@@ -19,7 +19,31 @@ npm run dev
 ## Test urls
 
 ### Web demo link
-https://sendbird.github.io/ai-bot-url-webdemo/?hashed_key=f58aa9880d42652979ad0f040ff208386eb7d8f53978b8652da348d2395de95b
+https://sendbird-chat-ai-bot-demo.netlify.app/?hashed_key=${token}
 
 ### Widget demo link
-https://sendbird.github.io/ai-bot-url-webdemo/?hashed_key=ee54c144453b618f8d5f7a907230657f535d5c78cfd3591c1cc876826b8873a1&is_widget=true
+https://sendbird-chat-ai-bot-demo.netlify.app/?hashed_key=${token}&is_widget=true
+
+### Web demo link (preprod)
+https://sendbird-chat-ai-bot-demo-preprod.netlify.app/?hashed_key=${token_preprod}
+
+### Widget demo link (preprod)
+https://sendbird-chat-ai-bot-demo-preprod.netlify.app/?hashed_key=${token_preprod}&is_widget=true
+
+## How to find secrets
+Go to 1password
+sendbird-chat-ai-bot-demo (engineering team has access to it)
+
+## Add .env file locally with below info
+```
+# Vite prefix is required for Vite to load the env variables
+# Sendbird App ID
+VITE_WEB_DEMO_APP_ID=
+VITE_WIDGET_DEMO_APP_ID=
+```
+
+### How to deploy to netlify
+Go to branch (main for prod and preprod for preprod)
+Remove vite config.base
+Commit
+Go to netlify ~
