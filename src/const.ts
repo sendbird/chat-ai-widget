@@ -35,7 +35,7 @@ export const DEMO_CONSTANTS = {
     suggestedReplies: [
       {
         title: 'Problem solved! 👍',
-        text: 'Thank you for your feedback! You can also build your own AI chatbot in Sendbird.',
+        text: 'Thank you for your feedback! You can also add your own AI chatbot using Sendbird.',
         buttonText: 'Try free trial',
         link: 'https://dashboard.sendbird.com/auth/signup',
       },
@@ -64,7 +64,7 @@ export const DEMO_CONSTANTS = {
     suggestedReplies: [
       {
         title: 'Problem solved! 👍',
-        text: 'Thank you for your feedback! You can also build your own AI chatbot in Sendbird.',
+        text: 'Thank you for your feedback! You can also add your own AI chatbot using Sendbird.',
         buttonText: 'Try free trial',
         link: 'https://dashboard.sendbird.com/auth/signup',
       },
@@ -95,7 +95,7 @@ export const INITIAL_DEMO_STATE: DemoConstant = {
   suggestedReplies: [
     {
       title: 'Problem solved! 👍',
-      text: 'Thank you for your feedback! You can also build your own AI chatbot in Sendbird.',
+      text: 'Thank you for your feedback! You can also add your own AI chatbot using Sendbird.',
       buttonText: 'Try free trial',
       link: 'https://dashboard.sendbird.com/auth/signup',
     },
