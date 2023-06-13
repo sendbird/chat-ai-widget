@@ -1,0 +1,37 @@
+{
+  "name": "ai-bot-url-webdemo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc-silent -p './tsconfig.json' --suppress @ && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "deploy": "./scripts/deploy.sh"
+  },
+  "dependencies": {
+    "@sendbird/chat": "^4.9.0",
+    "@sendbird/uikit-react": "^3.4.9",
+    "react": "^18.2.0",
+    "react-code-blocks": "^0.0.9-0",
+    "react-dom": "^18.2.0",
+    "react-popper-tooltip": "^4.4.2",
+    "styled-components": "^5.3.11",
+    "vite-plugin-svgr": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "tsc-silent": "^1.2.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9"
+  }
+}
