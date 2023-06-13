@@ -58,9 +58,8 @@ export default function ParsedBotMessageBody(props: Props) {
               />;
             }
             return (
-              <BlockContainer>
+              <BlockContainer key={'token' + i}>
                 <CopyBlock
-                  key={'token' + i}
                   text={token.value}
                   language={token.type}
                   theme={irBlack}
