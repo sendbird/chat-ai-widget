@@ -84,13 +84,12 @@ export default function CustomMessage(props: Props) {
   const tokens: Token[] = MessageTextParser((message as UserMessage).message);
   tokens.forEach((token: Token) => {
     if (token.type === 'String') {
-      replaceUrl(token.value);
+      token.value = replaceUrl(token.value);
       if (!isWebDemo) {
-        replaceTextExtracts(token.value);
+        token.value = replaceTextExtracts(token.value);
       }
     }
   });
-  // console.log('## tokens: ', tokens);
 
   return <div>
     <BotMessageWithBodyInput

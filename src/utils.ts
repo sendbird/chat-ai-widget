@@ -162,16 +162,16 @@ export function isNotLocalMessageCustomType(customType: string | undefined) {
 // const inputString = "This is a sample text containing Text extracts. Text extracts should be replaced.";
 // const replacedString = replaceTextExtracts(inputString);
 // console.log(replacedString);
-export function replaceTextExtracts(input: string): void {
+export function replaceTextExtracts(input: string): string {
   const searchText = "the Text extracts";
   const replaceText = "Sendbird documentation";
   const regex = new RegExp(searchText, "gi");
-  input.replace(regex, replaceText);
+  return input.replace(regex, replaceText);
 }
 
-export function replaceUrl(input: string): void {
+export function replaceUrl(input: string): string {
   const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
-  input.replace(urlRegex, function(url, i) {
+  return input.replace(urlRegex, function(url, i) {
     return `<a href="${url}" target="_blank">${url}</a>`;
   });
 }
