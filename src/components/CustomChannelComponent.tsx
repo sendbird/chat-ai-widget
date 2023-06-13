@@ -5,7 +5,7 @@ import {GroupChannel} from "@sendbird/chat/groupChannel";
 import {ClientUserMessage} from "SendbirdUIKitGlobal";
 import {useContext, useEffect, useState} from "react";
 import {DemoConstant, USER_ID} from "../const";
-import {scrollUtil} from "../utils";
+import {isSpecialMessage, scrollUtil} from "../utils";
 import LoadingScreen from "./LoadingScreen";
 import ChannelUI from "@sendbird/uikit-react/Channel/components/ChannelUI";
 import CustomChannelHeader from "./CustomChannelHeader";
@@ -77,11 +77,12 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           : <ChannelHeader/>;
       }}
       renderMessageInput={() => {
-        return <div style={{  position: 'relative', zIndex: 50, backgroundColor: 'white' }}>
+        return <div style={{ position: 'relative', zIndex: 50, backgroundColor: 'white' }}>
           {
             allMessages
             && allMessages.length > 2
             && lastMessage.sender.userId === botUser.userId
+            && !isSpecialMessage(lastMessage.message)
             && <SuggestedRepliesPanel botUser={botUser}/>
           }
           <CustomMessageInput/>

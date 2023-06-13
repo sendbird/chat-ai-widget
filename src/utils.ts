@@ -1,4 +1,4 @@
-import {LOCAL_MESSAGE_CUSTOM_TYPE} from "./const";
+import {LOCAL_MESSAGE_CUSTOM_TYPE, SPECIAL_MESSAGE_LIST} from "./const";
 
 export function uuid() {
   let d = new Date().getTime();
@@ -162,11 +162,22 @@ export function isNotLocalMessageCustomType(customType: string | undefined) {
 // const inputString = "This is a sample text containing Text extracts. Text extracts should be replaced.";
 // const replacedString = replaceTextExtracts(inputString);
 // console.log(replacedString);
-export function replaceTextExtracts(input: string): string {
+export function replaceTextExtracts(input: string): void {
   const searchText = "the Text extracts";
   const replaceText = "Sendbird documentation";
   const regex = new RegExp(searchText, "gi");
+  input.replace(regex, replaceText);
+}
 
-  const replacedString = input.replace(regex, replaceText);
-  return replacedString;
+export function replaceUrl(input: string): void {
+  const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
+  input.replace(urlRegex, function(url, i) {
+    return `<a href="${url}" target="_blank">${url}</a>`;
+  });
+}
+
+export function isSpecialMessage(message: string): boolean {
+  return SPECIAL_MESSAGE_LIST.findIndex((substr: string) => {
+    return message.includes(substr);
+  }) > -1;
 }

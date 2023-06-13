@@ -131,3 +131,13 @@ export interface StartingPageContent {
   headerOne: string;
   headerTwo: string;
 }
+
+export const SPECIAL_MESSAGE_LIST = [
+  'How can I assist you',
+  'Can you clarify',
+  'That\'s not a question I can answer unfortunately',
+  'Try again',
+  'I couldn\'t find the answer to your question',
+  'Can you try again?',
+  'I\'m sorry, I couldn\'t understand your question',
+];

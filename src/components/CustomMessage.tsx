@@ -3,7 +3,7 @@ import {DemoConstant, LOCAL_MESSAGE_CUSTOM_TYPE} from "../const";
 import BotMessageWithBodyInput from "./BotMessageWithBodyInput";
 import {UserMessage} from "@sendbird/chat/message";
 import PendingMessage from "./PendingMessage";
-import {isNotLocalMessageCustomType, MessageTextParser, replaceTextExtracts, Token} from "../utils";
+import {isNotLocalMessageCustomType, MessageTextParser, replaceTextExtracts, replaceUrl, Token} from "../utils";
 import SuggestedReplyMessageBody from "./SuggestedReplyMessageBody";
 import ParsedBotMessageBody from "./ParsedBotMessageBody";
 import {User} from "@sendbird/chat";
@@ -84,13 +84,9 @@ export default function CustomMessage(props: Props) {
   const tokens: Token[] = MessageTextParser((message as UserMessage).message);
   tokens.forEach((token: Token) => {
     if (token.type === 'String') {
-      const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
-      // const urlRegex = /(https?:\/\/[^\s]+)/g;
-      token.value = token.value.replace(urlRegex, function(url, i) {
-        return `<a href="${url}" target="_blank">${url}</a>`;
-      });
+      replaceUrl(token.value);
       if (!isWebDemo) {
-        token.value = replaceTextExtracts(token.value);
+        replaceTextExtracts(token.value);
       }
     }
   });

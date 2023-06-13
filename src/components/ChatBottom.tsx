@@ -26,11 +26,11 @@ const Highlighter = styled.a`
 export default function ChatBottom() {
   return <Container>
     <InnerContainer>
-      Add&nbsp;<Highlighter
+      Elevate your product with&nbsp;<Highlighter
       href='https://sendbird.com/products/chatgpt-integration'
       id="AI chatbot"
       target="_blank"
-    >AI chatbot</Highlighter>&nbsp;to your product using&nbsp;<SendbirdLogo width={'80px'}/>
+    >AI chatbot</Highlighter>&nbsp;powered by&nbsp;<SendbirdLogo width={'80px'}/>
     </InnerContainer>
   </Container>;
 }
