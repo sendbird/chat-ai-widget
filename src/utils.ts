@@ -158,13 +158,16 @@ export function isNotLocalMessageCustomType(customType: string | undefined) {
   return !customType || Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) === -1;
 }
 
-// Example usage:
-// const inputString = "This is a sample text containing Text extracts. Text extracts should be replaced.";
-// const replacedString = replaceTextExtracts(inputString);
-// console.log(replacedString);
-export function replaceTextExtracts(input: string): string {
+export function replaceTextExtractsForWidgetDemo(input: string): string {
   const searchText = "the Text extracts";
   const replaceText = "Sendbird documentation";
+  const regex = new RegExp(searchText, "gi");
+  return input.replace(regex, replaceText);
+}
+
+export function replaceTextExtractsForWebDemo(input: string): string {
+  const searchText = "Text extracts";
+  const replaceText = "website";
   const regex = new RegExp(searchText, "gi");
   return input.replace(regex, replaceText);
 }

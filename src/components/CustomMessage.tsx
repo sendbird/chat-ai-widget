@@ -3,7 +3,14 @@ import {DemoConstant, LOCAL_MESSAGE_CUSTOM_TYPE} from "../const";
 import BotMessageWithBodyInput from "./BotMessageWithBodyInput";
 import {UserMessage} from "@sendbird/chat/message";
 import PendingMessage from "./PendingMessage";
-import {isNotLocalMessageCustomType, MessageTextParser, replaceTextExtracts, replaceUrl, Token} from "../utils";
+import {
+  isNotLocalMessageCustomType,
+  MessageTextParser,
+  replaceTextExtractsForWebDemo,
+  replaceTextExtractsForWidgetDemo,
+  replaceUrl,
+  Token
+} from "../utils";
 import SuggestedReplyMessageBody from "./SuggestedReplyMessageBody";
 import ParsedBotMessageBody from "./ParsedBotMessageBody";
 import {User} from "@sendbird/chat";
@@ -85,9 +92,9 @@ export default function CustomMessage(props: Props) {
   tokens.forEach((token: Token) => {
     if (token.type === 'String') {
       token.value = replaceUrl(token.value);
-      if (!isWebDemo) {
-        token.value = replaceTextExtracts(token.value);
-      }
+      token.value = isWebDemo
+        ? replaceTextExtractsForWebDemo(token.value)
+        : replaceTextExtractsForWidgetDemo(token.value);
     }
   });
 
