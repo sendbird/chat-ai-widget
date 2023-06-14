@@ -36,7 +36,7 @@ const InputContainer = styled.div`
 `;
 
 const InnerContainer = styled.div`
-  padding: 12px 24px;
+  padding: 12px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;

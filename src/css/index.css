@@ -47,3 +47,7 @@
     align-items: center;
     height: 350px;
 }
+
+.sendbird-conversation__messages-padding {
+    padding: 0 16px !important;
+}
