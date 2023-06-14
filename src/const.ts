@@ -140,4 +140,5 @@ export const SPECIAL_MESSAGE_LIST = [
   'I couldn\'t find the answer to your question',
   'Can you try again?',
   'I\'m sorry, I couldn\'t understand your question',
+  'That\'s not a valid question',
 ];

@@ -12,6 +12,7 @@ const BackgroundContainer = styled.div<StartingPageAnimatorProps>`
 `;
 
 const TitleContainer = styled.div`
+  width: calc(100% - 64px);
   position: absolute;
   padding: 32px;
 `;
@@ -32,11 +33,9 @@ const HeaderOne = styled.div`
   //line-height: 36px;
   color: #FFFFFF;
   opacity: 0.8;
-  margin-top: 18px;
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 26px;
   font-family: 'Gellix', sans-serif;
 `;
 
@@ -61,6 +60,25 @@ const HeaderTwoForWebDemo = styled(HeaderTwo)`
   line-height: 40px;
 `;
 
+export const BetaLogo = styled.div`
+  padding: 4px;
+  background: #C8D9FA;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 12px;
+  color: #30308F;
+  font-family: 'SF Pro Display', sans-serif;
+  letter-spacing: 0.8px;
+`;
+
+export const HeaderOneContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+
 interface Props {
   isStartingPage: boolean;
 }
@@ -82,12 +100,19 @@ export function StartingPage(props: Props) {
         isWebDemo
           ? <TitleContainer>
             <SendbirdLogo width={'100px'}/>
-            <HeaderOneForWebDemo>{demoStates.startingPageContent.headerOne}</HeaderOneForWebDemo>
+            <HeaderOneContainer>
+              <HeaderOneForWebDemo>{demoStates.startingPageContent.headerOne}</HeaderOneForWebDemo>
+              <BetaLogo>BETA</BetaLogo>
+            </HeaderOneContainer>
+
             <HeaderTwoForWebDemo>{demoStates.startingPageContent.headerTwo}</HeaderTwoForWebDemo>
           </TitleContainer>
           : <TitleContainer>
             <SendbirdLogo width={'100px'}/>
-            <HeaderOne>{demoStates.startingPageContent.headerOne}</HeaderOne>
+            <HeaderOneContainer style={{ margin: '18px 0 8px', alignItems: 'flex-end' }}>
+              <HeaderOne>{demoStates.startingPageContent.headerOne}</HeaderOne>
+              <BetaLogo style={{ marginBottom: '3px' }}>BETA</BetaLogo>
+            </HeaderOneContainer>
             <HeaderTwo>{demoStates.startingPageContent.headerTwo}</HeaderTwo>
           </TitleContainer>
       }

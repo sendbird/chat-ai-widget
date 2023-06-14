@@ -5,6 +5,7 @@ import channelHeaderImage from '../icons/bot-message-image.png';
 import {useContext} from "react";
 import {DemoConstant} from "../const";
 import {DemoStatesContext} from "../context/DemoStatesContext";
+import {BetaLogo} from "./StartingPage";
 
 const Root = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const Root = styled.div`
   font-style: normal;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 16px 24px;
+  padding: 11px 12px;
 `;
 
 const SubContainer = styled.div`
@@ -28,7 +29,6 @@ const Title = styled.div`
   line-height: 20px;
   letter-spacing: -0.2px;
   color: rgba(0, 0, 0, 0.88);
-  margin-bottom: 4px;
 `;
 
 const TypingIndicator = styled.div`
@@ -90,12 +90,10 @@ export default function CustomChannelHeader(props: Props) {
   return <Root>
     <SubContainer>
       <img src={channelHeaderImage} alt="channelHeaderImage" style={{
-        height: "36px"
+        height: "34px"
       }}/>
-      <div>
-        <Title>{channel.name}</Title>
-        <TypingIndicator>{ isTyping ? 'Thinking...' : 'AI Chatbot' }</TypingIndicator>
-      </div>
+      <Title>{channel.name}</Title>
+      <BetaLogo>BETA</BetaLogo>
     </SubContainer>
     <RenewButtonContainer>
       <RenewButton onClick={onClickRenewButton}>
