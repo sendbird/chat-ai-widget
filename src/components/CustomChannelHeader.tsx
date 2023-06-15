@@ -93,7 +93,7 @@ export default function CustomChannelHeader(props: Props) {
         height: "34px"
       }}/>
       <Title>{channel.name}</Title>
-      <BetaLogo>BETA</BetaLogo>
+      <BetaLogo>{ isWebDemo ? 'DEMO' : 'BETA' }</BetaLogo>
     </SubContainer>
     <RenewButtonContainer>
       <RenewButton onClick={onClickRenewButton}>

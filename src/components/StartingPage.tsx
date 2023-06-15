@@ -102,7 +102,7 @@ export function StartingPage(props: Props) {
             <SendbirdLogo width={'100px'}/>
             <HeaderOneContainer>
               <HeaderOneForWebDemo>{demoStates.startingPageContent.headerOne}</HeaderOneForWebDemo>
-              <BetaLogo>BETA</BetaLogo>
+              <BetaLogo>{ isWebDemo ? 'DEMO' : 'BETA' }</BetaLogo>
             </HeaderOneContainer>
 
             <HeaderTwoForWebDemo>{demoStates.startingPageContent.headerTwo}</HeaderTwoForWebDemo>
@@ -111,7 +111,7 @@ export function StartingPage(props: Props) {
             <SendbirdLogo width={'100px'}/>
             <HeaderOneContainer style={{ margin: '18px 0 8px', alignItems: 'flex-end' }}>
               <HeaderOne>{demoStates.startingPageContent.headerOne}</HeaderOne>
-              <BetaLogo style={{ marginBottom: '3px' }}>BETA</BetaLogo>
+              <BetaLogo style={{ marginBottom: '3px' }}>{ isWebDemo ? 'DEMO' : 'BETA' }</BetaLogo>
             </HeaderOneContainer>
             <HeaderTwo>{demoStates.startingPageContent.headerTwo}</HeaderTwo>
           </TitleContainer>
