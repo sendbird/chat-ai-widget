@@ -30,7 +30,7 @@ export default function ChatBottom() {
       href='https://sendbird.com/products/chatgpt-integration'
       id="AI chatbot"
       target="_blank"
-    >AI chatbot</Highlighter>&nbsp;powered by&nbsp;<SendbirdLogo width={'80px'}/>
+    >AI chatbot</Highlighter>&nbsp;powered by&nbsp;<SendbirdLogo width={'75px'}/>
     </InnerContainer>
   </Container>;
 }

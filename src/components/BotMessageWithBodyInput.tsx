@@ -69,7 +69,7 @@ export default function BotMessageWithBodyInput(props: Props) {
       }}/>
     </ImageContainer>
     <BodyContainer style={bodyStyle ?? {}}>
-      <Sender isStartingPage={messageCount === 1}>{message.sender.nickname}</Sender>
+      <Sender isStartingPage={messageCount === 1}>Docs AI Assistant</Sender>
       {bodyComponent}
     </BodyContainer>
     <SentTime>

@@ -134,6 +134,7 @@ export interface StartingPageContent {
 
 export const SPECIAL_MESSAGE_LIST = [
   'How can I assist you',
+  'How can I help you',
   'Can you clarify',
   'That\'s not a question I can answer unfortunately',
   'Try again',
@@ -141,4 +142,6 @@ export const SPECIAL_MESSAGE_LIST = [
   'Can you try again?',
   'I\'m sorry, I couldn\'t understand your question',
   'That\'s not a valid question',
+  'Is there a specific question you have',
+  'I\'m here to help you with any questions you have',
 ];
