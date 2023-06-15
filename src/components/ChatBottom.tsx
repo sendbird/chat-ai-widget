@@ -24,13 +24,14 @@ const Highlighter = styled.a`
 
 // link: https://dashboard.sendbird.com/auth/signup
 export default function ChatBottom() {
+
   return <Container>
     <InnerContainer>
-      Elevate your product with&nbsp;<Highlighter
+      Learn how to&nbsp;<Highlighter
       href='https://sendbird.com/products/chatgpt-integration'
       id="AI chatbot"
       target="_blank"
-    >AI chatbot</Highlighter>&nbsp;powered by&nbsp;<SendbirdLogo width={'75px'}/>
+    >launch AI chatbots</Highlighter>&nbsp;in minutes with&nbsp;<SendbirdLogo width={'75px'}/>
     </InnerContainer>
   </Container>;
 }

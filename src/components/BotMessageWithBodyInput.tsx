@@ -2,8 +2,10 @@ import styled from "styled-components";
 import botMessageImage from '../icons/bot-message-image.png';
 import {formatCreatedAtToAMPM} from "../utils";
 import {UserMessage} from "@sendbird/chat/message";
-import {ReactNode} from "react";
+import {ReactNode, useContext} from "react";
 import {StartingPageAnimatorProps} from "./CustomChannelComponent";
+import {DemoConstant} from "../const";
+import {DemoStatesContext} from "../context/DemoStatesContext";
 
 const Root = styled.div<StartingPageAnimatorProps>`
   display: flex;
@@ -61,6 +63,8 @@ const ImageContainer = styled.div`
 
 export default function BotMessageWithBodyInput(props: Props) {
   const { message, bodyComponent, messageCount, zIndex, bodyStyle } = props;
+  const demoStates = useContext<DemoConstant>(DemoStatesContext);
+  const isWebDemo: boolean = demoStates.name === 'webDemo';
 
   return <Root style={{ zIndex: (messageCount === 1 && zIndex) ? zIndex : 0 }}>
     <ImageContainer>
@@ -69,7 +73,7 @@ export default function BotMessageWithBodyInput(props: Props) {
       }}/>
     </ImageContainer>
     <BodyContainer style={bodyStyle ?? {}}>
-      <Sender isStartingPage={messageCount === 1}>Docs AI Assistant</Sender>
+      <Sender isStartingPage={messageCount === 1}>{ isWebDemo ? 'Clark the Assistant' : 'Docs AI Assistant'}</Sender>
       {bodyComponent}
     </BodyContainer>
     <SentTime>

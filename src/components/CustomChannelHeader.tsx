@@ -97,7 +97,7 @@ export default function CustomChannelHeader(props: Props) {
     </SubContainer>
     <RenewButtonContainer>
       <RenewButton onClick={onClickRenewButton}>
-        <div>Renew</div>
+        <div>Refresh</div>
         <RefreshIcon height='18px' width='18px'/>
       </RenewButton>
       {

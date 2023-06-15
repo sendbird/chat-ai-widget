@@ -35,13 +35,9 @@ const HeaderOne = styled.div`
   opacity: 0.8;
   font-style: normal;
   font-weight: 600;
-  font-size: 26px;
-  font-family: 'Gellix', sans-serif;
-`;
-
-const HeaderOneForWebDemo = styled(HeaderOne)`
   font-size: 20px;
   line-height: 28px;
+  font-family: 'Gellix', sans-serif;
 `;
 
 const HeaderTwo = styled.div`
@@ -51,11 +47,6 @@ const HeaderTwo = styled.div`
   font-family: 'Gellix', sans-serif;
   color: #FFFFFF;
   //margin-top: 8px;
-  font-size: 36px;
-  line-height: 48px;
-`;
-
-const HeaderTwoForWebDemo = styled(HeaderTwo)`
   font-size: 32px;
   line-height: 40px;
 `;
@@ -76,6 +67,7 @@ export const HeaderOneContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  margin: 14px 0 0;
 `;
 
 
@@ -101,15 +93,14 @@ export function StartingPage(props: Props) {
           ? <TitleContainer>
             <SendbirdLogo width={'100px'}/>
             <HeaderOneContainer>
-              <HeaderOneForWebDemo>{demoStates.startingPageContent.headerOne}</HeaderOneForWebDemo>
+              <HeaderOne>{demoStates.startingPageContent.headerOne}</HeaderOne>
               <BetaLogo>{ isWebDemo ? 'DEMO' : 'BETA' }</BetaLogo>
             </HeaderOneContainer>
-
-            <HeaderTwoForWebDemo>{demoStates.startingPageContent.headerTwo}</HeaderTwoForWebDemo>
+            <HeaderTwo>{demoStates.startingPageContent.headerTwo}</HeaderTwo>
           </TitleContainer>
           : <TitleContainer>
             <SendbirdLogo width={'100px'}/>
-            <HeaderOneContainer style={{ margin: '18px 0 8px', alignItems: 'flex-end' }}>
+            <HeaderOneContainer style={{ alignItems: 'flex-end' }}>
               <HeaderOne>{demoStates.startingPageContent.headerOne}</HeaderOne>
               <BetaLogo style={{ marginBottom: '3px' }}>{ isWebDemo ? 'DEMO' : 'BETA' }</BetaLogo>
             </HeaderOneContainer>
