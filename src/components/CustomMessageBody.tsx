@@ -42,6 +42,6 @@ export default function CustomMessageBody(props: Props) {
   }
   
   return <Root>
-    <Text dangerouslySetInnerHTML={{ __html: message + extraStr }}/>
+    <Text dangerouslySetInnerHTML={{ __html: message + '.' + extraStr }}/>
   </Root>;
 }
