@@ -29,7 +29,7 @@ type Props = {
 }
 
 const StartingBlock = styled.div`
-  height: ${(props: StartingPageAnimatorProps) => (props.isStartingPage ? '115px' : '0')};
+  height: ${(props: StartingPageAnimatorProps) => (props.isStartingPage ? '125px' : '0')};
   width: 100%;
   transition: height 0.5s ease;
 `;
