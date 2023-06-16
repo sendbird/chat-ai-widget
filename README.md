@@ -17,16 +17,6 @@ npm run deploy
 npm run dev
 ```
 ## Test urls
-
-There are 2 envs. in netlify
-* Prod
-    *
-    *
-* Preprod
-    *
-    *
-`is_widget` flag optimizes Chat UI for widget view
-
 ### Web demo link(prod)
 https://sendbird-chat-ai-bot-demo.netlify.app/?hashed_key=${token}
 
@@ -57,3 +47,10 @@ Go to branch (main for prod and preprod for preprod)
 Env variables are already set in netlify
 Prod: https://app.netlify.com/sites/sendbird-chat-ai-bot-demo/overview
 Preprod: https://app.netlify.com/sites/sendbird-chat-ai-bot-demo-preprod/overview
+
+## Services that use this repo
+* Prod:
+    * Web: https://sendbird.com/products/demos/clark?hashed_key=${token}
+    * Widget: https://docs.sendbird.com?hashed_key=${token}&is_widget=true
+* Preprod: ^^ same urls but use staging URL instead of sendbird.com
+`is_widget` flag optimizes Chat UI for widget view
