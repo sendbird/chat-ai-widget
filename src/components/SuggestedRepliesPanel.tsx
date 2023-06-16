@@ -57,7 +57,7 @@ const Panel = styled.div`
   display: flex;
   height: 37px;
   width: calc(100%);
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   overflow: hidden;
   flex-wrap: wrap;
