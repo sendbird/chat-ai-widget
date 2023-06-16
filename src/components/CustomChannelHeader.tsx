@@ -48,11 +48,21 @@ const RenewButton = styled.div`
   cursor: pointer;
 `;
 
+const RenewButtonForWidgetDemo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+`;
+
 const RenewButtonContainer = styled.div`
   display: flex;
   height: fit-content;
   width: fit-content;
   align-items: center;
+  gap: 6px;
 `;
 
 const DelimiterContainer = styled.div`
@@ -68,8 +78,8 @@ const Delimiter = styled.div`
 `;
 
 const EmptyContainer = styled.div`
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 `;
 
 type Props = {
@@ -95,17 +105,21 @@ export default function CustomChannelHeader(props: Props) {
       <Title>{channel.name}</Title>
       <BetaLogo>{ isWebDemo ? 'DEMO' : 'BETA' }</BetaLogo>
     </SubContainer>
-    <RenewButtonContainer>
-      <RenewButton onClick={onClickRenewButton}>
-        <div>Refresh</div>
-        <RefreshIcon height='18px' width='18px'/>
-      </RenewButton>
-      {
-        !isWebDemo && <DelimiterContainer>
-          <Delimiter/>
+    {
+      isWebDemo
+        ? <RenewButtonContainer>
+          <RenewButton onClick={onClickRenewButton}>
+            <div>Refresh</div>
+            <RefreshIcon height='18px' width='18px'/>
+          </RenewButton>
+        </RenewButtonContainer>
+        : <RenewButtonContainer>
+          <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
+            <RefreshIcon height='16px' width='16px'/>
+          </RenewButtonForWidgetDemo>
           <EmptyContainer/>
-        </DelimiterContainer>
-      }
-    </RenewButtonContainer>
+          <EmptyContainer/>
+        </RenewButtonContainer>
+    }
   </Root>;
 }
