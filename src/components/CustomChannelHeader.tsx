@@ -55,6 +55,7 @@ const RenewButtonForWidgetDemo = styled.div`
   width: 24px;
   height: 24px;
   cursor: pointer;
+  margin-right: 4px;
 `;
 
 const RenewButtonContainer = styled.div`
