@@ -8,7 +8,7 @@ It is for the Sendbird Chat AI bot demo that works like the one by [Intercom](ht
 ## API Request workflow
 - https://sendbird.atlassian.net/wiki/spaces/PLAT/pages/2087026747/Web+demo+verion+2
 
-## Deploy to gh-pages
+## Deploy to gh-pages (#deprecated)
 ```bash
 npm run deploy
 ```
@@ -18,10 +18,19 @@ npm run dev
 ```
 ## Test urls
 
-### Web demo link
+There are 2 envs. in netlify
+* Prod
+    *
+    *
+* Preprod
+    *
+    *
+`is_widget` flag optimizes Chat UI for widget view
+
+### Web demo link(prod)
 https://sendbird-chat-ai-bot-demo.netlify.app/?hashed_key=${token}
 
-### Widget demo link
+### Widget demo link(prod)
 https://sendbird-chat-ai-bot-demo.netlify.app/?hashed_key=${token}&is_widget=true
 
 ### Web demo link (preprod)
@@ -37,6 +46,7 @@ sendbird-chat-ai-bot-demo (engineering team has access to it)
 ## Add .env file locally with below info
 ```
 # Vite prefix is required for Vite to load the env variables
+# https://vitejs.dev/guide/env-and-mode.html#env-files
 # Sendbird App ID
 VITE_WEB_DEMO_APP_ID=
 VITE_WIDGET_DEMO_APP_ID=
@@ -44,6 +54,6 @@ VITE_WIDGET_DEMO_APP_ID=
 
 ### How to deploy to netlify
 Go to branch (main for prod and preprod for preprod)
-Remove vite config.base
-Commit
-Go to netlify ~
+Env variables are already set in netlify
+Prod: https://app.netlify.com/sites/sendbird-chat-ai-bot-demo/overview
+Preprod: https://app.netlify.com/sites/sendbird-chat-ai-bot-demo-preprod/overview
