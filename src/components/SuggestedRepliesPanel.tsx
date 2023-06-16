@@ -17,6 +17,7 @@ interface SuggestedReplyItemProps {
 const SuggestedReplyItem = styled.div<SuggestedReplyItemProps>`
   white-space: nowrap;
   height: calc(100% - 8px);
+  font-size: 12px;
   padding: 3px 14px;
   display: flex;
   align-items: center;
@@ -56,7 +57,7 @@ const Panel = styled.div`
   display: flex;
   height: 37px;
   width: calc(100%);
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
   flex-wrap: wrap;

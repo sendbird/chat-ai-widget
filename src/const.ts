@@ -35,13 +35,13 @@ export const DEMO_CONSTANTS = {
     wsHost: `wss://ws-${WEB_DEMO_APP_ID}.sendbird.com`,
     suggestedReplies: [
       {
-        title: 'Yes, it was helpful!',
+        title: 'Yes, it was helpful! 👍',
         text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
         buttonText: 'Try free trial',
         link: 'https://dashboard.sendbird.com/auth/signup',
       },
       {
-        title: 'No, I need more help.',
+        title: 'No, I need more help. 💬',
         text: 'I\'m sorry, we couldn\'t help you. Let us know how we can improve by talking to one of our teammates.',
         buttonText: 'Talk to an expert',
         link: 'https://sendbird.com/contact-sales',
@@ -65,13 +65,13 @@ export const DEMO_CONSTANTS = {
     wsHost: `wss://ws-${WIDGET_DEMO_APP_ID}.sendbird.com`,
     suggestedReplies: [
       {
-        title: 'Yes, it was helpful!',
+        title: 'Yes, it was helpful! 👍',
         text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
         buttonText: 'Try free trial',
         link: 'https://dashboard.sendbird.com/auth/signup',
       },
       {
-        title: 'No, I need more help.',
+        title: 'No, I need more help. 💬',
         text: 'I\'m sorry to hear that we weren\'t able to assist you. You might find additional help on our community site.',
         buttonText: 'Visit our Community',
         link: 'https://community.sendbird.com/',
