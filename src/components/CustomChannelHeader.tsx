@@ -6,6 +6,7 @@ import {useContext} from "react";
 import {DemoConstant} from "../const";
 import {DemoStatesContext} from "../context/DemoStatesContext";
 import {BetaLogo} from "./StartingPage";
+import {useLoadingState} from "../context/LoadingStateContext";
 
 const Root = styled.div`
   display: flex;
@@ -90,13 +91,15 @@ type Props = {
 }
 
 export default function CustomChannelHeader(props: Props) {
-  const { channel, isTyping, createGroupChannel } = props;
+  const { channel, createGroupChannel } = props;
   const demoStates = useContext<DemoConstant>(DemoStatesContext);
   const isWebDemo: boolean = demoStates.name === 'webDemo';
+  const { setShowLoading } = useLoadingState();
 
   function onClickRenewButton() {
     createGroupChannel();
     // window.location.reload();
+    setShowLoading(true);
   }
   return <Root>
     <SubContainer>

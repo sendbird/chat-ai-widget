@@ -2,10 +2,10 @@ import {GroupChannel, SendbirdGroupChat} from "@sendbird/chat/groupChannel";
 import {useCreateGroupChannel} from "../hooks/useCreateGroupChannel";
 import {User} from "@sendbird/chat";
 import {useGetBotUser} from "../hooks/useGetBotUser";
-import LoadingScreen from "./LoadingScreen";
 import useSendbirdStateContext from "@sendbird/uikit-react/useSendbirdStateContext";
 import {ChannelProvider} from "@sendbird/uikit-react/Channel/context";
 import {CustomChannelComponent} from "./CustomChannelComponent";
+import * as React from "react";
 
 type CustomChannelProps = {
   hashedKey: string;
@@ -21,10 +21,8 @@ export default function CustomChannel(props: CustomChannelProps) {
   // console.log('## currentUser: ', sb.currentUser);
   // console.log('## botUser: ', botUser);
   // console.log('## channel: ', channel);
-  if (!channel || creating) return <LoadingScreen/>;
-  return (
+  return channel && !creating &&
     <ChannelProvider channelUrl={channel?.url}>
-      <CustomChannelComponent {...props} botUser={botUser} createGroupChannel={createGroupChannel} />
-    </ChannelProvider>
-  )
+      <CustomChannelComponent {...props} botUser={botUser} createGroupChannel={createGroupChannel}/>
+    </ChannelProvider>;
 }

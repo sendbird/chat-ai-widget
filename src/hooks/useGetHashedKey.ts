@@ -3,7 +3,7 @@ import {HASHED_KEY_QUERY_PARAMETER_NAME, IS_WIDGET_PARAMETER_NAME} from "../cons
 
 export function useGetHashedKey(): [string, boolean] {
   const [hashedKey, setHashedKey] = useState<string>('');
-  const [isWidget, setIsWidget] = useState<boolean>(false);
+  const [isWidget, setIsWidget] = useState<boolean>(null);
 
   function setHashedKeyFromCurrentUrl(): void {
     const urlParams: URLSearchParams = new URLSearchParams(window.location.search);
