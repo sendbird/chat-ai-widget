@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@sendbird/chat": "^4.9.2",
-    "@sendbird/chat-ai-widget": "^1.0.9",
     "@sendbird/uikit-react": "^3.5.1",
     "polished": "^2.3.1",
     "react": "^18.2.0",
