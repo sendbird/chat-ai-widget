@@ -59,6 +59,7 @@ export default function CustomMessage(props: Props) {
     return <div>
       <StartingBlock isStartingPage={allMessages.length === 1}/>
       <BotMessageWithBodyInput
+        botUser={botUser}
         message={message}
         bodyComponent={
           <CustomMessageBody message={(message as UserMessage).message} data={message.data}/>
@@ -75,6 +76,7 @@ export default function CustomMessage(props: Props) {
   if (!isNotLocalMessageCustomType(message.customType)) {
     if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
       return <BotMessageWithBodyInput
+        botUser={botUser}
         message={message}
         bodyComponent={<SuggestedReplyMessageBody message={message}/>}
         bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}

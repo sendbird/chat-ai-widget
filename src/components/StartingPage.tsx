@@ -2,9 +2,7 @@ import styled from "styled-components";
 import React from 'react';
 import {StartingPageAnimatorProps} from "./CustomChannelComponent";
 import {useEffect} from "react";
-import {StartingMessageContent, StartingPageContent} from "../const";
-
-import { ReactComponent as BackgroundImage } from '../icons/starting-page-bg-image-svg.svg';
+import {StartingPageContent} from "../const";
 import botMessageImage from '../icons/bot-message-image.png';
 import {useImageLoadingState} from "../context/ImageLoadingStateContext";
 
@@ -20,7 +18,7 @@ const TitleContainer = styled.div`
 
 const Root = styled.div<StartingPageAnimatorProps>`
   position: relative;
-  top: ${(props: StartingPageAnimatorProps) => (props.isStartingPage ? '0' : '-250px')};
+  top: ${(props: StartingPageAnimatorProps) => (props.isStartingPage ? '0' : '-300px')};
   opacity: ${(props: StartingPageAnimatorProps) => (props.isStartingPage ? '1' : '0')};
   z-index: 20;
   width: 100%;
@@ -79,7 +77,6 @@ const StartMessageContainer = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   position: relative;
-  z-index: 30;
 `;
 
 const StartMessageBodyContainer = styled.div`

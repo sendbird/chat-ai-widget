@@ -93,7 +93,7 @@ export const defaultColorSet = {
   },
 };
 
-const colorGenerator = (colorSet) => (colorKey, opacity?) => {
+const colorGenerator = (colorSet: keyof typeof defaultColorSet) => (colorKey: keyof typeof defaultColorSet['green'] | keyof typeof defaultColorSet['navy'], opacity?: number) => {
   const color = defaultColorSet[colorSet][colorKey];
   return opacity && opacity <= 1 ? transparentize(1 - opacity, color) : color;
 };
@@ -108,6 +108,5 @@ export const colors = {
   brown: colorGenerator('brown'),
   navy: colorGenerator('navy'),
   neutral: colorGenerator('neutral'),
-  newPurple: colorGenerator('newPurple'),
   white: '#ffffff',
 };

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { User } from "@sendbird/chat";
 import { GroupChannel } from "@sendbird/chat/groupChannel";
 import { UserMessage } from "@sendbird/chat/message";
 import { useChannelContext } from "@sendbird/uikit-react/Channel/context"

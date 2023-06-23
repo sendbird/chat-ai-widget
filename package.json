@@ -1,17 +1,24 @@
 {
-  "name": "ai-bot-url-webdemo",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "@sendbird/chat-ai-widget",
+  "version": "1.0.9",
+  "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sendbird/chat-ai-widget.git"
+  },
   "scripts": {
     "dev": "vite",
+    "build:types": "tsc ; cp -R src/icons icons",
     "build": "tsc-silent -p './tsconfig.json' --suppress @ && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "deploy": "./scripts/deploy.sh"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@sendbird/chat": "^4.9.2",
+    "@sendbird/chat-ai-widget": "^1.0.9",
     "@sendbird/uikit-react": "^3.5.1",
     "polished": "^2.3.1",
     "react": "^18.2.0",

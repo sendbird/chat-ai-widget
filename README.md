@@ -4,11 +4,11 @@ It is for the Sendbird Chat AI Widget UiKit.
 
 ## How to use
 ```bash
-npm install @sendbird/chat-ai-widget-uikit
+npm install @sendbird/chat-ai-widget
 ```
 
 ```jsx
-import { ChatAiWidget } from '@sendbird/chat-ai-widget-uikit';
+import {ChatAiWidget} from "@sendbird/chat-ai-widget";
 const App = () => {
   return (
       <ChatAiWidget

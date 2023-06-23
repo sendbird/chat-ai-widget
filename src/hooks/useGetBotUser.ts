@@ -2,8 +2,8 @@ import {useEffect, useState} from "react";
 import useSendbirdStateContext from "@sendbird/uikit-react/useSendbirdStateContext";
 import SendbirdChat, {ApplicationUserListQuery, User} from "@sendbird/chat";
 
-export function useGetBotUser(currentUser: User, sendbirdBotId: string): User {
-  const [botUser, setBotUser] = useState<User>(null);
+export function useGetBotUser(currentUser: User, sendbirdBotId: string): User | null {
+  const [botUser, setBotUser] = useState<User | null>(null);
   const store = useSendbirdStateContext();
   const sb: SendbirdChat = store.stores.sdkStore.sdk;
 
