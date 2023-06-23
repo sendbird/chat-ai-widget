@@ -1,6 +1,6 @@
 {
   "name": "@sendbird/chat-ai-widget",
-  "version": "1.0.9",
+  "version": "0.0.1",
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
