@@ -8,6 +8,7 @@ export const USER_ID = uuid();
 
 export interface Constant {
   botNickName: string;
+  betaMark: boolean;
   suggestedMessageContent: SuggestedMessageContent;
   createGroupChannelParams: CreateGroupChannelParams;
   startingPageContent: StartingPageContent;
@@ -23,6 +24,7 @@ export interface SuggestedReply {
 
 export const DEFAULT_CONSTANT: Constant = {
   botNickName: 'Jake Sully',
+  betaMark: true,
   suggestedMessageContent: {
     replyContents: [
       {
@@ -63,7 +65,6 @@ export const DEFAULT_CONSTANT: Constant = {
     headerContent: {
       headerOne: 'I\'m Sendbird AI ChatBot',
       headerTwo: 'Ask me anything!',
-      betaMark: true,
     },
     messageContent: {
       header: 'AI ChatBot',
@@ -119,7 +120,6 @@ export interface StringPageLogoContent {
 export interface StartingPageHeaderContent {
   headerOne: string;
   headerTwo: string;
-  betaMark: boolean;
 }
 
 export interface ChatBottomContent {

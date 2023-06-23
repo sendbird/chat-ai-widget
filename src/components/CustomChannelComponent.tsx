@@ -81,6 +81,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     <StartingPage
         isStartingPage={startingPagePlaceHolder}
         startingPageContent={constant.startingPageContent}
+        betaMark={constant.betaMark}
     />
     <ChannelUI
       renderChannelHeader={() => {
@@ -89,6 +90,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
             channel={channel}
             isTyping={activeSpinnerId > -1}
             createGroupChannel={createGroupChannel}
+            betaMark={constant.betaMark}
           />
           : <ChannelHeader/>;
       }}

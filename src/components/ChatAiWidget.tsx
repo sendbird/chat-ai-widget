@@ -109,6 +109,7 @@ const ChatAiWidget = ({
                                      applicationId,
                                      botId,
                                      botNickName = DEFAULT_CONSTANT.botNickName,
+                                     betaMark = DEFAULT_CONSTANT.betaMark,
                                      suggestedMessageContent = DEFAULT_CONSTANT.suggestedMessageContent,
                                      createGroupChannelParams = DEFAULT_CONSTANT.createGroupChannelParams,
                                      startingPageContent = DEFAULT_CONSTANT.startingPageContent,
@@ -117,6 +118,7 @@ const ChatAiWidget = ({
     applicationId: string,
     botId: string,
     botNickName?: string,
+    betaMark?: boolean,
     suggestedMessageContent?: SuggestedMessageContent,
     createGroupChannelParams?: CreateGroupChannelParams,
     startingPageContent?: StartingPageContent,
@@ -127,6 +129,7 @@ const ChatAiWidget = ({
     const constant = {
         ...DEFAULT_CONSTANT,
         botNickName,
+        betaMark,
         suggestedMessageContent,
         createGroupChannelParams,
         startingPageContent,

@@ -73,6 +73,7 @@ export const HeaderOneContainer = styled.div`
 const StartMessageContainer = styled.div`
   display: flex;
   align-items: flex-end;
+  padding-right: 12px;
   margin-bottom: 6px;
   flex-wrap: wrap;
   gap: 8px;
@@ -122,10 +123,11 @@ const StartMessageBodyContent = styled.div`
 interface Props {
     isStartingPage: boolean;
     startingPageContent: StartingPageContent;
+    betaMark: boolean;
 }
 
 export function StartingPage(props: Props) {
-    const { isStartingPage, startingPageContent } = props;
+    const { isStartingPage, startingPageContent, betaMark } = props;
     // console.log('## isWebDemo: ', isWebDemo);
     const { setShowImageLoading } = useImageLoadingState();
 
@@ -141,7 +143,9 @@ export function StartingPage(props: Props) {
             <BackgroundContainer isStartingPage>
                 <startingPageContent.backGroundContent.Component height={startingPageContent.backGroundContent.height}/>
                 <StartMessageContainer>
-                    <div>
+                    <div style={{
+                        paddingLeft: '12px',
+                    }}>
                         <img src={botMessageImage} alt="botProfileImage" style={{
                             height: '28px',
                         }}/>
@@ -160,7 +164,7 @@ export function StartingPage(props: Props) {
                 <HeaderOneContainer style={{ alignItems: 'flex-end' }}>
                     <HeaderOne>{startingPageContent.headerContent.headerOne}</HeaderOne>
                     {
-                        startingPageContent.headerContent.betaMark && <BetaLogo style={{ marginBottom: '3px' }}>{ 'BETA' }</BetaLogo>
+                        betaMark && <BetaLogo style={{ marginBottom: '3px' }}>{ 'BETA' }</BetaLogo>
                     }
                 </HeaderOneContainer>
                 <HeaderTwo>{startingPageContent.headerContent.headerTwo}</HeaderTwo>

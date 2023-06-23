@@ -8,6 +8,7 @@ import ChatAiWidget from "./components/ChatAiWidget";
 //     applicationId: 'AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67', // Your Sendbird application ID
 //     botId: 'korean-food-master', // Your Sendbird bot ID
 //     botNickName: 'Jake Sully',
+//     betaMark: true,
 //     suggestedMessageContent: {
 //         replyContents: [
 //             {
@@ -48,7 +49,6 @@ import ChatAiWidget from "./components/ChatAiWidget";
 //         headerContent: {
 //             headerOne: 'I\'m Sendbird AI ChatBot',
 //             headerTwo: 'Ask me anything!',
-//             betaMark: true,
 //         },
 //         messageContent: {
 //             header: 'AI ChatBot',
@@ -76,9 +76,10 @@ const App = () => {
             botId = "korean-food-master"
         />
         // <ChatAiWidget
-        //     applicationId = {customConstants.applicationId},
-        //     botId = {customConstants.botId},
-        //     botNickName: {customConstants.botNickName},
+        //     applicationId = {customConstants.applicationId}
+        //     botId = {customConstants.botId}
+        //     botNickName= {customConstants.botNickName}
+        //     betaMark = {customConstants.betaMark}
         //     suggestedMessageContent = {customConstants.suggestedMessageContent}
         //     createGroupChannelParams = {customConstants.createGroupChannelParams}
         //     startingPageContent = {customConstants.startingPageContent}

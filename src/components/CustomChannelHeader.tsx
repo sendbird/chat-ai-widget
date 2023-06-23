@@ -68,10 +68,11 @@ type Props = {
   channel: GroupChannel;
   isTyping: boolean;
   createGroupChannel: () => void;
+  betaMark: boolean;
 }
 
 export default function CustomChannelHeader(props: Props) {
-  const { channel, createGroupChannel } = props;
+  const { channel, createGroupChannel, betaMark } = props;
   const { setShowLoading } = useLoadingState();
 
   function onClickRenewButton() {
@@ -85,7 +86,7 @@ export default function CustomChannelHeader(props: Props) {
         height: "34px"
       }}/>
       <Title>{channel.name}</Title>
-      <BetaLogo>{ 'BETA' }</BetaLogo>
+      {betaMark && <BetaLogo>{ 'BETA' }</BetaLogo>}
     </SubContainer>
     <RenewButtonContainer>
       <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
