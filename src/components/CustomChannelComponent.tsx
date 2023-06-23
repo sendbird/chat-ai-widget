@@ -3,8 +3,8 @@ import {useChannelContext} from "@sendbird/uikit-react/Channel/context";
 import {SendingStatus} from "@sendbird/chat/message";
 import {GroupChannel} from "@sendbird/chat/groupChannel";
 import {ClientUserMessage} from "SendbirdUIKitGlobal";
-import {useContext, useEffect, useState} from "react";
-import {DemoConstant, USER_ID} from "../const";
+import {useEffect, useState} from "react";
+import {Constant, USER_ID} from "../const";
 import {isSpecialMessage, scrollUtil} from "../utils";
 import ChannelUI from "@sendbird/uikit-react/Channel/components/ChannelUI";
 import CustomChannelHeader from "./CustomChannelHeader";
@@ -15,15 +15,17 @@ import styled from "styled-components";
 import {StartingPage} from "./StartingPage";
 import ChannelHeader from "@sendbird/uikit-react/Channel/components/ChannelHeader"
 import ChatBottom from "./ChatBottom";
-import {DemoStatesContext} from "../context/DemoStatesContext";
 import {useLoadingState} from "../context/LoadingStateContext";
 
 const Root = styled.div`
-  height: 100vh; // 640px;
-  //height: 100%;
+  //height: 100vh; // 640px;
+  height: 100%;
   font-family: 'Roboto', sans-serif;
   z-index: 0;
   border: none;
+  .sendbird-place-holder__body{
+    display: ${({ hidePlaceholder }) => (hidePlaceholder ? 'none' : 'block')};
+  }
 `;
 
 export interface StartingPageAnimatorProps {
@@ -33,10 +35,11 @@ export interface StartingPageAnimatorProps {
 type CustomChannelComponentProps = {
   botUser: User;
   createGroupChannel?: () => void;
+  constant: Constant;
 }
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
-  const {botUser, createGroupChannel} = props;
+  const {botUser, createGroupChannel, constant} = props;
   // const store = useSendbirdStateContext();
   // const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
   const {allMessages, currentGroupChannel } = useChannelContext();
@@ -44,11 +47,11 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   // console.log('## isLoading: ', loading);
   const channel: GroupChannel | undefined = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[allMessages?.length - 1] as ClientUserMessage;
-  const demoStates = useContext<DemoConstant>(DemoStatesContext);
-  const isWebDemo: boolean = demoStates.name === 'webDemo';
   // console.log('#### allMessages: ', allMessages);
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
   const { setShowLoading } = useLoadingState();
+
+  const startingPagePlaceHolder = allMessages.length === 0;
   /**
    * If the updated last message is sent by the current user, activate spinner for the sent message.
    * If the updated last message is pending or failed by the current user or sent by the bot, deactivate spinner.
@@ -74,8 +77,11 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   }, [channel]);
 
   // if (!channel) return <LoadingScreen/>;
-  return <Root>
-    <StartingPage isStartingPage={allMessages.length === 1}/>
+  return <Root hidePlaceholder={startingPagePlaceHolder}>
+    <StartingPage
+        isStartingPage={startingPagePlaceHolder}
+        startingPageContent={constant.startingPageContent}
+    />
     <ChannelUI
       renderChannelHeader={() => {
         return createGroupChannel
@@ -91,15 +97,16 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
         return <div style={{ position: 'relative', zIndex: 50, backgroundColor: 'white' }}>
           {
             allMessages
-            && allMessages.length > 2
+            && allMessages.length > 1
             && lastMessage.sender.userId === botUser.userId
-            && !isSpecialMessage(lastMessage.message)
-            && <SuggestedRepliesPanel botUser={botUser}/>
+            && isSpecialMessage(lastMessage.message, constant.suggestedMessageContent.messageFilterList)
+            && <SuggestedRepliesPanel botUser={botUser} constant={constant}/>
           }
           <CustomMessageInput/>
-          {
-            !isWebDemo && <ChatBottom/>
-          }
+          <ChatBottom
+              chatBottomText={constant.chatBottomContent.text}
+              chatBottomBackgroundColor={constant.chatBottomContent.backgroundColor}
+          />
         </div>
       }}
       renderMessage={({message}) => {

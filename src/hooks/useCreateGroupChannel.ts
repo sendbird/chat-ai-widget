@@ -1,20 +1,17 @@
-import {useCallback, useContext, useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {GroupChannel, SendbirdGroupChat} from "@sendbird/chat/groupChannel";
 import useSendbirdStateContext from "@sendbird/uikit-react/useSendbirdStateContext";
 import {User} from "@sendbird/chat";
 import {GroupChannelCreateParams} from "@sendbird/chat/lib/__definition";
-import {DemoConstant} from "../const";
-import {DemoStatesContext} from "../context/DemoStatesContext";
+import {CreateGroupChannelParams} from "../const";
 
-export function useCreateGroupChannel(currentUser: User, botUser: User): [GroupChannel | null, () => void, boolean] {
+export function useCreateGroupChannel(currentUser: User, botUser: User, params: CreateGroupChannelParams): [GroupChannel | null, () => void, boolean] {
   const [channel, setChannel] = useState<GroupChannel | null>(null);
   const [creating, setCreating] = useState<boolean>(false);
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
-  const demoStates = useContext<DemoConstant>(DemoStatesContext);
   // console.log('## demoStates: ', demoStates);
 
-  const params = demoStates.createGroupChannelParams;
   const { name, coverUrl } = params;
 
   const createAndSetNewChannel = useCallback(() => {

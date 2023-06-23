@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {UserMessage} from "@sendbird/chat/message";
 
 const Root = styled.div`
   display: flex;

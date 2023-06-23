@@ -1,23 +1,17 @@
+import React from "react";
 import {uuid} from './utils';
+import {ReactComponent as StartingPageLogo} from './icons/sendbird-logo-starting-page.svg';
+import {ReactComponent as StartingPageBackground} from './icons/starting-page-bg-image-svg.svg';
 
 export const USER_ID = uuid();
-export const NICKNAME = "Jake Sully";
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
-export const WEB_DEMO_APP_ID = import.meta.env.VITE_WEB_DEMO_APP_ID;
-export const WIDGET_DEMO_APP_ID = import.meta.env.VITE_WIDGET_DEMO_APP_ID;
 
-export const HASHED_KEY_QUERY_PARAMETER_NAME = 'hashed_key'; // bot userId
-export const IS_WIDGET_PARAMETER_NAME = 'is_widget';
-
-export interface DemoConstant {
-  name: string;
-  appId: string;
-  apiHost: string;
-  wsHost: string;
-  suggestedReplies: SuggestedReply[];
+export interface Constant {
+  botNickName: string;
+  suggestedMessageContent: SuggestedMessageContent;
   createGroupChannelParams: CreateGroupChannelParams;
   startingPageContent: StartingPageContent;
-  infoBox: string;
+  chatBottomContent: ChatBottomContent;
 }
 
 export interface SuggestedReply {
@@ -27,13 +21,10 @@ export interface SuggestedReply {
   link: string;
 }
 
-export const DEMO_CONSTANTS = {
-  webDemo: {
-    name: 'webDemo',
-    appId: WEB_DEMO_APP_ID,
-    apiHost: `https://api-${WEB_DEMO_APP_ID}.sendbird.com`,
-    wsHost: `wss://ws-${WEB_DEMO_APP_ID}.sendbird.com`,
-    suggestedReplies: [
+export const DEFAULT_CONSTANT: Constant = {
+  botNickName: 'Jake Sully',
+  suggestedMessageContent: {
+    replyContents: [
       {
         title: 'Yes, it was helpful! 👍',
         text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
@@ -47,79 +38,56 @@ export const DEMO_CONSTANTS = {
         link: 'https://sendbird.com/contact-sales',
       },
     ],
-    createGroupChannelParams: {
-      name: 'Clark the Assistant',
-      coverUrl: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
-        'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-    },
-    startingPageContent: {
-      headerOne: 'Meet Clark',
-      headerTwo: 'Your very own AI Assistant',
-    },
-    infoBox: 'In this demo, the AI-generated responses may lack complete accuracy.',
-  },
-  widgetDemo: {
-    name: 'widgetDemo',
-    appId: WIDGET_DEMO_APP_ID,
-    apiHost: `https://api-${WIDGET_DEMO_APP_ID}.sendbird.com`,
-    wsHost: `wss://ws-${WIDGET_DEMO_APP_ID}.sendbird.com`,
-    suggestedReplies: [
-      {
-        title: 'Yes, it was helpful! 👍',
-        text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
-        buttonText: 'Try free trial',
-        link: 'https://dashboard.sendbird.com/auth/signup',
-      },
-      {
-        title: 'No, I need more help. 💬',
-        text: 'I\'m sorry to hear that we weren\'t able to assist you. You might find additional help on our community site.',
-        buttonText: 'Visit our Community',
-        link: 'https://community.sendbird.com/',
-      },
+    messageFilterList: [
+      'Can you please clarify?',
+      'How can I assist you',
+      'How can I help you',
+      'Can you clarify',
+      'That\'s not a question I can answer unfortunately',
+      'Try again',
+      'I couldn\'t find the answer to your question',
+      'Can you try again?',
+      'I apologize for any confusion',
+      'I\'m sorry, I couldn\'t understand your question',
+      'That\'s not a valid question',
+      'Is there a specific question you have',
+      'I\'m here to help you with any questions you have',
     ],
-    createGroupChannelParams: {
-      name: 'Docs AI Assistant',
-      coverUrl: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
+  },
+  createGroupChannelParams: {
+    name: 'Sendbird AI Chatbot',
+    coverUrl: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
         'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+  },
+  startingPageContent: {
+    headerContent: {
+      headerOne: 'I\'m Sendbird AI ChatBot',
+      headerTwo: 'Ask me anything!',
+      betaMark: true,
     },
-    startingPageContent: {
-      headerOne: 'I\'m Docs AI Assistant',
-      headerTwo: 'Ask us anything about Sendbird Docs!',
+    messageContent: {
+      header: 'AI ChatBot',
+      body: 'Hi~ I\'m Sendbird AI ChatBot. Ask me anything!',
     },
-    infoBox: 'In this beta version, the AI-generated responses may lack complete accuracy.',
+    logoContent: {
+      Component: StartingPageLogo,
+      width: '100px',
+    },
+    backGroundContent: {
+      Component: StartingPageBackground,
+      height: '240px'
+    }
+  },
+  chatBottomContent: {
+    text: 'Sendbird AI ChatBot',
+    backgroundColor: 'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)',
   },
 };
 
-export const INITIAL_DEMO_STATE: DemoConstant = {
-  name: 'webDemo',
-  appId: WEB_DEMO_APP_ID,
-  apiHost: `https://api-${WEB_DEMO_APP_ID}.sendbird.com`,
-  wsHost: `wss://ws-${WEB_DEMO_APP_ID}.sendbird.com`,
-  suggestedReplies: [
-    {
-      title: 'Yes, it was helpful! 👍',
-      text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
-      buttonText: 'Try free trial',
-      link: 'https://dashboard.sendbird.com/auth/signup',
-    },
-    {
-      title: 'No, I need more help. 💬',
-      text: 'I\'m sorry, we couldn\'t help you. Let us know how we can improve by talking to one of our teammates.',
-      buttonText: 'Talk to an expert',
-      link: 'https://sendbird.com/contact-sales',
-    },
-  ],
-  createGroupChannelParams: {
-    name: 'Clark the Assistant',
-    coverUrl: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
-      'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
-  },
-  startingPageContent: {
-    headerOne: 'Meet Clark',
-    headerTwo: 'Your very own AI Assistant',
-  },
-  infoBox: 'In this demo, the AI-generated responses may lack complete accuracy.',
-};
+export interface SuggestedMessageContent {
+  replyContents: SuggestedReply[];
+  messageFilterList: string[];
+}
 
 export interface CreateGroupChannelParams {
   name: string;
@@ -132,20 +100,35 @@ export const LOCAL_MESSAGE_CUSTOM_TYPE = {
 };
 
 export interface StartingPageContent {
-  headerOne: string;
-  headerTwo: string;
+  headerContent: StartingPageHeaderContent;
+  messageContent: StartingMessageContent;
+  logoContent: StringPageLogoContent;
+  backGroundContent: BackGroundContent;
 }
 
-export const SPECIAL_MESSAGE_LIST = [
-  'How can I assist you',
-  'How can I help you',
-  'Can you clarify',
-  'That\'s not a question I can answer unfortunately',
-  'Try again',
-  'I couldn\'t find the answer to your question',
-  'Can you try again?',
-  'I\'m sorry, I couldn\'t understand your question',
-  'That\'s not a valid question',
-  'Is there a specific question you have',
-  'I\'m here to help you with any questions you have',
-];
+export interface BackGroundContent {
+  Component: React.FC;
+  height: string;
+}
+
+export interface StringPageLogoContent {
+  Component: React.FC;
+  width: string;
+}
+
+export interface StartingPageHeaderContent {
+  headerOne: string;
+  headerTwo: string;
+  betaMark: boolean;
+}
+
+export interface ChatBottomContent {
+  text: string;
+  backgroundColor: string;
+}
+
+export interface StartingMessageContent {
+  header: string;
+  body: string;
+}
+

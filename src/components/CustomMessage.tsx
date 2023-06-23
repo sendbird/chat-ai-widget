@@ -1,13 +1,12 @@
 import {EveryMessage} from 'SendbirdUIKitGlobal';
-import {DemoConstant, LOCAL_MESSAGE_CUSTOM_TYPE} from "../const";
+import {LOCAL_MESSAGE_CUSTOM_TYPE} from "../const";
 import BotMessageWithBodyInput from "./BotMessageWithBodyInput";
 import {UserMessage} from "@sendbird/chat/message";
 import PendingMessage from "./PendingMessage";
 import {
   isNotLocalMessageCustomType,
   MessageTextParser,
-  replaceTextExtractsForWebDemo,
-  replaceTextExtractsForWidgetDemo,
+  replaceTextExtracts,
   replaceUrl,
   Token
 } from "../utils";
@@ -19,8 +18,6 @@ import CurrentUserMessage from "./CurrentUserMessage";
 import {useChannelContext} from "@sendbird/uikit-react/Channel/context";
 import {StartingPageAnimatorProps} from "./CustomChannelComponent";
 import styled from "styled-components";
-import {useContext} from "react";
-import {DemoStatesContext} from "../context/DemoStatesContext";
 
 type Props = {
   message: EveryMessage;
@@ -44,8 +41,6 @@ export default function CustomMessage(props: Props) {
   const {allMessages} = useChannelContext();
   const firstMessage: UserMessage = allMessages[0] as UserMessage;
   const firstMessageId = firstMessage?.messageId ?? -1;
-  const demoStates = useContext<DemoConstant>(DemoStatesContext);
-  const isWebDemo: boolean = demoStates.name === 'webDemo';
 
   // Sent by current user
   if ((message as UserMessage).sender.userId !== botUser.userId) {
@@ -92,23 +87,18 @@ export default function CustomMessage(props: Props) {
   tokens.forEach((token: Token) => {
     if (token.type === 'String') {
       token.value = replaceUrl(token.value);
-      token.value = isWebDemo
-        ? replaceTextExtractsForWebDemo(token.value)
-        : replaceTextExtractsForWidgetDemo(token.value);
+      token.value = replaceTextExtracts(token.value, "the Text extracts", "ChatBot Knowledge Base");
     }
   });
 
   return <div>
     <BotMessageWithBodyInput
+      botUser={botUser}
       message={message}
       bodyComponent={<ParsedBotMessageBody
         message={message}
         tokens={tokens}
       />}
     />
-    {/*<BotMessageWithBodyInput*/}
-    {/*  message={message}*/}
-    {/*  bodyComponent={<CustomMessageBody message={'Did that help?'}/>}*/}
-    {/*/>*/}
   </div>;
 }

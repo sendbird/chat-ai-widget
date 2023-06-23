@@ -1,4 +1,4 @@
-import {LOCAL_MESSAGE_CUSTOM_TYPE, SPECIAL_MESSAGE_LIST} from "./const";
+import {LOCAL_MESSAGE_CUSTOM_TYPE} from "./const";
 
 export function uuid() {
   let d = new Date().getTime();
@@ -158,16 +158,7 @@ export function isNotLocalMessageCustomType(customType: string | undefined) {
   return !customType || Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) === -1;
 }
 
-export function replaceTextExtractsForWidgetDemo(input: string): string {
-  const searchText = "the Text extracts";
-  const replaceText = "Sendbird documentation";
-  const regex = new RegExp(searchText, "gi");
-  return input.replace(regex, replaceText);
-}
-
-export function replaceTextExtractsForWebDemo(input: string): string {
-  const searchText = "Text extracts";
-  const replaceText = "website";
+export function replaceTextExtracts(input: string, searchText: string, replaceText: string): string {
   const regex = new RegExp(searchText, "gi");
   return input.replace(regex, replaceText);
 }
@@ -179,8 +170,8 @@ export function replaceUrl(input: string): string {
   });
 }
 
-export function isSpecialMessage(message: string): boolean {
-  return SPECIAL_MESSAGE_LIST.findIndex((substr: string) => {
+export function isSpecialMessage(message: string, specialMessageList: string[]): boolean {
+  return specialMessageList.findIndex((substr: string) => {
     return message.includes(substr);
   }) > -1;
 }

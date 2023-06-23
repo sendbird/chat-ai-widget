@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import { ReactComponent as InfoIcon } from '../icons/info-icon.svg';
-import {useContext, useState} from "react";
+import {useState} from "react";
 import {createPortal} from "react-dom";
 import {usePopperTooltip} from "react-popper-tooltip";
 import 'react-popper-tooltip/dist/styles.css';
-import {DemoConstant} from "../const";
-import {DemoStatesContext} from "../context/DemoStatesContext";
 
 const Text = styled.div`
   color: rgba(0, 0, 0, 0.5);
@@ -76,8 +74,6 @@ export default function BotMessageBottom() {
   });
 
   const [showInfoBox, setShowInfoBox] = useState<boolean>(false);
-  const demoStates = useContext<DemoConstant>(DemoStatesContext);
-  const isWebDemo: boolean = demoStates.name === 'webDemo';
 
   return <>
     <BottomComponent ref={setTriggerRef}>
@@ -98,13 +94,7 @@ export default function BotMessageBottom() {
           ref={setTooltipRef}
           {...getTooltipProps( )}
         >
-          <InfoBox>
-            {
-              isWebDemo
-                ? 'In this demo, the AI-generated responses may lack complete accuracy.'
-                : 'In this beta version, the AI-generated responses may lack complete accuracy.'
-            }
-          </InfoBox>
+          <InfoBox>In this beta version, the AI-generated responses may lack complete accuracy.</InfoBox>
           {/*<div {...getArrowProps({ className: 'tooltip-arrow' })} />*/}
         </div>,
         document.getElementById('sb_chat_root_for_z_index') as HTMLDivElement

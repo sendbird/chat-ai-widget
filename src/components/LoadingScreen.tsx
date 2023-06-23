@@ -2,11 +2,10 @@ import styled from "styled-components";
 import { ReactComponent as SpinIcon } from '../icons/spin-icon.svg';
 
 import {useLoadingState} from "../context/LoadingStateContext";
-import {useImageLoadingState} from "../context/ImageLoadingStateContext";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,15 +24,14 @@ const IconContainer = styled.div`
 `;
 
 interface LoadingScreenProps {
-  hashedKey?: string;
+  sendbirdBotId?: string;
 }
 
 export default function LoadingScreen(props: LoadingScreenProps) {
-  const { hashedKey } = props;
+  const { sendbirdBotId } = props;
   const { showLoading } = useLoadingState();
-  const { showImageLoading } = useImageLoadingState();
 
-  return (!hashedKey || showLoading || showImageLoading) && <Container>
+  return (!sendbirdBotId || showLoading ) && <Container>
     <IconContainer>
       <SpinIcon width='50px' height='50px'/>
     </IconContainer>

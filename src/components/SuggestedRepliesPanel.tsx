@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from 'react';
 import styled  from 'styled-components'
-import {DemoConstant, LOCAL_MESSAGE_CUSTOM_TYPE, SuggestedReply} from "../const";
+import {Constant, LOCAL_MESSAGE_CUSTOM_TYPE, SuggestedReply} from "../const";
 import {MessageType, SendingStatus, UserMessage} from "@sendbird/chat/message";
 import {ChannelType, User} from "@sendbird/chat";
 import {useSendLocalMessage} from "../hooks/useSendLocalMessage";
@@ -9,7 +9,6 @@ import {GroupChannel, SendbirdGroupChat} from "@sendbird/chat/groupChannel";
 import {useChannelContext} from "@sendbird/uikit-react/Channel/context";
 import {ClientUserMessage} from "SendbirdUIKitGlobal";
 import {isNotLocalMessageCustomType} from "../utils";
-import {DemoStatesContext} from "../context/DemoStatesContext";
 
 interface SuggestedReplyItemProps {
   isActive: boolean;
@@ -68,13 +67,12 @@ const Panel = styled.div`
 
 interface Props {
   botUser: User;
+  constant: Constant;
 }
 
 const SuggestedRepliesPanel = (props: Props) => {
-
-  const { botUser } = props;
-  const demoStates = useContext<DemoConstant>(DemoStatesContext);
-  const [suggestedReplies, setSuggestedReplies] = useState<SuggestedReply[]>(demoStates.suggestedReplies);
+  const { botUser, constant } = props;
+  const [suggestedReplies, setSuggestedReplies] = useState<SuggestedReply[]>(constant.suggestedMessageContent.replyContents);
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
   const { allMessages, currentGroupChannel } = useChannelContext();
@@ -86,7 +84,7 @@ const SuggestedRepliesPanel = (props: Props) => {
     if (lastMessage
       && lastMessage.sender.userId === botUser.userId
       && isNotLocalMessageCustomType(lastMessage.customType)) {
-      setSuggestedReplies(demoStates.suggestedReplies);
+      setSuggestedReplies(constant.suggestedMessageContent.replyContents);
     }
   }, [channel]);
 

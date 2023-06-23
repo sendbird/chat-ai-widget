@@ -1,19 +1,12 @@
 import styled from "styled-components";
-import { ReactComponent as SendbirdLogo } from '../icons/sendbird-logo-starting-page.svg';
+import React from 'react';
 import {StartingPageAnimatorProps} from "./CustomChannelComponent";
-import {useContext, useEffect} from "react";
-import {DemoConstant} from "../const";
-import {DemoStatesContext} from "../context/DemoStatesContext";
-import backgroundImage from '../icons/starting-page-bg-image.png';
-import backgroundImageWebp from '../icons/starting-page-bg-image.webp';
-
-import backgroundImageSmall from '../icons/starting-page-background-small.png';
+import {useEffect} from "react";
+import {StartingMessageContent, StartingPageContent} from "../const";
 
 import { ReactComponent as BackgroundImage } from '../icons/starting-page-bg-image-svg.svg';
-import {useLoadingState} from "../context/LoadingStateContext";
+import botMessageImage from '../icons/bot-message-image.png';
 import {useImageLoadingState} from "../context/ImageLoadingStateContext";
-
-
 
 const BackgroundContainer = styled.div<StartingPageAnimatorProps>`
   position: absolute;
@@ -79,51 +72,102 @@ export const HeaderOneContainer = styled.div`
 `;
 
 
+const StartMessageContainer = styled.div`
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: relative;
+  z-index: 30;
+`;
+
+const StartMessageBodyContainer = styled.div`
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.88);
+  max-width: 255px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  width: calc(100% - 98px);
+`;
+
+const StartMessageHeader = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  transition: color 0.5s ease 0s;
+  margin: 0px 0px 4px 12px;
+`;
+
+const StartMessageBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px 12px;
+  gap: 8px;
+  border-radius: 16px;
+  background-color: rgb(238, 238, 238);
+`;
+
+const StartMessageBodyContent = styled.div`
+  width: 100%;
+  text-align: left;
+  white-space: pre-line;
+  word-break: break-word;
+  line-height: 1.43;
+`;
+
 interface Props {
-  isStartingPage: boolean;
+    isStartingPage: boolean;
+    startingPageContent: StartingPageContent;
 }
 
 export function StartingPage(props: Props) {
-  const { isStartingPage } = props;
-  const demoStates = useContext<DemoConstant>(DemoStatesContext);
-  const isWebDemo: boolean = demoStates.name === 'webDemo';
-  // console.log('## isWebDemo: ', isWebDemo);
-  const { setShowImageLoading } = useImageLoadingState();
+    const { isStartingPage, startingPageContent } = props;
+    // console.log('## isWebDemo: ', isWebDemo);
+    const { setShowImageLoading } = useImageLoadingState();
 
-  useEffect(() => {
-    setShowImageLoading(false);
-    // setTimeout(() => {
-    //   setShowImageLoading(false);
-    // }, 500);
-  }, []);
+    useEffect(() => {
+        setShowImageLoading(false);
+        // setTimeout(() => {
+        //   setShowImageLoading(false);
+        // }, 500);
+    }, []);
 
-  return (
-    <Root isStartingPage={isStartingPage}>
-      <BackgroundContainer>
-        <img src={backgroundImageWebp} alt="backgroundImage" style={{
-          height: '240px',
-        }}/>
-        {/*<BackgroundImage width='743px' height='240px'/>*/}
-      </BackgroundContainer>
-      {
-        isWebDemo
-          ? <TitleContainer>
-            <SendbirdLogo width={'100px'}/>
-            <HeaderOneContainer>
-              <HeaderOne>{demoStates.startingPageContent.headerOne}</HeaderOne>
-              <BetaLogo>{ isWebDemo ? 'DEMO' : 'BETA' }</BetaLogo>
-            </HeaderOneContainer>
-            <HeaderTwo>{demoStates.startingPageContent.headerTwo}</HeaderTwo>
-          </TitleContainer>
-          : <TitleContainer>
-            <SendbirdLogo width={'100px'}/>
-            <HeaderOneContainer style={{ alignItems: 'flex-end' }}>
-              <HeaderOne>{demoStates.startingPageContent.headerOne}</HeaderOne>
-              <BetaLogo style={{ marginBottom: '3px' }}>{ isWebDemo ? 'DEMO' : 'BETA' }</BetaLogo>
-            </HeaderOneContainer>
-            <HeaderTwo>{demoStates.startingPageContent.headerTwo}</HeaderTwo>
-          </TitleContainer>
-      }
-    </Root>
-  );
+    return (
+        <Root isStartingPage={isStartingPage}>
+            <BackgroundContainer isStartingPage>
+                <startingPageContent.backGroundContent.Component height={startingPageContent.backGroundContent.height}/>
+                <StartMessageContainer>
+                    <div>
+                        <img src={botMessageImage} alt="botProfileImage" style={{
+                            height: '28px',
+                        }}/>
+                    </div>
+                    <StartMessageBodyContainer>
+                        <StartMessageHeader>{startingPageContent.messageContent.header}</StartMessageHeader>
+                        <StartMessageBody>
+                            <StartMessageBodyContent>{startingPageContent.messageContent.body}
+                            </StartMessageBodyContent>
+                        </StartMessageBody>
+                    </StartMessageBodyContainer>
+                </StartMessageContainer>
+            </BackgroundContainer>
+            <TitleContainer>
+                <startingPageContent.logoContent.Component width={startingPageContent.logoContent.width}/>
+                <HeaderOneContainer style={{ alignItems: 'flex-end' }}>
+                    <HeaderOne>{startingPageContent.headerContent.headerOne}</HeaderOne>
+                    {
+                        startingPageContent.headerContent.betaMark && <BetaLogo style={{ marginBottom: '3px' }}>{ 'BETA' }</BetaLogo>
+                    }
+                </HeaderOneContainer>
+                <HeaderTwo>{startingPageContent.headerContent.headerTwo}</HeaderTwo>
+            </TitleContainer>
+        </Root>
+    );
 }

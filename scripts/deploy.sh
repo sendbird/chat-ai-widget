@@ -37,5 +37,5 @@ git branch -D gh-pages
 
 print_purple "deployed to gh-pages\n"
 print_purple "-----------------------------------\n"
-print_purple "visit: https://sendbird.github.io/ai-bot-url-webdemo/"
+print_purple "visit: https://sendbird.github.io/chat-ai-widget-uikit/"
 print_purple "\n-----------------------------------\n"

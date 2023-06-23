@@ -1,15 +1,107 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-    <link rel="preload" href="https://fonts.cdnfonts.com/css/gellix" rel="stylesheet">
-    <link rel="preload" href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./src/icons/ic-sendbird-colored.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sendbird AI ChatBot</title>
+  <link rel="preload" href="https://fonts.cdnfonts.com/css/gellix" as="style">
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/gellix">
+  <link rel="preload" href="https://fonts.cdnfonts.com/css/sf-pro-display" as="style">
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
+  <!-- Prism CSS and JavaScript -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/toolbar/prism-toolbar.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-jsx.min.js"></script>
+  <!-- Prism 'Copy to Clipboard' plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+  <!-- Custom CSS -->
+  <style>
+    body {
+      padding: 20px;
+      font-family: 'SF Pro Display', sans-serif;
+      background-color: #f5f7f9;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #5c00c7;
+      color: white;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    main {
+      padding: 30px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 2em;
+      color: #5c00c7;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    pre {
+      background-color: #f0f0f0;
+      border-radius: 10px;
+    }
+
+    code {
+      font-size: 1.1em;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #333;
+    }
+
+    a {
+      color: #5c00c7;
+    }
+
+    div.code-toolbar>.toolbar>.toolbar-item>button  {
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Welcome to Sendbird AI Chatbot Demo!</h1>
+</header>
+<main>
+  <h2>How to Integrate the Sendbird AI Chatbot</h2>
+  <p>Once you have your Sendbird account and Application ID, you can install the <strong>Sendbird AI Chatbot Widget</strong> using npm:</p>
+  <pre><code class="language-bash">npm install sendbird-ai-chatbot-widget</code></pre>
+  <p>Then follow the code snippet below to integrate the <strong>Sendbird AI Chatbot</strong> in your application:</p>
+  <pre><code class="language-jsx">import SendbirdAIChatbotWidget from "./components/SendbirdAIChatbotWidget";
+const App = () => {
+  return (
+      &lt;ChatAiWidget/&gt;
+  );
+};
+export default App;
+</code></pre>
+  <p>If you need the Sendbird Application ID and Bot ID, you can visit the <a href="https://github.com/sf-luke-cha/ai-chatbot-tutorial/blob/main/README.md" target="_blank">Sendbird AI Chatbot Tutorial</a> for detailed instructions.</p>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</main>
+<footer>
+  <p>Powered by <a href="https://www.sendbird.com" target="_blank">Sendbird</a></p>
+</footer>
+</body>
 </html>

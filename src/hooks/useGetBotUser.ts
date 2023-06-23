@@ -2,17 +2,17 @@ import {useEffect, useState} from "react";
 import useSendbirdStateContext from "@sendbird/uikit-react/useSendbirdStateContext";
 import SendbirdChat, {ApplicationUserListQuery, User} from "@sendbird/chat";
 
-export function useGetBotUser(currentUser: User, hashedKey: string): User {
+export function useGetBotUser(currentUser: User, sendbirdBotId: string): User {
   const [botUser, setBotUser] = useState<User>(null);
   const store = useSendbirdStateContext();
   const sb: SendbirdChat = store.stores.sdkStore.sdk;
 
   useEffect(() => {
-    // console.log('## useGetBotUser: ', { hashedKey, id: currentUser?.userId });
-    if (currentUser && hashedKey) {
+    // console.log('## useGetBotUser: ', { hashedKey: sendbirdBotId, id: currentUser?.userId });
+    if (currentUser && sendbirdBotId) {
       // console.log('## useGetBotUser hashedKey: ', hashedKey);
       const query: ApplicationUserListQuery = sb.createApplicationUserListQuery({
-        userIdsFilter: [hashedKey],
+        userIdsFilter: [sendbirdBotId],
       });
       setTimeout(() => {
         query.next().then((users: User[]) => {
@@ -27,6 +27,6 @@ export function useGetBotUser(currentUser: User, hashedKey: string): User {
         });
       }, 2000);
     }
-  }, [currentUser?.userId, hashedKey]);
+  }, [currentUser?.userId, sendbirdBotId]);
   return botUser;
 }
