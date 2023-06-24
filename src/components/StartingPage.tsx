@@ -89,7 +89,7 @@ const StartMessageBodyContainer = styled.div`
   font-style: normal;
   line-height: 1.43;
   letter-spacing: normal;
-  width: calc(100% - 98px);
+  width: 90%;
 `;
 
 const StartMessageHeader = styled.div`
