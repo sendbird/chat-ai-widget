@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import React from 'react';
 import {StartingPageAnimatorProps} from "./CustomChannelComponent";
 import {useEffect} from "react";
 import {StartingPageContent} from "../const";
@@ -23,6 +22,7 @@ const Root = styled.div<StartingPageAnimatorProps>`
   z-index: 20;
   width: 100%;
   transition: ${(props: StartingPageAnimatorProps) => (props.isStartingPage ? 'none' : 'all 0.5s ease')};
+  text-align: start;
 `;
 
 

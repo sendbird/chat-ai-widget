@@ -1,5 +1,4 @@
 import {
-  NICKNAME,
   USER_ID,
   Constant
 } from "../const";

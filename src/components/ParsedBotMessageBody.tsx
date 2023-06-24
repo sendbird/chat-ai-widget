@@ -1,6 +1,6 @@
 import styled from "styled-components";
 // Ref: https://github.com/rajinwonderland/react-code-blocks#-demo
-import {CodeBlock, CopyBlock, irBlack} from "react-code-blocks";
+import {CopyBlock, irBlack} from "react-code-blocks";
 import BotMessageBottom from "./BotMessageBottom";
 import {Token, TokenType} from "../utils";
 import {UserMessage} from "@sendbird/chat/message";
@@ -43,7 +43,7 @@ type Props = {
  */
 export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens } = props;
-  const data: object = JSON.parse((message as UserMessage).data);
+  const data: object = JSON.parse((message as UserMessage).data?.toString() || '{}');
   const sources: Source[] = Array.isArray(data['metadatas']) ? data['metadatas'] as Source[] : [];
 
   // console.log('## sources: ', sources);

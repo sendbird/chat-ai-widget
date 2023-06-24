@@ -4,6 +4,7 @@ import {formatCreatedAtToAMPM} from "../utils";
 import {UserMessage} from "@sendbird/chat/message";
 import {ReactNode} from "react";
 import {StartingPageAnimatorProps} from "./CustomChannelComponent";
+import {User} from "@sendbird/chat";
 
 const Root = styled.div<StartingPageAnimatorProps>`
   display: flex;
@@ -49,6 +50,7 @@ const SentTime = styled.div`
 `;
 
 type Props = {
+  botUser: User;
   message: UserMessage;
   bodyComponent: ReactNode;
   messageCount: number;
@@ -62,7 +64,7 @@ const ImageContainer = styled.div`
 export default function BotMessageWithBodyInput(props: Props) {
   const { botUser, message, bodyComponent, messageCount, zIndex, bodyStyle } = props;
 
-  return <Root style={{ zIndex: (messageCount === 1 && zIndex) ? zIndex : 0 }}>
+  return <Root style={{ zIndex: (messageCount === 1 && zIndex) ? zIndex : 0 }} isStartingPage>
     <ImageContainer>
       <img src={botMessageImage} alt="botProfileImage" style={{
         height: "28px"

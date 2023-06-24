@@ -1,4 +1,6 @@
-import React, {Fragment, useEffect, useRef, useState} from 'react';
+import '@sendbird/uikit-react/dist/index.css';
+import '../css/index.css';
+import {Fragment, useEffect, useRef, useState} from 'react';
 import styled, {css} from 'styled-components';
 
 import {ReactComponent as ArrowDownIcon} from '../icons/ic-arrow-down.svg';
@@ -8,9 +10,7 @@ import WidgetWindow from './WidgetWindow';
 import {
     ChatBottomContent,
     CreateGroupChannelParams, DEFAULT_CONSTANT,
-    StartingMessageContent,
     StartingPageContent, SuggestedMessageContent,
-    SuggestedReply
 } from "../const";
 
 const StyledWidgetButtonWrapper = styled.button`

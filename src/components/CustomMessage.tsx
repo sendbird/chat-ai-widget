@@ -46,7 +46,7 @@ export default function CustomMessage(props: Props) {
   if ((message as UserMessage).sender.userId !== botUser.userId) {
     return <div>
       {
-        <CurrentUserMessage message={message}/>
+        <CurrentUserMessage message={message as UserMessage}/>
       }
       {
         activeSpinnerId === message.messageId &&
@@ -60,7 +60,7 @@ export default function CustomMessage(props: Props) {
       <StartingBlock isStartingPage={allMessages.length === 1}/>
       <BotMessageWithBodyInput
         botUser={botUser}
-        message={message}
+        message={message as UserMessage}
         bodyComponent={
           <CustomMessageBody message={(message as UserMessage).message} data={message.data}/>
         }
@@ -77,10 +77,10 @@ export default function CustomMessage(props: Props) {
     if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
       return <BotMessageWithBodyInput
         botUser={botUser}
-        message={message}
-        bodyComponent={<SuggestedReplyMessageBody message={message}/>}
+        message={message as UserMessage}
+        bodyComponent={<SuggestedReplyMessageBody message={message as UserMessage}/>}
         bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
-      />;
+       messageCount={allMessages.length}/>;
     }
   }
 
@@ -96,9 +96,10 @@ export default function CustomMessage(props: Props) {
   return <div>
     <BotMessageWithBodyInput
       botUser={botUser}
-      message={message}
+      message={message as UserMessage}
+      messageCount={allMessages.length}
       bodyComponent={<ParsedBotMessageBody
-        message={message}
+        message={message as UserMessage}
         tokens={tokens}
       />}
     />

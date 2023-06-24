@@ -5,7 +5,7 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const InnerContainer = styled.div`
+const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   padding: 0 4px;
   width: calc(100% - 8px);
   min-height: 40px;

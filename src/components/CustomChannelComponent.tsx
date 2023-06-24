@@ -17,12 +17,13 @@ import ChannelHeader from "@sendbird/uikit-react/Channel/components/ChannelHeade
 import ChatBottom from "./ChatBottom";
 import {useLoadingState} from "../context/LoadingStateContext";
 
-const Root = styled.div`
+const Root = styled.div<{ hidePlaceholder: boolean }>`
   //height: 100vh; // 640px;
   height: 100%;
   font-family: 'Roboto', sans-serif;
   z-index: 0;
   border: none;
+
   .sendbird-place-holder__body{
     display: ${({ hidePlaceholder }) => (hidePlaceholder ? 'none' : 'block')};
   }
@@ -87,7 +88,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
       renderChannelHeader={() => {
         return createGroupChannel
           ? <CustomChannelHeader
-            channel={channel}
+            channel={channel as GroupChannel}
             isTyping={activeSpinnerId > -1}
             createGroupChannel={createGroupChannel}
             betaMark={constant.betaMark}

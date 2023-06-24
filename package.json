@@ -1,6 +1,6 @@
 {
   "name": "@sendbird/chat-ai-widget",
-  "version": "0.0.1",
+  "version": "1.0.23",
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,14 +11,14 @@
   },
   "scripts": {
     "dev": "vite",
-    "build:types": "tsc ; cp -R src/icons icons",
+    "build:types": "rm -rf dist; rm -rf icons; rm -rf icons; tsc; cp -R src/icons icons; cp -R src/icons dist/icons ; cp -R src/css css; cp -R src/css dist/css",
     "build": "tsc-silent -p './tsconfig.json' --suppress @ && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "@sendbird/chat": "^4.9.2",
-    "@sendbird/uikit-react": "^3.5.1",
+    "@sendbird/uikit-react": "^3.5.2",
     "polished": "^2.3.1",
     "react": "^18.2.0",
     "react-code-blocks": "^0.0.9-0",
