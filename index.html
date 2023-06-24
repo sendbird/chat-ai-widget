@@ -88,10 +88,13 @@
   <p>Once you have your Sendbird account and Application ID, you can install the <strong>Sendbird AI Chatbot Widget</strong> using npm:</p>
   <pre><code class="language-bash">npm install @sendbird/chat-ai-widget</code></pre>
   <p>Then follow the code snippet below to integrate the <strong>Sendbird AI Chatbot</strong> in your application:</p>
-  <pre><code class="language-jsx">import {ChatAiWidget} from "@sendbird/chat-ai-widget";
+  <pre><code class="language-jsx">import ChatAiWidget from "@sendbird/chat-ai-widget";
 const App = () => {
   return (
-      &lt;ChatAiWidget/&gt;
+    &lt;ChatAiWidget
+      applicationId = "AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67"
+      botId = "korean-food-master"
+    /&gt;
   );
 };
 export default App;
