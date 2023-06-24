@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {StartingPageAnimatorProps} from "./CustomChannelComponent";
 import {useEffect} from "react";
-import {StartingPageContent} from "../const";
 import botMessageImage from '../icons/bot-message-image.png';
 import {useImageLoadingState} from "../context/ImageLoadingStateContext";
+import {StartingPageContent} from "../const";
 
 const BackgroundContainer = styled.div<StartingPageAnimatorProps>`
   position: absolute;
@@ -128,10 +128,11 @@ interface Props {
     isStartingPage: boolean;
     startingPageContent: StartingPageContent;
     betaMark: boolean;
+    botNickName: string;
 }
 
 export function StartingPage(props: Props) {
-    const { isStartingPage, startingPageContent, betaMark } = props;
+    const { isStartingPage, startingPageContent, betaMark, botNickName } = props;
     // console.log('## isWebDemo: ', isWebDemo);
     const { setShowImageLoading } = useImageLoadingState();
 
@@ -141,7 +142,6 @@ export function StartingPage(props: Props) {
         //   setShowImageLoading(false);
         // }, 500);
     }, []);
-
     return (
         <Root isStartingPage={isStartingPage}>
             <BackgroundContainer isStartingPage>
@@ -155,9 +155,11 @@ export function StartingPage(props: Props) {
                         }}/>
                     </div>
                     <StartMessageBodyContainer>
-                        <StartMessageHeader>{startingPageContent.messageContent.header}</StartMessageHeader>
+                        <StartMessageHeader>{startingPageContent.messageContent.header === ''?
+                            botNickName:startingPageContent.messageContent.header}</StartMessageHeader>
                         <StartMessageBody>
-                            <StartMessageBodyContent>{startingPageContent.messageContent.body}
+                            <StartMessageBodyContent>{startingPageContent.messageContent.body===''?
+                                "Hi~ I'm "+botNickName + ' Ask me anything!':startingPageContent.messageContent.body}
                             </StartMessageBodyContent>
                         </StartMessageBody>
                     </StartMessageBodyContainer>
@@ -166,7 +168,8 @@ export function StartingPage(props: Props) {
             <TitleContainer>
                 <startingPageContent.logoContent.Component width={startingPageContent.logoContent.width}/>
                 <HeaderOneContainer style={{ alignItems: 'flex-end' }}>
-                    <HeaderOne>{startingPageContent.headerContent.headerOne}</HeaderOne>
+                    <HeaderOne>{startingPageContent.headerContent.headerOne === ''?
+                        "I'm "+botNickName:startingPageContent.headerContent.headerOne}</HeaderOne>
                     {
                         betaMark && <BetaLogo style={{ marginBottom: '3px' }}>{ 'BETA' }</BetaLogo>
                     }

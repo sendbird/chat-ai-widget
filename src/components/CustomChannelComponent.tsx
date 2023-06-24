@@ -77,12 +77,12 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     }
   }, [channel]);
 
-  // if (!channel) return <LoadingScreen/>;
   return <Root hidePlaceholder={startingPagePlaceHolder}>
     <StartingPage
         isStartingPage={startingPagePlaceHolder}
         startingPageContent={constant.startingPageContent}
         betaMark={constant.betaMark}
+        botNickName={botUser.nickname}
     />
     <ChannelUI
       renderChannelHeader={() => {

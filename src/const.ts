@@ -1,6 +1,6 @@
 import React from "react";
 import {uuid} from './utils';
-import {ReactComponent as StartingPageLogo} from './icons/sendbird-logo-starting-page.svg';
+import {ReactComponent as StartingPageLogo} from './icons/icon-widget-chatbot.svg';
 import {ReactComponent as StartingPageBackground} from './icons/starting-page-bg-image-svg.svg';
 
 export const USER_ID = uuid();
@@ -63,16 +63,16 @@ export const DEFAULT_CONSTANT: Constant = {
   },
   startingPageContent: {
     headerContent: {
-      headerOne: 'I\'m Sendbird AI ChatBot',
+      headerOne: '',
       headerTwo: 'Ask me anything!',
     },
     messageContent: {
-      header: 'AI ChatBot',
-      body: 'Hi~ I\'m Sendbird AI ChatBot. Ask me anything!',
+      header: '',
+      body: '',
     },
     logoContent: {
       Component: StartingPageLogo,
-      width: '100px',
+      width: '30px',
     },
     backGroundContent: {
       Component: StartingPageBackground,
