@@ -78,18 +78,22 @@ const StartMessageContainer = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   position: relative;
+  width: calc(100% - 66px);
 `;
 
 const StartMessageBodyContainer = styled.div`
   font-size: 14px;
   color: rgba(0, 0, 0, 0.88);
-  max-width: 255px;
+  max-width: 225px;
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.43;
   letter-spacing: normal;
-  width: 90%;
+  
+  @media (max-width: 350px) {
+    max-width: 200px;
+  }
 `;
 
 const StartMessageHeader = styled.div`
