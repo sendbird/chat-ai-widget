@@ -13,7 +13,7 @@ const App = () => {
   return (
       <ChatAiWidget
               applicationId="AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67"
-              botId="korean-food-master"
+              botId="khan-academy-bot"
       />
   );
 }
@@ -28,6 +28,6 @@ npm run deploy
 npm run dev
 ```
 
-## Test urls
-https://sendbird-chat-ai-bot-demo.netlify.app/?hashed_key=${token}
+## Test url
+https://sendbird.github.io/chat-ai-widget/
 

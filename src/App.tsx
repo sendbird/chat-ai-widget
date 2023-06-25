@@ -6,7 +6,7 @@ import {ReactComponent as StartingPageBackground} from './icons/starting-page-bg
 
 const customConstants = {
     applicationId: 'AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67', // Your Sendbird application ID
-    botId: 'korean-food-master', // Your Sendbird bot ID
+    botId: 'khan-academy-bot', // Your Sendbird bot ID
     botNickName: 'Jake Sully',
     betaMark: true,
     suggestedMessageContent: {
@@ -41,18 +41,18 @@ const customConstants = {
         ],
     },
     createGroupChannelParams: {
-        name: 'Sendbird AI Chatbot',
+        name: 'Khan Academy Support Bot',
         coverUrl: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
             'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     },
     startingPageContent: {
         headerContent: {
-            headerOne: 'I\'m Sendbird AI ChatBot',
+            headerOne: 'I\'m Khan Academy Support Bot',
             headerTwo: 'Ask me anything!',
         },
         messageContent: {
             header: 'AI ChatBot',
-            body: 'Hi~ I\'m Sendbird AI ChatBot. Ask me anything!',
+            body: 'Hi~ I\'m Khan Academy Support ChatBot. Ask me anything!',
         },
         logoContent: {
             Component: StartingPageLogo,
