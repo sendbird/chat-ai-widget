@@ -7,7 +7,7 @@ It is for the Sendbird Chat AI Widget UiKit.
 
 1. Install Library
    ```bash
-   > npm install @sendbird/chat-ai-widget
+   npm install @sendbird/chat-ai-widget
    ```
 
 2. Add `import ...` and `<ChatAiWidget/>` Component to your Code.
@@ -25,7 +25,7 @@ It is for the Sendbird Chat AI Widget UiKit.
 
 ## Run locally
 ```bash
-> npm run dev
+npm run dev
 ```
 
 ## Demo URL
