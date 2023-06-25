@@ -2,12 +2,15 @@
 It is for the Sendbird Chat AI Widget UiKit.
 
 ## How to use
-Prepare Sendbird `Application ID` and `Bot ID`, If you want to know more, See [this](https://github.com/sf-luke-cha/ai-chatbot-tutorial/blob/main/README.md)!
+0. Prepare Sendbird ***Application ID*** and ***Bot ID***
+   If you need the Sendbird Application ID and Bot ID, you can visit the Sendbird AI Chatbot Tutorial for detailed instructions.
 
+1. Install Library
 ```bash
 > npm install @sendbird/chat-ai-widget
 ```
 
+2. Add `import ...` and `<ChatAiWidget/>` Component to your Code.
 ```jsx
 import {ChatAiWidget} from "@sendbird/chat-ai-widget";
 const App = () => {
@@ -20,15 +23,11 @@ const App = () => {
 }
 ```
 
-## Deploy to gh-pages
-```bash
-npm run deploy
-```
 ## Run locally
 ```bash
 npm run dev
 ```
 
-## Test url
+## Demo URL
 https://sendbird.github.io/chat-ai-widget/
 
