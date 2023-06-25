@@ -25,7 +25,7 @@ It is for the Sendbird Chat AI Widget UiKit.
 
 ## Run locally
 ```bash
-npm run dev
+> npm run dev
 ```
 
 ## Demo URL
