@@ -3,7 +3,7 @@ It is for the Sendbird Chat AI Widget UiKit.
 
 ## How to use
 0. Prepare Sendbird ***Application ID*** and ***Bot ID***
-   If you need the Sendbird Application ID and Bot ID, See Below
+   If you need the Sendbird Application ID and Bot ID, [See How to get Application ID and Bot ID](https://github.com/sendbird/chat-ai-widget/blob/develop/README.md#how-to-get-application-id-and-bot-id)
 
 1. Install Library
    ```bash
