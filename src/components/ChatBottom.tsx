@@ -20,6 +20,9 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
 
 const Highlighter = styled.a`
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 // link: https://dashboard.sendbird.com/auth/signup
