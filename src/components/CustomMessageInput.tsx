@@ -95,15 +95,15 @@ export default function CustomMessageInput() {
       };
       sendUserMessage(currentGroupChannel, params)
         .onPending((message) => {
-          console.log('## onPending', message);
+          // console.log('## onPending', message);
           setMessage('');
         })
         .onSucceeded((message) => {
-          console.log('## onSucceeded', message);
+          // console.log('## onSucceeded', message);
           setMessage('');
         })
         .onFailed((error) => {
-          console.log('## onFailed', error);
+          // console.log('## onFailed', error);
         });
     }
   }
