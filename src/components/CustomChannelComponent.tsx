@@ -117,6 +117,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           message={message}
           activeSpinnerId={activeSpinnerId}
           botUser={botUser}
+          constant={constant}
         />
       }}
       renderTypingIndicator={() => <></>}

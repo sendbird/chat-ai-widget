@@ -127,8 +127,6 @@ export function splitText(inputString: string) {
 }
 
 function isDelimiterIndex(index: number, inputString: string, delimiter: string) {
-
-
   return inputString.substring(index, index + delimiter.length) === delimiter;
 }
 
@@ -155,6 +153,15 @@ export function MessageTextParser(inputString: string): Token[] {
 
 export function isNotLocalMessageCustomType(customType: string | undefined) {
   return !customType || Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) === -1;
+}
+
+export function replaceTextExtractsMultiple(input: string, replacements: Array<[string, string]>): string {
+  let result = input;
+  for (let i = 0; i < replacements.length; i++) {
+    const [searchText, replaceText] = replacements[i];
+    result = replaceTextExtracts(result, searchText, replaceText);
+  }
+  return result;
 }
 
 export function replaceTextExtracts(input: string, searchText: string, replaceText: string): string {

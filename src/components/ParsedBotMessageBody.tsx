@@ -5,6 +5,7 @@ import BotMessageBottom from "./BotMessageBottom";
 import {Token, TokenType} from "../utils";
 import {UserMessage} from "@sendbird/chat/message";
 import SourceContainer, {Source} from "./SourceContainer";
+import {Constant} from "../const";
 
 const Root = styled.div`
   display: flex;
@@ -34,6 +35,7 @@ const BlockContainer = styled.div`
 type Props = {
   message: UserMessage;
   tokens: Token[];
+  constant: Constant;
 }
 
 /**
@@ -42,7 +44,7 @@ type Props = {
  * @constructor
  */
 export default function ParsedBotMessageBody(props: Props) {
-  const { message, tokens } = props;
+  const { message, tokens, constant } = props;
   const data: object = JSON.parse((message as UserMessage).data?.toString() || '{}');
   const sources: Source[] = Array.isArray(data['metadatas']) ? data['metadatas'] as Source[] : [];
 
@@ -74,7 +76,7 @@ export default function ParsedBotMessageBody(props: Props) {
           sources.length > 0
             ? <>
               <SourceContainer sources={sources}/>
-              <BotMessageBottom/>
+              <BotMessageBottom constant={constant}/>
             </>
             : null
         }

@@ -4,6 +4,7 @@ import {useState} from "react";
 import {createPortal} from "react-dom";
 import {usePopperTooltip} from "react-popper-tooltip";
 import 'react-popper-tooltip/dist/styles.css';
+import {Constant} from "../const";
 
 const Text = styled.div`
   color: rgba(0, 0, 0, 0.5);
@@ -62,7 +63,15 @@ const InfoBox = styled.div`
   }
 `;
 
-export default function BotMessageBottom() {
+type Props = {
+  constant: Constant;
+}
+
+export default function BotMessageBottom(props: Props) {
+  const {
+    constant,
+  } = props;
+
   const placement = 'auto';
 
   const {
@@ -79,7 +88,7 @@ export default function BotMessageBottom() {
     <BottomComponent ref={setTriggerRef}>
       <Delimiter/>
       <TextContainer>
-        <Text>AI-generated response powered by OpenAI</Text>
+        <Text>{constant.messageBottomContent.text}</Text>
         <InfoIconButton
           onMouseEnter={() => setShowInfoBox(true)}
           onMouseLeave={() => setShowInfoBox(false)}
@@ -94,7 +103,7 @@ export default function BotMessageBottom() {
           ref={setTooltipRef}
           {...getTooltipProps( )}
         >
-          <InfoBox>In this beta version, the AI-generated responses may lack complete accuracy.</InfoBox>
+          <InfoBox>{constant.messageBottomContent.infoIconText}</InfoBox>
           {/*<div {...getArrowProps({ className: 'tooltip-arrow' })} />*/}
         </div>,
         document.getElementById('sb_chat_root_for_z_index') as HTMLDivElement

@@ -13,6 +13,8 @@ export interface Constant {
   createGroupChannelParams: CreateGroupChannelParams;
   startingPageContent: StartingPageContent;
   chatBottomContent: ChatBottomContent;
+  messageBottomContent: MessageBottomContent;
+  replacementTextList: string[][];
 }
 
 export interface SuggestedReply {
@@ -83,6 +85,13 @@ export const DEFAULT_CONSTANT: Constant = {
     text: 'Sendbird AI ChatBot',
     backgroundColor: 'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)',
   },
+  messageBottomContent: {
+    text: 'AI-generated response powered by OpenAI',
+    infoIconText: 'In this beta version, the AI-generated responses may lack complete accuracy.',
+  },
+  replacementTextList: [
+    ["the Text extracts", "ChatBot Knowledge Base"],
+  ],
 };
 
 export interface SuggestedMessageContent {
@@ -132,3 +141,7 @@ export interface StartingMessageContent {
   body: string;
 }
 
+export interface MessageBottomContent {
+  text: string;
+  infoIconText: string;
+}

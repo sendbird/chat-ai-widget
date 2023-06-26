@@ -1,11 +1,12 @@
 import {EveryMessage} from 'SendbirdUIKitGlobal';
-import {LOCAL_MESSAGE_CUSTOM_TYPE} from "../const";
+import {Constant, LOCAL_MESSAGE_CUSTOM_TYPE} from "../const";
 import BotMessageWithBodyInput from "./BotMessageWithBodyInput";
 import {UserMessage} from "@sendbird/chat/message";
 import PendingMessage from "./PendingMessage";
 import {
   isNotLocalMessageCustomType,
   MessageTextParser,
+  replaceTextExtractsMultiple,
   replaceTextExtracts,
   replaceUrl,
   Token
@@ -23,6 +24,7 @@ type Props = {
   message: EveryMessage;
   activeSpinnerId: number;
   botUser: User;
+  constant: Constant;
 }
 
 const StartingBlock = styled.div`
@@ -36,6 +38,7 @@ export default function CustomMessage(props: Props) {
     message,
     activeSpinnerId,
     botUser,
+    constant,
   } = props;
 
   const {allMessages} = useChannelContext();
@@ -89,7 +92,7 @@ export default function CustomMessage(props: Props) {
   tokens.forEach((token: Token) => {
     if (token.type === 'String') {
       token.value = replaceUrl(token.value);
-      token.value = replaceTextExtracts(token.value, "the Text extracts", "ChatBot Knowledge Base");
+      token.value = replaceTextExtractsMultiple(token.value, constant.replacementTextList);
     }
   });
 
@@ -101,6 +104,7 @@ export default function CustomMessage(props: Props) {
       bodyComponent={<ParsedBotMessageBody
         message={message as UserMessage}
         tokens={tokens}
+        constant={constant}
       />}
     />
   </div>;

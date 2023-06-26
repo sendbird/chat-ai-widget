@@ -11,6 +11,7 @@ import {
     ChatBottomContent,
     CreateGroupChannelParams, DEFAULT_CONSTANT,
     StartingPageContent, SuggestedMessageContent,
+    MessageBottomContent,
 } from "../const";
 
 const StyledWidgetButtonWrapper = styled.button`
@@ -106,14 +107,16 @@ const getCookie = (cookieName) => {
 };
 
 const ChatAiWidget = ({
-                                     applicationId,
-                                     botId,
-                                     botNickName = DEFAULT_CONSTANT.botNickName,
-                                     betaMark = DEFAULT_CONSTANT.betaMark,
-                                     suggestedMessageContent = DEFAULT_CONSTANT.suggestedMessageContent,
-                                     createGroupChannelParams = DEFAULT_CONSTANT.createGroupChannelParams,
-                                     startingPageContent = DEFAULT_CONSTANT.startingPageContent,
-                                     chatBottomContent = DEFAULT_CONSTANT.chatBottomContent,
+    applicationId,
+    botId,
+    botNickName = DEFAULT_CONSTANT.botNickName,
+    betaMark = DEFAULT_CONSTANT.betaMark,
+    suggestedMessageContent = DEFAULT_CONSTANT.suggestedMessageContent,
+    createGroupChannelParams = DEFAULT_CONSTANT.createGroupChannelParams,
+    startingPageContent = DEFAULT_CONSTANT.startingPageContent,
+    chatBottomContent = DEFAULT_CONSTANT.chatBottomContent,
+    messageBottomContent = DEFAULT_CONSTANT.messageBottomContent,
+    replacementTextList = DEFAULT_CONSTANT.replacementTextList,
 }: {
     applicationId: string,
     botId: string,
@@ -123,6 +126,8 @@ const ChatAiWidget = ({
     createGroupChannelParams?: CreateGroupChannelParams,
     startingPageContent?: StartingPageContent,
     chatBottomContent?: ChatBottomContent,
+    messageBottomContent?: MessageBottomContent,
+    replacementTextList?: string[][],
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const timer = useRef<NodeJS.Timeout | null>(null);
@@ -134,6 +139,8 @@ const ChatAiWidget = ({
         createGroupChannelParams,
         startingPageContent,
         chatBottomContent,
+        messageBottomContent,
+        replacementTextList,
     };
     const buttonClickHandler = () => {
         if (timer.current !== null) {
