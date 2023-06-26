@@ -145,6 +145,13 @@ const customConstants = {
         text: 'Sendbird AI ChatBot',
         backgroundColor: 'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)',
     },
+    messageBottomContent: {
+        text: 'AI-generated response powered by OpenAI',
+        infoIconText: 'In this beta version, the AI-generated responses may lack complete accuracy.',
+    },
+    replacementTextList: [
+        ["the Text extracts", "ChatBot Knowledge Base"],
+    ],
 };
 
 const App = () => {
@@ -158,6 +165,8 @@ const App = () => {
             createGroupChannelParams = {customConstants.createGroupChannelParams}
             startingPageContent = {customConstants.startingPageContent}
             chatBottomContent = {customConstants.chatBottomContent}
+            messageBottomContent = {customConstants.messageBottomContent}
+            replacementTextList = {customConstants.replacementTextList}
         />
     );
 };
