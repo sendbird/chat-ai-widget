@@ -1,6 +1,7 @@
 ## What is this for?
 It is for the Sendbird Chat AI Widget UiKit.
 
+![final_output](https://github.com/sendbird/chat-ai-widget/assets/104121286/655afa8d-c844-4659-8bff-a873eebe0517)
 
 
 ## How to use
