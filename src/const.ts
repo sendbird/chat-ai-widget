@@ -6,24 +6,6 @@ import {ReactComponent as StartingPageBackground} from './icons/starting-page-bg
 export const USER_ID = uuid();
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
 
-export interface Constant {
-  botNickName: string;
-  betaMark: boolean;
-  suggestedMessageContent: SuggestedMessageContent;
-  createGroupChannelParams: CreateGroupChannelParams;
-  startingPageContent: StartingPageContent;
-  chatBottomContent: ChatBottomContent;
-  messageBottomContent: MessageBottomContent;
-  replacementTextList: string[][];
-}
-
-export interface SuggestedReply {
-  title: string;
-  text: string;
-  buttonText: string;
-  link: string;
-}
-
 export const DEFAULT_CONSTANT: Constant = {
   botNickName: 'Jake Sully',
   betaMark: true,
@@ -93,6 +75,24 @@ export const DEFAULT_CONSTANT: Constant = {
     ["the Text extracts", "ChatBot Knowledge Base"],
   ],
 };
+
+export interface Constant {
+  botNickName: string;
+  betaMark: boolean;
+  suggestedMessageContent: SuggestedMessageContent;
+  createGroupChannelParams: CreateGroupChannelParams;
+  startingPageContent: StartingPageContent;
+  chatBottomContent: ChatBottomContent;
+  messageBottomContent: MessageBottomContent;
+  replacementTextList: string[][];
+}
+
+export interface SuggestedReply {
+  title: string;
+  text: string;
+  buttonText: string;
+  link: string;
+}
 
 export interface SuggestedMessageContent {
   replyContents: SuggestedReply[];
