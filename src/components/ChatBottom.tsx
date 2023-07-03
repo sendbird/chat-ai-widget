@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
 import { ReactComponent as SendbirdLogo } from '../icons/sendbird-logo-widget.svg';
 
 const Container = styled.div`
@@ -12,7 +13,9 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${props => props.chatBottomBackgroundColor || 'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)'};
+  background: ${(props) =>
+    props.chatBottomBackgroundColor ||
+    'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)'};
   color: rgba(255, 255, 255, 0.88);
   flex-wrap: wrap;
   font-size: 13px;
@@ -26,15 +29,25 @@ const Highlighter = styled.a`
 `;
 
 // link: https://dashboard.sendbird.com/auth/signup
-export default function ChatBottom({chatBottomText, chatBottomBackgroundColor}:{
-    chatBottomText: string;
-    chatBottomBackgroundColor: string;
+export default function ChatBottom({
+  chatBottomText,
+  chatBottomBackgroundColor,
+}: {
+  chatBottomText: string;
+  chatBottomBackgroundColor: string;
 }) {
-  return <Container>
-    <InnerContainer chatBottomBackgroundColor={chatBottomBackgroundColor}>
-      {chatBottomText}&nbsp;&nbsp;&nbsp;Powered by&nbsp;<Highlighter href='https://sendbird.com/products/chatgpt-integration' target="_blank" rel="noopener noreferrer">
-      <SendbirdLogo width={'75px'}/>
-    </Highlighter>
-    </InnerContainer>
-  </Container>;
+  return (
+    <Container>
+      <InnerContainer chatBottomBackgroundColor={chatBottomBackgroundColor}>
+        {chatBottomText}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
+        <Highlighter
+          href="https://sendbird.com/products/chatgpt-integration"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <SendbirdLogo width={'75px'} />
+        </Highlighter>
+      </InnerContainer>
+    </Container>
+  );
 }

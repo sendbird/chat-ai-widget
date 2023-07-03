@@ -1,11 +1,12 @@
-import styled from "styled-components";
 // Ref: https://github.com/rajinwonderland/react-code-blocks#-demo
-import {CopyBlock, irBlack} from "react-code-blocks";
-import BotMessageBottom from "./BotMessageBottom";
-import {Token, TokenType} from "../utils";
-import {UserMessage} from "@sendbird/chat/message";
-import SourceContainer, {Source} from "./SourceContainer";
-import {Constant} from "../const";
+import { UserMessage } from '@sendbird/chat/message';
+import { CopyBlock, irBlack } from 'react-code-blocks';
+import styled from 'styled-components';
+
+import BotMessageBottom from './BotMessageBottom';
+import SourceContainer, { Source } from './SourceContainer';
+import { Constant } from '../const';
+import { Token, TokenType } from '../utils';
 
 const Root = styled.div`
   display: flex;
@@ -36,7 +37,7 @@ type Props = {
   message: UserMessage;
   tokens: Token[];
   constant: Constant;
-}
+};
 
 /**
  * Parses bot message text to process code snippets within the text.
@@ -45,42 +46,46 @@ type Props = {
  */
 export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens, constant } = props;
-  const data: object = JSON.parse((message as UserMessage).data?.toString() || '{}');
-  const sources: Source[] = Array.isArray(data['metadatas']) ? data['metadatas'] as Source[] : [];
+  const data: object = JSON.parse(
+    (message as UserMessage).data?.toString() || '{}'
+  );
+  const sources: Source[] = Array.isArray(data['metadatas'])
+    ? (data['metadatas'] as Source[])
+    : [];
 
   // console.log('## sources: ', sources);
   if (tokens.length > 0) {
-    return <Root>
-        {
-          tokens.map((token: Token, i) => {
-            if (token.type === TokenType.string) {
-              return <Text
+    return (
+      <Root>
+        {tokens.map((token: Token, i) => {
+          if (token.type === TokenType.string) {
+            return (
+              <Text
                 key={'token' + i}
                 dangerouslySetInnerHTML={{ __html: token.value }}
-              />;
-            }
-            return (
-              <BlockContainer key={'token' + i}>
-                <CopyBlock
-                  text={token.value}
-                  language={token.type}
-                  theme={irBlack}
-                  showLineNumbers={true}
-                  codeBlock
-                />
-              </BlockContainer>
-            )
-          })
-        }
-        {
-          sources.length > 0
-            ? <>
-              <SourceContainer sources={sources}/>
-              <BotMessageBottom constant={constant}/>
-            </>
-            : null
-        }
+              />
+            );
+          }
+          return (
+            <BlockContainer key={'token' + i}>
+              <CopyBlock
+                text={token.value}
+                language={token.type}
+                theme={irBlack}
+                showLineNumbers={true}
+                codeBlock
+              />
+            </BlockContainer>
+          );
+        })}
+        {sources.length > 0 ? (
+          <>
+            <SourceContainer sources={sources} />
+            <BotMessageBottom constant={constant} />
+          </>
+        ) : null}
       </Root>
+    );
   }
   return <Text>{message.message}</Text>;
 }

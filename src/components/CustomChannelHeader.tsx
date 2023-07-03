@@ -1,8 +1,9 @@
-import styled from "styled-components";
-import {ReactComponent as RefreshIcon} from '../icons/refresh-icon.svg';
-import {GroupChannel} from "@sendbird/chat/groupChannel";
+import { GroupChannel } from '@sendbird/chat/groupChannel';
+import styled from 'styled-components';
+
+import { useLoadingState } from '../context/LoadingStateContext';
 import channelHeaderImage from '../icons/bot-message-image.png';
-import {useLoadingState} from "../context/LoadingStateContext";
+import { ReactComponent as RefreshIcon } from '../icons/refresh-icon.svg';
 
 const Root = styled.div`
   display: flex;
@@ -48,16 +49,15 @@ const RenewButtonContainer = styled.div`
 
 const BetaLogo = styled.div`
   padding: 4px;
-  background: #C8D9FA;
+  background: #c8d9fa;
   border-radius: 2px;
   font-weight: 500;
   font-size: 11px;
   line-height: 12px;
-  color: #30308F;
+  color: #30308f;
   font-family: 'SF Pro Display', sans-serif;
   letter-spacing: 0.8px;
 `;
-
 
 const EmptyContainer = styled.div`
   width: 24px;
@@ -69,7 +69,7 @@ type Props = {
   isTyping: boolean;
   createGroupChannel: () => void;
   betaMark: boolean;
-}
+};
 
 export default function CustomChannelHeader(props: Props) {
   const { channel, createGroupChannel, betaMark } = props;
@@ -80,20 +80,26 @@ export default function CustomChannelHeader(props: Props) {
     // window.location.reload();
     setShowLoading(true);
   }
-  return <Root>
-    <SubContainer>
-      <img src={channelHeaderImage} alt="channelHeaderImage" style={{
-        height: "34px"
-      }}/>
-      <Title>{channel.name}</Title>
-      {betaMark && <BetaLogo>{ 'BETA' }</BetaLogo>}
-    </SubContainer>
-    <RenewButtonContainer>
-      <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
-        <RefreshIcon height='16px' width='16px'/>
-      </RenewButtonForWidgetDemo>
-    </RenewButtonContainer>
-    <EmptyContainer/>
-    <EmptyContainer/>
-  </Root>;
+  return (
+    <Root>
+      <SubContainer>
+        <img
+          src={channelHeaderImage}
+          alt="channelHeaderImage"
+          style={{
+            height: '34px',
+          }}
+        />
+        <Title>{channel.name}</Title>
+        {betaMark && <BetaLogo>{'BETA'}</BetaLogo>}
+      </SubContainer>
+      <RenewButtonContainer>
+        <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
+          <RefreshIcon height="16px" width="16px" />
+        </RenewButtonForWidgetDemo>
+      </RenewButtonContainer>
+      <EmptyContainer />
+      <EmptyContainer />
+    </Root>
+  );
 }

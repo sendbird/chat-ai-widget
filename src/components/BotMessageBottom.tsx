@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { usePopperTooltip } from 'react-popper-tooltip';
+import styled from 'styled-components';
+
+import { Constant } from '../const';
 import { ReactComponent as InfoIcon } from '../icons/info-icon.svg';
-import {useState} from "react";
-import {createPortal} from "react-dom";
-import {usePopperTooltip} from "react-popper-tooltip";
 import 'react-popper-tooltip/dist/styles.css';
-import {Constant} from "../const";
 
 const Text = styled.div`
   color: rgba(0, 0, 0, 0.5);
@@ -43,7 +44,6 @@ const InfoIconButton = styled.div`
   cursor: pointer;
 `;
 
-
 const InfoBox = styled.div`
   padding: 8px 12px;
   //width: calc(100% - 140px);
@@ -65,49 +65,41 @@ const InfoBox = styled.div`
 
 type Props = {
   constant: Constant;
-}
+};
 
 export default function BotMessageBottom(props: Props) {
-  const {
-    constant,
-  } = props;
+  const { constant } = props;
 
   const placement = 'auto';
 
-  const {
-    getTooltipProps,
-    setTooltipRef,
-    setTriggerRef,
-  } = usePopperTooltip({
+  const { getTooltipProps, setTooltipRef, setTriggerRef } = usePopperTooltip({
     placement,
   });
 
   const [showInfoBox, setShowInfoBox] = useState<boolean>(false);
 
-  return <>
-    <BottomComponent ref={setTriggerRef}>
-      <Delimiter/>
-      <TextContainer>
-        <Text>{constant.messageBottomContent.text}</Text>
-        <InfoIconButton
-          onMouseEnter={() => setShowInfoBox(true)}
-          onMouseLeave={() => setShowInfoBox(false)}
-        >
-          <InfoIcon height={'28px'} width={'28px'}/>
-        </InfoIconButton>
-      </TextContainer>
-    </BottomComponent>
-    {
-      showInfoBox && createPortal(
-        <div
-          ref={setTooltipRef}
-          {...getTooltipProps( )}
-        >
-          <InfoBox>{constant.messageBottomContent.infoIconText}</InfoBox>
-          {/*<div {...getArrowProps({ className: 'tooltip-arrow' })} />*/}
-        </div>,
-        document.getElementById('sb_chat_root_for_z_index') as HTMLDivElement
-      )
-    }
-  </>
+  return (
+    <>
+      <BottomComponent ref={setTriggerRef}>
+        <Delimiter />
+        <TextContainer>
+          <Text>{constant.messageBottomContent.text}</Text>
+          <InfoIconButton
+            onMouseEnter={() => setShowInfoBox(true)}
+            onMouseLeave={() => setShowInfoBox(false)}
+          >
+            <InfoIcon height={'28px'} width={'28px'} />
+          </InfoIconButton>
+        </TextContainer>
+      </BottomComponent>
+      {showInfoBox &&
+        createPortal(
+          <div ref={setTooltipRef} {...getTooltipProps()}>
+            <InfoBox>{constant.messageBottomContent.infoIconText}</InfoBox>
+            {/*<div {...getArrowProps({ className: 'tooltip-arrow' })} />*/}
+          </div>,
+          document.getElementById('sb_chat_root_for_z_index') as HTMLDivElement
+        )}
+    </>
+  );
 }

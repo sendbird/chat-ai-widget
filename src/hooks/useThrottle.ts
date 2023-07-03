@@ -1,6 +1,9 @@
 import { useRef, useEffect } from 'react';
 
-export function useThrottle<T extends (...args: any[]) => any>(func: T, delay: number): T {
+export function useThrottle<T extends (...args: any[]) => any>(
+  func: T,
+  delay: number
+): T {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const functionArgsRef = useRef<any[]>([]);
 

@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Root = styled.div`
-  
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -9,7 +8,7 @@ const Root = styled.div`
 `;
 
 const LineItem = styled.div`
-  border-right: solid rgba(0, 0, 0, 0.50);
+  border-right: solid rgba(0, 0, 0, 0.5);
 `;
 
 const LinesContainer = styled.div`
@@ -28,21 +27,18 @@ interface Props {
 
 export default function CodeSnippet(props: Props) {
   const { codeString } = props;
-  const numLines = codeString.split('\n').length;
-  const lineNumbers: number[] = [];
-  for (let i = 1; i < numLines + 1; i++) {
-    lineNumbers.push(i);
-  }
-  // console.log('## numLines: ', numLines);
+  const codeSegments = codeString.split('\n');
 
-  return <code>
+  return (
+    <code>
       <Root>
-      <LinesContainer>
-        {
-          lineNumbers.map((lineNumber: number) => <LineItem>{lineNumber}</LineItem>)
-        }
-      </LinesContainer>
-      <CodeContainer>{codeString}</CodeContainer>
+        <LinesContainer>
+          {codeSegments.map((seg) => (
+            <LineItem key={seg}>{seg}</LineItem>
+          ))}
+        </LinesContainer>
+        <CodeContainer>{codeString}</CodeContainer>
       </Root>
-    </code>;
+    </code>
+  );
 }

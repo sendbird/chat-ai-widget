@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { ReactComponent as SpinIcon } from '../icons/spin-icon.svg';
+import styled from 'styled-components';
 
-import {useLoadingState} from "../context/LoadingStateContext";
+import { useLoadingState } from '../context/LoadingStateContext';
+import { ReactComponent as SpinIcon } from '../icons/spin-icon.svg';
 
 const Container = styled.div`
   width: 100%;
@@ -31,9 +31,13 @@ export default function LoadingScreen(props: LoadingScreenProps) {
   const { sendbirdBotId } = props;
   const { showLoading } = useLoadingState();
 
-  return (!sendbirdBotId || showLoading ) && <Container>
-    <IconContainer>
-      <SpinIcon width='50px' height='50px'/>
-    </IconContainer>
-  </Container>;
+  return (
+    (!sendbirdBotId || showLoading) && (
+      <Container>
+        <IconContainer>
+          <SpinIcon width="50px" height="50px" />
+        </IconContainer>
+      </Container>
+    )
+  );
 }

@@ -93,10 +93,17 @@ export const defaultColorSet = {
   },
 };
 
-const colorGenerator = (colorSet: keyof typeof defaultColorSet) => (colorKey: keyof typeof defaultColorSet['green'] | keyof typeof defaultColorSet['navy'], opacity?: number) => {
-  const color = defaultColorSet[colorSet][colorKey];
-  return opacity && opacity <= 1 ? transparentize(1 - opacity, color) : color;
-};
+const colorGenerator =
+  (colorSet: keyof typeof defaultColorSet) =>
+  (
+    colorKey:
+      | keyof (typeof defaultColorSet)['green']
+      | keyof (typeof defaultColorSet)['navy'],
+    opacity?: number
+  ) => {
+    const color = defaultColorSet[colorSet][colorKey];
+    return opacity && opacity <= 1 ? transparentize(1 - opacity, color) : color;
+  };
 
 export const colors = {
   purple: colorGenerator('purple'),

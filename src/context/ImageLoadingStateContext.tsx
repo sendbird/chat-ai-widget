@@ -1,16 +1,24 @@
-import {createContext, ReactElement, useState} from "react";
-import * as React from "react";
+import { createContext, ReactElement, useState, useContext } from 'react';
 
-export const ImageLoadingStateContext = createContext({ showImageLoading: true, setShowImageLoading: null });
+const ImageLoadingStateContext = createContext({
+  showImageLoading: true,
+  setShowImageLoading: null,
+});
 interface LoadingStateProviderProps {
   children: ReactElement;
 }
 
-export const ImageLoadingStateProvider = (props: LoadingStateProviderProps) => {
+const ImageLoadingStateProvider = (props: LoadingStateProviderProps) => {
   const [showImageLoading, setShowImageLoading] = useState(true);
-  return <ImageLoadingStateContext.Provider value={{ showImageLoading, setShowImageLoading }}>
-    {props.children}
-  </ImageLoadingStateContext.Provider>;
-}
+  return (
+    <ImageLoadingStateContext.Provider
+      value={{ showImageLoading, setShowImageLoading }}
+    >
+      {props.children}
+    </ImageLoadingStateContext.Provider>
+  );
+};
 
-export const useImageLoadingState = () => React.useContext(ImageLoadingStateContext);
+export const useImageLoadingState = () => useContext(ImageLoadingStateContext);
+
+export default ImageLoadingStateProvider;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Root = styled.div`
   display: flex;
@@ -39,8 +39,10 @@ export default function CustomMessageBody(props: Props) {
       extraStr = ` I can answer your questions based on ${anchor}. Ask away!`;
     }
   }
-  
-  return <Root>
-    <Text dangerouslySetInnerHTML={{ __html: message + '.' + extraStr }}/>
-  </Root>;
+
+  return (
+    <Root>
+      <Text dangerouslySetInnerHTML={{ __html: message + '.' + extraStr }} />
+    </Root>
+  );
 }

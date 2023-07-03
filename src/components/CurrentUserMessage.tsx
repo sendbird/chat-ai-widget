@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import {formatCreatedAtToAMPM} from "../utils";
-import {UserMessage} from "@sendbird/chat/message";
+import { UserMessage } from '@sendbird/chat/message';
+import styled from 'styled-components';
+
+import { formatCreatedAtToAMPM } from '../utils';
 
 const Root = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ const SentTime = styled.div`
 const BodyComponent = styled.div`
   background-color: #742ddd;
   &:hover {
-    background-color: #6211c8
+    background-color: #6211c8;
   }
   color: rgba(255, 255, 255, 0.88);
   max-width: 600px;
@@ -51,19 +52,21 @@ const TextComponent = styled.div`
 
 type Props = {
   message: UserMessage;
-}
+};
 
 export default function CurrentUserMessage(props: Props) {
   const { message } = props;
 
-  return <Root>
-    <SentTime>
-      <div>{formatCreatedAtToAMPM(message.createdAt)}</div>
-    </SentTime>
-    <BodyContainer>
-      <BodyComponent>
-        <TextComponent>{message.message}</TextComponent>
-      </BodyComponent>
-    </BodyContainer>
-  </Root>;
+  return (
+    <Root>
+      <SentTime>
+        <div>{formatCreatedAtToAMPM(message.createdAt)}</div>
+      </SentTime>
+      <BodyContainer>
+        <BodyComponent>
+          <TextComponent>{message.message}</TextComponent>
+        </BodyComponent>
+      </BodyContainer>
+    </Root>
+  );
 }

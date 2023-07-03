@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
+import profileImage from '../icons/bot-message-image.png';
 import typingIndicatorLogo from '../icons/message-typing-indicator.gif';
-import profileImage from "../icons/bot-message-image.png";
 
 const Container = styled.div`
   display: flex;
@@ -14,14 +15,24 @@ const ImageContainer = styled.div`
 `;
 
 export default function PendingMessage() {
-  return <Container>
+  return (
+    <Container>
       <ImageContainer>
-        <img src={profileImage} alt="profileImage" style={{
-          height: "28px"
-        }}/>
+        <img
+          src={profileImage}
+          alt="profileImage"
+          style={{
+            height: '28px',
+          }}
+        />
       </ImageContainer>
-      <img src={typingIndicatorLogo} alt="pending..." style={{
-        height: "52px"
-      }}/>
-    </Container>;
+      <img
+        src={typingIndicatorLogo}
+        alt="pending..."
+        style={{
+          height: '52px',
+        }}
+      />
+    </Container>
+  );
 }

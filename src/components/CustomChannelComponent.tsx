@@ -1,21 +1,23 @@
-import {User} from "@sendbird/chat";
-import {useChannelContext} from "@sendbird/uikit-react/Channel/context";
-import {SendingStatus} from "@sendbird/chat/message";
-import {GroupChannel} from "@sendbird/chat/groupChannel";
-import {ClientUserMessage} from "SendbirdUIKitGlobal";
-import {useEffect, useState} from "react";
-import {Constant, USER_ID} from "../const";
-import {isSpecialMessage, scrollUtil} from "../utils";
-import ChannelUI from "@sendbird/uikit-react/Channel/components/ChannelUI";
-import CustomChannelHeader from "./CustomChannelHeader";
-import SuggestedRepliesPanel from "./SuggestedRepliesPanel";
-import CustomMessageInput from "./CustomMessageInput";
-import CustomMessage from "./CustomMessage";
-import styled from "styled-components";
-import {StartingPage} from "./StartingPage";
-import ChannelHeader from "@sendbird/uikit-react/Channel/components/ChannelHeader"
-import ChatBottom from "./ChatBottom";
-import {useLoadingState} from "../context/LoadingStateContext";
+import { User } from '@sendbird/chat';
+import { GroupChannel } from '@sendbird/chat/groupChannel';
+import { SendingStatus } from '@sendbird/chat/message';
+import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeader';
+import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
+import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import { useEffect, useState } from 'react';
+// eslint-disable-next-line import/no-unresolved
+import { ClientUserMessage } from 'SendbirdUIKitGlobal';
+import styled from 'styled-components';
+
+import ChatBottom from './ChatBottom';
+import CustomChannelHeader from './CustomChannelHeader';
+import CustomMessage from './CustomMessage';
+import CustomMessageInput from './CustomMessageInput';
+import { StartingPage } from './StartingPage';
+import SuggestedRepliesPanel from './SuggestedRepliesPanel';
+import { Constant, USER_ID } from '../const';
+import { useLoadingState } from '../context/LoadingStateContext';
+import { isSpecialMessage, scrollUtil } from '../utils';
 
 const Root = styled.div<{ hidePlaceholder: boolean }>`
   //height: 100vh; // 640px;
@@ -24,7 +26,7 @@ const Root = styled.div<{ hidePlaceholder: boolean }>`
   z-index: 0;
   border: none;
 
-  .sendbird-place-holder__body{
+  .sendbird-place-holder__body {
     display: ${({ hidePlaceholder }) => (hidePlaceholder ? 'none' : 'block')};
   }
 `;
@@ -37,17 +39,19 @@ type CustomChannelComponentProps = {
   botUser: User;
   createGroupChannel?: () => void;
   constant: Constant;
-}
+};
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
-  const {botUser, createGroupChannel, constant} = props;
+  const { botUser, createGroupChannel, constant } = props;
   // const store = useSendbirdStateContext();
   // const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
-  const {allMessages, currentGroupChannel } = useChannelContext();
+  const { allMessages, currentGroupChannel } = useChannelContext();
 
   // console.log('## isLoading: ', loading);
   const channel: GroupChannel | undefined = currentGroupChannel;
-  const lastMessage: ClientUserMessage = allMessages?.[allMessages?.length - 1] as ClientUserMessage;
+  const lastMessage: ClientUserMessage = allMessages?.[
+    allMessages?.length - 1
+  ] as ClientUserMessage;
   // console.log('#### allMessages: ', allMessages);
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
   const { setShowLoading } = useLoadingState();
@@ -58,9 +62,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
    * If the updated last message is pending or failed by the current user or sent by the bot, deactivate spinner.
    */
   useEffect(() => {
-    if (lastMessage
-      && lastMessage.sender?.userId === USER_ID
-      && lastMessage.sendingStatus === SendingStatus.SUCCEEDED
+    if (
+      lastMessage &&
+      lastMessage.sender?.userId === USER_ID &&
+      lastMessage.sendingStatus === SendingStatus.SUCCEEDED
     ) {
       setActiveSpinnerId(lastMessage.messageId);
       scrollUtil();
@@ -77,50 +82,71 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     }
   }, [channel]);
 
-  return <Root hidePlaceholder={startingPagePlaceHolder}>
-    <StartingPage
+  return (
+    <Root hidePlaceholder={startingPagePlaceHolder}>
+      <StartingPage
         isStartingPage={startingPagePlaceHolder}
         startingPageContent={constant.startingPageContent}
         betaMark={constant.betaMark}
         botNickName={botUser.nickname}
-    />
-    <ChannelUI
-      renderChannelHeader={() => {
-        return createGroupChannel
-          ? <CustomChannelHeader
-            channel={channel as GroupChannel}
-            isTyping={activeSpinnerId > -1}
-            createGroupChannel={createGroupChannel}
-            betaMark={constant.betaMark}
-          />
-          : <ChannelHeader/>;
-      }}
-      renderPlaceholderLoader={() => <></>}
-      renderMessageInput={() => {
-        return <div style={{ position: 'relative', zIndex: 50, backgroundColor: 'white' }}>
-          {
-            allMessages
-            && allMessages.length > 1
-            && lastMessage.sender.userId === botUser.userId
-            && isSpecialMessage(lastMessage.message, constant.suggestedMessageContent.messageFilterList)
-            && <SuggestedRepliesPanel botUser={botUser} constant={constant}/>
-          }
-          <CustomMessageInput/>
-          <ChatBottom
-              chatBottomText={constant.chatBottomContent.text}
-              chatBottomBackgroundColor={constant.chatBottomContent.backgroundColor}
-          />
-        </div>
-      }}
-      renderMessage={({message}) => {
-        return <CustomMessage
-          message={message}
-          activeSpinnerId={activeSpinnerId}
-          botUser={botUser}
-          constant={constant}
-        />
-      }}
-      renderTypingIndicator={() => <></>}
-    />
-  </Root>;
+      />
+      <ChannelUI
+        renderChannelHeader={() => {
+          return createGroupChannel ? (
+            <CustomChannelHeader
+              channel={channel as GroupChannel}
+              isTyping={activeSpinnerId > -1}
+              createGroupChannel={createGroupChannel}
+              betaMark={constant.betaMark}
+            />
+          ) : (
+            <ChannelHeader />
+          );
+        }}
+        renderPlaceholderLoader={() => <></>}
+        renderMessageInput={() => {
+          return (
+            <div
+              style={{
+                position: 'relative',
+                zIndex: 50,
+                backgroundColor: 'white',
+              }}
+            >
+              {allMessages &&
+                allMessages.length > 1 &&
+                lastMessage.sender.userId === botUser.userId &&
+                isSpecialMessage(
+                  lastMessage.message,
+                  constant.suggestedMessageContent.messageFilterList
+                ) && (
+                  <SuggestedRepliesPanel
+                    botUser={botUser}
+                    constant={constant}
+                  />
+                )}
+              <CustomMessageInput />
+              <ChatBottom
+                chatBottomText={constant.chatBottomContent.text}
+                chatBottomBackgroundColor={
+                  constant.chatBottomContent.backgroundColor
+                }
+              />
+            </div>
+          );
+        }}
+        renderMessage={({ message }) => {
+          return (
+            <CustomMessage
+              message={message}
+              activeSpinnerId={activeSpinnerId}
+              botUser={botUser}
+              constant={constant}
+            />
+          );
+        }}
+        renderTypingIndicator={() => <></>}
+      />
+    </Root>
+  );
 }

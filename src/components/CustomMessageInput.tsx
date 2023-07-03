@@ -1,18 +1,21 @@
-import {useEffect, useRef, useState} from "react";
-import useSendbirdStateContext from "@sendbird/uikit-react/useSendbirdStateContext";
-import sendbirdSelectors from "@sendbird/uikit-react/sendbirdSelectors";
-import { useChannelContext } from "@sendbird/uikit-react/Channel/context";
-import { UserMessageCreateParams } from "@sendbird/chat/message";
-import styled from "styled-components";
+import { type UserMessageCreateParams } from '@sendbird/chat/message';
+import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import * as sendbirdSelectors from '@sendbird/uikit-react/sendbirdSelectors';
+import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
+import { useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+
+import { useThrottle } from '../hooks/useThrottle';
 import { ReactComponent as SendIcon } from '../icons/send-icon.svg';
-import {useThrottle} from "../hooks/useThrottle";
 
 interface InputProps {
   isActive: boolean;
 }
 const InputComponent = styled.textarea<InputProps>`
-  width: ${(props: InputProps) => (props.isActive ? 'calc(100% - 66px)' : '100%')};
-  transition: ${(props: InputProps) => (props.isActive ? 'none' : 'width 0.5s')};
+  width: ${(props: InputProps) =>
+    props.isActive ? 'calc(100% - 66px)' : '100%'};
+  transition: ${(props: InputProps) =>
+    props.isActive ? 'none' : 'width 0.5s'};
   transition-timing-function: ease;
   padding: 8px 16px;
   font-size: 14px;
@@ -23,7 +26,7 @@ const InputComponent = styled.textarea<InputProps>`
   border: none;
   outline: none;
   max-height: 116px;
-  background: #EEEEEE;
+  background: #eeeeee;
   border-radius: 20px;
   height: auto;
   ::placeholder {
@@ -94,15 +97,15 @@ export default function CustomMessageInput() {
         message,
       };
       sendUserMessage(currentGroupChannel, params)
-        .onPending((message) => {
+        .onPending(() => {
           // console.log('## onPending', message);
           setMessage('');
         })
-        .onSucceeded((message) => {
+        .onSucceeded(() => {
           // console.log('## onSucceeded', message);
           setMessage('');
         })
-        .onFailed((error) => {
+        .onFailed(() => {
           // console.log('## onFailed', error);
         });
     }
@@ -110,8 +113,7 @@ export default function CustomMessageInput() {
   return (
     <InputContainer>
       <InnerContainer>
-
-      <InputComponent
+        <InputComponent
           isActive={showSendButton}
           onKeyPress={onPressEnter}
           ref={inputRef}
@@ -119,16 +121,20 @@ export default function CustomMessageInput() {
           onChange={handleMessageChange}
           onInput={throttledIncrement}
           rows={1}
-          placeholder={'Enter message'}
-          autoFocus={true}
+          placeholder="Enter message"
         />
-        {
-          showSendButton
-          && <Button>
-            <SendIcon onClick={sendInputAsUserMessage} height='20px' width='20px'>Send</SendIcon>
+        {showSendButton && (
+          <Button>
+            <SendIcon
+              onClick={sendInputAsUserMessage}
+              height="20px"
+              width="20px"
+            >
+              Send
+            </SendIcon>
           </Button>
-        }
+        )}
       </InnerContainer>
     </InputContainer>
-  )
+  );
 }

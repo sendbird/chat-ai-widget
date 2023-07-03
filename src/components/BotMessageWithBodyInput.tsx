@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import { User } from '@sendbird/chat';
+import { UserMessage } from '@sendbird/chat/message';
+import { ReactNode } from 'react';
+import styled from 'styled-components';
+
+import { StartingPageAnimatorProps } from './CustomChannelComponent';
 import botMessageImage from '../icons/bot-message-image.png';
-import {formatCreatedAtToAMPM} from "../utils";
-import {UserMessage} from "@sendbird/chat/message";
-import {ReactNode} from "react";
-import {StartingPageAnimatorProps} from "./CustomChannelComponent";
-import {User} from "@sendbird/chat";
+import { formatCreatedAtToAMPM } from '../utils';
 
 const Root = styled.div<StartingPageAnimatorProps>`
   display: flex;
@@ -20,7 +21,8 @@ const Sender = styled.div<StartingPageAnimatorProps>`
   font-weight: 700;
   font-size: 12px;
   line-height: 12px;
-  color: ${(props: StartingPageAnimatorProps) => (props.isStartingPage ? '#FFFFFF' : 'rgba(0, 0, 0, 0.5)')};
+  color: ${(props: StartingPageAnimatorProps) =>
+    props.isStartingPage ? '#FFFFFF' : 'rgba(0, 0, 0, 0.5)'};
   transition: color 0.5s;
   transition-timing-function: ease;
   margin: 0 0 4px 12px;
@@ -56,26 +58,33 @@ type Props = {
   messageCount: number;
   zIndex?: number;
   bodyStyle?: object;
-}
+};
 
-const ImageContainer = styled.div`
-`;
+const ImageContainer = styled.div``;
 
 export default function BotMessageWithBodyInput(props: Props) {
-  const { botUser, message, bodyComponent, messageCount, zIndex, bodyStyle } = props;
+  const { botUser, message, bodyComponent, messageCount, zIndex, bodyStyle } =
+    props;
 
-  return <Root style={{ zIndex: (messageCount === 1 && zIndex) ? zIndex : 0 }} isStartingPage>
-    <ImageContainer>
-      <img src={botMessageImage} alt="botProfileImage" style={{
-        height: "28px"
-      }}/>
-    </ImageContainer>
-    <BodyContainer style={bodyStyle ?? {}}>
-      <Sender isStartingPage={messageCount === 1}>{ botUser.nickname }</Sender>
-      {bodyComponent}
-    </BodyContainer>
-    <SentTime>
-      {formatCreatedAtToAMPM(message.createdAt)}
-    </SentTime>
-  </Root>;
+  return (
+    <Root
+      style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}
+      isStartingPage
+    >
+      <ImageContainer>
+        <img
+          src={botMessageImage}
+          alt="botProfileImage"
+          style={{
+            height: '28px',
+          }}
+        />
+      </ImageContainer>
+      <BodyContainer style={bodyStyle ?? {}}>
+        <Sender isStartingPage={messageCount === 1}>{botUser.nickname}</Sender>
+        {bodyComponent}
+      </BodyContainer>
+      <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+    </Root>
+  );
 }

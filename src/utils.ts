@@ -1,8 +1,8 @@
-import {LOCAL_MESSAGE_CUSTOM_TYPE} from "./const";
+import { LOCAL_MESSAGE_CUSTOM_TYPE } from './const';
 
 export function uuid() {
   let d = new Date().getTime();
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (d + Math.random() * 16) % 16 | 0;
     d = Math.floor(d / 16);
     return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
@@ -11,13 +11,12 @@ export function uuid() {
 
 export const scrollUtil = () => {
   setTimeout(() => {
-    const scrollDOM = document.querySelector('.sendbird-conversation__messages-padding');
+    const scrollDOM = document.querySelector(
+      '.sendbird-conversation__messages-padding'
+    );
     //console.warn(scrollDOM);
     if (scrollDOM) {
-      const {
-        scrollHeight,
-        clientHeight,
-      } = scrollDOM;
+      const { scrollHeight, clientHeight } = scrollDOM;
       // const isScrolledToEnd = (scrollTop + 200) > (scrollHeight - clientHeight);
       const isScrolledToEnd = true;
 
@@ -30,11 +29,11 @@ export const scrollUtil = () => {
       // });
       if (isScrolledToEnd) {
         //console.warn('move to end', scrollDOM.scrollHeight + 200)
-        scrollDOM.scrollTop = (scrollHeight - clientHeight) + 200
+        scrollDOM.scrollTop = scrollHeight - clientHeight + 200;
       }
     }
   }); // We may need ~500ms delay here.
-}
+};
 
 export function formatCreatedAtToAMPM(createdAt: number) {
   const date: Date = new Date(createdAt);
@@ -65,12 +64,12 @@ export enum TokenType {
 type StringToken = {
   type: TokenType.string;
   value: string;
-}
+};
 type CodeSnippetToken = {
   type: TokenType.codeSnippet;
   value: string;
   language: Languages;
-}
+};
 
 export type Token = StringToken | CodeSnippetToken;
 const parseCode = (code: string): CodeSnippetToken => {
@@ -81,15 +80,15 @@ const parseCode = (code: string): CodeSnippetToken => {
       type: TokenType.codeSnippet,
       value: match[2],
       language: match[1] as Languages,
-    }
+    };
   } else {
     return {
       type: TokenType.codeSnippet,
       value: code.substring(3, code.length - 3).trim(),
       language: Languages.unknown,
-    }
+    };
   }
-}
+};
 
 export function splitText(inputString: string) {
   const delimiter = '```';
@@ -116,7 +115,7 @@ export function splitText(inputString: string) {
         result.push(currentWord);
         currentWord = delimiter;
         inDelimiter = true;
-        i += (delimiter.length - 1); // -1 is because of i++;
+        i += delimiter.length - 1; // -1 is because of i++;
       } else {
         currentWord += char;
       }
@@ -126,7 +125,11 @@ export function splitText(inputString: string) {
   return result;
 }
 
-function isDelimiterIndex(index: number, inputString: string, delimiter: string) {
+function isDelimiterIndex(
+  index: number,
+  inputString: string,
+  delimiter: string
+) {
   return inputString.substring(index, index + delimiter.length) === delimiter;
 }
 
@@ -152,10 +155,16 @@ export function MessageTextParser(inputString: string): Token[] {
 }
 
 export function isNotLocalMessageCustomType(customType: string | undefined) {
-  return !customType || Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) === -1;
+  return (
+    !customType ||
+    Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) === -1
+  );
 }
 
-export function replaceTextExtractsMultiple(input: string, replacements: Array<[string, string]>): string {
+export function replaceTextExtractsMultiple(
+  input: string,
+  replacements: Array<[string, string]>
+): string {
   let result = input;
   for (let i = 0; i < replacements.length; i++) {
     const [searchText, replaceText] = replacements[i];
@@ -164,20 +173,30 @@ export function replaceTextExtractsMultiple(input: string, replacements: Array<[
   return result;
 }
 
-export function replaceTextExtracts(input: string, searchText: string, replaceText: string): string {
-  const regex = new RegExp(searchText, "gi");
+export function replaceTextExtracts(
+  input: string,
+  searchText: string,
+  replaceText: string
+): string {
+  const regex = new RegExp(searchText, 'gi');
   return input.replace(regex, replaceText);
 }
 
 export function replaceUrl(input: string): string {
-  const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
-  return input.replace(urlRegex, function(url) {
+  const urlRegex =
+    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
+  return input.replace(urlRegex, function (url) {
     return `<a href="${url}" target="_blank">${url}</a>`;
   });
 }
 
-export function isSpecialMessage(message: string, specialMessageList: string[]): boolean {
-  return specialMessageList.findIndex((substr: string) => {
-    return message.includes(substr);
-  }) > -1;
+export function isSpecialMessage(
+  message: string,
+  specialMessageList: string[]
+): boolean {
+  return (
+    specialMessageList.findIndex((substr: string) => {
+      return message.includes(substr);
+    }) > -1
+  );
 }

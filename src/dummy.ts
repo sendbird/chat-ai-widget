@@ -13,7 +13,7 @@ sb.connect(USER_ID, ACCESS_TOKEN, (user, error) => {
 
 This code initializes a new instance of the SendBird object with your app ID, then connects to the SDK using a user ID and access token. Once connected, the user ID is logged to the console. 
 
-You can find more information about the Sendbird Chat SDK in the "Getting Started" guide at https://sendbird.com/docs/chat/v4/javascript/getting-started/send-first-message.`
+You can find more information about the Sendbird Chat SDK in the "Getting Started" guide at https://sendbird.com/docs/chat/v4/javascript/getting-started/send-first-message.`;
 
 const DUMMY_MESSAGE2 = `Sure! Here's an example of how to create a group channel using the Sendbird Chat SDK in JavaScript:
 
@@ -41,7 +41,6 @@ sb.connect(USER_ID, ACCESS_TOKEN, (user, error) => {
 This code connects to the Sendbird Chat SDK using a user ID and access token, then creates a new group channel with the specified user IDs, name, and cover image URL. Once the channel is created, the channel URL is logged to the console.
 
 You can find more information about creating group channels in the "Creating a channel" guide at https://sendbird.com/docs/chat/v4/javascript/channel/creating-a-channel/create-a-channel.`;
-
 
 const DUMMY_MESSAGE3 = `Sure! Here are examples of how to get a list of users using the Sendbird Chat SDK in iOS and Android:
 

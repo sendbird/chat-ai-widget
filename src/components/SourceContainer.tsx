@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+
 import { ReactComponent as OpenLinkIcon } from '../icons/open-link-icon.svg';
 
 const Root = styled.div`
@@ -36,7 +37,6 @@ const SourceItem = styled.div`
   gap: 16px;
 `;
 
-
 const IconLink = styled.a`
   display: flex;
   justify-content: center;
@@ -46,7 +46,7 @@ const IconLink = styled.a`
 `;
 
 export interface Source {
-  source: string
+  source: string;
   title: string;
   description: string;
   language: string;
@@ -54,21 +54,25 @@ export interface Source {
 
 type Props = {
   sources: Source[];
-}
+};
 
 export default function SourceContainer(props: Props) {
   const { sources } = props;
   const source: Source = sources[sources.length - 1];
 
-  return <Root>
-    <RootTitle>Source</RootTitle>
-    <SourceItem>
-      <div>
-          <SourceTitle href={source.source} id="openLinkText" target="_blank">{source.title}</SourceTitle>
-      </div>
-      <IconLink href={source.source} id="openLinkIcon" target="_blank">
-        <OpenLinkIcon width={'15px'} height={'15px'}/>
-      </IconLink>
-    </SourceItem>
-  </Root>
+  return (
+    <Root>
+      <RootTitle>Source</RootTitle>
+      <SourceItem>
+        <div>
+          <SourceTitle href={source.source} id="openLinkText" target="_blank">
+            {source.title}
+          </SourceTitle>
+        </div>
+        <IconLink href={source.source} id="openLinkIcon" target="_blank">
+          <OpenLinkIcon width={'15px'} height={'15px'} />
+        </IconLink>
+      </SourceItem>
+    </Root>
+  );
 }

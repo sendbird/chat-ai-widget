@@ -1,6 +1,7 @@
-import {SuggestedReply} from "../const";
-import styled from "styled-components";
-import {UserMessage} from "@sendbird/chat/message";
+import { UserMessage } from '@sendbird/chat/message';
+import styled from 'styled-components';
+
+import { SuggestedReply } from '../const';
 
 const Root = styled.div`
   display: flex;
@@ -29,7 +30,7 @@ const LinkButton = styled.a`
   align-items: center;
   padding: 0px 12px;
   height: 32px;
-  background: #6210CC;
+  background: #6210cc;
   border-radius: 16px;
   color: white;
   cursor: pointer;
@@ -49,21 +50,19 @@ const Text = styled.div`
 
 type Props = {
   message: UserMessage;
-}
+};
 
 export default function SuggestedReplyMessageBody(props: Props) {
   const { message } = props;
   const data: SuggestedReply = JSON.parse(message.data ?? '');
-  return <Root>
-    <Text>{data.text}</Text>
-    <ButtonContainer>
-      <LinkButton
-        href={data.link}
-        id={data.buttonText}
-        target="_blank"
-      >
-        {data.buttonText}
-      </LinkButton>
-    </ButtonContainer>
-  </Root>;
+  return (
+    <Root>
+      <Text>{data.text}</Text>
+      <ButtonContainer>
+        <LinkButton href={data.link} id={data.buttonText} target="_blank">
+          {data.buttonText}
+        </LinkButton>
+      </ButtonContainer>
+    </Root>
+  );
 }
