@@ -1,10 +1,9 @@
 {
   "name": "@sendbird/chat-ai-widget",
-  "version": "1.0.0-rc-3",
+  "version": "1.0.0",
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "README.md"
@@ -28,17 +27,16 @@
   "dependencies": {
     "@sendbird/chat": "^4.9.3",
     "@sendbird/uikit-react": "^3.6.2",
-    "styled-components": "^5.3.11",
     "polished": "^2.3.1",
     "react-code-blocks": "^0.1.0",
-    "react-popper-tooltip": "^4.4.2"
+    "react-popper-tooltip": "^4.4.2",
+
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "react-dom": "^18.2.0",
-    "vite-plugin-svgr": "^3.2.0",
-    "react": "^18.2.0",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
+
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
@@ -47,15 +45,18 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "tslint-config-prettier": "^1.18.0",
     "prettier": "2.8.8",
     "prettier-eslint": "^15.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "tsc-silent": "^1.2.2",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "5.0.2",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "vite-plugin-svgr": "^3.2.0"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",

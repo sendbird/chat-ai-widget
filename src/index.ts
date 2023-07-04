@@ -1,2 +1,1 @@
-import ChatAiWidget from './components/ChatAiWidget';
-export default ChatAiWidget;
+export { default as ChatAiWidget } from './components/ChatAiWidget';

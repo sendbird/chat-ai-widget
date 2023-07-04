@@ -78,6 +78,7 @@ You can customize the UI of the ChatBot by using the `ChatAiWidget` component. T
 
 ```jsx
 import ChatAiWidget from '@sendbird/chat-ai-widget';
+import '@sendbird/chat-ai-widget/dist/style.css';
 
 import { ReactComponent as StartingPageLogo } from './icons/sendbird-logo-starting-page.svg';
 import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
