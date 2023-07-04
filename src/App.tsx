@@ -1,4 +1,4 @@
-import ChatAiWidget from './components/ChatAiWidget'; //import ChatAiWidget from "@sendbird/chat-ai-widget";
+import ChatAiWidget from './components/ChatAiWidget'; //import { ChatAiWidget } from "@sendbird/chat-ai-widget";
 import { ReactComponent as StartingPageLogo } from './icons/sendbird-logo-starting-page.svg';
 import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
 
