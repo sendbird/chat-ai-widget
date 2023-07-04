@@ -77,7 +77,7 @@ After your chatbot has been created, you can start testing conversations directl
 You can customize the UI of the ChatBot by using the `ChatAiWidget` component. The following are the props that can be used to customize the UI.
 
 ```jsx
-import ChatAiWidget from '@sendbird/chat-ai-widget';
+import { ChatAiWidget } from "@sendbird/chat-ai-widget";
 import '@sendbird/chat-ai-widget/dist/style.css';
 
 import { ReactComponent as StartingPageLogo } from './icons/sendbird-logo-starting-page.svg';
