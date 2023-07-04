@@ -15,13 +15,13 @@ It is for the Sendbird Chat AI Widget UiKit.
 
 2. Add `import ...` and `<ChatAiWidget/>` Component to your Code.
    ```jsx
-   import {ChatAiWidget} from "@sendbird/chat-ai-widget";
+   import { ChatAiWidget } from "@sendbird/chat-ai-widget";
    const App = () => {
      return (
-         <ChatAiWidget
-                 applicationId="AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67" // Your Sendbird Application ID
-                 botId="khan-academy-bot" // Your Bot ID
-         />
+      <ChatAiWidget
+        applicationId="AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67" // Your Sendbird Application ID
+        botId="khan-academy-bot" // Your Bot ID
+      />
      );
    }
    ```
@@ -77,7 +77,7 @@ After your chatbot has been created, you can start testing conversations directl
 You can customize the UI of the ChatBot by using the `ChatAiWidget` component. The following are the props that can be used to customize the UI.
 
 ```jsx
-import { ChatAiWidget } from '@sendbird/chat-ai-widget';
+import ChatAiWidget from '@sendbird/chat-ai-widget';
 
 import { ReactComponent as StartingPageLogo } from './icons/sendbird-logo-starting-page.svg';
 import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';

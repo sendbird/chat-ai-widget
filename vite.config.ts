@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from "vite-plugin-svgr";
@@ -17,5 +18,18 @@ export default defineConfig({
         // resolve nodejs global to browser globalThis(window)
       },
     },
+  },
+  build: {
+    lib: {
+      entry: resolve('src', 'index.ts'),
+      name: 'ChatAiWidget',
+      formats: ['es', 'umd'],
+      fileName: (format) => `index.${format}.js`
+    },
+    rollupOptions: {
+      external: [
+        'react-code-blocks',
+      ],
+    }
   },
 })
