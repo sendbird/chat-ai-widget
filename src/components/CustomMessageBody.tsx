@@ -24,25 +24,14 @@ const Text = styled.div`
 
 interface Props {
   message: string;
-  data: string | undefined;
 }
 
 export default function CustomMessageBody(props: Props) {
-  const { message, data } = props;
-  let extraStr = '';
-
-  if (data) {
-    const obj: object = JSON.parse(data);
-    const sourceUrl: string = obj['source_url'];
-    if (sourceUrl) {
-      const anchor = `<a href="${sourceUrl}" target="_blank">${sourceUrl}</a>`;
-      extraStr = ` I can answer your questions based on ${anchor}. Ask away!`;
-    }
-  }
+  const { message } = props;
 
   return (
     <Root>
-      <Text dangerouslySetInnerHTML={{ __html: message + '.' + extraStr }} />
+      <Text dangerouslySetInnerHTML={{ __html: message }} />
     </Root>
   );
 }

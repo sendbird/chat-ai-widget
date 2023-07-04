@@ -60,10 +60,7 @@ export default function CustomMessage(props: Props) {
           botUser={botUser}
           message={message as UserMessage}
           bodyComponent={
-            <CustomMessageBody
-              message={(message as UserMessage).message}
-              data={message.data}
-            />
+            <CustomMessageBody message={(message as UserMessage).message} />
           }
           messageCount={allMessages.length}
           zIndex={30}
