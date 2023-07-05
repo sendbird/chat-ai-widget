@@ -16,6 +16,8 @@ It is for the Sendbird Chat AI Widget UiKit.
 2. Add `import ...` and `<ChatAiWidget/>` Component to your Code.
    ```jsx
    import { ChatAiWidget } from "@sendbird/chat-ai-widget";
+   import "@sendbird/chat-ai-widget/dist/style.css";
+   
    const App = () => {
      return (
       <ChatAiWidget
