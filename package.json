@@ -17,6 +17,7 @@
     "build:types": "rm -rf dist; rm -rf icons; rm -rf icons; tsc; cp -R src/icons icons; cp -R src/icons dist/icons ; cp -R src/css css; cp -R src/css dist/css",
     "prebuild": "rm -rf ./dist",
     "build": "npm run prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build",
+    "build:pages": "npm run prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build --config vite.config.pages.ts",
     "lint": "npx eslint src",
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src --check",
