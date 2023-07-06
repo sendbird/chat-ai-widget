@@ -3,7 +3,7 @@ import { ReactComponent as StartingPageLogo } from './icons/sendbird-logo-starti
 import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
 
 const customConstants = {
-  applicationId: 'AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67', // Your Sendbird application ID
+  applicationId: '0C23FC90-22F9-4FEA-9A60-645D139DC985', // Your Sendbird application ID
   botId: 'khan-academy-bot', // Your Sendbird bot ID
   botNickName: 'Jake Sully',
   betaMark: true,

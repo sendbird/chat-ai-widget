@@ -56,7 +56,8 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
   const { setShowLoading } = useLoadingState();
 
-  const startingPagePlaceHolder = allMessages.length === 0;
+  const startingPagePlaceHolder =
+    allMessages.length === 0 || lastMessage.messageType === 'admin';
   /**
    * If the updated last message is sent by the current user, activate spinner for the sent message.
    * If the updated last message is pending or failed by the current user or sent by the bot, deactivate spinner.
@@ -64,6 +65,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   useEffect(() => {
     if (
       lastMessage &&
+      lastMessage.messageType !== 'admin' &&
       lastMessage.sender?.userId === USER_ID &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED
     ) {
@@ -114,7 +116,8 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
               }}
             >
               {allMessages &&
-                allMessages.length > 1 &&
+                allMessages.length > 2 &&
+                lastMessage.messageType !== 'admin' &&
                 lastMessage.sender.userId === botUser.userId &&
                 isSpecialMessage(
                   lastMessage.message,

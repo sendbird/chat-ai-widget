@@ -5,6 +5,7 @@ import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
 
+import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import { StartingPageAnimatorProps } from './CustomChannelComponent';
@@ -12,7 +13,8 @@ import CustomMessageBody from './CustomMessageBody';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import PendingMessage from './PendingMessage';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
-import { Constant, LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
+import SupportChatMessageWithBodyInput from './SupportChatMessageWithBodyInput';
+import { Constant, LOCAL_MESSAGE_CUSTOM_TYPE, USER_ID } from '../const';
 import {
   isNotLocalMessageCustomType,
   MessageTextParser,
@@ -42,7 +44,28 @@ export default function CustomMessage(props: Props) {
   const firstMessage: UserMessage = allMessages[0] as UserMessage;
   const firstMessageId = firstMessage?.messageId ?? -1;
 
-  // Sent by current user
+  // console.log('## activeSpinnerId: ', activeSpinnerId);
+
+  if (message.messageType === 'admin') {
+    return <div>{<AdminMessage message={message} />}</div>;
+  }
+
+  // console.log((message as UserMessage).sender.userId, botUser.userId, USER_ID);
+
+  if (
+    (message as UserMessage).sender.userId !== botUser.userId &&
+    (message as UserMessage).sender.userId !== USER_ID
+  ) {
+    return (
+      <div>
+        <SupportChatMessageWithBodyInput
+          message={message as UserMessage}
+          messageCount={allMessages.length}
+        />
+      </div>
+    );
+  }
+
   if ((message as UserMessage).sender.userId !== botUser.userId) {
     return (
       <div>
@@ -79,7 +102,10 @@ export default function CustomMessage(props: Props) {
           botUser={botUser}
           message={message as UserMessage}
           bodyComponent={
-            <SuggestedReplyMessageBody message={message as UserMessage} />
+            <SuggestedReplyMessageBody
+              botUser={botUser}
+              message={message as UserMessage}
+            />
           }
           bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
           messageCount={allMessages.length}

@@ -32,6 +32,7 @@ export function useCreateGroupChannel(
         invitedUserIds: [currentUser.userId, botUser.userId],
         isDistinct: false,
         coverUrl,
+        operatorUserIds: [currentUser.userId],
       };
       sb.groupChannel
         .createChannel(params)

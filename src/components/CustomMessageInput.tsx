@@ -1,4 +1,6 @@
-import { type UserMessageCreateParams } from '@sendbird/chat/message';
+import { User } from '@sendbird/chat';
+// eslint-disable-next-line import/named
+import { UserMessageCreateParams } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import * as sendbirdSelectors from '@sendbird/uikit-react/sendbirdSelectors';
 import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
@@ -94,7 +96,7 @@ export default function CustomMessageInput() {
   function sendInputAsUserMessage() {
     if (message.length > 0 && currentGroupChannel) {
       const params: UserMessageCreateParams = {
-        message,
+        message: message,
       };
       sendUserMessage(currentGroupChannel, params)
         .onPending(() => {

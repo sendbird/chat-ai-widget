@@ -8,7 +8,6 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-icons
 css
 dist
 dist-ssr
@@ -26,3 +25,4 @@ package-lock.json
 *.sln
 *.sw?
 .env
+/icon/
