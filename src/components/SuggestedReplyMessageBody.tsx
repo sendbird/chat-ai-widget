@@ -126,12 +126,12 @@ export default function SuggestedReplyMessageBody(props: Props) {
     <Root>
       <Text>{data.text}</Text>
       <ButtonContainer>
-        {data.buttonText === 'Talk to expert' && (
+        {data.buttonText === 'Talk to agent' && (
           <LinkButton href={data.link} id={data.buttonText} target="_blank">
             {data.buttonText}
           </LinkButton>
         )}
-        {data.buttonText !== 'Talk to expert' && (
+        {data.buttonText !== 'Talk to agent' && (
           <SupportChatButton
             id={data.buttonText}
             target="_blank"

@@ -18,7 +18,7 @@ const customConstants = {
       {
         title: 'No, I need more help. 💬',
         text: "I'm sorry, we couldn't help you. Let us know how we can improve by talking to one of our teammates.",
-        buttonText: 'Talk to an expert',
+        buttonText: 'Talk to an agent',
         link: 'https://sendbird.com/contact-sales',
       },
     ],
