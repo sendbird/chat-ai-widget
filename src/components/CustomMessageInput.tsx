@@ -78,13 +78,13 @@ export default function CustomMessageInput() {
     }
   }, 10);
 
-  function handleMessageChange(event) {
+  function handleMessageChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const value = event.target.value;
     setMessage(value);
     setShowSendButton(value.length > 0);
   }
 
-  function onPressEnter(event) {
+  function onPressEnter(event: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (!event.shiftKey && event.charCode === 13) {
       event.preventDefault();
       sendInputAsUserMessage();

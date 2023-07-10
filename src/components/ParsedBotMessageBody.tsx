@@ -52,7 +52,9 @@ export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens, constant } = props;
   const data_ = (message as UserMessage).data as string;
   const data: MetaData = JSON.parse(data_);
-  const sources: Source[] = Array.isArray(data['metadatas']) ? data['metadatas'] : [];
+  const sources: Source[] = Array.isArray(data['metadatas'])
+    ? data['metadatas']
+    : [];
 
   // console.log('## sources: ', sources);
   if (tokens.length > 0) {

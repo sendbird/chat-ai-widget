@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import DOMPurify from 'dompurify';
+import styled from 'styled-components';
 
 const Root = styled.div`
   display: flex;
