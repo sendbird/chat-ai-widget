@@ -3,7 +3,7 @@ import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateConte
 import { useEffect, useState } from 'react';
 
 export function useGetBotUser(
-  currentUser: User,
+  currentUser: User | null,
   sendbirdBotId: string
 ): User | null {
   const [botUser, setBotUser] = useState<User | null>(null);

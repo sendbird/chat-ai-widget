@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { useConstantState } from '../context/ConstantContext';
 import { ReactComponent as SendbirdLogo } from '../icons/sendbird-logo-widget.svg';
 
 const Container = styled.div`
@@ -29,17 +30,14 @@ const Highlighter = styled.a`
 `;
 
 // link: https://dashboard.sendbird.com/auth/signup
-export default function ChatBottom({
-  chatBottomText,
-  chatBottomBackgroundColor,
-}: {
-  chatBottomText: string;
-  chatBottomBackgroundColor: string;
-}) {
+export default function ChatBottom() {
+  const { chatBottomContent } = useConstantState();
   return (
     <Container>
-      <InnerContainer chatBottomBackgroundColor={chatBottomBackgroundColor}>
-        {chatBottomText}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
+      <InnerContainer
+        chatBottomBackgroundColor={chatBottomContent?.backgroundColor}
+      >
+        {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
         <Highlighter
           href="https://sendbird.com/products/chatgpt-integration"
           target="_blank"

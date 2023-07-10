@@ -2,7 +2,6 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import Chat from './Chat';
-import { Constant } from '../const';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
 import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';
 import { ReactComponent as ExpandtIcon } from '../icons/icon-expand.svg';
@@ -89,15 +88,9 @@ const StyledCloseButton = styled.button`
 `;
 
 const WidgetWindow = ({
-  applicationId,
-  botId,
-  constant,
   isOpen,
   setIsOpen,
 }: {
-  applicationId: string;
-  botId: string;
-  constant: Constant;
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
@@ -110,11 +103,7 @@ const WidgetWindow = ({
       <StyledCloseButton onClick={() => setIsOpen(() => false)}>
         <CloseIcon />
       </StyledCloseButton>
-      <Chat
-        applicationId={applicationId}
-        botId={botId}
-        constant={constant}
-      ></Chat>
+      <Chat />
     </StyledWidgetWindowWrapper>
   );
 };

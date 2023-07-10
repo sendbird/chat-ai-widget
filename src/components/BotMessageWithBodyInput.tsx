@@ -55,7 +55,7 @@ type Props = {
   botUser: User;
   message: UserMessage;
   bodyComponent: ReactNode;
-  messageCount: number;
+  messageCount?: number;
   zIndex?: number;
   bodyStyle?: object;
 };

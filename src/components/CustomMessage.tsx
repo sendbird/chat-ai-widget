@@ -12,7 +12,8 @@ import CustomMessageBody from './CustomMessageBody';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import PendingMessage from './PendingMessage';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
-import { Constant, LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
+import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
+import { useConstantState } from '../context/ConstantContext';
 import {
   isNotLocalMessageCustomType,
   MessageTextParser,
@@ -25,7 +26,6 @@ type Props = {
   message: EveryMessage;
   activeSpinnerId: number;
   botUser: User;
-  constant: Constant;
 };
 
 const StartingBlock = styled.div`
@@ -36,7 +36,8 @@ const StartingBlock = styled.div`
 `;
 
 export default function CustomMessage(props: Props) {
-  const { message, activeSpinnerId, botUser, constant } = props;
+  const { message, activeSpinnerId, botUser } = props;
+  const { replacementTextList } = useConstantState();
 
   const { allMessages } = useChannelContext();
   const firstMessage: UserMessage = allMessages[0] as UserMessage;
@@ -95,7 +96,7 @@ export default function CustomMessage(props: Props) {
       token.value = replaceUrl(token.value);
       token.value = replaceTextExtractsMultiple(
         token.value,
-        constant.replacementTextList
+        replacementTextList
       );
     }
   });
@@ -110,7 +111,6 @@ export default function CustomMessage(props: Props) {
           <ParsedBotMessageBody
             message={message as UserMessage}
             tokens={tokens}
-            constant={constant}
           />
         }
       />

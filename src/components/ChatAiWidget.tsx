@@ -4,14 +4,8 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import WidgetWindow from './WidgetWindow';
-import {
-  ChatBottomContent,
-  CreateGroupChannelParams,
-  DEFAULT_CONSTANT,
-  StartingPageContent,
-  SuggestedMessageContent,
-  MessageBottomContent,
-} from '../const';
+import { Constant } from '../const';
+import { ConstantStateProvider } from '../context/ConstantContext';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
 
@@ -92,7 +86,7 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
   }}
 `;
 
-const setCookie = (cookieName) => {
+const setCookie = (cookieName: string) => {
   if (!document) return;
   const HOUR_IN_MS = 3600000;
   const date = new Date();
@@ -103,48 +97,20 @@ const setCookie = (cookieName) => {
   document.cookie = `${cookieName}=true;expires=${expireTimeInString};path=/`;
 };
 
-const getCookie = (cookieName) => {
+const getCookie = (cookieName: string) => {
   if (!document) return [];
   const cookies = document.cookie.split(';');
   return cookies.filter((cookie) => cookie.includes(`${cookieName}=`));
 };
 
-const ChatAiWidget = ({
-  applicationId,
-  botId,
-  botNickName = DEFAULT_CONSTANT.botNickName,
-  betaMark = DEFAULT_CONSTANT.betaMark,
-  suggestedMessageContent = DEFAULT_CONSTANT.suggestedMessageContent,
-  createGroupChannelParams = DEFAULT_CONSTANT.createGroupChannelParams,
-  startingPageContent = DEFAULT_CONSTANT.startingPageContent,
-  chatBottomContent = DEFAULT_CONSTANT.chatBottomContent,
-  messageBottomContent = DEFAULT_CONSTANT.messageBottomContent,
-  replacementTextList = DEFAULT_CONSTANT.replacementTextList,
-}: {
+interface Props extends Partial<Constant> {
   applicationId: string;
   botId: string;
-  botNickName?: string;
-  betaMark?: boolean;
-  suggestedMessageContent?: SuggestedMessageContent;
-  createGroupChannelParams?: CreateGroupChannelParams;
-  startingPageContent?: StartingPageContent;
-  chatBottomContent?: ChatBottomContent;
-  messageBottomContent?: MessageBottomContent;
-  replacementTextList?: string[][];
-}) => {
+}
+
+const ChatAiWidget = ({ applicationId, botId, ...constantProps }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const timer = useRef<NodeJS.Timeout | null>(null);
-  const constant = {
-    ...DEFAULT_CONSTANT,
-    botNickName,
-    betaMark,
-    suggestedMessageContent,
-    createGroupChannelParams,
-    startingPageContent,
-    chatBottomContent,
-    messageBottomContent,
-    replacementTextList,
-  };
   const buttonClickHandler = () => {
     if (timer.current !== null) {
       clearTimeout(timer.current as NodeJS.Timeout);
@@ -160,15 +126,13 @@ const ChatAiWidget = ({
     }
   }, []);
   return (
-    <div>
+    <ConstantStateProvider
+      applicationId={applicationId}
+      botId={botId}
+      {...constantProps}
+    >
       <Fragment>
-        <WidgetWindow
-          applicationId={applicationId}
-          botId={botId}
-          constant={constant}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
+        <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} />
         <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
           <StyledWidgetIcon isOpen={isOpen}>
             <ChatBotIcon />
@@ -178,7 +142,7 @@ const ChatAiWidget = ({
           </StyledArrowIcon>
         </StyledWidgetButtonWrapper>
       </Fragment>
-    </div>
+    </ConstantStateProvider>
   );
 };
 
