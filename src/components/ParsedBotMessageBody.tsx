@@ -39,6 +39,10 @@ type Props = {
   constant: Constant;
 };
 
+type MetaData = {
+  metadatas?: Source[];
+};
+
 /**
  * Parses bot message text to process code snippets within the text.
  * @param props
@@ -46,12 +50,9 @@ type Props = {
  */
 export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens, constant } = props;
-  const data: object = JSON.parse(
-    (message as UserMessage).data?.toString() || '{}'
-  );
-  const sources: Source[] = Array.isArray(data['metadatas'])
-    ? (data['metadatas'] as Source[])
-    : [];
+  const data_ = (message as UserMessage).data as string;
+  const data: MetaData = JSON.parse(data_);
+  const sources: Source[] = Array.isArray(data['metadatas']) ? data['metadatas'] : [];
 
   // console.log('## sources: ', sources);
   if (tokens.length > 0) {
