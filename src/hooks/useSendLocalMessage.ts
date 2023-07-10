@@ -22,7 +22,6 @@ export function useSendLocalMessage() {
   const channelStore = useChannelContext();
   const currentGroupChannel = channelStore.currentGroupChannel;
   // this is the magic function that adds the message to channelStore
-  // @ts-expect-error no-unused-vars
   const messagesDispatcher =
     channelStore.messagesDispatcher as OnMessageRecivedDispatcher;
   const useSendLocalMessage = useCallback(

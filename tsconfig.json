@@ -22,6 +22,11 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true
   },
+  "include": [
+    "src",
+    "./src/custom.d.ts",
+    "node_modules/@sendbird/uikit-react/index.d.ts",
+  ],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
