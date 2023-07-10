@@ -6,7 +6,7 @@ import { StartingPageContent } from '../const';
 import { useImageLoadingState } from '../context/ImageLoadingStateContext';
 import botMessageImage from '../icons/bot-message-image.png';
 
-const BackgroundContainer = styled.div<StartingPageAnimatorProps>`
+const BackgroundContainer = styled.div`
   position: absolute;
 `;
 
