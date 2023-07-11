@@ -25,11 +25,7 @@ export default function CustomChannel(props: CustomChannelProps) {
     GroupChannel | null,
     () => void,
     boolean
-  ] = useCreateGroupChannel(
-    sb.currentUser,
-    botUser,
-    constant.createGroupChannelParams
-  );
+  ] = useCreateGroupChannel(sb.currentUser, botUser);
 
   // console.log('## currentUser: ', sb.currentUser);
   // console.log('## botUser: ', botUser);

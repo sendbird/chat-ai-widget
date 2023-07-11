@@ -7,7 +7,7 @@ import { StartingPageAnimatorProps } from './CustomChannelComponent';
 import botMessageImage from '../icons/bot-message-image.png';
 import { formatCreatedAtToAMPM } from '../utils';
 
-const Root = styled.div<StartingPageAnimatorProps>`
+const Root = styled.div`
   display: flex;
   align-items: flex-end;
   margin-bottom: 6px;

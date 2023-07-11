@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import styled from 'styled-components';
 
 const Root = styled.div`
@@ -28,10 +29,11 @@ interface Props {
 
 export default function CustomMessageBody(props: Props) {
   const { message } = props;
+  const sanitizedMessage = DOMPurify.sanitize(message);
 
   return (
     <Root>
-      <Text dangerouslySetInnerHTML={{ __html: message }} />
+      <Text>{sanitizedMessage}</Text>
     </Root>
   );
 }
