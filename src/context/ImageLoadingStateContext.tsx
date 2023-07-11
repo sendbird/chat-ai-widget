@@ -1,9 +1,11 @@
 import { createContext, ReactElement, useState, useContext } from 'react';
 
-const ImageLoadingStateContext = createContext({
-  showImageLoading: true,
-  setShowImageLoading: null,
-});
+import { noop } from '../utils';
+
+export const ImageLoadingStateContext = createContext<{
+  showImageLoading: boolean;
+  setShowImageLoading: (show: boolean) => void;
+}>({ showImageLoading: true, setShowImageLoading: noop });
 interface LoadingStateProviderProps {
   children: ReactElement;
 }

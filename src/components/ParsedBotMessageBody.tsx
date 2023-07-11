@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
 import SourceContainer, { Source } from './SourceContainer';
-import { Constant } from '../const';
 import { Token, TokenType } from '../utils';
 
 const Root = styled.div`
@@ -36,7 +35,6 @@ const BlockContainer = styled.div`
 type Props = {
   message: UserMessage;
   tokens: Token[];
-  constant: Constant;
 };
 
 type MetaData = {
@@ -49,7 +47,7 @@ type MetaData = {
  * @constructor
  */
 export default function ParsedBotMessageBody(props: Props) {
-  const { message, tokens, constant } = props;
+  const { message, tokens } = props;
   const data_ = (message as UserMessage).data as string;
   const data: MetaData = JSON.parse(data_);
   const sources: Source[] = Array.isArray(data['metadatas'])
@@ -84,7 +82,7 @@ export default function ParsedBotMessageBody(props: Props) {
         {sources.length > 0 ? (
           <>
             <SourceContainer sources={sources} />
-            <BotMessageBottom constant={constant} />
+            <BotMessageBottom />
           </>
         ) : null}
       </Root>

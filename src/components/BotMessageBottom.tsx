@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import styled from 'styled-components';
 
-import { Constant } from '../const';
+import { useConstantState } from '../context/ConstantContext';
 import { ReactComponent as InfoIcon } from '../icons/info-icon.svg';
 import 'react-popper-tooltip/dist/styles.css';
 
@@ -63,12 +63,8 @@ const InfoBox = styled.div`
   }
 `;
 
-type Props = {
-  constant: Constant;
-};
-
-export default function BotMessageBottom(props: Props) {
-  const { constant } = props;
+export default function BotMessageBottom() {
+  const { messageBottomContent } = useConstantState();
 
   const placement = 'auto';
 
@@ -83,7 +79,7 @@ export default function BotMessageBottom(props: Props) {
       <BottomComponent ref={setTriggerRef}>
         <Delimiter />
         <TextContainer>
-          <Text>{constant.messageBottomContent.text}</Text>
+          <Text>{messageBottomContent.text}</Text>
           <InfoIconButton
             onMouseEnter={() => setShowInfoBox(true)}
             onMouseLeave={() => setShowInfoBox(false)}
@@ -95,7 +91,7 @@ export default function BotMessageBottom(props: Props) {
       {showInfoBox &&
         createPortal(
           <div ref={setTooltipRef} {...getTooltipProps()}>
-            <InfoBox>{constant.messageBottomContent.infoIconText}</InfoBox>
+            <InfoBox>{messageBottomContent.infoIconText}</InfoBox>
             {/*<div {...getArrowProps({ className: 'tooltip-arrow' })} />*/}
           </div>,
           document.getElementById('sb_chat_root_for_z_index') as HTMLDivElement

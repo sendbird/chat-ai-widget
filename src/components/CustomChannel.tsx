@@ -7,17 +7,15 @@ import { ChannelProvider } from '@sendbird/uikit-react/Channel/context';
 import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
-import { Constant } from '../const';
 import { useCreateGroupChannel } from '../hooks/useCreateGroupChannel';
 import { useGetBotUser } from '../hooks/useGetBotUser';
 
 type CustomChannelProps = {
   sendbirdBotId: string;
-  constant: Constant;
 };
 
 export default function CustomChannel(props: CustomChannelProps) {
-  const { sendbirdBotId, constant } = props;
+  const { sendbirdBotId } = props;
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
   const botUser: User = useGetBotUser(sb.currentUser, sendbirdBotId) as User;
@@ -30,17 +28,18 @@ export default function CustomChannel(props: CustomChannelProps) {
   // console.log('## currentUser: ', sb.currentUser);
   // console.log('## botUser: ', botUser);
   // console.log('## channel: ', channel);
+
+  if (!channel || creating) {
+    return null;
+  }
+
   return (
-    channel &&
-    !creating && (
-      <ChannelProvider channelUrl={channel?.url}>
-        <CustomChannelComponent
-          {...props}
-          botUser={botUser}
-          createGroupChannel={createGroupChannel}
-          constant={constant}
-        />
-      </ChannelProvider>
-    )
+    <ChannelProvider channelUrl={channel?.url}>
+      <CustomChannelComponent
+        botUser={botUser}
+        createGroupChannel={createGroupChannel}
+        {...props}
+      />
+    </ChannelProvider>
   );
 }

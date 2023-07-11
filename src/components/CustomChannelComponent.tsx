@@ -6,7 +6,7 @@ import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import { useEffect, useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { ClientUserMessage } from 'SendbirdUIKitGlobal';
+import { ClientUserMessage, EveryMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
 
 import ChatBottom from './ChatBottom';
@@ -15,7 +15,8 @@ import CustomMessage from './CustomMessage';
 import CustomMessageInput from './CustomMessageInput';
 import { StartingPage } from './StartingPage';
 import SuggestedRepliesPanel from './SuggestedRepliesPanel';
-import { Constant, USER_ID } from '../const';
+import { USER_ID } from '../const';
+import { useConstantState } from '../context/ConstantContext';
 import { useLoadingState } from '../context/LoadingStateContext';
 import { isSpecialMessage, scrollUtil } from '../utils';
 
@@ -38,11 +39,11 @@ export interface StartingPageAnimatorProps {
 type CustomChannelComponentProps = {
   botUser: User;
   createGroupChannel?: () => void;
-  constant: Constant;
 };
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
-  const { botUser, createGroupChannel, constant } = props;
+  const { botUser, createGroupChannel } = props;
+  const { suggestedMessageContent } = useConstantState();
   // const store = useSendbirdStateContext();
   // const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
   const { allMessages, currentGroupChannel } = useChannelContext();
@@ -87,20 +88,14 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   return (
     <Root hidePlaceholder={startingPagePlaceHolder}>
-      <StartingPage
-        isStartingPage={startingPagePlaceHolder}
-        startingPageContent={constant.startingPageContent}
-        betaMark={constant.betaMark}
-        botNickName={botUser.nickname}
-      />
+      <StartingPage isStartingPage={startingPagePlaceHolder} />
       <ChannelUI
         renderChannelHeader={() => {
-          return createGroupChannel ? (
+          return channel && createGroupChannel ? (
             <CustomChannelHeader
               channel={channel as GroupChannel}
               isTyping={activeSpinnerId > -1}
               createGroupChannel={createGroupChannel}
-              betaMark={constant.betaMark}
             />
           ) : (
             <ChannelHeader />
@@ -121,30 +116,19 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 lastMessage.sender.userId === botUser.userId &&
                 isSpecialMessage(
                   lastMessage.message,
-                  constant.suggestedMessageContent.messageFilterList
-                ) && (
-                  <SuggestedRepliesPanel
-                    botUser={botUser}
-                    constant={constant}
-                  />
-                )}
+                  suggestedMessageContent.messageFilterList
+                ) && <SuggestedRepliesPanel botUser={botUser} />}
               <CustomMessageInput />
-              <ChatBottom
-                chatBottomText={constant.chatBottomContent.text}
-                chatBottomBackgroundColor={
-                  constant.chatBottomContent.backgroundColor
-                }
-              />
+              <ChatBottom />
             </div>
           );
         }}
-        renderMessage={({ message }) => {
+        renderMessage={({ message }: { message: EveryMessage }) => {
           return (
             <CustomMessage
               message={message}
               activeSpinnerId={activeSpinnerId}
               botUser={botUser}
-              constant={constant}
             />
           );
         }}

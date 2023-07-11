@@ -31,13 +31,15 @@ export default function LoadingScreen(props: LoadingScreenProps) {
   const { sendbirdBotId } = props;
   const { showLoading } = useLoadingState();
 
+  if (sendbirdBotId && !showLoading) {
+    return null;
+  }
+
   return (
-    (!sendbirdBotId || showLoading) && (
-      <Container>
-        <IconContainer>
-          <SpinIcon width="50px" height="50px" />
-        </IconContainer>
-      </Container>
-    )
+    <Container>
+      <IconContainer>
+        <SpinIcon width="50px" height="50px" />
+      </IconContainer>
+    </Container>
   );
 }

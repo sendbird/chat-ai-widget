@@ -7,20 +7,17 @@ import {
 import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useCallback, useEffect, useState } from 'react';
 
-import { CreateGroupChannelParams } from '../const';
+import { useConstantState } from '../context/ConstantContext';
 
 export function useCreateGroupChannel(
-  currentUser: User,
-  botUser: User,
-  params: CreateGroupChannelParams
+  currentUser: User | null,
+  botUser: User
 ): [GroupChannel | null, () => void, boolean] {
   const [channel, setChannel] = useState<GroupChannel | null>(null);
   const [creating, setCreating] = useState<boolean>(false);
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
-  // console.log('## demoStates: ', demoStates);
-
-  const { name, coverUrl } = params;
+  const { createGroupChannelParams } = useConstantState();
 
   const createAndSetNewChannel = useCallback(() => {
     if (currentUser && botUser) {
@@ -28,10 +25,10 @@ export function useCreateGroupChannel(
       // console.log('## createAndSetNewChannel: ', channel);
 
       const params: GroupChannelCreateParams = {
-        name,
+        name: createGroupChannelParams?.name,
         invitedUserIds: [currentUser.userId, botUser.userId],
         isDistinct: false,
-        coverUrl,
+        coverUrl: createGroupChannelParams?.coverUrl,
       };
       sb.groupChannel
         .createChannel(params)

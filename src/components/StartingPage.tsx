@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 
 import { StartingPageAnimatorProps } from './CustomChannelComponent';
-import { StartingPageContent } from '../const';
+import { useConstantState } from '../context/ConstantContext';
 import { useImageLoadingState } from '../context/ImageLoadingStateContext';
 import botMessageImage from '../icons/bot-message-image.png';
 
@@ -125,15 +125,13 @@ const StartMessageBodyContent = styled.div`
 
 interface Props {
   isStartingPage: boolean;
-  startingPageContent: StartingPageContent;
-  betaMark: boolean;
-  botNickName: string;
 }
 
 export function StartingPage(props: Props) {
-  const { isStartingPage, startingPageContent, betaMark, botNickName } = props;
+  const { isStartingPage } = props;
   // console.log('## isWebDemo: ', isWebDemo);
   const { setShowImageLoading } = useImageLoadingState();
+  const { startingPageContent, betaMark, botNickName } = useConstantState();
 
   useEffect(() => {
     setShowImageLoading(false);
@@ -141,11 +139,12 @@ export function StartingPage(props: Props) {
     //   setShowImageLoading(false);
     // }, 500);
   }, []);
+
   return (
     <Root isStartingPage={isStartingPage}>
       <BackgroundContainer isStartingPage>
         <startingPageContent.backGroundContent.Component
-          height={startingPageContent.backGroundContent.height}
+          height={startingPageContent?.backGroundContent.height}
         />
         <StartMessageContainer>
           <div

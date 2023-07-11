@@ -200,3 +200,12 @@ export function isSpecialMessage(
     }) > -1
   );
 }
+
+export function assert(condition: any, message: string): asserts condition {
+  if (!condition) {
+    throw new Error(message);
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export function noop() {}

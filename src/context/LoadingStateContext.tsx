@@ -1,8 +1,13 @@
 import { createContext, ReactElement, useState, useContext } from 'react';
 
-const LoadingStateContext = createContext({
+import { noop } from '../utils';
+
+const LoadingStateContext = createContext<{
+  showLoading: boolean;
+  setShowLoading: (showLoading: boolean) => void;
+}>({
   showLoading: true,
-  setShowLoading: null,
+  setShowLoading: noop,
 });
 interface LoadingStateProviderProps {
   children: ReactElement;
