@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom/client';
 
 import App from './App';
 
+const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
+const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App
-      applicationId="AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67"
-      botId="khan-academy-bot"
+      applicationId={CHAT_WIDGET_APP_ID}
+      botId={CHAT_WIDGET_BOT_ID}
     />
   </React.StrictMode>
 );
