@@ -8,6 +8,7 @@ import { Constant } from '../const';
 import { ConstantStateProvider } from '../context/ConstantContext';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
+import { assert } from '../utils';
 
 const StyledWidgetButtonWrapper = styled.button`
   position: fixed;
@@ -103,9 +104,12 @@ const getCookie = (cookieName: string) => {
   return cookies.filter((cookie) => cookie.includes(`${cookieName}=`));
 };
 
+const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
+const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
+
 interface Props extends Partial<Constant> {
-  applicationId: string;
-  botId: string;
+  applicationId?: string;
+  botId?: string;
 }
 
 const ChatAiWidget = ({ applicationId, botId, ...constantProps }: Props) => {
@@ -125,10 +129,18 @@ const ChatAiWidget = ({ applicationId, botId, ...constantProps }: Props) => {
       setCookie('chatbot');
     }
   }, []);
+
+  assert(
+    applicationId !== null && botId !== null,
+    'applicationId and botId must be provided'
+  );
+
   return (
     <ConstantStateProvider
-      applicationId={applicationId}
-      botId={botId}
+      // If env is not provided, prop will be used instead.
+      // But Either should be provided.
+      applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
+      botId={CHAT_WIDGET_BOT_ID ?? botId}
       {...constantProps}
     >
       <Fragment>

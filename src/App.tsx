@@ -2,8 +2,8 @@ import ChatAiWidget from './components/ChatAiWidget'; //import { ChatAiWidget } 
 import { Constant } from './const';
 
 interface Props extends Partial<Constant> {
-  applicationId: string;
-  botId: string;
+  applicationId?: string;
+  botId?: string;
 }
 
 const App = (props: Props) => {
