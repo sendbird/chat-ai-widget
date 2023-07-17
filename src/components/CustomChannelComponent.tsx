@@ -13,11 +13,9 @@ import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import CustomMessageInput from './CustomMessageInput';
-import { StartingPage } from './StartingPage';
 import SuggestedRepliesPanel from './SuggestedRepliesPanel';
 import { USER_ID } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import { useLoadingState } from '../context/LoadingStateContext';
 import { isSpecialMessage, scrollUtil } from '../utils';
 
 const Root = styled.div<{ hidePlaceholder: boolean }>`
@@ -44,22 +42,16 @@ type CustomChannelComponentProps = {
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
   const { suggestedMessageContent } = useConstantState();
-  // const store = useSendbirdStateContext();
-  // const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
   const { allMessages, currentGroupChannel } = useChannelContext();
 
-  // console.log('## isLoading: ', loading);
   const channel: GroupChannel | undefined = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[
     allMessages?.length - 1
   ] as ClientUserMessage;
-  // console.log('#### allMessages: ', allMessages);
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
-  const { setShowLoading } = useLoadingState();
 
   const startingPagePlaceHolder =
-    allMessages.length === 0 ||
-    (allMessages.length === 1 && lastMessage.messageType === 'admin');
+    allMessages.length === 1 && lastMessage.messageType === 'admin';
 
   /**
    * If the updated last message is sent by the current user, activate spinner for the sent message.
@@ -78,30 +70,19 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     }
   }, [lastMessage?.messageId]);
 
-  useEffect(() => {
-    if (channel) {
-      setTimeout(() => {
-        setShowLoading(false);
-      }, 500);
-    }
-  }, [channel]);
-
   return (
     <Root hidePlaceholder={startingPagePlaceHolder}>
-      <StartingPage isStartingPage={startingPagePlaceHolder} />
       <ChannelUI
         renderChannelHeader={() => {
           return channel && createGroupChannel ? (
             <CustomChannelHeader
               channel={channel as GroupChannel}
-              isTyping={activeSpinnerId > -1}
               createGroupChannel={createGroupChannel}
             />
           ) : (
             <ChannelHeader />
           );
         }}
-        renderPlaceholderLoader={() => <></>}
         renderMessageInput={() => {
           return (
             <div

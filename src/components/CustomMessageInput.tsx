@@ -53,13 +53,13 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
-export default function CustomMessageInput() {
+export function MessageInput({
+  onSendMessage,
+}: {
+  onSendMessage: (message: string) => void;
+}) {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [showSendButton, setShowSendButton] = useState<boolean>(false);
-  const store = useSendbirdStateContext();
-  const sendUserMessage = sendbirdSelectors.getSendUserMessage(store);
-  const { currentGroupChannel } = useChannelContext();
-
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -87,29 +87,11 @@ export default function CustomMessageInput() {
   function onPressEnter(event: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (!event.shiftKey && event.charCode === 13) {
       event.preventDefault();
-      sendInputAsUserMessage();
+      onSendMessage(message);
+      setMessage('');
     }
   }
 
-  function sendInputAsUserMessage() {
-    if (message.length > 0 && currentGroupChannel) {
-      const params: UserMessageCreateParams = {
-        message,
-      };
-      sendUserMessage(currentGroupChannel, params)
-        .onPending(() => {
-          // console.log('## onPending', message);
-          setMessage('');
-        })
-        .onSucceeded(() => {
-          // console.log('## onSucceeded', message);
-          setMessage('');
-        })
-        .onFailed(() => {
-          // console.log('## onFailed', error);
-        });
-    }
-  }
   return (
     <InputContainer>
       <InnerContainer>
@@ -126,7 +108,10 @@ export default function CustomMessageInput() {
         {showSendButton && (
           <Button>
             <SendIcon
-              onClick={sendInputAsUserMessage}
+              onClick={() => {
+                onSendMessage(message);
+                setMessage('');
+              }}
               height="20px"
               width="20px"
             >
@@ -136,5 +121,35 @@ export default function CustomMessageInput() {
         )}
       </InnerContainer>
     </InputContainer>
+  );
+}
+export default function CustomMessageInput() {
+  const store = useSendbirdStateContext();
+  const sendUserMessage = sendbirdSelectors.getSendUserMessage(store);
+  const { currentGroupChannel } = useChannelContext();
+
+  function sendInputAsUserMessage(message: string) {
+    if (message.length > 0 && currentGroupChannel) {
+      const params: UserMessageCreateParams = {
+        message,
+      };
+      sendUserMessage(currentGroupChannel, params)
+        .onPending(() => {
+          // console.log('## onPending', message);
+        })
+        .onSucceeded(() => {
+          // console.log('## onSucceeded', message);
+        })
+        .onFailed(() => {
+          // console.log('## onFailed', error);
+        });
+    }
+  }
+  return (
+    <MessageInput
+      onSendMessage={(message) => {
+        sendInputAsUserMessage(message);
+      }}
+    />
   );
 }

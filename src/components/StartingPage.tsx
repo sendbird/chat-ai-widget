@@ -1,13 +1,16 @@
-import { useEffect } from 'react';
 import styled from 'styled-components';
 
+import ChatBottom from './ChatBottom';
 import { StartingPageAnimatorProps } from './CustomChannelComponent';
+import { MessageInput } from './CustomMessageInput';
+import PendingMessage from './PendingMessage';
 import { useConstantState } from '../context/ConstantContext';
-import { useImageLoadingState } from '../context/ImageLoadingStateContext';
+import { useSbConnectionState } from '../context/SBConnectionContext';
 import botMessageImage from '../icons/bot-message-image.png';
 
 const BackgroundContainer = styled.div`
   position: absolute;
+  max-width: 400px;
 `;
 
 const TitleContainer = styled.div`
@@ -69,20 +72,25 @@ export const HeaderOneContainer = styled.div`
   margin: 14px 0 0;
 `;
 
-const StartMessageContainer = styled.div`
+interface StartMessageBodyProps {
+  outgoing?: boolean;
+}
+const StartMessageContainer = styled.div<StartMessageBodyProps>`
   display: flex;
   align-items: flex-end;
+  box-sizing: border-box;
+  justify-content: ${({ outgoing }) => (outgoing ? 'flex-end' : 'flex-start')};
   padding-right: 12px;
   margin-bottom: 6px;
   flex-wrap: wrap;
   gap: 8px;
   position: relative;
-  width: calc(100% - 66px);
+  width: calc(100%);
 `;
 
-const StartMessageBodyContainer = styled.div`
+const StartMessageBodyContainer = styled.div<StartMessageBodyProps>`
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.88);
+  color: ${({ outgoing }) => (outgoing ? '#ffffff' : ' rgba(0, 0, 0, 0.88)')};
   max-width: 225px;
   font-weight: normal;
   font-stretch: normal;
@@ -105,14 +113,15 @@ const StartMessageHeader = styled.div`
   margin: 0px 0px 4px 12px;
 `;
 
-const StartMessageBody = styled.div`
+const StartMessageBody = styled.div<StartMessageBodyProps>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 8px 12px;
   gap: 8px;
   border-radius: 16px;
-  background-color: rgb(238, 238, 238);
+  background-color: ${({ outgoing }) =>
+    outgoing ? '#742ddd' : 'rgb(238, 238, 238)'};
 `;
 
 const StartMessageBodyContent = styled.div`
@@ -123,6 +132,12 @@ const StartMessageBodyContent = styled.div`
   line-height: 1.43;
 `;
 
+const MessageInputContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+`;
+
 interface Props {
   isStartingPage: boolean;
 }
@@ -130,15 +145,13 @@ interface Props {
 export function StartingPage(props: Props) {
   const { isStartingPage } = props;
   // console.log('## isWebDemo: ', isWebDemo);
-  const { setShowImageLoading } = useImageLoadingState();
   const { startingPageContent, betaMark, botNickName } = useConstantState();
-
-  useEffect(() => {
-    setShowImageLoading(false);
-    // setTimeout(() => {
-    //   setShowImageLoading(false);
-    // }, 500);
-  }, []);
+  const {
+    sbConnectionStatus,
+    setSbConnectionStatus,
+    firstMessage,
+    setFirstMessage,
+  } = useSbConnectionState();
 
   return (
     <Root isStartingPage={isStartingPage}>
@@ -175,6 +188,35 @@ export function StartingPage(props: Props) {
             </StartMessageBody>
           </StartMessageBodyContainer>
         </StartMessageContainer>
+        {firstMessage !== '' && firstMessage != null && (
+          <StartMessageContainer outgoing={true}>
+            <StartMessageBodyContainer outgoing={true}>
+              <StartMessageBody outgoing={true}>
+                <StartMessageBodyContent>
+                  {firstMessage}
+                </StartMessageBodyContent>
+              </StartMessageBody>
+            </StartMessageBodyContainer>
+          </StartMessageContainer>
+        )}
+        {sbConnectionStatus !== 'INIT' && (
+          <StartMessageContainer>
+            <StartMessageBodyContainer>
+              <div style={{ paddingLeft: 12 }}>
+                <PendingMessage />
+              </div>
+            </StartMessageBodyContainer>
+          </StartMessageContainer>
+        )}
+        <MessageInputContainer>
+          <MessageInput
+            onSendMessage={async (message) => {
+              setFirstMessage(message);
+              setSbConnectionStatus('CONNECTING');
+            }}
+          />
+          <ChatBottom />
+        </MessageInputContainer>
       </BackgroundContainer>
       <TitleContainer>
         <startingPageContent.logoContent.Component

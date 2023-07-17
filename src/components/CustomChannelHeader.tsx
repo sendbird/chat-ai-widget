@@ -2,7 +2,7 @@ import { GroupChannel } from '@sendbird/chat/groupChannel';
 import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
-import { useLoadingState } from '../context/LoadingStateContext';
+import { useSbConnectionState } from '../context/SBConnectionContext';
 import channelHeaderImage from '../icons/bot-message-image.png';
 import { ReactComponent as RefreshIcon } from '../icons/refresh-icon.svg';
 
@@ -67,19 +67,18 @@ const EmptyContainer = styled.div`
 
 type Props = {
   channel: GroupChannel;
-  isTyping: boolean;
   createGroupChannel: () => void;
 };
 
 export default function CustomChannelHeader(props: Props) {
   const { channel, createGroupChannel } = props;
   const { betaMark } = useConstantState();
-  const { setShowLoading } = useLoadingState();
+  const { setFirstMessage } = useSbConnectionState();
 
   function onClickRenewButton() {
+    setFirstMessage(null);
     createGroupChannel();
     // window.location.reload();
-    setShowLoading(true);
   }
   return (
     <Root>

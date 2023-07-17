@@ -1,45 +1,59 @@
 import { User } from '@sendbird/chat';
+import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
 import {
-  type GroupChannel,
-  type SendbirdGroupChat,
-} from '@sendbird/chat/groupChannel';
-import { ChannelProvider } from '@sendbird/uikit-react/Channel/context';
+  ChannelProvider,
+  useChannelContext,
+} from '@sendbird/uikit-react/Channel/context';
 import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
+import { useEffect, useState } from 'react';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
+import { StartingPage } from './StartingPage';
+import { useConstantState } from '../context/ConstantContext';
+import { useSbConnectionState } from '../context/SBConnectionContext';
 import { useCreateGroupChannel } from '../hooks/useCreateGroupChannel';
 import { useGetBotUser } from '../hooks/useGetBotUser';
+import { assert } from '../utils';
 
-type CustomChannelProps = {
-  sendbirdBotId: string;
-};
+function Channel(props) {
+  const { sbConnectionStatus } = useSbConnectionState();
+  const { setInitialTimeStamp } = useChannelContext();
+  const [channelReady, setChannelReady] = useState(false);
 
-export default function CustomChannel(props: CustomChannelProps) {
-  const { sendbirdBotId } = props;
+  useEffect(() => {
+    if (sbConnectionStatus === 'CONNECTED') {
+      setTimeout(() => {
+        setChannelReady(true);
+        // Initialize the timestamp to be sure the first message is successfully sent,
+        // and then render the channel UI after 1 second.
+        setInitialTimeStamp(null);
+      }, 1000);
+    }
+  }, [sbConnectionStatus]);
+
+  if (channelReady) {
+    return <CustomChannelComponent {...props} />;
+  }
+
+  return <StartingPage isStartingPage={true} />;
+}
+
+export default function CustomChannel() {
+  const { botId } = useConstantState();
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
-  const botUser: User = useGetBotUser(sb.currentUser, sendbirdBotId) as User;
-  const [channel, createGroupChannel, creating]: [
-    GroupChannel | null,
-    () => void,
-    boolean
-  ] = useCreateGroupChannel(sb.currentUser, botUser);
 
-  // console.log('## currentUser: ', sb.currentUser);
-  // console.log('## botUser: ', botUser);
-  // console.log('## channel: ', channel);
+  assert(botId !== null, 'botId must be provided');
 
-  if (!channel || creating) {
-    return null;
-  }
+  const botUser: User = useGetBotUser(sb.currentUser, botId) as User;
+  const [channel, createGroupChannel] = useCreateGroupChannel(
+    sb.currentUser,
+    botUser
+  );
 
   return (
     <ChannelProvider channelUrl={channel?.url}>
-      <CustomChannelComponent
-        botUser={botUser}
-        createGroupChannel={createGroupChannel}
-        {...props}
-      />
+      <Channel createGroupChannel={createGroupChannel} botUser={botUser} />
     </ChannelProvider>
   );
 }
