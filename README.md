@@ -88,7 +88,8 @@ import { ReactComponent as StartingPageBackground } from './icons/starting-page-
 const customConstants = {
   applicationId: 'AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67', // Your Sendbird application ID
   botId: 'khan-academy-bot', // Your Sendbird bot ID
-  botNickName: 'Jake Sully',
+  botNickName: 'Khan Academy Support Bot',
+  userNickName: 'User',
   betaMark: true,
   suggestedMessageContent: {
     replyContents: [
@@ -164,6 +165,7 @@ const App = () => {
       applicationId={customConstants.applicationId}
       botId={customConstants.botId}
       botNickName={customConstants.botNickName}
+      userNickName={customConstants.userNickName}
       betaMark={customConstants.betaMark}
       suggestedMessageContent={customConstants.suggestedMessageContent}
       createGroupChannelParams={customConstants.createGroupChannelParams}

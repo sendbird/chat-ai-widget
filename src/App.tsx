@@ -12,6 +12,7 @@ const App = (props: Props) => {
       applicationId={props.applicationId}
       botId={props.botId}
       botNickName={props.botNickName}
+      userNickName={props.userNickName}
       betaMark={props.betaMark}
       suggestedMessageContent={props.suggestedMessageContent}
       createGroupChannelParams={props.createGroupChannelParams}

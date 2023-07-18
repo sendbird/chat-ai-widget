@@ -8,7 +8,8 @@ export const USER_ID = uuid();
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
 
 export const DEFAULT_CONSTANT: Constant = {
-  botNickName: 'Jake Sully',
+  botNickName: 'Khan Academy Support Bot',
+  userNickName: 'User',
   betaMark: true,
   suggestedMessageContent: {
     replyContents: [
@@ -80,6 +81,7 @@ export const DEFAULT_CONSTANT: Constant = {
 
 export interface Constant {
   botNickName: string;
+  userNickName: string;
   betaMark: boolean;
   suggestedMessageContent: SuggestedMessageContent;
   createGroupChannelParams: CreateGroupChannelParams;
