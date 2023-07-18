@@ -4,10 +4,12 @@ import {
   type SendbirdGroupChat,
   type GroupChannelCreateParams,
 } from '@sendbird/chat/groupChannel';
+import * as sendbirdSelectors from '@sendbird/uikit-react/sendbirdSelectors';
 import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useConstantState } from '../context/ConstantContext';
+import { useSbConnectionState } from '../context/SBConnectionContext';
 
 export function useCreateGroupChannel(
   currentUser: User | null,
@@ -17,13 +19,13 @@ export function useCreateGroupChannel(
   const [creating, setCreating] = useState<boolean>(false);
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
+  const sendUserMessage = sendbirdSelectors.getSendUserMessage(store);
   const { createGroupChannelParams } = useConstantState();
+  const { setSbConnectionStatus, firstMessage } = useSbConnectionState();
 
   const createAndSetNewChannel = useCallback(() => {
     if (currentUser && botUser) {
       setCreating(true);
-      // console.log('## createAndSetNewChannel: ', channel);
-
       const params: GroupChannelCreateParams = {
         name: createGroupChannelParams?.name,
         invitedUserIds: [currentUser.userId, botUser.userId],
@@ -34,9 +36,20 @@ export function useCreateGroupChannel(
         .createChannel(params)
         .then((channel: GroupChannel) => {
           setChannel(channel);
+          // We also send the first message to the newly created channel
+          // if it has a valid string
+          if (firstMessage !== '' || firstMessage != null) {
+            sendUserMessage(channel, {
+              message: firstMessage,
+            });
+          }
+        })
+        .catch((error) => {
+          console.error(error);
         })
         .finally(() => {
           setCreating(false);
+          setSbConnectionStatus('CONNECTED');
         });
     }
     // we dont want to watchout for change of whole objects

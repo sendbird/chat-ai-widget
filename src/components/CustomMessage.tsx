@@ -3,11 +3,9 @@ import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
-import styled from 'styled-components';
 
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
-import { StartingPageAnimatorProps } from './CustomChannelComponent';
 import CustomMessageBody from './CustomMessageBody';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import PendingMessage from './PendingMessage';
@@ -27,13 +25,6 @@ type Props = {
   activeSpinnerId: number;
   botUser: User;
 };
-
-const StartingBlock = styled.div`
-  height: ${(props: StartingPageAnimatorProps) =>
-    props.isStartingPage ? '125px' : '0'};
-  width: 100%;
-  transition: height 0.5s ease;
-`;
 
 export default function CustomMessage(props: Props) {
   const { message, activeSpinnerId, botUser } = props;
@@ -56,7 +47,6 @@ export default function CustomMessage(props: Props) {
   if (message.messageId === firstMessageId) {
     return (
       <div>
-        <StartingBlock isStartingPage={allMessages.length === 1} />
         <BotMessageWithBodyInput
           botUser={botUser}
           message={message as UserMessage}
