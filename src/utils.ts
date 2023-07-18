@@ -207,5 +207,11 @@ export function assert(condition: any, message: string): asserts condition {
   }
 }
 
+export function delay(delayTime: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delayTime);
+  });
+}
+
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 export function noop() {}

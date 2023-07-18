@@ -10,6 +10,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
+import { delay } from '../utils';
 
 export function useCreateGroupChannel(
   currentUser: User | null,
@@ -23,8 +24,11 @@ export function useCreateGroupChannel(
   const { createGroupChannelParams } = useConstantState();
   const { setSbConnectionStatus, firstMessage } = useSbConnectionState();
 
-  const createAndSetNewChannel = useCallback(() => {
-    if (currentUser && botUser) {
+  const createAndSetNewChannel = useCallback(async () => {
+    if (!currentUser || !botUser) {
+      return;
+    }
+    try {
       setCreating(true);
       const params: GroupChannelCreateParams = {
         name: createGroupChannelParams?.name,
@@ -32,25 +36,26 @@ export function useCreateGroupChannel(
         isDistinct: false,
         coverUrl: createGroupChannelParams?.coverUrl,
       };
-      sb.groupChannel
+      const groupChannel = await sb.groupChannel
         .createChannel(params)
         .then((channel: GroupChannel) => {
           setChannel(channel);
-          // We also send the first message to the newly created channel
-          // if it has a valid string
-          if (firstMessage !== '' || firstMessage != null) {
-            sendUserMessage(channel, {
-              message: firstMessage,
-            });
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
-          setCreating(false);
-          setSbConnectionStatus('CONNECTED');
+          return channel;
         });
+      // We also send the first message to the newly created channel
+      // if it has a valid string
+      if (firstMessage !== '' || firstMessage != null) {
+        await sendUserMessage(groupChannel, {
+          message: firstMessage,
+        });
+      }
+      // let's wait for a second to make sure channel is created & ready
+      await delay(1000);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setCreating(false);
+      setSbConnectionStatus('CONNECTED');
     }
     // we dont want to watchout for change of whole objects
     // eslint-disable-next-line react-hooks/exhaustive-deps
