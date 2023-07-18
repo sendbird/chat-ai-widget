@@ -1,6 +1,7 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import { useRef, useEffect } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
@@ -12,6 +13,7 @@ import PendingMessage from './PendingMessage';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
+import { useThrottle } from '../hooks/useThrottle';
 import {
   isNotLocalMessageCustomType,
   MessageTextParser,
@@ -33,6 +35,41 @@ export default function CustomMessage(props: Props) {
   const { allMessages } = useChannelContext();
   const firstMessage: UserMessage = allMessages[0] as UserMessage;
   const firstMessageId = firstMessage?.messageId ?? -1;
+
+  const isBotMessage: boolean =
+    (message as UserMessage).sender.userId === botUser.userId;
+  const isLastBotMessage: boolean =
+    isBotMessage &&
+    allMessages[allMessages.length - 1].messageId === message.messageId;
+  const lastMessageRef = useRef<HTMLDivElement>(null);
+
+  const throttledScrollIntoView = useThrottle((element: HTMLDivElement) => {
+    element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }, 30);
+
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const newHeight = entry.contentRect.height;
+        try {
+          console.log(`New height: ${newHeight}px`);
+          if (lastMessageRef?.current) {
+            throttledScrollIntoView(lastMessageRef.current);
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    });
+    if (isLastBotMessage && lastMessageRef?.current) {
+      const targetNode = lastMessageRef?.current;
+      // create mutation observer
+      observer.observe(targetNode);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, [isLastBotMessage]);
 
   // Sent by current user
   if ((message as UserMessage).sender.userId !== botUser.userId) {
@@ -92,7 +129,7 @@ export default function CustomMessage(props: Props) {
   });
 
   return (
-    <div>
+    <div ref={lastMessageRef}>
       <BotMessageWithBodyInput
         botUser={botUser}
         message={message as UserMessage}
