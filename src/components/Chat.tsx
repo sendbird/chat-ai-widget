@@ -12,7 +12,7 @@ import SBConnectionStateProvider, {
 import { assert } from '../utils';
 
 const SBComponent = () => {
-  const { applicationId, botId, botNickName } = useConstantState();
+  const { applicationId, botId, userNickName } = useConstantState();
 
   assert(
     applicationId !== null && botId !== null,
@@ -33,7 +33,7 @@ const SBComponent = () => {
     <SBProvider
       appId={applicationId}
       userId={USER_ID}
-      nickname={botNickName}
+      nickname={userNickName}
       customApiHost={`https://api-${applicationId}.sendbird.com`}
       customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
     >
