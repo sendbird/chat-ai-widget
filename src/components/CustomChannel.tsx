@@ -27,7 +27,7 @@ function Channel(props) {
         // Initialize the timestamp to be sure the first message is successfully sent,
         // and then render the channel UI after 1 second.
         setInitialTimeStamp(null);
-      }, 1000);
+      }, 500);
     }
   }, [sbConnectionStatus]);
 
