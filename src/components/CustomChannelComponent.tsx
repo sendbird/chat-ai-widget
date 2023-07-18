@@ -4,7 +4,7 @@ import { SendingStatus } from '@sendbird/chat/message';
 import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeader';
 import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { ClientUserMessage, EveryMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
@@ -39,6 +39,10 @@ type CustomChannelComponentProps = {
   createGroupChannel?: () => void;
 };
 
+type MessageMeta = {
+  stream: boolean;
+};
+
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
   const { suggestedMessageContent } = useConstantState();
@@ -52,6 +56,16 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const startingPagePlaceHolder =
     allMessages.length === 1 && lastMessage.messageType === 'admin';
+
+  const messageMeta = useMemo(() => {
+    let messageMeta: MessageMeta | null;
+    try {
+      messageMeta = lastMessage?.data ? JSON.parse(lastMessage.data) : null;
+    } catch (error) {
+      messageMeta = null;
+    }
+    return messageMeta;
+  }, [lastMessage?.data]);
 
   /**
    * If the updated last message is sent by the current user, activate spinner for the sent message.
@@ -95,6 +109,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
               {allMessages &&
                 allMessages.length > 1 &&
                 lastMessage.sender.userId === botUser.userId &&
+                !messageMeta?.stream &&
                 isSpecialMessage(
                   lastMessage.message,
                   suggestedMessageContent.messageFilterList
