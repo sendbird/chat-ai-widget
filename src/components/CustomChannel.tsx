@@ -52,7 +52,7 @@ export default function CustomChannel() {
   );
 
   return (
-    <ChannelProvider channelUrl={channel?.url}>
+    <ChannelProvider channelUrl={channel?.url} scrollBehavior="smooth">
       <Channel createGroupChannel={createGroupChannel} botUser={botUser} />
     </ChannelProvider>
   );

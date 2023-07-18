@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@sendbird/chat": "^4.9.3",
-    "@sendbird/uikit-react": "^3.6.2",
+    "@sendbird/uikit-react": "^3.6.3",
     "dompurify": "^3.0.4",
     "polished": "^2.3.1",
     "react-code-blocks": "^0.1.0",
