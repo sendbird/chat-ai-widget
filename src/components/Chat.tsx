@@ -10,6 +10,7 @@ import SBConnectionStateProvider, {
   useSbConnectionState,
 } from '../context/SBConnectionContext';
 import { assert } from '../utils';
+import { useMemo } from 'react';
 
 const SBComponent = () => {
   const { applicationId, botId, userNickName } = useConstantState();
@@ -19,6 +20,9 @@ const SBComponent = () => {
     'applicationId and botId must be provided'
   );
   const { sbConnectionStatus } = useSbConnectionState();
+  const sdkInitParams = useMemo(() => ({
+    appStateToggleEnabled: false,
+  }), []);
 
   // Until the user sends a first message,
   // we will display a fake channel UI not to establish a connection to Sendbird Chat SDK
@@ -36,6 +40,7 @@ const SBComponent = () => {
       nickname={userNickName}
       customApiHost={`https://api-${applicationId}.sendbird.com`}
       customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
+      sdkInitParams={sdkInitParams}
     >
       <>
         <CustomChannel />
