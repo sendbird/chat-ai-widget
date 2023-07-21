@@ -15,8 +15,9 @@
   "scripts": {
     "dev": "vite",
     "build:types": "rm -rf dist; rm -rf icons; rm -rf icons; tsc; cp -R src/icons icons; cp -R src/icons dist/icons ; cp -R src/css css; cp -R src/css dist/css",
-    "prebuild": "rm -rf ./dist",
-    "build": "npm run prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build",
+    "prebuild": "rm -rf ./dist && mv .env .env_temp || true",
+    "postbuild": "mv .env_temp .env || true",
+    "build": "npm run prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build && npm run postbuild",
     "build:pages": "npm run prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build --config vite.config.pages.ts",
     "lint": "npx eslint src",
     "lint:fix": "npm run lint -- --fix",

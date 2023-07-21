@@ -81,7 +81,14 @@ export default function BotMessageWithBodyInput(props: Props) {
         />
       </ImageContainer>
       <BodyContainer style={bodyStyle ?? {}}>
-        <Sender isStartingPage={messageCount === 1}>{botUser.nickname}</Sender>
+        <Sender
+          style={{
+            textAlign: 'left',
+          }}
+          isStartingPage={messageCount === 1}
+        >
+          {botUser.nickname}
+        </Sender>
         {bodyComponent}
       </BodyContainer>
       <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
