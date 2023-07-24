@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components';
 import WidgetWindow from './WidgetWindow';
 import { Constant } from '../const';
 import { ConstantStateProvider } from '../context/ConstantContext';
+import { HashedKeyProvider } from '../context/HashedKeyContext';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
 import { assert } from '../utils';
@@ -110,9 +111,15 @@ const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
 interface Props extends Partial<Constant> {
   applicationId?: string;
   botId?: string;
+  hashedKey?: string;
 }
 
-const ChatAiWidget = ({ applicationId, botId, ...constantProps }: Props) => {
+const ChatAiWidget = ({
+  applicationId,
+  botId,
+  hashedKey,
+  ...constantProps
+}: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const timer = useRef<NodeJS.Timeout | null>(null);
   const buttonClickHandler = () => {
@@ -143,17 +150,19 @@ const ChatAiWidget = ({ applicationId, botId, ...constantProps }: Props) => {
       botId={CHAT_WIDGET_BOT_ID ?? botId}
       {...constantProps}
     >
-      <Fragment>
-        <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} />
-        <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
-          <StyledWidgetIcon isOpen={isOpen}>
-            <ChatBotIcon />
-          </StyledWidgetIcon>
-          <StyledArrowIcon isOpen={isOpen}>
-            <ArrowDownIcon />
-          </StyledArrowIcon>
-        </StyledWidgetButtonWrapper>
-      </Fragment>
+      <HashedKeyProvider hashedKey={hashedKey ?? null}>
+        <Fragment>
+          <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} />
+          <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
+            <StyledWidgetIcon isOpen={isOpen}>
+              <ChatBotIcon />
+            </StyledWidgetIcon>
+            <StyledArrowIcon isOpen={isOpen}>
+              <ArrowDownIcon />
+            </StyledArrowIcon>
+          </StyledWidgetButtonWrapper>
+        </Fragment>
+      </HashedKeyProvider>
     </ConstantStateProvider>
   );
 };
