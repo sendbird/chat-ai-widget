@@ -1,16 +1,14 @@
 import SBProvider from '@sendbird/uikit-react/SendbirdProvider';
+import { useMemo } from 'react';
 
 import CustomChannel from './CustomChannel';
 import { StartingPage } from './StartingPage';
 import { USER_ID } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import ImageLoadingStateProvider from '../context/ImageLoadingStateContext';
-import { LoadingStateProvider } from '../context/LoadingStateContext';
 import SBConnectionStateProvider, {
   useSbConnectionState,
 } from '../context/SBConnectionContext';
 import { assert } from '../utils';
-import { useMemo } from 'react';
 
 const SBComponent = () => {
   const { applicationId, botId, userNickName } = useConstantState();
@@ -20,9 +18,12 @@ const SBComponent = () => {
     'applicationId and botId must be provided'
   );
   const { sbConnectionStatus } = useSbConnectionState();
-  const sdkInitParams = useMemo(() => ({
-    appStateToggleEnabled: false,
-  }), []);
+  const sdkInitParams = useMemo(
+    () => ({
+      appStateToggleEnabled: false,
+    }),
+    []
+  );
 
   // Until the user sends a first message,
   // we will display a fake channel UI not to establish a connection to Sendbird Chat SDK
@@ -53,11 +54,7 @@ const SBComponent = () => {
 const Chat = () => {
   return (
     <SBConnectionStateProvider>
-      <LoadingStateProvider>
-        <ImageLoadingStateProvider>
-          <SBComponent />
-        </ImageLoadingStateProvider>
-      </LoadingStateProvider>
+      <SBComponent />
     </SBConnectionStateProvider>
   );
 };
