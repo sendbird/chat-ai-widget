@@ -44,7 +44,7 @@ export function useCreateGroupChannel(
         });
       // We also send the first message to the newly created channel
       // if it has a valid string
-      if (firstMessage !== '' || firstMessage != null) {
+      if (firstMessage !== '' && firstMessage != null) {
         await sendUserMessage(groupChannel, {
           message: firstMessage,
         });

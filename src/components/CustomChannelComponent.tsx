@@ -57,7 +57,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const startingPagePlaceHolder =
     allMessages.length === 1 && lastMessage.messageType === 'admin';
 
-  const messageMeta = useMemo(() => {
+  const lastMessageMeta = useMemo(() => {
     let messageMeta: MessageMeta | null;
     try {
       messageMeta = lastMessage?.data ? JSON.parse(lastMessage.data) : null;
@@ -112,8 +112,8 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
               {allMessages &&
                 allMessages.length > 1 &&
                 lastMessage.sender.userId === botUser.userId &&
-                !messageMeta?.stream &&
-                isSpecialMessage(
+                !lastMessageMeta?.stream &&
+                !isSpecialMessage(
                   lastMessage.message,
                   suggestedMessageContent.messageFilterList
                 ) && <SuggestedRepliesPanel botUser={botUser} />}
