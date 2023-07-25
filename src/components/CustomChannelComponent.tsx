@@ -44,8 +44,7 @@ type MessageMeta = {
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
-  const { suggestedMessageContent, showChatBottom, instantConnect } =
-    useConstantState();
+  const { suggestedMessageContent, instantConnect } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
 
   const channel: GroupChannel | undefined = currentGroupChannel;
@@ -118,7 +117,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                   suggestedMessageContent.messageFilterList
                 ) && <SuggestedRepliesPanel botUser={botUser} />}
               <CustomMessageInput />
-              {showChatBottom && <ChatBottom />}
+              <ChatBottom />
             </div>
           );
         }}

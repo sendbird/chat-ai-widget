@@ -39,7 +39,6 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       replacementTextList:
         props.replacementTextList ?? initialState.replacementTextList,
       instantConnect: props.instantConnect ?? initialState.instantConnect,
-      showChatBottom: props.showChatBottom ?? initialState.showChatBottom,
     }),
     [props]
   );

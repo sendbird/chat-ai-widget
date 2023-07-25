@@ -41,6 +41,7 @@ export const DEFAULT_CONSTANT: Constant = {
       "That's not a valid question",
       'Is there a specific question you have',
       "I'm here to help you with any questions you have",
+      'Ask away',
     ],
   },
   createGroupChannelParams: {
@@ -79,7 +80,6 @@ export const DEFAULT_CONSTANT: Constant = {
   },
   replacementTextList: [['the Text extracts', 'ChatBot Knowledge Base']],
   instantConnect: false,
-  showChatBottom: true,
 };
 
 export interface Constant {
@@ -94,7 +94,6 @@ export interface Constant {
   messageBottomContent: MessageBottomContent;
   replacementTextList: string[][];
   instantConnect: boolean;
-  showChatBottom: boolean;
 }
 
 export interface SuggestedReply {
