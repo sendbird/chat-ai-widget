@@ -24,6 +24,8 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       botNickName: props.botNickName ?? initialState.botNickName,
       userNickName: props.userNickName ?? initialState.userNickName,
       betaMark: props.betaMark ?? initialState.betaMark,
+      customBetaMarkText:
+        props.customBetaMarkText ?? initialState.customBetaMarkText,
       suggestedMessageContent:
         props.suggestedMessageContent ?? initialState.suggestedMessageContent,
       createGroupChannelParams:
@@ -36,6 +38,8 @@ export const ConstantStateProvider = (props: ProviderProps) => {
         props.messageBottomContent ?? initialState.messageBottomContent,
       replacementTextList:
         props.replacementTextList ?? initialState.replacementTextList,
+      instantConnect: props.instantConnect ?? initialState.instantConnect,
+      showChatBottom: props.showChatBottom ?? initialState.showChatBottom,
     }),
     [props]
   );

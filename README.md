@@ -167,6 +167,7 @@ const App = () => {
       botNickName={customConstants.botNickName}
       userNickName={customConstants.userNickName}
       betaMark={customConstants.betaMark}
+      customBetaMarkText={customConstants.customBetaMarkText}
       suggestedMessageContent={customConstants.suggestedMessageContent}
       createGroupChannelParams={customConstants.createGroupChannelParams}
       startingPageContent={customConstants.startingPageContent}

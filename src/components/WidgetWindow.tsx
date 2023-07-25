@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import Chat from './Chat';
+import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
 import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';
 import { ReactComponent as ExpandtIcon } from '../icons/icon-expand.svg';
@@ -87,13 +88,16 @@ const StyledCloseButton = styled.button`
   justify-content: center;
 `;
 
+interface WidgetProps {
+  isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+}
+
 const WidgetWindow = ({
   isOpen,
   setIsOpen,
-}: {
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-}) => {
+  ...props
+}: WidgetProps & ChatWidgetProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
     <StyledWidgetWindowWrapper isOpen={isOpen} isExpanded={isExpanded}>
@@ -103,7 +107,7 @@ const WidgetWindow = ({
       <StyledCloseButton onClick={() => setIsOpen(() => false)}>
         <CloseIcon />
       </StyledCloseButton>
-      <Chat />
+      <Chat {...props} />
     </StyledWidgetWindowWrapper>
   );
 };
