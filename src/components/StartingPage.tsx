@@ -183,7 +183,7 @@ export function StartingPage(props: Props) {
             <StartMessageBody>
               <StartMessageBodyContent>
                 {startingPageContent.messageContent.body === ''
-                  ? "Hi~ I'm " + botNickName + ' Ask me anything!'
+                  ? `Hi~ I'm ${botNickName}. Ask me anything!`
                   : startingPageContent.messageContent.body}
               </StartMessageBodyContent>
             </StartMessageBody>
@@ -226,7 +226,7 @@ export function StartingPage(props: Props) {
         <HeaderOneContainer style={{ alignItems: 'flex-end' }}>
           <HeaderOne>
             {startingPageContent.headerContent.headerOne === ''
-              ? "I'm " + botNickName
+              ? `I'm ${botNickName}`
               : startingPageContent.headerContent.headerOne}
           </HeaderOne>
           {(betaMark || customBetaMarkText) && (
