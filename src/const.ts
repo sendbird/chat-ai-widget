@@ -11,6 +11,7 @@ export const DEFAULT_CONSTANT: Constant = {
   botNickName: 'Khan Academy Support Bot',
   userNickName: 'User',
   betaMark: true,
+  customBetaMarkText: 'BETA',
   suggestedMessageContent: {
     replyContents: [
       {
@@ -40,6 +41,7 @@ export const DEFAULT_CONSTANT: Constant = {
       "That's not a valid question",
       'Is there a specific question you have',
       "I'm here to help you with any questions you have",
+      'Ask away',
     ],
   },
   createGroupChannelParams: {
@@ -77,18 +79,21 @@ export const DEFAULT_CONSTANT: Constant = {
       'In this beta version, the AI-generated responses may lack complete accuracy.',
   },
   replacementTextList: [['the Text extracts', 'ChatBot Knowledge Base']],
+  instantConnect: false,
 };
 
 export interface Constant {
   botNickName: string;
   userNickName: string;
   betaMark: boolean;
+  customBetaMarkText: string;
   suggestedMessageContent: SuggestedMessageContent;
   createGroupChannelParams: CreateGroupChannelParams;
   startingPageContent: StartingPageContent;
   chatBottomContent: ChatBottomContent;
   messageBottomContent: MessageBottomContent;
   replacementTextList: string[][];
+  instantConnect: boolean;
 }
 
 export interface SuggestedReply {

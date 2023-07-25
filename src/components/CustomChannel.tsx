@@ -8,6 +8,7 @@ import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateConte
 import { useEffect, useState } from 'react';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
+import LoadingScreen from './LoadingScreen';
 import { StartingPage } from './StartingPage';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
@@ -16,6 +17,7 @@ import { useGetBotUser } from '../hooks/useGetBotUser';
 import { assert } from '../utils';
 
 function Channel(props) {
+  const { instantConnect } = useConstantState();
   const { sbConnectionStatus } = useSbConnectionState();
   const { setInitialTimeStamp } = useChannelContext();
   const [channelReady, setChannelReady] = useState(false);
@@ -35,11 +37,15 @@ function Channel(props) {
     return <CustomChannelComponent {...props} />;
   }
 
-  return <StartingPage isStartingPage={true} />;
+  return instantConnect ? (
+    <LoadingScreen />
+  ) : (
+    <StartingPage isStartingPage={true} />
+  );
 }
 
 export default function CustomChannel() {
-  const { botId } = useConstantState();
+  const { botId, instantConnect } = useConstantState();
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
 
@@ -50,6 +56,10 @@ export default function CustomChannel() {
     sb.currentUser,
     botUser
   );
+
+  if (instantConnect && !channel) {
+    return <LoadingScreen />;
+  }
 
   return (
     <ChannelProvider

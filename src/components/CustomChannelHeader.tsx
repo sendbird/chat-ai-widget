@@ -72,7 +72,7 @@ type Props = {
 
 export default function CustomChannelHeader(props: Props) {
   const { channel, createGroupChannel } = props;
-  const { betaMark } = useConstantState();
+  const { betaMark, customBetaMarkText, instantConnect } = useConstantState();
   const { setFirstMessage } = useSbConnectionState();
 
   function onClickRenewButton() {
@@ -91,15 +91,21 @@ export default function CustomChannelHeader(props: Props) {
           }}
         />
         <Title>{channel.name}</Title>
-        {betaMark && <BetaLogo>{'BETA'}</BetaLogo>}
+        {(betaMark || customBetaMarkText) && (
+          <BetaLogo>{customBetaMarkText}</BetaLogo>
+        )}
       </SubContainer>
       <RenewButtonContainer>
         <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
           <RefreshIcon height="16px" width="16px" />
         </RenewButtonForWidgetDemo>
       </RenewButtonContainer>
-      <EmptyContainer />
-      <EmptyContainer />
+      {!instantConnect && (
+        <>
+          <EmptyContainer />
+          <EmptyContainer />
+        </>
+      )}
     </Root>
   );
 }

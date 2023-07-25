@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from 'react';
 
+import { useConstantState } from './ConstantContext';
 import { noop } from '../utils';
 
 type ConnectionStatus = 'INIT' | 'CONNECTING' | 'CONNECTED';
@@ -20,8 +21,10 @@ export const SBConnectionStateContext = createContext<ConstantContextProps>({
 type ProviderProps = React.PropsWithChildren<ConstantContextProps>;
 
 const SBConnectionStateProvider = (props: ProviderProps) => {
+  const { instantConnect } = useConstantState();
   const [sbConnectionStatus, setSbConnectionStatus] =
-    useState<ConnectionStatus>('INIT');
+    // Don't need to use this state if instantConnect is true
+    useState<ConnectionStatus>(instantConnect ? 'CONNECTED' : 'INIT');
   const [firstMessage, setFirstMessage] = useState(null);
 
   return (

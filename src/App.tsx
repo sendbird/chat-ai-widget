@@ -15,6 +15,7 @@ const App = (props: Props) => {
       botNickName={props.botNickName}
       userNickName={props.userNickName}
       betaMark={props.betaMark}
+      customBetaMarkText={props.customBetaMarkText}
       suggestedMessageContent={props.suggestedMessageContent}
       createGroupChannelParams={props.createGroupChannelParams}
       startingPageContent={props.startingPageContent}
@@ -22,6 +23,7 @@ const App = (props: Props) => {
       messageBottomContent={props.messageBottomContent}
       replacementTextList={props.replacementTextList}
       hashedKey={props.hashedKey}
+      instantConnect={props.instantConnect}
     />
   );
 };

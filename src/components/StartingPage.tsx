@@ -145,7 +145,8 @@ interface Props {
 export function StartingPage(props: Props) {
   const { isStartingPage } = props;
   // console.log('## isWebDemo: ', isWebDemo);
-  const { startingPageContent, betaMark, botNickName } = useConstantState();
+  const { startingPageContent, betaMark, customBetaMarkText, botNickName } =
+    useConstantState();
   const {
     sbConnectionStatus,
     setSbConnectionStatus,
@@ -155,7 +156,7 @@ export function StartingPage(props: Props) {
 
   return (
     <Root isStartingPage={isStartingPage}>
-      <BackgroundContainer isStartingPage>
+      <BackgroundContainer>
         <startingPageContent.backGroundContent.Component
           height={startingPageContent?.backGroundContent.height}
         />
@@ -182,7 +183,7 @@ export function StartingPage(props: Props) {
             <StartMessageBody>
               <StartMessageBodyContent>
                 {startingPageContent.messageContent.body === ''
-                  ? "Hi~ I'm " + botNickName + ' Ask me anything!'
+                  ? `Hi~ I'm ${botNickName}. Ask me anything!`
                   : startingPageContent.messageContent.body}
               </StartMessageBodyContent>
             </StartMessageBody>
@@ -225,11 +226,13 @@ export function StartingPage(props: Props) {
         <HeaderOneContainer style={{ alignItems: 'flex-end' }}>
           <HeaderOne>
             {startingPageContent.headerContent.headerOne === ''
-              ? "I'm " + botNickName
+              ? `I'm ${botNickName}`
               : startingPageContent.headerContent.headerOne}
           </HeaderOne>
-          {betaMark && (
-            <BetaLogo style={{ marginBottom: '3px' }}>{'BETA'}</BetaLogo>
+          {(betaMark || customBetaMarkText) && (
+            <BetaLogo style={{ marginBottom: '3px' }}>
+              {customBetaMarkText}
+            </BetaLogo>
           )}
         </HeaderOneContainer>
         <HeaderTwo>{startingPageContent.headerContent.headerTwo}</HeaderTwo>

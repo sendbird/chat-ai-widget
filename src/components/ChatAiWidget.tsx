@@ -5,11 +5,8 @@ import styled, { css } from 'styled-components';
 
 import WidgetWindow from './WidgetWindow';
 import { Constant } from '../const';
-import { ConstantStateProvider } from '../context/ConstantContext';
-import { HashedKeyProvider } from '../context/HashedKeyContext';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
-import { assert } from '../utils';
 
 const StyledWidgetButtonWrapper = styled.button`
   position: fixed;
@@ -105,21 +102,13 @@ const getCookie = (cookieName: string) => {
   return cookies.filter((cookie) => cookie.includes(`${cookieName}=`));
 };
 
-const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
-const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
-
-interface Props extends Partial<Constant> {
+export interface Props extends Partial<Constant> {
   applicationId?: string;
   botId?: string;
   hashedKey?: string;
 }
 
-const ChatAiWidget = ({
-  applicationId,
-  botId,
-  hashedKey,
-  ...constantProps
-}: Props) => {
+const ChatAiWidget = (props: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const timer = useRef<NodeJS.Timeout | null>(null);
   const buttonClickHandler = () => {
@@ -137,33 +126,18 @@ const ChatAiWidget = ({
     }
   }, []);
 
-  assert(
-    applicationId !== null && botId !== null,
-    'applicationId and botId must be provided'
-  );
-
   return (
-    <ConstantStateProvider
-      // If env is not provided, prop will be used instead.
-      // But Either should be provided.
-      applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
-      botId={CHAT_WIDGET_BOT_ID ?? botId}
-      {...constantProps}
-    >
-      <HashedKeyProvider hashedKey={hashedKey ?? null}>
-        <Fragment>
-          <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} />
-          <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
-            <StyledWidgetIcon isOpen={isOpen}>
-              <ChatBotIcon />
-            </StyledWidgetIcon>
-            <StyledArrowIcon isOpen={isOpen}>
-              <ArrowDownIcon />
-            </StyledArrowIcon>
-          </StyledWidgetButtonWrapper>
-        </Fragment>
-      </HashedKeyProvider>
-    </ConstantStateProvider>
+    <Fragment>
+      <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
+      <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
+        <StyledWidgetIcon isOpen={isOpen}>
+          <ChatBotIcon />
+        </StyledWidgetIcon>
+        <StyledArrowIcon isOpen={isOpen}>
+          <ArrowDownIcon />
+        </StyledArrowIcon>
+      </StyledWidgetButtonWrapper>
+    </Fragment>
   );
 };
 

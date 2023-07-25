@@ -1,10 +1,17 @@
+import '@sendbird/uikit-react/dist/index.css';
+import '../css/index.css';
 import SBProvider from '@sendbird/uikit-react/SendbirdProvider';
 import { useMemo } from 'react';
 
+import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import CustomChannel from './CustomChannel';
 import { StartingPage } from './StartingPage';
 import { USER_ID } from '../const';
-import { useConstantState } from '../context/ConstantContext';
+import {
+  useConstantState,
+  ConstantStateProvider,
+} from '../context/ConstantContext';
+import { HashedKeyProvider } from '../context/HashedKeyContext';
 import SBConnectionStateProvider, {
   useSbConnectionState,
 } from '../context/SBConnectionContext';
@@ -51,11 +58,34 @@ const SBComponent = () => {
   );
 };
 
-const Chat = () => {
+const Chat = ({
+  applicationId,
+  botId,
+  hashedKey,
+  ...constantProps
+}: ChatWidgetProps) => {
+  const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
+  const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
+
+  assert(
+    applicationId !== null && botId !== null,
+    'applicationId and botId must be provided'
+  );
+
   return (
-    <SBConnectionStateProvider>
-      <SBComponent />
-    </SBConnectionStateProvider>
+    <ConstantStateProvider
+      // If env is not provided, prop will be used instead.
+      // But Either should be provided.
+      applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
+      botId={CHAT_WIDGET_BOT_ID ?? botId}
+      {...constantProps}
+    >
+      <HashedKeyProvider hashedKey={hashedKey ?? null}>
+        <SBConnectionStateProvider>
+          <SBComponent />
+        </SBConnectionStateProvider>
+      </HashedKeyProvider>
+    </ConstantStateProvider>
   );
 };
 

@@ -18,9 +18,8 @@ import { USER_ID } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { isSpecialMessage, scrollUtil } from '../utils';
 
-const Root = styled.div<{ hidePlaceholder: boolean }>`
-  //height: 100vh; // 640px;
-  height: 100%;
+const Root = styled.div<{ hidePlaceholder: boolean; height: string }>`
+  height: ${({ height }) => height};
   font-family: 'Roboto', sans-serif;
   z-index: 0;
   border: none;
@@ -45,7 +44,7 @@ type MessageMeta = {
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
-  const { suggestedMessageContent } = useConstantState();
+  const { suggestedMessageContent, instantConnect } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
 
   const channel: GroupChannel | undefined = currentGroupChannel;
@@ -57,7 +56,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const startingPagePlaceHolder =
     allMessages.length === 1 && lastMessage.messageType === 'admin';
 
-  const messageMeta = useMemo(() => {
+  const lastMessageMeta = useMemo(() => {
     let messageMeta: MessageMeta | null;
     try {
       messageMeta = lastMessage?.data ? JSON.parse(lastMessage.data) : null;
@@ -85,7 +84,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   }, [lastMessage?.messageId]);
 
   return (
-    <Root hidePlaceholder={startingPagePlaceHolder}>
+    <Root
+      hidePlaceholder={startingPagePlaceHolder}
+      height={instantConnect ? '100vh' : '100%'}
+    >
       <ChannelUI
         renderChannelHeader={() => {
           return channel && createGroupChannel ? (
@@ -109,8 +111,8 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
               {allMessages &&
                 allMessages.length > 1 &&
                 lastMessage.sender.userId === botUser.userId &&
-                !messageMeta?.stream &&
-                isSpecialMessage(
+                !lastMessageMeta?.stream &&
+                !isSpecialMessage(
                   lastMessage.message,
                   suggestedMessageContent.messageFilterList
                 ) && <SuggestedRepliesPanel botUser={botUser} />}
