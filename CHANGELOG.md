@@ -1,3 +1,10 @@
+## [v1.0.3] (July 25 2023)
+1. Added a hashedKey handling feature for using the chat-ai-widget in [ai-bot-url-webdemo](https://github.com/sendbird/ai-bot-url-webdemo).
+2. Introduced new props and exported the `Chat` component with the following features:
+   - `instantConnect`: When set to `true`, the SDK connection will be established right after mounting the Chat or ChatAiWidget component.
+   - `customBetaMarkText`: Allows customization of the `BETA` tag text in the Channel header.
+
+
 ## [v1.0.2] (July 21 2023)
 1. Fixed Channel Refresh Issue:
    - Even after merging #11, the channel was still being refreshed due to the sdk reconnection.
