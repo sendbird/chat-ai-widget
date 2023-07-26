@@ -30,8 +30,17 @@ It is for the Sendbird Chat AI Widget UiKit.
 
 ## Run locally
 ```bash
+npm install
 npm run dev
 ```
+ - If you want to change `applicationId` and `botId` when running in local, fix `.env`
+   ```
+   # Vite prefix is required for Vite to load the env variables
+   # Plz modify below two env variables on your needs
+   VITE_CHAT_WIDGET_APP_ID=AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67
+   VITE_CHAT_WIDGET_BOT_ID=khan-academy-bot
+   ```
+
 
 ## Demo URL
 https://sendbird.github.io/chat-ai-widget/
