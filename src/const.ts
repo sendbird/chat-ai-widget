@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { ReactComponent as StartingPageLogo } from './icons/icon-widget-chatbot.svg';
+import { ReactComponent as RefreshIcon } from './icons/refresh-icon.svg';
 import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
-import { uuid } from './utils';
+import { noop, uuid } from './utils';
 
 export const USER_ID = uuid();
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
@@ -80,6 +81,17 @@ export const DEFAULT_CONSTANT: Constant = {
   },
   replacementTextList: [['the Text extracts', 'ChatBot Knowledge Base']],
   instantConnect: false,
+  customRefreshComponent: {
+    icon: RefreshIcon,
+    width: '16px',
+    height: '16px',
+    style: {
+      position: 'relative',
+      // FIXME: This is a hack to make the refresh icon appear next to the expand & close icons in the widget window
+      right: '60px',
+    },
+    onClick: noop,
+  },
 };
 
 export interface Constant {
@@ -94,6 +106,7 @@ export interface Constant {
   messageBottomContent: MessageBottomContent;
   replacementTextList: string[][];
   instantConnect: boolean;
+  customRefreshComponent: CustomRefreshComponent;
 }
 
 export interface SuggestedReply {
@@ -153,4 +166,12 @@ export interface StartingMessageContent {
 export interface MessageBottomContent {
   text: string;
   infoIconText: string;
+}
+
+export interface CustomRefreshComponent {
+  icon: React.FC;
+  width: string;
+  height: string;
+  onClick?: () => void;
+  style?: React.CSSProperties;
 }
