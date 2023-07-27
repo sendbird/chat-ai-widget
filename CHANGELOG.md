@@ -1,3 +1,13 @@
+## [v1.0.4] (July 27 2023)
+#### Enhancement
+- Improved Channel Refresh Icon Control:
+  - Previously, the refresh icon and the expand + close icons were placed separately, causing alignment issues. To address this, the <EmptyContainer /> was used to prevent overlapping.
+  - Introduced a new prop, `customRefreshComponent`, which allows users to provide their own custom refresh icon component for better control.
+
+#### Bug fix:
+- Detailed Waiting Logic for Pending Bot Messages:
+  - Implemented a logic to wait until the last message in the group channel is not null, with a timeout of up to 3 seconds. This fix addresses issues where Bot's messages were pending after sending the first message.
+
 ## [v1.0.3] (July 25 2023)
 1. Added a hashedKey handling feature for using the chat-ai-widget in [ai-bot-url-webdemo](https://github.com/sendbird/ai-bot-url-webdemo).
 2. Introduced new props and exported the `Chat` component with the following features:
