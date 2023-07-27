@@ -33,7 +33,7 @@ It is for the Sendbird Chat AI Widget UiKit.
 npm install
 npm run dev
 ```
- - If you want to change `applicationId` and `botId` when running in local, fix `.env`
+ - If you want to change `applicationId` and `botId` when running in local, modify the below two variables in `.env`
    ```
    # Vite prefix is required for Vite to load the env variables
    # Plz modify below two env variables on your needs
