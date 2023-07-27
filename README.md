@@ -183,6 +183,7 @@ const App = () => {
       chatBottomContent={customConstants.chatBottomContent}
       messageBottomContent={customConstants.messageBottomContent}
       replacementTextList={customConstants.replacementTextList}
+      customRefreshComponent={customConstants.customRefreshComponent}
     />
   );
 };

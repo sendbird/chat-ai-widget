@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
 import channelHeaderImage from '../icons/bot-message-image.png';
-import { ReactComponent as RefreshIcon } from '../icons/refresh-icon.svg';
 
 const Root = styled.div`
   display: flex;
@@ -60,11 +59,6 @@ const BetaLogo = styled.div`
   letter-spacing: 0.8px;
 `;
 
-const EmptyContainer = styled.div`
-  width: 24px;
-  height: 24px;
-`;
-
 type Props = {
   channel: GroupChannel;
   createGroupChannel: () => void;
@@ -72,14 +66,17 @@ type Props = {
 
 export default function CustomChannelHeader(props: Props) {
   const { channel, createGroupChannel } = props;
-  const { betaMark, customBetaMarkText, instantConnect } = useConstantState();
+  const { betaMark, customBetaMarkText, customRefreshComponent } =
+    useConstantState();
   const { setFirstMessage } = useSbConnectionState();
 
   function onClickRenewButton() {
     setFirstMessage(null);
     createGroupChannel();
+    customRefreshComponent?.onClick?.();
     // window.location.reload();
   }
+
   return (
     <Root>
       <SubContainer>
@@ -97,15 +94,13 @@ export default function CustomChannelHeader(props: Props) {
       </SubContainer>
       <RenewButtonContainer>
         <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
-          <RefreshIcon height="16px" width="16px" />
+          <customRefreshComponent.icon
+            width={customRefreshComponent.width}
+            height={customRefreshComponent.height}
+            style={customRefreshComponent.style}
+          />
         </RenewButtonForWidgetDemo>
       </RenewButtonContainer>
-      {!instantConnect && (
-        <>
-          <EmptyContainer />
-          <EmptyContainer />
-        </>
-      )}
     </Root>
   );
 }

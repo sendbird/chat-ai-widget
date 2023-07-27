@@ -39,6 +39,24 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       replacementTextList:
         props.replacementTextList ?? initialState.replacementTextList,
       instantConnect: props.instantConnect ?? initialState.instantConnect,
+      customRefreshComponent: {
+        icon:
+          props.customRefreshComponent?.icon ??
+          initialState.customRefreshComponent.icon,
+        width:
+          props.customRefreshComponent?.width ??
+          initialState.customRefreshComponent.width,
+        height:
+          props.customRefreshComponent?.height ??
+          initialState.customRefreshComponent.height,
+        onClick:
+          props.customRefreshComponent?.onClick ??
+          initialState.customRefreshComponent.onClick,
+        style: {
+          ...initialState.customRefreshComponent.style,
+          ...props.customRefreshComponent?.style,
+        },
+      },
     }),
     [props]
   );

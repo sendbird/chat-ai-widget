@@ -24,6 +24,7 @@ const App = (props: Props) => {
       replacementTextList={props.replacementTextList}
       hashedKey={props.hashedKey}
       instantConnect={props.instantConnect}
+      customRefreshComponent={props.customRefreshComponent}
     />
   );
 };
