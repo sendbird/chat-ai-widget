@@ -49,8 +49,12 @@ export function useCreateGroupChannel(
           message: firstMessage,
         });
       }
-      // let's wait for a second to make sure channel is created & ready
-      await delay(1000);
+      let count = 0;
+      while (groupChannel.lastMessage == null && count < 30) {
+        await delay(100);
+        count += 1;
+      }
+      await delay(500);
     } catch (error) {
       console.error(error);
     } finally {
