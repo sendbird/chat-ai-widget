@@ -4,7 +4,7 @@ import { SendingStatus } from '@sendbird/chat/message';
 import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeader';
 import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { ClientUserMessage, EveryMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
@@ -16,6 +16,7 @@ import CustomMessageInput from './CustomMessageInput';
 import SuggestedRepliesPanel from './SuggestedRepliesPanel';
 import { USER_ID } from '../const';
 import { useConstantState } from '../context/ConstantContext';
+import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
 
 const Root = styled.div<{ hidePlaceholder: boolean; height: string }>`
@@ -46,11 +47,15 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
   const { suggestedMessageContent, instantConnect } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
+  const lastMessageRef = useRef<HTMLDivElement>(null);
 
   const channel: GroupChannel | undefined = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[
     allMessages?.length - 1
   ] as ClientUserMessage;
+  const isLastBotMessage =
+    (lastMessage as ClientUserMessage)?.sender.userId === botUser.userId;
+
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
 
   const startingPagePlaceHolder =
@@ -65,6 +70,23 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     }
     return messageMeta;
   }, [lastMessage?.data]);
+
+  const isSuggestedReplyVisible =
+    allMessages &&
+    allMessages.length > 1 &&
+    lastMessage.sender.userId === botUser.userId &&
+    !lastMessageMeta?.stream &&
+    !isSpecialMessage(
+      lastMessage.message,
+      suggestedMessageContent.messageFilterList
+    );
+
+  useScrollOnStreaming({
+    isLastBotMessage,
+    lastMessageRef,
+    // the SuggestedRepliesPanel height is about 50px
+    bottomBuffer: isSuggestedReplyVisible ? 50 : 0,
+  });
 
   /**
    * If the updated last message is sent by the current user, activate spinner for the sent message.
@@ -108,14 +130,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 backgroundColor: 'white',
               }}
             >
-              {allMessages &&
-                allMessages.length > 1 &&
-                lastMessage.sender.userId === botUser.userId &&
-                !lastMessageMeta?.stream &&
-                !isSpecialMessage(
-                  lastMessage.message,
-                  suggestedMessageContent.messageFilterList
-                ) && <SuggestedRepliesPanel botUser={botUser} />}
+              {isSuggestedReplyVisible && (
+                <SuggestedRepliesPanel botUser={botUser} />
+              )}
               <CustomMessageInput />
               <ChatBottom />
             </div>
@@ -127,6 +144,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
               message={message}
               activeSpinnerId={activeSpinnerId}
               botUser={botUser}
+              lastMessageRef={lastMessageRef}
             />
           );
         }}
