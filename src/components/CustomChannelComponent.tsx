@@ -14,7 +14,6 @@ import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import CustomMessageInput from './CustomMessageInput';
 import SuggestedRepliesPanel from './SuggestedRepliesPanel';
-import { USER_ID } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
@@ -45,7 +44,8 @@ type MessageMeta = {
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
-  const { suggestedMessageContent, instantConnect } = useConstantState();
+  const { userId, suggestedMessageContent, instantConnect } =
+    useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
@@ -95,7 +95,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   useEffect(() => {
     if (
       lastMessage &&
-      lastMessage.sender?.userId === USER_ID &&
+      lastMessage.sender?.userId === userId &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED
     ) {
       setActiveSpinnerId(lastMessage.messageId);

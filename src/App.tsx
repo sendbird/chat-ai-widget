@@ -13,6 +13,7 @@ const App = (props: Props) => {
       applicationId={props.applicationId}
       botId={props.botId}
       botNickName={props.botNickName}
+      userId={props.userId}
       userNickName={props.userNickName}
       betaMark={props.betaMark}
       customBetaMarkText={props.customBetaMarkText}
