@@ -1,3 +1,11 @@
+## [v1.0.5] (July 31 2023)
+#### Fixes:
+- Resolved an issue where the suggested reply panel overlapped the last message when streaming reply was enabled. By adding a 50px buffer to the scroll, the suggested reply panel now displays correctly without obstructing the last message.
+
+#### Feat:
+- Added an interface to enable users to utilize their custom session handler.
+  Introducing new props: configureSession and userId, which can now be passed into the <SendbirdProvider /> component.
+
 ## [v1.0.4] (July 27 2023)
 #### Enhancement
 - Improved Channel Refresh Icon Control:
