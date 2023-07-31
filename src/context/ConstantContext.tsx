@@ -58,6 +58,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
           ...props.customRefreshComponent?.style,
         },
       },
+      configureSession: props.configureSession,
     }),
     [props]
   );

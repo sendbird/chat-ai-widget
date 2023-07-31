@@ -1,3 +1,6 @@
+import SendbirdChat, { SessionHandler } from '@sendbird/chat';
+import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
+import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
 import React from 'react';
 
 import { ReactComponent as StartingPageLogo } from './icons/icon-widget-chatbot.svg';
@@ -95,6 +98,10 @@ export const DEFAULT_CONSTANT: Constant = {
   },
 };
 
+type ConfigureSession = (
+  sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat
+) => SessionHandler;
+
 export interface Constant {
   botNickName: string;
   userId: string;
@@ -109,6 +116,7 @@ export interface Constant {
   replacementTextList: string[][];
   instantConnect: boolean;
   customRefreshComponent: CustomRefreshComponent;
+  configureSession: ConfigureSession;
 }
 
 export interface SuggestedReply {
