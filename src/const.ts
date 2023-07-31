@@ -1,3 +1,6 @@
+import SendbirdChat, { SessionHandler } from '@sendbird/chat';
+import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
+import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
 import React from 'react';
 
 import { ReactComponent as StartingPageLogo } from './icons/icon-widget-chatbot.svg';
@@ -5,11 +8,12 @@ import { ReactComponent as RefreshIcon } from './icons/refresh-icon.svg';
 import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
 import { noop, uuid } from './utils';
 
-export const USER_ID = uuid();
+const USER_ID = uuid();
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
 
 export const DEFAULT_CONSTANT: Constant = {
   botNickName: 'Khan Academy Support Bot',
+  userId: USER_ID,
   userNickName: 'User',
   betaMark: true,
   customBetaMarkText: 'BETA',
@@ -94,8 +98,13 @@ export const DEFAULT_CONSTANT: Constant = {
   },
 };
 
+type ConfigureSession = (
+  sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat
+) => SessionHandler;
+
 export interface Constant {
   botNickName: string;
+  userId: string;
   userNickName: string;
   betaMark: boolean;
   customBetaMarkText: string;
@@ -107,6 +116,7 @@ export interface Constant {
   replacementTextList: string[][];
   instantConnect: boolean;
   customRefreshComponent: CustomRefreshComponent;
+  configureSession: ConfigureSession;
 }
 
 export interface SuggestedReply {

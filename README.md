@@ -84,7 +84,7 @@ https://sendbird.github.io/chat-ai-widget/
 After your chatbot has been created, you can start testing conversations directly from the web interface.
 <img width="800" alt="image" src="https://github.com/sf-luke-cha/ai-chatbot-tutorial/assets/104121286/f1d39df3-b50a-4c6d-a419-ef4bca5dcb87">
 
-## Customization
+## Basic Customization
 You can customize the UI of the ChatBot by using the `ChatAiWidget` component. The following are the props that can be used to customize the UI.
 
 ```jsx
@@ -94,10 +94,12 @@ import '@sendbird/chat-ai-widget/dist/style.css';
 import { ReactComponent as StartingPageLogo } from './icons/sendbird-logo-starting-page.svg';
 import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
 
+
 const customConstants = {
   applicationId: 'AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67', // Your Sendbird application ID
   botId: 'khan-academy-bot', // Your Sendbird bot ID
   botNickName: 'Khan Academy Support Bot',
+  userId: 'user1', // Specify your userId. If it's not provided, it'll generate a random one \w uuid
   userNickName: 'User',
   betaMark: true,
   suggestedMessageContent: {
@@ -174,6 +176,7 @@ const App = () => {
       applicationId={customConstants.applicationId}
       botId={customConstants.botId}
       botNickName={customConstants.botNickName}
+      userId={customConstants.userId}
       userNickName={customConstants.userNickName}
       betaMark={customConstants.betaMark}
       customBetaMarkText={customConstants.customBetaMarkText}
@@ -183,11 +186,90 @@ const App = () => {
       chatBottomContent={customConstants.chatBottomContent}
       messageBottomContent={customConstants.messageBottomContent}
       replacementTextList={customConstants.replacementTextList}
-      customRefreshComponent={customConstants.customRefreshComponent}
     />
   );
 };
 
 export default App;
 
+```
+
+## Advanced Customization
+```jsx
+import { ChatAiWidget } from "@sendbird/chat-ai-widget";
+import '@sendbird/chat-ai-widget/dist/style.css';
+
+import { SessionHandler } from '@sendbird/chat'
+
+// Replace below with the real one
+const USER_ID = 'UserId';
+
+/**
+ * To setup auth on their own API,
+ * You can also create your own custom session handler \w userId.
+ * More information can be found in
+ * https://sendbird.com/docs/chat/v3/javascript/guides/authentication
+ * Also, we recommend to memoize this configureSession function,
+ * before you pass to ChatAiWidget component.
+ * */
+const issueSessionToken = async (userId, ...) => {
+  // build your own API request handler
+};
+
+const memoizedConfigureSession = useCallback(
+  (sdk) => {
+    const sessionHandler = new SessionHandler();
+    sessionHandler.onSessionTokenRequired = (resolve, reject) => {
+      console.warn('SessionHandler.onSessionTokenRequired()');
+      // This issueSessionToken fn i
+      issueSessionToken(USER_ID)
+        .then(token => {
+          // curentUserInfo.accessToken = token;
+          resolve(token);
+        })
+        .catch(err => reject(err));
+    };
+    sessionHandler.onSessionRefreshed = () => {
+      console.warn('SessionHandler.onSessionRefreshed()');
+    };
+    sessionHandler.onSessionError = (err) => {
+      console.warn('SessionHandler.onSessionError()', err);
+    };
+    sessionHandler.onSessionClosed = () => {
+      console.warn('SessionHandler.onSessionClosed()');
+    };
+    console.warn(sessionHandler);
+    return sessionHandler;
+  },[]);
+
+const customConfigs = {
+  configureSession: memoizedConfigureSession,
+  customRefreshComponent: {
+    icon: 'Your SVG icon',
+    style: {
+      position: 'relative' as React.CSSProperties['position'],
+      right: 0,
+    },
+    width: '16px',
+    height: '16px',
+    onClick: () => { ... },
+  }
+}
+
+const customConstants = {
+  // Add other constant props like in the basic customization section above
+}
+
+const App = () => {
+  return (
+    <ChatAiWidget
+      userId={USER_ID}
+      configureSession={customConfigs.configureSession}
+      customRefreshComponent={customConfigs.customRefreshComponent}
+      {...customConstants}
+    />
+  );
+};
+
+export default App;
 ```

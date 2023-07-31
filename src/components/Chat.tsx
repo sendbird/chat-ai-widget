@@ -6,7 +6,6 @@ import { useMemo } from 'react';
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import CustomChannel from './CustomChannel';
 import { StartingPage } from './StartingPage';
-import { USER_ID } from '../const';
 import {
   useConstantState,
   ConstantStateProvider,
@@ -18,7 +17,8 @@ import SBConnectionStateProvider, {
 import { assert } from '../utils';
 
 const SBComponent = () => {
-  const { applicationId, botId, userNickName } = useConstantState();
+  const { applicationId, botId, userId, userNickName, configureSession } =
+    useConstantState();
 
   assert(
     applicationId !== null && botId !== null,
@@ -44,11 +44,12 @@ const SBComponent = () => {
   return (
     <SBProvider
       appId={applicationId}
-      userId={USER_ID}
+      userId={userId}
       nickname={userNickName}
       customApiHost={`https://api-${applicationId}.sendbird.com`}
       customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
       sdkInitParams={sdkInitParams}
+      configureSession={configureSession}
     >
       <>
         <CustomChannel />
