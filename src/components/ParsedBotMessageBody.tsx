@@ -1,11 +1,15 @@
 // Ref: https://github.com/rajinwonderland/react-code-blocks#-demo
 import { UserMessage } from '@sendbird/chat/message';
-import { CopyBlock, irBlack } from 'react-code-blocks';
+import { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
 import SourceContainer, { Source } from './SourceContainer';
 import { Token, TokenType } from '../utils';
+
+const LazyCodeBlock = lazy(() =>
+  import('./CodeBlock').then(({ CodeBlock }) => ({ default: CodeBlock }))
+);
 
 const Root = styled.div`
   display: flex;
@@ -69,13 +73,9 @@ export default function ParsedBotMessageBody(props: Props) {
           }
           return (
             <BlockContainer key={'token' + i}>
-              <CopyBlock
-                text={token.value}
-                language={token.type}
-                theme={irBlack}
-                showLineNumbers={true}
-                codeBlock
-              />
+              <Suspense fallback={<></>}>
+                <LazyCodeBlock token={token} />
+              </Suspense>
             </BlockContainer>
           );
         })}
