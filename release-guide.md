@@ -4,6 +4,7 @@
 1. Create a new branch for the release: e.g. `git checkout -b release/{X.X.X}`
 2. Write/Generate changelog in CHANGELOG.md
 3. Commit all changes, push to remote
+4. Comment `/bot create ticket` on github PR to make release ticket automatically
 
 ## Step 1 - Release Candidate
 1. Update the version in `package.json`: e.g. `version: {version}-rc-0` (increase the number if it's necessary)
