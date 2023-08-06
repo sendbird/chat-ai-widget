@@ -1,7 +1,7 @@
 import '@sendbird/uikit-react/dist/index.css';
 import '../css/index.css';
 import SBProvider from '@sendbird/uikit-react/SendbirdProvider';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import CustomChannel from './CustomChannel';
@@ -32,6 +32,8 @@ const SBComponent = () => {
     []
   );
 
+  const userAgentCustomParams = useRef({ 'chat-ai-widget': 'True' });
+
   // Until the user sends a first message,
   // we will display a fake channel UI not to establish a connection to Sendbird Chat SDK
   // `sbConnectionStatus` will be changed to `CONNECTING` after the first message is sent
@@ -50,6 +52,7 @@ const SBComponent = () => {
       customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
       sdkInitParams={sdkInitParams}
       configureSession={configureSession}
+      customExtensionParams={userAgentCustomParams.current}
     >
       <>
         <CustomChannel />

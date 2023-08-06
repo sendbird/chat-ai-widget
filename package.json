@@ -27,8 +27,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sendbird/chat": "^4.9.3",
-    "@sendbird/uikit-react": "3.6.5",
+    "@sendbird/chat": "^4.9.7",
+    "@sendbird/uikit-react": "^3.6.6",
     "dompurify": "^3.0.4",
     "polished": "^2.3.1",
     "react-code-blocks": "^0.1.0",
