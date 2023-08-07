@@ -1,3 +1,11 @@
+## [v1.0.6] (Aug 7 2023)
+
+#### Improvements:
+- Some users experienced slow loading of the chat AI widget due to the large bundle size of react-code-blocks.So we implemented lazy loading for the <CodeBlock /> component, resulting in faster and more efficient initialization.
+
+#### Chores:
+- Pass customExtensionParams to SBProvider for logging purpose.
+
 ## [v1.0.5] (July 31 2023)
 #### Fixes:
 - Resolved an issue where the suggested reply panel overlapped the last message when streaming reply was enabled. By adding a 50px buffer to the scroll, the suggested reply panel now displays correctly without obstructing the last message.
