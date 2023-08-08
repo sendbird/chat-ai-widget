@@ -27,6 +27,7 @@ const App = (props: Props) => {
       instantConnect={props.instantConnect}
       customRefreshComponent={props.customRefreshComponent}
       configureSession={props.configureSession}
+      enableSourceMessage={props.enableSourceMessage}
     />
   );
 };

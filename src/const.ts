@@ -96,6 +96,7 @@ export const DEFAULT_CONSTANT: Constant = {
     },
     onClick: noop,
   },
+  enableSourceMessage: true,
 };
 
 type ConfigureSession = (
@@ -117,6 +118,7 @@ export interface Constant {
   instantConnect: boolean;
   customRefreshComponent: CustomRefreshComponent;
   configureSession: ConfigureSession;
+  enableSourceMessage: boolean;
 }
 
 export interface SuggestedReply {

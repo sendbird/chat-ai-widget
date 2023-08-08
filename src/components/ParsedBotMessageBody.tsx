@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
 import SourceContainer, { Source } from './SourceContainer';
+import { useConstantState } from '../context/ConstantContext';
 import { Token, TokenType } from '../utils';
 
 const LazyCodeBlock = lazy(() =>
@@ -52,6 +53,7 @@ type MetaData = {
  */
 export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens } = props;
+  const { enableSourceMessage } = useConstantState();
   const data_ = (message as UserMessage).data as string;
   const data: MetaData = JSON.parse(data_);
   const sources: Source[] = Array.isArray(data['metadatas'])
@@ -59,7 +61,7 @@ export default function ParsedBotMessageBody(props: Props) {
     : [];
 
   // console.log('## sources: ', sources);
-  if (tokens.length > 0) {
+  if (tokens.length > 0 && enableSourceMessage) {
     return (
       <Root>
         {tokens.map((token: Token, i) => {
