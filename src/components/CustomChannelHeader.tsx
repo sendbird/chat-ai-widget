@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
 import channelHeaderImage from '../icons/bot-message-image.png';
+import { isMobile } from '../utils';
 
 const Root = styled.div`
   display: flex;
@@ -88,7 +89,7 @@ export default function CustomChannelHeader(props: Props) {
           }}
         />
         <Title>{channel.name}</Title>
-        {(betaMark || customBetaMarkText) && (
+        {!isMobile && (betaMark || customBetaMarkText) && (
           <BetaLogo>{customBetaMarkText}</BetaLogo>
         )}
       </SubContainer>

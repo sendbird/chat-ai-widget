@@ -215,3 +215,5 @@ export function delay(delayTime: number): Promise<void> {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 export function noop() {}
+
+export const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

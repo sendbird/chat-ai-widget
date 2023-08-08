@@ -14,7 +14,7 @@ import { HashedKeyProvider } from '../context/HashedKeyContext';
 import SBConnectionStateProvider, {
   useSbConnectionState,
 } from '../context/SBConnectionContext';
-import { assert } from '../utils';
+import { assert, isMobile } from '../utils';
 
 const SBComponent = () => {
   const { applicationId, botId, userId, userNickName, configureSession } =
@@ -53,6 +53,7 @@ const SBComponent = () => {
       sdkInitParams={sdkInitParams}
       configureSession={configureSession}
       customExtensionParams={userAgentCustomParams.current}
+      breakPoint={isMobile}
     >
       <>
         <CustomChannel />
