@@ -59,6 +59,8 @@ export const ConstantStateProvider = (props: ProviderProps) => {
         },
       },
       configureSession: props.configureSession,
+      enableSourceMessage:
+        props.enableSourceMessage ?? initialState.enableSourceMessage,
     }),
     [props]
   );

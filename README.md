@@ -168,6 +168,7 @@ const customConstants = {
       'In this beta version, the AI-generated responses may lack complete accuracy.',
   },
   replacementTextList: [['the Text extracts', 'ChatBot Knowledge Base']],
+  enableSourceMessage: false,
 };
 
 const App = () => {
@@ -186,6 +187,7 @@ const App = () => {
       chatBottomContent={customConstants.chatBottomContent}
       messageBottomContent={customConstants.messageBottomContent}
       replacementTextList={customConstants.replacementTextList}
+      enableSourceMessage={customConstants.enableSourceMessage}
     />
   );
 };

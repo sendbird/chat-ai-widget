@@ -54,6 +54,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     allMessages?.length - 1
   ] as ClientUserMessage;
   const isLastBotMessage =
+    !(lastMessage?.messageType === 'admin') &&
     (lastMessage as ClientUserMessage)?.sender.userId === botUser.userId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);

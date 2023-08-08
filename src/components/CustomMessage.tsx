@@ -4,6 +4,7 @@ import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
+import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
@@ -34,6 +35,11 @@ export default function CustomMessage(props: Props) {
   const { allMessages } = useChannelContext();
   const firstMessage: UserMessage = allMessages[0] as UserMessage;
   const firstMessageId = firstMessage?.messageId ?? -1;
+
+  // admin message
+  if (message.messageType === 'admin') {
+    return <div>{<AdminMessage message={message} />}</div>;
+  }
 
   // Sent by current user
   if ((message as UserMessage).sender.userId !== botUser.userId) {
