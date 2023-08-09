@@ -75,6 +75,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const isSuggestedReplyVisible =
     allMessages &&
     allMessages.length > 1 &&
+    !(lastMessage?.messageType === 'admin') &&
     lastMessage.sender.userId === botUser.userId &&
     !lastMessageMeta?.stream &&
     !isSpecialMessage(
@@ -96,6 +97,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   useEffect(() => {
     if (
       lastMessage &&
+      !(lastMessage?.messageType === 'admin') &&
       lastMessage.sender?.userId === userId &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED
     ) {
