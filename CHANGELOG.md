@@ -1,3 +1,11 @@
+## [v1.0.7] (Aug 10 2023)
+#### Feat:
+- Added support for mobile devices.
+
+#### Fixes:
+- Fixed issues related to AdminMessage handling and introduced an option for source messages.
+- Fixed an issue where scrolling in the parent element was not prevented.
+
 ## [v1.0.6] (Aug 7 2023)
 
 #### Improvements:
