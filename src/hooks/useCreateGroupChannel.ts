@@ -71,7 +71,7 @@ export function useCreateGroupChannel(
     }
     // we dont want to watchout for change of whole objects
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser?.userId, botUser?.userId]);
+  }, [currentUser?.userId, botUser?.userId, firstMessage]);
 
   useEffect(() => {
     // console.log('## useCreateGroupChannel: ', currentUser, botUser, sb);
@@ -82,7 +82,7 @@ export function useCreateGroupChannel(
       createAndSetNewChannel();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser?.userId, botUser?.userId]);
+  }, [currentUser?.userId, botUser?.userId, firstMessage]);
 
   return [channel, createAndSetNewChannel, creating];
 }
