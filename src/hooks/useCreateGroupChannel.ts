@@ -34,7 +34,7 @@ export function useCreateGroupChannel(
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
   const sendUserMessage = sendbirdSelectors.getSendUserMessage(store);
-  const { createGroupChannelParams, startingPageContent, instantConnect } =
+  const { createGroupChannelParams, instantConnect, firstMessageData } =
     useConstantState();
   const { setSbConnectionStatus, firstMessage } = useSbConnectionState();
 
@@ -44,12 +44,10 @@ export function useCreateGroupChannel(
     }
     try {
       setCreating(true);
-      const firstMessageData =
-        instantConnect && startingPageContent?.messageContent?.body != null
+      const paramData =
+        instantConnect && firstMessageData
           ? JSON.stringify({
-              first_message_data: [
-                { data: [], message: startingPageContent.messageContent.body },
-              ],
+              first_message_data: firstMessageData,
             })
           : undefined;
       const params: GroupChannelCreateParams = {
@@ -57,7 +55,7 @@ export function useCreateGroupChannel(
         invitedUserIds: [currentUser.userId, botUser.userId],
         isDistinct: false,
         coverUrl: createGroupChannelParams?.coverUrl,
-        data: firstMessageData,
+        data: paramData,
       };
       const groupChannel = await sb.groupChannel
         .createChannel(params)
