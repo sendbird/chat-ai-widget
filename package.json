@@ -1,6 +1,6 @@
 {
   "name": "@sendbird/chat-ai-widget",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -27,8 +27,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sendbird/chat": "^4.9.7",
-    "@sendbird/uikit-react": "^3.6.6",
+    "@sendbird/chat": "^4.9.8",
+    "@sendbird/uikit-react": "^3.6.7",
     "dompurify": "^3.0.4",
     "polished": "^2.3.1",
     "react-code-blocks": "^0.1.0",
