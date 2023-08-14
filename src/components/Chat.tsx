@@ -67,8 +67,11 @@ const Chat = ({
   applicationId,
   botId,
   hashedKey,
+  isOpen,
   ...constantProps
-}: ChatWidgetProps) => {
+}: ChatWidgetProps & {
+  isOpen: boolean;
+}) => {
   const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
 
@@ -87,7 +90,7 @@ const Chat = ({
     >
       <HashedKeyProvider hashedKey={hashedKey ?? null}>
         <SBConnectionStateProvider>
-          <SBComponent />
+          {isOpen && <SBComponent />}
         </SBConnectionStateProvider>
       </HashedKeyProvider>
     </ConstantStateProvider>

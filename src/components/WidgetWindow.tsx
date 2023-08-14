@@ -107,7 +107,7 @@ const WidgetWindow = ({
       <StyledCloseButton onClick={() => setIsOpen(() => false)}>
         <CloseIcon />
       </StyledCloseButton>
-      <Chat {...props} />
+      <Chat {...props} isOpen={isOpen} />
     </StyledWidgetWindowWrapper>
   );
 };
