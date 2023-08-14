@@ -61,8 +61,8 @@ export const DEFAULT_CONSTANT: Constant = {
       headerTwo: 'Ask me anything!',
     },
     messageContent: {
-      header: '',
-      body: '',
+      header: 'AI ChatBot',
+      body: "Hi~ I'm Khan Academy Support ChatBot. Ask me anything!",
     },
     logoContent: {
       Component: StartingPageLogo,
@@ -84,7 +84,7 @@ export const DEFAULT_CONSTANT: Constant = {
       'In this beta version, the AI-generated responses may lack complete accuracy.',
   },
   replacementTextList: [['the Text extracts', 'ChatBot Knowledge Base']],
-  instantConnect: false,
+  instantConnect: true,
   customRefreshComponent: {
     icon: RefreshIcon,
     width: '16px',

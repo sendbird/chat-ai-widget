@@ -44,8 +44,7 @@ type MessageMeta = {
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
-  const { userId, suggestedMessageContent, instantConnect } =
-    useConstantState();
+  const { userId, suggestedMessageContent } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
@@ -109,10 +108,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   }, [lastMessage?.messageId]);
 
   return (
-    <Root
-      hidePlaceholder={startingPagePlaceHolder}
-      height={instantConnect ? '100vh' : '100%'}
-    >
+    <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'}>
       <ChannelUI
         renderChannelHeader={() => {
           return channel && createGroupChannel ? (
