@@ -245,6 +245,8 @@ const memoizedConfigureSession = useCallback(
   },[]);
 
 const customConfigs = {
+  // If instantConnect set to `true`, the SDK connection will be established right after mounting the Chat or ChatAiWidget component
+  instantConnect: true / false,
   configureSession: memoizedConfigureSession,
   customRefreshComponent: {
     icon: 'Your SVG icon',
@@ -268,6 +270,7 @@ const App = () => {
       userId={USER_ID}
       configureSession={customConfigs.configureSession}
       customRefreshComponent={customConfigs.customRefreshComponent}
+      instantConnect={customConfigs.instantConnect}
       {...customConstants}
     />
   );
