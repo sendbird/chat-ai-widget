@@ -1,6 +1,8 @@
 ## [v1.0.7] (Aug 10 2023)
 #### Feat:
 - Added support for mobile devices.
+- Set `instantConnect: true` as default
+  - If instantConnect set is `true`, the SDK connection will be established right after mounting the <Chat /> or <ChatAiWidget /> component
 
 #### Fixes:
 - Fixed issues related to AdminMessage handling and introduced an option for source messages.
