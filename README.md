@@ -137,7 +137,7 @@ const customConstants = {
     {
       data: [
         {
-          options: [
+          quick_replies: [
             'What can I learn from Pre-K 8th grade?',
             'Tell me about Math',
           ],

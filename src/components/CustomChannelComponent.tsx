@@ -43,7 +43,7 @@ type MessageMeta =
   | {
       stream: boolean;
     }
-  | Array<{ options?: string[]; quick_replies?: string[] }>;
+  | Array<{ quick_replies?: string[] }>;
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
@@ -79,7 +79,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     Array.isArray(lastMessageMeta) &&
     lastMessageMeta.length > 0 &&
     lastMessageMeta[0] != null
-      ? lastMessageMeta[0].options ?? lastMessageMeta[0]?.quick_replies ?? []
+      ? lastMessageMeta[0].quick_replies ?? []
       : [];
 
   const isStaticReplyVisible =

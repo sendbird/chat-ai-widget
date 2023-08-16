@@ -53,7 +53,7 @@ export const DEFAULT_CONSTANT: Constant = {
     {
       data: [
         {
-          options: [
+          quick_replies: [
             'What can I learn from Pre-K 8th grade?',
             'Tell me about Math',
           ],
@@ -116,10 +116,8 @@ type ConfigureSession = (
   sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat
 ) => SessionHandler;
 
-type MessageOptions = string[];
-
 type MessageData = {
-  options?: MessageOptions;
+  quick_replies?: string[];
 };
 
 type FirstMessageItem = {
