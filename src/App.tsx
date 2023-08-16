@@ -18,6 +18,7 @@ const App = (props: Props) => {
       betaMark={props.betaMark}
       customBetaMarkText={props.customBetaMarkText}
       suggestedMessageContent={props.suggestedMessageContent}
+      firstMessageData={props.firstMessageData}
       createGroupChannelParams={props.createGroupChannelParams}
       startingPageContent={props.startingPageContent}
       chatBottomContent={props.chatBottomContent}

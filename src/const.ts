@@ -49,6 +49,19 @@ export const DEFAULT_CONSTANT: Constant = {
       'Ask away',
     ],
   },
+  firstMessageData: [
+    {
+      data: [
+        {
+          quick_replies: [
+            'What can I learn from Pre-K 8th grade?',
+            'Tell me about Math',
+          ],
+        },
+      ],
+      message: "Hi~ I'm Khan Academy Support ChatBot. Ask me anything!",
+    },
+  ],
   createGroupChannelParams: {
     name: 'Sendbird AI Chatbot',
     coverUrl:
@@ -103,6 +116,15 @@ type ConfigureSession = (
   sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat
 ) => SessionHandler;
 
+type MessageData = {
+  quick_replies?: string[];
+};
+
+type FirstMessageItem = {
+  data: MessageData[];
+  message: string;
+};
+
 export interface Constant {
   botNickName: string;
   userId: string;
@@ -119,6 +141,7 @@ export interface Constant {
   customRefreshComponent: CustomRefreshComponent;
   configureSession: ConfigureSession;
   enableSourceMessage: boolean;
+  firstMessageData: FirstMessageItem[];
 }
 
 export interface SuggestedReply {

@@ -13,7 +13,8 @@ import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import CustomMessageInput from './CustomMessageInput';
-import SuggestedRepliesPanel from './SuggestedRepliesPanel';
+import DynamicRepliesPanel from './DynamicRepliesPanel';
+import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
@@ -38,9 +39,11 @@ type CustomChannelComponentProps = {
   createGroupChannel?: () => void;
 };
 
-type MessageMeta = {
-  stream: boolean;
-};
+type MessageMeta =
+  | {
+      stream: boolean;
+    }
+  | Array<{ quick_replies?: string[] }>;
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
@@ -71,7 +74,15 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     return messageMeta;
   }, [lastMessage?.data]);
 
-  const isSuggestedReplyVisible =
+  const dynamicReplyOptions =
+    lastMessageMeta != null &&
+    Array.isArray(lastMessageMeta) &&
+    lastMessageMeta.length > 0 &&
+    lastMessageMeta[0] != null
+      ? lastMessageMeta[0].quick_replies ?? []
+      : [];
+
+  const isStaticReplyVisible =
     allMessages &&
     allMessages.length > 1 &&
     !(lastMessage?.messageType === 'admin') &&
@@ -86,7 +97,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     isLastBotMessage,
     lastMessageRef,
     // the SuggestedRepliesPanel height is about 50px
-    bottomBuffer: isSuggestedReplyVisible ? 50 : 0,
+    bottomBuffer: isStaticReplyVisible ? 50 : 0,
   });
 
   /**
@@ -129,8 +140,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 backgroundColor: 'white',
               }}
             >
-              {isSuggestedReplyVisible && (
-                <SuggestedRepliesPanel botUser={botUser} />
+              {dynamicReplyOptions.length > 0 ? (
+                <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
+              ) : (
+                isStaticReplyVisible && <StaticRepliesPanel botUser={botUser} />
               )}
               <CustomMessageInput />
               <ChatBottom />

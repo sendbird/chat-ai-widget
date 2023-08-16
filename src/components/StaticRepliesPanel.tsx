@@ -82,7 +82,7 @@ interface Props {
   botUser: User;
 }
 
-const SuggestedRepliesPanel = (props: Props) => {
+const StaticRepliesPanel = (props: Props) => {
   const { botUser } = props;
 
   const { suggestedMessageContent } = useConstantState();
@@ -161,4 +161,4 @@ const SuggestedRepliesPanel = (props: Props) => {
   ) : null;
 };
 
-export default SuggestedRepliesPanel;
+export default StaticRepliesPanel;

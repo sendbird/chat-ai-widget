@@ -133,6 +133,19 @@ const customConstants = {
       "I'm here to help you with any questions you have",
     ],
   },
+  firstMessageData: [
+    {
+      data: [
+        {
+          quick_replies: [
+            'What can I learn from Pre-K 8th grade?',
+            'Tell me about Math',
+          ],
+        },
+      ],
+      message: "Hi~ I'm Khan Academy Support ChatBot. Ask me anything!",
+    },
+  ],
   createGroupChannelParams: {
     name: 'Khan Academy Support Bot',
     coverUrl:
@@ -182,6 +195,7 @@ const App = () => {
       betaMark={customConstants.betaMark}
       customBetaMarkText={customConstants.customBetaMarkText}
       suggestedMessageContent={customConstants.suggestedMessageContent}
+      firstMessageData={customConstants.firstMessageData}
       createGroupChannelParams={customConstants.createGroupChannelParams}
       startingPageContent={customConstants.startingPageContent}
       chatBottomContent={customConstants.chatBottomContent}
