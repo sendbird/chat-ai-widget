@@ -43,7 +43,7 @@ type MessageMeta =
   | {
       stream: boolean;
     }
-  | Array<{ quick_replies?: string[] }>;
+  | { quick_replies?: string[] };
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
@@ -76,10 +76,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const dynamicReplyOptions =
     lastMessageMeta != null &&
-    Array.isArray(lastMessageMeta) &&
-    lastMessageMeta.length > 0 &&
-    lastMessageMeta[0] != null
-      ? lastMessageMeta[0].quick_replies ?? []
+    'quick_replies' in lastMessageMeta &&
+    lastMessageMeta.quick_replies != null
+      ? lastMessageMeta.quick_replies
       : [];
 
   const isStaticReplyVisible =
@@ -87,7 +86,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     allMessages.length > 1 &&
     !(lastMessage?.messageType === 'admin') &&
     lastMessage.sender.userId === botUser.userId &&
-    !lastMessageMeta?.stream &&
+    // in streaming
+    lastMessageMeta != null &&
+    'stream' in lastMessageMeta &&
+    !lastMessageMeta.stream &&
     !isSpecialMessage(
       lastMessage.message,
       suggestedMessageContent.messageFilterList
@@ -96,8 +98,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   useScrollOnStreaming({
     isLastBotMessage,
     lastMessageRef,
-    // the SuggestedRepliesPanel height is about 50px
-    bottomBuffer: isStaticReplyVisible ? 50 : 0,
+    // the reply panel component height is about 50px * 3(max replies) = 150px
+    bottomBuffer:
+      dynamicReplyOptions.length > 0 || isStaticReplyVisible ? 150 : 0,
   });
 
   /**

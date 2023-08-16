@@ -66,9 +66,7 @@ export default function BotMessageWithBodyInput(props: Props) {
     props;
 
   return (
-    <Root
-      style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}
-    >
+    <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
       <ImageContainer>
         <img
           src={botMessageImage}
