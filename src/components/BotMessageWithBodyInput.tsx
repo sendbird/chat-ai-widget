@@ -21,8 +21,7 @@ const Sender = styled.div<StartingPageAnimatorProps>`
   font-weight: 700;
   font-size: 12px;
   line-height: 12px;
-  color: ${(props: StartingPageAnimatorProps) =>
-    props.isStartingPage ? '#FFFFFF' : 'rgba(0, 0, 0, 0.5)'};
+  color: rgba(0, 0, 0, 0.5);
   transition: color 0.5s;
   transition-timing-function: ease;
   margin: 0 0 4px 12px;
@@ -69,7 +68,6 @@ export default function BotMessageWithBodyInput(props: Props) {
   return (
     <Root
       style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}
-      isStartingPage
     >
       <ImageContainer>
         <img
@@ -85,7 +83,6 @@ export default function BotMessageWithBodyInput(props: Props) {
           style={{
             textAlign: 'left',
           }}
-          isStartingPage={messageCount === 1}
         >
           {botUser.nickname}
         </Sender>
