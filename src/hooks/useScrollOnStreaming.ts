@@ -17,7 +17,7 @@ export function useScrollOnStreaming({
     if (bottomBuffer > 0) {
       element.style.scrollMarginBottom = `${bottomBuffer}px`;
     }
-  }, 30);
+  }, 0);
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
