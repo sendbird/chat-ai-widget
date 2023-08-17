@@ -12,25 +12,25 @@ const USER_ID = uuid();
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
 
 export const DEFAULT_CONSTANT: Constant = {
-  botNickName: 'Khan Academy Support Bot',
+  botNickName: 'Sendbird Bot',
   userId: USER_ID,
   userNickName: 'User',
   betaMark: true,
   customBetaMarkText: 'BETA',
   suggestedMessageContent: {
     replyContents: [
-      {
-        title: 'Yes, it was helpful! 👍',
-        text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
-        buttonText: 'Try free trial',
-        link: 'https://dashboard.sendbird.com/auth/signup',
-      },
-      {
-        title: 'No, I need more help. 💬',
-        text: "I'm sorry, we couldn't help you. Let us know how we can improve by talking to one of our teammates.",
-        buttonText: 'Talk to an expert',
-        link: 'https://sendbird.com/contact-sales',
-      },
+      // {
+      //   title: 'Yes, it was helpful! 👍',
+      //   text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
+      //   buttonText: 'Try free trial',
+      //   link: 'https://dashboard.sendbird.com/auth/signup',
+      // },
+      // {
+      //   title: 'No, I need more help. 💬',
+      //   text: "I'm sorry, we couldn't help you. Let us know how we can improve by talking to one of our teammates.",
+      //   buttonText: 'Talk to an expert',
+      //   link: 'https://sendbird.com/contact-sales',
+      // },
     ],
     messageFilterList: [
       'Can you please clarify?',
@@ -53,13 +53,10 @@ export const DEFAULT_CONSTANT: Constant = {
     {
       data: [
         {
-          quick_replies: [
-            'What can I learn from Pre-K 8th grade?',
-            'Tell me about Math',
-          ],
+          quick_replies: ['센드버드 100배 활용법', '센드버드 제품 살펴보기'],
         },
       ],
-      message: "Hi~ I'm Khan Academy Support ChatBot. Ask me anything!",
+      message: '안녕하세요! 센드버드 봇입니다. 무엇을 도와드릴까요?',
     },
   ],
   createGroupChannelParams: {
