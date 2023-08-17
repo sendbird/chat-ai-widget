@@ -81,12 +81,12 @@ export default function ParsedBotMessageBody(props: Props) {
             </BlockContainer>
           );
         })}
-        {sources.length > 0 ? (
+        {/* {sources.length > 0 ? (
           <>
             <SourceContainer sources={sources} />
             <BotMessageBottom />
           </>
-        ) : null}
+        ) : null} */}
       </Root>
     );
   }
