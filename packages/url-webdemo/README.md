@@ -14,17 +14,13 @@ It is for the Sendbird Chat AI bot demo that works like the one by [Intercom](ht
 npm run dev
 ```
 ## Test urls
-### Web demo link(prod)
-https://sendbird-chat-ai-bot-demo.netlify.app/?hashed_key=${token}
+### Web demo link
+ - prod: https://chat-ai-widget.netlify.app/?hashed_key=${token}
+ - preprod: https://develop--chat-ai-widget.netlify.app/?hashed_key=${token}
 
-### Widget demo link(prod)
-https://sendbird-chat-ai-bot-demo.netlify.app/?hashed_key=${token}&is_widget=true
-
-### Web demo link (preprod)
-https://sendbird-chat-ai-bot-demo-preprod.netlify.app/?hashed_key=${token_preprod}
-
-### Widget demo link (preprod)
-https://sendbird-chat-ai-bot-demo-preprod.netlify.app/?hashed_key=${token_preprod}&is_widget=true
+### Widget demo link
+ - prod: https://chat-ai-widget.netlify.app/?hashed_key=${token}&is_widget=true
+ - preprod: https://develop--chat-ai-widget.netlify.app/?hashed_key=${token}
 
 ## How to find secrets
 Go to 1password
@@ -40,10 +36,9 @@ VITE_WIDGET_DEMO_APP_ID=
 ```
 
 ### How to deploy to Netlify
-Go to branch (main for prod and preprod for preprod)
+Go to branch (`main` for prod and `develop` for preprod)
 Env variables are already set in netlify:
-- Prod: https://app.netlify.com/sites/sendbird-chat-ai-bot-demo/overview
-- Preprod: https://app.netlify.com/sites/sendbird-chat-ai-bot-demo-preprod/overview
+- https://app.netlify.com/sites/chat-ai-widget/overview
 
 ## Services that use this repo
 * Prod:
