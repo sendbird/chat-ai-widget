@@ -4,3 +4,10 @@ declare module '*.svg' {
   const src: string;
   export default src;
 }
+
+declare module '@sendbird/chat-ai-widget' {
+  import ChatAiWidget = require('@sendbird/chat-ai-widget');
+  const ChatAiWidget: ChatAiWidget.ChatAiWidget;
+  const Chat: ChatAiWidget.Chat;
+  export { ChatAiWidget, Chat };
+}

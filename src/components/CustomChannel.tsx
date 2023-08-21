@@ -16,7 +16,7 @@ import { useCreateGroupChannel } from '../hooks/useCreateGroupChannel';
 import { useGetBotUser } from '../hooks/useGetBotUser';
 import { assert } from '../utils';
 
-function Channel(props) {
+function Channel(props: { createGroupChannel: () => void; botUser: User }) {
   const { instantConnect } = useConstantState();
   const { sbConnectionStatus } = useSbConnectionState();
   const { setInitialTimeStamp } = useChannelContext();
