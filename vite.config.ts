@@ -34,7 +34,7 @@ export default defineConfig({
         'react',
         'react-dom',
         'styled-components',
-        'react-code-blocks'
+        'react-code-blocks',
       ],
     }
   },
