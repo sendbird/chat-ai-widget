@@ -67,7 +67,7 @@ const Chat = ({
   applicationId,
   botId,
   hashedKey,
-  isOpen,
+  isOpen = true,
   ...constantProps
 }: ChatWidgetProps & {
   isOpen: boolean;
