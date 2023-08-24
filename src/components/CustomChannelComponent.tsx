@@ -14,7 +14,6 @@ import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import CustomMessageInput from './CustomMessageInput';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
-import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
@@ -43,7 +42,7 @@ type MessageMeta =
   | {
       stream: boolean;
     }
-  | { quick_replies?: string[] };
+  | Array<{ quick_replies?: string[] }>;
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
@@ -76,9 +75,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const dynamicReplyOptions =
     lastMessageMeta != null &&
-    'quick_replies' in lastMessageMeta &&
-    lastMessageMeta.quick_replies != null
-      ? lastMessageMeta.quick_replies
+    Array.isArray(lastMessageMeta) &&
+    lastMessageMeta.length > 0 &&
+    lastMessageMeta[0] != null
+      ? lastMessageMeta[0].quick_replies ?? []
       : [];
 
   const isStaticReplyVisible =
@@ -143,11 +143,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 backgroundColor: 'white',
               }}
             >
-              {dynamicReplyOptions.length > 0 ? (
-                <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-              ) : (
-                isStaticReplyVisible && <StaticRepliesPanel botUser={botUser} />
-              )}
+              {/* {isStaticReplyVisible && <StaticRepliesPanel botUser={botUser} />} */}
               <CustomMessageInput />
               <ChatBottom />
             </div>
@@ -155,12 +151,17 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
         }}
         renderMessage={({ message }: { message: EveryMessage }) => {
           return (
-            <CustomMessage
-              message={message}
-              activeSpinnerId={activeSpinnerId}
-              botUser={botUser}
-              lastMessageRef={lastMessageRef}
-            />
+            <>
+              <CustomMessage
+                message={message}
+                activeSpinnerId={activeSpinnerId}
+                botUser={botUser}
+                lastMessageRef={lastMessageRef}
+              />
+              {dynamicReplyOptions.length > 0 && (
+                <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
+              )}
+            </>
           );
         }}
         renderTypingIndicator={() => <></>}

@@ -45,8 +45,7 @@ const Panel = styled.div`
   flex-wrap: wrap;
   column-gap: 10px;
   row-gap: 8px;
-  margin-top: 4px;
-  margin-right: 16px;
+  margin-top: 16px;
   flex-direction: column;
 `;
 
