@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import BetaLogo from './BetaLogo';
 import ChatBottom from './ChatBottom';
 import { StartingPageAnimatorProps } from './CustomChannelComponent';
 import { MessageInput } from './CustomMessageInput';
@@ -51,18 +52,6 @@ const HeaderTwo = styled.div`
   //margin-top: 8px;
   font-size: 32px;
   line-height: 40px;
-`;
-
-export const BetaLogo = styled.div`
-  padding: 4px;
-  background: #c8d9fa;
-  border-radius: 2px;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 12px;
-  color: #30308f;
-  font-family: 'SF Pro Display', sans-serif;
-  letter-spacing: 0.8px;
 `;
 
 export const HeaderOneContainer = styled.div`
