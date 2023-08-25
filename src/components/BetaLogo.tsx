@@ -8,8 +8,6 @@ const BetaLogo = styled.div`
   font-size: 11px;
   line-height: 12px;
   color: #1870f3;
-  font-family: 'SF Pro Display', sans-serif;
-  letter-spacing: 0.8px;
 `;
 
 export default BetaLogo;
