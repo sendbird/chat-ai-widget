@@ -29,7 +29,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
         props.customBetaMarkText ?? initialState.customBetaMarkText,
       suggestedMessageContent:
         props.suggestedMessageContent ?? initialState.suggestedMessageContent,
-      firstMessageData: props.firstMessageData ?? initialState.firstMessageData,
+      firstMessageData: props.firstMessageData ?? [],
       createGroupChannelParams:
         props.createGroupChannelParams ?? initialState.createGroupChannelParams,
       startingPageContent:

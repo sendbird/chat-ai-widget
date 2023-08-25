@@ -149,10 +149,6 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           );
         }}
         renderMessage={({ message }: { message: EveryMessage }) => {
-          const isLastBotMessage =
-            !(message?.messageType === 'admin') &&
-            (message as ClientUserMessage)?.sender.userId === botUser.userId &&
-            message.createdAt === lastMessage.createdAt;
           return (
             <>
               <CustomMessage
@@ -161,9 +157,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 botUser={botUser}
                 lastMessageRef={lastMessageRef}
               />
-              {isLastBotMessage && dynamicReplyOptions.length > 0 && (
-                <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-              )}
+              {message.messageId === lastMessage.messageId &&
+                dynamicReplyOptions.length > 0 && (
+                  <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
+                )}
             </>
           );
         }}
