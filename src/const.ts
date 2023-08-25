@@ -51,14 +51,12 @@ export const DEFAULT_CONSTANT: Constant = {
   },
   firstMessageData: [
     {
-      data: [
-        {
-          quick_replies: [
-            'What can I learn from Pre-K 8th grade?',
-            'Tell me about Math',
-          ],
-        },
-      ],
+      data: {
+        quick_replies: [
+          'What can I learn from Pre-K 8th grade?',
+          'Tell me about Math',
+        ],
+      },
       message: "Hi~ I'm Khan Academy Support ChatBot. Ask me anything!",
     },
   ],
@@ -121,7 +119,7 @@ type MessageData = {
 };
 
 type FirstMessageItem = {
-  data: MessageData[];
+  data: MessageData;
   message: string;
 };
 

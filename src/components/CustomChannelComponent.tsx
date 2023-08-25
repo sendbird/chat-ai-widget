@@ -42,7 +42,7 @@ type MessageMeta =
   | {
       stream: boolean;
     }
-  | Array<{ quick_replies?: string[] }>;
+  | { quick_replies?: string[] };
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
@@ -75,10 +75,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const dynamicReplyOptions =
     lastMessageMeta != null &&
-    Array.isArray(lastMessageMeta) &&
-    lastMessageMeta.length > 0 &&
-    lastMessageMeta[0] != null
-      ? lastMessageMeta[0].quick_replies ?? []
+    'quick_replies' in lastMessageMeta &&
+    lastMessageMeta.quick_replies != null
+      ? lastMessageMeta.quick_replies
       : [];
 
   const isStaticReplyVisible =
@@ -158,9 +157,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 botUser={botUser}
                 lastMessageRef={lastMessageRef}
               />
-              {dynamicReplyOptions.length > 0 && (
-                <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-              )}
+              {message.messageId === lastMessage.messageId &&
+                dynamicReplyOptions.length > 0 && (
+                  <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
+                )}
             </>
           );
         }}
