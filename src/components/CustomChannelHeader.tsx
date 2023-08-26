@@ -1,6 +1,7 @@
 import { GroupChannel } from '@sendbird/chat/groupChannel';
 import styled from 'styled-components';
 
+import BetaLogo from './BetaLogo';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
 import channelHeaderImage from '../icons/bot-message-image.png';
@@ -46,18 +47,6 @@ const RenewButtonContainer = styled.div`
   width: fit-content;
   align-items: center;
   gap: 6px;
-`;
-
-const BetaLogo = styled.div`
-  padding: 4px;
-  background: #c8d9fa;
-  border-radius: 2px;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 12px;
-  color: #30308f;
-  font-family: 'SF Pro Display', sans-serif;
-  letter-spacing: 0.8px;
 `;
 
 type Props = {
