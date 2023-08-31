@@ -33,9 +33,15 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
-        'styled-components',
         'react-code-blocks',
       ],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'react-code-blocks': 'ReactCodeBlocks',
+        }
+      }
     }
   },
 })

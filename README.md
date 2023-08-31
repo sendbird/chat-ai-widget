@@ -1,8 +1,7 @@
 ## What is this for?
-It is for the Sendbird Chat AI Widget UiKit.
+This is a Sendbird Chat AI Widget implemented on top of [React UiKit](https://github.com/sendbird/sendbird-uikit-react).
 
 ![output](https://github.com/sendbird/chat-ai-widget/assets/104121286/dc6f93e7-bfba-46e9-8b45-36ce4a9581d4)
-
 
 ## How to use
 0. Prepare Sendbird ***Application ID*** and ***Bot ID***
@@ -27,6 +26,8 @@ It is for the Sendbird Chat AI Widget UiKit.
      );
    }
    ```
+
+  > Not using React in your environment? You can also load this Chat AI Widget component from an HTML file on your website. Please refer to [js-example.html](./js-example.html) for an example.
 
 ## Run locally
 ```bash
