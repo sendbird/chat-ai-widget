@@ -1,3 +1,23 @@
+## [v1.0.8] (Aug 31 2023)
+
+#### Feat:
+- Implemented quick reply UI attachment to the bottom of bot messages.
+- Introduced a new feature for quick reply UI.
+- Introduce ai widget script loading for non-react users.
+
+#### Improvements:
+- Removed redundant styles to enhance the user interface.
+- Improved the BETA logo UI.
+
+#### Fixes:
+- Corrected the format of quick replies.
+- Addressed an issue with incorrect quick replies format.
+- Removed an unnecessary `isStartingPage` condition.
+
+#### Chores:
+- Moved url-webdemo to the packages directory for improved organization.
+
+
 ## [v1.0.7] (Aug 10 2023)
 #### Feat:
 - Added support for mobile devices.
