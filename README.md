@@ -1,7 +1,7 @@
 ## What is this for?
 This is a Sendbird Chat AI Widget implemented on top of [React UiKit](https://github.com/sendbird/sendbird-uikit-react).
 
-![output](https://github.com/sendbird/chat-ai-widget/assets/104121286/dc6f93e7-bfba-46e9-8b45-36ce4a9581d4)
+![chat-ai-widget](https://github.com/sendbird/chat-ai-widget/assets/104121286/360d2a17-dfc6-4810-a7c4-2f0615b43c3d)
 
 ## How to use
 0. Prepare Sendbird ***Application ID*** and ***Bot ID***
