@@ -13,7 +13,7 @@ export function useScrollOnStreaming({
   bottomBuffer,
 }: Params) {
   const throttledScrollIntoView = useThrottle((element: HTMLDivElement) => {
-    element.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    element.scrollIntoView({ block: 'end', behavior: 'smooth' });
     if (bottomBuffer > 0) {
       element.style.scrollMarginBottom = `${bottomBuffer}px`;
     }
