@@ -26,10 +26,19 @@ type Props = {
   activeSpinnerId: number;
   botUser: User;
   lastMessageRef: React.RefObject<HTMLDivElement>;
+  chainTop?: boolean;
+  chainBottom?: boolean;
 };
 
 export default function CustomMessage(props: Props) {
-  const { message, activeSpinnerId, botUser, lastMessageRef } = props;
+  const {
+    message,
+    activeSpinnerId,
+    botUser,
+    lastMessageRef,
+    chainTop,
+    chainBottom,
+  } = props;
   const { replacementTextList } = useConstantState();
 
   const { allMessages } = useChannelContext();
@@ -63,6 +72,8 @@ export default function CustomMessage(props: Props) {
           messageCount={allMessages.length}
           zIndex={30}
           bodyStyle={{ maxWidth: '255px', width: 'calc(100% - 98px)' }}
+          chainTop={chainTop}
+          chainBottom={chainBottom}
         />
       </div>
     );
@@ -81,6 +92,8 @@ export default function CustomMessage(props: Props) {
           }
           bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
           messageCount={allMessages.length}
+          chainTop={chainTop}
+          chainBottom={chainBottom}
         />
       );
     }
@@ -110,6 +123,8 @@ export default function CustomMessage(props: Props) {
             tokens={tokens}
           />
         }
+        chainTop={chainTop}
+        chainBottom={chainBottom}
       />
     </div>
   );

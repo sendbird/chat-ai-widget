@@ -54,6 +54,8 @@ type Props = {
   botUser: User;
   message: UserMessage;
   bodyComponent: ReactNode;
+  chainTop: boolean;
+  chainBottom: boolean;
   messageCount?: number;
   zIndex?: number;
   bodyStyle?: object;
@@ -61,29 +63,50 @@ type Props = {
 
 const ImageContainer = styled.div``;
 
-export default function BotMessageWithBodyInput(props: Props) {
-  const { botUser, message, bodyComponent, messageCount, zIndex, bodyStyle } =
-    props;
+const EmptyImageContainer = styled.div`
+  width: 30px;
+`;
 
+export default function BotMessageWithBodyInput(props: Props) {
+  const {
+    botUser,
+    message,
+    bodyComponent,
+    messageCount,
+    zIndex,
+    bodyStyle,
+    chainTop,
+    chainBottom,
+  } = props;
+
+  const nonChainedMessage = chainTop == null && chainBottom == null;
+  const displayProfileImage = nonChainedMessage || chainBottom;
+  const displaySender = nonChainedMessage || chainTop;
   return (
     <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
-      <ImageContainer>
-        <img
-          src={botMessageImage}
-          alt="botProfileImage"
-          style={{
-            height: '28px',
-          }}
-        />
-      </ImageContainer>
+      {displayProfileImage ? (
+        <ImageContainer>
+          <img
+            src={botMessageImage}
+            alt="botProfileImage"
+            style={{
+              height: '28px',
+            }}
+          />
+        </ImageContainer>
+      ) : (
+        <EmptyImageContainer />
+      )}
       <BodyContainer style={bodyStyle ?? {}}>
-        <Sender
-          style={{
-            textAlign: 'left',
-          }}
-        >
-          {botUser.nickname}
-        </Sender>
+        {displaySender && (
+          <Sender
+            style={{
+              textAlign: 'left',
+            }}
+          >
+            {botUser.nickname}
+          </Sender>
+        )}
         {bodyComponent}
       </BodyContainer>
       <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
