@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
+const TIME_SPAN = 3 * 60 * 1000;
 /**
  * Function to group messages based on their creation time
  *
@@ -17,7 +18,7 @@ export function groupMessagesByShortSpanTime(
     const prevKey = Object.keys(groups)[Object.keys(groups).length - 1];
 
     // Check if the time difference between the current message and the previous one is within 3 minutes
-    if (prevKey && message.createdAt - Number(prevKey) <= 3 * 60 * 1000) {
+    if (prevKey && message.createdAt - Number(prevKey) <= TIME_SPAN) {
       // Add the message to the existing group
       return {
         ...groups,
