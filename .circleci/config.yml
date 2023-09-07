@@ -16,25 +16,6 @@ executors:
     resource_class: arm.medium
 
 jobs:
-  build:
-    docker:
-      - image: circleci/node:18.17.1
-    resource_class: small
-    steps:
-      - checkout
-      - run:
-          name: change dir
-          command: cd packages/url-webdemo
-      - run:
-          name: Install Dependencies
-          command: npm install
-      - run:
-          name: Build
-          command: npm run build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build
   build_container_image_and_push:
     executor: << parameters.architecture >>
     environment:
