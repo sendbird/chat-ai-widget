@@ -54,6 +54,7 @@ const SBComponent = () => {
       configureSession={configureSession}
       customExtensionParams={userAgentCustomParams.current}
       breakPoint={isMobile}
+      isReactionEnabled={true}
     >
       <>
         <CustomChannel />
