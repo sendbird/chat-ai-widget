@@ -120,14 +120,6 @@ workflows:
   version: 2
   build_and_push:
     jobs:
-      - build:
-          name: build
-          context: circleci-dashboard-bot
-          filters: &only_version_tag_trigger
-            tags:
-              only: /^v.*/ # only deploy when it is release
-            branches:
-              ignore: /.*/
       - build_container_image_and_push:
           name: build_app-<<matrix.architecture>>
           filters: *only_version_tag_trigger
