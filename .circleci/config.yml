@@ -105,7 +105,7 @@ workflows:
           name: build_app-<<matrix.architecture>>
           filters: &only_version_tag_trigger
             tags:
-              only: /^v.*/ # only deploy when it is release
+              only: /^v.*/
             branches:
               ignore: /.*/
           matrix: &amd64_and_arm64_matrix
