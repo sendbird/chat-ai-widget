@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { StartingPageAnimatorProps } from './CustomChannelComponent';
+import { ReactionContainer } from './ReactionContainer';
 import botMessageImage from '../icons/bot-message-image.png';
 import { formatCreatedAtToAMPM } from '../utils';
 
@@ -85,6 +86,7 @@ export default function BotMessageWithBodyInput(props: Props) {
           {botUser.nickname}
         </Sender>
         {bodyComponent}
+        <ReactionContainer message={message} />
       </BodyContainer>
       <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
     </Root>
