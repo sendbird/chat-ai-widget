@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { StartingPageAnimatorProps } from './CustomChannelComponent';
 import { ReactionContainer } from './ReactionContainer';
+import { useConstantState } from '../context/ConstantContext';
 import botMessageImage from '../icons/bot-message-image.png';
 import { formatCreatedAtToAMPM } from '../utils';
 
@@ -69,6 +70,7 @@ const EmptyImageContainer = styled.div`
 `;
 
 export default function BotMessageWithBodyInput(props: Props) {
+  const { enableEmojiFeedback } = useConstantState();
   const {
     botUser,
     message,
@@ -109,7 +111,7 @@ export default function BotMessageWithBodyInput(props: Props) {
           </Sender>
         )}
         {bodyComponent}
-        <ReactionContainer message={message} />
+        {enableEmojiFeedback && <ReactionContainer message={message} />}
       </BodyContainer>
       <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
     </Root>

@@ -17,8 +17,14 @@ import SBConnectionStateProvider, {
 import { assert, isMobile } from '../utils';
 
 const SBComponent = () => {
-  const { applicationId, botId, userId, userNickName, configureSession } =
-    useConstantState();
+  const {
+    applicationId,
+    botId,
+    userId,
+    userNickName,
+    configureSession,
+    enableEmojiFeedback,
+  } = useConstantState();
 
   assert(
     applicationId !== null && botId !== null,
@@ -54,7 +60,7 @@ const SBComponent = () => {
       configureSession={configureSession}
       customExtensionParams={userAgentCustomParams.current}
       breakPoint={isMobile}
-      isReactionEnabled={true}
+      isReactionEnabled={enableEmojiFeedback}
     >
       <>
         <CustomChannel />

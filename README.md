@@ -183,6 +183,7 @@ const customConstants = {
   },
   replacementTextList: [['the Text extracts', 'ChatBot Knowledge Base']],
   enableSourceMessage: false,
+  enableEmojiFeedback: true,
 };
 
 const App = () => {
@@ -203,6 +204,7 @@ const App = () => {
       messageBottomContent={customConstants.messageBottomContent}
       replacementTextList={customConstants.replacementTextList}
       enableSourceMessage={customConstants.enableSourceMessage}
+      enableEmojiFeedback={customConstants.enableEmojiFeedback}
     />
   );
 };
