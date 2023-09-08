@@ -165,8 +165,8 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 activeSpinnerId={activeSpinnerId}
                 botUser={botUser}
                 lastMessageRef={lastMessageRef}
-                chainTop={grouppedMessage.chaintop}
-                chainBottom={grouppedMessage.chainBottom}
+                chainTop={grouppedMessage?.chaintop}
+                chainBottom={grouppedMessage?.chainBottom}
               />
               {message.messageId === lastMessage.messageId &&
                 dynamicReplyOptions.length > 0 && (
