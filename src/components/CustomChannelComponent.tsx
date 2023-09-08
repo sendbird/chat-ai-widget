@@ -17,6 +17,7 @@ import DynamicRepliesPanel from './DynamicRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
+import { groupMessagesByShortSpanTime } from '../utils/messages';
 
 const Root = styled.div<{ hidePlaceholder: boolean; height: string }>`
   height: ${({ height }) => height};
@@ -120,6 +121,11 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     }
   }, [lastMessage?.messageId]);
 
+  const grouppedMessages = useMemo(
+    () => groupMessagesByShortSpanTime(allMessages),
+    [allMessages.length]
+  );
+
   return (
     <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'}>
       <ChannelUI
@@ -149,6 +155,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           );
         }}
         renderMessage={({ message }: { message: EveryMessage }) => {
+          const grouppedMessage = grouppedMessages.find(
+            (m) => m.messageId == message.messageId
+          );
           return (
             <>
               <CustomMessage
@@ -156,6 +165,8 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 activeSpinnerId={activeSpinnerId}
                 botUser={botUser}
                 lastMessageRef={lastMessageRef}
+                chainTop={grouppedMessage?.chaintop}
+                chainBottom={grouppedMessage?.chainBottom}
               />
               {message.messageId === lastMessage.messageId &&
                 dynamicReplyOptions.length > 0 && (

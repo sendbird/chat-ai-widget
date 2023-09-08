@@ -1,4 +1,4 @@
-import { LOCAL_MESSAGE_CUSTOM_TYPE } from './const';
+import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 
 export function uuid() {
   let d = new Date().getTime();
