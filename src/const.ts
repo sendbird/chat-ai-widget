@@ -107,8 +107,8 @@ export const DEFAULT_CONSTANT: Constant = {
     },
     onClick: noop,
   },
-  enableSourceMessage: true,
-  enableEmojiFeedback: true,
+  enableSourceMessage: false,
+  enableEmojiFeedback: false,
 };
 
 type ConfigureSession = (
