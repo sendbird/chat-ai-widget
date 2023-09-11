@@ -13,7 +13,7 @@ export function groupMessagesByShortSpanTime(
 ): EveryMessage[] {
   // Create an object to group messages based on their creation time
   const groupedMessagesByCreatedAt = messages.reduce((groups, message, idx) => {
-    const { createdAt, sender } = message;
+    const { createdAt, sender, messageType } = message;
     // Get the key of the previous group
     const prevKey = Object.keys(groups)[Object.keys(groups).length - 1];
 
@@ -21,6 +21,7 @@ export function groupMessagesByShortSpanTime(
     if (
       prevKey &&
       createdAt - Number(prevKey) <= TIME_SPAN &&
+      messageType !== 'admin' &&
       sender?.userId === messages[idx - 1]?.sender.userId
     ) {
       // Add the message to the existing group
