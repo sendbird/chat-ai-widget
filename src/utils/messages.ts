@@ -12,13 +12,17 @@ export function groupMessagesByShortSpanTime(
   messages: EveryMessage[]
 ): EveryMessage[] {
   // Create an object to group messages based on their creation time
-  const groupedMessagesByCreatedAt = messages.reduce((groups, message) => {
-    const { createdAt } = message;
+  const groupedMessagesByCreatedAt = messages.reduce((groups, message, idx) => {
+    const { createdAt, sender } = message;
     // Get the key of the previous group
     const prevKey = Object.keys(groups)[Object.keys(groups).length - 1];
 
     // Check if the time difference between the current message and the previous one is within 3 minutes
-    if (prevKey && message.createdAt - Number(prevKey) <= TIME_SPAN) {
+    if (
+      prevKey &&
+      createdAt - Number(prevKey) <= TIME_SPAN &&
+      sender?.userId === messages[idx - 1]?.sender.userId
+    ) {
       // Add the message to the existing group
       return {
         ...groups,
