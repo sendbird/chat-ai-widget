@@ -62,6 +62,8 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       configureSession: props.configureSession,
       enableSourceMessage:
         props.enableSourceMessage ?? initialState.enableSourceMessage,
+      enableEmojiFeedback:
+        props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
     }),
     [props]
   );

@@ -29,6 +29,7 @@ const App = (props: Props) => {
       customRefreshComponent={props.customRefreshComponent}
       configureSession={props.configureSession}
       enableSourceMessage={props.enableSourceMessage}
+      enableEmojiFeedback={props.enableEmojiFeedback}
     />
   );
 };

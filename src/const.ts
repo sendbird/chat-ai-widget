@@ -108,6 +108,7 @@ export const DEFAULT_CONSTANT: Constant = {
     onClick: noop,
   },
   enableSourceMessage: true,
+  enableEmojiFeedback: true,
 };
 
 type ConfigureSession = (
@@ -139,6 +140,7 @@ export interface Constant {
   customRefreshComponent: CustomRefreshComponent;
   configureSession: ConfigureSession;
   enableSourceMessage: boolean;
+  enableEmojiFeedback: boolean;
   firstMessageData: FirstMessageItem[];
 }
 
