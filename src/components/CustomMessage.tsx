@@ -28,6 +28,7 @@ type Props = {
   lastMessageRef: React.RefObject<HTMLDivElement>;
   chainTop?: boolean;
   chainBottom?: boolean;
+  isBotWelcomeMessage: boolean;
 };
 
 export default function CustomMessage(props: Props) {
@@ -38,6 +39,7 @@ export default function CustomMessage(props: Props) {
     lastMessageRef,
     chainTop,
     chainBottom,
+    isBotWelcomeMessage,
   } = props;
   const { replacementTextList } = useConstantState();
 
@@ -71,9 +73,9 @@ export default function CustomMessage(props: Props) {
           }
           messageCount={allMessages.length}
           zIndex={30}
-          bodyStyle={{ maxWidth: '255px', width: 'calc(100% - 98px)' }}
           chainTop={chainTop}
           chainBottom={chainBottom}
+          isBotWelcomeMessage={isBotWelcomeMessage}
         />
       </div>
     );
@@ -94,6 +96,7 @@ export default function CustomMessage(props: Props) {
           messageCount={allMessages.length}
           chainTop={chainTop}
           chainBottom={chainBottom}
+          isBotWelcomeMessage={isBotWelcomeMessage}
         />
       );
     }
@@ -125,6 +128,7 @@ export default function CustomMessage(props: Props) {
         }
         chainTop={chainTop}
         chainBottom={chainBottom}
+        isBotWelcomeMessage={isBotWelcomeMessage}
       />
     </div>
   );

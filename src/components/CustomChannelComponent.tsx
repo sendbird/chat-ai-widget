@@ -17,7 +17,10 @@ import DynamicRepliesPanel from './DynamicRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
-import { groupMessagesByShortSpanTime } from '../utils/messages';
+import {
+  groupMessagesByShortSpanTime,
+  getBotWelcomeMessages,
+} from '../utils/messages';
 
 const Root = styled.div<{ hidePlaceholder: boolean; height: string }>`
   height: ${({ height }) => height};
@@ -126,6 +129,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     [allMessages.length]
   );
 
+  const botWelcomeMessages = useMemo(() => {
+    return getBotWelcomeMessages(allMessages, botUser.userId);
+  }, [allMessages.length]);
+
   return (
     <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'}>
       <ChannelUI
@@ -158,6 +165,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           const grouppedMessage = grouppedMessages.find(
             (m) => m.messageId == message.messageId
           );
+
+          const isBotWelcomeMessage = !!botWelcomeMessages.find(
+            (welcomeMessage) => welcomeMessage.messageId === message.messageId
+          );
           return (
             <>
               <CustomMessage
@@ -167,6 +178,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 lastMessageRef={lastMessageRef}
                 chainTop={grouppedMessage?.chaintop}
                 chainBottom={grouppedMessage?.chainBottom}
+                isBotWelcomeMessage={isBotWelcomeMessage}
               />
               {message.messageId === lastMessage.messageId &&
                 dynamicReplyOptions.length > 0 && (

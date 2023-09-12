@@ -61,7 +61,7 @@ export default function ParsedBotMessageBody(props: Props) {
     : [];
 
   // console.log('## sources: ', sources);
-  if (tokens.length > 0 && enableSourceMessage) {
+  if (tokens.length > 0) {
     return (
       <Root>
         {tokens.map((token: Token, i) => {
@@ -81,7 +81,7 @@ export default function ParsedBotMessageBody(props: Props) {
             </BlockContainer>
           );
         })}
-        {sources.length > 0 ? (
+        {sources.length > 0 && enableSourceMessage ? (
           <>
             <SourceContainer sources={sources} />
             <BotMessageBottom />
