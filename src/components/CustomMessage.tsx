@@ -1,6 +1,7 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import { useMemo } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
@@ -20,6 +21,7 @@ import {
   replaceUrl,
   Token,
 } from '../utils';
+import { getBotWelcomeMessages } from '../utils/messages';
 
 type Props = {
   message: EveryMessage;
@@ -44,6 +46,16 @@ export default function CustomMessage(props: Props) {
   const { allMessages } = useChannelContext();
   const firstMessage: UserMessage = allMessages[0] as UserMessage;
   const firstMessageId = firstMessage?.messageId ?? -1;
+
+  const isBotWelcomeMessage = useMemo(() => {
+    const botWelcomeMessages = getBotWelcomeMessages(
+      allMessages,
+      botUser.userId
+    );
+    return !!botWelcomeMessages.find(
+      (welcomeMessage) => welcomeMessage.messageId === message.messageId
+    );
+  }, [allMessages.length]);
 
   // admin message
   if (message.messageType === 'admin') {
@@ -71,9 +83,9 @@ export default function CustomMessage(props: Props) {
           }
           messageCount={allMessages.length}
           zIndex={30}
-          bodyStyle={{ maxWidth: '255px', width: 'calc(100% - 98px)' }}
           chainTop={chainTop}
           chainBottom={chainBottom}
+          isBotWelcomeMessage={isBotWelcomeMessage}
         />
       </div>
     );
@@ -94,6 +106,7 @@ export default function CustomMessage(props: Props) {
           messageCount={allMessages.length}
           chainTop={chainTop}
           chainBottom={chainBottom}
+          isBotWelcomeMessage={isBotWelcomeMessage}
         />
       );
     }
@@ -125,6 +138,7 @@ export default function CustomMessage(props: Props) {
         }
         chainTop={chainTop}
         chainBottom={chainBottom}
+        isBotWelcomeMessage={isBotWelcomeMessage}
       />
     </div>
   );

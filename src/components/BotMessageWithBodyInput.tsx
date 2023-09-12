@@ -61,12 +61,13 @@ type Props = {
   messageCount?: number;
   zIndex?: number;
   bodyStyle?: object;
+  isBotWelcomeMessage?: boolean;
 };
 
 const ImageContainer = styled.div``;
 
 const EmptyImageContainer = styled.div`
-  width: 30px;
+  width: 28px;
 `;
 
 export default function BotMessageWithBodyInput(props: Props) {
@@ -80,11 +81,13 @@ export default function BotMessageWithBodyInput(props: Props) {
     bodyStyle,
     chainTop,
     chainBottom,
+    isBotWelcomeMessage,
   } = props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
   const displaySender = nonChainedMessage || chainTop;
+
   return (
     <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
       {displayProfileImage ? (
@@ -111,7 +114,9 @@ export default function BotMessageWithBodyInput(props: Props) {
           </Sender>
         )}
         {bodyComponent}
-        {enableEmojiFeedback && <ReactionContainer message={message} />}
+        {enableEmojiFeedback && displayProfileImage && !isBotWelcomeMessage && (
+          <ReactionContainer message={message} />
+        )}
       </BodyContainer>
       <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
     </Root>

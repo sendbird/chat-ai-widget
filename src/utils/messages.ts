@@ -53,3 +53,24 @@ export function groupMessagesByShortSpanTime(
     }
   );
 }
+
+export function getBotWelcomeMessages(
+  messages: EveryMessage[],
+  botUserId: string
+) {
+  // if the list is empty or the first message is not from bot,
+  // we just assume there's no welcome messages
+  if (messages.length === 0 || messages[0]?.sender.userId !== botUserId) {
+    return [];
+  }
+
+  // if the list has only bot messages, then just return the whole list
+  if (messages.every((message) => message?.sender.userId === botUserId)) {
+    return messages;
+  }
+
+  const firstUserMesssage = messages.find(
+    (message) => message?.sender.userId !== botUserId
+  );
+  return messages.slice(0, messages.indexOf(firstUserMesssage));
+}
