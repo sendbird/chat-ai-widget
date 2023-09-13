@@ -39,6 +39,9 @@ jobs:
         description: AWS region of ECR repository to push container image
         type: enum
         enum: ['us-east-1', 'us-west-2']
+      extra_build_args:
+        description: extra build args to pass to docker build
+        type: string
     steps:
       - checkout
       - attach_workspace:
@@ -55,6 +58,7 @@ jobs:
           repo: << parameters.repo >>
           role-arn: arn:aws:iam::314716043882:role/ci-ops
           tag: '$CIRCLE_TAG-<< parameters.architecture >>'
+          extra-build-args: << parameters.extra_build_args >>
   push_arch_integrated_manifest:
     executor: arm64
     parameters:
@@ -116,6 +120,11 @@ workflows:
           build_path: '.'
           aws_region: us-west-2
           repo: aiwidget/app
+          extra_build_args: |
+            --build-arg VITE_CHAT_WIDGET_APP_ID=AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67 
+            --build-arg VITE_CHAT_WIDGET_BOT_ID=khan-academy-bot
+            --build-arg VITE_WEB_DEMO_APP_ID=6E1B01A5-517F-4F68-A74A-8427F3DE904C
+            --build-arg VITE_WIDGET_DEMO_APP_ID=58F00FA8-C48E-461D-975E-18D33C8778AB
           context:
             - circleci-dashboard-bot
       - push_arch_integrated_manifest:
