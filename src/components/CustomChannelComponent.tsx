@@ -46,7 +46,7 @@ type MessageMeta =
   | {
       stream: boolean;
     }
-  | { quick_replies?: string[] };
+  | { suggested_replies?: string[] };
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
@@ -79,9 +79,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const dynamicReplyOptions =
     lastMessageMeta != null &&
-    'quick_replies' in lastMessageMeta &&
-    lastMessageMeta.quick_replies != null
-      ? lastMessageMeta.quick_replies
+    'suggested_replies' in lastMessageMeta &&
+    lastMessageMeta.suggested_replies != null
+      ? lastMessageMeta.suggested_replies
       : [];
 
   const isStaticReplyVisible =
