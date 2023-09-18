@@ -52,7 +52,7 @@ export const DEFAULT_CONSTANT: Constant = {
   firstMessageData: [
     // {
     //   data: {
-    //     quick_replies: [
+    //     suggested_replies: [
     //       'What can I learn from Pre-K 8th grade?',
     //       'Tell me about Math',
     //     ],
@@ -116,7 +116,7 @@ type ConfigureSession = (
 ) => SessionHandler;
 
 type MessageData = {
-  quick_replies?: string[];
+  suggested_replies?: string[];
 };
 
 type FirstMessageItem = {
