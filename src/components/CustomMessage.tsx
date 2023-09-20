@@ -8,6 +8,7 @@ import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
+import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import PendingMessage from './PendingMessage';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
@@ -50,6 +51,23 @@ export default function CustomMessage(props: Props) {
   // admin message
   if (message.messageType === 'admin') {
     return <div>{<AdminMessage message={message} />}</div>;
+  }
+
+  if (message.extendedMessage.forms) {
+    const forms = JSON.parse(message.extendedMessage.forms);
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message as UserMessage}
+        bodyComponent={<FormMessage form={forms[0]} message={message} />}
+        bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
+        messageCount={allMessages.length}
+        chainTop={chainTop}
+        chainBottom={chainBottom}
+        isBotWelcomeMessage={isBotWelcomeMessage}
+        isFormMessage={true}
+      />
+    );
   }
 
   // Sent by current user

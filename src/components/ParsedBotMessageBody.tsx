@@ -54,7 +54,9 @@ type MetaData = {
 export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens } = props;
   const { enableSourceMessage } = useConstantState();
-  const data_ = (message as UserMessage).data as string;
+  const data_ =
+    (message as UserMessage).data === '' ? '{}' : (message.data as string);
+
   const data: MetaData = JSON.parse(data_);
   const sources: Source[] = Array.isArray(data['metadatas'])
     ? data['metadatas']

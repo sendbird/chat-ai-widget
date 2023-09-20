@@ -62,6 +62,7 @@ type Props = {
   zIndex?: number;
   bodyStyle?: object;
   isBotWelcomeMessage?: boolean;
+  isFormMessage?: boolean;
 };
 
 const ImageContainer = styled.div``;
@@ -82,6 +83,7 @@ export default function BotMessageWithBodyInput(props: Props) {
     chainTop,
     chainBottom,
     isBotWelcomeMessage,
+    isFormMessage = false,
   } = props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
@@ -114,9 +116,10 @@ export default function BotMessageWithBodyInput(props: Props) {
           </Sender>
         )}
         {bodyComponent}
-        {enableEmojiFeedback && displayProfileImage && !isBotWelcomeMessage && (
-          <ReactionContainer message={message} />
-        )}
+        {enableEmojiFeedback &&
+          displayProfileImage &&
+          !isBotWelcomeMessage &&
+          !isFormMessage && <ReactionContainer message={message} />}
       </BodyContainer>
       <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
     </Root>
