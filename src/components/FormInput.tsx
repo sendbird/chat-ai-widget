@@ -79,7 +79,7 @@ export interface InputProps {
   hasError?: boolean;
   value?: string;
   placeHolder?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 const FormInput = (props: InputProps) => {
   const {
@@ -106,9 +106,7 @@ const FormInput = (props: InputProps) => {
             required={required}
             disabled={disabled}
             value={value}
-            onChange={(event) => {
-              onChange?.(event);
-            }}
+            onChange={onChange}
             placeholder={!disabled ? placeHolder : ''}
           />
           {isValid && (

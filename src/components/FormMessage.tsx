@@ -10,6 +10,34 @@ import styled from 'styled-components';
 
 import Input from './FormInput';
 
+interface Field {
+  key: string;
+  title: string;
+  placeholder: string;
+  required: boolean;
+  regex: RegExp;
+  input_type: string;
+}
+
+interface Form {
+  key: string;
+  fields: Field[];
+  /** submitted data */
+  data: Record<string, string>;
+}
+interface Props {
+  message: EveryMessage;
+  form: Form;
+}
+
+interface FormValue {
+  value: string;
+  required: boolean;
+  hasError: boolean;
+  isValid: boolean;
+}
+type FormValues = Record<string, FormValue>;
+
 const Root = styled.div`
   max-width: 244px;
   display: flex;
@@ -24,29 +52,6 @@ const Root = styled.div`
 const SubmitButton = styled(Button)`
   width: 100%;
 `;
-
-interface Field {
-  key: string;
-  title: string;
-  placeholder: string;
-  required: boolean;
-  regex: RegExp;
-  input_type: string;
-}
-interface Props {
-  message: EveryMessage;
-  form: {
-    key: string;
-    fields: Field[];
-    /** ubmitted data */
-    data: Record<string, string>;
-  };
-}
-
-type FormValues = Record<
-  string,
-  { value: string; required: boolean; hasError: boolean; isValid: boolean }
->;
 
 export default function FormMessage(props: Props) {
   const {
@@ -82,7 +87,7 @@ export default function FormMessage(props: Props) {
 
   const handleSubmit = useCallback(async () => {
     try {
-      // If any of required fields are not even touched but the user tries to submit the form,
+      // If form is empty, ignore submit
       const invalidRequiredFields = Object.keys(formValues).filter(
         (key) => formValues[key].required && formValues[key].value.length === 0
       );

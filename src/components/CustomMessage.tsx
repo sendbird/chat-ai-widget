@@ -21,6 +21,7 @@ import {
   replaceUrl,
   Token,
 } from '../utils';
+import { isFormMessage } from '../utils/messages';
 
 type Props = {
   message: EveryMessage;
@@ -53,12 +54,12 @@ export default function CustomMessage(props: Props) {
     return <div>{<AdminMessage message={message} />}</div>;
   }
 
-  if (message.extendedMessage.forms) {
+  if (isFormMessage(message)) {
     const forms = JSON.parse(message.extendedMessage.forms);
     return (
       <BotMessageWithBodyInput
         botUser={botUser}
-        message={message as UserMessage}
+        message={message}
         bodyComponent={<FormMessage form={forms[0]} message={message} />}
         bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
         messageCount={allMessages.length}
@@ -85,7 +86,7 @@ export default function CustomMessage(props: Props) {
       <div>
         <BotMessageWithBodyInput
           botUser={botUser}
-          message={message as UserMessage}
+          message={message}
           bodyComponent={
             <CustomMessageBody message={(message as UserMessage).message} />
           }
@@ -106,7 +107,7 @@ export default function CustomMessage(props: Props) {
       return (
         <BotMessageWithBodyInput
           botUser={botUser}
-          message={message as UserMessage}
+          message={message}
           bodyComponent={
             <SuggestedReplyMessageBody message={message as UserMessage} />
           }
@@ -136,7 +137,7 @@ export default function CustomMessage(props: Props) {
     <div ref={lastMessageRef}>
       <BotMessageWithBodyInput
         botUser={botUser}
-        message={message as UserMessage}
+        message={message}
         messageCount={allMessages.length}
         bodyComponent={
           <ParsedBotMessageBody
