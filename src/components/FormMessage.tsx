@@ -58,30 +58,28 @@ export default function FormMessage(props: Props) {
     message,
     form: { fields, key: formKey, data: submittedData },
   } = props;
-  const [formValues, setInputValue] = useState<FormValues>(() =>
-    fields.reduce(
-      (acc, { key, required }) => ({
-        ...acc,
-        [key]: { value: '', required, hasError: false, isValid: false },
-      }),
-      {}
-    )
-  );
+
+  const initialFormValues: FormValues = {};
+  fields.forEach(({ key, required }) => {
+    initialFormValues[key] = {
+      value: '',
+      required,
+      hasError: false,
+      isValid: false,
+    };
+  });
+  const [formValues, setInputValue] = useState<FormValues>(initialFormValues);
 
   useEffect(() => {
     if (submittedData) {
-      setInputValue((prev) =>
-        Object.entries(prev).reduce((acc, [key, value]) => {
-          return {
-            ...acc,
-            [key]: {
-              ...value,
-              isValid:
-                submittedData?.[key] != null && submittedData[key] !== '',
-            },
-          };
-        }, {} as FormValues)
-      );
+      const updatedFormValues = {} as FormValues;
+      Object.entries(formValues).forEach(([key, value]) => {
+        updatedFormValues[key] = {
+          ...value,
+          isValid: submittedData?.[key] != null && submittedData[key] !== '',
+        };
+      });
+      setInputValue(updatedFormValues);
     }
   }, [submittedData]);
 
