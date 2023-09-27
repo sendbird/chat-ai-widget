@@ -42,11 +42,9 @@ type CustomChannelComponentProps = {
   createGroupChannel?: () => void;
 };
 
-type MessageMeta =
-  | {
-      stream: boolean;
-    }
-  | { suggested_replies?: string[] };
+interface MessageMeta {
+  stream: boolean;
+}
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
@@ -78,10 +76,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   }, [lastMessage?.data]);
 
   const dynamicReplyOptions =
-    lastMessageMeta != null &&
-    'suggested_replies' in lastMessageMeta &&
-    lastMessageMeta.suggested_replies != null
-      ? lastMessageMeta.suggested_replies
+    lastMessage?.extendedMessage != null &&
+    'suggested_replies' in lastMessage.extendedMessage &&
+    lastMessage.extendedMessage.suggested_replies != null
+      ? JSON.parse(lastMessage.extendedMessage.suggested_replies)
       : [];
 
   const isStaticReplyVisible =
