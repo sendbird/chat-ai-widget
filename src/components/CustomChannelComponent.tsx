@@ -60,7 +60,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   ] as ClientUserMessage;
   const isLastBotMessage =
     !(lastMessage?.messageType === 'admin') &&
-    (lastMessage as ClientUserMessage)?.sender.userId === botUser.userId;
+    (lastMessage as ClientUserMessage)?.sender?.userId === botUser.userId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
 
@@ -88,7 +88,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     allMessages &&
     allMessages.length > 1 &&
     !(lastMessage?.messageType === 'admin') &&
-    lastMessage.sender.userId === botUser.userId &&
+    lastMessage.sender?.userId === botUser.userId &&
     // in streaming
     lastMessageMeta != null &&
     'stream' in lastMessageMeta &&
