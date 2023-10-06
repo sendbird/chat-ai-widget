@@ -53,7 +53,7 @@ export default function CustomMessage(props: Props) {
   }
 
   // Sent by current user
-  if ((message as UserMessage).sender.userId !== botUser.userId) {
+  if ((message as UserMessage).sender?.userId !== botUser.userId) {
     return (
       <div>
         {<CurrentUserMessage message={message as UserMessage} />}

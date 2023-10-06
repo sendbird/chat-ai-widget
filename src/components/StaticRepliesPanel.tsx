@@ -102,7 +102,7 @@ const StaticRepliesPanel = (props: Props) => {
   useEffect(() => {
     if (
       lastMessage &&
-      lastMessage.sender.userId === botUser.userId &&
+      lastMessage.sender?.userId === botUser.userId &&
       isNotLocalMessageCustomType(lastMessage.customType)
     ) {
       setSuggestedReplies(suggestedMessageContent.replyContents);

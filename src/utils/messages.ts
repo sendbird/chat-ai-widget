@@ -22,7 +22,7 @@ export function groupMessagesByShortSpanTime(
       prevKey &&
       createdAt - Number(prevKey) <= TIME_SPAN &&
       messageType !== 'admin' &&
-      sender?.userId === messages[idx - 1]?.sender.userId
+      sender?.userId === messages[idx - 1]?.sender?.userId
     ) {
       // Add the message to the existing group
       return {
@@ -60,17 +60,17 @@ export function getBotWelcomeMessages(
 ) {
   // if the list is empty or the first message is not from bot,
   // we just assume there's no welcome messages
-  if (messages.length === 0 || messages[0]?.sender.userId !== botUserId) {
+  if (messages.length === 0 || messages[0]?.sender?.userId !== botUserId) {
     return [];
   }
 
   // if the list has only bot messages, then just return the whole list
-  if (messages.every((message) => message?.sender.userId === botUserId)) {
+  if (messages.every((message) => message?.sender?.userId === botUserId)) {
     return messages;
   }
 
   const firstUserMesssage = messages.find(
-    (message) => message?.sender.userId !== botUserId
+    (message) => message?.sender?.userId !== botUserId
   );
   return messages.slice(0, messages.indexOf(firstUserMesssage));
 }
