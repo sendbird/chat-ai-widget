@@ -8,6 +8,7 @@ import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
+import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import PendingMessage from './PendingMessage';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
@@ -20,6 +21,7 @@ import {
   replaceUrl,
   Token,
 } from '../utils';
+import { isFormMessage } from '../utils/messages';
 
 type Props = {
   message: EveryMessage;
@@ -52,6 +54,23 @@ export default function CustomMessage(props: Props) {
     return <div>{<AdminMessage message={message} />}</div>;
   }
 
+  if (isFormMessage(message)) {
+    const forms = JSON.parse(message.extendedMessage.forms);
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        bodyComponent={<FormMessage form={forms[0]} message={message} />}
+        bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
+        messageCount={allMessages.length}
+        chainTop={chainTop}
+        chainBottom={chainBottom}
+        isBotWelcomeMessage={isBotWelcomeMessage}
+        isFormMessage={true}
+      />
+    );
+  }
+
   // Sent by current user
   if ((message as UserMessage).sender?.userId !== botUser.userId) {
     return (
@@ -67,7 +86,7 @@ export default function CustomMessage(props: Props) {
       <div>
         <BotMessageWithBodyInput
           botUser={botUser}
-          message={message as UserMessage}
+          message={message}
           bodyComponent={
             <CustomMessageBody message={(message as UserMessage).message} />
           }
@@ -88,7 +107,7 @@ export default function CustomMessage(props: Props) {
       return (
         <BotMessageWithBodyInput
           botUser={botUser}
-          message={message as UserMessage}
+          message={message}
           bodyComponent={
             <SuggestedReplyMessageBody message={message as UserMessage} />
           }
@@ -118,7 +137,7 @@ export default function CustomMessage(props: Props) {
     <div ref={lastMessageRef}>
       <BotMessageWithBodyInput
         botUser={botUser}
-        message={message as UserMessage}
+        message={message}
         messageCount={allMessages.length}
         bodyComponent={
           <ParsedBotMessageBody

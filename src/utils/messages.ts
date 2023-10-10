@@ -74,3 +74,7 @@ export function getBotWelcomeMessages(
   );
   return messages.slice(0, messages.indexOf(firstUserMesssage));
 }
+
+export function isFormMessage(message: EveryMessage) {
+  return !!message.extendedMessage?.forms;
+}
