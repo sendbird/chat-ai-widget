@@ -101,7 +101,7 @@ export default function FormMessage(props: Props) {
 
       // If any of required fields are not valid,
       const hasError = Object.values(formValues).some(
-        ({ hasError }) => hasError
+        ({ hasError, required }) => required && hasError
       );
       if (hasError) {
         return;
@@ -125,9 +125,9 @@ export default function FormMessage(props: Props) {
     }
   }, [formValues, message.messageId, message.submitForm, formKey]);
 
-  const allFieldsValid = Object.values(formValues).every(
-    (field) => field.isValid
-  );
+  const allRequiredFieldsValid = Object.values(formValues)
+    .filter(({ required }) => required)
+    .every(({ isValid }) => isValid);
 
   return (
     <Root>
@@ -155,7 +155,7 @@ export default function FormMessage(props: Props) {
           />
         )
       )}
-      {!allFieldsValid && (
+      {!allRequiredFieldsValid && (
         <SubmitButton onClick={handleSubmit}>
           <Label
             type={LabelTypography.BUTTON_2}
