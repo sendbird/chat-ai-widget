@@ -113,7 +113,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
       lastMessage &&
       !(lastMessage?.messageType === 'admin') &&
       lastMessage.sender?.userId === userId &&
-      lastMessage.sendingStatus === SendingStatus.SUCCEEDED
+      lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
+      // this bubble loading should be shown only when there're only bot and 1 user in the channel
+      channel?.memberCount === 2
     ) {
       setActiveSpinnerId(lastMessage.messageId);
       scrollUtil();

@@ -1,11 +1,9 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
+import Avatar from '@sendbird/uikit-react/ui/Avatar';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { ReactionContainer } from './ReactionContainer';
-import { useConstantState } from '../context/ConstantContext';
-import botMessageImage from '../icons/bot-message-image.png';
 import { formatCreatedAtToAMPM } from '../utils';
 
 const Root = styled.div`
@@ -52,13 +50,11 @@ const SentTime = styled.div`
 `;
 
 type Props = {
-  botUser: User;
+  user: User;
   message: UserMessage;
   bodyComponent: ReactNode;
   chainTop: boolean;
   chainBottom: boolean;
-  messageCount?: number;
-  zIndex?: number;
   bodyStyle?: object;
   isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
@@ -70,36 +66,19 @@ const EmptyImageContainer = styled.div`
   width: 28px;
 `;
 
-export default function BotMessageWithBodyInput(props: Props) {
-  const { enableEmojiFeedback } = useConstantState();
-  const {
-    botUser,
-    message,
-    bodyComponent,
-    messageCount,
-    zIndex,
-    bodyStyle,
-    chainTop,
-    chainBottom,
-    isBotWelcomeMessage,
-    isFormMessage = false,
-  } = props;
+export default function UserMessageWithBodyInput(props: Props) {
+  const { user, message, bodyComponent, bodyStyle, chainTop, chainBottom } =
+    props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
   const displaySender = nonChainedMessage || chainTop;
 
   return (
-    <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
+    <Root>
       {displayProfileImage ? (
         <ImageContainer>
-          <img
-            src={botMessageImage}
-            alt="botProfileImage"
-            style={{
-              height: '28px',
-            }}
-          />
+          <Avatar height="28px" width="28px" src={user?.profileUrl} />
         </ImageContainer>
       ) : (
         <EmptyImageContainer />
@@ -111,14 +90,10 @@ export default function BotMessageWithBodyInput(props: Props) {
               textAlign: 'left',
             }}
           >
-            {botUser.nickname}
+            {user.nickname}
           </Sender>
         )}
         {bodyComponent}
-        {enableEmojiFeedback &&
-          displayProfileImage &&
-          !isBotWelcomeMessage &&
-          !isFormMessage && <ReactionContainer message={message} />}
       </BodyContainer>
       <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
     </Root>
