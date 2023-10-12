@@ -12,6 +12,7 @@ import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import PendingMessage from './PendingMessage';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
+import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import {
@@ -43,7 +44,7 @@ export default function CustomMessage(props: Props) {
     chainBottom,
     isBotWelcomeMessage,
   } = props;
-  const { replacementTextList } = useConstantState();
+  const { replacementTextList, userId } = useConstantState();
 
   const { allMessages } = useChannelContext();
   const firstMessage: UserMessage = allMessages[0] as UserMessage;
@@ -72,11 +73,30 @@ export default function CustomMessage(props: Props) {
   }
 
   // Sent by current user
-  if ((message as UserMessage).sender?.userId !== botUser.userId) {
+  if ((message as UserMessage).sender?.userId === userId) {
     return (
       <div>
         {<CurrentUserMessage message={message as UserMessage} />}
         {activeSpinnerId === message.messageId && <PendingMessage />}
+      </div>
+    );
+  }
+
+  // Sent by other users
+  if ((message as UserMessage).sender?.userId !== botUser.userId) {
+    return (
+      <div ref={lastMessageRef}>
+        {
+          <UserMessageWithBodyInput
+            message={message as UserMessage}
+            user={message?.sender}
+            chainTop={chainTop}
+            chainBottom={chainBottom}
+            bodyComponent={
+              <CustomMessageBody message={(message as UserMessage).message} />
+            }
+          />
+        }
       </div>
     );
   }
