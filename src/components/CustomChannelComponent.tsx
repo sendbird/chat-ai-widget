@@ -5,6 +5,7 @@ import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeade
 import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import { useEffect, useState, useMemo, useRef } from 'react';
+import ReactDOM from 'react-dom';
 // eslint-disable-next-line import/no-unresolved
 import { ClientUserMessage, EveryMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
@@ -12,7 +13,6 @@ import styled from 'styled-components';
 import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
-import CustomMessageInput from './CustomMessageInput';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
@@ -22,7 +22,12 @@ import {
   getBotWelcomeMessages,
 } from '../utils/messages';
 
-const Root = styled.div<{ hidePlaceholder: boolean; height: string }>`
+interface RootStyleProps {
+  hidePlaceholder: boolean;
+  height: string;
+  isInputActive: boolean;
+}
+const Root = styled.div<RootStyleProps>`
   height: ${({ height }) => height};
   font-family: 'Roboto', sans-serif;
   z-index: 0;
@@ -30,6 +35,59 @@ const Root = styled.div<{ hidePlaceholder: boolean; height: string }>`
 
   .sendbird-place-holder__body {
     display: ${({ hidePlaceholder }) => (hidePlaceholder ? 'none' : 'block')};
+  }
+
+  .sendbird-message-input-wrapper {
+    width: 100%;
+  }
+
+  .sendbird-message-input-wrapper__message-input {
+    padding: 12px 16px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+
+  .sendbird-message-input {
+    display: flex;
+    align-items: center;
+    .sendbird-message-input-text-field {
+      transition: ${(props: RootStyleProps) =>
+        props.isInputActive ? 'none' : 'width 0.5s'};
+      transition-timing-function: ease;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+      line-height: 20px;
+      color: rgba(0, 0, 0, 0.88);
+      resize: none;
+      border: none;
+      outline: none;
+      max-height: 116px;
+      background-color: #eeeeee;
+      border-radius: 20px;
+      height: auto;
+      ::placeholder {
+        color: rgba(0, 0, 0, 0.38);
+      }
+      :focus {
+        border: none;
+        box-shadow: none;
+      }
+    }
+    .sendbird-message-input--send {
+      position: relative;
+      right: 0;
+      bottom: 0;
+      :hover {
+        background-color: transparent;
+      }
+    }
+    .sendbird-message-input--placeholder {
+      top: 9px;
+    }
   }
 `;
 
@@ -146,21 +204,6 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
             <ChannelHeader />
           );
         }}
-        renderMessageInput={() => {
-          return (
-            <div
-              style={{
-                position: 'relative',
-                zIndex: 50,
-                backgroundColor: 'white',
-              }}
-            >
-              {/* {isStaticReplyVisible && <StaticRepliesPanel botUser={botUser} />} */}
-              <CustomMessageInput />
-              <ChatBottom />
-            </div>
-          );
-        }}
         renderMessage={({ message }: { message: EveryMessage }) => {
           const grouppedMessage = grouppedMessages.find(
             (m) => m.messageId == message.messageId
@@ -189,6 +232,18 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
         }}
         renderTypingIndicator={() => <></>}
       />
+      <Banner />
     </Root>
   );
+}
+
+function Banner() {
+  const inputElement = document.querySelector(
+    '.sendbird-message-input-wrapper'
+  );
+
+  if (inputElement) {
+    return ReactDOM.createPortal(<ChatBottom />, inputElement);
+  }
+  return null;
 }
