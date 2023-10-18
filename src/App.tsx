@@ -30,6 +30,7 @@ const App = (props: Props) => {
       configureSession={props.configureSession}
       enableSourceMessage={props.enableSourceMessage}
       enableEmojiFeedback={props.enableEmojiFeedback}
+      enableMention={props.enableMention}
     />
   );
 };

@@ -109,6 +109,7 @@ export const DEFAULT_CONSTANT: Constant = {
   },
   enableSourceMessage: true,
   enableEmojiFeedback: true,
+  enableMention: true,
 };
 
 type ConfigureSession = (
@@ -141,6 +142,7 @@ export interface Constant {
   configureSession: ConfigureSession;
   enableSourceMessage: boolean;
   enableEmojiFeedback: boolean;
+  enableMention: boolean;
   firstMessageData: FirstMessageItem[];
 }
 

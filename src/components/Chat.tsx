@@ -24,6 +24,7 @@ const SBComponent = () => {
     userNickName,
     configureSession,
     enableEmojiFeedback,
+    enableMention,
   } = useConstantState();
 
   assert(
@@ -61,6 +62,15 @@ const SBComponent = () => {
       customExtensionParams={userAgentCustomParams.current}
       breakPoint={isMobile}
       isReactionEnabled={enableEmojiFeedback}
+      isMentionEnabled={enableMention}
+      uikitOptions={{
+        groupChannel: {
+          input: {
+            // To hide the file upload icon from the message input
+            enableDocument: false,
+          },
+        },
+      }}
     >
       <>
         <CustomChannel />
