@@ -134,10 +134,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   }, [lastMessage?.data]);
 
   const dynamicReplyOptions =
-    lastMessage?.extendedMessage != null &&
-    'suggested_replies' in lastMessage.extendedMessage &&
-    lastMessage.extendedMessage.suggested_replies != null
-      ? JSON.parse(lastMessage.extendedMessage.suggested_replies)
+    lastMessage?.extendedMessagePayload != null &&
+    'suggested_replies' in lastMessage.extendedMessagePayload &&
+    lastMessage.extendedMessagePayload.suggested_replies != null
+      ? lastMessage.extendedMessagePayload.suggested_replies
       : [];
 
   const isStaticReplyVisible =

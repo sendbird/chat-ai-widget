@@ -76,5 +76,5 @@ export function getBotWelcomeMessages(
 }
 
 export function isFormMessage(message: EveryMessage) {
-  return !!message.extendedMessage?.forms;
+  return !!message.extendedMessagePayload?.forms;
 }
