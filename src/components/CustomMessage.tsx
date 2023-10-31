@@ -56,7 +56,7 @@ export default function CustomMessage(props: Props) {
   }
 
   if (isFormMessage(message)) {
-    const forms = JSON.parse(message.extendedMessage.forms);
+    const forms = message.extendedMessagePayload.forms;
     return (
       <BotMessageWithBodyInput
         botUser={botUser}
