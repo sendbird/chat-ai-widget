@@ -1,3 +1,19 @@
+## [v1.1.0] (Nov 9 2023)
+#### Feat:
+- Renamed `quick_replies` to `suggested_replies`
+- Renamed `extendedMessage` to `extendedMessagePayload` in the message data
+- Added a feedback response with thumbs up and down emojis
+  - Introduced a boolean parameter, `enableEmojiFeedback`, to control emoji display
+- Changed scroll block option to `end` from `nearest` in the useScrollOnStreaming hook
+- Merged sender profile when messages are sent in a short span of time
+- Made profile image invisible only when consecutive message senders are the same
+- Added form message UI components: `<FormInput />` & `<FormMessage />`
+- Supported user conversations with 3 or more participants in the chatbot
+- Enabled user(bot) mention
+
+#### Fixes:
+- Fixed URL parsing in the first message
+
 ## [v1.0.8] (Aug 31 2023)
 
 #### Feat:
