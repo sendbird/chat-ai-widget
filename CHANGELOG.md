@@ -1,4 +1,4 @@
-## [v1.1.0] (Nov 9, 2023)
+## [v1.1.0] (Nov 9 2023)
 #### Feat:
 - Renamed `quick_replies` to `suggested_replies`
 - Renamed `extendedMessage` to `extendedMessagePayload` in the message data
