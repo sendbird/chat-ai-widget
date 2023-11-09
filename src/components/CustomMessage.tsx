@@ -101,25 +101,6 @@ export default function CustomMessage(props: Props) {
     );
   }
 
-  if (message.messageId === firstMessageId) {
-    return (
-      <div>
-        <BotMessageWithBodyInput
-          botUser={botUser}
-          message={message}
-          bodyComponent={
-            <CustomMessageBody message={(message as UserMessage).message} />
-          }
-          messageCount={allMessages.length}
-          zIndex={30}
-          chainTop={chainTop}
-          chainBottom={chainBottom}
-          isBotWelcomeMessage={isBotWelcomeMessage}
-        />
-      </div>
-    );
-  }
-
   // Sent by bot
   // suggested message
   if (!isNotLocalMessageCustomType(message.customType)) {
