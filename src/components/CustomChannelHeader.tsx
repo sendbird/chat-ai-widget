@@ -1,4 +1,6 @@
+import { User } from '@sendbird/chat';
 import { GroupChannel } from '@sendbird/chat/groupChannel';
+import Avatar from '@sendbird/uikit-react/ui/Avatar';
 import styled from 'styled-components';
 
 import BetaLogo from './BetaLogo';
@@ -29,6 +31,10 @@ const Title = styled.div`
   line-height: 20px;
   letter-spacing: -0.2px;
   color: rgba(0, 0, 0, 0.88);
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const RenewButtonForWidgetDemo = styled.div`
@@ -51,11 +57,12 @@ const RenewButtonContainer = styled.div`
 
 type Props = {
   channel: GroupChannel;
+  botUser: User;
   createGroupChannel: () => void;
 };
 
 export default function CustomChannelHeader(props: Props) {
-  const { channel, createGroupChannel } = props;
+  const { channel, createGroupChannel, botUser } = props;
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
   const { setFirstMessage } = useSbConnectionState();
@@ -70,14 +77,13 @@ export default function CustomChannelHeader(props: Props) {
   return (
     <Root>
       <SubContainer>
-        <img
-          src={channelHeaderImage}
+        <Avatar
+          src={botUser?.profileUrl || channelHeaderImage}
           alt="channelHeaderImage"
-          style={{
-            height: '34px',
-          }}
+          height="34px"
+          width="34px"
         />
-        <Title>{channel.name}</Title>
+        <Title>{botUser?.nickname || channel.name}</Title>
         {!isMobile && (betaMark || customBetaMarkText) && (
           <BetaLogo>{customBetaMarkText}</BetaLogo>
         )}

@@ -195,8 +195,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'}>
       <ChannelUI
         renderChannelHeader={() => {
-          return channel && createGroupChannel ? (
+          return channel && createGroupChannel && botUser ? (
             <CustomChannelHeader
+              botUser={botUser}
               channel={channel as GroupChannel}
               createGroupChannel={createGroupChannel}
             />
