@@ -31,6 +31,10 @@ const Title = styled.div`
   line-height: 20px;
   letter-spacing: -0.2px;
   color: rgba(0, 0, 0, 0.88);
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 const RenewButtonForWidgetDemo = styled.div`
