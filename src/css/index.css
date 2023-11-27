@@ -51,3 +51,7 @@
 .sendbird-conversation__messages-padding {
   padding: 0 16px !important;
 }
+
+.sendbird-message-input .sendbird-message-input-text-field {
+  overflow-y: hidden;
+}
