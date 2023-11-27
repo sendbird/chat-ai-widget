@@ -1,5 +1,6 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
+import Avatar from '@sendbird/uikit-react/ui/Avatar';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
@@ -93,12 +94,11 @@ export default function BotMessageWithBodyInput(props: Props) {
     <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
       {displayProfileImage ? (
         <ImageContainer>
-          <img
-            src={botMessageImage}
+          <Avatar
+            src={botUser?.profileUrl || botMessageImage}
             alt="botProfileImage"
-            style={{
-              height: '28px',
-            }}
+            height="28px"
+            width="28px"
           />
         </ImageContainer>
       ) : (

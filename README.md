@@ -185,6 +185,7 @@ const customConstants = {
   enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
+  autoOpen: false,
 };
 
 const App = () => {
@@ -266,6 +267,11 @@ const memoizedConfigureSession = useCallback(
 const customConfigs = {
   // If instantConnect set to `true`, the SDK connection will be established right after mounting the Chat or ChatAiWidget component
   instantConnect: true / false,
+  // `autoOpen` determines whether the chatbot widget automatically opens
+  // when the user opens the browser window.
+  // The default behavior is to open after a certain period,
+  // but setting this option to `true` will keep it open at all times.
+  autoOpen: true / false,
   configureSession: memoizedConfigureSession,
   customRefreshComponent: {
     icon: 'Your SVG icon',
@@ -290,6 +296,7 @@ const App = () => {
       configureSession={customConfigs.configureSession}
       customRefreshComponent={customConfigs.customRefreshComponent}
       instantConnect={customConfigs.instantConnect}
+      autoOpen={customConfigs.autoOpen}
       {...customConstants}
     />
   );

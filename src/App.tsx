@@ -5,6 +5,7 @@ interface Props extends Partial<Constant> {
   applicationId?: string;
   botId?: string;
   hashedKey?: string;
+  autoOpen?: boolean;
 }
 
 const App = (props: Props) => {
@@ -31,6 +32,7 @@ const App = (props: Props) => {
       enableSourceMessage={props.enableSourceMessage}
       enableEmojiFeedback={props.enableEmojiFeedback}
       enableMention={props.enableMention}
+      autoOpen={props.autoOpen}
     />
   );
 };
