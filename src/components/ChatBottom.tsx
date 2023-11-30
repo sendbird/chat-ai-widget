@@ -16,7 +16,7 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   align-items: center;
   background: ${(props) =>
     props.chatBottomBackgroundColor ||
-    'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)'};
+    'linear-gradient(273.73deg, #4DCD90 -0.83%, #1870F3 48.04%, #3C7EFF 75.45%)'};
   color: rgba(255, 255, 255, 0.88);
   flex-wrap: wrap;
   font-size: 13px;

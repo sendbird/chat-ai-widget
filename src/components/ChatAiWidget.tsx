@@ -18,11 +18,12 @@ const StyledWidgetButtonWrapper = styled.button`
   background: conic-gradient(
     from 180deg at 50% 50%,
     #4dcd90 -17.35deg,
-    #6210cc 80.63deg,
-    #6210cc 176.25deg,
+    #1870f3 80.63deg,
+    #3c7eff 176.25deg,
     #4dcd90 342.65deg,
-    #6210cc 440.63deg
+    #1870f3 440.63deg
   );
+
   border-radius: 50%;
   color: white;
   transition: all 0.3s cubic-bezier(0.31, -0.105, 0.43, 1.4);
