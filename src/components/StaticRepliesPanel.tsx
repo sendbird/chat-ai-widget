@@ -15,44 +15,12 @@ import { useEffect, useState } from 'react';
 import { ClientUserMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
 
+import { ReplyItem } from './DynamicRepliesPanel';
 import { LOCAL_MESSAGE_CUSTOM_TYPE, SuggestedReply } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useSendLocalMessage } from '../hooks/useSendLocalMessage';
+import { useSendMessage as useSendUserMessage } from '../hooks/useSendMessage';
 import { isNotLocalMessageCustomType } from '../utils';
-
-interface SuggestedReplyItemProps {
-  isActive: boolean;
-}
-const SuggestedReplyItem = styled.div<SuggestedReplyItemProps>`
-  white-space: nowrap;
-  height: calc(100% - 8px);
-  font-size: 12px;
-  padding: 3px 14px;
-  display: flex;
-  align-items: center;
-  color: ${(props: SuggestedReplyItemProps) =>
-    props.isActive ? '#6C32D5' : '#EEEEEE'};
-  border: ${(props: SuggestedReplyItemProps) =>
-    props.isActive ? '1px solid #6C32D5' : '1px solid #EEEEEE'};
-  border-radius: 18px;
-  background-color: #ffffff;
-  cursor: ${(props: SuggestedReplyItemProps) =>
-    props.isActive ? 'pointer' : 'not-allowed'};
-  &:hover {
-    ${(props: SuggestedReplyItemProps) => {
-      if (props.isActive) {
-        return 'background-color: #E6E0FF;';
-      }
-    }};
-  }
-  &:active {
-    ${(props: SuggestedReplyItemProps) => {
-      if (props.isActive) {
-        return 'background-color: #6C32D5; color: #FFFFFF;';
-      }
-    }};
-  }
-`;
 
 const Root = styled.div`
   position: relative;
@@ -62,12 +30,10 @@ const Root = styled.div`
   align-items: flex-end;
   padding: 8px 24px 0px;
   font-size: 15px;
-  //width: calc(100%);
 `;
 
 const Panel = styled.div`
   display: flex;
-  height: 37px;
   width: calc(100%);
   justify-content: flex-end;
   align-items: center;
@@ -98,6 +64,7 @@ const StaticRepliesPanel = (props: Props) => {
     allMessages?.length - 1
   ] as ClientUserMessage;
   const sendLocalMessage = useSendLocalMessage();
+  const sendUserMessage = useSendUserMessage();
 
   useEffect(() => {
     if (
@@ -109,7 +76,7 @@ const StaticRepliesPanel = (props: Props) => {
     }
   }, [channel]);
 
-  const onClickSuggestedReply = (event: React.MouseEvent<HTMLDivElement>) => {
+  const onLocalMessageSend = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     const item: HTMLDivElement = event.currentTarget;
     const indexToRemove = Number(item.id);
@@ -130,7 +97,9 @@ const StaticRepliesPanel = (props: Props) => {
         sendingStatus: SendingStatus.SUCCEEDED,
         messageType: MessageType.USER,
         message: removedReply.text,
-        customType: LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion,
+        customType: removedReply.link
+          ? LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion
+          : null,
         reactions: [],
         plugins: [],
         data: JSON.stringify(removedReply),
@@ -141,19 +110,32 @@ const StaticRepliesPanel = (props: Props) => {
     setSuggestedReplies([]);
   };
 
+  const onUserMessageSend = (
+    event: React.MouseEvent<HTMLDivElement>,
+    message: string
+  ) => {
+    event.preventDefault();
+    sendUserMessage(message);
+    setSuggestedReplies([]);
+  };
+
   return suggestedReplies && suggestedReplies.length > 0 ? (
     <Root>
       <Panel>
-        {suggestedReplies.map((suggestedReply: SuggestedReply, i: number) => {
+        {suggestedReplies.map((item: SuggestedReply, i: number) => {
           return (
-            <SuggestedReplyItem
+            <ReplyItem
               id={i + ''}
               key={i}
-              onClick={onClickSuggestedReply}
+              onClick={
+                item.link
+                  ? onLocalMessageSend
+                  : (event) => onUserMessageSend(event, item.title)
+              }
               isActive={true}
             >
-              {suggestedReply.title}
-            </SuggestedReplyItem>
+              {item.title}
+            </ReplyItem>
           );
         })}
       </Panel>

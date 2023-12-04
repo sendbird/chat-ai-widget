@@ -15,6 +15,7 @@ import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import LoadingScreen from './LoadingScreen';
+import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
@@ -226,9 +227,11 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 isBotWelcomeMessage={isBotWelcomeMessage}
               />
               {message.messageId === lastMessage.messageId &&
-                dynamicReplyOptions.length > 0 && (
+                (dynamicReplyOptions.length > 0 ? (
                   <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-                )}
+                ) : isStaticReplyVisible ? (
+                  <StaticRepliesPanel botUser={botUser} />
+                ) : null)}
             </>
           );
         }}

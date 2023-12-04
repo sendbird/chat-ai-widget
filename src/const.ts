@@ -20,16 +20,13 @@ export const DEFAULT_CONSTANT: Constant = {
   suggestedMessageContent: {
     replyContents: [
       {
-        title: 'Yes, it was helpful! 👍',
-        text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
-        buttonText: 'Try free trial',
-        link: 'https://dashboard.sendbird.com/auth/signup',
+        title: 'Nice, it was helpful 💜',
+        text: 'I’m glad to hear that you found the information helpful! Interested in personalized assistance? Connect with one of our human experts right away.',
+        buttonText: 'Talk to us',
+        link: 'https://sendbird.com/contact-sales?ref=bot',
       },
       {
-        title: 'No, I need more help. 💬',
-        text: "I'm sorry, we couldn't help you. Let us know how we can improve by talking to one of our teammates.",
-        buttonText: 'Talk to an expert',
-        link: 'https://sendbird.com/contact-sales',
+        title: 'Hmm, more details please 🧐',
       },
     ],
     messageFilterList: [

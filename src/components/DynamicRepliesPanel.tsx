@@ -6,7 +6,7 @@ import { useSendMessage } from '../hooks/useSendMessage';
 interface SuggestedReplyItemProps {
   isActive: boolean;
 }
-const ReplyItem = styled.div<SuggestedReplyItemProps>`
+export const ReplyItem = styled.div<SuggestedReplyItemProps>`
   white-space: nowrap;
   height: 32px;
   font-size: 12px;
