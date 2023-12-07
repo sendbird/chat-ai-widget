@@ -21,8 +21,8 @@ export const DEFAULT_CONSTANT: Constant = {
     replyContents: [
       {
         title: 'Nice, it was helpful 💜',
-        text: 'I’m glad to hear that you found the information helpful! Interested in personalized assistance? Connect with one of our human experts right away.',
-        buttonText: 'Talk to us',
+        text: `I'm glad you found this helpful! Let's continue the conversation. Book time to speak live with one of our experts.`,
+        buttonText: 'Talk to an expert',
         link: 'https://sendbird.com/contact-sales?ref=bot',
       },
       {
@@ -82,7 +82,7 @@ export const DEFAULT_CONSTANT: Constant = {
     },
   },
   chatBottomContent: {
-    text: 'Sendbird AI ChatBot',
+    text: 'SmartAssistant',
     backgroundColor:
       'linear-gradient(273.73deg, #4DCD90 -0.83%, #1870F3 48.04%, #3C7EFF 75.45%)',
   },

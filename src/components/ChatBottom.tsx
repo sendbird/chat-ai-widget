@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   padding: 0 4px;
-  width: calc(100% - 8px);
+  width: 100%;
   min-height: 40px;
   display: flex;
   justify-content: center;
@@ -37,7 +37,7 @@ export default function ChatBottom() {
       <InnerContainer
         chatBottomBackgroundColor={chatBottomContent?.backgroundColor}
       >
-        {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
+        {chatBottomContent?.text}&nbsp;&nbsp;Powered by&nbsp;
         <Highlighter
           href="https://sendbird.com/products/chatgpt-integration"
           target="_blank"

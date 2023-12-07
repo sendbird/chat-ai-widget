@@ -58,7 +58,12 @@ export default function SuggestedReplyMessageBody(props: Props) {
       <Root>
         <Text>{data.text}</Text>
         <ButtonContainer>
-          <LinkButton href={data.link} id={data.buttonText} target="_blank">
+          <LinkButton
+            className="sendbird-link-button"
+            href={data.link}
+            id={data.buttonText}
+            target="_blank"
+          >
             {data.buttonText}
           </LinkButton>
         </ButtonContainer>
