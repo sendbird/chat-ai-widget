@@ -14,12 +14,16 @@ const ImageContainer = styled.div`
   width: 40px;
 `;
 
-export default function PendingMessage() {
+export default function PendingMessage({
+  botProfileUrl,
+}: {
+  botProfileUrl?: string;
+}) {
   return (
     <Container>
       <ImageContainer>
         <img
-          src={profileImage}
+          src={botProfileUrl || profileImage}
           alt="profileImage"
           style={{
             height: '28px',
