@@ -75,7 +75,9 @@ export default function CustomMessage(props: Props) {
     return (
       <div>
         {<CurrentUserMessage message={message as UserMessage} />}
-        {activeSpinnerId === message.messageId && <PendingMessage />}
+        {activeSpinnerId === message.messageId && (
+          <PendingMessage botProfileUrl={botUser?.profileUrl} />
+        )}
       </div>
     );
   }
@@ -100,7 +102,7 @@ export default function CustomMessage(props: Props) {
   }
 
   // Sent by bot
-  // suggested message
+  // for static suggested replies
   if (!isNotLocalMessageCustomType(message.customType)) {
     if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
       return (
