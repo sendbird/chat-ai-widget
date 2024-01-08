@@ -4,6 +4,7 @@
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "README.md"
@@ -57,7 +58,8 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "5.0.2",
     "vite": "^4.3.9",
-    "vite-plugin-svgr": "^3.2.0"
+    "vite-plugin-svgr": "^3.2.0",
+    "vite-plugin-dts": "^3.7.0"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
