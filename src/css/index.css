@@ -1,3 +1,7 @@
+:root {
+  --sendbird-light-primary-300: #30308F;
+}
+
 .sendbird-message-content-menu__reaction-menu {
   display: none;
 }
@@ -54,4 +58,27 @@
 
 .sendbird-message-input .sendbird-message-input-text-field {
   overflow-y: hidden;
+}
+
+.sendbird-theme--light .sendbird-icon-color--primary [class*="fill"] {
+  fill: var(--sendbird-light-primary-300);
+}
+
+.sendbird-theme--light .sendbird-button--primary {
+  border: 1px solid var(--sendbird-light-primary-300);
+  background-color: var(--sendbird-light-primary-300);
+}
+
+.sendbird-theme--light .sendbird-button--primary:hover {
+  border: 1px solid var(--sendbird-light-primary-300);
+  background-color: var(--sendbird-light-primary-300);
+}
+
+.sendbird-theme--light .sendbird-button--primary:active {
+  border: 1px solid var(--sendbird-light-primary-300);
+  background-color: var(--sendbird-light-primary-300);
+}
+
+.sendbird-notification--hide .sendbird-conversation__messages__notification {
+  fill: var(--sendbird-light-primary-300);
 }
