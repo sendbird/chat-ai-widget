@@ -14,9 +14,9 @@ const LazyCodeBlock = lazy(() =>
 
 const Root = styled.div`
   display: flex;
-  background-color: #eeeeee;
+  background-color: var(--sendbird-light-background-50-0);
   &:hover {
-    background-color: #e0e0e0;
+    background-color: var(--sendbird-light-background-50-0);
   }
   //max-width: 600px;
   flex-direction: column;

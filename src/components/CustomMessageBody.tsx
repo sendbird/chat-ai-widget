@@ -8,9 +8,9 @@ const Root = styled.div`
   padding: 8px 12px;
   gap: 8px;
   border-radius: 16px;
-  background-color: #eeeeee;
+  background-color: var(--sendbird-light-background-50-0);
   &:hover {
-    background-color: #e0e0e0;
+    background-color: var(--sendbird-light-background-50-0);
   }
   //max-width: 600px;
 `;

@@ -14,7 +14,6 @@ import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
-import LoadingScreen from './LoadingScreen';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
@@ -233,7 +232,6 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           );
         }}
         renderTypingIndicator={() => <></>}
-        renderPlaceholderLoader={() => <LoadingScreen />}
       />
       <Banner />
     </Root>

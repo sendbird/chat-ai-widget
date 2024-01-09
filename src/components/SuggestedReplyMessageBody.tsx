@@ -10,9 +10,9 @@ const Root = styled.div`
   padding: 8px 12px;
   gap: 8px;
   border-radius: 16px;
-  background-color: #eeeeee;
+  background-color: var(--sendbird-light-background-50-0);
   &:hover {
-    background-color: #e0e0e0;
+    background-color: var(--sendbird-light-background-50-0);
   }
 `;
 
@@ -30,7 +30,7 @@ const LinkButton = styled.a`
   align-items: center;
   padding: 0px 12px;
   height: 32px;
-  background: #6210cc;
+  background: var(--sendbird-light-primary-300);
   border-radius: 16px;
   color: white;
   cursor: pointer;

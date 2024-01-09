@@ -14,9 +14,11 @@ const ReplyItem = styled.div<SuggestedReplyItemProps>`
   display: flex;
   align-items: center;
   color: ${(props: SuggestedReplyItemProps) =>
-    props.isActive ? '#6C32D5' : '#EEEEEE'};
+    props.isActive ? 'var(--sendbird-light-primary-300)' : '#EEEEEE'};
   border: ${(props: SuggestedReplyItemProps) =>
-    props.isActive ? '1px solid #6C32D5' : '1px solid #EEEEEE'};
+    props.isActive
+      ? '1px solid var(--sendbird-light-primary-300)'
+      : '1px solid #EEEEEE'};
   border-radius: 18px;
   background-color: #ffffff;
   cursor: ${(props: SuggestedReplyItemProps) =>
@@ -24,14 +26,14 @@ const ReplyItem = styled.div<SuggestedReplyItemProps>`
   &:hover {
     ${(props: SuggestedReplyItemProps) => {
       if (props.isActive) {
-        return 'background-color: #E6E0FF;';
+        return 'background-color: var(--sendbird-light-primary-300);';
       }
     }};
   }
   &:active {
     ${(props: SuggestedReplyItemProps) => {
       if (props.isActive) {
-        return 'background-color: #6C32D5; color: #FFFFFF;';
+        return 'background-color: var(--sendbird-light-primary-300); color: #FFFFFF;';
       }
     }};
   }
