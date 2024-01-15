@@ -100,7 +100,11 @@ const WidgetWindow = ({
 }: WidgetProps & ChatWidgetProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <StyledWidgetWindowWrapper isOpen={isOpen} isExpanded={isExpanded}>
+    <StyledWidgetWindowWrapper
+      isOpen={isOpen}
+      isExpanded={isExpanded}
+      id="chat-widget-window"
+    >
       <StyledExpandButton onClick={() => setIsExpanded((prev) => !prev)}>
         {isExpanded ? <CollapseIcon /> : <ExpandtIcon />}
       </StyledExpandButton>

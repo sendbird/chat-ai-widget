@@ -217,3 +217,17 @@ export function delay(delayTime: number): Promise<void> {
 export function noop() {}
 
 export const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+export function getFormattedDate(inputTime: Date) {
+  // const year = inputTime.getUTCFullYear();
+  const month = inputTime.toLocaleString('en-us', { month: 'short' }); // 'Dec'
+  const day = inputTime.getUTCDate(); // 21
+
+  const formattedDate = `${month}, ${day}`;
+
+  const hours = ('0' + inputTime.getUTCHours()).slice(-2);
+  const minutes = ('0' + inputTime.getUTCMinutes()).slice(-2);
+  const formattedTime = `${hours}:${minutes}`;
+
+  return { formattedDate, formattedTime };
+}

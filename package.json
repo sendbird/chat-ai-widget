@@ -31,8 +31,10 @@
     "@sendbird/chat": "^4.10.1",
     "@sendbird/uikit-react": "^3.9.0",
     "dompurify": "^3.0.4",
+    "framer-motion": "^10.18.0",
     "polished": "^2.3.1",
     "react-code-blocks": "^0.1.0",
+    "react-modal-sheet": "^2.2.0",
     "react-popper-tooltip": "^4.4.2",
     "styled-components": "^5.3.11"
   },
@@ -58,8 +60,8 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "5.0.2",
     "vite": "^4.3.9",
-    "vite-plugin-svgr": "^3.2.0",
-    "vite-plugin-dts": "^3.7.0"
+    "vite-plugin-dts": "^3.7.0",
+    "vite-plugin-svgr": "^3.2.0"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",

@@ -78,3 +78,26 @@ export function getBotWelcomeMessages(
 export function isFormMessage(message: EveryMessage) {
   return !!message.extendedMessagePayload?.forms;
 }
+
+export type FunctionCallMessage = {
+  value_type: 'BALANCE' | 'TRANSACTION_HISTORY';
+  // stringified JSON
+  transaction_history?: string;
+  current_balance?: string;
+} | null;
+
+export function isCurrentBalanceMessage(message: FunctionCallMessage) {
+  return message?.value_type === 'BALANCE' && message?.current_balance != null;
+}
+
+export function isTransactionHistoryMessage(message: FunctionCallMessage) {
+  return (
+    message?.value_type === 'TRANSACTION_HISTORY' &&
+    message?.transaction_history != null
+  );
+}
+
+export interface MessageMeta {
+  stream: boolean;
+  function_calls?: any[];
+}

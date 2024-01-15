@@ -1,6 +1,7 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import { useMemo } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
@@ -8,6 +9,8 @@ import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
+import CurrentBalanceMessage from './CustomView/CurrentBalanceMessage';
+import TransactionHistoryMessage from './CustomView/TransactionHistoryMessage';
 import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import PendingMessage from './PendingMessage';
@@ -22,7 +25,13 @@ import {
   replaceUrl,
   Token,
 } from '../utils';
-import { isFormMessage } from '../utils/messages';
+import {
+  isFormMessage,
+  isCurrentBalanceMessage,
+  type FunctionCallMessage,
+  type MessageMeta,
+  isTransactionHistoryMessage,
+} from '../utils/messages';
 
 type Props = {
   message: EveryMessage;
@@ -48,6 +57,27 @@ export default function CustomMessage(props: Props) {
 
   const { allMessages } = useChannelContext();
 
+  const messageMeta = useMemo(() => {
+    let messageMeta: MessageMeta | null;
+    try {
+      messageMeta = message?.data ? JSON.parse(message.data) : null;
+    } catch (error) {
+      messageMeta = null;
+    }
+    return messageMeta;
+  }, [message?.data]);
+
+  const functionCallMessage: FunctionCallMessage = useMemo(() => {
+    if (
+      messageMeta &&
+      messageMeta.function_calls?.[0] &&
+      messageMeta.function_calls[0]?.response_text
+    ) {
+      return JSON.parse(messageMeta.function_calls[0].response_text);
+    }
+    return null;
+  }, [messageMeta]);
+
   // admin message
   if (message.messageType === 'admin') {
     return <div>{<AdminMessage message={message} />}</div>;
@@ -66,6 +96,34 @@ export default function CustomMessage(props: Props) {
         chainBottom={chainBottom}
         isBotWelcomeMessage={isBotWelcomeMessage}
         isFormMessage={true}
+      />
+    );
+  }
+
+  if (isCurrentBalanceMessage(functionCallMessage)) {
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        messageCount={allMessages.length}
+        bodyComponent={<CurrentBalanceMessage message={functionCallMessage} />}
+        chainTop={chainTop}
+        chainBottom={chainBottom}
+      />
+    );
+  }
+
+  if (isTransactionHistoryMessage(functionCallMessage)) {
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        messageCount={allMessages.length}
+        bodyComponent={
+          <TransactionHistoryMessage message={functionCallMessage} />
+        }
+        chainTop={chainTop}
+        chainBottom={chainBottom}
       />
     );
   }

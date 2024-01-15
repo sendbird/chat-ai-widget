@@ -1,6 +1,8 @@
 :root {
   --sendbird-light-primary-300: #30308f;
   --sendbird-light-background-50-0: #e7f1ff;
+  --sendbird-font-family-custom: "SF Pro Text", "SF Pro Icons", "SF Pro Display",
+    "SF Pro Rounded";
 }
 
 .sendbird-message-content-menu__reaction-menu {

@@ -20,6 +20,7 @@ import { isSpecialMessage, scrollUtil } from '../utils';
 import {
   groupMessagesByShortSpanTime,
   getBotWelcomeMessages,
+  type MessageMeta,
 } from '../utils/messages';
 
 interface RootStyleProps {
@@ -99,10 +100,6 @@ type CustomChannelComponentProps = {
   botUser: User;
   createGroupChannel?: () => void;
 };
-
-interface MessageMeta {
-  stream: boolean;
-}
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
@@ -213,6 +210,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           const isBotWelcomeMessage = !!botWelcomeMessages.find(
             (welcomeMessage) => welcomeMessage.messageId === message.messageId
           );
+
           return (
             <>
               <CustomMessage
