@@ -5,14 +5,13 @@ import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeade
 import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import { useEffect, useState, useMemo, useRef } from 'react';
-import ReactDOM from 'react-dom';
 // eslint-disable-next-line import/no-unresolved
 import { ClientUserMessage, EveryMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
 
-import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
+import { MessageInput } from './CustomMessageInput';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
@@ -230,19 +229,20 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           );
         }}
         renderTypingIndicator={() => <></>}
+        renderMessageInput={() => <MessageInput />}
       />
-      <Banner />
+      {/* <Banner /> */}
     </Root>
   );
 }
 
-function Banner() {
-  const inputElement = document.querySelector(
-    '.sendbird-message-input-wrapper'
-  );
+// function Banner() {
+//   const inputElement = document.querySelector(
+//     '.sendbird-message-input-wrapper'
+//   );
 
-  if (inputElement) {
-    return ReactDOM.createPortal(<ChatBottom />, inputElement);
-  }
-  return null;
-}
+//   if (inputElement) {
+//     return ReactDOM.createPortal(<ChatBottom />, inputElement);
+//   }
+//   return null;
+// }

@@ -98,13 +98,8 @@ export const DEFAULT_CONSTANT: Constant = {
   instantConnect: true,
   customRefreshComponent: {
     icon: RefreshIcon,
-    width: '16px',
-    height: '16px',
-    style: {
-      position: 'relative',
-      // FIXME: This is a hack to make the refresh icon appear next to the expand & close icons in the widget window
-      right: '60px',
-    },
+    width: '24px',
+    height: '24px',
     onClick: noop,
   },
   enableSourceMessage: true,
@@ -144,6 +139,7 @@ export interface Constant {
   enableEmojiFeedback: boolean;
   enableMention: boolean;
   firstMessageData: FirstMessageItem[];
+  inputValue?: string;
 }
 
 export interface SuggestedReply {

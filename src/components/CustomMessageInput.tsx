@@ -5,6 +5,8 @@ import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateConte
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import { useConstantState } from '../context/ConstantContext';
+import { useSendMessage } from '../hooks/useSendMessage';
 import { useThrottle } from '../hooks/useThrottle';
 import { ReactComponent as SendIcon } from '../icons/send-icon.svg';
 
@@ -56,15 +58,18 @@ const Button = styled.div`
 export function MessageInput({
   onSendMessage,
 }: {
-  onSendMessage: (message: string) => void;
+  onSendMessage?: (message?: string) => void;
 }) {
+  const { inputValue } = useConstantState();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [showSendButton, setShowSendButton] = useState<boolean>(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState(inputValue);
+
+  const sendMessage = useSendMessage();
 
   useEffect(() => {
-    if (!message) {
-      setShowSendButton(false);
+    if (typeof message === 'string' && message.length > 0) {
+      setShowSendButton(true);
       if (inputRef.current) {
         inputRef.current.style.height = 'auto';
       }
@@ -79,15 +84,20 @@ export function MessageInput({
   }, 10);
 
   function handleMessageChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    if (message == null) {
+      return;
+    }
     const value = event.target.value;
     setMessage(value);
+    sendMessage(message);
     setShowSendButton(value.length > 0);
   }
 
   function onPressEnter(event: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if (!event.shiftKey && event.charCode === 13) {
+    if (!event.shiftKey && event.charCode === 13 && message != null) {
       event.preventDefault();
-      onSendMessage(message);
+      onSendMessage?.(message);
+      sendMessage(message);
       setMessage('');
     }
   }
@@ -109,7 +119,7 @@ export function MessageInput({
           <Button>
             <SendIcon
               onClick={() => {
-                onSendMessage(message);
+                onSendMessage?.(message);
                 setMessage('');
               }}
               height="20px"

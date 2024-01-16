@@ -33,6 +33,7 @@ const App = (props: Props) => {
       enableEmojiFeedback={props.enableEmojiFeedback}
       enableMention={props.enableMention}
       autoOpen={props.autoOpen}
+      inputValue={props.inputValue}
     />
   );
 };
