@@ -3,11 +3,9 @@ import { GroupChannel } from '@sendbird/chat/groupChannel';
 import Avatar from '@sendbird/uikit-react/ui/Avatar';
 import styled from 'styled-components';
 
-import BetaLogo from './BetaLogo';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
 import channelHeaderImage from '../icons/bot-message-image.png';
-import { isMobile } from '../utils';
 
 const Root = styled.div`
   display: flex;
@@ -63,8 +61,7 @@ type Props = {
 
 export default function CustomChannelHeader(props: Props) {
   const { channel, createGroupChannel, botUser } = props;
-  const { betaMark, customBetaMarkText, customRefreshComponent } =
-    useConstantState();
+  const { customRefreshComponent } = useConstantState();
   const { setFirstMessage } = useSbConnectionState();
 
   function onClickRenewButton() {

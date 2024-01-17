@@ -68,6 +68,12 @@ export function MessageInput({
   const sendMessage = useSendMessage();
 
   useEffect(() => {
+    if (inputValue.length > 0) {
+      setMessage(inputValue);
+    }
+  }, [inputValue]);
+
+  useEffect(() => {
     if (typeof message === 'string' && message.length > 0) {
       setShowSendButton(true);
       if (inputRef.current) {
