@@ -8,7 +8,12 @@ import styled from 'styled-components';
 
 import ListRow from './ListRow';
 import TransactionHistoryBottomSheet from './TransactionHistoryBottomSheet';
+import transactionIconUrl1 from '../../icons/icon-transaction-type-1.png';
+import transactionIconUrl2 from '../../icons/icon-transaction-type-2.png';
+import transactionIconUrl3 from '../../icons/icon-transaction-type-3.png';
 import { FunctionCallMessage } from '../../utils/messages';
+
+const icons = [transactionIconUrl1, transactionIconUrl2, transactionIconUrl3];
 
 const Container = styled.div`
   display: flex;
@@ -62,9 +67,7 @@ const TransactionHistoryMessage = ({
           return (
             <ListRow
               key={history.transactionId}
-              imageSrc={`src/icons/icon-transaction-type-${
-                (index % 3) + 1
-              }.png`}
+              imageSrc={icons[index % 3]}
               title={
                 <AmountText
                   type={LabelTypography.SUBTITLE_1}

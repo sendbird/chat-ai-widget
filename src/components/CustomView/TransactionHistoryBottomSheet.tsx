@@ -7,8 +7,12 @@ import styled from 'styled-components';
 
 import ListRow from './ListRow';
 import { ReactComponent as CloseIcon } from '../../icons/icon-close.svg';
+import transactionIconUrl1 from '../../icons/icon-transaction-type-1.png';
+import transactionIconUrl2 from '../../icons/icon-transaction-type-2.png';
+import transactionIconUrl3 from '../../icons/icon-transaction-type-3.png';
 import { getFormattedDate } from '../../utils';
 
+const icons = [transactionIconUrl1, transactionIconUrl2, transactionIconUrl3];
 const BottomSheetContainer = styled(BottomSheet.Container)`
   padding-bottom: 16px;
 `;
@@ -40,7 +44,12 @@ const TransactionHistoryBottomSheet = ({
   return (
     <BottomSheet
       detent="content-height"
-      mountPoint={document.getElementById('chat-widget-window') as HTMLElement}
+      mountPoint={
+        document.getElementsByClassName(
+          'sendbird-conversation'
+        )?.[0] as HTMLElement
+      }
+      rootId="chat-window"
       isOpen={historyList.length > 0 && bottomSheetOpen}
       onClose={() => {
         setBottomSheetOpen(false);
@@ -53,7 +62,7 @@ const TransactionHistoryBottomSheet = ({
           </BottomSheetTitle>
           <CloseIcon
             style={{
-              paddingRight: '16px',
+              marginRight: '8px',
             }}
             onClick={() => {
               setBottomSheetOpen(false);
@@ -68,9 +77,7 @@ const TransactionHistoryBottomSheet = ({
             return (
               <ListRow
                 key={history.transactionId}
-                imageSrc={`src/icons/icon-transaction-type-${
-                  (index % 3) + 1
-                }.png`}
+                imageSrc={icons[index % 3]}
                 title={
                   <DescText type={LabelTypography.SUBTITLE_1}>
                     {history.description}

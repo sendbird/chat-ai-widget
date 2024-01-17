@@ -139,7 +139,10 @@ export interface Constant {
   enableEmojiFeedback: boolean;
   enableMention: boolean;
   firstMessageData: FirstMessageItem[];
-  inputValue: string;
+  inputValue: {
+    id: string;
+    value: string;
+  };
 }
 
 export interface SuggestedReply {

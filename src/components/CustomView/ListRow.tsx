@@ -10,6 +10,7 @@ const Container = styled.div`
 const LeftColumn = styled.div`
   width: 15%;
   text-align: center;
+  min-width: 40px;
   margin-right: 8px;
 `;
 

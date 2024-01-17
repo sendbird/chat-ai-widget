@@ -7,7 +7,6 @@ import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useSendMessage } from '../hooks/useSendMessage';
-import { useThrottle } from '../hooks/useThrottle';
 import { ReactComponent as SendIcon } from '../icons/send-icon.svg';
 
 interface InputProps {
@@ -15,7 +14,7 @@ interface InputProps {
 }
 const InputComponent = styled.textarea<InputProps>`
   width: ${(props: InputProps) =>
-    props.isActive ? 'calc(100% - 66px)' : '100%'};
+    props.isActive ? 'calc(100% - 30px)' : '100%'};
   transition: ${(props: InputProps) =>
     props.isActive ? 'none' : 'width 0.5s'};
   transition-timing-function: ease;
@@ -55,39 +54,57 @@ const Button = styled.div`
   cursor: pointer;
 `;
 
+// Updates the height of a <textarea> when the value changes.
+const useAutosizeTextArea = (
+  textAreaRef: HTMLTextAreaElement | null,
+  value: string
+) => {
+  useEffect(() => {
+    if (textAreaRef) {
+      // We need to reset the height momentarily to get the correct scrollHeight for the textarea
+      textAreaRef.style.height = '0';
+      const scrollHeight = textAreaRef.scrollHeight;
+
+      // We then set the height directly, outside of the render loop
+      // Trying to set this with state or a ref will product an incorrect value.
+      textAreaRef.style.height = scrollHeight + 'px';
+    }
+  }, [textAreaRef, value]);
+};
+
 export function MessageInput({
   onSendMessage,
 }: {
   onSendMessage?: (message?: string) => void;
 }) {
-  const { inputValue } = useConstantState();
+  const {
+    inputValue: { id: inputId, value: inputValue },
+  } = useConstantState();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [showSendButton, setShowSendButton] = useState<boolean>(false);
   const [message, setMessage] = useState(inputValue);
 
   const sendMessage = useSendMessage();
 
+  useAutosizeTextArea(inputRef.current, message);
+
   useEffect(() => {
     if (inputValue.length > 0) {
       setMessage(inputValue);
     }
-  }, [inputValue]);
+  }, [inputValue, inputId]);
 
   useEffect(() => {
     if (typeof message === 'string' && message.length > 0) {
       setShowSendButton(true);
-      if (inputRef.current) {
-        inputRef.current.style.height = 'auto';
-      }
     }
   }, [message]);
 
-  const throttledIncrement = useThrottle((e?) => {
-    if (inputRef.current) {
-      inputRef.current.style.height = 'auto';
-      inputRef.current.style.height = `${e.target.scrollHeight - 16}px`;
-    }
-  }, 10);
+  function handleSendMessage() {
+    onSendMessage?.(message);
+    sendMessage(message);
+    setMessage('');
+  }
 
   function handleMessageChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     if (message == null) {
@@ -95,16 +112,13 @@ export function MessageInput({
     }
     const value = event.target.value;
     setMessage(value);
-    sendMessage(message);
     setShowSendButton(value.length > 0);
   }
 
   function onPressEnter(event: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (!event.shiftKey && event.charCode === 13 && message != null) {
       event.preventDefault();
-      onSendMessage?.(message);
-      sendMessage(message);
-      setMessage('');
+      handleSendMessage();
     }
   }
 
@@ -117,7 +131,7 @@ export function MessageInput({
           ref={inputRef}
           value={message}
           onChange={handleMessageChange}
-          onInput={throttledIncrement}
+          // onInput={throttledIncrement}
           rows={1}
           placeholder="Enter message"
         />
@@ -125,8 +139,7 @@ export function MessageInput({
           <Button>
             <SendIcon
               onClick={() => {
-                onSendMessage?.(message);
-                setMessage('');
+                handleSendMessage();
               }}
               height="20px"
               width="20px"
