@@ -71,7 +71,7 @@ export default function CustomMessage(props: Props) {
     if (
       messageMeta &&
       messageMeta.function_calls?.[0] &&
-      messageMeta.function_calls[0]?.response_text
+      messageMeta.function_calls[0]?.response_text !== ''
     ) {
       return JSON.parse(messageMeta.function_calls[0].response_text);
     }

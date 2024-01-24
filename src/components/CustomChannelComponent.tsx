@@ -14,6 +14,7 @@ import CustomMessage from './CustomMessage';
 import { MessageInput } from './CustomMessageInput';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
+import { useNumOfMessages } from '../hooks/useInteractiveDemoSharableData';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
 import {
@@ -105,6 +106,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { userId, suggestedMessageContent } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
+  useNumOfMessages();
 
   const channel: GroupChannel | undefined = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[

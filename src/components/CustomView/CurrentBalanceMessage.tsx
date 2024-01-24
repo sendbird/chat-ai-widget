@@ -21,6 +21,8 @@ const Top = styled.div`
   border-radius: 16px 16px 0 0;
   text-align: center;
   padding: 16px 0;
+  display: flex;
+  justify-content: center;
 `;
 
 const Bottom = styled.div`
@@ -36,6 +38,7 @@ const TransactionHistoryButton = styled(Button)`
 `;
 
 const BalanceText = styled.div`
+  font-family: var(--sendbird-font-family-custom);
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;

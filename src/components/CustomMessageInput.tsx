@@ -77,22 +77,20 @@ export function MessageInput({
 }: {
   onSendMessage?: (message?: string) => void;
 }) {
-  const {
-    inputValue: { id: inputId, value: inputValue },
-  } = useConstantState();
+  const { inputValue } = useConstantState();
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [showSendButton, setShowSendButton] = useState<boolean>(false);
-  const [message, setMessage] = useState(inputValue);
+  const [message, setMessage] = useState(inputValue?.value ?? '');
 
   const sendMessage = useSendMessage();
 
   useAutosizeTextArea(inputRef.current, message);
 
   useEffect(() => {
-    if (inputValue.length > 0) {
-      setMessage(inputValue);
+    if (inputValue?.value != null && inputValue.value.length > 0) {
+      sendMessage(inputValue.value);
     }
-  }, [inputValue, inputId]);
+  }, [inputValue?.value, inputValue?.id]);
 
   useEffect(() => {
     if (typeof message === 'string' && message.length > 0) {

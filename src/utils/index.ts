@@ -231,3 +231,35 @@ export function getFormattedDate(inputTime: Date) {
 
   return { formattedDate, formattedTime };
 }
+
+/**
+ * Polyfill for localStorage
+ * localStorage wont work in some browsers, in incognito
+ * and no-cookie modes
+ * @returns { getItem: (key), setItem: (key, value) }
+ */
+interface Storage {
+  [key: string]: any;
+}
+export const LOCAL_STORAGE_KEY_PREFIX = 'chat-ai-widget';
+export const localStorageHelper = () => {
+  const store: Storage = {};
+  return {
+    getItem: (_key: string) => {
+      const key = `${LOCAL_STORAGE_KEY_PREFIX}_${_key}`;
+      try {
+        return localStorage.getItem(key);
+      } catch (error) {
+        return store[key];
+      }
+    },
+    setItem: (_key: string, value: string) => {
+      const key = `${LOCAL_STORAGE_KEY_PREFIX}_${_key}`;
+      try {
+        localStorage.setItem(key, value);
+      } catch (error) {
+        store[key] = value;
+      }
+    },
+  };
+};

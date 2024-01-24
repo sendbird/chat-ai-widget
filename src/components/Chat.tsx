@@ -14,6 +14,7 @@ import { HashedKeyProvider } from '../context/HashedKeyContext';
 import SBConnectionStateProvider, {
   useSbConnectionState,
 } from '../context/SBConnectionContext';
+import { useChatWindowLoadTime } from '../hooks/useInteractiveDemoSharableData';
 import { assert, isMobile } from '../utils';
 
 const SBComponent = () => {
@@ -39,8 +40,9 @@ const SBComponent = () => {
     []
   );
 
-  const userAgentCustomParams = useRef({ 'chat-ai-widget': 'True' });
+  useChatWindowLoadTime();
 
+  const userAgentCustomParams = useRef({ 'chat-ai-widget': 'True' });
   // Until the user sends a first message,
   // we will display a fake channel UI not to establish a connection to Sendbird Chat SDK
   // `sbConnectionStatus` will be changed to `CONNECTING` after the first message is sent

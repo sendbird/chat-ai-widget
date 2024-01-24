@@ -87,13 +87,18 @@ export type FunctionCallMessage = {
 } | null;
 
 export function isCurrentBalanceMessage(message: FunctionCallMessage) {
-  return message?.value_type === 'BALANCE' && message?.current_balance != null;
+  return (
+    message?.value_type === 'BALANCE' &&
+    message?.current_balance != null &&
+    message?.current_balance?.trim() !== ''
+  );
 }
 
 export function isTransactionHistoryMessage(message: FunctionCallMessage) {
   return (
     message?.value_type === 'TRANSACTION_HISTORY' &&
-    message?.transaction_history != null
+    message?.transaction_history != null &&
+    message?.transaction_history?.trim() !== ''
   );
 }
 
