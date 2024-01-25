@@ -14,6 +14,7 @@ export function useChatWindowLoadTime() {
       CHAT_LOAD_TIME_KEY,
       Math.floor(Date.now() / 1000).toString()
     );
+    window.dispatchEvent(new Event('storage'));
   }, []);
 }
 
@@ -27,5 +28,6 @@ export function useNumOfMessages() {
 
   useEffect(() => {
     store.current.setItem(NUM_OF_MESSAGES_KEY, numOfMessages.toString());
+    window.dispatchEvent(new Event('storage'));
   }, [numOfMessages]);
 }
