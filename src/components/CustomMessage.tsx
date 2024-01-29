@@ -10,6 +10,8 @@ import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CurrentBalanceMessage from './CustomView/CurrentBalanceMessage';
+import SendingMoneyConfirmedMessage from './CustomView/SendingMoneyConfirmedMessage';
+import SendingMoneyMessage from './CustomView/SendingMoneyMessage';
 import TransactionHistoryMessage from './CustomView/TransactionHistoryMessage';
 import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
@@ -28,9 +30,11 @@ import {
 import {
   isFormMessage,
   isCurrentBalanceMessage,
+  isSendingMoneyMessage,
+  isSendingMoneyConfirmedMessage,
+  isTransactionHistoryMessage,
   type FunctionCallMessage,
   type MessageMeta,
-  isTransactionHistoryMessage,
 } from '../utils/messages';
 
 type Props = {
@@ -96,6 +100,34 @@ export default function CustomMessage(props: Props) {
         chainBottom={chainBottom}
         isBotWelcomeMessage={isBotWelcomeMessage}
         isFormMessage={true}
+      />
+    );
+  }
+
+  if (isSendingMoneyMessage(functionCallMessage)) {
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        messageCount={allMessages.length}
+        bodyComponent={<SendingMoneyMessage message={functionCallMessage} />}
+        chainTop={chainTop}
+        chainBottom={chainBottom}
+      />
+    );
+  }
+
+  if (isSendingMoneyConfirmedMessage(functionCallMessage)) {
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        messageCount={allMessages.length}
+        bodyComponent={
+          <SendingMoneyConfirmedMessage message={functionCallMessage} />
+        }
+        chainTop={chainTop}
+        chainBottom={chainBottom}
       />
     );
   }

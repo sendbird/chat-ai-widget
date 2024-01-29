@@ -80,10 +80,16 @@ export function isFormMessage(message: EveryMessage) {
 }
 
 export type FunctionCallMessage = {
-  value_type: 'BALANCE' | 'TRANSACTION_HISTORY';
+  value_type:
+    | 'BALANCE'
+    | 'TRANSACTION_HISTORY'
+    | 'SENDING_MONEY'
+    | 'SENDING_MONEY_CONFIRMED';
   // stringified JSON
   transaction_history?: string;
   current_balance?: string;
+  target_amount?: string;
+  recipient?: string;
 } | null;
 
 export function isCurrentBalanceMessage(message: FunctionCallMessage) {
@@ -99,6 +105,22 @@ export function isTransactionHistoryMessage(message: FunctionCallMessage) {
     message?.value_type === 'TRANSACTION_HISTORY' &&
     message?.transaction_history != null &&
     message?.transaction_history?.trim() !== ''
+  );
+}
+
+export function isSendingMoneyMessage(message: FunctionCallMessage) {
+  return (
+    message?.value_type === 'SENDING_MONEY' &&
+    message?.target_amount != null &&
+    message?.recipient != null
+  );
+}
+
+export function isSendingMoneyConfirmedMessage(message: FunctionCallMessage) {
+  return (
+    message?.value_type === 'SENDING_MONEY_CONFIRMED' &&
+    message?.target_amount != null &&
+    message?.recipient != null
   );
 }
 
