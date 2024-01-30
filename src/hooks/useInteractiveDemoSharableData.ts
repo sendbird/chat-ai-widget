@@ -1,3 +1,4 @@
+import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import { useEffect, useRef } from 'react';
 
@@ -21,10 +22,13 @@ export function useChatWindowLoadTime() {
 /**
  * Should be used only inside of Channel component
  */
-export function useNumOfMessages() {
+export function useNumOfMessages(botUserId: string) {
   const store = useRef(localStorageHelper());
   const { allMessages } = useChannelContext();
-  const numOfMessages = allMessages?.length ?? 0;
+  // Count only bot messages
+  const numOfMessages =
+    allMessages?.filter((m) => (m as UserMessage).sender?.userId === botUserId)
+      .length ?? 0;
 
   useEffect(() => {
     store.current.setItem(NUM_OF_MESSAGES_KEY, numOfMessages.toString());

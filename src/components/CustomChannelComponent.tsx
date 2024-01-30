@@ -106,7 +106,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { userId, suggestedMessageContent } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
-  useNumOfMessages();
+  useNumOfMessages(botUser.userId);
 
   const channel: GroupChannel | undefined = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[
