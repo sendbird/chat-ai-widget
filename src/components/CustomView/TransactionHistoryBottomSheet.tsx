@@ -58,7 +58,7 @@ const TransactionHistoryBottomSheet = ({
       <BottomSheetContainer>
         <BottomSheetHeader>
           <BottomSheetTitle type={LabelTypography.H_2}>
-            Transaction history
+            Recent transactions
           </BottomSheetTitle>
           <CloseIcon
             style={{

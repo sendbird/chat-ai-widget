@@ -94,7 +94,7 @@ const TransactionHistoryMessage = ({
             type={LabelTypography.BUTTON_2}
             color={LabelColors.ONCONTENT_1}
           >
-            See all
+            See more
           </Label>
         </SeeAllButton>
       </Bottom>

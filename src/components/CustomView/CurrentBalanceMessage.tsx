@@ -7,7 +7,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import TransactionHistoryBottomSheet from './TransactionHistoryBottomSheet';
-import { ReactComponent as StackedCoinIcon } from '../../icons/icon-stacked-coins.svg';
+import { ReactComponent as WalletIcon } from '../../icons/icon-wallet.svg';
 import { FunctionCallMessage } from '../../utils/messages';
 
 const Container = styled.div`
@@ -55,10 +55,10 @@ const CurrentBalanceMessage = ({
   return (
     <Container>
       <Top>
-        <StackedCoinIcon />
+        <WalletIcon />
       </Top>
       <Bottom>
-        <Label type={LabelTypography.BODY_1}>Your total walth is</Label>
+        <Label type={LabelTypography.BODY_1}>Your current balance is</Label>
         <BalanceText>{message?.current_balance ?? 0}</BalanceText>
         {message?.transaction_history != null && (
           <TransactionHistoryButton
@@ -70,7 +70,7 @@ const CurrentBalanceMessage = ({
               type={LabelTypography.BUTTON_2}
               color={LabelColors.ONCONTENT_1}
             >
-              View transaction history
+              Recent transactions
             </Label>
           </TransactionHistoryButton>
         )}

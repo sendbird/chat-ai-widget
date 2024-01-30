@@ -51,7 +51,7 @@ const SendingMoneyMessage = ({ message }: { message: FunctionCallMessage }) => {
 
   return (
     <Container>
-      <Label>Please confirm.</Label>
+      <Label>Please confirm: </Label>
       <Label type={LabelTypography.H_2}>
         {message?.target_amount} to {message?.recipient ?? 'John Kim'}
       </Label>
