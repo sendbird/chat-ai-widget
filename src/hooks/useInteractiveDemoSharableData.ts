@@ -6,6 +6,16 @@ import { localStorageHelper } from '../utils';
 
 export const CHAT_LOAD_TIME_KEY = 'load-time';
 export const NUM_OF_MESSAGES_KEY = 'num-of-messages';
+export const BOT_ID = 'bot-id';
+
+export function useBotId(id: string) {
+  const store = useRef(localStorageHelper());
+
+  useEffect(() => {
+    store.current.setItem(BOT_ID, id);
+    window.dispatchEvent(new Event('storage'));
+  }, []);
+}
 
 export function useChatWindowLoadTime() {
   const store = useRef(localStorageHelper());

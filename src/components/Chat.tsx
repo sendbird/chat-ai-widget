@@ -14,7 +14,10 @@ import { HashedKeyProvider } from '../context/HashedKeyContext';
 import SBConnectionStateProvider, {
   useSbConnectionState,
 } from '../context/SBConnectionContext';
-import { useChatWindowLoadTime } from '../hooks/useInteractiveDemoSharableData';
+import {
+  useBotId,
+  useChatWindowLoadTime,
+} from '../hooks/useInteractiveDemoSharableData';
 import { assert, isMobile } from '../utils';
 
 const SBComponent = () => {
@@ -40,6 +43,7 @@ const SBComponent = () => {
     []
   );
 
+  useBotId(botId);
   useChatWindowLoadTime();
 
   const userAgentCustomParams = useRef({ 'chat-ai-widget': 'True' });
