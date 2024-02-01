@@ -52,14 +52,15 @@ const CurrentBalanceMessage = ({
 }) => {
   const [bottomSheetOpen, setBottomSheetOpen] = useState(false);
   const historyList = JSON.parse(message?.transaction_history ?? '[]');
+
   return (
     <Container>
       <Top>
         <WalletIcon />
       </Top>
       <Bottom>
-        <Label type={LabelTypography.BODY_1}>Your current balance is</Label>
-        <BalanceText>{message?.current_balance ?? 0}</BalanceText>
+        <Label type={LabelTypography.BODY_1}>Your balance</Label>
+        <BalanceText>{message?.current_balance ?? '$0'}</BalanceText>
         {message?.transaction_history != null && (
           <TransactionHistoryButton
             onClick={() => {
@@ -70,7 +71,7 @@ const CurrentBalanceMessage = ({
               type={LabelTypography.BUTTON_2}
               color={LabelColors.ONCONTENT_1}
             >
-              Recent transactions
+              View transaction history
             </Label>
           </TransactionHistoryButton>
         )}

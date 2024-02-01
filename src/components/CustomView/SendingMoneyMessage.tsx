@@ -51,31 +51,29 @@ const SendingMoneyMessage = ({ message }: { message: FunctionCallMessage }) => {
 
   return (
     <Container>
-      <Label>Please confirm: </Label>
-      <Label type={LabelTypography.H_2}>
-        {message?.target_amount} to {message?.recipient ?? 'John Kim'}
-      </Label>
+      <Label>Send to {message?.recipient ?? 'Jin Ku'}</Label>
+      <Label type={LabelTypography.H_2}>Amount: {message?.target_amount}</Label>
       <Bottom>
         <NoButton
           disabled={isConfirmed}
           onClick={() => {
-            handleClick('No');
+            handleClick('Cancel');
           }}
         >
           <ButtonLabel
             fontColor={'var(--sendbird-light-primary-300)'}
             disabled={isConfirmed}
           >
-            No
+            Cancel
           </ButtonLabel>
         </NoButton>
         <YesButton
           disabled={isConfirmed}
           onClick={() => {
-            handleClick('Yes');
+            handleClick('Send');
           }}
         >
-          <ButtonLabel disabled={isConfirmed}>Yes</ButtonLabel>
+          <ButtonLabel disabled={isConfirmed}>Send</ButtonLabel>
         </YesButton>
       </Bottom>
     </Container>

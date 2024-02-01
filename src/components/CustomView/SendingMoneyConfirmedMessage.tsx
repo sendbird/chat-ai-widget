@@ -35,13 +35,9 @@ const SendingMoneyConfirmedMessage = ({
         <SendingMoneyImg />
       </Top>
       <Bottom>
-        <div>Successfully sent</div>
+        <Label type={LabelTypography.CAPTION_1}>Success!</Label>
         <div>
-          <Label type={LabelTypography.CAPTION_1}>
-            {message?.target_amount ?? 0}
-          </Label>{' '}
-          to{' '}
-          <Label type={LabelTypography.CAPTION_1}>{message?.recipient}</Label>
+          {message?.target_amount ?? 0} was sent to {message?.recipient}
         </div>
       </Bottom>
     </Container>
