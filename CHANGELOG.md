@@ -1,3 +1,13 @@
+## [v1.1.1] (Feb 2 2024)
+
+#### Feat:
+- Added missing profile URL image prop
+- Used bot profileUrl & nickname in the channel header
+- Applied text overflow attribute to message input element
+
+#### Chore:
+- Excluded Pull Request option from Github.io deployment configuration
+
 ## [v1.1.0] (Nov 9 2023)
 #### Feat:
 - Renamed `quick_replies` to `suggested_replies`
