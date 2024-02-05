@@ -63,7 +63,7 @@ const TransactionHistoryMessage = ({
   return (
     <Container>
       {historyList.length > 0 &&
-        historyList.slice(3).map((history, index) => {
+        historyList.slice(0, 4).map((history, index) => {
           return (
             <ListRow
               key={history.transactionId}

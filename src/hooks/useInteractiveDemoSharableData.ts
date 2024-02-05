@@ -45,3 +45,16 @@ export function useNumOfMessages(botUserId: string) {
     window.dispatchEvent(new Event('storage'));
   }, [numOfMessages]);
 }
+
+export function useResetStorageData() {
+  const store = useRef(localStorageHelper());
+
+  return () => {
+    store.current.setItem(
+      CHAT_LOAD_TIME_KEY,
+      Math.floor(Date.now() / 1000).toString()
+    );
+    store.current.setItem(NUM_OF_MESSAGES_KEY, '0');
+    window.dispatchEvent(new Event('storage'));
+  };
+}

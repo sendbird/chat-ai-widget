@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
+import { useResetStorageData } from '../hooks/useInteractiveDemoSharableData';
 import channelHeaderImage from '../icons/bot-message-image.png';
 
 const Root = styled.div`
@@ -63,10 +64,12 @@ export default function CustomChannelHeader(props: Props) {
   const { channel, createGroupChannel, botUser } = props;
   const { customRefreshComponent } = useConstantState();
   const { setFirstMessage } = useSbConnectionState();
+  const resetStorageData = useResetStorageData();
 
   function onClickRenewButton() {
     setFirstMessage(null);
     createGroupChannel();
+    resetStorageData();
     customRefreshComponent?.onClick?.();
     // window.location.reload();
   }

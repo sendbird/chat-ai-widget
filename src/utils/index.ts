@@ -261,5 +261,13 @@ export const localStorageHelper = () => {
         store[key] = value;
       }
     },
+    removeItem: (_key: string) => {
+      const key = `${LOCAL_STORAGE_KEY_PREFIX}_${_key}`;
+      try {
+        localStorage.removeItem(key);
+      } catch (error) {
+        //
+      }
+    },
   };
 };
