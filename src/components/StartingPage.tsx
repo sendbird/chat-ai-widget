@@ -218,11 +218,11 @@ export function StartingPage(props: Props) {
               ? `I'm ${botNickName}`
               : startingPageContent.headerContent.headerOne}
           </HeaderOne>
-          {(betaMark || customBetaMarkText) && (
+          {betaMark ? (
             <BetaLogo style={{ marginBottom: '3px' }}>
               {customBetaMarkText}
             </BetaLogo>
-          )}
+          ) : null}
         </HeaderOneContainer>
         <HeaderTwo>{startingPageContent.headerContent.headerTwo}</HeaderTwo>
       </TitleContainer>
