@@ -1,5 +1,9 @@
-## [v1.1.1] (Feb 2 2024)
+## [v1.1.2] (Feb 7 2024)
+#### Fix:
+- Fixed text alignment issue with sendbird-message-input-text-field
+- Fixed autoOpen & betaMark prop behavior issue
 
+## [v1.1.1] (Feb 2 2024)
 #### Feat:
 - Added missing profile URL image prop
 - Used bot profileUrl & nickname in the channel header
