@@ -85,3 +85,7 @@
 .sendbird-notification--hide .sendbird-conversation__messages__notification {
   fill: var(--sendbird-light-primary-300);
 }
+
+.sendbird-conversation__scroll-bottom-button {
+  bottom: 16px;
+}

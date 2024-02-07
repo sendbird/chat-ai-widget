@@ -8,26 +8,29 @@ import styled from 'styled-components';
 
 import ListRow from './ListRow';
 import TransactionHistoryBottomSheet from './TransactionHistoryBottomSheet';
-import transactionIconUrl1 from '../../icons/icon-transaction-type-1.png';
-import transactionIconUrl2 from '../../icons/icon-transaction-type-2.png';
-import transactionIconUrl3 from '../../icons/icon-transaction-type-3.png';
+import { ReactComponent as TransactionIcon1 } from '../../icons/icon-transaction-type-1.svg';
+import { ReactComponent as TransactionIcon2 } from '../../icons/icon-transaction-type-2.svg';
+import { ReactComponent as TransactionIcon3 } from '../../icons/icon-transaction-type-3.svg';
 import { FunctionCallMessage } from '../../utils/messages';
 
-const icons = [transactionIconUrl1, transactionIconUrl2, transactionIconUrl3];
+const icons = [
+  <TransactionIcon1 key="1" />,
+  <TransactionIcon2 key="2" />,
+  <TransactionIcon3 key="3" />,
+];
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 244px;
+  width: 220px;
   font-family: var(--sendbird-font-family-custom);
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
-  padding: 8px 8px 0;
+  padding: 12px;
 `;
 
 const Bottom = styled.div`
   background-color: var(--sendbird-light-background-50-0);
-  padding: 12px;
   border-radius: 16px;
 `;
 
@@ -49,7 +52,6 @@ interface HistoryItem {
   currency: string;
   description: string;
 }
-
 const TransactionHistoryMessage = ({
   message,
 }: {
@@ -65,23 +67,25 @@ const TransactionHistoryMessage = ({
       {historyList.length > 0 &&
         historyList.slice(0, 4).map((history, index) => {
           return (
-            <ListRow
-              key={history.transactionId}
-              imageSrc={icons[index % 3]}
-              title={
-                <AmountText
-                  type={LabelTypography.SUBTITLE_1}
-                  color={LabelColors.PRIMARY}
-                >
-                  {history.amount}
-                </AmountText>
-              }
-              description={
-                <Label type={LabelTypography.CAPTION_3}>
-                  {history.description}
-                </Label>
-              }
-            />
+            <div key={history.transactionId} style={{ marginBottom: 16 }}>
+              <ListRow
+                key={history.transactionId}
+                icon={icons[index % icons.length]}
+                title={
+                  <AmountText
+                    type={LabelTypography.SUBTITLE_1}
+                    color={LabelColors.PRIMARY}
+                  >
+                    {history.amount}
+                  </AmountText>
+                }
+                description={
+                  <Label type={LabelTypography.CAPTION_3}>
+                    {history.description}
+                  </Label>
+                }
+              />
+            </div>
           );
         })}
       <Bottom>

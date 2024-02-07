@@ -1,11 +1,7 @@
-import { Dispatch, SetStateAction, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import Chat from './Chat';
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
-import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
-import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';
-import { ReactComponent as ExpandtIcon } from '../icons/icon-expand.svg';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
@@ -62,55 +58,17 @@ const StyledWidgetWindowWrapper = styled.div<{
     `}
 `;
 
-const StyledExpandButton = styled.button`
-  position: fixed;
-  right: 42px;
-  top: 16px;
-  width: 24px;
-  height: 24px;
-  background: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledCloseButton = styled.button`
-  position: fixed;
-  right: 12px;
-  top: 16px;
-  width: 24px;
-  height: 24px;
-  background: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 interface WidgetProps {
   isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const WidgetWindow = ({
-  isOpen,
-  setIsOpen,
-  ...props
-}: WidgetProps & ChatWidgetProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const WidgetWindow = ({ isOpen, ...props }: WidgetProps & ChatWidgetProps) => {
   return (
     <StyledWidgetWindowWrapper
       isOpen={isOpen}
-      isExpanded={isExpanded}
+      isExpanded={false}
       id="chat-widget-window"
     >
-      <StyledExpandButton onClick={() => setIsExpanded((prev) => !prev)}>
-        {isExpanded ? <CollapseIcon /> : <ExpandtIcon />}
-      </StyledExpandButton>
-      <StyledCloseButton onClick={() => setIsOpen(() => false)}>
-        <CloseIcon />
-      </StyledCloseButton>
       <Chat {...props} isOpen={isOpen} />
     </StyledWidgetWindowWrapper>
   );

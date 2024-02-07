@@ -12,7 +12,7 @@ import { formatCreatedAtToAMPM } from '../utils';
 const Root = styled.div`
   display: flex;
   align-items: flex-end;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
   gap: 8px;
   position: relative;

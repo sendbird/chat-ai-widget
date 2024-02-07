@@ -7,6 +7,9 @@ import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
 import { useResetStorageData } from '../hooks/useInteractiveDemoSharableData';
 import channelHeaderImage from '../icons/bot-message-image.png';
+import { ReactComponent as BatteryIcon } from '../icons/icon-battery.svg';
+import { ReactComponent as CellularIcon } from '../icons/icon-cellular-connection.svg';
+import { ReactComponent as WifiIcon } from '../icons/icon-wifi.svg';
 
 const Root = styled.div`
   display: flex;
@@ -15,7 +18,7 @@ const Root = styled.div`
   font-style: normal;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 11px 12px;
+  padding: 0 12px 12px;
 `;
 
 const SubContainer = styled.div`
@@ -43,7 +46,7 @@ const RenewButtonForWidgetDemo = styled.div`
   width: 24px;
   height: 24px;
   cursor: pointer;
-  margin-right: 2px;
+  margin-right: 4px;
 `;
 
 const RenewButtonContainer = styled.div`
@@ -52,6 +55,13 @@ const RenewButtonContainer = styled.div`
   width: fit-content;
   align-items: center;
   gap: 6px;
+`;
+
+const StatusBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 12px;
 `;
 
 type Props = {
@@ -75,28 +85,38 @@ export default function CustomChannelHeader(props: Props) {
   }
 
   return (
-    <Root>
-      <SubContainer>
-        <Avatar
-          src={botUser?.profileUrl || channelHeaderImage}
-          alt="channelHeaderImage"
-          height="34px"
-          width="34px"
-        />
-        <Title>{botUser?.nickname || channel.name}</Title>
-        {/* {!isMobile && (betaMark || customBetaMarkText) && (
+    <>
+      <StatusBar>
+        <div style={{ fontSize: 16, marginLeft: 8 }}>9:41</div>
+        <div style={{ display: 'flex' }}>
+          <CellularIcon />
+          <WifiIcon style={{ marginLeft: 7 }} />
+          <BatteryIcon style={{ marginLeft: 7 }} />
+        </div>
+      </StatusBar>
+      <Root>
+        <SubContainer>
+          <Avatar
+            src={botUser?.profileUrl || channelHeaderImage}
+            alt="channelHeaderImage"
+            height="34px"
+            width="34px"
+          />
+          <Title>{botUser?.nickname || channel.name}</Title>
+          {/* {!isMobile && (betaMark || customBetaMarkText) && (
           <BetaLogo>{customBetaMarkText}</BetaLogo>
         )} */}
-      </SubContainer>
-      <RenewButtonContainer>
-        <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
-          <customRefreshComponent.icon
-            width={customRefreshComponent.width}
-            height={customRefreshComponent.height}
-            style={customRefreshComponent.style}
-          />
-        </RenewButtonForWidgetDemo>
-      </RenewButtonContainer>
-    </Root>
+        </SubContainer>
+        <RenewButtonContainer>
+          <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
+            <customRefreshComponent.icon
+              width={customRefreshComponent.width}
+              height={customRefreshComponent.height}
+              style={customRefreshComponent.style}
+            />
+          </RenewButtonForWidgetDemo>
+        </RenewButtonContainer>
+      </Root>
+    </>
   );
 }

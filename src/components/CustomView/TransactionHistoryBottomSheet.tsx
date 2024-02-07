@@ -8,12 +8,17 @@ import styled from 'styled-components';
 
 import ListRow from './ListRow';
 import { ReactComponent as CloseIcon } from '../../icons/icon-close.svg';
-import transactionIconUrl1 from '../../icons/icon-transaction-type-1.png';
-import transactionIconUrl2 from '../../icons/icon-transaction-type-2.png';
-import transactionIconUrl3 from '../../icons/icon-transaction-type-3.png';
+import { ReactComponent as TransactionIcon1 } from '../../icons/icon-transaction-type-1.svg';
+import { ReactComponent as TransactionIcon2 } from '../../icons/icon-transaction-type-2.svg';
+import { ReactComponent as TransactionIcon3 } from '../../icons/icon-transaction-type-3.svg';
 import { getFormattedDate } from '../../utils';
 
-const icons = [transactionIconUrl1, transactionIconUrl2, transactionIconUrl3];
+const icons = [
+  <TransactionIcon1 key="1" />,
+  <TransactionIcon2 key="2" />,
+  <TransactionIcon3 key="3" />,
+];
+
 const BottomSheetContainer = styled(BottomSheet.Container)`
   padding-bottom: 16px;
   border-radius: 15px 15px 0 0 !important;
@@ -22,12 +27,13 @@ const BottomSheetContainer = styled(BottomSheet.Container)`
 const BottomSheetHeader = styled(BottomSheet.Header)`
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  padding: 24px 0;
+  width: auto;
+  padding: 26px 20px 18px 16px;
+  margin-bottom: 8px;
 `;
 
-const BottomSheetTitle = styled(Label)`
-  padding-left: 16px;
+const BottomSheetContent = styled(BottomSheet.Content)`
+  overflow: scroll;
 `;
 
 const DescText = styled(Label)`
@@ -93,19 +99,14 @@ const TransactionHistoryBottomSheet = ({
     >
       <BottomSheetContainer>
         <BottomSheetHeader>
-          <BottomSheetTitle type={LabelTypography.H_2}>
-            Transaction history
-          </BottomSheetTitle>
+          <Label type={LabelTypography.H_2}>Transaction history</Label>
           <CloseIcon
-            style={{
-              marginRight: '8px',
-            }}
             onClick={() => {
               setBottomSheetOpen(false);
             }}
           />
         </BottomSheetHeader>
-        <BottomSheet.Content>
+        <BottomSheetContent>
           {Object.entries(grouppedHistoryList).map(([date, historyList]) => {
             return (
               <div
@@ -115,7 +116,7 @@ const TransactionHistoryBottomSheet = ({
                 key={date}
               >
                 <Label
-                  type={LabelTypography.CAPTION_1}
+                  type={LabelTypography.CAPTION_2}
                   color={LabelColors.ONBACKGROUND_2}
                 >
                   {date}
@@ -125,42 +126,46 @@ const TransactionHistoryBottomSheet = ({
                     new Date(history.timeStamp)
                   );
                   return (
-                    <ListRow
+                    <div
                       key={history.transactionId}
-                      imageSrc={icons[index % 3]}
-                      title={
-                        <DescText type={LabelTypography.SUBTITLE_1}>
-                          {history.description}
-                        </DescText>
-                      }
-                      description={
-                        <Label
-                          type={LabelTypography.CAPTION_3}
-                          color={LabelColors.ONBACKGROUND_3}
-                        >
-                          {formattedTime}
-                        </Label>
-                      }
-                      rightTop={
-                        <Label type={LabelTypography.SUBTITLE_1}>
-                          {history.amount}
-                        </Label>
-                      }
-                      rightBottom={
-                        <Label
-                          type={LabelTypography.CAPTION_3}
-                          color={LabelColors.ONBACKGROUND_3}
-                        >
-                          {history.currentBalance}
-                        </Label>
-                      }
-                    />
+                      style={{ margin: '20px 0px' }}
+                    >
+                      <ListRow
+                        icon={icons[index % icons.length]}
+                        title={
+                          <DescText type={LabelTypography.SUBTITLE_1}>
+                            {history.description}
+                          </DescText>
+                        }
+                        description={
+                          <Label
+                            type={LabelTypography.CAPTION_3}
+                            color={LabelColors.ONBACKGROUND_3}
+                          >
+                            {formattedTime}
+                          </Label>
+                        }
+                        rightTop={
+                          <Label type={LabelTypography.SUBTITLE_1}>
+                            {history.amount}
+                          </Label>
+                        }
+                        rightBottom={
+                          <Label
+                            type={LabelTypography.CAPTION_3}
+                            color={LabelColors.ONBACKGROUND_3}
+                          >
+                            {history.currentBalance}
+                          </Label>
+                        }
+                      />
+                    </div>
                   );
                 })}
               </div>
             );
           })}
-        </BottomSheet.Content>
+        </BottomSheetContent>
       </BottomSheetContainer>
       <BottomSheet.Backdrop />
     </BottomSheet>

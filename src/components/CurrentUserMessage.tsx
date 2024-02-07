@@ -7,7 +7,7 @@ const Root = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: end;
-  margin-bottom: 6px;
+  margin-bottom: 16px;
   flex-wrap: wrap-reverse;
   gap: 8px;
 `;

@@ -34,15 +34,16 @@ const Bottom = styled.div`
 const TransactionHistoryButton = styled(Button)`
   width: 100%;
   border-radius: 8px;
-  margin-top: 8px;
+  margin-top: 12px;
 `;
 
 const BalanceText = styled.div`
-  font-family: var(--sendbird-font-family-custom);
+  font-family: var(--sendbird-font-family-default);
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
   letter-spacing: -0.01em;
+  margin-top: 6px;
 `;
 
 const CurrentBalanceMessage = ({

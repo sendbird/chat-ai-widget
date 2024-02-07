@@ -4,13 +4,11 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
 `;
 
 const LeftColumn = styled.div`
-  width: 15%;
   text-align: center;
-  min-width: 40px;
+  width: 44px;
   margin-right: 8px;
 `;
 
@@ -22,15 +20,9 @@ const CenterColumn = styled.div<{ hasRightColumn: boolean }>`
 `;
 
 const RightColumn = styled.div`
-  width: 25%;
+  width: 40%;
   padding-left: 4px;
   text-align: right;
-`;
-
-const CircleImage = styled.img`
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
 `;
 
 const Row = styled.div`
@@ -42,14 +34,14 @@ const Row = styled.div`
 `;
 
 interface ListRowProps {
-  imageSrc: string;
+  icon: React.ReactNode;
   title: React.ReactNode;
   description: React.ReactNode;
   rightTop?: React.ReactNode;
   rightBottom?: React.ReactNode;
 }
 const ListRow = ({
-  imageSrc,
+  icon,
   title,
   description,
   rightTop,
@@ -58,9 +50,7 @@ const ListRow = ({
   const hasRightColumn = rightTop != null || rightBottom != null;
   return (
     <Container>
-      <LeftColumn>
-        <CircleImage src={imageSrc} alt="" />
-      </LeftColumn>
+      <LeftColumn>{icon}</LeftColumn>
       <CenterColumn hasRightColumn={hasRightColumn}>
         <Row>{title}</Row>
         <Row>{description}</Row>

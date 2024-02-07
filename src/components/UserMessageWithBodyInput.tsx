@@ -46,7 +46,7 @@ const SentTime = styled.div`
   color: rgba(0, 0, 0, 0.38);
   font-size: 12px;
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 `;
 
 type Props = {
