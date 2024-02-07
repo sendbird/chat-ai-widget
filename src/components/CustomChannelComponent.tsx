@@ -70,6 +70,7 @@ const Root = styled.div<RootStyleProps>`
       background-color: #eeeeee;
       border-radius: 20px;
       height: auto;
+      text-align: start;
       ::placeholder {
         color: rgba(0, 0, 0, 0.38);
       }
