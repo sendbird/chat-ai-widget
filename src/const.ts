@@ -98,8 +98,8 @@ export const DEFAULT_CONSTANT: Constant = {
   instantConnect: true,
   customRefreshComponent: {
     icon: RefreshIcon,
-    width: '24px',
-    height: '24px',
+    width: '20px',
+    height: '18px',
     onClick: noop,
   },
   enableSourceMessage: true,
