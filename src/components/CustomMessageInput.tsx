@@ -8,9 +8,11 @@ import styled from 'styled-components';
 import { useConstantState } from '../context/ConstantContext';
 import { useSendMessage } from '../hooks/useSendMessage';
 import { ReactComponent as SendIcon } from '../icons/send-icon.svg';
+import {categoryColors} from "../utils/category";
 
 interface InputProps {
   isActive: boolean;
+  botCategory?: string;
 }
 const InputComponent = styled.textarea<InputProps>`
   width: ${(props: InputProps) =>
@@ -27,7 +29,11 @@ const InputComponent = styled.textarea<InputProps>`
   border: none;
   outline: none;
   max-height: 116px;
-  background: #eeeeee;
+  background: ${({ botCategory }) =>
+    botCategory
+      ? categoryColors[botCategory]['input-message-background-color']
+      : '#eeeeee'};
+  };
   border-radius: 20px;
   height: auto;
   ::placeholder {
@@ -81,6 +87,7 @@ export function MessageInput({
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [showSendButton, setShowSendButton] = useState<boolean>(false);
   const [message, setMessage] = useState(inputValue?.value ?? '');
+  const { botCategory } = useConstantState();
 
   const sendMessage = useSendMessage();
 
@@ -132,6 +139,7 @@ export function MessageInput({
           // onInput={throttledIncrement}
           rows={1}
           placeholder="Enter message"
+          botCategory={botCategory}
         />
         {showSendButton && (
           <Button>

@@ -1,7 +1,7 @@
 import { User } from '@sendbird/chat';
 import { GroupChannel } from '@sendbird/chat/groupChannel';
 import Avatar from '@sendbird/uikit-react/ui/Avatar';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
@@ -10,6 +10,17 @@ import channelHeaderImage from '../icons/bot-message-image.png';
 import { ReactComponent as BatteryIcon } from '../icons/icon-battery.svg';
 import { ReactComponent as CellularIcon } from '../icons/icon-cellular-connection.svg';
 import { ReactComponent as WifiIcon } from '../icons/icon-wifi.svg';
+import { categoryColors } from '../utils/category';
+
+const StyledCustomCustomChannelComponentWrapper = styled.div<{
+  botCategory?: string;
+}>`
+  ${({ botCategory }) =>
+    botCategory &&
+    css`
+      background: ${categoryColors[botCategory]['background-header-color']};
+    `}
+`;
 
 const Root = styled.div`
   display: flex;
@@ -73,6 +84,7 @@ type Props = {
 export default function CustomChannelHeader(props: Props) {
   const { channel, createGroupChannel, botUser } = props;
   const { customRefreshComponent } = useConstantState();
+  const { botCategory } = useConstantState();
   const { setFirstMessage } = useSbConnectionState();
   const resetStorageData = useResetStorageData();
 
@@ -85,7 +97,7 @@ export default function CustomChannelHeader(props: Props) {
   }
 
   return (
-    <>
+    <StyledCustomCustomChannelComponentWrapper botCategory={botCategory}>
       <StatusBar>
         <div style={{ fontSize: 16, marginLeft: 8 }}>9:41</div>
         <div style={{ display: 'flex' }}>
@@ -117,6 +129,6 @@ export default function CustomChannelHeader(props: Props) {
           </RenewButtonForWidgetDemo>
         </RenewButtonContainer>
       </Root>
-    </>
+    </StyledCustomCustomChannelComponentWrapper>
   );
 }

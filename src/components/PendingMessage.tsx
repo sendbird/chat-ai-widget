@@ -35,6 +35,7 @@ export default function PendingMessage({
         alt="pending..."
         style={{
           height: '52px',
+          borderRadius: '16px',
         }}
       />
     </Container>

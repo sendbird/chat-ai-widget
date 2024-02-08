@@ -22,11 +22,13 @@ import {
   getBotWelcomeMessages,
   type MessageMeta,
 } from '../utils/messages';
+import {categoryColors} from "../utils/category";
 
 interface RootStyleProps {
   hidePlaceholder: boolean;
   height: string;
   isInputActive: boolean;
+  botCategory?: string;
 }
 const Root = styled.div<RootStyleProps>`
   height: ${({ height }) => height};
@@ -67,7 +69,11 @@ const Root = styled.div<RootStyleProps>`
       border: none;
       outline: none;
       max-height: 116px;
-      background-color: #eeeeee;
+      background: ${({ botCategory }) =>
+        botCategory
+          ? categoryColors[botCategory]['input-container-color']
+          : '#eeeeee'};
+      };
       border-radius: 20px;
       height: auto;
       ::placeholder {
@@ -104,6 +110,7 @@ type CustomChannelComponentProps = {
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
   const { userId, suggestedMessageContent } = useConstantState();
+  const { botCategory } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
   useNumOfMessages(botUser.userId);
@@ -190,7 +197,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   }, [allMessages.length]);
 
   return (
-    <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'}>
+    <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'} botCategory={botCategory}>
       <ChannelUI
         renderChannelHeader={() => {
           return channel && createGroupChannel && botUser ? (

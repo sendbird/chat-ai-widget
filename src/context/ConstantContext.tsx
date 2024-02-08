@@ -21,6 +21,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
     () => ({
       applicationId: props.applicationId,
       botId: props.botId,
+      botCategory: props.botCategory ?? initialState.botCategory,
       botNickName: props.botNickName ?? initialState.botNickName,
       userId: props.userId ?? initialState.userId,
       userNickName: props.userNickName ?? initialState.userNickName,

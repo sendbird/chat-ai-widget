@@ -12,6 +12,7 @@ const USER_ID = uuid();
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
 
 export const DEFAULT_CONSTANT: Constant = {
+  botCategory: 'fintech',
   botNickName: 'Khan Academy Support Bot',
   userId: USER_ID,
   userNickName: 'User',
@@ -121,6 +122,7 @@ type FirstMessageItem = {
 };
 
 export interface Constant {
+  botCategory: string;
   botNickName: string;
   userId: string;
   userNickName: string;
