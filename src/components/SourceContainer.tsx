@@ -58,7 +58,7 @@ type Props = {
 
 export default function SourceContainer(props: Props) {
   const { sources } = props;
-  const source: Source = sources[sources.length - 1];
+  const source: Source = sources[0];
 
   return (
     <Root>
