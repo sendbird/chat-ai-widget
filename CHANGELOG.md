@@ -1,3 +1,8 @@
+## [v1.1.3] (Feb 13 2024)
+#### Fix:
+- Changed source display indexing from the last item to the first
+- Added a filtering option for the source list by `source_type`
+
 ## [v1.1.2] (Feb 7 2024)
 #### Fix:
 - Fixed text alignment issue with sendbird-message-input-text-field
