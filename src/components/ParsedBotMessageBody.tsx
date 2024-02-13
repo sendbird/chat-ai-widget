@@ -56,7 +56,9 @@ export default function ParsedBotMessageBody(props: Props) {
   const { enableSourceMessage } = useConstantState();
   const data: MetaData = JSON.parse(message.data === '' ? '{}' : message.data);
   const sources: Source[] = Array.isArray(data['metadatas'])
-    ? data['metadatas']
+    ? data['metadatas']?.filter(
+        (source: Source) => source.source_type !== 'file'
+      )
     : [];
 
   // console.log('## sources: ', sources);
