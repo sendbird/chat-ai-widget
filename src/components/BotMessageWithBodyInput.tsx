@@ -1,6 +1,10 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
 import Avatar from '@sendbird/uikit-react/ui/Avatar';
+import Label, {
+  LabelTypography,
+  LabelColors,
+} from '@sendbird/uikit-react/ui/Label';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
@@ -18,15 +22,9 @@ const Root = styled.div`
   position: relative;
 `;
 
-const Sender = styled.div`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 12px;
-  color: rgba(0, 0, 0, 0.5);
-  transition: color 0.5s;
-  transition-timing-function: ease;
+const Sender = styled(Label)`
   margin: 0 0 4px 12px;
+  text-align: left;
 `;
 
 interface BodyContainerProps {
@@ -35,7 +33,7 @@ interface BodyContainerProps {
 
 const BodyContainer = styled.div<BodyContainerProps>`
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.88);
+  color: ${({ theme }) => theme.textColor.incomingMessage};
   max-width: calc(100% - 96px);
   font-weight: normal;
   font-stretch: normal;
@@ -46,7 +44,7 @@ const BodyContainer = styled.div<BodyContainerProps>`
 
 const SentTime = styled.div`
   width: fit-content;
-  color: rgba(0, 0, 0, 0.38);
+  color: ${({ theme }) => theme.textColor.sentTime};
   font-size: 12px;
   line-height: 1;
   margin-bottom: 6px;
@@ -107,9 +105,8 @@ export default function BotMessageWithBodyInput(props: Props) {
       <BodyContainer style={bodyStyle ?? {}}>
         {displaySender && (
           <Sender
-            style={{
-              textAlign: 'left',
-            }}
+            type={LabelTypography.CAPTION_2}
+            color={LabelColors.ONBACKGROUND_2}
           >
             {botUser.nickname}
           </Sender>

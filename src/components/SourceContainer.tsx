@@ -15,7 +15,7 @@ const RootTitle = styled.div`
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
-  color: rgba(0, 0, 0, 0.5);
+  color: ${({ theme }) => theme.textColor.incomingMessage};
   padding-bottom: 4px;
 `;
 
@@ -24,7 +24,7 @@ const SourceTitle = styled.a`
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.1px;
-  color: rgba(0, 0, 0, 0.88);
+  color: ${({ theme }) => theme.textColor.incomingMessage};
   width: fit-content;
   block-size: fit-content;
 `;
@@ -43,6 +43,12 @@ const IconLink = styled.a`
   align-items: center;
   width: 15px;
   padding: 0 1px;
+
+  svg {
+    path {
+      fill: ${({ theme }) => theme.textColor.incomingMessage};
+    }
+  }
 `;
 
 export interface Source {

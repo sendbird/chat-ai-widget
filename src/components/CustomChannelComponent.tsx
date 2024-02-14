@@ -3,6 +3,7 @@ import { GroupChannel } from '@sendbird/chat/groupChannel';
 import { SendingStatus } from '@sendbird/chat/message';
 import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeader';
 import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
+// import SuggestedReplies from '@sendbird/uikit-react/Channel/components/SuggestedReplies';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import { useEffect, useState, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom';
@@ -67,7 +68,7 @@ const Root = styled.div<RootStyleProps>`
       border: none;
       outline: none;
       max-height: 116px;
-      background-color: #eeeeee;
+      background-color: ${({ theme }) => theme.bgColor.messageInput};
       border-radius: 20px;
       height: auto;
       text-align: start;
@@ -192,7 +193,6 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const botWelcomeMessages = useMemo(() => {
     return getBotWelcomeMessages(allMessages, botUser.userId);
   }, [allMessages.length]);
-
   return (
     <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'}>
       <ChannelUI
@@ -229,6 +229,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
               {message.messageId === lastMessage.messageId &&
                 dynamicReplyOptions.length > 0 && (
                   <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
+                  // <SuggestedReplies
+                  //   replyOptions={dynamicReplyOptions}
+                  //   onSendMessage={({ message }) => sendMessage(message)}
+                  // />
                 )}
             </>
           );

@@ -24,7 +24,7 @@ const BodyContainer = styled.div`
 `;
 
 const SentTime = styled.div`
-  color: rgba(0, 0, 0, 0.38);
+  color: ${({ theme }) => theme.textColor.sentTime};
   font-size: 12px;
   line-height: 1;
   margin-bottom: 6px;
@@ -35,7 +35,7 @@ const BodyComponent = styled.div`
   &:hover {
     background-color: #6211c8;
   }
-  color: rgba(255, 255, 255, 0.88);
+  color: ${({ theme }) => theme.textColor.outgoingMessage};
   max-width: 600px;
   display: flex;
   flex-direction: column;

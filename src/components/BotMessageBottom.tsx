@@ -8,7 +8,7 @@ import { ReactComponent as InfoIcon } from '../icons/info-icon.svg';
 import 'react-popper-tooltip/dist/styles.css';
 
 const Text = styled.div`
-  color: rgba(0, 0, 0, 0.5);
+  color: ${({ theme }) => theme.textColor.incomingMessage};
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
@@ -42,6 +42,12 @@ const InfoIconButton = styled.div`
   align-items: center;
   width: 18px;
   cursor: pointer;
+
+  svg {
+    path {
+      fill: ${({ theme }) => theme.textColor.incomingMessage};
+    }
+  }
 `;
 
 const InfoBox = styled.div`
@@ -52,7 +58,7 @@ const InfoBox = styled.div`
   width: 100%;
   background: rgb(0, 0, 0, 0.8);
   border-radius: 8px;
-  color: white;
+  color: ${({ theme }) => theme.textColor.sourceInfo};
   margin-top: 8px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
