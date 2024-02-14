@@ -35,7 +35,9 @@ import {
   isTransactionHistoryMessage,
   type FunctionCallMessage,
   type MessageMeta,
+  isOrderHistoryMessage,
 } from '../utils/messages';
+import OrderHistoryMessage from "./CustomView/OrderHistoryMessage";
 
 type Props = {
   message: EveryMessage;
@@ -154,6 +156,19 @@ export default function CustomMessage(props: Props) {
         bodyComponent={
           <TransactionHistoryMessage message={functionCallMessage} />
         }
+        chainTop={chainTop}
+        chainBottom={chainBottom}
+      />
+    );
+  }
+
+  if (isOrderHistoryMessage(functionCallMessage)) {
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        messageCount={allMessages.length}
+        bodyComponent={<OrderHistoryMessage message={functionCallMessage} />}
         chainTop={chainTop}
         chainBottom={chainBottom}
       />

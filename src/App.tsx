@@ -11,11 +11,9 @@ interface Props extends Partial<Constant> {
 const App = (props: Props) => {
   return (
     <ChatAiWidget
-      // applicationId={'125B2432-BB0A-4650-95E2-80810404D526'}
-      // botCategory={'ecommerce'}
-      // botId={'fintech-demo-bot'}
       applicationId={props.applicationId}
-      botCategory={props.botCategory}
+      botCategory={'ecommerce'}
+      // botCategory={props.botCategory}
       botId={props.botId}
       botNickName={props.botNickName}
       userId={props.userId}

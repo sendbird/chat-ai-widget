@@ -84,12 +84,14 @@ export type FunctionCallMessage = {
     | 'BALANCE'
     | 'TRANSACTION_HISTORY'
     | 'SENDING_MONEY'
-    | 'SENDING_MONEY_CONFIRMED';
+    | 'SENDING_MONEY_CONFIRMED'
+    | 'ORDER_HISTORY';
   // stringified JSON
   transaction_history?: string;
   current_balance?: string;
   target_amount?: string;
   recipient?: string;
+  order_history?: string;
 } | null;
 
 export function isCurrentBalanceMessage(message: FunctionCallMessage) {
@@ -121,6 +123,12 @@ export function isSendingMoneyConfirmedMessage(message: FunctionCallMessage) {
     message?.value_type === 'SENDING_MONEY_CONFIRMED' &&
     message?.target_amount != null &&
     message?.recipient != null
+  );
+}
+
+export function isOrderHistoryMessage(message: FunctionCallMessage) {
+  return (
+    message?.value_type === 'ORDER_HISTORY' && message?.order_history != null
   );
 }
 
