@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <link rel="preload" href="https://fonts.cdnfonts.com/css/gellix" rel="stylesheet">
+    <link rel="preload" href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+  </head>
+  <body>
+    <div id="aichatbot"></div>
+    <link href="/dist/index.css" rel="stylesheet" />
+    <script>
+      window.chatbotConfig = {
+        appId: "125B2432-BB0A-4650-95E2-80810404D526",
+        botId: "fintech-demo-bot",
+      }
+    </script>
+    <script
+      type="module"
+      src="/dist/index.js"
+      defer>
+    </script>
+  </body>
+</html>
