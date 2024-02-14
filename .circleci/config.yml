@@ -21,6 +21,10 @@ jobs:
     environment:
       AWS_ECR_REGISTRY_ID: '314716043882'
     parameters:
+      app:
+        description: application to build
+        type: enum
+        enum: ['webdemo', 'selfservice']
       architecture:
         description: architecture to build
         type: enum
@@ -57,7 +61,7 @@ jobs:
           region: << parameters.aws_region >>
           repo: << parameters.repo >>
           role-arn: arn:aws:iam::314716043882:role/ci-ops
-          tag: '$CIRCLE_TAG-<< parameters.architecture >>'
+          tag: '$CIRCLE_TAG-<< parameters.app >>-<< parameters.architecture >>'
           extra-build-args: << parameters.extra_build_args >>
   push_arch_integrated_manifest:
     executor: arm64
@@ -87,8 +91,10 @@ jobs:
       - run:
           name: Push image manifest
           command: |
-            docker manifest create "$ECR_REPO:$CIRCLE_TAG" "$ECR_REPO:$CIRCLE_TAG-amd64" "$ECR_REPO:$CIRCLE_TAG-arm64"
-            docker manifest push "$ECR_REPO:$CIRCLE_TAG"
+            docker manifest create "$ECR_REPO:$CIRCLE_TAG-webdemo" "$ECR_REPO:$CIRCLE_TAG-webdemo-amd64" "$ECR_REPO:$CIRCLE_TAG-webdemo-arm64"
+            docker manifest create "$ECR_REPO:$CIRCLE_TAG-selfservice" "$ECR_REPO:$CIRCLE_TAG-selfservice-amd64" "$ECR_REPO:$CIRCLE_TAG-selfservice-arm64"
+            docker manifest push "$ECR_REPO:$CIRCLE_TAG-webdemo"
+            docker manifest push "$ECR_REPO:$CIRCLE_TAG-selfservice"
   scan_credentials:
     docker:
       - image: $SEC_THOG_SCANNER_IMAGE
@@ -106,7 +112,7 @@ workflows:
   build_and_push:
     jobs:
       - build_container_image_and_push:
-          name: build_app-<<matrix.architecture>>
+          name: build_app-<<matrix.app>>-<<matrix.architecture>>
           filters: &only_version_tag_trigger
             tags:
               only: /^v.*/
@@ -117,9 +123,13 @@ workflows:
               architecture:
                 - amd64
                 - arm64
+              app:
+                - webdemo
+                - selfservice
           build_path: '.'
           aws_region: us-west-2
           repo: aiwidget/app
+          dockerfile: Dockerfile.<<matrix.app>>
           extra_build_args: |
             --build-arg VITE_CHAT_WIDGET_APP_ID=AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67 \
             --build-arg VITE_CHAT_WIDGET_BOT_ID=khan-academy-bot \
@@ -131,8 +141,10 @@ workflows:
           name: integrate_manifest_app
           filters: *only_version_tag_trigger
           requires:
-            - build_app-amd64
-            - build_app-arm64
+            - build_app-webdemo-amd64
+            - build_app-webdemo-arm64
+            - build_app-selfservice-amd64
+            - build_app-selfservice-arm64
           aws_region: us-west-2
           repo: aiwidget/app
           context:
