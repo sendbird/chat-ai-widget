@@ -31,6 +31,10 @@
   border: none !important;
 }
 
+.sendbird-theme--light .sendbird-conversation {
+  background-color: #F7F7F7;
+}
+
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

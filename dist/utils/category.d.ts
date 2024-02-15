@@ -7,6 +7,7 @@ export declare const categoryColors: {
         'input-container-color': string;
         'input-message-background-color': string;
         'icon-color': string;
+        'sendbird-conversation__messages-background-color': string;
     };
     ecommerce: {
         '--sendbird-light-primary-300': string;
@@ -16,6 +17,7 @@ export declare const categoryColors: {
         'input-container-color': string;
         'input-message-background-color': string;
         'icon-color': string;
+        'sendbird-conversation__messages-background-color': string;
     };
     healthcare: {
         '--sendbird-light-primary-300': string;
@@ -25,5 +27,6 @@ export declare const categoryColors: {
         'input-container-color': string;
         'input-message-background-color': string;
         'icon-color': string;
+        'sendbird-conversation__messages-background-color': string;
     };
 };

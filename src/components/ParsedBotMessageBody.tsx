@@ -1,23 +1,34 @@
 import { lazy, Suspense } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
 import SourceContainer, { Source } from './SourceContainer';
 import { useConstantState } from '../context/ConstantContext';
 import { Token, TokenType } from '../utils';
+import { categoryColors } from '../utils/category';
 
 const LazyCodeBlock = lazy(() =>
   import('./CodeBlock').then(({ CodeBlock }) => ({ default: CodeBlock }))
 );
 
-const Root = styled.div`
+const Root = styled.div<{
+  botCategory?: string;
+}>`
   display: flex;
-  background-color: var(--sendbird-light-background-50-0);
-  &:hover {
-    background-color: var(--sendbird-light-background-50-0);
-  }
+  ${({ botCategory }) =>
+    botCategory &&
+    css`
+      background-color: ${categoryColors[botCategory][
+        '--sendbird-light-background-50-0'
+      ]};
+      &:hover {
+        background-color: ${categoryColors[botCategory][
+          '--sendbird-light-background-50-0'
+        ]};
+      }
+    `};
   //max-width: 600px;
   flex-direction: column;
   align-items: flex-start;
@@ -54,6 +65,7 @@ type MetaData = {
 export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens } = props;
   const { enableSourceMessage } = useConstantState();
+  const { botCategory } = useConstantState();
   const data: MetaData = JSON.parse(message.data === '' ? '{}' : message.data);
   const sources: Source[] = Array.isArray(data['metadatas'])
     ? data['metadatas']
@@ -62,7 +74,7 @@ export default function ParsedBotMessageBody(props: Props) {
   // console.log('## sources: ', sources);
   if (tokens.length > 0) {
     return (
-      <Root>
+      <Root botCategory={botCategory}>
         {tokens.map((token: Token, i) => {
           if (token.type === TokenType.string) {
             return (

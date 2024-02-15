@@ -7,15 +7,17 @@ export const categoryColors = {
     'input-container-color': '#FFFFFF',
     'input-message-background-color': '#EEEEEE',
     'icon-color': '#30308F', //TODO: Could not find the way to change the icon color
+    'sendbird-conversation__messages-background-color': '#FFFFFF',
   },
   ecommerce: {
-    '--sendbird-light-primary-300': '#FFD726',
+    '--sendbird-light-primary-300': '#508537',
     '--sendbird-light-background-50-0': '#FFFFFF',
-    '--sendbird-light-background-50': '#F0F3F7',
-    'background-header-color': '#FFD726',
-    'input-container-color': '#FFD726',
-    'input-message-background-color': '#FFE668',
-    'icon-color': '#000000',
+    '--sendbird-light-background-50': '#FFFFFF',
+    'background-header-color': '#FFFFFF',
+    'input-container-color': '#FFFFFF',
+    'input-message-background-color': '#EEEEEE',
+    'icon-color': '#508537',
+    'sendbird-conversation__messages-background-color': '#F7F7F7',
   },
   healthcare: {
     '--sendbird-light-primary-300': '#3C7EFF',
@@ -25,5 +27,6 @@ export const categoryColors = {
     'input-container-color': '#FFFFFF',
     'input-message-background-color': '#EEEEEE',
     'icon-color': '#000000',
+    'sendbird-conversation__messages-background-color': '#FFFFFF',
   },
 };

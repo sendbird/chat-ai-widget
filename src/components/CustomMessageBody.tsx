@@ -1,17 +1,31 @@
 import DOMPurify from 'dompurify';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const Root = styled.div`
+import { useConstantState } from '../context/ConstantContext';
+import { categoryColors } from '../utils/category';
+
+const Root = styled.div<{
+  botCategory?: string;
+}>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 8px 12px;
   gap: 8px;
   border-radius: 16px;
-  background-color: var(--sendbird-light-background-50-0);
-  &:hover {
-    background-color: var(--sendbird-light-background-50-0);
-  }
+  ${({ botCategory }) =>
+    botCategory &&
+    css`
+      background-color: ${categoryColors[botCategory][
+        '--sendbird-light-background-50-0'
+      ]};
+      &:hover {
+        background-color: ${categoryColors[botCategory][
+          '--sendbird-light-background-50-0'
+        ]};
+      }
+    `};
+
   //max-width: 600px;
 `;
 
@@ -30,9 +44,10 @@ interface Props {
 export default function CustomMessageBody(props: Props) {
   const { message } = props;
   const sanitizedMessage = DOMPurify.sanitize(message);
+  const { botCategory } = useConstantState();
 
   return (
-    <Root>
+    <Root botCategory={botCategory}>
       <Text>{sanitizedMessage}</Text>
     </Root>
   );

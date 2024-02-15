@@ -7,13 +7,13 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import TransactionHistoryBottomSheet from './TransactionHistoryBottomSheet';
-import { ReactComponent as WalletIcon } from '../../icons/icon-wallet.svg';
+import WalletIcon from '../../icons/image_money.png';
 import { FunctionCallMessage } from '../../utils/messages';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 244px;
+  width: 220px;
   font-family: var(--sendbird-font-family-custom);
 `;
 const Top = styled.div`
@@ -57,7 +57,11 @@ const CurrentBalanceMessage = ({
   return (
     <Container>
       <Top>
-        <WalletIcon />
+        <img
+          src={WalletIcon}
+          alt="wallet icon"
+          style={{ width: '80px', height: '80px' }}
+        />
       </Top>
       <Bottom>
         <Label type={LabelTypography.BODY_1}>Your balance</Label>

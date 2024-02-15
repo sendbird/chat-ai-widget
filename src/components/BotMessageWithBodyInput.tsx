@@ -14,7 +14,6 @@ const Root = styled.div`
   align-items: flex-end;
   margin-bottom: 12px;
   flex-wrap: wrap;
-  gap: 8px;
   position: relative;
 `;
 
@@ -42,6 +41,8 @@ const BodyContainer = styled.div<BodyContainerProps>`
   font-style: normal;
   line-height: 1.43;
   letter-spacing: normal;
+  margin-right: 4px;
+  margin-left: 8px;
 `;
 
 const SentTime = styled.div`
@@ -49,7 +50,7 @@ const SentTime = styled.div`
   color: rgba(0, 0, 0, 0.38);
   font-size: 12px;
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 `;
 
 type Props = {

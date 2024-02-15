@@ -1,7 +1,9 @@
 import { UserMessage } from '@sendbird/chat/message';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
+import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
+import {categoryColors} from "../utils/category";
 
 const Root = styled.div`
   display: flex;
@@ -9,7 +11,7 @@ const Root = styled.div`
   align-items: end;
   margin-bottom: 16px;
   flex-wrap: wrap-reverse;
-  gap: 8px;
+  gap: 4px;
 `;
 
 const BodyContainer = styled.div`
@@ -30,11 +32,26 @@ const SentTime = styled.div`
   margin-bottom: 6px;
 `;
 
-const BodyComponent = styled.div`
-  background-color: var(--sendbird-light-primary-300);
-  &:hover {
-    background-color: var(--sendbird-light-primary-300);
-  }
+const BodyComponent = styled.div<{
+  botCategory?: string;
+}>`
+  ${({ botCategory }) =>
+    botCategory &&
+    css`
+      background-color: ${categoryColors[botCategory][
+        '--sendbird-light-primary-300'
+      ]};
+      &:hover {
+        background-color: ${categoryColors[botCategory][
+          '--sendbird-light-primary-300'
+        ]};
+      }
+    `};
+
+  //background-color: var(--sendbird-light-primary-300);
+  //&:hover {
+  //  background-color: var(--sendbird-light-primary-300);
+  //}
   color: rgba(255, 255, 255, 0.88);
   max-width: 600px;
   display: flex;
@@ -56,6 +73,7 @@ type Props = {
 
 export default function CurrentUserMessage(props: Props) {
   const { message } = props;
+  const { botCategory } = useConstantState();
 
   return (
     <Root>
@@ -63,7 +81,7 @@ export default function CurrentUserMessage(props: Props) {
         <div>{formatCreatedAtToAMPM(message.createdAt)}</div>
       </SentTime>
       <BodyContainer>
-        <BodyComponent>
+        <BodyComponent botCategory={botCategory}>
           <TextComponent>{message.message}</TextComponent>
         </BodyComponent>
       </BodyContainer>

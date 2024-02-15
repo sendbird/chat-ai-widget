@@ -44,11 +44,6 @@ const StyledWidgetWindowWrapper = styled.div<{
       --sendbird-light-background-50: ${categoryColors[botCategory][
         '--sendbird-light-background-50'
       ]};
-      .sendbird-conversation__footer {
-        background-color: ${categoryColors[botCategory][
-          'input-container-color'
-        ]};
-      }
     `}
 
   ${({ isOpen }) => {

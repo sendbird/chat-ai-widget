@@ -20,6 +20,8 @@ const StyledCustomCustomChannelComponentWrapper = styled.div<{
     css`
       background: ${categoryColors[botCategory]['background-header-color']};
     `}
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 `;
 
 const Root = styled.div`

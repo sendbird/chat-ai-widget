@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import { useConstantState } from '../context/ConstantContext';
 import { useSendMessage } from '../hooks/useSendMessage';
 import { ReactComponent as SendIcon } from '../icons/send-icon.svg';
-import {categoryColors} from "../utils/category";
+import { categoryColors } from '../utils/category';
 
 interface InputProps {
   isActive: boolean;
@@ -41,8 +41,19 @@ const InputComponent = styled.textarea<InputProps>`
   }
 `;
 
-const InputContainer = styled.div`
+interface InputContainerProps {
+  botCategory?: string;
+}
+
+const InputContainer = styled.div<InputContainerProps>`
   width: 100%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: ${({ botCategory }) =>
+    botCategory
+      ? categoryColors[botCategory]['input-container-color']
+      : '#eeeeee'};
+  };
 `;
 
 const InnerContainer = styled.div`
@@ -128,7 +139,7 @@ export function MessageInput({
   }
 
   return (
-    <InputContainer>
+    <InputContainer botCategory={botCategory}>
       <InnerContainer>
         <InputComponent
           isActive={showSendButton}

@@ -1,7 +1,7 @@
 import Label, { LabelTypography } from '@sendbird/uikit-react/ui/Label';
 import styled from 'styled-components';
 
-import { ReactComponent as SendingMoneyImg } from '../../icons/icon-sending-money.svg';
+import SendingMoneyImg from '../../icons/image_transfer.png';
 import { FunctionCallMessage } from '../../utils/messages';
 
 const Container = styled.div`
@@ -32,7 +32,11 @@ const SendingMoneyConfirmedMessage = ({
   return (
     <Container>
       <Top>
-        <SendingMoneyImg />
+        <img
+          src={SendingMoneyImg}
+          alt="sending money"
+          style={{ width: '80px', height: '80px' }}
+        />
       </Top>
       <Bottom>
         <Label type={LabelTypography.CAPTION_1}>Success!</Label>

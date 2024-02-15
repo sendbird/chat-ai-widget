@@ -6,9 +6,11 @@ import Label, {
 import { useCallback, useState, useEffect } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import Input from './FormInput';
+import { useConstantState } from '../context/ConstantContext';
+import { categoryColors } from '../utils/category';
 
 interface Field {
   key: string;
@@ -38,7 +40,9 @@ interface FormValue {
 }
 type FormValues = Record<string, FormValue>;
 
-const Root = styled.div`
+const Root = styled.div<{
+  botCategory?: string;
+}>`
   max-width: 244px;
   display: flex;
   flex-direction: column;
@@ -46,7 +50,12 @@ const Root = styled.div`
   padding: 16px 12px;
   gap: 8px;
   border-radius: 16px;
-  background-color: var(--sendbird-light-background-50-0);
+  ${({ botCategory }) =>
+    botCategory &&
+    css`
+      background-color: ${categoryColors[botCategory]['--sendbird-light-background-50-0']};
+      }
+    `};
 `;
 
 const SubmitButton = styled(Button)`
@@ -69,6 +78,7 @@ export default function FormMessage(props: Props) {
     };
   });
   const [formValues, setInputValue] = useState<FormValues>(initialFormValues);
+  const { botCategory } = useConstantState();
 
   useEffect(() => {
     if (submittedData) {
@@ -130,7 +140,7 @@ export default function FormMessage(props: Props) {
     .every(({ isValid }) => isValid);
 
   return (
-    <Root>
+    <Root botCategory={botCategory}>
       {fields.map(
         ({ title, placeholder, key, required, regex, input_type }) => (
           <Input

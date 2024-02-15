@@ -17,12 +17,12 @@ import { useConstantState } from '../context/ConstantContext';
 import { useNumOfMessages } from '../hooks/useInteractiveDemoSharableData';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
+import { categoryColors } from '../utils/category';
 import {
   groupMessagesByShortSpanTime,
   getBotWelcomeMessages,
   type MessageMeta,
 } from '../utils/messages';
-import {categoryColors} from "../utils/category";
 
 interface RootStyleProps {
   hidePlaceholder: boolean;
@@ -53,6 +53,20 @@ const Root = styled.div<RootStyleProps>`
     align-items: center;
   }
 
+  .sendbird-conversation__messages {
+    background-color: ${({ botCategory }) =>
+      botCategory
+        ? categoryColors[botCategory][
+            'sendbird-conversation__messages-background-color'
+          ]
+        : '#eeeeee'};
+  }
+
+  .sendbird-separator {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
   .sendbird-message-input {
     display: flex;
     align-items: center;
@@ -74,6 +88,7 @@ const Root = styled.div<RootStyleProps>`
           ? categoryColors[botCategory]['input-container-color']
           : '#eeeeee'};
       };
+    
       border-radius: 20px;
       height: auto;
       ::placeholder {
@@ -197,7 +212,11 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   }, [allMessages.length]);
 
   return (
-    <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'} botCategory={botCategory}>
+    <Root
+      hidePlaceholder={startingPagePlaceHolder}
+      height={'100%'}
+      botCategory={botCategory}
+    >
       <ChannelUI
         renderChannelHeader={() => {
           return channel && createGroupChannel && botUser ? (
