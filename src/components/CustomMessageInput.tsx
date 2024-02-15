@@ -18,10 +18,6 @@ const InputComponent = styled.textarea<InputProps>`
     props.isActive ? 'none' : 'width 0.5s'};
   transition-timing-function: ease;
   padding: 8px 16px;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
-  line-height: 20px;
-  color: rgba(0, 0, 0, 0.88);
   resize: none;
   border: none;
   outline: none;

@@ -8,9 +8,9 @@ const Root = styled.div`
   padding: 8px 12px;
   gap: 8px;
   border-radius: 16px;
-  background-color: #eeeeee;
+  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
   &:hover {
-    background-color: #e0e0e0;
+    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
   }
   //max-width: 600px;
 `;

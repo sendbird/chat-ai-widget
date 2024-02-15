@@ -2,6 +2,7 @@ import '@sendbird/uikit-react/dist/index.css';
 import '../css/index.css';
 import SBProvider from '@sendbird/uikit-react/SendbirdProvider';
 import { useMemo, useRef } from 'react';
+import { ThemeProvider } from 'styled-components';
 
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import CustomChannel from './CustomChannel';
@@ -14,7 +15,11 @@ import { HashedKeyProvider } from '../context/HashedKeyContext';
 import SBConnectionStateProvider, {
   useSbConnectionState,
 } from '../context/SBConnectionContext';
+import { getTheme } from '../theme';
 import { assert, isMobile } from '../utils';
+
+// TODO: Get the theme from the context
+const DEFAULT_THEME = 'light';
 
 const SBComponent = () => {
   const {
@@ -63,6 +68,7 @@ const SBComponent = () => {
       breakPoint={isMobile}
       isReactionEnabled={enableEmojiFeedback}
       isMentionEnabled={enableMention}
+      theme={DEFAULT_THEME}
       uikitOptions={{
         groupChannel: {
           input: {
@@ -92,6 +98,8 @@ const Chat = ({
   const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
 
+  const theme = getTheme()[DEFAULT_THEME];
+
   assert(
     applicationId !== null && botId !== null,
     'applicationId and botId must be provided'
@@ -105,11 +113,13 @@ const Chat = ({
       botId={CHAT_WIDGET_BOT_ID ?? botId}
       {...constantProps}
     >
-      <HashedKeyProvider hashedKey={hashedKey ?? null}>
-        <SBConnectionStateProvider>
-          {isOpen && <SBComponent />}
-        </SBConnectionStateProvider>
-      </HashedKeyProvider>
+      <ThemeProvider theme={theme}>
+        <HashedKeyProvider hashedKey={hashedKey ?? null}>
+          <SBConnectionStateProvider>
+            {isOpen && <SBComponent />}
+          </SBConnectionStateProvider>
+        </HashedKeyProvider>
+      </ThemeProvider>
     </ConstantStateProvider>
   );
 };

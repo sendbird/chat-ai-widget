@@ -1,6 +1,8 @@
 import { User } from '@sendbird/chat';
+import { Member } from '@sendbird/chat/groupChannel';
 import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import TypingIndicatorBubble from '@sendbird/uikit-react/ui/TypingIndicatorBubble';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
@@ -10,11 +12,11 @@ import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
-import PendingMessage from './PendingMessage';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
+import botMessageImage from '../icons/bot-message-image.png';
 import {
   isNotLocalMessageCustomType,
   MessageTextParser,
@@ -76,7 +78,13 @@ export default function CustomMessage(props: Props) {
       <div>
         {<CurrentUserMessage message={message as UserMessage} />}
         {activeSpinnerId === message.messageId && (
-          <PendingMessage botProfileUrl={botUser?.profileUrl} />
+          <TypingIndicatorBubble
+            typingMembers={[
+              {
+                profileUrl: botUser?.profileUrl || botMessageImage,
+              } as Member,
+            ]}
+          />
         )}
       </div>
     );

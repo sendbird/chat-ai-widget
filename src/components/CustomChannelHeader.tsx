@@ -1,6 +1,10 @@
 import { User } from '@sendbird/chat';
 import { GroupChannel } from '@sendbird/chat/groupChannel';
 import Avatar from '@sendbird/uikit-react/ui/Avatar';
+import Label, {
+  LabelTypography,
+  LabelColors,
+} from '@sendbird/uikit-react/ui/Label';
 import styled from 'styled-components';
 
 import BetaLogo from './BetaLogo';
@@ -25,12 +29,7 @@ const SubContainer = styled.div`
   align-items: center;
 `;
 
-const Title = styled.div`
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: -0.2px;
-  color: rgba(0, 0, 0, 0.88);
+const Title = styled(Label)`
   max-width: 200px;
   overflow: hidden;
   white-space: nowrap;
@@ -83,7 +82,9 @@ export default function CustomChannelHeader(props: Props) {
           height="34px"
           width="34px"
         />
-        <Title>{botUser?.nickname || channel.name}</Title>
+        <Title type={LabelTypography.H_2} color={LabelColors.ONBACKGROUND_1}>
+          {botUser?.nickname || channel.name}
+        </Title>
         {!isMobile && betaMark && <BetaLogo>{customBetaMarkText}</BetaLogo>}
       </SubContainer>
       <RenewButtonContainer>

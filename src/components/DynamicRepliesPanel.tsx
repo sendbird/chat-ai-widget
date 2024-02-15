@@ -18,13 +18,13 @@ const ReplyItem = styled.div<SuggestedReplyItemProps>`
   border: ${(props: SuggestedReplyItemProps) =>
     props.isActive ? '1px solid #6C32D5' : '1px solid #EEEEEE'};
   border-radius: 18px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.bgColor.suggestedReply};
   cursor: ${(props: SuggestedReplyItemProps) =>
     props.isActive ? 'pointer' : 'not-allowed'};
   &:hover {
-    ${(props: SuggestedReplyItemProps) => {
-      if (props.isActive) {
-        return 'background-color: #E6E0FF;';
+    ${({ isActive, theme }: SuggestedReplyItemProps) => {
+      if (isActive) {
+        return `background-color: ${theme.bgColor.hover.suggestedReply};`;
       }
     }};
   }

@@ -14,9 +14,9 @@ const LazyCodeBlock = lazy(() =>
 
 const Root = styled.div`
   display: flex;
-  background-color: #eeeeee;
+  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
   &:hover {
-    background-color: #e0e0e0;
+    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
   }
   //max-width: 600px;
   flex-direction: column;
