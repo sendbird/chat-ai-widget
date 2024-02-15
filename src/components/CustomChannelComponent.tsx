@@ -196,10 +196,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
       channel?.memberCount === 2
     ) {
       setActiveSpinnerId(lastMessage.messageId);
-      scrollUtil();
     } else {
       setActiveSpinnerId(-1);
     }
+    scrollUtil();
   }, [lastMessage?.messageId]);
 
   const grouppedMessages = useMemo(

@@ -24,7 +24,7 @@ import {
   isNotLocalMessageCustomType,
   MessageTextParser,
   replaceTextExtractsMultiple,
-  replaceUrl,
+  replaceUrl, scrollUtil,
   Token,
 } from '../utils';
 import {
@@ -177,6 +177,9 @@ export default function CustomMessage(props: Props) {
 
   // Sent by current user
   if ((message as UserMessage).sender?.userId === userId) {
+    if (activeSpinnerId !== message.messageId) {
+      scrollUtil();
+    }
     return (
       <div>
         {<CurrentUserMessage message={message as UserMessage} />}
