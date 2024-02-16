@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import WidgetWindow from './WidgetWindow';
 import { Constant } from '../const';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
-import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
+import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot-upstage.svg';
 
 const StyledWidgetButtonWrapper = styled.button`
   position: fixed;
@@ -15,14 +15,7 @@ const StyledWidgetButtonWrapper = styled.button`
   right: 24px;
   width: 48px;
   height: 48px;
-  background: conic-gradient(
-    from 180deg at 50% 50%,
-    #4dcd90 -17.35deg,
-    #6210cc 80.63deg,
-    #6210cc 176.25deg,
-    #4dcd90 342.65deg,
-    #6210cc 440.63deg
-  );
+  background: linear-gradient(132deg, #4165FF 17.3%, #8896FF 33.37%, #EA94F2 49.04%, #BDC7FF 63.27%, #3E62FF 87.73%);
   border-radius: 50%;
   color: white;
   transition: all 0.3s cubic-bezier(0.31, -0.105, 0.43, 1.4);
@@ -37,16 +30,12 @@ const StyledWidgetButtonWrapper = styled.button`
   span {
     position: absolute;
     transition: transform 0.16s linear 0s, opacity 0.08s linear 0s;
-    width: 32px;
-    height: 32px;
+    width: 52px;
+    height: 52px;
     user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    path {
-      fill: white;
-    }
   }
 
   &:hover {

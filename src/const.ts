@@ -85,9 +85,9 @@ export const DEFAULT_CONSTANT: Constant = {
     },
   },
   chatBottomContent: {
-    text: 'Sendbird AI ChatBot',
+    text: 'Upstage chatbot',
     backgroundColor:
-      'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)',
+      '#000',
   },
   messageBottomContent: {
     text: 'AI-generated response powered by OpenAI',

@@ -22,6 +22,24 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   font-size: 13px;
 `;
 
+const NameContainer = styled.div`
+  @font-face {
+    font-family: 'ES Peak';
+    font-weight: 600;
+    src: url('https://static1.squarespace.com/static/659384103b38c97cdaf368bd/t/659653494f761c0096299168/1704350545083/ESPeak-Medium.woff2') format('woff2');
+  }
+  font-family: "ES Peak", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  
+  background: linear-gradient(99deg, #4165FF 2.41%, #8896FF 35.96%, #EA94F2 66.09%, #CED0FF 81.74%, #3E62FF 94.41%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
 const Highlighter = styled.a`
   color: white;
   display: flex;
@@ -37,7 +55,7 @@ export default function ChatBottom() {
       <InnerContainer
         chatBottomBackgroundColor={chatBottomContent?.backgroundColor}
       >
-        {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
+        <NameContainer>{chatBottomContent?.text}</NameContainer>&nbsp;&nbsp;&nbsp;Powered by&nbsp;
         <Highlighter
           href="https://sendbird.com/products/chatgpt-integration"
           target="_blank"
