@@ -63,7 +63,7 @@ const Root = styled.div<RootStyleProps>`
       font-size: 14px;
       font-family: 'Roboto', sans-serif;
       line-height: 20px;
-      color: rgba(0, 0, 0, 0.88);
+      color: var(--sendbird-light-onlight-01);
       resize: none;
       border: none;
       outline: none;
@@ -73,7 +73,7 @@ const Root = styled.div<RootStyleProps>`
       height: auto;
       text-align: start;
       ::placeholder {
-        color: rgba(0, 0, 0, 0.38);
+        color: var(--sendbird-light-onlight-03);
       }
       :focus {
         border: none;

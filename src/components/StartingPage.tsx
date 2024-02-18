@@ -79,7 +79,8 @@ const StartMessageContainer = styled.div<StartMessageBodyProps>`
 
 const StartMessageBodyContainer = styled.div<StartMessageBodyProps>`
   font-size: 14px;
-  color: ${({ outgoing }) => (outgoing ? '#ffffff' : ' rgba(0, 0, 0, 0.88)')};
+  color: ${({ outgoing }) =>
+    outgoing ? '#ffffff' : 'var(--sendbird-dark-onlight-01)'};
   max-width: 225px;
   font-weight: normal;
   font-stretch: normal;
@@ -97,7 +98,7 @@ const StartMessageHeader = styled.div`
   font-weight: 700;
   font-size: 12px;
   line-height: 12px;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--sendbird-dark-onlight-02);
   transition: color 0.5s ease 0s;
   margin: 0px 0px 4px 12px;
 `;

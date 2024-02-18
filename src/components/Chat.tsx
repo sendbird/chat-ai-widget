@@ -2,11 +2,12 @@ import '@sendbird/uikit-react/dist/index.css';
 import '../css/index.css';
 import SBProvider from '@sendbird/uikit-react/SendbirdProvider';
 import { useMemo, useRef } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, useTheme } from 'styled-components';
 
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import CustomChannel from './CustomChannel';
 import { StartingPage } from './StartingPage';
+import { generateCSSVariables } from '../colors';
 import {
   useConstantState,
   ConstantStateProvider,
@@ -15,11 +16,9 @@ import { HashedKeyProvider } from '../context/HashedKeyContext';
 import SBConnectionStateProvider, {
   useSbConnectionState,
 } from '../context/SBConnectionContext';
+import { useChannelStyle } from '../hooks/useChannelStyle';
 import { getTheme } from '../theme';
 import { assert, isMobile } from '../utils';
-
-// TODO: Get the theme from the context
-const DEFAULT_THEME = 'light';
 
 const SBComponent = () => {
   const {
@@ -43,6 +42,19 @@ const SBComponent = () => {
     }),
     []
   );
+
+  const { theme } = useChannelStyle();
+  const globalTheme = useTheme();
+  const customColorSet = useMemo(() => {
+    if (!globalTheme.accentColor) return undefined;
+
+    return ['light', 'dark'].reduce((acc, cur) => {
+      return {
+        ...acc,
+        ...generateCSSVariables(globalTheme.accentColor, cur),
+      };
+    }, {});
+  }, [globalTheme.accentColor]);
 
   const userAgentCustomParams = useRef({ 'chat-ai-widget': 'True' });
 
@@ -68,7 +80,8 @@ const SBComponent = () => {
       breakPoint={isMobile}
       isReactionEnabled={enableEmojiFeedback}
       isMentionEnabled={enableMention}
-      theme={DEFAULT_THEME}
+      theme={theme}
+      colorSet={customColorSet}
       uikitOptions={{
         groupChannel: {
           input: {
@@ -97,30 +110,35 @@ const Chat = ({
 }) => {
   const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
-
-  const theme = getTheme()[DEFAULT_THEME];
+  const { theme, accentColor, botMessageBGColor } = useChannelStyle();
 
   assert(
     applicationId !== null && botId !== null,
     'applicationId and botId must be provided'
   );
 
+  const globalTheme = getTheme({
+    // get accentColor & botMessageBGColor from API response
+    accentColor: accentColor,
+    // botMessageBGColor: botMessageBGColor,
+  })[theme];
+
   return (
-    <ConstantStateProvider
-      // If env is not provided, prop will be used instead.
-      // But Either should be provided.
-      applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
-      botId={CHAT_WIDGET_BOT_ID ?? botId}
-      {...constantProps}
-    >
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={globalTheme}>
+      <ConstantStateProvider
+        // If env is not provided, prop will be used instead.
+        // But Either should be provided.
+        applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
+        botId={CHAT_WIDGET_BOT_ID ?? botId}
+        {...constantProps}
+      >
         <HashedKeyProvider hashedKey={hashedKey ?? null}>
           <SBConnectionStateProvider>
             {isOpen && <SBComponent />}
           </SBConnectionStateProvider>
         </HashedKeyProvider>
-      </ThemeProvider>
-    </ConstantStateProvider>
+      </ConstantStateProvider>
+    </ThemeProvider>
   );
 };
 

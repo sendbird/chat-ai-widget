@@ -19,7 +19,7 @@ const Root = styled.div`
   align-items: center;
   font-style: normal;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid var(--sendbird-dark-onlight-04);
   padding: 11px 12px;
 `;
 
@@ -44,6 +44,12 @@ const RenewButtonForWidgetDemo = styled.div`
   height: 24px;
   cursor: pointer;
   margin-right: 2px;
+
+  svg {
+    path {
+      fill: ${({ theme }) => theme.accentColor};
+    }
+  }
 `;
 
 const RenewButtonContainer = styled.div`

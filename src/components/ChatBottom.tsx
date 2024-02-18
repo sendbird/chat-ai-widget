@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
+import { useChannelStyle } from '../hooks/useChannelStyle';
 import { ReactComponent as SendbirdLogo } from '../icons/sendbird-logo-widget.svg';
 
 const Container = styled.div`
@@ -14,12 +15,17 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${(props) =>
-    props.chatBottomBackgroundColor ||
-    'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)'};
-  color: ${({ theme }) => theme.textColor.chatBottom};
+  background: ${({ theme, chatBottomBackgroundColor }) =>
+    chatBottomBackgroundColor || theme.bgColor.chatBottom};
+  color: ${({ theme }) => theme.textColor.chatBottom.poweredBy};
   flex-wrap: wrap;
   font-size: 13px;
+
+  svg {
+    path {
+      fill: ${({ theme }) => theme.textColor.chatBottom.logo};
+    }
+  }
 `;
 
 const Highlighter = styled.a`
@@ -32,10 +38,14 @@ const Highlighter = styled.a`
 // link: https://dashboard.sendbird.com/auth/signup
 export default function ChatBottom() {
   const { chatBottomContent } = useConstantState();
+  const { theme } = useChannelStyle();
+
   return (
     <Container>
       <InnerContainer
-        chatBottomBackgroundColor={chatBottomContent?.backgroundColor}
+        chatBottomBackgroundColor={
+          chatBottomContent?.backgroundColor ?? theme === 'light'
+        }
       >
         {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
         <Highlighter

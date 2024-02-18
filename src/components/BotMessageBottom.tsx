@@ -33,7 +33,7 @@ const Delimiter = styled.div`
   position: absolute;
   width: calc(100% + 24px);
   transform: translateX(-12px);
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 1px solid var(--sendbird-light-onlight-04);
 `;
 
 const InfoIconButton = styled.div`
@@ -56,7 +56,7 @@ const InfoBox = styled.div`
 
   max-width: 260px;
   width: 100%;
-  background: rgb(0, 0, 0, 0.8);
+  background: var(--sendbird-dark-onlight-01);
   border-radius: 8px;
   color: ${({ theme }) => theme.textColor.sourceInfo};
   margin-top: 8px;
