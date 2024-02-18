@@ -99,6 +99,7 @@ const WidgetWindow = ({
   ...props
 }: WidgetProps & ChatWidgetProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <StyledWidgetWindowWrapper isOpen={isOpen} isExpanded={isExpanded}>
       <StyledExpandButton onClick={() => setIsExpanded((prev) => !prev)}>

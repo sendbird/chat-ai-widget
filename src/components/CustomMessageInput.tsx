@@ -26,7 +26,7 @@ const InputComponent = styled.textarea<InputProps>`
   border-radius: 20px;
   height: auto;
   ::placeholder {
-    color: rgba(0, 0, 0, 0.38);
+    color: var(--sendbird-dark-onlight-03);
   }
 `;
 
@@ -47,6 +47,12 @@ const Button = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  svg {
+    path {
+      fill: ${({ theme }) => theme.accentColor};
+    }
+  }
 `;
 
 export function MessageInput({

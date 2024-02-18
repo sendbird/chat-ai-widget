@@ -19,9 +19,9 @@ const Container = styled.div`
   display: inline-block;
   margin-top: -12px;
   margin-left: 6px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.bgColor.chatBottom};
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 2px 1px var(--sendbird-dark-overlay);
 
   .sendbird-reaction-button--selected {
     border: none;
