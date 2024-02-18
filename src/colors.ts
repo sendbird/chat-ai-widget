@@ -1,119 +1,131 @@
-import { transparentize } from 'polished';
+function hexToRgb(value: string): [number, number, number] {
+  value = value.replace('#', '');
+  const lv = value.length;
+  const chunkSize = lv / 3;
+  return [
+    parseInt(value.slice(0, chunkSize), 16),
+    parseInt(value.slice(chunkSize, 2 * chunkSize), 16),
+    parseInt(value.slice(2 * chunkSize), 16),
+  ];
+}
 
-export const defaultColorSet = {
-  green: {
-    1: '#E2FAE4',
-    2: '#D1F0D3',
-    3: '#A5D9A8',
-    4: '#69C085',
-    5: '#019C6E',
-    50: '#e3fcf4',
-    100: '#aef2dc',
-    200: '#65e0b9',
-    300: '#1fcca1',
-    400: '#00998c',
-    500: '#007a7a',
-  },
-  indigo: {
-    50: '#deefff',
-    100: '#baddff',
-    200: '#82baff',
-    300: '#5292fa',
-    400: '#2876e8',
-    500: '#0050bf',
-  },
-  orange: {
-    50: '#fff5de',
-    100: '#ffe3b6',
-    200: '#ffd073',
-    300: '#ffa033',
-    400: '#ff7545',
-    500: '#e64d2e',
-  },
-  red: {
-    50: '#ffebee',
-    100: '#ffccd4',
-    200: '#ff949e',
-    300: '#f24d6b',
-    400: '#d92148',
-    500: '#8d3149',
-  },
-  pink: {
-    50: '#ffedfa',
-    100: '#ffccf2',
-    200: '#ffa6e8',
-    300: '#fb70cd',
-    400: '#d941b3',
-    500: '#8d3a7f',
-  },
-  brown: {
-    50: '#fff0eb',
-    100: '#ffd9d1',
-    200: '#f2a9a9',
-    300: '#d98282',
-    400: '#915151',
-    500: '#592c31',
-  },
-  navy: {
-    10: '#fafbfd',
-    50: '#f6f8fc',
-    100: '#dee2f2',
-    200: '#dde4f5',
-    300: '#c9d0ed',
-    400: '#a7afd9',
-    500: '#747cad',
-    600: '#596094',
-    700: '#44497a',
-    800: '#353761',
-    900: '#212242',
-  },
-  neutral: {
-    1: '#f7f7f7',
-    2: '#ececec',
-    3: '#e0e0e0',
-    4: '#cccccc',
-    5: '#a6a6a6',
-    6: '#858585',
-    7: '#5e5e5e',
-    8: '#424242',
-    9: '#2e2e2e',
-    10: '#0d0d0d',
-  },
-  purple: {
-    1: '#f0eeff',
-    2: '#e1dbff',
-    3: '#cabdff',
-    4: '#b49cff',
-    5: '#8e64fa',
-    6: '#7129e5',
-    7: '#6210cc',
-    8: '#4b11a1',
-    9: '#350c73',
-    10: '#1f084c',
-  },
-};
+function rgbToHex(rgb: [number, number, number]): string {
+  return `#${rgb.map((c) => c.toString(16).padStart(2, '0')).join('')}`;
+}
 
-const colorGenerator =
-  (colorSet: keyof typeof defaultColorSet) =>
-  (
-    colorKey:
-      | keyof (typeof defaultColorSet)['green']
-      | keyof (typeof defaultColorSet)['navy'],
-    opacity?: number
-  ) => {
-    const color = defaultColorSet[colorSet][colorKey];
-    return opacity && opacity <= 1 ? transparentize(1 - opacity, color) : color;
-  };
+function rgbToHsl(r: number, g: number, b: number): number[] {
+  // Convert to values between 0 and 1
+  r /= 255;
+  g /= 255;
+  b /= 255;
 
-export const colors = {
-  purple: colorGenerator('purple'),
-  green: colorGenerator('green'),
-  indigo: colorGenerator('indigo'),
-  orange: colorGenerator('orange'),
-  red: colorGenerator('red'),
-  pink: colorGenerator('pink'),
-  brown: colorGenerator('brown'),
-  navy: colorGenerator('navy'),
-  neutral: colorGenerator('neutral'),
-  white: '#ffffff',
-};
+  // Find maximum and minimum of RGB
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const d = max - min;
+
+  // Initialize hue, saturation, lightness
+  let h = 0;
+  let s = 0;
+  const l = (max + min) / 2;
+
+  // Calculate saturation
+  if (max !== min) {
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  }
+
+  // Calculate hue
+  if (max === r) {
+    h = (g - b) / d + (g < b ? 6 : 0);
+  } else if (max === g) {
+    h = (b - r) / d + 2;
+  } else if (max === b) {
+    h = (r - g) / d + 4;
+  }
+
+  h /= 6;
+
+  return [h, s, l];
+}
+
+function hslToRgb(h: number, s: number, l: number): [number, number, number] {
+  let r, g, b;
+
+  if (s === 0) {
+    r = g = b = l;
+  } else {
+    const hue2rgb = function hue2rgb(p: number, q: number, t: number) {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    };
+
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    r = hue2rgb(p, q, h + 1 / 3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1 / 3);
+  }
+
+  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
+function adjustColor(
+  color: string,
+  lightnessFactor: number,
+  saturationFactor: number
+): string {
+  const [r, g, b] = hexToRgb(color);
+  const [h, s, l] = rgbToHsl(r, g, b);
+  const newL = Math.max(0, Math.min(1, l * lightnessFactor));
+  const newS = Math.max(0, Math.min(1, s * saturationFactor));
+  const [newR, newG, newB] = hslToRgb(h, newS, newL);
+  return rgbToHex([Math.round(newR), Math.round(newG), Math.round(newB)]);
+}
+
+export function generateColorVariants(baseColor: string): {
+  [key: string]: string;
+} {
+  const variants: { [key: string]: string } = {};
+  variants['500'] = adjustColor(baseColor, 0.6, 1.2);
+  variants['400'] = adjustColor(baseColor, 0.85, 1.1);
+  variants['300'] = baseColor;
+  variants['200'] = adjustColor(baseColor, 1.5, 0.9);
+  variants['100'] = adjustColor(baseColor, 1.75, 0.8);
+  return variants;
+}
+
+export function getColorBasedOnSaturation(rgb: string): string {
+  // Remove '#'
+  rgb = rgb.slice(1);
+
+  // Parse the hexadecimal RGB values
+  const r = parseInt(rgb.substring(0, 2), 16);
+  const g = parseInt(rgb.substring(2, 4), 16);
+  const b = parseInt(rgb.substring(4, 6), 16);
+
+  // Convert RGB to HSL
+  const hsl = rgbToHsl(r, g, b);
+
+  // Return white if saturation is greater than 0.5, otherwise return black
+  return hsl[1] > 0.5 ? '#fff' : '#000';
+}
+
+export function generateCSSVariables(
+  accentColor: string,
+  themeType: string
+): Record<string, string> {
+  const colorVariants = generateColorVariants(accentColor);
+
+  return Object.keys(colorVariants).reduce(
+    (acc: Record<string, string>, key: string) => {
+      const cssVariable = `--sendbird-${themeType}-primary-${key}`;
+      acc[cssVariable] = colorVariants[parseInt(key)];
+      return acc;
+    },
+    {}
+  );
+}

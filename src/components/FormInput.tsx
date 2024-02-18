@@ -36,9 +36,14 @@ const Root = styled.div<Pick<InputProps, 'hasError'>>`
   .sendbird-input .sendbird-input__input {
     background-color: #fff;
     border: ${({ hasError }) =>
-      `solid 1px ${hasError ? '#DE360B' : 'rgba(0, 0, 0, 0.12)'}`};
+      `solid 1px ${
+        hasError
+          ? 'var(--sendbird-light-error-300)'
+          : 'var(--sendbird-light-onlight-04)'
+      }`};
     &:focus {
-      border: ${({ hasError }) => (hasError ? 'solid 1px #DE360B' : 'none')};
+      border: ${({ hasError }) =>
+        hasError ? 'solid 1px var(--sendbird-light-error-300)' : 'none'};
       box-shadow: none;
     }
     &:disabled {
@@ -50,14 +55,14 @@ const Root = styled.div<Pick<InputProps, 'hasError'>>`
 
 const Input = styled.input`
   ::placeholder {
-    color: rgba(0, 0, 0, 0.38);
+    color: var(--sendbird-light-onlight-03);
   }
 `;
 
 const ErrorLabel = styled(Label)`
   position: relative;
   top: 0;
-  color: #de360b;
+  color: var(--sendbird-light-error-300);
 `;
 
 const CheckIcon = styled(Icon)`

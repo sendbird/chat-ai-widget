@@ -31,9 +31,9 @@ const SentTime = styled.div`
 `;
 
 const BodyComponent = styled.div`
-  background-color: #742ddd;
+  background-color: ${({ theme }) => theme.bgColor.outgoingMessage};
   &:hover {
-    background-color: #6211c8;
+    background-color: ${({ theme }) => theme.bgColor.hover.outgoingMessage};
   }
   color: ${({ theme }) => theme.textColor.outgoingMessage};
   max-width: 600px;
