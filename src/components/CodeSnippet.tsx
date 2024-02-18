@@ -8,7 +8,7 @@ const Root = styled.div`
 `;
 
 const LineItem = styled.div`
-  border-right: solid rgba(0, 0, 0, 0.5);
+  border-right: solid var(--sendbird-dark-onlight-02);
 `;
 
 const LinesContainer = styled.div`
