@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import WidgetWindow from './WidgetWindow';
 import { Constant } from '../const';
-import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
+import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down-upstage.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot-upstage.svg';
 
 const StyledWidgetButtonWrapper = styled.button`
