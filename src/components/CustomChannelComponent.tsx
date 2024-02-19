@@ -1,10 +1,14 @@
 import { User } from '@sendbird/chat';
-import { GroupChannel } from '@sendbird/chat/groupChannel';
+import {
+  GroupChannel,
+  type SendbirdGroupChat,
+} from '@sendbird/chat/groupChannel';
 import { SendingStatus } from '@sendbird/chat/message';
 import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeader';
 import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
 // import SuggestedReplies from '@sendbird/uikit-react/Channel/components/SuggestedReplies';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useState, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom';
 // eslint-disable-next-line import/no-unresolved
@@ -18,7 +22,7 @@ import DynamicRepliesPanel from './DynamicRepliesPanel';
 import LoadingScreen from './LoadingScreen';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import { isSpecialMessage, scrollUtil } from '../utils';
+import { isSpecialMessage, scrollUtil, hideChatBottomBanner } from '../utils';
 import {
   groupMessagesByShortSpanTime,
   getBotWelcomeMessages,
@@ -43,6 +47,10 @@ const Root = styled.div<RootStyleProps>`
     width: 100%;
   }
 
+  .sendbird-conversation__footer {
+    background-color: ${({ theme }) => theme.bgColor.chatBottom};
+  }
+
   .sendbird-message-input-wrapper__message-input {
     padding: 12px 16px;
     display: flex;
@@ -63,7 +71,7 @@ const Root = styled.div<RootStyleProps>`
       font-size: 14px;
       font-family: 'Roboto', sans-serif;
       line-height: 20px;
-      color: var(--sendbird-light-onlight-01);
+      color: ${({ theme }) => theme.textColor.messageInput};
       resize: none;
       border: none;
       outline: none;
@@ -86,6 +94,12 @@ const Root = styled.div<RootStyleProps>`
       bottom: 0;
       :hover {
         background-color: transparent;
+      }
+
+      svg {
+        path {
+          fill: ${({ theme }) => theme.accentColor};
+        }
       }
     }
     .sendbird-message-input--placeholder {
@@ -246,12 +260,18 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 }
 
 function Banner() {
+  const store = useSendbirdStateContext();
+  const sdk = store.stores.sdkStore.sdk as SendbirdGroupChat;
+
+  if (hideChatBottomBanner(sdk)) {
+    return null;
+  }
+
   const inputElement = document.querySelector(
     '.sendbird-message-input-wrapper'
   );
 
-  if (inputElement) {
-    return ReactDOM.createPortal(<ChatBottom />, inputElement);
-  }
-  return null;
+  return inputElement
+    ? ReactDOM.createPortal(<ChatBottom />, inputElement)
+    : null;
 }

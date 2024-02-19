@@ -29,6 +29,7 @@ const SBComponent = () => {
     configureSession,
     enableEmojiFeedback,
     enableMention,
+    customUserAgentParam,
   } = useConstantState();
 
   assert(
@@ -56,7 +57,10 @@ const SBComponent = () => {
     }, {});
   }, [globalTheme.accentColor]);
 
-  const userAgentCustomParams = useRef({ 'chat-ai-widget': 'True' });
+  const userAgentCustomParams = useRef({
+    ...customUserAgentParam,
+    'chat-ai-widget': 'True',
+  });
 
   // Until the user sends a first message,
   // we will display a fake channel UI not to establish a connection to Sendbird Chat SDK
@@ -119,8 +123,8 @@ const Chat = ({
 
   const globalTheme = getTheme({
     // get accentColor & botMessageBGColor from API response
-    accentColor: accentColor,
-    // botMessageBGColor: botMessageBGColor,
+    accentColor,
+    botMessageBGColor: botMessageBGColor,
   })[theme];
 
   return (

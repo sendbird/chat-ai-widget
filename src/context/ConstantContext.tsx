@@ -59,6 +59,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
           ...props.customRefreshComponent?.style,
         },
       },
+      customUserAgentParam: props.customUserAgentParam,
       configureSession: props.configureSession,
       enableSourceMessage:
         props.enableSourceMessage ?? initialState.enableSourceMessage,

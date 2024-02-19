@@ -112,10 +112,11 @@ export interface Props extends Partial<Constant> {
 }
 
 const Component = (props: Props) => {
-  const { autoOpen = true } = props;
-  const [isOpen, setIsOpen] = useState<boolean>(autoOpen ?? false);
+  const { autoOpen, accentColor } = useChannelStyle();
+  const [isOpen, setIsOpen] = useState<boolean>(
+    props.autoOpen ?? autoOpen ?? false
+  );
   const timer = useRef<NodeJS.Timeout | null>(null);
-  const { accentColor } = useChannelStyle();
 
   const buttonClickHandler = () => {
     if (timer.current !== null) {
@@ -126,11 +127,11 @@ const Component = (props: Props) => {
   };
 
   useEffect(() => {
-    if (getCookie('chatbot').length === 0 && autoOpen) {
+    if (getCookie('chatbot').length === 0 && (props.autoOpen || autoOpen)) {
       timer.current = setTimeout(() => setIsOpen(() => true), 1000);
       setCookie('chatbot');
     }
-  }, []);
+  }, [autoOpen, props.autoOpen]);
 
   return (
     <Fragment>
@@ -151,12 +152,12 @@ const Component = (props: Props) => {
   );
 };
 
-export default function ChatAiWidget() {
+export default function ChatAiWidget(props: Props) {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Component />
+      <Component {...props} />
     </QueryClientProvider>
   );
 }
