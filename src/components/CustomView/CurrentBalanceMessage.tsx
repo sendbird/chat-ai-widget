@@ -7,7 +7,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import TransactionHistoryBottomSheet from './TransactionHistoryBottomSheet';
-import WalletIcon from '../../icons/image_money.png';
+import { ReactComponent as WalletIcon } from '../../icons/icon-wallet.svg';
 import { FunctionCallMessage } from '../../utils/messages';
 
 const Container = styled.div`
@@ -57,11 +57,7 @@ const CurrentBalanceMessage = ({
   return (
     <Container>
       <Top>
-        <img
-          src={WalletIcon}
-          alt="wallet icon"
-          style={{ width: '80px', height: '80px' }}
-        />
+        <WalletIcon />
       </Top>
       <Bottom>
         <Label type={LabelTypography.BODY_1}>Your balance</Label>
