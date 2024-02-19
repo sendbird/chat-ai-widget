@@ -3,6 +3,7 @@ import '../css/index.css';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
+import Chat from './Chat';
 import WidgetWindow from './WidgetWindow';
 import { Constant } from '../const';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
@@ -110,9 +111,18 @@ export interface Props extends Partial<Constant> {
 }
 
 const ChatAiWidget = (props: Props) => {
-  const { autoOpen = true } = props;
+  const { autoOpen = false } = props;
   const [isOpen, setIsOpen] = useState<boolean>(autoOpen ?? false);
+  const [isMobile] = useState<boolean>(window.innerWidth <= 768);
   const timer = useRef<NodeJS.Timeout | null>(null);
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  console.log('isMobile', isMobile);
+  console.log('isOpen', isOpen);
+
   const buttonClickHandler = () => {
     if (timer.current !== null) {
       clearTimeout(timer.current as NodeJS.Timeout);
@@ -122,6 +132,21 @@ const ChatAiWidget = (props: Props) => {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // 창 크기가 변경될 때마다 handleResize 함수를 호출합니다.
+    window.addEventListener('resize', handleResize);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거합니다.
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
     if (getCookie('chatbot').length === 0 && autoOpen) {
       timer.current = setTimeout(() => setIsOpen(() => true), 1000);
       setCookie('chatbot');
@@ -129,17 +154,35 @@ const ChatAiWidget = (props: Props) => {
   }, []);
 
   return (
-    <Fragment>
-      <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
-      <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
-        <StyledWidgetIcon isOpen={isOpen}>
-          <ChatBotIcon />
-        </StyledWidgetIcon>
-        <StyledArrowIcon isOpen={isOpen}>
-          <ArrowDownIcon />
-        </StyledArrowIcon>
-      </StyledWidgetButtonWrapper>
-    </Fragment>
+    <>
+      {isMobile && isOpen ? (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: `${dimensions.width}px`,
+            height: `100%`,
+            overflow: 'hidden',
+            backgroundColor: 'white',
+          }}
+        >
+          <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
+        </div>
+      ) : (
+        <Fragment>
+          <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
+          <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
+            <StyledWidgetIcon isOpen={isOpen}>
+              <ChatBotIcon />
+            </StyledWidgetIcon>
+            <StyledArrowIcon isOpen={isOpen}>
+              <ArrowDownIcon />
+            </StyledArrowIcon>
+          </StyledWidgetButtonWrapper>
+        </Fragment>
+      )}
+    </>
   );
 };
 

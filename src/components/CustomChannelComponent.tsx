@@ -67,10 +67,10 @@ const Root = styled.div<RootStyleProps>`
       resize: none;
       border: none;
       outline: none;
+      height: 40px;
       max-height: 116px;
       background-color: ${({ theme }) => theme.bgColor.messageInput};
       border-radius: 20px;
-      height: auto;
       text-align: start;
       ::placeholder {
         color: rgba(0, 0, 0, 0.38);

@@ -91,9 +91,11 @@ const Chat = ({
   botId,
   hashedKey,
   isOpen = true,
+  setIsOpen,
   ...constantProps
 }: ChatWidgetProps & {
   isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }) => {
   const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
@@ -111,6 +113,7 @@ const Chat = ({
       // But Either should be provided.
       applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
       botId={CHAT_WIDGET_BOT_ID ?? botId}
+      setIsOpen={setIsOpen}
       {...constantProps}
     >
       <ThemeProvider theme={theme}>

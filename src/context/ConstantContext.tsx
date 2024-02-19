@@ -7,6 +7,7 @@ const initialState = DEFAULT_CONSTANT;
 interface ConstantContextProps extends Constant {
   applicationId: string | null;
   botId: string | null;
+  setIsOpen?: (isOpen: boolean) => void;
 }
 const ConstantContext = createContext<ConstantContextProps>({
   applicationId: null,
@@ -21,6 +22,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
     () => ({
       applicationId: props.applicationId,
       botId: props.botId,
+      setIsOpen: props.setIsOpen,
       botNickName: props.botNickName ?? initialState.botNickName,
       userId: props.userId ?? initialState.userId,
       userNickName: props.userNickName ?? initialState.userNickName,

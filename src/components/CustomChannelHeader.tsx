@@ -65,6 +65,7 @@ export default function CustomChannelHeader(props: Props) {
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
   const { setFirstMessage } = useSbConnectionState();
+  const { setIsOpen } = useConstantState();
 
   function onClickRenewButton() {
     setFirstMessage(null);
@@ -95,6 +96,7 @@ export default function CustomChannelHeader(props: Props) {
             style={customRefreshComponent.style}
           />
         </RenewButtonForWidgetDemo>
+        <button onClick={() => setIsOpen?.(false)}>Close</button>
       </RenewButtonContainer>
     </Root>
   );
