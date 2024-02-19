@@ -16,14 +16,14 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   justify-content: center;
   align-items: center;
   background: ${({ theme, chatBottomBackgroundColor }) =>
-    chatBottomBackgroundColor || theme.bgColor.chatBottom};
-  color: ${({ theme }) => theme.textColor.chatBottom.poweredBy};
+    chatBottomBackgroundColor || theme.bgColor.bottomBanner};
+  color: ${({ theme }) => theme.textColor.bottomBanner.poweredBy};
   flex-wrap: wrap;
   font-size: 13px;
 
   svg {
     path {
-      fill: ${({ theme }) => theme.textColor.chatBottom.logo};
+      fill: ${({ theme }) => theme.textColor.bottomBanner.logo};
     }
   }
 `;

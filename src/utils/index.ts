@@ -1,3 +1,5 @@
+import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
+
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 
 export function uuid() {
@@ -217,3 +219,14 @@ export function delay(delayTime: number): Promise<void> {
 export function noop() {}
 
 export const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+export function hideChatBottomBanner(sdk: SendbirdGroupChat): boolean {
+  const REMOVE_POWERED_BY = 'remove_powered_by';
+  const applicationAttributes = sdk?.appInfo?.applicationAttributes;
+
+  if (Array.isArray(applicationAttributes)) {
+    return applicationAttributes.includes(REMOVE_POWERED_BY);
+  }
+
+  return false;
+}

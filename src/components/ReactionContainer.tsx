@@ -19,7 +19,7 @@ const Container = styled.div`
   display: inline-block;
   margin-top: -12px;
   margin-left: 6px;
-  background-color: ${({ theme }) => theme.bgColor.chatBottom};
+  background-color: ${({ theme }) => theme.bgColor.bottomBanner};
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px var(--sendbird-dark-overlay);
 

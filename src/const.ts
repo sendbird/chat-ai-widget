@@ -137,6 +137,7 @@ export interface Constant {
   replacementTextList: string[][];
   instantConnect: boolean;
   customRefreshComponent: CustomRefreshComponent;
+  customUserAgentParam: Record<any, any>;
   configureSession: ConfigureSession;
   enableSourceMessage: boolean;
   enableEmojiFeedback: boolean;

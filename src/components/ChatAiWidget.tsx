@@ -125,19 +125,16 @@ export interface Props extends Partial<Constant> {
 }
 
 const Component = (props: Props) => {
-  const { accentColor } = useChannelStyle();
-  const { autoOpen = true, enableMobileView } = props;
+  const { autoOpen, accentColor } = useChannelStyle();
   const [isOpen, setIsOpen] = useState<boolean>(
-    isMobile
-      ? false // we don't want to open the widget window automatically on mobile view
-      : autoOpen
+    // we don't want to open the widget window automatically on mobile view
+    isMobile ? false : props.autoOpen ?? autoOpen ?? false
   );
-  const timer = useRef<NodeJS.Timeout | null>(null);
-
   const { width: mobileContainerWidth } = useMobileView({
-    enableMobileView,
+    enableMobileView: props.enableMobileView,
     isWidgetOpen: isOpen,
   });
+  const timer = useRef<NodeJS.Timeout | null>(null);
 
   const buttonClickHandler = () => {
     if (timer.current !== null) {
@@ -148,11 +145,11 @@ const Component = (props: Props) => {
   };
 
   useEffect(() => {
-    if (getCookie('chatbot').length === 0 && autoOpen) {
+    if (getCookie('chatbot').length === 0 && (props.autoOpen || autoOpen)) {
       timer.current = setTimeout(() => setIsOpen(() => true), 1000);
       setCookie('chatbot');
     }
-  }, []);
+  }, [autoOpen, props.autoOpen]);
 
   return isMobile && isOpen ? (
     <MobileContainer width={mobileContainerWidth}>
@@ -177,12 +174,12 @@ const Component = (props: Props) => {
   );
 };
 
-export default function ChatAiWidget() {
+export default function ChatAiWidget(props: Props) {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Component />
+      <Component {...props} />
     </QueryClientProvider>
   );
 }
