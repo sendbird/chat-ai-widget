@@ -23,6 +23,9 @@ function App() {
       userId={USER_ID}
       instantConnect={true}
       betaMark={false}
+      customUserAgentParam={{
+        'chat-ai-widget-deployed': 'True'
+      }}
     />
   );
 }
