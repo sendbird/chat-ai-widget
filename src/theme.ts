@@ -1,11 +1,12 @@
 import { getColorBasedOnSaturation, generateColorVariants } from './colors';
 interface CommonTheme {
   bgColor: {
+    chatBottom: string;
     messageInput: string;
     incomingMessage: string;
     outgoingMessage: string;
     suggestedReply: string;
-    chatBottom: string;
+    bottomBanner: string;
     loadingScreen: string;
     hover: {
       incomingMessage: string;
@@ -19,7 +20,7 @@ interface CommonTheme {
     sentTime: string;
     sourceInfo: string;
     suggestedReply: string;
-    chatBottom: {
+    bottomBanner: {
       poweredBy: string;
       logo: string;
     };
@@ -41,12 +42,13 @@ export function getTheme({
   return {
     light: {
       bgColor: {
+        chatBottom: 'var(--sendbird-light-background-50)',
         messageInput: 'var(--sendbird-light-background-100)',
         incomingMessage:
           botMessageBGColor ?? 'var(--sendbird-dark-background-100)',
         outgoingMessage: accentColor ?? 'var(--sendbird-light-primary-300)',
         suggestedReply: 'var(--sendbird-light-background-50)',
-        chatBottom: 'var(--sendbird-light-background-50)',
+        bottomBanner: 'var(--sendbird-light-background-50)',
         loadingScreen: 'var(--sendbird-light-background-50)',
         hover: {
           // Give 1 level darker color for hover
@@ -69,7 +71,7 @@ export function getTheme({
         sentTime: 'var(--sendbird-dark-onlight-03)',
         sourceInfo: 'var(--sendbird-light-ondark-01)',
         suggestedReply: accentColor ?? 'var(--sendbird-light-primary-300)',
-        chatBottom: {
+        bottomBanner: {
           poweredBy: '#5E5E5E',
           logo: '#0D0D0D',
         },
@@ -78,12 +80,13 @@ export function getTheme({
     },
     dark: {
       bgColor: {
+        chatBottom: 'var(--sendbird-dark-background-600)',
         messageInput: 'var(--sendbird-dark-background-500)',
         incomingMessage:
           botMessageBGColor ?? 'var(--sendbird-dark-background-500)',
         outgoingMessage: accentColor ?? 'var(--sendbird-dark-primary-200)',
         suggestedReply: 'var(--sendbird-dark-background-600)',
-        chatBottom: 'var(--sendbird-dark-background-600)',
+        bottomBanner: 'var(--sendbird-dark-background-600)',
         loadingScreen: 'var(--sendbird-dark-background-600)',
         hover: {
           // Give 1 level lighter color for hover
@@ -107,7 +110,7 @@ export function getTheme({
         sentTime: 'var(--sendbird-dark-ondark-03)',
         sourceInfo: 'var(--sendbird-light-ondark-01)',
         suggestedReply: accentColor ?? 'var(--sendbird-dark-primary-200)',
-        chatBottom: {
+        bottomBanner: {
           poweredBy: 'var(--sendbird-dark-background-200)',
           logo: 'var(--sendbird-dark-background-50)',
         },
