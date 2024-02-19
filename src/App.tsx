@@ -32,6 +32,7 @@ const App = (props: Props) => {
       enableSourceMessage={props.enableSourceMessage}
       enableEmojiFeedback={props.enableEmojiFeedback}
       enableMention={props.enableMention}
+      customUserAgentParam={props.customUserAgentParam}
       autoOpen={props.autoOpen}
     />
   );

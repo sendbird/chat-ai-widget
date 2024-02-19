@@ -2,15 +2,12 @@
   display: none;
 }
 
-.sendbird-conversation__footer {
-  padding-bottom: 0 !important;
-}
-
 .sendbird-theme--light {
   margin: 0 !important;
 }
 
 .sendbird-conversation__footer {
+  padding-bottom: 0 !important;
   margin: 0 !important;
 }
 
