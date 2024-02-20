@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import profileImage from '../icons/bot-message-image.png';
+import BotProfileImage from './BotProfileImage';
 import typingIndicatorLogo from '../icons/message-typing-indicator.gif';
 
 const Container = styled.div`
@@ -22,13 +22,22 @@ export default function PendingMessage({
   return (
     <Container>
       <ImageContainer>
-        <img
-          src={botProfileUrl || profileImage}
-          alt="profileImage"
-          style={{
-            height: '28px',
-          }}
-        />
+        {botProfileUrl != null && botProfileUrl != '' ? (
+          <img
+            src={botProfileUrl}
+            alt="profileImage"
+            style={{
+              height: '28px',
+            }}
+          />
+        ) : (
+          <BotProfileImage
+            width={28}
+            height={28}
+            iconWidth={16}
+            iconHeight={16}
+          />
+        )}
       </ImageContainer>
       <img
         src={typingIndicatorLogo}

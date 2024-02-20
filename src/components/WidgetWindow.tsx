@@ -5,7 +5,7 @@ import Chat from './Chat';
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
 import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';
-import { ReactComponent as ExpandtIcon } from '../icons/icon-expand.svg';
+import { ReactComponent as ExpandIcon } from '../icons/icon-expand.svg';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
@@ -99,11 +99,14 @@ const WidgetWindow = ({
   ...props
 }: WidgetProps & ChatWidgetProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
-
   return (
-    <StyledWidgetWindowWrapper isOpen={isOpen} isExpanded={isExpanded}>
+    <StyledWidgetWindowWrapper
+      isOpen={isOpen}
+      isExpanded={isExpanded}
+      id="aichatbot-widget-window"
+    >
       <StyledExpandButton onClick={() => setIsExpanded((prev) => !prev)}>
-        {isExpanded ? <CollapseIcon /> : <ExpandtIcon />}
+        {isExpanded ? <CollapseIcon /> : <ExpandIcon />}
       </StyledExpandButton>
       <StyledCloseButton onClick={() => setIsOpen(() => false)}>
         <CloseIcon />
