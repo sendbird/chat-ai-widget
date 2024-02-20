@@ -11,6 +11,7 @@ import BetaLogo from './BetaLogo';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
 import channelHeaderImage from '../icons/bot-message-image.png';
+import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
 import { isMobile } from '../utils';
 
 const Root = styled.div`
@@ -65,6 +66,7 @@ export default function CustomChannelHeader(props: Props) {
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
   const { setFirstMessage } = useSbConnectionState();
+  const { setIsOpen } = useConstantState();
 
   function onClickRenewButton() {
     setFirstMessage(null);
@@ -95,6 +97,9 @@ export default function CustomChannelHeader(props: Props) {
             style={customRefreshComponent.style}
           />
         </RenewButtonForWidgetDemo>
+        {isMobile && (
+          <CloseButton onClick={() => setIsOpen?.(false)}>Close</CloseButton>
+        )}
       </RenewButtonContainer>
     </Root>
   );

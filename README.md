@@ -27,7 +27,42 @@ This is a Sendbird Chat AI Widget implemented on top of [React UiKit](https://gi
    }
    ```
 
-  > Not using React in your environment? You can also load this Chat AI Widget component from an HTML file on your website. Please refer to [js-example.html](./js-example.html) for an example.
+    > Not using React in your environment? You can also load this Chat AI Widget component from an HTML file on your website. Please refer to [js-example.html](./js-example.html) for an example.
+    ```html
+      <!-- Load React first and then, ReactDOM. Also, these two libs' version should be same -->
+      <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+      <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  
+      <!-- Load chat-ai-widget script and set process.env to prevent it get undefined -->
+      <script>process = { env: { NODE_ENV: '' } }</script>
+      <script
+        crossorigin
+        src="https://unpkg.com/@sendbird/chat-ai-widget@latest/dist/index.umd.js"
+      ></script>
+      <link href="https://unpkg.com/@sendbird/chat-ai-widget@latest/dist/style.css" rel="stylesheet" />
+      <!--Optional; to enable JSX syntax-->
+      <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+      
+      ...
+   
+      <!-- div element for chat-ai-widget container -->
+      <div id="root"></div>
+    
+      <!-- Initialize chat-ai-widget and render the widget component -->
+      <script type="text/babel">
+        const { ChatAiWidget } = window.ChatAiWidget
+        const App = () => {
+          return (
+            <ChatAiWidget
+              applicationId="AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67"
+              botId="khan-academy-bot"
+            />
+          )
+        }
+        ReactDOM.createRoot(document.querySelector('#root')).render(<div><App/></div>);
+      </script>
+    ```
+  
 
 ## Run locally
 ```bash
@@ -185,6 +220,7 @@ const customConstants = {
   enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
+  enableMobileView: true,
   autoOpen: false,
 };
 
@@ -208,6 +244,7 @@ const App = () => {
       enableSourceMessage={customConstants.enableSourceMessage}
       enableEmojiFeedback={customConstants.enableEmojiFeedback}
       enableMention={customConstants.enableMention}
+      enableMobileView={customConstants.enableMobileView}
     />
   );
 };

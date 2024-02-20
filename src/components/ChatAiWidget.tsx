@@ -3,10 +3,23 @@ import '../css/index.css';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
+import Chat from './Chat';
 import WidgetWindow from './WidgetWindow';
 import { Constant } from '../const';
+import useMobileView from '../hooks/useMobileView';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
+import { isMobile } from '../utils';
+
+const MobileContainer = styled.div<{ width: number }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: ${({ width }) => `${width}px`};
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+`;
 
 const StyledWidgetButtonWrapper = styled.button`
   position: fixed;
@@ -110,9 +123,19 @@ export interface Props extends Partial<Constant> {
 }
 
 const ChatAiWidget = (props: Props) => {
-  const { autoOpen = true } = props;
-  const [isOpen, setIsOpen] = useState<boolean>(autoOpen ?? false);
+  const { autoOpen = true, enableMobileView } = props;
+  const [isOpen, setIsOpen] = useState<boolean>(
+    isMobile
+      ? false // we don't want to open the widget window automatically on mobile view
+      : autoOpen
+  );
   const timer = useRef<NodeJS.Timeout | null>(null);
+
+  const { width: mobileContainerWidth } = useMobileView({
+    enableMobileView,
+    isWidgetOpen: isOpen,
+  });
+
   const buttonClickHandler = () => {
     if (timer.current !== null) {
       clearTimeout(timer.current as NodeJS.Timeout);
@@ -129,17 +152,25 @@ const ChatAiWidget = (props: Props) => {
   }, []);
 
   return (
-    <Fragment>
-      <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
-      <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
-        <StyledWidgetIcon isOpen={isOpen}>
-          <ChatBotIcon />
-        </StyledWidgetIcon>
-        <StyledArrowIcon isOpen={isOpen}>
-          <ArrowDownIcon />
-        </StyledArrowIcon>
-      </StyledWidgetButtonWrapper>
-    </Fragment>
+    <>
+      {isMobile && isOpen ? (
+        <MobileContainer width={mobileContainerWidth}>
+          <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
+        </MobileContainer>
+      ) : (
+        <Fragment>
+          <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
+          <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
+            <StyledWidgetIcon isOpen={isOpen}>
+              <ChatBotIcon />
+            </StyledWidgetIcon>
+            <StyledArrowIcon isOpen={isOpen}>
+              <ArrowDownIcon />
+            </StyledArrowIcon>
+          </StyledWidgetButtonWrapper>
+        </Fragment>
+      )}
+    </>
   );
 };
 
