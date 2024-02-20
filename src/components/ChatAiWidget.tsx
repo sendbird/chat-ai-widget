@@ -120,9 +120,6 @@ const ChatAiWidget = (props: Props) => {
     height: window.innerHeight,
   });
 
-  console.log('isMobile', isMobile);
-  console.log('isOpen', isOpen);
-
   const buttonClickHandler = () => {
     if (timer.current !== null) {
       clearTimeout(timer.current as NodeJS.Timeout);
@@ -145,6 +142,35 @@ const ChatAiWidget = (props: Props) => {
     // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거합니다.
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const originalPosition = document.body.style.position;
+    let originalTop = document.body.style.top;
+
+    if (isOpen && isMobile) {
+      originalTop = `${window.scrollY}px`;
+
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${originalTop}`;
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
+
+      if (originalPosition === 'fixed') {
+        window.scrollTo(0, parseInt(originalTop || '0') * -1);
+      }
+    }
+
+    return () => {
+      document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
+
+      if (originalPosition === 'fixed') {
+        window.scrollTo(0, parseInt(originalTop || '0') * -1);
+      }
+    };
+  }, [isOpen, isMobile]);
 
   useEffect(() => {
     if (getCookie('chatbot').length === 0 && autoOpen) {
