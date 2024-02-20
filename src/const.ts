@@ -105,7 +105,7 @@ export const DEFAULT_CONSTANT: Constant = {
     },
     onClick: noop,
   },
-  enableSourceMessage: true,
+  enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
 };
