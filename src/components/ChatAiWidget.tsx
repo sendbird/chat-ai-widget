@@ -6,8 +6,10 @@ import styled, { css } from 'styled-components';
 import Chat from './Chat';
 import WidgetWindow from './WidgetWindow';
 import { Constant } from '../const';
+import useMobileView from '../hooks/useMobileView';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
+import { isMobile } from '../utils';
 
 const MobileContainer = styled.div<{ width: number }>`
   position: fixed;
@@ -121,14 +123,17 @@ export interface Props extends Partial<Constant> {
 }
 
 const ChatAiWidget = (props: Props) => {
-  const { autoOpen = true } = props;
-  const { enableMobileView = true } = props;
-  const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(autoOpen);
+  const { autoOpen = true, enableMobileView } = props;
+  const [isOpen, setIsOpen] = useState<boolean>(
+    isMobile
+      ? false // we don't want to open the widget window automatically on mobile view
+      : autoOpen
+  );
   const timer = useRef<NodeJS.Timeout | null>(null);
-  const [dimensions, setDimensions] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+
+  const { width: mobileContainerWidth } = useMobileView({
+    enableMobileView,
+    isWidgetOpen: isOpen,
   });
 
   const buttonClickHandler = () => {
@@ -140,60 +145,6 @@ const ChatAiWidget = (props: Props) => {
   };
 
   useEffect(() => {
-    const updateIsMobile = () =>
-      setIsMobile(enableMobileView && window.innerWidth <= 768);
-    updateIsMobile();
-    window.addEventListener('resize', updateIsMobile);
-    return () => window.removeEventListener('resize', updateIsMobile);
-  }, [enableMobileView]);
-
-  // isMobile 상태에 따라 isOpen 상태 조정
-  useEffect(() => {
-    if (isMobile) setIsOpen(false);
-  }, [isMobile]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // disable body scroll when MobileContainer is open
-  useEffect(() => {
-    const originalPosition = document.body.style.position;
-    let originalTop = document.body.style.top;
-
-    if (isOpen && isMobile) {
-      originalTop = `${window.scrollY}px`;
-
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${originalTop}`;
-      document.body.style.width = '100%';
-    } else {
-      document.body.style.position = originalPosition;
-      document.body.style.top = originalTop;
-
-      if (originalPosition === 'fixed') {
-        window.scrollTo(0, parseInt(originalTop || '0') * -1);
-      }
-    }
-
-    return () => {
-      document.body.style.position = originalPosition;
-      document.body.style.top = originalTop;
-
-      if (originalPosition === 'fixed') {
-        window.scrollTo(0, parseInt(originalTop || '0') * -1);
-      }
-    };
-  }, [isOpen, isMobile]);
-
-  useEffect(() => {
     if (getCookie('chatbot').length === 0 && autoOpen) {
       timer.current = setTimeout(() => setIsOpen(() => true), 1000);
       setCookie('chatbot');
@@ -203,7 +154,7 @@ const ChatAiWidget = (props: Props) => {
   return (
     <>
       {isMobile && isOpen ? (
-        <MobileContainer width={dimensions.width}>
+        <MobileContainer width={mobileContainerWidth}>
           <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
         </MobileContainer>
       ) : (
