@@ -37,8 +37,13 @@ const Highlighter = styled.a`
 
 // link: https://dashboard.sendbird.com/auth/signup
 export default function ChatBottom() {
-  const { chatBottomContent } = useConstantState();
-  const { theme } = useChannelStyle();
+  const { chatBottomContent, applicationId, botId } = useConstantState();
+  const { theme } = useChannelStyle({
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    appId: applicationId!,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    botId: botId!,
+  });
 
   return (
     <Container>

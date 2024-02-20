@@ -40,8 +40,10 @@ const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
     justify-content: center;
     align-items: center;
 
-    path {
-      fill: white;
+    svg {
+      path {
+        fill: ${({ accentColor }) => getColorBasedOnSaturation(accentColor)};
+      }
     }
   }
 
@@ -105,14 +107,17 @@ const getCookie = (cookieName: string) => {
 };
 
 export interface Props extends Partial<Constant> {
-  applicationId?: string;
-  botId?: string;
+  applicationId: string;
+  botId: string;
   hashedKey?: string;
   autoOpen?: boolean;
 }
 
 const Component = (props: Props) => {
-  const { autoOpen, accentColor } = useChannelStyle();
+  const { autoOpen, accentColor } = useChannelStyle({
+    appId: props.applicationId,
+    botId: props.botId,
+  });
   const [isOpen, setIsOpen] = useState<boolean>(
     props.autoOpen ?? autoOpen ?? false
   );

@@ -8,9 +8,9 @@ import Label, {
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import BotProfileImage from './BotProfileImage';
 import { ReactionContainer } from './ReactionContainer';
 import { useConstantState } from '../context/ConstantContext';
-import botMessageImage from '../icons/bot-message-image.png';
 import { formatCreatedAtToAMPM } from '../utils';
 
 const Root = styled.div`
@@ -92,12 +92,21 @@ export default function BotMessageWithBodyInput(props: Props) {
     <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
       {displayProfileImage ? (
         <ImageContainer>
-          <Avatar
-            src={botUser?.profileUrl || botMessageImage}
-            alt="botProfileImage"
-            height="28px"
-            width="28px"
-          />
+          {botUser?.profileUrl != null && botUser.profileUrl != '' ? (
+            <Avatar
+              src={botUser.profileUrl}
+              alt="botProfileImage"
+              height="28px"
+              width="28px"
+            />
+          ) : (
+            <BotProfileImage
+              width={28}
+              height={28}
+              iconWidth={16}
+              iconHeight={16}
+            />
+          )}
         </ImageContainer>
       ) : (
         <EmptyImageContainer />

@@ -44,7 +44,10 @@ const SBComponent = () => {
     []
   );
 
-  const { theme } = useChannelStyle();
+  const { theme } = useChannelStyle({
+    appId: applicationId,
+    botId: botId,
+  });
   const globalTheme = useTheme();
   const customColorSet = useMemo(() => {
     if (!globalTheme.accentColor) return undefined;
@@ -112,9 +115,15 @@ const Chat = ({
 }: ChatWidgetProps & {
   isOpen: boolean;
 }) => {
-  const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
-  const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
-  const { theme, accentColor, botMessageBGColor } = useChannelStyle();
+  // If env is not provided, prop will be used instead.
+  // But Either should be provided.
+  const CHAT_WIDGET_APP_ID =
+    import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? applicationId;
+  const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID ?? botId;
+  const { theme, accentColor, botMessageBGColor } = useChannelStyle({
+    appId: CHAT_WIDGET_APP_ID,
+    botId: CHAT_WIDGET_BOT_ID,
+  });
 
   assert(
     applicationId !== null && botId !== null,
@@ -130,10 +139,8 @@ const Chat = ({
   return (
     <ThemeProvider theme={globalTheme}>
       <ConstantStateProvider
-        // If env is not provided, prop will be used instead.
-        // But Either should be provided.
-        applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
-        botId={CHAT_WIDGET_BOT_ID ?? botId}
+        applicationId={CHAT_WIDGET_APP_ID}
+        botId={CHAT_WIDGET_BOT_ID}
         {...constantProps}
       >
         <HashedKeyProvider hashedKey={hashedKey ?? null}>
