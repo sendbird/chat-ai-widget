@@ -11,6 +11,7 @@ import BetaLogo from './BetaLogo';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
 import channelHeaderImage from '../icons/bot-message-image.png';
+import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
 import { isMobile } from '../utils';
 
 const Root = styled.div`
@@ -96,7 +97,9 @@ export default function CustomChannelHeader(props: Props) {
             style={customRefreshComponent.style}
           />
         </RenewButtonForWidgetDemo>
-        <button onClick={() => setIsOpen?.(false)}>Close</button>
+        {isMobile && (
+          <CloseButton onClick={() => setIsOpen?.(false)}>Close</CloseButton>
+        )}
       </RenewButtonContainer>
     </Root>
   );

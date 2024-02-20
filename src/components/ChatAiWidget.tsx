@@ -9,6 +9,16 @@ import { Constant } from '../const';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
 
+const MobileContainer = styled.div<{ width: number }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: ${({ width }) => `${width}px`};
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+`;
+
 const StyledWidgetButtonWrapper = styled.button`
   position: fixed;
   z-index: 10000;
@@ -111,9 +121,10 @@ export interface Props extends Partial<Constant> {
 }
 
 const ChatAiWidget = (props: Props) => {
-  const { autoOpen = false } = props;
-  const [isOpen, setIsOpen] = useState<boolean>(autoOpen ?? false);
-  const [isMobile] = useState<boolean>(window.innerWidth <= 768);
+  const { autoOpen = true } = props;
+  const { enableMobileView = true } = props;
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(autoOpen);
   const timer = useRef<NodeJS.Timeout | null>(null);
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
@@ -129,20 +140,30 @@ const ChatAiWidget = (props: Props) => {
   };
 
   useEffect(() => {
+    const updateIsMobile = () =>
+      setIsMobile(enableMobileView && window.innerWidth <= 768);
+    updateIsMobile();
+    window.addEventListener('resize', updateIsMobile);
+    return () => window.removeEventListener('resize', updateIsMobile);
+  }, [enableMobileView]);
+
+  // isMobile 상태에 따라 isOpen 상태 조정
+  useEffect(() => {
+    if (isMobile) setIsOpen(false);
+  }, [isMobile]);
+
+  useEffect(() => {
     const handleResize = () => {
       setDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
       });
     };
-
-    // 창 크기가 변경될 때마다 handleResize 함수를 호출합니다.
     window.addEventListener('resize', handleResize);
-
-    // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거합니다.
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // disable body scroll when MobileContainer is open
   useEffect(() => {
     const originalPosition = document.body.style.position;
     let originalTop = document.body.style.top;
@@ -182,19 +203,9 @@ const ChatAiWidget = (props: Props) => {
   return (
     <>
       {isMobile && isOpen ? (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: `${dimensions.width}px`,
-            height: `100%`,
-            overflow: 'hidden',
-            backgroundColor: 'white',
-          }}
-        >
+        <MobileContainer width={dimensions.width}>
           <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
-        </div>
+        </MobileContainer>
       ) : (
         <Fragment>
           <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
