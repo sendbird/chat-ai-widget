@@ -5,15 +5,12 @@ import { uuid } from './utils';
 
 type ChatbotConfig = Window &
   typeof globalThis & {
-    chatbotConfig: {
-      appId: string;
-      botId: string;
-    };
+    chatbotConfig: string[]
   };
 
 const USER_ID = uuid();
-const APP_ID = (window as ChatbotConfig).chatbotConfig?.appId;
-const BOT_ID = (window as ChatbotConfig).chatbotConfig?.botId;
+const APP_ID = (window as ChatbotConfig).chatbotConfig?.[0]
+const BOT_ID = (window as ChatbotConfig).chatbotConfig?.[1]
 
 function App() {
   return (
