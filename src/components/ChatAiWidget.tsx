@@ -132,8 +132,10 @@ const Component = (props: Props) => {
     botId: props.botId,
   });
   const [isOpen, setIsOpen] = useState<boolean>(
-    // we don't want to open the widget window automatically on mobile view
-    isMobile ? false : props.autoOpen ?? autoOpen ?? false
+    isMobile
+      ? // we don't want to open the widget window automatically on mobile view
+        false
+      : props.autoOpen ?? autoOpen ?? false
   );
   const { width: mobileContainerWidth } = useMobileView({
     enableMobileView: props.enableMobileView,
