@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
 const DEFAULT_CHANNEL_STYLE = {
-  autoOpen: false,
   theme: 'light',
   accentColor: '#742DDD',
   botMessageBGColor: '#EEEEEE',
@@ -25,7 +24,7 @@ export const useChannelStyle = ({
   botId: string;
 }) => {
   const { data } = useQuery({
-    enabled: appId != null && botId != null,
+    enabled: !!appId && !!botId,
     queryKey: ['getChannelStyle', appId, botId],
     queryFn: async () => {
       try {
@@ -46,8 +45,6 @@ export const useChannelStyle = ({
       }
     },
   });
-  if (data == null) {
-    return DEFAULT_CHANNEL_STYLE;
-  }
+  if (data == null) return DEFAULT_CHANNEL_STYLE;
   return data;
 };

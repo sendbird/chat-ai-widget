@@ -122,15 +122,16 @@ const Chat = ({
   const CHAT_WIDGET_APP_ID =
     import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? applicationId;
   const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID ?? botId;
+
+  assert(
+    CHAT_WIDGET_APP_ID !== null && CHAT_WIDGET_BOT_ID !== null,
+    'applicationId and botId must be provided'
+  );
+
   const { theme, accentColor, botMessageBGColor } = useChannelStyle({
     appId: CHAT_WIDGET_APP_ID,
     botId: CHAT_WIDGET_BOT_ID,
   });
-
-  assert(
-    applicationId !== null && botId !== null,
-    'applicationId and botId must be provided'
-  );
 
   const globalTheme = getTheme({
     // get accentColor & botMessageBGColor from API response

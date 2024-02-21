@@ -127,7 +127,7 @@ export interface Props extends Partial<Constant> {
 }
 
 const Component = (props: Props) => {
-  const { autoOpen, accentColor } = useChannelStyle({
+  const channelStyle = useChannelStyle({
     appId: props.applicationId,
     botId: props.botId,
   });
@@ -135,7 +135,7 @@ const Component = (props: Props) => {
     isMobile
       ? // we don't want to open the widget window automatically on mobile view
         false
-      : props.autoOpen ?? autoOpen ?? false
+      : props.autoOpen ?? channelStyle.autoOpen ?? false
   );
   const { width: mobileContainerWidth } = useMobileView({
     enableMobileView: props.enableMobileView,
@@ -152,11 +152,14 @@ const Component = (props: Props) => {
   };
 
   useEffect(() => {
-      if (props.autoOpen || autoOpen) {
+    if (
+      getCookie('chatbot').length === 0 &&
+      (props.autoOpen || channelStyle.autoOpen)
+    ) {
       timer.current = setTimeout(() => setIsOpen(() => true), 1000);
       setCookie('chatbot');
     }
-  }, [props.autoOpen, autoOpen]);
+  }, [channelStyle.autoOpen, props.autoOpen]);
 
   return isMobile && isOpen ? (
     <MobileContainer width={mobileContainerWidth}>
@@ -168,7 +171,7 @@ const Component = (props: Props) => {
       <StyledWidgetButtonWrapper
         id="aichatbot-widget-button"
         onClick={buttonClickHandler}
-        accentColor={accentColor}
+        accentColor={channelStyle.accentColor}
       >
         <StyledWidgetIcon isOpen={isOpen}>
           <ChatBotIcon />
@@ -183,10 +186,18 @@ const Component = (props: Props) => {
 
 export default function ChatAiWidget(props: Props) {
   const queryClient = new QueryClient();
+  const CHAT_WIDGET_APP_ID =
+    import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? props.applicationId;
+  const CHAT_WIDGET_BOT_ID =
+    import.meta.env.VITE_CHAT_WIDGET_BOT_ID ?? props.botId;
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Component {...props} />
+      <Component
+        {...props}
+        applicationId={CHAT_WIDGET_APP_ID}
+        botId={CHAT_WIDGET_BOT_ID}
+      />
     </QueryClientProvider>
   );
 }
