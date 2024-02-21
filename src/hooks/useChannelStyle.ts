@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const DEFAULT_CHANNEL_STYLE = {
   autoOpen: false,
-  theme: 'dark',
+  theme: 'light',
   accentColor: '#742DDD',
   botMessageBGColor: '#EEEEEE',
 };
@@ -32,12 +32,13 @@ export const useChannelStyle = ({
         const response = await fetch(
           `https://api-${appId}.sendbird.com/v3/bots/${botId}/${appId}/bot_style`
         );
-        const data = (response.json() as unknown as BotStyleResponse).bot_style;
+        const data = await (response.json() as unknown as BotStyleResponse);
+        const { bot_style } = data;
         return {
-          autoOpen: data.auto_open,
-          theme: data.color.theme,
-          accentColor: data.color.accent_color,
-          botMessageBGColor: data.color.bot_message_color,
+          autoOpen: bot_style.auto_open,
+          theme: bot_style.color.theme,
+          accentColor: bot_style.color.accent_color,
+          botMessageBGColor: bot_style.color.bot_message_color,
         };
       } catch (error) {
         console.error(error);
