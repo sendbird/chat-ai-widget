@@ -145,7 +145,7 @@ const ChatAiWidget = (props: Props) => {
   };
 
   useEffect(() => {
-    if (getCookie('chatbot').length === 0 && autoOpen) {
+    if (getCookie('chatbot').length === 0 && autoOpen && !isMobile) {
       timer.current = setTimeout(() => setIsOpen(() => true), 1000);
       setCookie('chatbot');
     }
