@@ -24,12 +24,10 @@ function Channel(props: { createGroupChannel: () => void; botUser: User }) {
 
   useEffect(() => {
     if (sbConnectionStatus === 'CONNECTED') {
-      setTimeout(() => {
-        setChannelReady(true);
-        // Initialize the timestamp to be sure the first message is successfully sent,
-        // and then render the channel UI after 1 second.
-        setInitialTimeStamp(null);
-      }, 500);
+      setChannelReady(true);
+      // Initialize the timestamp to be sure the first message is successfully sent,
+      // and then render the channel UI after 1 second.
+      setInitialTimeStamp(null);
     }
   }, [sbConnectionStatus]);
 
