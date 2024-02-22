@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import Chat from './Chat';
+import { Chat } from './Chat';
 import WidgetWindow from './WidgetWindow';
 import { getColorBasedOnSaturation } from '../colors';
 import { Constant } from '../const';
@@ -101,24 +101,6 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
         `;
   }}
 `;
-
-const setCookie = (cookieName: string) => {
-  if (!document) return;
-  const HOUR_IN_MS = 3600000;
-  const date = new Date();
-  const time = date.getTime();
-  const expireTime = time + HOUR_IN_MS * 48;
-  date.setTime(expireTime);
-  const expireTimeInString = date.toUTCString();
-  document.cookie = `${cookieName}=true;expires=${expireTimeInString};path=/`;
-};
-
-const getCookie = (cookieName: string) => {
-  if (!document) return [];
-  const cookies = document.cookie.split(';');
-  return cookies.filter((cookie) => cookie.includes(`${cookieName}=`));
-};
-
 export interface Props extends Partial<Constant> {
   applicationId: string;
   botId: string;
@@ -126,8 +108,33 @@ export interface Props extends Partial<Constant> {
   autoOpen?: boolean;
 }
 
+const WidgetToggleButton = ({
+  onClick,
+  accentColor,
+  isOpen,
+}: {
+  onClick: () => void;
+  accentColor: string;
+  isOpen: boolean;
+}) => {
+  return (
+    <StyledWidgetButtonWrapper
+      id="aichatbot-widget-button"
+      onClick={onClick}
+      accentColor={accentColor}
+    >
+      <StyledWidgetIcon isOpen={isOpen}>
+        <ChatBotIcon />
+      </StyledWidgetIcon>
+      <StyledArrowIcon isOpen={isOpen}>
+        <ArrowDownIcon />
+      </StyledArrowIcon>
+    </StyledWidgetButtonWrapper>
+  );
+};
+
 const Component = (props: Props) => {
-  const channelStyle = useChannelStyle({
+  const { isFetching, ...channelStyle } = useChannelStyle({
     appId: props.applicationId,
     botId: props.botId,
   });
@@ -152,12 +159,8 @@ const Component = (props: Props) => {
   };
 
   useEffect(() => {
-    if (
-      getCookie('chatbot').length === 0 &&
-      (props.autoOpen || channelStyle.autoOpen)
-    ) {
+    if (props.autoOpen || channelStyle.autoOpen) {
       timer.current = setTimeout(() => setIsOpen(() => true), 1000);
-      setCookie('chatbot');
     }
   }, [channelStyle.autoOpen, props.autoOpen]);
 
@@ -168,18 +171,13 @@ const Component = (props: Props) => {
   ) : (
     <>
       <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
-      <StyledWidgetButtonWrapper
-        id="aichatbot-widget-button"
-        onClick={buttonClickHandler}
-        accentColor={channelStyle.accentColor}
-      >
-        <StyledWidgetIcon isOpen={isOpen}>
-          <ChatBotIcon />
-        </StyledWidgetIcon>
-        <StyledArrowIcon isOpen={isOpen}>
-          <ArrowDownIcon />
-        </StyledArrowIcon>
-      </StyledWidgetButtonWrapper>
+      {!isFetching && (
+        <WidgetToggleButton
+          onClick={buttonClickHandler}
+          accentColor={channelStyle.accentColor}
+          isOpen={isOpen}
+        />
+      )}
     </>
   );
 };

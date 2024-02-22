@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
 import LoadingScreen from './LoadingScreen';
-import { StartingPage } from './StartingPage';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
 import { useCreateGroupChannel } from '../hooks/useCreateGroupChannel';
@@ -17,7 +16,6 @@ import { useGetBotUser } from '../hooks/useGetBotUser';
 import { assert } from '../utils';
 
 function Channel(props: { createGroupChannel: () => void; botUser: User }) {
-  const { instantConnect } = useConstantState();
   const { sbConnectionStatus } = useSbConnectionState();
   const { setInitialTimeStamp } = useChannelContext();
   const [channelReady, setChannelReady] = useState(false);
@@ -35,11 +33,7 @@ function Channel(props: { createGroupChannel: () => void; botUser: User }) {
     return <CustomChannelComponent {...props} />;
   }
 
-  return instantConnect ? (
-    <LoadingScreen />
-  ) : (
-    <StartingPage isStartingPage={true} />
-  );
+  return <LoadingScreen />;
 }
 
 export default function CustomChannel() {

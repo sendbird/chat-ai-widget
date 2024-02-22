@@ -98,20 +98,13 @@ export function generateColorVariants(baseColor: string): {
   return variants;
 }
 
-export function getColorBasedOnSaturation(rgb: string): string {
-  // Remove '#'
-  rgb = rgb.slice(1);
-
-  // Parse the hexadecimal RGB values
-  const r = parseInt(rgb.substring(0, 2), 16);
-  const g = parseInt(rgb.substring(2, 4), 16);
-  const b = parseInt(rgb.substring(4, 6), 16);
-
-  // Convert RGB to HSL
-  const hsl = rgbToHsl(r, g, b);
-
-  // Return white if saturation is greater than 0.5, otherwise return black
-  return hsl[1] > 0.5 ? '#fff' : '#000';
+export function getColorBasedOnSaturation(hex: string) {
+  const threshold = 149;
+  const r = Number(`0x${hex[1]}${hex[2]}`);
+  const g = Number(`0x${hex[3]}${hex[4]}`);
+  const b = Number(`0x${hex[5]}${hex[6]}`);
+  const calc = r * 0.299 + g * 0.587 + b * 0.114;
+  return calc > threshold ? '#000000' : '#ffffff';
 }
 
 export function generateCSSVariables(
