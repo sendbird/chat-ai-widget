@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../colors';
-import { ReactComponent as ChatBotIcon } from '../icons/bot-profile-image-small.svg';
+import { ReactComponent as Icon } from '../icons/bot-profile-image-small.svg';
 
 interface ImageProps {
   width: number;
@@ -19,10 +19,14 @@ const StyledBotImage = styled.span<ImageProps>`
   align-items: center;
 }`;
 
-const StyledBotIcon = styled(ChatBotIcon).attrs(({ width, height, theme }) => ({
+const ChatBotIcon = styled(Icon)`
+  path {
+    fill: ${({ theme }) => getColorBasedOnSaturation(theme.accentColor)};
+  }
+`;
+const StyledBotIcon = styled(ChatBotIcon).attrs(({ width, height }) => ({
   width,
   height,
-  fill: getColorBasedOnSaturation(theme.accentColor),
 }))``;
 
 function BotProfileImage(props: ImageProps) {

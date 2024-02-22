@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useMemo } from 'react';
 
 const DEFAULT_CHANNEL_STYLE = {
   theme: 'light',
@@ -23,7 +24,7 @@ export const useChannelStyle = ({
   appId: string;
   botId: string;
 }) => {
-  const { data } = useQuery({
+  const { data, isFetching } = useQuery({
     enabled: !!appId && !!botId,
     queryKey: ['getChannelStyle', appId, botId],
     queryFn: async () => {
@@ -31,6 +32,9 @@ export const useChannelStyle = ({
         const response = await fetch(
           `https://api-${appId}.sendbird.com/v3/bots/${botId}/${appId}/bot_style`
         );
+        if (!response.ok) {
+          throw new Error((await response.json()).message);
+        }
         const data = await (response.json() as unknown as BotStyleResponse);
         const { bot_style } = data;
         return {
@@ -41,10 +45,16 @@ export const useChannelStyle = ({
         };
       } catch (error) {
         console.error(error);
-        return DEFAULT_CHANNEL_STYLE;
+        return {
+          ...DEFAULT_CHANNEL_STYLE,
+          isError: true,
+          errorMessage: (error as Error)?.message,
+        };
       }
     },
   });
-  if (data == null) return DEFAULT_CHANNEL_STYLE;
-  return data;
+  return useMemo(() => {
+    if (data == null) return { ...DEFAULT_CHANNEL_STYLE, isFetching };
+    return { ...data, isFetching };
+  }, [data != null, isFetching]);
 };

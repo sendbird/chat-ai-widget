@@ -1,3 +1,4 @@
+import Avatar from '@sendbird/uikit-react/ui/Avatar';
 import styled, { keyframes } from 'styled-components';
 
 import BotProfileImage from './BotProfileImage';
@@ -86,12 +87,11 @@ function CustomTypingIndicatorBubble({
     <Root>
       <div>
         {botProfileUrl != null && botProfileUrl != '' ? (
-          <img
+          <Avatar
             src={botProfileUrl}
-            alt="profileImage"
-            style={{
-              height: '28px',
-            }}
+            alt="botProfileImage"
+            height="28px"
+            width="28px"
           />
         ) : (
           <BotProfileImage
