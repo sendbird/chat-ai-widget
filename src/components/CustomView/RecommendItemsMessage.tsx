@@ -110,7 +110,7 @@ const RecommendItemsMessage = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: 330 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: 300 }}>
       <Container>
         <Label type={LabelTypography.BODY_1} color={LabelColors.ONBACKGROUND_1}>
           Here are our top sells.
