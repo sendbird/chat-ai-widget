@@ -34,6 +34,7 @@ function Channel(props: { createGroupChannel: () => void; botUser: User }) {
   }, [sbConnectionStatus]);
 
   if (channelReady) {
+    // console.log('here?', sbConnectionStatus, currentGroupChannel);
     return <CustomChannelComponent {...props} />;
   }
 

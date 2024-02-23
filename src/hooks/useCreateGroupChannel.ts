@@ -10,20 +10,6 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
-import { delay } from '../utils';
-
-async function waitForLastMessage(
-  channel: GroupChannel,
-  maxRetries = 30,
-  retryInterval = 100
-) {
-  let count = 0;
-  while (channel.lastMessage == null && count < maxRetries) {
-    await delay(retryInterval);
-    count++;
-  }
-  await delay(500);
-}
 
 export function useCreateGroupChannel(
   currentUser: User | null,
@@ -47,8 +33,8 @@ export function useCreateGroupChannel(
       const paramData =
         instantConnect && firstMessageData
           ? JSON.stringify({
-              first_message_data: firstMessageData,
-            })
+            first_message_data: firstMessageData,
+          })
           : undefined;
       const params: GroupChannelCreateParams = {
         name: createGroupChannelParams?.name,
@@ -70,7 +56,6 @@ export function useCreateGroupChannel(
           message: firstMessage,
         });
       }
-      await waitForLastMessage(groupChannel);
     } catch (error) {
       console.error(error);
     } finally {

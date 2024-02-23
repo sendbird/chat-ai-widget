@@ -35,7 +35,7 @@ export function useGetBotUser(
           .catch((err) => {
             console.error('## useGetBotUser error: ', err);
           });
-      }, 2000);
+      }, 0);
     }
   }, [currentUser?.userId, sendbirdBotId, hashedKey]);
   return botUser;

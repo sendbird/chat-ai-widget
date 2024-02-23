@@ -85,13 +85,19 @@ export type FunctionCallMessage = {
     | 'TRANSACTION_HISTORY'
     | 'SENDING_MONEY'
     | 'SENDING_MONEY_CONFIRMED'
-    | 'ORDER_HISTORY';
+    | 'ORDER_HISTORY'
+    | 'ORDER_DETAILS'
+    | 'CANCEL_ORDER'
+    | 'RECOMMEND_ITEMS';
   // stringified JSON
   transaction_history?: string;
   current_balance?: string;
   target_amount?: string;
   recipient?: string;
   order_history?: string;
+  order_details?: string;
+  cancel_order?: string;
+  recommend_items?: string;
 } | null;
 
 export function isCurrentBalanceMessage(message: FunctionCallMessage) {
@@ -129,6 +135,25 @@ export function isSendingMoneyConfirmedMessage(message: FunctionCallMessage) {
 export function isOrderHistoryMessage(message: FunctionCallMessage) {
   return (
     message?.value_type === 'ORDER_HISTORY' && message?.order_history != null
+  );
+}
+
+export function isOrderDetailsMessage(message: FunctionCallMessage) {
+  return (
+    message?.value_type === 'ORDER_DETAILS' && message?.order_details != null
+  );
+}
+
+export function isCancelOrderMessage(message: FunctionCallMessage) {
+  return (
+    message?.value_type === 'CANCEL_ORDER' && message?.cancel_order != null
+  );
+}
+
+export function isRecommendItemsMessage(message: FunctionCallMessage) {
+  return (
+    message?.value_type === 'RECOMMEND_ITEMS' &&
+    message?.recommend_items != null
   );
 }
 

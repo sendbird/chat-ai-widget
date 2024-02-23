@@ -9,7 +9,11 @@ import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
+import CancelOrderMessage from './CustomView/CancelOrderMessage';
 import CurrentBalanceMessage from './CustomView/CurrentBalanceMessage';
+import OrderDetailsMessage from './CustomView/OrderDetailsMessage';
+import OrderHistoryMessage from './CustomView/OrderHistoryMessage';
+import RecommendItemsMessage from './CustomView/RecommendItemsMessage';
 import SendingMoneyConfirmedMessage from './CustomView/SendingMoneyConfirmedMessage';
 import SendingMoneyMessage from './CustomView/SendingMoneyMessage';
 import TransactionHistoryMessage from './CustomView/TransactionHistoryMessage';
@@ -24,7 +28,8 @@ import {
   isNotLocalMessageCustomType,
   MessageTextParser,
   replaceTextExtractsMultiple,
-  replaceUrl, scrollUtil,
+  replaceUrl,
+  scrollUtil,
   Token,
 } from '../utils';
 import {
@@ -36,8 +41,10 @@ import {
   type FunctionCallMessage,
   type MessageMeta,
   isOrderHistoryMessage,
+  isOrderDetailsMessage,
+  isCancelOrderMessage,
+  isRecommendItemsMessage,
 } from '../utils/messages';
-import OrderHistoryMessage from "./CustomView/OrderHistoryMessage";
 
 type Props = {
   message: EveryMessage;
@@ -171,6 +178,46 @@ export default function CustomMessage(props: Props) {
         bodyComponent={<OrderHistoryMessage message={functionCallMessage} />}
         chainTop={chainTop}
         chainBottom={chainBottom}
+      />
+    );
+  }
+
+  if (isOrderDetailsMessage(functionCallMessage)) {
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        messageCount={allMessages.length}
+        bodyComponent={<OrderDetailsMessage message={functionCallMessage} />}
+        chainTop={chainTop}
+        chainBottom={chainBottom}
+      />
+    );
+  }
+
+  if (isCancelOrderMessage(functionCallMessage)) {
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        messageCount={allMessages.length}
+        bodyComponent={<CancelOrderMessage message={functionCallMessage} />}
+        chainTop={chainTop}
+        chainBottom={chainBottom}
+      />
+    );
+  }
+
+  if (isRecommendItemsMessage(functionCallMessage)) {
+    return (
+      <BotMessageWithBodyInput
+        botUser={botUser}
+        message={message}
+        messageCount={allMessages.length}
+        bodyComponent={<RecommendItemsMessage message={functionCallMessage} />}
+        chainTop={chainTop}
+        chainBottom={chainBottom}
+        newLineSentTime={true}
       />
     );
   }

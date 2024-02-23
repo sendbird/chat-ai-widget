@@ -12,6 +12,7 @@ type Props = {
     bodyStyle?: object;
     isBotWelcomeMessage?: boolean;
     isFormMessage?: boolean;
+    newLineSentTime?: boolean;
 };
 export default function BotMessageWithBodyInput(props: Props): import("react/jsx-runtime").JSX.Element;
 export {};

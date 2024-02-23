@@ -7,7 +7,7 @@ import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import { useEffect, useState, useMemo, useRef } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { ClientUserMessage, EveryMessage } from 'SendbirdUIKitGlobal';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
@@ -35,7 +35,20 @@ const Root = styled.div<RootStyleProps>`
   font-family: 'Roboto', sans-serif;
   z-index: 0;
   border: none;
-
+  
+  ${({ botCategory }) =>
+    botCategory &&
+    css`
+      --sendbird-light-primary-300: ${categoryColors[botCategory][
+        '--sendbird-light-primary-300'
+      ]};
+      --sendbird-light-background-50-0: ${categoryColors[botCategory][
+        '--sendbird-light-background-50-0'
+      ]};
+      --sendbird-light-background-50: ${categoryColors[botCategory][
+        '--sendbird-light-background-50'
+      ]};
+    `}
   .sendbird-place-holder__body {
     display: ${({ hidePlaceholder }) => (hidePlaceholder ? 'none' : 'block')};
   }
@@ -210,6 +223,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const botWelcomeMessages = useMemo(() => {
     return getBotWelcomeMessages(allMessages, botUser.userId);
   }, [allMessages.length]);
+
+  useEffect(() => {
+    channel?.createMetaData({ bot_id: botUser.userId });
+  }, []);
 
   return (
     <Root

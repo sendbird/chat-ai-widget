@@ -2,12 +2,10 @@ import styled, { css } from 'styled-components';
 
 import Chat from './Chat';
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
-import { categoryColors } from '../utils/category';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
   isExpanded: boolean;
-  botCategory?: string;
 }>`
   overscroll-behavior: none;
   -webkit-overflow-scrolling: auto;
@@ -31,20 +29,6 @@ const StyledWidgetWindowWrapper = styled.div<{
     opacity 83ms ease-out 0s;
   transform: scale(0.15);
   opacity: 0;
-
-  ${({ botCategory }) =>
-    botCategory &&
-    css`
-      --sendbird-light-primary-300: ${categoryColors[botCategory][
-        '--sendbird-light-primary-300'
-      ]};
-      --sendbird-light-background-50-0: ${categoryColors[botCategory][
-        '--sendbird-light-background-50-0'
-      ]};
-      --sendbird-light-background-50: ${categoryColors[botCategory][
-        '--sendbird-light-background-50'
-      ]};
-    `}
 
   ${({ isOpen }) => {
     return (
@@ -84,7 +68,6 @@ const WidgetWindow = ({ isOpen, ...props }: WidgetProps & ChatWidgetProps) => {
       isOpen={isOpen}
       isExpanded={false}
       id="chat-widget-window"
-      botCategory={props.botCategory}
     >
       <Chat {...props} isOpen={isOpen} />
     </StyledWidgetWindowWrapper>

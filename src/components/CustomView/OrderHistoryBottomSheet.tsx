@@ -1,23 +1,17 @@
 import Label, {
-  LabelTypography,
   LabelColors,
+  LabelTypography,
 } from '@sendbird/uikit-react/ui/Label';
-import { useMemo } from 'react';
+import { useState } from 'react';
 import BottomSheet from 'react-modal-sheet';
 import styled from 'styled-components';
 
+import { DeliveryStatusLabel } from './DeliveryStatusLabel';
+import { ItemImageComponent } from './ItemImageComponent';
 import ListRow from './ListRow';
+import { useSendMessage } from '../../hooks/useSendMessage';
+import { ReactComponent as IconChevronRight } from '../../icons/icon-chevron-right.svg';
 import { ReactComponent as CloseIcon } from '../../icons/icon-close.svg';
-import { ReactComponent as TransactionIcon1 } from '../../icons/icon-transaction-type-1.svg';
-import { ReactComponent as TransactionIcon2 } from '../../icons/icon-transaction-type-2.svg';
-import { ReactComponent as TransactionIcon3 } from '../../icons/icon-transaction-type-3.svg';
-import { getFormattedDate } from '../../utils';
-
-const icons = [
-  <TransactionIcon1 key="1" />,
-  <TransactionIcon2 key="2" />,
-  <TransactionIcon3 key="3" />,
-];
 
 const BottomSheetContainer = styled(BottomSheet.Container)`
   padding-bottom: 16px;
@@ -33,40 +27,34 @@ const BottomSheetHeader = styled(BottomSheet.Header)`
 `;
 
 const BottomSheetContent = styled(BottomSheet.Content)`
-  overflow: scroll;
+  padding: 0 16px;
 `;
 
-const DescText = styled(Label)`
+const DateText = styled(Label)`
+  font-weight: 700;
+`;
+
+const ItemsText = styled(Label)`
   font-weight: 500;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
-interface Transaction {
-  transactionId: string;
-  amount: string;
-  description: string;
-  prevBalance: string;
-  currentBalance: string;
-  timeStamp: string;
+interface Item {
+  image: string;
+  name: string;
+  price: number;
+  quantity: number;
 }
 
-type GroupedTransactions = { [date: string]: Transaction[] };
-
-function groupTransactionsByDate(
-  transactions: Transaction[]
-): GroupedTransactions {
-  const groupedTransactions: GroupedTransactions = {};
-
-  transactions.forEach((transaction) => {
-    const date = new Date(transaction.timeStamp);
-    const dateKey = getFormattedDate(date).formattedDate;
-
-    if (!groupedTransactions[dateKey]) {
-      groupedTransactions[dateKey] = [];
-    }
-    groupedTransactions[dateKey].push(transaction);
-  });
-
-  return groupedTransactions;
+interface HistoryItem {
+  id: string;
+  items: Item[];
+  date: string;
+  status: string;
 }
 
 const OrderHistoryBottomSheet = ({
@@ -74,14 +62,27 @@ const OrderHistoryBottomSheet = ({
   bottomSheetOpen,
   setBottomSheetOpen,
 }: {
-  historyList: any[];
+  historyList: HistoryItem[];
   bottomSheetOpen: boolean;
   setBottomSheetOpen: (value: boolean) => void;
 }) => {
-  const grouppedHistoryList = useMemo(
-    () => groupTransactionsByDate(historyList),
-    [historyList.map((history) => history.timeStamp)]
-  );
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  function getDescriptionMessage(history: HistoryItem) {
+    if (history.items.length === 1) {
+      return history.items[0].name;
+    } else {
+      return `${history.items[0].name} and ${
+        history.items.length - 1
+      } other items`;
+    }
+  }
+
+  const sendMessage = useSendMessage();
+  const handleListRowClick = (id: string) => {
+    sendMessage(`Details for Order #${id}`);
+    setBottomSheetOpen(false);
+  };
 
   return (
     <BottomSheet
@@ -99,7 +100,7 @@ const OrderHistoryBottomSheet = ({
     >
       <BottomSheetContainer>
         <BottomSheetHeader>
-          <Label type={LabelTypography.H_2}>Transaction history</Label>
+          <Label type={LabelTypography.H_2}>Order history</Label>
           <CloseIcon
             onClick={() => {
               setBottomSheetOpen(false);
@@ -107,64 +108,80 @@ const OrderHistoryBottomSheet = ({
           />
         </BottomSheetHeader>
         <BottomSheetContent>
-          {Object.entries(grouppedHistoryList).map(([date, historyList]) => {
-            return (
-              <div
-                style={{
-                  padding: '2px 16px',
-                }}
-                key={date}
-              >
-                <Label
-                  type={LabelTypography.CAPTION_2}
-                  color={LabelColors.ONBACKGROUND_2}
+          {historyList.length > 0 &&
+            historyList.slice(0, 4).map((history) => {
+              return (
+                <div
+                  key={history.id}
+                  style={{
+                    marginBottom: 16,
+                    cursor: 'pointer',
+                    backgroundColor:
+                      hoveredId === history.id ? '#f0f0f0' : 'transparent',
+                  }}
+                  onClick={() => handleListRowClick(history.id)}
+                  onMouseEnter={() => setHoveredId(history.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      handleListRowClick(history.id);
+                    }
+                  }}
                 >
-                  {date}
-                </Label>
-                {historyList.map((history, index) => {
-                  const { formattedTime } = getFormattedDate(
-                    new Date(history.timeStamp)
-                  );
-                  return (
-                    <div
-                      key={history.transactionId}
-                      style={{ margin: '20px 0px' }}
-                    >
-                      <ListRow
-                        icon={icons[index % icons.length]}
-                        title={
-                          <DescText type={LabelTypography.SUBTITLE_1}>
-                            {history.description}
-                          </DescText>
-                        }
-                        description={
-                          <Label
-                            type={LabelTypography.CAPTION_3}
-                            color={LabelColors.ONBACKGROUND_3}
+                  <ListRow
+                    key={history.id}
+                    icon={<ItemImageComponent image={history.items[0].image} />}
+                    title={
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                        }}
+                      >
+                        <div>
+                          <div
+                            style={{
+                              width: 150,
+                            }}
                           >
-                            {formattedTime}
-                          </Label>
-                        }
-                        rightTop={
-                          <Label type={LabelTypography.SUBTITLE_1}>
-                            {history.amount}
-                          </Label>
-                        }
-                        rightBottom={
-                          <Label
-                            type={LabelTypography.CAPTION_3}
-                            color={LabelColors.ONBACKGROUND_3}
+                            <DateText
+                              type={LabelTypography.BODY_2}
+                              color={LabelColors.ONBACKGROUND_2}
+                            >
+                              {history.date}
+                            </DateText>
+                          </div>
+                          <ItemsText
+                            type={LabelTypography.BODY_1}
+                            color={LabelColors.ONBACKGROUND_1}
                           >
-                            {history.currentBalance}
-                          </Label>
-                        }
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+                            {getDescriptionMessage(history)}
+                          </ItemsText>
+                          <DeliveryStatusLabel history={history} />
+                        </div>
+                        <div
+                          style={{
+                            width: 18,
+                          }}
+                        >
+                          <IconChevronRight
+                            style={{
+                              width: 14,
+                              height: 14,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    }
+                  />
+                </div>
+              );
+            })}
         </BottomSheetContent>
       </BottomSheetContainer>
       <BottomSheet.Backdrop />

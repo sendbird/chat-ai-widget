@@ -64,6 +64,7 @@ type Props = {
   bodyStyle?: object;
   isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
+  newLineSentTime?: boolean;
 };
 
 const ImageContainer = styled.div``;
@@ -85,6 +86,7 @@ export default function BotMessageWithBodyInput(props: Props) {
     chainBottom,
     isBotWelcomeMessage,
     isFormMessage = false,
+    newLineSentTime = false,
   } = props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
@@ -121,7 +123,21 @@ export default function BotMessageWithBodyInput(props: Props) {
           !isBotWelcomeMessage &&
           !isFormMessage && <ReactionContainer message={message} />}
       </BodyContainer>
-      <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+      {newLineSentTime ? (
+        <div
+          style={{
+            paddingLeft: '40px',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'flex-start',
+            marginTop: '4px',
+          }}
+        >
+          <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+        </div>
+      ) : (
+        <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+      )}
     </Root>
   );
 }

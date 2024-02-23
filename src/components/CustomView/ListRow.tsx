@@ -36,7 +36,7 @@ const Row = styled.div`
 interface ListRowProps {
   icon: React.ReactNode;
   title: React.ReactNode;
-  description: React.ReactNode;
+  description?: React.ReactNode;
   rightTop?: React.ReactNode;
   rightBottom?: React.ReactNode;
 }
