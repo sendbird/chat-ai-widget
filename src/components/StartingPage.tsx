@@ -110,7 +110,7 @@ const StartMessageBody = styled.div<StartMessageBodyProps>`
   gap: 8px;
   border-radius: 16px;
   background-color: ${({ outgoing }) =>
-    outgoing ? '#742ddd' : 'rgb(238, 238, 238)'};
+    outgoing ? '#8578F7' : 'rgb(238, 238, 238)'};
 `;
 
 const StartMessageBodyContent = styled.div`

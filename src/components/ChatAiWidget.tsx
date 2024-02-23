@@ -15,7 +15,7 @@ const StyledWidgetButtonWrapper = styled.button`
   right: 24px;
   width: 48px;
   height: 48px;
-  background: linear-gradient(132deg, #4165FF 17.3%, #8896FF 33.37%, #EA94F2 49.04%, #BDC7FF 63.27%, #3E62FF 87.73%);
+  background: radial-gradient(2348.26% 123.03% at 0% 28.33%, #9E78FA 1.1%, #7968EC 36.5%, #78C6FF 94.5%);
   border-radius: 50%;
   color: white;
   transition: all 0.3s cubic-bezier(0.31, -0.105, 0.43, 1.4);
