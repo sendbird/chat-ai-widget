@@ -67,6 +67,7 @@ export default function CustomMessage(props: Props) {
     isBotWelcomeMessage,
   } = props;
   const { replacementTextList, userId } = useConstantState();
+  const { currentGroupChannel } = useChannelContext();
 
   const { allMessages } = useChannelContext();
 
@@ -227,12 +228,14 @@ export default function CustomMessage(props: Props) {
     if (activeSpinnerId !== message.messageId) {
       scrollUtil();
     }
+    const userIds = currentGroupChannel?.members.map((member) => member.userId);
     return (
       <div>
         {<CurrentUserMessage message={message as UserMessage} />}
-        {activeSpinnerId === message.messageId && (
-          <PendingMessage botProfileUrl={botUser?.profileUrl} />
-        )}
+        {activeSpinnerId === message.messageId &&
+          userIds?.includes(botUser.userId) && (
+            <PendingMessage botProfileUrl={botUser?.profileUrl} />
+          )}
       </div>
     );
   }
