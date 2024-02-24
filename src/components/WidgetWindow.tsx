@@ -13,7 +13,6 @@ const StyledWidgetWindowWrapper = styled.div<{
 }>`
   overscroll-behavior: none;
   -webkit-overflow-scrolling: auto;
-  background-color: #fff;
   position: fixed;
   bottom: 84px;
   right: 20px;
