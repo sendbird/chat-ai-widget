@@ -8,6 +8,7 @@ interface CommonTheme {
     suggestedReply: string;
     bottomBanner: string;
     loadingScreen: string;
+    channelHeaderBorder: string;
     hover: {
       incomingMessage: string;
       outgoingMessage: string;
@@ -50,6 +51,7 @@ export function getTheme({
         suggestedReply: 'var(--sendbird-light-background-50)',
         bottomBanner: 'var(--sendbird-light-background-50)',
         loadingScreen: 'var(--sendbird-light-background-50)',
+        channelHeaderBorder: 'var(--sendbird-light-onlight-04)',
         hover: {
           // Give 1 level darker color for hover
           incomingMessage: botMessageBGColor
@@ -88,6 +90,7 @@ export function getTheme({
         suggestedReply: 'var(--sendbird-dark-background-600)',
         bottomBanner: 'var(--sendbird-dark-background-600)',
         loadingScreen: 'var(--sendbird-dark-background-600)',
+        channelHeaderBorder: 'var(--sendbird-dark-ondark-04)',
         hover: {
           // Give 1 level lighter color for hover
           incomingMessage: botMessageBGColor

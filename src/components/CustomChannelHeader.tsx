@@ -20,7 +20,7 @@ const Root = styled.div`
   align-items: center;
   font-style: normal;
   border: none;
-  border-bottom: 1px solid var(--sendbird-dark-onlight-04);
+  border-bottom: 1px solid ${({ theme }) => theme.bgColor.channelHeaderBorder};
   padding: 11px 12px;
 `;
 
