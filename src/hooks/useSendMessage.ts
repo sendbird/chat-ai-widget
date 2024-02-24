@@ -1,6 +1,6 @@
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import * as sendbirdSelectors from '@sendbird/uikit-react/sendbirdSelectors';
-import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
+import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useCallback } from 'react';
 
 export function useSendMessage(): (message: string) => Promise<void> {

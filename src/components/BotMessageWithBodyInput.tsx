@@ -9,11 +9,12 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BotProfileImage from './BotProfileImage';
+import { SentTime, BodyContainer } from './MessageComponent';
 import { ReactionContainer } from './ReactionContainer';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
 
-const Root = styled.div`
+const Root = styled.span`
   display: flex;
   align-items: flex-end;
   margin-bottom: 6px;
@@ -27,27 +28,9 @@ const Sender = styled(Label)`
   text-align: left;
 `;
 
-interface BodyContainerProps {
-  maxWidth?: string;
-}
-
-const BodyContainer = styled.div<BodyContainerProps>`
-  font-size: 14px;
-  color: ${({ theme }) => theme.textColor.incomingMessage};
-  max-width: calc(100% - 96px);
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.43;
-  letter-spacing: normal;
-`;
-
-const SentTime = styled.div`
-  width: fit-content;
-  color: ${({ theme }) => theme.textColor.sentTime};
-  font-size: 12px;
-  line-height: 1;
-  margin-bottom: 6px;
+const Content = styled.div`
+  display: flex;
+  align-items: end;
 `;
 
 type Props = {
@@ -58,7 +41,6 @@ type Props = {
   chainBottom: boolean;
   messageCount?: number;
   zIndex?: number;
-  bodyStyle?: object;
   isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
 };
@@ -77,7 +59,6 @@ export default function BotMessageWithBodyInput(props: Props) {
     bodyComponent,
     messageCount,
     zIndex,
-    bodyStyle,
     chainTop,
     chainBottom,
     isBotWelcomeMessage,
@@ -111,7 +92,7 @@ export default function BotMessageWithBodyInput(props: Props) {
       ) : (
         <EmptyImageContainer />
       )}
-      <BodyContainer style={bodyStyle ?? {}}>
+      <BodyContainer>
         {displaySender && (
           <Sender
             type={LabelTypography.CAPTION_2}
@@ -120,13 +101,17 @@ export default function BotMessageWithBodyInput(props: Props) {
             {botUser.nickname}
           </Sender>
         )}
-        {bodyComponent}
-        {enableEmojiFeedback &&
-          displayProfileImage &&
-          !isBotWelcomeMessage &&
-          !isFormMessage && <ReactionContainer message={message} />}
+        <Content>
+          <>
+            {bodyComponent}
+            {enableEmojiFeedback &&
+              displayProfileImage &&
+              !isBotWelcomeMessage &&
+              !isFormMessage && <ReactionContainer message={message} />}
+          </>
+          <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+        </Content>
       </BodyContainer>
-      <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
     </Root>
   );
 }

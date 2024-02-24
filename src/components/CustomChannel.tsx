@@ -4,7 +4,7 @@ import {
   ChannelProvider,
   useChannelContext,
 } from '@sendbird/uikit-react/Channel/context';
-import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
+import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useState } from 'react';
 
 import { CustomChannelComponent } from './CustomChannelComponent';

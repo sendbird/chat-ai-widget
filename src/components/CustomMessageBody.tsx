@@ -3,8 +3,16 @@ import styled from 'styled-components';
 
 const Root = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
+`;
+
+const Text = styled.span`
+  width: 100%;
+  text-align: left;
+  white-space: pre-line;
+  word-break: break-word;
+  line-height: 1.43;
+
   padding: 8px 12px;
   gap: 8px;
   border-radius: 16px;
@@ -12,15 +20,6 @@ const Root = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
   }
-  //max-width: 600px;
-`;
-
-const Text = styled.div`
-  width: 100%;
-  text-align: left;
-  white-space: pre-line;
-  word-break: break-word;
-  line-height: 1.43;
 `;
 
 interface Props {

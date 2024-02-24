@@ -8,6 +8,7 @@ import Label, {
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import { SentTime } from './MessageComponent';
 import { formatCreatedAtToAMPM } from '../utils';
 
 const Root = styled.div`
@@ -39,21 +40,12 @@ const BodyContainer = styled.div<BodyContainerProps>`
   letter-spacing: normal;
 `;
 
-const SentTime = styled.div`
-  width: fit-content;
-  color: ${({ theme }) => theme.textColor.sentTime};
-  font-size: 12px;
-  line-height: 1;
-  margin-bottom: 6px;
-`;
-
 type Props = {
   user: User;
   message: UserMessage;
   bodyComponent: ReactNode;
   chainTop: boolean;
   chainBottom: boolean;
-  bodyStyle?: object;
   isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
 };
@@ -65,8 +57,7 @@ const EmptyImageContainer = styled.div`
 `;
 
 export default function UserMessageWithBodyInput(props: Props) {
-  const { user, message, bodyComponent, bodyStyle, chainTop, chainBottom } =
-    props;
+  const { user, message, bodyComponent, chainTop, chainBottom } = props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
@@ -81,7 +72,7 @@ export default function UserMessageWithBodyInput(props: Props) {
       ) : (
         <EmptyImageContainer />
       )}
-      <BodyContainer style={bodyStyle ?? {}}>
+      <BodyContainer>
         {displaySender && (
           <Sender
             type={LabelTypography.CAPTION_2}
@@ -91,8 +82,8 @@ export default function UserMessageWithBodyInput(props: Props) {
           </Sender>
         )}
         {bodyComponent}
+        <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
       </BodyContainer>
-      <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
     </Root>
   );
 }

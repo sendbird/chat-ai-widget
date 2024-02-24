@@ -39,7 +39,6 @@ interface FormValue {
 type FormValues = Record<string, FormValue>;
 
 const Root = styled.div`
-  max-width: 244px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

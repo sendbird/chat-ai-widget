@@ -4,11 +4,11 @@ import {
   type SendbirdGroupChat,
 } from '@sendbird/chat/groupChannel';
 import { SendingStatus } from '@sendbird/chat/message';
-import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeader';
+import { default as ChannelHeader } from '@sendbird/uikit-react/Channel/components/ChannelHeader';
 import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
 // import SuggestedReplies from '@sendbird/uikit-react/Channel/components/SuggestedReplies';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
-import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
+import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useState, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom';
 // eslint-disable-next-line import/no-unresolved

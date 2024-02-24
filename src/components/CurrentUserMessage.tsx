@@ -1,6 +1,7 @@
 import { UserMessage } from '@sendbird/chat/message';
 import styled from 'styled-components';
 
+import { SentTime, BodyContainer, BodyComponent } from './MessageComponent';
 import { formatCreatedAtToAMPM } from '../utils';
 
 const Root = styled.div`
@@ -10,40 +11,6 @@ const Root = styled.div`
   margin-bottom: 6px;
   flex-wrap: wrap-reverse;
   gap: 8px;
-`;
-
-const BodyContainer = styled.div`
-  max-width: calc(100% - 90px); // 600px;
-  font-size: 14px;
-  width: fit-content;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.43;
-  letter-spacing: normal;
-`;
-
-const SentTime = styled.div`
-  color: ${({ theme }) => theme.textColor.sentTime};
-  font-size: 12px;
-  line-height: 1;
-  margin-bottom: 6px;
-`;
-
-const BodyComponent = styled.div`
-  background-color: ${({ theme }) => theme.bgColor.outgoingMessage};
-  &:hover {
-    background-color: ${({ theme }) => theme.bgColor.hover.outgoingMessage};
-  }
-  color: ${({ theme }) => theme.textColor.outgoingMessage};
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 8px 12px;
-  gap: 12px;
-  border-radius: 16px;
-  white-space: pre-wrap;
 `;
 
 const TextComponent = styled.div`

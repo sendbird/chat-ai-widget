@@ -16,7 +16,7 @@ const LinesContainer = styled.div`
 `;
 
 const CodeContainer = styled.div`
-  width: calc(100% - 40px);
+  width: calc(100% - 36px);
   overflow-x: scroll;
   height: 100px;
 `;

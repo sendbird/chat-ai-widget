@@ -12,25 +12,18 @@ const LazyCodeBlock = lazy(() =>
   import('./CodeBlock').then(({ CodeBlock }) => ({ default: CodeBlock }))
 );
 
-const Root = styled.div`
-  display: flex;
-  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
-  &:hover {
-    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
-  }
-  //max-width: 600px;
-  flex-direction: column;
-  align-items: flex-start;
+const Text = styled.div`
+  width: fit-content;
+  text-align: left;
+  word-break: break-word;
   padding: 8px 12px;
   gap: 12px;
   border-radius: 16px;
   white-space: pre-wrap;
-`;
-
-const Text = styled.div`
-  width: 100%;
-  text-align: left;
-  word-break: break-word;
+  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
+  &:hover {
+    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
+  }
 `;
 
 const BlockContainer = styled.div`
@@ -64,7 +57,7 @@ export default function ParsedBotMessageBody(props: Props) {
   // console.log('## sources: ', sources);
   if (tokens.length > 0) {
     return (
-      <Root>
+      <>
         {tokens.map((token: Token, i) => {
           if (token.type === TokenType.string) {
             return (
@@ -88,7 +81,7 @@ export default function ParsedBotMessageBody(props: Props) {
             <BotMessageBottom />
           </>
         ) : null}
-      </Root>
+      </>
     );
   }
   return <Text>{message.message}</Text>;
