@@ -33,7 +33,7 @@ const ReplyItem = styled.div<SuggestedReplyItemProps>`
   &:active {
     ${({ isActive, theme }: SuggestedReplyItemProps) => {
       if (isActive) {
-        return `background-color: ${theme.textColor.suggestedReply}; color: #FFFFFF;`;
+        return `background-color: ${theme.textColor.suggestedReply}; color: ${theme.textColor.outgoingMessage};`;
       }
     }};
   }
