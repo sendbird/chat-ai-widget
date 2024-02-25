@@ -1,6 +1,6 @@
 import '@sendbird/chat-ai-widget/dist/style.css';
 import { Chat as ChatAiWidget } from '@sendbird/chat-ai-widget';
-import './css/index.css';
+import './index.css';
 
 import { DEMO_CONSTANTS, DemoConstant } from './const';
 import { useGetHashedKey } from './hooks/useGetHashedKey';
