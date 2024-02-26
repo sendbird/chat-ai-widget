@@ -32,8 +32,12 @@ export const useChannelStyle = ({
         const response = await fetch(
           `https://api-${appId}.sendbird.com/v3/bots/${botId}/${appId}/bot_style`
         );
+        // TODO: Remove this when the API is available on every server regions
+        if (response.status === 404) {
+          return DEFAULT_CHANNEL_STYLE;
+        }
         if (!response.ok) {
-          throw new Error((await response.json()).message);
+          throw new Error((await response.json()).message || 'Something went wrong');
         }
         const data = await (response.json() as unknown as BotStyleResponse);
         const { bot_style } = data;
