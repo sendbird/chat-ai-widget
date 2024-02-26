@@ -25,7 +25,6 @@ const SBComponent = () => {
     userId,
     userNickName,
     configureSession,
-    enableEmojiFeedback,
     enableMention,
     customUserAgentParam,
   } = useConstantState();
@@ -76,7 +75,6 @@ const SBComponent = () => {
       configureSession={configureSession}
       customExtensionParams={userAgentCustomParams.current}
       breakPoint={isMobile}
-      isReactionEnabled={enableEmojiFeedback}
       isMentionEnabled={enableMention}
       theme={theme}
       colorSet={customColorSet}

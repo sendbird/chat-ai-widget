@@ -1,6 +1,5 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
-import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
@@ -29,9 +28,10 @@ type Props = {
   activeSpinnerId: number;
   botUser: User;
   lastMessageRef: React.RefObject<HTMLDivElement>;
+  isBotWelcomeMessage: boolean;
+  messageCount: number;
   chainTop?: boolean;
   chainBottom?: boolean;
-  isBotWelcomeMessage: boolean;
 };
 
 export default function CustomMessage(props: Props) {
@@ -43,10 +43,9 @@ export default function CustomMessage(props: Props) {
     chainTop,
     chainBottom,
     isBotWelcomeMessage,
+    messageCount,
   } = props;
   const { replacementTextList, userId } = useConstantState();
-
-  const { allMessages } = useChannelContext();
 
   // admin message
   if (message.messageType === 'admin') {
@@ -60,7 +59,7 @@ export default function CustomMessage(props: Props) {
         botUser={botUser}
         message={message}
         bodyComponent={<FormMessage form={forms[0]} message={message} />}
-        messageCount={allMessages.length}
+        messageCount={messageCount}
         chainTop={chainTop}
         chainBottom={chainBottom}
         isBotWelcomeMessage={isBotWelcomeMessage}
@@ -111,7 +110,7 @@ export default function CustomMessage(props: Props) {
           bodyComponent={
             <SuggestedReplyMessageBody message={message as UserMessage} />
           }
-          messageCount={allMessages.length}
+          messageCount={messageCount}
           chainTop={chainTop}
           chainBottom={chainBottom}
           isBotWelcomeMessage={isBotWelcomeMessage}
@@ -137,7 +136,7 @@ export default function CustomMessage(props: Props) {
       <BotMessageWithBodyInput
         botUser={botUser}
         message={message}
-        messageCount={allMessages.length}
+        messageCount={messageCount}
         bodyComponent={
           <ParsedBotMessageBody
             message={message as UserMessage}
