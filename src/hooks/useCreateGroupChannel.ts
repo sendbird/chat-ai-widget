@@ -4,12 +4,10 @@ import {
   type SendbirdGroupChat,
   type GroupChannelCreateParams,
 } from '@sendbird/chat/groupChannel';
-import * as sendbirdSelectors from '@sendbird/uikit-react/sendbirdSelectors';
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useConstantState } from '../context/ConstantContext';
-import { useSbConnectionState } from '../context/SBConnectionContext';
 
 export function useCreateGroupChannel(
   currentUser: User | null,
@@ -19,10 +17,8 @@ export function useCreateGroupChannel(
   const [creating, setCreating] = useState<boolean>(false);
   const store = useSendbirdStateContext();
   const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
-  const sendUserMessage = sendbirdSelectors.getSendUserMessage(store);
   const { createGroupChannelParams, instantConnect, firstMessageData } =
     useConstantState();
-  const { setSbConnectionStatus, firstMessage } = useSbConnectionState();
 
   const createAndSetNewChannel = useCallback(async () => {
     if (!currentUser || !botUser) {
@@ -43,28 +39,20 @@ export function useCreateGroupChannel(
         coverUrl: createGroupChannelParams?.coverUrl,
         data: paramData,
       };
-      const groupChannel = await sb.groupChannel
+      await sb.groupChannel
         .createChannel(params)
         .then((channel: GroupChannel) => {
           setChannel(channel);
           return channel;
         });
-      // We also send the first message to the newly created channel
-      // if it has a valid string
-      if (firstMessage !== '' && firstMessage != null) {
-        await sendUserMessage(groupChannel, {
-          message: firstMessage,
-        });
-      }
     } catch (error) {
       console.error(error);
     } finally {
       setCreating(false);
-      setSbConnectionStatus('CONNECTED');
     }
     // we dont want to watchout for change of whole objects
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser?.userId, botUser?.userId, firstMessage]);
+  }, [currentUser?.userId, botUser?.userId]);
 
   useEffect(() => {
     // console.log('## useCreateGroupChannel: ', currentUser, botUser, sb);
@@ -75,7 +63,7 @@ export function useCreateGroupChannel(
       createAndSetNewChannel();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser?.userId, botUser?.userId, firstMessage]);
+  }, [currentUser?.userId, botUser?.userId]);
 
   return [channel, createAndSetNewChannel, creating];
 }

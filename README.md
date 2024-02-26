@@ -127,10 +127,6 @@ You can customize the UI of the ChatBot by using the `ChatAiWidget` component. T
 import { ChatAiWidget } from "@sendbird/chat-ai-widget";
 import '@sendbird/chat-ai-widget/dist/style.css';
 
-import { ReactComponent as StartingPageLogo } from './icons/sendbird-logo-starting-page.svg';
-import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
-
-
 const customConstants = {
   applicationId: 'AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67', // Your Sendbird application ID
   botId: 'khan-academy-bot', // Your Sendbird bot ID
@@ -188,24 +184,6 @@ const customConstants = {
       'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
       'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
   },
-  startingPageContent: {
-    headerContent: {
-      headerOne: "I'm Khan Academy Support Bot",
-      headerTwo: 'Ask me anything!',
-    },
-    messageContent: {
-      header: 'AI ChatBot',
-      body: "Hi~ I'm Khan Academy Support ChatBot. Ask me anything!",
-    },
-    logoContent: {
-      Component: StartingPageLogo,
-      width: '100px',
-    },
-    backGroundContent: {
-      Component: StartingPageBackground,
-      height: '240px',
-    },
-  },
   chatBottomContent: {
     text: 'Sendbird AI ChatBot',
     backgroundColor:
@@ -237,7 +215,6 @@ const App = () => {
       suggestedMessageContent={customConstants.suggestedMessageContent}
       firstMessageData={customConstants.firstMessageData}
       createGroupChannelParams={customConstants.createGroupChannelParams}
-      startingPageContent={customConstants.startingPageContent}
       chatBottomContent={customConstants.chatBottomContent}
       messageBottomContent={customConstants.messageBottomContent}
       replacementTextList={customConstants.replacementTextList}

@@ -34,8 +34,6 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       firstMessageData: props.firstMessageData ?? [],
       createGroupChannelParams:
         props.createGroupChannelParams ?? initialState.createGroupChannelParams,
-      startingPageContent:
-        props.startingPageContent ?? initialState.startingPageContent,
       chatBottomContent:
         props.chatBottomContent ?? initialState.chatBottomContent,
       messageBottomContent:

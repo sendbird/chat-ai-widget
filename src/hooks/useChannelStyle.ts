@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 
 const DEFAULT_CHANNEL_STYLE = {
+  autoOpen: true,
   theme: 'light',
   accentColor: '#742DDD',
   botMessageBGColor: '#EEEEEE',
@@ -27,6 +28,7 @@ export const useChannelStyle = ({
   const { data, isFetching } = useQuery({
     enabled: !!appId && !!botId,
     queryKey: ['getChannelStyle', appId, botId],
+    retry: 0,
     queryFn: async () => {
       try {
         const response = await fetch(
@@ -37,7 +39,9 @@ export const useChannelStyle = ({
           return DEFAULT_CHANNEL_STYLE;
         }
         if (!response.ok) {
-          throw new Error((await response.json()).message || 'Something went wrong');
+          throw new Error(
+            (await response.json()).message || 'Something went wrong'
+          );
         }
         const data = await (response.json() as unknown as BotStyleResponse);
         const { bot_style } = data;

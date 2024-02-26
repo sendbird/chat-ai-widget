@@ -29,7 +29,6 @@ import {
 } from '../utils/messages';
 
 interface RootStyleProps {
-  hidePlaceholder: boolean;
   height: string;
   isInputActive: boolean;
 }
@@ -40,7 +39,7 @@ const Root = styled.div<RootStyleProps>`
   border: none;
 
   .sendbird-place-holder__body {
-    display: ${({ hidePlaceholder }) => (hidePlaceholder ? 'none' : 'block')};
+    display: block;
   }
 
   .sendbird-message-input-wrapper {
@@ -108,10 +107,6 @@ const Root = styled.div<RootStyleProps>`
   }
 `;
 
-export interface StartingPageAnimatorProps {
-  isStartingPage: boolean;
-}
-
 type CustomChannelComponentProps = {
   botUser: User;
   createGroupChannel?: () => void;
@@ -136,9 +131,6 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     (lastMessage as ClientUserMessage)?.sender?.userId === botUser.userId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
-
-  const startingPagePlaceHolder =
-    allMessages.length === 1 && lastMessage.messageType === 'admin';
 
   const lastMessageMeta = useMemo(() => {
     let messageMeta: MessageMeta | null;
@@ -208,7 +200,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     return getBotWelcomeMessages(allMessages, botUser.userId);
   }, [allMessages.length]);
   return (
-    <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'}>
+    <Root height={'100%'}>
       <ChannelUI
         renderChannelHeader={() => {
           return channel && createGroupChannel && botUser ? (

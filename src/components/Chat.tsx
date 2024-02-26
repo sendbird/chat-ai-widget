@@ -14,7 +14,6 @@ import {
   ConstantStateProvider,
 } from '../context/ConstantContext';
 import { HashedKeyProvider } from '../context/HashedKeyContext';
-import SBConnectionStateProvider from '../context/SBConnectionContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import { getTheme } from '../theme';
 import { assert, isMobile } from '../utils';
@@ -144,9 +143,7 @@ export const Chat = ({
         {...constantProps}
       >
         <HashedKeyProvider hashedKey={hashedKey ?? null}>
-          <SBConnectionStateProvider>
-            {isOpen && <SBComponent />}
-          </SBConnectionStateProvider>
+          {isOpen && <SBComponent />}
         </HashedKeyProvider>
       </ConstantStateProvider>
     </ThemeProvider>
