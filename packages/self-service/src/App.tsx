@@ -20,6 +20,8 @@ function App() {
       userId={USER_ID}
       instantConnect={true}
       betaMark={false}
+      enableEmojiFeedback={false}
+      enableMention={false}
       customUserAgentParam={{
         'chat-ai-widget-deployed': 'True'
       }}
