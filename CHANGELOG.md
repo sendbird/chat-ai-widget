@@ -1,3 +1,20 @@
+## [v1.2.0] (Feb 26 2024)
+#### Feat:
+- Introduced mobile view support: Users can now enable mobile view compatibility using the enableMobileView prop. To enable, simply set `enableMobileView={true}`. Default value is true.
+```
+  <ChatAiWidget
+    {...other props}
+    enableMobileView={true / false}
+  />
+```
+- Implemented Sendbird ChatAiWidget self-service integration: Detailed instructions for self-service integration can be found at here.
+  - [Shopify](https://sendbird.com//docs/ai-chatbot/guide/v1/widget-integration/shopify)
+  - [Wix](https://sendbird.com//docs/ai-chatbot/guide/v1/widget-integration/wix)
+  - [Wordpress](https://sendbird.com//docs/ai-chatbot/guide/v1/widget-integration/wordpress)
+- Removed `startingPage` related logic and props:
+  - These options, present since the early versions of the widget, have been deprecated due to extensive error pruning and lack of utilization in core functionalities. [Related PR Link](https://github.com/sendbird/chat-ai-widget/pull/92)
+
+
 ## [v1.1.3] (Feb 13 2024)
 #### Fix:
 - Changed source display indexing from the last item to the first
