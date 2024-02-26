@@ -6,6 +6,7 @@ import { localStorageHelper } from '../utils';
 
 export const CHAT_LOAD_TIME_KEY = 'load-time';
 export const NUM_OF_MESSAGES_KEY = 'num-of-messages';
+export const MEMBER_IDS_KEY = 'member-ids';
 export const BOT_ID = 'bot-id';
 
 export function useBotId(id: string) {
@@ -57,4 +58,16 @@ export function useResetStorageData() {
     store.current.setItem(NUM_OF_MESSAGES_KEY, '0');
     window.dispatchEvent(new Event('storage'));
   };
+}
+
+export function useCurrentChannelMemberIds() {
+  const store = useRef(localStorageHelper());
+  const { currentGroupChannel } = useChannelContext();
+  const memberIds =
+    currentGroupChannel?.members.map((member) => member.userId) ?? [];
+
+  useEffect(() => {
+    store.current.setItem(MEMBER_IDS_KEY, memberIds.toString());
+    window.dispatchEvent(new Event('storage'));
+  }, [memberIds]);
 }

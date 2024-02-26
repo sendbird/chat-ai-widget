@@ -14,7 +14,7 @@ import CustomMessage from './CustomMessage';
 import { MessageInput } from './CustomMessageInput';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
-import { useNumOfMessages } from '../hooks/useInteractiveDemoSharableData';
+import { useCurrentChannelMemberIds, useNumOfMessages } from '../hooks/useInteractiveDemoSharableData';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil } from '../utils';
 import { categoryColors } from '../utils/category';
@@ -142,6 +142,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { allMessages, currentGroupChannel } = useChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
   useNumOfMessages(botUser.userId);
+  useCurrentChannelMemberIds();
 
   const channel: GroupChannel | undefined = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[
