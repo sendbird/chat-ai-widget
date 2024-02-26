@@ -1,5 +1,5 @@
 import SendbirdChat, { ApplicationUserListQuery, User } from '@sendbird/chat';
-import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
+import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useState } from 'react';
 
 import { useHashedKey } from '../context/HashedKeyContext';

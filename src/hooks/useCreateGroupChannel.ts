@@ -5,7 +5,7 @@ import {
   type GroupChannelCreateParams,
 } from '@sendbird/chat/groupChannel';
 import * as sendbirdSelectors from '@sendbird/uikit-react/sendbirdSelectors';
-import useSendbirdStateContext from '@sendbird/uikit-react/useSendbirdStateContext';
+import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useCallback, useEffect, useState } from 'react';
 
 import { useConstantState } from '../context/ConstantContext';

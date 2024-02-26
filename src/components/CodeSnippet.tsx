@@ -8,7 +8,7 @@ const Root = styled.div`
 `;
 
 const LineItem = styled.div`
-  border-right: solid rgba(0, 0, 0, 0.5);
+  border-right: solid var(--sendbird-dark-onlight-02);
 `;
 
 const LinesContainer = styled.div`
@@ -16,7 +16,7 @@ const LinesContainer = styled.div`
 `;
 
 const CodeContainer = styled.div`
-  width: calc(100% - 40px);
+  width: calc(100% - 36px);
   overflow-x: scroll;
   height: 100px;
 `;

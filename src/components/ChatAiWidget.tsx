@@ -1,11 +1,14 @@
 import '@sendbird/uikit-react/dist/index.css';
 import '../css/index.css';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import Chat from './Chat';
+import { Chat } from './Chat';
 import WidgetWindow from './WidgetWindow';
+import { getColorBasedOnSaturation } from '../colors';
 import { Constant } from '../const';
+import { useChannelStyle } from '../hooks/useChannelStyle';
 import useMobileView from '../hooks/useMobileView';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
@@ -21,21 +24,14 @@ const MobileContainer = styled.div<{ width: number }>`
   background-color: white;
 `;
 
-const StyledWidgetButtonWrapper = styled.button`
+const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
   position: fixed;
   z-index: 10000;
   bottom: 24px;
   right: 24px;
   width: 48px;
   height: 48px;
-  background: conic-gradient(
-    from 180deg at 50% 50%,
-    #4dcd90 -17.35deg,
-    #6210cc 80.63deg,
-    #6210cc 176.25deg,
-    #4dcd90 342.65deg,
-    #6210cc 440.63deg
-  );
+  background: ${({ accentColor }) => accentColor};
   border-radius: 50%;
   color: white;
   transition: all 0.3s cubic-bezier(0.31, -0.105, 0.43, 1.4);
@@ -57,8 +53,10 @@ const StyledWidgetButtonWrapper = styled.button`
     justify-content: center;
     align-items: center;
 
-    path {
-      fill: white;
+    svg {
+      path {
+        fill: ${({ accentColor }) => getColorBasedOnSaturation(accentColor)};
+      }
     }
   }
 
@@ -69,6 +67,12 @@ const StyledWidgetButtonWrapper = styled.button`
 
   &:active {
     transform: scale(0.8);
+  }
+
+  svg {
+    path {
+      fill: ${({ accentColor }) => getColorBasedOnSaturation(accentColor)};
+    }
   }
 `;
 
@@ -97,44 +101,54 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
         `;
   }}
 `;
-
-const setCookie = (cookieName: string) => {
-  if (!document) return;
-  const HOUR_IN_MS = 3600000;
-  const date = new Date();
-  const time = date.getTime();
-  const expireTime = time + HOUR_IN_MS * 48;
-  date.setTime(expireTime);
-  const expireTimeInString = date.toUTCString();
-  document.cookie = `${cookieName}=true;expires=${expireTimeInString};path=/`;
-};
-
-const getCookie = (cookieName: string) => {
-  if (!document) return [];
-  const cookies = document.cookie.split(';');
-  return cookies.filter((cookie) => cookie.includes(`${cookieName}=`));
-};
-
 export interface Props extends Partial<Constant> {
-  applicationId?: string;
-  botId?: string;
+  applicationId: string;
+  botId: string;
   hashedKey?: string;
   autoOpen?: boolean;
 }
 
-const ChatAiWidget = (props: Props) => {
-  const { autoOpen = true, enableMobileView } = props;
+const WidgetToggleButton = ({
+  onClick,
+  accentColor,
+  isOpen,
+}: {
+  onClick: () => void;
+  accentColor: string;
+  isOpen: boolean;
+}) => {
+  return (
+    <StyledWidgetButtonWrapper
+      id="aichatbot-widget-button"
+      onClick={onClick}
+      accentColor={accentColor}
+    >
+      <StyledWidgetIcon isOpen={isOpen}>
+        <ChatBotIcon />
+      </StyledWidgetIcon>
+      <StyledArrowIcon isOpen={isOpen}>
+        <ArrowDownIcon />
+      </StyledArrowIcon>
+    </StyledWidgetButtonWrapper>
+  );
+};
+
+const Component = (props: Props) => {
+  const { isFetching, ...channelStyle } = useChannelStyle({
+    appId: props.applicationId,
+    botId: props.botId,
+  });
   const [isOpen, setIsOpen] = useState<boolean>(
     isMobile
-      ? false // we don't want to open the widget window automatically on mobile view
-      : autoOpen
+      ? // we don't want to open the widget window automatically on mobile view
+        false
+      : props.autoOpen ?? channelStyle.autoOpen ?? false
   );
-  const timer = useRef<NodeJS.Timeout | null>(null);
-
   const { width: mobileContainerWidth } = useMobileView({
-    enableMobileView,
+    enableMobileView: props.enableMobileView,
     isWidgetOpen: isOpen,
   });
+  const timer = useRef<NodeJS.Timeout | null>(null);
 
   const buttonClickHandler = () => {
     if (timer.current !== null) {
@@ -145,33 +159,43 @@ const ChatAiWidget = (props: Props) => {
   };
 
   useEffect(() => {
-    if (getCookie('chatbot').length === 0 && autoOpen && !isMobile) {
+    if (props.autoOpen || channelStyle.autoOpen) {
       timer.current = setTimeout(() => setIsOpen(() => true), 1000);
-      setCookie('chatbot');
     }
-  }, []);
+  }, [channelStyle.autoOpen, props.autoOpen]);
 
-  return (
+  return isMobile && isOpen ? (
+    <MobileContainer width={mobileContainerWidth}>
+      <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
+    </MobileContainer>
+  ) : (
     <>
-      {isMobile && isOpen ? (
-        <MobileContainer width={mobileContainerWidth}>
-          <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
-        </MobileContainer>
-      ) : (
-        <Fragment>
-          <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
-          <StyledWidgetButtonWrapper onClick={buttonClickHandler}>
-            <StyledWidgetIcon isOpen={isOpen}>
-              <ChatBotIcon />
-            </StyledWidgetIcon>
-            <StyledArrowIcon isOpen={isOpen}>
-              <ArrowDownIcon />
-            </StyledArrowIcon>
-          </StyledWidgetButtonWrapper>
-        </Fragment>
+      <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
+      {!isFetching && (
+        <WidgetToggleButton
+          onClick={buttonClickHandler}
+          accentColor={channelStyle.accentColor}
+          isOpen={isOpen}
+        />
       )}
     </>
   );
 };
 
-export default ChatAiWidget;
+export default function ChatAiWidget(props: Props) {
+  const queryClient = new QueryClient();
+  const CHAT_WIDGET_APP_ID =
+    import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? props.applicationId;
+  const CHAT_WIDGET_BOT_ID =
+    import.meta.env.VITE_CHAT_WIDGET_BOT_ID ?? props.botId;
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Component
+        {...props}
+        applicationId={CHAT_WIDGET_APP_ID}
+        botId={CHAT_WIDGET_BOT_ID}
+      />
+    </QueryClientProvider>
+  );
+}

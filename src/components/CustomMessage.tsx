@@ -1,8 +1,6 @@
 import { User } from '@sendbird/chat';
-import { Member } from '@sendbird/chat/groupChannel';
 import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
-import TypingIndicatorBubble from '@sendbird/uikit-react/ui/TypingIndicatorBubble';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
@@ -10,13 +8,13 @@ import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
+import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import botMessageImage from '../icons/bot-message-image.png';
 import {
   isNotLocalMessageCustomType,
   MessageTextParser,
@@ -62,7 +60,6 @@ export default function CustomMessage(props: Props) {
         botUser={botUser}
         message={message}
         bodyComponent={<FormMessage form={forms[0]} message={message} />}
-        bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
         messageCount={allMessages.length}
         chainTop={chainTop}
         chainBottom={chainBottom}
@@ -78,13 +75,7 @@ export default function CustomMessage(props: Props) {
       <div>
         {<CurrentUserMessage message={message as UserMessage} />}
         {activeSpinnerId === message.messageId && (
-          <TypingIndicatorBubble
-            typingMembers={[
-              {
-                profileUrl: botUser?.profileUrl || botMessageImage,
-              } as Member,
-            ]}
-          />
+          <CustomTypingIndicatorBubble botProfileUrl={botUser?.profileUrl} />
         )}
       </div>
     );
@@ -120,7 +111,6 @@ export default function CustomMessage(props: Props) {
           bodyComponent={
             <SuggestedReplyMessageBody message={message as UserMessage} />
           }
-          bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
           messageCount={allMessages.length}
           chainTop={chainTop}
           chainBottom={chainBottom}

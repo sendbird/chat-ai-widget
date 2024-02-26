@@ -15,13 +15,14 @@ const emojiMap: EmojiMap = {
     'https://static.sendbird.com/icons/emoji_thumbsdown.png',
 };
 
-const Container = styled.div`
-  display: inline-block;
-  margin-top: -12px;
+const Container = styled.span`
+  display: flex;
+  position: absolute;
+  bottom: -16px;
   margin-left: 6px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.bgColor.bottomBanner};
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 2px 1px var(--sendbird-dark-overlay);
 
   .sendbird-reaction-button--selected {
     border: none;

@@ -85,9 +85,7 @@ export const DEFAULT_CONSTANT: Constant = {
     },
   },
   chatBottomContent: {
-    text: 'Sendbird AI ChatBot',
-    backgroundColor:
-      'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)',
+    text: '',
   },
   messageBottomContent: {
     text: 'AI-generated response powered by OpenAI',
@@ -107,7 +105,7 @@ export const DEFAULT_CONSTANT: Constant = {
     },
     onClick: noop,
   },
-  enableSourceMessage: true,
+  enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
 };
@@ -139,6 +137,7 @@ export interface Constant {
   replacementTextList: string[][];
   instantConnect: boolean;
   customRefreshComponent: CustomRefreshComponent;
+  customUserAgentParam: Record<any, any>;
   configureSession: ConfigureSession;
   enableSourceMessage: boolean;
   enableEmojiFeedback: boolean;
@@ -193,7 +192,7 @@ export interface StartingPageHeaderContent {
 
 export interface ChatBottomContent {
   text: string;
-  backgroundColor: string;
+  backgroundColor?: string;
 }
 
 export interface StartingMessageContent {

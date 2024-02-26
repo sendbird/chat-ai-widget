@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
+import { useChannelStyle } from '../hooks/useChannelStyle';
 import { ReactComponent as SendbirdLogo } from '../icons/sendbird-logo-widget.svg';
 
 const Container = styled.div`
@@ -14,12 +15,17 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${(props) =>
-    props.chatBottomBackgroundColor ||
-    'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)'};
-  color: ${({ theme }) => theme.textColor.chatBottom};
+  background: ${({ theme, chatBottomBackgroundColor }) =>
+    chatBottomBackgroundColor || theme.bgColor.bottomBanner};
+  color: ${({ theme }) => theme.textColor.bottomBanner.poweredBy};
   flex-wrap: wrap;
   font-size: 13px;
+
+  svg {
+    path {
+      fill: ${({ theme }) => theme.textColor.bottomBanner.logo};
+    }
+  }
 `;
 
 const Highlighter = styled.a`
@@ -31,11 +37,20 @@ const Highlighter = styled.a`
 
 // link: https://dashboard.sendbird.com/auth/signup
 export default function ChatBottom() {
-  const { chatBottomContent } = useConstantState();
+  const { chatBottomContent, applicationId, botId } = useConstantState();
+  const { theme } = useChannelStyle({
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    appId: applicationId!,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    botId: botId!,
+  });
+
   return (
     <Container>
       <InnerContainer
-        chatBottomBackgroundColor={chatBottomContent?.backgroundColor}
+        chatBottomBackgroundColor={
+          chatBottomContent?.backgroundColor ?? theme === 'light'
+        }
       >
         {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
         <Highlighter

@@ -18,7 +18,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 100;
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.bgColor.loadingScreen};
 `;
 
 const IconContainer = styled.div`
@@ -28,6 +28,11 @@ const IconContainer = styled.div`
   height: 70px;
   width: 70px;
   animation: ${spinner} 1.5s linear infinite;
+  svg {
+    path {
+      fill: ${({ theme }) => theme.accentColor};
+    }
+  }
 `;
 
 export default function LoadingScreen() {

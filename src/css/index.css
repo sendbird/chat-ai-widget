@@ -1,9 +1,21 @@
-.sendbird-message-content-menu__reaction-menu {
-  display: none;
+a:empty,
+ul:empty,
+dl:empty,
+div:empty,
+section:empty,
+article:empty,
+p:empty,
+h1:empty,
+h2:empty,
+h3:empty,
+h4:empty,
+h5:empty,
+h6:empty {
+  display: block !important;
 }
 
-.sendbird-conversation__footer {
-  padding-bottom: 0 !important;
+.sendbird-message-content-menu__reaction-menu {
+  display: none;
 }
 
 .sendbird-theme--light {
@@ -11,6 +23,7 @@
 }
 
 .sendbird-conversation__footer {
+  padding-bottom: 0 !important;
   margin: 0 !important;
 }
 

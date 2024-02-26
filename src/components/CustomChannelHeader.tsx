@@ -8,9 +8,9 @@ import Label, {
 import styled from 'styled-components';
 
 import BetaLogo from './BetaLogo';
+import BotProfileImage from './BotProfileImage';
 import { useConstantState } from '../context/ConstantContext';
 import { useSbConnectionState } from '../context/SBConnectionContext';
-import channelHeaderImage from '../icons/bot-message-image.png';
 import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
 import { isMobile } from '../utils';
 
@@ -20,7 +20,7 @@ const Root = styled.div`
   align-items: center;
   font-style: normal;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid ${({ theme }) => theme.bgColor.channelHeaderBorder};
   padding: 11px 12px;
 `;
 
@@ -45,6 +45,12 @@ const RenewButtonForWidgetDemo = styled.div`
   height: 24px;
   cursor: pointer;
   margin-right: 2px;
+
+  svg {
+    path {
+      fill: ${({ theme }) => theme.accentColor};
+    }
+  }
 `;
 
 const RenewButtonContainer = styled.div`
@@ -78,12 +84,21 @@ export default function CustomChannelHeader(props: Props) {
   return (
     <Root>
       <SubContainer>
-        <Avatar
-          src={botUser?.profileUrl || channelHeaderImage}
-          alt="channelHeaderImage"
-          height="34px"
-          width="34px"
-        />
+        {botUser?.profileUrl != null && botUser.profileUrl != '' ? (
+          <Avatar
+            src={botUser.profileUrl}
+            alt="channelHeaderImage"
+            height="34px"
+            width="34px"
+          />
+        ) : (
+          <BotProfileImage
+            width={34}
+            height={34}
+            iconWidth={20}
+            iconHeight={20}
+          />
+        )}
         <Title type={LabelTypography.H_2} color={LabelColors.ONBACKGROUND_1}>
           {botUser?.nickname || channel.name}
         </Title>

@@ -7,20 +7,21 @@
     <title>Vite + React + TS</title>
     <link rel="preload" href="https://fonts.cdnfonts.com/css/gellix" rel="stylesheet">
     <link rel="preload" href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    <script>
+      !function(w, d, s, ...args){
+        var div = d.createElement('div');
+        div.id = 'aichatbot';
+        d.body.appendChild(div);
+        w.chatbotConfig = args;
+        var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s);
+        j.defer = true;
+        j.type = 'module';
+        j.src = 'https://aichatbot.sendbird.com/index.js/index.js';
+        f.parentNode.insertBefore(j, f);
+      }(window, document, 'script', 'A3E33A85-E4A7-46A4-99B1-EF6833E7DE3A', 'marketing_bot_3');
+    </script>
   </head>
   <body>
-    <div id="aichatbot"></div>
-    <link href="/dist/index.css" rel="stylesheet" />
-    <script>
-      window.chatbotConfig = {
-        appId: "125B2432-BB0A-4650-95E2-80810404D526",
-        botId: "fintech-demo-bot",
-      }
-    </script>
-    <script
-      type="module"
-      src="/dist/index.js"
-      defer>
-    </script>
   </body>
 </html>

@@ -1,5 +1,6 @@
 import '@sendbird/chat-ai-widget/dist/style.css';
 import { Chat as ChatAiWidget } from '@sendbird/chat-ai-widget';
+import './index.css';
 
 import { DEMO_CONSTANTS, DemoConstant } from './const';
 import { useGetHashedKey } from './hooks/useGetHashedKey';
@@ -17,8 +18,6 @@ function App() {
   return (
     <div style={{ height: '100vh' }}>
       <ChatAiWidget
-        // TODO: remove this after 1.0.8 is released
-        isOpen={true}
         applicationId={initialState.appId}
         botId={hashedKey}
         botNickName={initialState.botNickName}
@@ -27,9 +26,11 @@ function App() {
         startingPageContent={initialState.startingPageContent}
         replacementTextList={initialState.replacementTextList}
         messageBottomContent={initialState.messageBottomContent}
-        customBetaMarkText={isWidget ? 'BETA' : 'DEMO'}
+        customBetaMarkText="DEMO"
+        betaMark={true}
         instantConnect={true}
         customRefreshComponent={initialState.customRefreshComponent}
+        chatBottomContent={initialState.chatBottomContent}
       />
     </div>
   );

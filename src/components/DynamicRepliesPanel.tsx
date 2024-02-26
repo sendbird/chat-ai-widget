@@ -13,10 +13,12 @@ const ReplyItem = styled.div<SuggestedReplyItemProps>`
   padding: 3px 14px;
   display: flex;
   align-items: center;
-  color: ${(props: SuggestedReplyItemProps) =>
-    props.isActive ? '#6C32D5' : '#EEEEEE'};
-  border: ${(props: SuggestedReplyItemProps) =>
-    props.isActive ? '1px solid #6C32D5' : '1px solid #EEEEEE'};
+  color: ${({ isActive, theme }: SuggestedReplyItemProps) =>
+    isActive ? theme.textColor.suggestedReply : '#EEEEEE'};
+  border: ${({ isActive, theme }: SuggestedReplyItemProps) =>
+    isActive
+      ? `1px solid ${theme.textColor.suggestedReply}`
+      : '1px solid #EEEEEE'};
   border-radius: 18px;
   background-color: ${({ theme }) => theme.bgColor.suggestedReply};
   cursor: ${(props: SuggestedReplyItemProps) =>
@@ -29,9 +31,9 @@ const ReplyItem = styled.div<SuggestedReplyItemProps>`
     }};
   }
   &:active {
-    ${(props: SuggestedReplyItemProps) => {
-      if (props.isActive) {
-        return 'background-color: #6C32D5; color: #FFFFFF;';
+    ${({ isActive, theme }: SuggestedReplyItemProps) => {
+      if (isActive) {
+        return `background-color: ${theme.textColor.suggestedReply}; color: ${theme.textColor.outgoingMessage};`;
       }
     }};
   }
