@@ -29,7 +29,6 @@ import {
 } from '../utils/messages';
 
 interface RootStyleProps {
-  hidePlaceholder: boolean;
   height: string;
   isInputActive: boolean;
 }
@@ -40,7 +39,7 @@ const Root = styled.div<RootStyleProps>`
   border: none;
 
   .sendbird-place-holder__body {
-    display: ${({ hidePlaceholder }) => (hidePlaceholder ? 'none' : 'block')};
+    display: block;
   }
 
   .sendbird-message-input-wrapper {
@@ -108,10 +107,6 @@ const Root = styled.div<RootStyleProps>`
   }
 `;
 
-export interface StartingPageAnimatorProps {
-  isStartingPage: boolean;
-}
-
 type CustomChannelComponentProps = {
   botUser: User;
   createGroupChannel?: () => void;
@@ -136,9 +131,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     (lastMessage as ClientUserMessage)?.sender?.userId === botUser.userId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
-
-  const startingPagePlaceHolder =
-    allMessages.length === 1 && lastMessage.messageType === 'admin';
+  const messageCount = allMessages?.length ?? 0;
 
   const lastMessageMeta = useMemo(() => {
     let messageMeta: MessageMeta | null;
@@ -159,7 +152,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const isStaticReplyVisible =
     allMessages &&
-    allMessages.length > 1 &&
+    messageCount > 1 &&
     !(lastMessage?.messageType === 'admin') &&
     lastMessage.sender?.userId === botUser.userId &&
     // in streaming
@@ -201,14 +194,14 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const grouppedMessages = useMemo(
     () => groupMessagesByShortSpanTime(allMessages),
-    [allMessages.length]
+    [messageCount]
   );
 
   const botWelcomeMessages = useMemo(() => {
     return getBotWelcomeMessages(allMessages, botUser.userId);
-  }, [allMessages.length]);
+  }, [messageCount]);
   return (
-    <Root hidePlaceholder={startingPagePlaceHolder} height={'100%'}>
+    <Root height={'100%'}>
       <ChannelUI
         renderChannelHeader={() => {
           return channel && createGroupChannel && botUser ? (
@@ -239,6 +232,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 chainTop={grouppedMessage?.chaintop}
                 chainBottom={grouppedMessage?.chainBottom}
                 isBotWelcomeMessage={isBotWelcomeMessage}
+                messageCount={messageCount}
               />
               {message.messageId === lastMessage.messageId &&
                 dynamicReplyOptions.length > 0 && (

@@ -21,7 +21,6 @@ const App = (props: Props) => {
       suggestedMessageContent={props.suggestedMessageContent}
       firstMessageData={props.firstMessageData}
       createGroupChannelParams={props.createGroupChannelParams}
-      startingPageContent={props.startingPageContent}
       chatBottomContent={props.chatBottomContent}
       messageBottomContent={props.messageBottomContent}
       replacementTextList={props.replacementTextList}

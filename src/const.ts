@@ -3,9 +3,7 @@ import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
 import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
 import React from 'react';
 
-import { ReactComponent as StartingPageLogo } from './icons/icon-widget-chatbot.svg';
 import { ReactComponent as RefreshIcon } from './icons/refresh-icon.svg';
-import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
 import { noop, uuid } from './utils';
 
 const USER_ID = uuid();
@@ -66,24 +64,6 @@ export const DEFAULT_CONSTANT: Constant = {
       'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
       'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
   },
-  startingPageContent: {
-    headerContent: {
-      headerOne: '',
-      headerTwo: 'Ask me anything!',
-    },
-    messageContent: {
-      header: 'AI ChatBot',
-      body: "Hi~ I'm Khan Academy Support ChatBot. Ask me anything!",
-    },
-    logoContent: {
-      Component: StartingPageLogo,
-      width: '30px',
-    },
-    backGroundContent: {
-      Component: StartingPageBackground,
-      height: '240px',
-    },
-  },
   chatBottomContent: {
     text: '',
   },
@@ -131,7 +111,6 @@ export interface Constant {
   customBetaMarkText: string;
   suggestedMessageContent: SuggestedMessageContent;
   createGroupChannelParams: CreateGroupChannelParams;
-  startingPageContent: StartingPageContent;
   chatBottomContent: ChatBottomContent;
   messageBottomContent: MessageBottomContent;
   replacementTextList: string[][];
@@ -168,13 +147,6 @@ export const LOCAL_MESSAGE_CUSTOM_TYPE = {
   confirmation: 'confirmation',
 };
 
-export interface StartingPageContent {
-  headerContent: StartingPageHeaderContent;
-  messageContent: StartingMessageContent;
-  logoContent: StringPageLogoContent;
-  backGroundContent: BackGroundContent;
-}
-
 export interface BackGroundContent {
   Component: React.FC;
   height: string;
@@ -185,21 +157,10 @@ export interface StringPageLogoContent {
   width: string;
 }
 
-export interface StartingPageHeaderContent {
-  headerOne: string;
-  headerTwo: string;
-}
-
 export interface ChatBottomContent {
   text: string;
   backgroundColor?: string;
 }
-
-export interface StartingMessageContent {
-  header: string;
-  body: string;
-}
-
 export interface MessageBottomContent {
   text: string;
   infoIconText: string;

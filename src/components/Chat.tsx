@@ -14,7 +14,6 @@ import {
   ConstantStateProvider,
 } from '../context/ConstantContext';
 import { HashedKeyProvider } from '../context/HashedKeyContext';
-import SBConnectionStateProvider from '../context/SBConnectionContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import { getTheme } from '../theme';
 import { assert, isMobile } from '../utils';
@@ -26,7 +25,6 @@ const SBComponent = () => {
     userId,
     userNickName,
     configureSession,
-    enableEmojiFeedback,
     enableMention,
     customUserAgentParam,
   } = useConstantState();
@@ -77,7 +75,6 @@ const SBComponent = () => {
       configureSession={configureSession}
       customExtensionParams={userAgentCustomParams.current}
       breakPoint={isMobile}
-      isReactionEnabled={enableEmojiFeedback}
       isMentionEnabled={enableMention}
       theme={theme}
       colorSet={customColorSet}
@@ -144,9 +141,7 @@ export const Chat = ({
         {...constantProps}
       >
         <HashedKeyProvider hashedKey={hashedKey ?? null}>
-          <SBConnectionStateProvider>
-            {isOpen && <SBComponent />}
-          </SBConnectionStateProvider>
+          {isOpen && <SBComponent />}
         </HashedKeyProvider>
       </ConstantStateProvider>
     </ThemeProvider>

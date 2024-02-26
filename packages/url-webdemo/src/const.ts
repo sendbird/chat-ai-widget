@@ -1,5 +1,3 @@
-import { ReactComponent as SendbirdLogo } from './icons/sendbird-logo-starting-page.svg';
-import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
 import { uuid } from './utils';
 
 export const USER_ID = uuid();
@@ -43,7 +41,6 @@ export interface DemoConstant {
   wsHost: string;
   suggestedMessageContent: SuggestedMessageContent;
   createGroupChannelParams: CreateGroupChannelParams;
-  startingPageContent: StartingPageContent;
   botNickName: string;
   replacementTextList: string[][];
   customRefreshComponent?: Partial<CustomRefreshComponent>;
@@ -111,20 +108,6 @@ export const DEMO_CONSTANTS = {
         'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
         'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     },
-    startingPageContent: {
-      headerContent: {
-        headerOne: 'SmartAssistant',
-        headerTwo: 'AI-powered knowledge chatbot',
-      },
-      logoContent: {
-        Component: SendbirdLogo,
-        width: '100px',
-      },
-      backGroundContent: {
-        Component: StartingPageBackground,
-        height: '240px',
-      },
-    },
     replacementTextList: [['Clark', 'SmartAssistant']],
     customRefreshComponent: {
       style: {
@@ -146,20 +129,6 @@ export const DEMO_CONSTANTS = {
         'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
         'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     },
-    startingPageContent: {
-      headerContent: {
-        headerOne: "I'm Docs AI Assistant",
-        headerTwo: 'Ask us anything about Sendbird Docs!',
-      },
-      logoContent: {
-        Component: SendbirdLogo,
-        width: '100px',
-      },
-      backGroundContent: {
-        Component: StartingPageBackground,
-        height: '240px',
-      },
-    },
     replacementTextList: [['the Text extracts', 'Sendbird documentation']],
     ...commonConstants,
   },
@@ -168,31 +137,4 @@ export const DEMO_CONSTANTS = {
 export interface CreateGroupChannelParams {
   name: string;
   coverUrl: string;
-}
-
-interface StartingPageContent {
-  headerContent: StartingPageHeaderContent;
-  messageContent: StartingMessageContent;
-  logoContent: StringPageLogoContent;
-  backGroundContent: BackGroundContent;
-}
-
-interface BackGroundContent {
-  Component: React.FC;
-  height: string;
-}
-
-interface StringPageLogoContent {
-  Component: React.FC;
-  width: string;
-}
-
-interface StartingPageHeaderContent {
-  headerOne: string;
-  headerTwo: string;
-}
-
-interface StartingMessageContent {
-  header: string;
-  body: string;
 }

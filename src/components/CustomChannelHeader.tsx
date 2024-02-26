@@ -10,7 +10,6 @@ import styled from 'styled-components';
 import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
 import { useConstantState } from '../context/ConstantContext';
-import { useSbConnectionState } from '../context/SBConnectionContext';
 import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
 import { isMobile } from '../utils';
 
@@ -71,11 +70,9 @@ export default function CustomChannelHeader(props: Props) {
   const { channel, createGroupChannel, botUser } = props;
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
-  const { setFirstMessage } = useSbConnectionState();
   const { setIsOpen } = useConstantState();
 
   function onClickRenewButton() {
-    setFirstMessage(null);
     createGroupChannel();
     customRefreshComponent?.onClick?.();
     // window.location.reload();

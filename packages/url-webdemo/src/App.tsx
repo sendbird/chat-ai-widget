@@ -23,7 +23,6 @@ function App() {
         botNickName={initialState.botNickName}
         suggestedMessageContent={initialState.suggestedMessageContent}
         createGroupChannelParams={initialState.createGroupChannelParams}
-        startingPageContent={initialState.startingPageContent}
         replacementTextList={initialState.replacementTextList}
         messageBottomContent={initialState.messageBottomContent}
         customBetaMarkText="DEMO"
