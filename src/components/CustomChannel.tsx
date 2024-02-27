@@ -1,6 +1,6 @@
 import { User } from '@sendbird/chat';
 import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
-import { ChannelProvider } from '@sendbird/uikit-react/Channel/context';
+import { GroupChannelProvider } from '@sendbird/uikit-react/GroupChannel/context';
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
@@ -28,7 +28,7 @@ export default function CustomChannel() {
   }
 
   return (
-    <ChannelProvider
+    <GroupChannelProvider
       channelUrl={channel?.url}
       scrollBehavior="smooth"
       reconnectOnIdle={false}
@@ -37,6 +37,6 @@ export default function CustomChannel() {
         createGroupChannel={createGroupChannel}
         botUser={botUser}
       />
-    </ChannelProvider>
+    </GroupChannelProvider>
   );
 }

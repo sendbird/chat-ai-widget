@@ -1,18 +1,16 @@
-import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
-import * as sendbirdSelectors from '@sendbird/uikit-react/sendbirdSelectors';
-import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
+import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { useCallback } from 'react';
 
 export function useSendMessage(): (message: string) => Promise<void> {
-  const store = useSendbirdStateContext();
-  const sendUserMessage = sendbirdSelectors.getSendUserMessage(store);
-  const { currentGroupChannel } = useChannelContext();
+  const { currentChannel, sendUserMessage } = useGroupChannelContext();
 
   return useCallback(async (message: string) => {
     try {
-      await sendUserMessage(currentGroupChannel, {
-        message,
-      });
+      if (currentChannel == null) {
+        throw new Error('currentChannel is not defined');
+      } else {
+        await sendUserMessage({ message });
+      }
     } catch (error) {
       console.error(error);
     }
