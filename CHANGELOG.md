@@ -4,6 +4,7 @@
   - Excluded display of 👍👎 emojis during message streaming.
   - Modified URL text messages from bots to be parsed as links.
   - Fixed display of code snippets which had been broken since the self-service https://github.com/sendbird/chat-ai-widget/pull/87.
+- Added `renderWidgetToggleButton` prop to support custom widget toggle button rendering.
 
 #### Fix:
 - Replaced Channel module with GroupChannel to address issues.
