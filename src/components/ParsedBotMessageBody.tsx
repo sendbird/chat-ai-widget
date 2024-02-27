@@ -13,12 +13,11 @@ const LazyCodeBlock = lazy(() =>
 );
 
 const Text = styled.div`
-  width: fit-content;
+  width: inherit;
   text-align: left;
   word-break: break-word;
   padding: 8px 12px;
   gap: 12px;
-  border-radius: 16px;
   white-space: pre-wrap;
   background-color: ${({ theme }) => theme.bgColor.incomingMessage};
   &:hover {
@@ -28,6 +27,11 @@ const Text = styled.div`
 
 const BlockContainer = styled.div`
   width: 100%;
+`;
+
+const MultipleTokenTypeContainer = styled.div`
+  border-radius: 16px;
+  overflow: auto;
 `;
 
 type Props = {
@@ -57,7 +61,7 @@ export default function ParsedBotMessageBody(props: Props) {
   // console.log('## sources: ', sources);
   if (tokens.length > 0) {
     return (
-      <>
+      <MultipleTokenTypeContainer>
         {tokens.map((token: Token, i) => {
           if (token.type === TokenType.string) {
             return (
@@ -81,8 +85,8 @@ export default function ParsedBotMessageBody(props: Props) {
             <BotMessageBottom />
           </>
         ) : null}
-      </>
+      </MultipleTokenTypeContainer>
     );
   }
-  return <Text>{message.message}</Text>;
+  return <Text style={{ borderRadius: 16 }}>{message.message}</Text>;
 }
