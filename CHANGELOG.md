@@ -1,3 +1,16 @@
+## [v1.2.1] (Feb 27 2024)
+#### Feat:
+- Improved user experience based on customer feedback:
+  - Excluded display of 👍👎 emojis during message streaming.
+  - Modified URL text messages from bots to be parsed as links.
+  - Fixed display of code snippets which had been broken since the self-service https://github.com/sendbird/chat-ai-widget/pull/87.
+- Added `renderWidgetToggleButton` prop to support custom widget toggle button rendering.
+
+#### Fix:
+- Replaced Channel module with GroupChannel to address issues.
+- Used `isLoading` and `isPending` along with `isFetching` in `useChannelStyle` query hook to get the loading status.
+
+
 ## [v1.2.0] (Feb 26 2024)
 #### Feat:
 - Introduced mobile view support: Users can now enable mobile view compatibility using the enableMobileView prop. To enable, simply set `enableMobileView={true}`. Default value is true.
