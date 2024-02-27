@@ -1,5 +1,5 @@
 import { UserMessage } from '@sendbird/chat/message';
-import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import ImageRenderer from '@sendbird/uikit-react/ui/ImageRenderer';
 import ReactionButton from '@sendbird/uikit-react/ui/ReactionButton';
 import { useState, MouseEvent } from 'react';
@@ -58,7 +58,7 @@ function ReactionItem({
   );
 }
 export function ReactionContainer({ message }: Props) {
-  const { toggleReaction } = useChannelContext();
+  const { toggleReaction } = useGroupChannelContext();
   const [reactionState, setReactionState] = useState<{
     [emoji: string]: boolean;
   }>(

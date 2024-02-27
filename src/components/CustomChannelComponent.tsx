@@ -4,10 +4,10 @@ import {
   type SendbirdGroupChat,
 } from '@sendbird/chat/groupChannel';
 import { SendingStatus } from '@sendbird/chat/message';
-import { default as ChannelHeader } from '@sendbird/uikit-react/Channel/components/ChannelHeader';
-import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
+import { default as ChannelHeader } from '@sendbird/uikit-react/GroupChannel/components/GroupChannelHeader';
+import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChannelUI';
 // import SuggestedReplies from '@sendbird/uikit-react/Channel/components/SuggestedReplies';
-import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useState, useMemo, useRef } from 'react';
 import ReactDOM from 'react-dom';
@@ -119,10 +119,9 @@ interface MessageMeta {
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
   const { userId, suggestedMessageContent } = useConstantState();
-  const { allMessages, currentGroupChannel } = useChannelContext();
+  const { messages: allMessages, currentChannel: channel } =
+    useGroupChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
-
-  const channel: GroupChannel | undefined = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[
     allMessages?.length - 1
   ] as ClientUserMessage;
