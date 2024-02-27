@@ -24,7 +24,7 @@ export const useChannelStyle = ({
   appId: string;
   botId: string;
 }) => {
-  const { data, isFetching } = useQuery({
+  const { data, isPending, isLoading, isFetching } = useQuery({
     enabled: !!appId && !!botId,
     queryKey: ['getChannelStyle', appId, botId],
     retry: 0,
@@ -60,8 +60,9 @@ export const useChannelStyle = ({
       }
     },
   });
+  const fetching = isPending || isLoading || isFetching;
   return useMemo(() => {
-    if (data == null) return { ...DEFAULT_CHANNEL_STYLE, isFetching };
-    return { ...data, isFetching };
-  }, [data != null, isFetching]);
+    if (data == null) return { ...DEFAULT_CHANNEL_STYLE, isFetching: fetching };
+    return { ...data, isFetching: fetching };
+  }, [data != null, fetching]);
 };
