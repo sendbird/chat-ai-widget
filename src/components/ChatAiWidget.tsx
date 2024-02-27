@@ -1,5 +1,4 @@
 import '@sendbird/uikit-react/dist/index.css';
-import '../css/index.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
@@ -101,22 +100,17 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
         `;
   }}
 `;
-export interface Props extends Partial<Constant> {
-  applicationId: string;
-  botId: string;
-  hashedKey?: string;
-  autoOpen?: boolean;
-}
 
+interface ToggleButtonProps {
+  onClick: () => void;
+  accentColor: string;
+  isOpen: boolean;
+}
 const WidgetToggleButton = ({
   onClick,
   accentColor,
   isOpen,
-}: {
-  onClick: () => void;
-  accentColor: string;
-  isOpen: boolean;
-}) => {
+}: ToggleButtonProps) => {
   return (
     <StyledWidgetButtonWrapper
       id="aichatbot-widget-button"
@@ -132,6 +126,14 @@ const WidgetToggleButton = ({
     </StyledWidgetButtonWrapper>
   );
 };
+
+export interface Props extends Partial<Constant> {
+  applicationId: string;
+  botId: string;
+  hashedKey?: string;
+  autoOpen?: boolean;
+  renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
+}
 
 const Component = (props: Props) => {
   const { isFetching, ...channelStyle } = useChannelStyle({
@@ -164,6 +166,11 @@ const Component = (props: Props) => {
     }
   }, [channelStyle.autoOpen, props.autoOpen]);
 
+  const toggleButtonProps = {
+    onClick: buttonClickHandler,
+    accentColor: channelStyle.accentColor,
+    isOpen,
+  };
   return isMobile && isOpen ? (
     <MobileContainer width={mobileContainerWidth}>
       <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -171,13 +178,8 @@ const Component = (props: Props) => {
   ) : (
     <>
       <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
-      {!isFetching && (
-        <WidgetToggleButton
-          onClick={buttonClickHandler}
-          accentColor={channelStyle.accentColor}
-          isOpen={isOpen}
-        />
-      )}
+      {props.renderWidgetToggleButton?.(toggleButtonProps) ||
+        (!isFetching && <WidgetToggleButton {...toggleButtonProps} />)}
     </>
   );
 };

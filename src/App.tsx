@@ -6,6 +6,11 @@ interface Props extends Partial<Constant> {
   botId?: string;
   hashedKey?: string;
   autoOpen?: boolean;
+  renderWidgetToggleButton?: (props: {
+    onClick: () => void;
+    accentColor: string;
+    isOpen: boolean;
+  }) => React.ReactElement;
 }
 
 const App = (props: Props) => {
@@ -33,6 +38,7 @@ const App = (props: Props) => {
       enableMention={props.enableMention}
       customUserAgentParam={props.customUserAgentParam}
       autoOpen={props.autoOpen}
+      renderWidgetToggleButton={props.renderWidgetToggleButton}
     />
   );
 };
