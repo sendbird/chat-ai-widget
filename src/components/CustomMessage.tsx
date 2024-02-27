@@ -29,6 +29,7 @@ type Props = {
   botUser: User;
   lastMessageRef: React.RefObject<HTMLDivElement>;
   isBotWelcomeMessage: boolean;
+  isLastBotMessage: boolean;
   messageCount: number;
   chainTop?: boolean;
   chainBottom?: boolean;
@@ -43,8 +44,17 @@ export default function CustomMessage(props: Props) {
     chainTop,
     chainBottom,
     isBotWelcomeMessage,
+    isLastBotMessage,
     messageCount,
   } = props;
+  const commonProps = {
+    chainTop,
+    chainBottom,
+    isBotWelcomeMessage,
+    isLastBotMessage,
+    messageCount,
+    message,
+  };
   const { replacementTextList, userId } = useConstantState();
 
   // admin message
@@ -56,13 +66,9 @@ export default function CustomMessage(props: Props) {
     const forms = message.extendedMessagePayload.forms;
     return (
       <BotMessageWithBodyInput
+        {...commonProps}
         botUser={botUser}
-        message={message}
         bodyComponent={<FormMessage form={forms[0]} message={message} />}
-        messageCount={messageCount}
-        chainTop={chainTop}
-        chainBottom={chainBottom}
-        isBotWelcomeMessage={isBotWelcomeMessage}
         isFormMessage={true}
       />
     );
@@ -86,10 +92,8 @@ export default function CustomMessage(props: Props) {
       <div ref={lastMessageRef}>
         {
           <UserMessageWithBodyInput
-            message={message as UserMessage}
+            {...commonProps}
             user={message?.sender}
-            chainTop={chainTop}
-            chainBottom={chainBottom}
             bodyComponent={
               <CustomMessageBody message={(message as UserMessage).message} />
             }
@@ -105,15 +109,11 @@ export default function CustomMessage(props: Props) {
     if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
       return (
         <BotMessageWithBodyInput
+          {...commonProps}
           botUser={botUser}
-          message={message}
           bodyComponent={
             <SuggestedReplyMessageBody message={message as UserMessage} />
           }
-          messageCount={messageCount}
-          chainTop={chainTop}
-          chainBottom={chainBottom}
-          isBotWelcomeMessage={isBotWelcomeMessage}
         />
       );
     }
@@ -134,18 +134,14 @@ export default function CustomMessage(props: Props) {
   return (
     <div ref={lastMessageRef}>
       <BotMessageWithBodyInput
+        {...commonProps}
         botUser={botUser}
-        message={message}
-        messageCount={messageCount}
         bodyComponent={
           <ParsedBotMessageBody
             message={message as UserMessage}
             tokens={tokens}
           />
         }
-        chainTop={chainTop}
-        chainBottom={chainBottom}
-        isBotWelcomeMessage={isBotWelcomeMessage}
       />
     </div>
   );

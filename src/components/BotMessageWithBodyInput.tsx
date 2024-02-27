@@ -13,6 +13,7 @@ import { SentTime, BodyContainer } from './MessageComponent';
 import { ReactionContainer } from './ReactionContainer';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
+import { isLastMessageInStreaming } from '../utils/messages';
 
 const Root = styled.span`
   display: flex;
@@ -37,11 +38,12 @@ type Props = {
   botUser: User;
   message: UserMessage;
   bodyComponent: ReactNode;
-  chainTop: boolean;
-  chainBottom: boolean;
+  chainTop?: boolean;
+  chainBottom?: boolean;
   messageCount?: number;
   zIndex?: number;
   isBotWelcomeMessage?: boolean;
+  isLastBotMessage?: boolean;
   isFormMessage?: boolean;
 };
 
@@ -62,6 +64,7 @@ export default function BotMessageWithBodyInput(props: Props) {
     chainTop,
     chainBottom,
     isBotWelcomeMessage,
+    isLastBotMessage,
     isFormMessage = false,
   } = props;
 
@@ -107,6 +110,7 @@ export default function BotMessageWithBodyInput(props: Props) {
             {enableEmojiFeedback &&
               displayProfileImage &&
               !isBotWelcomeMessage &&
+              !(isLastBotMessage && isLastMessageInStreaming(message)) &&
               !isFormMessage && <ReactionContainer message={message} />}
           </>
           <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>

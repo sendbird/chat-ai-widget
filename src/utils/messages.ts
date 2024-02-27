@@ -78,3 +78,15 @@ export function getBotWelcomeMessages(
 export function isFormMessage(message: EveryMessage) {
   return !!message.extendedMessagePayload?.forms;
 }
+
+export function isLastMessageInStreaming(lastMessage: EveryMessage | null) {
+  if (
+    lastMessage == null ||
+    lastMessage?.data == null ||
+    lastMessage?.data === ''
+  ) {
+    return false;
+  }
+  const messageMetaData = JSON.parse(lastMessage.data);
+  return 'stream' in messageMetaData && messageMetaData.stream;
+}

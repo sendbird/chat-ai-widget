@@ -26,6 +26,7 @@ import { isSpecialMessage, scrollUtil, hideChatBottomBanner } from '../utils';
 import {
   groupMessagesByShortSpanTime,
   getBotWelcomeMessages,
+  isLastMessageInStreaming,
 } from '../utils/messages';
 
 interface RootStyleProps {
@@ -112,10 +113,6 @@ type CustomChannelComponentProps = {
   createGroupChannel?: () => void;
 };
 
-interface MessageMeta {
-  stream: boolean;
-}
-
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser, createGroupChannel } = props;
   const { userId, suggestedMessageContent } = useConstantState();
@@ -132,16 +129,6 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
   const messageCount = allMessages?.length ?? 0;
 
-  const lastMessageMeta = useMemo(() => {
-    let messageMeta: MessageMeta | null;
-    try {
-      messageMeta = lastMessage?.data ? JSON.parse(lastMessage.data) : null;
-    } catch (error) {
-      messageMeta = null;
-    }
-    return messageMeta;
-  }, [lastMessage?.data]);
-
   const dynamicReplyOptions =
     lastMessage?.extendedMessagePayload != null &&
     'suggested_replies' in lastMessage.extendedMessagePayload &&
@@ -149,15 +136,17 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
       ? lastMessage.extendedMessagePayload.suggested_replies
       : [];
 
+  const isMessageInStreaming = useMemo(() => {
+    const result = isLastMessageInStreaming(lastMessage);
+    return result;
+  }, [lastMessage?.data]);
+
   const isStaticReplyVisible =
     allMessages &&
     messageCount > 1 &&
     !(lastMessage?.messageType === 'admin') &&
     lastMessage.sender?.userId === botUser.userId &&
-    // in streaming
-    lastMessageMeta != null &&
-    'stream' in lastMessageMeta &&
-    !lastMessageMeta.stream &&
+    !isMessageInStreaming &&
     !isSpecialMessage(
       lastMessage.message,
       suggestedMessageContent.messageFilterList
@@ -166,9 +155,12 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   useScrollOnStreaming({
     isLastBotMessage,
     lastMessageRef,
-    // the reply panel component height is about 50px * 3(max replies) = 150px
     bottomBuffer:
-      dynamicReplyOptions.length > 0 || isStaticReplyVisible ? 150 : 0,
+      dynamicReplyOptions.length > 0 || isStaticReplyVisible
+        ? // the reply panel component height is about 50px * 3(max replies) = 150px
+          150
+        : // Feedback panel height is about 20px
+          20,
   });
 
   /**
@@ -231,6 +223,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 chainTop={grouppedMessage?.chaintop}
                 chainBottom={grouppedMessage?.chainBottom}
                 isBotWelcomeMessage={isBotWelcomeMessage}
+                isLastBotMessage={isLastBotMessage}
                 messageCount={messageCount}
               />
               {message.messageId === lastMessage.messageId &&

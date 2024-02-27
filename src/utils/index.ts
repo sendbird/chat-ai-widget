@@ -16,25 +16,14 @@ export const scrollUtil = () => {
     const scrollDOM = document.querySelector(
       '.sendbird-conversation__messages-padding'
     );
-    //console.warn(scrollDOM);
     if (scrollDOM) {
       const { scrollHeight, clientHeight } = scrollDOM;
-      // const isScrolledToEnd = (scrollTop + 200) > (scrollHeight - clientHeight);
       const isScrolledToEnd = true;
-
-      // console.warn({
-      //   scrollTop,
-      //   scrollHeight,
-      //   clientHeight,
-      //   [scrollHeight - clientHeight]: scrollHeight - clientHeight,
-      //   isScrolledToEnd,
-      // });
       if (isScrolledToEnd) {
-        //console.warn('move to end', scrollDOM.scrollHeight + 200)
         scrollDOM.scrollTop = scrollHeight - clientHeight + 200;
       }
     }
-  }); // We may need ~500ms delay here.
+  });
 };
 
 export function formatCreatedAtToAMPM(createdAt: number) {
@@ -186,9 +175,9 @@ export function replaceTextExtracts(
 
 export function replaceUrl(input: string): string {
   const urlRegex =
-    /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi;
+    /(?:https?:\/\/|www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.(xn--)?[a-z]{2,20}\b([-a-zA-Z0-9@:%_+[\],.~#?&/=]*[-a-zA-Z0-9@:%_+~#?&/=])*/g;
   return input.replace(urlRegex, function (url) {
-    return `<a href="${url}" target="_blank">${url}</a>`;
+    return `<a class="sendbird-word__url" href="${url}" target="_blank">${url}</a>`;
   });
 }
 

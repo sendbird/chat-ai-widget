@@ -44,8 +44,8 @@ type Props = {
   user: User;
   message: UserMessage;
   bodyComponent: ReactNode;
-  chainTop: boolean;
-  chainBottom: boolean;
+  chainTop?: boolean;
+  chainBottom?: boolean;
   isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
 };
