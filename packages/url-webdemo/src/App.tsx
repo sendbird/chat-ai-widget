@@ -25,11 +25,14 @@ function App() {
         createGroupChannelParams={initialState.createGroupChannelParams}
         replacementTextList={initialState.replacementTextList}
         messageBottomContent={initialState.messageBottomContent}
-        customBetaMarkText="DEMO"
-        betaMark={true}
-        instantConnect={true}
+        customBetaMarkText={initialState.customBetaMarkText}
+        betaMark={initialState.betaMark}
         customRefreshComponent={initialState.customRefreshComponent}
         chatBottomContent={initialState.chatBottomContent}
+        enableSourceMessage={initialState.enableSourceMessage}
+        enableMention={initialState.enableMention}
+        enableEmojiFeedback={initialState.enableEmojiFeedback}
+        instantConnect={true}
       />
     </div>
   );
