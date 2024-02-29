@@ -162,7 +162,7 @@ const Component = (props: Props) => {
 
   useEffect(() => {
     if (props.autoOpen || channelStyle.autoOpen) {
-      timer.current = setTimeout(() => setIsOpen(() => true), 1000);
+      timer.current = setTimeout(() => setIsOpen(() => true), 200);
     }
   }, [channelStyle.autoOpen, props.autoOpen]);
 
@@ -172,7 +172,7 @@ const Component = (props: Props) => {
     isOpen,
   };
   return isMobile && isOpen ? (
-    <MobileContainer width={mobileContainerWidth}>
+    <MobileContainer width={mobileContainerWidth} id="aichatbot-widget-window">
       <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
     </MobileContainer>
   ) : (
@@ -185,7 +185,15 @@ const Component = (props: Props) => {
 };
 
 export default function ChatAiWidget(props: Props) {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        staleTime: 5000,
+      },
+    },
+  });
   const CHAT_WIDGET_APP_ID =
     import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? props.applicationId;
   const CHAT_WIDGET_BOT_ID =

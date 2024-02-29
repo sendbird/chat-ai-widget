@@ -12,6 +12,7 @@ import BotProfileImage from './BotProfileImage';
 import { useConstantState } from '../context/ConstantContext';
 import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
 import { isMobile } from '../utils';
+import { useGroupChannel } from '../hooks/useGroupChannel';
 
 const Root = styled.div`
   display: flex;
@@ -63,13 +64,13 @@ const RenewButtonContainer = styled.div`
 type Props = {
   channel: GroupChannel;
   botUser: User;
-  createGroupChannel: () => void;
 };
 
 export default function CustomChannelHeader(props: Props) {
-  const { channel, createGroupChannel, botUser } = props;
+  const { channel, botUser } = props;
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
+  const { refetch: createGroupChannel } = useGroupChannel();
   const { setIsOpen } = useConstantState();
 
   function onClickRenewButton() {

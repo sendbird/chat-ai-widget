@@ -13,7 +13,6 @@ import {
   useConstantState,
   ConstantStateProvider,
 } from '../context/ConstantContext';
-import { HashedKeyProvider } from '../context/HashedKeyContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import { getTheme } from '../theme';
 import { assert, isMobile } from '../utils';
@@ -78,6 +77,7 @@ const SBComponent = () => {
       isMentionEnabled={enableMention}
       theme={theme}
       colorSet={customColorSet}
+      isReactionEnabled={false}
       uikitOptions={{
         groupChannel: {
           input: {
@@ -103,7 +103,6 @@ interface Props extends ChatWidgetProps {
 export const Chat = ({
   applicationId,
   botId,
-  hashedKey,
   isOpen = true,
   setIsOpen,
   ...constantProps
@@ -140,9 +139,7 @@ export const Chat = ({
         setIsOpen={setIsOpen}
         {...constantProps}
       >
-        <HashedKeyProvider hashedKey={hashedKey ?? null}>
           {isOpen && <SBComponent />}
-        </HashedKeyProvider>
       </ConstantStateProvider>
     </ThemeProvider>
   );
@@ -153,7 +150,15 @@ export const Chat = ({
  * Do not use this component directly. Use Chat instead for internal use.
  */
 export default function ChatClient(props: Props) {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        staleTime: 5000,
+      },
+    },
+  });
 
   return (
     <QueryClientProvider client={queryClient}>
