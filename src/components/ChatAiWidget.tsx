@@ -161,8 +161,8 @@ const Component = (props: Props) => {
   };
 
   useEffect(() => {
-    if (props.autoOpen || channelStyle.autoOpen) {
-      timer.current = setTimeout(() => setIsOpen(() => true), 200);
+    if (!isMobile && (props.autoOpen || channelStyle.autoOpen)) {
+      timer.current = setTimeout(() => setIsOpen(true), 200);
     }
   }, [channelStyle.autoOpen, props.autoOpen]);
 
