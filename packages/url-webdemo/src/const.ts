@@ -44,11 +44,16 @@ export interface DemoConstant {
   botNickName: string;
   replacementTextList: string[][];
   customRefreshComponent?: Partial<CustomRefreshComponent>;
+  betaMark: boolean;
+  customBetaMarkText?: string;
   messageBottomContent: {
     text: string;
     infoIconText: string;
   };
   chatBottomContent: ChatBottomContent;
+  enableSourceMessage: boolean;
+  enableEmojiFeedback: boolean;
+  enableMention: boolean;
 }
 
 const commonConstants = {
@@ -94,6 +99,9 @@ const commonConstants = {
     backgroundColor:
       'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)',
   },
+  enableSourceMessage: true,
+  enableEmojiFeedback: false,
+  enableMention: false,
 };
 export const DEMO_CONSTANTS = {
   webDemo: {
@@ -115,6 +123,8 @@ export const DEMO_CONSTANTS = {
         right: 0,
       },
     },
+    betaMark: true,
+    customBetaMarkText: 'DEMO',
     ...commonConstants,
   },
   widgetDemo: {
@@ -130,6 +140,7 @@ export const DEMO_CONSTANTS = {
         'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     },
     replacementTextList: [['the Text extracts', 'Sendbird documentation']],
+    betaMark: false,
     ...commonConstants,
   },
 };
