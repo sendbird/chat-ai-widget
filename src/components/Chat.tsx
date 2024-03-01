@@ -77,7 +77,6 @@ const SBComponent = () => {
       isMentionEnabled={enableMention}
       theme={theme}
       colorSet={customColorSet}
-      isReactionEnabled={false}
       uikitOptions={{
         groupChannel: {
           input: {
