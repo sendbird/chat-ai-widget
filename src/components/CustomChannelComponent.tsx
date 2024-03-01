@@ -19,7 +19,6 @@ import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
-import LoadingScreen from './LoadingScreen';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { isSpecialMessage, scrollUtil, hideChatBottomBanner } from '../utils';
@@ -110,12 +109,11 @@ const Root = styled.div<RootStyleProps>`
 
 type CustomChannelComponentProps = {
   botUser: User;
-  createGroupChannel?: () => void;
 };
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
-  const { botUser, createGroupChannel } = props;
-  const { userId, suggestedMessageContent } = useConstantState();
+  const { botUser } = props;
+  const { userId, suggestedMessageContent, botId } = useConstantState();
   const { messages: allMessages, currentChannel: channel } =
     useGroupChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -124,7 +122,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   ] as ClientUserMessage;
   const isLastBotMessage =
     !(lastMessage?.messageType === 'admin') &&
-    (lastMessage as ClientUserMessage)?.sender?.userId === botUser.userId;
+    (lastMessage as ClientUserMessage)?.sender?.userId === botId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
   const messageCount = allMessages?.length ?? 0;
@@ -145,7 +143,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     allMessages &&
     messageCount > 1 &&
     !(lastMessage?.messageType === 'admin') &&
-    lastMessage.sender?.userId === botUser.userId &&
+    lastMessage.sender?.userId === botId &&
     !isMessageInStreaming &&
     !isSpecialMessage(
       lastMessage.message,
@@ -189,17 +187,16 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   );
 
   const botWelcomeMessages = useMemo(() => {
-    return getBotWelcomeMessages(allMessages, botUser.userId);
+    return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
   return (
     <Root height={'100%'}>
       <ChannelUI
         renderChannelHeader={() => {
-          return channel && createGroupChannel && botUser ? (
+          return channel && botUser ? (
             <CustomChannelHeader
               botUser={botUser}
               channel={channel as GroupChannel}
-              createGroupChannel={createGroupChannel}
             />
           ) : (
             <ChannelHeader />
@@ -238,7 +235,6 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           );
         }}
         renderTypingIndicator={() => <></>}
-        renderPlaceholderLoader={() => <LoadingScreen />}
       />
       <Banner />
     </Root>

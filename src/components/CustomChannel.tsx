@@ -1,40 +1,27 @@
-import { User } from '@sendbird/chat';
-import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
 import { GroupChannelProvider } from '@sendbird/uikit-react/GroupChannel/context';
-import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
-
 import { CustomChannelComponent } from './CustomChannelComponent';
 import LoadingScreen from './LoadingScreen';
 import { useConstantState } from '../context/ConstantContext';
-import { useCreateGroupChannel } from '../hooks/useCreateGroupChannel';
-import { useGetBotUser } from '../hooks/useGetBotUser';
 import { assert } from '../utils';
+import { useGroupChannel } from '../hooks/useGroupChannel';
 
 export default function CustomChannel() {
-  const { botId, instantConnect } = useConstantState();
-  const store = useSendbirdStateContext();
-  const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
-
+  const { botId } = useConstantState();
   assert(botId !== null, 'botId must be provided');
 
-  const botUser: User = useGetBotUser(sb.currentUser, botId) as User;
-  const [channel, createGroupChannel] = useCreateGroupChannel(
-    sb.currentUser,
-    botUser
-  );
+  const { data } = useGroupChannel();
 
-  if (instantConnect && !channel) {
+  if (data == null) {
     return <LoadingScreen />;
   }
-
+  const { channel, botUser } = data;
   return (
     <GroupChannelProvider
-      channelUrl={channel?.url}
+      channelUrl={channel.url}
       scrollBehavior="smooth"
       reconnectOnIdle={false}
     >
       <CustomChannelComponent
-        createGroupChannel={createGroupChannel}
         botUser={botUser}
       />
     </GroupChannelProvider>

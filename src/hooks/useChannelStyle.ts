@@ -27,7 +27,6 @@ export const useChannelStyle = ({
   const { data, isPending, isLoading, isFetching } = useQuery({
     enabled: !!appId && !!botId,
     queryKey: ['getChannelStyle', appId, botId],
-    retry: 0,
     queryFn: async () => {
       try {
         const response = await fetch(

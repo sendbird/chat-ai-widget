@@ -4,7 +4,6 @@ import { Constant } from './const';
 interface Props extends Partial<Constant> {
   applicationId?: string;
   botId?: string;
-  hashedKey?: string;
   autoOpen?: boolean;
   renderWidgetToggleButton?: (props: {
     onClick: () => void;
@@ -29,7 +28,6 @@ const App = (props: Props) => {
       chatBottomContent={props.chatBottomContent}
       messageBottomContent={props.messageBottomContent}
       replacementTextList={props.replacementTextList}
-      hashedKey={props.hashedKey}
       instantConnect={props.instantConnect}
       customRefreshComponent={props.customRefreshComponent}
       configureSession={props.configureSession}
