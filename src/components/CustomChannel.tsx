@@ -1,9 +1,10 @@
 import { GroupChannelProvider } from '@sendbird/uikit-react/GroupChannel/context';
+
 import { CustomChannelComponent } from './CustomChannelComponent';
 import LoadingScreen from './LoadingScreen';
 import { useConstantState } from '../context/ConstantContext';
-import { assert } from '../utils';
 import { useGroupChannel } from '../hooks/useGroupChannel';
+import { assert } from '../utils';
 
 export default function CustomChannel() {
   const { botId } = useConstantState();
@@ -21,9 +22,7 @@ export default function CustomChannel() {
       scrollBehavior="smooth"
       reconnectOnIdle={false}
     >
-      <CustomChannelComponent
-        botUser={botUser}
-      />
+      <CustomChannelComponent botUser={botUser} />
     </GroupChannelProvider>
   );
 }

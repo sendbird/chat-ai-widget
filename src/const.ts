@@ -88,6 +88,7 @@ export const DEFAULT_CONSTANT: Constant = {
   enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
+  enableMobileView: true,
 };
 
 type ConfigureSession = (

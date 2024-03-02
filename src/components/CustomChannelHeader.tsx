@@ -1,5 +1,3 @@
-import { User } from '@sendbird/chat';
-import { GroupChannel } from '@sendbird/chat/groupChannel';
 import Avatar from '@sendbird/uikit-react/ui/Avatar';
 import Label, {
   LabelTypography,
@@ -10,9 +8,9 @@ import styled from 'styled-components';
 import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
 import { useConstantState } from '../context/ConstantContext';
+import { useGroupChannel } from '../hooks/useGroupChannel';
 import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
 import { isMobile } from '../utils';
-import { useGroupChannel } from '../hooks/useGroupChannel';
 
 const Root = styled.div`
   display: flex;
@@ -61,16 +59,10 @@ const RenewButtonContainer = styled.div`
   gap: 6px;
 `;
 
-type Props = {
-  channel: GroupChannel;
-  botUser: User;
-};
-
-export default function CustomChannelHeader(props: Props) {
-  const { channel, botUser } = props;
+export default function CustomChannelHeader() {
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
-  const { refetch: createGroupChannel } = useGroupChannel();
+  const { refetch: createGroupChannel, data } = useGroupChannel();
   const { setIsOpen } = useConstantState();
 
   function onClickRenewButton() {
@@ -78,6 +70,12 @@ export default function CustomChannelHeader(props: Props) {
     customRefreshComponent?.onClick?.();
     // window.location.reload();
   }
+
+  if (!data) {
+    return null;
+  }
+
+  const { botUser, channel } = data;
 
   return (
     <Root>
@@ -98,7 +96,7 @@ export default function CustomChannelHeader(props: Props) {
           />
         )}
         <Title type={LabelTypography.H_2} color={LabelColors.ONBACKGROUND_1}>
-          {botUser?.nickname || channel.name}
+          {botUser?.nickname || channel?.name}
         </Title>
         {!isMobile && betaMark && <BetaLogo>{customBetaMarkText}</BetaLogo>}
       </SubContainer>

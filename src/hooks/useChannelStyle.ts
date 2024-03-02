@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 
 const DEFAULT_CHANNEL_STYLE = {
-  theme: 'light',
+  theme: 'dark',
   accentColor: '#742DDD',
   botMessageBGColor: '#EEEEEE',
 };

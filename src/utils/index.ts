@@ -1,7 +1,5 @@
 import type SendbirdChat from '@sendbird/chat';
 
-import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
-
 export function uuid() {
   let d = new Date().getTime();
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
@@ -10,21 +8,6 @@ export function uuid() {
     return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
   });
 }
-
-export const scrollUtil = () => {
-  setTimeout(() => {
-    const scrollDOM = document.querySelector(
-      '.sendbird-conversation__messages-padding'
-    );
-    if (scrollDOM) {
-      const { scrollHeight, clientHeight } = scrollDOM;
-      const isScrolledToEnd = true;
-      if (isScrolledToEnd) {
-        scrollDOM.scrollTop = scrollHeight - clientHeight + 200;
-      }
-    }
-  });
-};
 
 export function formatCreatedAtToAMPM(createdAt: number) {
   const date: Date = new Date(createdAt);
@@ -145,13 +128,6 @@ export function MessageTextParser(inputString: string): Token[] {
   return result;
 }
 
-export function isNotLocalMessageCustomType(customType: string | undefined) {
-  return (
-    !customType ||
-    Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) === -1
-  );
-}
-
 export function replaceTextExtractsMultiple(
   input: string,
   replacements: [string, string][],
@@ -173,15 +149,12 @@ export function replaceTextExtracts(
   return input.replace(regex, replaceText);
 }
 
-export function isSpecialMessage(
-  message: string,
-  specialMessageList: string[]
-): boolean {
-  return (
-    specialMessageList.findIndex((substr: string) => {
-      return message.includes(substr);
-    }) > -1
-  );
+export function replaceUrl(input: string): string {
+  const urlRegex =
+    /(?:https?:\/\/|www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.(xn--)?[a-z]{2,20}\b([-a-zA-Z0-9@:%_+[\],.~#?&/=]*[-a-zA-Z0-9@:%_+~#?&/=])*/g;
+  return input.replace(urlRegex, function (url) {
+    return `<a class="sendbird-word__url" href="${url}" target="_blank">${url}</a>`;
+  });
 }
 
 export function assert(condition: any, message: string): asserts condition {

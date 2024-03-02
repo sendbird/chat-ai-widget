@@ -15,12 +15,11 @@ import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import {
-  isNotLocalMessageCustomType,
   MessageTextParser,
   replaceTextExtractsMultiple,
   Token,
 } from '../utils';
-import { isFormMessage } from '../utils/messages';
+import { isFormMessage, isLocalMessageCustomType } from '../utils/messages';
 
 type Props = {
   message: EveryMessage;
@@ -104,7 +103,7 @@ export default function CustomMessage(props: Props) {
 
   // Sent by bot
   // for static suggested replies
-  if (!isNotLocalMessageCustomType(message.customType)) {
+  if (isLocalMessageCustomType(message.customType)) {
     if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
       return (
         <BotMessageWithBodyInput
