@@ -1,3 +1,7 @@
+## [v1.2.3] (Mar 4 2024)
+#### Chore:
+- Injected `chat-ai-widget-key` key-value pair into the user agent parameter during build time.
+
 ## [v1.2.2] (Mar 4 2024)
 #### Feat:
 - Reduced initial loading time:
