@@ -1,3 +1,7 @@
+## [v1.2.3] (Mar 4 2024)
+#### Chore:
+- Internal change
+
 ## [v1.2.2] (Mar 4 2024)
 #### Feat:
 - Reduced initial loading time:

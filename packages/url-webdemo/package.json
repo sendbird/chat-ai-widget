@@ -16,7 +16,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@sendbird/chat-ai-widget": "^1.2.2"
+    "@sendbird/chat-ai-widget": "^1.2.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
