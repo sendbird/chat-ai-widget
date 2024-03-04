@@ -17,6 +17,8 @@ import { useChannelStyle } from '../hooks/useChannelStyle';
 import { getTheme } from '../theme';
 import { assert, isMobile } from '../utils';
 
+const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
+
 const SBComponent = () => {
   const {
     applicationId,
@@ -58,6 +60,7 @@ const SBComponent = () => {
   const userAgentCustomParams = useRef({
     ...customUserAgentParam,
     'chat-ai-widget': 'True',
+    'chat-ai-widget-key': CHAT_AI_WIDGET_KEY,
   });
 
   if (isError) {
@@ -138,7 +141,7 @@ export const Chat = ({
         setIsOpen={setIsOpen}
         {...constantProps}
       >
-          {isOpen && <SBComponent />}
+        {isOpen && <SBComponent />}
       </ConstantStateProvider>
     </ThemeProvider>
   );
