@@ -2,6 +2,7 @@ import '@sendbird/chat-ai-widget/dist/style.css';
 import { ChatAiWidget } from '@sendbird/chat-ai-widget';
 
 import { uuid } from './utils';
+const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
 
 type ChatbotConfig = Window &
   typeof globalThis & {
@@ -23,7 +24,8 @@ function App() {
       enableEmojiFeedback={false}
       enableMention={false}
       customUserAgentParam={{
-        'chat-ai-widget-deployed': 'True'
+        'chat-ai-widget-deployed': 'True',
+        'chat-ai-widget-key': CHAT_AI_WIDGET_KEY,
       }}
     />
   );
