@@ -1,3 +1,10 @@
+## [v1.2.2] (Mar 4 2024)
+#### Feat:
+- Reduced initial loading time:
+  - by changing delay time from 1000ms to 200ms when autoOpen is set to true.
+  - by eliminating unintended duplicated initial API calls.
+
+
 ## [v1.2.1] (Feb 27 2024)
 #### Feat:
 - Improved user experience based on customer feedback:
