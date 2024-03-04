@@ -1,3 +1,6 @@
+> NOTE: Please note that proper utilization through code build is available starting from the "AI Chatbot Pro" plan or higher of [the Sendbird AI Chatbot pricing plan](https://sendbird.com/pricing).
+
+
 ## What is this for?
 This is a Sendbird Chat AI Widget implemented on top of [React UiKit](https://github.com/sendbird/sendbird-uikit-react).
 
