@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import BotProfileImage from './BotProfileImage';
-import typingIndicatorLogo from '../icons/message-typing-indicator.gif';
+import typingIndicatorLogo from '../icons/message-typing-indicator.webp';
 
 const Container = styled.div`
   display: flex;
