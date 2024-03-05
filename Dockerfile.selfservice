@@ -8,5 +8,5 @@ RUN npm install
 RUN npm run build
 
 # production
-FROM nginx:alpine
+FROM nginx:1.25.4-alpine-slim
 COPY --from=builder /app/dist /usr/share/nginx/html
