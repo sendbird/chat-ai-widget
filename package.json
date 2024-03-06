@@ -19,6 +19,7 @@
     "prebuild": "rm -rf ./dist && mv .env .env_temp || true",
     "postbuild": "mv .env_temp .env || true",
     "build": "npm run prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build && npm run postbuild",
+    "build:npm": "node scripts/prebuild.mjs && npm run build",
     "build:pages": "rm -rf ./dist && tsc-silent -p './tsconfig.json' --suppress @ && vite build --config vite.config.pages.ts",
     "lint": "npx eslint src",
     "lint:fix": "npm run lint -- --fix",
