@@ -14,25 +14,13 @@ export const scrollUtil = () => {
     const scrollDOM = document.querySelector(
       '.sendbird-conversation__messages-padding'
     );
-    //console.warn(scrollDOM);
-    if (scrollDOM) {
-      const { scrollHeight, clientHeight } = scrollDOM;
-      // const isScrolledToEnd = (scrollTop + 200) > (scrollHeight - clientHeight);
-      const isScrolledToEnd = true;
-
-      // console.warn({
-      //   scrollTop,
-      //   scrollHeight,
-      //   clientHeight,
-      //   [scrollHeight - clientHeight]: scrollHeight - clientHeight,
-      //   isScrolledToEnd,
-      // });
-      if (isScrolledToEnd) {
-        //console.warn('move to end', scrollDOM.scrollHeight + 200)
-        scrollDOM.scrollTop = scrollHeight - clientHeight + 200;
+    const timer = setTimeout(() => {
+      if (scrollDOM) {
+        scrollDOM.scrollTop = scrollDOM.scrollHeight;
       }
-    }
-  }); // We may need ~500ms delay here.
+    }, 200);
+    return () => clearTimeout(timer);
+  });
 };
 
 export function formatCreatedAtToAMPM(createdAt: number) {

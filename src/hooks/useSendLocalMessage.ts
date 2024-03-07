@@ -3,8 +3,6 @@ import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
 import { useCallback } from 'react';
 
-import { scrollUtil } from '../utils';
-
 type OnMessageRecivedPayload = {
   channel: GroupChannel;
   message: UserMessage;
@@ -39,7 +37,6 @@ export function useSendLocalMessage() {
             message,
           },
         });
-        scrollUtil();
       }
     },
     [currentGroupChannel, messagesDispatcher]

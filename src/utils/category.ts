@@ -27,6 +27,6 @@ export const categoryColors = {
     'input-container-color': '#FFFFFF',
     'input-message-background-color': '#EEEEEE',
     'icon-color': '#000000',
-    'sendbird-conversation__messages-background-color': '#FFFFFF',
+    'sendbird-conversation__messages-background-color': '#C8D9FA',
   },
 };

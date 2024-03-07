@@ -19,6 +19,7 @@ import {
   useChatWindowLoadTime,
 } from '../hooks/useInteractiveDemoSharableData';
 import { assert, isMobile } from '../utils';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const SBComponent = () => {
   const {
@@ -103,20 +104,32 @@ const Chat = ({
     'applicationId and botId must be provided'
   );
 
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        staleTime: 5000,
+      },
+    },
+  });
+
   return (
-    <ConstantStateProvider
-      // If env is not provided, prop will be used instead.
-      // But Either should be provided.
-      applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
-      botId={CHAT_WIDGET_BOT_ID ?? botId}
-      {...constantProps}
-    >
-      <HashedKeyProvider hashedKey={hashedKey ?? null}>
-        <SBConnectionStateProvider>
-          {isOpen && <SBComponent />}
-        </SBConnectionStateProvider>
-      </HashedKeyProvider>
-    </ConstantStateProvider>
+    <QueryClientProvider client={queryClient}>
+      <ConstantStateProvider
+        // If env is not provided, prop will be used instead.
+        // But Either should be provided.
+        applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
+        botId={CHAT_WIDGET_BOT_ID ?? botId}
+        {...constantProps}
+      >
+        <HashedKeyProvider hashedKey={hashedKey ?? null}>
+          <SBConnectionStateProvider>
+            {isOpen && <SBComponent />}
+          </SBConnectionStateProvider>
+        </HashedKeyProvider>
+      </ConstantStateProvider>
+    </QueryClientProvider>
   );
 };
 

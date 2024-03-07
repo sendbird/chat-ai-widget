@@ -1,8 +1,8 @@
 import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { localStorageHelper } from '../utils';
+import { LOCAL_STORAGE_KEY_PREFIX, localStorageHelper } from '../utils';
 
 export const CHAT_LOAD_TIME_KEY = 'load-time';
 export const NUM_OF_MESSAGES_KEY = 'num-of-messages';

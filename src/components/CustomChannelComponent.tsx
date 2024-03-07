@@ -4,18 +4,27 @@ import { SendingStatus } from '@sendbird/chat/message';
 import ChannelHeader from '@sendbird/uikit-react/Channel/components/ChannelHeader';
 import ChannelUI from '@sendbird/uikit-react/Channel/components/ChannelUI';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import Label, {
+  LabelColors,
+  LabelTypography,
+} from '@sendbird/uikit-react/ui/Label';
 import { useEffect, useState, useMemo, useRef } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { ClientUserMessage, EveryMessage } from 'SendbirdUIKitGlobal';
 import styled, { css } from 'styled-components';
 
 import CustomChannelHeader from './CustomChannelHeader';
+import { HealthcareMessageInput } from './CustomHealthcareMessageInput';
 import CustomMessage from './CustomMessage';
 import { MessageInput } from './CustomMessageInput';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
-import { useCurrentChannelMemberIds, useNumOfMessages } from '../hooks/useInteractiveDemoSharableData';
+import {
+  useCurrentChannelMemberIds,
+  useNumOfMessages,
+} from '../hooks/useInteractiveDemoSharableData';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
+import { ReactComponent as IconClose } from '../icons/icon-close-black.svg';
 import { isSpecialMessage, scrollUtil } from '../utils';
 import { categoryColors } from '../utils/category';
 import {
@@ -31,11 +40,21 @@ interface RootStyleProps {
   botCategory?: string;
 }
 const Root = styled.div<RootStyleProps>`
+  position: relative;
   height: ${({ height }) => height};
   font-family: 'Roboto', sans-serif;
   z-index: 0;
   border: none;
-  
+
+  .sendbird-place-holder {
+    background: ${({ botCategory }) =>
+      botCategory
+        ? categoryColors[botCategory][
+            'sendbird-conversation__messages-background-color'
+          ]
+        : '#eeeeee'};
+    };
+  }
   ${({ botCategory }) =>
     botCategory &&
     css`
@@ -126,6 +145,30 @@ const Root = styled.div<RootStyleProps>`
   }
 `;
 
+const ModalContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 335px;
+  max-height: 319px;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 9999;
+`;
+
+const BackgroundOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+`;
+
 export interface StartingPageAnimatorProps {
   isStartingPage: boolean;
 }
@@ -141,6 +184,12 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botCategory } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    symptom: '',
+    date: '',
+    medicalHistory: '',
+  });
   useNumOfMessages(botUser.userId);
   useCurrentChannelMemberIds();
 
@@ -187,6 +236,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
       lastMessage.message,
       suggestedMessageContent.messageFilterList
     );
+
+  function closeModal() {
+    setShowModal(false);
+  }
 
   useScrollOnStreaming({
     isLastBotMessage,
@@ -275,20 +328,81 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           );
         }}
         renderTypingIndicator={() => <></>}
-        renderMessageInput={() => <MessageInput />}
+        renderMessageInput={() => {
+          if (botCategory === 'healthcare') {
+            return (
+              <HealthcareMessageInput
+                setModalContent={setModalContent}
+                setShowModal={setShowModal}
+              />
+            );
+          } else {
+            return <MessageInput />;
+          }
+        }}
       />
-      {/* <Banner /> */}
+      {showModal && (
+        <>
+          <BackgroundOverlay onClick={closeModal} />
+          <ModalContainer>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                height: '36px',
+              }}
+            >
+              <Label
+                type={LabelTypography.H_1}
+                color={LabelColors.ONBACKGROUND_1}
+              >
+                Medical History
+              </Label>
+              <IconClose
+                style={{
+                  color: 'black',
+                  cursor: 'pointer',
+                }}
+                onClick={closeModal}
+              />
+            </div>
+            <div
+              style={{
+                paddingTop: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+              }}
+            >
+              <div
+                style={{
+                  color: 'rgba(0, 0, 0, 0.5)',
+                }}
+              >
+                {modalContent.date}
+              </div>
+              <div
+                style={{
+                  height: '200px',
+                  overflowY: 'auto',
+                }}
+              >
+                {modalContent.medicalHistory.split('\n').map((item, index) => (
+                  <div
+                    style={{
+                      paddingLeft: '10px',
+                      textIndent: '-10px',
+                    }}
+                    key={index}
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ModalContainer>
+        </>
+      )}
     </Root>
   );
 }
-
-// function Banner() {
-//   const inputElement = document.querySelector(
-//     '.sendbird-message-input-wrapper'
-//   );
-
-//   if (inputElement) {
-//     return ReactDOM.createPortal(<ChatBottom />, inputElement);
-//   }
-//   return null;
-// }

@@ -31,7 +31,9 @@
   },
   "dependencies": {
     "@sendbird/chat": "^4.10.1",
-    "@sendbird/uikit-react": "^3.9.0",
+    "@sendbird/uikit-react": "^3.12.0",
+    "@tanstack/react-query": "^5.25.0",
+    "axios": "^1.6.7",
     "dompurify": "^3.0.4",
     "framer-motion": "^10.18.0",
     "polished": "^2.3.1",

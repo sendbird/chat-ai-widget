@@ -29,7 +29,6 @@ import {
   MessageTextParser,
   replaceTextExtractsMultiple,
   replaceUrl,
-  scrollUtil,
   Token,
 } from '../utils';
 import {
@@ -225,9 +224,6 @@ export default function CustomMessage(props: Props) {
 
   // Sent by current user
   if ((message as UserMessage).sender?.userId === userId) {
-    if (activeSpinnerId !== message.messageId) {
-      scrollUtil();
-    }
     const userIds = currentGroupChannel?.members.map((member) => member.userId);
     return (
       <div>
