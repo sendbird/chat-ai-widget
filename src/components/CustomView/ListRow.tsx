@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 `;
 
@@ -10,6 +10,7 @@ const LeftColumn = styled.div`
   text-align: center;
   width: 44px;
   margin-right: 8px;
+  padding-top: 4px;
 `;
 
 const CenterColumn = styled.div<{ hasRightColumn: boolean }>`

@@ -93,7 +93,7 @@ export default function CustomMessage(props: Props) {
 
   // admin message
   if (message.messageType === 'admin') {
-    return <div>{<AdminMessage message={message} />}</div>;
+    return <div>{<AdminMessage message={message.message} />}</div>;
   }
 
   if (isFormMessage(message)) {
@@ -178,6 +178,7 @@ export default function CustomMessage(props: Props) {
         bodyComponent={<OrderHistoryMessage message={functionCallMessage} />}
         chainTop={chainTop}
         chainBottom={chainBottom}
+        newLineSentTime={true}
       />
     );
   }
@@ -191,6 +192,7 @@ export default function CustomMessage(props: Props) {
         bodyComponent={<OrderDetailsMessage message={functionCallMessage} />}
         chainTop={chainTop}
         chainBottom={chainBottom}
+        newLineSentTime={true}
       />
     );
   }
@@ -238,19 +240,24 @@ export default function CustomMessage(props: Props) {
 
   // Sent by other users
   if ((message as UserMessage).sender?.userId !== botUser.userId) {
+    const userMessage = message as UserMessage;
+    console.log('userMessage', userMessage);
     return (
       <div ref={lastMessageRef}>
-        {
-          <UserMessageWithBodyInput
-            message={message as UserMessage}
-            user={message?.sender}
-            chainTop={chainTop}
-            chainBottom={chainBottom}
-            bodyComponent={
-              <CustomMessageBody message={(message as UserMessage).message} />
-            }
-          />
-        }
+        {userMessage.sender?.userId === 'luke' &&
+          userMessage.message ===
+            'Hello! This is Luke from Sendbird Shopping. How can I help you?' && (
+            <AdminMessage message={'Luke has joined the chat.'} />
+          )}
+        <UserMessageWithBodyInput
+          message={message as UserMessage}
+          user={message?.sender}
+          chainTop={chainTop}
+          chainBottom={chainBottom}
+          bodyComponent={
+            <CustomMessageBody message={(message as UserMessage).message} />
+          }
+        />
       </div>
     );
   }

@@ -26,9 +26,7 @@ const BottomSheetHeader = styled(BottomSheet.Header)`
   margin-bottom: 8px;
 `;
 
-const BottomSheetContent = styled(BottomSheet.Content)`
-  padding: 0 16px;
-`;
+const BottomSheetContent = styled(BottomSheet.Content)``;
 
 const DateText = styled(Label)`
   font-weight: 700;
@@ -114,6 +112,7 @@ const OrderHistoryBottomSheet = ({
                 <div
                   key={history.id}
                   style={{
+                    padding: '0 16px',
                     marginBottom: 16,
                     cursor: 'pointer',
                     backgroundColor:

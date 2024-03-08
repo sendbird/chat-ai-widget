@@ -93,12 +93,20 @@ const CancelOrderMessage = ({ message }: { message: FunctionCallMessage }) => {
             key={item.name}
             icon={<ItemImageComponent image={item.image} />}
             title={
-              <ItemsText
-                type={LabelTypography.BODY_1}
-                color={LabelColors.ONBACKGROUND_1}
-              >
-                {item.name}
-              </ItemsText>
+              <>
+                <Label
+                  type={LabelTypography.CAPTION_3}
+                  color={LabelColors.ONBACKGROUND_2}
+                >
+                  {'Paid on ' + orderDetails.date}
+                </Label>
+                <ItemsText
+                  type={LabelTypography.BODY_1}
+                  color={LabelColors.ONBACKGROUND_1}
+                >
+                  {item.name}
+                </ItemsText>
+              </>
             }
           />
         ))}

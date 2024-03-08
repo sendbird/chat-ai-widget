@@ -7,7 +7,6 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 60px;
 `;
 
 const ImageContainer = styled.div`

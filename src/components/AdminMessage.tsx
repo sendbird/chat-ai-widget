@@ -38,7 +38,7 @@ const TextComponent = styled.div`
 `;
 
 type Props = {
-  message: UserMessage;
+  message: string;
 };
 
 export default function AdminMessage(props: Props) {
@@ -48,7 +48,7 @@ export default function AdminMessage(props: Props) {
     <Root>
       <BodyContainer>
         <BodyComponent>
-          <TextComponent>{message.message}</TextComponent>
+          <TextComponent>{message}</TextComponent>
         </BodyComponent>
       </BodyContainer>
     </Root>

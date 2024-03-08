@@ -12,7 +12,7 @@ const App = (props: Props) => {
   return (
     <ChatAiWidget
       applicationId={props.applicationId}
-      botCategory={'healthcare'}
+      botCategory={'ecommerce'}
       // botCategory={props.botCategory}
       botId={props.botId}
       botNickName={props.botNickName}

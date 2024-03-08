@@ -15,7 +15,7 @@ import { FunctionCallMessage } from '../../utils/messages';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 244px;
   font-family: var(--sendbird-font-family-custom);
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
@@ -34,15 +34,21 @@ const Bottom = styled.div`
 const CancelOrderButton = styled(Button)`
   width: 100%;
   border-radius: 18px;
+  height: 36px;
 `;
 
 const ConnectToAnAgentButton = styled(Button)`
   width: 100%;
   border-radius: 18px;
+  height: 36px;
+`;
+
+const BoldText = styled(Label)`
+  font-weight: 700;
 `;
 
 const DateText = styled(Label)`
-  font-weight: 500;
+  font-weight: 400;
 `;
 
 const DetailText = styled(Label)`
@@ -108,15 +114,15 @@ const OrderDetailsMessage = ({ message }: { message: FunctionCallMessage }) => {
           alignItems: 'center',
         }}
       >
-        <DateText
+        <BoldText
           type={LabelTypography.BODY_1}
           color={LabelColors.ONBACKGROUND_1}
         >
           Order No.{orderDetails.id}
-        </DateText>
+        </BoldText>
         <DateText
-          type={LabelTypography.BODY_2}
-          color={LabelColors.ONBACKGROUND_2}
+          type={LabelTypography.BODY_1}
+          color={LabelColors.ONBACKGROUND_1}
         >
           {orderDetails.date}
         </DateText>
@@ -181,16 +187,22 @@ const OrderDetailsMessage = ({ message }: { message: FunctionCallMessage }) => {
           justifyContent: 'space-between',
         }}
       >
-        <Label type={LabelTypography.BODY_1} color={LabelColors.ONBACKGROUND_1}>
+        <BoldText
+          type={LabelTypography.BODY_1}
+          color={LabelColors.ONBACKGROUND_1}
+        >
           Item total:
-        </Label>
-        <Label type={LabelTypography.BODY_1} color={LabelColors.ONBACKGROUND_1}>
+        </BoldText>
+        <BoldText
+          type={LabelTypography.BODY_1}
+          color={LabelColors.ONBACKGROUND_1}
+        >
           $
           {orderDetails.items.reduce(
             (acc, item) => acc + item.price * item.quantity,
             0
           )}
-        </Label>
+        </BoldText>
       </div>
       <Bottom>
         {orderDetails.status === 'Payment Completed' && (

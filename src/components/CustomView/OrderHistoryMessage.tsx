@@ -21,17 +21,33 @@ const Container = styled.div`
   font-family: var(--sendbird-font-family-custom);
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
-  padding: 12px;
+  padding: 6px 12px;
+`;
+
+const ListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 244px;
+  font-family: var(--sendbird-font-family-custom);
+  background-color: var(--sendbird-light-background-50-0);
+  border-radius: 16px;
+  padding: 6px 0;
 `;
 
 const Bottom = styled.div`
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
+  padding: 0 12px;
 `;
 
 const SeeAllButton = styled(Button)`
   width: 100%;
   border-radius: 18px;
+  height: 36px;
+`;
+
+const ButtonText = styled(Label)`
+  margin: 10px 20px;
 `;
 
 const DateText = styled(Label)`
@@ -93,12 +109,13 @@ const OrderHistoryMessage = ({ message }: { message: FunctionCallMessage }) => {
           {'Here are your recent orders. Select each one to see it in detail.'}
         </Label>
       </Container>
-      <Container>
+      <ListContainer>
         {historyList.length > 0 &&
           historyList.slice(0, 3).map((history) => (
             <div
               key={history.id}
               style={{
+                padding: '0px 12px',
                 marginBottom: 16,
                 cursor: 'pointer',
                 backgroundColor:
@@ -151,12 +168,12 @@ const OrderHistoryMessage = ({ message }: { message: FunctionCallMessage }) => {
           ))}
         <Bottom>
           <SeeAllButton onClick={() => setBottomSheetOpen(true)}>
-            <Label
+            <ButtonText
               type={LabelTypography.BUTTON_2}
               color={LabelColors.ONCONTENT_1}
             >
               See all
-            </Label>
+            </ButtonText>
           </SeeAllButton>
         </Bottom>
         <OrderHistoryBottomSheet
@@ -164,7 +181,7 @@ const OrderHistoryMessage = ({ message }: { message: FunctionCallMessage }) => {
           bottomSheetOpen={bottomSheetOpen}
           setBottomSheetOpen={setBottomSheetOpen}
         />
-      </Container>
+      </ListContainer>
     </div>
   );
 };

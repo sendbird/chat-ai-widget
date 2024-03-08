@@ -260,7 +260,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
       lastMessage.sender?.userId === userId &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
       // this bubble loading should be shown only when there're only bot and 1 user in the channel
-      channel?.memberCount === 2
+      channel?.memberCount === 2 &&
+      !currentGroupChannel?.members
+        .map((member) => member.userId)
+        .includes('luke')
     ) {
       setActiveSpinnerId(lastMessage.messageId);
     } else {

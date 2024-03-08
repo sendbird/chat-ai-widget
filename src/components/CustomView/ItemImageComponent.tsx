@@ -7,8 +7,8 @@ export class ItemImageComponent extends Component<{ image: string }> {
         src={this.props.image}
         alt="item"
         style={{
-          width: 44,
-          height: 44,
+          width: 40,
+          height: 40,
           borderRadius: 8,
           objectFit: 'cover',
           objectPosition: 'center',
