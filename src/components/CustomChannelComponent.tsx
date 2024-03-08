@@ -137,7 +137,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     lastMessage?.sender?.userId === botId &&
     !isMessageInStreaming &&
     !isSpecialMessage(
-      lastMessage.isUserMessage() ? lastMessage.message : '',
+      lastMessage.message,
       suggestedMessageContent.messageFilterList
     );
 
