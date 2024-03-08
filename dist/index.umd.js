@@ -753,7 +753,7 @@ See https://s-c.sh/2BAXzed for more info.`),window["__styled-components-init__"]
 `,zu=({icon:e,title:n,description:t,rightTop:r,rightBottom:i})=>{const s=r!=null||i!=null;return U.jsxs(nQ,{children:[U.jsx(rQ,{children:e}),U.jsxs(iQ,{hasRightColumn:s,children:[U.jsx(t0,{children:n}),U.jsx(t0,{children:t})]}),s&&U.jsxs(sQ,{children:[r&&U.jsx(t0,{children:r}),i&&U.jsx(t0,{children:i})]})]})},Sw=Le.div`
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 244px;
   font-family: var(--sendbird-font-family-custom);
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
