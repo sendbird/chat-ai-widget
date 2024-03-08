@@ -33,6 +33,10 @@ interface RootStyleProps {
   isInputActive: boolean;
 }
 const Root = styled.div<RootStyleProps>`
+  & form {
+    margin: initial;
+    background-color: initial;
+  }
   height: ${({ height }) => height};
   font-family: 'Roboto', sans-serif;
   z-index: 0;
