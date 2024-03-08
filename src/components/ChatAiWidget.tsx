@@ -15,6 +15,7 @@ import { isMobile } from '../utils';
 
 const MobileContainer = styled.div<{ width: number }>`
   position: fixed;
+  z-index: 10000;
   top: 0;
   left: 0;
   width: ${({ width }) => `${width}px`};
