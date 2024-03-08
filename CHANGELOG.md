@@ -1,6 +1,19 @@
-## [v1.2.3] (Mar 4 2024)
+## [v1.3.1] (Mar 8 2024)
+#### Fix:
+- Hide unused button icons
+- Removed inherited margin and background-color from global CSS in the form
+- Fixed a scroll issue in safari browser
+- Added z-index to mobile container
+
+## [Internal] [v1.3.0]
+
+## [v1.2.5] (Mar 5 2024)
 #### Chore:
 - Internal change
+
+## [Deprecated] [v1.2.4] 
+
+## [Deprecated] [v1.2.3]
 
 ## [v1.2.2] (Mar 4 2024)
 #### Feat:

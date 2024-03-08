@@ -56,7 +56,7 @@ export function groupMessagesByShortSpanTime(
 
 export function getBotWelcomeMessages(
   messages: EveryMessage[],
-  botUserId: string
+  botUserId: string | null
 ) {
   // if the list is empty or the first message is not from bot,
   // we just assume there's no welcome messages
