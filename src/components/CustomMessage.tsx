@@ -247,7 +247,9 @@ export default function CustomMessage(props: Props) {
         {userMessage.sender?.userId === 'luke' &&
           userMessage.message ===
             'Hello! This is Luke from Sendbird Shopping. How can I help you?' && (
-            <AdminMessage message={'Luke has joined the chat.'} />
+            <AdminMessage
+              message={'Luke from Sendbird Shopping has joined the chat.'}
+            />
           )}
         <UserMessageWithBodyInput
           message={message as UserMessage}

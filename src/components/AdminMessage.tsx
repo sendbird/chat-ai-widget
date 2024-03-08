@@ -11,7 +11,6 @@ const Root = styled.div`
 `;
 
 const BodyContainer = styled.div`
-  max-width: calc(100% - 90px); // 600px;
   font-size: 11px;
   width: fit-content;
   font-weight: normal;
