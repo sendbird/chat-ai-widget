@@ -192,6 +192,8 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   return (
     <Root height={'100%'}>
       <ChannelUI
+        renderFileUploadIcon={() => <></>}
+        renderVoiceMessageIcon={() => <></>}
         renderChannelHeader={() => {
           return channel && botUser ? (
             <CustomChannelHeader
