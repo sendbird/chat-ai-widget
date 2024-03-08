@@ -84,7 +84,7 @@ const SBComponent = () => {
         groupChannel: {
           input: {
             // To hide the file upload icon from the message input
-            enableDocument: true,
+            enableDocument: false,
           },
           enableVoiceMessage: false,
         },
