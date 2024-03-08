@@ -86,6 +86,7 @@ const SBComponent = () => {
             // To hide the file upload icon from the message input
             enableDocument: false,
           },
+          enableVoiceMessage: false,
         },
       }}
     >

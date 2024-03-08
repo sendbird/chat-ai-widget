@@ -33,6 +33,10 @@ interface RootStyleProps {
   isInputActive: boolean;
 }
 const Root = styled.div<RootStyleProps>`
+  & form {
+    margin: initial;
+    background-color: initial;
+  }
   height: ${({ height }) => height};
   font-family: 'Roboto', sans-serif;
   z-index: 0;
@@ -192,6 +196,8 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   return (
     <Root height={'100%'}>
       <ChannelUI
+        renderFileUploadIcon={() => <></>}
+        renderVoiceMessageIcon={() => <></>}
         renderChannelHeader={() => {
           return channel && botUser ? (
             <CustomChannelHeader
