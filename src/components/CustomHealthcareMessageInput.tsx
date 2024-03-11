@@ -93,8 +93,8 @@ const AIAssistantContainer = styled.div``;
 const AIAssistantBodyContainer = styled.div`
   padding-left: 16px;
   padding-right: 16px;
-  padding-bottom: 12px;
-  gap: 12px;
+  padding-bottom: 8px;
+  gap: 8px;
   display: flex;
   flex-direction: column;
   max-height: 200px;
@@ -108,7 +108,7 @@ const AIContainer = styled.div`
   gap: 12px;
   display: flex;
   flex-direction: column;
-  max-height: 200px; 
+  max-height: 200px;
 `;
 
 const PatientHistoryListBody = styled.div`
@@ -237,11 +237,8 @@ const NewInput = styled.textarea`
 `;
 
 const SendButton = styled.button`
-  padding: 10px 16px;
-  background-color: ${(props) =>
-    props.disabled
-      ? '#cccccc'
-      : '#007bff'};
+  padding: 8px 16px;
+  background-color: ${(props) => (props.disabled ? '#cccccc' : '#007bff')};
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -253,7 +250,7 @@ const SendButton = styled.button`
 `;
 
 const CancelButton = styled.button`
-  padding: 10px 16px;
+  padding: 8px 16px;
   background: #ffffff;
   border: 1px solid var(--sendbird-light-primary-300);
   border-radius: 8px;
@@ -319,12 +316,10 @@ interface AIResponseMessage {
 
 export function HealthcareMessageInput({
   onSendMessage,
-  onAskToAISendMessage,
   setModalContent,
   setShowModal,
 }: {
   onSendMessage?: (message?: string) => void;
-  onAskToAISendMessage?: (message?: string) => void;
   setModalContent: (content: any) => void;
   setShowModal: (show: boolean) => void;
 }) {
@@ -425,9 +420,38 @@ export function HealthcareMessageInput({
   }, [allMessages]);
 
   useEffect(() => {
-    if (inputValue?.value != null && inputValue.value.length > 0) {
-      sendMessage(inputValue.value);
-    }
+    const fetchData = async () => {
+      if (inputValue?.value != null && inputValue.value.length > 0) {
+        setIsAskingAssistant(true);
+        setAIResponse(null);
+        setAskToAIMessage(inputValue.value);
+
+        try {
+          const response = await getRecommendMessage([
+            {
+              role: 'user',
+              content: "I'm now talking to Patient X. ",
+            },
+            {
+              role: 'user',
+              content: inputValue.value,
+            },
+          ]);
+          setAIResponse(response);
+          console.log(response);
+
+          if (response.response_method?.function_calls?.length > 0) {
+            setCurrentFunctionCall(response.response_method?.function_calls[0]);
+          }
+        } catch (error) {
+          console.error('Failed to fetch AI response', error);
+        }
+
+        setAskToAIMessage(''); // Clear input after sending
+      }
+    };
+
+    fetchData();
   }, [inputValue?.value, inputValue?.id]);
 
   useEffect(() => {
@@ -490,7 +514,6 @@ export function HealthcareMessageInput({
   }
 
   async function handleAskAISendMessage() {
-    onAskToAISendMessage?.(askToAIMessage);
     const response = await getRecommendMessage([
       {
         role: 'user',
