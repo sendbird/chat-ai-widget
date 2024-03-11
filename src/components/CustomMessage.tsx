@@ -18,7 +18,6 @@ import {
   isNotLocalMessageCustomType,
   MessageTextParser,
   replaceTextExtractsMultiple,
-  replaceUrl,
   Token,
 } from '../utils';
 import { isFormMessage } from '../utils/messages';
@@ -123,11 +122,14 @@ export default function CustomMessage(props: Props) {
   const tokens: Token[] = MessageTextParser((message as UserMessage).message);
   tokens.forEach((token: Token) => {
     if (token.type === 'String') {
-      token.value = replaceUrl(token.value);
+      // Redact text to replacementTextList
       token.value = replaceTextExtractsMultiple(
         token.value,
         replacementTextList
       );
+
+      // Convert url string to component --> handled by ParsedBotMessageBody > RegexText
+      // token.value = replaceUrl(token.value);
     }
   });
 

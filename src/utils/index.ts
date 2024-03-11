@@ -154,7 +154,7 @@ export function isNotLocalMessageCustomType(customType: string | undefined) {
 
 export function replaceTextExtractsMultiple(
   input: string,
-  replacements: Array<[string, string]>
+  replacements: [string, string][],
 ): string {
   let result = input;
   for (let i = 0; i < replacements.length; i++) {
@@ -171,14 +171,6 @@ export function replaceTextExtracts(
 ): string {
   const regex = new RegExp(searchText, 'gi');
   return input.replace(regex, replaceText);
-}
-
-export function replaceUrl(input: string): string {
-  const urlRegex =
-    /(?:https?:\/\/|www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.(xn--)?[a-z]{2,20}\b([-a-zA-Z0-9@:%_+[\],.~#?&/=]*[-a-zA-Z0-9@:%_+~#?&/=])*/g;
-  return input.replace(urlRegex, function (url) {
-    return `<a class="sendbird-word__url" href="${url}" target="_blank">${url}</a>`;
-  });
 }
 
 export function isSpecialMessage(
@@ -219,3 +211,29 @@ export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
 
   return false;
 }
+
+export const replaceWithRegex = <T,>(
+  text: string,
+  regex: RegExp,
+  replacer: (params: { match: string; groups: string[]; index: number; }) => T,
+) => {
+  const matches = [...text.matchAll(regex)];
+  const founds = matches.map((value) => {
+    const text = value[0];
+    const start = value.index ?? 0;
+    const end = start + text.length;
+    return { text, start, end, groups: value, matchIndex: value.index };
+  });
+
+  const items: Array<T | string> = [text];
+  let cursor = 0;
+  founds.forEach(({ text, start, end, groups }, index) => {
+    const restText = items.pop() as string;
+    const head = restText.slice(0, start - cursor);
+    const mid = replacer({ match: text, groups, index });
+    const tail = restText.slice(end - cursor);
+    items.push(head, mid, tail);
+    cursor = end;
+  });
+  return items;
+};

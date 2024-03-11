@@ -1,4 +1,4 @@
-import { UserMessage } from '@sendbird/chat/message';
+import { AdminMessage as ChatAdminMessage } from '@sendbird/chat/message';
 import styled from 'styled-components';
 
 const Root = styled.div`
@@ -38,7 +38,7 @@ const TextComponent = styled.div`
 `;
 
 type Props = {
-  message: UserMessage;
+  message: ChatAdminMessage;
 };
 
 export default function AdminMessage(props: Props) {

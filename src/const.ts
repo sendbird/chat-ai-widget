@@ -102,6 +102,8 @@ type FirstMessageItem = {
   data: MessageData;
   message: string;
 };
+type MatchString = string;
+type ReplaceString = string;
 
 export interface Constant {
   botNickName: string;
@@ -113,7 +115,7 @@ export interface Constant {
   createGroupChannelParams: CreateGroupChannelParams;
   chatBottomContent: ChatBottomContent;
   messageBottomContent: MessageBottomContent;
-  replacementTextList: string[][];
+  replacementTextList: [MatchString, ReplaceString][];
   instantConnect: boolean;
   customRefreshComponent: CustomRefreshComponent;
   customUserAgentParam: Record<any, any>;
