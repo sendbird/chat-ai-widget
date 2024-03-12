@@ -66,6 +66,12 @@ export default function ParsedBotMessageBody(props: Props) {
                 key={'token' + i}
                 patterns={[
                   {
+                    regex: markdownBoldRegex,
+                    replacer({ match, groups, index }) {
+                      return <strong key={`${match}-${index}`}>{groups[1]}</strong>;
+                    },
+                  },
+                  {
                     regex: markdownUrlRegex,
                     replacer({ match, groups, index }) {
                       return (
@@ -127,6 +133,7 @@ export default function ParsedBotMessageBody(props: Props) {
 const urlRegex =
   /(?:https?:\/\/|www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.(xn--)?[a-z]{2,20}\b([-a-zA-Z0-9@:%_+[\],.~#?&/=]*[-a-zA-Z0-9@:%_+~#?&/=])*/g;
 const markdownUrlRegex = /\[(.*?)\]\((.*?)\)/g;
+const markdownBoldRegex = /\*\*(.*?)\*\*/g;
 
 interface RegexTextPattern {
   regex: RegExp;
