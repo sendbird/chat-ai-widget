@@ -1,3 +1,12 @@
+## [v1.3.2] (Mar 12 2024)
+#### Feat:
+- Added support for simple markdown formats in bot messages
+  - Supports bold format (`**bold**`)
+  - Supports link format (`[text](url)`)
+
+#### Fix:
+- Addressed issues related to rendering bot messages
+
 ## [v1.3.1] (Mar 8 2024)
 #### Fix:
 - Hide unused button icons
