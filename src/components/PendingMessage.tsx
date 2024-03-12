@@ -21,7 +21,10 @@ const BodyContainer = styled.div`
 const BodyComponent = styled.div`
   background-color: #ffffff;
   border-radius: 16px;
-  padding: 6px 12px;
+  padding: 0 12px;
+  height: 34px;
+  display: flex;
+  align-items: center;
 `;
 
 export default function PendingMessage({

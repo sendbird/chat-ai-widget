@@ -1167,7 +1167,10 @@ See https://s-c.sh/2BAXzed for more info.`),window["__styled-components-init__"]
 `,ane=Me.div`
   background-color: #ffffff;
   border-radius: 16px;
-  padding: 6px 12px;
+  padding: 0 12px;
+  height: 34px;
+  display: flex;
+  align-items: center;
 `;function BM({botProfileUrl:e}){return H.jsxs(ine,{children:[H.jsx(sne,{children:H.jsx("img",{src:e||W0,alt:"profileImage",style:{height:"28px"}})}),H.jsx(one,{children:H.jsx(ane,{children:H.jsx(Mw,{})})})]})}const lne=Me.div`
   display: flex;
   flex-direction: column;
