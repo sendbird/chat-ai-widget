@@ -29,6 +29,9 @@ interface CustomRefreshComponent {
   style: React.CSSProperties;
 }
 
+type MatchString = string;
+type ReplaceString = string;
+
 interface ChatBottomContent {
   text: string;
   backgroundColor?: string;
@@ -42,7 +45,7 @@ export interface DemoConstant {
   suggestedMessageContent: SuggestedMessageContent;
   createGroupChannelParams: CreateGroupChannelParams;
   botNickName: string;
-  replacementTextList: string[][];
+  replacementTextList: [MatchString, ReplaceString][];
   customRefreshComponent?: Partial<CustomRefreshComponent>;
   betaMark: boolean;
   customBetaMarkText?: string;

@@ -31,18 +31,19 @@
   "dependencies": {
     "@sendbird/chat": "^4.10.1",
     "@sendbird/uikit-react": "^3.13.1",
+    "@tanstack/react-query": "^5.17.19",
     "dompurify": "^3.0.4",
     "polished": "^2.3.1",
     "react-code-blocks": "^0.1.0",
     "react-popper-tooltip": "^4.4.2",
-    "styled-components": "^5.3.11",
-    "@tanstack/react-query": "^5.17.19"
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.17.22",
+    "@types/dompurify": "^3.0.5",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@types/styled-components": "^5.1.26",
-    "@tanstack/eslint-plugin-query": "^5.17.22",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-react": "^4.0.0",
@@ -61,8 +62,8 @@
     "tslint-config-prettier": "^1.18.0",
     "typescript": "5.0.2",
     "vite": "^4.3.9",
-    "vite-plugin-svgr": "^3.2.0",
-    "vite-plugin-dts": "^3.7.0"
+    "vite-plugin-dts": "^3.7.0",
+    "vite-plugin-svgr": "^3.2.0"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",

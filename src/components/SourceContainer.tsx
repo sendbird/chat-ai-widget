@@ -56,6 +56,7 @@ export interface Source {
   title: string;
   description: string;
   language: string;
+  source_type?: string;
 }
 
 type Props = {
