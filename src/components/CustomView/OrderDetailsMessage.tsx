@@ -132,7 +132,9 @@ const OrderDetailsMessage = ({ message }: { message: FunctionCallMessage }) => {
       {orderDetails.items.map((item) => (
         <ListRow
           key={item.name}
-          icon={<ItemImageComponent image={item.image} />}
+          icon={
+            <ItemImageComponent image={item.image} width={40} height={40} />
+          }
           title={
             <ItemsText
               type={LabelTypography.BODY_1}

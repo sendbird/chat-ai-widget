@@ -3,7 +3,6 @@ import Label, {
   LabelTypography,
 } from '@sendbird/uikit-react/ui/Label';
 import { useState } from 'react';
-import BottomSheet from 'react-modal-sheet';
 import styled from 'styled-components';
 
 import { DeliveryStatusLabel } from './DeliveryStatusLabel';
@@ -12,6 +11,7 @@ import ListRow from './ListRow';
 import { useSendMessage } from '../../hooks/useSendMessage';
 import { ReactComponent as IconChevronRight } from '../../icons/icon-chevron-right.svg';
 import { ReactComponent as CloseIcon } from '../../icons/icon-close.svg';
+import BottomSheet from '../../react-modal-sheet/index';
 
 const BottomSheetContainer = styled(BottomSheet.Container)`
   padding-bottom: 16px;
@@ -112,8 +112,7 @@ const OrderHistoryBottomSheet = ({
                 <div
                   key={history.id}
                   style={{
-                    padding: '0 16px',
-                    marginBottom: 16,
+                    padding: '6px 16px',
                     cursor: 'pointer',
                     backgroundColor:
                       hoveredId === history.id ? '#f0f0f0' : 'transparent',
@@ -131,7 +130,13 @@ const OrderHistoryBottomSheet = ({
                 >
                   <ListRow
                     key={history.id}
-                    icon={<ItemImageComponent image={history.items[0].image} />}
+                    icon={
+                      <ItemImageComponent
+                        image={history.items[0].image}
+                        width={44}
+                        height={44}
+                      />
+                    }
                     title={
                       <div
                         style={{
@@ -139,10 +144,13 @@ const OrderHistoryBottomSheet = ({
                           flexDirection: 'row',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          width: '100%',
                         }}
                       >
-                        <div>
+                        <div
+                          style={{
+                            width: 269,
+                          }}
+                        >
                           <div
                             style={{
                               width: 150,
@@ -165,7 +173,7 @@ const OrderHistoryBottomSheet = ({
                         </div>
                         <div
                           style={{
-                            width: 18,
+                            width: 14,
                           }}
                         >
                           <IconChevronRight

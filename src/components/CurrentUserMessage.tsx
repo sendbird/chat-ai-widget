@@ -21,7 +21,7 @@ const BodyContainer = styled.div`
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.43;
+  line-height: 20px;
   letter-spacing: normal;
 `;
 

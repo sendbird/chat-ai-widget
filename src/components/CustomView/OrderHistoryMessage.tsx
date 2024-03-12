@@ -31,19 +31,20 @@ const ListContainer = styled.div`
   font-family: var(--sendbird-font-family-custom);
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
-  padding: 6px 0;
 `;
 
 const Bottom = styled.div`
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
-  padding: 0 12px;
+  padding: 6px 12px 12px;
 `;
 
 const SeeAllButton = styled(Button)`
   width: 100%;
   border-radius: 18px;
   height: 36px;
+  padding-top: 6px;
+  padding-bottom: 12px;
 `;
 
 const ButtonText = styled(Label)`
@@ -115,8 +116,7 @@ const OrderHistoryMessage = ({ message }: { message: FunctionCallMessage }) => {
             <div
               key={history.id}
               style={{
-                padding: '0px 12px',
-                marginBottom: 16,
+                padding: '6px 12px',
                 cursor: 'pointer',
                 backgroundColor:
                   hoveredId === history.id ? '#f0f0f0' : 'transparent',
@@ -134,7 +134,13 @@ const OrderHistoryMessage = ({ message }: { message: FunctionCallMessage }) => {
             >
               <ListRow
                 key={history.id}
-                icon={<ItemImageComponent image={history.items[0].image} />}
+                icon={
+                  <ItemImageComponent
+                    image={history.items[0].image}
+                    width={40}
+                    height={40}
+                  />
+                }
                 title={
                   <div
                     style={{
@@ -145,7 +151,11 @@ const OrderHistoryMessage = ({ message }: { message: FunctionCallMessage }) => {
                       width: '100%',
                     }}
                   >
-                    <div>
+                    <div
+                      style={{
+                        width: '150px',
+                      }}
+                    >
                       <DateText
                         type={LabelTypography.BODY_2}
                         color={LabelColors.ONBACKGROUND_2}

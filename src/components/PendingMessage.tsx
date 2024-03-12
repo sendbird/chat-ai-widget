@@ -1,16 +1,27 @@
 import styled from 'styled-components';
 
+import LoadingDots from './LoadingDots';
 import profileImage from '../icons/bot-message-image.png';
-import typingIndicatorLogo from '../icons/message-typing-indicator.gif';
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  margin-bottom: 8px;
 `;
 
 const ImageContainer = styled.div`
   width: 40px;
+`;
+
+const BodyContainer = styled.div`
+  max-width: calc(100% - 90px);
+`;
+
+const BodyComponent = styled.div`
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 6px 12px;
 `;
 
 export default function PendingMessage({
@@ -29,14 +40,11 @@ export default function PendingMessage({
           }}
         />
       </ImageContainer>
-      <img
-        src={typingIndicatorLogo}
-        alt="pending..."
-        style={{
-          height: '52px',
-          borderRadius: '16px',
-        }}
-      />
+      <BodyContainer>
+        <BodyComponent>
+          <LoadingDots />
+        </BodyComponent>
+      </BodyContainer>
     </Container>
   );
 }

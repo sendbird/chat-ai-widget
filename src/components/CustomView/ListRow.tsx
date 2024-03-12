@@ -17,7 +17,6 @@ const CenterColumn = styled.div<{ hasRightColumn: boolean }>`
   width: ${(props: { hasRightColumn: boolean }) =>
     props.hasRightColumn ? '60%' : '85%'};
   text-align: left;
-  padding-right: 4px;
 `;
 
 const RightColumn = styled.div`

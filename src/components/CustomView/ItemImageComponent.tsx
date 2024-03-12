@@ -1,14 +1,18 @@
 import { Component } from 'react';
 
-export class ItemImageComponent extends Component<{ image: string }> {
+export class ItemImageComponent extends Component<{
+  image: string;
+  width: number;
+  height: number;
+}> {
   render() {
     return (
       <img
         src={this.props.image}
         alt="item"
         style={{
-          width: 40,
-          height: 40,
+          width: this.props.width,
+          height: this.props.height,
           borderRadius: 8,
           objectFit: 'cover',
           objectPosition: 'center',
