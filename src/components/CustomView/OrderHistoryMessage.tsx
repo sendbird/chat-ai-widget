@@ -43,8 +43,10 @@ const SeeAllButton = styled(Button)`
   width: 100%;
   border-radius: 18px;
   height: 36px;
-  padding-top: 6px;
-  padding-bottom: 12px;
+
+  &:hover {
+    background-color: #44712f !important;
+  }
 `;
 
 const ButtonText = styled(Label)`
@@ -62,6 +64,7 @@ const ItemsText = styled(Label)`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 8px;
 `;
 
 interface Item {
@@ -81,7 +84,6 @@ interface HistoryItem {
 const OrderHistoryMessage = ({ message }: { message: FunctionCallMessage }) => {
   const historyList = message?.order_history as unknown as HistoryItem[];
   const [bottomSheetOpen, setBottomSheetOpen] = useState(false);
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   function getDescriptionMessage(history: HistoryItem) {
     if (history.items.length === 1) {
@@ -118,12 +120,8 @@ const OrderHistoryMessage = ({ message }: { message: FunctionCallMessage }) => {
               style={{
                 padding: '6px 12px',
                 cursor: 'pointer',
-                backgroundColor:
-                  hoveredId === history.id ? '#f0f0f0' : 'transparent',
               }}
               onClick={() => handleListRowClick(history.id)}
-              onMouseEnter={() => setHoveredId(history.id)}
-              onMouseLeave={() => setHoveredId(null)}
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {

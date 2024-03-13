@@ -1,4 +1,4 @@
-import { c as g } from "./index-a86fb353.mjs";
+import { c as g } from "./index-556f69e9.mjs";
 function H(e, t) {
   for (var o = 0; o < t.length; o++) {
     const s = t[o];
@@ -229,18 +229,18 @@ function T(e, t) {
       }).forEach(function(l) {
         var B = l.split(":"), O = B.shift().trim();
         if (O) {
-          var F = B.join(":").trim();
+          var I = B.join(":").trim();
           try {
-            u.append(O, F);
-          } catch (I) {
-            console.warn("Response " + I.message);
+            u.append(O, I);
+          } catch (C) {
+            console.warn("Response " + C.message);
           }
         }
       }), u) };
       n.url.startsWith("file://") && (r.status < 200 || r.status > 599) ? b.status = 200 : b.status = r.status, b.url = "responseURL" in r ? r.responseURL : b.headers.get("X-Request-URL");
-      var C = "response" in r ? r.response : r.responseText;
+      var F = "response" in r ? r.response : r.responseText;
       setTimeout(function() {
-        o(new f(C, b));
+        o(new f(F, b));
       }, 0);
     }, r.onerror = function() {
       setTimeout(function() {

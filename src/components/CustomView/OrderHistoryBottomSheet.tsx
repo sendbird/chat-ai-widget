@@ -2,7 +2,6 @@ import Label, {
   LabelColors,
   LabelTypography,
 } from '@sendbird/uikit-react/ui/Label';
-import { useState } from 'react';
 import styled from 'styled-components';
 
 import { DeliveryStatusLabel } from './DeliveryStatusLabel';
@@ -64,8 +63,6 @@ const OrderHistoryBottomSheet = ({
   bottomSheetOpen: boolean;
   setBottomSheetOpen: (value: boolean) => void;
 }) => {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-
   function getDescriptionMessage(history: HistoryItem) {
     if (history.items.length === 1) {
       return history.items[0].name;
@@ -112,14 +109,10 @@ const OrderHistoryBottomSheet = ({
                 <div
                   key={history.id}
                   style={{
-                    padding: '6px 16px',
+                    padding: '8px 16px',
                     cursor: 'pointer',
-                    backgroundColor:
-                      hoveredId === history.id ? '#f0f0f0' : 'transparent',
                   }}
                   onClick={() => handleListRowClick(history.id)}
-                  onMouseEnter={() => setHoveredId(history.id)}
-                  onMouseLeave={() => setHoveredId(null)}
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => {

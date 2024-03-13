@@ -51,7 +51,6 @@ const CarouselItem = styled.div`
   background: #ffffff;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
   border-radius: 8px;
 `;
 

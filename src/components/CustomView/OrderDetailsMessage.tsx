@@ -35,12 +35,20 @@ const CancelOrderButton = styled(Button)`
   width: 100%;
   border-radius: 18px;
   height: 36px;
+
+  &:hover {
+    background-color: #44712f !important;
+  }
 `;
 
 const ConnectToAnAgentButton = styled(Button)`
   width: 100%;
   border-radius: 18px;
   height: 36px;
+
+  &:hover {
+    background-color: #44712f !important;
+  }
 `;
 
 const BoldText = styled(Label)`

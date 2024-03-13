@@ -19,7 +19,7 @@ export class DeliveryStatusLabel extends Component<{ history: HistoryItem }> {
     return (
       <div
         style={{
-          borderRadius: 8,
+          borderRadius: 10,
           backgroundColor: `${
             this.props.history.status === 'Delivery Completed'
               ? '#E2FAE4'
@@ -34,8 +34,8 @@ export class DeliveryStatusLabel extends Component<{ history: HistoryItem }> {
             fontFamily: 'var(--sendbird-font-family-default)',
             fontWeight: 500,
             fontSize: 11,
-            lineHeight: '12px',
-            padding: '4px 8px',
+            lineHeight: '20px',
+            margin: '4px 8px',
             color: `${
               this.props.history.status === 'Delivery Completed'
                 ? '#084D42'

@@ -32,6 +32,10 @@ const Bottom = styled.div`
 const ConnectToAnAgentButton = styled(Button)`
   width: 100%;
   border-radius: 18px;
+
+  &:hover {
+    background-color: #44712f !important;
+  }
 `;
 
 const CancelText = styled(Label)`
@@ -91,7 +95,9 @@ const CancelOrderMessage = ({ message }: { message: FunctionCallMessage }) => {
         {orderDetails.items.map((item) => (
           <ListRow
             key={item.name}
-            icon={<ItemImageComponent image={item.image} width={40} height={40} />}
+            icon={
+              <ItemImageComponent image={item.image} width={40} height={40} />
+            }
             title={
               <>
                 <Label
