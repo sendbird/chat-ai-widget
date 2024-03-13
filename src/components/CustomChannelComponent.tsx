@@ -2,8 +2,8 @@ import { User } from '@sendbird/chat';
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus } from '@sendbird/chat/message';
 import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChannelUI';
-import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { Message } from '@sendbird/uikit-react/GroupChannel/components/Message';
+import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -17,7 +17,11 @@ import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { hideChatBottomBanner } from '../utils';
-import { getBotWelcomeMessages, groupMessagesByShortSpanTime, isStaticReplyVisible as getStaticMessageVisibility, } from '../utils/messages';
+import {
+  getBotWelcomeMessages,
+  groupMessagesByShortSpanTime,
+  isStaticReplyVisible as getStaticMessageVisibility,
+} from '../utils/messages';
 
 interface RootStyleProps {
   height: string;
@@ -130,16 +134,15 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
   const messageCount = allMessages?.length ?? 0;
 
-  const dynamicReplyOptions = (lastMessage?.extendedMessagePayload?.suggested_replies ?? []) as string[];
+  const dynamicReplyOptions = (lastMessage?.extendedMessagePayload
+    ?.suggested_replies ?? []) as string[];
 
-  const isStaticReplyVisible = useMemo(() => {
-    return getStaticMessageVisibility(
-      lastMessage ?? null,
-      botUser.userId,
-      suggestedMessageContent,
-      enableEmojiFeedback
-    );
-  }, [botUser.userId, lastMessage?.messageId, enableEmojiFeedback]);
+  const isStaticReplyVisible = getStaticMessageVisibility(
+    lastMessage ?? null,
+    botUser.userId,
+    suggestedMessageContent,
+    enableEmojiFeedback
+  );
 
   useScrollOnStreaming({
     isLastBotMessage,
@@ -218,7 +221,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 ) : isStaticReplyVisible ? (
                   <StaticRepliesPanel botUser={botUser} />
                 ) : null)}
-            </>
+            </Message>
           );
         }}
       />

@@ -130,7 +130,7 @@ export function MessageTextParser(inputString: string): Token[] {
 
 export function replaceTextExtractsMultiple(
   input: string,
-  replacements: [string, string][],
+  replacements: [string, string][]
 ): string {
   let result = input;
   for (let i = 0; i < replacements.length; i++) {
@@ -185,10 +185,10 @@ export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
   return false;
 }
 
-export const replaceWithRegex = <T,>(
+export const replaceWithRegex = <T>(
   text: string,
   regex: RegExp,
-  replacer: (params: { match: string; groups: string[]; index: number; }) => T,
+  replacer: (params: { match: string; groups: string[]; index: number }) => T
 ) => {
   const matches = [...text.matchAll(regex)];
   const founds = matches.map((value) => {
