@@ -1,12 +1,9 @@
 import { User } from '@sendbird/chat';
-import { GroupChannel } from '@sendbird/chat/groupChannel';
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus } from '@sendbird/chat/message';
-import { default as ChannelHeader } from '@sendbird/uikit-react/GroupChannel/components/GroupChannelHeader';
 import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChannelUI';
-// import SuggestedReplies from '@sendbird/uikit-react/Channel/components/SuggestedReplies';
-import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { Message } from '@sendbird/uikit-react/GroupChannel/components/Message';
+import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -16,14 +13,19 @@ import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
+import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import { hideChatBottomBanner, isSpecialMessage, scrollUtil } from '../utils';
-import { getBotWelcomeMessages, groupMessagesByShortSpanTime, isLastMessageInStreaming } from '../utils/messages';
+import { hideChatBottomBanner } from '../utils';
+import {
+  getBotWelcomeMessages,
+  groupMessagesByShortSpanTime,
+  isStaticReplyVisible as getStaticMessageVisibility,
+} from '../utils/messages';
 
 interface RootStyleProps {
   height: string;
-  isInputActive?: boolean;
+  isStaticReplyVisible: boolean;
 }
 const Root = styled.div<RootStyleProps>`
   & form {
@@ -34,6 +36,11 @@ const Root = styled.div<RootStyleProps>`
   font-family: 'Roboto', sans-serif;
   z-index: 0;
   border: none;
+
+  .sendbird-conversation__scroll-bottom-button {
+    bottom: ${({ isStaticReplyVisible }) =>
+      isStaticReplyVisible ? '65px' : '50px'};
+  }
 
   .sendbird-place-holder__body {
     display: block;
@@ -60,8 +67,7 @@ const Root = styled.div<RootStyleProps>`
     display: flex;
     align-items: center;
     .sendbird-message-input-text-field {
-      transition: ${(props: RootStyleProps) =>
-        props.isInputActive ? 'none' : 'width 0.5s'};
+      transition: width 0.5s;
       transition-timing-function: ease;
       padding: 8px 16px;
       font-size: 14px;
@@ -110,9 +116,13 @@ type CustomChannelComponentProps = {
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const { botUser } = props;
-  const { userId, suggestedMessageContent, botId } = useConstantState();
-  const { messages: allMessages, currentChannel: channel } =
-    useGroupChannelContext();
+  const { userId, suggestedMessageContent, botId, enableEmojiFeedback } =
+    useConstantState();
+  const {
+    messages: allMessages,
+    currentChannel: channel,
+    scrollToBottom,
+  } = useGroupChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
   const lastMessage = allMessages?.[allMessages?.length - 1] as
     | SendableMessage
@@ -124,22 +134,15 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
   const messageCount = allMessages?.length ?? 0;
 
-  const dynamicReplyOptions = (lastMessage?.extendedMessagePayload?.suggested_replies ?? []) as string[];
+  const dynamicReplyOptions = (lastMessage?.extendedMessagePayload
+    ?.suggested_replies ?? []) as string[];
 
-  const isMessageInStreaming = useMemo(() => {
-    return isLastMessageInStreaming(lastMessage);
-  }, [lastMessage?.data]);
-
-  const isStaticReplyVisible =
-    allMessages &&
-    messageCount > 1 &&
-    !(lastMessage?.messageType === 'admin') &&
-    lastMessage?.sender?.userId === botId &&
-    !isMessageInStreaming &&
-    !isSpecialMessage(
-      lastMessage.message,
-      suggestedMessageContent.messageFilterList
-    );
+  const isStaticReplyVisible = getStaticMessageVisibility(
+    lastMessage ?? null,
+    botUser.userId,
+    suggestedMessageContent,
+    enableEmojiFeedback
+  );
 
   useScrollOnStreaming({
     isLastBotMessage,
@@ -166,7 +169,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
       channel?.memberCount === 2
     ) {
       setActiveSpinnerId(lastMessage.messageId);
-      scrollUtil();
+      scrollToBottom();
     } else {
       setActiveSpinnerId(-1);
     }
@@ -178,23 +181,19 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   );
 
   const botWelcomeMessages = useMemo(() => {
+    if (!botId) {
+      return [];
+    }
     return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
+
   return (
-    <Root height={'100%'}>
+    <Root height={'100%'} isStaticReplyVisible={isStaticReplyVisible}>
       <ChannelUI
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
-        renderChannelHeader={() => {
-          return channel && botUser ? (
-            <CustomChannelHeader
-              botUser={botUser}
-              channel={channel as GroupChannel}
-            />
-          ) : (
-            <ChannelHeader />
-          );
-        }}
+        renderTypingIndicator={() => <></>}
+        renderChannelHeader={() => <CustomChannelHeader />}
         renderMessage={({ message, ...props }) => {
           const grouppedMessage = grouppedMessages.find(
             (m) => m.messageId == message.messageId
@@ -217,17 +216,14 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
                 messageCount={messageCount}
               />
               {message.messageId === lastMessage?.messageId &&
-                dynamicReplyOptions.length > 0 && (
+                (dynamicReplyOptions.length > 0 ? (
                   <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-                  // <SuggestedReplies
-                  //   replyOptions={dynamicReplyOptions}
-                  //   onSendMessage={({ message }) => sendMessage(message)}
-                  // />
-                )}
+                ) : isStaticReplyVisible ? (
+                  <StaticRepliesPanel botUser={botUser} />
+                ) : null)}
             </Message>
           );
         }}
-        renderTypingIndicator={() => <></>}
       />
       <Banner />
     </Root>

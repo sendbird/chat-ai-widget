@@ -29,8 +29,14 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       betaMark: props.betaMark ?? initialState.betaMark,
       customBetaMarkText:
         props.customBetaMarkText ?? initialState.customBetaMarkText,
-      suggestedMessageContent:
-        props.suggestedMessageContent ?? initialState.suggestedMessageContent,
+      suggestedMessageContent: {
+        replyContents:
+          props.suggestedMessageContent?.replyContents ??
+          initialState.suggestedMessageContent.replyContents,
+        messageFilterList:
+          props.suggestedMessageContent?.messageFilterList ??
+          initialState.suggestedMessageContent.messageFilterList,
+      },
       firstMessageData: props.firstMessageData ?? [],
       createGroupChannelParams:
         props.createGroupChannelParams ?? initialState.createGroupChannelParams,
@@ -66,6 +72,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       enableEmojiFeedback:
         props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
       enableMention: props.enableMention ?? initialState.enableMention,
+      enableMobileView: props.enableMobileView ?? initialState.enableMobileView,
     }),
     [props]
   );

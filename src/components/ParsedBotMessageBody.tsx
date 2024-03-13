@@ -68,7 +68,9 @@ export default function ParsedBotMessageBody(props: Props) {
                   {
                     regex: markdownBoldRegex,
                     replacer({ match, groups, index }) {
-                      return <strong key={`${match}-${index}`}>{groups[1]}</strong>;
+                      return (
+                        <strong key={`${match}-${index}`}>{groups[1]}</strong>
+                      );
                     },
                   },
                   {

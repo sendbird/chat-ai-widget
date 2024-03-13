@@ -17,34 +17,8 @@ export const DEFAULT_CONSTANT: Constant = {
   customBetaMarkText: 'BETA',
   suggestedMessageContent: {
     replyContents: [
-      {
-        title: 'Yes, it was helpful! 👍',
-        text: 'Thanks for your feedback! You can also build your own AI chatbot in Sendbird.',
-        buttonText: 'Try free trial',
-        link: 'https://dashboard.sendbird.com/auth/signup',
-      },
-      {
-        title: 'No, I need more help. 💬',
-        text: "I'm sorry, we couldn't help you. Let us know how we can improve by talking to one of our teammates.",
-        buttonText: 'Talk to an expert',
-        link: 'https://sendbird.com/contact-sales',
-      },
     ],
     messageFilterList: [
-      'Can you please clarify?',
-      'How can I assist you',
-      'How can I help you',
-      'Can you clarify',
-      "That's not a question I can answer unfortunately",
-      'Try again',
-      "I couldn't find the answer to your question",
-      'Can you try again?',
-      'I apologize for any confusion',
-      "I'm sorry, I couldn't understand your question",
-      "That's not a valid question",
-      'Is there a specific question you have',
-      "I'm here to help you with any questions you have",
-      'Ask away',
     ],
   },
   firstMessageData: [
@@ -88,6 +62,7 @@ export const DEFAULT_CONSTANT: Constant = {
   enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
+  enableMobileView: true,
 };
 
 type ConfigureSession = (

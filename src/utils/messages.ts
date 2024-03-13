@@ -1,5 +1,11 @@
+import { UserMessage } from '@sendbird/chat/message';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
+
+import {
+  LOCAL_MESSAGE_CUSTOM_TYPE,
+  type SuggestedMessageContent,
+} from '../const';
 
 const TIME_SPAN = 3 * 60 * 1000;
 /**
@@ -89,4 +95,44 @@ export function isLastMessageInStreaming(lastMessage: EveryMessage | null) {
   }
   const messageMetaData = JSON.parse(lastMessage.data);
   return 'stream' in messageMetaData && messageMetaData.stream;
+}
+
+export function isLocalMessageCustomType(customType: string | undefined) {
+  if (customType == undefined) {
+    return false;
+  }
+  return Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) !== -1;
+}
+
+function isSpecialMessage(
+  message: string,
+  specialMessageList: string[]
+): boolean {
+  return (
+    specialMessageList.findIndex((substr: string) => {
+      return message.includes(substr);
+    }) > -1
+  );
+}
+
+export function isStaticReplyVisible(
+  lastMessage: UserMessage | null,
+  botUserId: string,
+  suggestedMessageContent: SuggestedMessageContent,
+  enableEmojiFeedback: boolean
+) {
+  if (lastMessage == null || enableEmojiFeedback) {
+    return false;
+  }
+  return (
+    !(lastMessage.messageType === 'admin') &&
+    lastMessage.sender?.userId === botUserId &&
+    !isLastMessageInStreaming(lastMessage) &&
+    !isLocalMessageCustomType(lastMessage.customType) &&
+    suggestedMessageContent?.replyContents?.length > 0 &&
+    !isSpecialMessage(
+      lastMessage.message,
+      suggestedMessageContent.messageFilterList
+    )
+  );
 }

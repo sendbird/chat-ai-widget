@@ -1,21 +1,16 @@
 import { UserMessage } from '@sendbird/chat/message';
 import styled from 'styled-components';
 
+import { BodyComponent } from './MessageComponent';
 import { SuggestedReply } from '../const';
 
-const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 8px 12px;
-  gap: 8px;
-  border-radius: 16px;
-  background-color: #eeeeee;
+const Root = styled(BodyComponent)`
+  color: ${({ theme }) => theme.textColor.incomingMessage};
+  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
   &:hover {
-    background-color: #e0e0e0;
+    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
   }
 `;
-
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -30,7 +25,8 @@ const LinkButton = styled.a`
   align-items: center;
   padding: 0px 12px;
   height: 32px;
-  background: #6210cc;
+  background-color: ${({ theme }) => theme.bgColor.outgoingMessage};
+  color: ${({ theme }) => theme.textColor.outgoingMessage};
   border-radius: 16px;
   color: white;
   cursor: pointer;
