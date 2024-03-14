@@ -933,7 +933,7 @@ See https://s-c.sh/2BAXzed for more info.`),window["__styled-components-init__"]
 `,Lte=({message:e})=>{const n=e==null?void 0:e.order_history,[t,r]=v.useState(!1);function i(a){return a.items.length===1?a.items[0].name:`${a.items[0].name} and ${a.items.length-1} other items`}const s=Va(),o=a=>{s(`Details for Order #${a}`)};return B.jsxs("div",{style:{display:"flex",flexDirection:"column",gap:4},children:[B.jsx(Nte,{children:B.jsx(ze,{type:Fe.BODY_1,color:Le.ONBACKGROUND_1,children:"Here are your recent orders. Select each one to see it in detail."})}),B.jsxs(Mte,{children:[n.length>0&&n.slice(0,3).map(a=>B.jsx("div",{style:{padding:"6px 12px",cursor:"pointer"},onClick:()=>o(a.id),role:"button",tabIndex:0,onKeyDown:c=>{(c.key==="Enter"||c.key===" ")&&o(a.id)},children:B.jsx(Jc,{icon:B.jsx(Np,{image:a.items[0].image,width:40,height:40}),title:B.jsxs("div",{style:{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",width:"100%"},children:[B.jsxs("div",{style:{width:"150px"},children:[B.jsx(Dte,{type:Fe.BODY_2,color:Le.ONBACKGROUND_2,children:a.date}),B.jsx(Pte,{type:Fe.BODY_1,color:Le.ONBACKGROUND_1,children:i(a)}),B.jsx(bb,{history:a})]}),B.jsx(VM,{style:{width:14,height:14}})]})},a.id)},a.id)),B.jsx(Ite,{children:B.jsx(Ote,{onClick:()=>r(!0),children:B.jsx(xte,{type:Fe.BUTTON_2,color:Le.ONCONTENT_1,children:"See all"})})}),B.jsx(Ate,{historyList:n,bottomSheetOpen:t,setBottomSheetOpen:r})]})]})},Rte=Ie.div`
   display: flex;
   flex-direction: column;
-  width: 140px;
+  width: 170px;
   font-family: var(--sendbird-font-family-custom);
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
