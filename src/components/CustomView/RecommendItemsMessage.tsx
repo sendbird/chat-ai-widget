@@ -10,11 +10,11 @@ import { FunctionCallMessage } from '../../utils/messages';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 170px;
+  width: 140px;
   font-family: var(--sendbird-font-family-custom);
   background-color: var(--sendbird-light-background-50-0);
   border-radius: 16px;
-  padding: 12px;
+  padding: 6px 12px;
 `;
 
 const ItemsText = styled(Label)`
@@ -33,6 +33,7 @@ const PriceText = styled(Label)`
 const OriginalPriceText = styled(Label)`
   padding-left: 4px;
   text-decoration: line-through;
+  text-decoration-color: var(--sendbird-light-onlight-02);
 `;
 
 const CarouselContainer = styled.div`

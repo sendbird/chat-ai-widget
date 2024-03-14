@@ -136,7 +136,9 @@ const OrderDetailsMessage = ({ message }: { message: FunctionCallMessage }) => {
         </DateText>
       </div>
       <Divier />
-      <DeliveryStatusLabel history={orderDetails} />
+      <div>
+        <DeliveryStatusLabel history={orderDetails} />
+      </div>
       {orderDetails.items.map((item) => (
         <ListRow
           key={item.name}

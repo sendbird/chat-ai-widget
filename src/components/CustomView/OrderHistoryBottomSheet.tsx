@@ -9,7 +9,7 @@ import { ItemImageComponent } from './ItemImageComponent';
 import ListRow from './ListRow';
 import { useSendMessage } from '../../hooks/useSendMessage';
 import { ReactComponent as IconChevronRight } from '../../icons/icon-chevron-right.svg';
-import { ReactComponent as CloseIcon } from '../../icons/icon-close.svg';
+import { ReactComponent as CloseIcon } from '../../icons/icon-close-green.svg';
 import BottomSheet from '../../react-modal-sheet/index';
 
 const BottomSheetContainer = styled(BottomSheet.Container)`
