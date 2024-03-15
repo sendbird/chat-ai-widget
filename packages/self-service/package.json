@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf dist && tsc-silent -p './tsconfig.json' --suppress @ && vite build",
+    "build:post": "node scripts/generate-index.js",
+    "build": "rm -rf dist && tsc-silent -p './tsconfig.json' --suppress @ && vite build && npm run build:post",
     "preview": "vite preview",
     "lint": "npx eslint src",
     "lint:fix": "npm run lint -- --fix",
