@@ -10,9 +10,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: undefined,
-        // Uncomment the following line once testing is done
-        // entryFileNames: `output.js`,
-        entryFileNames: `[name].js`,
+        entryFileNames: `output.js`,
         chunkFileNames: `[name].js`,
         assetFileNames: `[name].[ext]`,
         globals: {

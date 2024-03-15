@@ -13,5 +13,5 @@ const content = `import(\`/output.js?v=${version}\`).then(() => console.log("AI 
 // For development
 fs.writeFileSync('dist/index-dev.js', content);
 
-// For production: Uncomment the following line after testing is done
-// fs.writeFileSync('dist/index.js', content);
+// For production
+fs.writeFileSync('dist/index.js', content);
