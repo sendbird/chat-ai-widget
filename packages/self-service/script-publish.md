@@ -12,7 +12,7 @@ No specific prerequisites are required.
 
 ## Common Steps
 
-1. Test the functionality locally by building this directory with `npm run build`. Utilize [embed-example.html](./embed-example.html) for testing purposes. Remember to replace `YOUR_APP_ID` and `YOUR_BOT_ID` with the actual values.
+1. Test the functionality locally by building this directory with `npm run build`. Utilize [embed-example.html](./embed-example.html) for testing purposes.
 2. Create a new tag and push it to this repository. Monitor the package build status on the [Circle CI dashboard](https://app.circleci.com/pipelines/github/sendbird/chat-ai-widget).
 3. If the Circle CI dashboard displays a green light, proceed to [gate-k8s](https://github.com/sendbird/gate-k8s) and update the `common.version` value in [this file](https://github.com/sendbird/gate-k8s/blob/main/values/aichatbot/prod.yaml) with the tag created in step 2. [This PR](https://github.com/sendbird/gate-k8s/pull/1396) might be helpful to see how you can create a PR in the gate-k8s repository.
 4. Once your PR is merged to the main branch in gate-k8s, the new script will be deployed right away.
