@@ -76,6 +76,7 @@ const commonConstants = {
       },
     ],
     messageFilterList: [
+      'Welcome',
       'Can you please clarify?',
       'How can I assist you',
       'Ask away',
@@ -102,7 +103,7 @@ const commonConstants = {
     backgroundColor:
       'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)',
   },
-  enableSourceMessage: true,
+  enableSourceMessage: false,
   enableEmojiFeedback: false,
   enableMention: false,
 };

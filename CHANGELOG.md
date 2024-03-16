@@ -1,3 +1,11 @@
+## [v1.3.3] (Mar 15 2024)
+### Feat:
+- Put the manual suggested reply component back for enhanced user interaction.
+
+### Chore:
+- Apply dynamic import for index script caching to improve performance and caching.
+- Add [self-service script publish guide](./packages/self-service/script-publish.md).
+
 ## [v1.3.2] (Mar 12 2024)
 #### Feat:
 - Added support for simple markdown formats in bot messages
