@@ -17,6 +17,7 @@ import { ReplyItem } from './DynamicRepliesPanel';
 import { LOCAL_MESSAGE_CUSTOM_TYPE, SuggestedReply } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useSendLocalMessage } from '../hooks/useSendLocalMessage';
+import { useSendMessage as useSendUserMessage } from '../hooks/useSendMessage';
 import { isLocalMessageCustomType } from '../utils/messages';
 
 const Root = styled.div`
@@ -58,6 +59,7 @@ const StaticRepliesPanel = (props: Props) => {
   const { messages, currentChannel: channel } = useGroupChannelContext();
   const lastMessage = messages?.[messages?.length - 1] as ClientUserMessage;
   const sendLocalMessage = useSendLocalMessage();
+  const sendUserMessage = useSendUserMessage();
 
   useEffect(() => {
     if (
@@ -69,7 +71,7 @@ const StaticRepliesPanel = (props: Props) => {
     }
   }, [channel?.url]);
 
-  const onClickSuggestedReply = (event: React.MouseEvent<HTMLDivElement>) => {
+  const onLocalMessageSend = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     const item: HTMLDivElement = event.currentTarget;
     const indexToRemove = Number(item.id);
@@ -90,7 +92,9 @@ const StaticRepliesPanel = (props: Props) => {
         sendingStatus: SendingStatus.SUCCEEDED,
         messageType: MessageType.USER,
         message: removedReply.text,
-        customType: LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion,
+        customType: removedReply.link
+          ? LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion
+          : null,
         reactions: [],
         plugins: [],
         data: JSON.stringify(removedReply),
@@ -101,18 +105,31 @@ const StaticRepliesPanel = (props: Props) => {
     setSuggestedReplies([]);
   };
 
+  const onUserMessageSend = (
+    event: React.MouseEvent<HTMLDivElement>,
+    message: string
+  ) => {
+    event.preventDefault();
+    sendUserMessage(message);
+    setSuggestedReplies([]);
+  };
+
   return suggestedReplies && suggestedReplies.length > 0 ? (
     <Root>
       <Panel>
-        {suggestedReplies.map((suggestedReply: SuggestedReply, i: number) => {
+        {suggestedReplies.map((item: SuggestedReply, i: number) => {
           return (
             <ReplyItem
               id={i + ''}
               key={i}
-              onClick={onClickSuggestedReply}
+              onClick={
+                item.link
+                  ? onLocalMessageSend
+                  : (event) => onUserMessageSend(event, item.title)
+              }
               isActive={true}
             >
-              {suggestedReply.title}
+              {item.title}
             </ReplyItem>
           );
         })}

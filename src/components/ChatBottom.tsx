@@ -17,15 +17,9 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
   align-items: center;
   background: ${({ theme, chatBottomBackgroundColor }) =>
     chatBottomBackgroundColor || theme.bgColor.bottomBanner};
-  color: ${({ theme }) => theme.textColor.bottomBanner.poweredBy};
+  color: white;
   flex-wrap: wrap;
   font-size: 13px;
-
-  svg {
-    path {
-      fill: ${({ theme }) => theme.textColor.bottomBanner.logo};
-    }
-  }
 `;
 
 const Highlighter = styled.a`
@@ -52,7 +46,7 @@ export default function ChatBottom() {
           chatBottomContent?.backgroundColor ?? theme === 'light'
         }
       >
-        {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
+        {chatBottomContent?.text}&nbsp;&nbsp;Powered by&nbsp;
         <Highlighter
           href="https://sendbird.com/products/chatgpt-integration"
           target="_blank"

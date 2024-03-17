@@ -105,13 +105,12 @@ export default function CustomMessage(props: Props) {
   // for static suggested replies
   if (isLocalMessageCustomType(message.customType)) {
     if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
+      const parsedData = JSON.parse(message.data);
       return (
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}
-          bodyComponent={
-            <SuggestedReplyMessageBody message={message as UserMessage} />
-          }
+          bodyComponent={<SuggestedReplyMessageBody data={parsedData} />}
         />
       );
     }

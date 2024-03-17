@@ -17,8 +17,32 @@ export const DEFAULT_CONSTANT: Constant = {
   customBetaMarkText: 'BETA',
   suggestedMessageContent: {
     replyContents: [
+      {
+        title: 'Nice, it was helpful 💜',
+        text: `I'm glad you found this helpful! Let's continue the conversation. Book time to speak live with one of our experts.`,
+        buttonText: 'Talk to an expert',
+        link: 'https://sendbird.com/contact-sales?ref=bot',
+      },
+      {
+        title: 'Hmm, more details please 🧐',
+      },
     ],
     messageFilterList: [
+      'Welcome',
+      'Can you please clarify?',
+      'How can I assist you',
+      'Ask away',
+      'How can I help you',
+      'Can you clarify',
+      "That's not a question I can answer unfortunately",
+      'Try again',
+      "I couldn't find the answer to your question",
+      'Can you try again?',
+      'I apologize for any confusion',
+      "I'm sorry, I couldn't understand your question",
+      "That's not a valid question",
+      'Is there a specific question you have',
+      "I'm here to help you with any questions you have",
     ],
   },
   firstMessageData: [
@@ -39,7 +63,9 @@ export const DEFAULT_CONSTANT: Constant = {
       'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
   },
   chatBottomContent: {
-    text: '',
+    text: 'SmartAssistant',
+    backgroundColor:
+      'linear-gradient(273.73deg, #4DCD90 -0.83%, #1870F3 48.04%, #3C7EFF 75.45%)',
   },
   messageBottomContent: {
     text: 'AI-generated response powered by OpenAI',
@@ -60,7 +86,7 @@ export const DEFAULT_CONSTANT: Constant = {
     onClick: noop,
   },
   enableSourceMessage: false,
-  enableEmojiFeedback: true,
+  enableEmojiFeedback: false,
   enableMention: true,
   enableMobileView: true,
 };

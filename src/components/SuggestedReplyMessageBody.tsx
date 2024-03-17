@@ -1,4 +1,3 @@
-import { UserMessage } from '@sendbird/chat/message';
 import styled from 'styled-components';
 
 import { BodyComponent } from './MessageComponent';
@@ -45,20 +44,28 @@ const Text = styled.div`
 `;
 
 type Props = {
-  message: UserMessage;
+  data: SuggestedReply;
 };
 
 export default function SuggestedReplyMessageBody(props: Props) {
-  const { message } = props;
-  const data: SuggestedReply = JSON.parse(message.data ?? '');
-  return (
-    <Root>
-      <Text>{data.text}</Text>
-      <ButtonContainer>
-        <LinkButton href={data.link} id={data.buttonText} target="_blank">
-          {data.buttonText}
-        </LinkButton>
-      </ButtonContainer>
-    </Root>
-  );
+  const { data } = props;
+  if (data.text && data.link && data.buttonText) {
+    return (
+      <Root>
+        <Text>{data.text}</Text>
+        <ButtonContainer>
+          <LinkButton
+            className="sendbird-link-button"
+            href={data.link}
+            id={data.buttonText}
+            target="_blank"
+          >
+            {data.buttonText}
+          </LinkButton>
+        </ButtonContainer>
+      </Root>
+    );
+  } else {
+    return null;
+  }
 }
