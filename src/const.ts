@@ -6,6 +6,7 @@ import React from 'react';
 import { ReactComponent as RefreshIcon } from './icons/refresh-icon.svg';
 import { noop, uuid } from './utils';
 
+export const MAX_Z_INDEX = 2147483647;
 const USER_ID = uuid();
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
 
@@ -16,10 +17,8 @@ export const DEFAULT_CONSTANT: Constant = {
   betaMark: false,
   customBetaMarkText: 'BETA',
   suggestedMessageContent: {
-    replyContents: [
-    ],
-    messageFilterList: [
-    ],
+    replyContents: [],
+    messageFilterList: [],
   },
   firstMessageData: [
     // {
@@ -52,11 +51,6 @@ export const DEFAULT_CONSTANT: Constant = {
     icon: RefreshIcon,
     width: '16px',
     height: '16px',
-    style: {
-      position: 'relative',
-      // FIXME: This is a hack to make the refresh icon appear next to the expand & close icons in the widget window
-      right: '60px',
-    },
     onClick: noop,
   },
   enableSourceMessage: false,

@@ -172,7 +172,9 @@ export function delay(delayTime: number): Promise<void> {
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 export function noop() {}
 
-export const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+export const isIOSMobile = /iPad|iPhone|iPod/.test(navigator.userAgent);
+export const isAndroidMobile = /Android/.test(navigator.userAgent);
+export const isMobile = isIOSMobile || isAndroidMobile;
 
 export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
   const REMOVE_POWERED_BY = 'remove_powered_by';
@@ -209,4 +211,13 @@ export const replaceWithRegex = <T>(
     cursor = end;
   });
   return items;
+};
+
+export const isEmpty = (value: any) => {
+  if (value == null) return true;
+  if (typeof value === 'boolean' || typeof value === 'number') return !value;
+  if ('length' in value) return value.length === 0;
+  if (value instanceof Object) return Object.keys(value).length === 0;
+
+  return false;
 };
