@@ -1,0 +1,19 @@
+/**
+* The following CSS rule has been added to address a specific behavior mentioned in the following Slack thread:
+* @link https://sendbird.slack.com/archives/C0585965FFA/p1708514883414479?thread_ts=1708492072.804859&cid=C0585965FFA
+*/
+#aichatbot a:empty,
+#aichatbot ul:empty,
+#aichatbot dl:empty,
+#aichatbot div:empty,
+#aichatbot section:empty,
+#aichatbot article:empty,
+#aichatbot p:empty,
+#aichatbot h1:empty,
+#aichatbot h2:empty,
+#aichatbot h3:empty,
+#aichatbot h4:empty,
+#aichatbot h5:empty,
+#aichatbot h6:empty {
+  display: block !important;
+}
