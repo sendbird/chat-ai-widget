@@ -18,10 +18,6 @@ const Text = styled.div`
   padding: 8px 12px;
   gap: 12px;
   white-space: pre-wrap;
-  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
-  &:hover {
-    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
-  }
 `;
 
 const BlockContainer = styled.div`
@@ -31,6 +27,10 @@ const BlockContainer = styled.div`
 const MultipleTokenTypeContainer = styled.div`
   border-radius: 16px;
   overflow: auto;
+  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
+  &:hover {
+    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
+  }
 `;
 
 type Props = {
@@ -121,10 +121,14 @@ export default function ParsedBotMessageBody(props: Props) {
           );
         })}
         {sources.length > 0 && enableSourceMessage ? (
-          <>
+          <div
+            style={{
+              padding: '8px 12px',
+            }}
+          >
             <SourceContainer sources={sources} />
             <BotMessageBottom />
-          </>
+          </div>
         ) : null}
       </MultipleTokenTypeContainer>
     );
