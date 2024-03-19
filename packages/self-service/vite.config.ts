@@ -13,13 +13,7 @@ export default defineConfig({
         entryFileNames: `output.js`,
         chunkFileNames: `[name].js`,
         assetFileNames: `[name].[ext]`,
-        globals: {
-          'react-code-blocks': 'ReactCodeBlocks',
-        }
       },
-      external: [
-        'react-code-blocks',
-      ],
     },
   },
 })
