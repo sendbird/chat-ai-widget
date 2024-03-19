@@ -103,7 +103,7 @@ const commonConstants = {
     backgroundColor:
       'linear-gradient(273.73deg, #4DCD90 -0.83%, #6210CC 48.04%, #6210CC 75.45%)',
   },
-  enableSourceMessage: false,
+  enableSourceMessage: true,
   enableEmojiFeedback: false,
   enableMention: false,
 };
