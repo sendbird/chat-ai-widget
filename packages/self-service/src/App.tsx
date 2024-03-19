@@ -1,4 +1,5 @@
 import '@sendbird/chat-ai-widget/dist/style.css';
+import './index.css';
 import { ChatAiWidget } from '@sendbird/chat-ai-widget';
 
 import { uuid } from './utils';
