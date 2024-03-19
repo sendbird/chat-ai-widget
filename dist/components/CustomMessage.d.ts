@@ -1,5 +1,5 @@
-/// <reference types="react" />
 import { User } from '@sendbird/chat';
+import React from 'react';
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 type Props = {
     message: EveryMessage;

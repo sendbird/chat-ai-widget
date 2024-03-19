@@ -1,0 +1,3681 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <title>AttributeError at /api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style</title>
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; }
+    h2 { margin-bottom:.8em; }
+    h2 span { font-size:80%; color:#666; font-weight:normal; }
+    h3 { margin:1em 0 .5em 0; }
+    h4 { margin:0 0 .5em 0; font-weight: normal; }
+    code, pre { font-size: 100%; white-space: pre-wrap; }
+    table { border:1px solid #ccc; border-collapse: collapse; width:100%; background:white; }
+    tbody td, tbody th { vertical-align:top; padding:2px 3px; }
+    thead th {
+      padding:1px 6px 1px 3px; background:#fefefe; text-align:left;
+      font-weight:normal; font-size:11px; border:1px solid #ddd;
+    }
+    tbody th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    table.vars { margin:5px 0 2px 40px; }
+    table.vars td, table.req td { font-family:monospace; }
+    table td.code { width:100%; }
+    table td.code pre { overflow:hidden; }
+    table.source th { color:#666; }
+    table.source td { font-family:monospace; white-space:pre; border-bottom:1px solid #eee; }
+    ul.traceback { list-style-type:none; color: #222; }
+    ul.traceback li.frame { padding-bottom:1em; color:#666; }
+    ul.traceback li.user { background-color:#e0e0e0; color:#000 }
+    div.context { padding:10px 0; overflow:hidden; }
+    div.context ol { padding-left:30px; margin:0 10px; list-style-position: inside; }
+    div.context ol li { font-family:monospace; white-space:pre; color:#777; cursor:pointer; padding-left: 2px; }
+    div.context ol li pre { display:inline; }
+    div.context ol.context-line li { color:#505050; background-color:#dfdfdf; padding: 3px 2px; }
+    div.context ol.context-line li span { position:absolute; right:32px; }
+    .user div.context ol.context-line li { background-color:#bbb; color:#000; }
+    .user div.context ol li { color:#666; }
+    div.commands { margin-left: 40px; }
+    div.commands a { color:#555; text-decoration:none; }
+    .user div.commands a { color: black; }
+    #summary { background: #ffc; }
+    #summary h2 { font-weight: normal; color: #666; }
+    #explanation { background:#eee; }
+    #template, #template-not-exist { background:#f6f6f6; }
+    #template-not-exist ul { margin: 0 0 10px 20px; }
+    #template-not-exist .postmortem-section { margin-bottom: 3px; }
+    #unicode-hint { background:#eee; }
+    #traceback { background:#eee; }
+    #requestinfo { background:#f6f6f6; padding-left:120px; }
+    #summary table { border:none; background:transparent; }
+    #requestinfo h2, #requestinfo h3 { position:relative; margin-left:-100px; }
+    #requestinfo h3 { margin-bottom:-1em; }
+    .error { background: #ffc; }
+    .specific { color:#cc3300; font-weight:bold; }
+    h2 span.commands { font-size:.7em;}
+    span.commands a:link {color:#5E5694;}
+    pre.exception_value { font-family: sans-serif; color: #666; font-size: 1.5em; margin: 10px 0 10px 0; }
+    .append-bottom { margin-bottom: 10px; }
+  </style>
+
+  <script type="text/javascript">
+    //<!--
+    function getElementsByClassName(oElm, strTagName, strClassName){
+      // Written by Jonathan Snook, http://www.snook.ca/jon; Add-ons by Robert Nyman, http://www.robertnyman.com
+      var arrElements = (strTagName == "*" && document.all)? document.all :
+        oElm.getElementsByTagName(strTagName);
+      var arrReturnElements = new Array();
+      strClassName = strClassName.replace(/\-/g, "\\-");
+      var oRegExp = new RegExp("(^|\\s)" + strClassName + "(\\s|$)");
+      var oElement;
+      for(var i=0; i<arrElements.length; i++){
+        oElement = arrElements[i];
+        if(oRegExp.test(oElement.className)){
+          arrReturnElements.push(oElement);
+        }
+      }
+      return (arrReturnElements)
+    }
+    function hideAll(elems) {
+      for (var e = 0; e < elems.length; e++) {
+        elems[e].style.display = 'none';
+      }
+    }
+    window.onload = function() {
+      hideAll(getElementsByClassName(document, 'table', 'vars'));
+      hideAll(getElementsByClassName(document, 'ol', 'pre-context'));
+      hideAll(getElementsByClassName(document, 'ol', 'post-context'));
+      hideAll(getElementsByClassName(document, 'div', 'pastebin'));
+    }
+    function toggle() {
+      for (var i = 0; i < arguments.length; i++) {
+        var e = document.getElementById(arguments[i]);
+        if (e) {
+          e.style.display = e.style.display == 'none' ? 'block': 'none';
+        }
+      }
+      return false;
+    }
+    function varToggle(link, id) {
+      toggle('v' + id);
+      var s = link.getElementsByTagName('span')[0];
+      var uarr = String.fromCharCode(0x25b6);
+      var darr = String.fromCharCode(0x25bc);
+      s.textContent = s.textContent == uarr ? darr : uarr;
+      return false;
+    }
+    function switchPastebinFriendly(link) {
+      s1 = "Switch to copy-and-paste view";
+      s2 = "Switch back to interactive view";
+      link.textContent = link.textContent.trim() == s1 ? s2: s1;
+      toggle('browserTraceback', 'pastebinTraceback');
+      return false;
+    }
+    //-->
+  </script>
+
+</head>
+<body>
+<div id="summary">
+  <h1>AttributeError at /api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style</h1>
+  <pre class="exception_value">&#39;NoneType&#39; object has no attribute &#39;is_premium_feature_granted&#39;</pre>
+  <table class="meta">
+
+    <tr>
+      <th>Request Method:</th>
+      <td>GET</td>
+    </tr>
+    <tr>
+      <th>Request URL:</th>
+      <td>http://localhost:9800/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style</td>
+    </tr>
+
+    <tr>
+      <th>Django Version:</th>
+      <td>1.11.33</td>
+    </tr>
+
+    <tr>
+      <th>Exception Type:</th>
+      <td>AttributeError</td>
+    </tr>
+
+
+    <tr>
+      <th>Exception Value:</th>
+      <td><pre>&#39;NoneType&#39; object has no attribute &#39;is_premium_feature_granted&#39;</pre></td>
+    </tr>
+
+
+    <tr>
+      <th>Exception Location:</th>
+      <td>/var/www/soda/current/api/api_views/v3/api_bot.py in api_bot_style, line 2043</td>
+    </tr>
+
+    <tr>
+      <th>Python Executable:</th>
+      <td>/usr/bin/uwsgi</td>
+    </tr>
+    <tr>
+      <th>Python Version:</th>
+      <td>3.8.12</td>
+    </tr>
+    <tr>
+      <th>Python Path:</th>
+      <td><pre>[&#39;/var/www/soda/current&#39;,
+ &#39;.&#39;,
+ &#39;&#39;,
+ &#39;/var/www/soda/current&#39;,
+ &#39;/usr/lib/pyston38.zip&#39;,
+ &#39;/usr/lib/python3.8-pyston2.3&#39;,
+ &#39;/usr/lib/python3.8-pyston2.3/lib-dynload&#39;,
+ &#39;/usr/lib/python3.8-pyston2.3/site-packages&#39;,
+ &#39;/var/www/soda/current&#39;,
+ &#39;/var/www/soda/current/ws_server/..&#39;]</pre></td>
+    </tr>
+    <tr>
+      <th>Server time:</th>
+      <td>Fri, 15 Mar 2024 02:06:52 +0000</td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+<div id="traceback">
+  <h2>Traceback <span class="commands"><a href="#" onclick="return switchPastebinFriendly(this);">
+    Switch to copy-and-paste view</a></span>
+  </h2>
+  <div id="browserTraceback">
+    <ul class="traceback">
+
+
+      <li class="frame django">
+        <code>/usr/lib/python3.8-pyston2.3/site-packages/django/core/handlers/exception.py</code> in <code>inner</code>
+
+
+        <div class="context" id="c281472830702912">
+
+          <ol start="34" class="pre-context" id="pre281472830702912">
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>    This decorator is automatically applied to all middleware to ensure that</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>    no middleware leaks an exception and that the next middleware in the stack</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>    can rely on getting a response instead of an exception.</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>    &quot;&quot;&quot;</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>    @wraps(get_response, assigned=available_attrs(get_response))</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>    def inner(request):</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>        try:</pre></li>
+
+          </ol>
+
+          <ol start="41" class="context-line">
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>
+            response = get_response(request)</pre> <span>...</span></li></ol>
+
+          <ol start='42' class="post-context" id="post281472830702912">
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>        except Exception as exc:</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>            response = response_for_exception(request, exc)</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>        return response</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre>    return inner</pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830702912', 'post281472830702912')"><pre></pre></li>
+
+          </ol>
+
+        </div>
+
+
+
+        <div class="commands">
+
+          <a href="#" onclick="return varToggle(this, '281472830702912')"><span>&#x25b6;</span> Local vars</a>
+
+        </div>
+        <table class="vars" id="v281472830702912">
+          <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>exc</td>
+            <td class="code"><pre>AttributeError(&quot;&#39;NoneType&#39; object has no attribute &#39;is_premium_feature_granted&#39;&quot;)</pre></td>
+          </tr>
+
+          <tr>
+            <td>get_response</td>
+            <td class="code"><pre>&lt;bound method BaseHandler._legacy_get_response of &lt;django.core.handlers.wsgi.WSGIHandler object at 0xffff808ba490&gt;&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>request</td>
+            <td class="code"><pre>&lt;WSGIRequest: GET &#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;&gt;</pre></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </li>
+
+
+      <li class="frame django">
+        <code>/usr/lib/python3.8-pyston2.3/site-packages/django/core/handlers/base.py</code> in <code>_legacy_get_response</code>
+
+
+        <div class="context" id="c281472830705408">
+
+          <ol start="242" class="pre-context" id="pre281472830705408">
+
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre>        # Apply request middleware</pre></li>
+
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre>        for middleware_method in self._request_middleware:</pre></li>
+
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre>            response = middleware_method(request)</pre></li>
+
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre>            if response:</pre></li>
+
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre>                break</pre></li>
+
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre>        if response is None:</pre></li>
+
+          </ol>
+
+          <ol start="249" class="context-line">
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre>
+            response = self._get_response(request)</pre> <span>...</span></li></ol>
+
+          <ol start='250' class="post-context" id="post281472830705408">
+
+            <li onclick="toggle('pre281472830705408', 'post281472830705408')"><pre>        return response</pre></li>
+
+          </ol>
+
+        </div>
+
+
+
+        <div class="commands">
+
+          <a href="#" onclick="return varToggle(this, '281472830705408')"><span>&#x25b6;</span> Local vars</a>
+
+        </div>
+        <table class="vars" id="v281472830705408">
+          <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>middleware_method</td>
+            <td class="code"><pre>&lt;function SendBirdApiMiddleware.process_request at 0xffff7e668790&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>request</td>
+            <td class="code"><pre>&lt;WSGIRequest: GET &#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>response</td>
+            <td class="code"><pre>None</pre></td>
+          </tr>
+
+          <tr>
+            <td>self</td>
+            <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0xffff808ba490&gt;</pre></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </li>
+
+
+      <li class="frame django">
+        <code>/usr/lib/python3.8-pyston2.3/site-packages/django/core/handlers/base.py</code> in <code>_get_response</code>
+
+
+        <div class="context" id="c281472830703168">
+
+          <ol start="180" class="pre-context" id="pre281472830703168">
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>                break</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>        if response is None:</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>            wrapped_callback = self.make_view_atomic(callback)</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>            try:</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>            except Exception as e:</pre></li>
+
+          </ol>
+
+          <ol start="187" class="context-line">
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>
+                response = self.process_exception_by_middleware(e, request)</pre> <span>...</span></li></ol>
+
+          <ol start='188' class="post-context" id="post281472830703168">
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>        # Complain if the view returned None (a common error).</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>        if response is None:</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>            if isinstance(callback, types.FunctionType):    # FBV</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>                view_name = callback.__name__</pre></li>
+
+            <li onclick="toggle('pre281472830703168', 'post281472830703168')"><pre>            else:                                           # CBV</pre></li>
+
+          </ol>
+
+        </div>
+
+
+
+        <div class="commands">
+
+          <a href="#" onclick="return varToggle(this, '281472830703168')"><span>&#x25b6;</span> Local vars</a>
+
+        </div>
+        <table class="vars" id="v281472830703168">
+          <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>callback</td>
+            <td class="code"><pre>&lt;function api_bot_style at 0xffff6eff6430&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>callback_args</td>
+            <td class="code"><pre>()</pre></td>
+          </tr>
+
+          <tr>
+            <td>callback_kwargs</td>
+            <td class="code"><pre>{&#39;app_id&#39;: &#39;758527E3-7DA1-419F-A488-B8AB8497243E&#39;,
+ &#39;bot_userid&#39;: &#39;imshopask&#39;,
+ &#39;version&#39;: &#39;3&#39;}</pre></td>
+          </tr>
+
+          <tr>
+            <td>middleware_method</td>
+            <td class="code"><pre>&lt;function UrlDecodeMiddleware.process_view at 0xffff7e65fc10&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>request</td>
+            <td class="code"><pre>&lt;WSGIRequest: GET &#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>resolver</td>
+            <td class="code"><pre>&lt;RegexURLResolver &#39;soda.urls&#39; (None:None) ^/&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>resolver_match</td>
+            <td class="code"><pre>ResolverMatch(func=api.api_views.v3.api_bot.api_bot_style, args=(), kwargs={&#39;version&#39;: &#39;3&#39;, &#39;bot_userid&#39;: &#39;imshopask&#39;, &#39;app_id&#39;: &#39;758527E3-7DA1-419F-A488-B8AB8497243E&#39;}, url_name=None, app_names=[&#39;api&#39;, &#39;api_v3&#39;], namespaces=[&#39;api&#39;, &#39;api_v3&#39;])</pre></td>
+          </tr>
+
+          <tr>
+            <td>response</td>
+            <td class="code"><pre>None</pre></td>
+          </tr>
+
+          <tr>
+            <td>self</td>
+            <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0xffff808ba490&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>urlconf</td>
+            <td class="code"><pre>&#39;soda.urls&#39;</pre></td>
+          </tr>
+
+          <tr>
+            <td>wrapped_callback</td>
+            <td class="code"><pre>&lt;function api_bot_style at 0xffff6d2f08b0&gt;</pre></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </li>
+
+
+      <li class="frame django">
+        <code>/usr/lib/python3.8-pyston2.3/site-packages/django/core/handlers/base.py</code> in <code>_get_response</code>
+
+
+        <div class="context" id="c281472830701952">
+
+          <ol start="178" class="pre-context" id="pre281472830701952">
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>            response = middleware_method(request, callback, callback_args, callback_kwargs)</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>            if response:</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>                break</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>        if response is None:</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>            wrapped_callback = self.make_view_atomic(callback)</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>            try:</pre></li>
+
+          </ol>
+
+          <ol start="185" class="context-line">
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>
+                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre> <span>...</span></li></ol>
+
+          <ol start='186' class="post-context" id="post281472830701952">
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>            except Exception as e:</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>                response = self.process_exception_by_middleware(e, request)</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>        # Complain if the view returned None (a common error).</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>        if response is None:</pre></li>
+
+            <li onclick="toggle('pre281472830701952', 'post281472830701952')"><pre>            if isinstance(callback, types.FunctionType):    # FBV</pre></li>
+
+          </ol>
+
+        </div>
+
+
+
+        <div class="commands">
+
+          <a href="#" onclick="return varToggle(this, '281472830701952')"><span>&#x25b6;</span> Local vars</a>
+
+        </div>
+        <table class="vars" id="v281472830701952">
+          <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>callback</td>
+            <td class="code"><pre>&lt;function api_bot_style at 0xffff6eff6430&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>callback_args</td>
+            <td class="code"><pre>()</pre></td>
+          </tr>
+
+          <tr>
+            <td>callback_kwargs</td>
+            <td class="code"><pre>{&#39;app_id&#39;: &#39;758527E3-7DA1-419F-A488-B8AB8497243E&#39;,
+ &#39;bot_userid&#39;: &#39;imshopask&#39;,
+ &#39;version&#39;: &#39;3&#39;}</pre></td>
+          </tr>
+
+          <tr>
+            <td>middleware_method</td>
+            <td class="code"><pre>&lt;function UrlDecodeMiddleware.process_view at 0xffff7e65fc10&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>request</td>
+            <td class="code"><pre>&lt;WSGIRequest: GET &#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>resolver</td>
+            <td class="code"><pre>&lt;RegexURLResolver &#39;soda.urls&#39; (None:None) ^/&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>resolver_match</td>
+            <td class="code"><pre>ResolverMatch(func=api.api_views.v3.api_bot.api_bot_style, args=(), kwargs={&#39;version&#39;: &#39;3&#39;, &#39;bot_userid&#39;: &#39;imshopask&#39;, &#39;app_id&#39;: &#39;758527E3-7DA1-419F-A488-B8AB8497243E&#39;}, url_name=None, app_names=[&#39;api&#39;, &#39;api_v3&#39;], namespaces=[&#39;api&#39;, &#39;api_v3&#39;])</pre></td>
+          </tr>
+
+          <tr>
+            <td>response</td>
+            <td class="code"><pre>None</pre></td>
+          </tr>
+
+          <tr>
+            <td>self</td>
+            <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0xffff808ba490&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>urlconf</td>
+            <td class="code"><pre>&#39;soda.urls&#39;</pre></td>
+          </tr>
+
+          <tr>
+            <td>wrapped_callback</td>
+            <td class="code"><pre>&lt;function api_bot_style at 0xffff6d2f08b0&gt;</pre></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </li>
+
+
+      <li class="frame user">
+        <code>/usr/lib/python3.8-pyston2.3/site-packages/sentry_sdk/integrations/django/views.py</code> in <code>sentry_wrapped_callback</code>
+
+
+        <div class="context" id="c281472830649408">
+
+          <ol start="61" class="pre-context" id="pre281472830649408">
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>    # type: (Hub, Any) -&gt; Any</pre></li>
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>    @_functools.wraps(callback)</pre></li>
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>    def sentry_wrapped_callback(request, *args, **kwargs):</pre></li>
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>        # type: (Any, *Any, **Any) -&gt; Any</pre></li>
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>        with hub.start_span(</pre></li>
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>            op=OP.VIEW_RENDER, description=request.resolver_match.view_name</pre></li>
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>        ):</pre></li>
+
+          </ol>
+
+          <ol start="68" class="context-line">
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>
+            return callback(request, *args, **kwargs)</pre> <span>...</span></li></ol>
+
+          <ol start='69' class="post-context" id="post281472830649408">
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830649408', 'post281472830649408')"><pre>    return sentry_wrapped_callback</pre></li>
+
+          </ol>
+
+        </div>
+
+
+
+        <div class="commands">
+
+          <a href="#" onclick="return varToggle(this, '281472830649408')"><span>&#x25b6;</span> Local vars</a>
+
+        </div>
+        <table class="vars" id="v281472830649408">
+          <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>args</td>
+            <td class="code"><pre>()</pre></td>
+          </tr>
+
+          <tr>
+            <td>callback</td>
+            <td class="code"><pre>&lt;function api_bot_style at 0xffff6eff6430&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>hub</td>
+            <td class="code"><pre>&lt;sentry_sdk.hub.Hub object at 0xffff6d141be0&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>kwargs</td>
+            <td class="code"><pre>{&#39;app_id&#39;: &#39;758527E3-7DA1-419F-A488-B8AB8497243E&#39;,
+ &#39;bot_userid&#39;: &#39;imshopask&#39;,
+ &#39;version&#39;: &#39;3&#39;}</pre></td>
+          </tr>
+
+          <tr>
+            <td>request</td>
+            <td class="code"><pre>&lt;WSGIRequest: GET &#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;&gt;</pre></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </li>
+
+
+      <li class="frame django">
+        <code>/usr/lib/python3.8-pyston2.3/site-packages/django/views/decorators/http.py</code> in <code>inner</code>
+
+
+        <div class="context" id="c281472830788224">
+
+          <ol start="33" class="pre-context" id="pre281472830788224">
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>        def inner(request, *args, **kwargs):</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>            if request.method not in request_method_list:</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>                logger.warning(</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>                    &#39;Method Not Allowed (%s): %s&#39;, request.method, request.path,</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>                    extra={&#39;status_code&#39;: 405, &#39;request&#39;: request}</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>                )</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>                return HttpResponseNotAllowed(request_method_list)</pre></li>
+
+          </ol>
+
+          <ol start="40" class="context-line">
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>
+            return func(request, *args, **kwargs)</pre> <span>...</span></li></ol>
+
+          <ol start='41' class="post-context" id="post281472830788224">
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>        return inner</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>    return decorator</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>require_GET = require_http_methods([&quot;GET&quot;])</pre></li>
+
+            <li onclick="toggle('pre281472830788224', 'post281472830788224')"><pre>require_GET.__doc__ = &quot;Decorator to require that a view only accepts the GET method.&quot;</pre></li>
+
+          </ol>
+
+        </div>
+
+
+
+        <div class="commands">
+
+          <a href="#" onclick="return varToggle(this, '281472830788224')"><span>&#x25b6;</span> Local vars</a>
+
+        </div>
+        <table class="vars" id="v281472830788224">
+          <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>args</td>
+            <td class="code"><pre>()</pre></td>
+          </tr>
+
+          <tr>
+            <td>func</td>
+            <td class="code"><pre>&lt;function api_bot_style at 0xffff6eff63a0&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>kwargs</td>
+            <td class="code"><pre>{&#39;app_id&#39;: &#39;758527E3-7DA1-419F-A488-B8AB8497243E&#39;,
+ &#39;bot_userid&#39;: &#39;imshopask&#39;,
+ &#39;version&#39;: &#39;3&#39;}</pre></td>
+          </tr>
+
+          <tr>
+            <td>request</td>
+            <td class="code"><pre>&lt;WSGIRequest: GET &#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>request_method_list</td>
+            <td class="code"><pre>[&#39;GET&#39;]</pre></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </li>
+
+
+      <li class="frame user">
+        <code>/var/www/soda/current/api/api_views/v3/api_bot.py</code> in <code>api_bot_style</code>
+
+
+        <div class="context" id="c281472830791040">
+
+          <ol start="2036" class="pre-context" id="pre281472830791040">
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>    logger.exception(&#39;POST Bot DEMO Exception&#39;)</pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>    raise InternalApiError(&#39;POST Bot DEMO&#39;)</pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>@require_http_methods([&#39;GET&#39;])</pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>def api_bot_style(request, version, app_id, bot_userid):</pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>  application = Application.get_cached_application_by_app_id(app_id)</pre></li>
+
+          </ol>
+
+          <ol start="2043" class="context-line">
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>
+  if not application.is_premium_feature_granted(ApplicationPlan.KEY_BOT_INTERFACE):</pre> <span>...</span></li></ol>
+
+          <ol start='2044' class="post-context" id="post281472830791040">
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>    raise NotAuthorized(&#39;Bot interface is a premium feature&#39;)</pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre></pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>  bot = BotUser.get_by_bot_userid(Profile.make_global_guest_id(application, bot_userid), bot_version=3)</pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>  if not bot or bot.user.profile.app_id != application.app_id:</pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre>    raise NotFound(&#39;Bot&#39;)</pre></li>
+
+            <li onclick="toggle('pre281472830791040', 'post281472830791040')"><pre></pre></li>
+
+          </ol>
+
+        </div>
+
+
+
+        <div class="commands">
+
+          <a href="#" onclick="return varToggle(this, '281472830791040')"><span>&#x25b6;</span> Local vars</a>
+
+        </div>
+        <table class="vars" id="v281472830791040">
+          <thead>
+          <tr>
+            <th>Variable</th>
+            <th>Value</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr>
+            <td>app_id</td>
+            <td class="code"><pre>&#39;758527E3-7DA1-419F-A488-B8AB8497243E&#39;</pre></td>
+          </tr>
+
+          <tr>
+            <td>application</td>
+            <td class="code"><pre>None</pre></td>
+          </tr>
+
+          <tr>
+            <td>bot_userid</td>
+            <td class="code"><pre>&#39;imshopask&#39;</pre></td>
+          </tr>
+
+          <tr>
+            <td>request</td>
+            <td class="code"><pre>&lt;WSGIRequest: GET &#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;&gt;</pre></td>
+          </tr>
+
+          <tr>
+            <td>version</td>
+            <td class="code"><pre>&#39;3&#39;</pre></td>
+          </tr>
+
+          </tbody>
+        </table>
+
+      </li>
+
+    </ul>
+  </div>
+  <form action="http://dpaste.com/" name="pasteform" id="pasteform" method="post">
+
+    <div id="pastebinTraceback" class="pastebin">
+      <input type="hidden" name="language" value="PythonConsole">
+      <input type="hidden" name="title"
+             value="AttributeError at /api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style">
+      <input type="hidden" name="source" value="Django Dpaste Agent">
+      <input type="hidden" name="poster" value="Django">
+      <textarea name="content" id="traceback_area" cols="140" rows="25">
+Environment:
+
+
+Request Method: GET
+Request URL: http://localhost:9800/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style
+
+Django Version: 1.11.33
+Python Version: 3.8.12
+Installed Applications:
+[&#39;django.contrib.auth&#39;,
+ &#39;django.contrib.contenttypes&#39;,
+ &#39;django.contrib.sessions&#39;,
+ &#39;django.contrib.messages&#39;,
+ &#39;django.contrib.humanize&#39;,
+ &#39;django_extensions&#39;,
+ &#39;django_hosts&#39;,
+ &#39;main&#39;,
+ &#39;ws_server&#39;,
+ &#39;sbrouting&#39;,
+ &#39;dapi&#39;,
+ &#39;push&#39;,
+ &#39;django_mysql&#39;,
+ &#39;soju&#39;,
+ &#39;friend&#39;,
+ &#39;notification&#39;,
+ &#39;llm&#39;]
+Installed Middleware:
+(&#39;api.api_middleware.authentication_middleware.AuthenticationMiddleware&#39;,
+ &#39;api.api_middleware.authorization_middleware.AuthorizationMiddleware&#39;,
+ &#39;api.api_middleware.speed_limit_middleware.AccessLimitMiddleware&#39;,
+ &#39;api.api_middleware.speed_limit_middleware.SpeedLimitMiddleware&#39;,
+ &#39;django_hosts.middleware.HostsRequestMiddleware&#39;,
+ &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+ &#39;django.middleware.common.CommonMiddleware&#39;,
+ &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+ &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+ &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+ &#39;api.api_middleware.logging_middleware.LoggingMiddleware&#39;,
+ &#39;django_hosts.middleware.HostsResponseMiddleware&#39;,
+ &#39;api.api_middleware.url_decoder_middleware.UrlDecodeMiddleware&#39;,
+ &#39;api.api_middleware.api_middleware.SendBirdApiMiddleware&#39;)
+
+
+
+Traceback:
+
+File "/usr/lib/python3.8-pyston2.3/site-packages/django/core/handlers/exception.py" in inner
+  41.             response = get_response(request)
+
+File "/usr/lib/python3.8-pyston2.3/site-packages/django/core/handlers/base.py" in _legacy_get_response
+  249.             response = self._get_response(request)
+
+File "/usr/lib/python3.8-pyston2.3/site-packages/django/core/handlers/base.py" in _get_response
+  187.                 response = self.process_exception_by_middleware(e, request)
+
+File "/usr/lib/python3.8-pyston2.3/site-packages/django/core/handlers/base.py" in _get_response
+  185.                 response = wrapped_callback(request, *callback_args, **callback_kwargs)
+
+File "/usr/lib/python3.8-pyston2.3/site-packages/sentry_sdk/integrations/django/views.py" in sentry_wrapped_callback
+  68.             return callback(request, *args, **kwargs)
+
+File "/usr/lib/python3.8-pyston2.3/site-packages/django/views/decorators/http.py" in inner
+  40.             return func(request, *args, **kwargs)
+
+File "/var/www/soda/current/api/api_views/v3/api_bot.py" in api_bot_style
+  2043.   if not application.is_premium_feature_granted(ApplicationPlan.KEY_BOT_INTERFACE):
+
+Exception Type: AttributeError at /api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style
+Exception Value: &#39;NoneType&#39; object has no attribute &#39;is_premium_feature_granted&#39;
+</textarea>
+      <br><br>
+      <input type="submit" value="Share this traceback on a public website">
+    </div>
+  </form>
+</div>
+
+
+
+<div id="requestinfo">
+  <h2>Request information</h2>
+
+
+
+  <h3 id="user-info">USER</h3>
+  <p>AnonymousUser</p>
+
+
+  <h3 id="get-info">GET</h3>
+
+  <p>No GET data</p>
+
+
+  <h3 id="post-info">POST</h3>
+
+  <p>No POST data</p>
+
+  <h3 id="files-info">FILES</h3>
+
+  <p>No FILES data</p>
+
+
+
+  <h3 id="cookie-info">COOKIES</h3>
+
+  <p>No cookie data</p>
+
+
+  <h3 id="meta-info">META</h3>
+  <table class="req">
+    <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <td>CONTENT_LENGTH</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CONTENT_TYPE</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DOCUMENT_ROOT</td>
+      <td class="code"><pre>&#39;/etc/nginx/html&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_ACCEPT</td>
+      <td class="code"><pre>&#39;*/*&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_ACCEPT_ENCODING</td>
+      <td class="code"><pre>&#39;gzip, deflate, br, zstd&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_ACCEPT_LANGUAGE</td>
+      <td class="code"><pre>&#39;ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ar;q=0.6&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_CONNECTION</td>
+      <td class="code"><pre>&#39;keep-alive&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_HOST</td>
+      <td class="code"><pre>&#39;localhost:9800&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_ORIGIN</td>
+      <td class="code"><pre>&#39;http://localhost:5173&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_REFERER</td>
+      <td class="code"><pre>&#39;http://localhost:5173/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_SEC_CH_UA</td>
+      <td class="code"><pre>&#39;&quot;Chromium&quot;;v=&quot;122&quot;, &quot;Not(A:Brand&quot;;v=&quot;24&quot;, &quot;Google Chrome&quot;;v=&quot;122&quot;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_SEC_CH_UA_MOBILE</td>
+      <td class="code"><pre>&#39;?0&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_SEC_CH_UA_PLATFORM</td>
+      <td class="code"><pre>&#39;&quot;macOS&quot;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_SEC_FETCH_DEST</td>
+      <td class="code"><pre>&#39;empty&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_SEC_FETCH_MODE</td>
+      <td class="code"><pre>&#39;cors&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_SEC_FETCH_SITE</td>
+      <td class="code"><pre>&#39;same-site&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HTTP_USER_AGENT</td>
+      <td class="code"><pre>(&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, &#39;
+ &#39;like Gecko) Chrome/122.0.0.0 Safari/537.36&#39;)</pre></td>
+    </tr>
+
+    <tr>
+      <td>PATH_INFO</td>
+      <td class="code"><pre>&#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>QUERY_STRING</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>REMOTE_ADDR</td>
+      <td class="code"><pre>&#39;172.18.0.1&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>REMOTE_PORT</td>
+      <td class="code"><pre>&#39;57924&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>REQUEST_METHOD</td>
+      <td class="code"><pre>&#39;GET&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>REQUEST_SCHEME</td>
+      <td class="code"><pre>&#39;http&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>REQUEST_URI</td>
+      <td class="code"><pre>&#39;/api/v3/bots/imshopask/758527E3-7DA1-419F-A488-B8AB8497243E/bot_style&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SCRIPT_NAME</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SERVER_NAME</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SERVER_PORT</td>
+      <td class="code"><pre>&#39;9800&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SERVER_PROTOCOL</td>
+      <td class="code"><pre>&#39;HTTP/1.1&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>uwsgi.core</td>
+      <td class="code"><pre>99</pre></td>
+    </tr>
+
+    <tr>
+      <td>uwsgi.node</td>
+      <td class="code"><pre>b&#39;d2798ee8aa3d&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>uwsgi.version</td>
+      <td class="code"><pre>b&#39;2.0.19.2&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>wsgi.errors</td>
+      <td class="code"><pre>&lt;_io.TextIOWrapper name=2 mode=&#39;w&#39; encoding=&#39;UTF-8&#39;&gt;</pre></td>
+    </tr>
+
+    <tr>
+      <td>wsgi.file_wrapper</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>wsgi.input</td>
+      <td class="code"><pre>&lt;uwsgi._Input object at 0xffff800ec2b0&gt;</pre></td>
+    </tr>
+
+    <tr>
+      <td>wsgi.multiprocess</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>wsgi.multithread</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>wsgi.run_once</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>wsgi.url_scheme</td>
+      <td class="code"><pre>&#39;http&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>wsgi.version</td>
+      <td class="code"><pre>(1, 0)</pre></td>
+    </tr>
+
+    <tr>
+      <td>x-wsgiorg.fdevent.readable</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>x-wsgiorg.fdevent.timeout</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>x-wsgiorg.fdevent.writable</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    </tbody>
+  </table>
+
+
+  <h3 id="settings-info">Settings</h3>
+  <h4>Using settings module <code>soda.settings</code></h4>
+  <table class="req">
+    <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <td>AAMETRIC_APPLICATION_PK_INDEX</td>
+      <td class="code"><pre>&#39;main_aametrics_application_pk_d4a84f8a_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>ABSOLUTE_URL_OVERRIDES</td>
+      <td class="code"><pre>{}</pre></td>
+    </tr>
+
+    <tr>
+      <td>ADMINS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>ALLOWED_HOSTS</td>
+      <td class="code"><pre>[&#39;*&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>ANNOUNCEMENT_SCHEDULE_INDEX</td>
+      <td class="code"><pre>&#39;main_announcementv2_status_priority_scheduled_at_aff463d7_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>API_URL</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>APM_ENV</td>
+      <td class="code"><pre>&#39;test-local&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>APNS_RETRY</td>
+      <td class="code"><pre>0</pre></td>
+    </tr>
+
+    <tr>
+      <td>APPEND_SLASH</td>
+      <td class="code"><pre>True</pre></td>
+    </tr>
+
+    <tr>
+      <td>ASYNC_CLOSE_GREENLET_COUNT</td>
+      <td class="code"><pre>32</pre></td>
+    </tr>
+
+    <tr>
+      <td>AUTHENTICATION_BACKENDS</td>
+      <td class="code"><pre>(&#39;django.contrib.auth.backends.ModelBackend&#39;,)</pre></td>
+    </tr>
+
+    <tr>
+      <td>AUTH_PASSWORD_VALIDATORS</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AUTH_USER_MODEL</td>
+      <td class="code"><pre>&#39;auth.User&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_ACCESS_PRESIGNED_URL</td>
+      <td class="code"><pre>&#39;AKIAUYMBXXEN5TQORF7Y&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_DELAYED_PUSH_END_POINT</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_DELAYED_TASK_END_POINT</td>
+      <td class="code"><pre>&#39;http://localstack.:4566/000000000000/delay_queue&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_LAMBDA_PUSH_END_POINT</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_OMEGA_SQS_ENDPOINT</td>
+      <td class="code"><pre>&#39;http://localstack.:4566/000000000000/omega_queue&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_R53_SENDBIRD_ZONE</td>
+      <td class="code"><pre>&#39;sendbird.com&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_R53_SENDBIRD_ZONE_ID</td>
+      <td class="code"><pre>&#39;Z2AZBZDRTWUEGW&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_REGION</td>
+      <td class="code"><pre>&#39;ap-northeast-1&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_S3_BUCKET</td>
+      <td class="code"><pre>&#39;sendbird-temp-localstack&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_S3_ENDPOINT</td>
+      <td class="code"><pre>&#39;http://localstack.:4566&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_S3_HOST</td>
+      <td class="code"><pre>&#39;http://localstack.:4566/sendbird-temp-localstack/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_SECONDARY_LAMBDA_PUSH_END_POINT</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AWS_SECRET_PRESIGNED_URL</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AZURE_OPENAI_API_ENDPOINT</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AZURE_OPENAI_API_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>AZURE_OPENAI_API_VERSION</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>BASE_DIR</td>
+      <td class="code"><pre>&#39;/var/www/soda/current/.&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>BASIC_LIST_USER_INDEX</td>
+      <td class="code"><pre>&#39;main_profile_f382adfe&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>BOT_CALLBACK_TIMEOUT</td>
+      <td class="code"><pre>2</pre></td>
+    </tr>
+
+    <tr>
+      <td>BOT_PRIVACY_MODE_TAG</td>
+      <td class="code"><pre>&#39;/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CACHES</td>
+      <td class="code"><pre>{&#39;default&#39;: {&#39;BACKEND&#39;: &#39;django.core.cache.backends.locmem.LocMemCache&#39;}}</pre></td>
+    </tr>
+
+    <tr>
+      <td>CACHE_MIDDLEWARE_ALIAS</td>
+      <td class="code"><pre>&#39;default&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CACHE_MIDDLEWARE_KEY_PREFIX</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CACHE_MIDDLEWARE_SECONDS</td>
+      <td class="code"><pre>600</pre></td>
+    </tr>
+
+    <tr>
+      <td>CCU_UPDATE_SECONDS</td>
+      <td class="code"><pre>3</pre></td>
+    </tr>
+
+    <tr>
+      <td>CELERYD_TASK_TIME_LIMIT</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHANNEL_OPERATOR_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_channeloperator_application_id_30afa943ce43e149_uniq&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHANNEL_UNREAD_CNT_UNIQ_INDEX</td>
+      <td class="code"><pre>&#39;main_messagingchannellist_user_id_5c6f4a35ca660f33_uniq&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHANNEL_USER_BAN_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_channeluserban_application_id_390ca3f0196546e2_uniq&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_ANNOUNCEMENT_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_channel_id_6cf5bf9495250faa_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_APP_TS_CUSTOM_TYPE_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_application_id_436be403ea34924_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_APP_TS_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_ts_214265cdedd4296c_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_BASIC_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_channel_id_b12cf882455f9f3_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_CHANGELOG_APPLICATION_ID_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_change_ts_1798e8a1_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_CHANGELOG_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_channel_id_394931962fd3da1d_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_CHANGELOG_USER_ID_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_channel_id_78041ba0b2d9f922_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_CHANNEL_ID_TS_CUSTOM_TYPE_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_channel_id_49e46748ea7b6fc2_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_CHANNEL_ID_TS_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_channel_id_b12cf882455f9f3_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_TS_CUSTOM_TYPE_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_channel_id_49e46748ea7b6fc2_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_MESSAGE_TS_USER_ID_INDEX</td>
+      <td class="code"><pre>&#39;main_chatmessage_channel_id_55b892c31308ede_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CHAT_PROD_ROUTE53_ACCESS_ARN</td>
+      <td class="code"><pre>&#39;arn:aws:iam::391396433657:role/sendbird-dot-com-remote-access-chat-prod&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>COMPONENT</td>
+      <td class="code"><pre>&#39;api&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CONN_MAX_AGE</td>
+      <td class="code"><pre>0</pre></td>
+    </tr>
+
+    <tr>
+      <td>COUNT_OPTION_INDEX</td>
+      <td class="code"><pre>&#39;main_messagingchannellist_user_id_44927fad2c548742_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_COOKIE_AGE</td>
+      <td class="code"><pre>31449600</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_COOKIE_DOMAIN</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_COOKIE_HTTPONLY</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_COOKIE_NAME</td>
+      <td class="code"><pre>&#39;csrftoken&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_COOKIE_PATH</td>
+      <td class="code"><pre>&#39;/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_COOKIE_SECURE</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_FAILURE_VIEW</td>
+      <td class="code"><pre>&#39;django.views.csrf.csrf_failure&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_HEADER_NAME</td>
+      <td class="code"><pre>&#39;HTTP_X_CSRFTOKEN&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_TRUSTED_ORIGINS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>CSRF_USE_SESSIONS</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>DATABASES</td>
+      <td class="code"><pre>{&#39;default&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+             &#39;AUTOCOMMIT&#39;: True,
+             &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+             &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+             &#39;CONN_MAX_AGE&#39;: 0,
+             &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+             &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+             &#39;NAME&#39;: &#39;circle_test&#39;,
+             &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                         &#39;isolation_level&#39;: &#39;read committed&#39;,
+                         &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+             &#39;PASSWORD&#39;: &#39;********************&#39;,
+             &#39;PORT&#39;: &#39;&#39;,
+             &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                      &#39;COLLATION&#39;: None,
+                      &#39;MIRROR&#39;: None,
+                      &#39;NAME&#39;: None},
+             &#39;TIME_ZONE&#39;: None,
+             &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-0&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_0&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-1&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_1&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-10&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_10&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-11&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_11&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-12&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_12&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-13&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_13&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-14&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_14&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-15&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_15&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-2&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_2&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-3&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_3&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-4&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_4&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-5&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_5&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-6&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_6&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-7&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_7&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-8&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_8&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-m-shard-9&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_master.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_9&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_master.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-0&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_0&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-1&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_1&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-10&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_10&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-11&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_11&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-12&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_12&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-13&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_13&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-14&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_14&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-15&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                      &#39;AUTOCOMMIT&#39;: True,
+                      &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                      &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                      &#39;CONN_MAX_AGE&#39;: 0,
+                      &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                      &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                      &#39;NAME&#39;: &#39;notifications_15&#39;,
+                      &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                  &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                  &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                      &#39;PASSWORD&#39;: &#39;********************&#39;,
+                      &#39;PORT&#39;: &#39;&#39;,
+                      &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                               &#39;COLLATION&#39;: None,
+                               &#39;MIRROR&#39;: None,
+                               &#39;NAME&#39;: None},
+                      &#39;TIME_ZONE&#39;: None,
+                      &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-2&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_2&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-3&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_3&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-4&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_4&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-5&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_5&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-6&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_6&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-7&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_7&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-8&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_8&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;notif-s-shard-9&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                     &#39;AUTOCOMMIT&#39;: True,
+                     &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                     &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                     &#39;CONN_MAX_AGE&#39;: 0,
+                     &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                     &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+                     &#39;NAME&#39;: &#39;notifications_9&#39;,
+                     &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                 &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                 &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+                     &#39;PASSWORD&#39;: &#39;********************&#39;,
+                     &#39;PORT&#39;: &#39;&#39;,
+                     &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                              &#39;COLLATION&#39;: None,
+                              &#39;MIRROR&#39;: None,
+                              &#39;NAME&#39;: None},
+                     &#39;TIME_ZONE&#39;: None,
+                     &#39;USER&#39;: &#39;root&#39;},
+ &#39;production-replica&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+                        &#39;AUTOCOMMIT&#39;: True,
+                        &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+                        &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+                        &#39;CONN_MAX_AGE&#39;: 0,
+                        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+                        &#39;HOST&#39;: &#39;/tmp/proxysql_prod_replica.sock&#39;,
+                        &#39;NAME&#39;: &#39;circle_test&#39;,
+                        &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                                    &#39;isolation_level&#39;: &#39;read committed&#39;,
+                                    &#39;unix_socket&#39;: &#39;/tmp/proxysql_prod_replica.sock&#39;},
+                        &#39;PASSWORD&#39;: &#39;********************&#39;,
+                        &#39;PORT&#39;: &#39;&#39;,
+                        &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                                 &#39;COLLATION&#39;: None,
+                                 &#39;MIRROR&#39;: None,
+                                 &#39;NAME&#39;: None},
+                        &#39;TIME_ZONE&#39;: None,
+                        &#39;USER&#39;: &#39;root&#39;},
+ &#39;replica1&#39;: {&#39;ATOMIC_REQUESTS&#39;: False,
+              &#39;AUTOCOMMIT&#39;: True,
+              &#39;CHARSET&#39;: &#39;utf8mb4&#39;,
+              &#39;COLLATION&#39;: &#39;utf8mb4_bin&#39;,
+              &#39;CONN_MAX_AGE&#39;: 0,
+              &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+              &#39;HOST&#39;: &#39;/tmp/proxysql_replica.sock&#39;,
+              &#39;NAME&#39;: &#39;circle_test&#39;,
+              &#39;OPTIONS&#39;: {&#39;charset&#39;: &#39;utf8mb4&#39;,
+                          &#39;isolation_level&#39;: &#39;read committed&#39;,
+                          &#39;unix_socket&#39;: &#39;/tmp/proxysql_replica.sock&#39;},
+              &#39;PASSWORD&#39;: &#39;********************&#39;,
+              &#39;PORT&#39;: &#39;&#39;,
+              &#39;TEST&#39;: {&#39;CHARSET&#39;: None,
+                       &#39;COLLATION&#39;: None,
+                       &#39;MIRROR&#39;: None,
+                       &#39;NAME&#39;: None},
+              &#39;TIME_ZONE&#39;: None,
+              &#39;USER&#39;: &#39;root&#39;}}</pre></td>
+    </tr>
+
+    <tr>
+      <td>DATABASE_ROUTERS</td>
+      <td class="code"><pre>[&#39;common.router.DBReplicationRouter&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>DATA_UPLOAD_MAX_MEMORY_SIZE</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>DATA_UPLOAD_MAX_NUMBER_FIELDS</td>
+      <td class="code"><pre>1000</pre></td>
+    </tr>
+
+    <tr>
+      <td>DATETIME_FORMAT</td>
+      <td class="code"><pre>&#39;N j, Y, P&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DATETIME_INPUT_FORMATS</td>
+      <td class="code"><pre>[&#39;%Y-%m-%d %H:%M:%S&#39;,
+ &#39;%Y-%m-%d %H:%M:%S.%f&#39;,
+ &#39;%Y-%m-%d %H:%M&#39;,
+ &#39;%Y-%m-%d&#39;,
+ &#39;%m/%d/%Y %H:%M:%S&#39;,
+ &#39;%m/%d/%Y %H:%M:%S.%f&#39;,
+ &#39;%m/%d/%Y %H:%M&#39;,
+ &#39;%m/%d/%Y&#39;,
+ &#39;%m/%d/%y %H:%M:%S&#39;,
+ &#39;%m/%d/%y %H:%M:%S.%f&#39;,
+ &#39;%m/%d/%y %H:%M&#39;,
+ &#39;%m/%d/%y&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>DATE_FORMAT</td>
+      <td class="code"><pre>&#39;N j, Y&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DATE_INPUT_FORMATS</td>
+      <td class="code"><pre>[&#39;%Y-%m-%d&#39;,
+ &#39;%m/%d/%Y&#39;,
+ &#39;%m/%d/%y&#39;,
+ &#39;%b %d %Y&#39;,
+ &#39;%b %d, %Y&#39;,
+ &#39;%d %b %Y&#39;,
+ &#39;%d %b, %Y&#39;,
+ &#39;%B %d %Y&#39;,
+ &#39;%B %d, %Y&#39;,
+ &#39;%d %B %Y&#39;,
+ &#39;%d %B, %Y&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEADLOCK_RETRIES</td>
+      <td class="code"><pre>2</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEADLOCK_RETRY_DELAY_SECS</td>
+      <td class="code"><pre>0.1</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEBUG</td>
+      <td class="code"><pre>True</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEBUG_PROPAGATE_EXCEPTIONS</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>DECIMAL_SEPARATOR</td>
+      <td class="code"><pre>&#39;.&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_CHARSET</td>
+      <td class="code"><pre>&#39;utf-8&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_CONTENT_TYPE</td>
+      <td class="code"><pre>&#39;text/html&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_EXCEPTION_REPORTER_FILTER</td>
+      <td class="code"><pre>&#39;django.views.debug.SafeExceptionReporterFilter&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_FILE_STORAGE</td>
+      <td class="code"><pre>&#39;django.core.files.storage.FileSystemStorage&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_FROM_EMAIL</td>
+      <td class="code"><pre>&#39;webmaster@localhost&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_HOST</td>
+      <td class="code"><pre>&#39;default&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_INDEX_TABLESPACE</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_RATE_LIMIT_WHITELIST_IP_LIST</td>
+      <td class="code"><pre>{&#39;52.41.228.63&#39;, &#39;44.227.21.125&#39;, &#39;44.235.131.121&#39;, &#39;54.244.129.64&#39;}</pre></td>
+    </tr>
+
+    <tr>
+      <td>DEFAULT_TABLESPACE</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DESK_CHANNEL_CUSTOM_TYPES</td>
+      <td class="code"><pre>(&#39;SENDBIRD_DESK_CHANNEL_CUSTOM_TYPE&#39;,)</pre></td>
+    </tr>
+
+    <tr>
+      <td>DESK_SECRET_KEYS</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DICTIONARY_SECRET_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>DISALLOWED_USER_AGENTS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>DJANGO_MYSQL_REWRITE_QUERIES</td>
+      <td class="code"><pre>True</pre></td>
+    </tr>
+
+    <tr>
+      <td>EDGE_READ_PER_SEC_LIMIT</td>
+      <td class="code"><pre>10</pre></td>
+    </tr>
+
+    <tr>
+      <td>EDGE_RECONNECT_CNT</td>
+      <td class="code"><pre>-1</pre></td>
+    </tr>
+
+    <tr>
+      <td>EDGE_RECONNECT_INTERVAL</td>
+      <td class="code"><pre>2</pre></td>
+    </tr>
+
+    <tr>
+      <td>EDGE_RECONNECT_MAX_INTERVAL</td>
+      <td class="code"><pre>20</pre></td>
+    </tr>
+
+    <tr>
+      <td>EDGE_RECONNECT_MUL</td>
+      <td class="code"><pre>2</pre></td>
+    </tr>
+
+    <tr>
+      <td>ELASTICSEARCH_SETTINGS</td>
+      <td class="code"><pre>{&#39;messagesearch&#39;: {&#39;hosts&#39;: [{&#39;host&#39;: &#39;es.&#39;}],
+                   &#39;index&#39;: {&#39;naming_rules&#39;: [{&#39;application_id_ranges&#39;: [{&#39;from&#39;: 0,
+                                                                          &#39;to&#39;: -1}],
+                                               &#39;name&#39;: &#39;chatmessage&#39;,
+                                               &#39;type&#39;: &#39;STATIC&#39;}]},
+                   &#39;port&#39;: 9200,
+                   &#39;timeout&#39;: 60}}</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_BACKEND</td>
+      <td class="code"><pre>&#39;django.core.mail.backends.smtp.EmailBackend&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_HOST</td>
+      <td class="code"><pre>&#39;localhost&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_HOST_PASSWORD</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_HOST_USER</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_PORT</td>
+      <td class="code"><pre>25</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_SSL_CERTFILE</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_SSL_KEYFILE</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_SUBJECT_PREFIX</td>
+      <td class="code"><pre>&#39;[Django] &#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_TIMEOUT</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_USE_LOCALTIME</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_USE_SSL</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>EMAIL_USE_TLS</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>ENABLE_HEALTHCHECKER_DEBUG</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>ENABLE_REDIS_DUAL_WRITE</td>
+      <td class="code"><pre>True</pre></td>
+    </tr>
+
+    <tr>
+      <td>EXTENSION_SERVICE_HOST_ENDPOINT</td>
+      <td class="code"><pre>&#39;https://extension-preprod.chat.stg.sendbirdtest.com&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>EXTRA_VALID_CONTENT_TYPES</td>
+      <td class="code"><pre>(&#39;audio/mp4&#39;,)</pre></td>
+    </tr>
+
+    <tr>
+      <td>FCM_RETRY</td>
+      <td class="code"><pre>0</pre></td>
+    </tr>
+
+    <tr>
+      <td>FILE_CHARSET</td>
+      <td class="code"><pre>&#39;utf-8&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>FILE_INFO_APP_CREATED_INDEX</td>
+      <td class="code"><pre>&#39;main_fileinfo_application_id_741559266a0c9907_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>FILE_INFO_CHANNEL_CREATED_REMOVED_AT</td>
+      <td class="code"><pre>&#39;main_fileinfo_channel_id_5e34f2a8_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>FILE_UPLOAD_DIRECTORY_PERMISSIONS</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>FILE_UPLOAD_HANDLERS</td>
+      <td class="code"><pre>(&#39;django.core.files.uploadhandler.TemporaryFileUploadHandler&#39;,)</pre></td>
+    </tr>
+
+    <tr>
+      <td>FILE_UPLOAD_MAX_MEMORY_SIZE</td>
+      <td class="code"><pre>2621440</pre></td>
+    </tr>
+
+    <tr>
+      <td>FILE_UPLOAD_PERMISSIONS</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>FILE_UPLOAD_TEMP_DIR</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>FIRST_DAY_OF_WEEK</td>
+      <td class="code"><pre>0</pre></td>
+    </tr>
+
+    <tr>
+      <td>FIXTURE_DIRS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>FORCE_SCRIPT_NAME</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>FORMAT_MODULE_PATH</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>FORM_RENDERER</td>
+      <td class="code"><pre>&#39;django.forms.renderers.DjangoTemplates&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>FRIEND_RELATION_USER_FRIEND_STATUS_INDEX</td>
+      <td class="code"><pre>&#39;main_friendrelation_user_id_3d50a39768ec38b7_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>FRIEND_RELATION_USER_FRIEND_UNIQUE_INDEX</td>
+      <td class="code"><pre>&#39;main_friendrelation_user_id_498f9faa70613e54_uniq&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GATE_SECRET_KEYS</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GATE_TO_SODA_PSK</td>
+      <td class="code"><pre>&#39;ERc6TkwG7i*LGx!3U!pYqmBQvud2zDwsc-JhXC*!4kYt8!bsuZz_etjmWeohd@HF&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GATE_URL</td>
+      <td class="code"><pre>&#39;https://gate-staging.sendbird.com&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GET_CHANNEL_MEMBER_COUNT_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_messagingchannellist_channel_id_2de341162b5346e4_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GOOGLE_AI_API_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GOOGLE_CLIENT_ID</td>
+      <td class="code"><pre>&#39;626647867701-rpnfh34l6ap2jfq3k4i8p11eani3eptg.apps.googleusercontent.com&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GOOGLE_CLOUD_API_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GOOGLE_CLOUD_BIGQUERY_SERVICE_ACCOUNT_INFO</td>
+      <td class="code"><pre>{}</pre></td>
+    </tr>
+
+    <tr>
+      <td>GROUP_CHANNEL_CREATED_AT_INDEX</td>
+      <td class="code"><pre>&#39;main_channel_application_id_1ed51ea8bc1c135b_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GROUP_CHANNEL_CUSTOM_TYPE_INDEX</td>
+      <td class="code"><pre>&#39;main_channel_30b64654&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GROUP_CHANNEL_METADATA_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_channel_application_id_7680bc7b823d900d_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GROUP_CHANNEL_NAME_INDEX</td>
+      <td class="code"><pre>&#39;main_channel_application_id_6f5bb23de2a51d43_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GROUP_CHANNEL_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_channel_6bc0a4eb&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>GROUP_ORDER_LAST_MSG_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_messagingchannellist_user_id_1a122f8b229c48df_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>HOSTNAME</td>
+      <td class="code"><pre>&#39;d2798ee8aa3d&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>IGNORABLE_404_URLS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>INSIGHT_SECRET_KEYS</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>INSTALLED_APPS</td>
+      <td class="code"><pre>[&#39;django.contrib.auth&#39;,
+ &#39;django.contrib.contenttypes&#39;,
+ &#39;django.contrib.sessions&#39;,
+ &#39;django.contrib.messages&#39;,
+ &#39;django.contrib.humanize&#39;,
+ &#39;django_extensions&#39;,
+ &#39;django_hosts&#39;,
+ &#39;main&#39;,
+ &#39;ws_server&#39;,
+ &#39;sbrouting&#39;,
+ &#39;dapi&#39;,
+ &#39;push&#39;,
+ &#39;django_mysql&#39;,
+ &#39;soju&#39;,
+ &#39;friend&#39;,
+ &#39;notification&#39;,
+ &#39;llm&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>INSTANCE_ID</td>
+      <td class="code"><pre>&#39;local-instance&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>INTENT_CLASSIFER_INDEX_HOST_DEV</td>
+      <td class="code"><pre>&#39;intent-classifier-index-dev-bac559c.svc.apw5-4e34-81fa.pinecone.io&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>INTENT_CLASSIFER_INDEX_HOST_PROD</td>
+      <td class="code"><pre>&#39;intent-classifier-index-prod-bac559c.svc.apw5-4e34-81fa.pinecone.io&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>INTERNAL_IPS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>INVITED_CHANNEL_CNT_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_messagingchannellist_user_id_2845c308b4ba493f_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>IS_APM_ON</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>IS_GEVENT_MONITOR_ON</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>IS_ON_K8S</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>IS_TEST</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>LANGUAGES</td>
+      <td class="code"><pre>[(&#39;af&#39;, &#39;Afrikaans&#39;),
+ (&#39;ar&#39;, &#39;Arabic&#39;),
+ (&#39;ast&#39;, &#39;Asturian&#39;),
+ (&#39;az&#39;, &#39;Azerbaijani&#39;),
+ (&#39;bg&#39;, &#39;Bulgarian&#39;),
+ (&#39;be&#39;, &#39;Belarusian&#39;),
+ (&#39;bn&#39;, &#39;Bengali&#39;),
+ (&#39;br&#39;, &#39;Breton&#39;),
+ (&#39;bs&#39;, &#39;Bosnian&#39;),
+ (&#39;ca&#39;, &#39;Catalan&#39;),
+ (&#39;cs&#39;, &#39;Czech&#39;),
+ (&#39;cy&#39;, &#39;Welsh&#39;),
+ (&#39;da&#39;, &#39;Danish&#39;),
+ (&#39;de&#39;, &#39;German&#39;),
+ (&#39;dsb&#39;, &#39;Lower Sorbian&#39;),
+ (&#39;el&#39;, &#39;Greek&#39;),
+ (&#39;en&#39;, &#39;English&#39;),
+ (&#39;en-au&#39;, &#39;Australian English&#39;),
+ (&#39;en-gb&#39;, &#39;British English&#39;),
+ (&#39;eo&#39;, &#39;Esperanto&#39;),
+ (&#39;es&#39;, &#39;Spanish&#39;),
+ (&#39;es-ar&#39;, &#39;Argentinian Spanish&#39;),
+ (&#39;es-co&#39;, &#39;Colombian Spanish&#39;),
+ (&#39;es-mx&#39;, &#39;Mexican Spanish&#39;),
+ (&#39;es-ni&#39;, &#39;Nicaraguan Spanish&#39;),
+ (&#39;es-ve&#39;, &#39;Venezuelan Spanish&#39;),
+ (&#39;et&#39;, &#39;Estonian&#39;),
+ (&#39;eu&#39;, &#39;Basque&#39;),
+ (&#39;fa&#39;, &#39;Persian&#39;),
+ (&#39;fi&#39;, &#39;Finnish&#39;),
+ (&#39;fr&#39;, &#39;French&#39;),
+ (&#39;fy&#39;, &#39;Frisian&#39;),
+ (&#39;ga&#39;, &#39;Irish&#39;),
+ (&#39;gd&#39;, &#39;Scottish Gaelic&#39;),
+ (&#39;gl&#39;, &#39;Galician&#39;),
+ (&#39;he&#39;, &#39;Hebrew&#39;),
+ (&#39;hi&#39;, &#39;Hindi&#39;),
+ (&#39;hr&#39;, &#39;Croatian&#39;),
+ (&#39;hsb&#39;, &#39;Upper Sorbian&#39;),
+ (&#39;hu&#39;, &#39;Hungarian&#39;),
+ (&#39;ia&#39;, &#39;Interlingua&#39;),
+ (&#39;id&#39;, &#39;Indonesian&#39;),
+ (&#39;io&#39;, &#39;Ido&#39;),
+ (&#39;is&#39;, &#39;Icelandic&#39;),
+ (&#39;it&#39;, &#39;Italian&#39;),
+ (&#39;ja&#39;, &#39;Japanese&#39;),
+ (&#39;ka&#39;, &#39;Georgian&#39;),
+ (&#39;kk&#39;, &#39;Kazakh&#39;),
+ (&#39;km&#39;, &#39;Khmer&#39;),
+ (&#39;kn&#39;, &#39;Kannada&#39;),
+ (&#39;ko&#39;, &#39;Korean&#39;),
+ (&#39;lb&#39;, &#39;Luxembourgish&#39;),
+ (&#39;lt&#39;, &#39;Lithuanian&#39;),
+ (&#39;lv&#39;, &#39;Latvian&#39;),
+ (&#39;mk&#39;, &#39;Macedonian&#39;),
+ (&#39;ml&#39;, &#39;Malayalam&#39;),
+ (&#39;mn&#39;, &#39;Mongolian&#39;),
+ (&#39;mr&#39;, &#39;Marathi&#39;),
+ (&#39;my&#39;, &#39;Burmese&#39;),
+ (&#39;nb&#39;, &#39;Norwegian Bokmål&#39;),
+ (&#39;ne&#39;, &#39;Nepali&#39;),
+ (&#39;nl&#39;, &#39;Dutch&#39;),
+ (&#39;nn&#39;, &#39;Norwegian Nynorsk&#39;),
+ (&#39;os&#39;, &#39;Ossetic&#39;),
+ (&#39;pa&#39;, &#39;Punjabi&#39;),
+ (&#39;pl&#39;, &#39;Polish&#39;),
+ (&#39;pt&#39;, &#39;Portuguese&#39;),
+ (&#39;pt-br&#39;, &#39;Brazilian Portuguese&#39;),
+ (&#39;ro&#39;, &#39;Romanian&#39;),
+ (&#39;ru&#39;, &#39;Russian&#39;),
+ (&#39;sk&#39;, &#39;Slovak&#39;),
+ (&#39;sl&#39;, &#39;Slovenian&#39;),
+ (&#39;sq&#39;, &#39;Albanian&#39;),
+ (&#39;sr&#39;, &#39;Serbian&#39;),
+ (&#39;sr-latn&#39;, &#39;Serbian Latin&#39;),
+ (&#39;sv&#39;, &#39;Swedish&#39;),
+ (&#39;sw&#39;, &#39;Swahili&#39;),
+ (&#39;ta&#39;, &#39;Tamil&#39;),
+ (&#39;te&#39;, &#39;Telugu&#39;),
+ (&#39;th&#39;, &#39;Thai&#39;),
+ (&#39;tr&#39;, &#39;Turkish&#39;),
+ (&#39;tt&#39;, &#39;Tatar&#39;),
+ (&#39;udm&#39;, &#39;Udmurt&#39;),
+ (&#39;uk&#39;, &#39;Ukrainian&#39;),
+ (&#39;ur&#39;, &#39;Urdu&#39;),
+ (&#39;vi&#39;, &#39;Vietnamese&#39;),
+ (&#39;zh-hans&#39;, &#39;Simplified Chinese&#39;),
+ (&#39;zh-hant&#39;, &#39;Traditional Chinese&#39;)]</pre></td>
+    </tr>
+
+    <tr>
+      <td>LANGUAGES_BIDI</td>
+      <td class="code"><pre>[&#39;he&#39;, &#39;ar&#39;, &#39;fa&#39;, &#39;ur&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>LANGUAGE_CODE</td>
+      <td class="code"><pre>&#39;en-us&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>LANGUAGE_COOKIE_AGE</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>LANGUAGE_COOKIE_DOMAIN</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>LANGUAGE_COOKIE_NAME</td>
+      <td class="code"><pre>&#39;django_language&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>LANGUAGE_COOKIE_PATH</td>
+      <td class="code"><pre>&#39;/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>LOCALE_PATHS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>LOGGING</td>
+      <td class="code"><pre>{&#39;disable_existing_loggers&#39;: False,
+ &#39;formatters&#39;: {&#39;verbose&#39;: {&#39;format&#39;: &#39;[pid %(process)d] %(levelname)s &#39;
+                                      &#39;%(asctime)s %(module)s %(thread)d &#39;
+                                      &#39;%(message)s&#39;}},
+ &#39;handlers&#39;: {&#39;console&#39;: {&#39;class&#39;: &#39;logging.StreamHandler&#39;,
+                          &#39;formatter&#39;: &#39;verbose&#39;,
+                          &#39;level&#39;: &#39;INFO&#39;}},
+ &#39;loggers&#39;: {&#39;api.api_middleware&#39;: &#39;********************&#39;,
+             &#39;api.api_middleware.utils&#39;: &#39;********************&#39;,
+             &#39;api.api_queries&#39;: &#39;********************&#39;,
+             &#39;api.api_views&#39;: &#39;********************&#39;,
+             &#39;boto&#39;: {&#39;level&#39;: &#39;CRITICAL&#39;},
+             &#39;botocore&#39;: {&#39;level&#39;: &#39;CRITICAL&#39;},
+             &#39;common&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;cron&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;ddtrace.internal.writer&#39;: {&#39;level&#39;: &#39;CRITICAL&#39;},
+             &#39;main&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;nose&#39;: {&#39;level&#39;: &#39;CRITICAL&#39;},
+             &#39;optools&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;push&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;s3transfer&#39;: {&#39;level&#39;: &#39;CRITICAL&#39;},
+             &#39;service&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;service.moderation_service.chatgpt&#39;: {&#39;level&#39;: &#39;DEBUG&#39;},
+             &#39;service.moderation_service.hive&#39;: {&#39;level&#39;: &#39;DEBUG&#39;},
+             &#39;soda&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;soda.health_check_v2&#39;: {&#39;level&#39;: &#39;WARNING&#39;},
+             &#39;soda_test&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;soju&#39;: {&#39;level&#39;: &#39;INFO&#39;},
+             &#39;urllib3&#39;: {&#39;level&#39;: &#39;CRITICAL&#39;},
+             &#39;ws_server&#39;: {&#39;level&#39;: &#39;WARNING&#39;},
+             &#39;ws_server.sb_cmd&#39;: {&#39;level&#39;: &#39;DEBUG&#39;}},
+ &#39;root&#39;: {&#39;handlers&#39;: [&#39;console&#39;], &#39;level&#39;: &#39;INFO&#39;},
+ &#39;version&#39;: 1}</pre></td>
+    </tr>
+
+    <tr>
+      <td>LOGGING_CONFIG</td>
+      <td class="code"><pre>&#39;logging.config.dictConfig&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>LOGIN_REDIRECT_URL</td>
+      <td class="code"><pre>&#39;/accounts/profile/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>LOGIN_URL</td>
+      <td class="code"><pre>&#39;/accounts/login/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>LOGOUT_REDIRECT_URL</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>LOG_DIR</td>
+      <td class="code"><pre>&#39;/var/www/soda/current/./logs&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MANAGERS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>MARKETO_BASE_URL</td>
+      <td class="code"><pre>&#39;https://047-LOL-803.mktorest.com&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MARKETO_CLIENT_ID</td>
+      <td class="code"><pre>&#39;573226e6-1050-4a61-a17c-c00e2de0ddc0&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MARKETO_CLIENT_SECRET</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MARKETO_DEMO_CAMPAIGN_ID</td>
+      <td class="code"><pre>11455</pre></td>
+    </tr>
+
+    <tr>
+      <td>MEDIA_ROOT</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MEDIA_URL</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MESSAGE_STORAGE</td>
+      <td class="code"><pre>&#39;django.contrib.messages.storage.fallback.FallbackStorage&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MIDDLEWARE</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>MIDDLEWARE_CLASSES</td>
+      <td class="code"><pre>(&#39;api.api_middleware.authentication_middleware.AuthenticationMiddleware&#39;,
+ &#39;api.api_middleware.authorization_middleware.AuthorizationMiddleware&#39;,
+ &#39;api.api_middleware.speed_limit_middleware.AccessLimitMiddleware&#39;,
+ &#39;api.api_middleware.speed_limit_middleware.SpeedLimitMiddleware&#39;,
+ &#39;django_hosts.middleware.HostsRequestMiddleware&#39;,
+ &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+ &#39;django.middleware.common.CommonMiddleware&#39;,
+ &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+ &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+ &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+ &#39;api.api_middleware.logging_middleware.LoggingMiddleware&#39;,
+ &#39;django_hosts.middleware.HostsResponseMiddleware&#39;,
+ &#39;api.api_middleware.url_decoder_middleware.UrlDecodeMiddleware&#39;,
+ &#39;api.api_middleware.api_middleware.SendBirdApiMiddleware&#39;)</pre></td>
+    </tr>
+
+    <tr>
+      <td>MIGRATION_MODULES</td>
+      <td class="code"><pre>{}</pre></td>
+    </tr>
+
+    <tr>
+      <td>MODERATION_ENGINE_HOST_ENDPOINT</td>
+      <td class="code"><pre>&#39;https://moderationengine-local.chat.dev.sendbirdtest.com&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MONTH_DAY_FORMAT</td>
+      <td class="code"><pre>&#39;F j&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>MQ_POOL_RETRY_CNT</td>
+      <td class="code"><pre>3</pre></td>
+    </tr>
+
+    <tr>
+      <td>MQ_POOL_SIZE</td>
+      <td class="code"><pre>50</pre></td>
+    </tr>
+
+    <tr>
+      <td>MQ_PRELOAD</td>
+      <td class="code"><pre>2</pre></td>
+    </tr>
+
+    <tr>
+      <td>MSK_CLUSTER_SETTINGS</td>
+      <td class="code"><pre>{&#39;COMMON&#39;: {&#39;BOOTSTRAP_BROKERS&#39;: &#39;kafka:9092&#39;}}</pre></td>
+    </tr>
+
+    <tr>
+      <td>NUMBER_GROUPING</td>
+      <td class="code"><pre>0</pre></td>
+    </tr>
+
+    <tr>
+      <td>OMEGA_SECRET_KEYS</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>OMEGA_URL</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>OMNI_API_END_POINT</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>OPENAI_API_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>OPERATOR_CACHE_OPTIONS</td>
+      <td class="code"><pre>{&#39;MAX_ENTRIES&#39;: 100000, &#39;TIMEOUT&#39;: 0.1}</pre></td>
+    </tr>
+
+    <tr>
+      <td>PASSWORD_HASHERS</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>PASSWORD_RESET_TIMEOUT_DAYS</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>PHONE_NUMBER_SECRET_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>PINECONE_API_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>PREPEND_WWW</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>PRIVATE_API_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>PROFILE_CREATED_AT_INDEX</td>
+      <td class="code"><pre>&#39;main_profile_app_id_7a27768b1063648e_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>PROFILE_IS_ACTIVE_INDEX</td>
+      <td class="code"><pre>&#39;main_profile_app_id_238ed4795babace3_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>PUSH_CERT_DIR</td>
+      <td class="code"><pre>&#39;/dev/shm/push_certs&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>PUSH_PEM_DIR</td>
+      <td class="code"><pre>&#39;/dev/shm/push_certs/pem&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>RATE_LIMIT_WHITELIST_IP_LIST</td>
+      <td class="code"><pre>{&#39;52.41.228.63&#39;, &#39;44.227.21.125&#39;, &#39;44.235.131.121&#39;, &#39;54.244.129.64&#39;}</pre></td>
+    </tr>
+
+    <tr>
+      <td>READ_BATCH_INTERVAL</td>
+      <td class="code"><pre>0.5</pre></td>
+    </tr>
+
+    <tr>
+      <td>REDIS_CLUSTER_INFO</td>
+      <td class="code"><pre>{&#39;non_persistent&#39;: {&#39;LOCATION&#39;: &#39;redis://172.18.1.10:15000&#39;,
+                    &#39;OPTIONS&#39;: {&#39;dynamic_startup_nodes&#39;: False,
+                                &#39;max_connections&#39;: 15,
+                                &#39;periodic_refresh_seconds&#39;: 120,
+                                &#39;reinitialize_steps&#39;: 100,
+                                &#39;require_full_coverage&#39;: False,
+                                &#39;retry_on_timeout&#39;: True,
+                                &#39;socket_keepalive&#39;: True,
+                                &#39;socket_keepalive_options&#39;: {4: 60,
+                                                             5: 20,
+                                                             6: 3},
+                                &#39;socket_timeout&#39;: 1,
+                                &#39;timeout&#39;: 3,
+                                &#39;use_burst&#39;: True}},
+ &#39;persistent&#39;: {&#39;LOCATION&#39;: &#39;redis://172.18.1.10:15000&#39;,
+                &#39;OPTIONS&#39;: {&#39;dynamic_startup_nodes&#39;: False,
+                            &#39;max_connections&#39;: 15,
+                            &#39;periodic_refresh_seconds&#39;: 120,
+                            &#39;reinitialize_steps&#39;: 100,
+                            &#39;require_full_coverage&#39;: False,
+                            &#39;retry_on_timeout&#39;: True,
+                            &#39;socket_keepalive&#39;: True,
+                            &#39;socket_keepalive_options&#39;: {4: 60, 5: 20, 6: 3},
+                            &#39;socket_timeout&#39;: 1,
+                            &#39;timeout&#39;: 3,
+                            &#39;use_burst&#39;: True}},
+ &#39;pubsub&#39;: {&#39;LOCATION&#39;: &#39;redis://172.18.1.10:15000&#39;,
+            &#39;OPTIONS&#39;: {&#39;dynamic_startup_nodes&#39;: False,
+                        &#39;max_connections&#39;: 15,
+                        &#39;periodic_refresh_seconds&#39;: 120,
+                        &#39;reinitialize_steps&#39;: 100,
+                        &#39;require_full_coverage&#39;: False,
+                        &#39;retry_on_timeout&#39;: True,
+                        &#39;socket_keepalive&#39;: True,
+                        &#39;socket_keepalive_options&#39;: {4: 60, 5: 20, 6: 3},
+                        &#39;socket_timeout&#39;: 1,
+                        &#39;timeout&#39;: 3,
+                        &#39;use_burst&#39;: True}},
+ &#39;ratelimit&#39;: {&#39;LOCATION&#39;: &#39;redis://172.18.1.10:15000&#39;,
+               &#39;OPTIONS&#39;: {&#39;dynamic_startup_nodes&#39;: False,
+                           &#39;max_connections&#39;: 15,
+                           &#39;periodic_refresh_seconds&#39;: 120,
+                           &#39;reinitialize_steps&#39;: 100,
+                           &#39;require_full_coverage&#39;: False,
+                           &#39;retry_on_timeout&#39;: True,
+                           &#39;socket_keepalive&#39;: True,
+                           &#39;socket_keepalive_options&#39;: {4: 60, 5: 20, 6: 3},
+                           &#39;socket_timeout&#39;: 1,
+                           &#39;timeout&#39;: 3,
+                           &#39;use_burst&#39;: True}}}</pre></td>
+    </tr>
+
+    <tr>
+      <td>REGION</td>
+      <td class="code"><pre>&#39;local&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>REMOVE_PREFIX_APP_ID</td>
+      <td class="code"><pre>0</pre></td>
+    </tr>
+
+    <tr>
+      <td>REPORT_CHANNEL_ID_INDEX</td>
+      <td class="code"><pre>&#39;main_reportlog_72eb6c85&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>ROOT_HOSTCONF</td>
+      <td class="code"><pre>&#39;soda.hosts&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>ROOT_URLCONF</td>
+      <td class="code"><pre>&#39;soda.urls&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>RXNS_BATCH_INTERVAL</td>
+      <td class="code"><pre>0.5</pre></td>
+    </tr>
+
+    <tr>
+      <td>RXNS_MAX_BATCH_SIZE</td>
+      <td class="code"><pre>100</pre></td>
+    </tr>
+
+    <tr>
+      <td>SBREGION</td>
+      <td class="code"><pre>&#39;local&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SB_CELERY_CONF</td>
+      <td class="code"><pre>&lt;soda.config.configs.CeleryConfig object at 0xffff80e198e0&gt;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SB_FILE_HOST</td>
+      <td class="code"><pre>&#39;http://file-local.sendbird.com.:9800&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SB_LOG_CONFIGURATION</td>
+      <td class="code"><pre>{&#39;access&#39;: {&#39;result_location&#39;: &#39;s3://aws-athena-query-results-391396433657-/&#39;},
+ &#39;login_history&#39;: {&#39;athena_aws_region&#39;: &#39;&#39;,
+                   &#39;database_name&#39;: None,
+                   &#39;max_query_time_seconds&#39;: 3600,
+                   &#39;result_location&#39;: &#39;s3://aws-athena-query-results-391396433657-/&#39;,
+                   &#39;table_name&#39;: None,
+                   &#39;use_athena&#39;: False}}</pre></td>
+    </tr>
+
+    <tr>
+      <td>SB_RABBITMQ_CONF</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>SEARCH_INDEX_HOST_DEV</td>
+      <td class="code"><pre>&#39;search-index-dev-bac559c.svc.apw5-4e34-81fa.pinecone.io&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SEARCH_INDEX_HOST_DEV_LARGE</td>
+      <td class="code"><pre>&#39;search-index-large-dev-bac559c.svc.apw5-4e34-81fa.pinecone.io&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SEARCH_INDEX_HOST_PROD</td>
+      <td class="code"><pre>&#39;search-index-prod-bac559c.svc.apw5-4e34-81fa.pinecone.io&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SEARCH_INDEX_HOST_PROD_LARGE</td>
+      <td class="code"><pre>&#39;search-index-large-prod-bac559c.svc.apw5-4e34-81fa.pinecone.io&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECONDARY_REDIS_CLUSTER_INFO</td>
+      <td class="code"><pre>{&#39;non_persistent&#39;: {&#39;LOCATION&#39;: &#39;redis://172.18.2.10:16000&#39;,
+                    &#39;OPTIONS&#39;: {&#39;dynamic_startup_nodes&#39;: False,
+                                &#39;max_connections&#39;: 15,
+                                &#39;periodic_refresh_seconds&#39;: 120,
+                                &#39;reinitialize_steps&#39;: 100,
+                                &#39;require_full_coverage&#39;: False,
+                                &#39;retry_on_timeout&#39;: True,
+                                &#39;socket_keepalive&#39;: True,
+                                &#39;socket_keepalive_options&#39;: {4: 60,
+                                                             5: 20,
+                                                             6: 3},
+                                &#39;socket_timeout&#39;: 1,
+                                &#39;timeout&#39;: 3,
+                                &#39;use_burst&#39;: True}},
+ &#39;persistent&#39;: {&#39;LOCATION&#39;: &#39;redis://172.18.2.10:16000&#39;,
+                &#39;OPTIONS&#39;: {&#39;dynamic_startup_nodes&#39;: False,
+                            &#39;max_connections&#39;: 15,
+                            &#39;periodic_refresh_seconds&#39;: 120,
+                            &#39;reinitialize_steps&#39;: 100,
+                            &#39;require_full_coverage&#39;: False,
+                            &#39;retry_on_timeout&#39;: True,
+                            &#39;socket_keepalive&#39;: True,
+                            &#39;socket_keepalive_options&#39;: {4: 60, 5: 20, 6: 3},
+                            &#39;socket_timeout&#39;: 1,
+                            &#39;timeout&#39;: 3,
+                            &#39;use_burst&#39;: True}},
+ &#39;ratelimit&#39;: {&#39;LOCATION&#39;: &#39;redis://172.18.2.10:16000&#39;,
+               &#39;OPTIONS&#39;: {&#39;dynamic_startup_nodes&#39;: False,
+                           &#39;max_connections&#39;: 15,
+                           &#39;periodic_refresh_seconds&#39;: 120,
+                           &#39;reinitialize_steps&#39;: 100,
+                           &#39;require_full_coverage&#39;: False,
+                           &#39;retry_on_timeout&#39;: True,
+                           &#39;socket_keepalive&#39;: True,
+                           &#39;socket_keepalive_options&#39;: {4: 60, 5: 20, 6: 3},
+                           &#39;socket_timeout&#39;: 1,
+                           &#39;timeout&#39;: 3,
+                           &#39;use_burst&#39;: True}}}</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECRET_API_KEY_FOR_TESTING</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECRET_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_BROWSER_XSS_FILTER</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_CONTENT_TYPE_NOSNIFF</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_HSTS_INCLUDE_SUBDOMAINS</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_HSTS_PRELOAD</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_HSTS_SECONDS</td>
+      <td class="code"><pre>0</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_PROXY_SSL_HEADER</td>
+      <td class="code"><pre>(&#39;HTTP_X_FORWARDED_PROTO&#39;, &#39;https&#39;)</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_REDIRECT_EXEMPT</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_SSL_HOST</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>SECURE_SSL_REDIRECT</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>SENDBIRD_NOREPLY_EMAIL</td>
+      <td class="code"><pre>&#39;noreply@sendbird.com&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SENDGRID_API_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SENTRY_CONFIG</td>
+      <td class="code"><pre>{&#39;with_locals&#39;: True}</pre></td>
+    </tr>
+
+    <tr>
+      <td>SENTRY_CONFIG_ADDITIONAL</td>
+      <td class="code"><pre>{&#39;with_locals&#39;: True}</pre></td>
+    </tr>
+
+    <tr>
+      <td>SENTRY_SODA_DSN</td>
+      <td class="code"><pre>&#39;https://b51456b092084bf4a9960301eee3bdfa@o31416.ingest.sentry.io/67651&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SENTRY_TEST_DSN</td>
+      <td class="code"><pre>&#39;https://35c65da4120e46c4a72624438d11a013:f86eb387c8a041f295fa5843c1e5cfb8@o31416.ingest.sentry.io/5739020&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SERVER_EMAIL</td>
+      <td class="code"><pre>&#39;root@localhost&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_CACHE_ALIAS</td>
+      <td class="code"><pre>&#39;default&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_COOKIE_AGE</td>
+      <td class="code"><pre>94608000</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_COOKIE_DOMAIN</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_COOKIE_HTTPONLY</td>
+      <td class="code"><pre>True</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_COOKIE_NAME</td>
+      <td class="code"><pre>&#39;sessionid&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_COOKIE_PATH</td>
+      <td class="code"><pre>&#39;/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_COOKIE_SECURE</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_ENGINE</td>
+      <td class="code"><pre>&#39;django.contrib.sessions.backends.db&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_EXPIRE_AT_BROWSER_CLOSE</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_FILE_PATH</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_SAVE_EVERY_REQUEST</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>SESSION_SERIALIZER</td>
+      <td class="code"><pre>&#39;django.contrib.sessions.serializers.JSONSerializer&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SETTINGS_MODULE</td>
+      <td class="code"><pre>&#39;soda.settings&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SHELL_PLUS_DONT_LOAD</td>
+      <td class="code"><pre>[&#39;main.DeletedMessagingChannelList&#39;, &#39;main.DeletedMessagingChannelListOld&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>SHELL_PLUS_PRE_IMPORTS</td>
+      <td class="code"><pre>(&#39;logging&#39;,
+ &#39;requests&#39;,
+ (&#39;django.db&#39;, &#39;close_old_connections&#39;),
+ (&#39;common.compat&#39;, &#39;json&#39;),
+ (&#39;soda_tests&#39;, &#39;test_util&#39;),
+ (&#39;main.models&#39;, &#39;logger&#39;),
+ (&#39;main.models&#39;, &#39;DeletedMessagingChannelList&#39;))</pre></td>
+    </tr>
+
+    <tr>
+      <td>SHELL_PLUS_PRINT_SQL_TRUNCATE</td>
+      <td class="code"><pre>5000</pre></td>
+    </tr>
+
+    <tr>
+      <td>SHORT_DATETIME_FORMAT</td>
+      <td class="code"><pre>&#39;m/d/Y P&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SHORT_DATE_FORMAT</td>
+      <td class="code"><pre>&#39;m/d/Y&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SIGNING_BACKEND</td>
+      <td class="code"><pre>&#39;django.core.signing.TimestampSigner&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SILENCED_SYSTEM_CHECKS</td>
+      <td class="code"><pre>[&#39;django_mysql.W001&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>SODA_TO_GATE_PSK</td>
+      <td class="code"><pre>&#39;JVKMfFQj-cVNvaPUo2bzXMpvJzp9h3A-_y3k_ZT82cYxyfJj2_n6AC2qAcDGP*mx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>SOLAR_API_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>STAGING_REGIONS</td>
+      <td class="code"><pre>[&#39;staging&#39;, &#39;preprod&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>STATICFILES_DIRS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>STATICFILES_FINDERS</td>
+      <td class="code"><pre>[&#39;django.contrib.staticfiles.finders.FileSystemFinder&#39;,
+ &#39;django.contrib.staticfiles.finders.AppDirectoriesFinder&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>STATICFILES_STORAGE</td>
+      <td class="code"><pre>&#39;django.contrib.staticfiles.storage.StaticFilesStorage&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>STATIC_ROOT</td>
+      <td class="code"><pre>None</pre></td>
+    </tr>
+
+    <tr>
+      <td>STATIC_URL</td>
+      <td class="code"><pre>&#39;/static/&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>TEMPLATES</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>TEST_NON_SERIALIZED_APPS</td>
+      <td class="code"><pre>[]</pre></td>
+    </tr>
+
+    <tr>
+      <td>TEST_RUNNER</td>
+      <td class="code"><pre>&#39;django.test.runner.DiscoverRunner&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>THOUSAND_SEPARATOR</td>
+      <td class="code"><pre>&#39;,&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>TIME_FORMAT</td>
+      <td class="code"><pre>&#39;P&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>TIME_INPUT_FORMATS</td>
+      <td class="code"><pre>[&#39;%H:%M:%S&#39;, &#39;%H:%M:%S.%f&#39;, &#39;%H:%M&#39;]</pre></td>
+    </tr>
+
+    <tr>
+      <td>TIME_ZONE</td>
+      <td class="code"><pre>&#39;UTC&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>TOKEN_SECRET_KEY</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>TURNSERVER_CRED_EXP_SECONDS</td>
+      <td class="code"><pre>86400</pre></td>
+    </tr>
+
+    <tr>
+      <td>UNREAD_CNT_SUM_USE_INDEX</td>
+      <td class="code"><pre>&#39;main_messagingchannellist_user_id_2e5f7ec8c21b869c_idx&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>USE_ETAGS</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>USE_I18N</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>USE_L10N</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>USE_REDIS_SSL</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>USE_THOUSAND_SEPARATOR</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>USE_TZ</td>
+      <td class="code"><pre>True</pre></td>
+    </tr>
+
+    <tr>
+      <td>USE_X_FORWARDED_HOST</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>USE_X_FORWARDED_PORT</td>
+      <td class="code"><pre>False</pre></td>
+    </tr>
+
+    <tr>
+      <td>VERSION</td>
+      <td class="code"><pre>&#39;&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>VIER_SECRET_KEYS</td>
+      <td class="code"><pre>&#39;********************&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>WORKER_CACHE_OPTIONS</td>
+      <td class="code"><pre>{&#39;MAX_ENTRIES&#39;: 128, &#39;TIMEOUT&#39;: 0.1}</pre></td>
+    </tr>
+
+    <tr>
+      <td>WSGI_APPLICATION</td>
+      <td class="code"><pre>&#39;soda.wsgi.application&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>WS_TIMEOUT</td>
+      <td class="code"><pre>30</pre></td>
+    </tr>
+
+    <tr>
+      <td>X_FRAME_OPTIONS</td>
+      <td class="code"><pre>&#39;SAMEORIGIN&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>YEAR_MONTH_FORMAT</td>
+      <td class="code"><pre>&#39;F Y&#39;</pre></td>
+    </tr>
+
+    <tr>
+      <td>ZOOKEEPER_HOSTS</td>
+      <td class="code"><pre>&#39;zoo1.:2181&#39;</pre></td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+<div id="explanation">
+  <p>
+    You're seeing this error because you have <code>DEBUG = True</code> in your
+    Django settings file. Change that to <code>False</code>, and Django will
+    display a standard page generated by the handler for this status code.
+  </p>
+</div>
+
+</body>
+</html>

@@ -7,16 +7,6 @@ import styled from 'styled-components';
 
 import { FunctionCallMessage } from '../../utils/messages';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 170px;
-  font-family: var(--sendbird-font-family-custom);
-  background-color: var(--sendbird-light-background-50-0);
-  border-radius: 16px;
-  padding: 6px 12px;
-`;
-
 const ItemsText = styled(Label)`
   font-weight: 500;
   white-space: normal;
@@ -41,7 +31,7 @@ const CarouselContainer = styled.div`
   overflow-x: hidden;
   cursor: grab;
   gap: 10px;
-  padding: 8px 0;
+  padding-top: 8px;
   user-select: none;
 `;
 
@@ -110,12 +100,7 @@ const RecommendItemsMessage = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: 300 }}>
-      <Container>
-        <Label type={LabelTypography.BODY_1} color={LabelColors.ONBACKGROUND_1}>
-          Here are our top sells.
-        </Label>
-      </Container>
+    <div style={{ display: 'flex', flexDirection: 'column', width: 340, marginBottom: 12}}>
       <CarouselContainer
         ref={carouselRef}
         onMouseDown={onDragStart}

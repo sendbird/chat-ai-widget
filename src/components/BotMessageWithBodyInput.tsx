@@ -12,7 +12,6 @@ import { formatCreatedAtToAMPM } from '../utils';
 const Root = styled.div`
   display: flex;
   align-items: flex-end;
-  margin-bottom: 12px;
   flex-wrap: wrap;
   position: relative;
 `;
@@ -65,6 +64,7 @@ type Props = {
   isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
   newLineSentTime?: boolean;
+  marginBottom?: string;
 };
 
 const ImageContainer = styled.div``;
@@ -87,6 +87,7 @@ export default function BotMessageWithBodyInput(props: Props) {
     isBotWelcomeMessage,
     isFormMessage = false,
     newLineSentTime = false,
+    marginBottom = '12px',
   } = props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
@@ -94,7 +95,7 @@ export default function BotMessageWithBodyInput(props: Props) {
   const displaySender = nonChainedMessage || chainTop;
 
   return (
-    <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
+    <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0, marginBottom: marginBottom }}>
       {displayProfileImage ? (
         <ImageContainer>
           <Avatar

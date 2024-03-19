@@ -137,13 +137,45 @@ const OrderDetailsMessage = ({ message }: { message: FunctionCallMessage }) => {
       </div>
       <Divier />
       <div>
-        <DeliveryStatusLabel history={orderDetails} />
+        <div
+          style={{
+            borderRadius: 10,
+            backgroundColor: `${
+              orderDetails.status === 'Delivery Completed'
+                ? '#E2FAE4'
+                : '#E7F1FF'
+            }`,
+            width: 126,
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 20,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: 'var(--sendbird-font-family-default)',
+              fontWeight: 500,
+              fontSize: 11,
+              lineHeight: '20px',
+              margin: '4px 8px',
+              color: `${
+                orderDetails.status === 'Delivery Completed'
+                  ? '#084D42'
+                  : '#30308F'
+              }`,
+            }}
+          >
+            {orderDetails.status}
+          </div>
+        </div>
       </div>
       {orderDetails.items.map((item) => (
         <ListRow
           key={item.name}
           icon={
-            <ItemImageComponent image={item.image} width={40} height={40} />
+            <ItemImageComponent image={item.image} width={40} height={40}/>
           }
           title={
             <ItemsText
@@ -165,7 +197,7 @@ const OrderDetailsMessage = ({ message }: { message: FunctionCallMessage }) => {
                 type={LabelTypography.CAPTION_3}
                 color={LabelColors.ONBACKGROUND_1}
               >
-                <div
+              <div
                   style={{
                     display: 'flex',
                     justifyContent: 'space-between',

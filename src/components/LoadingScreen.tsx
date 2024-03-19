@@ -19,6 +19,7 @@ const Container = styled.div`
   align-items: center;
   z-index: 100;
   background-color: white;
+  border-radius: 15px;
 `;
 
 const IconContainer = styled.div`

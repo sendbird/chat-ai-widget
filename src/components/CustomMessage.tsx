@@ -1,9 +1,14 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
 import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
-import { useMemo } from 'react';
+import Label, {
+  LabelColors,
+  LabelTypography,
+} from '@sendbird/uikit-react/ui/Label';
+import React, { useMemo } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
+import styled from 'styled-components';
 
 import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
@@ -211,16 +216,39 @@ export default function CustomMessage(props: Props) {
   }
 
   if (isRecommendItemsMessage(functionCallMessage)) {
+    const Container = styled.div`
+      display: flex;
+      flex-direction: column;
+      width: 170px;
+      font-family: var(--sendbird-font-family-custom);
+      background-color: var(--sendbird-light-background-50-0);
+      border-radius: 16px;
+      padding: 6px 12px;
+    `;
     return (
-      <BotMessageWithBodyInput
-        botUser={botUser}
-        message={message}
-        messageCount={allMessages.length}
-        bodyComponent={<RecommendItemsMessage message={functionCallMessage} />}
-        chainTop={chainTop}
-        chainBottom={chainBottom}
-        newLineSentTime={true}
-      />
+      <>
+        <BotMessageWithBodyInput
+          botUser={botUser}
+          message={message}
+          messageCount={allMessages.length}
+          bodyComponent={
+            <Container>
+              <Label
+                type={LabelTypography.BODY_1}
+                color={LabelColors.ONBACKGROUND_1}
+              >
+                Here are our top sells.
+              </Label>
+            </Container>
+          }
+          chainTop={chainTop}
+          chainBottom={chainBottom}
+          newLineSentTime={false}
+          disableProfileContainer={true}
+          marginBottom={'3px'}
+        />
+        <RecommendItemsMessage message={functionCallMessage} />
+      </>
     );
   }
 
@@ -241,7 +269,6 @@ export default function CustomMessage(props: Props) {
   // Sent by other users
   if ((message as UserMessage).sender?.userId !== botUser.userId) {
     const userMessage = message as UserMessage;
-    console.log('userMessage', userMessage);
     return (
       <div ref={lastMessageRef}>
         {userMessage.sender?.userId === 'luke' &&
