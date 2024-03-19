@@ -100,7 +100,7 @@ const RecommendItemsMessage = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', width: 340, marginBottom: 12}}>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', marginBottom: 12}}>
       <CarouselContainer
         ref={carouselRef}
         onMouseDown={onDragStart}

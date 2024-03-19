@@ -61,7 +61,7 @@
 }
 
 .sendbird-conversation__messages-padding {
-  padding: 0 16px !important;
+  padding: 0 0 !important;
 }
 
 .sendbird-message-input .sendbird-message-input-text-field {

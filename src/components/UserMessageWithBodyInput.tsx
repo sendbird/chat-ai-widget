@@ -13,6 +13,8 @@ const Root = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   position: relative;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
 const Sender = styled.div`

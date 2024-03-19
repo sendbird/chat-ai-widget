@@ -8,6 +8,8 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   margin-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
 const ImageContainer = styled.div`

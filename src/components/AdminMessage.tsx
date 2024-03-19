@@ -8,6 +8,8 @@ const Root = styled.div`
   margin-bottom: 6px;
   flex-wrap: wrap-reverse;
   gap: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
 `;
 
 const BodyContainer = styled.div`

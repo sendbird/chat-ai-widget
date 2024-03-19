@@ -95,7 +95,7 @@ export default function BotMessageWithBodyInput(props: Props) {
   const displaySender = nonChainedMessage || chainTop;
 
   return (
-    <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0, marginBottom: marginBottom }}>
+    <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0, marginBottom: marginBottom, paddingLeft: 16, paddingRight: 16 }}>
       {displayProfileImage ? (
         <ImageContainer>
           <Avatar
