@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { Chat } from './Chat';
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
+import { MAX_Z_INDEX } from '../const';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
 import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';
 import { ReactComponent as ExpandIcon } from '../icons/icon-expand.svg';
@@ -37,7 +38,7 @@ const StyledWidgetWindowWrapper = styled.div<{
     return (
       isOpen &&
       css`
-        z-index: 10000;
+        z-index: ${MAX_Z_INDEX};
         pointer-events: all;
         transform: scale(1);
         opacity: 1;

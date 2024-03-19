@@ -16,7 +16,7 @@ import DynamicRepliesPanel from './DynamicRepliesPanel';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import { hideChatBottomBanner } from '../utils';
+import { hideChatBottomBanner, isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,
   groupMessagesByShortSpanTime,
@@ -70,7 +70,9 @@ const Root = styled.div<RootStyleProps>`
       transition: width 0.5s;
       transition-timing-function: ease;
       padding: 8px 16px;
-      font-size: 14px;
+      // Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
+      // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
+      font-size: ${isIOSMobile ? 16 : 14}px;
       font-family: 'Roboto', sans-serif;
       line-height: 20px;
       color: ${({ theme }) => theme.textColor.messageInput};

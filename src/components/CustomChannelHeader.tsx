@@ -10,7 +10,7 @@ import BotProfileImage from './BotProfileImage';
 import { useConstantState } from '../context/ConstantContext';
 import { useGroupChannel } from '../hooks/useGroupChannel';
 import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
-import { isMobile } from '../utils';
+import { isMobile, isEmpty } from '../utils';
 
 const Root = styled.div`
   display: flex;
@@ -103,9 +103,20 @@ export default function CustomChannelHeader() {
       <RenewButtonContainer>
         <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
           <customRefreshComponent.icon
+            id="aichatbot-widget-refresh-icon"
             width={customRefreshComponent.width}
             height={customRefreshComponent.height}
-            style={customRefreshComponent.style}
+            style={
+              isEmpty(customRefreshComponent.style)
+                ? {
+                    position: 'relative',
+                    right: isMobile
+                      ? 0
+                      : // to make the refresh icon appear next to the expand & close icons in the widget window
+                        60,
+                  }
+                : customRefreshComponent.style
+            }
           />
         </RenewButtonForWidgetDemo>
         {isMobile && (

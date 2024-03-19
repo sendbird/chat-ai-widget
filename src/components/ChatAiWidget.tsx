@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import { Chat } from './Chat';
 import WidgetWindow from './WidgetWindow';
 import { getColorBasedOnSaturation } from '../colors';
-import { Constant } from '../const';
+import { Constant, MAX_Z_INDEX } from '../const';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import useMobileView from '../hooks/useMobileView';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
@@ -15,7 +15,7 @@ import { isMobile } from '../utils';
 
 const MobileContainer = styled.div<{ width: number }>`
   position: fixed;
-  z-index: 10000;
+  z-index: ${MAX_Z_INDEX};
   top: 0;
   left: 0;
   width: ${({ width }) => `${width}px`};
@@ -26,7 +26,7 @@ const MobileContainer = styled.div<{ width: number }>`
 
 const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
   position: fixed;
-  z-index: 10000;
+  z-index: ${MAX_Z_INDEX};
   bottom: 24px;
   right: 24px;
   width: 48px;
