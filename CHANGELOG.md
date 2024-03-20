@@ -1,3 +1,13 @@
+## [1.3.4] (Mar 19 2024)
+### Feat:
+- Drop `react-code-block` library & add new CodeBlock component.
+  - This update introduces a new component for displaying code blocks in a more efficient and stylized manner.
+
+### Fix:
+- Fix mobile UX issues to enhance UX on mobile devices by addressing various UI and interaction problems.
+- Fix visibility of empty elements handling to ensure that empty elements in the application do not interfere with the user's experience by being incorrectly visible.
+
+
 ## [v1.3.3] (Mar 15 2024)
 ### Feat:
 - Put the manual suggested reply component back for enhanced user interaction.

@@ -1,15 +1,12 @@
 import { UserMessage } from '@sendbird/chat/message';
-import { lazy, Suspense, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
 import SourceContainer, { Source } from './SourceContainer';
 import { useConstantState } from '../context/ConstantContext';
 import { replaceWithRegex, Token, TokenType } from '../utils';
-
-const LazyCodeBlock = lazy(() =>
-  import('./CodeBlock').then(({ CodeBlock }) => ({ default: CodeBlock }))
-);
+import { CodeBlock } from './CodeBlock';
 
 const Text = styled.div`
   width: inherit;
@@ -114,9 +111,7 @@ export default function ParsedBotMessageBody(props: Props) {
 
           return (
             <BlockContainer key={'token' + i}>
-              <Suspense fallback={<></>}>
-                <LazyCodeBlock token={token} />
-              </Suspense>
+              <CodeBlock token={token} />
             </BlockContainer>
           );
         })}
