@@ -1,3 +1,7 @@
+## [1.3.5] (Mar 21 2024)
+#### Chore:
+- Inject className; `sendbird-word` to the message bubble component to make it customizable
+
 ## [1.3.4] (Mar 19 2024)
 ### Feat:
 - Drop `react-code-block` library & add new CodeBlock component.
