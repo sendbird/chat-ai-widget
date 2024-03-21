@@ -3,10 +3,10 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
+import { CodeBlock } from './CodeBlock';
 import SourceContainer, { Source } from './SourceContainer';
 import { useConstantState } from '../context/ConstantContext';
 import { replaceWithRegex, Token, TokenType } from '../utils';
-import { CodeBlock } from './CodeBlock';
 
 const Text = styled.div`
   width: inherit;
@@ -55,7 +55,7 @@ export default function ParsedBotMessageBody(props: Props) {
   // console.log('## sources: ', sources);
   if (tokens.length > 0) {
     return (
-      <MultipleTokenTypeContainer>
+      <MultipleTokenTypeContainer className="sendbird-word">
         {tokens.map((token: Token, i) => {
           if (token.type === TokenType.string) {
             return (
@@ -128,7 +128,11 @@ export default function ParsedBotMessageBody(props: Props) {
       </MultipleTokenTypeContainer>
     );
   }
-  return <Text style={{ borderRadius: 16 }}>{message.message}</Text>;
+  return (
+    <Text className="sendbird-word" style={{ borderRadius: 16 }}>
+      {message.message}
+    </Text>
+  );
 }
 
 const urlRegex =
