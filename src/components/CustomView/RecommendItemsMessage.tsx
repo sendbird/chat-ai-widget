@@ -32,6 +32,7 @@ const CarouselContainer = styled.div`
   cursor: grab;
   gap: 10px;
   padding-top: 8px;
+  padding-left: 51px;
   user-select: none;
 `;
 

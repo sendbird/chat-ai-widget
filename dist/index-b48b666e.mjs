@@ -3165,7 +3165,7 @@ var C6 = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
           case 0:
             t = n.path, r = n.method, i = n.uploadProgressHandler, a = ![pe.GET, pe.DELETE].includes(r), o = this._sdkState.api, s = "".concat(o.host).concat(t).concat(a ? "" : n.query), c = a ? n.payload : null, l = this._createHeader(n, c instanceof FormData ? c : void 0), u = new AbortController(), d = u.signal, this._abortControl.set(n.requestId, u), h = Date.now(), A.label = 1;
           case 1:
-            return A.trys.push([1, 13, , 14]), i ? [4, import("./__bundle-aece11ae-ca696827.mjs")] : [3, 6];
+            return A.trys.push([1, 13, , 14]), i ? [4, import("./__bundle-aece11ae-19b7726e.mjs")] : [3, 6];
           case 2:
             f = A.sent().xmlHttpRequest, A.label = 3;
           case 3:
@@ -3177,11 +3177,11 @@ var C6 = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
               throw v;
             return this._logger.debug("XMLHttpRequest is not available in this environment. progressHandler is ignored."), [3, 6];
           case 6:
-            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-e51346dc.mjs").then((w) => w._)];
+            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-7b6e7403.mjs").then((w) => w._)];
           case 7:
             A.sent(), A.label = 8;
           case 8:
-            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-be32a429.mjs").then((w) => w._)];
+            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-88898d69.mjs").then((w) => w._)];
           case 9:
             A.sent(), A.label = 10;
           case 10:
@@ -28369,7 +28369,7 @@ var by = function() {
     return MediaRecorder.isTypeSupported(A);
   })) !== null && n !== void 0 ? n : "";
   a && !_ && i.error("VoiceRecorder: Browser does not support mimeType", { mimmeTypes: u2 }), Ye(function() {
-    a && !E && import("./bundle-f5U_VL0z-05c64c59.mjs").then(function(A) {
+    a && !E && import("./bundle-f5U_VL0z-c13a1700.mjs").then(function(A) {
       y(A);
     });
   }, [a, E]);
@@ -48669,6 +48669,7 @@ const C$ = X(no.Container)`
   cursor: grab;
   gap: 10px;
   padding-top: 8px;
+  padding-left: 51px;
   user-select: none;
 `, H$ = X.div`
   flex: 0 0 auto;
@@ -50496,7 +50497,7 @@ function qte(e) {
   ] });
 }
 const Kte = Zx(
-  () => import("./CodeBlock-373a61f2.mjs").then(({ CodeBlock: e }) => ({ default: e }))
+  () => import("./CodeBlock-b32ae076.mjs").then(({ CodeBlock: e }) => ({ default: e }))
 ), Wte = X.div`
   display: flex;
   ${({ botCategory: e }) => e && ii`

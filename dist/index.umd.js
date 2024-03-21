@@ -952,6 +952,7 @@ See https://s-c.sh/2BAXzed for more info.`),window["__styled-components-init__"]
   cursor: grab;
   gap: 10px;
   padding-top: 8px;
+  padding-left: 51px;
   user-select: none;
 `,Bte=Ie.div`
   flex: 0 0 auto;
