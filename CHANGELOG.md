@@ -1,6 +1,10 @@
-## [1.3.5] (Mar 21 2024)
+## [1.3.5] (Mar 22 2024)
 #### Chore:
 - Inject className; `sendbird-word` to the message bubble component to make it customizable
+
+#### Feat:
+- Enable passing `stringSet` prop from ChatAiWiget to UIKit
+  - Available `stringSet` can be found at https://github.com/sendbird/sendbird-uikit-react/blob/main/src/ui/Label/stringSet.ts.
 
 ## [1.3.4] (Mar 19 2024)
 ### Feat:
