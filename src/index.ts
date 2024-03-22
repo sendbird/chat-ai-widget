@@ -1,2 +1,5 @@
-export { default as ChatAiWidget } from './components/ChatAiWidget';
+export {
+  default as ChatAiWidget,
+  type Props as ChatAiWidgetConfigs,
+} from './components/ChatAiWidget';
 export { default as Chat } from './components/Chat';
