@@ -2,8 +2,6 @@ import '@sendbird/chat-ai-widget/dist/style.css';
 import './index.css';
 import {
   ChatAiWidget,
-  // Remove below line once 1.3.5 released
-  // eslint-disable-next-line import/named
   ChatAiWidgetConfigs,
 } from '@sendbird/chat-ai-widget';
 
