@@ -1,6 +1,7 @@
 import SendbirdChat, { SessionHandler } from '@sendbird/chat';
 import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
 import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
+import { type StringSet } from '@sendbird/uikit-react/types/ui/Label/stringSet';
 import React from 'react';
 
 import { ReactComponent as RefreshIcon } from './icons/refresh-icon.svg';
@@ -96,6 +97,7 @@ export interface Constant {
   enableMention: boolean;
   enableMobileView: boolean;
   firstMessageData: FirstMessageItem[];
+  stringSet: Partial<StringSet> | undefined;
 }
 
 export interface SuggestedReply {

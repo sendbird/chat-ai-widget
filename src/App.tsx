@@ -31,6 +31,7 @@ const App = (props: Props) => {
       instantConnect={props.instantConnect}
       customRefreshComponent={props.customRefreshComponent}
       configureSession={props.configureSession}
+      stringSet={props.stringSet}
       enableSourceMessage={props.enableSourceMessage}
       enableEmojiFeedback={props.enableEmojiFeedback}
       enableMention={props.enableMention}
