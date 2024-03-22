@@ -290,6 +290,11 @@ const customConfigs = {
   // but setting this option to `true` will keep it open at all times.
   autoOpen: true / false,
   configureSession: memoizedConfigureSession,
+  // Available stringSet can be found at https://github.com/sendbird/sendbird-uikit-react/blob/main/src/ui/Label/stringSet.ts
+  stringSet: {{
+    MESSAGE_INPUT__PLACE_HOLDER: 'Type a message',
+    // ...
+  }}
   customRefreshComponent: {
     icon: 'Your SVG icon',
     style: {
@@ -311,6 +316,7 @@ const App = () => {
     <ChatAiWidget
       userId={USER_ID}
       configureSession={customConfigs.configureSession}
+      stringSet={customConfigs.stringSet}
       customRefreshComponent={customConfigs.customRefreshComponent}
       instantConnect={customConfigs.instantConnect}
       autoOpen={customConfigs.autoOpen}

@@ -28,6 +28,7 @@ const SBComponent = () => {
     configureSession,
     enableMention,
     customUserAgentParam,
+    stringSet,
   } = useConstantState();
 
   assert(
@@ -80,6 +81,7 @@ const SBComponent = () => {
       isMentionEnabled={enableMention}
       theme={theme}
       colorSet={customColorSet}
+      stringSet={stringSet}
       uikitOptions={{
         groupChannel: {
           input: {
