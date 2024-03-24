@@ -15,6 +15,7 @@ import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
+import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { hideChatBottomBanner, isIOSMobile } from '../utils';
 import {
@@ -126,6 +127,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     scrollToBottom,
   } = useGroupChannelContext();
   const lastMessageRef = useRef<HTMLDivElement>(null);
+
+  useAutoDismissMobileKyeboardHandler();
+
   const lastMessage = allMessages?.[allMessages?.length - 1] as
     | SendableMessage
     | undefined;
