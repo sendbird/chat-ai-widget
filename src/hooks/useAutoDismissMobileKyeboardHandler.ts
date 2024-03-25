@@ -19,7 +19,13 @@ function useAutoDismissMobileKeyboardHandler(): void {
     };
 
     const handleKeyDown = (event: KeyboardEvent): void => {
-      if (event.key === 'Enter' && isIOSMobile) {
+      if (
+        event.key === 'Enter' &&
+        // TODO: Pressing Enter key on Android keyboard does't trigger the sending message event
+        // but carriage return event is fired instead which is a different behavior from UIKit React.
+        // Need to find a way to handle this case.
+        isIOSMobile
+      ) {
         handleDismissKeyboard();
       }
     };
