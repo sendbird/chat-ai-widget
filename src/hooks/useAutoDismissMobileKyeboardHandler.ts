@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { isIOSMobile } from '../utils';
 
@@ -6,37 +6,42 @@ const INPUT_ELEMENT_SELECTOR = '.sendbird-message-input';
 const SEND_BUTTON_SELECTOR = '.sendbird-message-input--send';
 
 function useAutoDismissMobileKeyboardHandler(): void {
+  const addedButtons = useRef<HTMLElement[]>([]);
+
   useEffect(() => {
     const handleDismissKeyboard = (): void => {
       setTimeout(() => {
-        const inputElement = document.querySelector(INPUT_ELEMENT_SELECTOR);
-        if (
-          document.activeElement instanceof HTMLElement &&
-          inputElement instanceof HTMLElement
-        ) {
-          document.activeElement.blur(); // blur the active element to dismiss the keyboard on mobile
-          inputElement.blur(); // ensure the input element is also blurred
+        if (document.activeElement instanceof HTMLElement) {
+          // blur the active element(send button) to dismiss the keyboard on mobile
+          document.activeElement.blur();
         }
       }, 200);
     };
 
-    const observerCallback = (mutations: MutationRecord[]): void => {
-      for (const mutation of mutations) {
-        if (mutation.type === 'childList') {
-          const addedNodes = Array.from(mutation.addedNodes) as HTMLElement[];
-          // Why we're searching the button in this way?
-          // Because the send button is not rendered in the DOM tree until the user starts typing
-          const sendButton = addedNodes.find(
-            (node) =>
-              node.nodeType === Node.ELEMENT_NODE &&
-              node.matches(SEND_BUTTON_SELECTOR)
-          );
-
-          if (sendButton instanceof HTMLElement) {
-            sendButton.addEventListener('click', handleDismissKeyboard);
-          }
-        }
+    const handleKeyDown = (event: KeyboardEvent): void => {
+      if (event.key === 'Enter' && isIOSMobile) {
+        handleDismissKeyboard();
       }
+    };
+
+    const observerCallback = (mutations: MutationRecord[]): void => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach((node) => {
+            if (
+              node.nodeType === Node.ELEMENT_NODE &&
+              (node as Element).matches(SEND_BUTTON_SELECTOR)
+            ) {
+              (node as HTMLElement).addEventListener(
+                'click',
+                handleDismissKeyboard
+              );
+              // Store added node for later removal
+              addedButtons.current.push(node as HTMLElement);
+            }
+          });
+        }
+      });
     };
 
     const observerRef = new MutationObserver(observerCallback);
@@ -47,24 +52,18 @@ function useAutoDismissMobileKeyboardHandler(): void {
     );
     if (inputElement) {
       observerRef.observe(inputElement, config);
-      inputElement.addEventListener('keydown', (event: KeyboardEvent) => {
-        if (
-          event.key === 'Enter' &&
-          // Pressing Enter key on Android keyboard does't trigger the sending message event but carriage return event is fired instead
-          isIOSMobile
-        ) {
-          handleDismissKeyboard();
-        }
-      });
+      inputElement.addEventListener('keydown', handleKeyDown);
     } else {
       console.warn('Input element not found for mutation observer');
     }
 
     return () => {
       observerRef.disconnect();
+      addedButtons.current.forEach((button) =>
+        button.removeEventListener('click', handleDismissKeyboard)
+      );
       if (inputElement) {
-        // Clean up event listener when the component is unmounted
-        inputElement.removeEventListener('keydown', handleDismissKeyboard);
+        inputElement.removeEventListener('keydown', handleKeyDown);
       }
     };
   }, []);
