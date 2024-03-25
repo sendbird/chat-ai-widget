@@ -32,6 +32,10 @@ function useAutoDismissMobileKeyboardHandler(): void {
               node.nodeType === Node.ELEMENT_NODE &&
               (node as Element).matches(SEND_BUTTON_SELECTOR)
             ) {
+              (node as HTMLElement).removeEventListener(
+                'click',
+                handleDismissKeyboard
+              );
               (node as HTMLElement).addEventListener(
                 'click',
                 handleDismissKeyboard
@@ -52,6 +56,7 @@ function useAutoDismissMobileKeyboardHandler(): void {
     );
     if (inputElement) {
       observerRef.observe(inputElement, config);
+      inputElement.removeEventListener('keydown', handleKeyDown);
       inputElement.addEventListener('keydown', handleKeyDown);
     } else {
       console.warn('Input element not found for mutation observer');
