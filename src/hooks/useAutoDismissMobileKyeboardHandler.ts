@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 import { isIOSMobile } from '../utils';
 
@@ -6,8 +6,6 @@ const INPUT_ELEMENT_SELECTOR = '.sendbird-message-input';
 const SEND_BUTTON_SELECTOR = '.sendbird-message-input--send';
 
 function useAutoDismissMobileKeyboardHandler(): void {
-  const observerRef = useRef<MutationObserver | null>(null);
-
   useEffect(() => {
     const handleDismissKeyboard = (): void => {
       setTimeout(() => {
@@ -41,14 +39,14 @@ function useAutoDismissMobileKeyboardHandler(): void {
       }
     };
 
-    observerRef.current = new MutationObserver(observerCallback);
+    const observerRef = new MutationObserver(observerCallback);
     const config = { childList: true, subtree: true };
 
     const inputElement = document.querySelector<HTMLInputElement>(
       INPUT_ELEMENT_SELECTOR
     );
     if (inputElement) {
-      observerRef.current.observe(inputElement, config);
+      observerRef.observe(inputElement, config);
       inputElement.addEventListener('keydown', (event: KeyboardEvent) => {
         if (
           event.key === 'Enter' &&
@@ -63,7 +61,7 @@ function useAutoDismissMobileKeyboardHandler(): void {
     }
 
     return () => {
-      observerRef.current?.disconnect();
+      observerRef.disconnect();
       if (inputElement) {
         // Clean up event listener when the component is unmounted
         inputElement.removeEventListener('keydown', handleDismissKeyboard);
