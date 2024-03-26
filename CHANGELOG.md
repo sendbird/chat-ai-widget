@@ -1,3 +1,7 @@
+## [1.3.6] (Mar 25 2024)
+#### Feat:
+- Dismiss mobile keyboard after sending a message
+
 ## [1.3.5] (Mar 22 2024)
 #### Chore:
 - Inject className; `sendbird-word` to the message bubble component to make it customizable
