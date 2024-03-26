@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { useSendMessage } from '../hooks/useSendMessage';
 
-export const ReplyItem = styled.div<SuggestedReplyItemProps>`
+export const ReplyItem = styled.div`
   white-space: nowrap;
   height: 32px;
   font-size: 12px;
@@ -19,7 +19,7 @@ export const ReplyItem = styled.div<SuggestedReplyItemProps>`
     background-color: ${({ theme }) => theme.bgColor.suggestedReply};
     &:hover {
       ${({ theme }) =>
-        `background-color: ${theme.bgColor.hover.suggestedReply};`};
+        `background-color: ${theme.bgColor.hover.suggestedReply}`};
     }
     &:active {
       ${({ theme }) =>
