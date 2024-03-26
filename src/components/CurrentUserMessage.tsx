@@ -16,10 +16,6 @@ const Root = styled.div<{ enableEmojiFeedback: boolean }>`
     enableEmojiFeedback ? '20px' : '0'};
 `;
 
-const TextComponent = styled.div`
-  white-space: pre-line;
-`;
-
 type Props = {
   message: UserMessage;
 };
@@ -35,7 +31,7 @@ export default function CurrentUserMessage(props: Props) {
       </SentTime>
       <BodyContainer>
         <BodyComponent>
-          <TextComponent>{message.message}</TextComponent>
+          <div className="sendbird-word">{message.message}</div>
         </BodyComponent>
       </BodyContainer>
     </Root>
