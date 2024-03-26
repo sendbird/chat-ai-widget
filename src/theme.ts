@@ -1,5 +1,5 @@
 import { getColorBasedOnSaturation, generateColorVariants } from './colors';
-interface CommonTheme {
+export interface CommonTheme {
   bgColor: {
     chatBottom: string;
     messageInput: string;

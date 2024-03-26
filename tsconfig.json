@@ -25,7 +25,7 @@
   "include": [
     "src",
     "./src/custom.d.ts",
-    "node_modules/@sendbird/uikit-react/index.d.ts",
+    "./src/styled-components.d.ts",
   ],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]

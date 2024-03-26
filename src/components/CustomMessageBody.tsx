@@ -32,7 +32,7 @@ export default function CustomMessageBody(props: Props) {
 
   return (
     <Root>
-      <Text>{sanitizedMessage}</Text>
+      <Text className="sendbird-word">{sanitizedMessage}</Text>
     </Root>
   );
 }
