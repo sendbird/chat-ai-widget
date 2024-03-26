@@ -1,3 +1,8 @@
+## [1.3.7] (Mar 26 2024)
+#### Feat:
+- Apply UIKit classNames to user message text & suggested replies
+  - styled-components.d.ts has been added to override `DefaultTheme`
+
 ## [1.3.6] (Mar 25 2024)
 #### Feat:
 - Dismiss mobile keyboard after sending a message
