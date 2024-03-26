@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import styled, { type ThemeProps } from 'styled-components';
+import styled from 'styled-components';
 
 import { useSendMessage } from '../hooks/useSendMessage';
 
-interface SuggestedReplyItemProps extends ThemeProps<T> {
-  isActive: boolean;
-}
 export const ReplyItem = styled.div<SuggestedReplyItemProps>`
   white-space: nowrap;
   height: 32px;
@@ -13,31 +10,20 @@ export const ReplyItem = styled.div<SuggestedReplyItemProps>`
   padding: 3px 14px;
   display: flex;
   align-items: center;
+  cursor: pointer;
   && {
     // To override the default color with the self service theme color
-    color: ${({ isActive, theme }: SuggestedReplyItemProps) =>
-      isActive ? theme.textColor.suggestedReply : '#EEEEEE'};
-    border: ${({ isActive, theme }: SuggestedReplyItemProps) =>
-      isActive
-        ? `1px solid ${theme.textColor.suggestedReply}`
-        : '1px solid #EEEEEE'};
+    color: ${({ theme }) => theme.textColor.suggestedReply};
+    border: ${({ theme }) => `1px solid ${theme.textColor.suggestedReply}`};
     border-radius: 18px;
     background-color: ${({ theme }) => theme.bgColor.suggestedReply};
-    cursor: ${(props: SuggestedReplyItemProps) =>
-      props.isActive ? 'pointer' : 'not-allowed'};
     &:hover {
-      ${({ isActive, theme }: SuggestedReplyItemProps) => {
-        if (isActive) {
-          return `background-color: ${theme.bgColor.hover.suggestedReply};`;
-        }
-      }};
+      ${({ theme }) =>
+        `background-color: ${theme.bgColor.hover.suggestedReply};`};
     }
     &:active {
-      ${({ isActive, theme }: SuggestedReplyItemProps) => {
-        if (isActive) {
-          return `background-color: ${theme.textColor.suggestedReply}; color: ${theme.textColor.outgoingMessage};`;
-        }
-      }};
+      ${({ theme }) =>
+        `background-color: ${theme.textColor.suggestedReply}; color: ${theme.textColor.outgoingMessage};`};
     }
   }
 `;
@@ -81,7 +67,6 @@ const DynamicRepliesPanel = (props: Props) => {
             id={option}
             key={option}
             onClick={(e) => onClickReply(e, option)}
-            isActive={true}
           >
             {option}
           </ReplyItem>

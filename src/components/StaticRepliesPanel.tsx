@@ -110,7 +110,6 @@ const StaticRepliesPanel = (props: Props) => {
               id={i + ''}
               key={i}
               onClick={onClickSuggestedReply}
-              isActive={true}
             >
               {suggestedReply.title}
             </ReplyItem>
