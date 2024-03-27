@@ -29,8 +29,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sendbird/chat": "^4.10.1",
-    "@sendbird/uikit-react": "^3.13.1",
+    "@sendbird/chat": "^4.11.0",
+    "@sendbird/uikit-react": "^3.13.4",
     "@tanstack/react-query": "^5.17.19",
     "dompurify": "^3.0.4",
     "react-popper-tooltip": "^4.4.2",

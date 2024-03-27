@@ -97,7 +97,7 @@ export interface Constant {
   enableMention: boolean;
   enableMobileView: boolean;
   firstMessageData: FirstMessageItem[];
-  stringSet: Partial<StringSet> | undefined;
+  stringSet: Partial<StringSet>;
 }
 
 export interface SuggestedReply {

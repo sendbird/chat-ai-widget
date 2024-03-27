@@ -1,3 +1,4 @@
+import { LabelStringSet } from '@sendbird/uikit-react/ui/Label';
 import { createContext, useContext, useMemo } from 'react';
 
 import { type Constant, DEFAULT_CONSTANT } from '../const';
@@ -67,7 +68,10 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       },
       customUserAgentParam: props.customUserAgentParam,
       configureSession: props.configureSession,
-      stringSet: props.stringSet,
+      stringSet: {
+        ...LabelStringSet,
+        ...props.stringSet,
+      },
       enableSourceMessage:
         props.enableSourceMessage ?? initialState.enableSourceMessage,
       enableEmojiFeedback:

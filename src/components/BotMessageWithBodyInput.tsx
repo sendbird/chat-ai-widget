@@ -8,9 +8,9 @@ import Label, {
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import BotMessageFeedback from './BotMessageFeedback';
 import BotProfileImage from './BotProfileImage';
 import { SentTime, BodyContainer } from './MessageComponent';
-import { ReactionContainer } from './ReactionContainer';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
 import { isLastMessageInStreaming } from '../utils/messages';
@@ -111,7 +111,7 @@ export default function BotMessageWithBodyInput(props: Props) {
               displayProfileImage &&
               !isBotWelcomeMessage &&
               !(isLastBotMessage && isLastMessageInStreaming(message)) &&
-              !isFormMessage && <ReactionContainer message={message} />}
+              !isFormMessage && <BotMessageFeedback message={message} />}
           </>
           <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
         </Content>
