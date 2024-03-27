@@ -18,6 +18,7 @@ export interface CommonTheme {
   textColor: {
     incomingMessage: string;
     outgoingMessage: string;
+    errorMessage: string;
     sentTime: string;
     sourceInfo: string;
     suggestedReply: string;
@@ -70,6 +71,7 @@ export function getTheme({
         outgoingMessage: accentColor
           ? getColorBasedOnSaturation(accentColor)
           : 'var(--sendbird-light-ondark-01)',
+        errorMessage: 'var(--sendbird-dark-onlight-01)',
         sentTime: 'var(--sendbird-dark-onlight-03)',
         sourceInfo: 'var(--sendbird-light-ondark-01)',
         suggestedReply: accentColor ?? 'var(--sendbird-light-primary-300)',
@@ -110,6 +112,7 @@ export function getTheme({
         incomingMessage: botMessageBGColor
           ? getColorBasedOnSaturation(botMessageBGColor)
           : 'var(--sendbird-dark-ondark-01)',
+        errorMessage: 'var(--sendbird-dark-ondark-01)',
         sentTime: 'var(--sendbird-dark-ondark-03)',
         sourceInfo: 'var(--sendbird-light-ondark-01)',
         suggestedReply: accentColor ?? 'var(--sendbird-dark-primary-200)',
