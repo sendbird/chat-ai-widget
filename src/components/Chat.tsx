@@ -27,6 +27,7 @@ const SBComponent = () => {
     userNickName,
     configureSession,
     enableMention,
+    enableEmojiFeedback,
     customUserAgentParam,
     stringSet,
   } = useConstantState();
@@ -89,6 +90,7 @@ const SBComponent = () => {
             enableDocument: false,
           },
           enableVoiceMessage: false,
+          enableFeedback: enableEmojiFeedback,
         },
       }}
     >
