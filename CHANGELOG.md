@@ -1,3 +1,11 @@
+
+## [1.3.8] (Mar 28 2024)
+#### Feat:
+- Apply text and icon color variations based on theme settings to the `<ErrorContainer />` component, enhancing the visual coherence across different application themes.
+- Introduce a message feedback feature that allows users to provide feedback on messages directly within the application. This feature is aimed at enhancing user engagement and interaction.
+  - As part of this update, the previous 👍🏻👎 emoji reactions have been replaced with a new UI
+- Update the bot icon to a modern and more visually appealing design.
+
 ## [1.3.7] (Mar 26 2024)
 #### Feat:
 - Apply UIKit classNames to user message text & suggested replies
