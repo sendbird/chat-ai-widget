@@ -4,7 +4,7 @@ import Label, {
 } from '@sendbird/uikit-react/ui/Label';
 import styled from 'styled-components';
 
-import { ReactComponent as ErrorIcon } from '../icons/icon-error.svg';
+import { ReactComponent as Icon } from '../icons/icon-error.svg';
 
 const Container = styled.div`
   width: 100%;
@@ -17,10 +17,16 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.bgColor.loadingScreen};
 `;
 
+const ErrorIcon = styled(Icon)`
+  path {
+    fill: ${({ theme }) => theme.textColor.errorMessage};
+  }
+`;
+
 const ErrorMessage = styled(Label)`
   margin-top: 16px;
   text-align: center;
-  color: var(--sendbird-light-onlight-02);
+  color: ${({ theme }) => theme.textColor.errorMessage};
 `;
 
 export default function ErrorContainer({

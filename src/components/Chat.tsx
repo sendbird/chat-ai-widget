@@ -78,7 +78,7 @@ const SBComponent = () => {
       sdkInitParams={sdkInitParams}
       configureSession={configureSession}
       customExtensionParams={userAgentCustomParams.current}
-      breakPoint={isMobile}
+      breakpoint={isMobile}
       isMentionEnabled={enableMention}
       theme={theme}
       colorSet={customColorSet}
