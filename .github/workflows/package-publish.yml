@@ -31,7 +31,7 @@ jobs:
         run: |
           npm install
           npm version ${{ github.event.inputs.version }}
-          cp .env .env.production
+          touch .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production
           npm run build:npm
       - name: 'set environments'
