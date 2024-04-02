@@ -2,9 +2,12 @@ name: npm publish
 on:
   workflow_dispatch:
     inputs:
-      branch_name:
-        description: 'Type a branch name starting with `release/v`'
+      version:
+        description: 'Target version'
         required: true
+  pull_request: # remove this once test is done
+    branches:
+      - feat/AC-1856
 
 jobs:
   publish:
@@ -17,7 +20,7 @@ jobs:
       - name: Check if branch exists
         id: check-branch
         run: |
-          if git ls-remote --heads origin ${{ github.event.inputs.branch }} | grep -q refs/heads/${{ github.event.inputs.branch }}; then
+          if git ls-remote --heads origin release/v${{ github.event.inputs.version }} | grep -q refs/heads/release/v${{ github.event.inputs.version }}; then
             echo "Branch exists."
           else
             echo "Branch does not exist."
@@ -30,7 +33,7 @@ jobs:
           npm version ${{ github.event.inputs.version }}
           cp .env .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production
-          npm run build:pages
+          npm run build:npm
       - name: 'set environments'
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" >> .npmrc
