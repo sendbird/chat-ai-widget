@@ -1,0 +1,46 @@
+name: npm publish
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Type a branch name starting with `release/v`'
+        required: true
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Check if branch exists
+        id: check-branch
+        run: |
+          if git ls-remote --heads origin ${{ github.event.inputs.branch }} | grep -q refs/heads/${{ github.event.inputs.branch }}; then
+            echo "Branch exists."
+          else
+            echo "Branch does not exist."
+            exit 1
+          fi
+      - uses: actions/setup-node@v3
+      - name: Install and Build 🔧
+        run: |
+          npm install
+          npm version ${{ github.event.inputs.version }}
+          cp .env .env.production
+          echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production
+          npm run build:pages
+      - name: 'set environments'
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" >> .npmrc
+          git config --global user.email "sha.sdk_deployment@sendbird.com"
+          git config --global user.name "sendbird-sdk-deployment"
+      - name: 'build and publish to npm'
+        run: |
+          npm publish -access=public
+      - name: 'create a pull request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create --title "chore(release): publish ${{ github.event.inputs.version }}" --body "created by automation"

@@ -1,0 +1,76 @@
+name: Release ticket creation on manual workflow trigger
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Type a branch name starting with `release/v`'
+        required: true
+
+jobs:
+  trigger-release-ticket-creation:
+    name: Trigger release ticket creation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Verify branch name
+        run: |
+          if [[ ! ${{ github.event.inputs.branch_name }} =~ ^release/v ]]; then
+            echo "Branch name should start with 'release/v'"
+            exit 1
+          fi
+
+      - name: Check if branch exists
+        id: check_branch
+        run: |
+          set -x
+          set -o pipefail
+          branch_name="${{ github.event.inputs.branch_name }}"
+          git ls-remote --exit-code --heads origin "$branch_name" | grep -q "$branch_name"
+          if [[ ${PIPESTATUS[1]} -eq 0 ]]; then
+            echo "BRANCH_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "BRANCH_EXISTS=false" >> $GITHUB_ENV
+          fi
+
+      - name: Create branch if it doesn't exist
+        if: steps.check_branch.outputs.branch_exists == 1
+        run: |
+          branch_name="${{ github.event.inputs.branch_name }}"
+          git checkout -b "$branch_name"
+          git push origin "$branch_name"
+
+      - name: Trigger CircleCI Job
+        run: |
+          set -x
+          API_RESULT=$(curl --request POST \
+            --url "https://circleci.com/api/v2/project/gh/${{ github.repository }}/pipeline" \
+            --header "Circle-Token: ${{ secrets.CIRCLECI_API_TOKEN }}" \
+            --header "content-type: application/json" \
+            --data '{
+              "branch": "${{ github.event.inputs.branch_name }}",
+              "parameters": {
+                "run_workflow_create_ticket": true
+              }
+            }')
+          echo "API_RESULT: ${API_RESULT}"
+          CIRCLE_CI_JOB_NUMBER=$(echo "${API_RESULT}" | jq -r '.number')
+
+          if [[ $? -eq 0 ]]; then
+            HTTP_STATUS=$(echo "${API_RESULT}" | jq -r '.status')
+
+            if [[ $HTTP_STATUS == "success" ]]; then
+              echo "CircleCI Job Triggered: $CIRCLE_CI_JOB_NUMBER"
+              echo "DEPLOY_COMMENT_BODY=https://app.circleci.com/pipelines/github/${{ github.repository }}/$CIRCLE_CI_JOB_NUMBER" >> $GITHUB_ENV
+              echo "JOB_STATUS=success" >> $GITHUB_OUTPUT
+            else
+              echo "CircleCI Job Trigger Failed"
+              echo "JOB_STATUS=failure" >> $GITHUB_OUTPUT
+              exit 1
+            fi
+          else
+            echo "API request failed"
+            echo "JOB_STATUS=failure" >> $GITHUB_OUTPUT
+            exit 1
+          fi
