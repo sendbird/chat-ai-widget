@@ -1,4 +1,4 @@
-name: Release ticket creation on manual workflow trigger
+name: Trigger Release Ticket Creation
 on:
   workflow_dispatch:
     inputs:
