@@ -5,6 +5,9 @@ on:
       version:
         description: 'Target version'
         required: true
+  push:
+    branches:
+      - 'feat/AC-1856'
 
 jobs:
   publish:

@@ -5,6 +5,9 @@ on:
       branch_name:
         description: 'Type a branch name starting with `release/v`'
         required: true
+  push:
+    branches:
+      - 'feat/AC-1856'
 
 jobs:
   trigger-release-ticket-creation:
