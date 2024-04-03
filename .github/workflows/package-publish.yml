@@ -1,49 +1,77 @@
-name: npm publish
+name: publish
+
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Target version'
+        description: 'version'
         required: true
-  push:
-    branches:
-      - 'feat/AC-1856'
+        type: string
+      npm_tag:
+        description: 'release tag'
+        required: false
+        type: string
 
 jobs:
   publish:
-    name: Publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Check if branch exists
-        id: check-branch
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Check if the release branch exists
         run: |
-          if git ls-remote --heads origin release/v${{ github.event.inputs.version }} | grep -q refs/heads/release/v${{ github.event.inputs.version }}; then
-            echo "Branch exists."
-          else
-            echo "Branch does not exist."
+          set -x
+          branch_name="release/v${{ github.event.inputs.version }}"
+          if ! git ls-remote --exit-code --heads origin "$branch_name" > /dev/null; then
+            echo "Branch $branch_name does not exist. Make sure to create the branch and create a Jira ticket with pr-comment-bot."
             exit 1
           fi
-      - uses: actions/setup-node@v3
-      - name: Install and Build 🔧
+      - name: Install and Build
         run: |
           npm install
-          npm version ${{ github.event.inputs.version }}
           touch .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production
           npm run build:npm
-      - name: 'set environments'
+      - name: Publish to npm
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" >> .npmrc
-          git config --global user.email "sha.sdk_deployment@sendbird.com"
+          if [ -z "${{ github.event.inputs.npm_tag }}" ]; then
+            npm publish --access=public
+          else
+            npm publish --tag ${{ github.event.inputs.npm_tag }} --access=public
+          fi
+      - name: Set environments
+        run: |
           git config --global user.name "sendbird-sdk-deployment"
-      - name: 'build and publish to npm'
+          git config --global user.email "sha.sdk_deployment@sendbird.com"
+          echo "RELEASE_DATE=$(date +'%b %d %Y')" >> $GITHUB_ENV
+          echo "LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
+      - name: Generate CHANEGLOG
         run: |
-          npm publish -access=public
-      - name: 'create a pull request'
+          echo "## [$LATEST_TAG] - $RELEASE_DATE" > temp-changelog.md
+          git log $LATEST_TAG..develop --oneline >> temp-changelog.md
+          echo "" >> temp-changelog.md
+          cat CHANGELOG.md >> temp-changelog.md
+          mv temp-changelog.md CHANGELOG.md
+          git commit -m "Update CHANGELOG.md for $LATEST_TAG"
+          git push origin v${{ github.event.inputs.version }}
+      - name: Update installed chat-ai-widget version to latest under packages/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr create --title "chore(release): publish ${{ github.event.inputs.version }}" --body "created by automation"
+          packages=( "url-webdemo" "self-service" )
+          for package in "${packages[@]}"; do
+            cd ./packages/$package
+            npm install @sendbird/chat-ai-widget@${{ github.event.inputs.version }}
+            cd -
+          done
+          git add .
+          git commit -m "chore: update chat-ai-widget version to v${{ github.event.inputs.version }}"
+          git push origin release/v${{ github.event.inputs.version }}
+      - name: Tag new target and push to origin
+        run: |
+          git tag v${{ github.event.inputs.version }}
+          git push origin v${{ github.event.inputs.version }}
