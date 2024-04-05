@@ -1,4 +1,3 @@
-import { User } from '@sendbird/chat';
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus } from '@sendbird/chat/message';
 import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChannelUI';
@@ -16,6 +15,7 @@ import DynamicRepliesPanel from './DynamicRepliesPanel';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
+import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { hideChatBottomBanner, isIOSMobile } from '../utils';
 import {
@@ -113,19 +113,17 @@ const Root = styled.div<RootStyleProps>`
   }
 `;
 
-type CustomChannelComponentProps = {
-  botUser: User;
-};
-
-export function CustomChannelComponent(props: CustomChannelComponentProps) {
-  const { botUser } = props;
-  const { userId, suggestedMessageContent, botId, enableEmojiFeedback } =
+export function CustomChannelComponent() {
+  const { suggestedMessageContent, botId, enableEmojiFeedback } =
     useConstantState();
   const {
     messages: allMessages,
     currentChannel: channel,
     scrollToBottom,
   } = useGroupChannelContext();
+  const { userId } = useWidgetLocalStorage();
+  const botUser = channel?.members.find((member) => member.userId === botId);
+
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
   useAutoDismissMobileKyeboardHandler();
@@ -145,7 +143,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const isStaticReplyVisible = getStaticMessageVisibility(
     lastMessage ?? null,
-    botUser.userId,
+    botUser?.userId,
     suggestedMessageContent,
     enableEmojiFeedback
   );
@@ -199,7 +197,16 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
         renderTypingIndicator={() => <></>}
-        renderChannelHeader={() => <CustomChannelHeader />}
+        renderChannelHeader={() => (
+          <CustomChannelHeader
+            botProfileUrl={botUser?.profileUrl}
+            botNickname={botUser?.nickname}
+            channelName={channel?.name}
+            onRenewButtonClick={() => {
+              channel?.resetMyHistory();
+            }}
+          />
+        )}
         renderMessage={({ message, ...props }) => {
           const grouppedMessage = grouppedMessages.find(
             (m) => m.messageId == message.messageId

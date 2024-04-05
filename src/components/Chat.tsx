@@ -14,6 +14,7 @@ import {
   ConstantStateProvider,
 } from '../context/ConstantContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
+import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
 import { assert, isMobile } from '../utils';
 
@@ -23,7 +24,7 @@ const SBComponent = () => {
   const {
     applicationId,
     botId,
-    userId,
+    // userId,
     userNickName,
     configureSession,
     enableMention,
@@ -47,6 +48,7 @@ const SBComponent = () => {
     appId: applicationId,
     botId: botId,
   });
+  const { sessionToken, userId } = useWidgetLocalStorage();
   const globalTheme = useTheme();
   const customColorSet = useMemo(() => {
     if (!globalTheme.accentColor) return undefined;
@@ -72,9 +74,10 @@ const SBComponent = () => {
     <SBProvider
       appId={applicationId}
       userId={userId}
+      accessToken={sessionToken}
       nickname={userNickName}
-      customApiHost={`https://api-${applicationId}.sendbird.com`}
-      customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
+      customApiHost={`https://api-${applicationId}.sendbirdtest.com`}
+      customWebSocketHost={`wss://ws-${applicationId}.sendbirdtest.com`}
       sdkInitParams={sdkInitParams}
       configureSession={configureSession}
       customExtensionParams={userAgentCustomParams.current}

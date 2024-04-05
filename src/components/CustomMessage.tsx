@@ -14,6 +14,7 @@ import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
+import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import {
   MessageTextParser,
   replaceTextExtractsMultiple,
@@ -53,7 +54,8 @@ export default function CustomMessage(props: Props) {
     messageCount,
     message,
   };
-  const { replacementTextList, userId } = useConstantState();
+  const { replacementTextList } = useConstantState();
+  const { userId } = useWidgetLocalStorage();
 
   // admin message
   if (message.messageType === 'admin') {

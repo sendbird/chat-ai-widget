@@ -1,6 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 
+import useWidgetLocalStorage, {
+  CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
+} from './useWidgetLocalStorage';
+import { localStorageHelper } from '../utils';
+
 const DEFAULT_CHANNEL_STYLE = {
   theme: 'dark',
   accentColor: '#742DDD',
@@ -16,6 +21,14 @@ interface BotStyleResponse {
       theme: 'light' | 'dark';
     };
   };
+  user?: {
+    expire_at: string;
+    user_id: string;
+    session_token: string;
+  };
+  channel?: {
+    channel_url: string;
+  };
 }
 export const useChannelStyle = ({
   appId,
@@ -24,25 +37,37 @@ export const useChannelStyle = ({
   appId: string;
   botId: string;
 }) => {
+  const userAndChannelInfoFromStorage = useWidgetLocalStorage();
+  const userExists = userAndChannelInfoFromStorage != null;
   const { data, isPending, isLoading, isFetching } = useQuery({
     enabled: !!appId && !!botId,
-    queryKey: ['getChannelStyle', appId, botId],
+    queryKey: ['getChannelStyle', appId, botId, userExists],
     queryFn: async () => {
       try {
         const response = await fetch(
-          `https://api-${appId}.sendbird.com/v3/bots/${botId}/${appId}/bot_style`
+          `https://api-${appId}.sendbirdtest.com/v3/bots/${botId}/${appId}/widget_setting?create_user_and_channel=${
+            !userExists ? 'True' : 'False'
+          }`
         );
-        // TODO: Remove this when the API is available on every server regions
-        if (response.status === 404) {
-          return DEFAULT_CHANNEL_STYLE;
-        }
         if (!response.ok) {
           throw new Error(
             (await response.json()).message || 'Something went wrong'
           );
         }
         const data = await (response.json() as unknown as BotStyleResponse);
-        const { bot_style } = data;
+        const { bot_style, user, channel } = data;
+
+        if (user != null && channel != null) {
+          localStorageHelper().setItem(
+            CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
+            JSON.stringify({
+              expireAt: user.expire_at,
+              userId: user.user_id,
+              sessionToken: user.session_token,
+              channelUrl: channel.channel_url,
+            })
+          );
+        }
         return {
           autoOpen: bot_style.auto_open,
           theme: bot_style.color.theme,

@@ -221,3 +221,32 @@ export const isEmpty = (value: any) => {
 
   return false;
 };
+
+/**
+ * Polyfill for localStorage
+ * localStorage wont work in some browsers, in incognito
+ * and no-cookie modes
+ * @returns { getItem: (key), setItem: (key, value) }
+ */
+interface Storage {
+  [key: string]: any;
+}
+export const localStorageHelper = () => {
+  const store: Storage = {};
+  return {
+    getItem: (key: string) => {
+      try {
+        return localStorage.getItem(key);
+      } catch (error) {
+        return store[key];
+      }
+    },
+    setItem: (key: string, value: string) => {
+      try {
+        localStorage.setItem(key, value);
+      } catch (error) {
+        store[key] = value;
+      }
+    },
+  };
+};
