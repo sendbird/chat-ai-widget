@@ -1,9 +1,7 @@
-import Avatar from '@sendbird/uikit-react/ui/Avatar';
-import Label, {
-  LabelTypography,
-  LabelColors,
-} from '@sendbird/uikit-react/ui/Label';
 import styled from 'styled-components';
+
+import Avatar from '@uikit/ui/Avatar';
+import { Label, LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
@@ -74,7 +72,11 @@ export default function CustomChannelHeader({
 }: Props) {
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
+<<<<<<< HEAD
   const { setIsOpen } = useWidgetOpen();
+=======
+  const { setIsOpen } = useConstantState();
+>>>>>>> cf71e33c (Reuse userId & channelUrl)
 
   async function handleRenewButtonClick() {
     try {

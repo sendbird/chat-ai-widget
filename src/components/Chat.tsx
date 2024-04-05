@@ -1,11 +1,12 @@
 import '@sendbird/uikit-react/dist/index.css';
 import '../css/index.css';
-import { GroupChannelProvider } from '@sendbird/uikit-react/GroupChannel/context';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
 import { useManualGroupChannelCreation } from '../hooks/useGroupChannel';
 import useWidgetButtonActivityTimeout from '../hooks/useWidgetButtonActivityTimeout';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
+
+import { GroupChannelProvider } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 const Chat = () => {
   useWidgetButtonActivityTimeout();
