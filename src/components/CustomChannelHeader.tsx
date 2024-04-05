@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
 import { useConstantState } from '../context/ConstantContext';
-import { useGroupChannel } from '../hooks/useGroupChannel';
 import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
 import { isMobile, isEmpty } from '../utils';
 
@@ -59,30 +58,37 @@ const RenewButtonContainer = styled.div`
   gap: 6px;
 `;
 
-export default function CustomChannelHeader() {
+interface Props {
+  onRenewButtonClick: () => Promise<void>;
+  botProfileUrl?: string;
+  botNickname?: string;
+  channelName?: string;
+}
+export default function CustomChannelHeader({
+  botProfileUrl,
+  botNickname,
+  channelName,
+  onRenewButtonClick,
+}: Props) {
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
-  const { refetch: createGroupChannel, data } = useGroupChannel();
   const { setIsOpen } = useConstantState();
 
-  function onClickRenewButton() {
-    createGroupChannel();
-    customRefreshComponent?.onClick?.();
-    // window.location.reload();
+  async function handleRenewButtonClick() {
+    try {
+      await onRenewButtonClick();
+      customRefreshComponent?.onClick?.();
+    } catch (error) {
+      console.error('Error on renew button click', error);
+    }
   }
-
-  if (!data) {
-    return null;
-  }
-
-  const { botUser, channel } = data;
 
   return (
     <Root>
       <SubContainer>
-        {botUser?.profileUrl != null && botUser.profileUrl != '' ? (
+        {botProfileUrl != null && botProfileUrl != '' ? (
           <Avatar
-            src={botUser.profileUrl}
+            src={botProfileUrl}
             alt="channelHeaderImage"
             height="34px"
             width="34px"
@@ -96,12 +102,16 @@ export default function CustomChannelHeader() {
           />
         )}
         <Title type={LabelTypography.H_2} color={LabelColors.ONBACKGROUND_1}>
-          {botUser?.nickname || channel?.name}
+          {botNickname || channelName}
         </Title>
         {!isMobile && betaMark && <BetaLogo>{customBetaMarkText}</BetaLogo>}
       </SubContainer>
       <RenewButtonContainer>
-        <RenewButtonForWidgetDemo onClick={onClickRenewButton}>
+        <RenewButtonForWidgetDemo
+          onClick={() => {
+            handleRenewButtonClick();
+          }}
+        >
           <customRefreshComponent.icon
             id="aichatbot-widget-refresh-icon"
             width={customRefreshComponent.width}
