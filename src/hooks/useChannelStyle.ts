@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import useWidgetLocalStorage, {
   CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
 } from './useWidgetLocalStorage';
-import { localStorageHelper } from '../utils';
+import { localStorageHelper, isPastTime } from '../utils';
 
 const DEFAULT_CHANNEL_STYLE = {
   theme: 'dark',
@@ -30,6 +30,7 @@ interface BotStyleResponse {
     channel_url: string;
   };
 }
+
 export const useChannelStyle = ({
   appId,
   botId,
@@ -38,15 +39,25 @@ export const useChannelStyle = ({
   botId: string;
 }) => {
   const userAndChannelInfoFromStorage = useWidgetLocalStorage();
-  const userExists = userAndChannelInfoFromStorage != null;
+  const isUserAndChannelExpired =
+    // If there is no user and channel info in the local storage
+    userAndChannelInfoFromStorage == null ||
+    // Or if the user and channel info is expired
+    (userAndChannelInfoFromStorage != null &&
+      isPastTime(userAndChannelInfoFromStorage.expireAt));
+
+  console.log({
+    userAndChannelInfoFromStorage,
+    isUserAndChannelExpired,
+  });
   const { data, isPending, isLoading, isFetching } = useQuery({
     enabled: !!appId && !!botId,
-    queryKey: ['getChannelStyle', appId, botId, userExists],
+    queryKey: ['getChannelStyle', appId, botId, isUserAndChannelExpired],
     queryFn: async () => {
       try {
         const response = await fetch(
           `https://api-${appId}.sendbirdtest.com/v3/bots/${botId}/${appId}/widget_setting?create_user_and_channel=${
-            !userExists ? 'True' : 'False'
+            isUserAndChannelExpired ? 'True' : 'False'
           }`
         );
         if (!response.ok) {

@@ -1,6 +1,3 @@
-import { uuid } from './utils';
-
-export const USER_ID = uuid();
 export const NICKNAME = 'Jake Sully';
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
 export const WEB_DEMO_APP_ID = import.meta.env.VITE_WEB_DEMO_APP_ID;

@@ -15,8 +15,8 @@ import DynamicRepliesPanel from './DynamicRepliesPanel';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
+import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { hideChatBottomBanner, isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,

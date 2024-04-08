@@ -134,7 +134,6 @@ const customConstants = {
   applicationId: 'AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67', // Your Sendbird application ID
   botId: 'khan-academy-bot', // Your Sendbird bot ID
   botNickName: 'Khan Academy Support Bot',
-  userId: 'user1', // Specify your userId. If it's not provided, it'll generate a random one \w uuid
   userNickName: 'User',
   betaMark: false,
   suggestedMessageContent: {
@@ -211,7 +210,6 @@ const App = () => {
       applicationId={customConstants.applicationId}
       botId={customConstants.botId}
       botNickName={customConstants.botNickName}
-      userId={customConstants.userId}
       userNickName={customConstants.userNickName}
       betaMark={customConstants.betaMark}
       customBetaMarkText={customConstants.customBetaMarkText}
@@ -244,7 +242,7 @@ import { SessionHandler } from '@sendbird/chat'
 const USER_ID = 'UserId';
 
 /**
- * To setup auth on their own API,
+ * To setup auth on your own API,
  * You can also create your own custom session handler \w userId.
  * More information can be found in
  * https://sendbird.com/docs/chat/v3/javascript/guides/authentication
@@ -260,7 +258,6 @@ const memoizedConfigureSession = useCallback(
     const sessionHandler = new SessionHandler();
     sessionHandler.onSessionTokenRequired = (resolve, reject) => {
       console.warn('SessionHandler.onSessionTokenRequired()');
-      // This issueSessionToken fn i
       issueSessionToken(USER_ID)
         .then(token => {
           // curentUserInfo.accessToken = token;
