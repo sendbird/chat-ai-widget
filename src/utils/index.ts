@@ -1,4 +1,4 @@
-import { type SendbirdGroupChat } from '@sendbird/chat/lib/__definition';
+import type SendbirdChat from '@sendbird/chat';
 
 export function formatCreatedAtToAMPM(createdAt: number) {
   const date: Date = new Date(createdAt);
@@ -167,7 +167,7 @@ export const isIOSMobile = /iPad|iPhone|iPod/.test(navigator.userAgent);
 export const isAndroidMobile = /Android/.test(navigator.userAgent);
 export const isMobile = isIOSMobile || isAndroidMobile;
 
-export function hideChatBottomBanner(sdk: SendbirdGroupChat): boolean {
+export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
   const REMOVE_POWERED_BY = 'remove_powered_by';
   const applicationAttributes = sdk?.appInfo?.applicationAttributes;
 
