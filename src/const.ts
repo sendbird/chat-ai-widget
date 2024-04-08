@@ -6,17 +6,13 @@ import { type StringSet } from '@sendbird/uikit-react/types/ui/Label/stringSet';
 import React from 'react';
 
 import { ReactComponent as RefreshIcon } from './icons/refresh-icon.svg';
-import { noop, uuid } from './utils';
+import { noop } from './utils';
 
 // Most of browsers use a 32-bit signed integer as the maximum value for z-index
 export const MAX_Z_INDEX = 2147483647;
 
-// Want to use your own app_id? Get one from https://dashboard.sendbird.com/auth/signin
-const USER_ID = uuid();
-
 export const DEFAULT_CONSTANT: Constant = {
   botNickName: 'Khan Academy Support Bot',
-  userId: USER_ID,
   userNickName: 'User',
   betaMark: false,
   customBetaMarkText: 'BETA',
@@ -78,7 +74,6 @@ type ReplaceString = string;
 
 export interface Constant {
   botNickName: string;
-  userId: string;
   userNickName: string;
   betaMark: boolean;
   customBetaMarkText: string;
@@ -89,14 +84,15 @@ export interface Constant {
   replacementTextList: [MatchString, ReplaceString][];
   instantConnect: boolean;
   customRefreshComponent: CustomRefreshComponent;
-  customUserAgentParam: Record<any, any>;
-  configureSession: ConfigureSession;
   enableSourceMessage: boolean;
   enableEmojiFeedback: boolean;
   enableMention: boolean;
   enableMobileView: boolean;
   firstMessageData: FirstMessageItem[];
-  stringSet: Partial<StringSet>;
+  userId?: string;
+  configureSession?: ConfigureSession;
+  stringSet?: Partial<StringSet>;
+  customUserAgentParam?: Record<any, any>;
 }
 
 export interface SuggestedReply {

@@ -24,7 +24,6 @@ const SBComponent = () => {
   const {
     applicationId,
     botId,
-    // userId,
     userNickName,
     configureSession,
     enableMention,
