@@ -214,6 +214,15 @@ export const isEmpty = (value: any) => {
   return false;
 };
 
+export function isPastTime(timestamp: number): boolean {
+  const currentTime = Date.now();
+  console.log({
+    currentTime: new Date(currentTime),
+    timestamp: new Date(timestamp),
+  });
+  return timestamp < currentTime;
+}
+
 /**
  * Resolves a base URL and a path, ensuring there is exactly one slash between them.
  * @param baseURL - The base URL, e.g., 'https://api.example.com/'

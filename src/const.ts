@@ -1,12 +1,12 @@
 import SendbirdChat, { SessionHandler } from '@sendbird/chat';
 import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
 import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
-import { type StringSet } from '@sendbird/uikit-react/types/ui/Label/stringSet';
 import React from 'react';
 
 import { ReactComponent as RefreshIcon } from './icons/refresh-icon.svg';
 import { SendbirdChatAICallbacks } from './interfaces';
 import { noop } from './utils';
+import { StringSet } from '@uikit/ui/Label/stringSet';
 
 // Most of browsers use a 32-bit signed integer as the maximum value for z-index
 export const MAX_Z_INDEX = 2147483647;
