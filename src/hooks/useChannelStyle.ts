@@ -3,7 +3,9 @@ import { useMemo } from 'react';
 
 import useWidgetLocalStorage, {
   CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
+  type WidgetLocalStorageValue,
 } from './useWidgetLocalStorage';
+import { useConstantState } from '../context/ConstantContext';
 import { localStorageHelper, isPastTime } from '../utils';
 
 const DEFAULT_CHANNEL_STYLE = {
@@ -31,6 +33,16 @@ interface BotStyleResponse {
   };
 }
 
+export function isUserAndChannelCreationNeeded(
+  userAndChannelInfo: WidgetLocalStorageValue
+) {
+  const isInfoMissing = userAndChannelInfo == null;
+  const isInfoExpired =
+    userAndChannelInfo != null && isPastTime(userAndChannelInfo.expireAt);
+
+  return isInfoMissing || isInfoExpired;
+}
+
 export const useChannelStyle = ({
   appId,
   botId,
@@ -38,26 +50,22 @@ export const useChannelStyle = ({
   appId: string;
   botId: string;
 }) => {
+  const { userId, configureSession } = useConstantState();
+  const manualChannelCreationNeeded =
+    userId != null && configureSession != null;
   const userAndChannelInfoFromStorage = useWidgetLocalStorage();
-  const isUserAndChannelExpired =
-    // If there is no user and channel info in the local storage
-    userAndChannelInfoFromStorage == null ||
-    // Or if the user and channel info is expired
-    (userAndChannelInfoFromStorage != null &&
-      isPastTime(userAndChannelInfoFromStorage.expireAt));
+  const newUserAndChannelCreationNeeded =
+    !manualChannelCreationNeeded &&
+    isUserAndChannelCreationNeeded(userAndChannelInfoFromStorage);
 
-  console.log({
-    userAndChannelInfoFromStorage,
-    isUserAndChannelExpired,
-  });
   const { data, isPending, isLoading, isFetching } = useQuery({
     enabled: !!appId && !!botId,
-    queryKey: ['getChannelStyle', appId, botId, isUserAndChannelExpired],
+    queryKey: ['getChannelStyle', appId, botId],
     queryFn: async () => {
       try {
         const response = await fetch(
           `https://api-${appId}.sendbirdtest.com/v3/bots/${botId}/${appId}/widget_setting?create_user_and_channel=${
-            isUserAndChannelExpired ? 'True' : 'False'
+            newUserAndChannelCreationNeeded ? 'True' : 'False'
           }`
         );
         if (!response.ok) {
