@@ -311,6 +311,9 @@ const customConstants = {
 const App = () => {
   return (
     <ChatAiWidget
+      /**
+       * userId & configureSession should be used together to create a group channel on the client side.
+       */
       userId={USER_ID}
       configureSession={customConfigs.configureSession}
       stringSet={customConfigs.stringSet}
