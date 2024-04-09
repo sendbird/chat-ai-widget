@@ -26,7 +26,7 @@ export const useManualGroupChannelCreation = () => {
   const store = useSendbirdStateContext();
   const sb = store.stores.sdkStore.sdk as SendbirdGroupChat;
 
-  const { data: channelUrl } = useQuery({
+  useQuery({
     enabled:
       sb?.groupChannel != null &&
       botId != null &&
@@ -56,25 +56,21 @@ export const useManualGroupChannelCreation = () => {
           data: paramData,
         };
         const channel = await sb?.groupChannel?.createChannel(params);
-        return channel.url;
+        localStorageHelper().setItem(
+          CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
+          JSON.stringify({
+            channelUrl: channel.url,
+            expireAt: getDateNDaysLater(30),
+            userId: customUserId,
+            // there's no sessionToken in this case since we don't know the value of it
+            // but instead, it should be handled by configureSession that user provides
+            sessionToken: undefined,
+          })
+        );
       } catch (error) {
         console.error(error);
         throw new Error('Failed to create a new channel');
       }
     },
   });
-
-  if (channelUrl != null) {
-    localStorageHelper().setItem(
-      CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
-      JSON.stringify({
-        channelUrl,
-        expireAt: getDateNDaysLater(30),
-        userId: customUserId,
-        // there's no sessionToken in this case since we don't know the value of it
-        // but instead, it should be handled by configureSession that user provides
-        sessionToken: undefined,
-      })
-    );
-  }
 };
