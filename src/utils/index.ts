@@ -216,11 +216,17 @@ export const isEmpty = (value: any) => {
 
 export function isPastTime(timestamp: number): boolean {
   const currentTime = Date.now();
-  console.log({
-    currentTime: new Date(currentTime),
-    timestamp: new Date(timestamp),
-  });
   return timestamp < currentTime;
+}
+
+export function getDateNDaysLater(daysToAdd: number): Date {
+  const millisecondsPerDay = 24 * 60 * 60 * 1000; // 24hours in milliseconds
+  const currentDate = new Date();
+  const futureDate = new Date(
+    currentDate.getTime() + daysToAdd * millisecondsPerDay
+  );
+
+  return futureDate;
 }
 
 /**
