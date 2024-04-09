@@ -25,7 +25,6 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       botId: props.botId,
       setIsOpen: props.setIsOpen,
       botNickName: props.botNickName ?? initialState.botNickName,
-      userId: props.userId,
       userNickName: props.userNickName ?? initialState.userNickName,
       betaMark: props.betaMark ?? initialState.betaMark,
       customBetaMarkText:
@@ -67,6 +66,10 @@ export const ConstantStateProvider = (props: ProviderProps) => {
         },
       },
       customUserAgentParam: props.customUserAgentParam,
+      /**
+       * userId & configureSession should be used together to create a group channel on the client side.
+       */
+      userId: props.userId,
       configureSession: props.configureSession,
       stringSet: {
         ...LabelStringSet,
