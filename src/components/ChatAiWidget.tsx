@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { Chat } from './Chat';
+import SBComponent from './SBComponent';
 import WidgetWindow from './WidgetWindow';
 import { getColorBasedOnSaturation } from '../colors';
 import { Constant, MAX_Z_INDEX } from '../const';
+import { ConstantStateProvider } from '../context/ConstantContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import useMobileView from '../hooks/useMobileView';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
@@ -136,11 +138,8 @@ export interface Props extends Partial<Constant> {
   renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
 }
 
-const Component = (props: Props) => {
-  const { isFetching, ...channelStyle } = useChannelStyle({
-    appId: props.applicationId,
-    botId: props.botId,
-  });
+const Component = ({ ...props }: Props) => {
+  const { isFetching, ...channelStyle } = useChannelStyle();
   const [isOpen, setIsOpen] = useState<boolean>(
     isMobile
       ? // we don't want to open the widget window automatically on mobile view
@@ -172,16 +171,29 @@ const Component = (props: Props) => {
     accentColor: channelStyle.accentColor,
     isOpen,
   };
-  return isMobile && isOpen ? (
-    <MobileContainer width={mobileContainerWidth} id="aichatbot-widget-window">
-      <Chat {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
-    </MobileContainer>
-  ) : (
-    <>
-      <WidgetWindow isOpen={isOpen} setIsOpen={setIsOpen} {...props} />
-      {props.renderWidgetToggleButton?.(toggleButtonProps) ||
-        (!isFetching && <WidgetToggleButton {...toggleButtonProps} />)}
-    </>
+
+  const chatProps = {
+    ...props,
+    isOpen,
+    setIsOpen,
+  };
+  return (
+    <SBComponent>
+      {isMobile && isOpen ? (
+        <MobileContainer
+          width={mobileContainerWidth}
+          id="aichatbot-widget-window"
+        >
+          <Chat {...chatProps} />
+        </MobileContainer>
+      ) : (
+        <>
+          <WidgetWindow {...chatProps} />
+          {props.renderWidgetToggleButton?.(toggleButtonProps) ||
+            (!isFetching && <WidgetToggleButton {...toggleButtonProps} />)}
+        </>
+      )}
+    </SBComponent>
   );
 };
 
@@ -195,6 +207,8 @@ export default function ChatAiWidget(props: Props) {
       },
     },
   });
+  // If env is not provided, prop will be used instead.
+  // But Either should be provided.
   const CHAT_WIDGET_APP_ID =
     import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? props.applicationId;
   const CHAT_WIDGET_BOT_ID =
@@ -202,11 +216,13 @@ export default function ChatAiWidget(props: Props) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Component
+      <ConstantStateProvider
         {...props}
         applicationId={CHAT_WIDGET_APP_ID}
         botId={CHAT_WIDGET_BOT_ID}
-      />
+      >
+        <Component {...props} />
+      </ConstantStateProvider>
     </QueryClientProvider>
   );
 }

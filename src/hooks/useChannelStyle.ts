@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 
 import useWidgetLocalStorage, {
-  CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
   type WidgetLocalStorageValue,
+  saveToLocalStorage,
 } from './useWidgetLocalStorage';
 import { useConstantState } from '../context/ConstantContext';
-import { localStorageHelper, isPastTime } from '../utils';
+import { isPastTime } from '../utils';
 
 const DEFAULT_CHANNEL_STYLE = {
   theme: 'dark',
@@ -24,7 +24,7 @@ interface BotStyleResponse {
     };
   };
   user?: {
-    expire_at: string;
+    expire_at: number;
     user_id: string;
     session_token: string;
   };
@@ -36,24 +36,24 @@ interface BotStyleResponse {
 export function isUserAndChannelCreationNeeded(
   userAndChannelInfo: WidgetLocalStorageValue
 ) {
-  const isInfoMissing = userAndChannelInfo == null;
+  const isInfoMissing = userAndChannelInfo?.userId == null;
   const isInfoExpired =
     userAndChannelInfo != null && isPastTime(userAndChannelInfo.expireAt);
 
   return isInfoMissing || isInfoExpired;
 }
 
-export const useChannelStyle = ({
-  appId,
-  botId,
-}: {
-  appId: string;
-  botId: string;
-}) => {
-  const { userId, configureSession } = useConstantState();
+export const useChannelStyle = () => {
+  const {
+    applicationId: appId,
+    botId,
+    userId,
+    configureSession,
+  } = useConstantState();
   const manualChannelCreationNeeded =
     userId != null && configureSession != null;
   const userAndChannelInfoFromStorage = useWidgetLocalStorage();
+
   const newUserAndChannelCreationNeeded =
     !manualChannelCreationNeeded &&
     isUserAndChannelCreationNeeded(userAndChannelInfoFromStorage);
@@ -77,15 +77,12 @@ export const useChannelStyle = ({
         const { bot_style, user, channel } = data;
 
         if (user != null && channel != null) {
-          localStorageHelper().setItem(
-            CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
-            JSON.stringify({
-              expireAt: user.expire_at,
-              userId: user.user_id,
-              sessionToken: user.session_token,
-              channelUrl: channel.channel_url,
-            })
-          );
+          saveToLocalStorage({
+            expireAt: user.expire_at,
+            userId: user.user_id,
+            sessionToken: user.session_token,
+            channelUrl: channel.channel_url,
+          });
         }
         return {
           autoOpen: bot_style.auto_open,

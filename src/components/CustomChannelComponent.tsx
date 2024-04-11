@@ -43,10 +43,6 @@ const Root = styled.div<RootStyleProps>`
       isStaticReplyVisible ? '65px' : '50px'};
   }
 
-  .sendbird-place-holder__body {
-    display: block;
-  }
-
   .sendbird-message-input-wrapper {
     width: 100%;
   }
