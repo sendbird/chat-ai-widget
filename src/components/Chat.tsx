@@ -8,6 +8,7 @@ import { CustomChannelComponent } from './CustomChannelComponent';
 import SBComponent from './SBComponent';
 import { ConstantStateProvider } from '../context/ConstantContext';
 import { useManualGroupChannelCreation } from '../hooks/useGroupChannel';
+import useWidgetButtonActivityTimeout from '../hooks/useWidgetButtonActivityTimeout';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { assert } from '../utils';
 
@@ -17,15 +18,12 @@ interface Props extends ChatWidgetProps {
 }
 
 export const Chat = () => {
+  useWidgetButtonActivityTimeout();
   useManualGroupChannelCreation();
   const { channelUrl } = useWidgetLocalStorage();
 
   return (
-    <GroupChannelProvider
-      channelUrl={channelUrl}
-      scrollBehavior="smooth"
-      reconnectOnIdle={false}
-    >
+    <GroupChannelProvider channelUrl={channelUrl} scrollBehavior="smooth">
       <CustomChannelComponent />
       <div id={'sb_chat_root_for_z_index'} />
     </GroupChannelProvider>
