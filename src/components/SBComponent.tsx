@@ -47,12 +47,6 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     }, {});
   }, [accentColor]);
   const { sessionToken, userId } = useWidgetLocalStorage();
-  const sdkInitParams = useMemo(
-    () => ({
-      appStateToggleEnabled: false,
-    }),
-    []
-  );
 
   if (isFetching) {
     return null;
@@ -67,7 +61,6 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
         nickname={userNickName}
         customApiHost={`https://api-${applicationId}.sendbirdtest.com`}
         customWebSocketHost={`wss://ws-${applicationId}.sendbirdtest.com`}
-        sdkInitParams={sdkInitParams}
         configureSession={configureSession}
         customExtensionParams={userAgentCustomParams.current}
         breakpoint={isMobile}
