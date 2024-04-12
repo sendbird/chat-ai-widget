@@ -45,6 +45,9 @@ function useWidgetLocalStorage() {
       }
     };
 
+    // The 'localStorageChange' event is a CustomEvent,
+    // distinct from the standard 'storage' event, which is only triggered by changes in other tabs.
+    // This custom event allows us to detect localStorage changes within the same tab in real-time.
     window.addEventListener('localStorageChange', handleCustomStorageChange);
 
     return () => {
