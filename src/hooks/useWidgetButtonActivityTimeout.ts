@@ -1,6 +1,8 @@
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useRef } from 'react';
 
+import { useChannelStyle } from './useChannelStyle';
+
 const WS_IDLE_TIMEOUT = 6000 * 3;
 
 /**
@@ -8,6 +10,7 @@ const WS_IDLE_TIMEOUT = 6000 * 3;
  * when the widget button is not clicked for a certain amount of time
  */
 function useWidgetButtonActivityTimeout() {
+  const channelStyle = useChannelStyle();
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number>(Date.now());
   const store = useSendbirdStateContext();
@@ -15,7 +18,11 @@ function useWidgetButtonActivityTimeout() {
 
   useEffect(() => {
     const button = document.getElementById('aichatbot-widget-button');
-    if (!button) {
+    if (
+      !button ||
+      // We only need to run this logic when autoOpen is disabled
+      channelStyle?.autoOpen
+    ) {
       return;
     }
 
