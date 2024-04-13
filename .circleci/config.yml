@@ -2,7 +2,6 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
   aws-cli: circleci/aws-cli@2.1.0
-  aws-s3: circleci/aws-s3@4.0
   
 executors:
   amd64:
@@ -25,6 +24,33 @@ executors:
     resource_class: medium
 
 commands:
+  aws-s3-sync:
+    description: Sync with S3 bucket
+    parameters:
+      from:
+        default: default
+        description: Local directory
+        type: string
+      to:
+        default: default
+        description: Target bucket path
+        type: string
+      arguments:
+        description: If you wish to pass any additional arguments to the aws rm command (i.e. --exclude)
+        default: ''
+        type: string
+      aws_region:
+        default: us-east-1
+        description: AWS region
+        type: string
+    steps:
+      - run:
+          command: |
+            echo "Unset AWS environments to use assumed credentials"
+            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
+            aws s3 sync --region <<parameters.aws_region>> \
+                <<parameters.from>> <<parameters.to>> \
+                <<parameters.arguments>>
   aws-create-invalidation:
     description: Create invalidation in CloudFront distribution
     parameters:
@@ -163,8 +189,7 @@ jobs:
           profile-name: ci-web-prod
           source-profile: default
           role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
-      - aws-s3/sync:
-          profile_name: ci-web-prod
+      - aws-s3-sync:
           arguments: | 
             --delete
           from: dist/
