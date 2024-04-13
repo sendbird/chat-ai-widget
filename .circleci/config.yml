@@ -227,9 +227,10 @@ workflows:
     jobs:
       - build:
           name: build
+          filters: *only_version_tag_trigger
       - upload_to_s3_and_invalidate_cache:
           name: upload_to_s3_and_invalidate_cache
-          # filters: *only_version_tag_trigger
+          filters: *only_version_tag_trigger
           requires:
             - build
           context:
