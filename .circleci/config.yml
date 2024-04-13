@@ -142,14 +142,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: change directory
-          command: cd ./packages/self-service
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Build
-          command: npm run build
+          name: install dependencies and build
+          command: |
+            cd ./packages/self-service
+            npm install
+            npm run build
       - persist_to_workspace:
           root: ./packages/self-service
           paths:
