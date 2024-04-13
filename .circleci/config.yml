@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
   aws-cli: circleci/aws-cli@2.1.0
-
+  aws-s3: circleci/aws-s3@4.0
 executors:
   amd64:
     machine:
@@ -24,31 +24,6 @@ executors:
     resource_class: medium
 
 commands:
-  aws-s3-sync:
-    description: Sync with S3 bucket
-    parameters:
-      from:
-        default: default
-        description: Local directory
-        type: string
-      to:
-        default: default
-        description: Target bucket path
-        type: string
-      arguments:
-        description: If you wish to pass any additional arguments to the aws rm command (i.e. --exclude)
-        default: ''
-        type: string
-      aws_region:
-        default: us-east-1
-        description: AWS region
-        type: string
-    steps:
-      - run:
-          command: |
-            aws s3 sync --region <<parameters.aws_region>> \
-                <<parameters.from>> <<parameters.to>> \
-                <<parameters.arguments>>
   aws-create-invalidation:
     description: Create invalidation in CloudFront distribution
     parameters:
@@ -63,10 +38,12 @@ commands:
     steps:
       - run:
           command: |
+            echo "Unset AWS environments to use assumed credentials"
+            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
+            echo "Create invalidation in CloudFront"
             aws cloudfront create-invalidation \
                 --distribution-id <<parameters.distribution-id>> \
                 --paths <<parameters.paths>>
-
 
 jobs:
   build_container_image_and_push:
@@ -160,10 +137,11 @@ jobs:
           name: Scan credentials
           command: sh scan.sh
   build:
-    executor: node
     working_directory: ~/packages/self-service
+    executor: node
     steps:
-      - checkout
+      - checkout:
+          path: ~/packages
       - run:
           name: Install dependencies
           command: npm install
@@ -177,20 +155,21 @@ jobs:
   upload_to_s3_and_invalidate_cache:
     executor: ci-aws
     steps:
-      - checkout
       - attach_workspace:
           at: .
-      - aws-cli/setup:
-          profile-name: default
-          configure-default-region: false
-      - aws-cli/role-arn-setup:
-          profile-name: ci-web-prod
-          source-profile: default
-          role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
-      - aws-s3-sync:
-          from: 'dist/'
-          to: 's3://genai-aichatbotwidget-use1-prod/'
-          arguments: '--delete'
+      - aws-s3/sync:
+          arguments: | 
+            --delete
+          auth:
+            - aws-cli/setup:
+                profile-name: ci-web-prod
+                configure-default-region: false
+            - aws-cli/role-arn-setup:
+                profile-name: ci-web-prod
+                source-profile: default
+                role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
+          from: dist/
+          to: s3://genai-aichatbotwidget-use1-prod
       - aws-create-invalidation:
           distribution-id: 'EURYULTBDXGNR'
           paths: '/*'
@@ -223,7 +202,7 @@ workflows:
             --build-arg VITE_WEB_DEMO_APP_ID=6E1B01A5-517F-4F68-A74A-8427F3DE904C \
             --build-arg VITE_WIDGET_DEMO_APP_ID=58F00FA8-C48E-461D-975E-18D33C8778AB
           context:
-            - circleci-dashboard-bot5
+            - circleci-dashboard-bot
       - push_arch_integrated_manifest:
           name: integrate_manifest_app
           filters: *only_version_tag_trigger
