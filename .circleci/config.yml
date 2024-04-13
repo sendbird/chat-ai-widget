@@ -16,9 +16,12 @@ executors:
     resource_class: arm.medium
   ci-aws:
     docker:
-      - image: cimg/aws:2023.07
+      - image: cimg/aws:2024.03
     resource_class: small
-
+  node:
+    docker:
+      - image: cimg/node:18.17.1
+    resource_class: medium
 
 commands:
   aws-s3-sync:
@@ -156,6 +159,21 @@ jobs:
       - run:
           name: Scan credentials
           command: sh scan.sh
+  build:
+    executor: node
+    working_directory: ~/packages/self-service
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Build
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
   upload_to_s3_and_invalidate_cache:
     executor: ci-aws
     steps:
@@ -226,8 +244,12 @@ workflows:
             - integrate_manifest_app
   deploy_to_s3:
     jobs:
+      - build:
+          name: build
       - upload_to_s3_and_invalidate_cache:
           name: upload_to_s3_and_invalidate_cache
           # filters: *only_version_tag_trigger
+          requires:
+            - build
           context:
             - circleci-dashboard-bot
