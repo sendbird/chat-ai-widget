@@ -138,10 +138,12 @@ jobs:
           name: Scan credentials
           command: sh scan.sh
   build:
-    working_directory: ~/packages/self-service
     executor: node
     steps:
       - checkout
+      - run:
+          name: change directory
+          command: cd ./packages/self-service
       - run:
           name: Install dependencies
           command: npm install
@@ -149,7 +151,7 @@ jobs:
           name: Build
           command: npm run build
       - persist_to_workspace:
-          root: .
+          root: ./packages/self-service
           paths:
             - dist
   upload_to_s3_and_invalidate_cache:
@@ -165,6 +167,7 @@ jobs:
           source-profile: default
           role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
       - aws-s3/sync:
+          profile_name: ci-web-prod
           arguments: | 
             --delete
           from: dist/
