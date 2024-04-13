@@ -42,7 +42,7 @@ commands:
             echo "Create invalidation in CloudFront"
             aws cloudfront create-invalidation \
                 --distribution-id <<parameters.distribution-id>> \
-                --paths <<parameters.paths>>
+                --paths <<parameters.paths>> --profile ci-web-prod
 
 jobs:
   build_container_image_and_push:
