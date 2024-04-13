@@ -36,13 +36,17 @@ commands:
         default: /
         description: Target paths for invalidation
         type: string
+      profile:
+        default: default
+        description: AWS profile name
+        type: string
     steps:
       - run:
           command: |
             echo "Create invalidation in CloudFront"
             aws cloudfront create-invalidation \
                 --distribution-id <<parameters.distribution-id>> \
-                --paths <<parameters.paths>> --profile ci-web-prod
+                --paths <<parameters.paths>> --profile <<parameters.profile>>
 
 jobs:
   build_container_image_and_push:
@@ -170,6 +174,7 @@ jobs:
       - aws-create-invalidation:
           distribution-id: 'EURYULTBDXGNR'
           paths: '/*'
+          profile: ci-web-prod
 
 workflows:
   build_and_push:
