@@ -39,8 +39,6 @@ commands:
     steps:
       - run:
           command: |
-            echo "Unset AWS environments to use assumed credentials"
-            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
             echo "Create invalidation in CloudFront"
             aws cloudfront create-invalidation \
                 --distribution-id <<parameters.distribution-id>> \
