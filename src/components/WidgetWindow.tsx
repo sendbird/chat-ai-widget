@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { Chat } from './Chat';
+import Chat from './Chat';
 import { MAX_Z_INDEX } from '../const';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
 import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';

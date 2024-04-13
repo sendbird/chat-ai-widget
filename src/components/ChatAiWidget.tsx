@@ -2,7 +2,7 @@ import '@sendbird/uikit-react/dist/index.css';
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { Chat } from './Chat';
+import Chat from './Chat';
 import ProviderContainer, {
   type ProviderContainerProps,
 } from './ProviderContainer';
