@@ -21,10 +21,16 @@ export function saveToLocalStorage(value: WidgetLocalStorageValue) {
 }
 
 export type WidgetLocalStorageValue = {
-  userId: string;
-  channelUrl: string;
+  userId: string | null;
+  channelUrl: string | null;
   expireAt: number;
   sessionToken?: string;
+};
+
+const DEFAULT_VALUE: WidgetLocalStorageValue = {
+  userId: null,
+  channelUrl: null,
+  expireAt: 0,
 };
 
 function parseValue(value: string | null) {
@@ -33,8 +39,8 @@ function parseValue(value: string | null) {
 
 function useWidgetLocalStorage() {
   const key = CHAT_AI_WIDGET_LOCAL_STORAGE_KEY;
-  const [value, setValue] = useState(() =>
-    parseValue(localStorageHelper().getItem(key))
+  const [value, setValue] = useState(
+    () => parseValue(localStorageHelper().getItem(key)) || DEFAULT_VALUE
   );
 
   useEffect(() => {
@@ -58,7 +64,7 @@ function useWidgetLocalStorage() {
     };
   }, []);
 
-  return (value ?? {}) as WidgetLocalStorageValue;
+  return value as WidgetLocalStorageValue;
 }
 
 export default useWidgetLocalStorage;
