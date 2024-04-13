@@ -27,7 +27,7 @@ export type WidgetLocalStorageValue = {
   sessionToken?: string;
 };
 
-const DEFAULT_VALUE: WidgetLocalStorageValue = {
+const DEFAULT_VALUE = {
   userId: null,
   channelUrl: null,
   expireAt: 0,
@@ -37,7 +37,7 @@ function parseValue(value: string | null) {
   return value != null && value !== '' ? JSON.parse(value) : null;
 }
 
-function useWidgetLocalStorage() {
+function useWidgetLocalStorage(): WidgetLocalStorageValue {
   const key = CHAT_AI_WIDGET_LOCAL_STORAGE_KEY;
   const [value, setValue] = useState(
     () => parseValue(localStorageHelper().getItem(key)) || DEFAULT_VALUE
@@ -64,7 +64,7 @@ function useWidgetLocalStorage() {
     };
   }, []);
 
-  return value as WidgetLocalStorageValue;
+  return value;
 }
 
 export default useWidgetLocalStorage;
