@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import { CustomChannelComponent } from './CustomChannelComponent';
-import SBComponent from './SBComponent';
+import SBComponent from './ProviderContainer';
 import { ConstantStateProvider } from '../context/ConstantContext';
 import { useManualGroupChannelCreation } from '../hooks/useGroupChannel';
 import useWidgetButtonActivityTimeout from '../hooks/useWidgetButtonActivityTimeout';

@@ -1,9 +1,15 @@
 import SBProvider from '@sendbird/uikit-react/SendbirdProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useRef, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 
+import { type ToggleButtonProps } from './WidgetToggleButton';
 import { generateCSSVariables } from '../colors';
-import { useConstantState } from '../context/ConstantContext';
+import { type Constant } from '../const';
+import {
+  useConstantState,
+  ConstantStateProvider,
+} from '../context/ConstantContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
@@ -85,4 +91,41 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
   );
 };
 
-export default SBComponent;
+export interface ProviderContainerProps extends Partial<Constant> {
+  applicationId: string;
+  botId: string;
+  children: React.ReactElement;
+  hashedKey?: string;
+  autoOpen?: boolean;
+  renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
+}
+
+export default function ProviderContainer(props: ProviderContainerProps) {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        staleTime: 5000,
+      },
+    },
+  });
+  // If env is not provided, prop will be used instead.
+  // But Either should be provided.
+  const CHAT_WIDGET_APP_ID =
+    import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? props.applicationId;
+  const CHAT_WIDGET_BOT_ID =
+    import.meta.env.VITE_CHAT_WIDGET_BOT_ID ?? props.botId;
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ConstantStateProvider
+        {...props}
+        applicationId={CHAT_WIDGET_APP_ID}
+        botId={CHAT_WIDGET_BOT_ID}
+      >
+        <SBComponent>{props.children}</SBComponent>
+      </ConstantStateProvider>
+    </QueryClientProvider>
+  );
+}
