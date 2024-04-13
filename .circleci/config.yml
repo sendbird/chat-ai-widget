@@ -3,6 +3,7 @@ orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
   aws-cli: circleci/aws-cli@2.1.0
   aws-s3: circleci/aws-s3@4.0
+  
 executors:
   amd64:
     machine:
@@ -157,17 +158,16 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+      - aws-cli/setup:
+          profile-name: ci-web-prod
+          configure-default-region: false
+      - aws-cli/role-arn-setup:
+          profile-name: ci-web-prod
+          source-profile: default
+          role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
       - aws-s3/sync:
           arguments: | 
             --delete
-          auth:
-            - aws-cli/setup:
-                profile-name: ci-web-prod
-                configure-default-region: false
-            - aws-cli/role-arn-setup:
-                profile-name: ci-web-prod
-                source-profile: default
-                role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
           from: dist/
           to: s3://genai-aichatbotwidget-use1-prod
       - aws-create-invalidation:
