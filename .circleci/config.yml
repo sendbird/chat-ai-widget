@@ -227,7 +227,7 @@ workflows:
   deploy_to_s3:
     jobs:
       - upload_to_s3_and_invalidate_cache:
-          name: 
+          name: upload_to_s3_and_invalidate_cache
           # filters: *only_version_tag_trigger
           context:
             - circleci-dashboard-bot
