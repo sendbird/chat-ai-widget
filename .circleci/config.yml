@@ -36,13 +36,17 @@ commands:
         description: If you wish to pass any additional arguments to the aws rm command (i.e. --exclude)
         default: ''
         type: string
+      aws_region:
+        default: us-east-1
+        description: AWS region
+        type: string
     steps:
       - run:
           command: |
             echo "Unset AWS environments to use assumed credentials"
             unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
-            aws s3 sync --region us-west-2 \
-                <<parameters.from>> <<parameters.to>> \
+            aws s3 sync --region <<parameters.from>> \
+                <<parameters.from>> <<parameters.aws_region>> \
                 <<parameters.arguments>>
   aws-create-invalidation:
     description: Create invalidation in CloudFront distribution
