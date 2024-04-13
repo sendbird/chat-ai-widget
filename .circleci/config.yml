@@ -14,6 +14,56 @@ executors:
       image: ubuntu-2004:current
       docker_layer_caching: true
     resource_class: arm.medium
+  ci-aws:
+    docker:
+      - image: cimg/aws:2023.07
+    resource_class: small
+
+
+commands:
+  aws-s3-sync:
+    description: Sync with S3 bucket
+    parameters:
+      from:
+        default: default
+        description: Local directory
+        type: string
+      to:
+        default: default
+        description: Target bucket path
+        type: string
+      arguments:
+        description: If you wish to pass any additional arguments to the aws rm command (i.e. --exclude)
+        default: ''
+        type: string
+    steps:
+      - run:
+          command: |
+            echo "Unset AWS environments to use assumed credentials"
+            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
+            aws s3 sync --region us-west-2 \
+                <<parameters.from>> <<parameters.to>> \
+                <<parameters.arguments>>
+  aws-create-invalidation:
+    description: Create invalidation in CloudFront distribution
+    parameters:
+      distribution-id:
+        default: default
+        description: Distribution id for CloudFront
+        type: string
+      paths:
+        default: /
+        description: Target paths for invalidation
+        type: string
+    steps:
+      - run:
+          command: |
+            echo "Unset AWS environments to use assumed credentials"
+            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
+            echo "Create invalidation in CloudFront"
+            aws cloudfront create-invalidation \
+                --distribution-id <<parameters.distribution-id>> \
+                --paths <<parameters.paths>>
 
 jobs:
   build_container_image_and_push:
@@ -106,9 +156,28 @@ jobs:
       - run:
           name: Scan credentials
           command: sh scan.sh
+  upload_to_s3_and_invalidate_cache:
+    executor: ci-aws
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - aws-cli/setup:
+          profile-name: default
+          configure-default-region: false
+      - aws-cli/role-arn-setup:
+          profile-name: ci-web-prod
+          source-profile: default
+          role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
+      - aws-s3-sync:
+          from: 'dist/'
+          to: 's3://genai-aichatbotwidget-use1-prod/'
+          arguments: '--delete'
+      - aws-create-invalidation:
+          distribution-id: 'EURYULTBDXGNR'
+          paths: '/*'
 
 workflows:
-  version: 2
   build_and_push:
     jobs:
       - build_container_image_and_push:
@@ -155,3 +224,10 @@ workflows:
             - devsecops
           requires:
             - integrate_manifest_app
+  deploy_to_s3:
+    jobs:
+      - upload_to_s3_and_invalidate_cache:
+          name: 
+          # filters: *only_version_tag_trigger
+          context:
+            - circleci-dashboard-bot
