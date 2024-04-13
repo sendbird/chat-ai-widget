@@ -43,10 +43,8 @@ commands:
     steps:
       - run:
           command: |
-            echo "Unset AWS environments to use assumed credentials"
-            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
-            aws s3 sync --region <<parameters.from>> \
-                <<parameters.from>> <<parameters.aws_region>> \
+            aws s3 sync --region <<parameters.aws_region>> \
+                <<parameters.from>> <<parameters.to>> \
                 <<parameters.arguments>>
   aws-create-invalidation:
     description: Create invalidation in CloudFront distribution
@@ -62,12 +60,10 @@ commands:
     steps:
       - run:
           command: |
-            echo "Unset AWS environments to use assumed credentials"
-            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
-            echo "Create invalidation in CloudFront"
             aws cloudfront create-invalidation \
                 --distribution-id <<parameters.distribution-id>> \
                 --paths <<parameters.paths>>
+
 
 jobs:
   build_container_image_and_push:
@@ -209,7 +205,7 @@ workflows:
             --build-arg VITE_WEB_DEMO_APP_ID=6E1B01A5-517F-4F68-A74A-8427F3DE904C \
             --build-arg VITE_WIDGET_DEMO_APP_ID=58F00FA8-C48E-461D-975E-18D33C8778AB
           context:
-            - circleci-dashboard-bot
+            - circleci-dashboard-bot5
       - push_arch_integrated_manifest:
           name: integrate_manifest_app
           filters: *only_version_tag_trigger
