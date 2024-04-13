@@ -141,8 +141,7 @@ jobs:
     working_directory: ~/packages/self-service
     executor: node
     steps:
-      - checkout:
-          path: ~/packages
+      - checkout
       - run:
           name: Install dependencies
           command: npm install
