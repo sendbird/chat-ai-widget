@@ -8,7 +8,6 @@ const initialState = DEFAULT_CONSTANT;
 interface ConstantContextProps extends Constant {
   applicationId: string | null;
   botId: string | null;
-  setIsOpen?: (isOpen: boolean) => void;
 }
 const ConstantContext = createContext<ConstantContextProps>({
   applicationId: null,
@@ -23,7 +22,6 @@ export const ConstantStateProvider = (props: ProviderProps) => {
     () => ({
       applicationId: props.applicationId,
       botId: props.botId,
-      setIsOpen: props.setIsOpen,
       botNickName: props.botNickName ?? initialState.botNickName,
       userNickName: props.userNickName ?? initialState.userNickName,
       betaMark: props.betaMark ?? initialState.betaMark,
@@ -81,6 +79,8 @@ export const ConstantStateProvider = (props: ProviderProps) => {
         props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
       enableMention: props.enableMention ?? initialState.enableMention,
       enableMobileView: props.enableMobileView ?? initialState.enableMobileView,
+      autoOpen: props.autoOpen,
+      renderWidgetToggleButton: props.renderWidgetToggleButton,
     }),
     [props]
   );
