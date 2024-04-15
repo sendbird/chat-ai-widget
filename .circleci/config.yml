@@ -172,7 +172,7 @@ jobs:
           to: s3://genai-aichatbotwidget-use1-prod
           profile_name: ci-web-prod
       - aws-s3/copy:
-          arguments: '--metadata-directive COPY --cache-control no-cache'
+          arguments: '--metadata-directive REPLACE --cache-control no-cache --content-type application/javascript'
           from: s3://genai-aichatbotwidget-use1-prod/index.js
           profile_name: ci-web-prod
           to: s3://genai-aichatbotwidget-use1-prod/index.js
