@@ -72,11 +72,7 @@ export default function CustomChannelHeader({
 }: Props) {
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
-<<<<<<< HEAD
   const { setIsOpen } = useWidgetOpen();
-=======
-  const { setIsOpen } = useConstantState();
->>>>>>> cf71e33c (Reuse userId & channelUrl)
 
   async function handleRenewButtonClick() {
     try {

@@ -219,12 +219,10 @@ export function isPastTime(timestamp: number): boolean {
   return timestamp < currentTime;
 }
 
-export function getDateNDaysLater(daysToAdd: number): Date {
+export function getDateNDaysLater(daysToAdd: number): number {
   const millisecondsPerDay = 24 * 60 * 60 * 1000; // 24hours in milliseconds
   const currentDate = new Date();
-  const futureDate = new Date(
-    currentDate.getTime() + daysToAdd * millisecondsPerDay
-  );
+  const futureDate = currentDate.getTime() + daysToAdd * millisecondsPerDay;
 
   return futureDate;
 }

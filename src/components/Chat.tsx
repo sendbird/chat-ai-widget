@@ -1,4 +1,3 @@
-import '@sendbird/uikit-react/dist/index.css';
 import '../css/index.css';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
