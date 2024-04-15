@@ -74,8 +74,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
           userId={userId}
           accessToken={sessionToken}
           nickname={userNickName}
-          customApiHost={`https://api-${applicationId}.sendbirdtest.com`}
-          customWebSocketHost={`wss://ws-${applicationId}.sendbirdtest.com`}
+          customApiHost={`https://api-${applicationId}.sendbird.com`}
+          customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
           configureSession={configureSession}
           customExtensionParams={userAgentCustomParams.current}
           breakpoint={isMobile}
