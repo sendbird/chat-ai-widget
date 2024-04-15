@@ -47,22 +47,6 @@ commands:
             aws cloudfront create-invalidation \
                 --distribution-id <<parameters.distribution-id>> \
                 --paths <<parameters.paths>> --profile <<parameters.profile>>
-  aws-create-s3-object-metadata:
-    description: Create metadata for S3 object
-    parameters:
-      path:
-        default: /
-        description: Target paths for invalidation
-        type: string
-      profile:
-        default: default
-        description: AWS profile name
-        type: string
-    steps:
-      - run:
-          command: |
-            aws s3 cp s3://firefund-assets/file.jpg s3://firefund-assets/file.jpg --profile <<parameters.profile>> --content-type image/png
-
 
 jobs:
   build_container_image_and_push:
