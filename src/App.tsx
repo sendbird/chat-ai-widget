@@ -35,6 +35,7 @@ const App = (props: Props) => {
       enableSourceMessage={props.enableSourceMessage}
       enableEmojiFeedback={props.enableEmojiFeedback}
       enableMention={props.enableMention}
+      enableMobileView={props.enableMobileView}
       customUserAgentParam={props.customUserAgentParam}
       autoOpen={props.autoOpen}
       renderWidgetToggleButton={props.renderWidgetToggleButton}

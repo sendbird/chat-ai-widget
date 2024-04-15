@@ -1,5 +1,5 @@
 import '@sendbird/uikit-react/dist/index.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import Chat from './Chat';
@@ -9,6 +9,7 @@ import ProviderContainer, {
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
 import { MAX_Z_INDEX } from '../const';
+import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import useMobileView from '../hooks/useMobileView';
 import { isMobile } from '../utils';
@@ -26,16 +27,8 @@ const MobileContainer = styled.div<{ width: number }>`
 
 const Component = (props: ProviderContainerProps) => {
   const { isFetching, ...channelStyle } = useChannelStyle();
-  const [isOpen, setIsOpen] = useState<boolean>(
-    isMobile
-      ? // we don't want to open the widget window automatically on mobile view
-        false
-      : props.autoOpen ?? channelStyle.autoOpen ?? false
-  );
-  const { width: mobileContainerWidth } = useMobileView({
-    enableMobileView: props.enableMobileView,
-    isWidgetOpen: isOpen,
-  });
+  const { isOpen, setIsOpen } = useWidgetOpen();
+  const { width: mobileContainerWidth } = useMobileView();
   const timer = useRef<NodeJS.Timeout | null>(null);
 
   const buttonClickHandler = () => {
@@ -58,18 +51,13 @@ const Component = (props: ProviderContainerProps) => {
     isOpen,
   };
 
-  const chatProps = {
-    ...props,
-    isOpen,
-    setIsOpen,
-  };
   return isMobile && isOpen ? (
     <MobileContainer width={mobileContainerWidth} id="aichatbot-widget-window">
-      <Chat {...chatProps} />
+      <Chat />
     </MobileContainer>
   ) : (
     <>
-      <WidgetWindow {...chatProps} />
+      <WidgetWindow />
       {props.renderWidgetToggleButton?.(toggleButtonProps) ||
         (!isFetching && <WidgetToggleButton {...toggleButtonProps} />)}
     </>

@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
 import { useConstantState } from '../context/ConstantContext';
+import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
 import { isMobile, isEmpty } from '../utils';
 
@@ -72,7 +73,7 @@ export default function CustomChannelHeader({
 }: Props) {
   const { betaMark, customBetaMarkText, customRefreshComponent } =
     useConstantState();
-  const { setIsOpen } = useConstantState();
+  const { setIsOpen } = useWidgetOpen();
 
   async function handleRenewButtonClick() {
     try {
@@ -130,7 +131,7 @@ export default function CustomChannelHeader({
           />
         </RenewButtonForWidgetDemo>
         {isMobile && (
-          <CloseButton onClick={() => setIsOpen?.(false)}>Close</CloseButton>
+          <CloseButton onClick={() => setIsOpen(false)}>Close</CloseButton>
         )}
       </RenewButtonContainer>
     </Root>

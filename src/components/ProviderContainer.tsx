@@ -10,6 +10,7 @@ import {
   useConstantState,
   ConstantStateProvider,
 } from '../context/ConstantContext';
+import { WidgetOpenProvider } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
@@ -26,6 +27,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     enableEmojiFeedback,
     customUserAgentParam,
     stringSet,
+    ...restConstantProps
   } = useConstantState();
 
   const userAgentCustomParams = useRef({
@@ -34,7 +36,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     'chat-ai-widget-key': CHAT_AI_WIDGET_KEY,
   });
 
-  const { isFetching, theme, accentColor, botMessageBGColor } =
+  const { isFetching, theme, accentColor, botMessageBGColor, autoOpen } =
     useChannelStyle();
 
   const styledTheme = getTheme({
@@ -59,35 +61,44 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
   }
 
   return (
-    <ThemeProvider theme={styledTheme}>
-      <SBProvider
-        appId={applicationId}
-        userId={userId}
-        accessToken={sessionToken}
-        nickname={userNickName}
-        customApiHost={`https://api-${applicationId}.sendbirdtest.com`}
-        customWebSocketHost={`wss://ws-${applicationId}.sendbirdtest.com`}
-        configureSession={configureSession}
-        customExtensionParams={userAgentCustomParams.current}
-        breakpoint={isMobile}
-        isMentionEnabled={enableMention}
-        theme={theme}
-        colorSet={customColorSet}
-        stringSet={stringSet}
-        uikitOptions={{
-          groupChannel: {
-            input: {
-              // To hide the file upload icon from the message input
-              enableDocument: false,
+    <WidgetOpenProvider
+      isOpen={
+        isMobile
+          ? // we don't want to open the widget window automatically on mobile view
+            false
+          : restConstantProps.autoOpen ?? autoOpen ?? false
+      }
+    >
+      <ThemeProvider theme={styledTheme}>
+        <SBProvider
+          appId={applicationId}
+          userId={userId}
+          accessToken={sessionToken}
+          nickname={userNickName}
+          customApiHost={`https://api-${applicationId}.sendbirdtest.com`}
+          customWebSocketHost={`wss://ws-${applicationId}.sendbirdtest.com`}
+          configureSession={configureSession}
+          customExtensionParams={userAgentCustomParams.current}
+          breakpoint={isMobile}
+          isMentionEnabled={enableMention}
+          theme={theme}
+          colorSet={customColorSet}
+          stringSet={stringSet}
+          uikitOptions={{
+            groupChannel: {
+              input: {
+                // To hide the file upload icon from the message input
+                enableDocument: false,
+              },
+              enableVoiceMessage: false,
+              enableFeedback: enableEmojiFeedback,
             },
-            enableVoiceMessage: false,
-            enableFeedback: enableEmojiFeedback,
-          },
-        }}
-      >
-        {children}
-      </SBProvider>
-    </ThemeProvider>
+          }}
+        >
+          {children}
+        </SBProvider>
+      </ThemeProvider>
+    </WidgetOpenProvider>
   );
 };
 

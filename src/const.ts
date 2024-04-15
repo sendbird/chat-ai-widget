@@ -94,6 +94,7 @@ export interface Constant {
   configureSession?: ConfigureSession;
   stringSet?: Partial<StringSet>;
   customUserAgentParam?: Record<any, any>;
+  autoOpen?: boolean;
 }
 
 export interface SuggestedReply {
