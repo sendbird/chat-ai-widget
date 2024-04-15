@@ -5,9 +5,9 @@ import {
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useQuery } from '@tanstack/react-query';
 
-import { CHAT_AI_WIDGET_LOCAL_STORAGE_KEY } from './useWidgetLocalStorage';
+import { saveToLocalStorage } from './useWidgetLocalStorage';
 import { useConstantState } from '../context/ConstantContext';
-import { localStorageHelper, getDateNDaysLater, assert } from '../utils';
+import { getDateNDaysLater, assert } from '../utils';
 
 /**
  * This hook is used to create a group channel manually
@@ -56,17 +56,14 @@ export const useManualGroupChannelCreation = () => {
           data: paramData,
         };
         const channel = await sb?.groupChannel?.createChannel(params);
-        localStorageHelper().setItem(
-          CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
-          JSON.stringify({
-            channelUrl: channel.url,
-            expireAt: getDateNDaysLater(30),
-            userId: customUserId,
-            // there's no sessionToken in this case since we don't know the value of it
-            // but instead, it should be handled by configureSession that user provides
-            sessionToken: undefined,
-          })
-        );
+        saveToLocalStorage({
+          channelUrl: channel.url,
+          expireAt: getDateNDaysLater(30),
+          userId: customUserId,
+          // there's no sessionToken in this case since we don't know the value of it
+          // but instead, it should be handled by configureSession that user provides
+          sessionToken: undefined,
+        });
       } catch (error) {
         console.error(error);
         throw new Error('Failed to create a new channel');

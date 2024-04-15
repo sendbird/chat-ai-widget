@@ -1,9 +1,8 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { Chat } from './Chat';
-import { type Props as ChatWidgetProps } from './ChatAiWidget';
 import { MAX_Z_INDEX } from '../const';
+import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
 import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';
 import { ReactComponent as ExpandIcon } from '../icons/icon-expand.svg';
@@ -88,17 +87,10 @@ const StyledCloseButton = styled.button`
   justify-content: center;
 `;
 
-interface WidgetProps {
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-const WidgetWindow = ({
-  isOpen,
-  setIsOpen,
-  ...props
-}: WidgetProps & ChatWidgetProps) => {
+const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
+  const { isOpen, setIsOpen } = useWidgetOpen();
   const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <StyledWidgetWindowWrapper
       isOpen={isOpen}
@@ -112,10 +104,10 @@ const WidgetWindow = ({
           <ExpandIcon id="aichatbot-widget-expand-icon" />
         )}
       </StyledExpandButton>
-      <StyledCloseButton onClick={() => setIsOpen(() => false)}>
+      <StyledCloseButton onClick={() => setIsOpen(false)}>
         <CloseIcon id="aichatbot-widget-close-icon" />
       </StyledCloseButton>
-      <Chat {...props} isOpen={isOpen} />
+      {children}
     </StyledWidgetWindowWrapper>
   );
 };

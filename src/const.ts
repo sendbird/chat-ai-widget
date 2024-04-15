@@ -93,6 +93,11 @@ export interface Constant {
   configureSession?: ConfigureSession;
   stringSet?: Partial<StringSet>;
   customUserAgentParam?: Record<any, any>;
+  autoOpen?: boolean;
+  renderWidgetToggleButton?: (props: {
+    onClick: () => void;
+    isOpen: boolean;
+  }) => React.ReactElement;
 }
 
 export interface SuggestedReply {
