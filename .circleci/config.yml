@@ -2,7 +2,8 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@8.2.1
   aws-cli: circleci/aws-cli@2.1.0
-
+  aws-s3: circleci/aws-s3@4.0.0
+  
 executors:
   amd64:
     machine:
@@ -14,6 +15,38 @@ executors:
       image: ubuntu-2004:current
       docker_layer_caching: true
     resource_class: arm.medium
+  ci-aws:
+    docker:
+      - image: cimg/aws:2024.03
+    resource_class: small
+  node:
+    docker:
+      - image: cimg/node:18.17.1
+    resource_class: medium
+
+commands:
+  aws-create-invalidation:
+    description: Create invalidation in CloudFront distribution
+    parameters:
+      distribution-id:
+        default: default
+        description: Distribution id for CloudFront
+        type: string
+      paths:
+        default: /
+        description: Target paths for invalidation
+        type: string
+      profile:
+        default: default
+        description: AWS profile name
+        type: string
+    steps:
+      - run:
+          command: |
+            echo "Create invalidation in CloudFront"
+            aws cloudfront create-invalidation \
+                --distribution-id <<parameters.distribution-id>> \
+                --paths <<parameters.paths>> --profile <<parameters.profile>>
 
 jobs:
   build_container_image_and_push:
@@ -106,9 +139,44 @@ jobs:
       - run:
           name: Scan credentials
           command: sh scan.sh
+  build:
+    executor: node
+    steps:
+      - checkout
+      - run:
+          name: install dependencies and build
+          command: |
+            cd ./packages/self-service
+            npm install
+            npm run build
+      - persist_to_workspace:
+          root: ./packages/self-service
+          paths:
+            - dist
+  upload_to_s3_and_invalidate_cache:
+    executor: ci-aws
+    steps:
+      - attach_workspace:
+          at: .
+      - aws-cli/setup:
+          profile-name: default
+          configure-default-region: false
+      - aws-cli/role-arn-setup:
+          profile-name: ci-web-prod
+          source-profile: default
+          role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
+      - aws-s3/sync:
+          arguments: | 
+            --delete
+          from: dist/
+          to: s3://genai-aichatbotwidget-use1-prod
+          profile_name: ci-web-prod
+      - aws-create-invalidation:
+          distribution-id: 'EURYULTBDXGNR'
+          paths: '/*'
+          profile: ci-web-prod
 
 workflows:
-  version: 2
   build_and_push:
     jobs:
       - build_container_image_and_push:
@@ -155,3 +223,15 @@ workflows:
             - devsecops
           requires:
             - integrate_manifest_app
+  deploy_to_s3:
+    jobs:
+      - build:
+          name: build
+          filters: *only_version_tag_trigger
+      - upload_to_s3_and_invalidate_cache:
+          name: upload_to_s3_and_invalidate_cache
+          filters: *only_version_tag_trigger
+          requires:
+            - build
+          context:
+            - circleci-dashboard-bot
