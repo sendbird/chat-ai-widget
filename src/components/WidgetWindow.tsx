@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import Chat from './Chat';
 import { MAX_Z_INDEX } from '../const';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
@@ -88,7 +87,7 @@ const StyledCloseButton = styled.button`
   justify-content: center;
 `;
 
-const WidgetWindow = () => {
+const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, setIsOpen } = useWidgetOpen();
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -108,7 +107,7 @@ const WidgetWindow = () => {
       <StyledCloseButton onClick={() => setIsOpen(false)}>
         <CloseIcon id="aichatbot-widget-close-icon" />
       </StyledCloseButton>
-      <Chat />
+      {children}
     </StyledWidgetWindowWrapper>
   );
 };

@@ -1,9 +1,14 @@
+import { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../colors';
 import { MAX_Z_INDEX } from '../const';
+import { useConstantState } from '../context/ConstantContext';
+import { useWidgetOpen } from '../context/WidgetOpenContext';
+import { useChannelStyle } from '../hooks/useChannelStyle';
 import { ReactComponent as ArrowDownIcon } from '../icons/ic-arrow-down.svg';
 import { ReactComponent as ChatBotIcon } from '../icons/icon-widget-chatbot.svg';
+import { isMobile } from '../utils';
 
 const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
   position: fixed;
@@ -83,16 +88,13 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
   }}
 `;
 
-export interface ToggleButtonProps {
+interface ToggleButtonProps {
   onClick: () => void;
   accentColor: string;
   isOpen: boolean;
 }
-const WidgetToggleButton = ({
-  onClick,
-  accentColor,
-  isOpen,
-}: ToggleButtonProps) => {
+
+const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
   return (
     <StyledWidgetButtonWrapper
       id="aichatbot-widget-button"
@@ -109,4 +111,35 @@ const WidgetToggleButton = ({
   );
 };
 
-export default WidgetToggleButton;
+export default function WidgetToggleButton() {
+  const { isFetching, ...channelStyle } = useChannelStyle();
+  const { autoOpen, renderWidgetToggleButton } = useConstantState();
+  const { isOpen, setIsOpen } = useWidgetOpen();
+  const timer = useRef<NodeJS.Timeout | null>(null);
+
+  const buttonClickHandler = () => {
+    if (timer.current !== null) {
+      clearTimeout(timer.current as NodeJS.Timeout);
+      timer.current = null;
+    }
+    setIsOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (!isMobile && (autoOpen || channelStyle.autoOpen)) {
+      timer.current = setTimeout(() => setIsOpen(true), 100);
+    }
+  }, [channelStyle.autoOpen, autoOpen]);
+
+  const toggleButtonProps = {
+    onClick: buttonClickHandler,
+    accentColor: channelStyle.accentColor,
+    isOpen,
+  };
+
+  if (typeof renderWidgetToggleButton === 'function') {
+    return renderWidgetToggleButton(toggleButtonProps);
+  }
+
+  return !isFetching ? <StyledButton {...toggleButtonProps} /> : null;
+}

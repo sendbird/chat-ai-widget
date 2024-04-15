@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useRef, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { type ToggleButtonProps } from './WidgetToggleButton';
 import { generateCSSVariables } from '../colors';
 import { type Constant } from '../const';
 import {
@@ -107,8 +106,6 @@ export interface ProviderContainerProps extends Partial<Constant> {
   botId: string;
   children: React.ReactElement;
   hashedKey?: string;
-  autoOpen?: boolean;
-  renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
 }
 
 export default function ProviderContainer(props: ProviderContainerProps) {

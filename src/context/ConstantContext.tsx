@@ -80,6 +80,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       enableMention: props.enableMention ?? initialState.enableMention,
       enableMobileView: props.enableMobileView ?? initialState.enableMobileView,
       autoOpen: props.autoOpen,
+      renderWidgetToggleButton: props.renderWidgetToggleButton,
     }),
     [props]
   );
