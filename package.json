@@ -29,15 +29,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sendbird/chat": "^4.11.0",
     "@sendbird/uikit-react": "^3.13.4",
     "@tanstack/react-query": "^5.17.19",
-    "dompurify": "^3.0.4",
     "react-popper-tooltip": "^4.4.2",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.17.22",
     "@types/dompurify": "^3.0.5",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
@@ -53,11 +50,9 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "2.8.8",
-    "prettier-eslint": "^15.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsc-silent": "^1.2.2",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "5.0.2",
     "vite": "^4.3.9",
     "vite-plugin-dts": "^3.7.0",

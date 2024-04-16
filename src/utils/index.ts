@@ -1,4 +1,4 @@
-import type SendbirdChat from '@sendbird/chat';
+import { type SendbirdGroupChat }  from '@sendbird/chat/lib/__definition';
 
 export function uuid() {
   let d = new Date().getTime();
@@ -176,7 +176,7 @@ export const isIOSMobile = /iPad|iPhone|iPod/.test(navigator.userAgent);
 export const isAndroidMobile = /Android/.test(navigator.userAgent);
 export const isMobile = isIOSMobile || isAndroidMobile;
 
-export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
+export function hideChatBottomBanner(sdk: SendbirdGroupChat): boolean {
   const REMOVE_POWERED_BY = 'remove_powered_by';
   const applicationAttributes = sdk?.appInfo?.applicationAttributes;
 
