@@ -31,7 +31,6 @@
   "dependencies": {
     "@sendbird/uikit-react": "^3.13.4",
     "@tanstack/react-query": "^5.17.19",
-    "dompurify": "^3.0.4",
     "react-popper-tooltip": "^4.4.2",
     "styled-components": "^5.3.11"
   },
