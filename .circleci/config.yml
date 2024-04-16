@@ -171,6 +171,16 @@ jobs:
           from: dist/
           to: s3://genai-aichatbotwidget-use1-prod
           profile_name: ci-web-prod
+      - aws-s3/copy:
+          arguments: '--metadata-directive REPLACE --cache-control "max-age=0" --content-type application/javascript'
+          from: s3://genai-aichatbotwidget-use1-prod/index.js
+          profile_name: ci-web-prod
+          to: s3://genai-aichatbotwidget-use1-prod/index.js
+      - aws-s3/copy:
+          arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type application/javascript --recursive'
+          from: s3://genai-aichatbotwidget-use1-prod/${CIRCLE_TAG}
+          profile_name: ci-web-prod
+          to: s3://genai-aichatbotwidget-use1-prod/${CIRCLE_TAG}
       - aws-create-invalidation:
           distribution-id: 'EURYULTBDXGNR'
           paths: '/*'
