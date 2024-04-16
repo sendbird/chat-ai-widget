@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - develop
+      - feat/AC-1679 # Will be put develop branch back once QA is done
 
 jobs:
   build-and-deploy:
