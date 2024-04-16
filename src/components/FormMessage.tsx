@@ -1,12 +1,10 @@
-import Button from '@sendbird/uikit-react/ui/Button';
-import Label, {
-  LabelTypography,
-  LabelColors,
-} from '@sendbird/uikit-react/ui/Label';
 import { useCallback, useState, useEffect } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { EveryMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
+
+import type { EveryMessage } from '@uikit/types';
+import Button from '@uikit/ui/Button';
+import { Label, LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import Input from './FormInput';
 

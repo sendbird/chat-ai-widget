@@ -1,6 +1,7 @@
 import { UserMessage } from '@sendbird/chat/message';
-import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { useCallback } from 'react';
+
+import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 export function useSendLocalMessage() {
   const { _dangerous_reducer_updateMessages, scrollToBottom } =

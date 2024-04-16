@@ -1,5 +1,6 @@
-import Avatar from '@sendbird/uikit-react/ui/Avatar';
 import styled, { keyframes } from 'styled-components';
+
+import Avatar from '@uikit/ui/Avatar';
 
 import BotProfileImage from './BotProfileImage';
 

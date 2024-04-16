@@ -1,15 +1,13 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
-import Avatar from '@sendbird/uikit-react/ui/Avatar';
-import Label, {
-  LabelTypography,
-  LabelColors,
-} from '@sendbird/uikit-react/ui/Label';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { SentTime } from './MessageComponent';
 import { formatCreatedAtToAMPM } from '../utils';
+
+import { Label, LabelColors, LabelTypography } from '@uikit/ui/Label';
+import Avatar from '@uikit/ui/Avatar';
 
 const Root = styled.div`
   display: flex;

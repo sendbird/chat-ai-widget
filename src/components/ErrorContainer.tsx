@@ -1,8 +1,6 @@
-import Label, {
-  LabelTypography,
-  LabelColors,
-} from '@sendbird/uikit-react/ui/Label';
 import styled from 'styled-components';
+
+import { Label, LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import { ReactComponent as Icon } from '../icons/icon-error.svg';
 

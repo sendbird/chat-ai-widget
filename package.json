@@ -5,6 +5,7 @@
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "files": [
     "dist",
     "README.md"
@@ -29,7 +30,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sendbird/uikit-react": "^3.14.3",
     "@tanstack/react-query": "^5.17.19",
     "styled-components": "^5.3.11"
   },
@@ -43,7 +43,8 @@
     "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
@@ -61,5 +62,8 @@
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

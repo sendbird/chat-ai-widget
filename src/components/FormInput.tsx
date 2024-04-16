@@ -1,11 +1,7 @@
-import Icon, { IconTypes, IconColors } from '@sendbird/uikit-react/ui/Icon';
-import {
-  default as UIKitLabel,
-  LabelTypography,
-  LabelColors,
-} from '@sendbird/uikit-react/ui/Label';
 import { ReactElement, ChangeEvent, ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import UIKitLabel, { LabelColors, LabelTypography } from '@uikit/ui/Label';
+import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
 
 export interface InputLabelProps {
   children: ReactNode;
@@ -20,9 +16,7 @@ const Label = styled(UIKitLabel)`
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <Label
     className="sendbird-input-label"
-    style={css`
-      margin-bottom: 8px;
-    `}
+    style={{ marginBottom: 8 }}
     type={LabelTypography.CAPTION_2}
     color={LabelColors.ONBACKGROUND_2}
   >
@@ -124,7 +118,7 @@ const FormInput = (props: InputProps) => {
           )}
         </InputContainer>
         {hasError && (
-          <ErrorLabel type={LabelTypography.CAPTION_4}>
+          <ErrorLabel type={LabelTypography.CAPTION_3}>
             Please check the value
           </ErrorLabel>
         )}

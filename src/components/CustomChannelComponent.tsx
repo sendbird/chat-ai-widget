@@ -1,12 +1,13 @@
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
-import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChannelUI';
-import { Message } from '@sendbird/uikit-react/GroupChannel/components/Message';
-import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
-import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
+import ChannelUI from '@uikit/modules/Channel/components/ChannelUI';
+import Message from '@uikit/modules/GroupChannel/components/Message';
+import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';

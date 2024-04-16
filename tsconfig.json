@@ -20,12 +20,13 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@uikit/*": ["./packages/uikit/src/*"],
+    }
   },
   "include": [
     "src",
-    "./src/custom.d.ts",
-    "./src/styled-components.d.ts",
   ],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]

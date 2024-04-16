@@ -13,7 +13,7 @@ const Chat = () => {
   const { channelUrl } = useWidgetLocalStorage();
 
   return (
-    <GroupChannelProvider channelUrl={channelUrl} scrollBehavior="smooth">
+    <GroupChannelProvider channelUrl={channelUrl} scrollBehavior='smooth'>
       <CustomChannelComponent />
       <div id={'sb_chat_root_for_z_index'} />
     </GroupChannelProvider>
