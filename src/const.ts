@@ -1,6 +1,4 @@
-import SendbirdChat, { SessionHandler } from '@sendbird/chat';
-import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
-import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
+import { type SessionHandler, type SendbirdGroupChat } from '@sendbird/chat/lib/__definition';
 import { type StringSet } from '@sendbird/uikit-react/types/ui/Label/stringSet';
 import React from 'react';
 
@@ -63,7 +61,7 @@ export const DEFAULT_CONSTANT: Constant = {
 };
 
 type ConfigureSession = (
-  sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat
+  sdk: SendbirdGroupChat
 ) => SessionHandler;
 
 type MessageData = {
