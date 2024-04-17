@@ -166,8 +166,6 @@ jobs:
           source-profile: default
           role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
       - aws-s3/sync:
-          arguments: | 
-            --delete
           from: dist/
           to: s3://genai-aichatbotwidget-use1-prod
           profile_name: ci-web-prod
