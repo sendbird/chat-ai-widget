@@ -29,7 +29,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sendbird/uikit-react": "^3.13.4",
+    "@sendbird/uikit-react": "^3.14.1",
     "@tanstack/react-query": "^5.17.19",
     "styled-components": "^5.3.11"
   },
