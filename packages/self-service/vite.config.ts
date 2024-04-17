@@ -10,7 +10,7 @@ const version = getWidgetVersion();
 export default defineConfig({
   plugins: [react(), svgr(), cssInjectedByJsPlugin()],
   build: {
-    outDir: `./dist/${version}`,
+    outDir: `./dist/v${version}`,
     rollupOptions: {
       output: {
         manualChunks: undefined,

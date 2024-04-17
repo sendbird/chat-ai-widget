@@ -8,7 +8,7 @@ if (!version) {
     process.exit(1);
 }
 
-const content = `import(\`/${version}/output.js\`).then(() => console.log("AI chatbot module has been successfully loaded"));`;
+const content = `import(\`/v${version}/output.js\`).then(() => console.log("AI chatbot module has been successfully loaded"));`;
 
 // For development
 fs.writeFileSync('dist/index-dev.js', content);
