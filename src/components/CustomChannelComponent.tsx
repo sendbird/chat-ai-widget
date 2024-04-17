@@ -116,6 +116,7 @@ export function CustomChannelComponent() {
     messages: allMessages,
     currentChannel: channel,
     scrollToBottom,
+    refresh,
   } = useGroupChannelContext();
   const { userId } = useWidgetLocalStorage();
   const botUser = channel?.members.find((member) => member.userId === botId);
@@ -198,8 +199,9 @@ export function CustomChannelComponent() {
             botProfileUrl={botUser?.profileUrl}
             botNickname={botUser?.nickname}
             channelName={channel?.name}
-            onRenewButtonClick={() => {
-              channel?.resetMyHistory();
+            onRenewButtonClick={async () => {
+              await channel?.resetMyHistory();
+              await refresh();
             }}
           />
         )}
