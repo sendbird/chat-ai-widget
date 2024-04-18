@@ -38,13 +38,17 @@ const MobileComponent = () => {
   const { isOpen } = useWidgetOpen();
   const { width: mobileContainerWidth } = useMobileView();
 
-  if (!isOpen) {
-    return <WidgetToggleButton />;
-  }
   return (
-    <MobileContainer width={mobileContainerWidth} id="aichatbot-widget-window">
-      <Chat />
-    </MobileContainer>
+    <>
+      {!isOpen && <WidgetToggleButton />}
+      <MobileContainer
+        style={{ display: isOpen ? 'block' : 'none' }}
+        width={mobileContainerWidth}
+        id="aichatbot-widget-window"
+      >
+        <Chat />
+      </MobileContainer>
+    </>
   );
 };
 
