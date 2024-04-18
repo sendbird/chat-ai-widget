@@ -6,7 +6,7 @@ import { useConstantState } from '../context/ConstantContext';
 const DATADOG_APP_ID = import.meta.env.VITE_CHAT_AI_WIDGET_DATADOG_APP_ID;
 const DATADOG_CLIENT_TOKEN = import.meta.env
   .VITE_CHAT_AI_WIDGET_DATADOG_CLIENT_TOKEN;
-
+const isProd = import.meta.env.PROD ? 'prod' : 'dev';
 
 const useDatadogRum = () => {
   const { serviceName } = useConstantState();
@@ -21,15 +21,12 @@ const useDatadogRum = () => {
         trackResources: true,
         trackLongTasks: true,
         trackUserInteractions: true,
+        service: serviceName || 'genai-chatbot-widget',
+        version: APP_VERSION,
+        env: isProd ? 'production' : 'development',
       });
 
       datadogRum.startSessionReplayRecording();
-
-      datadogRum.setGlobalContextProperty(
-        'service',
-        serviceName || 'genai-chatbot-widget'
-      );
-      datadogRum.setGlobalContextProperty('version', APP_VERSION);
     }
 
     return () => {
