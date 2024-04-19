@@ -105,16 +105,14 @@ export default function BotMessageWithBodyInput(props: Props) {
           </Sender>
         )}
         <Content>
-          <>
-            {bodyComponent}
-            {enableEmojiFeedback &&
-              displayProfileImage &&
-              !isBotWelcomeMessage &&
-              !(isLastBotMessage && isLastMessageInStreaming(message)) &&
-              !isFormMessage && <BotMessageFeedback message={message} />}
-          </>
+          {bodyComponent}
           <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
         </Content>
+        {enableEmojiFeedback &&
+          displayProfileImage &&
+          !isBotWelcomeMessage &&
+          !(isLastBotMessage && isLastMessageInStreaming(message)) &&
+          !isFormMessage && <BotMessageFeedback message={message} />}
       </BodyContainer>
     </Root>
   );
