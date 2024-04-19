@@ -59,13 +59,7 @@ export const DEFAULT_CONSTANT: Constant = {
   enableMobileView: true,
 };
 
-<<<<<<< HEAD
 type ConfigureSession = (sdk: SendbirdGroupChat) => SessionHandler;
-=======
-type ConfigureSession = (
-  sdk: SendbirdGroupChat
-) => SessionHandler;
->>>>>>> 9ed79ba6 (chore: remove unused files (#146))
 
 type MessageData = {
   suggested_replies?: string[];
