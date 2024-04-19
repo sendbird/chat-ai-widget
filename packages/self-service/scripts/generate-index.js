@@ -1,14 +1,14 @@
 import fs from 'node:fs';
+import { getWidgetVersion } from './widget-version.js';
 
-const packageLock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
-const version = packageLock.dependencies["@sendbird/chat-ai-widget"].version;
+const version = getWidgetVersion();
 
 if (!version) {
     console.error('Error: No version found for @sendbird/chat-ai-widget. Please check the package-lock.json file.');
     process.exit(1);
 }
 
-const content = `import(\`/output.js?v=${version}\`).then(() => console.log("AI chatbot module has been successfully loaded"));`;
+const content = `import(\`/v${version}/output.js\`).then(() => console.log("AI chatbot module has been successfully loaded"));`;
 
 // For development
 fs.writeFileSync('dist/index-dev.js', content);
