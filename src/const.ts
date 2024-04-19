@@ -1,4 +1,7 @@
-import { type SessionHandler, type SendbirdGroupChat } from '@sendbird/chat/lib/__definition';
+import {
+  type SessionHandler,
+  type SendbirdGroupChat,
+} from '@sendbird/chat/lib/__definition';
 import { type StringSet } from '@sendbird/uikit-react/types/ui/Label/stringSet';
 import React from 'react';
 
@@ -60,9 +63,7 @@ export const DEFAULT_CONSTANT: Constant = {
   enableMobileView: true,
 };
 
-type ConfigureSession = (
-  sdk: SendbirdGroupChat
-) => SessionHandler;
+type ConfigureSession = (sdk: SendbirdGroupChat) => SessionHandler;
 
 type MessageData = {
   suggested_replies?: string[];

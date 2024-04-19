@@ -1,4 +1,4 @@
-import { type SendbirdGroupChat }  from '@sendbird/chat/lib/__definition';
+import { type SendbirdGroupChat } from '@sendbird/chat/lib/__definition';
 
 export function uuid() {
   let d = new Date().getTime();
