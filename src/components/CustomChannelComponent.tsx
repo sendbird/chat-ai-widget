@@ -4,7 +4,7 @@ import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChanne
 import { Message } from '@sendbird/uikit-react/GroupChannel/components/Message';
 import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
@@ -23,6 +23,7 @@ import {
   groupMessagesByShortSpanTime,
   isStaticReplyVisible as getStaticMessageVisibility,
 } from '../utils/messages';
+import MessageDataContent from './MessageDataContent';
 
 interface RootStyleProps {
   height: string;
@@ -214,23 +215,26 @@ export function CustomChannelComponent() {
 
           return (
             <Message {...props} message={message}>
-              <CustomMessage
-                message={message}
-                activeSpinnerId={activeSpinnerId}
-                botUser={botUser}
-                lastMessageRef={lastMessageRef}
-                chainTop={grouppedMessage?.chaintop}
-                chainBottom={grouppedMessage?.chainBottom}
-                isBotWelcomeMessage={isBotWelcomeMessage}
-                isLastBotMessage={isLastBotMessage}
-                messageCount={messageCount}
-              />
-              {message.messageId === lastMessage?.messageId &&
-                (dynamicReplyOptions.length > 0 ? (
-                  <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-                ) : isStaticReplyVisible ? (
-                  <StaticRepliesPanel botUser={botUser} />
-                ) : null)}
+              <>
+                <CustomMessage
+                  message={message}
+                  activeSpinnerId={activeSpinnerId}
+                  botUser={botUser}
+                  lastMessageRef={lastMessageRef}
+                  chainTop={grouppedMessage?.chaintop}
+                  chainBottom={grouppedMessage?.chainBottom}
+                  isBotWelcomeMessage={isBotWelcomeMessage}
+                  isLastBotMessage={isLastBotMessage}
+                  messageCount={messageCount}
+                />
+                {message.messageId === lastMessage?.messageId &&
+                  (dynamicReplyOptions.length > 0 ? (
+                    <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
+                  ) : isStaticReplyVisible ? (
+                    <StaticRepliesPanel botUser={botUser} />
+                  ) : null)}
+                {message.data && <MessageDataContent messageData={message.data}/>}
+              </>
             </Message>
           );
         }}

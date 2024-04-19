@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 
+.env
 .env.production
 .npmrc
 
@@ -26,4 +27,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-

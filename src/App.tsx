@@ -1,6 +1,14 @@
 import ChatAiWidget from './components/ChatAiWidget'; //import { ChatAiWidget } from "@sendbird/chat-ai-widget";
 import { Constant } from './const';
 
+export interface MessageDataFunctionCallProps {
+  name: string;
+  response_text: string;
+  status_code: number;
+}
+export type MessageDataFunctionCall = (props: MessageDataFunctionCallProps) => void;
+export type MessageDataFunctionCalls = Record<string, MessageDataFunctionCall>;
+
 interface Props extends Partial<Constant> {
   applicationId?: string;
   botId?: string;
@@ -10,6 +18,7 @@ interface Props extends Partial<Constant> {
     accentColor: string;
     isOpen: boolean;
   }) => React.ReactElement;
+  messageDataFunctionCalls?: MessageDataFunctionCalls;
 }
 
 const App = (props: Props) => {
@@ -40,6 +49,7 @@ const App = (props: Props) => {
       autoOpen={props.autoOpen}
       renderWidgetToggleButton={props.renderWidgetToggleButton}
       serviceName={props.serviceName}
+      messageDataFunctionCalls={props.messageDataFunctionCalls}
     />
   );
 };
