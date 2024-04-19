@@ -98,6 +98,7 @@ export interface Constant {
     onClick: () => void;
     isOpen: boolean;
   }) => React.ReactElement;
+  serviceName?: string;
 }
 
 export interface SuggestedReply {

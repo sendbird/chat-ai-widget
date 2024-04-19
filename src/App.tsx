@@ -39,6 +39,7 @@ const App = (props: Props) => {
       customUserAgentParam={props.customUserAgentParam}
       autoOpen={props.autoOpen}
       renderWidgetToggleButton={props.renderWidgetToggleButton}
+      serviceName={props.serviceName}
     />
   );
 };

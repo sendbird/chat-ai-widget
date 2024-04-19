@@ -29,6 +29,7 @@ function App() {
       customUserAgentParam={{
         'chat-ai-widget-deployed': 'True',
       }}
+      serviceName="genai-self-service"
       {...chatbotConfigs}
     />
   );
