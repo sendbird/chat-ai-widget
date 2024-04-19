@@ -57,7 +57,7 @@ jobs:
           cat CHANGELOG.md >> temp-changelog.md
           mv temp-changelog.md CHANGELOG.md
           git commit -m "Update CHANGELOG.md for $LATEST_TAG"
-          git push origin v${{ github.event.inputs.version }}
+          git push origin release/v${{ github.event.inputs.version }}
       - name: Update installed chat-ai-widget version to latest under packages/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
