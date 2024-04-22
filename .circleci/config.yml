@@ -186,7 +186,7 @@ workflows:
   build_and_push:
     jobs:
       - build_container_image_and_push:
-          name: build_app-<<matrix.app>>-<<matrix.architecture>>
+          name: build_app-<<matrix.architecture>>
           filters: &only_version_tag_trigger
             tags:
               only: /^v.*/
@@ -200,7 +200,7 @@ workflows:
           build_path: '.'
           aws_region: us-west-2
           repo: aiwidget/app
-          dockerfile: Dockerfile.<<matrix.app>>
+          dockerfile: Dockerfile.webdemo
           extra_build_args: |
             --build-arg VITE_CHAT_WIDGET_APP_ID=AE8F7EEA-4555-4F86-AD8B-5E0BD86BFE67 \
             --build-arg VITE_CHAT_WIDGET_BOT_ID=khan-academy-bot \
