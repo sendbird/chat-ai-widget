@@ -93,7 +93,7 @@ export function isLastMessageInStreaming(lastMessage: EveryMessage | null) {
   ) {
     return false;
   }
-  const messageMetaData = JSON.parse(lastMessage.data);
+  const messageMetaData = parseMessageDataSafely(lastMessage.data);
   return 'stream' in messageMetaData && messageMetaData.stream;
 }
 
@@ -135,4 +135,12 @@ export function isStaticReplyVisible(
       suggestedMessageContent.messageFilterList
     )
   );
+}
+
+export function parseMessageDataSafely(messageData: string) {
+  try {
+    return JSON.parse(messageData === '' ? '{}' : messageData);
+  } catch (error) {
+    return {};
+  }
 }

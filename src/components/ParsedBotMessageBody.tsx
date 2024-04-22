@@ -7,6 +7,7 @@ import { CodeBlock } from './CodeBlock';
 import SourceContainer, { Source } from './SourceContainer';
 import { useConstantState } from '../context/ConstantContext';
 import { replaceWithRegex, Token, TokenType } from '../utils';
+import { parseMessageDataSafely } from '../utils/messages';
 
 const Text = styled.div`
   width: inherit;
@@ -47,7 +48,7 @@ type MetaData = {
 export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens } = props;
   const { enableSourceMessage } = useConstantState();
-  const data: MetaData = JSON.parse(message.data === '' ? '{}' : message.data);
+  const data: MetaData = parseMessageDataSafely(message.data);
   const sources: Source[] = Array.isArray(data['metadatas'])
     ? data['metadatas']?.filter((source) => source.source_type !== 'file')
     : [];
