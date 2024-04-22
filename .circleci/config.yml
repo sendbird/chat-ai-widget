@@ -57,7 +57,7 @@ jobs:
       app:
         description: application to build
         type: enum
-        enum: ['webdemo', 'selfservice']
+        default: webdemo
       architecture:
         description: architecture to build
         type: enum
@@ -125,9 +125,7 @@ jobs:
           name: Push image manifest
           command: |
             docker manifest create "$ECR_REPO:$CIRCLE_TAG-webdemo" "$ECR_REPO:$CIRCLE_TAG-webdemo-amd64" "$ECR_REPO:$CIRCLE_TAG-webdemo-arm64"
-            docker manifest create "$ECR_REPO:$CIRCLE_TAG-selfservice" "$ECR_REPO:$CIRCLE_TAG-selfservice-amd64" "$ECR_REPO:$CIRCLE_TAG-selfservice-arm64"
             docker manifest push "$ECR_REPO:$CIRCLE_TAG-webdemo"
-            docker manifest push "$ECR_REPO:$CIRCLE_TAG-selfservice"
   scan_credentials:
     docker:
       - image: $SEC_THOG_SCANNER_IMAGE
@@ -199,9 +197,6 @@ workflows:
               architecture:
                 - amd64
                 - arm64
-              app:
-                - webdemo
-                - selfservice
           build_path: '.'
           aws_region: us-west-2
           repo: aiwidget/app
@@ -219,8 +214,6 @@ workflows:
           requires:
             - build_app-webdemo-amd64
             - build_app-webdemo-arm64
-            - build_app-selfservice-amd64
-            - build_app-selfservice-arm64
           aws_region: us-west-2
           repo: aiwidget/app
           context:
