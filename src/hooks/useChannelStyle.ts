@@ -77,12 +77,15 @@ export const useChannelStyle = () => {
         const { bot_style, user, channel } = data;
 
         if (user != null && channel != null) {
-          saveToLocalStorage({
-            expireAt: user.expire_at,
-            userId: user.user_id,
-            sessionToken: user.session_token,
-            channelUrl: channel.channel_url,
-          });
+          saveToLocalStorage(
+            { appId, botId },
+            {
+              expireAt: user.expire_at,
+              userId: user.user_id,
+              sessionToken: user.session_token,
+              channelUrl: channel.channel_url,
+            }
+          );
         }
         return {
           autoOpen: bot_style.auto_open,

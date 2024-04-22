@@ -18,6 +18,7 @@ export const useManualGroupChannelCreation = () => {
     instantConnect,
     firstMessageData,
     createGroupChannelParams,
+    applicationId: appId,
     botId,
     configureSession,
     userId: customUserId,
@@ -56,14 +57,17 @@ export const useManualGroupChannelCreation = () => {
           data: paramData,
         };
         const channel = await sb?.groupChannel?.createChannel(params);
-        saveToLocalStorage({
-          channelUrl: channel.url,
-          expireAt: getDateNDaysLater(30),
-          userId: customUserId,
-          // there's no sessionToken in this case since we don't know the value of it
-          // but instead, it should be handled by configureSession that user provides
-          sessionToken: undefined,
-        });
+        saveToLocalStorage(
+          { appId, botId },
+          {
+            channelUrl: channel.url,
+            expireAt: getDateNDaysLater(30),
+            userId: customUserId,
+            // there's no sessionToken in this case since we don't know the value of it
+            // but instead, it should be handled by configureSession that user provides
+            sessionToken: undefined,
+          }
+        );
       } catch (error) {
         console.error(error);
         throw new Error('Failed to create a new channel');

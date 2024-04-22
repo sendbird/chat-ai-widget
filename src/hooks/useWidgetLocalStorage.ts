@@ -1,19 +1,27 @@
 import { useState, useEffect } from 'react';
 
+import { useConstantState } from '../context/ConstantContext';
 import { localStorageHelper } from '../utils';
 
-export const CHAT_AI_WIDGET_LOCAL_STORAGE_KEY = '@sendbird/chat-ai-widget';
+const CHAT_AI_WIDGET_LOCAL_STORAGE_KEY_PREFIX = '@sendbird/chat-ai-widget';
+const getLocalStorageKey = (appId: string, botId: string) => {
+  return `${CHAT_AI_WIDGET_LOCAL_STORAGE_KEY_PREFIX}/${appId}/${botId}`;
+};
 
-export function saveToLocalStorage(value: WidgetLocalStorageValue) {
+export function saveToLocalStorage(
+  key: {
+    appId: string;
+    botId: string;
+  },
+  value: WidgetLocalStorageValue
+) {
+  const localStorageKey = getLocalStorageKey(key.appId, key.botId);
   const stringifiedValue = JSON.stringify(value);
-  localStorageHelper().setItem(
-    CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
-    stringifiedValue
-  );
+  localStorageHelper().setItem(localStorageKey, stringifiedValue);
   window.dispatchEvent(
     new CustomEvent('localStorageChange', {
       detail: {
-        key: CHAT_AI_WIDGET_LOCAL_STORAGE_KEY,
+        key: localStorageKey,
         value: stringifiedValue,
       },
     })
@@ -38,7 +46,8 @@ function parseValue(value: string | null) {
 }
 
 function useWidgetLocalStorage(): WidgetLocalStorageValue {
-  const key = CHAT_AI_WIDGET_LOCAL_STORAGE_KEY;
+  const { applicationId: appId, botId } = useConstantState();
+  const key = getLocalStorageKey(appId, botId);
   const [value, setValue] = useState(
     () => parseValue(localStorageHelper().getItem(key)) || DEFAULT_VALUE
   );
