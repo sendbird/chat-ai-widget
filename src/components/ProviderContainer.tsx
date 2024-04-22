@@ -11,7 +11,7 @@ import {
 } from '../context/ConstantContext';
 import { WidgetOpenProvider } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
-import useDatadogRum from '../hooks/useDatadog';
+// import useDatadogRum from '../hooks/useDatadog';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
 import { isMobile } from '../utils';
@@ -29,7 +29,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     stringSet,
     ...restConstantProps
   } = useConstantState();
-  useDatadogRum();
+  // useDatadogRum();
 
   const userAgentCustomParams = useRef({
     ...customUserAgentParam,

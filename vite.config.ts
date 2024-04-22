@@ -32,13 +32,11 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
-        '@datadog/browser-rum'
       ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          '@datadog/browser-rum': 'datadogRum'
         }
       }
     }
