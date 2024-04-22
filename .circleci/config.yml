@@ -56,7 +56,7 @@ jobs:
     parameters:
       app:
         description: application to build
-        type: enum
+        type: string
         default: webdemo
       architecture:
         description: architecture to build
