@@ -1,13 +1,4 @@
-import { type SendbirdGroupChat } from '@sendbird/chat/lib/__definition';
-
-export function uuid() {
-  let d = new Date().getTime();
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = (d + Math.random() * 16) % 16 | 0;
-    d = Math.floor(d / 16);
-    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
-  });
-}
+import type SendbirdChat from '@sendbird/chat';
 
 export function formatCreatedAtToAMPM(createdAt: number) {
   const date: Date = new Date(createdAt);
@@ -176,7 +167,7 @@ export const isIOSMobile = /iPad|iPhone|iPod/.test(navigator.userAgent);
 export const isAndroidMobile = /Android/.test(navigator.userAgent);
 export const isMobile = isIOSMobile || isAndroidMobile;
 
-export function hideChatBottomBanner(sdk: SendbirdGroupChat): boolean {
+export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
   const REMOVE_POWERED_BY = 'remove_powered_by';
   const applicationAttributes = sdk?.appInfo?.applicationAttributes;
 
@@ -220,4 +211,46 @@ export const isEmpty = (value: any) => {
   if (value instanceof Object) return Object.keys(value).length === 0;
 
   return false;
+};
+
+export function isPastTime(timestamp: number): boolean {
+  const currentTime = Date.now();
+  return timestamp < currentTime;
+}
+
+export function getDateNDaysLater(daysToAdd: number): number {
+  const millisecondsPerDay = 24 * 60 * 60 * 1000; // 24hours in milliseconds
+  const currentDate = new Date();
+  const futureDate = currentDate.getTime() + daysToAdd * millisecondsPerDay;
+
+  return futureDate;
+}
+
+/**
+ * Polyfill for localStorage
+ * localStorage wont work in some browsers, in incognito
+ * and no-cookie modes
+ * @returns { getItem: (key), setItem: (key, value) }
+ */
+interface Storage {
+  [key: string]: any;
+}
+export const localStorageHelper = () => {
+  const store: Storage = {};
+  return {
+    getItem: (key: string) => {
+      try {
+        return localStorage.getItem(key);
+      } catch (error) {
+        return store[key];
+      }
+    },
+    setItem: (key: string, value: string) => {
+      try {
+        localStorage.setItem(key, value);
+      } catch (error) {
+        store[key] = value;
+      }
+    },
+  };
 };

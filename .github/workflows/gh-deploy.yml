@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - feat/AC-1679 # Will be put develop branch back once QA is done
+      - develop
 
 jobs:
   build-and-deploy:
@@ -18,7 +18,9 @@ jobs:
         run: |
           npm install
           cp .env .env.production
-          echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production
+          echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production && \
+          echo "VITE_CHAT_AI_WIDGET_DATADOG_CLIENT_TOKEN=${{ secrets.datadog_client_token }}" >> .env.production && \
+          echo "VITE_CHAT_AI_WIDGET_DATADOG_APP_ID=${{ secrets.datadog_app_id }}" >> .env.production
           npm run build:pages
 
       - name: Deploy 🚀

@@ -16,6 +16,9 @@ export default defineConfig({
     svgr(),
     dts(),
   ],
+  define: {
+    APP_VERSION: JSON.stringify(process.env.npm_package_version),
+  },
   // to point to correct path for gh-pages
   base: '/chat-ai-widget',
   build: {
@@ -29,11 +32,13 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
+        '@datadog/browser-rum'
       ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          '@datadog/browser-rum': 'datadogRum'
         }
       }
     }
