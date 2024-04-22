@@ -18,6 +18,8 @@ function useDynamicAttachModal() {
               const child = document.getElementById(childId);
               if (parent && child) {
                 parent.appendChild(child);
+                // Disconnect the observer once the child is attached
+                observer.disconnect();
               }
             }
           });
@@ -29,7 +31,7 @@ function useDynamicAttachModal() {
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      observer.disconnect();
+      observer?.disconnect();
     };
   }, []);
 }
