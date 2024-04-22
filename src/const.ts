@@ -150,3 +150,13 @@ export interface CustomRefreshComponent {
   onClick?: () => void;
   style?: React.CSSProperties;
 }
+
+export const elementIds = {
+  widgetWindow: 'aichatbot-widget-window',
+  widgetToggleButton: 'aichatbot-widget-button',
+  collapseIcon: 'aichatbot-widget-collapse-icon',
+  expandIcon: 'aichatbot-widget-expand-icon',
+  closeIcon: 'aichatbot-widget-close-icon',
+  refreshIcon: 'aichatbot-widget-refresh-icon',
+  uikitModal: 'sendbird-modal-root',
+};

@@ -12,6 +12,7 @@ import {
 import { WidgetOpenProvider } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 // import useDatadogRum from '../hooks/useDatadog';
+import useDynamicAttachModal from '../hooks/useDynamicAttachModal';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
 import { isMobile } from '../utils';
@@ -29,6 +30,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     stringSet,
     ...restConstantProps
   } = useConstantState();
+  useDynamicAttachModal();
+
   // useDatadogRum();
 
   const userAgentCustomParams = useRef({

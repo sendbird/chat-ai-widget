@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { MAX_Z_INDEX } from '../const';
+import { MAX_Z_INDEX, elementIds } from '../const';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
 import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';
@@ -95,17 +95,17 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
     <StyledWidgetWindowWrapper
       isOpen={isOpen}
       isExpanded={isExpanded}
-      id="aichatbot-widget-window"
+      id={elementIds.widgetWindow}
     >
       <StyledExpandButton onClick={() => setIsExpanded((prev) => !prev)}>
         {isExpanded ? (
-          <CollapseIcon id="aichatbot-widget-collapse-icon" />
+          <CollapseIcon id={elementIds.collapseIcon} />
         ) : (
-          <ExpandIcon id="aichatbot-widget-expand-icon" />
+          <ExpandIcon id={elementIds.expandIcon} />
         )}
       </StyledExpandButton>
       <StyledCloseButton onClick={() => setIsOpen(false)}>
-        <CloseIcon id="aichatbot-widget-close-icon" />
+        <CloseIcon id={elementIds.closeIcon} />
       </StyledCloseButton>
       {children}
     </StyledWidgetWindowWrapper>

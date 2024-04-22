@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../colors';
-import { MAX_Z_INDEX } from '../const';
+import { MAX_Z_INDEX, elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
@@ -97,7 +97,7 @@ interface ToggleButtonProps {
 const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
   return (
     <StyledWidgetButtonWrapper
-      id="aichatbot-widget-button"
+      id={elementIds.widgetToggleButton}
       onClick={onClick}
       accentColor={accentColor}
     >
