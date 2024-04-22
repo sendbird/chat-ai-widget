@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { BodyComponent } from './MessageComponent';
 import { SuggestedReply } from '../const';
+import { parseMessageDataSafely } from '../utils/messages';
 
 const Root = styled(BodyComponent)`
   color: ${({ theme }) => theme.textColor.incomingMessage};
@@ -50,7 +51,7 @@ type Props = {
 
 export default function SuggestedReplyMessageBody(props: Props) {
   const { message } = props;
-  const data: SuggestedReply = JSON.parse(message.data ?? '');
+  const data: SuggestedReply = parseMessageDataSafely(message.data);
   return (
     <Root>
       <Text>{data.text}</Text>
