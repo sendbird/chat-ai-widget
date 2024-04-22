@@ -212,8 +212,8 @@ workflows:
           name: integrate_manifest_app
           filters: *only_version_tag_trigger
           requires:
-            - build_app-webdemo-amd64
-            - build_app-webdemo-arm64
+            - build_app-amd64
+            - build_app-arm64
           aws_region: us-west-2
           repo: aiwidget/app
           context:
