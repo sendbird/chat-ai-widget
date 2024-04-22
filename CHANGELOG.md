@@ -1,3 +1,16 @@
+## [1.3.9] (April 19 2024)
+#### Feat:
+- Created an upload_to_s3 pipeline to facilitate file transfers to AWS S3.
+- Added automated workflows for publishing, enhancing deployment efficiency.
+  - [workflows/package-publish.yml](./.github/workflows/package-publish.yml)
+
+#### Fix:
+- Corrected the positioning of the feedback icon in the bot message UI
+
+#### Chore:
+- Modified the build output path for better management of build artifacts.
+- Removed `react-popper-tooltip` library from the project dependencies to streamline the bundle size.
+
 
 ## [1.3.8] (Mar 28 2024)
 #### Feat:
@@ -24,20 +37,20 @@
   - Available `stringSet` can be found at https://github.com/sendbird/sendbird-uikit-react/blob/main/src/ui/Label/stringSet.ts.
 
 ## [1.3.4] (Mar 19 2024)
-### Feat:
+#### Feat:
 - Drop `react-code-block` library & add new CodeBlock component.
   - This update introduces a new component for displaying code blocks in a more efficient and stylized manner.
 
-### Fix:
+#### Fix:
 - Fix mobile UX issues to enhance UX on mobile devices by addressing various UI and interaction problems.
 - Fix visibility of empty elements handling to ensure that empty elements in the application do not interfere with the user's experience by being incorrectly visible.
 
 
 ## [v1.3.3] (Mar 15 2024)
-### Feat:
+#### Feat:
 - Put the manual suggested reply component back for enhanced user interaction.
 
-### Chore:
+#### Chore:
 - Apply dynamic import for index script caching to improve performance and caching.
 - Add [self-service script publish guide](./packages/self-service/script-publish.md).
 
