@@ -1,3 +1,20 @@
+## [1.4.1] (April 22 2024)
+#### Feat:
+- Implemented safe parsing of message.data to prevent errors in data handling.
+- Enhanced efficiency by reusing user and channel information stored in localStorage, reducing redundant data requests and improving user experience.
+- Established functionality to connect the ChatAiWidget upon component mounting, improving real-time interaction capabilities. This includes various improvements such as managing connections and handling UI behavior between mobile and desktop platforms.
+
+#### Fix:
+- Corrected the position of the feedback dialog which used to be incorrectly placed after bumping up UIKit version.
+
+#### Chore:
+- Updated key structures to include appId and boId, which allows better identification and tracking of business objects.
+  - LocalStorage key format: `@sendbird/chat-ai-widget/${appId}/${botId}`
+- Cleanup of Unused Files and Dependencies: Removed unnecessary files and dependencies like dompurify to streamline the codebase.
+
+
+## [Deprecated] [v1.4.0]
+
 ## [1.3.9] (April 19 2024)
 #### Feat:
 - Created an upload_to_s3 pipeline to facilitate file transfers to AWS S3.
