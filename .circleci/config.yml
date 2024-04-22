@@ -52,7 +52,7 @@ jobs:
   build_container_image_and_push:
     executor: << parameters.architecture >>
     environment:
-      AWS_ECR_REGISTRY_ID: '314716043882'
+      AWS_ECR_REGISTRY_ID: $AWS_ECR_REGISTRY_ID
     parameters:
       app:
         description: application to build
@@ -93,7 +93,7 @@ jobs:
           profile-name: default
           region: << parameters.aws_region >>
           repo: << parameters.repo >>
-          role-arn: arn:aws:iam::314716043882:role/ci-ops
+          role-arn: $CI_ROLE_ARN
           tag: '$CIRCLE_TAG-<< parameters.app >>-<< parameters.architecture >>'
           extra-build-args: << parameters.extra_build_args >>
   push_arch_integrated_manifest:
@@ -108,7 +108,7 @@ jobs:
         type: string
     environment:
       DOCKER_CLI_EXPERIMENTAL: enabled
-      ECR_REPO: 314716043882.dkr.ecr.<<parameters.aws_region>>.amazonaws.com/<<parameters.repo>>
+      ECR_REPO: $AWS_ECR_REGISTRY_ID.dkr.ecr.<<parameters.aws_region>>.amazonaws.com/<<parameters.repo>>
     steps:
       - aws-cli/setup:
           profile-name: default
@@ -116,7 +116,7 @@ jobs:
       - aws-cli/role-arn-setup:
           profile-name: ci-ops
           source-profile: default
-          role-arn: arn:aws:iam::314716043882:role/ci-ops
+          role-arn: $CI_ROLE_ARN
       - run:
           name: Login in docker registry
           command: |
@@ -162,21 +162,21 @@ jobs:
       - aws-cli/role-arn-setup:
           profile-name: ci-web-prod
           source-profile: default
-          role-arn: arn:aws:iam::049322569699:role/dashboard-ci-web-prod
+          role-arn: $DASHBOARD_CI_ROLE_ARN
       - aws-s3/sync:
           from: dist/
-          to: s3://genai-aichatbotwidget-use1-prod
+          to: $S3_BUCKET
           profile_name: ci-web-prod
       - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=0" --content-type application/javascript'
-          from: s3://genai-aichatbotwidget-use1-prod/index.js
+          from: $S3_BUCKET/index.js
           profile_name: ci-web-prod
-          to: s3://genai-aichatbotwidget-use1-prod/index.js
+          to: $S3_BUCKET/index.js
       - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type application/javascript --recursive'
-          from: s3://genai-aichatbotwidget-use1-prod/${CIRCLE_TAG}
+          from: $S3_BUCKET/${CIRCLE_TAG}
           profile_name: ci-web-prod
-          to: s3://genai-aichatbotwidget-use1-prod/${CIRCLE_TAG}
+          to: $S3_BUCKET/${CIRCLE_TAG}
       - aws-create-invalidation:
           distribution-id: 'EURYULTBDXGNR'
           paths: '/*'
