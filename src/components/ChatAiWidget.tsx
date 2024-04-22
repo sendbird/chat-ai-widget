@@ -7,7 +7,7 @@ import ProviderContainer, {
 } from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
-import { MAX_Z_INDEX } from '../const';
+import { MAX_Z_INDEX, elementIds } from '../const';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import useMobileView from '../hooks/useMobileView';
 import { isMobile } from '../utils';
@@ -44,7 +44,7 @@ const MobileComponent = () => {
       <MobileContainer
         style={{ display: isOpen ? 'block' : 'none' }}
         width={mobileContainerWidth}
-        id="aichatbot-widget-window"
+        id={elementIds.widgetWindow}
       >
         <Chat />
       </MobileContainer>

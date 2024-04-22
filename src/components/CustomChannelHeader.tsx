@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
+import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
@@ -114,7 +115,7 @@ export default function CustomChannelHeader({
           }}
         >
           <customRefreshComponent.icon
-            id="aichatbot-widget-refresh-icon"
+            id={elementIds.refreshIcon}
             width={customRefreshComponent.width}
             height={customRefreshComponent.height}
             style={
