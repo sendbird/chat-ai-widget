@@ -1,3 +1,11 @@
+## [1.4.2] (April 23 2024)
+#### Fix:
+- Fixed a DOMException issue in useDynamicAttachModal hook.
+
+#### Chore:
+- Replaced a Sendbird AI Chatbot website link in ChatBottom component.
+
+
 ## [1.4.1] (April 22 2024)
 #### Feat:
 - Implemented safe parsing of message.data to prevent errors in data handling.
