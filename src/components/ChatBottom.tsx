@@ -49,7 +49,7 @@ export default function ChatBottom() {
       >
         {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
         <Highlighter
-          href="https://sendbird.com/products/chatgpt-integration"
+          href="https://sendbird.com/products/ai-chatbot"
           target="_blank"
           rel="noopener noreferrer"
         >
