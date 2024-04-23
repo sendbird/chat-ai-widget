@@ -16,7 +16,7 @@ function useDynamicAttachModal() {
             if (node?.id === parentId) {
               const parent = document.getElementById(parentId);
               const child = document.getElementById(childId);
-              if (parent && child) {
+              if (parent && child && child.parentNode === document.body) {
                 parent.appendChild(child);
                 // Disconnect the observer once the child is attached
                 observer.disconnect();
