@@ -170,16 +170,16 @@ jobs:
       - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=0" --content-type application/javascript'
           from: $S3_BUCKET/index.js
-          profile_name: ci-web-prod
           to: $S3_BUCKET/index.js
+          profile_name: ci-web-prod
       - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type application/javascript --recursive'
           from: $S3_BUCKET/${CIRCLE_TAG}
-          profile_name: ci-web-prod
           to: $S3_BUCKET/${CIRCLE_TAG}
+          profile_name: ci-web-prod
       - aws-create-invalidation:
-          distribution-id: 'EURYULTBDXGNR'
-          paths: '/*'
+          distribution-id: $DISTRIBUTION_ID
+          paths: '/index.js'
           profile: ci-web-prod
 
 workflows:
