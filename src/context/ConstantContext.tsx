@@ -2,14 +2,14 @@ import { LabelStringSet } from '@sendbird/uikit-react/ui/Label';
 import { createContext, useContext, useMemo } from 'react';
 
 import { type Constant, DEFAULT_CONSTANT } from '../const';
-import { MessageDataFunctionCalls } from '../App';
+import {SendbirdChatAICallbacks} from '../interfaces';
 
 const initialState = DEFAULT_CONSTANT;
 
 interface ConstantContextProps extends Constant {
   applicationId: string | null;
   botId: string | null;
-  messageDataFunctionCalls?: MessageDataFunctionCalls;
+  callbacks?: SendbirdChatAICallbacks;
 }
 const ConstantContext = createContext<ConstantContextProps>({
   applicationId: null,
@@ -37,7 +37,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
           props.suggestedMessageContent?.messageFilterList ??
           initialState.suggestedMessageContent.messageFilterList,
       },
-      messageDataFunctionCalls: props.messageDataFunctionCalls,
+      callbacks: props.callbacks,
       firstMessageData: props.firstMessageData ?? [],
       createGroupChannelParams:
         props.createGroupChannelParams ?? initialState.createGroupChannelParams,

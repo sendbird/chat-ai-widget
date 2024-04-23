@@ -111,8 +111,14 @@ const Root = styled.div<RootStyleProps>`
 `;
 
 export function CustomChannelComponent() {
-  const { suggestedMessageContent, botId, enableEmojiFeedback } =
-    useConstantState();
+  const {
+    suggestedMessageContent,
+    botId,
+    enableEmojiFeedback,
+    customUserAgentParam,
+  } = useConstantState();
+  const isForSendbirdDashboard = customUserAgentParam
+    && customUserAgentParam['chat-ai-widget-preview'] === 'True';
   const {
     messages: allMessages,
     currentChannel: channel,
@@ -233,7 +239,7 @@ export function CustomChannelComponent() {
                   ) : isStaticReplyVisible ? (
                     <StaticRepliesPanel botUser={botUser} />
                   ) : null)}
-                {message.data && <MessageDataContent messageData={message.data}/>}
+                {isForSendbirdDashboard && message.data && <MessageDataContent messageData={message.data}/>}
               </>
             </Message>
           );

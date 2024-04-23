@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
-import {MessageDataFunctionCall, MessageDataFunctionCallProps} from '../App';
 import { useEffect, useState } from 'react';
 import { ReactComponent as EllipsisIcon } from '../icons/icon-ellipsis.svg';
 import { ReactComponent as MessageBubbleIcon } from '../icons/icon-message-bubble.svg';
 import { ReactComponent as ChevronRightIcon } from '../icons/icon-chevron-right.svg';
+import {ViewDetailData} from '../interfaces';
 
 const Text = styled.div`
   font-size: 14px;
@@ -104,7 +104,8 @@ interface FunctionCallRenderData {
 }
 
 export default function MessageDataContent({ messageData }: MessageDataContentProps) {
-  const { messageDataFunctionCalls } = useConstantState();
+  const { callbacks } = useConstantState();
+  const onViewDetailClick = callbacks?.onViewDetailClick;
 
   // console.log('## messageData: ', messageData);
 
@@ -114,24 +115,22 @@ export default function MessageDataContent({ messageData }: MessageDataContentPr
     const messageDataObject: MessageDataObject = JSON.parse(messageData);
     const functionCallsData = messageDataObject?.function_calls;
 
-    console.log('## functionCallsData: ', functionCallsData, !!messageDataFunctionCalls);
+    // console.log('## functionCallsData: ', functionCallsData, onViewDetailClick);
     if (
       functionCallsData
       && Array.isArray(functionCallsData)
       && functionCallsData.length > 0
-      // && messageDataFunctionCalls
     ) {
       const newFunctionCalls: FunctionCallRenderData[] = [];
-
-      (functionCallsData as MessageDataFunctionCallProps[])
-        .forEach((functionCallData: MessageDataFunctionCallProps) => {
-          if (functionCallData.name) {
-            let functionCall: MessageDataFunctionCall = () => {};
-            if (messageDataFunctionCalls && typeof messageDataFunctionCalls[functionCallData.name] === 'function') {
-              functionCall = messageDataFunctionCalls[functionCallData.name];
-            }
+      (functionCallsData as ViewDetailData[])
+        .forEach((functionCallData: ViewDetailData) => {
+          const response = functionCallData.response;
+          if (response.name) {
+            const functionCall = (onViewDetailClick && typeof onViewDetailClick === 'function')
+              ? onViewDetailClick
+              : () => {};
             newFunctionCalls.push({
-              name: functionCallData.name,
+              name: response.name,
               onClick: () => functionCall(functionCallData),
             });
           }
@@ -140,7 +139,7 @@ export default function MessageDataContent({ messageData }: MessageDataContentPr
         setFunctionCalls(newFunctionCalls);
       }
     }
-  }, [messageDataFunctionCalls, messageData]);
+  }, [messageData]);
 
   if (functionCalls.length === 0) return null;
 
