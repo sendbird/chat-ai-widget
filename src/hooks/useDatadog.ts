@@ -1,4 +1,3 @@
-import { datadogRum } from '@datadog/browser-rum';
 import { useEffect } from 'react';
 
 import { useConstantState } from '../context/ConstantContext';
@@ -12,26 +11,22 @@ const useDatadogRum = () => {
   const { serviceName } = useConstantState();
   useEffect(() => {
     if (DATADOG_APP_ID != null && DATADOG_CLIENT_TOKEN != null) {
-      datadogRum.init({
-        applicationId: DATADOG_APP_ID,
-        clientToken: DATADOG_CLIENT_TOKEN,
-        site: 'datadoghq.com',
-        sessionSampleRate: 100,
-        sessionReplaySampleRate: 100,
-        trackResources: true,
-        trackLongTasks: true,
-        trackUserInteractions: true,
-        service: serviceName || 'genai-chatbot-widget',
-        version: APP_VERSION,
-        env: isProd ? 'production' : 'development',
+      import('@datadog/browser-rum-slim').then(({ datadogRum }) => {
+        datadogRum.init({
+          applicationId: DATADOG_APP_ID,
+          clientToken: DATADOG_CLIENT_TOKEN,
+          site: 'datadoghq.com',
+          sessionSampleRate: 10,
+          sessionReplaySampleRate: 10,
+          trackResources: false,
+          trackLongTasks: false,
+          trackUserInteractions: false,
+          service: serviceName || 'genai-chatbot-widget',
+          version: APP_VERSION,
+          env: isProd ? 'production' : 'development',
+        });
       });
-
-      datadogRum.startSessionReplayRecording();
     }
-
-    return () => {
-      datadogRum.stopSessionReplayRecording();
-    };
   }, []);
 };
 

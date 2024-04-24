@@ -5,14 +5,13 @@ import { ThemeProvider } from 'styled-components';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
 import { generateCSSVariables } from '../colors';
-import { type Constant } from '../const';
 import {
   useConstantState,
   ConstantStateProvider,
 } from '../context/ConstantContext';
 import { WidgetOpenProvider } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
-// import useDatadogRum from '../hooks/useDatadog';
+import useDatadogRum from '../hooks/useDatadog';
 import useDynamicAttachModal from '../hooks/useDynamicAttachModal';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
@@ -32,8 +31,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     ...restConstantProps
   } = useConstantState();
   useDynamicAttachModal();
-
-  // useDatadogRum();
+  useDatadogRum();
 
   const userAgentCustomParams = useRef({
     ...customUserAgentParam,
