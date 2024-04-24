@@ -1,4 +1,5 @@
 module.exports = {
+  root: true, // This fixes issue when running lint fix command: https://stackoverflow.com/questions/55060228/eslint-couldnt-find-the-plugin-eslint-plugin-typescript-eslint
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',

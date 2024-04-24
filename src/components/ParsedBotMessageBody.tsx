@@ -53,11 +53,11 @@ export default function ParsedBotMessageBody(props: Props) {
     ? data['metadatas']?.filter((source) => source.source_type !== 'file')
     : [];
 
-  // console.log('## sources: ', sources);
   if (tokens.length > 0) {
     return (
       <MultipleTokenTypeContainer className="sendbird-word">
         {tokens.map((token: Token, i) => {
+          // Normal text part of the message.
           if (token.type === TokenType.string) {
             return (
               <RegexText
@@ -109,7 +109,7 @@ export default function ParsedBotMessageBody(props: Props) {
               </RegexText>
             );
           }
-
+          // Code part of the message.
           return (
             <BlockContainer key={'token' + i}>
               <CodeBlock token={token} />
