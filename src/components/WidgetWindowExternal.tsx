@@ -1,13 +1,12 @@
 import Chat from './Chat';
-import ProviderContainer, {
-  type ProviderContainerProps,
-} from './ProviderContainer';
+import { ChatAiWidgetProps } from './ChatAiWidget';
+import ProviderContainer from './ProviderContainer';
 
 /**
  * NOTE: External purpose only.
  * Do not use this component directly. Use Chat instead for internal use.
  */
-function WidgetWindowExternal(props: ProviderContainerProps) {
+function WidgetWindowExternal(props: ChatAiWidgetProps) {
   return (
     <ProviderContainer {...props}>
       <Chat />
