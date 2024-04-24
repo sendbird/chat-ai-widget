@@ -136,6 +136,7 @@ export function replaceTextExtracts(
   searchText: string,
   replaceText: string
 ): string {
+  // gi => global (All matches; don't return on first match) + insensitive (Case insensitive match)
   const regex = new RegExp(searchText, 'gi');
   return input.replace(regex, replaceText);
 }

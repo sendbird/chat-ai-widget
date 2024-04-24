@@ -2,12 +2,10 @@ import '@sendbird/uikit-react/dist/index.css';
 import styled from 'styled-components';
 
 import Chat from './Chat';
-import ProviderContainer, {
-  type ProviderContainerProps,
-} from './ProviderContainer';
+import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
-import { MAX_Z_INDEX, elementIds } from '../const';
+import { MAX_Z_INDEX, elementIds, type Constant } from '../const';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import useMobileView from '../hooks/useMobileView';
 import { isMobile } from '../utils';
@@ -52,7 +50,13 @@ const MobileComponent = () => {
   );
 };
 
-export default function ChatAiWidget(props: ProviderContainerProps) {
+export interface ChatAiWidgetProps extends Partial<Constant> {
+  applicationId: string;
+  botId: string;
+  hashedKey?: string;
+}
+
+export default function ChatAiWidget(props: ChatAiWidgetProps) {
   return (
     <ProviderContainer {...props}>
       {isMobile ? <MobileComponent /> : <DesktopComponent />}

@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useRef, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 
+import { ChatAiWidgetProps } from './ChatAiWidget';
 import { generateCSSVariables } from '../colors';
 import { type Constant } from '../const';
 import {
@@ -106,11 +107,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
   );
 };
 
-export interface ProviderContainerProps extends Partial<Constant> {
-  applicationId: string;
-  botId: string;
+export interface ProviderContainerProps extends ChatAiWidgetProps {
   children: React.ReactElement;
-  hashedKey?: string;
 }
 
 export default function ProviderContainer(props: ProviderContainerProps) {
