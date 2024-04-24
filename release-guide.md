@@ -9,8 +9,9 @@
 
 ## Step 1 - Publish a new chat-ai-widget package (using automated workflow)
 1. Navigate to Actions -> [Publish Workflow](./.github/workflows/package-publish.yml) in the GitHub repository.
-2. Fill in the version field with the target version (e.g., 1.3.1), and use rc / alpha / beta for the npm_tag field if needed.
-3. Once all the steps in the workflow are successfully completed:
+2. Change the target branch to the release branch created in Step 0.
+3. Fill in the version field with the target version (e.g., 1.3.1), and use rc / alpha / beta for the npm_tag field if needed.
+4. Once all the steps in the workflow are successfully completed:
    - The build output will be published to npm.
    - A commit will be pushed to the release PR created in Step 0. This commit includes:
      - Changes to the CHANGELOG and version updates.

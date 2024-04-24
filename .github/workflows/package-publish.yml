@@ -50,17 +50,6 @@ jobs:
         run: |
           git config --global user.name "sendbird-sdk-deployment"
           git config --global user.email "sha.sdk_deployment@sendbird.com"
-          echo "RELEASE_DATE=$(date +'%b %d %Y')" >> $GITHUB_ENV
-          echo "LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))" >> $GITHUB_ENV
-      - name: Generate CHANEGLOG
-        run: |
-          echo "## [$LATEST_TAG] - $RELEASE_DATE" > temp-changelog.md
-          git log $LATEST_TAG..develop --oneline >> temp-changelog.md
-          echo "" >> temp-changelog.md
-          cat CHANGELOG.md >> temp-changelog.md
-          mv temp-changelog.md CHANGELOG.md
-          git commit -m "Update CHANGELOG.md for $LATEST_TAG"
-          git push origin release/v${{ github.event.inputs.version }}
       - name: Update installed chat-ai-widget version to latest under packages/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
