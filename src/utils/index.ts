@@ -76,7 +76,6 @@ export function splitText(inputString: string) {
       }
     } else {
       if (isDelimiterIndex(i, inputString, delimiter)) {
-        // console.log('## isDelimiterIndex: ', isDelimiterIndex(i, inputString, delimiter));
         result.push(currentWord);
         currentWord = delimiter;
         inDelimiter = true;

@@ -1,4 +1,5 @@
-import { FeedbackRating, UserMessage, Feedback } from '@sendbird/chat/message';
+import { FeedbackRating, BaseMessage, Feedback } from '@sendbird/chat/message';
+import { CoreMessageType } from '@sendbird/uikit-react/types/utils';
 import FeedbackIconButton from '@sendbird/uikit-react/ui/FeedbackIconButton';
 import Icon, { IconTypes } from '@sendbird/uikit-react/ui/Icon';
 import MessageFeedbackFailedModal from '@sendbird/uikit-react/ui/MessageFeedbackFailedModal';
@@ -9,7 +10,7 @@ import { useState } from 'react';
 import { useConstantState } from '../context/ConstantContext';
 import { isMobile } from '../utils';
 
-function BotMessageFeedback({ message }: { message: UserMessage }) {
+function BotMessageFeedback({ message }: { message: BaseMessage }) {
   const { stringSet } = useConstantState();
   const [showFeedbackOptionsMenu, setShowFeedbackOptionsMenu] =
     useState<boolean>(false);
@@ -116,7 +117,7 @@ function BotMessageFeedback({ message }: { message: UserMessage }) {
           showFeedbackModal && (
             <MessageFeedbackModal
               selectedFeedback={message.myFeedback.rating}
-              message={message}
+              message={message as CoreMessageType}
               onUpdate={async (
                 selectedFeedback: FeedbackRating,
                 comment: string
