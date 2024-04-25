@@ -1,14 +1,9 @@
 module.exports = {
   root: true, // This fixes issue when running lint fix command: https://stackoverflow.com/questions/55060228/eslint-couldnt-find-the-plugin-eslint-plugin-typescript-eslint
   env: { browser: true, es2020: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  plugins: ['import'],
+  plugins: ['import', 'styled-components-a11y'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -39,7 +34,19 @@ module.exports = {
         "newlines-between": "always",
         "alphabetize": {"order": "asc", "caseInsensitive": true}
       }
-    ]
+    ],
+    'styled-components-a11y/control-has-associated-label': [
+      2,
+      {
+        'labelAttributes': ['label'],
+        'depth': 3,
+        'ignoreElements': [
+          'input',
+          'textarea',
+        ],
+        'includeRoles': ['button']
+      },
+    ],
   },
   settings: {
     react: {

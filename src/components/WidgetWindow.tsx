@@ -72,7 +72,10 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <StyledWidgetWindowWrapper isOpen={isOpen} id={elementIds.widgetWindow}>
-      <StyledCloseButton onClick={() => setIsOpen(false)}>
+      <StyledCloseButton
+        aria-label="Close widget"
+        onClick={() => setIsOpen(false)}
+      >
         <CloseIcon id={elementIds.closeIcon} />
       </StyledCloseButton>
       {children}

@@ -132,7 +132,14 @@ export default function CustomChannelHeader({
           />
         </RenewButtonForWidgetDemo>
         {isMobile && (
-          <CloseButton onClick={() => setIsOpen(false)}>Close</CloseButton>
+          <CloseButton
+            aria-label="Close widget"
+            type="button"
+            id={elementIds.closeIcon}
+            onClick={() => setIsOpen(false)}
+          >
+            Close
+          </CloseButton>
         )}
       </RenewButtonContainer>
     </Root>
