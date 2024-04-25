@@ -1,12 +1,9 @@
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
 import styled from 'styled-components';
-import { useState } from 'react';
 import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 // import { FileViewerComponent } from '@sendbird/uikit-react/ui/FileViewer';
-// import {MouseEvent, useState} from 'react';
 // import {downloadFileWithUrl, noop} from '../utils';
 // import {createPortal} from 'react-dom';
-import ImageRenderer from '@sendbird/uikit-react/ui/ImageRenderer';
 
 const Root = styled.div`
   width: 100%;
@@ -24,11 +21,9 @@ type Props = {
 export default function FileMessage(props: Props) {
   const { message } = props;
   const {
+    isScrollBottomReached,
     scrollToBottom,
   } = useGroupChannelContext();
-
-  // const [showPreview, setShowPreview] = useState(false);
-  // const [isLoaded, setIsLoaded] = useState(false);
 
   // const root = document.getElementById('aichatbot-widget-window');
 
@@ -51,12 +46,15 @@ export default function FileMessage(props: Props) {
       {/*    />,*/}
       {/*    root!*/}
       {/*  )}*/}
-      {/*<ImageRenderer*/}
-      {/*  url={message.url}*/}
-      {/*  width={'360px'}*/}
-      {/*  height={'270px'}*/}
-      {/*/>*/}
-      <Image src={message.url} alt={''} onLoad={() => scrollToBottom()} />
+      <Image
+        src={message.url}
+        alt={''}
+        onLoad={() => {
+          if (isScrollBottomReached) {
+            scrollToBottom();
+          }
+        }}
+      />
     </Root>
   );
 }
