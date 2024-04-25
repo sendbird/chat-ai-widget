@@ -1,15 +1,11 @@
-import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { MAX_Z_INDEX, elementIds } from '../const';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
-import { ReactComponent as CollapseIcon } from '../icons/icon-collapse.svg';
-import { ReactComponent as ExpandIcon } from '../icons/icon-expand.svg';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
-  isExpanded: boolean;
 }>`
   overscroll-behavior: none;
   -webkit-overflow-scrolling: auto;
@@ -52,26 +48,6 @@ const StyledWidgetWindowWrapper = styled.div<{
   .widget-close-button {
     display: none;
   }
-
-  ${({ isExpanded }) =>
-    isExpanded &&
-    css`
-      width: 743px;
-      height: 723px;
-    `}
-`;
-
-const StyledExpandButton = styled.button`
-  position: fixed;
-  right: 42px;
-  top: 16px;
-  width: 24px;
-  height: 24px;
-  background: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const StyledCloseButton = styled.button`
@@ -85,27 +61,24 @@ const StyledCloseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  svg {
+    cursor: pointer;
+  }
 `;
 
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, setIsOpen } = useWidgetOpen();
-  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <StyledWidgetWindowWrapper
       isOpen={isOpen}
-      isExpanded={isExpanded}
       id={elementIds.widgetWindow}
     >
-      <StyledExpandButton onClick={() => setIsExpanded((prev) => !prev)}>
-        {isExpanded ? (
-          <CollapseIcon id={elementIds.collapseIcon} />
-        ) : (
-          <ExpandIcon id={elementIds.expandIcon} />
-        )}
-      </StyledExpandButton>
       <StyledCloseButton onClick={() => setIsOpen(false)}>
-        <CloseIcon id={elementIds.closeIcon} />
+        <CloseIcon
+          id={elementIds.closeIcon}
+        />
       </StyledCloseButton>
       {children}
     </StyledWidgetWindowWrapper>

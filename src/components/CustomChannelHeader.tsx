@@ -124,8 +124,8 @@ export default function CustomChannelHeader({
                     position: 'relative',
                     right: isMobile
                       ? 0
-                      : // to make the refresh icon appear next to the expand & close icons in the widget window
-                        60,
+                      : // to make the refresh icon appear next to the close icon in the widget window
+                        26,
                   }
                 : customRefreshComponent.style
             }
