@@ -51,7 +51,7 @@ const Root = styled.div<RootStyleProps>`
     background-color: ${({ theme }) => theme.bgColor.chatBottom};
   }
 
-  .sendbird-message-input-wrapper__message-input {
+  && .sendbird-message-input-wrapper__message-input {
     padding: 12px 16px;
     display: flex;
     -webkit-box-pack: justify;

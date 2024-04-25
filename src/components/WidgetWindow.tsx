@@ -71,14 +71,9 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, setIsOpen } = useWidgetOpen();
 
   return (
-    <StyledWidgetWindowWrapper
-      isOpen={isOpen}
-      id={elementIds.widgetWindow}
-    >
+    <StyledWidgetWindowWrapper isOpen={isOpen} id={elementIds.widgetWindow}>
       <StyledCloseButton onClick={() => setIsOpen(false)}>
-        <CloseIcon
-          id={elementIds.closeIcon}
-        />
+        <CloseIcon id={elementIds.closeIcon} />
       </StyledCloseButton>
       {children}
     </StyledWidgetWindowWrapper>
