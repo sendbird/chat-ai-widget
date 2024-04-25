@@ -33,6 +33,7 @@ function BotMessageFeedback({ message }: { message: UserMessage }) {
       {/** Feedback icons */}
       <div className="sendbird-message-content__middle__body-container__feedback-buttons-container">
         <FeedbackIconButton
+          aria-label="Like the bot answer"
           isSelected={message?.myFeedback?.rating === FeedbackRating.GOOD}
           onClick={async () => {
             if (!message?.myFeedback?.rating) {
@@ -57,6 +58,7 @@ function BotMessageFeedback({ message }: { message: UserMessage }) {
           <Icon type={IconTypes.FEEDBACK_LIKE} width="24px" height="24px" />
         </FeedbackIconButton>
         <FeedbackIconButton
+          aria-label="Dislike the bot answer"
           isSelected={message?.myFeedback?.rating === FeedbackRating.BAD}
           onClick={async () => {
             if (!message?.myFeedback?.rating) {

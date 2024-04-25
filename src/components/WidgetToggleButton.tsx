@@ -98,6 +98,7 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
   return (
     <StyledWidgetButtonWrapper
       id={elementIds.widgetToggleButton}
+      aria-label="Widget toggle button"
       onClick={onClick}
       accentColor={accentColor}
     >
