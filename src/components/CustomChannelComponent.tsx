@@ -164,7 +164,6 @@ export function CustomChannelComponent() {
     if (
       lastMessage &&
       !(lastMessage?.messageType === 'admin') &&
-      lastMessage.sender?.userId === userId &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
       // this bubble loading should be shown only when there're only bot and 1 user in the channel
       channel?.memberCount === 2
