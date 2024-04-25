@@ -1,3 +1,15 @@
+## [1.4.4] (April 25 2024)
+#### Feat:
+- Added missing aria-label attributes to enhance accessibility, with corresponding ESLint rule settings to ensure continued compliance.
+- Removed the expand/collapse button from the WidgetWindow.
+
+#### Fix:
+- Incremented the specifications for messageInputWrapper style to improve UI consistency.
+
+#### Revert:
+- Reverted the addition of the slim version of Datadog RUM, removing related code. This reverts the changes initially introduced in commit f2bfe362.
+
+
 ## [1.4.3] (April 24 2024)
 #### Feat:
 - Integrated Datadog RUM (Real User Monitoring) in a slimmed-down version to optimize performance monitoring without heavily impacting the application's load time.
