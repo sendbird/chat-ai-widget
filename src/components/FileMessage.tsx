@@ -29,6 +29,7 @@ export default function FileMessage(props: Props) {
 
   return (
     <Root>
+      {/*Please keep the commented code for referencing in the future when adding file viewer*/}
       {/*{root &&*/}
       {/*  showPreview &&*/}
       {/*  createPortal(*/}
@@ -50,9 +51,7 @@ export default function FileMessage(props: Props) {
         src={message.url}
         alt={''}
         onLoad={() => {
-          if (isScrollBottomReached) {
-            scrollToBottom();
-          }
+          scrollToBottom();
         }}
       />
     </Root>
