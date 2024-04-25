@@ -8,7 +8,7 @@ import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
-import FormMessage from './FormMessage';
+import FormMessage, { Form } from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
@@ -63,7 +63,7 @@ export default function CustomMessage(props: Props) {
   }
 
   if (isFormMessage(message)) {
-    const forms = message.extendedMessagePayload.forms;
+    const forms: Form[] = message.extendedMessagePayload!.forms as Form[];
     return (
       <BotMessageWithBodyInput
         {...commonProps}
@@ -123,7 +123,7 @@ export default function CustomMessage(props: Props) {
       <BotMessageWithBodyInput
         {...commonProps}
         botUser={botUser}
-        bodyComponent={<FileMessage url={message.url} />}
+        bodyComponent={<FileMessage message={message} />}
       />
     );
   }

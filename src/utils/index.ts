@@ -254,3 +254,14 @@ export const localStorageHelper = () => {
     },
   };
 };
+
+export function downloadFileWithUrl(url?: string | null) {
+  let safeURL = url;
+  if (safeURL) {
+    if (!safeURL.startsWith('http://') && !safeURL.startsWith('https://')) {
+      safeURL = 'https://' + safeURL;
+    }
+    window.open(safeURL, '_blank', 'noopener,noreferrer');
+  }
+  return Promise.resolve();
+}

@@ -82,7 +82,7 @@ export function getBotWelcomeMessages(
 }
 
 export function isFormMessage(message: EveryMessage) {
-  return !!message.extendedMessagePayload?.forms;
+  return Array.isArray(message.extendedMessagePayload?.forms);
 }
 
 export function isLastMessageInStreaming(lastMessage: EveryMessage | null) {

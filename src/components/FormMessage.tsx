@@ -19,7 +19,7 @@ interface Field {
   input_type: string;
 }
 
-interface Form {
+export interface Form {
   key: string;
   fields: Field[];
   /** submitted data */

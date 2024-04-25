@@ -56,3 +56,17 @@
 .sendbird-modal__content {
   width: calc(100% - 20px);
 }
+
+.sendbird-fileviewer__header__left {
+  max-width: 272px;
+}
+
+.sendbird-fileviewer {
+  outline: none;
+}
+
+textarea:focus, input:focus{
+  &:active {
+    outline: none;
+  }
+}
