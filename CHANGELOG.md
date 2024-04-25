@@ -1,3 +1,11 @@
+## [1.4.3] (April 24 2024)
+#### Feat:
+- Integrated Datadog RUM (Real User Monitoring) in a slimmed-down version to optimize performance monitoring without heavily impacting the application's load time.
+
+#### Fix:
+- Made `children` prop type optional for <ChatAiWidget /> component.
+
+
 ## [1.4.2] (April 23 2024)
 #### Fix:
 - Fixed a DOMException issue in useDynamicAttachModal hook.

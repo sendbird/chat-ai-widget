@@ -45,6 +45,8 @@ jobs:
             npm publish --access=public
           else
             npm publish --tag ${{ github.event.inputs.npm_tag }} --access=public
+            echo "npm_tag is provided; Skipping the rest of the steps."
+            exit 1
           fi
       - name: Set environments
         run: |
