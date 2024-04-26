@@ -214,6 +214,26 @@ export const isEmpty = (value: any) => {
   return false;
 };
 
+/**
+ * Resolves a base URL and a path, ensuring there is exactly one slash between them.
+ * @param baseURL - The base URL, e.g., 'https://api.example.com/'
+ * @param path - The path to append to the baseURL, e.g., '/v1/resource'
+ * @returns The resolved URL.
+ */
+export function resolvePath(baseURL: string, path: string): string {
+  // Remove a trailing slash from the baseURL if it exists
+  if (baseURL.endsWith('/')) {
+    baseURL = baseURL.slice(0, -1);
+  }
+
+  // Remove a leading slash from the path if it exists
+  if (path.startsWith('/')) {
+    path = path.slice(1);
+  }
+
+  return `${baseURL}/${path}`;
+}
+
 export function isPastTime(timestamp: number): boolean {
   const currentTime = Date.now();
   return timestamp < currentTime;

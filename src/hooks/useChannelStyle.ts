@@ -6,7 +6,7 @@ import useWidgetLocalStorage, {
   saveToLocalStorage,
 } from './useWidgetLocalStorage';
 import { useConstantState } from '../context/ConstantContext';
-import { isPastTime } from '../utils';
+import { isPastTime, resolvePath } from '../utils';
 
 const DEFAULT_CHANNEL_STYLE = {
   theme: 'dark',
@@ -49,6 +49,7 @@ export const useChannelStyle = () => {
     botId,
     userId,
     configureSession,
+    apiHost: customApiHost,
   } = useConstantState();
   const manualChannelCreationNeeded =
     userId != null && configureSession != null;
@@ -64,9 +65,12 @@ export const useChannelStyle = () => {
     queryFn: async () => {
       try {
         const response = await fetch(
-          `https://api-${appId}.sendbird.com/v3/bots/${botId}/${appId}/widget_setting?create_user_and_channel=${
-            newUserAndChannelCreationNeeded ? 'True' : 'False'
-          }`
+          resolvePath(
+            customApiHost,
+            `/v3/bots/${botId}/${appId}/widget_setting?create_user_and_channel=${
+              newUserAndChannelCreationNeeded ? 'True' : 'False'
+            }`
+          )
         );
         if (!response.ok) {
           throw new Error(

@@ -27,6 +27,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     enableEmojiFeedback,
     customUserAgentParam,
     stringSet,
+    apiHost,
+    wsHost,
     ...restConstantProps
   } = useConstantState();
   useDynamicAttachModal();
@@ -76,8 +78,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
           userId={userId}
           accessToken={sessionToken}
           nickname={userNickName}
-          customApiHost={`https://api-${applicationId}.sendbird.com`}
-          customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
+          customApiHost={apiHost}
+          customWebSocketHost={wsHost}
           configureSession={configureSession}
           customExtensionParams={userAgentCustomParams.current}
           breakpoint={isMobile}

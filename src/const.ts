@@ -90,6 +90,8 @@ export interface Constant {
   enableMention: boolean;
   enableMobileView: boolean;
   firstMessageData: FirstMessageItem[];
+  apiHost: string;
+  wsHost: string;
   userId?: string;
   configureSession?: ConfigureSession;
   stringSet?: Partial<StringSet>;
