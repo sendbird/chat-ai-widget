@@ -114,7 +114,6 @@ export default function MessageDataContent({ messageData }: MessageDataContentPr
     const messageDataObject: MessageDataObject = JSON.parse(messageData);
     const functionCallsData = messageDataObject?.function_calls;
 
-    // console.log('## functionCallsData: ', functionCallsData, onViewDetailClick);
     if (
       functionCallsData
       && Array.isArray(functionCallsData)
