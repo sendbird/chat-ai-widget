@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as EllipsisIcon } from '../icons/icon-ellipsis.svg';
 import { ReactComponent as MessageBubbleIcon } from '../icons/icon-message-bubble.svg';
 import { ReactComponent as ChevronRightIcon } from '../icons/icon-chevron-right.svg';
-import {ViewDetailData} from '../interfaces';
+import { ViewDetailData } from '../interfaces';
 
 const Text = styled.div`
   font-size: 14px;
