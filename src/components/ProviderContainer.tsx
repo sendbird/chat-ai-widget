@@ -14,7 +14,7 @@ import { useChannelStyle } from '../hooks/useChannelStyle';
 import useDynamicAttachModal from '../hooks/useDynamicAttachModal';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
-import { isMobile } from '../utils';
+import { isMobile, getBaseAPIUrl, getBaseWSUrl } from '../utils';
 
 const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
 
@@ -27,6 +27,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     enableEmojiFeedback,
     customUserAgentParam,
     stringSet,
+    apiHost,
+    wsHost,
     ...restConstantProps
   } = useConstantState();
   useDynamicAttachModal();
@@ -76,8 +78,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
           userId={userId}
           accessToken={sessionToken}
           nickname={userNickName}
-          customApiHost={`https://api-${applicationId}.sendbird.com`}
-          customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
+          customApiHost={getBaseAPIUrl(applicationId, apiHost)}
+          customWebSocketHost={getBaseWSUrl(applicationId, wsHost)}
           configureSession={configureSession}
           customExtensionParams={userAgentCustomParams.current}
           breakpoint={isMobile}

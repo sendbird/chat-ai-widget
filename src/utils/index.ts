@@ -214,6 +214,14 @@ export const isEmpty = (value: any) => {
   return false;
 };
 
+export function getBaseAPIUrl(appId: string, customApiHost?: string) {
+  return customApiHost ?? `https://api-${appId}.sendbird.com`;
+}
+
+export function getBaseWSUrl(appId: string, customWebSocketHost?: string) {
+  return customWebSocketHost ?? `wss://ws-${appId}.sendbird.com`;
+}
+
 export function isPastTime(timestamp: number): boolean {
   const currentTime = Date.now();
   return timestamp < currentTime;

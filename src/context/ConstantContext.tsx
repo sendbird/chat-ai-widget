@@ -82,6 +82,8 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       autoOpen: props.autoOpen,
       renderWidgetToggleButton: props.renderWidgetToggleButton,
       serviceName: props.serviceName,
+      apiHost: props.apiHost,
+      wsHost: props.wsHost,
     }),
     [props]
   );
