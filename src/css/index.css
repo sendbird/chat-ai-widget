@@ -65,8 +65,17 @@
   outline: none;
 }
 
-textarea:focus, input:focus{
+textarea:focus, input:focus {
   &:active {
     outline: none;
   }
+}
+
+.sendbird-ai-widget-file-message-root {
+  width: 100%;
+}
+
+.sendbird-ai-widget-file-message-image {
+  border-radius: 16px;
+  width: 100%;
 }
