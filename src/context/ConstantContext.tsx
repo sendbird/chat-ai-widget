@@ -2,7 +2,7 @@ import { LabelStringSet } from '@sendbird/uikit-react/ui/Label';
 import { createContext, useContext, useMemo } from 'react';
 
 import { type Constant, DEFAULT_CONSTANT } from '../const';
-import {SendbirdChatAICallbacks} from '../interfaces';
+import { SendbirdChatAICallbacks } from '../interfaces';
 
 const initialState = DEFAULT_CONSTANT;
 

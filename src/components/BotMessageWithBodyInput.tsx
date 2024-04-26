@@ -11,11 +11,10 @@ import styled from 'styled-components';
 import BotMessageFeedback from './BotMessageFeedback';
 import BotProfileImage from './BotProfileImage';
 import { SentTime, BodyContainer } from './MessageComponent';
+import MessageDataContent from './MessageDataContent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
 import { isLastMessageInStreaming } from '../utils/messages';
-import MessageDataContent from './MessageDataContent';
-
 
 const Root = styled.span`
   display: flex;
@@ -114,7 +113,7 @@ export default function BotMessageWithBodyInput(props: Props) {
           displayProfileImage &&
           !isBotWelcomeMessage &&
           !(isLastBotMessage && isLastMessageInStreaming(message)) &&
-          !isFormMessage && <BotMessageFeedback message={message}/>}
+          !isFormMessage && <BotMessageFeedback message={message} />}
       </BodyContainer>
     </Root>
   );

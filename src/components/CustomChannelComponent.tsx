@@ -12,6 +12,7 @@ import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
+import MessageDataContent from './MessageDataContent';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
@@ -23,7 +24,6 @@ import {
   groupMessagesByShortSpanTime,
   isStaticReplyVisible as getStaticMessageVisibility,
 } from '../utils/messages';
-import MessageDataContent from './MessageDataContent';
 
 interface RootStyleProps {
   height: string;
@@ -117,8 +117,9 @@ export function CustomChannelComponent() {
     enableEmojiFeedback,
     customUserAgentParam,
   } = useConstantState();
-  const isForSendbirdDashboard = customUserAgentParam
-    && customUserAgentParam['chat-ai-widget-preview'] === 'True';
+  const isForSendbirdDashboard =
+    customUserAgentParam &&
+    customUserAgentParam['chat-ai-widget-preview'] === 'True';
   const {
     messages: allMessages,
     currentChannel: channel,
@@ -221,26 +222,26 @@ export function CustomChannelComponent() {
 
           return (
             <Message {...props} message={message}>
-              <>
-                <CustomMessage
-                  message={message}
-                  activeSpinnerId={activeSpinnerId}
-                  botUser={botUser}
-                  lastMessageRef={lastMessageRef}
-                  chainTop={grouppedMessage?.chaintop}
-                  chainBottom={grouppedMessage?.chainBottom}
-                  isBotWelcomeMessage={isBotWelcomeMessage}
-                  isLastBotMessage={isLastBotMessage}
-                  messageCount={messageCount}
-                />
-                {message.messageId === lastMessage?.messageId &&
-                  (dynamicReplyOptions.length > 0 ? (
-                    <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-                  ) : isStaticReplyVisible ? (
-                    <StaticRepliesPanel botUser={botUser} />
-                  ) : null)}
-                {isForSendbirdDashboard && message.data && <MessageDataContent messageData={message.data}/>}
-              </>
+              <CustomMessage
+                message={message}
+                activeSpinnerId={activeSpinnerId}
+                botUser={botUser}
+                lastMessageRef={lastMessageRef}
+                chainTop={grouppedMessage?.chaintop}
+                chainBottom={grouppedMessage?.chainBottom}
+                isBotWelcomeMessage={isBotWelcomeMessage}
+                isLastBotMessage={isLastBotMessage}
+                messageCount={messageCount}
+              />
+              {message.messageId === lastMessage?.messageId &&
+                (dynamicReplyOptions.length > 0 ? (
+                  <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
+                ) : isStaticReplyVisible ? (
+                  <StaticRepliesPanel botUser={botUser} />
+                ) : null)}
+              {isForSendbirdDashboard && message.data && (
+                <MessageDataContent messageData={message.data} />
+              )}
             </Message>
           );
         }}
