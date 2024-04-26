@@ -107,7 +107,6 @@ export default function MessageDataContent({ messageData }: MessageDataContentPr
   const { callbacks } = useConstantState();
   const onViewDetailClick = callbacks?.onViewDetailClick;
 
-  // console.log('## messageData: ', messageData);
 
   const [functionCalls, setFunctionCalls] = useState<FunctionCallRenderData[]>([]);
 
