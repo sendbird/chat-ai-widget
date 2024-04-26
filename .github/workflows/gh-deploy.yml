@@ -18,9 +18,7 @@ jobs:
         run: |
           npm install
           cp .env .env.production
-          echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production && \
-          echo "VITE_CHAT_AI_WIDGET_DATADOG_CLIENT_TOKEN=${{ secrets.datadog_client_token }}" >> .env.production && \
-          echo "VITE_CHAT_AI_WIDGET_DATADOG_APP_ID=${{ secrets.datadog_app_id }}" >> .env.production
+          echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production
           npm run build:pages
 
       - name: Deploy 🚀
