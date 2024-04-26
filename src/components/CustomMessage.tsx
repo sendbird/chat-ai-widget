@@ -1,6 +1,5 @@
 import { User } from '@sendbird/chat';
 import { BaseMessage, UserMessage } from '@sendbird/chat/message';
-// eslint-disable-next-line import/no-unresolved
 
 import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
@@ -63,6 +62,7 @@ export default function CustomMessage(props: Props) {
   }
 
   if (isFormMessage(message)) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const forms: Form[] = message.extendedMessagePayload!.forms as Form[];
     return (
       <BotMessageWithBodyInput

@@ -255,7 +255,7 @@ export const localStorageHelper = () => {
   };
 };
 
-export function downloadFileWithUrl(url?: string | null) {
+export async function downloadFileWithUrl(url?: string | null) {
   let safeURL = url;
   if (safeURL) {
     if (!safeURL.startsWith('http://') && !safeURL.startsWith('https://')) {
@@ -263,5 +263,4 @@ export function downloadFileWithUrl(url?: string | null) {
     }
     window.open(safeURL, '_blank', 'noopener,noreferrer');
   }
-  return Promise.resolve();
 }

@@ -2,6 +2,7 @@ import { UserMessage } from '@sendbird/chat/message';
 // eslint-disable-next-line import/no-unresolved
 import { EveryMessage } from 'SendbirdUIKitGlobal';
 
+import { Form } from '../components/FormMessage';
 import {
   LOCAL_MESSAGE_CUSTOM_TYPE,
   type SuggestedMessageContent,
@@ -81,7 +82,13 @@ export function getBotWelcomeMessages(
   return messages.slice(0, messages.indexOf(firstUserMesssage));
 }
 
-export function isFormMessage(message: EveryMessage) {
+export function isFormMessage(
+  message: EveryMessage
+): message is EveryMessage & {
+  extendedMessagePayload: {
+    forms: Form[];
+  };
+} {
   return Array.isArray(message.extendedMessagePayload?.forms);
 }
 
