@@ -14,7 +14,7 @@ import { useChannelStyle } from '../hooks/useChannelStyle';
 import useDynamicAttachModal from '../hooks/useDynamicAttachModal';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
-import { isMobile, getBaseAPIUrl, getBaseWSUrl } from '../utils';
+import { isMobile } from '../utils';
 
 const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
 
@@ -78,8 +78,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
           userId={userId}
           accessToken={sessionToken}
           nickname={userNickName}
-          customApiHost={getBaseAPIUrl(applicationId, apiHost)}
-          customWebSocketHost={getBaseWSUrl(applicationId, wsHost)}
+          customApiHost={apiHost}
+          customWebSocketHost={wsHost}
           configureSession={configureSession}
           customExtensionParams={userAgentCustomParams.current}
           breakpoint={isMobile}

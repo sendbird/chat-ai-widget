@@ -82,8 +82,9 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       autoOpen: props.autoOpen,
       renderWidgetToggleButton: props.renderWidgetToggleButton,
       serviceName: props.serviceName,
-      apiHost: props.apiHost,
-      wsHost: props.wsHost,
+      apiHost:
+        props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
+      wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
     }),
     [props]
   );

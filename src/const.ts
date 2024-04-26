@@ -90,6 +90,8 @@ export interface Constant {
   enableMention: boolean;
   enableMobileView: boolean;
   firstMessageData: FirstMessageItem[];
+  apiHost: string;
+  wsHost: string;
   userId?: string;
   configureSession?: ConfigureSession;
   stringSet?: Partial<StringSet>;
@@ -100,8 +102,6 @@ export interface Constant {
     isOpen: boolean;
   }) => React.ReactElement;
   serviceName?: string;
-  apiHost?: string;
-  wsHost?: string;
 }
 
 export interface SuggestedReply {
