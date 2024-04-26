@@ -1,6 +1,6 @@
 import ChatAiWidget from './components/ChatAiWidget'; //import { ChatAiWidget } from "@sendbird/chat-ai-widget";
 import { Constant } from './const';
-import {SendbirdChatAICallbacks} from './interfaces';
+import { SendbirdChatAICallbacks } from './interfaces';
 
 interface Props extends Partial<Constant> {
   applicationId?: string;
