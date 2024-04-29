@@ -15,6 +15,7 @@
     "url": "https://github.com/sendbird/chat-ai-widget.git"
   },
   "scripts": {
+    "install:deps": "npm install --force && git submodule update --init",
     "dev": "vite",
     "build:types": "rm -rf dist; rm -rf icons; rm -rf icons; tsc; cp -R src/icons icons; cp -R src/icons dist/icons ; cp -R src/css css; cp -R src/css dist/css",
     "prebuild": "rm -rf ./dist && mv .env .env_temp || true",

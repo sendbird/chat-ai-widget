@@ -38,9 +38,13 @@ jobs:
         run: |
           npm_version="${{ github.event.inputs.version }}-${{ github.event.inputs.npm_tag }}"
           jq --arg npm_version "$npm_version" '.version = $npm_version' package.json > package.json.tmp && mv package.json.tmp package.json
+      - name: Set environments
+        run: |
+          git config --global user.name "sendbird-sdk-deployment"
+          git config --global user.email "sha.sdk_deployment@sendbird.com"
       - name: Install and Build
         run: |
-          npm install
+          npm run install:deps
           touch .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production && \
           npm run build:npm
@@ -54,15 +58,12 @@ jobs:
             echo "npm_tag is provided; Skipping the rest of the steps."
             exit 1
           fi
-      - name: Set environments
-        run: |
-          git config --global user.name "sendbird-sdk-deployment"
-          git config --global user.email "sha.sdk_deployment@sendbird.com"
+
       - name: Update installed chat-ai-widget version to latest under packages/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          packages=( "url-webdemo" "self-service" )
+          packages=( "self-service" )
           for package in "${packages[@]}"; do
             cd ./packages/$package
             npm install @sendbird/chat-ai-widget@${{ github.event.inputs.version }}
