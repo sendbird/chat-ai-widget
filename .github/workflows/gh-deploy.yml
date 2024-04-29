@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - feat/AC-1679
+      - develop
 
 jobs:
   build-and-deploy:

@@ -25,7 +25,6 @@ export default defineConfig({
     dts(),
     visualizer({
       filename: './dist/report.html',
-      open: true,
       brotliSize: true,
     }),
     pluginPurgeCss({

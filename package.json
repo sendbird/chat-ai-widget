@@ -62,7 +62,7 @@
     "tsc-silent": "^1.2.2",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "5.0.2",
-    "vite": "4.5.3",
+    "vite": "6.0.0-alpha.6",
     "vite-plugin-dts": "^3.7.0",
     "vite-plugin-svgr": "^3.2.0"
   },
