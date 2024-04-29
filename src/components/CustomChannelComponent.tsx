@@ -199,8 +199,6 @@ export function CustomChannelComponent() {
     return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
 
-  if (!channel || !botUser) return null;
-
   return (
     <Root height={'100%'} isStaticReplyVisible={isStaticReplyVisible}>
       <ChannelUI
@@ -209,11 +207,11 @@ export function CustomChannelComponent() {
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
           <CustomChannelHeader
-            botProfileUrl={botUser.profileUrl}
-            botNickname={botUser.nickname}
-            channelName={channel.name}
+            botProfileUrl={botUser?.profileUrl}
+            botNickname={botUser?.nickname}
+            channelName={channel?.name}
             onRenewButtonClick={async () => {
-              await channel.resetMyHistory();
+              await channel?.resetMyHistory();
               await refresh();
             }}
           />
