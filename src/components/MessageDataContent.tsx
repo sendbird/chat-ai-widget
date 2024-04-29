@@ -114,7 +114,6 @@ function objectOfViewDetailResponse(object: any): object is ViewDetailResponse {
 
 function isValidFunctionCalls(functionCallsData: object | undefined) {
   return (
-    functionCallsData &&
     Array.isArray(functionCallsData) &&
     functionCallsData.length > 0 &&
     functionCallsData.every((functionCallData) =>
@@ -135,26 +134,23 @@ export default function MessageDataContent({
       const functionCallsData = messageDataObject?.function_calls;
       const newFunctionCalls: FunctionCallRenderData[] = [];
       if (
-        functionCallsData &&
         Array.isArray(functionCallsData) &&
         functionCallsData.length > 0 &&
         isValidFunctionCalls(functionCallsData)
       ) {
-        (functionCallsData as ViewDetailData[]).forEach(
-          (functionCallData: ViewDetailData) => {
-            const response = functionCallData.response;
-            if (response.name) {
-              const functionCall =
-                onViewDetailClick && typeof onViewDetailClick === 'function'
-                  ? onViewDetailClick
-                  : noop;
-              newFunctionCalls.push({
-                name: response.name,
-                onClick: () => functionCall(functionCallData),
-              });
-            }
+        (functionCallsData as ViewDetailData[]).forEach((functionCallData) => {
+          const response = functionCallData.response;
+          if (response.name) {
+            const functionCall =
+              typeof onViewDetailClick === 'function'
+                ? onViewDetailClick
+                : noop;
+            newFunctionCalls.push({
+              name: response.name,
+              onClick: () => functionCall(functionCallData),
+            });
           }
-        );
+        });
       }
       return newFunctionCalls;
     } catch (e) {
