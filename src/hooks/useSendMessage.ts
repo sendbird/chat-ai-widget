@@ -9,7 +9,6 @@ export function useSendMessage(): (message: string) => Promise<void> {
       if (currentChannel == null) {
         throw new Error('currentChannel is not defined');
       } else {
-        console.log('## here');
         await sendUserMessage({ message });
       }
     } catch (error) {
