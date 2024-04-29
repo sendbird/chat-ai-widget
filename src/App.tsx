@@ -1,5 +1,6 @@
 import ChatAiWidget from './components/ChatAiWidget'; //import { ChatAiWidget } from "@sendbird/chat-ai-widget";
 import { Constant } from './const';
+import { SendbirdChatAICallbacks } from './interfaces';
 
 interface Props extends Partial<Constant> {
   applicationId?: string;
@@ -10,6 +11,7 @@ interface Props extends Partial<Constant> {
     accentColor: string;
     isOpen: boolean;
   }) => React.ReactElement;
+  callbacks?: SendbirdChatAICallbacks;
 }
 
 const App = (props: Props) => {
@@ -40,6 +42,7 @@ const App = (props: Props) => {
       autoOpen={props.autoOpen}
       renderWidgetToggleButton={props.renderWidgetToggleButton}
       serviceName={props.serviceName}
+      callbacks={props.callbacks}
     />
   );
 };

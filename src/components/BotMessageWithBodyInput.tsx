@@ -5,12 +5,13 @@ import Label, {
   LabelTypography,
   LabelColors,
 } from '@sendbird/uikit-react/ui/Label';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BotMessageFeedback from './BotMessageFeedback';
 import BotProfileImage from './BotProfileImage';
 import { SentTime, BodyContainer } from './MessageComponent';
+import MessageDataContent from './MessageDataContent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
 import { isLastMessageInStreaming } from '../utils/messages';

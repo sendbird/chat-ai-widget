@@ -1,5 +1,5 @@
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
-import { SendingStatus } from '@sendbird/chat/message';
+import { SendingStatus, UserMessage } from '@sendbird/chat/message';
 import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChannelUI';
 import { Message } from '@sendbird/uikit-react/GroupChannel/components/Message';
 import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
@@ -12,11 +12,11 @@ import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
+import MessageDataContent from './MessageDataContent';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { hideChatBottomBanner, isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,
@@ -72,7 +72,7 @@ const Root = styled.div<RootStyleProps>`
       font-size: ${isIOSMobile ? 16 : 14}px;
       font-family: 'Roboto', sans-serif;
       line-height: 20px;
-      color: ${({ theme }) => theme.textColor.messageInput};
+      color: ${({ theme }) => theme.textColor.messageInput}; // FIXME: messageInput does not exist
       resize: none;
       border: none;
       outline: none;
@@ -109,16 +109,28 @@ const Root = styled.div<RootStyleProps>`
   }
 `;
 
+function isForSendbirdDashboard(data: object | undefined) {
+  return (
+    data &&
+    'chat-ai-widget-preview' in data &&
+    data['chat-ai-widget-preview'] === 'True'
+  );
+}
+
 export function CustomChannelComponent() {
-  const { suggestedMessageContent, botId, enableEmojiFeedback } =
-    useConstantState();
+  const {
+    suggestedMessageContent,
+    botId,
+    enableEmojiFeedback,
+    customUserAgentParam,
+  } = useConstantState();
   const {
     messages: allMessages,
     currentChannel: channel,
     scrollToBottom,
     refresh,
   } = useGroupChannelContext();
-  const { userId } = useWidgetLocalStorage();
+
   const botUser = channel?.members.find((member) => member.userId === botId);
 
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -139,7 +151,7 @@ export function CustomChannelComponent() {
     ?.suggested_replies ?? []) as string[];
 
   const isStaticReplyVisible = getStaticMessageVisibility(
-    lastMessage ?? null,
+    (lastMessage as UserMessage) ?? null,
     botUser?.userId,
     suggestedMessageContent,
     enableEmojiFeedback
@@ -231,6 +243,9 @@ export function CustomChannelComponent() {
                 ) : isStaticReplyVisible ? (
                   <StaticRepliesPanel botUser={botUser} />
                 ) : null)}
+              {isForSendbirdDashboard(customUserAgentParam) && message.data && (
+                <MessageDataContent messageData={message.data} />
+              )}
             </Message>
           );
         }}
