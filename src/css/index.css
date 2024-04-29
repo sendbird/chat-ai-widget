@@ -79,3 +79,6 @@ textarea:focus, input:focus {
   border-radius: 16px;
   width: 100%;
 }
+.sendbird-word__url {
+  font-weight: 700;
+}
