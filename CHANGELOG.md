@@ -1,3 +1,9 @@
+## [1.4.5] (April 29 2024)
+#### Feat:
+- Added new properties `apiHost`, and `wsHost` in `Constant`
+- Added `FileMessage` for displaying a file message content as image
+- Added a new property `callbacks` in `ConstantContextProps`
+
 ## [1.4.4] (April 25 2024)
 #### Feat:
 - Added missing aria-label attributes to enhance accessibility, with corresponding ESLint rule settings to ensure continued compliance.
