@@ -1,5 +1,5 @@
 import { User } from '@sendbird/chat';
-import { UserMessage } from '@sendbird/chat/message';
+import { BaseMessage } from '@sendbird/chat/message';
 import Avatar from '@sendbird/uikit-react/ui/Avatar';
 import Label, {
   LabelTypography,
@@ -36,7 +36,7 @@ const Content = styled.div`
 
 type Props = {
   botUser: User;
-  message: UserMessage;
+  message: BaseMessage;
   bodyComponent: ReactNode;
   chainTop?: boolean;
   chainBottom?: boolean;

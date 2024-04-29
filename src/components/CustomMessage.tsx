@@ -1,14 +1,13 @@
 import { User } from '@sendbird/chat';
-import { UserMessage } from '@sendbird/chat/message';
-// eslint-disable-next-line import/no-unresolved
-import { EveryMessage } from 'SendbirdUIKitGlobal';
+import { BaseMessage, UserMessage } from '@sendbird/chat/message';
 
 import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
-import FormMessage from './FormMessage';
+import FileMessage from './FileMessage';
+import FormMessage, { Form } from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
@@ -23,7 +22,7 @@ import {
 import { isFormMessage, isLocalMessageCustomType } from '../utils/messages';
 
 type Props = {
-  message: EveryMessage;
+  message: BaseMessage;
   activeSpinnerId: number;
   botUser: User;
   lastMessageRef: React.RefObject<HTMLDivElement>;
@@ -58,12 +57,13 @@ export default function CustomMessage(props: Props) {
   const { userId } = useWidgetLocalStorage();
 
   // admin message
-  if (message.messageType === 'admin') {
+  if (message.isAdminMessage()) {
     return <div>{<AdminMessage message={message} />}</div>;
   }
 
   if (isFormMessage(message)) {
-    const forms = message.extendedMessagePayload.forms;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const forms: Form[] = message.extendedMessagePayload!.forms as Form[];
     return (
       <BotMessageWithBodyInput
         {...commonProps}
@@ -87,16 +87,15 @@ export default function CustomMessage(props: Props) {
   }
 
   // Sent by other users
-  if ((message as UserMessage).sender?.userId !== botUser.userId) {
+  if (message.isUserMessage() && message.sender?.userId !== botUser.userId) {
     return (
       <div ref={lastMessageRef}>
         {
           <UserMessageWithBodyInput
             {...commonProps}
-            user={message?.sender}
-            bodyComponent={
-              <CustomMessageBody message={(message as UserMessage).message} />
-            }
+            message={message}
+            user={message.sender}
+            bodyComponent={<CustomMessageBody message={message.message} />}
           />
         }
       </div>
@@ -117,6 +116,16 @@ export default function CustomMessage(props: Props) {
         />
       );
     }
+  }
+
+  if (message.isFileMessage()) {
+    return (
+      <BotMessageWithBodyInput
+        {...commonProps}
+        botUser={botUser}
+        bodyComponent={<FileMessage message={message} />}
+      />
+    );
   }
 
   // Normal message

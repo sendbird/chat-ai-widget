@@ -76,7 +76,6 @@ export function splitText(inputString: string) {
       }
     } else {
       if (isDelimiterIndex(i, inputString, delimiter)) {
-        // console.log('## isDelimiterIndex: ', isDelimiterIndex(i, inputString, delimiter));
         result.push(currentWord);
         currentWord = delimiter;
         inDelimiter = true;
@@ -275,3 +274,13 @@ export const localStorageHelper = () => {
     },
   };
 };
+
+export async function downloadFileWithUrl(url?: string | null) {
+  let safeURL = url;
+  if (safeURL) {
+    if (!safeURL.startsWith('http://') && !safeURL.startsWith('https://')) {
+      safeURL = 'https://' + safeURL;
+    }
+    window.open(safeURL, '_blank', 'noopener,noreferrer');
+  }
+}
