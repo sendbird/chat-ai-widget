@@ -1,8 +1,8 @@
 export interface SendbirdChatAICallbacks {
-  onViewDetailClick?: (data: ViewDetailData) => void;
+  onViewDetailClick?: (data: FunctionCallData) => void;
 }
 
-export interface ViewDetailRequestInfo {
+export interface FunctionCallRequestInfo {
   headers: {
     'Api-Token': string;
   };
@@ -11,9 +11,9 @@ export interface ViewDetailRequestInfo {
   request_body: object;
 }
 
-export interface ViewDetailData {
+export interface FunctionCallData {
   name: string;
-  request: ViewDetailRequestInfo;
+  request: FunctionCallRequestInfo;
   response_text: string;
   status_code: number;
 }

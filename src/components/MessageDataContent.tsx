@@ -4,7 +4,7 @@ import { useConstantState } from '../context/ConstantContext';
 import { ReactComponent as ChevronRightIcon } from '../icons/icon-chevron-right.svg';
 import { ReactComponent as EllipsisIcon } from '../icons/icon-ellipsis.svg';
 import { ReactComponent as MessageBubbleIcon } from '../icons/icon-message-bubble.svg';
-import { ViewDetailData } from '../interfaces';
+import { FunctionCallData } from '../interfaces';
 import { noop } from '../utils';
 
 const Text = styled.div`
@@ -129,7 +129,7 @@ const INTENT_MAP = {
   similar_question_match: 'Intent classified',
 };
 
-function isObjectOfViewDetailData(object: any): object is ViewDetailData {
+function isObjectOfViewDetailData(object: any): object is FunctionCallData {
   const { name, request, response_text, status_code } = object ?? {};
   return (
     typeof name === 'string' &&
@@ -141,7 +141,7 @@ function isObjectOfViewDetailData(object: any): object is ViewDetailData {
 
 function isValidFunctionCalls(
   functionCallsData: object | undefined
-): functionCallsData is ViewDetailData[] {
+): functionCallsData is FunctionCallData[] {
   return (
     Array.isArray(functionCallsData) &&
     functionCallsData.length > 0 &&
