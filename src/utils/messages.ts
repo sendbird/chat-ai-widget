@@ -124,7 +124,7 @@ function isSpecialMessage(
 
 export function isStaticReplyVisible(
   lastMessage: UserMessage | null,
-  botUserId: string,
+  botUserId: string | undefined,
   suggestedMessageContent: SuggestedMessageContent,
   enableEmojiFeedback: boolean
 ) {

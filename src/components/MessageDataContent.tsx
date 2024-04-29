@@ -4,8 +4,8 @@ import { useConstantState } from '../context/ConstantContext';
 import { ReactComponent as ChevronRightIcon } from '../icons/icon-chevron-right.svg';
 import { ReactComponent as EllipsisIcon } from '../icons/icon-ellipsis.svg';
 import { ReactComponent as MessageBubbleIcon } from '../icons/icon-message-bubble.svg';
-import { ViewDetailData } from '../interfaces';
-import {noop} from '../utils';
+import { ViewDetailData, ViewDetailResponse } from '../interfaces';
+import { noop } from '../utils';
 
 const Text = styled.div`
   font-size: 14px;
@@ -103,6 +103,26 @@ interface FunctionCallRenderData {
   onClick: () => void;
 }
 
+function objectOfViewDetailResponse(object: any): object is ViewDetailResponse {
+  const { name, reponse, status_code } = object;
+  return (
+    typeof name === 'string' &&
+    typeof reponse === 'string' &&
+    typeof status_code === 'number'
+  );
+}
+
+function isValidFunctionCalls(functionCallsData: object | undefined) {
+  return (
+    functionCallsData &&
+    Array.isArray(functionCallsData) &&
+    functionCallsData.length > 0 &&
+    functionCallsData.every((functionCallData) =>
+      objectOfViewDetailResponse(functionCallData)
+    )
+  );
+}
+
 export default function MessageDataContent({
   messageData,
 }: MessageDataContentProps) {
@@ -117,7 +137,8 @@ export default function MessageDataContent({
       if (
         functionCallsData &&
         Array.isArray(functionCallsData) &&
-        functionCallsData.length > 0
+        functionCallsData.length > 0 &&
+        isValidFunctionCalls(functionCallsData)
       ) {
         (functionCallsData as ViewDetailData[]).forEach(
           (functionCallData: ViewDetailData) => {

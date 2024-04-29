@@ -1,10 +1,10 @@
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
-import { SendingStatus } from '@sendbird/chat/message';
+import { SendingStatus, UserMessage } from '@sendbird/chat/message';
 import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChannelUI';
 import { Message } from '@sendbird/uikit-react/GroupChannel/components/Message';
 import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
 import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
@@ -17,7 +17,6 @@ import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { hideChatBottomBanner, isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,
@@ -73,7 +72,7 @@ const Root = styled.div<RootStyleProps>`
       font-size: ${isIOSMobile ? 16 : 14}px;
       font-family: 'Roboto', sans-serif;
       line-height: 20px;
-      color: ${({ theme }) => theme.textColor.messageInput};
+      color: ${({ theme }) => theme.textColor.messageInput}; // FIXME: messageInput does not exist
       resize: none;
       border: none;
       outline: none;
@@ -110,6 +109,14 @@ const Root = styled.div<RootStyleProps>`
   }
 `;
 
+function isForSendbirdDashboard(data: object | undefined) {
+  return (
+    data &&
+    'chat-ai-widget-preview' in data &&
+    data['chat-ai-widget-preview'] === 'True'
+  );
+}
+
 export function CustomChannelComponent() {
   const {
     suggestedMessageContent,
@@ -117,16 +124,12 @@ export function CustomChannelComponent() {
     enableEmojiFeedback,
     customUserAgentParam,
   } = useConstantState();
-  const isForSendbirdDashboard =
-    customUserAgentParam &&
-    customUserAgentParam['chat-ai-widget-preview'] === 'True';
   const {
     messages: allMessages,
     currentChannel: channel,
     scrollToBottom,
     refresh,
   } = useGroupChannelContext();
-  const { userId } = useWidgetLocalStorage();
   const botUser = channel?.members.find((member) => member.userId === botId);
 
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -147,7 +150,7 @@ export function CustomChannelComponent() {
     ?.suggested_replies ?? []) as string[];
 
   const isStaticReplyVisible = getStaticMessageVisibility(
-    lastMessage ?? null,
+    (lastMessage as UserMessage) ?? null,
     botUser?.userId,
     suggestedMessageContent,
     enableEmojiFeedback
@@ -195,6 +198,8 @@ export function CustomChannelComponent() {
     return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
 
+  if (!channel || !botUser) return null;
+
   return (
     <Root height={'100%'} isStaticReplyVisible={isStaticReplyVisible}>
       <ChannelUI
@@ -203,11 +208,11 @@ export function CustomChannelComponent() {
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
           <CustomChannelHeader
-            botProfileUrl={botUser?.profileUrl}
-            botNickname={botUser?.nickname}
-            channelName={channel?.name}
+            botProfileUrl={botUser.profileUrl}
+            botNickname={botUser.nickname}
+            channelName={channel.name}
             onRenewButtonClick={async () => {
-              await channel?.resetMyHistory();
+              await channel.resetMyHistory();
               await refresh();
             }}
           />
@@ -239,7 +244,7 @@ export function CustomChannelComponent() {
                 ) : isStaticReplyVisible ? (
                   <StaticRepliesPanel botUser={botUser} />
                 ) : null)}
-              {isForSendbirdDashboard && message.data && (
+              {isForSendbirdDashboard(customUserAgentParam) && message.data && (
                 <MessageDataContent messageData={message.data} />
               )}
             </Message>
