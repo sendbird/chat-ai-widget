@@ -214,19 +214,6 @@ export const isEmpty = (value: any) => {
   return false;
 };
 
-export function isPastTime(timestamp: number): boolean {
-  const currentTime = Date.now();
-  return timestamp < currentTime;
-}
-
-export function getDateNDaysLater(daysToAdd: number): number {
-  const millisecondsPerDay = 24 * 60 * 60 * 1000; // 24hours in milliseconds
-  const currentDate = new Date();
-  const futureDate = currentDate.getTime() + daysToAdd * millisecondsPerDay;
-
-  return futureDate;
-}
-
 /**
  * Resolves a base URL and a path, ensuring there is exactly one slash between them.
  * @param baseURL - The base URL, e.g., 'https://api.example.com/'
@@ -245,6 +232,19 @@ export function resolvePath(baseURL: string, path: string): string {
   }
 
   return `${baseURL}/${path}`;
+}
+
+export function isPastTime(timestamp: number): boolean {
+  const currentTime = Date.now();
+  return timestamp < currentTime;
+}
+
+export function getDateNDaysLater(daysToAdd: number): number {
+  const millisecondsPerDay = 24 * 60 * 60 * 1000; // 24hours in milliseconds
+  const currentDate = new Date();
+  const futureDate = currentDate.getTime() + daysToAdd * millisecondsPerDay;
+
+  return futureDate;
 }
 
 /**
