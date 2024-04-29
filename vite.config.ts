@@ -19,7 +19,9 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    svgr(),
+    svgr({
+      exportAsDefault: true
+    }),
     dts(),
     visualizer({
       filename: './dist/report.html',

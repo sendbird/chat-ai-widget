@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ReactComponent as OpenLinkIcon } from '../icons/open-link-icon.svg';
+import OpenLinkIcon from '../icons/open-link-icon.svg';
 
 const Root = styled.div`
   display: flex;

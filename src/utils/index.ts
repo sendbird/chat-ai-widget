@@ -104,7 +104,7 @@ export function MessageTextParser(inputString: string): Token[] {
   // debugger
   // const parts = inputString.split(snippetRegex);
   const parts = splitText(inputString);
-  const result = parts.map((part:  string) => {
+  const result = parts.map((part: string) => {
     if (part.startsWith('```') && part.endsWith('```')) {
       // Code snippet part
       return parseCode(part);

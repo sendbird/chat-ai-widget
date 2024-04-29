@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { Label, LabelColors, LabelTypography } from '@uikit/ui/Label';
+import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
-import { ReactComponent as Icon } from '../icons/icon-error.svg';
+import Icon from '../icons/icon-error.svg';
 
 const Container = styled.div`
   width: 100%;

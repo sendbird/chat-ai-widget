@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import type { EveryMessage } from '@uikit/types';
 import Button from '@uikit/ui/Button';
-import { Label, LabelColors, LabelTypography } from '@uikit/ui/Label';
+import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import Input from './FormInput';
 

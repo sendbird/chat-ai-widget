@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { MAX_Z_INDEX, elementIds } from '../const';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
-import { ReactComponent as CloseIcon } from '../icons/ic-widget-close.svg';
+import CloseIcon from '../icons/ic-widget-close.svg';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;

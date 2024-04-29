@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-import { ReactComponent as SpinIcon } from '../icons/spin-icon.svg';
+import SpinIcon from '../icons/spin-icon.svg';
 
 const spinner = keyframes`
   0% {

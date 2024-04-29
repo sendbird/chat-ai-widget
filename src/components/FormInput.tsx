@@ -1,7 +1,8 @@
 import { ReactElement, ChangeEvent, ReactNode } from 'react';
 import styled from 'styled-components';
-import UIKitLabel, { LabelColors, LabelTypography } from '@uikit/ui/Label';
+
 import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
+import UIKitLabel, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 export interface InputLabelProps {
   children: ReactNode;

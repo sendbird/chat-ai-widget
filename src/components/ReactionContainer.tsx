@@ -48,13 +48,13 @@ function ReactionItem({
 }) {
   return (
     <ReactionButton
-      width='24px'
-      height='24px'
+      width="24px"
+      height="24px"
       selected={reacted}
       onClick={onClick}
       dataSbId={`ui_emoji_reactions_menu_${emoji}`}
     >
-      <ImageRenderer url={url} width='18px' height='18px' />
+      <ImageRenderer url={url} width="18px" height="18px" />
     </ReactionButton>
   );
 }

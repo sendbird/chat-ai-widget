@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
-import ChannelUI from '@uikit/modules/Channel/components/ChannelUI';
+import ChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
@@ -73,7 +73,8 @@ const Root = styled.div<RootStyleProps>`
       font-size: ${isIOSMobile ? 16 : 14}px;
       font-family: 'Roboto', sans-serif;
       line-height: 20px;
-      color: ${({ theme }) => theme.textColor.messageInput}; // FIXME: messageInput does not exist
+      color: ${({ theme }) =>
+        theme.textColor.messageInput}; // FIXME: messageInput does not exist
       resize: none;
       border: none;
       outline: none;
@@ -125,7 +126,6 @@ export function CustomChannelComponent() {
   } = useGroupChannelContext();
 
   const botUser = channel?.members.find((member) => member.userId === botId);
-
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
   useAutoDismissMobileKyeboardHandler();

@@ -3,11 +3,11 @@ import { UserMessage } from '@sendbird/chat/message';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import Avatar from '@uikit/ui/Avatar';
+import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
+
 import { SentTime } from './MessageComponent';
 import { formatCreatedAtToAMPM } from '../utils';
-
-import { Label, LabelColors, LabelTypography } from '@uikit/ui/Label';
-import Avatar from '@uikit/ui/Avatar';
 
 const Root = styled.div`
   display: flex;

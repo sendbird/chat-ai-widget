@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../colors';
-import { ReactComponent as Icon } from '../icons/bot-profile-image-small.svg';
+import Icon from '../icons/bot-profile-image-small.svg';
 
 interface ImageProps {
   width: number;
