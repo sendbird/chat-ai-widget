@@ -4,7 +4,7 @@ import { useConstantState } from '../context/ConstantContext';
 import { ReactComponent as ChevronRightIcon } from '../icons/icon-chevron-right.svg';
 import { ReactComponent as EllipsisIcon } from '../icons/icon-ellipsis.svg';
 import { ReactComponent as MessageBubbleIcon } from '../icons/icon-message-bubble.svg';
-import { ViewDetailData, ViewDetailResponse } from '../interfaces';
+import { ViewDetailData } from '../interfaces';
 import { noop } from '../utils';
 
 const Text = styled.div`
@@ -51,6 +51,7 @@ const WorkFlowType = styled.div`
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
+  padding: 0 4px;
 `;
 
 const Root = styled.div`
@@ -89,13 +90,27 @@ const AdditionalInfo = styled.div`
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
+  margin-top: 5px;
 `;
 
 interface MessageDataContentProps {
   messageData: string;
 }
+
+enum IntentPayload {
+  EXACT_MATCHED = 'exact_question_match',
+  KEYWORD_MATCHED = 'keyword_match',
+  SIMILAR_MATCHED = 'similar_question_match',
+}
+
+interface WorkflowObject {
+  name: string;
+  intent_type: IntentPayload;
+}
+
 interface MessageDataObject {
   function_calls: object[];
+  workflow: WorkflowObject;
 }
 
 interface FunctionCallRenderData {
@@ -103,22 +118,44 @@ interface FunctionCallRenderData {
   onClick: () => void;
 }
 
-function objectOfViewDetailResponse(object: any): object is ViewDetailResponse {
-  const { name, reponse, status_code } = object;
+interface WorkflowData {
+  name: string;
+  type: string;
+}
+
+const INTENT_MAP = {
+  exact_question_match: 'Exact match',
+  keyword_match: 'Keyword',
+  similar_question_match: 'Intent classified',
+};
+
+function isObjectOfViewDetailData(object: any): object is ViewDetailData {
+  const { name, request, response_text, status_code } = object ?? {};
   return (
     typeof name === 'string' &&
-    typeof reponse === 'string' &&
+    typeof request === 'object' &&
+    typeof response_text === 'string' &&
     typeof status_code === 'number'
   );
 }
 
-function isValidFunctionCalls(functionCallsData: object | undefined) {
+function isValidFunctionCalls(
+  functionCallsData: object | undefined
+): functionCallsData is ViewDetailData[] {
   return (
     Array.isArray(functionCallsData) &&
     functionCallsData.length > 0 &&
     functionCallsData.every((functionCallData) =>
-      objectOfViewDetailResponse(functionCallData)
+      isObjectOfViewDetailData(functionCallData)
     )
+  );
+}
+
+function isValidWorkflowData(object: any): object is WorkflowObject {
+  const { name, intent_type } = object ?? {};
+  return (
+    typeof name === 'string' &&
+    Object.values(IntentPayload).includes(intent_type)
   );
 }
 
@@ -128,48 +165,61 @@ export default function MessageDataContent({
   const { callbacks } = useConstantState();
   const onViewDetailClick = callbacks?.onViewDetailClick;
 
-  function getFunctionCallsData() {
+  function getMessageContentData(): [
+    WorkflowData | null,
+    FunctionCallRenderData[]
+  ] {
+    let newWorkflow: WorkflowData | null = null;
+    const newFunctionCalls: FunctionCallRenderData[] = [];
+
     try {
       const messageDataObject: MessageDataObject = JSON.parse(messageData);
       const functionCallsData = messageDataObject?.function_calls;
-      const newFunctionCalls: FunctionCallRenderData[] = [];
       if (
         Array.isArray(functionCallsData) &&
         functionCallsData.length > 0 &&
         isValidFunctionCalls(functionCallsData)
       ) {
-        (functionCallsData as ViewDetailData[]).forEach((functionCallData) => {
-          const response = functionCallData.response;
-          if (response.name) {
+        functionCallsData.forEach((functionCallData) => {
+          if (functionCallData.name) {
             const functionCall =
               typeof onViewDetailClick === 'function'
                 ? onViewDetailClick
                 : noop;
             newFunctionCalls.push({
-              name: response.name,
+              name: functionCallData.name,
               onClick: () => functionCall(functionCallData),
             });
           }
         });
       }
-      return newFunctionCalls;
+      const workflowData = messageDataObject?.workflow;
+      if (isValidWorkflowData(workflowData)) {
+        newWorkflow = {
+          name: workflowData.name,
+          type: INTENT_MAP[workflowData.intent_type],
+        } as WorkflowData;
+      }
+      return [newWorkflow, newFunctionCalls];
     } catch (e) {
-      return [];
+      return [newWorkflow, newFunctionCalls];
     }
   }
+  const [workflow, functionCalls] = getMessageContentData();
 
-  const functionCalls: FunctionCallRenderData[] = getFunctionCallsData();
-  if (functionCalls.length === 0) return null;
+  if (!workflow && functionCalls.length === 0) return null;
 
   return (
     <Root>
       <SideBar />
       <DataContainer>
-        <DataRow>
-          <MessageBubbleIcon id="aichatbot-widget-ellipsis-icon" />
-          <Text>{}</Text>
-          <WorkFlowType>{}</WorkFlowType>
-        </DataRow>
+        {workflow && (
+          <DataRow>
+            <MessageBubbleIcon id="aichatbot-widget-ellipsis-icon" />
+            <Text>{workflow.name}</Text>
+            <WorkFlowType>{workflow.type}</WorkFlowType>
+          </DataRow>
+        )}
         {functionCalls.map((renderData, index) => (
           <DataRow key={index}>
             <EllipsisIcon id="aichatbot-widget-message-bubble-icon" />

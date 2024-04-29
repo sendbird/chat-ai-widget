@@ -130,6 +130,7 @@ export function CustomChannelComponent() {
     scrollToBottom,
     refresh,
   } = useGroupChannelContext();
+
   const botUser = channel?.members.find((member) => member.userId === botId);
 
   const lastMessageRef = useRef<HTMLDivElement>(null);
