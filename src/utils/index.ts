@@ -104,7 +104,7 @@ export function MessageTextParser(inputString: string): Token[] {
   // debugger
   // const parts = inputString.split(snippetRegex);
   const parts = splitText(inputString);
-  const result = parts.map((part) => {
+  const result = parts.map((part:  string) => {
     if (part.startsWith('```') && part.endsWith('```')) {
       // Code snippet part
       return parseCode(part);
@@ -245,19 +245,6 @@ export function resolvePath(baseURL: string, path: string): string {
   }
 
   return `${baseURL}/${path}`;
-}
-
-export function isPastTime(timestamp: number): boolean {
-  const currentTime = Date.now();
-  return timestamp < currentTime;
-}
-
-export function getDateNDaysLater(daysToAdd: number): number {
-  const millisecondsPerDay = 24 * 60 * 60 * 1000; // 24hours in milliseconds
-  const currentDate = new Date();
-  const futureDate = currentDate.getTime() + daysToAdd * millisecondsPerDay;
-
-  return futureDate;
 }
 
 /**

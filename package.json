@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.17.19",
-    "styled-components": "^5.3.11"
+    "styled-components": "^5.3.11",
+    "ts-pattern": "^5.1.1"
   },
   "devDependencies": {
     "@mojojoejo/vite-plugin-purgecss": "^1.1.0",
@@ -46,12 +47,12 @@
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-styled-components-a11y": "^2.1.32",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-styled-components-a11y": "^2.1.32",
     "prettier": "2.8.8",
     "prettier-eslint": "^15.0.1",
     "react": "^18.2.0",
@@ -61,7 +62,7 @@
     "tsc-silent": "^1.2.2",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "5.0.2",
-    "vite": "4",
+    "vite": "4.5.3",
     "vite-plugin-dts": "^3.7.0",
     "vite-plugin-svgr": "^3.2.0"
   },

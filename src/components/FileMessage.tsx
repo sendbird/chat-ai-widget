@@ -1,6 +1,6 @@
 import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
-import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
+import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 // import { FileViewerComponent } from '@sendbird/uikit-react/ui/FileViewer';
 // import {downloadFileWithUrl, noop} from '../utils';
 // import {createPortal} from 'react-dom';
