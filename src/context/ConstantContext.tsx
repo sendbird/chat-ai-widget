@@ -84,7 +84,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       enableMobileView: props.enableMobileView ?? initialState.enableMobileView,
       autoOpen: props.autoOpen,
       renderWidgetToggleButton: props.renderWidgetToggleButton,
-      serviceName: props.serviceName ?? getDefaultServiceName(),
+      serviceName: getDefaultServiceName(props.serviceName),
       apiHost:
         props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
       wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,

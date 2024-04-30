@@ -294,10 +294,16 @@ export function isDashboardPreview(userAgent: object | undefined) {
   );
 }
 
-export function getDefaultServiceName() {
-  if (isShopify()) return widgetServiceName.self.shopify;
-  if (isWordpress()) return widgetServiceName.self.wordpress;
-  return widgetServiceName.default;
+export function getDefaultServiceName(injectedServiceName?: string) {
+  if (!injectedServiceName) {
+    return widgetServiceName.default;
+  } else if (injectedServiceName === widgetServiceName.self.default) {
+    if (isShopify()) return widgetServiceName.self.shopify;
+    if (isWordpress()) return widgetServiceName.self.wordpress;
+    return widgetServiceName.self.default;
+  } else {
+    return injectedServiceName;
+  }
 }
 
 export function isShopify() {
