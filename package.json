@@ -1,6 +1,6 @@
 {
   "name": "@sendbird/chat-ai-widget",
-  "version": "1.4.7",
+  "version": "1.5.0",
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -15,7 +15,7 @@
     "url": "https://github.com/sendbird/chat-ai-widget.git"
   },
   "scripts": {
-    "install:deps": "npm install && git submodule update --init",
+    "install:deps": "npm install && rm -rf packages/uikit && git submodule update --init",
     "dev": "vite",
     "build:types": "rm -rf dist; rm -rf icons; rm -rf icons; tsc; cp -R src/icons icons; cp -R src/icons dist/icons ; cp -R src/css css; cp -R src/css dist/css",
     "prebuild": "rm -rf ./dist && mv .env .env_temp || true",
@@ -58,6 +58,7 @@
     "react-dom": "^18.2.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-visualizer": "^5.12.0",
+    "ts-pattern": "^5.1.1",
     "tsc-silent": "^1.2.2",
     "typescript": "5.0.2",
     "vite": "5.2.10",

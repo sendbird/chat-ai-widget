@@ -18,6 +18,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: 'recursive'
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
@@ -60,8 +62,6 @@ jobs:
           fi
 
       - name: Update installed chat-ai-widget version to latest under packages/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           packages=( "self-service" )
           for package in "${packages[@]}"; do
