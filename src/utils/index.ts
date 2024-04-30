@@ -286,6 +286,14 @@ export async function downloadFileWithUrl(url?: string | null) {
   }
 }
 
+export function isDashboardPreview(userAgent: object | undefined) {
+  return (
+    userAgent &&
+    'chat-ai-widget-preview' in userAgent &&
+    userAgent['chat-ai-widget-preview'] === 'True'
+  );
+}
+
 export function getDefaultServiceName() {
   if (isShopify()) return widgetServiceName.self.shopify;
   if (isWordpress()) return widgetServiceName.self.wordpress;

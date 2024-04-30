@@ -3,6 +3,7 @@ import './index.css';
 import {
   ChatAiWidget,
   ChatAiWidgetConfigs,
+  widgetServiceName,
 } from '@sendbird/chat-ai-widget';
 
 type AppId = string;
@@ -25,7 +26,7 @@ function App() {
       enableEmojiFeedback={false}
       enableMention={false}
       customUserAgentParam={{ 'chat-ai-widget-deployed': 'True' }}
-      serviceName={serviceName ?? 'genai-self-service'}
+      serviceName={serviceName ?? widgetServiceName.self.default}
       {...restConfigs}
     />
   );

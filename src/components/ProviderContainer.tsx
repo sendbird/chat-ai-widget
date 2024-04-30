@@ -14,7 +14,7 @@ import { useChannelStyle } from '../hooks/useChannelStyle';
 import useDynamicAttachModal from '../hooks/useDynamicAttachModal';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
-import { isMobile } from '../utils';
+import { isDashboardPreview, isMobile } from '../utils';
 
 const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
 
@@ -34,12 +34,18 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
   } = useConstantState();
   useDynamicAttachModal();
 
-  const userAgentCustomParams = useRef<Record<string, string>>({
-    ...customUserAgentParam,
-    'chat-ai-widget': 'True',
-    'chat-ai-widget-key': CHAT_AI_WIDGET_KEY,
-    'chat-ai-widget-service-name': serviceName,
-  });
+  const userAgentCustomParams = useMemo(() => {
+    const userAgent: Record<string, any> = {
+      ...customUserAgentParam,
+      'chat-ai-widget': 'True',
+      'chat-ai-widget-key': CHAT_AI_WIDGET_KEY,
+      'chat-ai-widget-service-name': serviceName,
+    };
+    if (isDashboardPreview(userAgent)) {
+      delete userAgent['chat-ai-widget-service-name'];
+    }
+    return userAgent;
+  }, []);
 
   const { isFetching, theme, accentColor, botMessageBGColor, autoOpen } =
     useChannelStyle();
@@ -83,7 +89,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
           customApiHost={apiHost}
           customWebSocketHost={wsHost}
           configureSession={configureSession}
-          customExtensionParams={userAgentCustomParams.current}
+          customExtensionParams={userAgentCustomParams}
           breakpoint={isMobile}
           isMentionEnabled={enableMention}
           theme={theme}
