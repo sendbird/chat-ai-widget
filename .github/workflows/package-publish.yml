@@ -16,14 +16,14 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: 'recursive'
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 18.x
       - name: Check if the release branch exists
         run: |
           set -x
@@ -46,7 +46,7 @@ jobs:
           git config --global user.email "sha.sdk_deployment@sendbird.com"
       - name: Install and Build
         run: |
-          npm run install:deps
+          npm install
           touch .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production && \
           npm run build:npm
