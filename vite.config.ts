@@ -5,9 +5,9 @@ import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import svgr from 'vite-plugin-svgr';
-import pluginPurgeCss from '@mojojoejo/vite-plugin-purgecss';
+// import pluginPurgeCss from '@mojojoejo/vite-plugin-purgecss';
 import { terser } from 'rollup-plugin-terser';
+import svgr from 'vite-plugin-svgr';
 
 
 // https://vitejs.dev/config/
@@ -20,16 +20,19 @@ export default defineConfig({
   plugins: [
     react(),
     svgr({
-      exportAsDefault: true
+      include: '**/*.svg',
+      svgrOptions: {
+        exportType: 'default',
+      },
     }),
     dts(),
     visualizer({
       filename: './dist/report.html',
       brotliSize: true,
     }),
-    pluginPurgeCss({
-      variables: true,
-    }),
+    // pluginPurgeCss({
+    //   variables: true,
+    // }),
   ],
   resolve: {
     alias: [
