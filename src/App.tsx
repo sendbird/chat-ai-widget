@@ -11,7 +11,6 @@ interface Props extends Partial<Constant> {
     accentColor: string;
     isOpen: boolean;
   }) => React.ReactElement;
-  callbacks?: SendbirdChatAICallbacks;
 }
 
 const App = (props: Props) => {
