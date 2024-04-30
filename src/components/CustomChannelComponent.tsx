@@ -17,7 +17,7 @@ import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import { hideChatBottomBanner, isIOSMobile } from '../utils';
+import { hideChatBottomBanner, isDashboardPreview, isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,
   groupMessagesByShortSpanTime,
@@ -108,14 +108,6 @@ const Root = styled.div<RootStyleProps>`
     }
   }
 `;
-
-function isForSendbirdDashboard(data: object | undefined) {
-  return (
-    data &&
-    'chat-ai-widget-preview' in data &&
-    data['chat-ai-widget-preview'] === 'True'
-  );
-}
 
 export function CustomChannelComponent() {
   const {
@@ -243,7 +235,7 @@ export function CustomChannelComponent() {
                 ) : isStaticReplyVisible ? (
                   <StaticRepliesPanel botUser={botUser} />
                 ) : null)}
-              {isForSendbirdDashboard(customUserAgentParam) && message.data && (
+              {isDashboardPreview(customUserAgentParam) && message.data && (
                 <MessageDataContent messageData={message.data} />
               )}
             </Message>

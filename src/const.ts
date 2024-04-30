@@ -102,7 +102,7 @@ export interface Constant {
     onClick: () => void;
     isOpen: boolean;
   }) => React.ReactElement;
-  serviceName?: string;
+  serviceName: string;
   callbacks?: SendbirdChatAICallbacks;
 }
 
@@ -162,3 +162,16 @@ export const elementIds = {
   refreshIcon: 'aichatbot-widget-refresh-icon',
   uikitModal: 'sendbird-modal-root',
 };
+
+export const widgetServiceName = {
+  default: 'genai-chatbot-widget',
+  self: {
+    default: 'genai-self-service',
+    wordpress: 'genai-wordpress-self-service',
+    shopify: 'genai-shopify-self-service',
+  },
+  plugin: {
+    wordpress: 'genai-wordpress-plugin',
+    shopify: 'genai-shopify-plugin',
+  },
+} as const;

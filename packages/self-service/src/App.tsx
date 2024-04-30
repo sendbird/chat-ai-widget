@@ -3,34 +3,31 @@ import './index.css';
 import {
   ChatAiWidget,
   ChatAiWidgetConfigs,
+  widgetServiceName,
 } from '@sendbird/chat-ai-widget';
 
-type ChatbotConfig = Window &
-  typeof globalThis & {
-    chatbotConfig: string[];
-  };
-
-const APP_ID = (window as ChatbotConfig).chatbotConfig?.[0];
-const BOT_ID = (window as ChatbotConfig).chatbotConfig?.[1];
-const chatbotConfigs =
+type AppId = string;
+type BotId = string;
+type ChatbotWindow = typeof window & {
   // Available configs are defined in the ChatAiWidget component
-  ((window as ChatbotConfig)
-    .chatbotConfig?.[2] as unknown as ChatAiWidgetConfigs) ?? {};
+  chatbotConfig?: [AppId, BotId, ChatAiWidgetConfigs];
+};
+
+const [appId, botId, configs] = (window as ChatbotWindow).chatbotConfig ?? [];
 
 function App() {
+  const { serviceName, ...restConfigs } = configs ?? {};
   return (
     <ChatAiWidget
-      applicationId={APP_ID}
-      botId={BOT_ID}
+      applicationId={appId}
+      botId={botId}
       instantConnect={true}
       betaMark={false}
       enableEmojiFeedback={false}
       enableMention={false}
-      customUserAgentParam={{
-        'chat-ai-widget-deployed': 'True',
-      }}
-      serviceName="genai-self-service"
-      {...chatbotConfigs}
+      customUserAgentParam={{ 'chat-ai-widget-deployed': 'True' }}
+      serviceName={serviceName ?? widgetServiceName.self.default}
+      {...restConfigs}
     />
   );
 }

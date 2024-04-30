@@ -1,4 +1,5 @@
 import type SendbirdChat from '@sendbird/chat';
+import { widgetServiceName } from '../const';
 
 export function formatCreatedAtToAMPM(createdAt: number) {
   const date: Date = new Date(createdAt);
@@ -283,4 +284,30 @@ export async function downloadFileWithUrl(url?: string | null) {
     }
     window.open(safeURL, '_blank', 'noopener,noreferrer');
   }
+}
+
+export function isDashboardPreview(userAgent: object | undefined) {
+  return (
+    userAgent &&
+    'chat-ai-widget-preview' in userAgent &&
+    userAgent['chat-ai-widget-preview'] === 'True'
+  );
+}
+
+export function getDefaultServiceName() {
+  if (isShopify()) return widgetServiceName.self.shopify;
+  if (isWordpress()) return widgetServiceName.self.wordpress;
+  return widgetServiceName.default;
+}
+
+export function isShopify() {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  return typeof window !== 'undefined' && !!window['Shopify'];
+}
+
+export function isWordpress() {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  return typeof window !== 'undefined' && !!window['wp'];
 }
