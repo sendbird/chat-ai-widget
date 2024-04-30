@@ -1,3 +1,10 @@
+## [1.4.7] (April 30 2024)
+#### Feat:
+- Added `serviceName` to chatbot configs
+
+#### Fix:
+- Added missing property `url` in `FunctionCallRequestInfo`
+
 ## [1.4.6] (April 30 2024)
 #### Fix:
 - Added missing `callbacks` property to `Constant`  
