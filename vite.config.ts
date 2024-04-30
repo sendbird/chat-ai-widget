@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-// import pluginPurgeCss from '@mojojoejo/vite-plugin-purgecss';
 import { terser } from 'rollup-plugin-terser';
 import svgr from 'vite-plugin-svgr';
 
@@ -30,9 +29,6 @@ export default defineConfig({
       filename: './dist/report.html',
       brotliSize: true,
     }),
-    // pluginPurgeCss({
-    //   variables: true,
-    // }),
   ],
   resolve: {
     alias: [
