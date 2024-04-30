@@ -1,3 +1,10 @@
+## [1.5.0] (April 30 2024)
+#### Chore:
+- Reduced chat-ai-widget bundle size 402.12 kB -> 292.90 kB (gzip); 27.36%
+  - Removed `@sendbird/uikit-react` dependency from `package.json`.
+  - Linked the necessary code from `sendbird/uikit-react` github repository directly into `packages/uikit/` dir through a Git submodule.
+  - Updated our build process(Github workflow / Circleci config) to initialize and update the Git submodule, ensuring that the latest version of the code is always used.
+
 ## [1.4.7] (April 30 2024)
 #### Feat:
 - Added `serviceName` to chatbot configs
