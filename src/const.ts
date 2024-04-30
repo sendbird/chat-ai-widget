@@ -167,11 +167,11 @@ export const widgetServiceName = {
   default: 'genai-chatbot-widget',
   self: {
     default: 'genai-self-service',
-    wordpress: 'genai-wordpress',
-    shopify: '',
+    wordpress: 'genai-wordpress-self-service',
+    shopify: 'genai-shopify-self-service',
   },
   plugin: {
     wordpress: 'genai-wordpress-plugin',
-    shopify: '',
+    shopify: 'genai-shopify-plugin',
   },
 } as const;
