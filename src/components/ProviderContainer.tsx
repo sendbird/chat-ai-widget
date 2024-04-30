@@ -29,14 +29,16 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     stringSet,
     apiHost,
     wsHost,
+    serviceName,
     ...restConstantProps
   } = useConstantState();
   useDynamicAttachModal();
 
-  const userAgentCustomParams = useRef({
+  const userAgentCustomParams = useRef<Record<string, string>>({
     ...customUserAgentParam,
     'chat-ai-widget': 'True',
     'chat-ai-widget-key': CHAT_AI_WIDGET_KEY,
+    'chat-ai-widget-service-name': serviceName,
   });
 
   const { isFetching, theme, accentColor, botMessageBGColor, autoOpen } =

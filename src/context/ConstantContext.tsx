@@ -2,6 +2,7 @@ import { LabelStringSet } from '@sendbird/uikit-react/ui/Label';
 import { createContext, useContext, useMemo } from 'react';
 
 import { type Constant, DEFAULT_CONSTANT } from '../const';
+import { getDefaultServiceName } from '../utils';
 
 const initialState = DEFAULT_CONSTANT;
 
@@ -82,7 +83,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       enableMobileView: props.enableMobileView ?? initialState.enableMobileView,
       autoOpen: props.autoOpen,
       renderWidgetToggleButton: props.renderWidgetToggleButton,
-      serviceName: props.serviceName,
+      serviceName: props.serviceName ?? getDefaultServiceName(),
       apiHost:
         props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
       wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
