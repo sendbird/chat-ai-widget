@@ -1,12 +1,10 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
-import Avatar from '@sendbird/uikit-react/ui/Avatar';
-import Label, {
-  LabelTypography,
-  LabelColors,
-} from '@sendbird/uikit-react/ui/Label';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
+
+import Avatar from '@uikit/ui/Avatar';
+import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import { SentTime } from './MessageComponent';
 import { formatCreatedAtToAMPM } from '../utils';

@@ -1,5 +1,6 @@
-import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useRef } from 'react';
+
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 import { useChannelStyle } from './useChannelStyle';
 

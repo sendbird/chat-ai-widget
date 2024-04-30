@@ -1,0 +1,4 @@
+[submodule "packages/uikit"]
+	path = packages/uikit
+	url = git@github.com:sendbird/sendbird-uikit-react.git
+	branch = ai-widget/experimental

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
-import { ReactComponent as ChevronRightIcon } from '../icons/icon-chevron-right.svg';
-import { ReactComponent as EllipsisIcon } from '../icons/icon-ellipsis.svg';
-import { ReactComponent as MessageBubbleIcon } from '../icons/icon-message-bubble.svg';
+import ChevronRightIcon from '../icons/icon-chevron-right.svg';
+import EllipsisIcon from '../icons/icon-ellipsis.svg';
+import MessageBubbleIcon from '../icons/icon-message-bubble.svg';
 import { FunctionCallData } from '../interfaces';
 import { noop } from '../utils';
 

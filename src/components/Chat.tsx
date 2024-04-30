@@ -1,6 +1,6 @@
-import '@sendbird/uikit-react/dist/index.css';
 import '../css/index.css';
-import { GroupChannelProvider } from '@sendbird/uikit-react/GroupChannel/context';
+
+import { GroupChannelProvider } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
 import { useManualGroupChannelCreation } from '../hooks/useGroupChannel';

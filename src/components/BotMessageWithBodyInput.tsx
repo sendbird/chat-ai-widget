@@ -1,17 +1,14 @@
 import { User } from '@sendbird/chat';
 import { BaseMessage } from '@sendbird/chat/message';
-import Avatar from '@sendbird/uikit-react/ui/Avatar';
-import Label, {
-  LabelTypography,
-  LabelColors,
-} from '@sendbird/uikit-react/ui/Label';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
+
+import Avatar from '@uikit/ui/Avatar';
+import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import BotMessageFeedback from './BotMessageFeedback';
 import BotProfileImage from './BotProfileImage';
 import { SentTime, BodyContainer } from './MessageComponent';
-import MessageDataContent from './MessageDataContent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
 import { isLastMessageInStreaming } from '../utils/messages';

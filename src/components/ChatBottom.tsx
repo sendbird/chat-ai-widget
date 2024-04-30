@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
-import { ReactComponent as SendbirdLogo } from '../icons/sendbird-logo-widget.svg';
+import SendbirdLogo from '../icons/sendbird-logo-widget.svg';
 
 const Container = styled.div`
   width: 100%;

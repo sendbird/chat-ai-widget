@@ -1,17 +1,16 @@
 import { ChannelType, User } from '@sendbird/chat';
-import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
 import {
   MessageType,
   SendingStatus,
   UserMessage,
 } from '@sendbird/chat/message';
-import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
-import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-// eslint-disable-next-line import/no-unresolved
-import { ClientUserMessage } from 'SendbirdUIKitGlobal';
 import styled from 'styled-components';
+
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
+import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
+import { ClientUserMessage } from '@uikit/types';
 
 import { ReplyItem } from './DynamicRepliesPanel';
 import { LOCAL_MESSAGE_CUSTOM_TYPE, SuggestedReply } from '../const';
@@ -54,7 +53,7 @@ const StaticRepliesPanel = (props: Props) => {
     suggestedMessageContent?.replyContents
   );
   const store = useSendbirdStateContext();
-  const sb: SendbirdGroupChat = store.stores.sdkStore.sdk as SendbirdGroupChat;
+  const sb = store.stores.sdkStore.sdk;
   const { messages, currentChannel: channel } = useGroupChannelContext();
   const lastMessage = messages?.[messages?.length - 1] as ClientUserMessage;
   const sendLocalMessage = useSendLocalMessage();

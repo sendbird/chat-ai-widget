@@ -1,12 +1,13 @@
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
-import ChannelUI from '@sendbird/uikit-react/GroupChannel/components/GroupChannelUI';
-import { Message } from '@sendbird/uikit-react/GroupChannel/components/Message';
-import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
-import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
+import ChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
+import Message from '@uikit/modules/GroupChannel/components/Message';
+import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
@@ -72,7 +73,8 @@ const Root = styled.div<RootStyleProps>`
       font-size: ${isIOSMobile ? 16 : 14}px;
       font-family: 'Roboto', sans-serif;
       line-height: 20px;
-      color: ${({ theme }) => theme.textColor.messageInput}; // FIXME: messageInput does not exist
+      color: ${({ theme }) =>
+        theme.textColor.messageInput}; // FIXME: messageInput does not exist
       resize: none;
       border: none;
       outline: none;
@@ -124,7 +126,6 @@ export function CustomChannelComponent() {
   } = useGroupChannelContext();
 
   const botUser = channel?.members.find((member) => member.userId === botId);
-
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
   useAutoDismissMobileKyeboardHandler();

@@ -5,6 +5,7 @@
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "files": [
     "dist",
     "README.md"
@@ -14,6 +15,7 @@
     "url": "https://github.com/sendbird/chat-ai-widget.git"
   },
   "scripts": {
+    "install:deps": "npm install && git submodule update --init",
     "dev": "vite",
     "build:types": "rm -rf dist; rm -rf icons; rm -rf icons; tsc; cp -R src/icons icons; cp -R src/icons dist/icons ; cp -R src/css css; cp -R src/css dist/css",
     "prebuild": "rm -rf ./dist && mv .env .env_temp || true",
@@ -29,37 +31,44 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@sendbird/uikit-react": "^3.14.3",
     "@tanstack/react-query": "^5.17.19",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.17.22",
     "@types/dompurify": "^3.0.5",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
-    "@vitejs/plugin-react": "^4.0.0",
+    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-styled-components-a11y": "^2.1.32",
     "prettier": "2.8.8",
+    "prettier-eslint": "^15.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.12.0",
     "tsc-silent": "^1.2.2",
     "typescript": "5.0.2",
-    "vite": "^4.3.9",
+    "vite": "5.2.10",
     "vite-plugin-dts": "^3.7.0",
-    "vite-plugin-svgr": "^3.2.0"
+    "vite-plugin-svgr": "^4.2.0"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

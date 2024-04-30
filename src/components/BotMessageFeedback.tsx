@@ -1,16 +1,16 @@
-import { FeedbackRating, BaseMessage, Feedback } from '@sendbird/chat/message';
-import { CoreMessageType } from '@sendbird/uikit-react/types/utils';
-import FeedbackIconButton from '@sendbird/uikit-react/ui/FeedbackIconButton';
-import Icon, { IconTypes } from '@sendbird/uikit-react/ui/Icon';
-import MessageFeedbackFailedModal from '@sendbird/uikit-react/ui/MessageFeedbackFailedModal';
-import MessageFeedbackModal from '@sendbird/uikit-react/ui/MessageFeedbackModal';
-import MobileFeedbackMenu from '@sendbird/uikit-react/ui/MobileFeedbackMenu';
+import { FeedbackRating, UserMessage, Feedback } from '@sendbird/chat/message';
 import { useState } from 'react';
+
+import FeedbackIconButton from '@uikit/ui/FeedbackIconButton';
+import Icon, { IconTypes } from '@uikit/ui/Icon';
+import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
+import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
+import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
 
 import { useConstantState } from '../context/ConstantContext';
 import { isMobile } from '../utils';
 
-function BotMessageFeedback({ message }: { message: BaseMessage }) {
+function BotMessageFeedback({ message }: { message: UserMessage }) {
   const { stringSet } = useConstantState();
   const [showFeedbackOptionsMenu, setShowFeedbackOptionsMenu] =
     useState<boolean>(false);

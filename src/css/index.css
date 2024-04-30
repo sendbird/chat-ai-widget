@@ -65,7 +65,8 @@
   outline: none;
 }
 
-textarea:focus, input:focus {
+textarea:focus,
+input:focus {
   &:active {
     outline: none;
   }
@@ -79,6 +80,14 @@ textarea:focus, input:focus {
   border-radius: 16px;
   width: 100%;
 }
+
 .sendbird-word__url {
   font-weight: 700;
+}
+
+.sendbird-message-content__middle__body-container__feedback-buttons-container {
+  margin-top: 4px;
+  position: relative;
+  display: flex;
+  gap: 4px;
 }

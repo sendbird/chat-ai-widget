@@ -1,4 +1,3 @@
-import '@sendbird/uikit-react/dist/index.css';
 import styled from 'styled-components';
 
 import Chat from './Chat';

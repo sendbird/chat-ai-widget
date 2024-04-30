@@ -1,9 +1,6 @@
-import {
-  type GroupChannelCreateParams,
-  type SendbirdGroupChat,
-} from '@sendbird/chat/groupChannel';
-import { default as useSendbirdStateContext } from '@sendbird/uikit-react/useSendbirdStateContext';
 import { useQuery } from '@tanstack/react-query';
+
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 import { saveToLocalStorage } from './useWidgetLocalStorage';
 import { useConstantState } from '../context/ConstantContext';
@@ -25,7 +22,7 @@ export const useManualGroupChannelCreation = () => {
   } = useConstantState();
 
   const store = useSendbirdStateContext();
-  const sb = store.stores.sdkStore.sdk as SendbirdGroupChat;
+  const sb = store.stores.sdkStore.sdk;
 
   useQuery({
     enabled:
@@ -49,14 +46,13 @@ export const useManualGroupChannelCreation = () => {
           botId != null && customUserId != null,
           'botId and customUserId must be provided'
         );
-        const params: GroupChannelCreateParams = {
+        const channel = await sb?.groupChannel?.createChannel({
           name: createGroupChannelParams?.name,
           invitedUserIds: [customUserId, botId],
           isDistinct: false,
           coverUrl: createGroupChannelParams?.coverUrl,
           data: paramData,
-        };
-        const channel = await sb?.groupChannel?.createChannel(params);
+        });
         saveToLocalStorage(
           { appId, botId },
           {

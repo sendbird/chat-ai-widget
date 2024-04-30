@@ -1,6 +1,7 @@
 import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
-import { useGroupChannelContext } from '@sendbird/uikit-react/GroupChannel/context';
+
+import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 // import { FileViewerComponent } from '@sendbird/uikit-react/ui/FileViewer';
 // import {downloadFileWithUrl, noop} from '../utils';
 // import {createPortal} from 'react-dom';
@@ -16,7 +17,7 @@ export default function FileMessage(props: Props) {
   // const root = document.getElementById('aichatbot-widget-window');
 
   return (
-    <div className='sendbird-ai-widget-file-message-root'>
+    <div className="sendbird-ai-widget-file-message-root">
       {/*Please keep the commented code for referencing in the future when adding file viewer*/}
       {/*
       {root &&
@@ -38,7 +39,7 @@ export default function FileMessage(props: Props) {
         )}
         */}
       <img
-        className='sendbird-ai-widget-file-message-image'
+        className="sendbird-ai-widget-file-message-image"
         src={message.url}
         alt={''}
         onLoad={() => {

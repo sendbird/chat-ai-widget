@@ -1,5 +1,6 @@
-import { LabelStringSet } from '@sendbird/uikit-react/ui/Label';
 import { createContext, useContext, useMemo } from 'react';
+
+import { LabelStringSet } from '@uikit/ui/Label';
 
 import { type Constant, DEFAULT_CONSTANT } from '../const';
 import { getDefaultServiceName } from '../utils';

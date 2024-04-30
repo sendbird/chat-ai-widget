@@ -1,16 +1,14 @@
-import Avatar from '@sendbird/uikit-react/ui/Avatar';
-import Label, {
-  LabelTypography,
-  LabelColors,
-} from '@sendbird/uikit-react/ui/Label';
 import styled from 'styled-components';
+
+import Avatar from '@uikit/ui/Avatar';
+import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
-import { ReactComponent as CloseButton } from '../icons/ic-widget-close.svg';
+import CloseButton from '../icons/ic-widget-close.svg';
 import { isMobile, isEmpty } from '../utils';
 
 const Root = styled.div`

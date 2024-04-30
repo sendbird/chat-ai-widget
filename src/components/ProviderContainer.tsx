@@ -1,7 +1,8 @@
-import SBProvider from '@sendbird/uikit-react/SendbirdProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useRef, useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
+
+import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
 import { generateCSSVariables } from '../colors';
@@ -81,7 +82,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
       }
     >
       <ThemeProvider theme={styledTheme}>
-        <SBProvider
+        <SendbirdProvider
           appId={applicationId}
           userId={userId}
           accessToken={sessionToken}
@@ -107,7 +108,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
           }}
         >
           {children}
-        </SBProvider>
+        </SendbirdProvider>
       </ThemeProvider>
     </WidgetOpenProvider>
   );
