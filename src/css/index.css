@@ -84,3 +84,10 @@ input:focus {
 .sendbird-word__url {
   font-weight: 700;
 }
+
+.sendbird-message-content__middle__body-container__feedback-buttons-container {
+  margin-top: 4px;
+  position: relative;
+  display: flex;
+  gap: 4px;
+}
