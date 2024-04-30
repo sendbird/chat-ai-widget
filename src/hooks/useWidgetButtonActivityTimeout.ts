@@ -4,7 +4,7 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 import { useChannelStyle } from './useChannelStyle';
 
-const WS_IDLE_TIMEOUT = 6000 * 3;
+const WS_IDLE_TIMEOUT = 1000 * 60 * 3;
 
 /**
  * This hook is used to disconnect the websocket connection
@@ -13,49 +13,45 @@ const WS_IDLE_TIMEOUT = 6000 * 3;
 function useWidgetButtonActivityTimeout() {
   const channelStyle = useChannelStyle();
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const startTimeRef = useRef<number>(Date.now());
   const store = useSendbirdStateContext();
-  const sdk = store.stores.sdkStore.sdk;
+  const { sdk, initialized } = store.stores.sdkStore;
 
   useEffect(() => {
     const button = document.getElementById('aichatbot-widget-button');
-    if (
-      !button ||
-      // We only need to run this logic when autoOpen is disabled
-      channelStyle?.autoOpen
-    ) {
-      return;
-    }
-
-    const handleClick = () => {
-      const currentTime = Date.now();
-      const elapsedTime = currentTime - startTimeRef.current;
+    const clearTimer = () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
         timerRef.current = null;
       }
-
-      if (elapsedTime >= WS_IDLE_TIMEOUT) {
-        sdk?.reconnect();
-      }
+    };
+    const handleClick = () => {
+      if (sdk.connectionState !== 'OPEN') sdk.reconnect();
       // Remove the event listener to prevent multiple event listeners
       // We only need this logic to run once
-      button.removeEventListener('click', handleClick);
+      button?.removeEventListener('click', handleClick);
+      clearTimer();
     };
 
-    button.addEventListener('click', handleClick);
+    if (!sdk || !initialized || !button) {
+      return;
+    }
 
-    timerRef.current = setTimeout(() => {
-      sdk?.disconnectWebSocket();
-    }, WS_IDLE_TIMEOUT);
+    // We only need to run this logic when autoOpen is disabled
+    if (channelStyle?.autoOpen) {
+      button.removeEventListener('click', handleClick);
+      clearTimer();
+    } else {
+      button.addEventListener('click', handleClick);
+      timerRef.current = setTimeout(() => {
+        sdk.disconnectWebSocket();
+      }, WS_IDLE_TIMEOUT);
+    }
 
     return () => {
       button.removeEventListener('click', handleClick);
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
+      clearTimer();
     };
-  }, [sdk?.reconnect]);
+  }, [sdk, initialized, channelStyle?.autoOpen]);
 }
 
 export default useWidgetButtonActivityTimeout;

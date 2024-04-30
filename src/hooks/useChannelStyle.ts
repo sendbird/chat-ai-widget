@@ -101,6 +101,7 @@ export const useChannelStyle = () => {
         console.error(error);
         return {
           ...DEFAULT_CHANNEL_STYLE,
+          autoOpen: false,
           isError: true,
           errorMessage: (error as Error)?.message,
         };
@@ -109,7 +110,7 @@ export const useChannelStyle = () => {
   });
   const fetching = isPending || isLoading || isFetching;
   return useMemo(() => {
-    if (data == null) return { ...DEFAULT_CHANNEL_STYLE, isFetching: fetching };
+    if (data == null) return { ...DEFAULT_CHANNEL_STYLE, autoOpen: false, isFetching: fetching };
     return { ...data, isFetching: fetching };
   }, [data != null, fetching]);
 };
