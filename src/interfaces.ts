@@ -9,6 +9,7 @@ export interface FunctionCallRequestInfo {
   method: string;
   query_params: object;
   request_body: object;
+  url: string;
 }
 
 export interface FunctionCallData {
