@@ -130,12 +130,13 @@ const INTENT_MAP = {
 };
 
 function isObjectOfViewDetailData(object: any): object is FunctionCallData {
-  const { name, request, response_text, status_code } = object ?? {};
+  const { name, request, response_text, status_code, url } = object ?? {};
   return (
     typeof name === 'string' &&
     typeof request === 'object' &&
     typeof response_text === 'string' &&
-    typeof status_code === 'number'
+    typeof status_code === 'number' &&
+    typeof url === 'string'
   );
 }
 
