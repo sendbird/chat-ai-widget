@@ -1,3 +1,7 @@
+## [1.4.6] (April 30 2024)
+#### Fix:
+- Added missing `callbacks` property to `Constant`  
+
 ## [1.4.5] (April 29 2024)
 #### Feat:
 - Added new properties `apiHost`, and `wsHost` in `Constant`
