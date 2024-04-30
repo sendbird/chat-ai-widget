@@ -7,7 +7,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: { jsx: true },
   },
-  plugins: ['import', '@typescript-eslint', 'styled-components-a11y'],
+  plugins: ['import', 'styled-components-a11y'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
