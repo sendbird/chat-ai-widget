@@ -1,3 +1,7 @@
+## [1.5.2] (May 2 2024)
+#### Fix:
+- Fixed an accidental disconnect issue.
+
 ## [1.5.1] (April 30 2024)
 #### Chore:
 - Reduced chat-ai-widget bundle size 402.12 kB -> 292.90 kB (gzip); 27.36%
