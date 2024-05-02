@@ -9,10 +9,22 @@ import { useConstantState } from '../context/ConstantContext';
 import { isPastTime, resolvePath } from '../utils';
 
 const DEFAULT_CHANNEL_STYLE = {
-  theme: 'dark',
+  theme: 'light' as 'light' | 'dark',
   accentColor: '#742DDD',
   botMessageBGColor: '#EEEEEE',
+  autoOpen: false,
 };
+
+interface ChannelStyle {
+  theme: 'light' | 'dark';
+  accentColor: string;
+  botMessageBGColor: string;
+  autoOpen: boolean;
+
+  isFetching: boolean;
+  isError?: boolean;
+  errorMessage?: string;
+}
 
 interface BotStyleResponse {
   bot_style: {
@@ -43,7 +55,7 @@ export function isUserAndChannelCreationNeeded(
   return isInfoMissing || isInfoExpired;
 }
 
-export const useChannelStyle = () => {
+export const useChannelStyle = (): ChannelStyle => {
   const {
     applicationId: appId,
     botId,
@@ -80,7 +92,7 @@ export const useChannelStyle = () => {
         const data = await (response.json() as unknown as BotStyleResponse);
         const { bot_style, user, channel } = data;
 
-        if (user != null && channel != null) {
+        if (user != null && channel != null && appId != null && botId != null) {
           saveToLocalStorage(
             { appId, botId },
             {
