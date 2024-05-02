@@ -55,6 +55,7 @@ export function isUserAndChannelCreationNeeded(
   return isInfoMissing || isInfoExpired;
 }
 
+// FIXME: apply autoOpen in constant context
 export const useChannelStyle = (): ChannelStyle => {
   const {
     applicationId: appId,
