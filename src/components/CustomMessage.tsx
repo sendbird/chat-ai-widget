@@ -31,7 +31,6 @@ type Props = {
   message: CoreMessageType;
   activeSpinnerId: number;
   botUser?: User;
-  lastMessageRef: React.RefObject<HTMLDivElement>;
   isBotWelcomeMessage: boolean;
   isLastBotMessage: boolean;
   messageCount: number;
@@ -44,7 +43,6 @@ export default function CustomMessage(props: Props) {
     message,
     activeSpinnerId,
     botUser,
-    lastMessageRef,
     chainTop,
     chainBottom,
     isBotWelcomeMessage,
@@ -100,7 +98,7 @@ export default function CustomMessage(props: Props) {
     getSenderUserIdFromMessage(message) !== botUser?.userId
   ) {
     return (
-      <div ref={lastMessageRef}>
+      <div>
         {
           <UserMessageWithBodyInput
             {...commonProps}
@@ -154,7 +152,7 @@ export default function CustomMessage(props: Props) {
     });
 
     return (
-      <div ref={lastMessageRef}>
+      <div>
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}

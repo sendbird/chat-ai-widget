@@ -128,6 +128,11 @@ export function CustomChannelComponent() {
     refresh,
   } = useGroupChannelContext();
 
+  /**
+   * Please keep below comments for easy local testing.
+   */
+  // console.log('## messages: ', allMessages);
+
   const botUser = channel?.members.find((member) => member.userId === botId);
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
@@ -220,32 +225,40 @@ export function CustomChannelComponent() {
 
           return (
             <Message {...props} message={message}>
-              <CustomMessage
-                message={message}
-                activeSpinnerId={activeSpinnerId}
-                botUser={botUser}
-                lastMessageRef={lastMessageRef}
-                // FIXME: Remove data pollution.
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                chainTop={grouppedMessage?.chainTop}
-                // FIXME: Remove data pollution.
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                chainBottom={grouppedMessage?.chainBottom}
-                isBotWelcomeMessage={isBotWelcomeMessage}
-                isLastBotMessage={isLastBotMessage}
-                messageCount={messageCount}
-              />
-              {message.messageId === lastMessage?.messageId &&
-                (dynamicReplyOptions.length > 0 ? (
-                  <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-                ) : isStaticReplyVisible ? (
-                  <StaticRepliesPanel botUser={botUser} />
-                ) : null)}
-              {isDashboardPreview(customUserAgentParam) && message.data && (
-                <MessageDataContent messageData={message.data} />
-              )}
+              <div
+                style={
+                  message.messageId !== lastMessage?.messageId
+                    ? { marginBottom: '16px' }
+                    : undefined
+                }
+                ref={lastMessageRef}
+              >
+                <CustomMessage
+                  message={message}
+                  activeSpinnerId={activeSpinnerId}
+                  botUser={botUser}
+                  // FIXME: Remove data pollution.
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  chainTop={grouppedMessage?.chainTop}
+                  // FIXME: Remove data pollution.
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  chainBottom={grouppedMessage?.chainBottom}
+                  isBotWelcomeMessage={isBotWelcomeMessage}
+                  isLastBotMessage={isLastBotMessage}
+                  messageCount={messageCount}
+                />
+                {message.messageId === lastMessage?.messageId &&
+                  (dynamicReplyOptions.length > 0 ? (
+                    <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
+                  ) : isStaticReplyVisible ? (
+                    <StaticRepliesPanel botUser={botUser} />
+                  ) : null)}
+                {isDashboardPreview(customUserAgentParam) && message.data && (
+                  <MessageDataContent messageData={message.data} />
+                )}
+              </div>
             </Message>
           );
         }}
