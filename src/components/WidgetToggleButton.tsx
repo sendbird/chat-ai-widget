@@ -88,7 +88,7 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
   }}
 `;
 
-interface ToggleButtonProps {
+export interface ToggleButtonProps {
   onClick: () => void;
   accentColor: string;
   isOpen: boolean;

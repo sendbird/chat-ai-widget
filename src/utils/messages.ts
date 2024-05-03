@@ -1,6 +1,6 @@
-import { UserMessage } from '@sendbird/chat/message';
-// eslint-disable-next-line import/no-unresolved
-import { EveryMessage } from 'SendbirdUIKitGlobal';
+import { BaseMessage, UserMessage } from '@sendbird/chat/message';
+
+import { CoreMessageType } from '@uikit/utils';
 
 import { Form } from '../components/FormMessage';
 import {
@@ -16,20 +16,20 @@ const TIME_SPAN = 3 * 60 * 1000;
  * @returns {EveryMessage[]} - Array of messages grouped by creation time
  */
 export function groupMessagesByShortSpanTime(
-  messages: EveryMessage[]
-): EveryMessage[] {
+  messages: BaseMessage[]
+): BaseMessage[] {
   // Create an object to group messages based on their creation time
   const groupedMessagesByCreatedAt = messages.reduce((groups, message, idx) => {
-    const { createdAt, sender, messageType } = message;
     // Get the key of the previous group
     const prevKey = Object.keys(groups)[Object.keys(groups).length - 1];
 
     // Check if the time difference between the current message and the previous one is within 3 minutes
     if (
       prevKey &&
-      createdAt - Number(prevKey) <= TIME_SPAN &&
-      messageType !== 'admin' &&
-      sender?.userId === messages[idx - 1]?.sender?.userId
+      message.createdAt - Number(prevKey) <= TIME_SPAN &&
+      !message.isAdminMessage() &&
+      getSenderUserIdFromMessage(message) ===
+        getSenderUserIdFromMessage(messages[idx - 1])
     ) {
       // Add the message to the existing group
       return {
@@ -40,21 +40,27 @@ export function groupMessagesByShortSpanTime(
       // Create a new group for the current message
       return {
         ...groups,
-        [createdAt]: [message],
+        [message.createdAt]: [message],
       };
     }
-  }, {});
+  }, {} as Record<string, BaseMessage[]>);
 
   // Flatten the grouped messages and add chain indicators
   return Object.values(groupedMessagesByCreatedAt).flatMap(
-    (messages: EveryMessage[]) => {
+    (messages: BaseMessage[]) => {
       if (messages.length > 1) {
         // Add chain indicators to the first and last messages in the group
-        return messages.map((message, index) => ({
-          ...message,
-          chaintop: index === 0,
-          chainBottom: index === messages.length - 1,
-        }));
+        messages.forEach((message, index) => {
+          // FIXME: Remove data pollution.
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          message.chainTop = index === 0;
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          message.chainBottom = index === messages.length - 1;
+        });
+
+        return messages;
       }
       return messages;
     }
@@ -62,29 +68,39 @@ export function groupMessagesByShortSpanTime(
 }
 
 export function getBotWelcomeMessages(
-  messages: EveryMessage[],
+  messages: BaseMessage[],
   botUserId: string | null
 ) {
   // if the list is empty or the first message is not from bot,
   // we just assume there's no welcome messages
-  if (messages.length === 0 || messages[0]?.sender?.userId !== botUserId) {
+  if (
+    messages.length === 0 ||
+    getSenderUserIdFromMessage(messages[0]) !== botUserId
+  ) {
     return [];
   }
 
   // if the list has only bot messages, then just return the whole list
-  if (messages.every((message) => message?.sender?.userId === botUserId)) {
+  if (
+    messages.every(
+      (message) => getSenderUserIdFromMessage(message) === botUserId
+    )
+  ) {
     return messages;
   }
 
-  const firstUserMesssage = messages.find(
-    (message) => message?.sender?.userId !== botUserId
+  const firstUserMessage = messages.find(
+    (message) => getSenderUserIdFromMessage(message) !== botUserId
   );
-  return messages.slice(0, messages.indexOf(firstUserMesssage));
+  return messages.slice(
+    0,
+    firstUserMessage ? messages.indexOf(firstUserMessage) : -1
+  );
 }
 
 export function isFormMessage(
-  message: EveryMessage
-): message is EveryMessage & {
+  message: CoreMessageType
+): message is CoreMessageType & {
   extendedMessagePayload: {
     forms: Form[];
   };
@@ -92,7 +108,7 @@ export function isFormMessage(
   return Array.isArray(message.extendedMessagePayload?.forms);
 }
 
-export function isLastMessageInStreaming(lastMessage: EveryMessage | null) {
+export function isLastMessageInStreaming(lastMessage: BaseMessage | null) {
   if (
     lastMessage == null ||
     lastMessage?.data == null ||
@@ -150,4 +166,18 @@ export function parseMessageDataSafely(messageData: string) {
   } catch (error) {
     return {};
   }
+}
+
+export function getSenderUserIdFromMessage(
+  message?: BaseMessage | null
+): string | undefined {
+  if (!message) return undefined;
+
+  if (message.isUserMessage()) return message.sender.userId;
+  if (message.isFileMessage()) return message.sender.userId;
+  if (message.isMultipleFilesMessage()) return message.sender.userId;
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  return message?.sender?.userId ?? undefined;
 }

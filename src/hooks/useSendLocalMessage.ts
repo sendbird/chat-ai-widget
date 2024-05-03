@@ -4,6 +4,7 @@ import { useCallback } from 'react';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 export function useSendLocalMessage() {
+  // @ts-expect-error internal interface
   const { _dangerous_reducer_updateMessages, scrollToBottom } =
     useGroupChannelContext();
 

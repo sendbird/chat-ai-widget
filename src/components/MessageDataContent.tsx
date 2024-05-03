@@ -4,7 +4,7 @@ import { useConstantState } from '../context/ConstantContext';
 import ChevronRightIcon from '../icons/icon-chevron-right.svg';
 import EllipsisIcon from '../icons/icon-ellipsis.svg';
 import MessageBubbleIcon from '../icons/icon-message-bubble.svg';
-import { FunctionCallData } from '../interfaces';
+import { FunctionCallData } from '../types';
 import { noop } from '../utils';
 
 const Text = styled.div`

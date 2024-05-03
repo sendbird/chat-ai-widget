@@ -1,4 +1,4 @@
-import { UserMessage } from '@sendbird/chat/message';
+import { BaseMessage } from '@sendbird/chat/message';
 import styled from 'styled-components';
 
 import { BodyComponent } from './MessageComponent';
@@ -46,7 +46,7 @@ const Text = styled.div`
 `;
 
 type Props = {
-  message: UserMessage;
+  message: BaseMessage;
 };
 
 export default function SuggestedReplyMessageBody(props: Props) {

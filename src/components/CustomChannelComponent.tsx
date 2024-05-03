@@ -18,7 +18,11 @@ import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import { hideChatBottomBanner, isDashboardPreview, isIOSMobile } from '../utils';
+import {
+  hideChatBottomBanner,
+  isDashboardPreview,
+  isIOSMobile,
+} from '../utils';
 import {
   getBotWelcomeMessages,
   groupMessagesByShortSpanTime,
@@ -29,6 +33,7 @@ interface RootStyleProps {
   height: string;
   isStaticReplyVisible: boolean;
 }
+// Note: sendbird-conversation__scroll-bottom-button >> it seems a style issue
 const Root = styled.div<RootStyleProps>`
   & form {
     margin: initial;
@@ -73,8 +78,6 @@ const Root = styled.div<RootStyleProps>`
       font-size: ${isIOSMobile ? 16 : 14}px;
       font-family: 'Roboto', sans-serif;
       line-height: 20px;
-      color: ${({ theme }) =>
-        theme.textColor.messageInput}; // FIXME: messageInput does not exist
       resize: none;
       border: none;
       outline: none;
@@ -186,9 +189,7 @@ export function CustomChannelComponent() {
   );
 
   const botWelcomeMessages = useMemo(() => {
-    if (!botId) {
-      return [];
-    }
+    if (!botId) return [];
     return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
 
@@ -224,7 +225,13 @@ export function CustomChannelComponent() {
                 activeSpinnerId={activeSpinnerId}
                 botUser={botUser}
                 lastMessageRef={lastMessageRef}
-                chainTop={grouppedMessage?.chaintop}
+                // FIXME: Remove data pollution.
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                chainTop={grouppedMessage?.chainTop}
+                // FIXME: Remove data pollution.
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 chainBottom={grouppedMessage?.chainBottom}
                 isBotWelcomeMessage={isBotWelcomeMessage}
                 isLastBotMessage={isLastBotMessage}

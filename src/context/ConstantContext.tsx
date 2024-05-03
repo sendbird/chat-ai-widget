@@ -7,15 +7,15 @@ import { getDefaultServiceName } from '../utils';
 
 const initialState = DEFAULT_CONSTANT;
 
-interface ConstantContextProps extends Constant {
+interface ConstantContextProps extends Partial<Constant> {
   applicationId: string | null;
   botId: string | null;
 }
-const ConstantContext = createContext<ConstantContextProps>({
-  applicationId: null,
-  botId: null,
-  ...initialState,
-});
+interface ConstantContextValue extends Constant {
+  applicationId: string | null;
+  botId: string | null;
+}
+const ConstantContext = createContext<ConstantContextValue | null>(null);
 
 type ProviderProps = React.PropsWithChildren<ConstantContextProps>;
 
@@ -99,4 +99,10 @@ export const ConstantStateProvider = (props: ProviderProps) => {
   );
 };
 
-export const useConstantState = () => useContext(ConstantContext);
+export const useConstantState = () => {
+  const ctx = useContext(ConstantContext);
+  if (!ctx) {
+    throw new Error('useConstantState must be used within ConstantProvider');
+  }
+  return ctx;
+};

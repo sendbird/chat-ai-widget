@@ -17,7 +17,8 @@ const Label = styled(UIKitLabel)`
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <Label
     className="sendbird-input-label"
-    style={{ marginBottom: 8 }}
+    // ? Label doesn't hav style prop
+    // style={{ marginBottom: 8 }}
     type={LabelTypography.CAPTION_2}
     color={LabelColors.ONBACKGROUND_2}
   >

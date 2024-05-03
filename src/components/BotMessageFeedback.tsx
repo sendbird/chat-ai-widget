@@ -1,4 +1,4 @@
-import { FeedbackRating, UserMessage, Feedback } from '@sendbird/chat/message';
+import { FeedbackRating, Feedback } from '@sendbird/chat/message';
 import { useState } from 'react';
 
 import FeedbackIconButton from '@uikit/ui/FeedbackIconButton';
@@ -6,11 +6,12 @@ import Icon, { IconTypes } from '@uikit/ui/Icon';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
 import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
+import { CoreMessageType } from '@uikit/utils';
 
 import { useConstantState } from '../context/ConstantContext';
 import { isMobile } from '../utils';
 
-function BotMessageFeedback({ message }: { message: UserMessage }) {
+function BotMessageFeedback({ message }: { message: CoreMessageType }) {
   const { stringSet } = useConstantState();
   const [showFeedbackOptionsMenu, setShowFeedbackOptionsMenu] =
     useState<boolean>(false);
@@ -117,31 +118,35 @@ function BotMessageFeedback({ message }: { message: UserMessage }) {
           showFeedbackModal && (
             <MessageFeedbackModal
               selectedFeedback={message.myFeedback.rating}
-              message={message as CoreMessageType}
+              message={message}
               onUpdate={async (
                 selectedFeedback: FeedbackRating,
                 comment: string
               ) => {
-                const newFeedback: Feedback = new Feedback({
-                  id: message.myFeedback.id,
-                  rating: selectedFeedback,
-                  comment,
-                });
-                try {
-                  await message.updateFeedback(newFeedback);
-                } catch (error) {
-                  console.error('Channel: Update feedback failed.', error);
-                  setFeedbackFailedText(stringSet.FEEDBACK_FAILED_SAVE);
+                if (message.myFeedback) {
+                  const newFeedback: Feedback = new Feedback({
+                    id: message.myFeedback.id,
+                    rating: selectedFeedback,
+                    comment,
+                  });
+                  try {
+                    await message.updateFeedback(newFeedback);
+                  } catch (error) {
+                    console.error('Channel: Update feedback failed.', error);
+                    setFeedbackFailedText(stringSet.FEEDBACK_FAILED_SAVE);
+                  }
                 }
                 onCloseFeedbackForm();
               }}
               onClose={onCloseFeedbackForm}
               onRemove={async () => {
-                try {
-                  await message.deleteFeedback(message.myFeedback.id);
-                } catch (error) {
-                  console.error('Channel: Delete feedback failed.', error);
-                  setFeedbackFailedText(stringSet.FEEDBACK_FAILED_DELETE);
+                if (message.myFeedback) {
+                  try {
+                    await message.deleteFeedback(message.myFeedback.id);
+                  } catch (error) {
+                    console.error('Channel: Delete feedback failed.', error);
+                    setFeedbackFailedText(stringSet.FEEDBACK_FAILED_DELETE);
+                  }
                 }
                 onCloseFeedbackForm();
               }}

@@ -1,4 +1,5 @@
 import type SendbirdChat from '@sendbird/chat';
+
 import { widgetServiceName } from '../const';
 
 export function formatCreatedAtToAMPM(createdAt: number) {

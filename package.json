@@ -4,7 +4,7 @@
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "type": "module",
   "files": [
     "dist",
