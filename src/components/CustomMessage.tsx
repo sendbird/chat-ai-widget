@@ -1,30 +1,29 @@
 import { User } from '@sendbird/chat';
-import React from 'react';
 
 import { CoreMessageType } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
+import BotMessageFeedback from './BotMessageFeedback';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
-import FileMessage from './FileMessage';
+import AppFileMessage from './FileMessage';
 import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
+import { Source } from './SourceContainer';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
-import {
-  MessageTextParser,
-  replaceTextExtractsMultiple,
-  Token,
-} from '../utils';
+import { MessageMetaData, parseTextMessage, Token } from '../utils';
 import {
   getSenderUserIdFromMessage,
   isFormMessage,
+  isLastMessageInStreaming,
   isLocalMessageCustomType,
+  parseMessageDataSafely,
 } from '../utils/messages';
 
 type Props = {
@@ -57,7 +56,7 @@ export default function CustomMessage(props: Props) {
     messageCount,
     message,
   };
-  const { replacementTextList } = useConstantState();
+  const { replacementTextList, enableEmojiFeedback } = useConstantState();
   const { userId } = useWidgetLocalStorage();
 
   // admin message
@@ -72,7 +71,7 @@ export default function CustomMessage(props: Props) {
         {...commonProps}
         botUser={botUser}
         bodyComponent={<FormMessage form={forms[0]} message={message} />}
-        isFormMessage={true}
+        createdAt={message.createdAt}
       />
     );
   }
@@ -92,11 +91,8 @@ export default function CustomMessage(props: Props) {
     );
   }
 
-  // Sent by other users
-  if (
-    message.isUserMessage() &&
-    getSenderUserIdFromMessage(message) !== botUser?.userId
-  ) {
+  // Sent by other users (Users who are not bot nor current user)
+  if (message.isUserMessage() && message.sender?.userId !== botUser?.userId) {
     return (
       <UserMessageWithBodyInput
         {...commonProps}
@@ -116,6 +112,14 @@ export default function CustomMessage(props: Props) {
           {...commonProps}
           botUser={botUser}
           bodyComponent={<SuggestedReplyMessageBody message={message} />}
+          createdAt={message.createdAt}
+          messageFeedback={
+            enableEmojiFeedback &&
+            !isBotWelcomeMessage &&
+            !(isLastBotMessage && isLastMessageInStreaming(message.data)) && (
+              <BotMessageFeedback message={message} />
+            )
+          }
         />
       );
     }
@@ -126,37 +130,51 @@ export default function CustomMessage(props: Props) {
       <BotMessageWithBodyInput
         {...commonProps}
         botUser={botUser}
-        bodyComponent={<FileMessage message={message} />}
+        bodyComponent={<AppFileMessage message={message} />}
+        createdAt={message.createdAt}
+        messageFeedback={
+          enableEmojiFeedback &&
+          !isBotWelcomeMessage &&
+          !(isLastBotMessage && isLastMessageInStreaming(message.data)) && (
+            <BotMessageFeedback message={message} />
+          )
+        }
       />
     );
   }
 
   if (message.isUserMessage()) {
     // Normal message
-    const tokens: Token[] = MessageTextParser(message.message);
-    tokens.forEach((token: Token) => {
-      if (token.type === 'String') {
-        // Redact text to replacementTextList
-        token.value = replaceTextExtractsMultiple(
-          token.value,
-          replacementTextList
-        );
-
-        // Convert url string to component --> handled by ParsedBotMessageBody > RegexText
-        // token.value = replaceUrl(token.value);
-      }
-    });
+    const tokens: Token[] = parseTextMessage(
+      message.message,
+      replacementTextList
+    );
+    const data: MessageMetaData = parseMessageDataSafely(message.data);
+    const sources: Source[] = Array.isArray(data['metadatas'])
+      ? data['metadatas']?.filter((source) => source.source_type !== 'file')
+      : [];
 
     return (
       <BotMessageWithBodyInput
         {...commonProps}
         botUser={botUser}
         bodyComponent={
-          <ParsedBotMessageBody message={message} tokens={tokens} />
+          <ParsedBotMessageBody
+            text={message.message}
+            tokens={tokens}
+            sources={sources}
+          />
+        }
+        createdAt={message.createdAt}
+        messageFeedback={
+          enableEmojiFeedback &&
+          !isBotWelcomeMessage &&
+          !(isLastBotMessage && isLastMessageInStreaming(message.data)) && (
+            <BotMessageFeedback message={message} />
+          )
         }
       />
     );
   }
-
   return <></>;
 }

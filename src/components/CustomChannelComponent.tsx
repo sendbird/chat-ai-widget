@@ -1,3 +1,4 @@
+giimport { Member } from '@sendbird/chat/groupChannel';
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -9,11 +10,13 @@ import ChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
+import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import MessageDataContent from './MessageDataContent';
+import ParsedBotMessageBody from './ParsedBotMessageBody';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
@@ -22,6 +25,8 @@ import {
   hideChatBottomBanner,
   isDashboardPreview,
   isIOSMobile,
+  parseTextMessage,
+  Token,
 } from '../utils';
 import {
   getBotWelcomeMessages,
@@ -121,6 +126,8 @@ export function CustomChannelComponent() {
     botId,
     enableEmojiFeedback,
     customUserAgentParam,
+    botStudioEditProps,
+    replacementTextList,
   } = useConstantState();
   const {
     messages,
@@ -128,14 +135,15 @@ export function CustomChannelComponent() {
     scrollToBottom,
     refresh,
   } = useGroupChannelContext();
-
   // NOTE: Filter out messages that should not be displayed.
   const allMessages = messages.filter(
     (message) => !shouldFilterOutMessage(message)
   );
+  const { botProfileImageUrl, welcomeMessages } = botStudioEditProps ?? {};
 
   const botUser = channel?.members.find((member) => member.userId === botId);
   const lastMessageRef = useRef<HTMLDivElement>(null);
+  const botProfileUrl = botProfileImageUrl ?? botUser?.profileUrl;
 
   useAutoDismissMobileKyeboardHandler();
 
@@ -189,7 +197,7 @@ export function CustomChannelComponent() {
     }
   }, [lastMessage?.messageId]);
 
-  const grouppedMessages = useMemo(
+  const groupedMessages = useMemo(
     () => groupMessagesByShortSpanTime(allMessages),
     [messageCount]
   );
@@ -199,6 +207,9 @@ export function CustomChannelComponent() {
     return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
 
+  const firstMessageId =
+    allMessages.length > 0 ? allMessages[0].messageId : null;
+
   return (
     <Root height={'100%'} isStaticReplyVisible={isStaticReplyVisible}>
       <ChannelUI
@@ -207,7 +218,7 @@ export function CustomChannelComponent() {
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
           <CustomChannelHeader
-            botProfileUrl={botUser?.profileUrl}
+            botProfileUrl={botProfileUrl}
             botNickname={botUser?.nickname}
             channelName={channel?.name}
             onRenewButtonClick={async () => {
@@ -217,14 +228,67 @@ export function CustomChannelComponent() {
           />
         )}
         renderMessage={({ message, ...props }) => {
-          // NOTE: Filter out messages that should not be displayed.
-          if (shouldFilterOutMessage(message)) return <></>;
-
-          const grouppedMessage = grouppedMessages.find(
-            (m) => m.messageId == message.messageId
-          );
           const isBotWelcomeMessage = botWelcomeMessages.some(
             (m) => m.messageId === message.messageId
+          );
+          /**
+           * Replace with injected welcome messages instead.
+           */
+          if (
+            isBotWelcomeMessage &&
+            welcomeMessages &&
+            welcomeMessages.length > 0
+          ) {
+            if (!firstMessageId || message.messageId === firstMessageId) {
+              const lastWelcomeMessageIndex = welcomeMessages.length - 1;
+              return (
+                <Message {...props} message={message}>
+                  {welcomeMessages.map((welcomeMsg, index) => {
+                    const suggestedReplies = welcomeMsg.suggestedReplies;
+                    // TODO: support file message in the future.
+                    if ('message' in welcomeMsg) {
+                      const text = welcomeMsg.message;
+                      const tokens: Token[] = parseTextMessage(
+                        text,
+                        replacementTextList
+                      );
+                      return (
+                        <div ref={lastMessageRef} key={index}>
+                          <BotMessageWithBodyInput
+                            chainTop={index === 0}
+                            chainBottom={index === lastWelcomeMessageIndex}
+                            messageCount={messageCount}
+                            botUser={botUser as Member}
+                            bodyComponent={
+                              <ParsedBotMessageBody
+                                text={text}
+                                tokens={tokens}
+                              />
+                            }
+                            createdAt={message.createdAt}
+                          />
+                          {suggestedReplies && suggestedReplies.length && (
+                            <DynamicRepliesPanel
+                              replyOptions={suggestedReplies}
+                            />
+                          )}
+                        </div>
+                      );
+                    }
+                  })}
+                </Message>
+              );
+            }
+            return;
+          }
+          /**
+           * Note that we display injected welcome messages regardless of first welcome message
+           * is filtered.
+           */
+          // NOTE: Filter out messages that should not be displayed.
+          if (shouldFilterOutMessage(message)) return <></>;
+          const groupedMessage = groupedMessages.find(
+            (m) => m.messageId == message.messageId
           );
 
           return (
@@ -244,21 +308,29 @@ export function CustomChannelComponent() {
                   // FIXME: Remove data pollution.
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
-                  chainTop={grouppedMessage?.chainTop}
+                  chainTop={groupedMessage?.chainTop}
                   // FIXME: Remove data pollution.
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore
-                  chainBottom={grouppedMessage?.chainBottom}
+                  chainBottom={groupedMessage?.chainBottom}
                   isBotWelcomeMessage={isBotWelcomeMessage}
                   isLastBotMessage={isLastBotMessage}
                   messageCount={messageCount}
                 />
                 {message.messageId === lastMessage?.messageId &&
-                  (dynamicReplyOptions.length > 0 ? (
-                    <DynamicRepliesPanel replyOptions={dynamicReplyOptions} />
-                  ) : isStaticReplyVisible ? (
-                    <StaticRepliesPanel botUser={botUser} />
-                  ) : null)}
+                  (() => {
+                    if (dynamicReplyOptions.length > 0) {
+                      return (
+                        <DynamicRepliesPanel
+                          replyOptions={dynamicReplyOptions}
+                        />
+                      );
+                    }
+                    if (isStaticReplyVisible) {
+                      return <StaticRepliesPanel botUser={botUser} />;
+                    }
+                    return null;
+                  })()}
                 {isDashboardPreview(customUserAgentParam) && message.data && (
                   <MessageDataContent messageData={message.data} />
                 )}

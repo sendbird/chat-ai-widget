@@ -108,15 +108,11 @@ export function isFormMessage(
   return Array.isArray(message.extendedMessagePayload?.forms);
 }
 
-export function isLastMessageInStreaming(lastMessage: BaseMessage | null) {
-  if (
-    lastMessage == null ||
-    lastMessage?.data == null ||
-    lastMessage?.data === ''
-  ) {
+export function isLastMessageInStreaming(messageData?: string) {
+  if (!messageData) {
     return false;
   }
-  const messageMetaData = parseMessageDataSafely(lastMessage.data);
+  const messageMetaData = parseMessageDataSafely(messageData);
   return 'stream' in messageMetaData && messageMetaData.stream;
 }
 
@@ -150,7 +146,7 @@ export function isStaticReplyVisible(
   return (
     !(lastMessage.messageType === 'admin') &&
     lastMessage.sender?.userId === botUserId &&
-    !isLastMessageInStreaming(lastMessage) &&
+    !isLastMessageInStreaming(lastMessage.data) &&
     !isLocalMessageCustomType(lastMessage.customType) &&
     suggestedMessageContent?.replyContents?.length > 0 &&
     !isSpecialMessage(

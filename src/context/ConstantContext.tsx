@@ -94,6 +94,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
       deviceType: props.deviceType, // Note this property is not being used but added just to remove any confusion.
       isMobileView,
+      botStudioEditProps: props.botStudioEditProps,
     }),
     [props]
   );

@@ -1,5 +1,6 @@
 import type SendbirdChat from '@sendbird/chat';
 
+import { Source } from '../components/SourceContainer';
 import { widgetServiceName } from '../const';
 
 export function formatCreatedAtToAMPM(createdAt: number) {
@@ -37,7 +38,9 @@ type CodeSnippetToken = {
   value: string;
   language: Languages;
 };
-
+export type MessageMetaData = {
+  metadatas?: Source[];
+};
 export type Token = StringToken | CodeSnippetToken;
 const parseCode = (code: string): CodeSnippetToken => {
   const snippetRegex = /```([a-zA-Z]+)([\s\S]*)```/;
@@ -99,7 +102,10 @@ function isDelimiterIndex(
   return inputString.substring(index, index + delimiter.length) === delimiter;
 }
 
-export function MessageTextParser(inputString: string): Token[] {
+export function parseTextMessage(
+  inputString: string,
+  replacementTextList: [string, string][]
+): Token[] {
   // const snippetRegex = /```(.*)```/g;
   // const snippetRegex = /(```([\w]*)\n([\S\s]+?)\n```)/g;
   // debugger
@@ -115,6 +121,18 @@ export function MessageTextParser(inputString: string): Token[] {
         type: 'String',
         value: part.trim(),
       } as StringToken;
+    }
+  });
+  result.forEach((token: Token) => {
+    if (token.type === 'String') {
+      // Redact text to replacementTextList
+      token.value = replaceTextExtractsMultiple(
+        token.value,
+        replacementTextList
+      );
+
+      // Convert url string to component --> handled by ParsedBotMessageBody > RegexText
+      // token.value = replaceUrl(token.value);
     }
   });
   return result;

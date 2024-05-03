@@ -4,14 +4,11 @@ import styled from 'styled-components';
 
 import Avatar from '@uikit/ui/Avatar';
 import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
-import { CoreMessageType } from '@uikit/utils';
 
-import BotMessageFeedback from './BotMessageFeedback';
 import BotProfileImage from './BotProfileImage';
 import { SentTime, BodyContainer } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
-import { isLastMessageInStreaming } from '../utils/messages';
 
 const Root = styled.span`
   display: flex;
@@ -34,15 +31,14 @@ const Content = styled.div`
 
 type Props = {
   botUser?: User;
-  message: CoreMessageType;
+  createdAt: number;
+  messageData?: string;
   bodyComponent: ReactNode;
   chainTop?: boolean;
   chainBottom?: boolean;
   messageCount?: number;
   zIndex?: number;
-  isBotWelcomeMessage?: boolean;
-  isLastBotMessage?: boolean;
-  isFormMessage?: boolean;
+  messageFeedback?: ReactNode;
 };
 
 const ImageContainer = styled.div``;
@@ -52,31 +48,32 @@ const EmptyImageContainer = styled.div`
 `;
 
 export default function BotMessageWithBodyInput(props: Props) {
-  const { enableEmojiFeedback } = useConstantState();
+  const { botStudioEditProps } = useConstantState();
+
   const {
     botUser,
-    message,
+    createdAt,
     bodyComponent,
     messageCount,
     zIndex,
     chainTop,
     chainBottom,
-    isBotWelcomeMessage,
-    isLastBotMessage,
-    isFormMessage = false,
+    messageFeedback,
   } = props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
   const displaySender = nonChainedMessage || chainTop;
+  const botProfileUrl =
+    botStudioEditProps?.botProfileImageUrl ?? botUser?.profileUrl;
 
   return (
     <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
       {displayProfileImage ? (
         <ImageContainer>
-          {botUser?.profileUrl != null && botUser.profileUrl != '' ? (
+          {botProfileUrl != null && botProfileUrl != '' ? (
             <Avatar
-              src={botUser.profileUrl}
+              src={botProfileUrl}
               alt="botProfileImage"
               height="28px"
               width="28px"
@@ -104,13 +101,9 @@ export default function BotMessageWithBodyInput(props: Props) {
         )}
         <Content>
           {bodyComponent}
-          <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+          <SentTime>{formatCreatedAtToAMPM(createdAt)}</SentTime>
         </Content>
-        {enableEmojiFeedback &&
-          displayProfileImage &&
-          !isBotWelcomeMessage &&
-          !(isLastBotMessage && isLastMessageInStreaming(message)) &&
-          !isFormMessage && <BotMessageFeedback message={message} />}
+        {displayProfileImage && messageFeedback}
       </BodyContainer>
     </Root>
   );

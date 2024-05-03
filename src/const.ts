@@ -83,6 +83,37 @@ type FirstMessageItem = {
 type MatchString = string;
 type ReplaceString = string;
 
+export interface WidgetStyles {
+  theme?: 'light' | 'dark';
+  primaryColor?: string; // Color for messages sent by me, suggested replies, etc.
+  botMessageColor?: string;
+}
+
+export interface WelcomeUserMessage {
+  message: string;
+  suggestedReplies?: string[];
+}
+
+// TODO: support this later.
+// export interface WelcomeFileMessage {
+//   file?: File | Blob | FileUrlInfo;
+//   suggestedReplies?: string[];
+// }
+
+export interface FileUrlInfo {
+  url?: string;
+  name?: string;
+  size?: number;
+  type?: string; // mime type
+}
+
+export interface BotStudioEditProps {
+  botProfileImageUrl?: string;
+  aiAttributes?: object;
+  welcomeMessages?: Array<WelcomeUserMessage>;
+  styles?: WidgetStyles;
+}
+
 export interface Constant {
   botNickName: string;
   userNickName: string;
@@ -111,6 +142,7 @@ export interface Constant {
   serviceName: string;
   callbacks?: SendbirdChatAICallbacks;
   deviceType?: 'desktop' | 'mobile';
+  botStudioEditProps?: BotStudioEditProps;
 }
 
 export interface SuggestedReply {
