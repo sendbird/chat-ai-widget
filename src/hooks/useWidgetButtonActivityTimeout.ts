@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 import { useChannelStyle } from './useChannelStyle';
+import { useConstantState } from '../context/ConstantContext';
 
 const WS_IDLE_TIMEOUT = 1000 * 60 * 3;
 
@@ -11,6 +12,7 @@ const WS_IDLE_TIMEOUT = 1000 * 60 * 3;
  * when the widget button is not clicked for a certain amount of time
  */
 function useWidgetButtonActivityTimeout() {
+  const { autoOpen } = useConstantState();
   const channelStyle = useChannelStyle();
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const store = useSendbirdStateContext();
@@ -36,8 +38,10 @@ function useWidgetButtonActivityTimeout() {
       return;
     }
 
+    const autoOpenValue = autoOpen ?? channelStyle.autoOpen;
+
     // We only need to run this logic when autoOpen is disabled
-    if (channelStyle?.autoOpen) {
+    if (autoOpenValue) {
       button.removeEventListener('click', handleClick);
       clearTimer();
     } else {
@@ -51,7 +55,7 @@ function useWidgetButtonActivityTimeout() {
       button.removeEventListener('click', handleClick);
       clearTimer();
     };
-  }, [sdk, initialized, channelStyle?.autoOpen]);
+  }, [sdk, initialized, channelStyle.autoOpen, autoOpen]);
 }
 
 export default useWidgetButtonActivityTimeout;
