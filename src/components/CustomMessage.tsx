@@ -97,7 +97,7 @@ export default function CustomMessage(props: Props) {
   // Sent by other users
   if (
     message.isUserMessage() &&
-    getSenderUserIdFromMessage(message) !== (botUser?.userId ?? '##bot_id##')
+    getSenderUserIdFromMessage(message) !== botUser?.userId
   ) {
     return (
       <div ref={lastMessageRef}>
