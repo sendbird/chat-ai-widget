@@ -1,3 +1,8 @@
+## [1.5.3] (May 3 2024)
+#### Fix:
+- Fixed errors occurring when removing a channel or when the bot leaves.
+- Fixed types path correctly.
+
 ## [1.5.2] (May 2 2024)
 #### Fix:
 - Fixed an accidental disconnect issue.
