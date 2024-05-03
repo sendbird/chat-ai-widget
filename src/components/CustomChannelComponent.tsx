@@ -128,8 +128,6 @@ export function CustomChannelComponent() {
     refresh,
   } = useGroupChannelContext();
 
-  // const channel: typeof currentChannel = null;
-
   const botUser = channel?.members.find((member) => member.userId === botId);
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
