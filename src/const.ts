@@ -7,7 +7,7 @@ import { StringSet } from '@uikit/ui/Label/stringSet';
 
 import type { ToggleButtonProps } from './components/WidgetToggleButton';
 import RefreshIcon from './icons/refresh-icon.svg';
-import { SendbirdChatAICallbacks } from './interfaces';
+import { SendbirdChatAICallbacks } from './types';
 import { noop } from './utils';
 
 // Most of browsers use a 32-bit signed integer as the maximum value for z-index
