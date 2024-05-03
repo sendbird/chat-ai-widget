@@ -1,5 +1,7 @@
 import { User } from '@sendbird/chat';
-import { BaseMessage, UserMessage } from '@sendbird/chat/message';
+import React from 'react';
+
+import { CoreMessageType } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
@@ -7,7 +9,7 @@ import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
-import FormMessage, { Form } from './FormMessage';
+import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
@@ -19,12 +21,16 @@ import {
   replaceTextExtractsMultiple,
   Token,
 } from '../utils';
-import { isFormMessage, isLocalMessageCustomType } from '../utils/messages';
+import {
+  getSenderUserIdFromMessage,
+  isFormMessage,
+  isLocalMessageCustomType,
+} from '../utils/messages';
 
 type Props = {
-  message: BaseMessage;
+  message: CoreMessageType;
   activeSpinnerId: number;
-  botUser: User;
+  botUser?: User;
   lastMessageRef: React.RefObject<HTMLDivElement>;
   isBotWelcomeMessage: boolean;
   isLastBotMessage: boolean;
@@ -62,8 +68,7 @@ export default function CustomMessage(props: Props) {
   }
 
   if (isFormMessage(message)) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const forms: Form[] = message.extendedMessagePayload!.forms as Form[];
+    const forms = message.extendedMessagePayload.forms;
     return (
       <BotMessageWithBodyInput
         {...commonProps}
@@ -75,19 +80,25 @@ export default function CustomMessage(props: Props) {
   }
 
   // Sent by current user
-  if ((message as UserMessage).sender?.userId === userId) {
+  if (
+    message.isUserMessage() &&
+    getSenderUserIdFromMessage(message) === userId
+  ) {
     return (
       <div>
-        {<CurrentUserMessage message={message as UserMessage} />}
-        {activeSpinnerId === message.messageId && (
-          <CustomTypingIndicatorBubble botProfileUrl={botUser?.profileUrl} />
+        {<CurrentUserMessage message={message} />}
+        {activeSpinnerId === message.messageId && botUser && (
+          <CustomTypingIndicatorBubble botProfileUrl={botUser.profileUrl} />
         )}
       </div>
     );
   }
 
   // Sent by other users
-  if (message.isUserMessage() && message.sender?.userId !== botUser.userId) {
+  if (
+    message.isUserMessage() &&
+    getSenderUserIdFromMessage(message) !== (botUser?.userId ?? '##bot_id##')
+  ) {
     return (
       <div ref={lastMessageRef}>
         {
@@ -110,9 +121,7 @@ export default function CustomMessage(props: Props) {
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}
-          bodyComponent={
-            <SuggestedReplyMessageBody message={message as UserMessage} />
-          }
+          bodyComponent={<SuggestedReplyMessageBody message={message} />}
         />
       );
     }
@@ -128,33 +137,34 @@ export default function CustomMessage(props: Props) {
     );
   }
 
-  // Normal message
-  const tokens: Token[] = MessageTextParser((message as UserMessage).message);
-  tokens.forEach((token: Token) => {
-    if (token.type === 'String') {
-      // Redact text to replacementTextList
-      token.value = replaceTextExtractsMultiple(
-        token.value,
-        replacementTextList
-      );
+  if (message.isUserMessage()) {
+    // Normal message
+    const tokens: Token[] = MessageTextParser(message.message);
+    tokens.forEach((token: Token) => {
+      if (token.type === 'String') {
+        // Redact text to replacementTextList
+        token.value = replaceTextExtractsMultiple(
+          token.value,
+          replacementTextList
+        );
 
-      // Convert url string to component --> handled by ParsedBotMessageBody > RegexText
-      // token.value = replaceUrl(token.value);
-    }
-  });
+        // Convert url string to component --> handled by ParsedBotMessageBody > RegexText
+        // token.value = replaceUrl(token.value);
+      }
+    });
 
-  return (
-    <div ref={lastMessageRef}>
-      <BotMessageWithBodyInput
-        {...commonProps}
-        botUser={botUser}
-        bodyComponent={
-          <ParsedBotMessageBody
-            message={message as UserMessage}
-            tokens={tokens}
-          />
-        }
-      />
-    </div>
-  );
+    return (
+      <div ref={lastMessageRef}>
+        <BotMessageWithBodyInput
+          {...commonProps}
+          botUser={botUser}
+          bodyComponent={
+            <ParsedBotMessageBody message={message} tokens={tokens} />
+          }
+        />
+      </div>
+    );
+  }
+
+  return <></>;
 }

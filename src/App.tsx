@@ -1,15 +1,17 @@
+import React from 'react';
+
+import { StringSet } from '@uikit/ui/Label/stringSet';
+
 import ChatAiWidget from './components/ChatAiWidget'; //import { ChatAiWidget } from "@sendbird/chat-ai-widget";
+import { ToggleButtonProps } from './components/WidgetToggleButton';
 import { Constant } from './const';
 
-interface Props extends Partial<Constant> {
+interface Props extends Omit<Partial<Constant>, 'stringSet'> {
   applicationId?: string;
   botId?: string;
   autoOpen?: boolean;
-  renderWidgetToggleButton?: (props: {
-    onClick: () => void;
-    accentColor: string;
-    isOpen: boolean;
-  }) => React.ReactElement;
+  renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
+  stringSet?: Partial<StringSet>;
 }
 
 const App = (props: Props) => {

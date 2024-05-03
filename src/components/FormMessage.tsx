@@ -1,10 +1,9 @@
 import { useCallback, useState, useEffect } from 'react';
-// eslint-disable-next-line import/no-unresolved
 import styled from 'styled-components';
 
-import type { EveryMessage } from '@uikit/types';
 import Button from '@uikit/ui/Button';
 import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
+import { CoreMessageType } from '@uikit/utils';
 
 import Input from './FormInput';
 
@@ -24,7 +23,7 @@ export interface Form {
   data: Record<string, string>;
 }
 interface Props {
-  message: EveryMessage;
+  message: CoreMessageType;
   form: Form;
 }
 

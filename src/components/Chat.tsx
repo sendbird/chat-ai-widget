@@ -11,6 +11,7 @@ const Chat = () => {
   useWidgetButtonActivityTimeout();
   useManualGroupChannelCreation();
   const { channelUrl } = useWidgetLocalStorage();
+  if (!channelUrl) return <></>;
 
   return (
     <GroupChannelProvider channelUrl={channelUrl} scrollBehavior="smooth">

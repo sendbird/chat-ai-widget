@@ -1,26 +1,19 @@
 import React, {
   createContext,
-  useContext,
-  useState,
   Dispatch,
   SetStateAction,
+  useContext,
+  useState,
 } from 'react';
 
 import { noop } from '../utils';
 
-interface Props {
+const WidgetOpenContext = createContext<{
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-}
+}>({ isOpen: false, setIsOpen: noop });
 
-const WidgetOpenContext = createContext<Props>({
-  isOpen: false,
-  setIsOpen: noop,
-});
-
-type ProviderProps = React.PropsWithChildren<Props>;
-
-export const WidgetOpenProvider: React.FC<ProviderProps> = ({ children }) => {
+export const WidgetOpenProvider = ({ children }: React.PropsWithChildren) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -30,7 +23,7 @@ export const WidgetOpenProvider: React.FC<ProviderProps> = ({ children }) => {
   );
 };
 
-export const useWidgetOpen = (): Props => {
+export const useWidgetOpen = () => {
   const context = useContext(WidgetOpenContext);
   if (context === undefined) {
     throw new Error('useWidgetOpen must be used within an WidgetOpenProvider');

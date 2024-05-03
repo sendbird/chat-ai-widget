@@ -41,7 +41,7 @@ const Panel = styled.div`
 `;
 
 interface Props {
-  botUser: User;
+  botUser?: User;
 }
 
 const StaticRepliesPanel = (props: Props) => {
@@ -85,7 +85,7 @@ const StaticRepliesPanel = (props: Props) => {
         channelUrl: channel?.url,
         channelType: ChannelType.GROUP,
         createdAt, // FIXME: ms? or seconds? sorted by this or id?
-        sender: botUser.serialize(),
+        sender: botUser?.serialize(),
         sendingStatus: SendingStatus.SUCCEEDED,
         messageType: MessageType.USER,
         message: removedReply.text,

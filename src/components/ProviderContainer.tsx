@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useRef, useMemo } from 'react';
+import { useMemo } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import SendbirdProvider from '@uikit/lib/Sendbird';
@@ -31,7 +31,6 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     apiHost,
     wsHost,
     serviceName,
-    ...restConstantProps
   } = useConstantState();
   useDynamicAttachModal();
 
@@ -48,7 +47,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     return userAgent;
   }, []);
 
-  const { isFetching, theme, accentColor, botMessageBGColor, autoOpen } =
+  const { isFetching, theme, accentColor, botMessageBGColor } =
     useChannelStyle();
 
   const styledTheme = getTheme({
@@ -74,41 +73,45 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
 
   return (
     <WidgetOpenProvider
-      isOpen={
-        isMobile
-          ? // we don't want to open the widget window automatically on mobile view
-            false
-          : restConstantProps.autoOpen ?? autoOpen ?? false
-      }
+    // Currently, it is handled by useEffect in WidgetToggleButton.
+    //
+    // isOpen={
+    //   isMobile
+    //     ? // we don't want to open the widget window automatically on mobile view
+    //       false
+    //     : restConstantProps.autoOpen ?? autoOpen ?? false
+    // }
     >
       <ThemeProvider theme={styledTheme}>
-        <SendbirdProvider
-          appId={applicationId}
-          userId={userId}
-          accessToken={sessionToken}
-          nickname={userNickName}
-          customApiHost={apiHost}
-          customWebSocketHost={wsHost}
-          configureSession={configureSession}
-          customExtensionParams={userAgentCustomParams}
-          breakpoint={isMobile}
-          isMentionEnabled={enableMention}
-          theme={theme}
-          colorSet={customColorSet}
-          stringSet={stringSet}
-          uikitOptions={{
-            groupChannel: {
-              input: {
-                // To hide the file upload icon from the message input
-                enableDocument: false,
+        {applicationId && userId && (
+          <SendbirdProvider
+            appId={applicationId}
+            userId={userId}
+            accessToken={sessionToken}
+            nickname={userNickName}
+            customApiHost={apiHost}
+            customWebSocketHost={wsHost}
+            configureSession={configureSession}
+            customExtensionParams={userAgentCustomParams}
+            breakpoint={isMobile}
+            isMentionEnabled={enableMention}
+            theme={theme}
+            colorSet={customColorSet}
+            stringSet={stringSet}
+            uikitOptions={{
+              groupChannel: {
+                input: {
+                  // To hide the file upload icon from the message input
+                  enableDocument: false,
+                },
+                enableVoiceMessage: false,
+                enableFeedback: enableEmojiFeedback,
               },
-              enableVoiceMessage: false,
-              enableFeedback: enableEmojiFeedback,
-            },
-          }}
-        >
-          {children}
-        </SendbirdProvider>
+            }}
+          >
+            {children}
+          </SendbirdProvider>
+        )}
       </ThemeProvider>
     </WidgetOpenProvider>
   );

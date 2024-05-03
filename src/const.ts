@@ -5,6 +5,7 @@ import React from 'react';
 
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
+import type { ToggleButtonProps } from './components/WidgetToggleButton';
 import RefreshIcon from './icons/refresh-icon.svg';
 import { SendbirdChatAICallbacks } from './interfaces';
 import { noop } from './utils';
@@ -12,7 +13,7 @@ import { noop } from './utils';
 // Most of browsers use a 32-bit signed integer as the maximum value for z-index
 export const MAX_Z_INDEX = 2147483647;
 
-export const DEFAULT_CONSTANT: Constant = {
+export const DEFAULT_CONSTANT = {
   botNickName: 'Khan Academy Support Bot',
   userNickName: 'User',
   betaMark: false,
@@ -53,12 +54,13 @@ export const DEFAULT_CONSTANT: Constant = {
     width: '16px',
     height: '16px',
     onClick: noop,
+    style: {},
   },
   enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
   enableMobileView: true,
-};
+} satisfies Partial<Constant>;
 
 type ConfigureSession = (
   sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat
@@ -96,13 +98,10 @@ export interface Constant {
   wsHost: string;
   userId?: string;
   configureSession?: ConfigureSession;
-  stringSet?: Partial<StringSet>;
+  stringSet: StringSet;
   customUserAgentParam?: Record<any, any>;
   autoOpen?: boolean;
-  renderWidgetToggleButton?: (props: {
-    onClick: () => void;
-    isOpen: boolean;
-  }) => React.ReactElement;
+  renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
   serviceName: string;
   callbacks?: SendbirdChatAICallbacks;
 }

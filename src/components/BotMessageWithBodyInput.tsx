@@ -1,10 +1,10 @@
 import { User } from '@sendbird/chat';
-import { BaseMessage } from '@sendbird/chat/message';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Avatar from '@uikit/ui/Avatar';
 import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
+import { CoreMessageType } from '@uikit/utils';
 
 import BotMessageFeedback from './BotMessageFeedback';
 import BotProfileImage from './BotProfileImage';
@@ -33,8 +33,8 @@ const Content = styled.div`
 `;
 
 type Props = {
-  botUser: User;
-  message: BaseMessage;
+  botUser?: User;
+  message: CoreMessageType;
   bodyComponent: ReactNode;
   chainTop?: boolean;
   chainBottom?: boolean;
@@ -99,7 +99,7 @@ export default function BotMessageWithBodyInput(props: Props) {
             type={LabelTypography.CAPTION_2}
             color={LabelColors.ONBACKGROUND_2}
           >
-            {botUser.nickname}
+            {botUser?.nickname}
           </Sender>
         )}
         <Content>
