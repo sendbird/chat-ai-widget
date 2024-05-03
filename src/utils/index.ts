@@ -274,6 +274,13 @@ export const localStorageHelper = () => {
         store[key] = value;
       }
     },
+    deleteItem: (key: string) => {
+      try {
+        localStorage.removeItem(key);
+      } catch (error) {
+        delete store[key];
+      }
+    },
   };
 };
 
