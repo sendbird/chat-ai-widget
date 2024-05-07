@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { elementIds } from '../const';
+import {elementIds, MAX_Z_INDEX} from '../const';
 
 const parentId = elementIds.widgetWindow;
 const childId = elementIds.uikitModal;
@@ -14,10 +14,12 @@ function useDynamicAttachModal() {
           // Check if the added nodes include the one with parentId
           Array.from(mutation.addedNodes).forEach((node) => {
             if (node?.id === parentId) {
-              const parent = document.getElementById(parentId);
-              const child = document.getElementById(childId);
-              if (parent && child && child.parentNode === document.body) {
-                parent.appendChild(child);
+              const parent = document.getElementById(parentId); // aichatbot-widget-window
+              const child = document.getElementById(childId); // sendbird-modal-root
+              if (parent && child && child?.parentNode) {
+                child?.parentNode.appendChild(child);
+                child.style.position = 'absolute';
+                child.style.zIndex = MAX_Z_INDEX + 1 + '';
                 // Disconnect the observer once the child is attached
                 observer.disconnect();
               }

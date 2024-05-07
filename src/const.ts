@@ -11,7 +11,7 @@ import { SendbirdChatAICallbacks } from './types';
 import { noop } from './utils';
 
 // Most of browsers use a 32-bit signed integer as the maximum value for z-index
-export const MAX_Z_INDEX = 2147483647;
+export const MAX_Z_INDEX = 1000;
 
 export const DEFAULT_CONSTANT = {
   botNickName: 'Khan Academy Support Bot',
