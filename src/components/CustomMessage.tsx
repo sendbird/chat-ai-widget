@@ -62,7 +62,7 @@ export default function CustomMessage(props: Props) {
 
   // admin message
   if (message.isAdminMessage()) {
-    return <div>{<AdminMessage message={message} />}</div>;
+    return <AdminMessage message={message} />;
   }
 
   if (isFormMessage(message)) {
@@ -98,16 +98,12 @@ export default function CustomMessage(props: Props) {
     getSenderUserIdFromMessage(message) !== botUser?.userId
   ) {
     return (
-      <div>
-        {
-          <UserMessageWithBodyInput
-            {...commonProps}
-            message={message}
-            user={message.sender}
-            bodyComponent={<CustomMessageBody message={message.message} />}
-          />
-        }
-      </div>
+      <UserMessageWithBodyInput
+        {...commonProps}
+        message={message}
+        user={message.sender}
+        bodyComponent={<CustomMessageBody message={message.message} />}
+      />
     );
   }
 
@@ -152,15 +148,13 @@ export default function CustomMessage(props: Props) {
     });
 
     return (
-      <div>
-        <BotMessageWithBodyInput
-          {...commonProps}
-          botUser={botUser}
-          bodyComponent={
-            <ParsedBotMessageBody message={message} tokens={tokens} />
-          }
-        />
-      </div>
+      <BotMessageWithBodyInput
+        {...commonProps}
+        botUser={botUser}
+        bodyComponent={
+          <ParsedBotMessageBody message={message} tokens={tokens} />
+        }
+      />
     );
   }
 
