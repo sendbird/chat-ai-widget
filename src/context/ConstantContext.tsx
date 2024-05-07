@@ -10,7 +10,6 @@ const initialState = DEFAULT_CONSTANT;
 interface ConstantContextProps extends Partial<Constant> {
   applicationId: string | null;
   botId: string | null;
-  isMobileView: boolean;
 }
 interface ConstantContextValue extends Constant {
   applicationId: string | null;
