@@ -171,7 +171,7 @@ export const isMobile = (deviceType?: 'mobile' | 'desktop') => {
   if (deviceType === 'mobile') return true;
   if (deviceType === 'desktop') return false;
   return isIOSMobile || isAndroidMobile;
-}
+};
 
 export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
   const REMOVE_POWERED_BY = 'remove_powered_by';

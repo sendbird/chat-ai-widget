@@ -5,10 +5,9 @@ import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
 import { elementIds, type Constant, WIDGET_WINDOW_Z_INDEX } from '../const';
-import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import useMobileView from '../hooks/useMobileView';
-import {isMobile} from '../utils';
+import { isMobile } from '../utils';
 
 const MobileContainer = styled.div<{ width: number }>`
   position: fixed;
