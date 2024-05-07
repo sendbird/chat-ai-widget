@@ -12,6 +12,8 @@ import { noop } from './utils';
 
 // Most of browsers use a 32-bit signed integer as the maximum value for z-index
 export const MAX_Z_INDEX = 2147483647;
+// .sendbird-modal-root will be on top of the widget window
+export const WIDGET_WINDOW_Z_INDEX = MAX_Z_INDEX - 1;
 
 export const DEFAULT_CONSTANT = {
   botNickName: 'Khan Academy Support Bot',

@@ -91,3 +91,8 @@ input:focus {
   display: flex;
   gap: 4px;
 }
+
+.sendbird-modal-root {
+  position: absolute;
+  z-index: 2147483647;
+}
