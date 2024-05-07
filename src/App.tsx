@@ -43,6 +43,7 @@ const App = (props: Props) => {
       renderWidgetToggleButton={props.renderWidgetToggleButton}
       serviceName={props.serviceName}
       callbacks={props.callbacks}
+      deviceType={props.deviceType}
     />
   );
 };

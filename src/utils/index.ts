@@ -167,7 +167,11 @@ export function noop() {}
 
 export const isIOSMobile = /iPad|iPhone|iPod/.test(navigator.userAgent);
 export const isAndroidMobile = /Android/.test(navigator.userAgent);
-export const isMobile = isIOSMobile || isAndroidMobile;
+export const isMobile = (deviceType?: 'mobile' | 'desktop') => {
+  if (deviceType === 'mobile') return true;
+  if (deviceType === 'desktop') return false;
+  return isIOSMobile || isAndroidMobile;
+};
 
 export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
   const REMOVE_POWERED_BY = 'remove_powered_by';

@@ -58,7 +58,7 @@ export interface ChatAiWidgetProps extends Partial<Constant> {
 export default function ChatAiWidget(props: ChatAiWidgetProps) {
   return (
     <ProviderContainer {...props}>
-      {isMobile ? <MobileComponent /> : <DesktopComponent />}
+      {isMobile(props.deviceType) ? <MobileComponent /> : <DesktopComponent />}
     </ProviderContainer>
   );
 }

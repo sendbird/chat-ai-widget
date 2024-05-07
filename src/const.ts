@@ -106,6 +106,7 @@ export interface Constant {
   renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
   serviceName: string;
   callbacks?: SendbirdChatAICallbacks;
+  deviceType?: 'desktop' | 'mobile';
 }
 
 export interface SuggestedReply {

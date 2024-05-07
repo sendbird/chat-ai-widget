@@ -8,7 +8,6 @@ import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import ArrowDownIcon from '../icons/ic-arrow-down.svg';
 import ChatBotIcon from '../icons/icon-widget-chatbot.svg';
-import { isMobile } from '../utils';
 
 const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
   position: fixed;
@@ -114,7 +113,8 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
 
 export default function WidgetToggleButton() {
   const { isFetching, ...channelStyle } = useChannelStyle();
-  const { autoOpen, renderWidgetToggleButton } = useConstantState();
+  const { autoOpen, renderWidgetToggleButton, isMobileView } =
+    useConstantState();
   const { isOpen, setIsOpen } = useWidgetOpen();
   const timer = useRef<NodeJS.Timeout | null>(null);
 
@@ -127,7 +127,7 @@ export default function WidgetToggleButton() {
   };
 
   useEffect(() => {
-    if (!isMobile && (autoOpen || channelStyle.autoOpen)) {
+    if (!isMobileView && (autoOpen || channelStyle.autoOpen)) {
       timer.current = setTimeout(() => setIsOpen(true), 100);
     }
   }, [channelStyle.autoOpen, autoOpen]);

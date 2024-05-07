@@ -9,17 +9,16 @@ import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
 import { CoreMessageType } from '@uikit/utils';
 
 import { useConstantState } from '../context/ConstantContext';
-import { isMobile } from '../utils';
 
 function BotMessageFeedback({ message }: { message: CoreMessageType }) {
-  const { stringSet } = useConstantState();
+  const { stringSet, isMobileView } = useConstantState();
   const [showFeedbackOptionsMenu, setShowFeedbackOptionsMenu] =
     useState<boolean>(false);
   const [showFeedbackModal, setShowFeedbackModal] = useState<boolean>(false);
   const [feedbackFailedText, setFeedbackFailedText] = useState<string>('');
 
   const openFeedbackFormOrMenu = () => {
-    if (isMobile) {
+    if (isMobileView) {
       setShowFeedbackOptionsMenu(true);
     } else {
       setShowFeedbackModal(true);
