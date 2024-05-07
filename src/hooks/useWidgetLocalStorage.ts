@@ -4,9 +4,21 @@ import { useConstantState } from '../context/ConstantContext';
 import { localStorageHelper } from '../utils';
 
 const CHAT_AI_WIDGET_LOCAL_STORAGE_KEY_PREFIX = '@sendbird/chat-ai-widget';
-const getLocalStorageKey = (appId: string, botId: string) => {
+const getLocalStorageKey = (appId: string | null, botId: string | null) => {
+  if (!appId || !botId) {
+    throw new Error('appId and botId is required to save to storage');
+  }
   return `${CHAT_AI_WIDGET_LOCAL_STORAGE_KEY_PREFIX}/${appId}/${botId}`;
 };
+
+/**
+ * Call this function if the bot has been deleted.
+ * Otherwise, users may join channels where the bot does not exist.
+ * */
+export function clearCache(params: { appId: string; botId: string }) {
+  const localStorageKey = getLocalStorageKey(params.appId, params.botId);
+  localStorageHelper().deleteItem(localStorageKey);
+}
 
 export function saveToLocalStorage(
   key: {
