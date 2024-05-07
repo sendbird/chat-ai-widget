@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { MAX_Z_INDEX, elementIds } from '../const';
+import { WIDGET_WINDOW_Z_INDEX, elementIds } from '../const';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import CloseIcon from '../icons/ic-widget-close.svg';
 
@@ -33,7 +33,7 @@ const StyledWidgetWindowWrapper = styled.div<{
     return (
       isOpen &&
       css`
-        z-index: ${MAX_Z_INDEX};
+        z-index: ${WIDGET_WINDOW_Z_INDEX};
         pointer-events: all;
         transform: scale(1);
         opacity: 1;

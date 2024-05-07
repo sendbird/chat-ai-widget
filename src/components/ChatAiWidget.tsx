@@ -4,14 +4,14 @@ import Chat from './Chat';
 import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
-import { MAX_Z_INDEX, elementIds, type Constant } from '../const';
+import { elementIds, type Constant, WIDGET_WINDOW_Z_INDEX } from '../const';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import useMobileView from '../hooks/useMobileView';
 import { isMobile } from '../utils';
 
 const MobileContainer = styled.div<{ width: number }>`
   position: fixed;
-  z-index: ${MAX_Z_INDEX};
+  z-index: ${WIDGET_WINDOW_Z_INDEX};
   top: 0;
   left: 0;
   width: ${({ width }) => `${width}px`};

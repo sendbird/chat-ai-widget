@@ -12,7 +12,6 @@ import {
 } from '../context/ConstantContext';
 import { WidgetOpenProvider } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
-import useDynamicAttachModal from '../hooks/useDynamicAttachModal';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
 import { isDashboardPreview, isMobile } from '../utils';
@@ -32,7 +31,6 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     wsHost,
     serviceName,
   } = useConstantState();
-  useDynamicAttachModal();
 
   const userAgentCustomParams = useMemo(() => {
     const userAgent: Record<string, any> = {
