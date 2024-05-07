@@ -14,7 +14,7 @@ import { WidgetOpenProvider } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
-import { isDashboardPreview, isMobile } from '../utils';
+import { isDashboardPreview } from '../utils';
 
 const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
 
@@ -30,6 +30,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     apiHost,
     wsHost,
     serviceName,
+    isMobileView,
   } = useConstantState();
 
   const userAgentCustomParams = useMemo(() => {
@@ -91,7 +92,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
             customWebSocketHost={wsHost}
             configureSession={configureSession}
             customExtensionParams={userAgentCustomParams}
-            breakpoint={isMobile}
+            breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.
             isMentionEnabled={enableMention}
             theme={theme}
             colorSet={customColorSet}

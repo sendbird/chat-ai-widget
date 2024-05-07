@@ -2,10 +2,9 @@ import { useEffect, useState, useMemo } from 'react';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
-import { isMobile } from '../utils';
 
 export default function useMobileView() {
-  const { enableMobileView } = useConstantState();
+  const { enableMobileView, isMobileView } = useConstantState();
   const { isOpen: isWidgetOpen } = useWidgetOpen();
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
@@ -38,7 +37,7 @@ export default function useMobileView() {
         window.scrollTo(0, parseInt(originalTop || '0') * -1);
       }
     }
-    if (isWidgetOpen && isMobile) {
+    if (isWidgetOpen && isMobileView) {
       originalTop = `${window.scrollY}px`;
 
       document.body.style.position = 'fixed';
@@ -50,7 +49,7 @@ export default function useMobileView() {
     return () => {
       setToOriginalPosition();
     };
-  }, [isWidgetOpen, isMobile]);
+  }, [isWidgetOpen, isMobileView]);
 
   return useMemo(
     () => ({

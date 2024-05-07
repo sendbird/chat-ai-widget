@@ -9,7 +9,7 @@ import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import CloseButton from '../icons/ic-widget-close.svg';
-import { isMobile, isEmpty } from '../utils';
+import { isEmpty } from '../utils';
 
 const Root = styled.div`
   display: flex;
@@ -70,7 +70,7 @@ export default function CustomChannelHeader({
   channelName,
   onRenewButtonClick,
 }: Props) {
-  const { betaMark, customBetaMarkText, customRefreshComponent } =
+  const { betaMark, customBetaMarkText, customRefreshComponent, isMobileView } =
     useConstantState();
   const { setIsOpen } = useWidgetOpen();
 
@@ -104,7 +104,7 @@ export default function CustomChannelHeader({
         <Title type={LabelTypography.H_2} color={LabelColors.ONBACKGROUND_1}>
           {botNickname || channelName}
         </Title>
-        {!isMobile && betaMark && <BetaLogo>{customBetaMarkText}</BetaLogo>}
+        {!isMobileView && betaMark && <BetaLogo>{customBetaMarkText}</BetaLogo>}
       </SubContainer>
       <RenewButtonContainer>
         <RenewButtonForWidgetDemo
@@ -120,7 +120,7 @@ export default function CustomChannelHeader({
               isEmpty(customRefreshComponent.style)
                 ? {
                     position: 'relative',
-                    right: isMobile
+                    right: isMobileView
                       ? 0
                       : // to make the refresh icon appear next to the close icon in the widget window
                         26,
@@ -129,7 +129,7 @@ export default function CustomChannelHeader({
             }
           />
         </RenewButtonForWidgetDemo>
-        {isMobile && (
+        {isMobileView && (
           <CloseButton
             aria-label="Close widget"
             type="button"

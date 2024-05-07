@@ -3,17 +3,19 @@ import { createContext, useContext, useMemo } from 'react';
 import { LabelStringSet } from '@uikit/ui/Label';
 
 import { type Constant, DEFAULT_CONSTANT } from '../const';
-import { getDefaultServiceName } from '../utils';
+import { getDefaultServiceName, isMobile } from '../utils';
 
 const initialState = DEFAULT_CONSTANT;
 
 interface ConstantContextProps extends Partial<Constant> {
   applicationId: string | null;
   botId: string | null;
+  isMobileView: boolean;
 }
 interface ConstantContextValue extends Constant {
   applicationId: string | null;
   botId: string | null;
+  isMobileView: boolean;
 }
 const ConstantContext = createContext<ConstantContextValue | null>(null);
 
@@ -88,6 +90,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       apiHost:
         props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
       wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
+      isMobileView: isMobile(props.deviceType),
     }),
     [props]
   );
