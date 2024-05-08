@@ -13,7 +13,7 @@ const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   flex-wrap: wrap-reverse;
   gap: 8px;
   margin-top: ${({ enableEmojiFeedback }) =>
-    enableEmojiFeedback ? '20px' : '0'};
+    enableEmojiFeedback ? '16px' : '0'};
 `;
 
 type Props = {
