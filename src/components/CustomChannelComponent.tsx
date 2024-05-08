@@ -27,6 +27,7 @@ import {
   getBotWelcomeMessages,
   groupMessagesByShortSpanTime,
   isStaticReplyVisible as getStaticMessageVisibility,
+  shouldFilterMessage,
 } from '../utils/messages';
 
 interface RootStyleProps {
@@ -211,6 +212,8 @@ export function CustomChannelComponent() {
           />
         )}
         renderMessage={({ message, ...props }) => {
+          if (shouldFilterMessage(message)) return <></>;
+
           const grouppedMessage = grouppedMessages.find(
             (m) => m.messageId == message.messageId
           );

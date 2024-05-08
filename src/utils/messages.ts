@@ -1,4 +1,4 @@
-import { BaseMessage, UserMessage } from '@sendbird/chat/message';
+import { AdminMessage, BaseMessage, UserMessage } from '@sendbird/chat/message';
 
 import { CoreMessageType } from '@uikit/utils';
 
@@ -180,4 +180,16 @@ export function getSenderUserIdFromMessage(
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return message?.sender?.userId ?? undefined;
+}
+
+const messageFilter = {
+  isSystemMessageFromSalesforce: (message: AdminMessage) => {
+    return message.message.endsWith('was updated.');
+  },
+};
+export function shouldFilterMessage(message: BaseMessage) {
+  if (message.isAdminMessage()) {
+    return messageFilter.isSystemMessageFromSalesforce(message);
+  }
+  return false;
 }
