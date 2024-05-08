@@ -128,11 +128,6 @@ export function CustomChannelComponent() {
     refresh,
   } = useGroupChannelContext();
 
-  /**
-   * Please keep below comments for easy local testing.
-   */
-  // console.log('## messages: ', allMessages);
-
   const botUser = channel?.members.find((member) => member.userId === botId);
   const lastMessageRef = useRef<HTMLDivElement>(null);
 

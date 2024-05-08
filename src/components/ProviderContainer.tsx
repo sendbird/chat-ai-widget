@@ -70,13 +70,6 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     return null;
   }
 
-  /**
-   * Please keep below comments for easy local testing.
-   */
-  // console.log('## appId: ', applicationId);
-  // console.log('## userId: ', userId);
-  // console.log('## sessionToken: ', sessionToken);
-
   return (
     <WidgetOpenProvider
     // Currently, it is handled by useEffect in WidgetToggleButton.
@@ -112,11 +105,6 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
                 },
                 enableVoiceMessage: false,
                 enableFeedback: enableEmojiFeedback,
-                /**
-                 * Please keep below comments for easy local testing.
-                 */
-                // enableSuggestedReplies: true,
-                // showSuggestedRepliesFor: 'all_messages',
               },
             }}
           >
