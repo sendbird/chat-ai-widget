@@ -7,11 +7,33 @@ import MessageBubbleIcon from '../icons/icon-message-bubble.svg';
 import { FunctionCallData } from '../types';
 import { noop } from '../utils';
 
+const ICON_WIDTH = 16;
+const RIGHT_CONTENT_WIDTH = 92;
+const DATA_ROW_GAP = 8;
+
 const Text = styled.div`
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  max-width: calc(
+    100% - ${ICON_WIDTH}px - ${DATA_ROW_GAP}px - ${DATA_ROW_GAP}px -
+      ${RIGHT_CONTENT_WIDTH}px
+  );
+`;
+
+const TextButton = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  white-space: nowrap;
 `;
 
 const ViewDetails = styled.div`
@@ -52,6 +74,7 @@ const WorkFlowType = styled.div`
   font-weight: 400;
   line-height: 16px;
   padding: 0 4px;
+  white-space: nowrap;
 `;
 
 const Root = styled.div`
@@ -59,6 +82,7 @@ const Root = styled.div`
   justify-content: flex-start;
   margin-top: 16px;
   margin-left: 36px;
+  width: calc(100% - 36px);
 `;
 
 const SideBar = styled.div`
@@ -74,7 +98,7 @@ const DataContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 4px;
-  width: 100%;
+  width: calc(100% - 28px);
   margin-left: 16px;
 `;
 
@@ -82,7 +106,8 @@ const DataRow = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 8px;
+  gap: ${DATA_ROW_GAP}px;
+  width: 100%;
 `;
 
 const AdditionalInfo = styled.div`
@@ -91,6 +116,14 @@ const AdditionalInfo = styled.div`
   font-weight: 400;
   line-height: 16px;
   margin-top: 5px;
+`;
+
+const Icon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
 `;
 
 interface MessageDataContentProps {
@@ -130,13 +163,12 @@ const INTENT_MAP = {
 };
 
 function isObjectOfViewDetailData(object: any): object is FunctionCallData {
-  const { name, request, response_text, status_code, url } = object ?? {};
+  const { name, request, response_text, status_code } = object ?? {};
   return (
     typeof name === 'string' &&
     typeof request === 'object' &&
     typeof response_text === 'string' &&
-    typeof status_code === 'number' &&
-    typeof url === 'string'
+    typeof status_code === 'number'
   );
 }
 
@@ -176,6 +208,7 @@ export default function MessageDataContent({
     try {
       const messageDataObject: MessageDataObject = JSON.parse(messageData);
       const functionCallsData = messageDataObject?.function_calls;
+
       if (
         Array.isArray(functionCallsData) &&
         functionCallsData.length > 0 &&
@@ -216,17 +249,21 @@ export default function MessageDataContent({
       <DataContainer>
         {workflow && (
           <DataRow>
-            <MessageBubbleIcon id="aichatbot-widget-ellipsis-icon" />
+            <Icon>
+              <MessageBubbleIcon id="aichatbot-widget-ellipsis-icon" />
+            </Icon>
             <Text>{workflow.name}</Text>
             <WorkFlowType>{workflow.type}</WorkFlowType>
           </DataRow>
         )}
         {functionCalls.map((renderData, index) => (
           <DataRow key={index}>
-            <EllipsisIcon id="aichatbot-widget-message-bubble-icon" />
+            <Icon>
+              <EllipsisIcon id="aichatbot-widget-message-bubble-icon" />
+            </Icon>
             <Text>{renderData.name}</Text>
             <ViewDetails onClick={renderData.onClick}>
-              <Text>View details</Text>
+              <TextButton>View details</TextButton>
               <ChevronRightIcon id="aichatbot-widget-chevron-right-icon" />
             </ViewDetails>
           </DataRow>
