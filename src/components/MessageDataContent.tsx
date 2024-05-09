@@ -67,6 +67,12 @@ const ViewDetails = styled.div`
   }
 `;
 
+const LineHeightWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  height: 20px;
+`;
+
 const WorkFlowType = styled.div`
   border-radius: 2px;
   border: 1px solid #ccc;
@@ -105,7 +111,7 @@ const DataContainer = styled.div`
 const DataRow = styled.div`
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: ${DATA_ROW_GAP}px;
   width: 100%;
 `;
@@ -123,7 +129,7 @@ const Icon = styled.div`
   justify-content: center;
   align-items: center;
   width: 16px;
-  height: 16px;
+  height: 20px;
 `;
 
 interface MessageDataContentProps {
@@ -253,7 +259,9 @@ export default function MessageDataContent({
               <MessageBubbleIcon id="aichatbot-widget-ellipsis-icon" />
             </Icon>
             <Text>{workflow.name}</Text>
-            <WorkFlowType>{workflow.type}</WorkFlowType>
+            <LineHeightWrapper>
+              <WorkFlowType>{workflow.type}</WorkFlowType>
+            </LineHeightWrapper>
           </DataRow>
         )}
         {functionCalls.map((renderData, index) => (
