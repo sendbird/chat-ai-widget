@@ -182,14 +182,16 @@ export function getSenderUserIdFromMessage(
   return message?.sender?.userId ?? undefined;
 }
 
-const messageFilter = {
-  isSystemMessageFromSalesforce: (message: AdminMessage) => {
-    return message.message === "The channel's custom_type was updated.";
+const msgFilter = {
+  sys: {
+    isCustomTypeUpdated: (message: AdminMessage) => {
+      return message.message === "The channel's custom_type was updated.";
+    },
   },
 };
 export function shouldFilterOutMessage(message: BaseMessage) {
   if (message.isAdminMessage()) {
-    return messageFilter.isSystemMessageFromSalesforce(message);
+    return msgFilter.sys.isCustomTypeUpdated(message);
   }
   return false;
 }
