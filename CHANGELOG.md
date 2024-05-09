@@ -1,3 +1,14 @@
+## [1.5.4] (May 8 2024)
+
+#### Feat:
+- Added a new optional property `deviceType` to Constant. When given, the app fixates its view type accordingly irregardless of change of screen width
+
+#### Fix:
+- Fixed a bug where initial scroll position is not at the bottom when last message has suggested replies
+- Fixed a bug where margin between neighboring messages is not always `16px`
+- Fixed a bug where users join empty channels when a bot is recreated with the same ID
+- Fixed a bug where modal components being rendered beneath chat component
+
 ## [1.5.3] (May 3 2024)
 #### Fix:
 - Fixed errors occurring when removing a channel or when the bot leaves.
