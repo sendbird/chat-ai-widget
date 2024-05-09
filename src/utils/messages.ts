@@ -184,7 +184,7 @@ export function getSenderUserIdFromMessage(
 
 const messageFilter = {
   isSystemMessageFromSalesforce: (message: AdminMessage) => {
-    return message.message.endsWith('was updated.');
+    return message.message === "The channel's custom_type was updated.";
   },
 };
 export function shouldFilterMessage(message: BaseMessage) {
