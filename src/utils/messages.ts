@@ -187,7 +187,7 @@ const messageFilter = {
     return message.message === "The channel's custom_type was updated.";
   },
 };
-export function shouldFilterMessage(message: BaseMessage) {
+export function shouldFilterOutMessage(message: BaseMessage) {
   if (message.isAdminMessage()) {
     return messageFilter.isSystemMessageFromSalesforce(message);
   }

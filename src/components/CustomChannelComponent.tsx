@@ -27,7 +27,7 @@ import {
   getBotWelcomeMessages,
   groupMessagesByShortSpanTime,
   isStaticReplyVisible as getStaticMessageVisibility,
-  shouldFilterMessage,
+  shouldFilterOutMessage,
 } from '../utils/messages';
 
 interface RootStyleProps {
@@ -123,11 +123,16 @@ export function CustomChannelComponent() {
     customUserAgentParam,
   } = useConstantState();
   const {
-    messages: allMessages,
+    messages,
     currentChannel: channel,
     scrollToBottom,
     refresh,
   } = useGroupChannelContext();
+
+  // NOTE: Filter out messages that should not be displayed.
+  const allMessages = messages.filter(
+    (message) => !shouldFilterOutMessage(message)
+  );
 
   const botUser = channel?.members.find((member) => member.userId === botId);
   const lastMessageRef = useRef<HTMLDivElement>(null);
@@ -212,7 +217,8 @@ export function CustomChannelComponent() {
           />
         )}
         renderMessage={({ message, ...props }) => {
-          if (shouldFilterMessage(message)) return <></>;
+          // NOTE: Filter out messages that should not be displayed.
+          if (shouldFilterOutMessage(message)) return <></>;
 
           const grouppedMessage = grouppedMessages.find(
             (m) => m.messageId == message.messageId
