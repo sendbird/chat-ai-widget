@@ -113,8 +113,7 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
 
 export default function WidgetToggleButton() {
   const { isFetching, ...channelStyle } = useChannelStyle();
-  const { autoOpen, renderWidgetToggleButton, isMobileView } =
-    useConstantState();
+  const { autoOpen, renderWidgetToggleButton } = useConstantState();
   const { isOpen, setIsOpen } = useWidgetOpen();
   const timer = useRef<NodeJS.Timeout | null>(null);
 
@@ -127,7 +126,7 @@ export default function WidgetToggleButton() {
   };
 
   useEffect(() => {
-    if (!isMobileView && (autoOpen || channelStyle.autoOpen)) {
+    if (autoOpen || channelStyle.autoOpen) {
       timer.current = setTimeout(() => setIsOpen(true), 100);
     }
   }, [channelStyle.autoOpen, autoOpen]);
