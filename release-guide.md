@@ -21,3 +21,10 @@ Once all the steps in the workflow are successfully completed:
      - `@sendbird/chat-ai-widget` dependency version updated in `/packages/*`.
    - A new tag(`v{version}`) will be pushed to the origin to trigger the self-service script deployment.
      -  Check the progress in [Circle CI dashboard](https://app.circleci.com/pipelines/github/sendbird/chat-ai-widget).
+
+### Want to publish `@sendbird/chat-ai-widget` manually?
+1. Update the `version` field in `package.json`.
+2. Run `npm run build:npm` in the directory root.
+   - Make sure you have `.env.production` which contains `VITE_CHAT_AI_WIDGET_KEY=...`.
+   - `VITE_CHAT_AI_WIDGET_KEY` can be found in 1Password under the entry `CHAT_AI_WIDGET_KEY`.
+3. Run `npm publish` (with `--tag rc / alpha / beta` depending on your need).
