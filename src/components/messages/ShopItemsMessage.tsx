@@ -52,7 +52,7 @@ export const ShopItemsMessage = ({ message }: Props) => {
           width={240}
           height={198}
           key={index}
-          // onClick={() => openURL(item.url)}
+          onClick={() => openURL(item.url)}
         >
           <Image src={item.featured_image} alt={item.title} />
           <div style={{ padding: 12 }}>
