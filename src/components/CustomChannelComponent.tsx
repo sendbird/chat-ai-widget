@@ -1,4 +1,3 @@
-giimport { Member } from '@sendbird/chat/groupChannel';
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -258,7 +257,7 @@ export function CustomChannelComponent() {
                             chainTop={index === 0}
                             chainBottom={index === lastWelcomeMessageIndex}
                             messageCount={messageCount}
-                            botUser={botUser as Member}
+                            botUser={botUser}
                             bodyComponent={
                               <ParsedBotMessageBody
                                 text={text}
@@ -279,7 +278,7 @@ export function CustomChannelComponent() {
                 </Message>
               );
             }
-            return;
+            return <></>;
           }
           /**
            * Note that we display injected welcome messages regardless of first welcome message
