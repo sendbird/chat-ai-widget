@@ -8,7 +8,7 @@ import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
-import AppFileMessage from './FileMessage';
+import FileMessage from './FileMessage';
 import FormMessage from './FormMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import { Source } from './SourceContainer';
@@ -130,7 +130,7 @@ export default function CustomMessage(props: Props) {
       <BotMessageWithBodyInput
         {...commonProps}
         botUser={botUser}
-        bodyComponent={<AppFileMessage message={message} />}
+        bodyComponent={<FileMessage message={message} />}
         createdAt={message.createdAt}
         messageFeedback={
           enableEmojiFeedback &&

@@ -86,7 +86,7 @@ type ReplaceString = string;
 export interface WidgetStyles {
   theme?: 'light' | 'dark';
   primaryColor?: string; // Color for messages sent by me, suggested replies, etc.
-  botMessageColor?: string;
+  botMessageBGColor?: string;
 }
 
 export interface WelcomeUserMessage {
@@ -100,12 +100,12 @@ export interface WelcomeUserMessage {
 //   suggestedReplies?: string[];
 // }
 
-export interface FileUrlInfo {
-  url?: string;
-  name?: string;
-  size?: number;
-  type?: string; // mime type
-}
+// export interface FileUrlInfo {
+//   url?: string;
+//   name?: string;
+//   size?: number;
+//   type?: string; // mime type
+// }
 
 export interface BotInfo {
   profileUrl?: string;
@@ -114,8 +114,8 @@ export interface BotInfo {
 
 export interface BotStudioEditProps {
   botInfo?: BotInfo;
-  aiAttributes?: object;
-  welcomeMessages?: Array<WelcomeUserMessage>;
+  aiAttributes?: Record<string, unknown>;
+  welcomeMessages?: WelcomeUserMessage[];
   styles?: WidgetStyles;
 }
 

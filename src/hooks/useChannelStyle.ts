@@ -65,7 +65,7 @@ export const useChannelStyle = (): ChannelStyle => {
     apiHost: customApiHost,
     botStudioEditProps,
   } = useConstantState();
-  const { theme, primaryColor, botMessageColor } =
+  const { theme, primaryColor, botMessageBGColor } =
     botStudioEditProps?.styles ?? {};
   const manualChannelCreationNeeded =
     userId != null && configureSession != null;
@@ -130,8 +130,8 @@ export const useChannelStyle = (): ChannelStyle => {
       ...data,
       theme: theme ?? data.theme,
       accentColor: primaryColor ?? data.accentColor,
-      botMessageBGColor: botMessageColor ?? data.botMessageBGColor,
+      botMessageBGColor: botMessageBGColor ?? data.botMessageBGColor,
       isFetching: fetching,
     };
-  }, [data != null, fetching, theme, primaryColor, botMessageColor]);
+  }, [data != null, fetching, theme, primaryColor, botMessageBGColor]);
 };
