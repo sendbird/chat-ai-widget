@@ -96,6 +96,7 @@ const DataContainer = styled.div`
   align-items: flex-start;
   gap: 4px;
   margin-left: 16px;
+  flex: 1; // Without this, Sidebar width is reduced.
 `;
 
 const DataRow = styled.div`
