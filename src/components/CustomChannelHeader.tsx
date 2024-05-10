@@ -50,12 +50,12 @@ const RenewButtonForWidgetDemo = styled.div`
   }
 `;
 
-const RenewButtonContainer = styled.div`
+const RenewButtonContainer = styled.div<{ gap: number }>`
   display: flex;
   height: fit-content;
   width: fit-content;
   align-items: center;
-  gap: 6px;
+  gap: ${({ gap }) => `${gap}px`};
 `;
 
 interface Props {
@@ -106,7 +106,7 @@ export default function CustomChannelHeader({
         </Title>
         {!isMobileView && betaMark && <BetaLogo>{customBetaMarkText}</BetaLogo>}
       </SubContainer>
-      <RenewButtonContainer>
+      <RenewButtonContainer gap={isMobileView ? 14 : 8}>
         <RenewButtonForWidgetDemo
           onClick={() => {
             handleRenewButtonClick();
@@ -134,6 +134,8 @@ export default function CustomChannelHeader({
             aria-label="Close widget"
             type="button"
             id={elementIds.closeIcon}
+            width={'24px'}
+            height={'24px'}
             onClick={() => setIsOpen(false)}
           >
             Close

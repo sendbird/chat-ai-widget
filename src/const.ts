@@ -51,6 +51,10 @@ export const DEFAULT_CONSTANT = {
   },
   replacementTextList: [['the Text extracts', 'ChatBot Knowledge Base']],
   instantConnect: true,
+  /**
+   * width, and height values here are only placeholder due to required, but they are meaningless
+   * as ConstantStateProvider is overwriting them based on isMobile state.
+   */
   customRefreshComponent: {
     icon: RefreshIcon,
     width: '16px',
