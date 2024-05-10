@@ -21,6 +21,9 @@ const ConstantContext = createContext<ConstantContextValue | null>(null);
 type ProviderProps = React.PropsWithChildren<ConstantContextProps>;
 
 export const ConstantStateProvider = (props: ProviderProps) => {
+  const isMobileView = isMobile(props.deviceType);
+  const defaultRefreshComponentSideLength = isMobileView ? '24px' : '16px';
+
   const memoizedValue = useMemo(
     () => ({
       applicationId: props.applicationId,
@@ -55,10 +58,10 @@ export const ConstantStateProvider = (props: ProviderProps) => {
           initialState.customRefreshComponent.icon,
         width:
           props.customRefreshComponent?.width ??
-          initialState.customRefreshComponent.width,
+          defaultRefreshComponentSideLength,
         height:
           props.customRefreshComponent?.height ??
-          initialState.customRefreshComponent.height,
+          defaultRefreshComponentSideLength,
         onClick:
           props.customRefreshComponent?.onClick ??
           initialState.customRefreshComponent.onClick,
@@ -90,7 +93,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
         props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
       wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
       deviceType: props.deviceType, // Note this property is not being used but added just to remove any confusion.
-      isMobileView: isMobile(props.deviceType),
+      isMobileView,
     }),
     [props]
   );

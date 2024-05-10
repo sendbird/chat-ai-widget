@@ -114,8 +114,8 @@ export default function CustomChannelHeader({
         >
           <customRefreshComponent.icon
             id={elementIds.refreshIcon}
-            width={isMobileView ? '24px' : customRefreshComponent.width}
-            height={isMobileView ? '24px' : customRefreshComponent.height}
+            width={customRefreshComponent.width}
+            height={customRefreshComponent.height}
             style={
               isEmpty(customRefreshComponent.style)
                 ? {
@@ -134,8 +134,8 @@ export default function CustomChannelHeader({
             aria-label="Close widget"
             type="button"
             id={elementIds.closeIcon}
-            width={isMobileView ? '24px' : customRefreshComponent.width}
-            height={isMobileView ? '24px' : customRefreshComponent.height}
+            width={isMobileView ? '24px' : '16px'}
+            height={isMobileView ? '24px' : '16px'}
             onClick={() => setIsOpen(false)}
           >
             Close
