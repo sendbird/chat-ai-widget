@@ -105,6 +105,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
                 },
                 enableVoiceMessage: false,
                 enableFeedback: enableEmojiFeedback,
+                enableSuggestedReplies: true,
               },
             }}
           >
