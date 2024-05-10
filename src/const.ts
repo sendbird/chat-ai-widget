@@ -107,8 +107,13 @@ export interface FileUrlInfo {
   type?: string; // mime type
 }
 
+export interface BotInfo {
+  profileUrl?: string;
+  nickname?: string;
+}
+
 export interface BotStudioEditProps {
-  botProfileImageUrl?: string;
+  botInfo?: BotInfo;
   aiAttributes?: object;
   welcomeMessages?: Array<WelcomeUserMessage>;
   styles?: WidgetStyles;

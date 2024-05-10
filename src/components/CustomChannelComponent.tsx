@@ -138,11 +138,12 @@ export function CustomChannelComponent() {
   const allMessages = messages.filter(
     (message) => !shouldFilterOutMessage(message)
   );
-  const { botProfileImageUrl, welcomeMessages } = botStudioEditProps ?? {};
-
+  const { botInfo, welcomeMessages } = botStudioEditProps ?? {};
+  const { profileUrl, nickname } = botInfo ?? {};
   const botUser = channel?.members.find((member) => member.userId === botId);
+  const botProfileUrl = profileUrl ?? botUser?.profileUrl;
+  const botNickname = nickname ?? botUser?.nickname;
   const lastMessageRef = useRef<HTMLDivElement>(null);
-  const botProfileUrl = botProfileImageUrl ?? botUser?.profileUrl;
 
   useAutoDismissMobileKyeboardHandler();
 
@@ -218,7 +219,7 @@ export function CustomChannelComponent() {
         renderChannelHeader={() => (
           <CustomChannelHeader
             botProfileUrl={botProfileUrl}
-            botNickname={botUser?.nickname}
+            botNickname={botNickname}
             channelName={channel?.name}
             onRenewButtonClick={async () => {
               await channel?.resetMyHistory();

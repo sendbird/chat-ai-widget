@@ -64,8 +64,9 @@ export default function BotMessageWithBodyInput(props: Props) {
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
   const displaySender = nonChainedMessage || chainTop;
-  const botProfileUrl =
-    botStudioEditProps?.botProfileImageUrl ?? botUser?.profileUrl;
+  const { profileUrl, nickname } = botStudioEditProps?.botInfo ?? {};
+  const botProfileUrl = profileUrl ?? botUser?.profileUrl;
+  const botNickname = nickname ?? botUser?.nickname;
 
   return (
     <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
@@ -96,7 +97,7 @@ export default function BotMessageWithBodyInput(props: Props) {
             type={LabelTypography.CAPTION_2}
             color={LabelColors.ONBACKGROUND_2}
           >
-            {botUser?.nickname}
+            {botNickname}
           </Sender>
         )}
         <Content>

@@ -48,7 +48,10 @@ const App = (props: Props) => {
       callbacks={props.callbacks}
       deviceType={props.deviceType}
       // botStudioEditProps={{
-      //   // botProfileImageUrl: 'url',
+      //   botInfo: {
+      //     profileUrl: 'url',
+      //     nickname: 'Super bot',
+      //   },
       //   aiAttributes: {
       //     legend: 'this is legend',
       //   },
@@ -65,9 +68,9 @@ const App = (props: Props) => {
       //     },
       //   ],
       //   styles: {
-      //     theme: 'dark',
-      //     primaryColor: 'blue',
-      //     botMessageColor: 'pink',
+      //     theme: 'light',
+      //     primaryColor: 'orange',
+      //     botMessageColor: 'hotpink',
       //   },
       // }}
     />
