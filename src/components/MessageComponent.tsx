@@ -5,14 +5,23 @@ export const SentTime = styled.span`
   color: ${({ theme }) => theme.textColor.sentTime};
   font-size: 12px;
   line-height: 1;
-  margin-bottom: 2px;
   min-width: 56px;
+`;
+
+export const DefaultSentTime = styled(SentTime)`
+  margin-bottom: 2px;
+`;
+
+export const WideSentTime = styled(SentTime)`
+  margin-top: 4px;
+  display: block;
+  height: 14px;
 `;
 
 export const BodyContainer = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.textColor.incomingMessage};
-  max-width: calc(100% - 40px);
+  max-width: calc(100% - 36px);
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;

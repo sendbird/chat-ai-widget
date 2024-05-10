@@ -11,6 +11,7 @@ import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
 import FormMessage from './FormMessage';
+import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import { Source } from './SourceContainer';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
@@ -19,6 +20,7 @@ import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { MessageMetaData, parseTextMessage, Token } from '../utils';
+import { messageExtension } from '../utils/messageExtension';
 import {
   getSenderUserIdFromMessage,
   isFormMessage,
@@ -137,6 +139,30 @@ export default function CustomMessage(props: Props) {
         {...commonProps}
         botUser={botUser}
         bodyComponent={<FileMessage message={message} />}
+        createdAt={message.createdAt}
+        messageFeedback={
+          enableEmojiFeedback &&
+          !isBotWelcomeMessage &&
+          !(isLastBotMessage && isLastMessageInStreaming(message.data)) && (
+            <BotMessageFeedback message={message} />
+          )
+        }
+      />
+    );
+  }
+
+  // Shop items
+  const __DEV__ = isBotWelcomeMessage;
+  if (
+    message.isUserMessage() &&
+    (messageExtension.commerceShopItems.has(message) || __DEV__)
+  ) {
+    return (
+      <BotMessageWithBodyInput
+        wideContainer
+        {...commonProps}
+        botUser={botUser}
+        bodyComponent={<ShopItemsMessage message={message} />}
         createdAt={message.createdAt}
         messageFeedback={
           enableEmojiFeedback &&

@@ -6,15 +6,19 @@ import Avatar from '@uikit/ui/Avatar';
 import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import BotProfileImage from './BotProfileImage';
-import { SentTime, BodyContainer } from './MessageComponent';
+import {
+  BodyContainer,
+  DefaultSentTime,
+  WideSentTime,
+} from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
 
 const Root = styled.span`
   display: flex;
+  flex-direction: row;
   align-items: flex-end;
   margin-bottom: 6px;
-  flex-wrap: wrap;
   gap: 8px;
   position: relative;
 `;
@@ -34,6 +38,10 @@ const Content = styled.div`
   gap: 4px;
 `;
 
+const EmptyImageContainer = styled.div`
+  width: 28px;
+`;
+
 type Props = {
   botUser?: User;
   createdAt?: number;
@@ -44,13 +52,8 @@ type Props = {
   messageCount?: number;
   zIndex?: number;
   messageFeedback?: ReactNode;
+  wideContainer?: boolean;
 };
-
-const ImageContainer = styled.div``;
-
-const EmptyImageContainer = styled.div`
-  width: 28px;
-`;
 
 export default function BotMessageWithBodyInput(props: Props) {
   const { botStudioEditProps } = useConstantState();
@@ -64,6 +67,7 @@ export default function BotMessageWithBodyInput(props: Props) {
     chainTop,
     chainBottom,
     messageFeedback,
+    wideContainer = false,
   } = props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
@@ -76,7 +80,7 @@ export default function BotMessageWithBodyInput(props: Props) {
   return (
     <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
       {displayProfileImage ? (
-        <ImageContainer>
+        <div style={wideContainer ? { paddingBottom: 18 } : undefined}>
           {botProfileUrl != null && botProfileUrl != '' ? (
             <Avatar
               src={botProfileUrl}
@@ -92,7 +96,7 @@ export default function BotMessageWithBodyInput(props: Props) {
               iconHeight={16}
             />
           )}
-        </ImageContainer>
+        </div>
       ) : (
         <EmptyImageContainer />
       )}
@@ -109,10 +113,15 @@ export default function BotMessageWithBodyInput(props: Props) {
         )}
         <Content>
           {bodyComponent}
-          {!!createdAt && (
-            <SentTime>{formatCreatedAtToAMPM(createdAt)}</SentTime>
+          {!wideContainer && !!createdAt && (
+            <DefaultSentTime>
+              {formatCreatedAtToAMPM(createdAt)}
+            </DefaultSentTime>
           )}
         </Content>
+        {wideContainer && !!createdAt && (
+          <WideSentTime>{formatCreatedAtToAMPM(createdAt)}</WideSentTime>
+        )}
         {displayProfileImage && messageFeedback}
       </BodyContainer>
     </Root>

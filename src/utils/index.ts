@@ -306,7 +306,7 @@ export const localStorageHelper = () => {
   };
 };
 
-export async function downloadFileWithUrl(url?: string | null) {
+export async function openURL(url?: string | null) {
   let safeURL = url;
   if (safeURL) {
     if (!safeURL.startsWith('http://') && !safeURL.startsWith('https://')) {
