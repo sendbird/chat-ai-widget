@@ -7,8 +7,6 @@ import MessageBubbleIcon from '../icons/icon-message-bubble.svg';
 import { FunctionCallData } from '../types';
 import { noop } from '../utils';
 
-const DATA_ROW_GAP = 8;
-
 const Text = styled.div`
   font-size: 14px;
   font-weight: 500;
@@ -19,6 +17,7 @@ const Text = styled.div`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
+  word-break: break-word;
 `;
 
 const TextButton = styled.div`
@@ -96,7 +95,6 @@ const DataContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 4px;
-  width: calc(100% - 28px);
   margin-left: 16px;
 `;
 
@@ -104,7 +102,7 @@ const DataRow = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: ${DATA_ROW_GAP}px;
+  gap: 8px;
   width: 100%;
 `;
 
