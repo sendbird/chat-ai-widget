@@ -134,8 +134,8 @@ export default function CustomChannelHeader({
             aria-label="Close widget"
             type="button"
             id={elementIds.closeIcon}
-            width={isMobileView ? '24px' : '16px'}
-            height={isMobileView ? '24px' : '16px'}
+            width={'24px'}
+            height={'24px'}
             onClick={() => setIsOpen(false)}
           >
             Close
