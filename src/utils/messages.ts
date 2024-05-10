@@ -1,4 +1,4 @@
-import { BaseMessage, UserMessage } from '@sendbird/chat/message';
+import { AdminMessage, BaseMessage, UserMessage } from '@sendbird/chat/message';
 
 import { CoreMessageType } from '@uikit/utils';
 
@@ -180,4 +180,18 @@ export function getSenderUserIdFromMessage(
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   return message?.sender?.userId ?? undefined;
+}
+
+const msgFilter = {
+  sys: {
+    isCustomTypeUpdated: (message: AdminMessage) => {
+      return message.message === "The channel's custom_type was updated.";
+    },
+  },
+};
+export function shouldFilterOutMessage(message: BaseMessage) {
+  if (message.isAdminMessage()) {
+    return msgFilter.sys.isCustomTypeUpdated(message);
+  }
+  return false;
 }
