@@ -19,9 +19,14 @@ const Root = styled.span`
   position: relative;
 `;
 
-const Sender = styled(Label)`
-  margin: 0 0 4px 12px;
+const Sender = styled.div`
+  padding: 0 0 4px 12px;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(
+    100% - 12px - 56px
+  ); // -12 for left margin and -56 for timestamp min width.
 `;
 
 const Content = styled.div`
@@ -93,11 +98,13 @@ export default function BotMessageWithBodyInput(props: Props) {
       )}
       <BodyContainer>
         {displaySender && (
-          <Sender
-            type={LabelTypography.CAPTION_2}
-            color={LabelColors.ONBACKGROUND_2}
-          >
-            {botNickname}
+          <Sender>
+            <Label
+              type={LabelTypography.CAPTION_2}
+              color={LabelColors.ONBACKGROUND_2}
+            >
+              {botNickname}
+            </Label>
           </Sender>
         )}
         <Content>
