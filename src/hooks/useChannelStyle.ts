@@ -63,7 +63,10 @@ export const useChannelStyle = (): ChannelStyle => {
     userId,
     configureSession,
     apiHost: customApiHost,
+    botStudioEditProps,
   } = useConstantState();
+  const { theme, primaryColor, botMessageBGColor } =
+    botStudioEditProps?.styles ?? {};
   const manualChannelCreationNeeded =
     userId != null && configureSession != null;
   const userAndChannelInfoFromStorage = useWidgetLocalStorage();
@@ -123,6 +126,12 @@ export const useChannelStyle = (): ChannelStyle => {
   const fetching = isPending || isLoading || isFetching;
   return useMemo(() => {
     if (data == null) return { ...DEFAULT_CHANNEL_STYLE, isFetching: fetching };
-    return { ...data, isFetching: fetching };
-  }, [data != null, fetching]);
+    return {
+      ...data,
+      theme: theme ?? data.theme,
+      accentColor: primaryColor ?? data.accentColor,
+      botMessageBGColor: botMessageBGColor ?? data.botMessageBGColor,
+      isFetching: fetching,
+    };
+  }, [data != null, fetching, theme, primaryColor, botMessageBGColor]);
 };

@@ -14,6 +14,9 @@ interface Props extends Omit<Partial<Constant>, 'stringSet'> {
   stringSet?: Partial<StringSet>;
 }
 
+/**
+ * Leave comments below for testing
+ */
 const App = (props: Props) => {
   return (
     <ChatAiWidget
@@ -44,6 +47,32 @@ const App = (props: Props) => {
       serviceName={props.serviceName}
       callbacks={props.callbacks}
       deviceType={props.deviceType}
+      // botStudioEditProps={{
+      //   botInfo: {
+      //     profileUrl: 'url',
+      //     nickname: 'Super bot',
+      //   },
+      //   aiAttributes: {
+      //     legend: 'this is legend',
+      //   },
+      //   welcomeMessages: [
+      //     {
+      //       message: 'hello',
+      //     },
+      //     {
+      //       message: 'how can I help you?',
+      //     },
+      //     {
+      //       message: 'ewfwjfi',
+      //       suggestedReplies: ['wwfwefwefwefee', 'reply2'],
+      //     },
+      //   ],
+      //   styles: {
+      //     theme: 'light',
+      //     primaryColor: 'orange',
+      //     botMessageColor: 'hotpink',
+      //   },
+      // }}
     />
   );
 };
