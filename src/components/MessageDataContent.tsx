@@ -7,8 +7,6 @@ import MessageBubbleIcon from '../icons/icon-message-bubble.svg';
 import { FunctionCallData } from '../types';
 import { noop } from '../utils';
 
-const ICON_WIDTH = 16;
-const RIGHT_CONTENT_WIDTH = 92;
 const DATA_ROW_GAP = 8;
 
 const Text = styled.div`
@@ -21,10 +19,6 @@ const Text = styled.div`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
-  max-width: calc(
-    100% - ${ICON_WIDTH}px - ${DATA_ROW_GAP}px - ${DATA_ROW_GAP}px -
-      ${RIGHT_CONTENT_WIDTH}px
-  );
 `;
 
 const TextButton = styled.div`
@@ -87,7 +81,6 @@ const Root = styled.div`
   justify-content: flex-start;
   margin-top: 16px;
   padding-left: 36px;
-  //width: calc(100% - 36px);
 `;
 
 const SideBar = styled.div`
