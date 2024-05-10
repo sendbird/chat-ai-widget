@@ -1,3 +1,16 @@
+## [1.5.5] (May 10 2024)
+#### Feat:
+- Added `botStudioEditProps` in `Constant`. Supports real time update of various injected states such as `botInfo`, `aiAttributes`, `welcomeMessages`, and `styles`
+
+#### Fix:
+- Fixed a bug where sender name is overflowing in a bot message
+- Fixed a bug where message input is not being disabled when last message has a suggested replies
+- Fixed a bug where multi-line message data content is displayed incorrectly
+
+#### Chore:
+- Increased channel header button sizes in mobile view
+- `autoOpen` is now applied in the mobile view as well
+
 ## [1.5.4] (May 8 2024)
 
 #### Feat:
