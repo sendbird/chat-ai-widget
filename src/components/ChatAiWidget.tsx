@@ -37,7 +37,7 @@ const MobileComponent = () => {
 
   return (
     <>
-      {!isOpen && <WidgetToggleButton />}
+      <WidgetToggleButton />
       <MobileContainer
         style={{ display: isOpen ? 'block' : 'none' }}
         width={mobileContainerWidth}
