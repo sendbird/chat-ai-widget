@@ -17,7 +17,6 @@ const Text = styled.div`
   line-height: 20px;
   letter-spacing: -0.1px;
   overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -87,8 +86,8 @@ const Root = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-top: 16px;
-  margin-left: 36px;
-  width: calc(100% - 36px);
+  padding-left: 36px;
+  //width: calc(100% - 36px);
 `;
 
 const SideBar = styled.div`
