@@ -123,7 +123,7 @@ export default function WidgetToggleButton() {
       clearTimeout(timer.current as NodeJS.Timeout);
       timer.current = null;
     }
-    setIsOpen((prev) => !prev);
+    setIsOpen(!isOpen);
   };
 
   useEffect(() => {

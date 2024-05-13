@@ -73,6 +73,10 @@ const App = (props: Props) => {
       //     botMessageColor: 'hotpink',
       //   },
       // }}
+      // showChat={true}
+      // onInternalSetIsOpen={(props) => {
+      //   console.log('## onInternalSetIsOpen: ', props);
+      // }}
     />
   );
 };
