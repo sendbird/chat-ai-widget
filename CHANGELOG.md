@@ -1,3 +1,7 @@
+## [1.5.6] (May 10 2024)
+#### Fix:
+- Fixed a bug where the widget wouldn't close in the mobile view when autoOpen was set to true.
+
 ## [1.5.5] (May 10 2024)
 #### Feat:
 - Added `botStudioEditProps` in `Constant`. Supports real time update of various injected states such as `botInfo`, `aiAttributes`, `welcomeMessages`, and `styles`
