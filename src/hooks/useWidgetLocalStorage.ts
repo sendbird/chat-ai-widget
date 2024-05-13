@@ -40,6 +40,10 @@ export function saveToLocalStorage(
   );
 }
 
+// FIXME: The userId is fragmented and managed in three different places.
+//  Integration is needed in the future to manage all cases in one place.
+//  - widget: ConstantContext, WidgetLocalStorage
+//  - uikit: SendbirdStateContext
 export type WidgetLocalStorageValue = {
   userId: string | null;
   channelUrl: string | null;
