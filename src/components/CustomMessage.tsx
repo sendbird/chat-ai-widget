@@ -16,7 +16,6 @@ import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { MessageMetaData, parseTextMessage, Token } from '../utils';
 import {
   getSenderUserIdFromMessage,
@@ -25,6 +24,7 @@ import {
   isLocalMessageCustomType,
   parseMessageDataSafely,
 } from '../utils/messages';
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 type Props = {
   message: CoreMessageType;
@@ -57,7 +57,8 @@ export default function CustomMessage(props: Props) {
     message,
   };
   const { replacementTextList, enableEmojiFeedback } = useConstantState();
-  const { userId } = useWidgetLocalStorage();
+  const { stores } = useSendbirdStateContext();
+  const currentUserId = stores.userStore.user.userId;
 
   // admin message
   if (message.isAdminMessage()) {
@@ -79,7 +80,7 @@ export default function CustomMessage(props: Props) {
   // Sent by current user
   if (
     message.isUserMessage() &&
-    getSenderUserIdFromMessage(message) === userId
+    getSenderUserIdFromMessage(message) === currentUserId
   ) {
     return (
       <div>
