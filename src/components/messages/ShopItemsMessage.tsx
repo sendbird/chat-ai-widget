@@ -33,6 +33,8 @@ const Image = styled.img`
   -webkit-user-drag: none;
 `;
 
+// TODO: if (message.data.stream) render <TypingDots /> else render <Carousel />
+// TODO: filter commerce items to match urls included in message.message
 type Props = { message: BaseMessage };
 export const ShopItemsMessage = ({ message }: Props) => {
   const items = messageExtension.commerceShopItems.get(message);
