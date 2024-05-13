@@ -24,9 +24,8 @@ const Sender = styled.div`
   text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: calc(
-    100% - 12px - 56px
-  ); // -12 for left margin and -56 for timestamp min width.
+  white-space: nowrap;
+  width: 246px;
 `;
 
 const Content = styled.div`
