@@ -25,6 +25,7 @@ import {
   parseMessageDataSafely,
 } from '../utils/messages';
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
+import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 
 type Props = {
   message: CoreMessageType;
@@ -58,7 +59,8 @@ export default function CustomMessage(props: Props) {
   };
   const { replacementTextList, enableEmojiFeedback } = useConstantState();
   const { stores } = useSendbirdStateContext();
-  const currentUserId = stores.userStore.user.userId;
+  const { userId } = useWidgetLocalStorage();
+  const currentUserId = stores.userStore.user.userId || userId;
 
   // admin message
   if (message.isAdminMessage()) {
