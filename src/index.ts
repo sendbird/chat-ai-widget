@@ -3,5 +3,6 @@ export { type ProviderContainerProps as ChatAiWidgetConfigs } from './components
 export { default as ChatWindow } from './components/WidgetWindowExternal';
 export { widgetServiceName } from './const';
 export { clearCache } from './hooks/useWidgetLocalStorage';
+export { openWidget } from './hooks/useWidgetOpenStateHandler';
 
 export type * from './types';
