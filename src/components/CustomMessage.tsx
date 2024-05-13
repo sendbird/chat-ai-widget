@@ -1,5 +1,6 @@
 import { User } from '@sendbird/chat';
 
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import { CoreMessageType } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
@@ -16,6 +17,7 @@ import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
+import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { MessageMetaData, parseTextMessage, Token } from '../utils';
 import {
   getSenderUserIdFromMessage,
@@ -24,8 +26,6 @@ import {
   isLocalMessageCustomType,
   parseMessageDataSafely,
 } from '../utils/messages';
-import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 
 type Props = {
   message: CoreMessageType;
