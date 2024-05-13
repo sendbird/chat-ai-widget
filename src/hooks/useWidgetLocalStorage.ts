@@ -20,6 +20,7 @@ export function clearCache(params: { appId: string; botId: string }) {
   localStorageHelper().deleteItem(localStorageKey);
 }
 
+const CUSTOM_EVENT_KEY = 'sbwidget@localStorageChange';
 export function saveToLocalStorage(
   key: {
     appId: string;
@@ -31,7 +32,7 @@ export function saveToLocalStorage(
   const stringifiedValue = JSON.stringify(value);
   localStorageHelper().setItem(localStorageKey, stringifiedValue);
   window.dispatchEvent(
-    new CustomEvent('localStorageChange', {
+    new CustomEvent(CUSTOM_EVENT_KEY, {
       detail: {
         key: localStorageKey,
         value: stringifiedValue,
@@ -76,16 +77,13 @@ function useWidgetLocalStorage(): WidgetLocalStorageValue {
       }
     };
 
-    // The 'localStorageChange' event is a CustomEvent,
+    // The 'sbwidget@localStorageChange' event is a CustomEvent,
     // distinct from the standard 'storage' event, which is only triggered by changes in other tabs.
     // This custom event allows us to detect localStorage changes within the same tab in real-time.
-    window.addEventListener('localStorageChange', handleCustomStorageChange);
+    window.addEventListener(CUSTOM_EVENT_KEY, handleCustomStorageChange);
 
     return () => {
-      window.removeEventListener(
-        'localStorageChange',
-        handleCustomStorageChange
-      );
+      window.removeEventListener(CUSTOM_EVENT_KEY, handleCustomStorageChange);
     };
   }, []);
 
