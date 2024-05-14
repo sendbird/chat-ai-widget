@@ -66,7 +66,7 @@ export const DEFAULT_CONSTANT = {
   enableEmojiFeedback: true,
   enableMention: true,
   enableMobileView: true,
-  onInternalSetIsOpen: noop,
+  onChatOpenStateChange: noop,
 } satisfies Partial<Constant>;
 
 type ConfigureSession = (
@@ -120,7 +120,7 @@ export interface BotStudioEditProps {
   styles?: WidgetStyles;
 }
 
-export interface OnInternalSetIsOpenProps {
+export interface OnChatOpenStateChangeProps {
   newIsOpen: boolean;
 }
 
@@ -153,8 +153,8 @@ export interface Constant {
   callbacks?: SendbirdChatAICallbacks;
   deviceType?: 'desktop' | 'mobile';
   botStudioEditProps?: BotStudioEditProps;
-  showChat?: boolean;
-  onInternalSetIsOpen?: (props: OnInternalSetIsOpenProps) => void;
+  chatOpenState?: boolean;
+  onChatOpenStateChange?: (props: OnChatOpenStateChangeProps) => void;
 }
 
 export interface SuggestedReply {

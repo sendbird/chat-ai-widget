@@ -95,9 +95,9 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       deviceType: props.deviceType, // Note this property is not being used but added just to remove any confusion.
       isMobileView,
       botStudioEditProps: props.botStudioEditProps,
-      showChat: props.showChat,
-      onInternalSetIsOpen:
-        props.onInternalSetIsOpen ?? initialState.onInternalSetIsOpen,
+      chatOpenState: props.chatOpenState,
+      onChatOpenStateChange:
+        props.onChatOpenStateChange ?? initialState.onChatOpenStateChange,
     }),
     [props]
   );

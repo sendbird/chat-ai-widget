@@ -14,20 +14,20 @@ const WidgetOpenContext = createContext<{
 }>({ isOpen: false, setIsOpen: noop });
 
 export const WidgetOpenProvider = ({ children }: React.PropsWithChildren) => {
-  const { showChat, onInternalSetIsOpen } = useConstantState();
+  const { chatOpenState, onChatOpenStateChange } = useConstantState();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    if (typeof showChat === 'boolean') {
-      setIsOpen(showChat);
+    if (typeof chatOpenState === 'boolean') {
+      setIsOpen(chatOpenState);
     }
-  }, [showChat]);
+  }, [chatOpenState]);
 
   const customSetIsOpen = (newIsOpen: boolean) => {
-    if (typeof showChat !== 'boolean') {
+    if (typeof chatOpenState !== 'boolean') {
       setIsOpen(newIsOpen);
     }
-    onInternalSetIsOpen?.({
+    onChatOpenStateChange?.({
       newIsOpen,
     });
   };
