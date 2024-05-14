@@ -66,7 +66,6 @@ export const DEFAULT_CONSTANT = {
   enableEmojiFeedback: true,
   enableMention: true,
   enableMobileView: true,
-  onChatOpenStateChange: noop,
 } satisfies Partial<Constant>;
 
 type ConfigureSession = (
