@@ -1,5 +1,7 @@
 import type SendbirdChat from '@sendbird/chat';
+import { BaseMessage } from '@sendbird/chat/message';
 
+import { parseMessageDataSafely } from './messages';
 import { Source } from '../components/SourceContainer';
 import { widgetServiceName } from '../const';
 
@@ -102,6 +104,14 @@ function isDelimiterIndex(
   return inputString.substring(index, index + delimiter.length) === delimiter;
 }
 
+export function getSourceFromMetadata(message: BaseMessage) {
+  const data: MessageMetaData = parseMessageDataSafely(message.data);
+  const sources: Source[] = Array.isArray(data['metadatas'])
+    ? data['metadatas']?.filter((source) => source.source_type !== 'file')
+    : [];
+  return sources;
+}
+
 export function parseTextMessage(
   inputString: string,
   replacementTextList: [string, string][]
@@ -158,6 +168,11 @@ export function replaceTextExtracts(
   // gi => global (All matches; don't return on first match) + insensitive (Case insensitive match)
   const regex = new RegExp(searchText, 'gi');
   return input.replace(regex, replaceText);
+}
+
+export function extractUrls(text: string): string[] {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  return text.match(urlRegex) ?? [];
 }
 
 export function replaceUrl(input: string): string {

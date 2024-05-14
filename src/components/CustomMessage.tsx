@@ -1,6 +1,7 @@
 import { User } from '@sendbird/chat';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
+import TypingDots from '@uikit/ui/TypingIndicatorBubble/TypingDots';
 import { CoreMessageType } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
@@ -13,20 +14,18 @@ import FileMessage from './FileMessage';
 import FormMessage from './FormMessage';
 import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
-import { Source } from './SourceContainer';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
-import { MessageMetaData, parseTextMessage, Token } from '../utils';
+import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
 import {
-  getSenderUserIdFromMessage,
   isFormMessage,
   isLastMessageInStreaming,
   isLocalMessageCustomType,
-  parseMessageDataSafely,
+  isSentBy,
 } from '../utils/messages';
 
 type Props = {
@@ -63,44 +62,137 @@ export default function CustomMessage(props: Props) {
     useConstantState();
   const { stores } = useSendbirdStateContext();
   const { userId } = useWidgetLocalStorage();
+
   const currentUserId = stores.userStore.user.userId || userId;
   const { profileUrl } = botStudioEditProps?.botInfo ?? {};
+  const botUserId = botUser?.userId;
   const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';
 
-  // admin message
+  const shouldRenderFeedback = () => {
+    return (
+      enableEmojiFeedback &&
+      !isBotWelcomeMessage &&
+      !(isLastBotMessage && isLastMessageInStreaming(message.data))
+    );
+  };
+
+  const renderFeedbackButtons = () => {
+    if (shouldRenderFeedback()) return <BotMessageFeedback message={message} />;
+    return null;
+  };
+
+  // Sent by admin
   if (message.isAdminMessage()) {
     return <AdminMessage message={message} />;
   }
 
-  if (isFormMessage(message)) {
-    const forms = message.extendedMessagePayload.forms;
-    return (
-      <BotMessageWithBodyInput
-        {...commonProps}
-        botUser={botUser}
-        bodyComponent={<FormMessage form={forms[0]} message={message} />}
-        createdAt={message.createdAt}
-      />
-    );
+  // Sent by current user
+  if (isSentBy(message, currentUserId)) {
+    if (message.isUserMessage()) {
+      return (
+        <div>
+          <CurrentUserMessage message={message} />
+          {activeSpinnerId === message.messageId && botUser && (
+            <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />
+          )}
+        </div>
+      );
+    }
   }
 
-  // Sent by current user
-  if (
-    message.isUserMessage() &&
-    getSenderUserIdFromMessage(message) === currentUserId
-  ) {
-    return (
-      <div>
-        {<CurrentUserMessage message={message} />}
-        {activeSpinnerId === message.messageId && botUser && (
-          <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />
-        )}
-      </div>
-    );
+  // Sent by bot user
+  if (isSentBy(message, botUserId)) {
+    if (isFormMessage(message)) {
+      const forms = message.extendedMessagePayload.forms;
+      return (
+        <BotMessageWithBodyInput
+          {...commonProps}
+          botUser={botUser}
+          bodyComponent={<FormMessage form={forms[0]} message={message} />}
+          createdAt={message.createdAt}
+        />
+      );
+    }
+
+    // for static suggested replies
+    if (isLocalMessageCustomType(message.customType)) {
+      if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
+        return (
+          <BotMessageWithBodyInput
+            {...commonProps}
+            botUser={botUser}
+            bodyComponent={<SuggestedReplyMessageBody message={message} />}
+            createdAt={message.createdAt}
+            messageFeedback={renderFeedbackButtons()}
+          />
+        );
+      }
+    }
+
+    // for file message
+    if (message.isFileMessage()) {
+      return (
+        <BotMessageWithBodyInput
+          {...commonProps}
+          botUser={botUser}
+          bodyComponent={<FileMessage message={message} />}
+          createdAt={message.createdAt}
+          messageFeedback={renderFeedbackButtons()}
+        />
+      );
+    }
+
+    // for user message
+    if (message.isUserMessage()) {
+      const sources = getSourceFromMetadata(message);
+      const tokens: Token[] = parseTextMessage(
+        message.message,
+        replacementTextList
+      );
+
+      const textMessageBody = (
+        <ParsedBotMessageBody
+          text={message.message}
+          tokens={tokens}
+          sources={sources}
+        />
+      );
+
+      // commerce carousel message
+      if (messageExtension.commerceShopItems.isValid(message)) {
+        return (
+          <BotMessageWithBodyInput
+            wideContainer
+            {...commonProps}
+            botUser={botUser}
+            bodyComponent={
+              <ShopItemsMessage
+                message={message}
+                streamingBody={<TypingDots />}
+                textBody={textMessageBody}
+              />
+            }
+            createdAt={message.createdAt}
+            messageFeedback={renderFeedbackButtons()}
+          />
+        );
+      }
+
+      // text message
+      return (
+        <BotMessageWithBodyInput
+          {...commonProps}
+          botUser={botUser}
+          bodyComponent={textMessageBody}
+          createdAt={message.createdAt}
+          messageFeedback={renderFeedbackButtons()}
+        />
+      );
+    }
   }
 
   // Sent by other users (Users who are not bot nor current user)
-  if (message.isUserMessage() && message.sender?.userId !== botUser?.userId) {
+  if (message.isUserMessage()) {
     return (
       <UserMessageWithBodyInput
         {...commonProps}
@@ -111,102 +203,5 @@ export default function CustomMessage(props: Props) {
     );
   }
 
-  // Sent by bot
-  // for static suggested replies
-  if (isLocalMessageCustomType(message.customType)) {
-    if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
-      return (
-        <BotMessageWithBodyInput
-          {...commonProps}
-          botUser={botUser}
-          bodyComponent={<SuggestedReplyMessageBody message={message} />}
-          createdAt={message.createdAt}
-          messageFeedback={
-            enableEmojiFeedback &&
-            !isBotWelcomeMessage &&
-            !(isLastBotMessage && isLastMessageInStreaming(message.data)) && (
-              <BotMessageFeedback message={message} />
-            )
-          }
-        />
-      );
-    }
-  }
-
-  if (message.isFileMessage()) {
-    return (
-      <BotMessageWithBodyInput
-        {...commonProps}
-        botUser={botUser}
-        bodyComponent={<FileMessage message={message} />}
-        createdAt={message.createdAt}
-        messageFeedback={
-          enableEmojiFeedback &&
-          !isBotWelcomeMessage &&
-          !(isLastBotMessage && isLastMessageInStreaming(message.data)) && (
-            <BotMessageFeedback message={message} />
-          )
-        }
-      />
-    );
-  }
-
-  // Shop items
-  const __DEV__ = isBotWelcomeMessage;
-  if (
-    message.isUserMessage() &&
-    (messageExtension.commerceShopItems.has(message) || __DEV__)
-  ) {
-    return (
-      <BotMessageWithBodyInput
-        wideContainer
-        {...commonProps}
-        botUser={botUser}
-        bodyComponent={<ShopItemsMessage message={message} />}
-        createdAt={message.createdAt}
-        messageFeedback={
-          enableEmojiFeedback &&
-          !isBotWelcomeMessage &&
-          !(isLastBotMessage && isLastMessageInStreaming(message.data)) && (
-            <BotMessageFeedback message={message} />
-          )
-        }
-      />
-    );
-  }
-
-  if (message.isUserMessage()) {
-    // Normal message
-    const tokens: Token[] = parseTextMessage(
-      message.message,
-      replacementTextList
-    );
-    const data: MessageMetaData = parseMessageDataSafely(message.data);
-    const sources: Source[] = Array.isArray(data['metadatas'])
-      ? data['metadatas']?.filter((source) => source.source_type !== 'file')
-      : [];
-
-    return (
-      <BotMessageWithBodyInput
-        {...commonProps}
-        botUser={botUser}
-        bodyComponent={
-          <ParsedBotMessageBody
-            text={message.message}
-            tokens={tokens}
-            sources={sources}
-          />
-        }
-        createdAt={message.createdAt}
-        messageFeedback={
-          enableEmojiFeedback &&
-          !isBotWelcomeMessage &&
-          !(isLastBotMessage && isLastMessageInStreaming(message.data)) && (
-            <BotMessageFeedback message={message} />
-          )
-        }
-      />
-    );
-  }
   return <></>;
 }

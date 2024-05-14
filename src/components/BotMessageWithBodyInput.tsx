@@ -55,6 +55,12 @@ type Props = {
   wideContainer?: boolean;
 };
 
+// TODO: When changing the layout, it should be modified to apply flexibly.
+const HEIGHTS = {
+  FEEDBACK: 40,
+  TIMESTAMP: 18,
+};
+
 export default function BotMessageWithBodyInput(props: Props) {
   const { botStudioEditProps } = useConstantState();
 
@@ -70,6 +76,10 @@ export default function BotMessageWithBodyInput(props: Props) {
     wideContainer = false,
   } = props;
 
+  const profilePaddingBottom =
+    (messageFeedback ? HEIGHTS.FEEDBACK : 0) +
+    (wideContainer ? HEIGHTS.TIMESTAMP : 0);
+
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
   const displaySender = nonChainedMessage || chainTop;
@@ -80,7 +90,7 @@ export default function BotMessageWithBodyInput(props: Props) {
   return (
     <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
       {displayProfileImage ? (
-        <div style={wideContainer ? { paddingBottom: 18 } : undefined}>
+        <div style={{ paddingBottom: profilePaddingBottom }}>
           {botProfileUrl != null && botProfileUrl != '' ? (
             <Avatar
               src={botProfileUrl}

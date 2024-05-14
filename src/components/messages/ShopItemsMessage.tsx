@@ -1,4 +1,5 @@
-import { BaseMessage } from '@sendbird/chat/message';
+import { UserMessage } from '@sendbird/chat/message';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { openURL } from '../../utils';
@@ -10,6 +11,16 @@ const avatarSize = 28;
 const avatarMargin = 8;
 const leftMargin = avatarSize + avatarMargin + listPadding;
 
+const BodyWrapper = styled.div({
+  display: 'flex',
+  flexWrap: 'wrap',
+});
+const Container = styled.div({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 4,
+  width: '100%',
+});
 const Text = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -33,35 +44,56 @@ const Image = styled.img`
   -webkit-user-drag: none;
 `;
 
-// TODO: if (message.data.stream) render <TypingDots /> else render <Carousel />
-// TODO: filter commerce items to match urls included in message.message
-type Props = { message: BaseMessage };
-export const ShopItemsMessage = ({ message }: Props) => {
-  const items = messageExtension.commerceShopItems.get(message);
+type Props = {
+  message: UserMessage;
+  textBody: ReactNode;
+  streamingBody: ReactNode;
+};
+export const ShopItemsMessage = ({
+  message,
+  textBody,
+  streamingBody,
+}: Props) => {
+  const items = messageExtension.commerceShopItems.getValidItems(message);
+  const isStreaming = messageExtension.isStreaming(message);
+  const shouldRenderCarouselBody = isStreaming || items.length > 0;
+  const renderCarouselBody = () => {
+    if (isStreaming) return streamingBody;
+
+    return (
+      <SnapCarousel
+        startPadding={leftMargin}
+        endPadding={listPadding}
+        gap={avatarMargin}
+        style={{
+          flexShrink: 0,
+          flexBasis: '100%',
+          marginLeft: -leftMargin,
+        }}
+      >
+        {items.map((item, index) => (
+          <SnapCarousel.Item
+            width={240}
+            height={198}
+            key={index}
+            onClick={() => openURL(item.url)}
+          >
+            <Image src={item.featured_image} alt={item.title} />
+            <div style={{ padding: 12 }}>
+              <Text>{item.title}</Text>
+            </div>
+          </SnapCarousel.Item>
+        ))}
+      </SnapCarousel>
+    );
+  };
 
   return (
-    <SnapCarousel
-      startPadding={leftMargin}
-      gap={avatarMargin}
-      style={{
-        flexShrink: 0,
-        flexBasis: `calc(100% + ${listPadding}px)`,
-        marginLeft: -leftMargin,
-      }}
-    >
-      {items.map((item, index) => (
-        <SnapCarousel.Item
-          width={240}
-          height={198}
-          key={index}
-          onClick={() => openURL(item.url)}
-        >
-          <Image src={item.featured_image} alt={item.title} />
-          <div style={{ padding: 12 }}>
-            <Text>{item.title}</Text>
-          </div>
-        </SnapCarousel.Item>
-      ))}
-    </SnapCarousel>
+    <Container>
+      <BodyWrapper>{textBody}</BodyWrapper>
+      {shouldRenderCarouselBody && (
+        <BodyWrapper>{renderCarouselBody()}</BodyWrapper>
+      )}
+    </Container>
   );
 };

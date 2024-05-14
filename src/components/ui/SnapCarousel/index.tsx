@@ -5,7 +5,6 @@ import { noop } from '../../../utils';
 
 const Container = styled.div({
   // overscrollBehavior: 'none' // it prevents scroll-y in carousel view
-  zIndex: 24,
   display: 'flex',
   flexDirection: 'row',
   scrollSnapType: 'x mandatory',
@@ -39,6 +38,7 @@ type SnapCarouselProps = {
   children: React.ReactNode;
   gap?: number;
   startPadding?: number;
+  endPadding?: number;
   style?: React.CSSProperties;
 };
 
@@ -50,6 +50,7 @@ const Context = createContext<{
 export const SnapCarousel = ({
   gap = 0,
   startPadding = 0,
+  endPadding = 0,
   style,
   children,
 }: SnapCarouselProps) => {
@@ -85,6 +86,7 @@ export const SnapCarousel = ({
           gap,
           scrollPadding: startPadding,
           paddingLeft: startPadding,
+          paddingRight: endPadding,
           ...style,
         }}
       >
