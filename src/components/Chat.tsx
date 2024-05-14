@@ -15,7 +15,7 @@ const Chat = () => {
   useManualGroupChannelCreation();
   const { channelUrl } = useWidgetLocalStorage();
   const { botStudioEditProps } = useConstantState();
-  const aiAttributesRef = useRef();
+  const aiAttributesRef = useRef<object>();
 
   if (!channelUrl) return <></>;
   aiAttributesRef.current = botStudioEditProps?.aiAttributes;

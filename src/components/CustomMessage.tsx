@@ -1,5 +1,6 @@
 import { User } from '@sendbird/chat';
 
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import { CoreMessageType } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
@@ -57,7 +58,9 @@ export default function CustomMessage(props: Props) {
     message,
   };
   const { replacementTextList, enableEmojiFeedback } = useConstantState();
+  const { stores } = useSendbirdStateContext();
   const { userId } = useWidgetLocalStorage();
+  const currentUserId = stores.userStore.user.userId || userId;
 
   // admin message
   if (message.isAdminMessage()) {
@@ -79,7 +82,7 @@ export default function CustomMessage(props: Props) {
   // Sent by current user
   if (
     message.isUserMessage() &&
-    getSenderUserIdFromMessage(message) === userId
+    getSenderUserIdFromMessage(message) === currentUserId
   ) {
     return (
       <div>
