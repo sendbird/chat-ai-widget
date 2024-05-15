@@ -1,3 +1,10 @@
+## [1.5.6] (May 15 2024)
+#### Feat:
+- Added `widgetOpenState` and `onWidgetOpenStateChange` to `Constant`
+
+#### Fix:
+- Fixed a bug where a message sent by a member that is not the current user nor the bot user is displayed incorrectly
+
 ## [1.5.6] (May 10 2024)
 #### Fix:
 - Fixed a bug where the widget wouldn't close in the mobile view when autoOpen was set to true.
