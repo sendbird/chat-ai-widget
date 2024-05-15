@@ -5,20 +5,20 @@ import { noop } from '../utils';
 
 const WidgetOpenContext = createContext<{
   isOpen: boolean;
-  setIsOpen: (newIsOpen: boolean) => void;
+  setIsOpen: (value: boolean) => void;
 }>({ isOpen: false, setIsOpen: noop });
 
 export const WidgetOpenProvider = ({ children }: React.PropsWithChildren) => {
-  const { chatOpenState, onChatOpenStateChange } = useConstantState();
+  const { widgetOpenState, onWidgetOpenStateChange } = useConstantState();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <WidgetOpenContext.Provider
       value={{
-        isOpen: typeof chatOpenState === 'boolean' ? chatOpenState : isOpen,
+        isOpen: typeof widgetOpenState === 'boolean' ? widgetOpenState : isOpen,
         setIsOpen:
-          typeof onChatOpenStateChange === 'function'
-            ? (newIsOpen: boolean) => onChatOpenStateChange({ newIsOpen })
+          typeof onWidgetOpenStateChange === 'function'
+            ? (value: boolean) => onWidgetOpenStateChange({ value })
             : setIsOpen,
       }}
     >

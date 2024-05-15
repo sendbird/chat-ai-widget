@@ -119,8 +119,8 @@ export interface BotStudioEditProps {
   styles?: WidgetStyles;
 }
 
-export interface OnChatOpenStateChangeProps {
-  newIsOpen: boolean;
+export interface OnWidgetOpenStateChangeParams {
+  value: boolean;
 }
 
 export interface Constant {
@@ -152,8 +152,8 @@ export interface Constant {
   callbacks?: SendbirdChatAICallbacks;
   deviceType?: 'desktop' | 'mobile';
   botStudioEditProps?: BotStudioEditProps;
-  chatOpenState?: boolean;
-  onChatOpenStateChange?: (props: OnChatOpenStateChangeProps) => void;
+  widgetOpenState?: boolean;
+  onWidgetOpenStateChange?: (props: OnWidgetOpenStateChangeParams) => void;
 }
 
 export interface SuggestedReply {
