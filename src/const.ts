@@ -119,6 +119,10 @@ export interface BotStudioEditProps {
   styles?: WidgetStyles;
 }
 
+export interface OnWidgetOpenStateChangeParams {
+  value: boolean;
+}
+
 export interface Constant {
   botNickName: string;
   userNickName: string;
@@ -148,6 +152,8 @@ export interface Constant {
   callbacks?: SendbirdChatAICallbacks;
   deviceType?: 'desktop' | 'mobile';
   botStudioEditProps?: BotStudioEditProps;
+  widgetOpenState?: boolean;
+  onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
 }
 
 export interface SuggestedReply {

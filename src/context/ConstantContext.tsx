@@ -95,6 +95,8 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       deviceType: props.deviceType, // Note this property is not being used but added just to remove any confusion.
       isMobileView,
       botStudioEditProps: props.botStudioEditProps,
+      widgetOpenState: props.widgetOpenState,
+      onWidgetOpenStateChange: props.onWidgetOpenStateChange
     }),
     [props]
   );
