@@ -153,7 +153,7 @@ export interface Constant {
   deviceType?: 'desktop' | 'mobile';
   botStudioEditProps?: BotStudioEditProps;
   widgetOpenState?: boolean;
-  onWidgetOpenStateChange?: (props: OnWidgetOpenStateChangeParams) => void;
+  onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
 }
 
 export interface SuggestedReply {
