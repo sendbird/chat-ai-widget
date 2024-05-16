@@ -67,9 +67,8 @@ export const ShopItemsMessage = ({
         endPadding={listPadding}
         gap={avatarMargin}
         style={{
-          flexShrink: 0,
-          flexBasis: '100%',
           marginLeft: -leftMargin,
+          marginRight: -listPadding,
         }}
         renderButtons={({ onClickPrev, onClickNext }) => (
           <>

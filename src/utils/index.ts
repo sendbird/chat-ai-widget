@@ -171,7 +171,7 @@ export function replaceTextExtracts(
 }
 
 export function extractUrls(text: string): string[] {
-  const urlRegex = /(https?:\/\/[^\s()]+)/g
+  const urlRegex = /(https?:\/\/[^\s()]+)/g;
   return text.match(urlRegex) ?? [];
 }
 
