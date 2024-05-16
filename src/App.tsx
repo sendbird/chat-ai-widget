@@ -73,6 +73,10 @@ const App = (props: Props) => {
       //     botMessageColor: 'hotpink',
       //   },
       // }}
+      // chatOpenState={false}
+      // onChatOpenStateChange={(props) => {
+      //   console.log('## onChatOpenStateChange: ', props);
+      // }}
     />
   );
 };
