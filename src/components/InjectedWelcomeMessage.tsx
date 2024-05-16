@@ -17,6 +17,7 @@ type Props = {
   welcomeMessages: WelcomeUserMessage[];
   botUser: Member | undefined;
   messageCount: number | undefined;
+  isLastMessage: boolean;
 };
 
 export default function InjectedWelcomeMessage(props: Props) {
@@ -26,6 +27,7 @@ export default function InjectedWelcomeMessage(props: Props) {
     welcomeMessages,
     botUser,
     messageCount,
+    isLastMessage,
   } = props;
   const lastWelcomeMessageIndex = welcomeMessages.length - 1;
   const { replacementTextList } = useConstantState();
@@ -50,7 +52,7 @@ export default function InjectedWelcomeMessage(props: Props) {
                 createdAt={message.createdAt}
                 messageCount={messageCount}
               />
-              {suggestedReplies && suggestedReplies.length && (
+              {isLastMessage && suggestedReplies && suggestedReplies.length && (
                 <DynamicRepliesPanel replyOptions={suggestedReplies} />
               )}
             </div>

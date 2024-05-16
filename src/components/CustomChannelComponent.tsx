@@ -231,11 +231,14 @@ export function CustomChannelComponent() {
            * Replace with injected welcome messages instead.
            */
           if (
+            lastMessage &&
+            botWelcomeMessages.length > 0 &&
             isBotWelcomeMessage &&
             welcomeMessages &&
             welcomeMessages.length > 0
           ) {
             if (!firstMessageId || message.messageId === firstMessageId) {
+              const lastBotWelcomeMessage = botWelcomeMessages[botWelcomeMessages.length - 1];
               return (
                 <InjectedWelcomeMessage
                   lastMessageRef={lastMessageRef}
@@ -243,6 +246,9 @@ export function CustomChannelComponent() {
                   welcomeMessages={welcomeMessages}
                   botUser={botUser}
                   messageCount={messageCount}
+                  isLastMessage={
+                    lastMessage.messageId === lastBotWelcomeMessage.messageId
+                  }
                 />
               );
             }
