@@ -114,7 +114,7 @@ workflows:
           name: build_staging
           filters: &only_version_tag_trigger_staging
             tags:
-              only: /^v\d+\.\d+\.\d+-staging$/
+              only: /^v\d+\.\d+\.\d+-staging(\.\d+)?$/
             branches:
               ignore: /.*/
       - upload_to_s3_and_invalidate_cache:
