@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useMemo, useRef } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useMemo,
+  useRef,
+} from 'react';
 import styled from 'styled-components';
 
 import { noop } from '../../../utils';
@@ -40,6 +46,10 @@ type SnapCarouselProps = {
   startPadding?: number;
   endPadding?: number;
   style?: React.CSSProperties;
+  renderButtons?: (props: {
+    onClickPrev(): void;
+    onClickNext(): void;
+  }) => ReactNode;
 };
 
 const Context = createContext<{
@@ -53,6 +63,7 @@ export const SnapCarousel = ({
   endPadding = 0,
   style,
   children,
+  renderButtons,
 }: SnapCarouselProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const activeIndex = useRef(0);
@@ -90,25 +101,21 @@ export const SnapCarousel = ({
           ...style,
         }}
       >
-        {/*<button
-          style={{ position: 'absolute', left: -16 }}
-          onClick={() => scrollTo(activeIndex.current - 1)}
-        >
-          {'left'}
-        </button>*/}
         {React.Children.map(children, (child, index) => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, { ...child.props, index });
           }
           return null;
         })}
-        {/*<button
-          style={{ position: 'absolute', right: -16 }}
-          onClick={() => scrollTo(activeIndex.current + 1)}
-        >
-          {'right'}
-        </button>*/}
       </Container>
+      {renderButtons?.({
+        onClickPrev() {
+          scrollTo(activeIndex.current - 1);
+        },
+        onClickNext() {
+          scrollTo(activeIndex.current + 1);
+        },
+      })}
     </Context.Provider>
   );
 };

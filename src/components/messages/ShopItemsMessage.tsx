@@ -14,6 +14,7 @@ const leftMargin = avatarSize + avatarMargin + listPadding;
 const BodyWrapper = styled.div({
   display: 'flex',
   flexWrap: 'wrap',
+  position: 'relative',
 });
 const Container = styled.div({
   display: 'flex',
@@ -70,6 +71,36 @@ export const ShopItemsMessage = ({
           flexBasis: '100%',
           marginLeft: -leftMargin,
         }}
+        renderButtons={({ onClickPrev, onClickNext }) => (
+          <>
+            <button
+              style={{
+                position: 'absolute',
+                left: -leftMargin,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                height: 50,
+                width: 50,
+              }}
+              onClick={onClickPrev}
+            >
+              {'left'}
+            </button>
+            <button
+              style={{
+                position: 'absolute',
+                right: -listPadding,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                height: 50,
+                width: 50,
+              }}
+              onClick={onClickNext}
+            >
+              {'right'}
+            </button>
+          </>
+        )}
       >
         {items.map((item, index) => (
           <SnapCarousel.Item
