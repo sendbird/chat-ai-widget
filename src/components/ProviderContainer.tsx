@@ -1,17 +1,18 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useMemo } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { StyleSheetManager, ThemeProvider } from 'styled-components';
 
 import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
 import { generateCSSVariables } from '../colors';
 import {
-  useConstantState,
   ConstantStateProvider,
+  useConstantState,
 } from '../context/ConstantContext';
 import { WidgetOpenProvider } from '../context/WidgetOpenContext';
 import { useChannelStyle } from '../hooks/useChannelStyle';
+import { useStyledComponentsTarget } from '../hooks/useStyledComponentsTarget';
 import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
 import { isDashboardPreview } from '../utils';
@@ -65,6 +66,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     }, {});
   }, [accentColor]);
   const { sessionToken, userId } = useWidgetLocalStorage();
+  const target = useStyledComponentsTarget();
 
   if (isFetching) {
     return null;
@@ -81,38 +83,40 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     //     : restConstantProps.autoOpen ?? autoOpen ?? false
     // }
     >
-      <ThemeProvider theme={styledTheme}>
-        {applicationId && userId && (
-          <SendbirdProvider
-            appId={applicationId}
-            userId={userId}
-            accessToken={sessionToken}
-            nickname={userNickName}
-            customApiHost={apiHost}
-            customWebSocketHost={wsHost}
-            configureSession={configureSession}
-            customExtensionParams={userAgentCustomParams}
-            breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.
-            isMentionEnabled={enableMention}
-            theme={theme}
-            colorSet={customColorSet}
-            stringSet={stringSet}
-            uikitOptions={{
-              groupChannel: {
-                input: {
-                  // To hide the file upload icon from the message input
-                  enableDocument: false,
+      <StyleSheetManager target={target}>
+        <ThemeProvider theme={styledTheme}>
+          {applicationId && userId && (
+            <SendbirdProvider
+              appId={applicationId}
+              userId={userId}
+              accessToken={sessionToken}
+              nickname={userNickName}
+              customApiHost={apiHost}
+              customWebSocketHost={wsHost}
+              configureSession={configureSession}
+              customExtensionParams={userAgentCustomParams}
+              breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.
+              isMentionEnabled={enableMention}
+              theme={theme}
+              colorSet={customColorSet}
+              stringSet={stringSet}
+              uikitOptions={{
+                groupChannel: {
+                  input: {
+                    // To hide the file upload icon from the message input
+                    enableDocument: false,
+                  },
+                  enableVoiceMessage: false,
+                  enableFeedback: enableEmojiFeedback,
+                  enableSuggestedReplies: true,
                 },
-                enableVoiceMessage: false,
-                enableFeedback: enableEmojiFeedback,
-                enableSuggestedReplies: true,
-              },
-            }}
-          >
-            {children}
-          </SendbirdProvider>
-        )}
-      </ThemeProvider>
+              }}
+            >
+              {children}
+            </SendbirdProvider>
+          )}
+        </ThemeProvider>
+      </StyleSheetManager>
     </WidgetOpenProvider>
   );
 };
