@@ -35,7 +35,7 @@ const Content = styled.div`
 
 type Props = {
   botUser?: User;
-  createdAt: number;
+  createdAt?: number;
   messageData?: string;
   bodyComponent: ReactNode;
   chainTop?: boolean;
@@ -108,7 +108,7 @@ export default function BotMessageWithBodyInput(props: Props) {
         )}
         <Content>
           {bodyComponent}
-          <SentTime>{formatCreatedAtToAMPM(createdAt)}</SentTime>
+          {createdAt && <SentTime>{formatCreatedAtToAMPM(createdAt)}</SentTime>}
         </Content>
         {displayProfileImage && messageFeedback}
       </BodyContainer>
