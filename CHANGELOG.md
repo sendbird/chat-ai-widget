@@ -1,3 +1,7 @@
+## [1.5.8] (May 17 2024)
+#### Fix:
+- Fixed a bug where styles were broken on some websites
+
 ## [1.5.7] (May 15 2024)
 #### Feat:
 - Added `widgetOpenState` and `onWidgetOpenStateChange` to `Constant`
