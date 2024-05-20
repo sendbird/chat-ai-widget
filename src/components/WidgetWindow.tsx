@@ -1,11 +1,17 @@
+import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { WIDGET_WINDOW_Z_INDEX, elementIds } from '../const';
+import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 import CloseIcon from '../icons/ic-widget-close.svg';
+import CollapseIcon from '../icons/icon-collapse.svg';
+import ExpandIcon from '../icons/icon-expand.svg';
+import { isDashboardPreview } from '../utils';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
+  isExpanded: boolean;
 }>`
   overscroll-behavior: none;
   -webkit-overflow-scrolling: auto;
@@ -48,6 +54,30 @@ const StyledWidgetWindowWrapper = styled.div<{
   .widget-close-button {
     display: none;
   }
+
+  ${({ isExpanded }) =>
+    isExpanded &&
+    css`
+      width: 743px;
+      height: 723px;
+    `}
+`;
+
+const StyledExpandButton = styled.button`
+  position: fixed;
+  right: 42px;
+  top: 16px;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    cursor: pointer;
+  }
 `;
 
 const StyledCloseButton = styled.button`
@@ -69,9 +99,24 @@ const StyledCloseButton = styled.button`
 
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, setIsOpen } = useWidgetOpen();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const { customUserAgentParam } = useConstantState();
 
   return (
-    <StyledWidgetWindowWrapper isOpen={isOpen} id={elementIds.widgetWindow}>
+    <StyledWidgetWindowWrapper
+      isOpen={isOpen}
+      isExpanded={isExpanded}
+      id={elementIds.widgetWindow}
+    >
+      {isDashboardPreview(customUserAgentParam) && (
+        <StyledExpandButton onClick={() => setIsExpanded((prev) => !prev)}>
+          {isExpanded ? (
+            <CollapseIcon id={elementIds.collapseIcon} />
+          ) : (
+            <ExpandIcon id={elementIds.expandIcon} />
+          )}
+        </StyledExpandButton>
+      )}
       <StyledCloseButton
         aria-label="Close widget"
         onClick={() => setIsOpen(false)}
