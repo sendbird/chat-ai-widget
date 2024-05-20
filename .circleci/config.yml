@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@2.1.0
   aws-s3: circleci/aws-s3@4.0.0
-  
+
 executors:
   ci-aws:
     docker:
@@ -42,6 +42,9 @@ jobs:
     executor: node
     steps:
       - checkout
+      - run:
+          name: Enable Corepack
+          command: corepack enable
       - run:
           name: install dependencies and build
           command: |
