@@ -47,7 +47,7 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
     channelUrl: channel.url,
     channelType: ChannelType.GROUP,
     createdAt, // FIXME: ms? or seconds? sorted by this or id?
-    sender: botUser?.serialize(),
+    sender: botUser.serialize(),
     sendingStatus: SendingStatus.SUCCEEDED,
     messageType: MessageType.USER,
     message: 'a welcome message',
