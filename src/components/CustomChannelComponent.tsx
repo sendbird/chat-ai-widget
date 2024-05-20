@@ -209,10 +209,7 @@ export function CustomChannelComponent() {
   );
   const firstMessageCreatedAt =
     allMessages.length > 0 ? allMessages[0].createdAt : undefined;
-  const lastWelcomeMessageCreatedAt =
-    botWelcomeMessages.length > 0
-      ? botWelcomeMessages[botWelcomeMessages.length - 1].createdAt
-      : undefined;
+  const lastWelcomeMessageCreatedAt = botWelcomeMessages[botWelcomeMessages.length - 1]?.createdAt
   const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
 
   return (
