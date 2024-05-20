@@ -111,18 +111,15 @@ export default App;
 | Prop Name               | Type                                    | Required | Default Value | Description                                                                                                    |
 |-------------------------|-----------------------------------------|----------|---------------|----------------------------------------------------------------------------------------------------------------|
 | `applicationId`         | `string`                                | Yes      | N/A           | Your Sendbird application ID                                                                                   |
-| `botId`                 | `string`                                | Yes      | N/A           | Your Sendbird bot ID                                                                                           |
-| `botNickName`           | `string`                                | No       | N/A           | The nickname of the bot                                                                                        |
-| `userNickName`          | `string`                                | No       | N/A           | The nickname of the user                                                                                       |
-| `enableSourceMessage`   | `boolean`                               | No       | `false`       | Enables the display of the source message.                                                                     |
+| `botId`                 | `string`                                | Yes      | N/A           | Your Sendbird bot ID                                                                                           |                                                                                       |
+| `userNickName`          | `string`                                | No       | N/A           | The nickname of the user                                                                                       |                                                                   |
 | `enableEmojiFeedback`   | `boolean`                               | No       | `true`        | Enables emoji feedback functionality.                                                                          |
 | `enableMention`         | `boolean`                               | No       | `true`        | Enables mention functionality.                                                                                 |
 | `enableMobileView`      | `boolean`                               | No       | `true`        | Enables mobile view.                                                                                           |
-| `autoOpen`              | `boolean`                               | No       | `true`        | Determines whether the chatbot widget automatically opens when the browser window is opened.                   |
-| `configureSession`      | `() => SessionHandler`                  | No      | N/A           | Function to configure the user session. The example usage can be found [here](./custom-session-guide.md).|
 | `stringSet`             | `{ [key: string]: string }`             | No       | N/A           | Customizable string set. Available string sets can be found [here](https://github.com/sendbird/sendbird-uikit-react/blob/main/src/ui/Label/stringSet.ts). |
 | `customRefreshComponent` | `{ icon: string, style: React.CSSProperties, width: string, height: string, onClick: () => void }` | No       | N/A           | Customizable refresh component. You can set properties such as `icon`, `style`, `width`, `height`, and `onClick`. |
-
+| `configureSession`      | `() => SessionHandler`                  | No      | N/A           | Function to configure the user session. The example usage can be found [here](./custom-session-guide.md). <br/><br/> Must be used with `userId`.|
+| `autoOpen`              | `boolean`                               | No       | N/A        | Determines whether the chatbot widget automatically opens when the browser window is opened.                   |
 
 ## For internal contributors
 - [Release guide](./release-guide.md)
