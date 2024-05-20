@@ -47,6 +47,7 @@ const App = (props: Props) => {
       serviceName={props.serviceName}
       callbacks={props.callbacks}
       deviceType={props.deviceType}
+      enableResetHistoryOnConnect={props.enableResetHistoryOnConnect}
       // botStudioEditProps={{
       //   botInfo: {
       //     profileUrl: 'url',

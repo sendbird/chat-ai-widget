@@ -18,6 +18,7 @@ import MessageDataContent from './MessageDataContent';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
+import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import {
   hideChatBottomBanner,
@@ -141,8 +142,6 @@ export function CustomChannelComponent() {
   const botNickname = nickname ?? botUser?.nickname;
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
-  useAutoDismissMobileKyeboardHandler();
-
   const lastMessage = allMessages?.[allMessages?.length - 1] as
     | SendableMessage
     | undefined;
@@ -163,6 +162,8 @@ export function CustomChannelComponent() {
     enableEmojiFeedback
   );
 
+  useAutoDismissMobileKyeboardHandler();
+  useResetHistoryOnConnected();
   useScrollOnStreaming({
     isLastBotMessage,
     lastMessageRef,
@@ -238,7 +239,8 @@ export function CustomChannelComponent() {
             welcomeMessages.length > 0
           ) {
             if (!firstMessageId || message.messageId === firstMessageId) {
-              const lastBotWelcomeMessage = botWelcomeMessages[botWelcomeMessages.length - 1];
+              const lastBotWelcomeMessage =
+                botWelcomeMessages[botWelcomeMessages.length - 1];
               return (
                 <InjectedWelcomeMessage
                   lastMessageRef={lastMessageRef}
