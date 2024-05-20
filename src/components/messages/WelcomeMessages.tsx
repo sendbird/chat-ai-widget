@@ -59,7 +59,7 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
 
   return (
     <Message message={localMessage as ClientUserMessage} hasSeparator={true}>
-      {welcomeMessages.map((welcomeMsg: WelcomeUserMessage, index) => {
+      {welcomeMessages.map((welcomeMsg, index) => {
         const suggestedReplies = welcomeMsg.suggestedReplies;
         if ('message' in welcomeMsg) {
           const text = welcomeMsg.message;
