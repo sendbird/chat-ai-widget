@@ -15,7 +15,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: 'recursive'
           fetch-depth: 0
-
+      - name: Enable corepack
+        run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: 'yarn'
       - name: Install and Build 🔧
         run: |
           yarn install
