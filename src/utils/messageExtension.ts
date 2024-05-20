@@ -19,7 +19,7 @@ export const messageExtension = {
     }
   },
   commerceShopItems: {
-    isValid(message: UserMessage) {
+    isValid(message: UserMessage): boolean {
       return (
         (
           (message.extendedMessagePayload?.commerce_shop_items ??
@@ -27,11 +27,11 @@ export const messageExtension = {
         ).length > 0
       );
     },
-    getItems(message: UserMessage) {
+    getItems(message: UserMessage): CommerceShopItem[] {
       return (message.extendedMessagePayload?.commerce_shop_items ??
         []) as CommerceShopItem[];
     },
-    getValidItems(message: UserMessage) {
+    getValidItems(message: UserMessage): CommerceShopItem[] {
       const urls = extractUrls(message.message);
       return this.getItems(message).filter((it) => urls.includes(it.url));
     },

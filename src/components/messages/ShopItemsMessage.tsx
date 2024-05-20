@@ -2,6 +2,7 @@ import { UserMessage } from '@sendbird/chat/message';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
+import { useConstantState } from '../../context/ConstantContext';
 import { openURL } from '../../utils';
 import { messageExtension } from '../../utils/messageExtension';
 import { SnapCarousel } from '../ui/SnapCarousel';
@@ -44,6 +45,13 @@ const Image = styled.img`
   -ms-user-select: none;
   -webkit-user-drag: none;
 `;
+const Button = styled.button({
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  height: 50,
+  width: 50,
+});
 
 type Props = {
   message: UserMessage;
@@ -55,9 +63,11 @@ export const ShopItemsMessage = ({
   textBody,
   streamingBody,
 }: Props) => {
+  const { isMobileView } = useConstantState();
   const items = messageExtension.commerceShopItems.getValidItems(message);
   const isStreaming = messageExtension.isStreaming(message);
   const shouldRenderCarouselBody = isStreaming || items.length > 0;
+  const shouldRenderButtons = !isMobileView && items.length >= 2;
   const renderCarouselBody = () => {
     if (isStreaming) return streamingBody;
 
@@ -66,40 +76,23 @@ export const ShopItemsMessage = ({
         startPadding={leftMargin}
         endPadding={listPadding}
         gap={avatarMargin}
-        style={{
-          marginLeft: -leftMargin,
-          marginRight: -listPadding,
-        }}
-        renderButtons={({ onClickPrev, onClickNext }) => (
-          <>
-            <button
-              style={{
-                position: 'absolute',
-                left: -leftMargin,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                height: 50,
-                width: 50,
-              }}
-              onClick={onClickPrev}
-            >
-              {'left'}
-            </button>
-            <button
-              style={{
-                position: 'absolute',
-                right: -listPadding,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                height: 50,
-                width: 50,
-              }}
-              onClick={onClickNext}
-            >
-              {'right'}
-            </button>
-          </>
-        )}
+        style={{ marginLeft: -leftMargin, marginRight: -listPadding }}
+        renderButtons={({ activeIndex, onClickPrev, onClickNext }) =>
+          shouldRenderButtons && (
+            <>
+              {activeIndex !== 0 && (
+                <Button style={{ left: -leftMargin }} onClick={onClickPrev}>
+                  {'left'}
+                </Button>
+              )}
+              {activeIndex !== items.length - 1 && (
+                <Button style={{ right: -listPadding }} onClick={onClickNext}>
+                  {'right'}
+                </Button>
+              )}
+            </>
+          )
+        }
       >
         {items.map((item, index) => (
           <SnapCarousel.Item

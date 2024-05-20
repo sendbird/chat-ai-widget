@@ -4,6 +4,7 @@ import React, {
   useContext,
   useMemo,
   useRef,
+  useState,
 } from 'react';
 import styled from 'styled-components';
 
@@ -47,15 +48,16 @@ type SnapCarouselProps = {
   endPadding?: number;
   style?: React.CSSProperties;
   renderButtons?: (props: {
+    activeIndex: number;
     onClickPrev(): void;
     onClickNext(): void;
   }) => ReactNode;
 };
 
 const Context = createContext<{
-  activeIndex: React.MutableRefObject<number>;
+  activeIndex: number;
   scrollTo: (index: number) => void;
-}>({ activeIndex: { current: 0 }, scrollTo: noop });
+}>({ activeIndex: 0, scrollTo: noop });
 
 export const SnapCarousel = ({
   gap = 0,
@@ -66,7 +68,7 @@ export const SnapCarousel = ({
   renderButtons,
 }: SnapCarouselProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const activeIndex = useRef(0);
+  const [activeIndex, setActiveState] = useState(0);
   const itemLength = React.Children.toArray(children).length;
   const cursorSize = useMemo(() => {
     const containerWidth = (ref.current?.scrollWidth ?? 0) - startPadding;
@@ -75,14 +77,14 @@ export const SnapCarousel = ({
 
   const onScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const idx = Math.round(e.currentTarget.scrollLeft / cursorSize);
-    if (idx !== activeIndex.current) activeIndex.current = idx;
+    if (idx !== activeIndex) setActiveState(idx);
   };
 
   const scrollTo = (index: number) => {
     if (ref.current) {
-      activeIndex.current = Math.min(Math.max(0, index), itemLength - 1);
+      const nextIdx = Math.min(Math.max(0, index), itemLength - 1);
       ref.current.scroll({
-        left: activeIndex.current * cursorSize,
+        left: nextIdx * cursorSize,
         behavior: 'smooth',
       });
     }
@@ -109,11 +111,12 @@ export const SnapCarousel = ({
         })}
       </Container>
       {renderButtons?.({
+        activeIndex,
         onClickPrev() {
-          scrollTo(activeIndex.current - 1);
+          scrollTo(activeIndex - 1);
         },
         onClickNext() {
-          scrollTo(activeIndex.current + 1);
+          scrollTo(activeIndex + 1);
         },
       })}
     </Context.Provider>
@@ -138,7 +141,7 @@ SnapCarousel.Item = function Item({
   const { activeIndex } = useContext(Context);
   return (
     <ItemContainer
-      onClick={() => index === activeIndex.current && onClick?.()}
+      onClick={() => index === activeIndex && onClick?.()}
       role={'button'}
       style={{ width, height }}
     >
