@@ -29,6 +29,7 @@ interface BotStyle {
   theme: 'light' | 'dark';
   accentColor: string;
   botMessageBGColor: string;
+  /** @deprecated We no longer use the autoOpen value from the dashboard. **/
   autoOpen: boolean;
 }
 

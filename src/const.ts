@@ -261,16 +261,6 @@ export const LOCAL_MESSAGE_CUSTOM_TYPE = {
   confirmation: 'confirmation',
 };
 
-export interface BackGroundContent {
-  Component: React.FC;
-  height: string;
-}
-
-export interface StringPageLogoContent {
-  Component: React.FC;
-  width: string;
-}
-
 export interface ChatBottomContent {
   text: string;
   backgroundColor?: string;

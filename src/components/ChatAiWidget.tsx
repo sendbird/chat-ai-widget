@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { StringSet } from '@uikit/ui/Label/stringSet';
+
 import Chat from './Chat';
 import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
@@ -49,10 +51,12 @@ const MobileComponent = () => {
   );
 };
 
-export interface ChatAiWidgetProps extends Partial<Constant> {
+export interface ChatAiWidgetProps
+  extends Omit<Partial<Constant>, 'stringSet'> {
   applicationId: string;
   botId: string;
   hashedKey?: string;
+  stringSet?: Partial<StringSet>;
 }
 
 export default function ChatAiWidget(props: ChatAiWidgetProps) {
