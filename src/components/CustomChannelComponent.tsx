@@ -208,7 +208,9 @@ export function CustomChannelComponent() {
     (message) => message.messageId
   );
   const firstMessageCreatedAt = allMessages[0]?.createdAt;
-  const lastWelcomeMessageCreatedAt = botWelcomeMessages[botWelcomeMessages.length - 1]?.createdAt
+  const lastBotWelcomeMessage =
+    botWelcomeMessages[botWelcomeMessages.length - 1];
+  const lastWelcomeMessageCreatedAt = lastBotWelcomeMessage?.createdAt;
   const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
 
   return (
@@ -237,6 +239,12 @@ export function CustomChannelComponent() {
                   botUser={botUser}
                   messageCount={messageCount}
                   lastMessageRef={lastMessageRef}
+                  showSuggestedReplies={
+                    lastMessage
+                      ? lastMessage.messageId ===
+                        lastBotWelcomeMessage.messageId
+                      : true
+                  }
                   timestamp={
                     lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt
                   }

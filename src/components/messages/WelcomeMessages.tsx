@@ -11,12 +11,12 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import { ClientUserMessage } from '@uikit/types';
 
-import BotMessageWithBodyInput from '../BotMessageWithBodyInput';
-import DynamicRepliesPanel from '../DynamicRepliesPanel';
-import ParsedBotMessageBody from '../ParsedBotMessageBody';
 import { WelcomeUserMessage } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
 import { parseTextMessage, Token } from '../../utils';
+import BotMessageWithBodyInput from '../BotMessageWithBodyInput';
+import DynamicRepliesPanel from '../DynamicRepliesPanel';
+import ParsedBotMessageBody from '../ParsedBotMessageBody';
 
 interface WelcomeMessagesProps {
   channel: GroupChannel;
@@ -24,6 +24,7 @@ interface WelcomeMessagesProps {
   botUser: User;
   messageCount: number;
   lastMessageRef: RefObject<HTMLDivElement>;
+  showSuggestedReplies: boolean;
   timestamp?: number;
 }
 
@@ -35,6 +36,7 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
     botUser,
     messageCount,
     lastMessageRef,
+    showSuggestedReplies,
     timestamp,
   } = props;
   const lastWelcomeMessageIndex = welcomeMessages.length - 1;
@@ -73,9 +75,11 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
                   <ParsedBotMessageBody text={text} tokens={tokens} />
                 }
               />
-              {suggestedReplies && suggestedReplies.length && (
-                <DynamicRepliesPanel replyOptions={suggestedReplies} />
-              )}
+              {showSuggestedReplies &&
+                suggestedReplies &&
+                suggestedReplies.length && (
+                  <DynamicRepliesPanel replyOptions={suggestedReplies} />
+                )}
             </div>
           );
         } else {
