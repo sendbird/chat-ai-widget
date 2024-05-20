@@ -207,7 +207,7 @@ export function CustomChannelComponent() {
   const botWelcomeMessageIds = botWelcomeMessages.map(
     (message) => message.messageId
   );
-  const firstMessageCreatedAt = allMessages[0]?.createdAt : undefined;
+  const firstMessageCreatedAt = allMessages[0]?.createdAt;
   const lastWelcomeMessageCreatedAt = botWelcomeMessages[botWelcomeMessages.length - 1]?.createdAt
   const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
 
