@@ -108,7 +108,9 @@ export default function BotMessageWithBodyInput(props: Props) {
         )}
         <Content>
           {bodyComponent}
-          {createdAt && <SentTime>{formatCreatedAtToAMPM(createdAt)}</SentTime>}
+          {!!createdAt && (
+            <SentTime>{formatCreatedAtToAMPM(createdAt)}</SentTime>
+          )}
         </Content>
         {displayProfileImage && messageFeedback}
       </BodyContainer>
