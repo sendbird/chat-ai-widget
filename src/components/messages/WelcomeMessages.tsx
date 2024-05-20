@@ -11,12 +11,12 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import { ClientUserMessage } from '@uikit/types';
 
-import BotMessageWithBodyInput from './BotMessageWithBodyInput';
-import DynamicRepliesPanel from './DynamicRepliesPanel';
-import ParsedBotMessageBody from './ParsedBotMessageBody';
-import { WelcomeUserMessage } from '../const';
-import { useConstantState } from '../context/ConstantContext';
-import { parseTextMessage, Token } from '../utils';
+import BotMessageWithBodyInput from '../BotMessageWithBodyInput';
+import DynamicRepliesPanel from '../DynamicRepliesPanel';
+import ParsedBotMessageBody from '../ParsedBotMessageBody';
+import { WelcomeUserMessage } from '../../const';
+import { useConstantState } from '../../context/ConstantContext';
+import { parseTextMessage, Token } from '../../utils';
 
 interface WelcomeMessagesProps {
   channel: GroupChannel;

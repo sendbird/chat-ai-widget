@@ -16,7 +16,7 @@ import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import MessageDataContent from './MessageDataContent';
 import StaticRepliesPanel from './StaticRepliesPanel';
-import WelcomeMessages from './WelcomeMessages';
+import WelcomeMessages from './messages/WelcomeMessages';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
