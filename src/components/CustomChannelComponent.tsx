@@ -202,7 +202,7 @@ export function CustomChannelComponent() {
 
   const botWelcomeMessages = useMemo(() => {
     if (!botId) return [];
-    return getBotWelcomeMessages(messages, botId);
+    return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
   const botWelcomeMessageIds = botWelcomeMessages.map(
     (message) => message.messageId
