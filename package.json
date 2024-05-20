@@ -15,19 +15,19 @@
     "url": "https://github.com/sendbird/chat-ai-widget.git"
   },
   "scripts": {
-    "install:deps": "git submodule update --init --recursive && npm install",
+    "install:deps": "git submodule update --init --recursive && yarn install",
     "dev": "vite",
     "build:types": "rm -rf dist; rm -rf icons; rm -rf icons; tsc; cp -R src/icons icons; cp -R src/icons dist/icons ; cp -R src/css css; cp -R src/css dist/css",
     "prebuild": "rm -rf ./dist && mv .env .env_temp || true",
     "postbuild": "mv .env_temp .env || true",
-    "build": "npm run prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build && npm run postbuild",
-    "build:npm": "node scripts/prebuild.mjs && npm run build",
+    "build": "yarn prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build && yarn postbuild",
+    "build:npm": "node scripts/prebuild.mjs && yarn build",
     "build:pages": "rm -rf ./dist && tsc-silent -p './tsconfig.json' --suppress @ && vite build --config vite.config.pages.ts",
     "lint": "npx eslint src",
-    "lint:fix": "npm run lint -- --fix",
+    "lint:fix": "yarn lint -- --fix",
     "prettier": "npx prettier src --check",
-    "prettier:fix": "npm run prettier -- --write",
-    "format": "npm run prettier:fix && npm run lint:fix",
+    "prettier:fix": "yarn prettier -- --write",
+    "format": "yarn prettier:fix && yarn lint:fix",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -71,5 +71,6 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "packageManager": "yarn@4.2.2"
 }

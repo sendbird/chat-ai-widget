@@ -46,10 +46,10 @@ jobs:
           git config --global user.email "sha.sdk_deployment@sendbird.com"
       - name: Install and Build
         run: |
-          npm install
+          yarn install --immutable --immutable-cache
           touch .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production && \
-          npm run build:npm
+          yarn build:npm
       - name: Publish to npm
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.npm_token }}" >> .npmrc
@@ -66,7 +66,7 @@ jobs:
           packages=( "self-service" )
           for package in "${packages[@]}"; do
             cd ./packages/$package
-            npm install @sendbird/chat-ai-widget@${{ github.event.inputs.version }}
+            yarn add @sendbird/chat-ai-widget@${{ github.event.inputs.version }}
             cd -
           done
           git add .
