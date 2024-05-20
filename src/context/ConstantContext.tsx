@@ -82,7 +82,6 @@ export const ConstantStateProvider = (
       enableEmojiFeedback:
         props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
       enableMention: props.enableMention ?? initialState.enableMention,
-      enableMobileView: props.enableMobileView ?? initialState.enableMobileView,
       autoOpen: props.autoOpen,
       renderWidgetToggleButton: props.renderWidgetToggleButton,
       serviceName: getDefaultServiceName(props.serviceName),

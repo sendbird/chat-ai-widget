@@ -63,7 +63,6 @@ export const DEFAULT_CONSTANT = {
   enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
-  enableMobileView: true,
   enableResetHistoryOnConnect: false,
 } satisfies Partial<Constant>;
 
@@ -144,13 +143,13 @@ export interface Constant extends Required<ConstantProps> {
    */
   enableMention: boolean;
   /**
-   * @public Whether to enable mobile view.
-   */
-  enableMobileView: boolean;
-  /**
    * @public String set to be used in the widget.
    */
   stringSet: StringSet;
+  /**
+   * @public Device type to be used in the widget.
+   */
+  deviceType?: 'desktop' | 'mobile';
   /**
    * @public Whether to open the widget automatically.
    */
@@ -219,10 +218,6 @@ export interface Constant extends Required<ConstantProps> {
    * @private Callbacks to be used in the widget.
    */
   callbacks?: SendbirdChatAICallbacks;
-  /**
-   * @private Device type to be used in the widget.
-   */
-  deviceType?: 'desktop' | 'mobile';
   /**
    * @private Bot studio edit properties to be used in Sendbird Dashboard.
    */

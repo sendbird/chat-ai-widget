@@ -4,7 +4,7 @@ import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
 
 export default function useMobileView() {
-  const { enableMobileView, isMobileView } = useConstantState();
+  const { isMobileView } = useConstantState();
   const { isOpen: isWidgetOpen } = useWidgetOpen();
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
@@ -22,7 +22,7 @@ export default function useMobileView() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [enableMobileView]);
+  }, [isMobileView]);
 
   // disable body scroll when MobileContainer is open
   useEffect(() => {
