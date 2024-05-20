@@ -75,8 +75,8 @@ This is a Sendbird Chat AI Widget implemented on top of [React UiKit](https://gi
 ## Run locally
 
 ```bash
-npm run install:deps
-npm run dev
+yarn run install:deps
+yarn run dev
 ```
 
  - If you want to change applicationId and botId when running locally, modify the following variables in `.env`:
