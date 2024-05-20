@@ -46,8 +46,8 @@ jobs:
           name: install dependencies and build
           command: |
             cd ./packages/self-service
-            npm install
-            npm run build
+            yarn install
+            yarn build
       - persist_to_workspace:
           root: ./packages/self-service
           paths:

@@ -24,7 +24,7 @@ Once all the steps in the workflow are successfully completed:
 
 ### Want to publish `@sendbird/chat-ai-widget` manually?
 1. Update the `version` field in `package.json`.
-2. Run `npm run build:npm` in the directory root.
+2. Run `yarn build:npm` in the directory root.
    - Make sure you have `.env.production` which contains `VITE_CHAT_AI_WIDGET_KEY=...`.
    - `VITE_CHAT_AI_WIDGET_KEY` can be found in 1Password under the entry `CHAT_AI_WIDGET_KEY`.
 3. Run `npm publish` (with `--tag rc / alpha / beta` depending on your need).
