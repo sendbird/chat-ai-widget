@@ -249,10 +249,8 @@ export function CustomChannelComponent() {
             (mid) => mid === message.messageId
           );
           /**
-           * Note that we display injected welcome messages regardless of first welcome message
-           * is filtered.
+           * Filter out messages that should not be displayed.
            */
-          // NOTE: Filter out messages that should not be displayed.
           if (
             isWelcomeMessagesGiven &&
             botWelcomeMessageIds.includes(message.messageId)
@@ -263,7 +261,6 @@ export function CustomChannelComponent() {
             (m) => m.messageId == message.messageId
           );
 
-          /* eslint-disable react/prop-types */ // TODO: upgrade to latest eslint tooling or add "react/prop-types": "off" to eslintrc rules.
           let hasSeparator = props.hasSeparator;
           const prevMessageTimestamp =
             lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
