@@ -70,12 +70,8 @@ const App = (props: Props) => {
       //   styles: {
       //     theme: 'light',
       //     primaryColor: 'orange',
-      //     botMessageColor: 'hotpink',
+      //     botMessageBGColor: 'hotpink',
       //   },
-      // }}
-      // chatOpenState={false}
-      // onChatOpenStateChange={(props) => {
-      //   console.log('## onChatOpenStateChange: ', props);
       // }}
     />
   );
