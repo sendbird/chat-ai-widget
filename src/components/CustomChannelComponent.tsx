@@ -257,13 +257,17 @@ export function CustomChannelComponent() {
             (mid) => mid === message.messageId
           );
           /**
-           * Filter out messages that should not be displayed.
+           * When welcome messages are given, they are rendered through renderWelcomeMessage. In this case, filter
+           * out actual welcome messages.
            */
           if (
             isWelcomeMessagesGiven &&
             botWelcomeMessageIds.includes(message.messageId)
           )
             return <></>;
+          /**
+           * Filter out any message that should be filtered out due to business requirement.
+           */
           if (shouldFilterOutMessage(message)) return <></>;
           const groupedMessage = groupedMessages.find(
             (m) => m.messageId == message.messageId

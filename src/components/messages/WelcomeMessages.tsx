@@ -3,9 +3,8 @@ import type { GroupChannel } from '@sendbird/chat/groupChannel';
 import {
   MessageType,
   SendingStatus,
-  UserMessage,
 } from '@sendbird/chat/message';
-import { RefObject } from 'react';
+import { RefObject, useMemo } from 'react';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import Message from '@uikit/modules/GroupChannel/components/Message';
@@ -44,21 +43,25 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
   const store = useSendbirdStateContext();
   const sb = store.stores.sdkStore.sdk;
   const createdAt = timestamp ?? Date.now(); // channel.createdAt;
-  const localMessage: UserMessage = sb.message.buildMessageFromSerializedData({
-    messageId: channel.createdAt,
-    channelUrl: channel.url,
-    channelType: ChannelType.GROUP,
-    createdAt, // FIXME: ms? or seconds? sorted by this or id?
-    sender: botUser.serialize(),
-    sendingStatus: SendingStatus.SUCCEEDED,
-    messageType: MessageType.USER,
-    message: 'a welcome message',
-    reactions: [],
-    plugins: [],
-  }) as UserMessage;
+  const localMessage: ClientUserMessage = useMemo(
+    () =>
+      sb.message.buildMessageFromSerializedData({
+        messageId: channel.createdAt,
+        channelUrl: channel.url,
+        channelType: ChannelType.GROUP,
+        createdAt, // FIXME: ms? or seconds? sorted by this or id?
+        sender: botUser.serialize(),
+        sendingStatus: SendingStatus.SUCCEEDED,
+        messageType: MessageType.USER,
+        message: 'a welcome message',
+        reactions: [],
+        plugins: [],
+      }) as ClientUserMessage,
+    []
+  );
 
   return (
-    <Message message={localMessage as ClientUserMessage} hasSeparator={true}>
+    <Message message={localMessage} hasSeparator={true}>
       {welcomeMessages.map((welcomeMsg, index) => {
         const suggestedReplies = welcomeMsg.suggestedReplies;
         if ('message' in welcomeMsg) {
