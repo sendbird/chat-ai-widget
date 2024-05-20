@@ -46,7 +46,7 @@ jobs:
           git config --global user.email "sha.sdk_deployment@sendbird.com"
       - name: Install and Build
         run: |
-          yarn install
+          yarn install --immutable --immutable-cache
           touch .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production && \
           yarn build:npm
