@@ -12,7 +12,6 @@ import { getDateNDaysLater, assert } from '../utils';
  */
 export const useManualGroupChannelCreation = () => {
   const {
-    instantConnect,
     firstMessageData,
     createGroupChannelParams,
     applicationId: appId,
@@ -35,12 +34,11 @@ export const useManualGroupChannelCreation = () => {
     retry: 0,
     queryFn: async () => {
       try {
-        const paramData =
-          instantConnect && firstMessageData
-            ? JSON.stringify({
-                first_message_data: firstMessageData,
-              })
-            : undefined;
+        const paramData = firstMessageData
+          ? JSON.stringify({
+              first_message_data: firstMessageData,
+            })
+          : undefined;
 
         assert(
           botId != null && customUserId != null,

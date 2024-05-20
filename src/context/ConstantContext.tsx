@@ -27,7 +27,6 @@ export const ConstantStateProvider = (
     () => ({
       applicationId: props.applicationId,
       botId: props.botId,
-      botNickName: props.botNickName ?? initialState.botNickName,
       userNickName: props.userNickName ?? initialState.userNickName,
       betaMark: props.betaMark ?? initialState.betaMark,
       customBetaMarkText:
@@ -50,7 +49,6 @@ export const ConstantStateProvider = (
         props.messageBottomContent ?? initialState.messageBottomContent,
       replacementTextList:
         props.replacementTextList ?? initialState.replacementTextList,
-      instantConnect: props.instantConnect ?? initialState.instantConnect,
       customRefreshComponent: {
         icon:
           props.customRefreshComponent?.icon ??
