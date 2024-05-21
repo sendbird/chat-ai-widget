@@ -12,6 +12,7 @@ export interface CommonTheme {
       incomingMessage: string;
       outgoingMessage: string;
       suggestedReply: string;
+      carouselButton: string;
     };
     carouselItem: string;
     carouselButton: string;
@@ -68,6 +69,7 @@ export function getTheme({
             ? generateColorVariants(accentColor)[400]
             : 'var(--sendbird-light-primary-400)',
           suggestedReply: 'var(--sendbird-light-background-100)',
+          carouselButton: 'var(--sendbird-light-background-100)',
         },
         carouselItem: 'var(--sendbird-light-background-50)',
         carouselButton: 'var(--sendbird-light-background-50)',
@@ -116,6 +118,7 @@ export function getTheme({
             ? generateColorVariants(accentColor)[400]
             : 'var(--sendbird-dark-primary-300)',
           suggestedReply: 'var(--sendbird-dark-background-500)',
+          carouselButton: 'var(--sendbird-dark-background-500)',
         },
         carouselItem: 'var(--sendbird-dark-background-500)',
         carouselButton: 'var(--sendbird-dark-background-400)',

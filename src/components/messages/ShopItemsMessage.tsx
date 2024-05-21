@@ -49,7 +49,7 @@ const Image = styled.img`
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-drag: none;
-  backgroundcolor: ${({ theme }) => theme.bgColor.carouselItem};
+  background-color: ${({ theme }) => theme.bgColor.carouselItem};
 `;
 
 const Button = styled.button<{ direction: 'left' | 'right' }>(
@@ -68,6 +68,9 @@ const Button = styled.button<{ direction: 'left' | 'right' }>(
     backgroundColor: theme.bgColor.carouselButton,
     boxShadow:
       '0px 8px 10px 1px rgba(13, 13, 13, 0.12), 0px 3px 14px 2px rgba(13, 13, 13, 0.08), 0px 3px 5px -3px rgba(13, 13, 13, 0.04)',
+    '&:hover': {
+      backgroundColor: theme.bgColor.hover.carouselButton,
+    },
   })
 );
 
