@@ -24,9 +24,9 @@
     "build:npm": "node scripts/prebuild.mjs && yarn build",
     "build:pages": "rm -rf ./dist && tsc-silent -p './tsconfig.json' --suppress @ && vite build --config vite.config.pages.ts",
     "lint": "npx eslint src",
-    "lint:fix": "yarn lint -- --fix",
+    "lint:fix": "yarn lint --fix",
     "prettier": "npx prettier src --check",
-    "prettier:fix": "yarn prettier -- --write",
+    "prettier:fix": "yarn prettier --write",
     "format": "yarn prettier:fix && yarn lint:fix",
     "preview": "vite preview"
   },

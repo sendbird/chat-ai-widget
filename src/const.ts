@@ -66,6 +66,7 @@ export const DEFAULT_CONSTANT = {
   enableEmojiFeedback: true,
   enableMention: true,
   enableMobileView: true,
+  enableResetHistoryOnConnect: false,
 } satisfies Partial<Constant>;
 
 type ConfigureSession = (
@@ -123,7 +124,7 @@ export interface OnWidgetOpenStateChangeParams {
   value: boolean;
 }
 
-export interface Constant {
+export interface Constant extends Required<ConstantProps> {
   botNickName: string;
   userNickName: string;
   betaMark: boolean;
@@ -154,6 +155,13 @@ export interface Constant {
   botStudioEditProps?: BotStudioEditProps;
   widgetOpenState?: boolean;
   onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
+}
+
+export interface ConstantProps {
+  /**
+   * Reset chat history when chat is connected.
+   * */
+  enableResetHistoryOnConnect?: boolean;
 }
 
 export interface SuggestedReply {

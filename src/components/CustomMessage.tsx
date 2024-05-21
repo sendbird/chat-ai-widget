@@ -57,7 +57,8 @@ export default function CustomMessage(props: Props) {
     messageCount,
     message,
   };
-  const { replacementTextList, enableEmojiFeedback, botStudioEditProps } = useConstantState();
+  const { replacementTextList, enableEmojiFeedback, botStudioEditProps } =
+    useConstantState();
   const { stores } = useSendbirdStateContext();
   const { userId } = useWidgetLocalStorage();
   const currentUserId = stores.userStore.user.userId || userId;
