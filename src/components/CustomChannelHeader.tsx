@@ -20,7 +20,7 @@ const Root = styled.div`
   align-items: center;
   font-style: normal;
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.bgColor.channelHeaderBorder};
+  border-bottom: 1px solid ${({ theme }) => theme.borderColor.channelHeader};
   padding: 11px 12px;
 `;
 
