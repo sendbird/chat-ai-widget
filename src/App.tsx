@@ -75,6 +75,8 @@ const App = (props: Props) => {
       // widgetOpenState={false}
       // onWidgetOpenStateChange={(props) => {
       //   console.log('## onChatOpenStateChange: ', props);
+      // onWidgetExpandStateChange={(newIsExpanded) => {
+      //   console.log('## newIsExpanded: ', newIsExpanded);
       // }}
     />
   );

@@ -100,7 +100,13 @@ const StyledCloseButton = styled.button`
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, setIsOpen } = useWidgetOpen();
   const [isExpanded, setIsExpanded] = useState(false);
-  const { customUserAgentParam } = useConstantState();
+  const { customUserAgentParam, onWidgetExpandStateChange } =
+    useConstantState();
+
+  const onExpandButtonToggle = () => {
+    onWidgetExpandStateChange?.(!isExpanded);
+    setIsExpanded((prev) => !prev);
+  };
 
   return (
     <StyledWidgetWindowWrapper
@@ -109,7 +115,7 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
       id={elementIds.widgetWindow}
     >
       {isDashboardPreview(customUserAgentParam) && (
-        <StyledExpandButton onClick={() => setIsExpanded((prev) => !prev)}>
+        <StyledExpandButton onClick={onExpandButtonToggle}>
           {isExpanded ? (
             <CollapseIcon id={elementIds.collapseIcon} />
           ) : (

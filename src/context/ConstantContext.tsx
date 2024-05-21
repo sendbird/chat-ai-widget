@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useMemo } from 'react';
+import { createContext, PropsWithChildren, useContext } from 'react';
 
 import { LabelStringSet } from '@uikit/ui/Label';
 
