@@ -22,7 +22,7 @@ export default function useMobileView() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [isMobileView]);
+  }, []);
 
   // disable body scroll when MobileContainer is open
   useEffect(() => {
