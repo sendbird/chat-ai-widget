@@ -41,9 +41,7 @@ export default function CurrentUserMessage(props: Props) {
     <Root enableEmojiFeedback={enableEmojiFeedback}>
       <Content>
         {!!createdAt && (
-          <DefaultSentTime>
-            {formatCreatedAtToAMPM(createdAt)}
-          </DefaultSentTime>
+          <DefaultSentTime>{formatCreatedAtToAMPM(createdAt)}</DefaultSentTime>
         )}
         <BodyComponent>
           <div className="sendbird-word">{message.message}</div>
