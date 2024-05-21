@@ -230,6 +230,9 @@ export interface Constant extends Required<ConstantProps> {
    * @private Callback to be called when the widget open state changes.
    */
   onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
+  /**
+   * @private Callback to be called when the widget expand state changes.
+   */
   onWidgetExpandStateChange?: (isExpanded: boolean) => void;
 }
 
