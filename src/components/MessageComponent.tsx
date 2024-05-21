@@ -27,6 +27,7 @@ export const BodyContainer = styled.div`
   font-style: normal;
   line-height: 1.43;
   letter-spacing: normal;
+  width: 100%;
 `;
 
 export const BodyComponent = styled.div`

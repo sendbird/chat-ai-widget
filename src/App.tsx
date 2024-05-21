@@ -46,6 +46,11 @@ const App = (props: Props) => {
       callbacks={props.callbacks}
       deviceType={props.deviceType}
       enableResetHistoryOnConnect={props.enableResetHistoryOnConnect}
+      // callbacks={{
+      //   onWidgetExpandStateChange: (newIsExpanded) => {
+      //     console.log('## newIsExpanded: ', newIsExpanded);
+      //   },
+      // }}
       // botStudioEditProps={{
       //   botInfo: {
       //     profileUrl: 'url',
@@ -62,7 +67,7 @@ const App = (props: Props) => {
       //       message: 'how can I help you?',
       //     },
       //     {
-      //       message: 'ewfwjfi',
+      //       message: 'ewfwefoi',
       //       suggestedReplies: ['wwfwefwefwefee', 'reply2'],
       //     },
       //   ],

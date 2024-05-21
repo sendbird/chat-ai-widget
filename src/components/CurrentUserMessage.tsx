@@ -20,6 +20,13 @@ const Root = styled.div<{ enableEmojiFeedback: boolean }>`
     enableEmojiFeedback ? '16px' : '0'};
 `;
 
+const Content = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  gap: 4px;
+`;
+
 type Props = {
   message: UserMessage;
 };
@@ -28,15 +35,21 @@ export default function CurrentUserMessage(props: Props) {
   const { enableEmojiFeedback } = useConstantState();
   const { message } = props;
 
+  const createdAt = message.createdAt;
+
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
-      <DefaultSentTime>
-        <div>{formatCreatedAtToAMPM(message.createdAt)}</div>
-      </DefaultSentTime>
       <BodyContainer>
-        <BodyComponent>
-          <div className="sendbird-word">{message.message}</div>
-        </BodyComponent>
+        <Content>
+          {!!createdAt && (
+            <DefaultSentTime>
+              {formatCreatedAtToAMPM(createdAt)}
+            </DefaultSentTime>
+          )}
+          <BodyComponent>
+            <div className="sendbird-word">{message.message}</div>
+          </BodyComponent>
+        </Content>
       </BodyContainer>
     </Root>
   );
