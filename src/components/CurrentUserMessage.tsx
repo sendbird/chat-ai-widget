@@ -11,7 +11,7 @@ const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   align-items: end;
   margin-bottom: 6px;
   flex-wrap: wrap-reverse;
-  gap: 8px;
+  gap: 4px;
   margin-top: ${({ enableEmojiFeedback }) =>
     enableEmojiFeedback ? '16px' : '0'};
 `;

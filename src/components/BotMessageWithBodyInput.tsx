@@ -31,6 +31,7 @@ const Sender = styled.div`
 const Content = styled.div`
   display: flex;
   align-items: end;
+  gap: 4px;
 `;
 
 type Props = {
