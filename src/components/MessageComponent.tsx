@@ -5,7 +5,7 @@ export const SentTime = styled.span`
   color: ${({ theme }) => theme.textColor.sentTime};
   font-size: 12px;
   line-height: 1;
-  min-width: 56px;
+  white-space: nowrap;
 `;
 
 export const DefaultSentTime = styled(SentTime)`
