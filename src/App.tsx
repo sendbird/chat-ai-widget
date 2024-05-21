@@ -22,7 +22,6 @@ const App = (props: Props) => {
     <ChatAiWidget
       applicationId={props.applicationId}
       botId={props.botId}
-      botNickName={props.botNickName}
       userId={props.userId}
       userNickName={props.userNickName}
       betaMark={props.betaMark}
