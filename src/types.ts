@@ -1,5 +1,9 @@
 export interface SendbirdChatAICallbacks {
   onViewDetailClick?: (data: FunctionCallData) => void;
+  /**
+   * @private Callback to be called when the widget expand state changes.
+   */
+  onWidgetExpandStateChange?: (isExpanded: boolean) => void;
 }
 
 export interface FunctionCallRequestInfo {

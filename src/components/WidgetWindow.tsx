@@ -100,13 +100,13 @@ const StyledCloseButton = styled.button`
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, setIsOpen } = useWidgetOpen();
   const [isExpanded, setIsExpanded] = useState(false);
-  const { customUserAgentParam, onWidgetExpandStateChange } =
+  const { customUserAgentParam, callbacks } =
     useConstantState();
 
   const onExpandButtonToggle = () => {
     setIsExpanded((prev) => {
       const newIsExpanded = !prev;
-      onWidgetExpandStateChange?.(newIsExpanded);
+      callbacks?.onWidgetExpandStateChange?.(newIsExpanded);
       return newIsExpanded;
     });
   };
