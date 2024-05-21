@@ -21,7 +21,6 @@ function App() {
     <ChatAiWidget
       applicationId={appId}
       botId={botId}
-      instantConnect={true}
       betaMark={false}
       enableEmojiFeedback={false}
       enableMention={false}

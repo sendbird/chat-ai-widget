@@ -22,7 +22,6 @@ const App = (props: Props) => {
     <ChatAiWidget
       applicationId={props.applicationId}
       botId={props.botId}
-      botNickName={props.botNickName}
       userId={props.userId}
       userNickName={props.userNickName}
       betaMark={props.betaMark}
@@ -40,7 +39,6 @@ const App = (props: Props) => {
       enableSourceMessage={props.enableSourceMessage}
       enableEmojiFeedback={props.enableEmojiFeedback}
       enableMention={props.enableMention}
-      enableMobileView={props.enableMobileView}
       customUserAgentParam={props.customUserAgentParam}
       autoOpen={props.autoOpen}
       renderWidgetToggleButton={props.renderWidgetToggleButton}
