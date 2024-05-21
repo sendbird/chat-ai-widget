@@ -104,8 +104,11 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
     useConstantState();
 
   const onExpandButtonToggle = () => {
-    onWidgetExpandStateChange?.(!isExpanded);
-    setIsExpanded((prev) => !prev);
+    setIsExpanded((prev) => {
+      const newIsExpanded = !prev;
+      onWidgetExpandStateChange?.(newIsExpanded);
+      return newIsExpanded;
+    });
   };
 
   return (
