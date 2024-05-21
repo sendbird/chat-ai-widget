@@ -240,10 +240,7 @@ export function CustomChannelComponent() {
                   messageCount={messageCount}
                   lastMessageRef={lastMessageRef}
                   showSuggestedReplies={
-                    lastMessage
-                      ? lastMessage.messageId ===
-                        lastBotWelcomeMessage.messageId
-                      : true
+                    lastMessage?.messageId === lastBotWelcomeMessage?.messageId
                   }
                   timestamp={
                     lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt
