@@ -2,7 +2,7 @@ import { UserMessage } from '@sendbird/chat/message';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { useConstantState } from '../../context/ConstantContext';
+// import { useConstantState } from '../../context/ConstantContext';
 import { openURL } from '../../utils';
 import { messageExtension } from '../../utils/messageExtension';
 import { SnapCarousel } from '../ui/SnapCarousel';
@@ -63,11 +63,11 @@ export const ShopItemsMessage = ({
   textBody,
   streamingBody,
 }: Props) => {
-  const { isMobileView } = useConstantState();
+  // const { isMobileView } = useConstantState();
   const items = messageExtension.commerceShopItems.getValidItems(message);
   const isStreaming = messageExtension.isStreaming(message);
   const shouldRenderCarouselBody = isStreaming || items.length > 0;
-  const shouldRenderButtons = !isMobileView && items.length >= 2;
+  const shouldRenderButtons = false; // !isMobileView && items.length >= 2;
   const renderCarouselBody = () => {
     if (isStreaming) return streamingBody;
 
