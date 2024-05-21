@@ -32,7 +32,6 @@ const App = (props: Props) => {
       chatBottomContent={props.chatBottomContent}
       messageBottomContent={props.messageBottomContent}
       replacementTextList={props.replacementTextList}
-      instantConnect={props.instantConnect}
       customRefreshComponent={props.customRefreshComponent}
       configureSession={props.configureSession}
       stringSet={props.stringSet}
