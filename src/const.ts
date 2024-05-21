@@ -54,11 +54,11 @@ export const DEFAULT_CONSTANT = {
    * as ConstantStateProvider is overwriting them based on isMobile state.
    */
   customRefreshComponent: {
-    icon: RefreshIcon,
-    width: '16px',
-    height: '16px',
+    icon: RefreshIcon as React.ComponentType<any>,
     onClick: noop,
     style: {},
+    width: '16px',
+    height: '16px',
   },
   enableSourceMessage: false,
   enableEmojiFeedback: true,
@@ -280,12 +280,16 @@ export interface MessageBottomContent {
   infoIconText: string;
 }
 
-export interface CustomRefreshComponent {
-  icon: React.FC;
-  width: string;
-  height: string;
+type CustomRefreshProps = {
+  width?: string;
+  height?: string;
   onClick?: () => void;
   style?: React.CSSProperties;
+  id?: string;
+};
+
+export interface CustomRefreshComponent extends CustomRefreshProps {
+  icon: React.ComponentType<CustomRefreshProps>;
 }
 
 export const elementIds = {

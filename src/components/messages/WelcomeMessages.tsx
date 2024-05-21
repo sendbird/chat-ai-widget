@@ -1,9 +1,6 @@
 import { ChannelType, User } from '@sendbird/chat';
 import type { GroupChannel } from '@sendbird/chat/groupChannel';
-import {
-  MessageType,
-  SendingStatus,
-} from '@sendbird/chat/message';
+import { MessageType, SendingStatus } from '@sendbird/chat/message';
 import { RefObject, useMemo } from 'react';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';

@@ -108,6 +108,10 @@ export function isFormMessage(
   return Array.isArray(message.extendedMessagePayload?.forms);
 }
 
+export function isSentBy(message: BaseMessage, userId?: string | null) {
+  return getSenderUserIdFromMessage(message) === userId;
+}
+
 export function isLastMessageInStreaming(messageData?: string) {
   if (!messageData) {
     return false;

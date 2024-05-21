@@ -1,7 +1,11 @@
 import { UserMessage } from '@sendbird/chat/message';
 import styled from 'styled-components';
 
-import { SentTime, BodyContainer, BodyComponent } from './MessageComponent';
+import {
+  DefaultSentTime,
+  BodyContainer,
+  BodyComponent,
+} from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils';
 
@@ -26,9 +30,9 @@ export default function CurrentUserMessage(props: Props) {
 
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
-      <SentTime>
+      <DefaultSentTime>
         <div>{formatCreatedAtToAMPM(message.createdAt)}</div>
-      </SentTime>
+      </DefaultSentTime>
       <BodyContainer>
         <BodyComponent>
           <div className="sendbird-word">{message.message}</div>

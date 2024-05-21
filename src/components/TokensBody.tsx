@@ -37,6 +37,7 @@ const MultipleTokenTypeContainer = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
   }
+  max-width: calc(100% - 36px);
 `;
 
 export const TextContainer = styled.div`
