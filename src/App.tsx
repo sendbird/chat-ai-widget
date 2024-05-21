@@ -32,7 +32,6 @@ const App = (props: Props) => {
       chatBottomContent={props.chatBottomContent}
       messageBottomContent={props.messageBottomContent}
       replacementTextList={props.replacementTextList}
-      instantConnect={props.instantConnect}
       customRefreshComponent={props.customRefreshComponent}
       configureSession={props.configureSession}
       stringSet={props.stringSet}
@@ -43,9 +42,13 @@ const App = (props: Props) => {
       autoOpen={props.autoOpen}
       renderWidgetToggleButton={props.renderWidgetToggleButton}
       serviceName={props.serviceName}
-      callbacks={props.callbacks}
       deviceType={props.deviceType}
       enableResetHistoryOnConnect={props.enableResetHistoryOnConnect}
+      // callbacks={{
+      //   onWidgetExpandStateChange: (newIsExpanded) => {
+      //     console.log('## newIsExpanded: ', newIsExpanded);
+      //   },
+      // }}
       // botStudioEditProps={{
       //   botInfo: {
       //     profileUrl: 'url',
@@ -75,7 +78,6 @@ const App = (props: Props) => {
       // widgetOpenState={false}
       // onWidgetOpenStateChange={(props) => {
       //   console.log('## onChatOpenStateChange: ', props);
-      // }}
     />
   );
 };
