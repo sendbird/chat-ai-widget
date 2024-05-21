@@ -11,6 +11,9 @@ import { useWidgetOpen } from '../context/WidgetOpenContext';
 import CloseButton from '../icons/ic-widget-close.svg';
 import { isDashboardPreview, isEmpty } from '../utils';
 
+const RIGHT_WITH_EXPAND_BUTTON = 60; // gap = 6 and button width = 24 => 24 * 2 + 6 * 2 = 60
+const RIGHT_WITHOUT_EXPAND_BUTTON = 26;
+
 const Root = styled.div`
   display: flex;
   justify-content: space-between;
@@ -129,8 +132,8 @@ export default function CustomChannelHeader({
                       ? 0
                       : // to make the refresh icon appear next to the close icon in the widget window
                       isDashboardPreview(customUserAgentParam)
-                      ? 60
-                      : 26,
+                      ? RIGHT_WITH_EXPAND_BUTTON
+                      : RIGHT_WITHOUT_EXPAND_BUTTON,
                   }
                 : customRefreshComponent.style
             }
