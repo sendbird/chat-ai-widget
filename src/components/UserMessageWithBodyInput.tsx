@@ -38,6 +38,12 @@ const BodyContainer = styled.div<BodyContainerProps>`
   letter-spacing: normal;
 `;
 
+const Content = styled.div`
+  display: flex;
+  align-items: end;
+  gap: 4px;
+`;
+
 type Props = {
   user: User;
   message: UserMessage;
@@ -79,8 +85,12 @@ export default function UserMessageWithBodyInput(props: Props) {
             {user.nickname}
           </Sender>
         )}
-        {bodyComponent}
-        <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+        <Content>
+          {bodyComponent}
+          {!!message?.createdAt && (
+            <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+          )}
+        </Content>
       </BodyContainer>
     </Root>
   );
