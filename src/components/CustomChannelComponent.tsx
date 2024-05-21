@@ -1,5 +1,6 @@
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
+import isSameDay from 'date-fns/isSameDay';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
@@ -13,9 +14,9 @@ import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
-import InjectedWelcomeMessage from './InjectedWelcomeMessage';
 import MessageDataContent from './MessageDataContent';
 import StaticRepliesPanel from './StaticRepliesPanel';
+import WelcomeMessages from './messages/WelcomeMessages';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
@@ -203,9 +204,14 @@ export function CustomChannelComponent() {
     if (!botId) return [];
     return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
-
-  const firstMessageId =
-    allMessages.length > 0 ? allMessages[0].messageId : null;
+  const botWelcomeMessageIds = botWelcomeMessages.map(
+    (message) => message.messageId
+  );
+  const firstMessageCreatedAt = allMessages[0]?.createdAt;
+  const lastBotWelcomeMessage =
+    botWelcomeMessages[botWelcomeMessages.length - 1];
+  const lastWelcomeMessageCreatedAt = lastBotWelcomeMessage?.createdAt;
+  const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
 
   return (
     <Root height={'100%'} isStaticReplyVisible={isStaticReplyVisible}>
@@ -224,50 +230,55 @@ export function CustomChannelComponent() {
             }}
           />
         )}
-        renderMessage={({ message, ...props }) => {
-          const isBotWelcomeMessage = botWelcomeMessages.some(
-            (m) => m.messageId === message.messageId
-          );
-          /**
-           * Replace with injected welcome messages instead.
-           */
-          if (
-            lastMessage &&
-            botWelcomeMessages.length > 0 &&
-            isBotWelcomeMessage &&
-            welcomeMessages &&
-            welcomeMessages.length > 0
-          ) {
-            if (!firstMessageId || message.messageId === firstMessageId) {
-              const lastBotWelcomeMessage =
-                botWelcomeMessages[botWelcomeMessages.length - 1];
-              return (
-                <InjectedWelcomeMessage
-                  lastMessageRef={lastMessageRef}
-                  messageToReplace={message}
+        renderWelcomeMessage={
+          channel && isWelcomeMessagesGiven && botUser
+            ? () => (
+                <WelcomeMessages
+                  channel={channel}
                   welcomeMessages={welcomeMessages}
                   botUser={botUser}
                   messageCount={messageCount}
-                  isLastMessage={
-                    lastMessage.messageId === lastBotWelcomeMessage.messageId
+                  lastMessageRef={lastMessageRef}
+                  showSuggestedReplies={
+                    lastMessage?.messageId === lastBotWelcomeMessage?.messageId
+                  }
+                  timestamp={
+                    lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt
                   }
                 />
-              );
-            }
-            return <></>;
-          }
+              )
+            : undefined
+        }
+        renderMessage={({ message, ...props }) => {
+          const isBotWelcomeMessage = botWelcomeMessageIds.some(
+            (mid) => mid === message.messageId
+          );
           /**
-           * Note that we display injected welcome messages regardless of first welcome message
-           * is filtered.
+           * When welcome messages are given, they are rendered through renderWelcomeMessage. In this case, filter
+           * out actual welcome messages.
            */
-          // NOTE: Filter out messages that should not be displayed.
+          if (
+            isWelcomeMessagesGiven &&
+            botWelcomeMessageIds.includes(message.messageId)
+          )
+            return <></>;
+          /**
+           * Filter out any message that should be filtered out due to business requirement.
+           */
           if (shouldFilterOutMessage(message)) return <></>;
           const groupedMessage = groupedMessages.find(
             (m) => m.messageId == message.messageId
           );
 
+          let hasSeparator = props.hasSeparator;
+          const prevMessageTimestamp =
+            lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
+          if (isWelcomeMessagesGiven && prevMessageTimestamp) {
+            hasSeparator = !isSameDay(message.createdAt, prevMessageTimestamp);
+          }
+
           return (
-            <Message {...props} message={message}>
+            <Message {...props} hasSeparator={hasSeparator} message={message}>
               <div
                 style={
                   message.messageId !== lastMessage?.messageId

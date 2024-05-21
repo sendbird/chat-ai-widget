@@ -18,6 +18,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   rules: {
+    'react/prop-types': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'off',
     // suppress errors for missing 'import React' in files
