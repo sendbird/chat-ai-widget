@@ -43,4 +43,5 @@ export const BodyComponent = styled.div`
   gap: 12px;
   border-radius: 16px;
   white-space: pre-wrap;
+  word-break: break-word;
 `;

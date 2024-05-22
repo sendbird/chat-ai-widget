@@ -14,7 +14,6 @@ const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   justify-content: flex-end;
   align-items: end;
   margin-bottom: 6px;
-  flex-wrap: wrap-reverse;
   gap: 4px;
   margin-top: ${({ enableEmojiFeedback }) =>
     enableEmojiFeedback ? '16px' : '0'};
@@ -31,7 +30,7 @@ export default function CurrentUserMessage(props: Props) {
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
       <DefaultSentTime>
-        <div>{formatCreatedAtToAMPM(message.createdAt)}</div>
+        {formatCreatedAtToAMPM(message.createdAt)}
       </DefaultSentTime>
       <BodyContainer>
         <BodyComponent>

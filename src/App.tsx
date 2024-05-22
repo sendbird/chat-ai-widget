@@ -65,7 +65,7 @@ const App = (props: Props) => {
       //       message: 'how can I help you?',
       //     },
       //     {
-      //       message: 'ewfwjfi',
+      //       message: 'ewfwefoi',
       //       suggestedReplies: ['wwfwefwefwefee', 'reply2'],
       //     },
       //   ],
