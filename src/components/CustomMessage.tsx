@@ -63,6 +63,8 @@ export default function CustomMessage(props: Props) {
   const { profileUrl } = botStudioEditProps?.botInfo ?? {};
   const botUserId = botUser?.userId;
   const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';
+  const isWaitingForBotReply =
+    activeSpinnerId === message.messageId && !!botUser;
 
   const shouldRenderFeedback = () => {
     return (
@@ -82,13 +84,17 @@ export default function CustomMessage(props: Props) {
     return <AdminMessage message={message} />;
   }
 
-  // Sent by current user
+  /**
+   * If a message to render is sent by me and is a last message,
+   * typing indicator bubble is displayed below to indicate
+   * a reply message from bot is expected to arrive.
+   */
   if (isSentBy(message, currentUserId)) {
     if (message.isUserMessage()) {
       return (
         <div>
           <CurrentUserMessage message={message} />
-          {activeSpinnerId === message.messageId && botUser && (
+          {isWaitingForBotReply && (
             <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />
           )}
         </div>
