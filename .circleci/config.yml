@@ -10,7 +10,7 @@ executors:
     resource_class: small
   node:
     docker:
-      - image: cimg/node:18.17.1
+      - image: cimg/node:20.13.1
     resource_class: medium
 
 commands:
@@ -44,7 +44,7 @@ jobs:
       - checkout
       - run:
           name: Enable Corepack
-          command: corepack enable
+          command: corepack enable --install-directory ~/bin
       - run:
           name: install dependencies and build
           command: |
