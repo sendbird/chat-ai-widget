@@ -10,7 +10,7 @@ executors:
     resource_class: small
   node:
     docker:
-      - image: cimg/node:18.17.1
+      - image: cimg/node:20.13.1
     resource_class: medium
 
 commands:
@@ -44,13 +44,16 @@ jobs:
       - checkout
       - run:
           name: Enable Corepack
-          command: corepack enable
+          command: corepack enable --install-directory ~/bin
       - run:
           name: install dependencies and build
           command: |
             cd ./packages/self-service
-            yarn install --immutable --immutable-cache
-            yarn build
+            npm install
+            npm run build
+#            TODO: update self-service to use yarn workspaces
+#            yarn install --immutable --immutable-cache
+#            yarn build
       - persist_to_workspace:
           root: ./packages/self-service
           paths:
