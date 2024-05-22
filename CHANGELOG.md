@@ -14,6 +14,12 @@ Widget now supports carousel message for commercial shop items. Message with val
 - Adjusted margins of message timestamp
 - Fixed a bug where message bubble width is incorrectly displayed depending on the length of text
 
+### Permanently removed
+- Following Constant properties are removed because they were not being considered internally:
+  - instantConnect
+  - botNickName
+  - enableMobileView
+
 ## [1.5.8] (May 17 2024)
 #### Fix:
 - Fixed a bug where styles were broken on some websites
