@@ -49,8 +49,11 @@ jobs:
           name: install dependencies and build
           command: |
             cd ./packages/self-service
-            yarn install --immutable --immutable-cache
-            yarn build
+            npm install
+            npm run build
+#            TODO: update self-service to use yarn workspaces
+#            yarn install --immutable --immutable-cache
+#            yarn build
       - persist_to_workspace:
           root: ./packages/self-service
           paths:
