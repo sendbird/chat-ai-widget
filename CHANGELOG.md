@@ -1,3 +1,19 @@
+## [1.5.9] (May 22 2024)
+### Feat:
+#### Carousel message
+Widget now supports carousel message for commercial shop items. Message with valid `extendedMessagePayload?.commerce_shop_items` value is displayed as carousel component that is interactable.
+
+#### Others
+- Added `enableResetHistoryOnConnect` in `Constant` for allowing to reset chat history
+- Added `onWidgetExpandStateChange` to `Constant.callbacks` that will be called upon expanded state change event
+
+### Fix:
+- Fixed a bug where `botStudioEditProps.botInfo.profileUrl` is not applied to typing indicator bubble
+- Fixed a bug where suggested replies of `botStudioEditProps.welcomeMessages` are not being removed after a message is sent
+- Fixed a bug where injected welcome messages are not displayed when there is no message in the channel
+- Adjusted margins of message timestamp
+- Fixed a bug where message bubble width is incorrectly displayed depending on the length of text
+
 ## [1.5.8] (May 17 2024)
 #### Fix:
 - Fixed a bug where styles were broken on some websites
