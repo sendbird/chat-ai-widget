@@ -26,8 +26,6 @@ const Container = styled.div({
   width: '100%',
 });
 
-const IMAGE_HEIGHT = 134;
-
 const ItemText = styled.div`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -42,7 +40,7 @@ const ItemText = styled.div`
 const Image = styled.img`
   flex-shrink: 0;
   width: 100%;
-  height: ${IMAGE_HEIGHT}px;
+  height: 134px;
   object-fit: cover;
   user-select: none;
   -webkit-user-select: none;
@@ -58,7 +56,7 @@ const Button = styled.button<{ direction: 'left' | 'right' }>(
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    top: IMAGE_HEIGHT, // "50%",
+    top: '50%',
     transform: 'translateY(-50%)',
     border: 'none',
     cursor: 'pointer',
