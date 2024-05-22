@@ -18,7 +18,7 @@ Widget now supports carousel message for commercial shop items. Message with val
 - Following Constant properties are removed because they were not being considered internally:
   - instantConnect
   - botNickName
-  - enableMobileView
+  - enableMobileView (use deviceType instead)
 
 ## [1.5.8] (May 17 2024)
 #### Fix:
