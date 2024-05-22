@@ -8,12 +8,15 @@ export interface CommonTheme {
     suggestedReply: string;
     bottomBanner: string;
     loadingScreen: string;
-    channelHeaderBorder: string;
     hover: {
       incomingMessage: string;
       outgoingMessage: string;
       suggestedReply: string;
+      carouselButton: string;
     };
+    carouselItem: string;
+    carouselButton: string;
+    carouselButtonIcon: string;
   };
   textColor: {
     incomingMessage: string;
@@ -26,6 +29,11 @@ export interface CommonTheme {
       poweredBy: string;
       logo: string;
     };
+    carouselItem: string;
+  };
+  borderColor: {
+    channelHeader: string;
+    carouselItem: string;
   };
   accentColor: string;
 }
@@ -52,7 +60,6 @@ export function getTheme({
         suggestedReply: 'var(--sendbird-light-background-50)',
         bottomBanner: 'var(--sendbird-light-background-50)',
         loadingScreen: 'var(--sendbird-light-background-50)',
-        channelHeaderBorder: 'var(--sendbird-light-onlight-04)',
         hover: {
           // Give 1 level darker color for hover
           incomingMessage: botMessageBGColor
@@ -62,7 +69,11 @@ export function getTheme({
             ? generateColorVariants(accentColor)[400]
             : 'var(--sendbird-light-primary-400)',
           suggestedReply: 'var(--sendbird-light-background-100)',
+          carouselButton: 'var(--sendbird-light-background-100)',
         },
+        carouselItem: 'var(--sendbird-light-background-50)',
+        carouselButton: 'var(--sendbird-light-background-50)',
+        carouselButtonIcon: 'var(--sendbird-light-background-400)',
       },
       textColor: {
         incomingMessage: botMessageBGColor
@@ -79,6 +90,11 @@ export function getTheme({
           poweredBy: '#5E5E5E',
           logo: '#0D0D0D',
         },
+        carouselItem: 'var(--sendbird-light-onlight-01)',
+      },
+      borderColor: {
+        channelHeader: 'var(--sendbird-light-onlight-04)',
+        carouselItem: 'var(--sendbird-light-onlight-04)',
       },
       accentColor: accentColor ?? 'var(--sendbird-light-primary-300)',
     },
@@ -92,7 +108,6 @@ export function getTheme({
         suggestedReply: 'var(--sendbird-dark-background-600)',
         bottomBanner: 'var(--sendbird-dark-background-600)',
         loadingScreen: 'var(--sendbird-dark-background-600)',
-        channelHeaderBorder: 'var(--sendbird-dark-ondark-04)',
         hover: {
           // Give 1 level lighter color for hover
           incomingMessage: botMessageBGColor
@@ -103,7 +118,11 @@ export function getTheme({
             ? generateColorVariants(accentColor)[400]
             : 'var(--sendbird-dark-primary-300)',
           suggestedReply: 'var(--sendbird-dark-background-500)',
+          carouselButton: 'var(--sendbird-dark-background-500)',
         },
+        carouselItem: 'var(--sendbird-dark-background-500)',
+        carouselButton: 'var(--sendbird-dark-background-400)',
+        carouselButtonIcon: 'var(--sendbird-dark-background-50)',
       },
       textColor: {
         outgoingMessage: accentColor
@@ -120,6 +139,11 @@ export function getTheme({
           poweredBy: 'var(--sendbird-dark-background-200)',
           logo: 'var(--sendbird-dark-background-50)',
         },
+        carouselItem: 'var(--sendbird-dark-ondark-01)',
+      },
+      borderColor: {
+        channelHeader: 'var(--sendbird-dark-ondark-04)',
+        carouselItem: 'var(--sendbird-dark-ondark-04)',
       },
       accentColor: accentColor ?? 'var(--sendbird-dark-primary-200)',
     },

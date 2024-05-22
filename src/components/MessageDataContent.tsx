@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
-import ChevronRightIcon from '../icons/icon-chevron-right.svg';
+import ChevronRightIcon from '../icons/chevron-right.svg';
 import EllipsisIcon from '../icons/icon-ellipsis.svg';
 import MessageBubbleIcon from '../icons/icon-message-bubble.svg';
 import { FunctionCallData } from '../types';

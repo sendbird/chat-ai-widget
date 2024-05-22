@@ -26,18 +26,20 @@ const Container = styled.div({
   },
 });
 
-const ItemContainer = styled.div({
-  display: 'flex',
-  flexShrink: 0,
-  scrollSnapAlign: 'start',
-  flexDirection: 'column',
-  borderRadius: 16,
-  overflow: 'hidden',
-  border: '1px solid var(--sendbird-light-onlight-04)',
-  backgroundColor: '#fff',
-  boxSizing: 'border-box',
-  cursor: 'pointer',
-});
+const ItemContainer = styled.div<{ focused: boolean }>(
+  ({ theme, focused }) => ({
+    display: 'flex',
+    flexShrink: 0,
+    scrollSnapAlign: 'start',
+    flexDirection: 'column',
+    borderRadius: 16,
+    overflow: 'hidden',
+    border: `1px solid ${theme.borderColor.carouselItem}`,
+    backgroundColor: theme.bgColor.carouselItem,
+    boxSizing: 'border-box',
+    cursor: focused ? 'pointer' : 'auto',
+  })
+);
 
 type SnapCarouselProps = {
   width?: number | string;
@@ -139,9 +141,11 @@ SnapCarousel.Item = function Item({
   index = 0,
 }: SnapCarouselItemProps) {
   const { activeIndex } = useContext(Context);
+  const focused = index === activeIndex;
   return (
     <ItemContainer
-      onClick={() => index === activeIndex && onClick?.()}
+      focused={focused}
+      onClick={() => focused && onClick?.()}
       role={'button'}
       style={{ width, height }}
     >
