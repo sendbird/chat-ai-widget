@@ -84,7 +84,7 @@ type ReplaceString = string;
 
 export interface WidgetStyles extends Omit<Partial<BotStyle>, 'autoOpen'> {
   /**
-   * @deprecated Use `accentColor` instaed
+   * @deprecated Use `accentColor` instead.
    * */
   primaryColor?: string; // Color for messages sent by me, suggested replies, etc.
 }
