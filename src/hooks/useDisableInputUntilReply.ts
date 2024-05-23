@@ -31,7 +31,7 @@ export const useDisableInputUntilReply = ({
     } else if (isSentBy(lastMessage, botUser.userId)) {
       const isStreaming = messageExtension.isStreaming(lastMessage);
       if (!isStreaming) {
-        if (timer) clearImmediate(timer);
+        if (timer) clearTimeout(timer);
         setIsMessageInputDisabled(false);
       }
     }
