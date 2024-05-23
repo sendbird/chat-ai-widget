@@ -95,14 +95,7 @@ export const WidgetSettingProvider = ({
       botId,
       createUserAndChannel: reuseCachedSession ? false : strategy === 'auto',
     });
-    setBotStyle({
-      ...response.botStyle,
-      ...botStudioEditProps?.styles,
-      accentColor:
-        botStudioEditProps?.styles?.accentColor ??
-        botStudioEditProps?.styles?.primaryColor ??
-        response.botStyle.accentColor,
-    });
+    setBotStyle(response.botStyle);
     if (reuseCachedSession) {
       setWidgetSession({
         strategy: sessionStrategy,
@@ -182,7 +175,19 @@ export const WidgetSettingProvider = ({
 
   return (
     <WidgetSettingContext.Provider
-      value={{ initialized, botStyle, widgetSession, initManualSession }}
+      value={{
+        initialized,
+        botStyle: {
+          ...botStyle,
+          ...botStudioEditProps?.styles,
+          accentColor:
+            botStudioEditProps?.styles?.accentColor ??
+            botStudioEditProps?.styles?.primaryColor ??
+            botStyle.accentColor,
+        },
+        widgetSession,
+        initManualSession,
+      }}
     >
       {widgetSession ? children : null}
     </WidgetSettingContext.Provider>
