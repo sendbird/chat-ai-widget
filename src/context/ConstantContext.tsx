@@ -1,5 +1,12 @@
-import { createContext, PropsWithChildren, useContext } from 'react';
+import { SessionHandler } from '@sendbird/chat';
+import {
+  createContext,
+  PropsWithChildren,
+  useCallback,
+  useContext,
+} from 'react';
 
+import { ConfigureSessionTypes } from '@uikit/lib/hooks/useConnect/types';
 import { LabelStringSet } from '@uikit/ui/Label';
 
 import { type Constant, DEFAULT_CONSTANT } from '../const';
@@ -23,6 +30,30 @@ export const ConstantStateProvider = (
 ) => {
   const isMobileView = isMobile(props.deviceType);
   const defaultRefreshComponentSideLength = isMobileView ? '24px' : '16px';
+
+  /**
+   * In chat SDK, because of the instance check in SessionHandler,
+   * customer cannot use SessionHandler when using self-service or umd builds.
+   *
+   * Therefore, we are refactoring it to also handle it as a general object.
+   * */
+  const configureSession: ConfigureSessionTypes = useCallback(
+    (sdk) => {
+      const handler = props.configureSession?.(sdk);
+      if (!handler) return new SessionHandler();
+
+      return new SessionHandler({
+        ...handler,
+        onSessionTokenRequired: handler.onSessionTokenRequired,
+        onSessionClosed: handler.onSessionClosed,
+        onSessionError: handler.onSessionError,
+        onSessionRefreshed: handler.onSessionRefreshed,
+        onSessionExpired: handler.onSessionExpired,
+      });
+    },
+    [props.configureSession]
+  );
+
   return (
     <ConstantContext.Provider
       value={{
@@ -74,7 +105,7 @@ export const ConstantStateProvider = (
          * userId & configureSession should be used together to create a group channel on the client side.
          */
         userId: props.userId,
-        configureSession: props.configureSession,
+        configureSession: props.configureSession ? configureSession : undefined,
         stringSet: {
           ...LabelStringSet,
           ...props.stringSet,
