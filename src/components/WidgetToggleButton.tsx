@@ -127,10 +127,10 @@ export default function WidgetToggleButton() {
   };
 
   useEffect(() => {
-    if (autoOpen || botStyle.autoOpen) {
+    if (autoOpen) {
       timer.current = setTimeout(() => setIsOpen(true), 100);
     }
-  }, [botStyle.autoOpen, autoOpen]);
+  }, [autoOpen]);
 
   const toggleButtonProps = {
     onClick: buttonClickHandler,

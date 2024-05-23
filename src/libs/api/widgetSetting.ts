@@ -7,6 +7,7 @@ type APIResponse = {
       accent_color: string;
       bot_message_color: string;
     };
+    /** @deprecated We no longer use the autoOpen value from the dashboard. **/
     auto_open: boolean;
   };
   user?: {
@@ -31,6 +32,7 @@ type Response = {
     theme: 'light' | 'dark';
     accentColor: string;
     botMessageBGColor: string;
+    /** @deprecated We no longer use the autoOpen value from the dashboard. **/
     autoOpen: boolean;
   };
   user?: {
@@ -70,7 +72,11 @@ export async function getWidgetSetting({
       theme: json.bot_style.color.theme,
       accentColor: json.bot_style.color.accent_color,
       botMessageBGColor: json.bot_style.color.bot_message_color,
-      autoOpen: json.bot_style.auto_open,
+      /**
+       * NOTE: autoOpen can no longer be configured from the dashboard, so customers will no longer be able to disable autoOpen.
+       *  Therefore, set it to false and remove it so that it is not used.
+       * */
+      autoOpen: false, //json.bot_style.auto_open,
     },
     user: json.user
       ? {
