@@ -41,7 +41,7 @@ const Chat = () => {
     stores.sdkStore.initialized,
   ]);
 
-  if (!widgetSession.channelUrl) return <></>;
+
 
   const onBeforeSendMessage = <
     T extends UserMessageCreateParams | FileMessageCreateParams
@@ -60,7 +60,7 @@ const Chat = () => {
 
   return (
     <GroupChannelProvider
-      channelUrl={widgetSession.channelUrl}
+      channelUrl={widgetSession.channelUrl ?? ''}
       scrollBehavior={'smooth'}
       onBeforeSendUserMessage={onBeforeSendMessage}
       onBeforeSendFileMessage={onBeforeSendMessage}

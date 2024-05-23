@@ -22,7 +22,6 @@ const App = (props: Props) => {
     <ChatAiWidget
       applicationId={props.applicationId}
       botId={props.botId}
-      userId={props.userId}
       userNickName={props.userNickName}
       betaMark={props.betaMark}
       customBetaMarkText={props.customBetaMarkText}
@@ -33,6 +32,7 @@ const App = (props: Props) => {
       messageBottomContent={props.messageBottomContent}
       replacementTextList={props.replacementTextList}
       customRefreshComponent={props.customRefreshComponent}
+      userId={props.userId}
       configureSession={props.configureSession}
       stringSet={props.stringSet}
       enableSourceMessage={props.enableSourceMessage}
