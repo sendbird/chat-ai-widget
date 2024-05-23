@@ -95,7 +95,14 @@ export const WidgetSettingProvider = ({
       botId,
       createUserAndChannel: reuseCachedSession ? false : strategy === 'auto',
     });
-    setBotStyle({ ...response.botStyle, ...botStudioEditProps?.styles });
+    setBotStyle({
+      ...response.botStyle,
+      ...botStudioEditProps?.styles,
+      accentColor:
+        botStudioEditProps?.styles?.accentColor ??
+        botStudioEditProps?.styles?.primaryColor ??
+        response.botStyle.accentColor,
+    });
     if (reuseCachedSession) {
       setWidgetSession({
         strategy: sessionStrategy,
