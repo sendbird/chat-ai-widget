@@ -121,7 +121,7 @@ export const WidgetSettingProvider = ({
 
       /**
        * NOTE: We don't fully initialize the manual strategy session here.
-       * After the uikit is initializing, we should call the `initManualSession` function.
+       * After the uikit is initialized, we should call the `initManualSession` function.
        * */
       if (sessionStrategy === 'manual' && injectedUserId) {
         const session = {
