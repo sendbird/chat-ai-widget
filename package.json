@@ -34,7 +34,6 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.17.22",
     "@types/dompurify": "^3.0.5",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
