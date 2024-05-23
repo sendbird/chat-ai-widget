@@ -22,7 +22,7 @@ export const useDisableInputUntilReply = ({
 }: UseDisableInputUntilReplyProps) => {
   useEffect(() => {
     if (!currentUserId || !botUser || !lastMessage) return;
-    let timer;
+    let timer: ReturnType<typeof setTimeout> | undefined = undefined;
     if (isSentBy(lastMessage, currentUserId)) {
       setIsMessageInputDisabled(true);
       timer = setTimeout(() => {
