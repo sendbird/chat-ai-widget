@@ -11,27 +11,37 @@ import { GroupChannelProvider } from '@uikit/modules/GroupChannel/context/GroupC
 
 import { CustomChannelComponent } from './CustomChannelComponent';
 import { useConstantState } from '../context/ConstantContext';
-import { useWidgetSetting } from '../context/WidgetSettingContext';
+import {
+  useWidgetSession,
+  useWidgetSetting,
+} from '../context/WidgetSettingContext';
 import useWidgetButtonActivityTimeout from '../hooks/useWidgetButtonActivityTimeout';
 
 const Chat = () => {
   useWidgetButtonActivityTimeout();
   const { stores } = useSendbirdStateContext();
-  const { widgetSession, initManualSession } = useWidgetSetting();
+  const widgetSetting = useWidgetSetting();
+  const widgetSession = useWidgetSession();
   const { botStudioEditProps } = useConstantState();
   const aiAttributesRef = useRef<object>();
   aiAttributesRef.current = botStudioEditProps?.aiAttributes;
 
-  // Initialize session if the strategy is manual and not yet initialized
+  // Initialize the manual session if channelUrl is not set.
   useEffect(() => {
-    if (widgetSession && stores.sdkStore.initialized) {
+    if (widgetSetting.initialized && stores.sdkStore.initialized) {
       if (widgetSession.strategy === 'manual' && !widgetSession.channelUrl) {
-        initManualSession(stores.sdkStore.sdk);
+        widgetSetting.initManualSession(stores.sdkStore.sdk);
       }
     }
-  }, [widgetSession, stores.sdkStore.sdk, stores.sdkStore.initialized]);
+  }, [
+    widgetSetting.initialized,
+    widgetSession.strategy,
+    widgetSession.channelUrl,
+    stores.sdkStore.sdk,
+    stores.sdkStore.initialized,
+  ]);
 
-  if (!widgetSession?.channelUrl) return <></>;
+  if (!widgetSession.channelUrl) return <></>;
 
   const onBeforeSendMessage = <
     T extends UserMessageCreateParams | FileMessageCreateParams

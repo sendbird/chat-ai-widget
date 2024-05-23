@@ -91,7 +91,7 @@ export const WidgetSettingProvider = ({
         host: apiHost,
         appId,
         botId,
-        createUserAndChannel: strategy === 'auto',
+        createUserAndChannel: false,
       });
 
       setBotStyle(response.botStyle);
