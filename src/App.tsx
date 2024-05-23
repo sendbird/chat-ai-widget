@@ -65,13 +65,13 @@ const App = (props: Props) => {
       //       message: 'how can I help you?',
       //     },
       //     {
-      //       message: 'ewfwefoi',
-      //       suggestedReplies: ['wwfwefwefwefee', 'reply2'],
+      //       message: 'ewfweweoijweofijfoi',
+      //       suggestedReplies: ['wwfwefwefwefee', 'reply2', 'reply3'],
       //     },
       //   ],
       //   styles: {
       //     theme: 'light',
-      //     accentColor: 'orange',
+      //     primaryColor: 'orange',
       //     botMessageBGColor: 'hotpink',
       //   },
       // }}

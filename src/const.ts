@@ -306,3 +306,7 @@ export const widgetServiceName = {
     shopify: 'genai-shopify-plugin',
   },
 } as const;
+
+export const widgetStringSet = {
+  messageInputDisabledPlaceholder: 'Waiting for the bot’s reply…',
+};

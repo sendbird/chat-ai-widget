@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import ChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
 import Message from '@uikit/modules/GroupChannel/components/Message';
+import MessageInputWrapper from '@uikit/modules/GroupChannel/components/MessageInputWrapper';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 import ChatBottom from './ChatBottom';
@@ -18,7 +19,9 @@ import MessageDataContent from './MessageDataContent';
 import WelcomeMessages from './messages/WelcomeMessages';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
+import { useWidgetSession } from '../context/WidgetSettingContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
+import { useDisableInputUntilReply } from '../hooks/useDisableInputUntilReply';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import {
@@ -29,6 +32,7 @@ import {
 import {
   getBotWelcomeMessages,
   groupMessagesByShortSpanTime,
+  isSentBy,
   isStaticReplyVisible as getStaticMessageVisibility,
   shouldFilterOutMessage,
 } from '../utils/messages';
@@ -132,6 +136,8 @@ export function CustomChannelComponent() {
     scrollToBottom,
     refresh,
   } = useGroupChannelContext();
+  const { userId: currentUserId } = useWidgetSession();
+
   // NOTE: Filter out messages that should not be displayed.
   const allMessages = messages.filter(
     (message) => !shouldFilterOutMessage(message)
@@ -151,6 +157,7 @@ export function CustomChannelComponent() {
     lastMessage?.sender?.userId === botId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
+
   const messageCount = allMessages?.length ?? 0;
 
   const dynamicReplyOptions = (lastMessage?.extendedMessagePayload
@@ -176,6 +183,12 @@ export function CustomChannelComponent() {
           20,
   });
 
+  const isMessageInputDisabled = useDisableInputUntilReply({
+    lastMessage,
+    botUser,
+    currentUserId,
+  });
+
   /**
    * If the updated last message is sent by the current user, activate spinner for the sent message.
    * If the updated last message is pending or failed by the current user or sent by the bot, deactivate spinner.
@@ -183,6 +196,7 @@ export function CustomChannelComponent() {
   useEffect(() => {
     if (
       lastMessage &&
+      isSentBy(lastMessage, currentUserId) &&
       !(lastMessage?.messageType === 'admin') &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
       // this bubble loading should be shown only when there're only bot and 1 user in the channel
@@ -218,6 +232,9 @@ export function CustomChannelComponent() {
       <ChannelUI
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
+        renderMessageInput={() => (
+          <MessageInputWrapper disabled={isMessageInputDisabled} />
+        )}
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
           <CustomChannelHeader

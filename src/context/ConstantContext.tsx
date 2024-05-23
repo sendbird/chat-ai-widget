@@ -9,7 +9,7 @@ import {
 import { ConfigureSessionTypes } from '@uikit/lib/hooks/useConnect/types';
 import { LabelStringSet } from '@uikit/ui/Label';
 
-import { type Constant, DEFAULT_CONSTANT } from '../const';
+import { type Constant, DEFAULT_CONSTANT, widgetStringSet } from '../const';
 import { getDefaultServiceName, isMobile } from '../utils';
 
 const initialState = DEFAULT_CONSTANT;
@@ -108,6 +108,8 @@ export const ConstantStateProvider = (
         configureSession: props.configureSession ? configureSession : undefined,
         stringSet: {
           ...LabelStringSet,
+          MESSAGE_INPUT__PLACE_HOLDER__DISABLED:
+            widgetStringSet.messageInputDisabledPlaceholder,
           ...props.stringSet,
         },
         enableSourceMessage:
