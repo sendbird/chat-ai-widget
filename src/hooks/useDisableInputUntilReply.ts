@@ -38,6 +38,11 @@ export const useDisableInputUntilReply = ({
         setIsMessageInputDisabled(false);
       }
     }
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
   }, [currentUserId, botUser, lastMessage]);
 
   return isMessageInputDisabled;
