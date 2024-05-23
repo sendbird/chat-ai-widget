@@ -4,25 +4,44 @@ import {
   FileMessageCreateParams,
   UserMessageCreateParams,
 } from '@sendbird/chat/message';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
+import { useSendbirdStateContext } from '@uikit/index';
 import { GroupChannelProvider } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 import { CustomChannelComponent } from './CustomChannelComponent';
 import { useConstantState } from '../context/ConstantContext';
-import { useManualGroupChannelCreation } from '../hooks/useGroupChannel';
+import {
+  useWidgetSession,
+  useWidgetSetting,
+} from '../context/WidgetSettingContext';
 import useWidgetButtonActivityTimeout from '../hooks/useWidgetButtonActivityTimeout';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 
 const Chat = () => {
   useWidgetButtonActivityTimeout();
-  useManualGroupChannelCreation();
-  const { channelUrl } = useWidgetLocalStorage();
+  const { stores } = useSendbirdStateContext();
+  const widgetSetting = useWidgetSetting();
+  const widgetSession = useWidgetSession();
   const { botStudioEditProps } = useConstantState();
   const aiAttributesRef = useRef<object>();
   aiAttributesRef.current = botStudioEditProps?.aiAttributes;
 
-  if (!channelUrl) return <></>;
+  // Initialize the manual session if channelUrl is not set.
+  useEffect(() => {
+    if (widgetSetting.initialized && stores.sdkStore.initialized) {
+      if (widgetSession.strategy === 'manual' && !widgetSession.channelUrl) {
+        widgetSetting.initManualSession(stores.sdkStore.sdk);
+      }
+    }
+  }, [
+    widgetSetting.initialized,
+    widgetSession.strategy,
+    widgetSession.channelUrl,
+    stores.sdkStore.sdk,
+    stores.sdkStore.initialized,
+  ]);
+
+  if (!widgetSession.channelUrl) return <></>;
 
   const onBeforeSendMessage = <
     T extends UserMessageCreateParams | FileMessageCreateParams
@@ -41,7 +60,7 @@ const Chat = () => {
 
   return (
     <GroupChannelProvider
-      channelUrl={channelUrl}
+      channelUrl={widgetSession.channelUrl}
       scrollBehavior={'smooth'}
       onBeforeSendUserMessage={onBeforeSendMessage}
       onBeforeSendFileMessage={onBeforeSendMessage}

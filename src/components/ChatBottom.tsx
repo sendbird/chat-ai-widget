@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
-import { useChannelStyle } from '../hooks/useChannelStyle';
 import SendbirdLogo from '../icons/sendbird-logo-widget.svg';
 
 const Container = styled.div`
   width: 100%;
 `;
 
-const InnerContainer = styled.div<{ chatBottomBackgroundColor: string }>`
+const InnerContainer = styled.div<{ chatBottomBackgroundColor?: string }>`
   padding: 0 4px;
   width: calc(100% - 8px);
   min-height: 40px;
@@ -38,14 +37,11 @@ const Highlighter = styled.a`
 // link: https://dashboard.sendbird.com/auth/signup
 export default function ChatBottom() {
   const { chatBottomContent } = useConstantState();
-  const { theme } = useChannelStyle();
 
   return (
     <Container>
       <InnerContainer
-        chatBottomBackgroundColor={
-          chatBottomContent?.backgroundColor ?? theme === 'light'
-        }
+        chatBottomBackgroundColor={chatBottomContent.backgroundColor}
       >
         {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
         <Highlighter

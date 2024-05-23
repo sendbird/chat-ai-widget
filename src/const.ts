@@ -35,10 +35,10 @@ export const DEFAULT_CONSTANT = {
     // },
   ],
   createGroupChannelParams: {
-    name: 'Sendbird AI Chatbot',
-    coverUrl:
-      'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
-      'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
+    // name: 'Sendbird AI Chatbot',
+    // coverUrl:
+    //   'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ix' +
+    //   'lib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
   },
   chatBottomContent: {
     text: '',
@@ -252,8 +252,8 @@ export interface SuggestedMessageContent {
 }
 
 export interface CreateGroupChannelParams {
-  name: string;
-  coverUrl: string;
+  name?: string;
+  coverUrl?: string;
 }
 
 export const LOCAL_MESSAGE_CUSTOM_TYPE = {

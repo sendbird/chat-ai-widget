@@ -292,16 +292,16 @@ export function getDateNDaysLater(daysToAdd: number): number {
  * @returns { getItem: (key), setItem: (key, value) }
  */
 interface Storage {
-  [key: string]: any;
+  [key: string]: string;
 }
 export const localStorageHelper = () => {
   const store: Storage = {};
   return {
-    getItem: (key: string) => {
+    getItem: (key: string): string | null => {
       try {
         return localStorage.getItem(key);
       } catch (error) {
-        return store[key];
+        return store[key] ?? null;
       }
     },
     setItem: (key: string, value: string) => {
