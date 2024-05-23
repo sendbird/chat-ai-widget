@@ -1,6 +1,5 @@
 import { User } from '@sendbird/chat';
 
-import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import TypingDots from '@uikit/ui/TypingIndicatorBubble/TypingDots';
 import { CoreMessageType } from '@uikit/utils';
 
@@ -18,7 +17,7 @@ import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
+import { useWidgetSession } from '../context/WidgetSettingContext';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
 import {
@@ -60,10 +59,9 @@ export default function CustomMessage(props: Props) {
   };
   const { replacementTextList, enableEmojiFeedback, botStudioEditProps } =
     useConstantState();
-  const { stores } = useSendbirdStateContext();
-  const { userId } = useWidgetLocalStorage();
+  const { userId } = useWidgetSession();
 
-  const currentUserId = stores.userStore.user.userId || userId;
+  const currentUserId = userId;
   const { profileUrl } = botStudioEditProps?.botInfo ?? {};
   const botUserId = botUser?.userId;
   const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';

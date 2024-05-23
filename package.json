@@ -31,7 +31,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.17.19",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {

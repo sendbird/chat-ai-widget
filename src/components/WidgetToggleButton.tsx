@@ -5,7 +5,7 @@ import { getColorBasedOnSaturation } from '../colors';
 import { MAX_Z_INDEX, elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetOpen } from '../context/WidgetOpenContext';
-import { useChannelStyle } from '../hooks/useChannelStyle';
+import { useWidgetSetting } from '../context/WidgetSettingContext';
 import ArrowDownIcon from '../icons/ic-arrow-down.svg';
 import ChatBotIcon from '../icons/icon-widget-chatbot.svg';
 
@@ -112,7 +112,7 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
 };
 
 export default function WidgetToggleButton() {
-  const { isFetching, ...channelStyle } = useChannelStyle();
+  const { botStyle } = useWidgetSetting();
   const { autoOpen, renderWidgetToggleButton, isMobileView } =
     useConstantState();
   const { isOpen, setIsOpen } = useWidgetOpen();
@@ -127,14 +127,14 @@ export default function WidgetToggleButton() {
   };
 
   useEffect(() => {
-    if (autoOpen || channelStyle.autoOpen) {
+    if (autoOpen || botStyle.autoOpen) {
       timer.current = setTimeout(() => setIsOpen(true), 100);
     }
-  }, [channelStyle.autoOpen, autoOpen]);
+  }, [botStyle.autoOpen, autoOpen]);
 
   const toggleButtonProps = {
     onClick: buttonClickHandler,
-    accentColor: channelStyle.accentColor,
+    accentColor: botStyle.accentColor,
     isOpen,
   };
 
@@ -144,5 +144,5 @@ export default function WidgetToggleButton() {
     return renderWidgetToggleButton(toggleButtonProps);
   }
 
-  return !isFetching ? <StyledButton {...toggleButtonProps} /> : null;
+  return <StyledButton {...toggleButtonProps} />;
 }

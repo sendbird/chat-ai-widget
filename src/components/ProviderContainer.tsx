@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
 
@@ -11,9 +10,12 @@ import {
   useConstantState,
 } from '../context/ConstantContext';
 import { WidgetOpenProvider } from '../context/WidgetOpenContext';
-import { useChannelStyle } from '../hooks/useChannelStyle';
+import {
+  useWidgetSession,
+  useWidgetSetting,
+  WidgetSettingProvider,
+} from '../context/WidgetSettingContext';
 import { useStyledComponentsTarget } from '../hooks/useStyledComponentsTarget';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import { getTheme } from '../theme';
 import { isDashboardPreview } from '../utils';
 
@@ -33,6 +35,9 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     serviceName,
     isMobileView,
   } = useConstantState();
+  const { botStyle } = useWidgetSetting();
+  const session = useWidgetSession();
+  const target = useStyledComponentsTarget();
 
   const userAgentCustomParams = useMemo(() => {
     const userAgent: Record<string, any> = {
@@ -47,8 +52,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     return userAgent;
   }, []);
 
-  const { isFetching, theme, accentColor, botMessageBGColor } =
-    useChannelStyle();
+  const { theme, accentColor, botMessageBGColor } = botStyle;
 
   const styledTheme = getTheme({
     accentColor,
@@ -65,31 +69,16 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
       };
     }, {});
   }, [accentColor]);
-  const { sessionToken, userId } = useWidgetLocalStorage();
-  const target = useStyledComponentsTarget();
-
-  if (isFetching) {
-    return null;
-  }
 
   return (
-    <WidgetOpenProvider
-    // Currently, it is handled by useEffect in WidgetToggleButton.
-    //
-    // isOpen={
-    //   isMobile
-    //     ? // we don't want to open the widget window automatically on mobile view
-    //       false
-    //     : restConstantProps.autoOpen ?? autoOpen ?? false
-    // }
-    >
+    <WidgetOpenProvider>
       <StyleSheetManager target={target}>
         <ThemeProvider theme={styledTheme}>
-          {applicationId && userId && (
+          {applicationId && session.userId && (
             <SendbirdProvider
               appId={applicationId}
-              userId={userId}
-              accessToken={sessionToken}
+              userId={session.userId}
+              accessToken={session.sessionToken}
               nickname={userNickName}
               customApiHost={apiHost}
               customWebSocketHost={wsHost}
@@ -126,15 +115,6 @@ export interface ProviderContainerProps extends ChatAiWidgetProps {
 }
 
 export default function ProviderContainer(props: ProviderContainerProps) {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        refetchOnWindowFocus: false,
-        refetchOnReconnect: false,
-        staleTime: 5000,
-      },
-    },
-  });
   // If env is not provided, prop will be used instead.
   // But Either should be provided.
   const CHAT_WIDGET_APP_ID =
@@ -143,14 +123,14 @@ export default function ProviderContainer(props: ProviderContainerProps) {
     import.meta.env.VITE_CHAT_WIDGET_BOT_ID ?? props.botId;
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ConstantStateProvider
-        {...props}
-        applicationId={CHAT_WIDGET_APP_ID}
-        botId={CHAT_WIDGET_BOT_ID}
-      >
+    <ConstantStateProvider
+      {...props}
+      applicationId={CHAT_WIDGET_APP_ID}
+      botId={CHAT_WIDGET_BOT_ID}
+    >
+      <WidgetSettingProvider>
         <SBComponent>{props.children}</SBComponent>
-      </ConstantStateProvider>
-    </QueryClientProvider>
+      </WidgetSettingProvider>
+    </ConstantStateProvider>
   );
 }
