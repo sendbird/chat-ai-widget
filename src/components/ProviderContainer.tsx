@@ -5,6 +5,7 @@ import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
 import { generateCSSVariables } from '../colors';
+import { widgetStringSet } from '../const';
 import {
   ConstantStateProvider,
   useConstantState,
@@ -88,7 +89,10 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
               isMentionEnabled={enableMention}
               theme={theme}
               colorSet={customColorSet}
-              stringSet={stringSet}
+              stringSet={{
+                ...stringSet,
+                MESSAGE_INPUT__PLACE_HOLDER__DISABLED: widgetStringSet.messageInputDisabledPlaceholder,
+              }}
               uikitOptions={{
                 groupChannel: {
                   input: {

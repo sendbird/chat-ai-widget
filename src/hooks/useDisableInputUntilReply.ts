@@ -33,7 +33,6 @@ export const useDisableInputUntilReply = ({
       const isStreaming = messageExtension.isStreaming(lastMessage);
       if (!isStreaming) {
         if (timerRef.current) {
-          console.log('## timer cleared!');
           clearTimeout(timerRef.current);
         }
         setIsMessageInputDisabled(false);

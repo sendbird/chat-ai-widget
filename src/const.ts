@@ -307,6 +307,6 @@ export const widgetServiceName = {
   },
 } as const;
 
-export const stringSet = {
+export const widgetStringSet = {
   messageInputDisabledPlaceholder: 'Waiting for the bot’s reply…',
 };

@@ -1,7 +1,7 @@
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
 import isSameDay from 'date-fns/isSameDay';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
@@ -18,7 +18,6 @@ import DynamicRepliesPanel from './DynamicRepliesPanel';
 import MessageDataContent from './MessageDataContent';
 import WelcomeMessages from './messages/WelcomeMessages';
 import StaticRepliesPanel from './StaticRepliesPanel';
-import { stringSet } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useDisableInputUntilReply } from '../hooks/useDisableInputUntilReply';
@@ -240,7 +239,6 @@ export function CustomChannelComponent() {
         renderMessageInput={() => (
           <MessageInputWrapper
             disabled={isMessageInputDisabled}
-            disabledPlaceholder={stringSet.messageInputDisabledPlaceholder}
           />
         )}
         renderTypingIndicator={() => <></>}
