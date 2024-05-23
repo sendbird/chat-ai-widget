@@ -124,13 +124,14 @@ export const WidgetSettingProvider = ({
        * After the uikit is initializing, we should call the `initManualSession` function.
        * */
       if (sessionStrategy === 'manual' && injectedUserId) {
-        setWidgetSession({
+        const session = {
           strategy: sessionStrategy,
           userId: injectedUserId,
           sessionToken: undefined,
           channelUrl: undefined,
           expireAt: 0,
-        });
+        }
+        setWidgetSession(session);
       }
     }
 
