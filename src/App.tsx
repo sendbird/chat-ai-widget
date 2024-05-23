@@ -71,13 +71,14 @@ const App = (props: Props) => {
       //   ],
       //   styles: {
       //     theme: 'light',
-      //     primaryColor: 'orange',
+      //     accentColor: 'orange',
       //     botMessageBGColor: 'hotpink',
       //   },
       // }}
-      // widgetOpenState={false}
+      // widgetOpenState={true}
       // onWidgetOpenStateChange={(props) => {
       //   console.log('## onChatOpenStateChange: ', props);
+      // }}
     />
   );
 };
