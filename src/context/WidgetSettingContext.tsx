@@ -83,19 +83,19 @@ export const WidgetSettingProvider = ({
       botId,
     });
 
-    // Reuse the session if it is valid.
-    if (
-      cachedSession &&
+    const reuseCachedSession =
+      !!cachedSession &&
       cachedSession.strategy === strategy &&
-      !isPastTime(cachedSession.expireAt)
-    ) {
-      const response = await getWidgetSetting({
-        host: apiHost,
-        appId,
-        botId,
-        createUserAndChannel: false,
-      });
+      !isPastTime(cachedSession.expireAt);
 
+    const response = await getWidgetSetting({
+      host: apiHost,
+      appId,
+      botId,
+      createUserAndChannel: reuseCachedSession ? false : strategy === 'auto',
+    });
+
+    if (reuseCachedSession) {
       setBotStyle(response.botStyle);
       setWidgetSession({
         strategy: sessionStrategy,
@@ -105,13 +105,6 @@ export const WidgetSettingProvider = ({
         sessionToken: cachedSession.sessionToken,
       });
     } else {
-      const response = await getWidgetSetting({
-        host: apiHost,
-        appId,
-        botId,
-        createUserAndChannel: strategy === 'auto',
-      });
-
       setBotStyle(response.botStyle);
 
       if (sessionStrategy === 'auto' && response.user && response.channel) {
@@ -153,7 +146,7 @@ export const WidgetSettingProvider = ({
         : undefined;
 
       const channel = await sdk.groupChannel.createChannel({
-        name: createGroupChannelParams?.name,
+        name: createGroupChannelParams?.name ?? 'AI Chatbot Widget Channel',
         coverUrl: createGroupChannelParams?.coverUrl,
         invitedUserIds: [injectedUserId, botId],
         isDistinct: false,
