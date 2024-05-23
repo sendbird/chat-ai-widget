@@ -170,7 +170,7 @@ export const WidgetSettingProvider = ({
     // Trick to prevent duplicated request in strict mode.
     if (inProgress.current) return;
     inProgress.current = true;
-    initSessionByStrategy(sessionStrategy).then(() => {
+    initSessionByStrategy(sessionStrategy).finally(() => {
       inProgress.current = false;
     });
   }, [sessionStrategy]);
