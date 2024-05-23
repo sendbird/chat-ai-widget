@@ -130,7 +130,7 @@ export const WidgetSettingProvider = ({
           sessionToken: undefined,
           channelUrl: undefined,
           expireAt: 0,
-        }
+        };
         setWidgetSession(session);
       }
     }

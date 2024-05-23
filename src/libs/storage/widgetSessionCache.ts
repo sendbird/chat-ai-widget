@@ -1,17 +1,16 @@
 import { localStorageHelper } from '../../utils';
 
-// const DEFAULT_VALUE = { userId: null, channelUrl: null, expireAt: 0 };
 const WIDGET_SESSION_PREFIX = '@sendbird/chat-ai-widget';
 const getKey = (appId: string, botId: string) => {
   return `${WIDGET_SESSION_PREFIX}/${appId}/${botId}`;
 };
 
 export type WidgetSessionCache = {
+  strategy: 'auto' | 'manual';
   userId: string;
   channelUrl: string;
   expireAt: number;
   sessionToken?: string;
-  strategy?: 'auto' | 'manual'; // default: auto
 };
 
 export function getWidgetSessionCache(params: {
@@ -21,7 +20,12 @@ export function getWidgetSessionCache(params: {
   const key = getKey(params.appId, params.botId);
   const value = localStorageHelper().getItem(key);
   try {
-    return value ? JSON.parse(value) : null;
+    if (value) {
+      // For cache of users before the update, there is no 'strategy'.
+      // Therefore, 'auto' is set as the default value.
+      return { strategy: 'auto', ...JSON.parse(value) };
+    }
+    return null;
   } catch {
     return null;
   }
