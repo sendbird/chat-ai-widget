@@ -1,3 +1,13 @@
+## [1.5.11] (May 23 2024)
+### Feat:
+- Mssage input is now being disabled upon sending a message until a reply message is received from the bot and finished streaming
+
+### Chore:
+- Expand button is now being displayed only when `callbacks.onWidgetExpandStateChange` is given
+
+### Deprecated:
+- `autoOpen` in `BotStyle` has been deprecated and is no longer being considered internally due to its use-case removal
+
 ## [1.5.10] (May 23 2024)
 ### Fix:
 - Fixed a bug where the widget was not working when `configureSession` was set.
