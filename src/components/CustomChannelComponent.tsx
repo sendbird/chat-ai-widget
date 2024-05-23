@@ -23,7 +23,6 @@ import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKy
 import { useDisableInputUntilReply } from '../hooks/useDisableInputUntilReply';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import useWidgetLocalStorage from '../hooks/useWidgetLocalStorage';
 import {
   hideChatBottomBanner,
   isDashboardPreview,
@@ -36,6 +35,7 @@ import {
   isStaticReplyVisible as getStaticMessageVisibility,
   shouldFilterOutMessage,
 } from '../utils/messages';
+import {useWidgetSession} from '../context/WidgetSettingContext';
 
 interface RootStyleProps {
   height: string;
@@ -136,9 +136,7 @@ export function CustomChannelComponent() {
     scrollToBottom,
     refresh,
   } = useGroupChannelContext();
-  const { stores } = useSendbirdStateContext();
-  const { userId } = useWidgetLocalStorage();
-  const currentUserId = stores.userStore.user.userId || userId;
+  const { userId: currentUserId } = useWidgetSession();
 
   // NOTE: Filter out messages that should not be displayed.
   const allMessages = messages.filter(
