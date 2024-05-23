@@ -1,5 +1,5 @@
 import { SendableMessage, Member } from '@sendbird/chat/lib/__definition';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import {Dispatch, SetStateAction, useEffect, useRef} from 'react';
 
 import { messageExtension } from '../utils/messageExtension';
 import { isSentBy } from '../utils/messages';
@@ -20,18 +20,22 @@ export const useDisableInputUntilReply = ({
   currentUserId,
   setIsMessageInputDisabled,
 }: UseDisableInputUntilReplyProps) => {
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
   useEffect(() => {
     if (!currentUserId || !botUser || !lastMessage) return;
-    let timer: ReturnType<typeof setTimeout> | undefined = undefined;
-    if (isSentBy(lastMessage, currentUserId)) {
+    if (isSentBy(lastMessage, currentUserId) && lastMessage.messageId === 0) {
       setIsMessageInputDisabled(true);
-      timer = setTimeout(() => {
+      timerRef.current = setTimeout(() => {
         setIsMessageInputDisabled(false);
       }, 10000);
     } else if (isSentBy(lastMessage, botUser.userId)) {
       const isStreaming = messageExtension.isStreaming(lastMessage);
       if (!isStreaming) {
-        if (timer) clearTimeout(timer);
+        if (timerRef.current) {
+          console.log('## timer cleared!');
+          clearTimeout(timerRef.current);
+        }
         setIsMessageInputDisabled(false);
       }
     }

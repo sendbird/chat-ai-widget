@@ -84,13 +84,14 @@ export default function CustomMessage(props: Props) {
     return <AdminMessage message={message} />;
   }
 
-  /**
-   * If a message to render is sent by me and is a last message,
-   * typing indicator bubble is displayed below to indicate
-   * a reply message from bot is expected to arrive.
-   */
+  // Sent by current user
   if (isSentBy(message, currentUserId)) {
     if (message.isUserMessage()) {
+      /**
+       * If a message to render is sent by me and is a last message,
+       * typing indicator bubble is displayed below to indicate
+       * a reply message from bot is expected to arrive.
+       */
       return (
         <div>
           <CurrentUserMessage message={message} />

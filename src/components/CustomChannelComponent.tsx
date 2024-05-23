@@ -18,6 +18,7 @@ import DynamicRepliesPanel from './DynamicRepliesPanel';
 import MessageDataContent from './MessageDataContent';
 import WelcomeMessages from './messages/WelcomeMessages';
 import StaticRepliesPanel from './StaticRepliesPanel';
+import { stringSet } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useDisableInputUntilReply } from '../hooks/useDisableInputUntilReply';
@@ -237,7 +238,10 @@ export function CustomChannelComponent() {
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
         renderMessageInput={() => (
-          <MessageInputWrapper disabled={isMessageInputDisabled} />
+          <MessageInputWrapper
+            disabled={isMessageInputDisabled}
+            disabledPlaceholder={stringSet.messageInputDisabledPlaceholder}
+          />
         )}
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
