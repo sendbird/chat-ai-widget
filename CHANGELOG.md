@@ -1,3 +1,9 @@
+## [1.5.10] (May 23 2024)
+### Fix:
+- Fixed a bug where the widget was not working when `configureSession` was set.
+### Chore:
+- Removed a `@tanstack/react-query` dependency
+
 ## [1.5.9] (May 22 2024)
 ### Feat:
 #### Carousel message
