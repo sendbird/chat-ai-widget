@@ -19,6 +19,7 @@ import MessageDataContent from './MessageDataContent';
 import WelcomeMessages from './messages/WelcomeMessages';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
+import { useWidgetSession } from '../context/WidgetSettingContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useDisableInputUntilReply } from '../hooks/useDisableInputUntilReply';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
@@ -35,7 +36,6 @@ import {
   isStaticReplyVisible as getStaticMessageVisibility,
   shouldFilterOutMessage,
 } from '../utils/messages';
-import {useWidgetSession} from '../context/WidgetSettingContext';
 
 interface RootStyleProps {
   height: string;
@@ -157,7 +157,6 @@ export function CustomChannelComponent() {
     lastMessage?.sender?.userId === botId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
-  const [isMessageInputDisabled, setIsMessageInputDisabled] = useState(false);
 
   const messageCount = allMessages?.length ?? 0;
 
@@ -184,11 +183,10 @@ export function CustomChannelComponent() {
           20,
   });
 
-  useDisableInputUntilReply({
+  const isMessageInputDisabled = useDisableInputUntilReply({
     lastMessage,
     botUser,
     currentUserId,
-    setIsMessageInputDisabled,
   });
 
   /**
@@ -235,9 +233,7 @@ export function CustomChannelComponent() {
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
         renderMessageInput={() => (
-          <MessageInputWrapper
-            disabled={isMessageInputDisabled}
-          />
+          <MessageInputWrapper disabled={isMessageInputDisabled} />
         )}
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
