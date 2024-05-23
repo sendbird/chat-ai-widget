@@ -25,7 +25,7 @@ interface WidgetSession {
   sessionToken?: string;
 }
 
-interface BotStyle {
+export interface BotStyle {
   theme: 'light' | 'dark';
   accentColor: string;
   botMessageBGColor: string;
@@ -52,6 +52,7 @@ export const WidgetSettingProvider = ({
     applicationId: _appId,
     botId: _botId,
     apiHost,
+    botStudioEditProps,
   } = useConstantState();
 
   const appId = _appId as string;
@@ -95,9 +96,8 @@ export const WidgetSettingProvider = ({
       botId,
       createUserAndChannel: reuseCachedSession ? false : strategy === 'auto',
     });
-
+    setBotStyle(response.botStyle);
     if (reuseCachedSession) {
-      setBotStyle(response.botStyle);
       setWidgetSession({
         strategy: sessionStrategy,
         userId: cachedSession.userId,
@@ -106,8 +106,6 @@ export const WidgetSettingProvider = ({
         sessionToken: cachedSession.sessionToken,
       });
     } else {
-      setBotStyle(response.botStyle);
-
       if (sessionStrategy === 'auto' && response.user && response.channel) {
         const session = {
           strategy: sessionStrategy,
@@ -178,7 +176,19 @@ export const WidgetSettingProvider = ({
 
   return (
     <WidgetSettingContext.Provider
-      value={{ initialized, botStyle, widgetSession, initManualSession }}
+      value={{
+        initialized,
+        botStyle: {
+          ...botStyle,
+          ...botStudioEditProps?.styles,
+          accentColor:
+            botStudioEditProps?.styles?.accentColor ??
+            botStudioEditProps?.styles?.primaryColor ??
+            botStyle.accentColor,
+        },
+        widgetSession,
+        initManualSession,
+      }}
     >
       {widgetSession ? children : null}
     </WidgetSettingContext.Provider>

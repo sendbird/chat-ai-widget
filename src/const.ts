@@ -6,6 +6,7 @@ import React from 'react';
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
 import type { ToggleButtonProps } from './components/WidgetToggleButton';
+import { BotStyle } from './context/WidgetSettingContext';
 import RefreshIcon from './icons/refresh-icon.svg';
 import { SendbirdChatAICallbacks } from './types';
 import { noop } from './utils';
@@ -81,10 +82,11 @@ type FirstMessageItem = {
 type MatchString = string;
 type ReplaceString = string;
 
-export interface WidgetStyles {
-  theme?: 'light' | 'dark';
+export interface WidgetStyles extends Omit<Partial<BotStyle>, 'autoOpen'> {
+  /**
+   * @deprecated Use `accentColor` instead.
+   * */
   primaryColor?: string; // Color for messages sent by me, suggested replies, etc.
-  botMessageBGColor?: string;
 }
 
 export interface WelcomeUserMessage {
