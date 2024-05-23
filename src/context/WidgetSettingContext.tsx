@@ -147,8 +147,8 @@ export const WidgetSettingProvider = ({
         : undefined;
 
       const channel = await sdk.groupChannel.createChannel({
-        name: createGroupChannelParams?.name ?? 'AI Chatbot Widget Channel',
-        coverUrl: createGroupChannelParams?.coverUrl,
+        name: createGroupChannelParams.name ?? 'AI Chatbot Widget Channel',
+        coverUrl: createGroupChannelParams.coverUrl,
         invitedUserIds: [injectedUserId, botId],
         isDistinct: false,
         data,
