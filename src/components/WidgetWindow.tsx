@@ -7,7 +7,6 @@ import { useWidgetOpen } from '../context/WidgetOpenContext';
 import CloseIcon from '../icons/ic-widget-close.svg';
 import CollapseIcon from '../icons/icon-collapse.svg';
 import ExpandIcon from '../icons/icon-expand.svg';
-import { isDashboardPreview } from '../utils';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
@@ -100,7 +99,7 @@ const StyledCloseButton = styled.button`
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, setIsOpen } = useWidgetOpen();
   const [isExpanded, setIsExpanded] = useState(false);
-  const { customUserAgentParam, callbacks } = useConstantState();
+  const { callbacks } = useConstantState();
 
   const onExpandButtonToggle = () => {
     setIsExpanded((prev) => {
@@ -116,7 +115,7 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
       isExpanded={isExpanded}
       id={elementIds.widgetWindow}
     >
-      {isDashboardPreview(customUserAgentParam) && (
+      {callbacks?.onWidgetExpandStateChange && (
         <StyledExpandButton onClick={onExpandButtonToggle}>
           {isExpanded ? (
             <CollapseIcon id={elementIds.collapseIcon} />
