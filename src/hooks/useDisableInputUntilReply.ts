@@ -8,6 +8,7 @@ interface UseDisableInputUntilReplyProps {
   lastMessage?: SendableMessage;
   botUser?: Member;
   currentUserId: string | null;
+  blockInputWhileBotResponding?: boolean | number;
 }
 
 /**
@@ -17,18 +18,26 @@ export const useDisableInputUntilReply = ({
   lastMessage,
   botUser,
   currentUserId,
+  blockInputWhileBotResponding,
 }: UseDisableInputUntilReplyProps) => {
   const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-
   const [isMessageInputDisabled, setIsMessageInputDisabled] = useState(false);
 
   useEffect(() => {
-    if (!currentUserId || !botUser || !lastMessage) return;
+    if (
+      !blockInputWhileBotResponding ||
+      !currentUserId ||
+      !botUser ||
+      !lastMessage
+    )
+      return;
     if (isSentBy(lastMessage, currentUserId) && lastMessage.messageId === 0) {
       setIsMessageInputDisabled(true);
-      timerRef.current = setTimeout(() => {
-        setIsMessageInputDisabled(false);
-      }, 10000);
+      if (typeof blockInputWhileBotResponding === 'number') {
+        timerRef.current = setTimeout(() => {
+          setIsMessageInputDisabled(false);
+        }, blockInputWhileBotResponding);
+      }
     } else if (isSentBy(lastMessage, botUser.userId)) {
       const isStreaming = messageExtension.isStreaming(lastMessage);
       if (!isStreaming) {
@@ -38,12 +47,7 @@ export const useDisableInputUntilReply = ({
         setIsMessageInputDisabled(false);
       }
     }
-    return () => {
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
-      }
-    };
-  }, [currentUserId, botUser, lastMessage]);
+  }, [currentUserId, botUser, lastMessage, blockInputWhileBotResponding]);
 
   return isMessageInputDisabled;
 };

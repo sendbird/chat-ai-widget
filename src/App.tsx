@@ -44,6 +44,9 @@ const App = (props: Props) => {
       serviceName={props.serviceName}
       deviceType={props.deviceType}
       enableResetHistoryOnConnect={props.enableResetHistoryOnConnect}
+      // messageInputControlProps={{
+      //   blockInputWhileBotResponding: 10000,
+      // }}
       // callbacks={{
       //   onWidgetExpandStateChange: (newIsExpanded) => {
       //     console.log('## newIsExpanded: ', newIsExpanded);

@@ -120,6 +120,17 @@ export interface BotStudioEditProps {
   suggestedRepliesDirection?: 'horizontal' | 'vertical';
 }
 
+export interface MessageInputControlProps {
+  /**
+   * default value is false.
+   * If false or 0 is given, message input will not be blocked.
+   * If true is non-zero numeric value is given, message input will be blocked.
+   * If true is given, there will not be a force unblock.
+   * If numeric value is given, it will be used as timeout to force unblock the input.
+   */
+  blockInputWhileBotResponding?: boolean | number;
+}
+
 export interface OnWidgetOpenStateChangeParams {
   value: boolean;
 }
@@ -233,6 +244,10 @@ export interface Constant extends Required<ConstantProps> {
    * @private Callback to be called when the widget open state changes.
    */
   onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
+  /**
+   * @private Message input state controlling properties.
+   */
+  messageInputControlProps?: MessageInputControlProps;
 }
 
 export interface ConstantProps {
