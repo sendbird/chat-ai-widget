@@ -88,7 +88,9 @@ export const WidgetSettingProvider = ({
     const reuseCachedSession = ((cache: typeof cachedSession): cache is NonNullable<typeof cachedSession> => {
       if (!cache || cache.strategy !== strategy) return false;
       if (cache.strategy === 'manual') {
-        return cache.userId === injectedUserId;
+        // NOTE: There is no need to check the expiration of the session if it is managed manually.
+        // However, since the existing logic has been regenerating the channel every 30 days due to this logic.
+        return !isPastTime(cache.expireAt) && cache.userId === injectedUserId;
       }
       if (cache.strategy === 'auto') {
         return !isPastTime(cache.expireAt);
