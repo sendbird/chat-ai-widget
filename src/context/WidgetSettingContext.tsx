@@ -85,10 +85,16 @@ export const WidgetSettingProvider = ({
       botId,
     });
 
-    const reuseCachedSession =
-      !!cachedSession &&
-      cachedSession.strategy === strategy &&
-      !isPastTime(cachedSession.expireAt);
+    const reuseCachedSession = ((cache: typeof cachedSession): cache is NonNullable<typeof cachedSession> => {
+      if (!cache || cache.strategy !== strategy) return false;
+      if (cache.strategy === 'manual') {
+        return cache.userId === injectedUserId;
+      }
+      if (cache.strategy === 'auto') {
+        return !isPastTime(cache.expireAt);
+      }
+      return false;
+    })(cachedSession);
 
     const response = await getWidgetSetting({
       host: apiHost,
