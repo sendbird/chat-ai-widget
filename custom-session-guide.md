@@ -1,60 +1,81 @@
 # Custom Session Configuration Guide
 
-This guide explains how to configure a custom session handler for the `ChatAiWidget` component. This can be useful if you need to set up authentication with your own API.
+This guide provides detailed instructions on configuring a custom session handler for the `ChatAiWidget` component, particularly useful for integrating authentication with your own API.
 
-### Step-by-Step Guide
+## Prerequisites
 
-#### Define the Session Configuration Function
-We recommend to memoize the configure function with `useCallback`. This ensures that the function is not recreated on every render.
-```jsx
-const issueSessionToken = async (userId, ...) => {
-  // Build your own API request handler here
+Before you can manage sessions independently, you must obtain session tokens using the Sendbird Platform API. For detailed instructions on preparing to use the Platform API, please refer to the [official documentation](https://sendbird.com/docs/chat/platform-api/v3/prepare-to-use-api).
+
+## Step-by-Step Guide
+
+### Defining a Function to Issue Session Tokens
+
+Define a function to issue session tokens. The following TypeScript code is an example; in practice, you should issue session tokens from your server. For more information, please see the [Sendbird documentation](https://sendbird.com/docs/chat/platform-api/v3/user/managing-session-tokens/issue-a-session-token).
+
+```ts
+const APP_ID = "YOUR_APP_ID";
+const API_TOKEN = "YOUR_API_TOKEN";
+
+const issueSessionToken = async (
+  userId: string,
+  expiryDuration = 10 * 60 * 1000
+): Promise<string> => {
+  const url = `https://api-${APP_ID}.sendbird.com/v3/users/${userId}/token`;
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json; charset=utf8",
+      "Api-Token": API_TOKEN,
+    },
+    body: JSON.stringify({ expires_at: Date.now() + expiryDuration }),
+  });
+
+  const data = await response.json();
+  if (response.ok) {
+    return data.token as string;
+  } else {
+    throw new Error("Failed to issue a session token");
+  }
 };
-
-const memoizedConfigureSession = useCallback(
-  (sdk) => {
-    const sessionHandler = new SessionHandler();
-
-    sessionHandler.onSessionTokenRequired = (resolve, reject) => {
-      console.warn('SessionHandler.onSessionTokenRequired()');
-      // Replace USER_ID with your real user ID
-      issueSessionToken(USER_ID)
-        .then(token => {
-          // Assign the token to the user's access token
-          resolve(token);
-        })
-        .catch(err => reject(err));
-    };
-
-    sessionHandler.onSessionRefreshed = () => {
-      // Handle session refresh
-    };
-
-    sessionHandler.onSessionError = (err) => {
-      // Handle session error
-    };
-
-    sessionHandler.onSessionClosed = () => {
-      // Handle session closure
-    };
-
-    return sessionHandler;
-  }, []
-);
-
 ```
-#### Integrate the Session Configuration into the Component
-Pass the memoizedConfigureSession function and USER_ID as props to the ChatAiWidget component.
 
-```jsx
+### Defining a Session Configuration Function
+
+```tsx
+const USER_ID = "USER_ID";
+
+const configureSession = () => ({
+  onSessionTokenRequired: (resolve, reject) => {
+    // Action to take when a session token is required
+    issueSessionToken(USER_ID)
+      .then((token) => resolve(token))
+      .catch((err) => reject(err));
+  },
+  onSessionRefreshed: () => {
+    // Action to take when session is refreshed
+  },
+  onSessionError: (err) => {
+    // Action to take when session encounters an error
+  },
+  onSessionClosed: () => {
+    // Action to take when session is closed
+  },
+});
+```
+
+### Passing Session Configuration Data to the Widget
+
+Pass the user ID and session configuration function to the widget. The widget will now manage the session for the specified user ID, issuing session tokens as needed.
+
+```tsx
 const App = () => {
   return (
     <ChatAiWidget
       /**
-       * Pass other necessary props here
+       * Include other necessary properties here
        */
       userId={USER_ID}
-      configureSession={memoizedConfigureSession}
+      configureSession={configureSession}
     />
   );
 };
@@ -62,6 +83,20 @@ const App = () => {
 export default App;
 ```
 
-### Need more detailed information?
-For more information on setting up authentication with your own API, refer to the [Sendbird documentation](https://sendbird.com/docs/chat/v3/javascript/guides/authentication).
+## Further Information
 
+For additional details on setting up authentication with your own API, please consult the following resources:
+
+- [JavaScript SDK Overview](https://sendbird.com/docs/chat/sdk/v4/javascript/overview)
+  - [Connecting to the Sendbird server using a user ID and token](https://sendbird.com/docs/chat/sdk/v4/javascript/application/authenticating-a-user/authentication#2-connect-to-the-sendbird-server-with-a-user-id-and-a-token)
+  - [Setting a session handler](https://sendbird.com/docs/chat/sdk/v4/javascript/application/authenticating-a-user/authentication#2-set-a-session-handler)
+
+- [Platform API Overview](https://sendbird.com/docs/chat/platform-api/v3/overview)
+  - [Preparing to use the API](https://sendbird.com/docs/chat/platform-api/v3/prepare-to-use-api)
+  - [Issuing a session token](https://sendbird.com/docs/chat/platform-api/v3/user/managing-session-tokens/issue-a-session-token)
+
+## Real World Example
+
+For practical implementation, you can refer to this sample repository which demonstrates the integration of a custom session handler with the `ChatAiWidget` component. This example provides a hands-on approach to understand how the concepts outlined in this guide can be applied in a real-world scenario.
+
+[View the example repository on GitHub](https://github.com/sendbird/chat-ai-widget-session-sample)
