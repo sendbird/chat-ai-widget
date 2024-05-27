@@ -122,9 +122,8 @@ export interface BotStudioEditProps {
 
 export interface MessageInputControlProps {
   /**
-   * default value is false.
-   * If false or 0 is given, message input will not be blocked.
-   * If true is non-zero numeric value is given, message input will be blocked.
+   * If undefined, false, or 0 is given, message input will not be blocked.
+   * If true or non-zero numeric value is given, message input will be blocked.
    * If true is given, there will not be a force unblock.
    * If numeric value is given, it will be used as timeout to force unblock the input.
    */
