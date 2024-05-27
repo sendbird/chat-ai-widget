@@ -336,9 +336,11 @@ export function CustomChannelComponent() {
                     }
                     return null;
                   })()}
-                {isDashboardPreview(customUserAgentParam) && message.data && (
-                  <MessageDataContent messageData={message.data} />
-                )}
+                {message.messageId === lastMessage?.messageId &&
+                  isDashboardPreview(customUserAgentParam) &&
+                  message.data && (
+                    <MessageDataContent messageData={message.data} />
+                  )}
               </div>
             </Message>
           );
