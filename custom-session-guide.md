@@ -18,7 +18,7 @@ const API_TOKEN = "YOUR_API_TOKEN";
 
 const issueSessionToken = async (
   userId: string,
-  period = 10 * 60 * 1000
+  expiryDuration = 10 * 60 * 1000
 ): Promise<string> => {
   const url = `https://api-${APP_ID}.sendbird.com/v3/users/${userId}/token`;
   const response = await fetch(url, {
@@ -27,7 +27,7 @@ const issueSessionToken = async (
       "Content-Type": "application/json; charset=utf8",
       "Api-Token": API_TOKEN,
     },
-    body: JSON.stringify({ expires_at: Date.now() + period }),
+    body: JSON.stringify({ expires_at: Date.now() + expiryDuration }),
   });
 
   const data = await response.json();
