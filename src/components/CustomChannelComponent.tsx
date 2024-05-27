@@ -142,7 +142,8 @@ export function CustomChannelComponent() {
   const allMessages = messages.filter(
     (message) => !shouldFilterOutMessage(message)
   );
-  const { botInfo, welcomeMessages } = botStudioEditProps ?? {};
+  const { botInfo, welcomeMessages, suggestedRepliesDirection } =
+    botStudioEditProps ?? {};
   const { profileUrl, nickname } = botInfo ?? {};
   const botUser = channel?.members.find((member) => member.userId === botId);
   const botProfileUrl = profileUrl ?? botUser?.profileUrl;
@@ -152,6 +153,7 @@ export function CustomChannelComponent() {
   const lastMessage = allMessages?.[allMessages?.length - 1] as
     | SendableMessage
     | undefined;
+
   const isLastBotMessage =
     !(lastMessage?.messageType === 'admin') &&
     lastMessage?.sender?.userId === botId;
@@ -252,7 +254,6 @@ export function CustomChannelComponent() {
             ? () => (
                 <WelcomeMessages
                   channel={channel}
-                  welcomeMessages={welcomeMessages}
                   botUser={botUser}
                   messageCount={messageCount}
                   lastMessageRef={lastMessageRef}
@@ -326,6 +327,7 @@ export function CustomChannelComponent() {
                       return (
                         <DynamicRepliesPanel
                           replyOptions={dynamicReplyOptions}
+                          type={suggestedRepliesDirection}
                         />
                       );
                     }

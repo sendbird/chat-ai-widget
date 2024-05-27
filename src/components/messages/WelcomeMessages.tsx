@@ -7,7 +7,6 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import { ClientUserMessage } from '@uikit/types';
 
-import { WelcomeUserMessage } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
 import { parseTextMessage, Token } from '../../utils';
 import BotMessageWithBodyInput from '../BotMessageWithBodyInput';
@@ -16,7 +15,6 @@ import ParsedBotMessageBody from '../ParsedBotMessageBody';
 
 interface WelcomeMessagesProps {
   channel: GroupChannel;
-  welcomeMessages: WelcomeUserMessage[];
   botUser: User;
   messageCount: number;
   lastMessageRef: RefObject<HTMLDivElement>;
@@ -25,19 +23,20 @@ interface WelcomeMessagesProps {
 }
 
 export default function WelcomeMessages(props: WelcomeMessagesProps) {
-  const { replacementTextList } = useConstantState();
+  const { replacementTextList, botStudioEditProps } = useConstantState();
+  const { welcomeMessages, suggestedRepliesDirection } =
+    botStudioEditProps ?? {};
+  const store = useSendbirdStateContext();
+
   const {
     channel,
-    welcomeMessages,
     botUser,
     messageCount,
     lastMessageRef,
     showSuggestedReplies,
     timestamp,
   } = props;
-  const lastWelcomeMessageIndex = welcomeMessages.length - 1;
 
-  const store = useSendbirdStateContext();
   const sb = store.stores.sdkStore.sdk;
   const createdAt = timestamp ?? Date.now(); // channel.createdAt;
   const localMessage: ClientUserMessage = useMemo(
@@ -57,9 +56,13 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
     []
   );
 
+  const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
+  if (!isWelcomeMessagesGiven) return <></>;
+
   return (
     <Message message={localMessage} hasSeparator={true}>
       {welcomeMessages.map((welcomeMsg, index) => {
+        const lastWelcomeMessageIndex = welcomeMessages.length - 1;
         const suggestedReplies = welcomeMsg.suggestedReplies;
         if ('message' in welcomeMsg) {
           const text = welcomeMsg.message;
@@ -78,7 +81,10 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
               {showSuggestedReplies &&
                 suggestedReplies &&
                 suggestedReplies.length && (
-                  <DynamicRepliesPanel replyOptions={suggestedReplies} />
+                  <DynamicRepliesPanel
+                    replyOptions={suggestedReplies}
+                    type={suggestedRepliesDirection}
+                  />
                 )}
             </div>
           );

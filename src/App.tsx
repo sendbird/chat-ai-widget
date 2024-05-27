@@ -74,6 +74,7 @@ const App = (props: Props) => {
       //     primaryColor: 'orange',
       //     botMessageBGColor: 'hotpink',
       //   },
+      //   suggestedRepliesDirection: 'vertical',
       // }}
       // widgetOpenState={true}
       // onWidgetOpenStateChange={(props) => {

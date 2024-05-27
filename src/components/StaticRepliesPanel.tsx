@@ -9,10 +9,10 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
+import { ReplyItem } from '@uikit/modules/GroupChannel/components/SuggestedReplies';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 import { ClientUserMessage } from '@uikit/types';
 
-import { ReplyItem } from './DynamicRepliesPanel';
 import { LOCAL_MESSAGE_CUSTOM_TYPE, SuggestedReply } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useSendLocalMessage } from '../hooks/useSendLocalMessage';
@@ -105,9 +105,12 @@ const StaticRepliesPanel = (props: Props) => {
       <Panel>
         {suggestedReplies.map((suggestedReply: SuggestedReply, i: number) => {
           return (
-            <ReplyItem id={i + ''} key={i} onClick={onClickSuggestedReply}>
-              {suggestedReply.title}
-            </ReplyItem>
+            <ReplyItem
+              index={i}
+              key={i}
+              value={suggestedReply.title}
+              onClickReply={onClickSuggestedReply}
+            />
           );
         })}
       </Panel>
