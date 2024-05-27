@@ -1,6 +1,17 @@
+## [1.5.12] (May 28, 2024)
+### Feat:
+- Added horizontal suggested replies support.
+
+### Fix:
+- Fixed a bug where the configure session functionality was not working correctly.
+
+### Chore:
+- Displayed MessageDataContent for the last message only.
+- Updated the custom session guide.
+
 ## [1.5.11] (May 23 2024)
 ### Feat:
-- Mssage input is now being disabled upon sending a message until a reply message is received from the bot and finished streaming
+- Message input is now being disabled upon sending a message until a reply message is received from the bot and finished streaming
 
 ### Chore:
 - Expand button is now being displayed only when `callbacks.onWidgetExpandStateChange` is given
