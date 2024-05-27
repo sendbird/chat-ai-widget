@@ -117,6 +117,7 @@ export interface BotStudioEditProps {
   aiAttributes?: Record<string, unknown>;
   welcomeMessages?: WelcomeUserMessage[];
   styles?: WidgetStyles;
+  suggestedRepliesDirection?: 'horizontal' | 'vertical';
 }
 
 export interface OnWidgetOpenStateChangeParams {
