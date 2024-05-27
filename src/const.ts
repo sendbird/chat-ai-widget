@@ -1,6 +1,4 @@
-import SendbirdChat, { SessionHandler } from '@sendbird/chat';
-import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
-import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
+import { SessionHandler } from '@sendbird/chat';
 import React from 'react';
 
 import { StringSet } from '@uikit/ui/Label/stringSet';
@@ -67,9 +65,7 @@ export const DEFAULT_CONSTANT = {
   enableResetHistoryOnConnect: false,
 } satisfies Partial<Constant>;
 
-type ConfigureSession = (
-  sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat
-) => SessionHandler;
+type ConfigureSession = () => SessionHandler;
 
 type MessageData = {
   suggested_replies?: string[];

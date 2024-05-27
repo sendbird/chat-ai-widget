@@ -41,8 +41,6 @@ const Chat = () => {
     stores.sdkStore.initialized,
   ]);
 
-
-
   const onBeforeSendMessage = <
     T extends UserMessageCreateParams | FileMessageCreateParams
   >(

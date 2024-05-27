@@ -20,11 +20,19 @@ type APIResponse = {
   };
 };
 
-type Params = {
+interface Params extends ConfigureSessionParams {
   host: string;
   botId: string;
   appId: string;
   createUserAndChannel: boolean;
+}
+
+/**
+ * This is required to configure the session manually.
+ * */
+type ConfigureSessionParams = {
+  userId?: string;
+  sessionKey?: string;
 };
 
 type Response = {
@@ -50,17 +58,21 @@ export async function getWidgetSetting({
   botId,
   appId,
   createUserAndChannel,
+  userId,
+  sessionKey,
 }: Params): Promise<Response> {
-  const params = new URLSearchParams({
+  const headers = sessionKey ? { 'Session-Key': sessionKey } : undefined;
+  const params = asQueryParams({
     create_user_and_channel: createUserAndChannel ? 'True' : 'False',
-  }).toString();
+    user_id: createUserAndChannel && userId ? userId : undefined,
+  });
 
   const path = resolvePath(
     host,
     `/v3/bots/${botId}/${appId}/widget_setting?${params}`
   );
 
-  const response = await fetch(path);
+  const response = await fetch(path, { headers });
   const result = await response.json();
   if (!response.ok) {
     throw new Error(result.message || 'Something went wrong');
@@ -91,4 +103,11 @@ export async function getWidgetSetting({
         }
       : undefined,
   };
+}
+
+function asQueryParams(obj: object) {
+  return Object.entries(obj)
+    .filter(([_, value]) => value !== undefined && value !== null)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&');
 }
