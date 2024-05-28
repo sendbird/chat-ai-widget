@@ -28,7 +28,8 @@
     "prettier": "npx prettier src --check",
     "prettier:fix": "yarn prettier --write",
     "format": "yarn prettier:fix && yarn lint:fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:unit": "vitest"
   },
   "dependencies": {
     "styled-components": "^5.3.11"
@@ -61,7 +62,8 @@
     "typescript": "5.0.2",
     "vite": "5.2.10",
     "vite-plugin-dts": "^3.7.0",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
