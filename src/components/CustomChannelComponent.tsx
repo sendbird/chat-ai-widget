@@ -187,7 +187,7 @@ export function CustomChannelComponent() {
   });
 
   const blockInputWhileBotResponding =
-    messageInputControlProps?.blockInputWhileBotResponding;
+    messageInputControlProps?.blockWhileBotResponding;
   const isMessageInputDisabled = useDisableInputUntilReply({
     lastMessage,
     botUser,
