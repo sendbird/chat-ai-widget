@@ -129,7 +129,7 @@ export function CustomChannelComponent() {
     enableEmojiFeedback,
     customUserAgentParam,
     botStudioEditProps,
-    messageInputControlProps,
+    messageInputControls,
   } = useConstantState();
   const {
     messages,
@@ -187,7 +187,7 @@ export function CustomChannelComponent() {
   });
 
   const blockInputWhileBotResponding =
-    messageInputControlProps?.blockWhileBotResponding;
+    messageInputControls?.blockWhileBotResponding;
   const isMessageInputDisabled = useDisableInputUntilReply({
     lastMessage,
     botUser,

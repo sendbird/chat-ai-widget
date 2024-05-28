@@ -120,7 +120,7 @@ export interface BotStudioEditProps {
   suggestedRepliesDirection?: 'horizontal' | 'vertical';
 }
 
-export interface MessageInputControlProps {
+export interface MessageInputControls {
   /**
    * If undefined, false, or 0 is given, message input will not be blocked.
    * If true or non-zero numeric value is given, message input will be blocked.
@@ -246,7 +246,7 @@ export interface Constant extends Required<ConstantProps> {
   /**
    * @public Message input state controlling properties.
    */
-  messageInputControlProps?: MessageInputControlProps;
+  messageInputControls?: MessageInputControls;
 }
 
 export interface ConstantProps {
