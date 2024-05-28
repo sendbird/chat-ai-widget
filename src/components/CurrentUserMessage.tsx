@@ -7,7 +7,7 @@ import {
   BodyComponent,
 } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
-import { formatCreatedAtToAMPM } from '../utils';
+import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   display: flex;

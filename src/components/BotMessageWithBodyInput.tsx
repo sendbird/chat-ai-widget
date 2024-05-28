@@ -12,7 +12,7 @@ import {
   WideSentTime,
 } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
-import { formatCreatedAtToAMPM } from '../utils';
+import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.span`
   display: flex;
