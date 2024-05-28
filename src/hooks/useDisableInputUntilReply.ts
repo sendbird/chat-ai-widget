@@ -47,7 +47,12 @@ export const useDisableInputUntilReply = ({
         setIsMessageInputDisabled(false);
       }
     }
-  }, [currentUserId, botUser, lastMessage, blockInputWhileBotResponding]);
+  }, [
+    currentUserId,
+    botUser?.userId,
+    lastMessage,
+    blockInputWhileBotResponding,
+  ]);
 
   return isMessageInputDisabled;
 };
