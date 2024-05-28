@@ -127,7 +127,7 @@ export interface MessageInputControlProps {
    * If true is given, there will not be a force unblock.
    * If numeric value is given, it will be used as timeout to force unblock the input.
    */
-  blockInputWhileBotResponding?: boolean | number;
+  blockWhileBotResponding?: boolean | number;
 }
 
 export interface OnWidgetOpenStateChangeParams {
@@ -244,7 +244,7 @@ export interface Constant extends Required<ConstantProps> {
    */
   onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
   /**
-   * @private Message input state controlling properties.
+   * @public Message input state controlling properties.
    */
   messageInputControlProps?: MessageInputControlProps;
 }
