@@ -31,6 +31,7 @@ import {
 } from '../utils';
 import {
   getBotWelcomeMessages,
+  getSenderUserIdFromMessage,
   groupMessagesByShortSpanTime,
   isSentBy,
   isStaticReplyVisible as getStaticMessageVisibility,
@@ -228,6 +229,16 @@ export function CustomChannelComponent() {
     botWelcomeMessages[botWelcomeMessages.length - 1];
   const lastWelcomeMessageCreatedAt = lastBotWelcomeMessage?.createdAt;
   const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
+  const firstUserMessage = allMessages.find(
+    (message) => getSenderUserIdFromMessage(message) !== botId
+  );
+  /**
+   * Injected welcome messages should have timestamp set to either:
+   * 1. last real welcome message createdAt.
+   * 2. first message of the channel. This is because welcome message should have timestamp <= of first message.
+   */
+  const welcomeMessageTimeStamp =
+    lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
 
   return (
     <Root height={'100%'} isStaticReplyVisible={isStaticReplyVisible}>
@@ -260,9 +271,7 @@ export function CustomChannelComponent() {
                   showSuggestedReplies={
                     lastMessage?.messageId === lastBotWelcomeMessage?.messageId
                   }
-                  timestamp={
-                    lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt
-                  }
+                  timestamp={welcomeMessageTimeStamp}
                 />
               )
             : undefined
@@ -289,10 +298,18 @@ export function CustomChannelComponent() {
           );
 
           let hasSeparator = props.hasSeparator;
-          const prevMessageTimestamp =
-            lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
-          if (isWelcomeMessagesGiven && prevMessageTimestamp) {
-            hasSeparator = !isSameDay(message.createdAt, prevMessageTimestamp);
+          /**
+           * For first user message, if welcome message is given and timestamps are different
+           */
+          if (
+            isWelcomeMessagesGiven &&
+            welcomeMessageTimeStamp &&
+            message.messageId === firstUserMessage?.messageId
+          ) {
+            hasSeparator = !isSameDay(
+              message.createdAt,
+              welcomeMessageTimeStamp
+            );
           }
 
           return (
