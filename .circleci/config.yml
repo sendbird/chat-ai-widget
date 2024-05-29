@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@2.1.0
   aws-s3: circleci/aws-s3@4.0.0
+  codecov: codecov/codecov@4.1.0
 
 executors:
   ci-aws:
@@ -12,8 +13,17 @@ executors:
     docker:
       - image: cimg/node:20.13.1
     resource_class: medium
+  ci-node:
+    docker:
+      - image: cimg/node:20.13.1
+    resource_class: medium
+    working_directory: ~/project
 
 commands:
+  attach_project:
+    steps:
+      - attach_workspace:
+          at: ~/project
   aws-create-invalidation:
     description: Create invalidation in CloudFront distribution
     parameters:
@@ -38,6 +48,57 @@ commands:
                 --paths <<parameters.paths>> --profile <<parameters.profile>>
 
 jobs:
+  # CI - install dependencies
+  prepare:
+    executor: ci-node
+    steps:
+      - checkout
+      - attach_project
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: |
+            yarn install --immutable
+      - save_cache:
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - packages/self-service/node_modules
+            - packages/uikit/node_modules
+      - persist_to_workspace:
+          root: .
+          paths: .
+  # CI - check lint
+  run-lint:
+    executor: ci-node
+    steps:
+      - attach_project
+      - run:
+          name: Run lint
+          command: yarn lint
+  # CI - check build
+  run-build:
+    executor: ci-node
+    steps:
+      - attach_project
+      - run:
+          name: Run build
+          command: yarn build
+  # CI - check test
+  run-test:
+    executor: ci-node
+    steps:
+      - attach_project
+      - run:
+          no_output_timeout: 15m
+          name: Run test
+          command: yarn test --forceExit --runInBand
+      - codecov/upload
+
+  # Publish - build self-service
   build:
     executor: node
     steps:
@@ -58,6 +119,7 @@ jobs:
           root: ./packages/self-service
           paths:
             - dist
+  # Publish - upload self-service to S3 and invalidate cache
   upload_to_s3_and_invalidate_cache:
     executor: ci-aws
     parameters:
@@ -97,6 +159,18 @@ jobs:
           profile: ci-web
 
 workflows:
+  ci:
+    jobs:
+      - prepare
+      - run-lint:
+          requires:
+            - prepare
+      - run-build:
+          requires:
+            - prepare
+      - run-test:
+          requires:
+            - prepare
   deploy_to_s3:
     jobs:
       - build:
