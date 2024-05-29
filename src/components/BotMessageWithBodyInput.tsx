@@ -62,7 +62,7 @@ const HEIGHTS = {
 };
 
 export default function BotMessageWithBodyInput(props: Props) {
-  const { botStudioEditProps } = useConstantState();
+  const { botStudioEditProps, locale } = useConstantState();
 
   const {
     botUser,
@@ -125,12 +125,14 @@ export default function BotMessageWithBodyInput(props: Props) {
           {bodyComponent}
           {!wideContainer && !!createdAt && (
             <DefaultSentTime>
-              {formatCreatedAtToAMPM(createdAt)}
+              {formatCreatedAtToAMPM(createdAt, locale)}
             </DefaultSentTime>
           )}
         </Content>
         {wideContainer && !!createdAt && (
-          <WideSentTime>{formatCreatedAtToAMPM(createdAt)}</WideSentTime>
+          <WideSentTime>
+            {formatCreatedAtToAMPM(createdAt, locale)}
+          </WideSentTime>
         )}
         {displayProfileImage && messageFeedback}
       </BodyContainer>

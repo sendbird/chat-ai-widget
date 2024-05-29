@@ -57,7 +57,7 @@ export default function CustomMessage(props: Props) {
     messageCount,
     message,
   };
-  const { replacementTextList, enableEmojiFeedback, botStudioEditProps } =
+  const { replacementTextList, enableEmojiFeedback, botStudioEditProps, locale } =
     useConstantState();
   const { userId: currentUserId } = useWidgetSession();
   const { profileUrl } = botStudioEditProps?.botInfo ?? {};

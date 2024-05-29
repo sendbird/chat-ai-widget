@@ -1,5 +1,6 @@
 import { User } from '@sendbird/chat';
 import { UserMessage } from '@sendbird/chat/message';
+import { Locale } from 'date-fns';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
@@ -52,6 +53,7 @@ type Props = {
   chainBottom?: boolean;
   isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
+  locale?: Locale;
 };
 
 const ImageContainer = styled.div``;
@@ -61,7 +63,7 @@ const EmptyImageContainer = styled.div`
 `;
 
 export default function UserMessageWithBodyInput(props: Props) {
-  const { user, message, bodyComponent, chainTop, chainBottom } = props;
+  const { user, message, bodyComponent, chainTop, chainBottom, locale } = props;
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
@@ -88,7 +90,9 @@ export default function UserMessageWithBodyInput(props: Props) {
         <Content>
           {bodyComponent}
           {!!message?.createdAt && (
-            <SentTime>{formatCreatedAtToAMPM(message.createdAt)}</SentTime>
+            <SentTime>
+              {formatCreatedAtToAMPM(message.createdAt, locale)}
+            </SentTime>
           )}
         </Content>
       </BodyContainer>

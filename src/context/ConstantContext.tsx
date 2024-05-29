@@ -132,6 +132,7 @@ export const ConstantStateProvider = (
           props.enableResetHistoryOnConnect ??
           initialState.enableResetHistoryOnConnect,
         messageInputControls: props.messageInputControls,
+        locale: props.locale ?? initialState.locale,
       }}
     >
       {props.children}
