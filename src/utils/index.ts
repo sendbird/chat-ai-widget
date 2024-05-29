@@ -332,7 +332,6 @@ export async function openURL(url?: string | null) {
 }
 
 export function isDashboardPreview(userAgent: object | undefined) {
-  return true;
   return (
     userAgent &&
     'chat-ai-widget-preview' in userAgent &&
