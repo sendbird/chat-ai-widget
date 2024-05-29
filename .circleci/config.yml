@@ -24,6 +24,9 @@ commands:
     steps:
       - attach_workspace:
           at: ~/project
+      - run:
+          name: Enable Corepack
+          command: corepack enable --install-directory ~/bin
   aws-create-invalidation:
     description: Create invalidation in CloudFront distribution
     parameters:
