@@ -1594,6 +1594,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.21.0":
+  version: 7.24.6
+  resolution: "@babel/runtime@npm:7.24.6"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10c0/224ad205de33ea28979baaec89eea4c4d4e9482000dd87d15b97859365511cdd4d06517712504024f5d33a5fb9412f9b91c96f1d923974adf9359e1575cde049
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.22.15, @babel/template@npm:^7.24.0, @babel/template@npm:^7.3.3":
   version: 7.24.0
   resolution: "@babel/template@npm:7.24.0"
@@ -3065,8 +3074,8 @@ __metadata:
   linkType: soft
 
 "@sendbird/chat@npm:^4.12.3":
-  version: 4.12.4
-  resolution: "@sendbird/chat@npm:4.12.4"
+  version: 4.12.6
+  resolution: "@sendbird/chat@npm:4.12.6"
   peerDependencies:
     "@react-native-async-storage/async-storage": ^1.17.6
     react-native-mmkv: ^2.12.2
@@ -3075,7 +3084,7 @@ __metadata:
       optional: true
     react-native-mmkv:
       optional: true
-  checksum: 10c0/efdaf79b3036d7468f7fd81219fea67374a4d47c778753e016db4b23f074ce1961b866fe05fdc901b215c0374002895215c611f3d26446dd08a148fb9270e43e
+  checksum: 10c0/35b501357a9c5b3ce49a7faac5c8b8b8d7c921851ea4e0b949a86678caa7eb5a829395a20469eaa0c50c175af9d3a85d034c14f49386953558dfb048a64b340c
   languageName: node
   linkType: hard
 
