@@ -47,7 +47,7 @@ const MobileComponent = () => {
   return (
     <>
       <MobileContainer
-        style={{ display: isOpen ? 'block' : 'none' }}
+        style={{ display: (isOpen && isVisible) ? 'block' : 'none' }}
         width={mobileContainerWidth}
         id={elementIds.widgetWindow}
       >

@@ -97,7 +97,7 @@ const StyledCloseButton = styled.button`
 `;
 
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
-  const { isOpen, setIsOpen } = useWidgetState();
+  const { isVisible, isOpen, setIsOpen } = useWidgetState();
   const [isExpanded, setIsExpanded] = useState(false);
   const { callbacks } = useConstantState();
 
@@ -111,7 +111,7 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <StyledWidgetWindowWrapper
-      isOpen={isOpen}
+      isOpen={isOpen && isVisible}
       isExpanded={isExpanded}
       id={elementIds.widgetWindow}
     >

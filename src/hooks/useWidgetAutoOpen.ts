@@ -5,7 +5,7 @@ import { useWidgetState } from '../context/WidgetStateContext';
 
 export function useWidgetAutoOpen() {
   const { isOpen, setIsOpen } = useWidgetState();
-  const { autoOpen, enableHideWidgetForDeactivatedUser } = useConstantState();
+  const { autoOpen } = useConstantState();
 
   const timer = useRef<ReturnType<typeof setTimeout>>();
 
@@ -15,14 +15,13 @@ export function useWidgetAutoOpen() {
   }
 
   useEffect(() => {
-    if (autoOpen && !enableHideWidgetForDeactivatedUser) {
-      timer.current = setTimeout(() => setIsOpen(true), 100);
-      return () => {
-        if (timer.current) {
-          clearTimeout(timer.current);
-          timer.current = undefined;
-        }
-      };
-    }
-  }, [autoOpen, enableHideWidgetForDeactivatedUser]);
+    if (autoOpen) timer.current = setTimeout(() => setIsOpen(true), 100);
+
+    return () => {
+      if (timer.current) {
+        clearTimeout(timer.current);
+        timer.current = undefined;
+      }
+    };
+  }, [autoOpen]);
 }
