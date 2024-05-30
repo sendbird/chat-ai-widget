@@ -67,7 +67,7 @@ export const DEFAULT_CONSTANT = {
   enableEmojiFeedback: true,
   enableMention: true,
   enableResetHistoryOnConnect: false,
-  locale: enUS,
+  dateLocale: enUS,
 } satisfies Partial<Constant>;
 
 type ConfigureSession = (
@@ -173,7 +173,7 @@ export interface Constant extends Required<ConstantProps> {
   /**
    * @public locale instance to be applied
    */
-  locale: Locale;
+  dateLocale: Locale;
   /**
    * @private Whether to show the beta mark.
    */

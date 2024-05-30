@@ -34,7 +34,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     wsHost,
     serviceName,
     isMobileView,
-    locale,
+    dateLocale,
   } = useConstantState();
   const { botStyle } = useWidgetSetting();
   const session = useWidgetSession();
@@ -101,7 +101,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
                   enableSuggestedReplies: true,
                 },
               }}
-              dateLocale={locale}
+              dateLocale={dateLocale}
             >
               {children}
             </SendbirdProvider>

@@ -24,13 +24,13 @@ type Props = {
 };
 
 export default function CurrentUserMessage(props: Props) {
-  const { enableEmojiFeedback, locale } = useConstantState();
+  const { enableEmojiFeedback, dateLocale } = useConstantState();
   const { message } = props;
 
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
       <DefaultSentTime>
-        {formatCreatedAtToAMPM(message.createdAt, locale)}
+        {formatCreatedAtToAMPM(message.createdAt, dateLocale)}
       </DefaultSentTime>
       <BodyContainer>
         <BodyComponent>
