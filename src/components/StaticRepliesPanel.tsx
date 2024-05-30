@@ -106,7 +106,6 @@ const StaticRepliesPanel = (props: Props) => {
         {suggestedReplies.map((suggestedReply: SuggestedReply, i: number) => {
           return (
             <ReplyItem
-              index={i}
               key={i}
               value={suggestedReply.title}
               onClickReply={onClickSuggestedReply}
