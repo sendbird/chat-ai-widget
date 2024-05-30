@@ -9,6 +9,7 @@ import WidgetWindow from './WidgetWindow';
 import { elementIds, type Constant, WIDGET_WINDOW_Z_INDEX } from '../const';
 import { useWidgetState } from '../context/WidgetStateContext';
 import useMobileView from '../hooks/useMobileView';
+import { useWidgetAutoOpen } from '../hooks/useWidgetAutoOpen';
 import { isMobile } from '../utils';
 
 const MobileContainer = styled.div<{ width: number }>`
@@ -24,6 +25,9 @@ const MobileContainer = styled.div<{ width: number }>`
 
 const DesktopComponent = () => {
   const { isVisible } = useWidgetState();
+
+  useWidgetAutoOpen();
+
   return (
     <>
       <WidgetWindow>
@@ -37,6 +41,8 @@ const DesktopComponent = () => {
 const MobileComponent = () => {
   const { isOpen, isVisible } = useWidgetState();
   const { width: mobileContainerWidth } = useMobileView();
+
+  useWidgetAutoOpen();
 
   return (
     <>

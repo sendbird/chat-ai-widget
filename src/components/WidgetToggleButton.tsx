@@ -1,8 +1,7 @@
-import { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../colors';
-import { MAX_Z_INDEX, elementIds } from '../const';
+import { elementIds, MAX_Z_INDEX } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSetting } from '../context/WidgetSettingContext';
 import { useWidgetState } from '../context/WidgetStateContext';
@@ -113,33 +112,11 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
 
 export default function WidgetToggleButton() {
   const { botStyle } = useWidgetSetting();
-  const {
-    enableHideWidgetForDeactivatedUser,
-    autoOpen,
-    renderWidgetToggleButton,
-  } = useConstantState();
+  const { renderWidgetToggleButton } = useConstantState();
   const { isOpen, setIsOpen } = useWidgetState();
-  const timer = useRef<NodeJS.Timeout | null>(null);
-
-  const buttonClickHandler = () => {
-    if (timer.current !== null) {
-      clearTimeout(timer.current as NodeJS.Timeout);
-      timer.current = null;
-    }
-    setIsOpen(!isOpen);
-  };
-
-  useEffect(() => {
-    if (autoOpen && !enableHideWidgetForDeactivatedUser) {
-      timer.current = setTimeout(() => setIsOpen(true), 100);
-      return () => {
-        if (timer.current) clearTimeout(timer.current);
-      };
-    }
-  }, [autoOpen, enableHideWidgetForDeactivatedUser]);
 
   const toggleButtonProps = {
-    onClick: buttonClickHandler,
+    onClick: () => setIsOpen(!isOpen),
     accentColor: botStyle.accentColor,
     isOpen,
   };
