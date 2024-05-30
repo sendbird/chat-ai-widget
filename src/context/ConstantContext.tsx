@@ -8,15 +8,17 @@ import {
 
 import { ConfigureSessionTypes } from '@uikit/lib/hooks/useConnect/types';
 import { LabelStringSet } from '@uikit/ui/Label';
+import { StringSet } from '@uikit/ui/Label/stringSet';
 
 import { type Constant, DEFAULT_CONSTANT, widgetStringSet } from '../const';
 import { getDefaultServiceName, isMobile } from '../utils';
 
 const initialState = DEFAULT_CONSTANT;
 
-interface ConstantContextProps extends Partial<Constant> {
+interface ConstantContextProps extends Omit<Partial<Constant>, 'stringSet'> {
   applicationId: string | null;
   botId: string | null;
+  stringSet?: Partial<StringSet>;
 }
 interface ConstantContextValue extends Constant {
   applicationId: string | null;
@@ -133,6 +135,9 @@ export const ConstantStateProvider = (
           initialState.enableResetHistoryOnConnect,
         messageInputControls: props.messageInputControls,
         dateLocale: props.dateLocale ?? initialState.dateLocale,
+        enableHideWidgetForDeactivatedUser:
+          props.enableHideWidgetForDeactivatedUser ??
+          initialState.enableHideWidgetForDeactivatedUser,
       }}
     >
       {props.children}

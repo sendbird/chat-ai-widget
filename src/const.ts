@@ -68,6 +68,7 @@ export const DEFAULT_CONSTANT = {
   enableMention: true,
   enableResetHistoryOnConnect: false,
   dateLocale: enUS,
+  enableHideWidgetForDeactivatedUser: false,
 } satisfies Partial<Constant>;
 
 type ConfigureSession = (
@@ -137,7 +138,7 @@ export interface OnWidgetOpenStateChangeParams {
   value: boolean;
 }
 
-export interface Constant extends Required<ConstantProps> {
+export interface Constant extends ConstantFeatureFlags {
   /**
    * @public User nickname to be used in the widget.
    */
@@ -147,18 +148,6 @@ export interface Constant extends Required<ConstantProps> {
    */
   customRefreshComponent: CustomRefreshComponent;
   /**
-   * @public Whether to display the source of the knowledge data.
-   */
-  enableSourceMessage: boolean;
-  /**
-   * @public Whether to enable feedback icons at the bottom of the message bubble.
-   */
-  enableEmojiFeedback: boolean;
-  /**
-   * @public Whether to enable mention feature via `@{userName}` signature.
-   */
-  enableMention: boolean;
-  /**
    * @public String set to be used in the widget.
    */
   stringSet: StringSet;
@@ -166,6 +155,14 @@ export interface Constant extends Required<ConstantProps> {
    * @public Device type to be used in the widget.
    */
   deviceType?: 'desktop' | 'mobile';
+  /**
+   * @public User ID to be used in the widget.
+   */
+  userId?: string;
+  /**
+   * @public Session configuration function. Must be used with `userId`.
+   */
+  configureSession?: ConfigureSession;
   /**
    * @public Whether to open the widget automatically.
    */
@@ -215,14 +212,6 @@ export interface Constant extends Required<ConstantProps> {
    */
   wsHost: string;
   /**
-   * @private User ID to be used in the widget.
-   */
-  userId?: string;
-  /**
-   * @private Session configuration function. Must be used with `userId`.
-   */
-  configureSession?: ConfigureSession;
-  /**
    * @private Custom user agent parameters.
    */
   customUserAgentParam?: Record<any, any>;
@@ -256,11 +245,27 @@ export interface Constant extends Required<ConstantProps> {
   messageInputControls?: MessageInputControls;
 }
 
-export interface ConstantProps {
+interface ConstantFeatureFlags {
   /**
-   * Reset chat history when chat is connected.
+   * @public Whether to display the source of the knowledge data.
+   */
+  enableSourceMessage: boolean;
+  /**
+   * @public Whether to enable feedback icons at the bottom of the message bubble.
+   */
+  enableEmojiFeedback: boolean;
+  /**
+   * @public Whether to enable mention feature via `@{userName}` signature.
+   */
+  enableMention: boolean;
+  /**
+   * @public Reset chat history when chat is connected.
    * */
-  enableResetHistoryOnConnect?: boolean;
+  enableResetHistoryOnConnect: boolean;
+  /**
+   * @public Hide widget for deactivated user.
+   * */
+  enableHideWidgetForDeactivatedUser: boolean;
 }
 
 export interface SuggestedReply {

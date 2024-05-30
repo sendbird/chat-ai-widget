@@ -86,7 +86,6 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
               configureSession={configureSession}
               customExtensionParams={userAgentCustomParams}
               breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.
-              isMentionEnabled={enableMention}
               theme={theme}
               colorSet={customColorSet}
               stringSet={stringSet}
@@ -97,8 +96,9 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
                     enableDocument: false,
                   },
                   enableVoiceMessage: false,
-                  enableFeedback: enableEmojiFeedback,
                   enableSuggestedReplies: true,
+                  enableMention,
+                  enableFeedback: enableEmojiFeedback,
                 },
               }}
               dateLocale={dateLocale}
