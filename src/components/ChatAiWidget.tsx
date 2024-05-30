@@ -7,7 +7,7 @@ import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
 import { elementIds, type Constant, WIDGET_WINDOW_Z_INDEX } from '../const';
-import { useWidgetOpen } from '../context/WidgetOpenContext';
+import { useWidgetState } from '../context/WidgetStateContext';
 import useMobileView from '../hooks/useMobileView';
 import { isMobile } from '../utils';
 
@@ -23,23 +23,23 @@ const MobileContainer = styled.div<{ width: number }>`
 `;
 
 const DesktopComponent = () => {
+  const { isVisible } = useWidgetState();
   return (
     <>
       <WidgetWindow>
         <Chat />
       </WidgetWindow>
-      <WidgetToggleButton />
+      {isVisible && <WidgetToggleButton />}
     </>
   );
 };
 
 const MobileComponent = () => {
-  const { isOpen } = useWidgetOpen();
+  const { isOpen, isVisible } = useWidgetState();
   const { width: mobileContainerWidth } = useMobileView();
 
   return (
     <>
-      <WidgetToggleButton />
       <MobileContainer
         style={{ display: isOpen ? 'block' : 'none' }}
         width={mobileContainerWidth}
@@ -47,6 +47,7 @@ const MobileComponent = () => {
       >
         <Chat />
       </MobileContainer>
+      {isVisible && !isOpen && <WidgetToggleButton />}
     </>
   );
 };

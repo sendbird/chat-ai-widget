@@ -7,7 +7,7 @@ import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import { useWidgetOpen } from '../context/WidgetOpenContext';
+import { useWidgetState } from '../context/WidgetStateContext';
 import CloseButton from '../icons/ic-widget-close.svg';
 import { isEmpty } from '../utils';
 
@@ -80,7 +80,7 @@ export default function CustomChannelHeader({
     isMobileView,
     callbacks,
   } = useConstantState();
-  const { setIsOpen } = useWidgetOpen();
+  const { setIsOpen } = useWidgetState();
 
   async function handleRenewButtonClick() {
     try {

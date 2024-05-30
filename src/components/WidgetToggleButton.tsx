@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 import { getColorBasedOnSaturation } from '../colors';
 import { MAX_Z_INDEX, elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { useWidgetSetting } from '../context/WidgetSettingContext';
+import { useWidgetState } from '../context/WidgetStateContext';
 import ArrowDownIcon from '../icons/ic-arrow-down.svg';
 import ChatBotIcon from '../icons/icon-widget-chatbot.svg';
 
@@ -113,9 +113,12 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
 
 export default function WidgetToggleButton() {
   const { botStyle } = useWidgetSetting();
-  const { autoOpen, renderWidgetToggleButton, isMobileView } =
-    useConstantState();
-  const { isOpen, setIsOpen } = useWidgetOpen();
+  const {
+    enableHideWidgetForDeactivatedUser,
+    autoOpen,
+    renderWidgetToggleButton,
+  } = useConstantState();
+  const { isOpen, setIsOpen } = useWidgetState();
   const timer = useRef<NodeJS.Timeout | null>(null);
 
   const buttonClickHandler = () => {
@@ -127,18 +130,19 @@ export default function WidgetToggleButton() {
   };
 
   useEffect(() => {
-    if (autoOpen) {
+    if (autoOpen && !enableHideWidgetForDeactivatedUser) {
       timer.current = setTimeout(() => setIsOpen(true), 100);
+      return () => {
+        if (timer.current) clearTimeout(timer.current);
+      };
     }
-  }, [autoOpen]);
+  }, [autoOpen, enableHideWidgetForDeactivatedUser]);
 
   const toggleButtonProps = {
     onClick: buttonClickHandler,
     accentColor: botStyle.accentColor,
     isOpen,
   };
-
-  if (isOpen && isMobileView) return null;
 
   if (typeof renderWidgetToggleButton === 'function') {
     return renderWidgetToggleButton(toggleButtonProps);

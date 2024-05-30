@@ -1,11 +1,11 @@
 import { useEffect, useState, useMemo } from 'react';
 
 import { useConstantState } from '../context/ConstantContext';
-import { useWidgetOpen } from '../context/WidgetOpenContext';
+import { useWidgetState } from '../context/WidgetStateContext';
 
 export default function useMobileView() {
   const { isMobileView } = useConstantState();
-  const { isOpen: isWidgetOpen } = useWidgetOpen();
+  const { isOpen: isWidgetOpen } = useWidgetState();
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
