@@ -85,7 +85,9 @@ export const WidgetSettingProvider = ({
       botId,
     });
 
-    const reuseCachedSession = ((cache: typeof cachedSession): cache is NonNullable<typeof cachedSession> => {
+    const reuseCachedSession = ((
+      cache: typeof cachedSession
+    ): cache is NonNullable<typeof cachedSession> => {
       if (!cache || cache.strategy !== strategy) return false;
       if (cache.strategy === 'manual') {
         // NOTE: There is no need to check the expiration of the session if it is managed manually.

@@ -120,6 +120,7 @@ export default App;
 | `customRefreshComponent` | `{ icon: string, style: React.CSSProperties, width: string, height: string, onClick: () => void }` | No       | N/A           | Customizable refresh component. You can set properties such as `icon`, `style`, `width`, `height`, and `onClick`. |
 | `configureSession`      | `() => SessionHandler`                  | No      | N/A           | Function to configure the user session. The example usage can be found [here](./custom-session-guide.md). <br/><br/> Must be used with `userId`.|
 | `autoOpen`              | `boolean`                               | No       | N/A        | Determines whether the chatbot widget automatically opens when the browser window is opened.                   |
+| `messageInputControls.blockWhileBotResponding` | `boolean \| number` | No | N/A | Allows to control enabled/disabled state of the message input for waiting for the bot's reply mesage. If number value is given, a timer will be set to force unblock the message input. |
 
 ## For internal contributors
 - [Release guide](./release-guide.md)
