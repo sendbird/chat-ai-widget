@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
 
 import SendbirdProvider from '@uikit/lib/Sendbird';
@@ -117,19 +117,8 @@ export interface ProviderContainerProps extends ChatAiWidgetProps {
 }
 
 export default function ProviderContainer(props: ProviderContainerProps) {
-  // If env is not provided, prop will be used instead.
-  // But Either should be provided.
-  const CHAT_WIDGET_APP_ID =
-    import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? props.applicationId;
-  const CHAT_WIDGET_BOT_ID =
-    import.meta.env.VITE_CHAT_WIDGET_BOT_ID ?? props.botId;
-
   return (
-    <ConstantStateProvider
-      {...props}
-      applicationId={CHAT_WIDGET_APP_ID}
-      botId={CHAT_WIDGET_BOT_ID}
-    >
+    <ConstantStateProvider {...props}>
       <WidgetSettingProvider>
         <SBComponent>{props.children}</SBComponent>
       </WidgetSettingProvider>

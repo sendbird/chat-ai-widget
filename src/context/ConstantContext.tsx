@@ -16,13 +16,13 @@ import { getDefaultServiceName, isMobile } from '../utils';
 const initialState = DEFAULT_CONSTANT;
 
 interface ConstantContextProps extends Omit<Partial<Constant>, 'stringSet'> {
-  applicationId: string | null;
-  botId: string | null;
+  applicationId: string;
+  botId: string;
   stringSet?: Partial<StringSet>;
 }
 interface ConstantContextValue extends Constant {
-  applicationId: string | null;
-  botId: string | null;
+  applicationId: string;
+  botId: string;
   isMobileView: boolean;
 }
 const ConstantContext = createContext<ConstantContextValue | null>(null);
