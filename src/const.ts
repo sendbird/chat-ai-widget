@@ -171,6 +171,10 @@ export interface Constant extends Required<ConstantProps> {
    */
   autoOpen?: boolean;
   /**
+   * @public locale instance to be applied
+   */
+  locale: Locale;
+  /**
    * @private Whether to show the beta mark.
    */
   betaMark: boolean;
@@ -250,10 +254,6 @@ export interface Constant extends Required<ConstantProps> {
    * @public Message input state controlling properties.
    */
   messageInputControls?: MessageInputControls;
-  /**
-   * @public locale instance to be applied
-   */
-  locale: Locale;
 }
 
 export interface ConstantProps {
