@@ -21,7 +21,7 @@ import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
-import { useDisableInputUntilReply } from '../hooks/useDisableInputUntilReply';
+import { useBlockWhileBotResponding } from '../hooks/useBlockWhileBotResponding';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import {
@@ -130,7 +130,6 @@ export function CustomChannelComponent() {
     enableEmojiFeedback,
     customUserAgentParam,
     botStudioEditProps,
-    messageInputControls,
   } = useConstantState();
   const {
     messages,
@@ -186,14 +185,9 @@ export function CustomChannelComponent() {
         : // Feedback panel height is about 20px
           20,
   });
-
-  const blockInputWhileBotResponding =
-    messageInputControls?.blockWhileBotResponding;
-  const isMessageInputDisabled = useDisableInputUntilReply({
+  const isMessageInputDisabled = useBlockWhileBotResponding({
     lastMessage,
     botUser,
-    currentUserId,
-    blockInputWhileBotResponding,
   });
 
   /**
