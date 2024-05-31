@@ -1,6 +1,8 @@
 import SendbirdChat, { SessionHandler } from '@sendbird/chat';
 import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
 import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
+import { Locale } from 'date-fns';
+import { enUS } from 'date-fns/locale';
 import React from 'react';
 
 import { StringSet } from '@uikit/ui/Label/stringSet';
@@ -65,6 +67,7 @@ export const DEFAULT_CONSTANT = {
   enableEmojiFeedback: true,
   enableMention: true,
   enableResetHistoryOnConnect: false,
+  dateLocale: enUS,
 } satisfies Partial<Constant>;
 
 type ConfigureSession = (
@@ -167,6 +170,10 @@ export interface Constant extends Required<ConstantProps> {
    * @public Whether to open the widget automatically.
    */
   autoOpen?: boolean;
+  /**
+   * @public locale instance to be applied
+   */
+  dateLocale: Locale;
   /**
    * @private Whether to show the beta mark.
    */

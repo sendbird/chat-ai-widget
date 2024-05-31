@@ -7,7 +7,7 @@ import {
   BodyComponent,
 } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
-import { formatCreatedAtToAMPM } from '../utils';
+import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   display: flex;
@@ -24,13 +24,13 @@ type Props = {
 };
 
 export default function CurrentUserMessage(props: Props) {
-  const { enableEmojiFeedback } = useConstantState();
+  const { enableEmojiFeedback, dateLocale } = useConstantState();
   const { message } = props;
 
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
       <DefaultSentTime>
-        {formatCreatedAtToAMPM(message.createdAt)}
+        {formatCreatedAtToAMPM(message.createdAt, dateLocale)}
       </DefaultSentTime>
       <BodyContainer>
         <BodyComponent>

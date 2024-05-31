@@ -12,7 +12,7 @@ import {
   WideSentTime,
 } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
-import { formatCreatedAtToAMPM } from '../utils';
+import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.span`
   display: flex;
@@ -62,7 +62,7 @@ const HEIGHTS = {
 };
 
 export default function BotMessageWithBodyInput(props: Props) {
-  const { botStudioEditProps } = useConstantState();
+  const { botStudioEditProps, dateLocale } = useConstantState();
 
   const {
     botUser,
@@ -125,12 +125,14 @@ export default function BotMessageWithBodyInput(props: Props) {
           {bodyComponent}
           {!wideContainer && !!createdAt && (
             <DefaultSentTime>
-              {formatCreatedAtToAMPM(createdAt)}
+              {formatCreatedAtToAMPM(createdAt, dateLocale)}
             </DefaultSentTime>
           )}
         </Content>
         {wideContainer && !!createdAt && (
-          <WideSentTime>{formatCreatedAtToAMPM(createdAt)}</WideSentTime>
+          <WideSentTime>
+            {formatCreatedAtToAMPM(createdAt, dateLocale)}
+          </WideSentTime>
         )}
         {displayProfileImage && messageFeedback}
       </BodyContainer>

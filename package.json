@@ -28,7 +28,8 @@
     "prettier": "npx prettier src --check",
     "prettier:fix": "yarn prettier --write",
     "format": "yarn prettier:fix && yarn lint:fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
     "styled-components": "^5.3.11"
@@ -41,6 +42,7 @@
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-react": "^4.2.1",
+    "date-fns": "^3.6.0",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -50,6 +52,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-styled-components-a11y": "^2.1.32",
+    "jsdom": "^24.1.0",
     "prettier": "2.8.8",
     "prettier-eslint": "^15.0.1",
     "react": "^18.2.0",
@@ -61,11 +64,18 @@
     "typescript": "5.0.2",
     "vite": "5.2.10",
     "vite-plugin-dts": "^3.7.0",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
+    "date-fns": "^3.6.0",
     "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "date-fns": {
+      "optional": true
+    }
   },
   "workspaces": [
     "packages/*"

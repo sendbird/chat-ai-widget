@@ -5,18 +5,6 @@ import { parseMessageDataSafely } from './messages';
 import { Source } from '../components/SourceContainer';
 import { widgetServiceName } from '../const';
 
-export function formatCreatedAtToAMPM(createdAt: number) {
-  const date: Date = new Date(createdAt);
-  let hours = date.getHours();
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  const minutes = date.getMinutes();
-  const minutesStr: string = (minutes < 10 ? '0' : '') + minutes;
-  const strTime = hours + ':' + minutesStr + ' ' + ampm;
-  return strTime;
-}
-
 // Fixme: Add more languages
 export enum Languages {
   typescript = 'typescript',
