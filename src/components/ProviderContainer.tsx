@@ -1,4 +1,5 @@
-import { useMemo } from 'react';
+import { SendbirdErrorCode } from '@sendbird/chat';
+import React, { useMemo } from 'react';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
 
 import SendbirdProvider from '@uikit/lib/Sendbird';
@@ -9,12 +10,15 @@ import {
   ConstantStateProvider,
   useConstantState,
 } from '../context/ConstantContext';
-import { WidgetOpenProvider } from '../context/WidgetOpenContext';
 import {
   useWidgetSession,
   useWidgetSetting,
   WidgetSettingProvider,
 } from '../context/WidgetSettingContext';
+import {
+  useWidgetState,
+  WidgetStateProvider,
+} from '../context/WidgetStateContext';
 import { useStyledComponentsTarget } from '../hooks/useStyledComponentsTarget';
 import { getTheme } from '../theme';
 import { isDashboardPreview } from '../utils';
@@ -35,7 +39,10 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     serviceName,
     isMobileView,
     dateLocale,
+    enableHideWidgetForDeactivatedUser,
   } = useConstantState();
+
+  const { setIsVisible } = useWidgetState();
   const { botStyle } = useWidgetSetting();
   const session = useWidgetSession();
   const target = useStyledComponentsTarget();
@@ -72,43 +79,61 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
   }, [accentColor]);
 
   return (
-    <WidgetOpenProvider>
-      <StyleSheetManager target={target}>
-        <ThemeProvider theme={styledTheme}>
-          {applicationId && session.userId && (
-            <SendbirdProvider
-              appId={applicationId}
-              userId={session.userId}
-              accessToken={session.sessionToken}
-              nickname={userNickName}
-              customApiHost={apiHost}
-              customWebSocketHost={wsHost}
-              configureSession={configureSession}
-              customExtensionParams={userAgentCustomParams}
-              breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.
-              isMentionEnabled={enableMention}
-              theme={theme}
-              colorSet={customColorSet}
-              stringSet={stringSet}
-              uikitOptions={{
-                groupChannel: {
-                  input: {
-                    // To hide the file upload icon from the message input
-                    enableDocument: false,
-                  },
-                  enableVoiceMessage: false,
-                  enableFeedback: enableEmojiFeedback,
-                  enableSuggestedReplies: true,
+    <StyleSheetManager target={target}>
+      <ThemeProvider theme={styledTheme}>
+        {applicationId && session.userId && (
+          <SendbirdProvider
+            appId={applicationId}
+            userId={session.userId}
+            accessToken={session.sessionToken}
+            nickname={userNickName}
+            customApiHost={apiHost}
+            customWebSocketHost={wsHost}
+            configureSession={configureSession}
+            customExtensionParams={userAgentCustomParams}
+            breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.
+            theme={theme}
+            colorSet={customColorSet}
+            stringSet={stringSet}
+            dateLocale={dateLocale}
+            eventHandlers={{
+              connection: {
+                onConnected() {
+                  if (enableHideWidgetForDeactivatedUser) {
+                    setIsVisible(true);
+                  }
                 },
-              }}
-              dateLocale={dateLocale}
-            >
-              {children}
-            </SendbirdProvider>
-          )}
-        </ThemeProvider>
-      </StyleSheetManager>
-    </WidgetOpenProvider>
+                onFailed(error) {
+                  if (enableHideWidgetForDeactivatedUser) {
+                    if (
+                      error.code === SendbirdErrorCode.USER_AUTH_DEACTIVATED
+                    ) {
+                      setIsVisible(false);
+                    } else {
+                      setIsVisible(true);
+                    }
+                  }
+                },
+              },
+            }}
+            uikitOptions={{
+              groupChannel: {
+                input: {
+                  // To hide the file upload icon from the message input
+                  enableDocument: false,
+                },
+                enableVoiceMessage: false,
+                enableSuggestedReplies: true,
+                enableMention,
+                enableFeedback: enableEmojiFeedback,
+              },
+            }}
+          >
+            {children}
+          </SendbirdProvider>
+        )}
+      </ThemeProvider>
+    </StyleSheetManager>
   );
 };
 
@@ -117,21 +142,12 @@ export interface ProviderContainerProps extends ChatAiWidgetProps {
 }
 
 export default function ProviderContainer(props: ProviderContainerProps) {
-  // If env is not provided, prop will be used instead.
-  // But Either should be provided.
-  const CHAT_WIDGET_APP_ID =
-    import.meta.env.VITE_CHAT_WIDGET_APP_ID ?? props.applicationId;
-  const CHAT_WIDGET_BOT_ID =
-    import.meta.env.VITE_CHAT_WIDGET_BOT_ID ?? props.botId;
-
   return (
-    <ConstantStateProvider
-      {...props}
-      applicationId={CHAT_WIDGET_APP_ID}
-      botId={CHAT_WIDGET_BOT_ID}
-    >
+    <ConstantStateProvider {...props}>
       <WidgetSettingProvider>
-        <SBComponent>{props.children}</SBComponent>
+        <WidgetStateProvider>
+          <SBComponent>{props.children}</SBComponent>
+        </WidgetStateProvider>
       </WidgetSettingProvider>
     </ConstantStateProvider>
   );

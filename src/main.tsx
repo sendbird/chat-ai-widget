@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
-import { DEFAULT_CONSTANT } from './const';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App firstMessageData={DEFAULT_CONSTANT.firstMessageData} />
+    <App
+      applicationId={import.meta.env.VITE_CHAT_WIDGET_APP_ID}
+      botId={import.meta.env.VITE_CHAT_WIDGET_BOT_ID}
+    />
   </React.StrictMode>
 );

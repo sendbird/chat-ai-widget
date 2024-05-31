@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import { WIDGET_WINDOW_Z_INDEX, elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import { useWidgetOpen } from '../context/WidgetOpenContext';
+import { useWidgetState } from '../context/WidgetStateContext';
 import CloseIcon from '../icons/ic-widget-close.svg';
 import CollapseIcon from '../icons/icon-collapse.svg';
 import ExpandIcon from '../icons/icon-expand.svg';
@@ -97,7 +97,7 @@ const StyledCloseButton = styled.button`
 `;
 
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
-  const { isOpen, setIsOpen } = useWidgetOpen();
+  const { isVisible, isOpen, setIsOpen } = useWidgetState();
   const [isExpanded, setIsExpanded] = useState(false);
   const { callbacks } = useConstantState();
 
@@ -111,7 +111,7 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <StyledWidgetWindowWrapper
-      isOpen={isOpen}
+      isOpen={isOpen && isVisible}
       isExpanded={isExpanded}
       id={elementIds.widgetWindow}
     >

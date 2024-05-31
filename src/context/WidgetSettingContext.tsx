@@ -49,14 +49,11 @@ export const WidgetSettingProvider = ({
     firstMessageData,
     userId: injectedUserId,
     configureSession,
-    applicationId: _appId,
-    botId: _botId,
+    applicationId: appId,
+    botId,
     apiHost,
     botStudioEditProps,
   } = useConstantState();
-
-  const appId = _appId as string;
-  const botId = _botId as string;
 
   if (!appId || !botId) {
     throw new Error('applicationId or botId is not defined');

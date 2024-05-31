@@ -3059,14 +3059,18 @@ __metadata:
     vite-plugin-svgr: "npm:^4.2.0"
     vitest: "npm:^1.6.0"
   peerDependencies:
+    date-fns: ^3.6.0
     react: ^16.8.6 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    date-fns:
+      optional: true
   languageName: unknown
   linkType: soft
 
 "@sendbird/chat@npm:^4.12.3":
-  version: 4.12.4
-  resolution: "@sendbird/chat@npm:4.12.4"
+  version: 4.12.6
+  resolution: "@sendbird/chat@npm:4.12.6"
   peerDependencies:
     "@react-native-async-storage/async-storage": ^1.17.6
     react-native-mmkv: ^2.12.2
@@ -3075,7 +3079,7 @@ __metadata:
       optional: true
     react-native-mmkv:
       optional: true
-  checksum: 10c0/efdaf79b3036d7468f7fd81219fea67374a4d47c778753e016db4b23f074ce1961b866fe05fdc901b215c0374002895215c611f3d26446dd08a148fb9270e43e
+  checksum: 10c0/35b501357a9c5b3ce49a7faac5c8b8b8d7c921851ea4e0b949a86678caa7eb5a829395a20469eaa0c50c175af9d3a85d034c14f49386953558dfb048a64b340c
   languageName: node
   linkType: hard
 

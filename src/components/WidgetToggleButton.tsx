@@ -1,11 +1,10 @@
-import { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../colors';
-import { MAX_Z_INDEX, elementIds } from '../const';
+import { elementIds, MAX_Z_INDEX } from '../const';
 import { useConstantState } from '../context/ConstantContext';
-import { useWidgetOpen } from '../context/WidgetOpenContext';
 import { useWidgetSetting } from '../context/WidgetSettingContext';
+import { useWidgetState } from '../context/WidgetStateContext';
 import ArrowDownIcon from '../icons/ic-arrow-down.svg';
 import ChatBotIcon from '../icons/icon-widget-chatbot.svg';
 
@@ -113,32 +112,14 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
 
 export default function WidgetToggleButton() {
   const { botStyle } = useWidgetSetting();
-  const { autoOpen, renderWidgetToggleButton, isMobileView } =
-    useConstantState();
-  const { isOpen, setIsOpen } = useWidgetOpen();
-  const timer = useRef<NodeJS.Timeout | null>(null);
-
-  const buttonClickHandler = () => {
-    if (timer.current !== null) {
-      clearTimeout(timer.current as NodeJS.Timeout);
-      timer.current = null;
-    }
-    setIsOpen(!isOpen);
-  };
-
-  useEffect(() => {
-    if (autoOpen) {
-      timer.current = setTimeout(() => setIsOpen(true), 100);
-    }
-  }, [autoOpen]);
+  const { renderWidgetToggleButton } = useConstantState();
+  const { isOpen, setIsOpen } = useWidgetState();
 
   const toggleButtonProps = {
-    onClick: buttonClickHandler,
+    onClick: () => setIsOpen(!isOpen),
     accentColor: botStyle.accentColor,
     isOpen,
   };
-
-  if (isOpen && isMobileView) return null;
 
   if (typeof renderWidgetToggleButton === 'function') {
     return renderWidgetToggleButton(toggleButtonProps);

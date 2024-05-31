@@ -7,8 +7,8 @@ import { ToggleButtonProps } from './components/WidgetToggleButton';
 import { Constant } from './const';
 
 interface Props extends Omit<Partial<Constant>, 'stringSet'> {
-  applicationId?: string;
-  botId?: string;
+  applicationId: string;
+  botId: string;
   autoOpen?: boolean;
   renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
   stringSet?: Partial<StringSet>;

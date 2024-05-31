@@ -121,6 +121,8 @@ export default App;
 | `configureSession`      | `() => SessionHandler`                  | No      | N/A           | Function to configure the user session. The example usage can be found [here](./custom-session-guide.md). <br/><br/> Must be used with `userId`.|
 | `autoOpen`              | `boolean`                               | No       | N/A        | Determines whether the chatbot widget automatically opens when the browser window is opened.                   |
 | `messageInputControls.blockWhileBotResponding` | `boolean \| number` | No | N/A | Allows to control enabled/disabled state of the message input for waiting for the bot's reply mesage. If number value is given, a timer will be set to force unblock the message input. |
+| `enableResetHistoryOnConnect`        | `boolean`  | No       | `false`       | Determines whether the chatbot widget history is reset when the user connects. |
+| `enableHideWidgetForDeactivatedUser` | `boolean`  | No       | `false`       | Determines whether the chatbot widget is hidden when the user is deactivated.  |
 
 ## For internal contributors
 - [Release guide](./release-guide.md)
