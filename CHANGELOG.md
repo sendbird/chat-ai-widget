@@ -1,3 +1,26 @@
+## [1.6.0] (May 31, 2024)
+### Feat:
+- Added `messageInputControls` to `Constant`. It allows to control enabled/disabled state of the message input
+- Added `dateLocale` to `Constant`. It is applied to string values of message timestamp and date separator
+- Added the `enableHideWidgetForDeactivatedUser` to `Constant`. It is used to decide whether the chatbot widget is hidden or not when the user is deactivated
+```tsx
+import { ar } from 'date-fns/locale';
+
+<ChatAiWidget
+  applicationId={props.applicationId}
+  botId={props.botId}
+  messageInputControls={{
+    blockWhileBotResponding: 30000, // Change force unblock timeout to 30 seconds. Default value is 10 seconds.
+  }}
+  dateLocale={ar} // Applies Arabic locale.
+  enableHideWidgetForDeactivatedUser={true}
+/>
+```
+Refer to [**Available props** section in **README.md**](./README.md#available-props) file for details.
+
+### Fix:
+- Fixed a bug where multiple timestamps of messages are not grouped into one when should be if `botStudioEditProps.welcomeMessages` is given
+
 ## [1.5.12] (May 28, 2024)
 ### Feat:
 - Added horizontal suggested replies support.
