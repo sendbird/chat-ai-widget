@@ -133,7 +133,8 @@ export const ConstantStateProvider = (
         enableResetHistoryOnConnect:
           props.enableResetHistoryOnConnect ??
           initialState.enableResetHistoryOnConnect,
-        messageInputControls: props.messageInputControls,
+        messageInputControls:
+          props.messageInputControls ?? initialState.messageInputControls,
         dateLocale: props.dateLocale ?? initialState.dateLocale,
         enableHideWidgetForDeactivatedUser:
           props.enableHideWidgetForDeactivatedUser ??
