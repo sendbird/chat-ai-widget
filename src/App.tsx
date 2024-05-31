@@ -1,3 +1,4 @@
+import { ar } from 'date-fns/locale';
 import React from 'react';
 
 import { StringSet } from '@uikit/ui/Label/stringSet';
@@ -47,6 +48,7 @@ const App = (props: Props) => {
       // messageInputControls={{
       //   blockWhileBotResponding: false,
       // }}
+      // dateLocale={ar}
       // callbacks={{
       //   onWidgetExpandStateChange: (newIsExpanded) => {
       //     console.log('## newIsExpanded: ', newIsExpanded);

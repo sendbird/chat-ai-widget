@@ -172,7 +172,7 @@ export interface Constant extends ConstantFeatureFlags {
    */
   autoOpen?: boolean;
   /**
-   * @public locale instance to be applied
+   * @public Locale value to be applied to string values of message timestamp and date separator.
    */
   dateLocale: Locale;
   /**
