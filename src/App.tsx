@@ -45,7 +45,7 @@ const App = (props: Props) => {
       deviceType={props.deviceType}
       enableResetHistoryOnConnect={props.enableResetHistoryOnConnect}
       // messageInputControls={{
-      //   blockWhileBotResponding: 1000,
+      //   blockWhileBotResponding: false,
       // }}
       // callbacks={{
       //   onWidgetExpandStateChange: (newIsExpanded) => {

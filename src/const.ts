@@ -69,6 +69,9 @@ export const DEFAULT_CONSTANT = {
   enableResetHistoryOnConnect: false,
   dateLocale: enUS,
   enableHideWidgetForDeactivatedUser: false,
+  messageInputControls: {
+    blockWhileBotResponding: 10000,
+  },
 } satisfies Partial<Constant>;
 
 type ConfigureSession = (
@@ -128,8 +131,9 @@ export interface MessageInputControls {
   /**
    * If undefined, false, or 0 is given, message input will not be blocked.
    * If true or non-zero numeric value is given, message input will be blocked.
-   * If true is given, there will not be a force unblock.
+   * If true is given, there will not be a force unblock (unblocks IFF reply is received).
    * If numeric value is given, it will be used as timeout to force unblock the input.
+   * Default value is 10000 (force unblock after 10 seconds).
    */
   blockWhileBotResponding?: boolean | number;
 }
@@ -171,6 +175,10 @@ export interface Constant extends ConstantFeatureFlags {
    * @public locale instance to be applied
    */
   dateLocale: Locale;
+  /**
+   * @public Message input state controlling properties.
+   */
+  messageInputControls?: MessageInputControls;
   /**
    * @private Whether to show the beta mark.
    */
@@ -239,10 +247,6 @@ export interface Constant extends ConstantFeatureFlags {
    * @private Callback to be called when the widget open state changes.
    */
   onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
-  /**
-   * @public Message input state controlling properties.
-   */
-  messageInputControls?: MessageInputControls;
 }
 
 interface ConstantFeatureFlags {
