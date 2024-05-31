@@ -3059,8 +3059,12 @@ __metadata:
     vite-plugin-svgr: "npm:^4.2.0"
     vitest: "npm:^1.6.0"
   peerDependencies:
+    date-fns: ^3.6.0
     react: ^16.8.6 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    date-fns:
+      optional: true
   languageName: unknown
   linkType: soft
 
