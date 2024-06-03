@@ -22,7 +22,6 @@ function App() {
       applicationId={appId}
       botId={botId}
       betaMark={false}
-      enableEmojiFeedback={false}
       enableMention={false}
       customUserAgentParam={{ 'chat-ai-widget-deployed': 'True' }}
       serviceName={serviceName ?? widgetServiceName.self.default}
