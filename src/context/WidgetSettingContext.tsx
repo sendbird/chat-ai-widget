@@ -104,19 +104,21 @@ export const WidgetSettingProvider = ({
     })(cachedSession);
 
     const sessionKey = await (async () => {
-      if (!injectedUserId || !configureSession) return undefined;
-      if (strategy !== 'manual' || useCachedSession) return undefined;
-      try {
-        const handler = configureSession({} as any);
-        if (handler.onSessionTokenRequired) {
-          return (
-            (await new Promise(handler.onSessionTokenRequired)) ?? undefined
-          );
-        }
-      } catch {
-        // noop
-      }
+      // TODO: new manual strategy
       return undefined;
+      // if (!injectedUserId || !configureSession) return undefined;
+      // if (strategy !== 'manual' || useCachedSession) return undefined;
+      // try {
+      //   const handler = configureSession({} as any);
+      //   if (handler.onSessionTokenRequired) {
+      //     return (
+      //       (await new Promise(handler.onSessionTokenRequired)) ?? undefined
+      //     );
+      //   }
+      // } catch {
+      //   // noop
+      // }
+      // return undefined;
     })();
 
     await widgetSettingHandler(strategy, useCachedSession, {
@@ -148,18 +150,20 @@ export const WidgetSettingProvider = ({
           saveWidgetSessionCache({ appId, botId, data: session });
         }
       })
-      .onManualNonCached((response) => {
-        if (injectedUserId && response) {
-          const session = {
-            strategy,
-            userId: injectedUserId,
-            sessionToken: response.sessionKey,
-            channelUrl: response.channel.channelUrl,
-            expireAt: getDateNDaysLater(30),
-          };
-          setWidgetSession(session);
-          saveWidgetSessionCache({ appId, botId, data: session });
-        } else if (injectedUserId) {
+      .onManualNonCached(() => {
+        // TODO: new manual strategy
+        // if (injectedUserId && response) {
+        //   const session = {
+        //     strategy,
+        //     userId: injectedUserId,
+        //     sessionToken: response.sessionKey,
+        //     channelUrl: response.channel.channelUrl,
+        //     expireAt: getDateNDaysLater(30),
+        //   };
+        //   setWidgetSession(session);
+        //   saveWidgetSessionCache({ appId, botId, data: session });
+        // } else
+        if (injectedUserId) {
           /**
            * NOTE: [Legacy manual] We don't fully initialize the manual strategy session here.
            * After the uikit is initialized, we should call the `initManualSession` function.

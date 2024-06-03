@@ -240,11 +240,13 @@ function getParamsByStrategy(
     if (useCachedSession) {
       return {};
     } else {
-      return {
-        createChannel: true,
-        userId: params.userId,
-        sessionKey: params.sessionKey,
-      };
+      // TODO: new manual strategy
+      return {};
+      // return {
+      //   createChannel: true,
+      //   userId: params.userId,
+      //   sessionKey: params.sessionKey,
+      // };
     }
   }
 }
