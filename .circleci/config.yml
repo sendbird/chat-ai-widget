@@ -2,7 +2,6 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@2.1.0
   aws-s3: circleci/aws-s3@4.0.0
-  codecov: codecov/codecov@4.1.0
 
 executors:
   ci-aws:
@@ -99,7 +98,6 @@ jobs:
           no_output_timeout: 15m
           name: Run test
           command: yarn test --forceExit --runInBand
-      - codecov/upload
 
   # Publish - build self-service
   build:
