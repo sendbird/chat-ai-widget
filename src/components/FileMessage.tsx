@@ -1,7 +1,9 @@
 import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
+import { match } from 'ts-pattern';
 
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
+import { isVideoMessage } from '@uikit/utils';
 // import { FileViewerComponent } from '@sendbird/uikit-react/ui/FileViewer';
 // import {downloadFileWithUrl, noop} from '../utils';
 // import {createPortal} from 'react-dom';
@@ -38,14 +40,23 @@ export default function FileMessage(props: Props) {
           root!
         )}
         */}
-      <img
-        className="sendbird-ai-widget-file-message-image"
-        src={message.url}
-        alt={''}
-        onLoad={() => {
-          scrollToBottom();
-        }}
-      />
+      {match(message)
+        .when(isVideoMessage, () => (
+          // eslint-disable-next-line jsx-a11y/media-has-caption
+          <video controls className="sendbird-ai-widget-file-message">
+            <source src={message.url} type={message.type} />
+          </video>
+        ))
+        .otherwise(() => (
+          <img
+            className="sendbird-ai-widget-file-message"
+            src={message.url}
+            alt={''}
+            onLoad={() => {
+              scrollToBottom();
+            }}
+          />
+        ))}
     </div>
   );
 }
