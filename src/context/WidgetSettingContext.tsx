@@ -156,7 +156,7 @@ export const WidgetSettingProvider = ({
         //   const session = {
         //     strategy,
         //     userId: injectedUserId,
-        //     sessionToken: response.sessionKey,
+        //     sessionToken: undefined,
         //     channelUrl: response.channel.channelUrl,
         //     expireAt: getDateNDaysLater(30),
         //   };

@@ -127,10 +127,7 @@ export const widgetSettingHandler = (
       channel: ResponseChannel;
     }) => void;
     AutoCached: (response: { channel?: ResponseChannel }) => void;
-    ManualNonCached: (response?: {
-      channel: ResponseChannel;
-      sessionKey: string;
-    }) => void;
+    ManualNonCached: (response?: { channel: ResponseChannel }) => void;
     ManualCached: () => void;
   };
 
@@ -210,11 +207,8 @@ export const widgetSettingHandler = (
     if (useCachedSession) {
       callbacks.onManualCached();
     } else {
-      if (response.channel && params.sessionKey) {
-        callbacks.onManualNonCached({
-          channel: response.channel,
-          sessionKey: params.sessionKey,
-        });
+      if (response.channel) {
+        callbacks.onManualNonCached({ channel: response.channel });
       } else {
         // Legacy manual
         callbacks.onManualNonCached();
