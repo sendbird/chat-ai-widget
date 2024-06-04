@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
-import ChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
+import GroupChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import MessageInputWrapper from '@uikit/modules/GroupChannel/components/MessageInputWrapper';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
@@ -19,7 +19,10 @@ import MessageDataContent from './MessageDataContent';
 import WelcomeMessages from './messages/WelcomeMessages';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { useConstantState } from '../context/ConstantContext';
-import { useWidgetSession } from '../context/WidgetSettingContext';
+import {
+  useWidgetSession,
+  useWidgetSetting,
+} from '../context/WidgetSettingContext';
 import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
 import { useBlockWhileBotResponding } from '../hooks/useBlockWhileBotResponding';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
@@ -137,6 +140,7 @@ export function CustomChannelComponent() {
     scrollToBottom,
     refresh,
   } = useGroupChannelContext();
+  const { resetSession } = useWidgetSetting();
   const { userId: currentUserId } = useWidgetSession();
 
   // NOTE: Filter out messages that should not be displayed.
@@ -238,9 +242,16 @@ export function CustomChannelComponent() {
   const welcomeMessageTimeStamp =
     lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
 
+  const resetReqCounter = useRef(0);
+
   return (
     <Root height={'100%'} isStaticReplyVisible={isStaticReplyVisible}>
-      <ChannelUI
+      <GroupChannelUI
+        onChannelFetchFailed={() => {
+          if (resetReqCounter.current > 5) return;
+          resetReqCounter.current += 1;
+          resetSession();
+        }}
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
         renderMessageInput={() => (
