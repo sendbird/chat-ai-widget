@@ -136,6 +136,7 @@ export default function CustomMessage(props: Props) {
     if (message.isFileMessage()) {
       return (
         <BotMessageWithBodyInput
+          wideContainer
           {...commonProps}
           botUser={botUser}
           bodyComponent={<FileMessage message={message} />}
