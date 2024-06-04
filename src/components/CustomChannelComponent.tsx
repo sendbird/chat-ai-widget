@@ -23,7 +23,7 @@ import {
   useWidgetSession,
   useWidgetSetting,
 } from '../context/WidgetSettingContext';
-import useAutoDismissMobileKyeboardHandler from '../hooks/useAutoDismissMobileKyeboardHandler';
+import useAutoDismissMobileKeyboardHandler from '../hooks/useAutoDismissMobileKeyboardHandler';
 import { useBlockWhileBotResponding } from '../hooks/useBlockWhileBotResponding';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
@@ -177,7 +177,7 @@ export function CustomChannelComponent() {
     enableEmojiFeedback
   );
 
-  useAutoDismissMobileKyeboardHandler();
+  useAutoDismissMobileKeyboardHandler();
   useResetHistoryOnConnected();
   useScrollOnStreaming({
     isLastBotMessage,
