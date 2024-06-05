@@ -44,9 +44,14 @@ export default function FileMessage(props: Props) {
         )}
         */}
       {isVideoMessage(message) && (
-        // eslint-disable-next-line jsx-a11y/media-has-caption
         <video controls className="sendbird-ai-widget-file-message">
           <source src={message.url} type={message.type} />
+          <track
+            kind="captions"
+            src="path/to/your-captions.vtt"
+            srcLang="en"
+            label="English"
+          />
         </video>
       )}
       {isImageMessage(message) && (
