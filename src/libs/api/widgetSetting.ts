@@ -231,7 +231,8 @@ function getParamsByStrategy(
     }
   } else {
     if (useCachedSession) {
-      return { userId: params.userId };
+      return {};
+      // return { userId: params.userId };
     } else {
       return {};
       // return {
