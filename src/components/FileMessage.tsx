@@ -46,7 +46,7 @@ export default function FileMessage(props: Props) {
       {isVideoMessage(message) && (
         <video controls className="sendbird-ai-widget-file-message">
           <source src={message.url} type={message.type} />
-          <track kind="captions" srcLang="en" label="English" />
+          <track kind="captions" />
         </video>
       )}
       {isImageMessage(message) && (
