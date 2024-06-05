@@ -1,7 +1,7 @@
 import { User } from '@sendbird/chat';
 
 import TypingDots from '@uikit/ui/TypingIndicatorBubble/TypingDots';
-import { CoreMessageType } from '@uikit/utils';
+import { CoreMessageType, isVideoMessage } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
 import BotMessageFeedback from './BotMessageFeedback';
@@ -136,6 +136,7 @@ export default function CustomMessage(props: Props) {
     if (message.isFileMessage()) {
       return (
         <BotMessageWithBodyInput
+          wideContainer={isVideoMessage(message)}
           {...commonProps}
           botUser={botUser}
           bodyComponent={<FileMessage message={message} />}
