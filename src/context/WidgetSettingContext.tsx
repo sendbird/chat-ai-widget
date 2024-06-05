@@ -38,6 +38,7 @@ type Context = {
   botStyle: BotStyle;
   widgetSession: WidgetSession | null;
   initManualSession: (sdk: SendbirdChatWith<[GroupChannelModule]>) => void;
+  resetSession: () => Promise<void>;
 };
 
 const WidgetSettingContext = createContext<Context | null>(null);
@@ -76,7 +77,10 @@ export const WidgetSettingProvider = ({
     null
   );
 
-  async function initSessionByStrategy(strategy: 'auto' | 'manual') {
+  async function initSessionByStrategy(
+    strategy: 'auto' | 'manual',
+    clearCache = false
+  ) {
     const cachedSession = getWidgetSessionCache({
       appId,
       botId,
@@ -85,6 +89,7 @@ export const WidgetSettingProvider = ({
     const reuseCachedSession = ((
       cache: typeof cachedSession
     ): cache is NonNullable<typeof cachedSession> => {
+      if (clearCache) return false;
       if (!cache || cache.strategy !== strategy) return false;
       if (cache.strategy === 'manual') {
         // NOTE: There is no need to check the expiration of the session if it is managed manually.
@@ -195,6 +200,7 @@ export const WidgetSettingProvider = ({
         },
         widgetSession,
         initManualSession,
+        resetSession: () => initSessionByStrategy(sessionStrategy, true),
       }}
     >
       {widgetSession ? children : null}
