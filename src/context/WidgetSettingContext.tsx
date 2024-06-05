@@ -159,7 +159,7 @@ export const WidgetSettingProvider = ({
             ...cachedSession,
             channelUrl: channel?.channelUrl ?? cachedSession.channelUrl,
           } satisfies WidgetSessionCache;
-          setWidgetSession(session);
+          setWidgetSession({ ...session, sessionToken });
           saveWidgetSessionCache({ appId, botId, data: session });
         }
       })
