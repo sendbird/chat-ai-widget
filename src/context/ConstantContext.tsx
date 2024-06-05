@@ -59,9 +59,51 @@ export const ConstantStateProvider = (
   return (
     <ConstantContext.Provider
       value={{
+        // ----- SDK props ----- //
         applicationId: props.applicationId,
         botId: props.botId,
+        /** userId, sessionToken, configureSession should be used together to handle session manually. **/
+        userId: props.userId,
+        sessionToken: props.sessionToken,
+        configureSession: props.configureSession ? configureSession : undefined,
         userNickName: props.userNickName ?? initialState.userNickName,
+        apiHost:
+          props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
+        wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
+        serviceName: getDefaultServiceName(props.serviceName),
+        callbacks: props.callbacks,
+        customUserAgentParam: props.customUserAgentParam,
+        renderWidgetToggleButton: props.renderWidgetToggleButton,
+        deviceType: props.deviceType, // Note this property is not being used but added just to remove any confusion.
+        isMobileView,
+        stringSet: {
+          ...LabelStringSet,
+          MESSAGE_INPUT__PLACE_HOLDER__DISABLED:
+            widgetStringSet.messageInputDisabledPlaceholder,
+          ...props.stringSet,
+        },
+        botStudioEditProps: props.botStudioEditProps,
+        widgetOpenState: props.widgetOpenState,
+        onWidgetOpenStateChange: props.onWidgetOpenStateChange,
+        messageInputControls: {
+          ...initialState.messageInputControls,
+          ...props.messageInputControls,
+        },
+        dateLocale: props.dateLocale ?? initialState.dateLocale,
+        // ----- Feature flag props ----- //
+        autoOpen: props.autoOpen,
+        enableSourceMessage:
+          props.enableSourceMessage ?? initialState.enableSourceMessage,
+        enableEmojiFeedback:
+          props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
+        enableMention: props.enableMention ?? initialState.enableMention,
+        enableResetHistoryOnConnect:
+          props.enableResetHistoryOnConnect ??
+          initialState.enableResetHistoryOnConnect,
+        enableHideWidgetForDeactivatedUser:
+          props.enableHideWidgetForDeactivatedUser ??
+          initialState.enableHideWidgetForDeactivatedUser,
+        // ----- Legacy props ----- //
         betaMark: props.betaMark ?? initialState.betaMark,
         customBetaMarkText:
           props.customBetaMarkText ?? initialState.customBetaMarkText,
@@ -73,7 +115,6 @@ export const ConstantStateProvider = (
             props.suggestedMessageContent?.messageFilterList ??
             initialState.suggestedMessageContent.messageFilterList,
         },
-        callbacks: props.callbacks,
         firstMessageData: props.firstMessageData ?? [],
         createGroupChannelParams:
           props.createGroupChannelParams ??
@@ -102,45 +143,6 @@ export const ConstantStateProvider = (
             ...props.customRefreshComponent?.style,
           },
         },
-        customUserAgentParam: props.customUserAgentParam,
-        /**
-         * userId & configureSession should be used together to create a group channel on the client side.
-         */
-        userId: props.userId,
-        configureSession: props.configureSession ? configureSession : undefined,
-        stringSet: {
-          ...LabelStringSet,
-          MESSAGE_INPUT__PLACE_HOLDER__DISABLED:
-            widgetStringSet.messageInputDisabledPlaceholder,
-          ...props.stringSet,
-        },
-        enableSourceMessage:
-          props.enableSourceMessage ?? initialState.enableSourceMessage,
-        enableEmojiFeedback:
-          props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
-        enableMention: props.enableMention ?? initialState.enableMention,
-        autoOpen: props.autoOpen,
-        renderWidgetToggleButton: props.renderWidgetToggleButton,
-        serviceName: getDefaultServiceName(props.serviceName),
-        apiHost:
-          props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
-        wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
-        deviceType: props.deviceType, // Note this property is not being used but added just to remove any confusion.
-        isMobileView,
-        botStudioEditProps: props.botStudioEditProps,
-        widgetOpenState: props.widgetOpenState,
-        onWidgetOpenStateChange: props.onWidgetOpenStateChange,
-        enableResetHistoryOnConnect:
-          props.enableResetHistoryOnConnect ??
-          initialState.enableResetHistoryOnConnect,
-        messageInputControls: {
-          ...initialState.messageInputControls,
-          ...props.messageInputControls,
-        },
-        dateLocale: props.dateLocale ?? initialState.dateLocale,
-        enableHideWidgetForDeactivatedUser:
-          props.enableHideWidgetForDeactivatedUser ??
-          initialState.enableHideWidgetForDeactivatedUser,
       }}
     >
       {props.children}

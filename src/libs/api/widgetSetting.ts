@@ -27,7 +27,7 @@ type Params = {
   createUserAndChannel?: boolean;
   createChannel?: boolean;
   userId?: string;
-  sessionKey?: string;
+  // sessionToken?: string;
 };
 
 type Response = {
@@ -57,9 +57,8 @@ export async function getWidgetSetting({
   createUserAndChannel,
   createChannel,
   userId,
-  sessionKey,
 }: Params): Promise<Response> {
-  const headers = sessionKey ? { 'Session-Key': sessionKey } : undefined;
+  // const headers = sessionToken ? { 'Session-Key': sessionToken } : undefined;
   const params = asQueryParams({
     create_user_and_channel: asBoolString(createUserAndChannel),
     create_channel: asBoolString(createChannel),
@@ -70,7 +69,7 @@ export async function getWidgetSetting({
     `/v3/bots/${botId}/${appId}/widget_setting?${params}`
   );
 
-  const response = await fetch(path, { headers });
+  const response = await fetch(path);
   const result = await response.json();
   if (!response.ok) {
     throw new Error(result.message || 'Something went wrong');
@@ -128,7 +127,7 @@ export const widgetSettingHandler = (
     }) => void;
     AutoCached: (response: { channel?: ResponseChannel }) => void;
     ManualNonCached: (response?: { channel: ResponseChannel }) => void;
-    ManualCached: () => void;
+    ManualCached: (response: { channel?: ResponseChannel }) => void;
   };
 
   const callbacks: {
@@ -183,8 +182,8 @@ export const widgetSettingHandler = (
         botId: params.botId,
         ...getParamsByStrategy(strategy, useCachedSession, params),
       });
-      callbacks.onGetBotStyle(response.botStyle);
 
+      callbacks.onGetBotStyle(response.botStyle);
       if (strategy === 'auto') handleAutoStrategy(response);
       if (strategy === 'manual') handleManualStrategy(response);
     },
@@ -205,7 +204,7 @@ export const widgetSettingHandler = (
 
   function handleManualStrategy(response: Response) {
     if (useCachedSession) {
-      callbacks.onManualCached();
+      callbacks.onManualCached({ channel: response.channel });
     } else {
       if (response.channel) {
         callbacks.onManualNonCached({ channel: response.channel });
@@ -232,14 +231,13 @@ function getParamsByStrategy(
     }
   } else {
     if (useCachedSession) {
-      return {};
+      return { userId: params.userId };
     } else {
-      // TODO: new manual strategy
       return {};
       // return {
       //   createChannel: true,
       //   userId: params.userId,
-      //   sessionKey: params.sessionKey,
+      //   sessionToken: params.sessionToken,
       // };
     }
   }

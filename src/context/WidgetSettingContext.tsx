@@ -14,7 +14,7 @@ import {
   saveWidgetSessionCache,
   WidgetSessionCache,
 } from '../libs/storage/widgetSessionCache';
-import { getDateNDaysLater, isPastTime, noop } from '../utils';
+import { getDateNDaysLater, isPastTime } from '../utils';
 
 interface WidgetSession {
   strategy: 'auto' | 'manual';
@@ -47,13 +47,14 @@ export const WidgetSettingProvider = ({
   children,
 }: React.PropsWithChildren) => {
   const {
-    createGroupChannelParams,
-    firstMessageData,
-    userId: injectedUserId,
-    configureSession,
     applicationId: appId,
     botId,
     apiHost,
+    userId: injectedUserId,
+    sessionToken,
+    configureSession,
+    createGroupChannelParams,
+    firstMessageData,
     botStudioEditProps,
   } = useConstantState();
 
@@ -62,7 +63,7 @@ export const WidgetSettingProvider = ({
   }
 
   const sessionStrategy: 'auto' | 'manual' =
-    typeof configureSession === 'function' && !!injectedUserId
+    typeof configureSession === 'function' && !!injectedUserId && !!sessionToken
       ? 'manual'
       : 'auto';
 
@@ -103,30 +104,11 @@ export const WidgetSettingProvider = ({
       return false;
     })(cachedSession);
 
-    const sessionKey = await (async () => {
-      // TODO: new manual strategy
-      return undefined;
-      // if (!injectedUserId || !configureSession) return undefined;
-      // if (strategy !== 'manual' || useCachedSession) return undefined;
-      // try {
-      //   const handler = configureSession({} as any);
-      //   if (handler.onSessionTokenRequired) {
-      //     return (
-      //       (await new Promise(handler.onSessionTokenRequired)) ?? undefined
-      //     );
-      //   }
-      // } catch {
-      //   // noop
-      // }
-      // return undefined;
-    })();
-
     await widgetSettingHandler(strategy, useCachedSession, {
       host: apiHost,
       appId,
       botId,
       userId: strategy === 'manual' ? injectedUserId : cachedSession?.userId,
-      sessionKey,
     })
       .onGetBotStyle((style) => setBotStyle(style))
       .onAutoNonCached(({ user, channel }) => {
@@ -151,19 +133,12 @@ export const WidgetSettingProvider = ({
         }
       })
       .onManualNonCached(() => {
-        // TODO: new manual strategy
-        // if (injectedUserId && response) {
-        //   const session = {
-        //     strategy,
-        //     userId: injectedUserId,
-        //     sessionToken: undefined,
-        //     channelUrl: response.channel.channelUrl,
-        //     expireAt: getDateNDaysLater(30),
-        //   };
-        //   setWidgetSession(session);
-        //   saveWidgetSessionCache({ appId, botId, data: session });
-        // } else
         if (injectedUserId) {
+          // if (response) {
+          //   const session = { strategy, userId: injectedUserId, channelUrl: response.channel?.channelUrl, expireAt: getDateNDaysLater(30) } satisfies WidgetSessionCache;
+          //   setWidgetSession({ ...session, sessionToken });
+          //   saveWidgetSessionCache({ appId, botId, data: session });
+          // }
           /**
            * NOTE: [Legacy manual] We don't fully initialize the manual strategy session here.
            * After the uikit is initialized, we should call the `initManualSession` function.
@@ -171,14 +146,23 @@ export const WidgetSettingProvider = ({
           const session = {
             strategy,
             userId: injectedUserId,
-            sessionToken: undefined,
+            sessionToken,
             channelUrl: undefined,
             expireAt: 0,
-          };
+          } satisfies WidgetSession;
           setWidgetSession(session);
         }
       })
-      .onManualCached(noop)
+      .onManualCached(({ channel }) => {
+        if (cachedSession) {
+          const session = {
+            ...cachedSession,
+            channelUrl: channel?.channelUrl ?? cachedSession.channelUrl,
+          } satisfies WidgetSessionCache;
+          setWidgetSession(session);
+          saveWidgetSessionCache({ appId, botId, data: session });
+        }
+      })
       .get();
 
     setInitialized(true);
@@ -204,10 +188,9 @@ export const WidgetSettingProvider = ({
         strategy: sessionStrategy,
         expireAt: getDateNDaysLater(30),
         userId: injectedUserId,
-        sessionToken: undefined,
         channelUrl: channel.url,
       };
-      setWidgetSession(session);
+      setWidgetSession((prev) => ({ ...prev, ...session }));
       saveWidgetSessionCache({ appId, botId, data: session });
     }
   }

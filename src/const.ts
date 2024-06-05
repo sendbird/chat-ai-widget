@@ -144,130 +144,166 @@ export interface OnWidgetOpenStateChangeParams {
 
 export interface Constant extends ConstantFeatureFlags {
   /**
-   * @public User nickname to be used in the widget.
+   * @public
+   * @description User nickname to be used in the widget.
    */
   userNickName: string;
   /**
-   * @public Customizable refresh component.
+   * @public
+   * @description Customizable refresh component.
    */
   customRefreshComponent: CustomRefreshComponent;
   /**
-   * @public String set to be used in the widget.
+   * @public
+   * @description String set to be used in the widget.
    */
   stringSet: StringSet;
   /**
-   * @public Device type to be used in the widget.
+   * @public
+   * @description Device type to be used in the widget.
    */
   deviceType?: 'desktop' | 'mobile';
   /**
-   * @public User ID to be used in the widget.
+   * @public
+   * @description User ID to be used in the widget connect. Must be used with `sessionToken` and `configureSession`.
    */
   userId?: string;
   /**
-   * @public Session configuration function. Must be used with `userId`.
+   * @public
+   * @description Session token to be used in the widget connect. Must be used with `userId` and `configureSession`.
+   */
+  sessionToken?: string;
+  /**
+   * @public
+   * @description Session configuration function. Must be used with `userId` and `sessionToken`.
    */
   configureSession?: ConfigureSession;
   /**
-   * @public Whether to open the widget automatically.
+   * @public
+   * @description Whether to open the widget automatically.
    */
   autoOpen?: boolean;
   /**
-   * @public Locale value to be applied to string values of message timestamp and date separator.
+   * @public
+   * @description Locale value to be applied to string values of message timestamp and date separator.
    */
   dateLocale: Locale;
   /**
-   * @public Message input state controlling properties.
+   * @public
+   * @description Message input state controlling properties.
    */
   messageInputControls?: MessageInputControls;
   /**
-   * @private Whether to show the beta mark.
+   * @private
+   * @description Whether to show the beta mark.
    */
   betaMark: boolean;
   /**
-   * @private Custom text to be shown as the beta mark.
+   * @private
+   * @description Custom text to be shown as the beta mark.
    */
   customBetaMarkText: string;
   /**
-   * @private Suggested message content.
+   * @private
+   * @description Suggested message content.
    */
   suggestedMessageContent: SuggestedMessageContent;
   /**
-   * @private Group channel creation parameters.
+   * @private
+   * @description Group channel creation parameters.
    */
   createGroupChannelParams: CreateGroupChannelParams;
   /**
-   * @private Chat bottom content.
+   * @private
+   * @description Chat bottom content.
    */
   chatBottomContent: ChatBottomContent;
   /**
-   * @private Message bottom content which will be displayed at the bottom of the message bubble.
+   * @private
+   * @description Message bottom content which will be displayed at the bottom of the message bubble.
    */
   messageBottomContent: MessageBottomContent;
   /**
-   * @private Replacement text list to be replaced in the message.
+   * @private
+   * @description Replacement text list to be replaced in the message.
    */
   replacementTextList: [MatchString, ReplaceString][];
   /**
-   * @private First message data to be sent when the widget is opened.
+   * @private
+   * @description First message data to be sent when the widget is opened.
    */
   firstMessageData: FirstMessageItem[];
   /**
-   * @private Custom API host.
+   * @private
+   * @description Custom API host.
    */
   apiHost: string;
   /**
-   * @private Custom WS host.
+   * @private
+   * @description Custom WS host.
    */
   wsHost: string;
   /**
-   * @private Custom user agent parameters.
+   * @private
+   * @description Custom user agent parameters.
    */
   customUserAgentParam?: Record<any, any>;
   /**
-   * @private Custom widget toggle button renderer.
+   * @private
+   * @description Custom widget toggle button renderer.
    */
   renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
   /**
-   * @private Service name to be used in the widget.
+   * @private
+   * @description Service name to be used in the widget.
    */
   serviceName: string;
   /**
-   * @private Callbacks to be used in the widget.
+   * @private
+   * @description Callbacks to be used in the widget.
    */
   callbacks?: SendbirdChatAICallbacks;
   /**
-   * @private Bot studio edit properties to be used in Sendbird Dashboard.
+   * @private
+   * @description Bot studio edit properties to be used in Sendbird Dashboard.
    */
   botStudioEditProps?: BotStudioEditProps;
   /**
-   * @private Widget open state.
+   * @private
+   * @description Widget open state.
    */
   widgetOpenState?: boolean;
   /**
-   * @private Callback to be called when the widget open state changes.
+   * @private
+   * @description Callback to be called when the widget open state changes.
    */
   onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
 }
 
 interface ConstantFeatureFlags {
   /**
-   * @public Whether to display the source of the knowledge data.
+   * @public
+   * @description Whether to display the source of the knowledge data.
    */
   enableSourceMessage: boolean;
   /**
-   * @public Whether to enable feedback icons at the bottom of the message bubble.
+   * @public
+   * @description Whether to enable feedback icons at the bottom of the message bubble.
    */
   enableEmojiFeedback: boolean;
   /**
-   * @public Whether to enable mention feature via `@{userName}` signature.
+   * @public
+   * @description Whether to enable mention feature via `@{userName}` signature.
    */
   enableMention: boolean;
   /**
-   * @public Reset chat history when chat is connected.
+   * @public
+   * @description Reset chat history when chat is connected.
    * */
   enableResetHistoryOnConnect: boolean;
   /**
-   * @public Hide widget for deactivated user.
+   * @public
+   * @description Hide widget for deactivated user.
    * */
   enableHideWidgetForDeactivatedUser: boolean;
 }
