@@ -1,4 +1,3 @@
-import { ar } from 'date-fns/locale';
 import React from 'react';
 
 import { StringSet } from '@uikit/ui/Label/stringSet';

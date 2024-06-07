@@ -1,3 +1,7 @@
+## [1.6.1] (Jun 4, 2024)
+### change:
+- Removed auto focusing of message input when disabled state changes to false
+
 ## [1.6.0] (May 31, 2024)
 ### Feat:
 - Added `messageInputControls` to `Constant`. It allows to control enabled/disabled state of the message input

@@ -2,6 +2,7 @@ import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
 
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
+import { isImageMessage, isVideoMessage } from '@uikit/utils';
 // import { FileViewerComponent } from '@sendbird/uikit-react/ui/FileViewer';
 // import {downloadFileWithUrl, noop} from '../utils';
 // import {createPortal} from 'react-dom';
@@ -16,6 +17,10 @@ export default function FileMessage(props: Props) {
 
   // const root = document.getElementById('aichatbot-widget-window');
 
+  /**
+   * Currently only video and image file messages will be sent.
+   * TODO: In the future, we may support other file types. When we do, we need to update the logic.
+   */
   return (
     <div className="sendbird-ai-widget-file-message-root">
       {/*Please keep the commented code for referencing in the future when adding file viewer*/}
@@ -38,14 +43,22 @@ export default function FileMessage(props: Props) {
           root!
         )}
         */}
-      <img
-        className="sendbird-ai-widget-file-message-image"
-        src={message.url}
-        alt={''}
-        onLoad={() => {
-          scrollToBottom();
-        }}
-      />
+      {isVideoMessage(message) && (
+        <video controls className="sendbird-ai-widget-file-message">
+          <source src={message.url} type={message.type} />
+          <track kind="captions" />
+        </video>
+      )}
+      {isImageMessage(message) && (
+        <img
+          className="sendbird-ai-widget-file-message"
+          src={message.url}
+          alt={''}
+          onLoad={() => {
+            scrollToBottom();
+          }}
+        />
+      )}
     </div>
   );
 }
