@@ -24,7 +24,10 @@ type Params = {
   host: string;
   botId: string;
   appId: string;
-  createUserAndChannel: boolean;
+  createUserAndChannel?: boolean;
+  createChannel?: boolean;
+  userId?: string;
+  // sessionToken?: string;
 };
 
 type Response = {
@@ -35,14 +38,16 @@ type Response = {
     /** @deprecated We no longer use the autoOpen value from the dashboard. **/
     autoOpen: boolean;
   };
-  user?: {
-    expireAt: number;
-    userId: string;
-    sessionToken: string;
-  };
-  channel?: {
-    channelUrl: string;
-  };
+  user?: ResponseUser;
+  channel?: ResponseChannel;
+};
+type ResponseUser = {
+  expireAt: number;
+  userId: string;
+  sessionToken: string;
+};
+type ResponseChannel = {
+  channelUrl: string;
 };
 
 export async function getWidgetSetting({
@@ -50,11 +55,15 @@ export async function getWidgetSetting({
   botId,
   appId,
   createUserAndChannel,
+  createChannel,
+  userId,
 }: Params): Promise<Response> {
-  const params = new URLSearchParams({
-    create_user_and_channel: createUserAndChannel ? 'True' : 'False',
-  }).toString();
-
+  // const headers = sessionToken ? { 'Session-Key': sessionToken } : undefined;
+  const params = asQueryParams({
+    create_user_and_channel: asBoolString(createUserAndChannel),
+    create_channel: asBoolString(createChannel),
+    user_id: userId,
+  });
   const path = resolvePath(
     host,
     `/v3/bots/${botId}/${appId}/widget_setting?${params}`
@@ -91,4 +100,146 @@ export async function getWidgetSetting({
         }
       : undefined,
   };
+}
+
+function asBoolString(value?: boolean | null): 'True' | 'False' | undefined {
+  if (value === undefined || value === null) return undefined;
+  return value ? 'True' : 'False';
+}
+
+function asQueryParams(obj: object) {
+  return Object.entries(obj)
+    .filter(([_, value]) => value !== undefined && value !== null)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&');
+}
+
+export const widgetSettingHandler = (
+  strategy: 'auto' | 'manual',
+  useCachedSession: boolean,
+  params: Omit<Params, 'createChannel' | 'createUserAndChannel'>
+) => {
+  type Callbacks = {
+    BotStyle: (botStyle: Response['botStyle']) => void;
+    AutoNonCached: (response: {
+      user: ResponseUser;
+      channel: ResponseChannel;
+    }) => void;
+    AutoCached: (response: { channel?: ResponseChannel }) => void;
+    ManualNonCached: (response?: { channel: ResponseChannel }) => void;
+    ManualCached: (response: { channel?: ResponseChannel }) => void;
+  };
+
+  const callbacks: {
+    onGetBotStyle: Callbacks['BotStyle'];
+    onAutoNonCached: Callbacks['AutoNonCached'];
+    onAutoCached: Callbacks['AutoCached'];
+    onManualNonCached: Callbacks['ManualNonCached'];
+    onManualCached: Callbacks['ManualCached'];
+  } = {
+    onGetBotStyle: () => {
+      /* empty */
+    },
+    onAutoNonCached: () => {
+      /* empty */
+    },
+    onAutoCached: () => {
+      /* empty */
+    },
+    onManualNonCached: () => {
+      /* empty */
+    },
+    onManualCached: () => {
+      /* empty */
+    },
+  };
+
+  const handlers = {
+    onGetBotStyle: (callback: Callbacks['BotStyle']) => {
+      callbacks.onGetBotStyle = callback;
+      return handlers;
+    },
+    onAutoNonCached: (callback: Callbacks['AutoNonCached']) => {
+      callbacks.onAutoNonCached = callback;
+      return handlers;
+    },
+    onAutoCached: (callback: Callbacks['AutoCached']) => {
+      callbacks.onAutoCached = callback;
+      return handlers;
+    },
+    onManualCached: (callback: Callbacks['ManualCached']) => {
+      callbacks.onManualCached = callback;
+      return handlers;
+    },
+    onManualNonCached: (callback: Callbacks['ManualNonCached']) => {
+      callbacks.onManualNonCached = callback;
+      return handlers;
+    },
+    get: async () => {
+      const response = await getWidgetSetting({
+        host: params.host,
+        appId: params.appId,
+        botId: params.botId,
+        ...getParamsByStrategy(strategy, useCachedSession, params),
+      });
+
+      callbacks.onGetBotStyle(response.botStyle);
+      if (strategy === 'auto') handleAutoStrategy(response);
+      if (strategy === 'manual') handleManualStrategy(response);
+    },
+  };
+
+  function handleAutoStrategy(response: Response) {
+    if (useCachedSession) {
+      callbacks.onAutoCached({ channel: response.channel });
+    } else {
+      if (response.channel && response.user) {
+        callbacks.onAutoNonCached({
+          channel: response.channel,
+          user: response.user,
+        });
+      }
+    }
+  }
+
+  function handleManualStrategy(response: Response) {
+    if (useCachedSession) {
+      callbacks.onManualCached({ channel: response.channel });
+    } else {
+      if (response.channel) {
+        callbacks.onManualNonCached({ channel: response.channel });
+      } else {
+        // Legacy manual
+        callbacks.onManualNonCached();
+      }
+    }
+  }
+
+  return handlers;
+};
+
+function getParamsByStrategy(
+  strategy: 'auto' | 'manual',
+  useCachedSession: boolean,
+  params: Omit<Params, 'createChannel' | 'createUserAndChannel'>
+) {
+  if (strategy === 'auto') {
+    if (useCachedSession) {
+      return { userId: params.userId };
+    } else {
+      return { createUserAndChannel: true };
+    }
+  } else {
+    if (useCachedSession) {
+      return {};
+      // return { userId: params.userId };
+    } else {
+      return {};
+      // return {
+      //   createChannel: true,
+      //   userId: params.userId,
+      //   sessionToken: params.sessionToken,
+      // };
+    }
+  }
 }

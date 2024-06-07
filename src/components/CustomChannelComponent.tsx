@@ -1,6 +1,6 @@
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
-import isSameDay from 'date-fns/isSameDay';
+import { isSameDay } from 'date-fns/isSameDay';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';

@@ -12,6 +12,8 @@ Before you can manage sessions independently, you must obtain session tokens usi
 
 Define a function to issue session tokens. The following TypeScript code is an example; in practice, you should issue session tokens from your server. For more information, please see the [Sendbird documentation](https://sendbird.com/docs/chat/platform-api/v3/user/managing-session-tokens/issue-a-session-token).
 
+**Note:** You must [create a Sendbird user](https://sendbird.com/docs/chat/platform-api/v3/user/creating-users/create-a-user) before issuing a token.
+
 ```ts
 const APP_ID = "YOUR_APP_ID";
 const API_TOKEN = "YOUR_API_TOKEN";
@@ -65,16 +67,25 @@ const configureSession = () => ({
 
 ### Passing Session Configuration Data to the Widget
 
-Pass the user ID and session configuration function to the widget. The widget will now manage the session for the specified user ID, issuing session tokens as needed.
+Pass the user ID, session token, and session configuration function to the widget. The widget will now manage the session for the specified user ID, issuing session tokens as needed.
 
 ```tsx
 const App = () => {
+  const [sessionToken, setSessionToken] = useState<string | null>(null);
+  
+  useEffect(() => {
+    issueSessionToken(USER_ID).then(token => setSessionToken(token));
+  }, [USER_ID]);
+  
+  if (!sessionToken) return null;
+  
   return (
     <ChatAiWidget
       /**
        * Include other necessary properties here
        */
       userId={USER_ID}
+      sessionToken={sessionToken}
       configureSession={configureSession}
     />
   );

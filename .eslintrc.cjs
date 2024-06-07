@@ -50,6 +50,15 @@ module.exports = {
         'includeRoles': ['button']
       },
     ],
+    '@typescript-eslint/no-unused-vars': [
+      1,
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
   },
   settings: {
     react: {
