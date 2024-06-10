@@ -1,3 +1,16 @@
+## [1.6.2] (Jun 7, 2024)
+### Feat:
+- Added video message support for bot messages. The widget now supports video messages sent by the bot.
+- Added support for using new channels in `widget_setting` when a new channel is created.
+- Added `sessionToken` prop for managing manual sessions.
+
+### Fix:
+- Fixed a bug where the widget would not connect to the bot when the cached channel is not found and now creates a new channel.
+- Fixed a bug where the feedback did not work according to the option set in the dashboard.
+
+### Chore:
+- Removed the default value of `false` for mentions in self-service.
+
 ## [1.6.1] (Jun 4, 2024)
 ### change:
 - Removed auto focusing of message input when disabled state changes to false
