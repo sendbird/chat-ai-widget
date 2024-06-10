@@ -84,6 +84,7 @@ input:focus {
 .sendbird-word__url {
   font-weight: 700;
   color: black;
+  text-decoration: underline;
 }
 
 .sendbird-message-content__middle__body-container__feedback-buttons-container {
