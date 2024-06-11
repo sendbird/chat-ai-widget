@@ -84,4 +84,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr review --approve --body "approved by automation"
+          if [ -z "${{ github.event.inputs.npm_tag }}" ]; then
+            gh pr review --approve --body "approved by automation"
+          fi
