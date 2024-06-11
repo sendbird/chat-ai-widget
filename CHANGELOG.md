@@ -1,3 +1,9 @@
+## [1.6.3] (Jun 11, 2024)
+### Fix:
+- Fixed the positioning of the scroll-to-bottom button.
+- Fixed the positioning of the "powered by" banner.
+- Added an underline to links in messages.
+
 ## [1.6.2] (Jun 7, 2024)
 ### Feat:
 - Added video message support for bot messages. The widget now supports video messages sent by the bot.
