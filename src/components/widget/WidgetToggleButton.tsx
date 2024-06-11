@@ -109,8 +109,6 @@ export interface ToggleButtonProps {
 const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
   const { botStyle } = useWidgetSetting();
 
-  const toggleButtonImg = botStyle.toggleButtonUrl;
-
   return (
     <StyledWidgetButtonWrapper
       id={elementIds.widgetToggleButton}
@@ -119,7 +117,7 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
       accentColor={accentColor}
     >
       <StyledWidgetIcon isOpen={isOpen}>
-        <WidgetIcon url={toggleButtonImg} />
+        <WidgetIcon url={botStyle.toggleButtonUrl} />
       </StyledWidgetIcon>
       <StyledArrowIcon isOpen={isOpen}>
         <ChevronDownIcon />
