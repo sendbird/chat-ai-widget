@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Avatar from '@uikit/ui/Avatar';
 import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
-import BetaLogo from './BetaLogo';
 import BotProfileImage from './BotProfileImage';
+import BetaLogo from './ui/BetaLogo';
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetState } from '../context/WidgetStateContext';

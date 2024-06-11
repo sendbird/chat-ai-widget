@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
-import { CodeBlock } from './CodeBlock';
 import SourceContainer, { Source } from './SourceContainer';
+import { CodeBlock } from './ui/CodeBlock';
 import { useConstantState } from '../context/ConstantContext';
 import { replaceWithRegex, Token, TokenType } from '../utils';
 

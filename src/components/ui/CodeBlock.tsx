@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { Token } from '../utils';
+import { Token } from '../../utils';
 
 const CodeContainer = styled.div`
   position: relative; /* For the copy button positioning */

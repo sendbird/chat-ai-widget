@@ -2,22 +2,20 @@ import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
 import { isSameDay } from 'date-fns/isSameDay';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import GroupChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import MessageInputWrapper from '@uikit/modules/GroupChannel/components/MessageInputWrapper';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
-import ChatBottom from './ChatBottom';
 import CustomChannelHeader from './CustomChannelHeader';
 import CustomMessage from './CustomMessage';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
 import MessageDataContent from './MessageDataContent';
 import WelcomeMessages from './messages/WelcomeMessages';
 import StaticRepliesPanel from './StaticRepliesPanel';
+import { PoweredByBanner } from './ui/PoweredByBanner';
 import { useConstantState } from '../context/ConstantContext';
 import {
   useWidgetSession,
@@ -27,11 +25,7 @@ import useAutoDismissMobileKeyboardHandler from '../hooks/useAutoDismissMobileKe
 import { useBlockWhileBotResponding } from '../hooks/useBlockWhileBotResponding';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import {
-  hideChatBottomBanner,
-  isDashboardPreview,
-  isIOSMobile,
-} from '../utils';
+import { isDashboardPreview, isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,
   getSenderUserIdFromMessage,
@@ -58,7 +52,7 @@ const Root = styled.div<RootStyleProps>`
 
   .sendbird-conversation__scroll-bottom-button {
     bottom: ${({ isStaticReplyVisible }) =>
-      isStaticReplyVisible ? '65px' : '50px'};
+      isStaticReplyVisible ? '65px' : '16px'};
   }
 
   .sendbird-message-input-wrapper {
@@ -372,24 +366,7 @@ export function CustomChannelComponent() {
           );
         }}
       />
-      <Banner />
+      <PoweredByBanner />
     </Root>
   );
-}
-
-function Banner() {
-  const store = useSendbirdStateContext();
-  const sdk = store.stores.sdkStore.sdk;
-
-  if (hideChatBottomBanner(sdk)) {
-    return null;
-  }
-
-  const inputElement = document.querySelector(
-    '.sendbird-message-input-wrapper'
-  );
-
-  return inputElement
-    ? ReactDOM.createPortal(<ChatBottom />, inputElement)
-    : null;
 }
