@@ -29,8 +29,7 @@ const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
     0px 6px 30px 5px rgba(33, 33, 33, 0.08),
     0px 6px 10px -5px rgba(33, 33, 33, 0.04);
 
-  span,
-  div {
+  span {
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -80,9 +79,11 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
   ${({ isOpen }) => {
     return isOpen
       ? css`
+          position: absolute;
           transform: rotate(0deg);
         `
       : css`
+          position: absolute;
           transform: rotate(-90deg) scale(0);
         `;
   }}
@@ -143,13 +144,7 @@ function WidgetIcon(props: { url?: string }) {
     if (url.endsWith('.svg')) {
       return <div dangerouslySetInnerHTML={{ __html: svg }} />;
     } else {
-      return (
-        <Img
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          src={url}
-          alt="widget-toggle-button"
-        />
-      );
+      return <Img src={url} alt="widget-toggle-button" />;
     }
   }
 
