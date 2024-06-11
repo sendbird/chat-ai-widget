@@ -6,11 +6,11 @@ import Chat from './Chat';
 import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
-import { elementIds, type Constant, WIDGET_WINDOW_Z_INDEX } from '../const';
-import { useWidgetState } from '../context/WidgetStateContext';
-import useMobileView from '../hooks/useMobileView';
-import { useWidgetAutoOpen } from '../hooks/useWidgetAutoOpen';
-import { isMobile } from '../utils';
+import { elementIds, type Constant, WIDGET_WINDOW_Z_INDEX } from '../../const';
+import { useWidgetState } from '../../context/WidgetStateContext';
+import useMobileView from '../../hooks/useMobileView';
+import { useWidgetAutoOpen } from '../../hooks/useWidgetAutoOpen';
+import { isMobile } from '../../utils';
 
 const MobileContainer = styled.div<{ width: number }>`
   position: fixed;

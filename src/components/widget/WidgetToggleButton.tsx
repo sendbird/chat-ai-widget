@@ -1,14 +1,17 @@
+import DOMPurify from 'dompurify';
+import { useLayoutEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { getColorBasedOnSaturation } from '../colors';
-import { elementIds, MAX_Z_INDEX } from '../const';
-import { useConstantState } from '../context/ConstantContext';
-import { useWidgetSetting } from '../context/WidgetSettingContext';
-import { useWidgetState } from '../context/WidgetStateContext';
-import ArrowDownIcon from '../icons/ic-arrow-down.svg';
-import ChatBotIcon from '../icons/icon-widget-chatbot.svg';
+import { getColorBasedOnSaturation } from '../../colors';
+import { elementIds, MAX_Z_INDEX } from '../../const';
+import { useConstantState } from '../../context/ConstantContext';
+import { useWidgetSetting } from '../../context/WidgetSettingContext';
+import { useWidgetState } from '../../context/WidgetStateContext';
+import BotOutlinedIcon from '../../icons/bot-outlined.svg';
+import ChevronDownIcon from '../../icons/chevron-down.svg';
 
 const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
+  padding: 0;
   position: fixed;
   z-index: ${MAX_Z_INDEX};
   bottom: 24px;
@@ -17,7 +20,6 @@ const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
   height: 48px;
   background: ${({ accentColor }) => accentColor};
   border-radius: 50%;
-  color: white;
   transition: all 0.3s cubic-bezier(0.31, -0.105, 0.43, 1.4);
   border: none;
   display: flex;
@@ -27,17 +29,21 @@ const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
     0px 6px 30px 5px rgba(33, 33, 33, 0.08),
     0px 6px 10px -5px rgba(33, 33, 33, 0.04);
 
-  span {
-    position: absolute;
+  span,
+  div {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
     transition: transform 0.16s linear 0s, opacity 0.08s linear 0s;
-    width: 32px;
-    height: 32px;
     user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
 
     svg {
+      width: 32px;
+      height: 32px;
       path {
         fill: ${({ accentColor }) => getColorBasedOnSaturation(accentColor)};
       }
@@ -52,22 +58,18 @@ const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
   &:active {
     transform: scale(0.8);
   }
-
-  svg {
-    path {
-      fill: ${({ accentColor }) => getColorBasedOnSaturation(accentColor)};
-    }
-  }
 `;
 
 const StyledWidgetIcon = styled.span<{ isOpen: boolean }>`
   ${({ isOpen }) => {
     return isOpen
       ? css`
+          position: absolute;
           opacity: 0;
           transform: rotate(30deg) scale(0);
         `
       : css`
+          position: absolute;
           opacity: 1;
           transform: rotate(0deg);
         `;
@@ -86,6 +88,17 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
   }}
 `;
 
+const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+`;
+
 export interface ToggleButtonProps {
   onClick: () => void;
   accentColor: string;
@@ -93,6 +106,10 @@ export interface ToggleButtonProps {
 }
 
 const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
+  const { botStyle } = useWidgetSetting();
+
+  const toggleButtonImg = botStyle.toggleButtonUrl;
+
   return (
     <StyledWidgetButtonWrapper
       id={elementIds.widgetToggleButton}
@@ -101,14 +118,43 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
       accentColor={accentColor}
     >
       <StyledWidgetIcon isOpen={isOpen}>
-        <ChatBotIcon />
+        <WidgetIcon url={toggleButtonImg} />
       </StyledWidgetIcon>
       <StyledArrowIcon isOpen={isOpen}>
-        <ArrowDownIcon />
+        <ChevronDownIcon />
       </StyledArrowIcon>
     </StyledWidgetButtonWrapper>
   );
 };
+
+function WidgetIcon(props: { url?: string }) {
+  const { url } = props;
+  const [svg, setSVG] = useState<string>('');
+
+  useLayoutEffect(() => {
+    if (url && url.endsWith('.svg')) {
+      fetch(url)
+        .then((res) => res.text())
+        .then((svg) => setSVG(DOMPurify.sanitize(svg)));
+    }
+  }, [url]);
+
+  if (url) {
+    if (url.endsWith('.svg')) {
+      return <div dangerouslySetInnerHTML={{ __html: svg }} />;
+    } else {
+      return (
+        <Img
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          src={url}
+          alt="widget-toggle-button"
+        />
+      );
+    }
+  }
+
+  return <BotOutlinedIcon />;
+}
 
 export default function WidgetToggleButton() {
   const { botStyle } = useWidgetSetting();

@@ -5,23 +5,23 @@ import { StyleSheetManager, ThemeProvider } from 'styled-components';
 import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
-import { generateCSSVariables } from '../colors';
+import { generateCSSVariables } from '../../colors';
 import {
   ConstantStateProvider,
   useConstantState,
-} from '../context/ConstantContext';
+} from '../../context/ConstantContext';
 import {
   useWidgetSession,
   useWidgetSetting,
   WidgetSettingProvider,
-} from '../context/WidgetSettingContext';
+} from '../../context/WidgetSettingContext';
 import {
   useWidgetState,
   WidgetStateProvider,
-} from '../context/WidgetStateContext';
-import { useStyledComponentsTarget } from '../hooks/useStyledComponentsTarget';
-import { getTheme } from '../theme';
-import { isDashboardPreview } from '../utils';
+} from '../../context/WidgetStateContext';
+import { useStyledComponentsTarget } from '../../hooks/useStyledComponentsTarget';
+import { getTheme } from '../../theme';
+import { isDashboardPreview } from '../../utils';
 
 const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
 

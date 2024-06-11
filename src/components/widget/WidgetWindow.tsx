@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { WIDGET_WINDOW_Z_INDEX, elementIds } from '../const';
-import { useConstantState } from '../context/ConstantContext';
-import { useWidgetState } from '../context/WidgetStateContext';
-import CloseIcon from '../icons/ic-widget-close.svg';
-import CollapseIcon from '../icons/icon-collapse.svg';
-import ExpandIcon from '../icons/icon-expand.svg';
+import { WIDGET_WINDOW_Z_INDEX, elementIds } from '../../const';
+import { useConstantState } from '../../context/ConstantContext';
+import { useWidgetState } from '../../context/WidgetStateContext';
+import CloseIcon from '../../icons/ic-widget-close.svg';
+import CollapseIcon from '../../icons/icon-collapse.svg';
+import ExpandIcon from '../../icons/icon-expand.svg';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
