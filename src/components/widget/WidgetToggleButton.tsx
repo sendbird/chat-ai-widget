@@ -1,5 +1,3 @@
-import DOMPurify from 'dompurify';
-import { useLayoutEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../../colors';
@@ -47,6 +45,25 @@ const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
         fill: ${({ accentColor }) => getColorBasedOnSaturation(accentColor)};
       }
     }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-drag: none;
+      &[data-svg='true'] {
+        width: 32px;
+        height: 32px;
+        filter: ${({ accentColor }) => {
+          return getColorBasedOnSaturation(accentColor) === '#ffffff'
+            ? 'grayscale(100%) brightness(2000%)'
+            : 'grayscale(100%) invert(100%) saturate(0%) brightness(0%) contrast(1000%)';
+        }};
+      }
+    }
   }
 
   &:hover {
@@ -89,17 +106,6 @@ const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
   }}
 `;
 
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-drag: none;
-`;
-
 export interface ToggleButtonProps {
   onClick: () => void;
   accentColor: string;
@@ -128,21 +134,12 @@ const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
 
 function WidgetIcon(props: { url?: string }) {
   const { url } = props;
-  const [svg, setSVG] = useState<string>('');
-
-  useLayoutEffect(() => {
-    if (url && url.endsWith('.svg')) {
-      fetch(url)
-        .then((res) => res.text())
-        .then((svg) => setSVG(DOMPurify.sanitize(svg)));
-    }
-  }, [url]);
 
   if (url) {
     if (url.endsWith('.svg')) {
-      return <div dangerouslySetInnerHTML={{ __html: svg }} />;
+      return <img src={url} alt={'widget-toggle-button'} data-svg={true} />;
     } else {
-      return <Img src={url} alt="widget-toggle-button" />;
+      return <img src={url} alt="widget-toggle-button" />;
     }
   }
 
