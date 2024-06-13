@@ -83,7 +83,7 @@ input:focus {
 
 .sendbird-word__url {
   font-weight: 700;
-  color: black;
+  color: inherit;
   text-decoration: underline;
 }
 
