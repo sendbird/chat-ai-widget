@@ -5,7 +5,7 @@ import BotMessageBottom from './BotMessageBottom';
 import SourceContainer, { Source } from './SourceContainer';
 import { CodeBlock } from './ui/CodeBlock';
 import { useConstantState } from '../context/ConstantContext';
-import { replaceWithRegex, Token, TokenType } from '../utils';
+import { asSafeURL, replaceWithRegex, Token, TokenType } from '../utils';
 
 const urlRegex =
   /(?:https?:\/\/|www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.(xn--)?[a-z]{2,20}\b([-a-zA-Z0-9@:%_+[\],.~#?&/=]*[-a-zA-Z0-9@:%_+~#?&/=])*/g;
@@ -105,7 +105,7 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
                       <a
                         key={`${match}-${index}`}
                         className="sendbird-word__url"
-                        href={groups[2]}
+                        href={asSafeURL(groups[2])}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -121,7 +121,7 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
                       <a
                         key={`${match}-${index}`}
                         className="sendbird-word__url"
-                        href={match}
+                        href={asSafeURL(match)}
                         target="_blank"
                         rel="noreferrer"
                       >
