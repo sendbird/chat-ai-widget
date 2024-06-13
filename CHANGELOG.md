@@ -1,3 +1,7 @@
+## [1.6.4] (Jun 13, 2024)
+### Fix:
+- Fixed an issue where the link text color did not change according to the theme.
+
 ## [1.6.3] (Jun 11, 2024)
 ### Fix:
 - Fixed the positioning of the scroll-to-bottom button.
