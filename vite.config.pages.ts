@@ -14,7 +14,7 @@ export default defineConfig({
     }),
   ],
   // to point to correct path for gh-pages
-  base: '/chat-ai-widget',
+  base: '/chat-ai-widget-file-msg-demo',
   resolve: {
     alias: [
       {
