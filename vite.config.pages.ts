@@ -1,10 +1,18 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
-import path from "node:path";
+import path from 'node:path';
 
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [
+    react(),
+    svgr({
+      include: '**/*.svg',
+      svgrOptions: {
+        exportType: 'default',
+      },
+    }),
+  ],
   // to point to correct path for gh-pages
   base: '/chat-ai-widget',
   resolve: {

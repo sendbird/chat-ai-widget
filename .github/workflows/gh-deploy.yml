@@ -2,11 +2,23 @@ name: Deploy Github pages
 
 on:
   push:
-    branches:
-      - develop
+    branches: ["develop"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -27,11 +39,12 @@ jobs:
           cp .env .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production
           yarn build:pages
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: dist # The folder the action should deploy.
-          clean: true # Automatically remove deleted files from the commit
-          commit-message: Deploy to gh-pages 🚀
+          path: 'dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
