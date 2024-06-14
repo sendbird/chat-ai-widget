@@ -21,7 +21,6 @@ import { useWidgetSession } from '../context/WidgetSettingContext';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
 import {
-  isFormMessage,
   isLastMessageInStreaming,
   isLocalMessageCustomType,
   isSentBy,
@@ -106,13 +105,14 @@ export default function CustomMessage(props: Props) {
 
   // Sent by bot user
   if (isSentBy(message, botUserId)) {
-    if (isFormMessage(message)) {
-      const forms = message.extendedMessagePayload.forms;
+    if (Array.isArray(message.forms) && message.forms.length > 0) {
       return (
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}
-          bodyComponent={<FormMessage form={forms[0]} message={message} />}
+          bodyComponent={
+            <FormMessage form={message.forms[0]} message={message} />
+          }
           createdAt={message.createdAt}
         />
       );

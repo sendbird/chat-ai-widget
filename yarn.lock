@@ -3068,9 +3068,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sendbird/chat@npm:^4.12.7":
+"@sendbird/chat@file:/Users/liamcho/GitHub/chat-js/dist::locator=%40sendbird%2Fuikit-react%40workspace%3Apackages%2Fuikit":
   version: 4.12.7
-  resolution: "@sendbird/chat@npm:4.12.7"
+  resolution: "@sendbird/chat@file:/Users/liamcho/GitHub/chat-js/dist#/Users/liamcho/GitHub/chat-js/dist::hash=f99eed&locator=%40sendbird%2Fuikit-react%40workspace%3Apackages%2Fuikit"
   peerDependencies:
     "@react-native-async-storage/async-storage": ^1.17.6
     react-native-mmkv: ^2.12.2
@@ -3079,7 +3079,7 @@ __metadata:
       optional: true
     react-native-mmkv:
       optional: true
-  checksum: 10c0/c10a306e778ea3196fa6a0668a0d5d85c9e96caeacdb1f3c92a3cf036a089d1b90f07bc524d5f42f656bc548df28be50c1135505729d1d57ebe042c19e8420b4
+  checksum: 10c0/515f193219fefa72396875a54613323edae4ba80633fd9cd3e8861013c8cf03f3b4476915f71494fe8e3a18f994f307c2ddeb34822379adf3f876a86828a6861
   languageName: node
   linkType: hard
 
@@ -3123,7 +3123,7 @@ __metadata:
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
     "@rollup/plugin-replace": "npm:^5.0.4"
     "@rollup/plugin-typescript": "npm:^11.1.5"
-    "@sendbird/chat": "npm:^4.12.7"
+    "@sendbird/chat": "file:/Users/liamcho/GitHub/chat-js/dist"
     "@sendbird/react-uikit-message-template-view": "npm:0.0.1-alpha.73"
     "@sendbird/uikit-tools": "npm:0.0.1-alpha.73"
     "@storybook/addon-essentials": "npm:^8.0.9"

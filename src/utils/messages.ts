@@ -1,8 +1,5 @@
 import { AdminMessage, BaseMessage, UserMessage } from '@sendbird/chat/message';
 
-import { CoreMessageType } from '@uikit/utils';
-
-import { Form } from '../components/FormMessage';
 import {
   LOCAL_MESSAGE_CUSTOM_TYPE,
   type SuggestedMessageContent,
@@ -96,16 +93,6 @@ export function getBotWelcomeMessages(
     0,
     firstUserMessage ? messages.indexOf(firstUserMessage) : -1
   );
-}
-
-export function isFormMessage(
-  message: CoreMessageType
-): message is CoreMessageType & {
-  extendedMessagePayload: {
-    forms: Form[];
-  };
-} {
-  return Array.isArray(message.extendedMessagePayload?.forms);
 }
 
 export function isSentBy(message: BaseMessage, userId?: string | null) {

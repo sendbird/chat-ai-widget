@@ -1,3 +1,4 @@
+import { Form } from '@sendbird/chat/message';
 import { useCallback, useState, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -7,21 +8,6 @@ import { CoreMessageType } from '@uikit/utils';
 
 import Input from './FormInput';
 
-interface Field {
-  key: string;
-  title: string;
-  placeholder: string;
-  required: boolean;
-  regex: RegExp;
-  input_type: string;
-}
-
-export interface Form {
-  key: string;
-  fields: Field[];
-  /** submitted data */
-  data: Record<string, string>;
-}
 interface Props {
   message: CoreMessageType;
   form: Form;
@@ -50,10 +36,8 @@ const SubmitButton = styled(Button)`
 `;
 
 export default function FormMessage(props: Props) {
-  const {
-    message,
-    form: { fields, key: formKey, data: submittedData },
-  } = props;
+  const { message, form } = props;
+  const { fields, key: formKey, answers: submittedData } = form;
 
   const initialFormValues: FormValues = {};
   fields.forEach(({ key, required }) => {
@@ -69,9 +53,10 @@ export default function FormMessage(props: Props) {
   useEffect(() => {
     if (submittedData) {
       const updatedFormValues = {} as FormValues;
-      Object.entries(formValues).forEach(([key, value]) => {
+      Object.entries(formValues).forEach(([key, formValue]) => {
         updatedFormValues[key] = {
-          ...value,
+          ...formValue,
+          value: submittedData?.[key],
           isValid: submittedData?.[key] != null && submittedData[key] !== '',
         };
       });
@@ -111,7 +96,6 @@ export default function FormMessage(props: Props) {
         },
         {} as Record<string, string>
       );
-
       await message.submitForm({
         formId: formKey,
         answers,
@@ -127,12 +111,14 @@ export default function FormMessage(props: Props) {
 
   return (
     <Root>
-      {fields.map(
-        ({ title, placeholder, key, required, regex, input_type }) => (
+      {fields.map((field) => {
+        const { title, placeholder, key, required, inputType } = field;
+        return (
           <Input
             key={key}
-            type={input_type}
+            type={inputType}
             placeHolder={placeholder}
+            value={formValues[key].value}
             hasError={formValues[key].hasError}
             isValid={formValues[key].isValid}
             disabled={submittedData != null}
@@ -140,17 +126,15 @@ export default function FormMessage(props: Props) {
             required={required}
             onChange={(event) => {
               const value = event.target.value;
-              const hasError = regex
-                ? regex.test(value)
-                : required && value === '';
+              const hasError = !field.isValid(String(value));
               setInputValue(() => ({
                 ...formValues,
                 [key]: { ...formValues[key], value, hasError },
               }));
             }}
           />
-        )
-      )}
+        );
+      })}
       {!allRequiredFieldsValid && (
         <SubmitButton onClick={handleSubmit}>
           <Label

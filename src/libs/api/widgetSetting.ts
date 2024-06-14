@@ -62,15 +62,14 @@ export async function getWidgetSetting({
 }: Params): Promise<Response> {
   // const headers = sessionToken ? { 'Session-Key': sessionToken } : undefined;
   const params = asQueryParams({
-    create_user_and_channel: asBoolString(createUserAndChannel),
-    create_channel: asBoolString(createChannel),
+    create_user_and_channel: asBoolString(false),
+    create_channel: asBoolString(false),
     user_id: userId,
   });
   const path = resolvePath(
     host,
     `/v3/bots/${botId}/${appId}/widget_setting?${params}`
   );
-
   const response = await fetch(path);
   const result = await response.json();
   if (!response.ok) {
