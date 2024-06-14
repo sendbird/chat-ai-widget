@@ -49,7 +49,7 @@ export const useBlockWhileBotResponding = ({
       !lastMessage
     )
       return;
-    if (isSentBy(lastMessage, currentUserId)) {
+    if (isSentBy(lastMessage, currentUserId) && lastMessage.isUserMessage()) {
       if (lastMessage.sendingStatus === 'pending') {
         setTimerAndBlock();
       } else if (lastMessage.sendingStatus === 'failed') {

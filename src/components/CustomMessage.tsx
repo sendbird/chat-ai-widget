@@ -6,11 +6,12 @@ import { CoreMessageType, isVideoMessage } from '@uikit/utils';
 import AdminMessage from './AdminMessage';
 import BotMessageFeedback from './BotMessageFeedback';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
-import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
 import FormMessage from './FormMessage';
+import { OutgoingFileMessage } from './messages/outgoing/OutgoingFileMessage';
+import { OutgoingUserMessage } from './messages/outgoing/OutgoingUserMessage';
 import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
@@ -95,12 +96,15 @@ export default function CustomMessage(props: Props) {
        */
       return (
         <div>
-          <CurrentUserMessage message={message} />
+          <OutgoingUserMessage message={message} />
           {isWaitingForBotReply && (
             <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />
           )}
         </div>
       );
+    }
+    if (message.isFileMessage()) {
+      return <OutgoingFileMessage message={message} />;
     }
   }
 

@@ -52,6 +52,15 @@ const Chat = () => {
         data: JSON.stringify({ ai_attrs: aiAttributesRef.current }),
       };
     } else {
+      if ('file' in params && params.file instanceof Blob) {
+        if (
+          params.file.type !== 'image/png' &&
+          params.file.type !== 'image/jpeg'
+        ) {
+          throw new Error('Invalid file type');
+        }
+      }
+
       return params;
     }
   };

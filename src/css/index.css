@@ -52,6 +52,11 @@
 .sendbird-message-input .sendbird-message-input-text-field {
   overflow-y: hidden;
 }
+.sendbird-message-input .sendbird-message-input--attach.sendbird-message-input--attach {
+  position: relative;
+  right: 0;
+  bottom: 0;
+}
 
 .sendbird-modal__content {
   width: calc(100% - 20px);
