@@ -1,15 +1,24 @@
 import { FileMessage, SendingStatus } from '@sendbird/chat/message';
 import { useMemo, useRef } from 'react';
-import { useTheme } from 'styled-components';
+import styled from 'styled-components';
 
 import OutgoingContainer from './OutgoingContainer';
 
 type Props = {
   message: FileMessage;
 };
+
+const Img = styled.img(({ theme }) => ({
+  backgroundColor: theme.textColor.outgoingMessage,
+  borderRadius: 12,
+  width: 280,
+  height: 200,
+  borderWidth: 1,
+  objectFit: 'cover',
+}));
+
 export const OutgoingFileMessage = ({ message }: Props) => {
   const localUrl = useRef<null | string>(null);
-  const theme = useTheme();
 
   const fileUrl = useMemo(() => {
     if (
@@ -26,18 +35,7 @@ export const OutgoingFileMessage = ({ message }: Props) => {
   }, [message.sendingStatus]);
   return (
     <OutgoingContainer message={message}>
-      <img
-        alt={message.name}
-        style={{
-          backgroundColor: theme.bgColor.outgoingMessage,
-          borderRadius: 12,
-          width: '100%',
-          height: 200,
-          borderWidth: 1,
-          objectFit: 'cover',
-        }}
-        src={fileUrl}
-      />
+      <Img alt={message.name} src={fileUrl} />
     </OutgoingContainer>
   );
 };
