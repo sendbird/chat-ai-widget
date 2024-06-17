@@ -7,4 +7,6 @@ export {
   clearCache,
 } from './libs/storage/widgetSessionCache';
 
+export { WidgetButton } from './components/ui/WidgetButton';
+
 export type * from './types';
