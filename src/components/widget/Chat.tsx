@@ -1,4 +1,4 @@
-import '../css/index.css';
+import '../../css/index.css';
 
 import {
   FileMessageCreateParams,
@@ -9,13 +9,13 @@ import { useEffect, useRef } from 'react';
 import { useSendbirdStateContext } from '@uikit/index';
 import { GroupChannelProvider } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
-import { CustomChannelComponent } from './CustomChannelComponent';
-import { useConstantState } from '../context/ConstantContext';
+import { useConstantState } from '../../context/ConstantContext';
 import {
   useWidgetSession,
   useWidgetSetting,
-} from '../context/WidgetSettingContext';
-import useWidgetButtonActivityTimeout from '../hooks/useWidgetButtonActivityTimeout';
+} from '../../context/WidgetSettingContext';
+import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
+import { CustomChannelComponent } from '../CustomChannelComponent';
 
 const Chat = () => {
   useWidgetButtonActivityTimeout();

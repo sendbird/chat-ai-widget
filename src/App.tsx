@@ -2,8 +2,8 @@ import React from 'react';
 
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
-import ChatAiWidget from './components/ChatAiWidget'; //import { ChatAiWidget } from "@sendbird/chat-ai-widget";
-import { ToggleButtonProps } from './components/WidgetToggleButton';
+import ChatAiWidget from './components/widget/ChatAiWidget';
+import { ToggleButtonProps } from './components/widget/WidgetToggleButton';
 import { Constant } from './const';
 
 interface Props extends Omit<Partial<Constant>, 'stringSet'> {

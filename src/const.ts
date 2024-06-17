@@ -7,7 +7,7 @@ import React from 'react';
 
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
-import type { ToggleButtonProps } from './components/WidgetToggleButton';
+import type { ToggleButtonProps } from './components/widget/WidgetToggleButton';
 import { BotStyle } from './context/WidgetSettingContext';
 import RefreshIcon from './icons/refresh-icon.svg';
 import { SendbirdChatAICallbacks } from './types';
