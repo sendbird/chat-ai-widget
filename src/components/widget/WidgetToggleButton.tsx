@@ -32,6 +32,9 @@ export default function WidgetToggleButton() {
   }
 
   return (
-    <FloatingWidgetButton {...toggleButtonProps} imageUrl={botStyle.toggleButtonUrl} />
+    <FloatingWidgetButton
+      {...toggleButtonProps}
+      imageUrl={botStyle.toggleButtonUrl}
+    />
   );
 }
