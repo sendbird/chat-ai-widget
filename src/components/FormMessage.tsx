@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Button from '@uikit/ui/Button';
 import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
+import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
 
 import Input from './FormInput';
@@ -38,6 +39,7 @@ const SubmitButton = styled(Button)`
 export default function FormMessage(props: Props) {
   const { message, form } = props;
   const { fields, key: formKey, answers: submittedData } = form;
+  const [submitFailed, setSubmitFailed] = useState(false);
 
   const initialFormValues: FormValues = {};
   fields.forEach(({ key, required }) => {
@@ -101,6 +103,7 @@ export default function FormMessage(props: Props) {
         answers,
       });
     } catch (error) {
+      setSubmitFailed(true);
       console.error(error);
     }
   }, [formValues, message.messageId, message.submitForm, formKey]);
@@ -144,6 +147,14 @@ export default function FormMessage(props: Props) {
             Submit
           </Label>
         </SubmitButton>
+      )}
+      {submitFailed && (
+        <MessageFeedbackFailedModal
+          text={'Submit failed.'}
+          onCancel={() => {
+            setSubmitFailed(false);
+          }}
+        />
       )}
     </Root>
   );
