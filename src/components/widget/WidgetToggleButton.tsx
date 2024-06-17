@@ -1,165 +1,40 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { getColorBasedOnSaturation } from '../../colors';
-import { elementIds, MAX_Z_INDEX } from '../../const';
+import { MAX_Z_INDEX } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetSetting } from '../../context/WidgetSettingContext';
 import { useWidgetState } from '../../context/WidgetStateContext';
-import BotOutlinedIcon from '../../icons/bot-outlined.svg';
-import ChevronDownIcon from '../../icons/chevron-down.svg';
+import { WidgetButton, WidgetButtonProps } from '../ui/WidgetButton';
 
-const StyledWidgetButtonWrapper = styled.button<{ accentColor: string }>`
-  padding: 0;
-  position: fixed;
-  z-index: ${MAX_Z_INDEX};
-  bottom: 24px;
-  right: 24px;
-  width: 48px;
-  height: 48px;
-  background: ${({ accentColor }) => accentColor};
-  border-radius: 50%;
-  transition: all 0.3s cubic-bezier(0.31, -0.105, 0.43, 1.4);
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 16px 24px 2px rgba(33, 33, 33, 0.12),
-    0px 6px 30px 5px rgba(33, 33, 33, 0.08),
-    0px 6px 10px -5px rgba(33, 33, 33, 0.04);
-
-  span {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    overflow: hidden;
-    transition: transform 0.16s linear 0s, opacity 0.08s linear 0s;
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-      width: 32px;
-      height: 32px;
-      path {
-        fill: ${({ accentColor }) => getColorBasedOnSaturation(accentColor)};
-      }
-    }
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      user-select: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      -webkit-user-drag: none;
-      &[data-svg='true'] {
-        width: 32px;
-        height: 32px;
-        filter: ${({ accentColor }) => {
-          return getColorBasedOnSaturation(accentColor) === '#ffffff'
-            ? 'grayscale(100%) brightness(2000%)'
-            : 'grayscale(100%) invert(100%) saturate(0%) brightness(0%) contrast(1000%)';
-        }};
-      }
-    }
-  }
-
-  &:hover {
-    transition: transform 250ms cubic-bezier(0.33, 0, 0, 1);
-    transform: scale(1.1);
-  }
-
-  &:active {
-    transform: scale(0.8);
+const FloatingWidgetButton = styled(WidgetButton)`
+  && {
+    position: fixed;
+    z-index: ${MAX_Z_INDEX};
+    bottom: 24px;
+    right: 24px;
   }
 `;
 
-const StyledWidgetIcon = styled.span<{ isOpen: boolean }>`
-  ${({ isOpen }) => {
-    return isOpen
-      ? css`
-          position: absolute;
-          opacity: 0;
-          transform: rotate(30deg) scale(0);
-        `
-      : css`
-          position: absolute;
-          opacity: 1;
-          transform: rotate(0deg);
-        `;
-  }}
-`;
-
-const StyledArrowIcon = styled.span<{ isOpen: boolean }>`
-  ${({ isOpen }) => {
-    return isOpen
-      ? css`
-          position: absolute;
-          transform: rotate(0deg);
-        `
-      : css`
-          position: absolute;
-          transform: rotate(-90deg) scale(0);
-        `;
-  }}
-`;
-
-export interface ToggleButtonProps {
-  onClick: () => void;
-  accentColor: string;
-  isOpen: boolean;
-}
-
-const StyledButton = ({ onClick, accentColor, isOpen }: ToggleButtonProps) => {
-  const { botStyle } = useWidgetSetting();
-
-  return (
-    <StyledWidgetButtonWrapper
-      id={elementIds.widgetToggleButton}
-      aria-label="Widget toggle button"
-      onClick={onClick}
-      accentColor={accentColor}
-    >
-      <StyledWidgetIcon isOpen={isOpen}>
-        <WidgetIcon url={botStyle.toggleButtonUrl} />
-      </StyledWidgetIcon>
-      <StyledArrowIcon isOpen={isOpen}>
-        <ChevronDownIcon />
-      </StyledArrowIcon>
-    </StyledWidgetButtonWrapper>
-  );
-};
-
-function WidgetIcon(props: { url?: string }) {
-  const { url } = props;
-
-  if (url) {
-    if (url.endsWith('.svg')) {
-      return <img src={url} alt={'widget-toggle-button'} data-svg={true} />;
-    } else {
-      return <img src={url} alt="widget-toggle-button" />;
-    }
-  }
-
-  return <BotOutlinedIcon />;
-}
-
+export type ToggleButtonProps = Omit<WidgetButtonProps, 'imageUrl'>;
 export default function WidgetToggleButton() {
   const { botStyle } = useWidgetSetting();
   const { renderWidgetToggleButton } = useConstantState();
   const { isOpen, setIsOpen } = useWidgetState();
 
-  const toggleButtonProps = {
+  const toggleButtonProps: ToggleButtonProps = {
+    isOpen,
     onClick: () => setIsOpen(!isOpen),
     accentColor: botStyle.accentColor,
-    isOpen,
   };
 
   if (typeof renderWidgetToggleButton === 'function') {
     return renderWidgetToggleButton(toggleButtonProps);
   }
 
-  return <StyledButton {...toggleButtonProps} />;
+  return (
+    <FloatingWidgetButton
+      {...toggleButtonProps}
+      imageUrl={botStyle.toggleButtonUrl}
+    />
+  );
 }
