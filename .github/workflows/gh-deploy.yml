@@ -36,8 +36,13 @@ jobs:
       - name: Install and Build 🔧
         run: |
           yarn install
-          cp .env .env.production
+          rm .env
+          touch .env.production
           echo "VITE_CHAT_AI_WIDGET_KEY=${{ secrets.chat_ai_widget_key }}" >> .env.production
+          echo "VITE_CHAT_WIDGET_APP_ID=${{ secrets.app_id }}" >> .env.production
+          echo "VITE_CHAT_WIDGET_BOT_ID=${{ secrets.bot_id }}" >> .env.production
+          echo "VITE_API_HOST=${{ secrets.api_host }}" >> .env.production
+          echo "VITE_WS_HOST=${{ secrets.ws_host }}" >> .env.production
           yarn build:pages
       - name: Setup Pages
         uses: actions/configure-pages@v5

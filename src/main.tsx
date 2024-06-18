@@ -8,6 +8,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <App
       applicationId={import.meta.env.VITE_CHAT_WIDGET_APP_ID}
       botId={import.meta.env.VITE_CHAT_WIDGET_BOT_ID}
+      apiHost={import.meta.env.VITE_API_HOST}
+      wsHost={import.meta.env.VITE_WS_HOST}
     />
   </React.StrictMode>
 );
