@@ -35,9 +35,14 @@ export interface BotStyle {
   autoOpen: boolean;
 }
 
+export interface BotConfigs {
+  allowImageProcessing: boolean;
+}
+
 type Context = {
   initialized: boolean;
   botStyle: BotStyle;
+  botConfigs: BotConfigs;
   widgetSession: WidgetSession | null;
   initManualSession: (sdk: SendbirdChatWith<[GroupChannelModule]>) => void;
   resetSession: () => Promise<void>;
@@ -76,6 +81,9 @@ export const WidgetSettingProvider = ({
     botMessageBGColor: '#EEEEEE',
     autoOpen: false,
   });
+  const [botConfigs, setBotConfigs] = useState<BotConfigs>({
+    allowImageProcessing: false,
+  });
   const [widgetSession, setWidgetSession] = useState<WidgetSession | null>(
     null
   );
@@ -111,6 +119,7 @@ export const WidgetSettingProvider = ({
       botId,
       userId: strategy === 'manual' ? injectedUserId : cachedSession?.userId,
     })
+      .onGetConfigs((configs) => setBotConfigs(configs))
       .onGetBotStyle((style) => setBotStyle(style))
       .onAutoNonCached(({ user, channel }) => {
         const session = {
@@ -217,6 +226,7 @@ export const WidgetSettingProvider = ({
             botStudioEditProps?.styles?.primaryColor ??
             botStyle.accentColor,
         },
+        botConfigs,
         widgetSession,
         initManualSession,
         resetSession: () => initSessionByStrategy(sessionStrategy, true),

@@ -1,6 +1,7 @@
 import { resolvePath } from '../../utils';
 
 type APIResponse = {
+  allow_image_processing?: boolean;
   bot_style: {
     color: {
       theme: 'light' | 'dark';
@@ -32,6 +33,9 @@ type Params = {
 };
 
 type Response = {
+  configs: {
+    allowImageProcessing: boolean;
+  };
   botStyle: {
     theme: 'light' | 'dark';
     accentColor: string;
@@ -79,6 +83,9 @@ export async function getWidgetSetting({
 
   const json = result as APIResponse;
   return {
+    configs: {
+      allowImageProcessing: json.allow_image_processing ?? false,
+    },
     botStyle: {
       theme: json.bot_style.color.theme,
       accentColor: json.bot_style.color.accent_color,
@@ -123,6 +130,7 @@ export const widgetSettingHandler = (
   params: Omit<Params, 'createChannel' | 'createUserAndChannel'>
 ) => {
   type Callbacks = {
+    Configs: (config: Response['configs']) => void;
     BotStyle: (botStyle: Response['botStyle']) => void;
     AutoNonCached: (response: {
       user: ResponseUser;
@@ -134,12 +142,16 @@ export const widgetSettingHandler = (
   };
 
   const callbacks: {
+    onGetConfigs: Callbacks['Configs'];
     onGetBotStyle: Callbacks['BotStyle'];
     onAutoNonCached: Callbacks['AutoNonCached'];
     onAutoCached: Callbacks['AutoCached'];
     onManualNonCached: Callbacks['ManualNonCached'];
     onManualCached: Callbacks['ManualCached'];
   } = {
+    onGetConfigs: () => {
+      /* empty */
+    },
     onGetBotStyle: () => {
       /* empty */
     },
@@ -158,6 +170,10 @@ export const widgetSettingHandler = (
   };
 
   const handlers = {
+    onGetConfigs: (callback: Callbacks['Configs']) => {
+      callbacks.onGetConfigs = callback;
+      return handlers;
+    },
     onGetBotStyle: (callback: Callbacks['BotStyle']) => {
       callbacks.onGetBotStyle = callback;
       return handlers;
@@ -186,6 +202,7 @@ export const widgetSettingHandler = (
         ...getParamsByStrategy(strategy, useCachedSession, params),
       });
 
+      callbacks.onGetConfigs(response.configs);
       callbacks.onGetBotStyle(response.botStyle);
       if (strategy === 'auto') handleAutoStrategy(response);
       if (strategy === 'manual') handleManualStrategy(response);
