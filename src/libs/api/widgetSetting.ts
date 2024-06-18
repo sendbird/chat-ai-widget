@@ -7,7 +7,7 @@ type APIResponse = {
       accent_color: string;
       bot_message_color: string;
     };
-    toggle_button_url?: string;
+    toggle_button_url?: string | null;
     /** @deprecated We no longer use the autoOpen value from the dashboard. **/
     auto_open: boolean;
   };
@@ -83,7 +83,7 @@ export async function getWidgetSetting({
       theme: json.bot_style.color.theme,
       accentColor: json.bot_style.color.accent_color,
       botMessageBGColor: json.bot_style.color.bot_message_color,
-      toggleButtonUrl: json.bot_style.toggle_button_url,
+      toggleButtonUrl: json.bot_style.toggle_button_url ?? undefined,
       /**
        * NOTE: autoOpen can no longer be configured from the dashboard, so customers will no longer be able to disable autoOpen.
        *  Therefore, set it to false and remove it so that it is not used.
