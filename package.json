@@ -32,12 +32,16 @@
     "test": "vitest"
   },
   "dependencies": {
+    "katex": "^0.16.10",
+    "react-latex": "^2.0.0",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@types/dompurify": "^3.0.5",
+    "@types/katex": "^0",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
+    "@types/react-latex": "^2",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",

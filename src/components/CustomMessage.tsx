@@ -104,7 +104,14 @@ export default function CustomMessage(props: Props) {
       );
     }
     if (message.isFileMessage()) {
-      return <OutgoingFileMessage message={message} />;
+      return (
+        <div>
+          <OutgoingFileMessage message={message} />
+          {isWaitingForBotReply && (
+            <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />
+          )}
+        </div>
+      );
     }
   }
 

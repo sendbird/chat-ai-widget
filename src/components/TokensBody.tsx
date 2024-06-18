@@ -6,6 +6,7 @@ import SourceContainer, { Source } from './SourceContainer';
 import { CodeBlock } from './ui/CodeBlock';
 import { useConstantState } from '../context/ConstantContext';
 import { asSafeURL, replaceWithRegex, Token, TokenType } from '../utils';
+import Latex from 'react-latex';
 
 const urlRegex =
   /(?:https?:\/\/|www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.(xn--)?[a-z]{2,20}\b([-a-zA-Z0-9@:%_+[\],.~#?&/=]*[-a-zA-Z0-9@:%_+~#?&/=])*/g;
@@ -128,6 +129,12 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
                         {match}
                       </a>
                     );
+                  },
+                },
+                {
+                  regex: /.+/g,
+                  replacer({ match, index }) {
+                    return <Latex key={`${match}-${index}`}>{match}</Latex>;
                   },
                 },
               ]}

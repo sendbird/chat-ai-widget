@@ -3027,8 +3027,10 @@ __metadata:
   resolution: "@sendbird/chat-ai-widget@workspace:."
   dependencies:
     "@types/dompurify": "npm:^3.0.5"
+    "@types/katex": "npm:^0"
     "@types/react": "npm:^18.0.37"
     "@types/react-dom": "npm:^18.0.11"
+    "@types/react-latex": "npm:^2"
     "@types/styled-components": "npm:^5.1.26"
     "@typescript-eslint/eslint-plugin": "npm:^5.60.1"
     "@typescript-eslint/parser": "npm:^5.60.1"
@@ -3044,10 +3046,12 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-styled-components-a11y: "npm:^2.1.32"
     jsdom: "npm:^24.1.0"
+    katex: "npm:^0.16.10"
     prettier: "npm:2.8.8"
     prettier-eslint: "npm:^15.0.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-latex: "npm:^2.0.0"
     rollup-plugin-terser: "npm:^7.0.2"
     rollup-plugin-visualizer: "npm:^5.12.0"
     styled-components: "npm:^5.3.11"
@@ -4532,6 +4536,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/katex@npm:^0":
+  version: 0.16.7
+  resolution: "@types/katex@npm:0.16.7"
+  checksum: 10c0/68dcb9f68a90513ec78ca0196a142e15c2a2c270b1520d752bafd47a99207115085a64087b50140359017d7e9c870b3c68e7e4d36668c9e348a9ef0c48919b5a
+  languageName: node
+  linkType: hard
+
 "@types/liftoff@npm:^2.5.1":
   version: 2.5.1
   resolution: "@types/liftoff@npm:2.5.1"
@@ -4667,6 +4678,15 @@ __metadata:
   dependencies:
     "@types/react": "npm:*"
   checksum: 10c0/6c90d2ed72c5a0e440d2c75d99287e4b5df3e7b011838cdc03ae5cd518ab52164d86990e73246b9d812eaf02ec351d74e3b4f5bd325bf341e13bf980392fd53b
+  languageName: node
+  linkType: hard
+
+"@types/react-latex@npm:^2":
+  version: 2.0.3
+  resolution: "@types/react-latex@npm:2.0.3"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10c0/48aaf199aba60a77332e36ca23e9432e66789292e7948c7ea66ed649868b42eb1f89404667fe7d8d69b7cf8a1eff330c9f14a63f36a55ca3d80c00fe56c78926
   languageName: node
   linkType: hard
 
@@ -6832,7 +6852,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^2.20.0":
+"commander@npm:^2.19.0, commander@npm:^2.20.0":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: 10c0/74c781a5248c2402a0a3e966a0a2bba3c054aad144f5c023364be83265e796b20565aa9feff624132ff629aa64e16999fa40a743c10c12f7c61e96a794b99288
@@ -6850,6 +6870,13 @@ __metadata:
   version: 7.2.0
   resolution: "commander@npm:7.2.0"
   checksum: 10c0/8d690ff13b0356df7e0ebbe6c59b4712f754f4b724d4f473d3cc5b3fdcf978e3a5dc3078717858a2ceb50b0f84d0660a7f22a96cdc50fb877d0c9bb31593d23a
+  languageName: node
+  linkType: hard
+
+"commander@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "commander@npm:8.3.0"
+  checksum: 10c0/8b043bb8322ea1c39664a1598a95e0495bfe4ca2fad0d84a92d7d1d8d213e2a155b441d2470c8e08de7c4a28cf2bc6e169211c49e1b21d9f7edc6ae4d9356060
   languageName: node
   linkType: hard
 
@@ -11955,6 +11982,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"katex@npm:^0.10.2":
+  version: 0.10.2
+  resolution: "katex@npm:0.10.2"
+  dependencies:
+    commander: "npm:^2.19.0"
+  bin:
+    katex: cli.js
+  checksum: 10c0/1f8d54a41967478c97be8222021c3cc73db2df4084437015a8207b2f0277c46d179e1b184fbc910120103ffdea0ab6d01272c6700fa4e08f6ba2d8f6e8621111
+  languageName: node
+  linkType: hard
+
+"katex@npm:^0.16.10":
+  version: 0.16.10
+  resolution: "katex@npm:0.16.10"
+  dependencies:
+    commander: "npm:^8.3.0"
+  bin:
+    katex: cli.js
+  checksum: 10c0/b465213157e5245bbb31ff6563c33ae81807c06d6f2246325b3a2397497e8929a34eebbb262f5e0991ec00fbc0cc85f388246e6dfc38ec86c28d3e481cb70afa
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.5.3":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -14808,6 +14857,15 @@ __metadata:
   version: 18.3.1
   resolution: "react-is@npm:18.3.1"
   checksum: 10c0/f2f1e60010c683479e74c63f96b09fb41603527cd131a9959e2aee1e5a8b0caf270b365e5ca77d4a6b18aae659b60a86150bb3979073528877029b35aecd2072
+  languageName: node
+  linkType: hard
+
+"react-latex@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "react-latex@npm:2.0.0"
+  dependencies:
+    katex: "npm:^0.10.2"
+  checksum: 10c0/25ad9209d54246706fc308953374e05aa9500638b7c480f75a1a485da51e5ab90cdfdaee5b2d56efe09524923b7748b895b9296dd983f4e53a4dc5b7b4c1b161
   languageName: node
   linkType: hard
 

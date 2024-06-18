@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import 'katex/dist/katex.min.css';
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
 import Chat from './Chat';
