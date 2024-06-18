@@ -1,3 +1,12 @@
+## [1.6.5] (Jun 18, 2024)
+### Feat:
+- Added `botStudioEditProps.styles.toggleButtonUrl` to customize the toggle button image.
+- Exported `WidgetButton` component.
+
+### Fix:
+- Fixed the disabled placeholder for waiting suggested replies.
+- Fixed the issue where JavaScript would run when a link was ctrl + clicked.
+
 ## [1.6.4] (Jun 13, 2024)
 ### Fix:
 - Fixed an issue where the link text color did not change according to the theme.
