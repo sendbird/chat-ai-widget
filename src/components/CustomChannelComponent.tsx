@@ -249,7 +249,10 @@ export function CustomChannelComponent() {
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
         renderMessageInput={() => (
-          <MessageInputWrapper disabled={isMessageInputDisabled} />
+          <MessageInputWrapper
+            disabled={isMessageInputDisabled}
+            acceptableMimeTypes={['image/jpeg', 'image/png']}
+          />
         )}
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
