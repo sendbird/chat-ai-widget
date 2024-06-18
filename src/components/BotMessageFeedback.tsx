@@ -157,6 +157,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
         feedbackFailedText && (
           <MessageFeedbackFailedModal
             text={feedbackFailedText}
+            rootElementId={'aichatbot-widget-window'}
             onCancel={() => {
               setFeedbackFailedText('');
             }}

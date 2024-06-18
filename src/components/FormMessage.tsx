@@ -151,6 +151,7 @@ export default function FormMessage(props: Props) {
       {submitFailed && (
         <MessageFeedbackFailedModal
           text={'Submit failed.'}
+          rootElementId={'aichatbot-widget-window'}
           onCancel={() => {
             setSubmitFailed(false);
           }}
