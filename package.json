@@ -29,7 +29,7 @@
     "prettier:fix": "yarn prettier --write",
     "format": "yarn prettier:fix && yarn lint:fix",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "styled-components": "^5.3.11"
