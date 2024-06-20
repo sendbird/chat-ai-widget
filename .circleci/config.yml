@@ -60,6 +60,13 @@ jobs:
             - dist
   upload_to_s3_and_invalidate_cache:
     executor: ci-aws
+    parameters:
+      s3_bucket:
+        type: string
+      distribution_id:
+        type: string
+      role_arn:
+        type: string
     steps:
       - attach_workspace:
           at: .
@@ -67,27 +74,27 @@ jobs:
           profile-name: default
           configure-default-region: false
       - aws-cli/role-arn-setup:
-          profile-name: ci-web-prod
+          profile-name: ci-web
           source-profile: default
-          role-arn: $DASHBOARD_CI_ROLE_ARN
+          role-arn: << parameters.role_arn >>
       - aws-s3/sync:
           from: dist/
-          to: $S3_BUCKET
-          profile_name: ci-web-prod
+          to: << parameters.s3_bucket >>
+          profile_name: ci-web
       - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=0" --content-type application/javascript'
-          from: $S3_BUCKET/index.js
-          to: $S3_BUCKET/index.js
-          profile_name: ci-web-prod
+          from: << parameters.s3_bucket >>/index.js
+          to: << parameters.s3_bucket >>/index.js
+          profile_name: ci-web
       - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type application/javascript --recursive'
-          from: $S3_BUCKET/${CIRCLE_TAG}
-          to: $S3_BUCKET/${CIRCLE_TAG}
-          profile_name: ci-web-prod
+          from: << parameters.s3_bucket >>/${CIRCLE_TAG}
+          to: << parameters.s3_bucket >>/${CIRCLE_TAG}
+          profile_name: ci-web
       - aws-create-invalidation:
-          distribution-id: $DISTRIBUTION_ID
+          distribution-id: << parameters.distribution_id >>
           paths: '/index.js'
-          profile: ci-web-prod
+          profile: ci-web
 
 workflows:
   deploy_to_s3:
@@ -96,13 +103,33 @@ workflows:
           name: build
           filters: &only_version_tag_trigger
             tags:
-              only: /^v.*/
+              only: /^v\d+\.\d+\.\d+$/
             branches:
               ignore: /.*/
       - upload_to_s3_and_invalidate_cache:
           name: upload_to_s3_and_invalidate_cache
           filters: *only_version_tag_trigger
+          s3_bucket: $S3_BUCKET
+          distribution_id: $DISTRIBUTION_ID
+          role_arn: $ROLE_ARN
           requires:
             - build
+          context:
+            - circleci-dashboard-bot
+      - build:
+          name: build_staging
+          filters: &only_version_tag_trigger_staging
+            tags:
+              only: /^v\d+\.\d+\.\d+-staging(\.\d+)?$/
+            branches:
+              ignore: /.*/
+      - upload_to_s3_and_invalidate_cache:
+          name: upload_to_s3_and_invalidate_cache_staging
+          filters: *only_version_tag_trigger_staging
+          s3_bucket: $S3_BUCKET_STAGING
+          distribution_id: $DISTRIBUTION_ID_STAGING
+          role_arn: $ROLE_ARN_STAGING
+          requires:
+            - build_staging
           context:
             - circleci-dashboard-bot
