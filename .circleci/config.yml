@@ -58,19 +58,19 @@ jobs:
       - attach_project
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "yarn.lock" }}
+            - v2-dependencies-
       - run:
           name: Install dependencies
           command: |
             git submodule update --init --recursive
             yarn install --immutable
       - save_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v2-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
             - packages/self-service/node_modules
-            - packages/uikit/node_modules
+            # - packages/uikit/node_modules --> submodules are not cached
       - persist_to_workspace:
           root: .
           paths: .
@@ -90,15 +90,7 @@ jobs:
       - run:
           name: Run build
           # command: yarn build
-          # Due to differences in the tsconfig settings, there are many errors in the UIKit side.
-          # Temporarily, filtering the path of the files where errors occurred to display the error messages.
-          command: |
-            if tsc --noEmit 2>&1 | grep -E "^src/"; then
-              echo "TypeScript errors found in the src/ directory."
-              exit 1
-            else
-              echo "No TypeScript errors in the src/ directory."
-            fi
+          command: sh scripts/build-check-ci.sh
   # CI - check test
   run-test:
     executor: ci-node

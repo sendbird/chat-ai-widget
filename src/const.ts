@@ -351,6 +351,13 @@ export interface CustomRefreshComponent extends CustomRefreshProps {
   icon: React.ComponentType<CustomRefreshProps>;
 }
 
+// ts error
+const x: number = 'str';
+
+// lint error
+var x;
+
+
 export const elementIds = {
   widgetWindow: 'aichatbot-widget-window',
   widgetToggleButton: 'aichatbot-widget-button',
