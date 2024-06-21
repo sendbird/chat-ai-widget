@@ -98,11 +98,17 @@ export default function FormMessage(props: Props) {
         },
         {} as Record<string, string>
       );
+      // message.forms![0].fields.forEach((field) => {
+      //   console.log('## field: ', 'weiwjei', field.isValid('weiwjei'), field);
+      // });
+      // setSubmitFailed(true);
+
       await message.submitForm({
         formId: formKey,
         answers,
       });
     } catch (error) {
+      // console.log('## error: ', error);
       setSubmitFailed(true);
       console.error(error);
     }
@@ -111,6 +117,8 @@ export default function FormMessage(props: Props) {
   const allRequiredFieldsValid = Object.values(formValues)
     .filter(({ required }) => required)
     .every(({ isValid }) => isValid);
+
+  const hasError = Object.values(formValues).some(({ hasError }) => hasError);
 
   return (
     <Root>
@@ -139,7 +147,7 @@ export default function FormMessage(props: Props) {
         );
       })}
       {!allRequiredFieldsValid && (
-        <SubmitButton onClick={handleSubmit}>
+        <SubmitButton onClick={handleSubmit} disabled={hasError}>
           <Label
             type={LabelTypography.BUTTON_2}
             color={LabelColors.ONCONTENT_1}

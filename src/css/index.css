@@ -104,3 +104,7 @@ input:focus {
 .sendbird-message-input-text-field::-webkit-scrollbar {
   display: none;
 }
+
+.sendbird-modal__content {
+  max-width: calc(100% - 80px);
+}
