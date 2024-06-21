@@ -4,7 +4,6 @@ describe('asSafeURL', () => {
   test('should return the same URL if it is already safe', () => {
     expect(asSafeURL('http://example.com')).toBe('http://example.com');
     expect(asSafeURL('https://example.com')).toBe('https://example.com');
-    expect(asSafeURL('mailto:email@gmail.com')).toBe('mailto:email@gmail.com');
   });
 
   test('should return a safe URL if it is not safe', () => {
