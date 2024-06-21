@@ -202,9 +202,14 @@ export function CustomChannelComponent() {
       channel?.memberCount === 2
     ) {
       setActiveSpinnerId(lastMessage.messageId);
-      scrollToBottom();
+      setTimeout(() => {
+        scrollToBottom();
+      }, 150);
     } else {
       setActiveSpinnerId(-1);
+      setTimeout(() => {
+        scrollToBottom();
+      }, 150);
     }
   }, [lastMessage?.messageId]);
 

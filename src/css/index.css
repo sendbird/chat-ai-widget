@@ -108,3 +108,8 @@ input:focus {
 .sendbird-modal__content {
   max-width: calc(100% - 80px);
 }
+
+.sendbird-suggested-replies {
+  margin: 0 !important;
+  padding: 8px 0 16px;
+}
