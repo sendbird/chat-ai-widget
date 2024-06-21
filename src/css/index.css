@@ -49,10 +49,6 @@
   padding: 0 16px !important;
 }
 
-.sendbird-message-input .sendbird-message-input-text-field {
-  overflow-y: hidden;
-}
-
 .sendbird-modal__content {
   width: calc(100% - 20px);
 }
@@ -97,4 +93,14 @@ input:focus {
 .sendbird-modal-root {
   position: absolute;
   z-index: 2147483647;
+}
+
+/* Hide scroll bar in Firefox */
+.sendbird-message-input-text-field {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* Hide scroll bar in WebKit */
+.sendbird-message-input-text-field::-webkit-scrollbar {
+  display: none;
 }
