@@ -33,7 +33,9 @@ export const messageExtension = {
     },
     getValidItems(message: UserMessage): CommerceShopItem[] {
       const urls = extractUrls(message.message);
-      return this.getItems(message).filter((it) => urls.includes(it.url));
+      return this.getItems(message)
+        .filter((it) => urls.includes(it.url))
+        .sort((a, b) => urls.indexOf(a.url) - urls.indexOf(b.url));
     },
   },
 };
