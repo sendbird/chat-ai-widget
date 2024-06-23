@@ -92,7 +92,10 @@ const Root = styled.div`
   padding: 16px 12px;
   gap: 8px;
   border-radius: 16px;
-  background-color: #eeeeee;
+  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
+  &:hover {
+    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
+  }
 `;
 
 const SubmitButton = styled(Button)`
