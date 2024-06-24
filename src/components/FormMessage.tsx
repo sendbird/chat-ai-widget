@@ -214,9 +214,7 @@ export default function FormMessage(props: Props) {
         );
       })}
       <SubmitButton onClick={handleSubmit} disabled={hasError || isSubmitted}>
-        <Label type={LabelTypography.BUTTON_2} color={LabelColors.ONCONTENT_1}>
-          Submit
-        </Label>
+        <Label type={LabelTypography.BUTTON_2}>Submit</Label>
       </SubmitButton>
       {submitFailed && (
         <MessageFeedbackFailedModal
