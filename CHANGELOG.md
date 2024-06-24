@@ -1,3 +1,7 @@
+## [1.7.0] (Jun 24, 2024)
+### Feat:
+- Migrated endpoint for `FormMessage` to a new one
+
 ## [1.6.5] (Jun 18, 2024)
 ### Feat:
 - Added `botStudioEditProps.styles.toggleButtonUrl` to customize the toggle button image.
