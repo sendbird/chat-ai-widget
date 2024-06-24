@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '@uikit/ui/Button';
-import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
+import Label, { LabelTypography } from '@uikit/ui/Label';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
 
@@ -107,19 +107,17 @@ export default function FormMessage(props: Props) {
   const { items, id: formId } = form;
 
   const [submitFailed, setSubmitFailed] = useState(false);
-  const [formValues, setInputValue] = useState<FormValues>(
-    (() => {
-      const initialFormValues: FormValues = {};
-      items.forEach(({ id, required }) => {
-        initialFormValues[id] = {
-          temporaryAnswer: '',
-          required,
-          hasError: false,
-        };
-      });
-      return initialFormValues;
-    })()
-  );
+  const [formValues, setInputValue] = useState<FormValues>(() => {
+    const initialFormValues: FormValues = {};
+    items.forEach(({ id, required }) => {
+      initialFormValues[id] = {
+        temporaryAnswer: '',
+        required,
+        hasError: false,
+      };
+    });
+    return initialFormValues;
+  });
   const submittedData = items.reduce((acc, item) => {
     if (item.value) acc[item.id] = item.value;
     return acc;
