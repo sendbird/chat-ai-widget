@@ -10,7 +10,7 @@ import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
-import FormMessage from './FormMessage';
+import FormMessage, { MessageFormPayload } from './FormMessage';
 import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
@@ -21,7 +21,6 @@ import { useWidgetSession } from '../context/WidgetSettingContext';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
 import {
-  isFormMessage,
   isLastMessageInStreaming,
   isLocalMessageCustomType,
   isSentBy,
@@ -106,13 +105,14 @@ export default function CustomMessage(props: Props) {
 
   // Sent by bot user
   if (isSentBy(message, botUserId)) {
-    if (isFormMessage(message)) {
-      const forms = message.extendedMessagePayload.forms;
+    const messageForm: MessageFormPayload | undefined = message
+      .extendedMessagePayload?.message_form as MessageFormPayload | undefined;
+    if (messageForm) {
       return (
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}
-          bodyComponent={<FormMessage form={forms[0]} message={message} />}
+          bodyComponent={<FormMessage form={messageForm} message={message} />}
           createdAt={message.createdAt}
         />
       );

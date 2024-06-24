@@ -86,15 +86,25 @@ function adjustColor(
   return rgbToHex([Math.round(newR), Math.round(newG), Math.round(newB)]);
 }
 
-export function generateColorVariants(baseColor: string): {
+const getColorFactor = (variant: string, theme: string): [number, number] => {
+  if (variant === '500') return [0.6, 1.2];
+  if (variant === '400') return [0.85, 1.1];
+  if (variant === '200') return theme === 'dark' ? [1.1, 0.95] : [1.5, 0.9];
+  if (variant === '100') return theme === 'dark' ? [1.2, 0.9] : [1.75, 0.8];
+  return [1, 1];
+};
+export function generateColorVariants(
+  baseColor: string,
+  theme = 'light'
+): {
   [key: string]: string;
 } {
   const variants: { [key: string]: string } = {};
-  variants['500'] = adjustColor(baseColor, 0.6, 1.2);
-  variants['400'] = adjustColor(baseColor, 0.85, 1.1);
+  variants['500'] = adjustColor(baseColor, ...getColorFactor('500', theme));
+  variants['400'] = adjustColor(baseColor, ...getColorFactor('400', theme));
   variants['300'] = baseColor;
-  variants['200'] = adjustColor(baseColor, 1.5, 0.9);
-  variants['100'] = adjustColor(baseColor, 1.75, 0.8);
+  variants['200'] = adjustColor(baseColor, ...getColorFactor('200', theme));
+  variants['100'] = adjustColor(baseColor, ...getColorFactor('100', theme));
   return variants;
 }
 
@@ -111,7 +121,7 @@ export function generateCSSVariables(
   accentColor: string,
   themeType: string
 ): Record<string, string> {
-  const colorVariants = generateColorVariants(accentColor);
+  const colorVariants = generateColorVariants(accentColor, themeType);
 
   return Object.keys(colorVariants).reduce(
     (acc: Record<string, string>, key: string) => {

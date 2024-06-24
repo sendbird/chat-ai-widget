@@ -17,6 +17,8 @@ export interface CommonTheme {
     carouselItem: string;
     carouselButton: string;
     carouselButtonIcon: string;
+    formInput: string;
+    formInputDisabled: string;
   };
   textColor: {
     incomingMessage: string;
@@ -30,10 +32,12 @@ export interface CommonTheme {
       logo: string;
     };
     carouselItem: string;
+    placeholder: string;
   };
   borderColor: {
     channelHeader: string;
     carouselItem: string;
+    formInputError: string;
   };
   accentColor: string;
 }
@@ -74,6 +78,8 @@ export function getTheme({
         carouselItem: 'var(--sendbird-light-background-50)',
         carouselButton: 'var(--sendbird-light-background-50)',
         carouselButtonIcon: 'var(--sendbird-light-background-400)',
+        formInput: 'var(--sendbird-light-background-50)',
+        formInputDisabled: 'var(--sendbird-dark-ondark-02)',
       },
       textColor: {
         incomingMessage: botMessageBGColor
@@ -91,10 +97,12 @@ export function getTheme({
           logo: '#0D0D0D',
         },
         carouselItem: 'var(--sendbird-light-onlight-01)',
+        placeholder: 'var(--sendbird-light-onlight-03)',
       },
       borderColor: {
         channelHeader: 'var(--sendbird-light-onlight-04)',
         carouselItem: 'var(--sendbird-light-onlight-04)',
+        formInputError: 'var(--sendbird-light-error-300)',
       },
       accentColor: accentColor ?? 'var(--sendbird-light-primary-300)',
     },
@@ -123,6 +131,8 @@ export function getTheme({
         carouselItem: 'var(--sendbird-dark-background-500)',
         carouselButton: 'var(--sendbird-dark-background-400)',
         carouselButtonIcon: 'var(--sendbird-dark-background-50)',
+        formInput: 'var(--sendbird-light-onlight-03)',
+        formInputDisabled: 'var(--sendbird-light-onlight-04)',
       },
       textColor: {
         outgoingMessage: accentColor
@@ -140,10 +150,12 @@ export function getTheme({
           logo: 'var(--sendbird-dark-background-50)',
         },
         carouselItem: 'var(--sendbird-dark-ondark-01)',
+        placeholder: 'var(--sendbird-dark-ondark-03)',
       },
       borderColor: {
         channelHeader: 'var(--sendbird-dark-ondark-04)',
         carouselItem: 'var(--sendbird-dark-ondark-04)',
+        formInputError: 'var(--sendbird-dark-error-200)',
       },
       accentColor: accentColor ?? 'var(--sendbird-dark-primary-200)',
     },

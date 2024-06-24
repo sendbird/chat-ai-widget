@@ -75,8 +75,8 @@ const App = (props: Props) => {
       //   ],
       //   styles: {
       //     theme: 'light',
-      //     primaryColor: 'orange',
-      //     botMessageBGColor: 'hotpink',
+      //     accentColor: '#FF7F50',
+      //     botMessageBGColor: '#ff0095',
       //   },
       //   suggestedRepliesDirection: 'vertical',
       // }}
