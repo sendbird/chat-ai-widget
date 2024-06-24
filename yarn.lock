@@ -3123,7 +3123,7 @@ __metadata:
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
     "@rollup/plugin-replace": "npm:^5.0.4"
     "@rollup/plugin-typescript": "npm:^11.1.5"
-    "@sendbird/chat": "file:/Users/liamcho/GitHub/chat-js/dist"
+    "@sendbird/chat": "npm:^4.12.7"
     "@sendbird/react-uikit-message-template-view": "npm:0.0.1-alpha.73"
     "@sendbird/uikit-tools": "npm:0.0.1-alpha.73"
     "@storybook/addon-essentials": "npm:^8.0.9"
