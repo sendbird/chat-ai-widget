@@ -56,8 +56,6 @@ export async function getWidgetSetting({
   host,
   botId,
   appId,
-  createUserAndChannel,
-  createChannel,
   userId,
 }: Params): Promise<Response> {
   // const headers = sessionToken ? { 'Session-Key': sessionToken } : undefined;

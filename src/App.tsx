@@ -36,7 +36,7 @@ const App = (props: Props) => {
       customRefreshComponent={props.customRefreshComponent}
       userId={'js_form_v2_test_user'}
       sessionToken={'7d5f010f83c2d85329f575ca9779dcb0301c4b1e'}
-      configureSession={() => {}}
+      // configureSession={() => {}}
       stringSet={props.stringSet}
       enableSourceMessage={props.enableSourceMessage}
       enableEmojiFeedback={props.enableEmojiFeedback}

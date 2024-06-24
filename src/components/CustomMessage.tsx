@@ -105,8 +105,8 @@ export default function CustomMessage(props: Props) {
 
   // Sent by bot user
   if (isSentBy(message, botUserId)) {
-    const messageForm: MessageFormPayload | undefined = message.extendedMessagePayload
-      ?.message_form as MessageFormPayload | undefined;
+    const messageForm: MessageFormPayload | undefined = message
+      .extendedMessagePayload?.message_form as MessageFormPayload | undefined;
     if (messageForm) {
       return (
         <BotMessageWithBodyInput
