@@ -1,6 +1,6 @@
 import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
-import { useState } from 'react';
+import {ReactNode, useState} from 'react';
 
 import FileViewer from '@uikit/modules/GroupChannel/components/FileViewer';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
@@ -50,7 +50,7 @@ export default function FileMessage(props: Props) {
           message={message}
           onCancel={() => setShowFileViewer(false)}
           profile={
-            profileUrl != '' ? (
+            (profileUrl != '' ? (
               <Avatar
                 src={profileUrl}
                 alt="botProfileImage"
@@ -64,7 +64,7 @@ export default function FileMessage(props: Props) {
                 iconWidth={18}
                 iconHeight={18}
               />
-            )
+            )) as ReactNode
           }
         />
       )}
