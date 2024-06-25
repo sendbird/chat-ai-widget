@@ -31,7 +31,6 @@ export interface BotStyle {
   accentColor: string;
   botMessageBGColor: string;
   toggleButtonUrl?: string;
-  /** @deprecated We no longer use the autoOpen value from the dashboard. **/
   autoOpen: boolean;
 }
 
@@ -57,6 +56,7 @@ export const WidgetSettingProvider = ({
     createGroupChannelParams,
     firstMessageData,
     botStudioEditProps,
+    autoOpen,
   } = useConstantState();
 
   if (!appId || !botId) {
@@ -216,6 +216,7 @@ export const WidgetSettingProvider = ({
             botStudioEditProps?.styles?.accentColor ??
             botStudioEditProps?.styles?.primaryColor ??
             botStyle.accentColor,
+          autoOpen: autoOpen ?? botStyle.autoOpen,
         },
         widgetSession,
         initManualSession,
