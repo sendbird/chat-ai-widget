@@ -140,7 +140,9 @@ export default function CustomMessage(props: Props) {
           wideContainer={isVideoMessage(message)}
           {...commonProps}
           botUser={botUser}
-          bodyComponent={<FileMessage message={message} />}
+          bodyComponent={
+            <FileMessage message={message} profileUrl={botProfileUrl} />
+          }
           createdAt={message.createdAt}
           messageFeedback={renderFeedbackButtons()}
         />
