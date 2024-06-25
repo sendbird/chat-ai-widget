@@ -1,8 +1,14 @@
 import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
+import { useState } from 'react';
 
+import useLongPress from '@uikit/hooks/useLongPress';
+import FileViewer from '@uikit/modules/GroupChannel/components/FileViewer';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
-import { isImageMessage, isVideoMessage } from '@uikit/utils';
+import { isImageMessage, isSentMessage, isVideoMessage } from '@uikit/utils';
+
+import { noop } from '../utils';
+
 // import { FileViewerComponent } from '@sendbird/uikit-react/ui/FileViewer';
 // import {downloadFileWithUrl, noop} from '../utils';
 // import {createPortal} from 'react-dom';
@@ -14,8 +20,18 @@ type Props = {
 export default function FileMessage(props: Props) {
   const { message } = props;
   const { scrollToBottom } = useGroupChannelContext();
+  const [showFileViewer, setShowFileViewer] = useState(false);
 
   // const root = document.getElementById('aichatbot-widget-window');
+
+  const onClickHandler = useLongPress({
+    onLongPress: noop,
+    onClick: () => {
+      if (isSentMessage(message)) {
+        setShowFileViewer(true);
+      }
+    },
+  });
 
   /**
    * Currently only video and image file messages will be sent.
@@ -57,6 +73,13 @@ export default function FileMessage(props: Props) {
           onLoad={() => {
             scrollToBottom();
           }}
+          {...onClickHandler}
+        />
+      )}
+      {showFileViewer && (
+        <FileViewer
+          message={message}
+          onCancel={() => setShowFileViewer(false)}
         />
       )}
     </div>

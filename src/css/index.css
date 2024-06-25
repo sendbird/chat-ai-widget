@@ -75,6 +75,7 @@ input:focus {
 .sendbird-ai-widget-file-message {
   border-radius: 16px;
   width: 100%;
+  cursor: pointer;
 }
 
 .sendbird-word__url {
