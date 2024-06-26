@@ -50,7 +50,7 @@ export default function FileMessage(props: Props) {
           message={message}
           onCancel={() => setShowFileViewer(false)}
           profile={
-            (profileUrl != '' ? (
+            profileUrl != '' ? (
               <Avatar
                 src={profileUrl}
                 alt="botProfileImage"
@@ -64,7 +64,7 @@ export default function FileMessage(props: Props) {
                 iconWidth={18}
                 iconHeight={18}
               />
-            )) as ReactNode
+            )
           }
         />
       )}
