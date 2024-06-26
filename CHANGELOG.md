@@ -1,3 +1,13 @@
+## [1.7.1] (Jun 26, 2024)
+### Feat:
+- Added a file viewer that allows you to enlarge images by clicking on them.
+
+### Fix:
+- Fixed the text color of messages sent by third parties (not the bot) to display correctly.
+
+### Chore:
+- Re-applied the autoOpen settings as configured in the dashboard.
+
 ## [1.7.0] (Jun 24, 2024)
 ### Feat:
 - Migrated endpoint for `FormMessage` to a new one
