@@ -1,6 +1,6 @@
 import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 
 import FileViewer from '@uikit/modules/GroupChannel/components/FileViewer';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
