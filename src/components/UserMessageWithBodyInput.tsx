@@ -30,7 +30,7 @@ interface BodyContainerProps {
 
 const BodyContainer = styled.div<BodyContainerProps>`
   font-size: 14px;
-  color: ${({ theme }) => theme.textColor.outgoingMessage};
+  color: ${({ theme }) => theme.textColor.incomingMessage};
   max-width: calc(100% - 96px);
   font-weight: normal;
   font-stretch: normal;
