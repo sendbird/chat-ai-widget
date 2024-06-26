@@ -1,19 +1,23 @@
 import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
+import { useState } from 'react';
 
+import FileViewer from '@uikit/modules/GroupChannel/components/FileViewer';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
+import Avatar from '@uikit/ui/Avatar';
 import { isImageMessage, isVideoMessage } from '@uikit/utils';
-// import { FileViewerComponent } from '@sendbird/uikit-react/ui/FileViewer';
-// import {downloadFileWithUrl, noop} from '../utils';
-// import {createPortal} from 'react-dom';
+
+import BotProfileImage from './BotProfileImage';
 
 type Props = {
   message: ChatFileMessage;
+  profileUrl: string;
 };
 
 export default function FileMessage(props: Props) {
-  const { message } = props;
+  const { message, profileUrl } = props;
   const { scrollToBottom } = useGroupChannelContext();
+  const [showFileViewer, setShowFileViewer] = useState(false);
 
   // const root = document.getElementById('aichatbot-widget-window');
 
@@ -23,26 +27,6 @@ export default function FileMessage(props: Props) {
    */
   return (
     <div className="sendbird-ai-widget-file-message-root">
-      {/*Please keep the commented code for referencing in the future when adding file viewer*/}
-      {/*
-      {root &&
-        showPreview &&
-        createPortal(
-          <FileViewerComponent
-            profileUrl={message.sender?.profileUrl}
-            nickname={message.sender?.nickname}
-            name={message.name}
-            type={message.type}
-            url={message?.url}
-            isByMe={false}
-            disableDelete={(message.threadInfo?.replyCount || 0) > 0}
-            onClose={() => setShowPreview(false)}
-            onDelete={noop}
-            onDownloadClick={() => downloadFileWithUrl(message.url)}
-          />,
-          root!
-        )}
-        */}
       {isVideoMessage(message) && (
         <video controls className="sendbird-ai-widget-file-message">
           <source src={message.url} type={message.type} />
@@ -50,6 +34,7 @@ export default function FileMessage(props: Props) {
         </video>
       )}
       {isImageMessage(message) && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
         <img
           className="sendbird-ai-widget-file-message"
           src={message.url}
@@ -57,6 +42,30 @@ export default function FileMessage(props: Props) {
           onLoad={() => {
             scrollToBottom();
           }}
+          onClick={() => setShowFileViewer(true)}
+        />
+      )}
+      {showFileViewer && (
+        <FileViewer
+          message={message}
+          onCancel={() => setShowFileViewer(false)}
+          profile={
+            profileUrl != '' ? (
+              <Avatar
+                src={profileUrl}
+                alt="botProfileImage"
+                height="32px"
+                width="32px"
+              />
+            ) : (
+              <BotProfileImage
+                width={32}
+                height={32}
+                iconWidth={18}
+                iconHeight={18}
+              />
+            )
+          }
         />
       )}
     </div>
