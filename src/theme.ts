@@ -19,6 +19,12 @@ export interface CommonTheme {
     carouselButtonIcon: string;
     formInput: string;
     formInputDisabled: string;
+    formChip: {
+      default: string;
+      selected: string;
+      submittedDefault: string;
+      submittedSelected: string;
+    };
   };
   textColor: {
     incomingMessage: string;
@@ -33,11 +39,21 @@ export interface CommonTheme {
     };
     carouselItem: string;
     placeholder: string;
+    formChip: {
+      default: string;
+      selected: string;
+      submittedDefault: string;
+      submittedSelected: string;
+    };
   };
   borderColor: {
     channelHeader: string;
     carouselItem: string;
     formInputError: string;
+    formChip: {
+      default: string;
+      selected: string;
+    };
   };
   accentColor: string;
 }
@@ -80,6 +96,12 @@ export function getTheme({
         carouselButtonIcon: 'var(--sendbird-light-background-400)',
         formInput: 'var(--sendbird-light-background-50)',
         formInputDisabled: 'var(--sendbird-dark-ondark-02)',
+        formChip: {
+          default: 'var(--sendbird-light-background-50)',
+          selected: 'var(--sendbird-light-primary-300)',
+          submittedDefault: 'var(--sendbird-dark-ondark-02)',
+          submittedSelected: 'var(--sendbird-dark-ondark-02)',
+        },
       },
       textColor: {
         incomingMessage: botMessageBGColor
@@ -98,11 +120,21 @@ export function getTheme({
         },
         carouselItem: 'var(--sendbird-light-onlight-01)',
         placeholder: 'var(--sendbird-light-onlight-03)',
+        formChip: {
+          default: 'var(--sendbird-light-onlight-02)',
+          selected: 'var(--sendbird-light-primary-300)',
+          submittedDefault: 'var(--sendbird-light-onlight-02)',
+          submittedSelected: 'var(--sendbird-light-onlight-01)',
+        },
       },
       borderColor: {
         channelHeader: 'var(--sendbird-light-onlight-04)',
         carouselItem: 'var(--sendbird-light-onlight-04)',
         formInputError: 'var(--sendbird-light-error-300)',
+        formChip: {
+          default: 'var(--sendbird-light-onlight-04)',
+          selected: 'var(--sendbird-light-primary-300)',
+        },
       },
       accentColor: accentColor ?? 'var(--sendbird-light-primary-300)',
     },
@@ -133,6 +165,12 @@ export function getTheme({
         carouselButtonIcon: 'var(--sendbird-dark-background-50)',
         formInput: 'var(--sendbird-light-onlight-03)',
         formInputDisabled: 'var(--sendbird-light-onlight-04)',
+        formChip: {
+          default: 'var(--sendbird-light-background-50)',
+          selected: 'var(--sendbird-light-primary-300)',
+          submittedDefault: 'var(--sendbird-dark-ondark-02)',
+          submittedSelected: 'var(--sendbird-dark-ondark-02)',
+        },
       },
       textColor: {
         outgoingMessage: accentColor
@@ -151,11 +189,21 @@ export function getTheme({
         },
         carouselItem: 'var(--sendbird-dark-ondark-01)',
         placeholder: 'var(--sendbird-dark-ondark-03)',
+        formChip: {
+          default: 'var(--sendbird-light-onlight-02)',
+          selected: 'var(--sendbird-light-primary-300)',
+          submittedDefault: 'var(--sendbird-light-onlight-02)',
+          submittedSelected: 'var(--sendbird-light-onlight-01)',
+        },
       },
       borderColor: {
         channelHeader: 'var(--sendbird-dark-ondark-04)',
         carouselItem: 'var(--sendbird-dark-ondark-04)',
         formInputError: 'var(--sendbird-dark-error-200)',
+        formChip: {
+          default: 'var(--sendbird-light-onlight-04)',
+          selected: 'var(--sendbird-light-primary-300)',
+        },
       },
       accentColor: accentColor ?? 'var(--sendbird-dark-primary-200)',
     },

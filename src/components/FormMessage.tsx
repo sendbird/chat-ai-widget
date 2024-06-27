@@ -1,3 +1,7 @@
+import {
+  MessageForm,
+  MessageFormItemStyle,
+} from '@sendbird/chat/lib/__definition';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
@@ -18,73 +22,17 @@ export enum FormFieldValidatorType {
   DECIMAL_PLACE = 'decimal_place',
 }
 
-export type FormFieldValidator =
-  | NumberFormFieldValidator
-  | EnumFormFieldValidator
-  | TextFormFieldValidator
-  | RegexFormFieldValidator
-  | DecimalFormFieldValidator;
-
-interface NumberFormFieldValidator {
-  key: FormFieldValidatorType.NUMBER;
-  min?: number;
-  max?: number;
-}
-
-interface EnumFormFieldValidator {
-  key: FormFieldValidatorType.ENUM;
-  enums?: string[];
-  allow_other?: boolean;
-}
-
-interface TextFormFieldValidator {
-  key: FormFieldValidatorType.TEXT;
-  min_length?: number;
-  max_length?: number;
-}
-
-interface RegexFormFieldValidator {
-  key: FormFieldValidatorType.REGEX;
-  regex?: string;
-}
-
-interface DecimalFormFieldValidator {
-  key: FormFieldValidatorType.DECIMAL_PLACE;
-  max_decimal_place?: number;
-}
-
-interface MessageFormItemPayload {
-  id: number;
-  item_type: string; // will be deprecated. Use style instead.
-  name: string;
-  placeholder: string;
-  required: boolean;
-  sort_order: number;
-  style?: {
-    layout: string;
-    options?: string[];
-  };
-  validators: FormFieldValidator[];
-  value?: string; // submitted value.
-}
-
-export interface MessageFormPayload {
-  created_at: number;
-  id: number;
-  items: MessageFormItemPayload[];
-}
-
 interface Props {
   message: CoreMessageType;
-  form: MessageFormPayload;
+  form: MessageForm;
 }
 
 interface FormValue {
-  temporaryAnswer: string;
+  draftValues: string[];
   required: boolean;
   hasError: boolean;
 }
-type FormValues = Record<string, FormValue>;
+// type FormValues = Record<string, FormValue>;
 
 const Root = styled.div`
   display: flex;
@@ -108,111 +56,96 @@ export default function FormMessage(props: Props) {
   const { items, id: formId } = form;
 
   const [submitFailed, setSubmitFailed] = useState(false);
-  const [formValues, setInputValue] = useState<FormValues>(() => {
-    const initialFormValues: FormValues = {};
-    items.forEach(({ id, required }) => {
-      initialFormValues[id] = {
-        temporaryAnswer: '',
+  const [formValues, setInputValue] = useState<FormValue[]>(() => {
+    const initialFormValues: FormValue[] = [];
+    items.forEach(({ required, style }) => {
+      let draftValues: string[] = [];
+      const { layout, defaultOptions = [] }: MessageFormItemStyle = style;
+      if (layout === 'chip') {
+        draftValues = defaultOptions;
+      }
+      initialFormValues.push({
+        draftValues,
         required,
         hasError: false,
-      };
+      });
     });
     return initialFormValues;
   });
-  const submittedData = items.reduce((acc, item) => {
-    if (item.value) acc[item.id] = item.value;
-    return acc;
-  }, {} as Record<string, string>);
-  const isSubmitted = Object.keys(submittedData).length > 0;
 
   const handleSubmit = useCallback(async () => {
     try {
       // If form is empty, ignore submit
-      const invalidRequiredFields = Object.keys(formValues).filter(
-        (key) =>
-          formValues[key].required &&
-          formValues[key].temporaryAnswer.length === 0
+      const isMissingRequired = formValues.some(
+        (formValue) => formValue.required && formValue.draftValues.length === 0
       );
-      invalidRequiredFields.forEach((key) => {
-        setInputValue((prev) => ({
-          ...prev,
-          [key]: { ...prev[key], hasError: true },
-        }));
-      });
-      if (invalidRequiredFields.length > 0) {
+      if (isMissingRequired) {
+        setInputValue((oldFormValues) => {
+          return oldFormValues.map((formValue) => {
+            if (formValue.required && formValue.draftValues.length === 0) {
+              formValue.hasError = true;
+            }
+            return formValue;
+          });
+        });
         return;
       }
 
       // If any of required fields are not valid,
-      const hasError = Object.values(formValues).some(
+      const hasError = formValues.some(
         ({ hasError, required }) => required && hasError
       );
       if (hasError) {
         return;
       }
-      const answers = Object.entries(formValues).reduce(
-        (acc, [key, { temporaryAnswer }]) => {
-          return {
-            ...acc,
-            [key]: temporaryAnswer,
-          };
-        },
-        {} as Record<string, string>
-      );
-      // setSubmitFailed(true);
-      await message.submitMessageForm({
-        formId,
-        answers,
+
+      formValues.forEach((formValue, index) => {
+        items[index].draftValues = formValue.draftValues;
       });
+      await message.submitMessageForm();
     } catch (error) {
       setSubmitFailed(true);
       console.error(error);
     }
-  }, [formValues, message.messageId, message.submitForm, formId]);
+  }, [formValues, message.messageId, message.submitMessageForm, formId]);
 
   const hasError = Object.values(formValues).some(({ hasError }) => hasError);
 
   return (
     <Root>
-      {items.map((field) => {
-        const {
-          name,
-          placeholder,
-          id: key,
-          required,
-          item_type,
-          validators,
-        } = field;
-        const { temporaryAnswer, hasError } = formValues[key];
+      {items.map((item, index) => {
+        const { name, placeholder, id, required, style } = item;
+        const { draftValues = [], hasError } = formValues[index];
+        const submittedValues = item.submittedValues;
         return (
           <Input
-            key={key}
-            type={item_type}
+            key={id}
+            style={style}
             placeHolder={placeholder}
-            value={
-              submittedData[key] !== '' ? submittedData[key] : temporaryAnswer
-            }
+            values={submittedValues ?? draftValues}
             hasError={hasError}
-            isValid={!!submittedData[key]}
-            disabled={!!submittedData[key]}
+            isValid={!!submittedValues}
+            disabled={!!submittedValues}
             name={name}
             required={required}
-            onChange={(event) => {
-              const value = event.target.value;
-              const hasError = !validateFormField(
-                String(value),
-                required,
-                validators
-              );
-              setInputValue(() => ({
-                ...formValues,
-                [key]: { ...formValues[key], temporaryAnswer: value, hasError },
-              }));
+            onChange={(values) => {
+              setInputValue((oldInputs) => {
+                oldInputs[index] = {
+                  ...oldInputs[index],
+                  draftValues: values,
+                  hasError: item.isValid(values),
+                };
+                return oldInputs;
+              });
             }}
+            isSubmitted={form.isSubmitted}
           />
         );
       })}
-      <SubmitButton onClick={handleSubmit} disabled={hasError || isSubmitted}>
+      <SubmitButton
+        onClick={handleSubmit}
+        disabled={hasError || form.isSubmitted}
+      >
         <Label type={LabelTypography.BUTTON_2}>Submit</Label>
       </SubmitButton>
       {submitFailed && (

@@ -113,3 +113,15 @@ input:focus {
   margin: 0 !important;
   padding: 8px 0 16px;
 }
+
+.sendbird-form-chip__container {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.sendbird-form-chip {
+  padding: 0px 12px;
+}
