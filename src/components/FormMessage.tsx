@@ -32,7 +32,6 @@ interface FormValue {
   required: boolean;
   hasError: boolean;
 }
-// type FormValues = Record<string, FormValue>;
 
 const Root = styled.div`
   display: flex;

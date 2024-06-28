@@ -70,6 +70,9 @@ const Chip = styled.div<ChipProps>`
   align-items: center;
   width: fit-content;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 
   ${({ theme, state }) => {
     switch (state) {
