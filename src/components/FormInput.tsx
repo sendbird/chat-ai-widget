@@ -1,5 +1,5 @@
 import { MessageFormItemStyle } from '@sendbird/chat/lib/__definition';
-import { ReactElement, ReactNode, useState, useEffect } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
@@ -18,8 +18,6 @@ const Label = styled(UIKitLabel)`
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <Label
     className="sendbird-input-label"
-    // ? Label doesn't hav style prop
-    // style={{ marginBottom: 8 }}
     type={LabelTypography.CAPTION_2}
     color={LabelColors.ONBACKGROUND_2}
   >
@@ -56,12 +54,23 @@ const Root = styled.div<Pick<InputProps, 'hasError'>>`
   }
 `;
 
+const SendbirdInput = styled.div`
+  height: unset;
+`;
+
 interface ChipProps {
   state: ChipState;
 }
 
 const Chip = styled.div<ChipProps>`
   border-radius: 100px;
+  padding: 6px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+
   ${({ theme, state }) => {
     switch (state) {
       case 'default': {
@@ -75,6 +84,7 @@ const Chip = styled.div<ChipProps>`
       case 'selected': {
         return {
           color: theme.textColor.formChip.selected,
+          // backgroundColor: theme.bgColor.formChip.selected,
           backgroundColor: theme.bgColor.formChip.selected,
           borderColor: theme.bgColor.formChip.selected,
           border: `1px solid ${theme.borderColor.formChip.selected}`,
@@ -104,6 +114,16 @@ const Input = styled.input`
   ::placeholder {
     color: var(--sendbird-light-onlight-03);
   }
+  padding: 6px 12px !important;
+`;
+
+const TextArea = styled.textarea`
+  ::placeholder {
+    color: var(--sendbird-light-onlight-03);
+  }
+  resize: none;
+  height: 96px;
+  padding: 8px 12px !important;
 `;
 
 const ErrorLabel = styled(Label)`
@@ -160,35 +180,21 @@ const FormInput = (props: InputProps) => {
     isSubmitted,
   } = props;
 
-  const { layout, options = [] }: MessageFormItemStyle = style;
-  // TODO: Need to check design first!
-  // const { min, max } = resultCount ?? {};
-  const [chipDataList, setChipDataList] = useState<ChipData[]>(
-    getInitialChipDataList()
-  );
-
-  useEffect(() => {
-    if (!isSubmitted && chipDataList.length > 0) {
-      onChange(
-        chipDataList.reduce((acc, chipData) => {
-          if (chipData.state === 'selected') {
-            acc.push(chipData.option);
-          }
-          return acc;
-        }, [] as string[])
-      );
-    }
-  }, [chipDataList]);
+  const { layout, options = [], resultCount }: MessageFormItemStyle = style;
+  const { min = 1, max = 1 } = resultCount ?? {};
+  const chipDataList: ChipData[] = getInitialChipDataList();
 
   function getInitialChipDataList(): ChipData[] {
     if (isSubmitted) {
       return options.map((option) => ({
-        state: option in values ? 'submittedSelected' : 'submittedDefault',
+        state: values.includes(option)
+          ? 'submittedSelected'
+          : 'submittedDefault',
         option,
       }));
     } else {
       return options.map((option) => ({
-        state: option in values ? 'selected' : 'default',
+        state: values.includes(option) ? 'selected' : 'default',
         option,
       }));
     }
@@ -196,69 +202,107 @@ const FormInput = (props: InputProps) => {
 
   const onChipClick = (index: number) => {
     if (isSubmitted) return;
-    setChipDataList((oldList) => {
-      const dataAt = chipDataList[index];
-      if (dataAt.state === 'default') {
-        dataAt.state = 'selected';
-      } else if (dataAt.state === 'selected') {
-        dataAt.state = 'default';
-      }
-      return oldList;
-    });
+    const newDraftedValues =
+      min === 1 && max === 1
+        ? [chipDataList[index].option]
+        : chipDataList.reduce((acc, chipData, i) => {
+            if (i === index) {
+              if (chipData.state === 'default' && values.length < max) {
+                acc.push(chipData.option);
+              }
+            } else {
+              if (chipData.state === 'selected') {
+                acc.push(chipData.option);
+              }
+            }
+            return acc;
+          }, [] as string[]);
+    onChange(newDraftedValues);
   };
 
   return (
     <Root hasError={hasError}>
-      <div className="sendbird-input">
+      <SendbirdInput className="sendbird-input">
         <InputLabel>{required ? `${name} *` : name}</InputLabel>
-        {(() => {
-          switch (layout) {
-            case 'chip': {
-              return chipDataList.map((chipData, index) => {
+        <div className="sendbird-form-chip__container">
+          {(() => {
+            switch (layout) {
+              case 'chip': {
+                return chipDataList.map((chipData, index) => {
+                  return (
+                    <Chip
+                      key={index}
+                      state={chipData.state}
+                      onClick={() => onChipClick(index)}
+                    >
+                      {chipData.option}
+                    </Chip>
+                  );
+                });
+              }
+              case 'textarea': {
+                const currentValue = values.length > 0 ? values[0] : '';
                 return (
-                  <Chip
-                    key={index}
-                    state={chipData.state}
-                    onClick={() => onChipClick(index)}
-                  >
-                    {chipData.option}
-                  </Chip>
-                );
-              });
-            }
-            default: {
-              const value = values.length > 0 ? values[0] : '';
-              return (
-                <InputContainer>
-                  <Input
-                    type={layout}
-                    className="sendbird-input__input"
-                    name={name}
-                    required={required}
-                    disabled={disabled}
-                    value={value}
-                    onChange={(event) => onChange([event.target.value])}
-                    placeholder={!disabled ? placeHolder : ''}
-                  />
-                  {isValid && (
-                    <CheckIcon
-                      type={IconTypes.DONE}
-                      fillColor={IconColors.SECONDARY}
-                      width="24px"
-                      height="24px"
+                  <InputContainer>
+                    <TextArea
+                      className="sendbird-input__input"
+                      required={required}
+                      disabled={disabled}
+                      value={currentValue}
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        onChange(value ? [value] : []);
+                      }}
+                      placeholder={!disabled ? placeHolder : ''}
                     />
-                  )}
-                </InputContainer>
-              );
+                    {isValid && (
+                      <CheckIcon
+                        type={IconTypes.DONE}
+                        fillColor={IconColors.SECONDARY}
+                        width="24px"
+                        height="24px"
+                      />
+                    )}
+                  </InputContainer>
+                );
+              }
+              default: {
+                const currentValue = values.length > 0 ? values[0] : '';
+                return (
+                  <InputContainer>
+                    <Input
+                      type={layout}
+                      className="sendbird-input__input"
+                      name={name}
+                      required={required}
+                      disabled={disabled}
+                      value={currentValue}
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        onChange(value ? [value] : []);
+                      }}
+                      placeholder={!disabled ? placeHolder : ''}
+                    />
+                    {isValid && (
+                      <CheckIcon
+                        type={IconTypes.DONE}
+                        fillColor={IconColors.SECONDARY}
+                        width="24px"
+                        height="24px"
+                      />
+                    )}
+                  </InputContainer>
+                );
+              }
             }
-          }
-        })()}
+          })()}
+        </div>
         {hasError && (
           <ErrorLabel type={LabelTypography.CAPTION_3}>
             Please check the value
           </ErrorLabel>
         )}
-      </div>
+      </SendbirdInput>
     </Root>
   );
 };

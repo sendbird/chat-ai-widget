@@ -98,7 +98,7 @@ export function getTheme({
         formInputDisabled: 'var(--sendbird-dark-ondark-02)',
         formChip: {
           default: 'var(--sendbird-light-background-50)',
-          selected: 'var(--sendbird-light-primary-300)',
+          selected: 'var(--sendbird-light-primary-100)',
           submittedDefault: 'var(--sendbird-dark-ondark-02)',
           submittedSelected: 'var(--sendbird-dark-ondark-02)',
         },

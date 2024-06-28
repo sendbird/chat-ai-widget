@@ -72,6 +72,8 @@ export default function FormMessage(props: Props) {
     });
     return initialFormValues;
   });
+  const isSubmitted = form.isSubmitted;
+  const hasError = Object.values(formValues).some(({ hasError }) => hasError);
 
   const handleSubmit = useCallback(async () => {
     try {
@@ -83,14 +85,16 @@ export default function FormMessage(props: Props) {
         setInputValue((oldFormValues) => {
           return oldFormValues.map((formValue) => {
             if (formValue.required && formValue.draftValues.length === 0) {
-              formValue.hasError = true;
+              return {
+                ...formValue,
+                hasError: true,
+              };
             }
             return formValue;
           });
         });
         return;
       }
-
       // If any of required fields are not valid,
       const hasError = formValues.some(
         ({ hasError, required }) => required && hasError
@@ -98,7 +102,6 @@ export default function FormMessage(props: Props) {
       if (hasError) {
         return;
       }
-
       formValues.forEach((formValue, index) => {
         items[index].draftValues = formValue.draftValues;
       });
@@ -109,14 +112,13 @@ export default function FormMessage(props: Props) {
     }
   }, [formValues, message.messageId, message.submitMessageForm, formId]);
 
-  const hasError = Object.values(formValues).some(({ hasError }) => hasError);
-
   return (
     <Root>
       {items.map((item, index) => {
         const { name, placeholder, id, required, style } = item;
         const { draftValues = [], hasError } = formValues[index];
         const submittedValues = item.submittedValues;
+
         return (
           <Input
             key={id}
@@ -124,21 +126,24 @@ export default function FormMessage(props: Props) {
             placeHolder={placeholder}
             values={submittedValues ?? draftValues}
             hasError={hasError}
-            isValid={!!submittedValues}
-            disabled={!!submittedValues}
+            isValid={isSubmitted}
+            disabled={isSubmitted}
             name={name}
             required={required}
             onChange={(values) => {
               setInputValue((oldInputs) => {
-                oldInputs[index] = {
-                  ...oldInputs[index],
+                const newInputs = [...oldInputs]; // Create a new array
+                newInputs[index] = {
+                  ...newInputs[index], // Create a new object for the updated item
                   draftValues: values,
-                  hasError: item.isValid(values),
+                  hasError:
+                    !item.isValid(values) ||
+                    (!isSubmitted && required && values.length === 0),
                 };
-                return oldInputs;
+                return newInputs; // Return the new array
               });
             }}
-            isSubmitted={form.isSubmitted}
+            isSubmitted={isSubmitted}
           />
         );
       })}

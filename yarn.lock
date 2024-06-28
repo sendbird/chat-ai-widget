@@ -3070,7 +3070,7 @@ __metadata:
 
 "@sendbird/chat@file:/Users/liamcho/GitHub/chat-js/dist::locator=%40sendbird%2Fchat-ai-widget%40workspace%3A.":
   version: 4.13.0
-  resolution: "@sendbird/chat@file:/Users/liamcho/GitHub/chat-js/dist#/Users/liamcho/GitHub/chat-js/dist::hash=8bf009&locator=%40sendbird%2Fchat-ai-widget%40workspace%3A."
+  resolution: "@sendbird/chat@file:/Users/liamcho/GitHub/chat-js/dist#/Users/liamcho/GitHub/chat-js/dist::hash=33eff0&locator=%40sendbird%2Fchat-ai-widget%40workspace%3A."
   peerDependencies:
     "@react-native-async-storage/async-storage": ^1.17.6
     react-native-mmkv: ^2.0.0
@@ -3079,7 +3079,7 @@ __metadata:
       optional: true
     react-native-mmkv:
       optional: true
-  checksum: 10c0/95b72159744ed5d1f537982c0b4234eec61c72a5095166fd083ff60d4aaaf363f4b51ee85b7f1353561dd953f942614619ca1ba9e688e5ddeb7e6971dea046d4
+  checksum: 10c0/e71e24ceb79a2aaa2b6d91769d264e7e3aa26767a3dca8af853b5df9e7cbfd658db27633b2029e4ce2bc14fa6ecfc6eca4e87c0739051cd9e82e9a864fe74558
   languageName: node
   linkType: hard
 
