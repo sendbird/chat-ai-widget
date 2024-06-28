@@ -69,7 +69,6 @@ const Chip = styled.div<ChipProps>`
   justify-content: center;
   align-items: center;
   width: fit-content;
-  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
@@ -82,6 +81,7 @@ const Chip = styled.div<ChipProps>`
           backgroundColor: theme.bgColor.formChip.default,
           borderColor: theme.bgColor.formChip.default,
           border: `1px solid ${theme.borderColor.formChip.default}`,
+          cursor: 'pointer',
         };
       }
       case 'selected': {
@@ -91,6 +91,7 @@ const Chip = styled.div<ChipProps>`
           backgroundColor: theme.bgColor.formChip.selected,
           borderColor: theme.bgColor.formChip.selected,
           border: `1px solid ${theme.borderColor.formChip.selected}`,
+          cursor: 'pointer',
         };
       }
       case 'submittedDefault': {
@@ -98,6 +99,7 @@ const Chip = styled.div<ChipProps>`
           color: theme.textColor.formChip.submittedDefault,
           backgroundColor: theme.bgColor.formChip.submittedDefault,
           border: 'none',
+          cursor: 'default',
         };
       }
       case 'submittedSelected': {
@@ -105,6 +107,7 @@ const Chip = styled.div<ChipProps>`
           color: theme.textColor.formChip.submittedSelected,
           backgroundColor: theme.bgColor.formChip.submittedSelected,
           border: 'none',
+          cursor: 'default',
         };
       }
       default:
