@@ -135,11 +135,15 @@ const ErrorLabel = styled(Label)`
   color: var(--sendbird-light-error-300);
 `;
 
-const CheckIcon = styled(Icon)`
+interface CheckIconProps {
+  right?: string;
+  bottom?: string;
+}
+
+const CheckIcon = styled(Icon)<CheckIconProps>`
   position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: ${({ right }) => right ?? '8px'};
+  bottom: ${({ bottom }) => bottom ?? '3px'};
 `;
 
 const InputContainer = styled.div`
@@ -264,6 +268,7 @@ const FormInput = (props: InputProps) => {
                         fillColor={IconColors.SECONDARY}
                         width="24px"
                         height="24px"
+                        bottom="8px"
                       />
                     )}
                   </InputContainer>
