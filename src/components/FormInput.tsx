@@ -65,9 +65,10 @@ interface ChipProps {
 const Chip = styled.div<ChipProps>`
   border-radius: 100px;
   padding: 6px 16px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: calc(100% - 32px);
 
   ${({ theme, state }) => {
     switch (state) {
@@ -112,6 +113,12 @@ const Chip = styled.div<ChipProps>`
   }};
 `;
 
+const ChipText = styled.div`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
 const Input = styled.input`
   ::placeholder {
     color: var(--sendbird-light-onlight-03);
@@ -143,6 +150,10 @@ const CheckIcon = styled(Icon)<CheckIconProps>`
   position: absolute;
   right: ${({ right }) => right ?? '8px'};
   bottom: ${({ bottom }) => bottom ?? '3px'};
+`;
+
+const CheckIconForChip = styled(Icon)<CheckIconProps>`
+  margin-left: 4px;
 `;
 
 const InputContainer = styled.div`
@@ -241,7 +252,18 @@ const FormInput = (props: InputProps) => {
                       state={chipData.state}
                       onClick={() => onChipClick(index)}
                     >
-                      {chipData.option}
+                      <ChipText>
+                        {chipData.option}
+                      </ChipText>
+                      {isSubmitted &&
+                        chipData.state === 'submittedSelected' && (
+                          <CheckIconForChip
+                            type={IconTypes.DONE}
+                            fillColor={IconColors.SECONDARY}
+                            width="20px"
+                            height="20px"
+                          />
+                        )}
                     </Chip>
                   );
                 });

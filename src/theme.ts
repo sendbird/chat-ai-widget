@@ -166,10 +166,10 @@ export function getTheme({
         formInput: 'var(--sendbird-light-onlight-03)',
         formInputDisabled: 'var(--sendbird-light-onlight-04)',
         formChip: {
-          default: 'var(--sendbird-light-background-50)',
-          selected: 'var(--sendbird-light-primary-300)',
-          submittedDefault: 'var(--sendbird-dark-ondark-02)',
-          submittedSelected: 'var(--sendbird-dark-ondark-02)',
+          default: 'var(--sendbird-light-onlight-03)',
+          selected: 'var(--sendbird-dark-background-600)',
+          submittedDefault: 'var(--sendbird-dark-background-500)',
+          submittedSelected: 'var(--sendbird-light-onlight-04)',
         },
       },
       textColor: {
@@ -190,10 +190,10 @@ export function getTheme({
         carouselItem: 'var(--sendbird-dark-ondark-01)',
         placeholder: 'var(--sendbird-dark-ondark-03)',
         formChip: {
-          default: 'var(--sendbird-light-onlight-02)',
-          selected: 'var(--sendbird-light-primary-300)',
-          submittedDefault: 'var(--sendbird-light-onlight-02)',
-          submittedSelected: 'var(--sendbird-light-onlight-01)',
+          default: 'var(--sendbird-dark-ondark-02)',
+          selected: 'var(--sendbird-dark-primary-200)',
+          submittedDefault: 'var(--sendbird-dark-ondark-04)',
+          submittedSelected: 'var(--sendbird-dark-ondark-01)',
         },
       },
       borderColor: {
@@ -201,8 +201,8 @@ export function getTheme({
         carouselItem: 'var(--sendbird-dark-ondark-04)',
         formInputError: 'var(--sendbird-dark-error-200)',
         formChip: {
-          default: 'var(--sendbird-light-onlight-04)',
-          selected: 'var(--sendbird-light-primary-300)',
+          default: 'var(--sendbird-dark-ondark-04)',
+          selected: 'var(--sendbird-dark-primary-200)',
         },
       },
       accentColor: accentColor ?? 'var(--sendbird-dark-primary-200)',
