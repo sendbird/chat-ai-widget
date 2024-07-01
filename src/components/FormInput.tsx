@@ -65,13 +65,9 @@ interface ChipProps {
 const Chip = styled.div<ChipProps>`
   border-radius: 100px;
   padding: 6px 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
+  white-space: nowrap;
 
   ${({ theme, state }) => {
     switch (state) {

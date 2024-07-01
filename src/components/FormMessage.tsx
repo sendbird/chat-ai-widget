@@ -40,6 +40,7 @@ const Root = styled.div`
   padding: 16px 12px;
   gap: 8px;
   border-radius: 16px;
+  overflow: hidden;
   background-color: ${({ theme }) => theme.bgColor.incomingMessage};
   &:hover {
     background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
