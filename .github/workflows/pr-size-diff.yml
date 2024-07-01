@@ -1,0 +1,25 @@
+name: PR size diff
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: 'recursive'
+          fetch-depth: 0
+      - name: Enable corepack
+        run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: 'yarn'
+      - uses: preactjs/compressed-size-action@v2
+        with:
+          pattern: "./dist/**/*.{js,css}"
+          exclude: "{**/*.d.ts,**/node_modules/**}"
+          strip-hash: "\\w+-([a-zA-Z0-9_-]{8})\\.js$"
