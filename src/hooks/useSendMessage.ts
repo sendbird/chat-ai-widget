@@ -4,17 +4,6 @@ import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/Grou
 
 export function useSendMessage(): (message: string) => Promise<void> {
   const { currentChannel, sendUserMessage } = useGroupChannelContext();
-  console.log(`
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  large contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge contentlarge content
-  `);
 
   return useCallback(async (message: string) => {
     try {
