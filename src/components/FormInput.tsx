@@ -29,7 +29,7 @@ const Root = styled.div<Pick<InputProps, 'hasError'>>`
   padding-bottom: 12px;
   width: 100%;
   .sendbird-input .sendbird-input__input {
-    color: ${({ theme }) => theme.textColor.incomingMessage};
+    color: ${({ theme }) => theme.textColor.incomingMessage} !important;
     ::placeholder {
       color: ${({ theme }) => theme.textColor.placeholder};
     }
@@ -52,10 +52,6 @@ const Root = styled.div<Pick<InputProps, 'hasError'>>`
       background-color: #fff;
     }
   }
-`;
-
-const SendbirdInput = styled.div`
-  height: unset;
 `;
 
 interface ChipProps {
@@ -137,9 +133,6 @@ const ChipText = styled.div`
 `;
 
 const Input = styled.input`
-  ::placeholder {
-    color: var(--sendbird-light-onlight-03);
-  }
   padding: 6px 12px !important;
 `;
 
@@ -154,7 +147,7 @@ const TextArea = styled.textarea`
 
 const SubmittedTextArea = styled.div`
   width: calc(100% - 24px);
-  color: ${({ theme }) => theme.textColor.placeholder};
+  color: ${({ theme }) => theme.textColor.incomingMessage};
   background-color: ${({ theme }) =>
     theme.bgColor.formInputDisabled} !important;
   border: solid 1px transparent !important;
