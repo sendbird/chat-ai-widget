@@ -76,19 +76,36 @@ const Chip = styled.div<ChipProps>`
         return {
           color: theme.textColor.formChip.default,
           backgroundColor: theme.bgColor.formChip.default,
-          borderColor: theme.bgColor.formChip.default,
           border: `1px solid ${theme.borderColor.formChip.default}`,
           cursor: 'pointer',
+          '&:hover': {
+            color: theme.textColor.formChip.hover,
+            'background-color': theme.bgColor.formChip.hover,
+            border: `1px solid ${theme.borderColor.formChip.hover}`,
+          },
+          '&:focus': {
+            color: theme.textColor.formChip.focus,
+            'background-color': theme.bgColor.formChip.focus,
+            border: `2px solid ${theme.borderColor.formChip.focus}`,
+          },
         };
       }
       case 'selected': {
         return {
           color: theme.textColor.formChip.selected,
-          // backgroundColor: theme.bgColor.formChip.selected,
           backgroundColor: theme.bgColor.formChip.selected,
-          borderColor: theme.bgColor.formChip.selected,
           border: `1px solid ${theme.borderColor.formChip.selected}`,
           cursor: 'pointer',
+          '&:hover': {
+            color: theme.textColor.formChip.hover,
+            'background-color': theme.bgColor.formChip.hover,
+            border: `1px solid ${theme.borderColor.formChip.hover}`,
+          },
+          '&:focus': {
+            color: theme.textColor.formChip.focus,
+            'background-color': theme.bgColor.formChip.focus,
+            border: `2px solid ${theme.borderColor.formChip.focus}`,
+          },
         };
       }
       case 'submittedDefault': {
@@ -252,9 +269,7 @@ const FormInput = (props: InputProps) => {
                       state={chipData.state}
                       onClick={() => onChipClick(index)}
                     >
-                      <ChipText>
-                        {chipData.option}
-                      </ChipText>
+                      <ChipText>{chipData.option}</ChipText>
                       {isSubmitted &&
                         chipData.state === 'submittedSelected' && (
                           <CheckIconForChip

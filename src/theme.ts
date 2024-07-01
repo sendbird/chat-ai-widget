@@ -24,6 +24,8 @@ export interface CommonTheme {
       selected: string;
       submittedDefault: string;
       submittedSelected: string;
+      hover: string;
+      focus: string;
     };
   };
   textColor: {
@@ -44,6 +46,8 @@ export interface CommonTheme {
       selected: string;
       submittedDefault: string;
       submittedSelected: string;
+      hover: string;
+      focus: string;
     };
   };
   borderColor: {
@@ -53,6 +57,8 @@ export interface CommonTheme {
     formChip: {
       default: string;
       selected: string;
+      hover: string;
+      focus: string;
     };
   };
   accentColor: string;
@@ -101,6 +107,8 @@ export function getTheme({
           selected: 'var(--sendbird-light-primary-100)',
           submittedDefault: 'var(--sendbird-dark-ondark-02)',
           submittedSelected: 'var(--sendbird-dark-ondark-02)',
+          hover: 'var(--sendbird-light-background-50)',
+          focus: 'var(--sendbird-light-background-50)',
         },
       },
       textColor: {
@@ -125,6 +133,8 @@ export function getTheme({
           selected: 'var(--sendbird-light-primary-300)',
           submittedDefault: 'var(--sendbird-light-onlight-02)',
           submittedSelected: 'var(--sendbird-light-onlight-01)',
+          hover: 'var(--sendbird-light-primary-300)',
+          focus: 'var(--sendbird-light-onlight-02)',
         },
       },
       borderColor: {
@@ -134,6 +144,8 @@ export function getTheme({
         formChip: {
           default: 'var(--sendbird-light-onlight-04)',
           selected: 'var(--sendbird-light-primary-300)',
+          hover: 'var(--sendbird-light-primary-300)',
+          focus: 'var(--sendbird-light-primary-300)',
         },
       },
       accentColor: accentColor ?? 'var(--sendbird-light-primary-300)',
@@ -170,6 +182,8 @@ export function getTheme({
           selected: 'var(--sendbird-dark-background-600)',
           submittedDefault: 'var(--sendbird-dark-background-500)',
           submittedSelected: 'var(--sendbird-light-onlight-04)',
+          hover: 'var(--sendbird-light-onlight-03)',
+          focus: 'var(--sendbird-light-onlight-03)',
         },
       },
       textColor: {
@@ -194,6 +208,8 @@ export function getTheme({
           selected: 'var(--sendbird-dark-primary-200)',
           submittedDefault: 'var(--sendbird-dark-ondark-04)',
           submittedSelected: 'var(--sendbird-dark-ondark-01)',
+          hover: 'var(--sendbird-dark-primary-200)',
+          focus: 'var(--sendbird-dark-ondark-02)',
         },
       },
       borderColor: {
@@ -203,6 +219,8 @@ export function getTheme({
         formChip: {
           default: 'var(--sendbird-dark-ondark-04)',
           selected: 'var(--sendbird-dark-primary-200)',
+          hover: 'var(--sendbird-dark-primary-200)',
+          focus: 'var(--sendbird-dark-ondark-02)',
         },
       },
       accentColor: accentColor ?? 'var(--sendbird-dark-primary-200)',
