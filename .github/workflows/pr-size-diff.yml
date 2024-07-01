@@ -18,4 +18,4 @@ jobs:
         with:
           pattern: "./dist/**/*.{js,css}"
           exclude: "{**/*.d.ts,**/node_modules/**}"
-          strip-hash: "__bundle-\\d+-([a-zA-Z0-9_-]{8})\\.js$"
+          strip-hash: "\\w+-([a-zA-Z0-9_-]{8})\\.js$"
