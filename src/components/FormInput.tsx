@@ -30,26 +30,29 @@ const Root = styled.div<Pick<InputProps, 'hasError'>>`
   width: 100%;
   .sendbird-input .sendbird-input__input {
     color: ${({ theme }) => theme.textColor.incomingMessage} !important;
+    background-color: ${({ theme }) => theme.bgColor.formInput} !important;
+    border: ${({ theme, hasError }) =>
+      `solid 1px ${
+        hasError
+          ? theme.borderColor.formInput.error
+          : theme.borderColor.formInput.default
+      }`} !important;
     ::placeholder {
       color: ${({ theme }) => theme.textColor.placeholder};
     }
-    background-color: ${({ theme }) => theme.bgColor.formInput} !important;
-    :disabled {
+    &:disabled {
+      pointer-events: none;
       background-color: ${({ theme }) =>
         theme.bgColor.formInputDisabled} !important;
     }
-    border: ${({ theme, hasError }) =>
-      `solid 1px ${
-        hasError ? theme.borderColor.formInputError : 'transparent'
-      } !important`};
     &:focus {
-      border: ${({ hasError }) =>
-        hasError ? 'solid 1px var(--sendbird-light-error-300)' : 'none'};
+      border: ${({ theme }) =>
+        `solid 2px ${theme.borderColor.formInput.focus}`} !important;
       box-shadow: none;
     }
-    &:disabled {
-      pointer-events: none;
-      background-color: #fff;
+    &:active {
+      border: ${({ theme }) =>
+        `solid 1px ${theme.borderColor.formInput.active}`} !important;
     }
   }
 `;

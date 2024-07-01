@@ -150,7 +150,9 @@ export default function FormMessage(props: Props) {
         onClick={handleSubmit}
         disabled={hasError || form.isSubmitted}
       >
-        <Label type={LabelTypography.BUTTON_2}>Submit</Label>
+        <Label type={LabelTypography.BUTTON_2}>
+          {isSubmitted ? 'Submitted successfully' : 'Submit'}
+        </Label>
       </SubmitButton>
       {submitFailed && (
         <MessageFeedbackFailedModal

@@ -53,7 +53,12 @@ export interface CommonTheme {
   borderColor: {
     channelHeader: string;
     carouselItem: string;
-    formInputError: string;
+    formInput: {
+      default: string;
+      active: string;
+      focus: string;
+      error: string;
+    };
     formChip: {
       default: string;
       selected: string;
@@ -140,7 +145,12 @@ export function getTheme({
       borderColor: {
         channelHeader: 'var(--sendbird-light-onlight-04)',
         carouselItem: 'var(--sendbird-light-onlight-04)',
-        formInputError: 'var(--sendbird-light-error-300)',
+        formInput: {
+          default: 'var(--sendbird-light-onlight-04)',
+          active: 'var(--sendbird-light-primary-300)',
+          focus: 'var(--sendbird-light-primary-300)',
+          error: 'var(--sendbird-light-error-300)',
+        },
         formChip: {
           default: 'var(--sendbird-light-onlight-04)',
           selected: 'var(--sendbird-light-primary-300)',
@@ -215,7 +225,12 @@ export function getTheme({
       borderColor: {
         channelHeader: 'var(--sendbird-dark-ondark-04)',
         carouselItem: 'var(--sendbird-dark-ondark-04)',
-        formInputError: 'var(--sendbird-dark-error-200)',
+        formInput: {
+          default: 'var(--sendbird-dark-ondark-04)',
+          active: 'var(--sendbird-dark-primary-200)',
+          focus: 'var(--sendbird-dark-primary-200)',
+          error: 'var(--sendbird-dark-error-200)',
+        },
         formChip: {
           default: 'var(--sendbird-dark-ondark-04)',
           selected: 'var(--sendbird-dark-primary-200)',
