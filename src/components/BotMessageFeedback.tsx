@@ -8,6 +8,7 @@ import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
 import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
 import { CoreMessageType } from '@uikit/utils';
 
+import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 
 function BotMessageFeedback({ message }: { message: CoreMessageType }) {
@@ -116,6 +117,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
           message?.myFeedback?.rating &&
           showFeedbackModal && (
             <MessageFeedbackModal
+              rootElementId={elementIds.widgetWindow}
               selectedFeedback={message.myFeedback.rating}
               message={message}
               onUpdate={async (
@@ -157,7 +159,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
         feedbackFailedText && (
           <MessageFeedbackFailedModal
             text={feedbackFailedText}
-            rootElementId={'aichatbot-widget-window'}
+            rootElementId={elementIds.widgetWindow}
             onCancel={() => {
               setFeedbackFailedText('');
             }}
