@@ -152,6 +152,19 @@ const TextArea = styled.textarea`
   padding: 8px 12px !important;
 `;
 
+const SubmittedTextArea = styled.div`
+  width: calc(100% - 24px);
+  color: ${({ theme }) => theme.textColor.placeholder};
+  background-color: ${({ theme }) =>
+    theme.bgColor.formInputDisabled} !important;
+  border: solid 1px transparent !important;
+  pointer-events: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+`;
+
 const ErrorLabel = styled(Label)`
   position: relative;
   top: 0;
@@ -175,6 +188,7 @@ const CheckIconForChip = styled(Icon)<CheckIconProps>`
 
 const InputContainer = styled.div`
   position: relative;
+  width: 100%;
 `;
 export interface InputProps {
   name: string;
@@ -296,17 +310,21 @@ const FormInput = (props: InputProps) => {
                 const currentValue = values.length > 0 ? values[0] : '';
                 return (
                   <InputContainer>
-                    <TextArea
-                      className="sendbird-input__input"
-                      required={required}
-                      disabled={disabled}
-                      value={currentValue}
-                      onChange={(event) => {
-                        const value = event.target.value;
-                        onChange(value ? [value] : []);
-                      }}
-                      placeholder={!disabled ? placeHolder : ''}
-                    />
+                    {isSubmitted ? (
+                      <SubmittedTextArea>{currentValue}</SubmittedTextArea>
+                    ) : (
+                      <TextArea
+                        className="sendbird-input__input"
+                        required={required}
+                        disabled={disabled}
+                        value={currentValue}
+                        onChange={(event) => {
+                          const value = event.target.value;
+                          onChange(value ? [value] : []);
+                        }}
+                        placeholder={!disabled ? placeHolder : ''}
+                      />
+                    )}
                     {isValid && (
                       <CheckIcon
                         type={IconTypes.DONE}
