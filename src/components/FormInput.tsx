@@ -236,27 +236,36 @@ const FormInput = (props: InputProps) => {
 
   const onChipClick = (index: number) => {
     if (isSubmitted) return;
-    const newDraftedValues =
-      min === 1 && max === 1
-        ? [chipDataList[index].option]
-        : chipDataList.reduce((acc, chipData, i) => {
-            if (i === index) {
-              if (chipData.state === 'default' && values.length < max) {
-                acc.push(chipData.option);
-              }
-            } else {
-              if (chipData.state === 'selected') {
-                acc.push(chipData.option);
-              }
-            }
-            return acc;
-          }, [] as string[]);
-    onChange(newDraftedValues);
+    let newDraftedValues: string[];
+    if (min === 1 && max === 1) {
+      // Single select
+      newDraftedValues = [chipDataList[index].option];
+    } else {
+      /**
+       * Multi select case
+       * Upon chip click, if it is:
+       *   1. not selected and can select more -> select the chip. Keep other selected chips as is.
+       *   2. already selected ->  deselect the chip. Keep other selected chips as is.
+       */
+      newDraftedValues = chipDataList.reduce((acc, chipData, i) => {
+        if (i === index) {
+          if (chipData.state === 'default' && values.length < max) {
+            acc.push(chipData.option);
+          }
+        } else {
+          if (chipData.state === 'selected') {
+            acc.push(chipData.option);
+          }
+        }
+        return acc;
+      }, [] as string[]);
+    }
+    if (newDraftedValues.length > 0) onChange(newDraftedValues);
   };
 
   return (
     <Root hasError={hasError}>
-      <SendbirdInput className="sendbird-input">
+      <div className="sendbird-input" style={{ height: 'unset' }}>
         <InputLabel>{required ? `${name} *` : name}</InputLabel>
         <div className="sendbird-form-chip__container">
           {(() => {
@@ -346,7 +355,7 @@ const FormInput = (props: InputProps) => {
             Please check the value
           </ErrorLabel>
         )}
-      </SendbirdInput>
+      </div>
     </Root>
   );
 };
