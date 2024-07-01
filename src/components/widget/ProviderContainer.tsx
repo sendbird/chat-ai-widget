@@ -19,6 +19,7 @@ import {
   useWidgetState,
   WidgetStateProvider,
 } from '../../context/WidgetStateContext';
+import { useAssignGlobalFunction } from '../../hooks/useAssignGlobalFunction';
 import { useStyledComponentsTarget } from '../../hooks/useStyledComponentsTarget';
 import { getTheme } from '../../theme';
 import { isDashboardPreview } from '../../utils';
@@ -42,6 +43,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     enableHideWidgetForDeactivatedUser,
   } = useConstantState();
 
+  useAssignGlobalFunction();
   const { setIsVisible } = useWidgetState();
   const { botStyle } = useWidgetSetting();
   const session = useWidgetSession();
