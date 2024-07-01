@@ -9,9 +9,8 @@ import Button from '@uikit/ui/Button';
 import Label, { LabelTypography } from '@uikit/ui/Label';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
-
-import Input from './FormInput';
 import { elementIds } from '../const';
+import FormInput from './FormInput';
 import { validateFormField } from '../utils/formFieldValidator';
 
 export enum FormFieldValidatorType {
@@ -56,7 +55,7 @@ export default function FormMessage(props: Props) {
   const { items, id: formId } = form;
 
   const [submitFailed, setSubmitFailed] = useState(false);
-  const [formValues, setInputValue] = useState<FormValue[]>(() => {
+  const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
     items.forEach(({ required, style }) => {
       let draftValues: string[] = [];
@@ -82,7 +81,7 @@ export default function FormMessage(props: Props) {
         (formValue) => formValue.required && formValue.draftValues.length === 0
       );
       if (isMissingRequired) {
-        setInputValue((oldFormValues) => {
+        setFormValues((oldFormValues) => {
           return oldFormValues.map((formValue) => {
             if (formValue.required && formValue.draftValues.length === 0) {
               return {
@@ -120,7 +119,7 @@ export default function FormMessage(props: Props) {
         const submittedValues = item.submittedValues;
 
         return (
-          <Input
+          <FormInput
             key={id}
             style={style}
             placeHolder={placeholder}
@@ -131,7 +130,7 @@ export default function FormMessage(props: Props) {
             name={name}
             required={required}
             onChange={(values) => {
-              setInputValue((oldInputs) => {
+              setFormValues((oldInputs) => {
                 const newInputs = [...oldInputs]; // Create a new array
                 newInputs[index] = {
                   ...newInputs[index], // Create a new object for the updated item
