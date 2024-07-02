@@ -161,18 +161,31 @@ const TextArea = styled.textarea`
   padding: 8px 12px !important;
 `;
 
-const SubmittedTextInputContainer = styled.div`
+interface SubmittedTextInputContainerProps {
+  isTextarea?: boolean;
+}
+
+const SubmittedTextInputContainer = styled.div<SubmittedTextInputContainerProps>`
   width: calc(100% - 24px);
   color: ${({ theme }) => theme.textColor.incomingMessage};
   background-color: ${({ theme }) =>
     theme.bgColor.formInputDisabled} !important;
   border: solid 1px transparent !important;
   pointer-events: none;
-  padding: 8px 12px;
+  ${({ isTextarea }) => {
+    return isTextarea
+      ? {
+          padding: '9px 12px',
+        }
+      : {
+          padding: '7px 12px',
+        };
+  }};
   border-radius: 4px;
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  min-height: 12px;
+  line-height: 1;
+  min-height: 14px; // In case no value, min-height should be the font size.
 `;
 
 const ErrorLabel = styled(Label)`
@@ -329,7 +342,7 @@ const FormInput = (props: InputProps) => {
                 return (
                   <InputContainer>
                     {isSubmitted ? (
-                      <SubmittedTextInputContainer>
+                      <SubmittedTextInputContainer padding={'8px 12px'}>
                         {currentValue}
                       </SubmittedTextInputContainer>
                     ) : (
