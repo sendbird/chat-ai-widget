@@ -21,7 +21,7 @@ interface Props {
 interface FormValue {
   draftValues: string[];
   required: boolean;
-  hasError: boolean;
+  errorMessage: string | null;
 }
 
 const Root = styled.div`
@@ -39,6 +39,11 @@ const SubmitButton = styled(Button)`
   width: 100%;
 `;
 
+export enum ErrorMessages {
+  emptyRequired = 'This field is required',
+  invalid = 'Please check the value',
+}
+
 export default function FormMessage(props: Props) {
   const { message, form } = props;
   const { items, id: formId } = form;
@@ -55,13 +60,15 @@ export default function FormMessage(props: Props) {
       initialFormValues.push({
         draftValues,
         required,
-        hasError: false,
+        errorMessage: null,
       });
     });
     return initialFormValues;
   });
   const isSubmitted = form.isSubmitted;
-  const hasError = Object.values(formValues).some(({ hasError }) => hasError);
+  const hasError = Object.values(formValues).some(
+    ({ errorMessage }) => !!errorMessage
+  );
 
   const handleSubmit = useCallback(async () => {
     try {
@@ -75,7 +82,7 @@ export default function FormMessage(props: Props) {
             if (formValue.required && formValue.draftValues.length === 0) {
               return {
                 ...formValue,
-                hasError: true,
+                errorMessage: ErrorMessages.emptyRequired,
               };
             }
             return formValue;
@@ -85,7 +92,7 @@ export default function FormMessage(props: Props) {
       }
       // If any of required fields are not valid,
       const hasError = formValues.some(
-        ({ hasError, required }) => required && hasError
+        ({ errorMessage, required }) => required && errorMessage
       );
       if (hasError) {
         return;
@@ -104,7 +111,7 @@ export default function FormMessage(props: Props) {
     <Root>
       {items.map((item, index) => {
         const { name, placeholder, id, required, style } = item;
-        const { draftValues = [], hasError } = formValues[index];
+        const { draftValues = [], errorMessage } = formValues[index];
         const submittedValues = item.submittedValues;
 
         return (
@@ -113,7 +120,7 @@ export default function FormMessage(props: Props) {
             style={style}
             placeHolder={placeholder}
             values={submittedValues ?? draftValues}
-            hasError={hasError}
+            errorMessage={errorMessage}
             isValid={isSubmitted}
             disabled={isSubmitted}
             name={name}
@@ -123,9 +130,15 @@ export default function FormMessage(props: Props) {
                 newInputs[index] = {
                   ...newInputs[index], // Create a new object for the updated item
                   draftValues: values,
-                  hasError:
-                    !item.isValid(values) ||
-                    (!isSubmitted && required && values.length === 0),
+                  errorMessage: (() => {
+                    if (!item.isValid(values)) {
+                      return ErrorMessages.invalid;
+                    }
+                    if (!isSubmitted && required && values.length === 0) {
+                      return ErrorMessages.emptyRequired;
+                    }
+                    return null;
+                  })(),
                 };
                 return newInputs; // Return the new array
               });

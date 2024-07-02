@@ -25,15 +25,15 @@ export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   </Label>
 );
 
-const Root = styled.div<Pick<InputProps, 'hasError'>>`
+const Root = styled.div<Pick<InputProps, 'errorMessage'>>`
   padding-bottom: 12px;
   width: 100%;
   .sendbird-input .sendbird-input__input {
     color: ${({ theme }) => theme.textColor.incomingMessage} !important;
     background-color: ${({ theme }) => theme.bgColor.formInput} !important;
-    border: ${({ theme, hasError }) =>
+    border: ${({ theme, errorMessage }) =>
       `solid 1px ${
-        hasError
+        errorMessage
           ? theme.borderColor.formInput.error
           : theme.borderColor.formInput.default
       }`} !important;
@@ -198,7 +198,7 @@ export interface InputProps {
   required?: boolean;
   disabled?: boolean;
   isValid?: boolean;
-  hasError?: boolean;
+  errorMessage: string | null;
   values: string[];
   placeHolder?: string;
   onChange: (values: string[]) => void;
@@ -221,7 +221,7 @@ const FormInput = (props: InputProps) => {
     name,
     required,
     disabled,
-    hasError,
+    errorMessage,
     isValid,
     values,
     style,
@@ -280,9 +280,9 @@ const FormInput = (props: InputProps) => {
   };
 
   return (
-    <Root hasError={hasError}>
+    <Root errorMessage={errorMessage}>
       <div className="sendbird-input" style={{ height: 'unset' }}>
-        <InputLabel>{required ? `${name} *` : name}</InputLabel>
+        <InputLabel>{required ? name : `${name} (optional)`}</InputLabel>
         <div className="sendbird-form-chip__container">
           {(() => {
             switch (layout) {
@@ -370,9 +370,9 @@ const FormInput = (props: InputProps) => {
             }
           })()}
         </div>
-        {hasError && (
+        {errorMessage && (
           <ErrorLabel type={LabelTypography.CAPTION_3}>
-            Please check the value
+            {errorMessage}
           </ErrorLabel>
         )}
       </div>
