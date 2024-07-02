@@ -130,8 +130,7 @@ export default function FormMessage(props: Props) {
             name={name}
             required={required}
             onChange={(values) => {
-              setFormValues((oldInputs) => {
-                const newInputs = [...oldInputs]; // Create a new array
+              setFormValues(([...newInputs]) => {
                 newInputs[index] = {
                   ...newInputs[index], // Create a new object for the updated item
                   draftValues: values,
