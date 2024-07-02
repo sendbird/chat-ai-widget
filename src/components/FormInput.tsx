@@ -44,6 +44,7 @@ const Root = styled.div<Pick<InputProps, 'hasError'>>`
       pointer-events: none;
       background-color: ${({ theme }) =>
         theme.bgColor.formInputDisabled} !important;
+      border: none !important;
     }
     &:focus {
       border: ${({ theme }) =>
