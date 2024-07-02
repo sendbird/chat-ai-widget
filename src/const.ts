@@ -180,7 +180,7 @@ export interface Constant extends ConstantFeatureFlags {
   configureSession?: ConfigureSession;
   /**
    * @public
-   * @description Whether to open the widget automatically.
+   * @description Whether to open the widget automatically. (only works in desktop)
    */
   autoOpen?: boolean;
   /**
