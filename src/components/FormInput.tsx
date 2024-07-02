@@ -25,6 +25,14 @@ export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   </Label>
 );
 
+const InputTitleContainer = styled.div`
+  display: inline-block;
+`;
+
+const OptionalText = styled.span`
+  color: ${({ theme }) => theme.textColor.placeholder};
+`;
+
 const Root = styled.div<Pick<InputProps, 'errorMessage'>>`
   padding-bottom: 12px;
   width: 100%;
@@ -154,7 +162,7 @@ const TextArea = styled.textarea`
   padding: 8px 12px !important;
 `;
 
-const SubmittedTextArea = styled.div`
+const SubmittedTextInputContainer = styled.div`
   width: calc(100% - 24px);
   color: ${({ theme }) => theme.textColor.incomingMessage};
   background-color: ${({ theme }) =>
@@ -165,6 +173,7 @@ const SubmittedTextArea = styled.div`
   border-radius: 4px;
   overflow-wrap: break-word;
   white-space: pre-wrap;
+  min-height: 12px;
 `;
 
 const ErrorLabel = styled(Label)`
@@ -282,7 +291,15 @@ const FormInput = (props: InputProps) => {
   return (
     <Root errorMessage={errorMessage}>
       <div className="sendbird-input" style={{ height: 'unset' }}>
-        <InputLabel>{required ? name : `${name} (optional)`}</InputLabel>
+        <InputLabel>
+          {required ? (
+            name
+          ) : (
+            <InputTitleContainer>
+              name <OptionalText>(optional)</OptionalText>
+            </InputTitleContainer>
+          )}
+        </InputLabel>
         <div className="sendbird-form-chip__container">
           {(() => {
             switch (layout) {
@@ -313,7 +330,9 @@ const FormInput = (props: InputProps) => {
                 return (
                   <InputContainer>
                     {isSubmitted ? (
-                      <SubmittedTextArea>{currentValue}</SubmittedTextArea>
+                      <SubmittedTextInputContainer>
+                        {currentValue}
+                      </SubmittedTextInputContainer>
                     ) : (
                       <TextArea
                         className="sendbird-input__input"
@@ -343,19 +362,25 @@ const FormInput = (props: InputProps) => {
                 const currentValue = values.length > 0 ? values[0] : '';
                 return (
                   <InputContainer>
-                    <Input
-                      type={layout}
-                      className="sendbird-input__input"
-                      name={name}
-                      required={required}
-                      disabled={disabled}
-                      value={currentValue}
-                      onChange={(event) => {
-                        const value = event.target.value;
-                        onChange(value ? [value] : []);
-                      }}
-                      placeholder={!disabled ? placeHolder : ''}
-                    />
+                    {isSubmitted ? (
+                      <SubmittedTextInputContainer>
+                        {currentValue}
+                      </SubmittedTextInputContainer>
+                    ) : (
+                      <Input
+                        type={layout}
+                        className="sendbird-input__input"
+                        name={name}
+                        required={required}
+                        disabled={disabled}
+                        value={currentValue}
+                        onChange={(event) => {
+                          const value = event.target.value;
+                          onChange(value ? [value] : []);
+                        }}
+                        placeholder={!disabled ? placeHolder : ''}
+                      />
+                    )}
                     {isValid && (
                       <CheckIcon
                         type={IconTypes.DONE}
