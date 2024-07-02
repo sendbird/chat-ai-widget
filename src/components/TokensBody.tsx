@@ -34,9 +34,6 @@ const MultipleTokenTypeContainer = styled.div`
   border-radius: 16px;
   overflow: auto;
   background-color: ${({ theme }) => theme.bgColor.incomingMessage};
-  &:hover {
-    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
-  }
 `;
 
 export const TextContainer = styled.div`

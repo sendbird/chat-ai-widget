@@ -41,9 +41,6 @@ const Root = styled.div`
   border-radius: 16px;
   overflow: hidden;
   background-color: ${({ theme }) => theme.bgColor.incomingMessage};
-  &:hover {
-    background-color: ${({ theme }) => theme.bgColor.hover.incomingMessage};
-  }
 `;
 
 const SubmitButton = styled(Button)`
