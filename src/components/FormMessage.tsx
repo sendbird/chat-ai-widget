@@ -7,6 +7,7 @@ import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
 
 import Input from './FormInput';
+import { elementIds } from '../const';
 import { validateFormField } from '../utils/formFieldValidator';
 
 export enum FormFieldValidatorType {
@@ -217,7 +218,7 @@ export default function FormMessage(props: Props) {
       {submitFailed && (
         <MessageFeedbackFailedModal
           text={'Submit failed.'}
-          rootElementId={'aichatbot-widget-window'}
+          rootElementId={elementIds.widgetWindow}
           onCancel={() => {
             setSubmitFailed(false);
           }}
