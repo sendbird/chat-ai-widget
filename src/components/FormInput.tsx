@@ -151,7 +151,7 @@ const ChipText = styled.div`
   font-size: 12px;
   font-weight: bold;
   font-style: normal;
-  line-height: 20px;
+  line-height: 16px;
   letter-spacing: normal;
 `;
 
