@@ -105,12 +105,14 @@ export default function CustomMessage(props: Props) {
 
   // Sent by bot user
   if (isSentBy(message, botUserId)) {
-    if (message.form) {
+    if (message.messageForm) {
       return (
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}
-          bodyComponent={<FormMessage form={message.form} message={message} />}
+          bodyComponent={
+            <FormMessage form={message.messageForm} message={message} />
+          }
           createdAt={message.createdAt}
         />
       );

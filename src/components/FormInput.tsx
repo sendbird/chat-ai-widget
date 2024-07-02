@@ -14,6 +14,10 @@ const Label = styled(UIKitLabel)`
   bottom: 4px;
 `;
 
+const ChipLabelInner = styled(UIKitLabel)`
+
+`;
+
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <Label
     className="sendbird-input-label"
@@ -22,6 +26,16 @@ export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   >
     {children}
   </Label>
+);
+
+export const ChipLabel = ({ children }: InputLabelProps): ReactElement => (
+  <ChipLabelInner
+    className="sendbird-input-label"
+    type={LabelTypography.CAPTION_2}
+    color={LabelColors.ONBACKGROUND_2}
+  >
+    {children}
+  </ChipLabelInner>
 );
 
 const InputTitleContainer = styled.div`
@@ -37,6 +51,7 @@ const Root = styled.div<Pick<InputProps, 'errorMessage'>>`
   width: 100%;
   .sendbird-input .sendbird-input__input {
     color: ${({ theme }) => theme.textColor.incomingMessage} !important;
+    height: fit-content;
     background-color: ${({ theme }) => theme.bgColor.formInput} !important;
     border: ${({ theme, errorMessage }) =>
       `solid 1px ${
@@ -68,11 +83,12 @@ const Root = styled.div<Pick<InputProps, 'errorMessage'>>`
 
 interface ChipProps {
   state: ChipState;
+  isSubmitted?: boolean;
 }
 
 const Chip = styled.div<ChipProps>`
   border-radius: 100px;
-  padding: 6px 16px;
+  padding: ${({ isSubmitted }) => (isSubmitted ? 8 : 7)}px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,10 +162,15 @@ const ChipText = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: normal;
 `;
 
 const Input = styled.input`
-  padding: 6px 12px !important;
+  padding: 7px 12px !important;
 `;
 
 const TextArea = styled.textarea`
@@ -176,16 +197,16 @@ const SubmittedTextInputContainer = styled.div<SubmittedTextInputContainerProps>
     return isTextarea
       ? {
           padding: '9px 12px',
+          'min-height': '78px',
         }
       : {
           padding: '7px 12px',
+          'min-height': '20px', // In case no value, min-height should be the font size.
         };
   }};
   border-radius: 4px;
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  line-height: 1;
-  min-height: 14px; // In case no value, min-height should be the font size.
 `;
 
 const ErrorLabel = styled(Label)`
@@ -202,7 +223,7 @@ interface CheckIconProps {
 const CheckIcon = styled(Icon)<CheckIconProps>`
   position: absolute;
   right: ${({ right }) => right ?? '8px'};
-  bottom: ${({ bottom }) => bottom ?? '3px'};
+  bottom: ${({ bottom }) => bottom ?? '6px'};
 `;
 
 const CheckIconForChip = styled(Icon)<CheckIconProps>`
@@ -308,7 +329,7 @@ const FormInput = (props: InputProps) => {
             name
           ) : (
             <InputTitleContainer>
-              name <OptionalText>(optional)</OptionalText>
+              {name} <OptionalText>(optional)</OptionalText>
             </InputTitleContainer>
           )}
         </InputLabel>
@@ -322,13 +343,14 @@ const FormInput = (props: InputProps) => {
                       key={index}
                       state={chipData.state}
                       onClick={() => onChipClick(index)}
+                      isSubmitted={isSubmitted}
                     >
                       <ChipText>{chipData.option}</ChipText>
                       {isSubmitted &&
                         chipData.state === 'submittedSelected' && (
                           <CheckIconForChip
                             type={IconTypes.DONE}
-                            fillColor={IconColors.SECONDARY}
+                            fillColor={IconColors.SECONDARY_2}
                             width="20px"
                             height="20px"
                           />
@@ -342,7 +364,7 @@ const FormInput = (props: InputProps) => {
                 return (
                   <InputContainer>
                     {isSubmitted ? (
-                      <SubmittedTextInputContainer padding={'8px 12px'}>
+                      <SubmittedTextInputContainer isTextarea={true}>
                         {currentValue}
                       </SubmittedTextInputContainer>
                     ) : (
@@ -361,7 +383,7 @@ const FormInput = (props: InputProps) => {
                     {isValid && (
                       <CheckIcon
                         type={IconTypes.DONE}
-                        fillColor={IconColors.SECONDARY}
+                        fillColor={IconColors.SECONDARY_2}
                         width="24px"
                         height="24px"
                         bottom="8px"
@@ -396,7 +418,7 @@ const FormInput = (props: InputProps) => {
                     {isValid && (
                       <CheckIcon
                         type={IconTypes.DONE}
-                        fillColor={IconColors.SECONDARY}
+                        fillColor={IconColors.SECONDARY_2}
                         width="24px"
                         height="24px"
                       />

@@ -165,7 +165,7 @@ export function getTheme({
         chatBottom: 'var(--sendbird-dark-background-600)',
         messageInput: 'var(--sendbird-dark-background-500)',
         incomingMessage:
-          botMessageBGColor ?? 'var(--sendbird-dark-background-500)',
+          botMessageBGColor ?? 'var(--sendbird-dark-background-400)',
         outgoingMessage: accentColor ?? 'var(--sendbird-dark-primary-200)',
         suggestedReply: 'var(--sendbird-dark-background-600)',
         bottomBanner: 'var(--sendbird-dark-background-600)',
