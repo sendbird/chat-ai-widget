@@ -10,7 +10,6 @@ export interface InputLabelProps {
 }
 
 const Label = styled(UIKitLabel)`
-  font-size: 11px;
   position: relative;
   bottom: 4px;
 `;
