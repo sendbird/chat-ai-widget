@@ -150,7 +150,7 @@ const TextArea = styled.textarea`
     color: var(--sendbird-light-onlight-03);
   }
   resize: none;
-  height: 96px;
+  height: 96px !important;
   padding: 8px 12px !important;
 `;
 
