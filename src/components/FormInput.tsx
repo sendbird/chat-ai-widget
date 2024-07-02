@@ -14,8 +14,6 @@ const Label = styled(UIKitLabel)`
   bottom: 4px;
 `;
 
-const ChipLabelInner = styled(UIKitLabel)``;
-
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <Label
     className="sendbird-input-label"
@@ -24,16 +22,6 @@ export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   >
     {children}
   </Label>
-);
-
-export const ChipLabel = ({ children }: InputLabelProps): ReactElement => (
-  <ChipLabelInner
-    className="sendbird-input-label"
-    type={LabelTypography.CAPTION_2}
-    color={LabelColors.ONBACKGROUND_2}
-  >
-    {children}
-  </ChipLabelInner>
 );
 
 const InputTitleContainer = styled.div`
