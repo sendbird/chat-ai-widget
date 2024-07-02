@@ -13,14 +13,6 @@ import { elementIds } from '../const';
 import FormInput from './FormInput';
 import { validateFormField } from '../utils/formFieldValidator';
 
-export enum FormFieldValidatorType {
-  NUMBER = 'number',
-  ENUM = 'enum',
-  TEXT = 'text',
-  REGEX = 'regex',
-  DECIMAL_PLACE = 'decimal_place',
-}
-
 interface Props {
   message: CoreMessageType;
   form: MessageForm;
