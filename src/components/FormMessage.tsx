@@ -1,7 +1,7 @@
 import {
   MessageForm,
   MessageFormItemStyle,
-} from '@sendbird/chat/lib/__definition';
+} from '@sendbird/chat/message';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
