@@ -14,9 +14,7 @@ const Label = styled(UIKitLabel)`
   bottom: 4px;
 `;
 
-const ChipLabelInner = styled(UIKitLabel)`
-
-`;
+const ChipLabelInner = styled(UIKitLabel)``;
 
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <Label
@@ -333,102 +331,104 @@ const FormInput = (props: InputProps) => {
             </InputTitleContainer>
           )}
         </InputLabel>
-        <div className="sendbird-form-chip__container">
-          {(() => {
-            switch (layout) {
-              case 'chip': {
-                return chipDataList.map((chipData, index) => {
-                  return (
-                    <Chip
-                      key={index}
-                      state={chipData.state}
-                      onClick={() => onChipClick(index)}
-                      isSubmitted={isSubmitted}
-                    >
-                      <ChipText>{chipData.option}</ChipText>
-                      {isSubmitted &&
-                        chipData.state === 'submittedSelected' && (
-                          <CheckIconForChip
-                            type={IconTypes.DONE}
-                            fillColor={IconColors.SECONDARY_2}
-                            width="20px"
-                            height="20px"
-                          />
-                        )}
-                    </Chip>
-                  );
-                });
-              }
-              case 'textarea': {
-                const currentValue = values.length > 0 ? values[0] : '';
-                return (
-                  <InputContainer>
-                    {isSubmitted ? (
-                      <SubmittedTextInputContainer isTextarea={true}>
-                        {currentValue}
-                      </SubmittedTextInputContainer>
-                    ) : (
-                      <TextArea
-                        className="sendbird-input__input"
-                        required={required}
-                        disabled={disabled}
-                        value={currentValue}
-                        onChange={(event) => {
-                          const value = event.target.value;
-                          onChange(value ? [value] : []);
-                        }}
-                        placeholder={!disabled ? placeHolder : ''}
-                      />
-                    )}
-                    {isValid && (
-                      <CheckIcon
-                        type={IconTypes.DONE}
-                        fillColor={IconColors.SECONDARY_2}
-                        width="24px"
-                        height="24px"
-                        bottom="8px"
-                      />
-                    )}
-                  </InputContainer>
-                );
-              }
-              default: {
-                const currentValue = values.length > 0 ? values[0] : '';
-                return (
-                  <InputContainer>
-                    {isSubmitted ? (
-                      <SubmittedTextInputContainer>
-                        {currentValue}
-                      </SubmittedTextInputContainer>
-                    ) : (
-                      <Input
-                        type={layout}
-                        className="sendbird-input__input"
-                        name={name}
-                        required={required}
-                        disabled={disabled}
-                        value={currentValue}
-                        onChange={(event) => {
-                          const value = event.target.value;
-                          onChange(value ? [value] : []);
-                        }}
-                        placeholder={!disabled ? placeHolder : ''}
-                      />
-                    )}
-                    {isValid && (
-                      <CheckIcon
-                        type={IconTypes.DONE}
-                        fillColor={IconColors.SECONDARY_2}
-                        width="24px"
-                        height="24px"
-                      />
-                    )}
-                  </InputContainer>
-                );
-              }
+        {(() => {
+          switch (layout) {
+            case 'chip': {
+              return (
+                <div className="sendbird-form-chip__container">
+                  {chipDataList.map((chipData, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        state={chipData.state}
+                        onClick={() => onChipClick(index)}
+                        isSubmitted={isSubmitted}
+                      >
+                        <ChipText>{chipData.option}</ChipText>
+                        {isSubmitted &&
+                          chipData.state === 'submittedSelected' && (
+                            <CheckIconForChip
+                              type={IconTypes.DONE}
+                              fillColor={IconColors.SECONDARY_2}
+                              width="20px"
+                              height="20px"
+                            />
+                          )}
+                      </Chip>
+                    );
+                  })}
+                </div>
+              );
             }
-          })()}
-        </div>
+            case 'textarea': {
+              const currentValue = values.length > 0 ? values[0] : '';
+              return (
+                <InputContainer>
+                  {isSubmitted ? (
+                    <SubmittedTextInputContainer isTextarea={true}>
+                      {currentValue}
+                    </SubmittedTextInputContainer>
+                  ) : (
+                    <TextArea
+                      className="sendbird-input__input"
+                      required={required}
+                      disabled={disabled}
+                      value={currentValue}
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        onChange(value ? [value] : []);
+                      }}
+                      placeholder={!disabled ? placeHolder : ''}
+                    />
+                  )}
+                  {isValid && (
+                    <CheckIcon
+                      type={IconTypes.DONE}
+                      fillColor={IconColors.SECONDARY_2}
+                      width="24px"
+                      height="24px"
+                      bottom="8px"
+                    />
+                  )}
+                </InputContainer>
+              );
+            }
+            default: {
+              const currentValue = values.length > 0 ? values[0] : '';
+              return (
+                <InputContainer>
+                  {isSubmitted ? (
+                    <SubmittedTextInputContainer>
+                      {currentValue}
+                    </SubmittedTextInputContainer>
+                  ) : (
+                    <Input
+                      type={layout}
+                      className="sendbird-input__input"
+                      name={name}
+                      required={required}
+                      disabled={disabled}
+                      value={currentValue}
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        onChange(value ? [value] : []);
+                      }}
+                      placeholder={!disabled ? placeHolder : ''}
+                    />
+                  )}
+                  {isValid && (
+                    <CheckIcon
+                      type={IconTypes.DONE}
+                      fillColor={IconColors.SECONDARY_2}
+                      width="24px"
+                      height="24px"
+                    />
+                  )}
+                </InputContainer>
+              );
+            }
+          }
+        })()}
         {errorMessage && (
           <ErrorLabel type={LabelTypography.CAPTION_3}>
             {errorMessage}
