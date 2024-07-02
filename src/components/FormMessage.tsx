@@ -39,10 +39,10 @@ const SubmitButton = styled(Button)`
   width: 100%;
 `;
 
-export enum ErrorMessages {
-  emptyRequired = 'This field is required',
-  invalid = 'Please check the value',
-}
+const ErrorMessages = {
+  emptyRequired: 'This field is required',
+  invalid: 'Please check the value',
+};
 
 export default function FormMessage(props: Props) {
   const { message, form } = props;
