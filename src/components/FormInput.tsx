@@ -48,8 +48,9 @@ const Root = styled.div<Pick<InputProps, 'hasError'>>`
     }
     &:focus {
       border: ${({ theme }) =>
-        `solid 2px ${theme.borderColor.formInput.focus}`} !important;
-      box-shadow: none;
+        `solid 1px ${theme.borderColor.formInput.focus}`} !important;
+      outline: none;
+      box-shadow: 0 0 0 1px ${({ theme }) => theme.borderColor.formInput.focus};
     }
     &:active {
       border: ${({ theme }) =>
@@ -86,7 +87,9 @@ const Chip = styled.div<ChipProps>`
           '&:focus': {
             color: theme.textColor.formChip.focus,
             'background-color': theme.bgColor.formChip.focus,
-            border: `2px solid ${theme.borderColor.formChip.focus}`,
+            border: `1px solid ${theme.borderColor.formChip.focus}`,
+            outline: 'none',
+            'box-shadow': `0 0 0 1px ${theme.borderColor.formChip.focus}`,
           },
         };
       }
@@ -104,7 +107,9 @@ const Chip = styled.div<ChipProps>`
           '&:focus': {
             color: theme.textColor.formChip.focus,
             'background-color': theme.bgColor.formChip.focus,
-            border: `2px solid ${theme.borderColor.formChip.focus}`,
+            border: `1px solid ${theme.borderColor.formChip.focus}`,
+            outline: 'none',
+            'box-shadow': `0 0 0 1px ${theme.borderColor.formChip.focus}`,
           },
         };
       }
