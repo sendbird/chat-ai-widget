@@ -80,8 +80,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@4.2.2",
-  "resolutions": {
-    "@sendbird/chat": "file:/Users/liamcho/GitHub/chat-js/dist"
-  }
+  "packageManager": "yarn@4.2.2"
 }
