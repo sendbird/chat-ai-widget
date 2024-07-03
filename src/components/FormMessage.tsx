@@ -29,7 +29,6 @@ const Root = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 16px 12px;
-  gap: 8px;
   border-radius: 16px;
   overflow: hidden;
   background-color: ${({ theme }) => theme.bgColor.incomingMessage};

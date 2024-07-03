@@ -12,6 +12,7 @@ export interface InputLabelProps {
 const Label = styled(UIKitLabel)`
   position: relative;
   bottom: 4px;
+  line-height: 14px;
 `;
 
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
@@ -74,7 +75,7 @@ interface ChipProps {
 
 const Chip = styled.div<ChipProps>`
   border-radius: 100px;
-  padding: ${({ isSubmitted }) => (isSubmitted ? 8 : 7)}px 16px;
+  padding: ${({ isSubmitted }) => (isSubmitted ? 6 : 5)}px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,7 +152,7 @@ const ChipText = styled.div`
   font-size: 12px;
   font-weight: bold;
   font-style: normal;
-  line-height: 16px;
+  line-height: 20px;
   letter-spacing: normal;
 `;
 
@@ -160,6 +161,7 @@ const Input = styled.input`
 `;
 
 const TextArea = styled.textarea`
+  display: block; // Without this, parent height does not fit this height.
   ::placeholder {
     color: var(--sendbird-light-onlight-03);
   }
@@ -220,6 +222,11 @@ const InputContainer = styled.div`
   position: relative;
   width: 100%;
 `;
+
+const InputRoot = styled.div`
+  height: unset;
+`;
+
 export interface InputProps {
   name: string;
   style: MessageFormItemStyle;
@@ -309,16 +316,16 @@ const FormInput = (props: InputProps) => {
 
   return (
     <Root errorMessage={errorMessage}>
-      <div className="sendbird-input" style={{ height: 'unset' }}>
-        <InputLabel>
-          {required ? (
-            name
-          ) : (
-            <InputTitleContainer>
-              {name} <OptionalText>(optional)</OptionalText>
-            </InputTitleContainer>
-          )}
-        </InputLabel>
+      <InputLabel>
+        {required ? (
+          name
+        ) : (
+          <InputTitleContainer>
+            {name} <OptionalText>(optional)</OptionalText>
+          </InputTitleContainer>
+        )}
+      </InputLabel>
+      <InputRoot className="sendbird-input">
         {(() => {
           switch (layout) {
             case 'chip': {
@@ -422,7 +429,7 @@ const FormInput = (props: InputProps) => {
             {errorMessage}
           </ErrorLabel>
         )}
-      </div>
+      </InputRoot>
     </Root>
   );
 };
