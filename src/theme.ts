@@ -49,6 +49,7 @@ export interface CommonTheme {
       hover: string;
       focus: string;
     };
+    activeButton: string;
   };
   borderColor: {
     channelHeader: string;
@@ -141,6 +142,9 @@ export function getTheme({
           hover: 'var(--sendbird-light-primary-300)',
           focus: 'var(--sendbird-light-onlight-02)',
         },
+        activeButton: accentColor
+          ? getColorBasedOnSaturation(accentColor, 0.88)
+          : 'var(--sendbird-dark-ondark-01)',
       },
       borderColor: {
         channelHeader: 'var(--sendbird-light-onlight-04)',
@@ -221,6 +225,9 @@ export function getTheme({
           hover: 'var(--sendbird-dark-primary-200)',
           focus: 'var(--sendbird-dark-ondark-02)',
         },
+        activeButton: accentColor
+          ? getColorBasedOnSaturation(accentColor, 0.88)
+          : 'var(--sendbird-light-onlight-01)',
       },
       borderColor: {
         channelHeader: 'var(--sendbird-dark-ondark-04)',

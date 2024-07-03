@@ -38,6 +38,10 @@ const SubmitButton = styled(Button)`
   width: 100%;
 `;
 
+const ButtonText = styled.div`
+  color: ${({ theme }) => theme.textColor.activeButton};
+`;
+
 const ErrorMessages = {
   emptyRequired: 'This field is required',
   invalid: 'Please check the value',
@@ -151,7 +155,9 @@ export default function FormMessage(props: Props) {
         disabled={hasError || form.isSubmitted}
       >
         <Label type={LabelTypography.BUTTON_2}>
-          {isSubmitted ? 'Submitted successfully' : 'Submit'}
+          <ButtonText>
+            {isSubmitted ? 'Submitted successfully' : 'Submit'}
+          </ButtonText>
         </Label>
       </SubmitButton>
       {submitFailed && (
