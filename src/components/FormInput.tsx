@@ -325,13 +325,9 @@ const FormInput = (props: InputProps) => {
   return (
     <Root errorMessage={errorMessage}>
       <InputLabel>
-        {required ? (
-          name
-        ) : (
-          <InputTitleContainer>
-            {name} <OptionalText>(optional)</OptionalText>
-          </InputTitleContainer>
-        )}
+        <InputTitleContainer>
+          {name} {!required && <OptionalText>(optional)</OptionalText>}
+        </InputTitleContainer>
       </InputLabel>
       <InputRoot className="sendbird-input">
         {(() => {
