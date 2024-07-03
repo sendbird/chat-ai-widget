@@ -207,8 +207,7 @@ const SubmittedText = styled.div`
 `;
 
 const ErrorLabel = styled(Label)`
-  position: relative;
-  top: 0;
+  margin-top: 4px;
   color: var(--sendbird-light-error-300);
 `;
 
@@ -229,10 +228,6 @@ const CheckIconForChip = styled(Icon)<CheckIconProps>`
 
 const InputContainer = styled.div`
   width: 100%;
-`;
-
-const InputRoot = styled.div`
-  height: unset;
 `;
 
 export interface InputProps {
@@ -329,7 +324,7 @@ const FormInput = (props: InputProps) => {
           {name} {!required && <OptionalText>(optional)</OptionalText>}
         </InputTitleContainer>
       </InputLabel>
-      <InputRoot className="sendbird-input">
+      <div className="sendbird-input" style={{ height: 'unset' }}>
         {(() => {
           switch (layout) {
             case 'chip': {
@@ -393,7 +388,10 @@ const FormInput = (props: InputProps) => {
                 </InputContainer>
               );
             }
-            default: {
+            case 'text':
+            case 'number':
+            case 'phone':
+            case 'email': {
               const currentValue = values.length > 0 ? values[0] : '';
               return (
                 <InputContainer>
@@ -429,6 +427,9 @@ const FormInput = (props: InputProps) => {
                 </InputContainer>
               );
             }
+            default: {
+              return <></>;
+            }
           }
         })()}
         {errorMessage && (
@@ -436,7 +437,7 @@ const FormInput = (props: InputProps) => {
             {errorMessage}
           </ErrorLabel>
         )}
-      </InputRoot>
+      </div>
     </Root>
   );
 };

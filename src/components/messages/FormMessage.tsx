@@ -8,6 +8,7 @@ import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
 
 import { elementIds } from '../../const';
+import { useConstantState } from '../../context/ConstantContext';
 import FormInput from '../FormInput';
 
 interface Props {
@@ -44,14 +45,10 @@ const ButtonText = styled.div<ButtonTextProps>`
     disabled ? 'inherit' : theme.textColor.activeButton};
 `;
 
-const ErrorMessages = {
-  emptyRequired: 'This field is required',
-  invalid: 'Please check the value',
-};
-
 export default function FormMessage(props: Props) {
   const { message, form } = props;
   const { items, id: formId } = form;
+  const { stringSet } = useConstantState();
 
   const [submitFailed, setSubmitFailed] = useState(false);
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
@@ -67,12 +64,15 @@ export default function FormMessage(props: Props) {
     return initialFormValues;
   });
   const isSubmitted = form.isSubmitted;
-  const hasError = Object.values(formValues).some(
-    ({ errorMessage }) => !!errorMessage
-  );
+  const hasError = formValues.some(({ errorMessage }) => !!errorMessage);
 
   const handleSubmit = useCallback(async () => {
     try {
+      // If any of required fields are not valid,
+      const hasError = formValues.some(({ errorMessage }) => errorMessage);
+      if (hasError) {
+        return;
+      }
       // If form is empty, ignore submit
       const isMissingRequired = formValues.some(
         (formValue) =>
@@ -85,17 +85,12 @@ export default function FormMessage(props: Props) {
             if (formValue.required && formValue.draftValues.length === 0) {
               return {
                 ...formValue,
-                errorMessage: ErrorMessages.emptyRequired,
+                errorMessage: stringSet.FORM_ITEM_REQUIRED,
               };
             }
             return formValue;
           });
         });
-        return;
-      }
-      // If any of required fields are not valid,
-      const hasError = formValues.some(({ errorMessage }) => errorMessage);
-      if (hasError) {
         return;
       }
       formValues.forEach((formValue, index) => {
@@ -132,10 +127,10 @@ export default function FormMessage(props: Props) {
                   draftValues: values,
                   errorMessage: (() => {
                     if (!item.isValid(values)) {
-                      return ErrorMessages.invalid;
+                      return stringSet.FORM_ITEM_INVALID;
                     }
                     if (!isSubmitted && required && values.length === 0) {
-                      return ErrorMessages.emptyRequired;
+                      return stringSet.FORM_ITEM_REQUIRED;
                     }
                     return null;
                   })(),
