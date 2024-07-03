@@ -57,13 +57,9 @@ export default function FormMessage(props: Props) {
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
     items.forEach(({ required, style }) => {
-      let draftValues: string[] = [];
-      const { layout, defaultOptions = [] }: MessageFormItemStyle = style;
-      if (layout === 'chip') {
-        draftValues = defaultOptions;
-      }
+      const { layout, defaultOptions = [] } = style;
       initialFormValues.push({
-        draftValues,
+        draftValues: layout === 'chip' ? defaultOptions : [],
         required,
         errorMessage: null,
       });
