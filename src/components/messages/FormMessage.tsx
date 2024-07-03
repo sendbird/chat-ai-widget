@@ -1,7 +1,4 @@
-import {
-  MessageForm,
-  MessageFormItemStyle,
-} from '@sendbird/chat/message';
+import { MessageForm, MessageFormItemStyle } from '@sendbird/chat/message';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
@@ -9,8 +6,8 @@ import Button from '@uikit/ui/Button';
 import Label, { LabelTypography } from '@uikit/ui/Label';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
-import { elementIds } from '../const';
-import FormInput from './FormInput';
+import FormInput from '../FormInput';
+import { elementIds } from '../../const';
 import { validateFormField } from '../utils/formFieldValidator';
 
 interface Props {
@@ -82,7 +79,9 @@ export default function FormMessage(props: Props) {
     try {
       // If form is empty, ignore submit
       const isMissingRequired = formValues.some(
-        (formValue) => formValue.required && formValue.draftValues.length === 0
+        (formValue) =>
+          formValue.required &&
+          (!formValue.draftValues || formValue.draftValues.length === 0)
       );
       if (isMissingRequired) {
         setFormValues((oldFormValues) => {
@@ -99,9 +98,7 @@ export default function FormMessage(props: Props) {
         return;
       }
       // If any of required fields are not valid,
-      const hasError = formValues.some(
-        ({ errorMessage, required }) => required && errorMessage
-      );
+      const hasError = formValues.some(({ errorMessage }) => errorMessage);
       if (hasError) {
         return;
       }
@@ -120,14 +117,13 @@ export default function FormMessage(props: Props) {
       {items.map((item, index) => {
         const { name, placeholder, id, required, style } = item;
         const { draftValues = [], errorMessage } = formValues[index];
-        const submittedValues = item.submittedValues;
 
         return (
           <FormInput
             key={id}
             style={style}
             placeHolder={placeholder}
-            values={submittedValues ?? draftValues}
+            values={item.submittedValues ?? draftValues}
             errorMessage={errorMessage}
             isValid={isSubmitted}
             disabled={isSubmitted}
@@ -155,10 +151,7 @@ export default function FormMessage(props: Props) {
           />
         );
       })}
-      <SubmitButton
-        onClick={handleSubmit}
-        disabled={hasError || isSubmitted}
-      >
+      <SubmitButton onClick={handleSubmit} disabled={hasError || isSubmitted}>
         <Label type={LabelTypography.BUTTON_2}>
           <ButtonText disabled={hasError || isSubmitted}>
             {isSubmitted ? 'Submitted successfully' : 'Submit'}
