@@ -1,5 +1,5 @@
-import { FeedbackRating, Feedback } from '@sendbird/chat/message';
-import { useState } from 'react';
+import { Feedback, FeedbackRating } from '@sendbird/chat/message';
+import { useReducer } from 'react';
 
 import FeedbackIconButton from '@uikit/ui/FeedbackIconButton';
 import Icon, { IconTypes } from '@uikit/ui/Icon';
@@ -8,26 +8,28 @@ import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
 import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
 import { CoreMessageType } from '@uikit/utils';
 
+import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 
+type State = Partial<{
+  errorText: string;
+  modalVisible: boolean;
+  menuVisible: boolean;
+}>;
+
 function BotMessageFeedback({ message }: { message: CoreMessageType }) {
-  const { stringSet, isMobileView } = useConstantState();
-  const [showFeedbackOptionsMenu, setShowFeedbackOptionsMenu] =
-    useState<boolean>(false);
-  const [showFeedbackModal, setShowFeedbackModal] = useState<boolean>(false);
-  const [feedbackFailedText, setFeedbackFailedText] = useState<string>('');
-
-  const openFeedbackFormOrMenu = () => {
-    if (isMobileView) {
-      setShowFeedbackOptionsMenu(true);
-    } else {
-      setShowFeedbackModal(true);
+  const { stringSet } = useConstantState();
+  const [state, setState] = useReducer(
+    (p: State, a: State) => ({ ...p, ...a }),
+    {
+      errorText: '',
+      modalVisible: false,
+      menuVisible: false,
     }
-  };
+  );
 
-  const onCloseFeedbackForm = () => {
-    setShowFeedbackModal(false);
-  };
+  const openFeedbackMenu = () => setState({ menuVisible: true });
+  const closeFeedbackModal = () => setState({ modalVisible: false });
 
   return (
     <>
@@ -35,24 +37,21 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
       <div className="sendbird-message-content__middle__body-container__feedback-buttons-container">
         <FeedbackIconButton
           aria-label="Like the bot answer"
-          isSelected={message?.myFeedback?.rating === FeedbackRating.GOOD}
+          isSelected={message.myFeedback?.rating === FeedbackRating.GOOD}
           onClick={async () => {
-            if (!message?.myFeedback?.rating) {
+            if (message.myFeedback) {
+              openFeedbackMenu();
+            } else {
               try {
-                await message.submitFeedback({
-                  rating: FeedbackRating.GOOD,
-                });
-                openFeedbackFormOrMenu();
+                await message.submitFeedback({ rating: FeedbackRating.GOOD });
               } catch (error) {
                 console.error?.('Channel: Submit feedback failed.', error);
-                setFeedbackFailedText(stringSet.FEEDBACK_FAILED_SUBMIT);
+                setState({ errorText: stringSet.FEEDBACK_FAILED_SUBMIT });
               }
-            } else {
-              openFeedbackFormOrMenu();
             }
           }}
           disabled={
-            message?.myFeedback != null &&
+            !!message.myFeedback &&
             message.myFeedback.rating !== FeedbackRating.GOOD
           }
         >
@@ -60,24 +59,21 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
         </FeedbackIconButton>
         <FeedbackIconButton
           aria-label="Dislike the bot answer"
-          isSelected={message?.myFeedback?.rating === FeedbackRating.BAD}
+          isSelected={message.myFeedback?.rating === FeedbackRating.BAD}
           onClick={async () => {
-            if (!message?.myFeedback?.rating) {
+            if (message.myFeedback) {
+              openFeedbackMenu();
+            } else {
               try {
-                await message.submitFeedback({
-                  rating: FeedbackRating.BAD,
-                });
-                openFeedbackFormOrMenu();
+                await message.submitFeedback({ rating: FeedbackRating.BAD });
               } catch (error) {
                 console.error?.('Channel: Submit feedback failed.', error);
-                setFeedbackFailedText(stringSet.FEEDBACK_FAILED_SUBMIT);
+                setState({ errorText: stringSet.FEEDBACK_FAILED_SUBMIT });
               }
-            } else {
-              openFeedbackFormOrMenu();
             }
           }}
           disabled={
-            message?.myFeedback != null &&
+            !!message.myFeedback &&
             message.myFeedback.rating !== FeedbackRating.BAD
           }
         >
@@ -85,82 +81,75 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
         </FeedbackIconButton>
       </div>
       {
-        // Feedback menu
-        message.myFeedback?.rating && showFeedbackOptionsMenu && (
+        // Feedback bottom sheet menu
+        message.myFeedback && state.menuVisible && (
           <MobileFeedbackMenu
+            rootElementId={elementIds.widgetWindow}
             hideMenu={() => {
-              setShowFeedbackOptionsMenu(false);
+              setState({ menuVisible: false });
             }}
             onEditFeedback={() => {
-              setShowFeedbackOptionsMenu(false);
-              setShowFeedbackModal(true);
+              setState({ menuVisible: false, modalVisible: true });
             }}
             onRemoveFeedback={async () => {
+              if (!message.myFeedback) return;
               try {
-                if (message.myFeedback?.id == null) {
-                  throw new Error('Invalid feedback id');
-                }
                 await message.deleteFeedback(message.myFeedback.id);
               } catch (error) {
                 console.error?.('Channel: Delete feedback failed.', error);
-                setFeedbackFailedText(stringSet.FEEDBACK_FAILED_DELETE);
+                setState({ errorText: stringSet.FEEDBACK_FAILED_DELETE });
               }
-              setShowFeedbackOptionsMenu(false);
+              setState({ menuVisible: false });
             }}
           />
         )
       }
       {
-        // Feedback modal
-        message.myFeedback != null &&
-          message?.myFeedback?.rating &&
-          showFeedbackModal && (
-            <MessageFeedbackModal
-              selectedFeedback={message.myFeedback.rating}
-              message={message}
-              onUpdate={async (
-                selectedFeedback: FeedbackRating,
-                comment: string
-              ) => {
-                if (message.myFeedback) {
-                  const newFeedback: Feedback = new Feedback({
+        // Feedback comment modal
+        message.myFeedback && state.modalVisible && (
+          <MessageFeedbackModal
+            isMobile
+            rootElementId={elementIds.widgetWindow}
+            selectedFeedback={message.myFeedback.rating}
+            message={message}
+            onUpdate={async (selectedFeedback, comment) => {
+              if (message.myFeedback) {
+                try {
+                  const feedback = new Feedback({
                     id: message.myFeedback.id,
                     rating: selectedFeedback,
                     comment,
                   });
-                  try {
-                    await message.updateFeedback(newFeedback);
-                  } catch (error) {
-                    console.error('Channel: Update feedback failed.', error);
-                    setFeedbackFailedText(stringSet.FEEDBACK_FAILED_SAVE);
-                  }
+                  await message.updateFeedback(feedback);
+                } catch (error) {
+                  console.error('Channel: Update feedback failed.', error);
+                  setState({ errorText: stringSet.FEEDBACK_FAILED_SAVE });
                 }
-                onCloseFeedbackForm();
-              }}
-              onClose={onCloseFeedbackForm}
-              onRemove={async () => {
-                if (message.myFeedback) {
-                  try {
-                    await message.deleteFeedback(message.myFeedback.id);
-                  } catch (error) {
-                    console.error('Channel: Delete feedback failed.', error);
-                    setFeedbackFailedText(stringSet.FEEDBACK_FAILED_DELETE);
-                  }
+              }
+              closeFeedbackModal();
+            }}
+            onClose={closeFeedbackModal}
+            onRemove={async () => {
+              if (message.myFeedback) {
+                try {
+                  await message.deleteFeedback(message.myFeedback.id);
+                } catch (error) {
+                  console.error('Channel: Delete feedback failed.', error);
+                  setState({ errorText: stringSet.FEEDBACK_FAILED_DELETE });
                 }
-                onCloseFeedbackForm();
-              }}
-            />
-          )
+              }
+              closeFeedbackModal();
+            }}
+          />
+        )
       }
       {
-        // Feedback failed modal
-        feedbackFailedText && (
+        // error modal
+        !!state.errorText && (
           <MessageFeedbackFailedModal
-            text={feedbackFailedText}
-            rootElementId={'aichatbot-widget-window'}
-            onCancel={() => {
-              setFeedbackFailedText('');
-            }}
+            text={state.errorText}
+            rootElementId={elementIds.widgetWindow}
+            onCancel={() => setState({ errorText: '' })}
           />
         )
       }
