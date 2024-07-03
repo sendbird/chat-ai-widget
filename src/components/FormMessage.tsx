@@ -38,8 +38,13 @@ const SubmitButton = styled(Button)`
   width: 100%;
 `;
 
-const ButtonText = styled.div`
-  color: ${({ theme }) => theme.textColor.activeButton};
+interface ButtonTextProps {
+  disabled?: boolean;
+}
+
+const ButtonText = styled.div<ButtonTextProps>`
+  color: ${({ theme, disabled }) =>
+    disabled ? 'inherit' : theme.textColor.activeButton};
 `;
 
 const ErrorMessages = {
@@ -152,10 +157,10 @@ export default function FormMessage(props: Props) {
       })}
       <SubmitButton
         onClick={handleSubmit}
-        disabled={hasError || form.isSubmitted}
+        disabled={hasError || isSubmitted}
       >
         <Label type={LabelTypography.BUTTON_2}>
-          <ButtonText>
+          <ButtonText disabled={hasError || isSubmitted}>
             {isSubmitted ? 'Submitted successfully' : 'Submit'}
           </ButtonText>
         </Label>
