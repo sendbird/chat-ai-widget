@@ -129,7 +129,7 @@ export default function FormMessage(props: Props) {
                     if (!item.isValid(values)) {
                       return stringSet.FORM_ITEM_INVALID;
                     }
-                    if (!isSubmitted && required && values.length === 0) {
+                    if (required && values.length === 0) {
                       return stringSet.FORM_ITEM_REQUIRED;
                     }
                     return null;
