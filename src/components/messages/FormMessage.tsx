@@ -6,9 +6,9 @@ import Button from '@uikit/ui/Button';
 import Label, { LabelTypography } from '@uikit/ui/Label';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
-import FormInput from '../FormInput';
+
 import { elementIds } from '../../const';
-import { validateFormField } from '../utils/formFieldValidator';
+import FormInput from '../FormInput';
 
 interface Props {
   message: CoreMessageType;
