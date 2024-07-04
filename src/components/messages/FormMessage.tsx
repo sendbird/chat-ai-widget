@@ -121,7 +121,7 @@ export default function FormMessage(props: Props) {
             disabled={isSubmitted}
             name={name}
             required={required}
-            onFocused={focused => setIsInputFocused(focused)}
+            onFocused={(isFocus) => setIsInputFocused(isFocus)}
             onChange={(values) => {
               setFormValues(([...newInputs]) => {
                 newInputs[index] = {

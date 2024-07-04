@@ -1,11 +1,5 @@
 import { MessageFormItemStyle } from '@sendbird/chat/message';
-import {
-  Dispatch,
-  ReactElement,
-  ReactNode,
-  SetStateAction,
-  useState,
-} from 'react';
+import { ReactElement, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
 import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
@@ -245,7 +239,7 @@ export interface InputProps {
   errorMessage: string | null;
   values: string[];
   placeHolder?: string;
-  setIsInputFocused?: Dispatch<SetStateAction<boolean>>;
+  onFocused?: (isFocus: boolean) => void;
   onChange: (values: string[]) => void;
   isSubmitted: boolean;
 }
@@ -270,7 +264,7 @@ const FormInput = (props: InputProps) => {
     isValid,
     values,
     style,
-    setIsInputFocused,
+    onFocused,
     onChange,
     placeHolder,
     isSubmitted,
