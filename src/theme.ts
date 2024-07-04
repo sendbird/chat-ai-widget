@@ -19,6 +19,14 @@ export interface CommonTheme {
     carouselButtonIcon: string;
     formInput: string;
     formInputDisabled: string;
+    formChip: {
+      default: string;
+      selected: string;
+      submittedDefault: string;
+      submittedSelected: string;
+      hover: string;
+      focus: string;
+    };
   };
   textColor: {
     incomingMessage: string;
@@ -33,11 +41,31 @@ export interface CommonTheme {
     };
     carouselItem: string;
     placeholder: string;
+    formChip: {
+      default: string;
+      selected: string;
+      submittedDefault: string;
+      submittedSelected: string;
+      hover: string;
+      focus: string;
+    };
+    activeButton: string;
   };
   borderColor: {
     channelHeader: string;
     carouselItem: string;
-    formInputError: string;
+    formInput: {
+      default: string;
+      active: string;
+      focus: string;
+      error: string;
+    };
+    formChip: {
+      default: string;
+      selected: string;
+      hover: string;
+      focus: string;
+    };
   };
   accentColor: string;
 }
@@ -80,6 +108,14 @@ export function getTheme({
         carouselButtonIcon: 'var(--sendbird-light-background-400)',
         formInput: 'var(--sendbird-light-background-50)',
         formInputDisabled: 'var(--sendbird-dark-ondark-02)',
+        formChip: {
+          default: 'var(--sendbird-light-background-50)',
+          selected: 'var(--sendbird-light-primary-100)',
+          submittedDefault: 'var(--sendbird-dark-ondark-02)',
+          submittedSelected: 'var(--sendbird-dark-ondark-02)',
+          hover: 'var(--sendbird-light-background-50)',
+          focus: 'var(--sendbird-light-background-50)',
+        },
       },
       textColor: {
         incomingMessage: botMessageBGColor
@@ -98,11 +134,33 @@ export function getTheme({
         },
         carouselItem: 'var(--sendbird-light-onlight-01)',
         placeholder: 'var(--sendbird-light-onlight-03)',
+        formChip: {
+          default: 'var(--sendbird-light-onlight-02)',
+          selected: 'var(--sendbird-light-primary-300)',
+          submittedDefault: 'var(--sendbird-light-onlight-02)',
+          submittedSelected: 'var(--sendbird-light-onlight-01)',
+          hover: 'var(--sendbird-light-primary-300)',
+          focus: 'var(--sendbird-light-onlight-02)',
+        },
+        activeButton: accentColor
+          ? getColorBasedOnSaturation(accentColor, 0.88)
+          : 'var(--sendbird-dark-ondark-01)',
       },
       borderColor: {
         channelHeader: 'var(--sendbird-light-onlight-04)',
         carouselItem: 'var(--sendbird-light-onlight-04)',
-        formInputError: 'var(--sendbird-light-error-300)',
+        formInput: {
+          default: 'var(--sendbird-light-onlight-04)',
+          active: 'var(--sendbird-light-primary-300)',
+          focus: 'var(--sendbird-light-primary-300)',
+          error: 'var(--sendbird-light-error-300)',
+        },
+        formChip: {
+          default: 'var(--sendbird-light-onlight-04)',
+          selected: 'var(--sendbird-light-primary-300)',
+          hover: 'var(--sendbird-light-primary-300)',
+          focus: 'var(--sendbird-light-primary-300)',
+        },
       },
       accentColor: accentColor ?? 'var(--sendbird-light-primary-300)',
     },
@@ -111,7 +169,7 @@ export function getTheme({
         chatBottom: 'var(--sendbird-dark-background-600)',
         messageInput: 'var(--sendbird-dark-background-500)',
         incomingMessage:
-          botMessageBGColor ?? 'var(--sendbird-dark-background-500)',
+          botMessageBGColor ?? 'var(--sendbird-dark-background-400)',
         outgoingMessage: accentColor ?? 'var(--sendbird-dark-primary-200)',
         suggestedReply: 'var(--sendbird-dark-background-600)',
         bottomBanner: 'var(--sendbird-dark-background-600)',
@@ -133,6 +191,14 @@ export function getTheme({
         carouselButtonIcon: 'var(--sendbird-dark-background-50)',
         formInput: 'var(--sendbird-light-onlight-03)',
         formInputDisabled: 'var(--sendbird-light-onlight-04)',
+        formChip: {
+          default: 'var(--sendbird-light-onlight-03)',
+          selected: 'var(--sendbird-dark-background-600)',
+          submittedDefault: 'var(--sendbird-dark-background-500)',
+          submittedSelected: 'var(--sendbird-light-onlight-04)',
+          hover: 'var(--sendbird-light-onlight-03)',
+          focus: 'var(--sendbird-light-onlight-03)',
+        },
       },
       textColor: {
         outgoingMessage: accentColor
@@ -151,11 +217,33 @@ export function getTheme({
         },
         carouselItem: 'var(--sendbird-dark-ondark-01)',
         placeholder: 'var(--sendbird-dark-ondark-03)',
+        formChip: {
+          default: 'var(--sendbird-dark-ondark-02)',
+          selected: 'var(--sendbird-dark-primary-200)',
+          submittedDefault: 'var(--sendbird-dark-ondark-04)',
+          submittedSelected: 'var(--sendbird-dark-ondark-01)',
+          hover: 'var(--sendbird-dark-primary-200)',
+          focus: 'var(--sendbird-dark-ondark-02)',
+        },
+        activeButton: accentColor
+          ? getColorBasedOnSaturation(accentColor, 0.88)
+          : 'var(--sendbird-light-onlight-01)',
       },
       borderColor: {
         channelHeader: 'var(--sendbird-dark-ondark-04)',
         carouselItem: 'var(--sendbird-dark-ondark-04)',
-        formInputError: 'var(--sendbird-dark-error-200)',
+        formInput: {
+          default: 'var(--sendbird-dark-ondark-04)',
+          active: 'var(--sendbird-dark-primary-200)',
+          focus: 'var(--sendbird-dark-primary-200)',
+          error: 'var(--sendbird-dark-error-200)',
+        },
+        formChip: {
+          default: 'var(--sendbird-dark-ondark-04)',
+          selected: 'var(--sendbird-dark-primary-200)',
+          hover: 'var(--sendbird-dark-primary-200)',
+          focus: 'var(--sendbird-dark-ondark-02)',
+        },
       },
       accentColor: accentColor ?? 'var(--sendbird-dark-primary-200)',
     },

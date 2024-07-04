@@ -108,12 +108,16 @@ export function generateColorVariants(
   return variants;
 }
 
-export function getColorBasedOnSaturation(hex: string) {
+export function getColorBasedOnSaturation(hex: string, alpha?: number) {
   const threshold = 149;
   const r = Number(`0x${hex[1]}${hex[2]}`);
   const g = Number(`0x${hex[3]}${hex[4]}`);
   const b = Number(`0x${hex[5]}${hex[6]}`);
   const calc = r * 0.299 + g * 0.587 + b * 0.114;
+  if (alpha) {
+    const val = calc > threshold ? 0 : 255;
+    return `rgba(${val}, ${val}, ${val}, ${alpha})`;
+  }
   return calc > threshold ? '#000000' : '#ffffff';
 }
 

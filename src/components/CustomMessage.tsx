@@ -10,7 +10,7 @@ import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
-import FormMessage, { MessageFormPayload } from './FormMessage';
+import FormMessage from './messages/FormMessage';
 import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
@@ -105,14 +105,14 @@ export default function CustomMessage(props: Props) {
 
   // Sent by bot user
   if (isSentBy(message, botUserId)) {
-    const messageForm: MessageFormPayload | undefined = message
-      .extendedMessagePayload?.message_form as MessageFormPayload | undefined;
-    if (messageForm) {
+    if (message.messageForm) {
       return (
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}
-          bodyComponent={<FormMessage form={messageForm} message={message} />}
+          bodyComponent={
+            <FormMessage form={message.messageForm} message={message} />
+          }
           createdAt={message.createdAt}
         />
       );

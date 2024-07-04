@@ -31,9 +31,6 @@ export const BodyContainer = styled.div`
 
 export const BodyComponent = styled.div`
   background-color: ${({ theme }) => theme.bgColor.outgoingMessage};
-  &:hover {
-    background-color: ${({ theme }) => theme.bgColor.hover.outgoingMessage};
-  }
   color: ${({ theme }) => theme.textColor.outgoingMessage};
   max-width: 600px;
   display: flex;
