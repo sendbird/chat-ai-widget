@@ -1,3 +1,12 @@
+## [1.7.2] (July 04, 2024)
+### Feat:
+- `FormInput` of `FormMesage` now supports two new `MessageFormItem.style.layout` types: `chip` and `textarea`
+- Added `window.sbWidget` interface to allowing control of the widget state and cache clearing from a non-React environment
+
+### Update:
+- `MessageFeedbackModal` is now being displayed within the widget window
+- `autoOpen` is now being ignored in mobile view
+
 ## [1.7.1] (Jun 26, 2024)
 ### Feat:
 - Added a file viewer that allows you to enlarge images by clicking on them.
