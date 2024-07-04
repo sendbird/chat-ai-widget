@@ -51,6 +51,7 @@ export default function FormMessage(props: Props) {
   const { stringSet } = useConstantState();
 
   const [submitFailed, setSubmitFailed] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
     items.forEach(({ required, style }) => {
@@ -120,6 +121,7 @@ export default function FormMessage(props: Props) {
             disabled={isSubmitted}
             name={name}
             required={required}
+            setIsInputFocused={setIsInputFocused}
             onChange={(values) => {
               setFormValues(([...newInputs]) => {
                 newInputs[index] = {
@@ -142,9 +144,12 @@ export default function FormMessage(props: Props) {
           />
         );
       })}
-      <SubmitButton onClick={handleSubmit} disabled={hasError || isSubmitted}>
+      <SubmitButton
+        onClick={handleSubmit}
+        disabled={(!isInputFocused && hasError) || isSubmitted}
+      >
         <Label type={LabelTypography.BUTTON_2}>
-          <ButtonText disabled={hasError || isSubmitted}>
+          <ButtonText disabled={(!isInputFocused && hasError) || isSubmitted}>
             {isSubmitted ? 'Submitted successfully' : 'Submit'}
           </ButtonText>
         </Label>
