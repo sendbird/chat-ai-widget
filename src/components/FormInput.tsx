@@ -1,5 +1,5 @@
 import { MessageFormItemStyle } from '@sendbird/chat/message';
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
 import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
@@ -239,6 +239,7 @@ export interface InputProps {
   errorMessage: string | null;
   values: string[];
   placeHolder?: string;
+  onFocused?: (isFocus: boolean) => void;
   onChange: (values: string[]) => void;
   isSubmitted: boolean;
 }
@@ -263,6 +264,7 @@ const FormInput = (props: InputProps) => {
     isValid,
     values,
     style,
+    onFocused,
     onChange,
     placeHolder,
     isSubmitted,
@@ -271,6 +273,18 @@ const FormInput = (props: InputProps) => {
   const { layout, options = [], resultCount }: MessageFormItemStyle = style;
   const { min = 1, max = 1 } = resultCount ?? {};
   const chipDataList: ChipData[] = getInitialChipDataList();
+
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    onFocused?.(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    onFocused?.(false);
+  };
 
   function getInitialChipDataList(): ChipData[] {
     if (isSubmitted) {
@@ -378,6 +392,8 @@ const FormInput = (props: InputProps) => {
                       required={required}
                       disabled={disabled}
                       value={currentValue}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
                       onChange={(event) => {
                         const value = event.target.value;
                         onChange(value ? [value] : []);
@@ -417,6 +433,8 @@ const FormInput = (props: InputProps) => {
                       required={required}
                       disabled={disabled}
                       value={currentValue}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
                       onChange={(event) => {
                         const value = event.target.value;
                         onChange(value ? [value] : []);
@@ -432,7 +450,7 @@ const FormInput = (props: InputProps) => {
             }
           }
         })()}
-        {errorMessage && (
+        {!isFocused && errorMessage && (
           <ErrorLabel type={LabelTypography.CAPTION_3}>
             {errorMessage}
           </ErrorLabel>
