@@ -284,12 +284,12 @@ const FormInput = (props: InputProps) => {
 
   const handleFocus = () => {
     setIsFocused(true);
-    setIsInputFocused?.(true);
+    onFocused?.(true);
   };
 
   const handleBlur = () => {
     setIsFocused(false);
-    setIsInputFocused?.(false);
+    onFocused?.(false);
   };
 
   function getInitialChipDataList(): ChipData[] {
