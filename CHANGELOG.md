@@ -1,5 +1,5 @@
 ## [1.7.3] (July 09, 2024)
-### Feat:
+### Fix:
 - Fixed a broken backward compatibility of `FormMessage` introduced in v1.7.2
 
 ## [1.7.2] (July 04, 2024)
