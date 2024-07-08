@@ -348,5 +348,3 @@ export function asSafeURL(url: string) {
 
   return safeURL;
 }
-
-export const cx = (...args: any[]) => args.filter(Boolean).join(' ');
