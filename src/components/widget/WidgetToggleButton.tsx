@@ -31,10 +31,5 @@ export default function WidgetToggleButton() {
     return renderWidgetToggleButton(toggleButtonProps);
   }
 
-  return (
-    <FloatingWidgetButton
-      {...toggleButtonProps}
-      imageUrl={botStyle.toggleButtonUrl}
-    />
-  );
+  return <FloatingWidgetButton {...toggleButtonProps} imageUrl={botStyle.toggleButtonUrl} />;
 }

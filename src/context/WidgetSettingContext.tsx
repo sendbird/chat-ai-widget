@@ -1,19 +1,10 @@
 import { SendbirdChatWith } from '@sendbird/chat';
 import { GroupChannelModule } from '@sendbird/chat/groupChannel';
-import React, {
-  createContext,
-  useContext,
-  useLayoutEffect,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useLayoutEffect, useState } from 'react';
 
 import { useConstantState } from './ConstantContext';
 import { widgetSettingHandler } from '../libs/api/widgetSetting';
-import {
-  getWidgetSessionCache,
-  saveWidgetSessionCache,
-  WidgetSessionCache,
-} from '../libs/storage/widgetSessionCache';
+import { getWidgetSessionCache, saveWidgetSessionCache, WidgetSessionCache } from '../libs/storage/widgetSessionCache';
 import { getDateNDaysLater, isPastTime } from '../utils';
 
 interface WidgetSession {
@@ -43,9 +34,7 @@ type Context = {
 };
 
 const WidgetSettingContext = createContext<Context | null>(null);
-export const WidgetSettingProvider = ({
-  children,
-}: React.PropsWithChildren) => {
+export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => {
   const {
     applicationId: appId,
     botId,
@@ -64,9 +53,7 @@ export const WidgetSettingProvider = ({
   }
 
   const sessionStrategy: 'auto' | 'manual' =
-    typeof configureSession === 'function' && !!injectedUserId && !!sessionToken
-      ? 'manual'
-      : 'auto';
+    typeof configureSession === 'function' && !!injectedUserId && !!sessionToken ? 'manual' : 'auto';
 
   const inProgress = React.useRef(false);
   const [initialized, setInitialized] = useState(false);
@@ -76,22 +63,15 @@ export const WidgetSettingProvider = ({
     botMessageBGColor: '#EEEEEE',
     autoOpen: false,
   });
-  const [widgetSession, setWidgetSession] = useState<WidgetSession | null>(
-    null
-  );
+  const [widgetSession, setWidgetSession] = useState<WidgetSession | null>(null);
 
-  async function initSessionByStrategy(
-    strategy: 'auto' | 'manual',
-    clearCache = false
-  ) {
+  async function initSessionByStrategy(strategy: 'auto' | 'manual', clearCache = false) {
     const cachedSession = getWidgetSessionCache({
       appId,
       botId,
     });
 
-    const useCachedSession = ((
-      cache: typeof cachedSession
-    ): cache is NonNullable<typeof cachedSession> => {
+    const useCachedSession = ((cache: typeof cachedSession): cache is NonNullable<typeof cachedSession> => {
       if (clearCache) return false;
       if (!cache || cache.strategy !== strategy) return false;
       if (cache.strategy === 'manual') {
@@ -169,13 +149,9 @@ export const WidgetSettingProvider = ({
     setInitialized(true);
   }
 
-  async function initManualSession(
-    sdk: SendbirdChatWith<[GroupChannelModule]>
-  ) {
+  async function initManualSession(sdk: SendbirdChatWith<[GroupChannelModule]>) {
     if (sessionStrategy === 'manual' && injectedUserId) {
-      const data = firstMessageData
-        ? JSON.stringify({ first_message_data: firstMessageData })
-        : undefined;
+      const data = firstMessageData ? JSON.stringify({ first_message_data: firstMessageData }) : undefined;
 
       const channel = await sdk.groupChannel.createChannel({
         name: createGroupChannelParams.name ?? 'AI Chatbot Widget Channel',
@@ -213,9 +189,7 @@ export const WidgetSettingProvider = ({
           ...botStyle,
           ...botStudioEditProps?.styles,
           accentColor:
-            botStudioEditProps?.styles?.accentColor ??
-            botStudioEditProps?.styles?.primaryColor ??
-            botStyle.accentColor,
+            botStudioEditProps?.styles?.accentColor ?? botStudioEditProps?.styles?.primaryColor ?? botStyle.accentColor,
           autoOpen: autoOpen ?? botStyle.autoOpen,
         },
         widgetSession,
@@ -231,9 +205,7 @@ export const WidgetSettingProvider = ({
 export const useWidgetSetting = () => {
   const context = useContext(WidgetSettingContext);
   if (!context) {
-    throw new Error(
-      'Not found WidgetSettingContext, useWidgetSetting must be used within an WidgetSettingProvider'
-    );
+    throw new Error('Not found WidgetSettingContext, useWidgetSetting must be used within an WidgetSettingProvider');
   }
   return context;
 };
@@ -242,7 +214,7 @@ export const useWidgetSession = () => {
   const { widgetSession } = useWidgetSetting();
   if (!widgetSession) {
     throw new Error(
-      "WidgetSession is not initialized. Please make sure to use useWidgetSession under the WidgetSettingProvider's children components."
+      "WidgetSession is not initialized. Please make sure to use useWidgetSession under the WidgetSettingProvider's children components.",
     );
   }
   return widgetSession;

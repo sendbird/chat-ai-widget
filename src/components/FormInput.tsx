@@ -17,11 +17,7 @@ const Label = styled(UIKitLabel)`
 
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <div style={{ marginBottom: '6px' }}>
-    <Label
-      className="sendbird-input-label"
-      type={LabelTypography.CAPTION_2}
-      color={LabelColors.ONBACKGROUND_2}
-    >
+    <Label className="sendbird-input-label" type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
       {children}
     </Label>
   </div>
@@ -43,29 +39,22 @@ const Root = styled.div<Pick<InputProps, 'errorMessage'>>`
     height: fit-content;
     background-color: ${({ theme }) => theme.bgColor.formInput} !important;
     border: ${({ theme, errorMessage }) =>
-      `solid 1px ${
-        errorMessage
-          ? theme.borderColor.formInput.error
-          : theme.borderColor.formInput.default
-      }`} !important;
+      `solid 1px ${errorMessage ? theme.borderColor.formInput.error : theme.borderColor.formInput.default}`} !important;
     ::placeholder {
       color: ${({ theme }) => theme.textColor.placeholder};
     }
     &:disabled {
       pointer-events: none;
-      background-color: ${({ theme }) =>
-        theme.bgColor.formInputDisabled} !important;
+      background-color: ${({ theme }) => theme.bgColor.formInputDisabled} !important;
       border: none !important;
     }
     &:focus {
-      border: ${({ theme }) =>
-        `solid 1px ${theme.borderColor.formInput.focus}`} !important;
+      border: ${({ theme }) => `solid 1px ${theme.borderColor.formInput.focus}`} !important;
       outline: none;
       box-shadow: 0 0 0 1px ${({ theme }) => theme.borderColor.formInput.focus};
     }
     &:active {
-      border: ${({ theme }) =>
-        `solid 1px ${theme.borderColor.formInput.active}`} !important;
+      border: ${({ theme }) => `solid 1px ${theme.borderColor.formInput.active}`} !important;
     }
   }
 `;
@@ -181,8 +170,7 @@ const SubmittedTextInputContainer = styled.div<SubmittedTextInputContainerProps>
   word-wrap: break-word;
   width: calc(100% - 24px);
   color: ${({ theme }) => theme.textColor.incomingMessage};
-  background-color: ${({ theme }) =>
-    theme.bgColor.formInputDisabled} !important;
+  background-color: ${({ theme }) => theme.bgColor.formInputDisabled} !important;
   border: none;
   pointer-events: none;
   ${({ isTextarea }) => {
@@ -244,11 +232,7 @@ export interface InputProps {
   isSubmitted: boolean;
 }
 
-type ChipState =
-  | 'default'
-  | 'selected'
-  | 'submittedDefault'
-  | 'submittedSelected';
+type ChipState = 'default' | 'selected' | 'submittedDefault' | 'submittedSelected';
 
 interface ChipData {
   state: ChipState;
@@ -289,9 +273,7 @@ const FormInput = (props: InputProps) => {
   function getInitialChipDataList(): ChipData[] {
     if (isSubmitted) {
       return options.map((option) => ({
-        state: values.includes(option)
-          ? 'submittedSelected'
-          : 'submittedDefault',
+        state: values.includes(option) ? 'submittedSelected' : 'submittedDefault',
         option,
       }));
     } else {
@@ -353,15 +335,14 @@ const FormInput = (props: InputProps) => {
                         isSubmitted={isSubmitted}
                       >
                         <ChipText>{chipData.option}</ChipText>
-                        {isSubmitted &&
-                          chipData.state === 'submittedSelected' && (
-                            <CheckIconForChip
-                              type={IconTypes.DONE}
-                              fillColor={IconColors.SECONDARY_2}
-                              width="20px"
-                              height="20px"
-                            />
-                          )}
+                        {isSubmitted && chipData.state === 'submittedSelected' && (
+                          <CheckIconForChip
+                            type={IconTypes.DONE}
+                            fillColor={IconColors.SECONDARY_2}
+                            width="20px"
+                            height="20px"
+                          />
+                        )}
                       </Chip>
                     );
                   })}
@@ -377,12 +358,7 @@ const FormInput = (props: InputProps) => {
                       <SubmittedText>{currentValue}</SubmittedText>
                       {isValid && (
                         <CheckIconContainer>
-                          <Icon
-                            type={IconTypes.DONE}
-                            fillColor={IconColors.SECONDARY_2}
-                            width="20px"
-                            height="20px"
-                          />
+                          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
                       )}
                     </SubmittedTextInputContainer>
@@ -416,12 +392,7 @@ const FormInput = (props: InputProps) => {
                       <SubmittedText>{currentValue}</SubmittedText>
                       {isValid && (
                         <CheckIconContainer>
-                          <Icon
-                            type={IconTypes.DONE}
-                            fillColor={IconColors.SECONDARY_2}
-                            width="20px"
-                            height="20px"
-                          />
+                          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
                       )}
                     </SubmittedTextInputContainer>
@@ -450,11 +421,7 @@ const FormInput = (props: InputProps) => {
             }
           }
         })()}
-        {!isFocused && errorMessage && (
-          <ErrorLabel type={LabelTypography.CAPTION_3}>
-            {errorMessage}
-          </ErrorLabel>
-        )}
+        {!isFocused && errorMessage && <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>}
       </div>
     </Root>
   );

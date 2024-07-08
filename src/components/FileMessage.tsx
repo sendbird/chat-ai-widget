@@ -51,19 +51,9 @@ export default function FileMessage(props: Props) {
           onCancel={() => setShowFileViewer(false)}
           profile={
             profileUrl != '' ? (
-              <Avatar
-                src={profileUrl}
-                alt="botProfileImage"
-                height="32px"
-                width="32px"
-              />
+              <Avatar src={profileUrl} alt="botProfileImage" height="32px" width="32px" />
             ) : (
-              <BotProfileImage
-                width={32}
-                height={32}
-                iconWidth={18}
-                iconHeight={18}
-              />
+              <BotProfileImage width={32} height={32} iconWidth={18} iconHeight={18} />
             )
           }
         />

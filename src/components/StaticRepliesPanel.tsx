@@ -1,9 +1,5 @@
 import { ChannelType, User } from '@sendbird/chat';
-import {
-  MessageType,
-  SendingStatus,
-  UserMessage,
-} from '@sendbird/chat/message';
+import { MessageType, SendingStatus, UserMessage } from '@sendbird/chat/message';
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
@@ -49,9 +45,7 @@ const StaticRepliesPanel = (props: Props) => {
 
   const { suggestedMessageContent, botId } = useConstantState();
 
-  const [suggestedReplies, setSuggestedReplies] = useState<SuggestedReply[]>(
-    suggestedMessageContent?.replyContents
-  );
+  const [suggestedReplies, setSuggestedReplies] = useState<SuggestedReply[]>(suggestedMessageContent?.replyContents);
   const store = useSendbirdStateContext();
   const sb = store.stores.sdkStore.sdk;
   const { messages, currentChannel: channel } = useGroupChannelContext();
@@ -59,11 +53,7 @@ const StaticRepliesPanel = (props: Props) => {
   const sendLocalMessage = useSendLocalMessage();
 
   useEffect(() => {
-    if (
-      lastMessage &&
-      lastMessage.sender?.userId === botId &&
-      !isLocalMessageCustomType(lastMessage.customType)
-    ) {
+    if (lastMessage && lastMessage.sender?.userId === botId && !isLocalMessageCustomType(lastMessage.customType)) {
       setSuggestedReplies(suggestedMessageContent.replyContents);
     }
   }, [channel?.url]);
@@ -79,22 +69,20 @@ const StaticRepliesPanel = (props: Props) => {
     // TODO:
     // 1. Create a sent suggested reply user message and then add it to the message list.
     const createdAt: number = Date.now();
-    const localMessage: UserMessage = sb.message.buildMessageFromSerializedData(
-      {
-        messageId: createdAt,
-        channelUrl: channel?.url,
-        channelType: ChannelType.GROUP,
-        createdAt, // FIXME: ms? or seconds? sorted by this or id?
-        sender: botUser?.serialize(),
-        sendingStatus: SendingStatus.SUCCEEDED,
-        messageType: MessageType.USER,
-        message: removedReply.text,
-        customType: LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion,
-        reactions: [],
-        plugins: [],
-        data: JSON.stringify(removedReply),
-      }
-    ) as UserMessage;
+    const localMessage: UserMessage = sb.message.buildMessageFromSerializedData({
+      messageId: createdAt,
+      channelUrl: channel?.url,
+      channelType: ChannelType.GROUP,
+      createdAt, // FIXME: ms? or seconds? sorted by this or id?
+      sender: botUser?.serialize(),
+      sendingStatus: SendingStatus.SUCCEEDED,
+      messageType: MessageType.USER,
+      message: removedReply.text,
+      customType: LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion,
+      reactions: [],
+      plugins: [],
+      data: JSON.stringify(removedReply),
+    }) as UserMessage;
 
     sendLocalMessage(localMessage);
     setSuggestedReplies([]);
@@ -104,13 +92,7 @@ const StaticRepliesPanel = (props: Props) => {
     <Root>
       <Panel>
         {suggestedReplies.map((suggestedReply: SuggestedReply, i: number) => {
-          return (
-            <ReplyItem
-              key={i}
-              value={suggestedReply.title}
-              onClickReply={onClickSuggestedReply}
-            />
-          );
+          return <ReplyItem key={i} value={suggestedReply.title} onClickReply={onClickSuggestedReply} />;
         })}
       </Panel>
     </Root>
@@ -118,11 +100,7 @@ const StaticRepliesPanel = (props: Props) => {
 };
 
 export default function StaticReplyContainer(props: Props) {
-  const inputElement = document.querySelector(
-    '.sendbird-conversation__scroll-container'
-  );
+  const inputElement = document.querySelector('.sendbird-conversation__scroll-container');
 
-  return inputElement
-    ? ReactDOM.createPortal(<StaticRepliesPanel {...props} />, inputElement)
-    : null;
+  return inputElement ? ReactDOM.createPortal(<StaticRepliesPanel {...props} />, inputElement) : null;
 }

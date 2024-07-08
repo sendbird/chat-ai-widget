@@ -1,11 +1,7 @@
 import { UserMessage } from '@sendbird/chat/message';
 import styled from 'styled-components';
 
-import {
-  DefaultSentTime,
-  BodyContainer,
-  BodyComponent,
-} from './MessageComponent';
+import { DefaultSentTime, BodyContainer, BodyComponent } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
@@ -15,8 +11,7 @@ const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   align-items: end;
   margin-bottom: 6px;
   gap: 4px;
-  margin-top: ${({ enableEmojiFeedback }) =>
-    enableEmojiFeedback ? '16px' : '0'};
+  margin-top: ${({ enableEmojiFeedback }) => (enableEmojiFeedback ? '16px' : '0')};
 `;
 
 type Props = {
@@ -29,9 +24,7 @@ export default function CurrentUserMessage(props: Props) {
 
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
-      <DefaultSentTime>
-        {formatCreatedAtToAMPM(message.createdAt, dateLocale)}
-      </DefaultSentTime>
+      <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>
       <BodyContainer>
         <BodyComponent>
           <div className="sendbird-word">{message.message}</div>

@@ -20,13 +20,7 @@ const DynamicRepliesPanel = (props: Props) => {
     return <></>;
   }
 
-  return (
-    <SuggestedReplies
-      replyOptions={replyOptions}
-      onSendMessage={onSendMessage}
-      type={type}
-    />
-  );
+  return <SuggestedReplies replyOptions={replyOptions} onSendMessage={onSendMessage} type={type} />;
 };
 
 export default DynamicRepliesPanel;

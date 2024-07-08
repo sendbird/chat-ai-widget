@@ -7,11 +7,7 @@ interface Params {
   lastMessageRef: React.RefObject<HTMLDivElement>;
   bottomBuffer: number;
 }
-export function useScrollOnStreaming({
-  isLastBotMessage,
-  lastMessageRef,
-  bottomBuffer,
-}: Params) {
+export function useScrollOnStreaming({ isLastBotMessage, lastMessageRef, bottomBuffer }: Params) {
   const throttledScrollIntoView = useThrottle((element: HTMLDivElement) => {
     element.scrollIntoView({ block: 'end', behavior: 'smooth' });
     if (bottomBuffer > 0) {

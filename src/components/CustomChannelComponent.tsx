@@ -17,10 +17,7 @@ import WelcomeMessages from './messages/WelcomeMessages';
 import StaticRepliesPanel from './StaticRepliesPanel';
 import { PoweredByBanner } from './ui/PoweredByBanner';
 import { useConstantState } from '../context/ConstantContext';
-import {
-  useWidgetSession,
-  useWidgetSetting,
-} from '../context/WidgetSettingContext';
+import { useWidgetSession, useWidgetSetting } from '../context/WidgetSettingContext';
 import useAutoDismissMobileKeyboardHandler from '../hooks/useAutoDismissMobileKeyboardHandler';
 import { useBlockWhileBotResponding } from '../hooks/useBlockWhileBotResponding';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
@@ -51,8 +48,7 @@ const Root = styled.div<RootStyleProps>`
   border: none;
 
   .sendbird-conversation__scroll-bottom-button {
-    bottom: ${({ isStaticReplyVisible }) =>
-      isStaticReplyVisible ? '65px' : '16px'};
+    bottom: ${({ isStaticReplyVisible }) => (isStaticReplyVisible ? '65px' : '16px')};
   }
 
   .sendbird-message-input-wrapper {
@@ -121,54 +117,36 @@ const Root = styled.div<RootStyleProps>`
 `;
 
 export function CustomChannelComponent() {
-  const {
-    suggestedMessageContent,
-    botId,
-    enableEmojiFeedback,
-    customUserAgentParam,
-    botStudioEditProps,
-  } = useConstantState();
-  const {
-    messages,
-    currentChannel: channel,
-    scrollToBottom,
-    refresh,
-  } = useGroupChannelContext();
+  const { suggestedMessageContent, botId, enableEmojiFeedback, customUserAgentParam, botStudioEditProps } =
+    useConstantState();
+  const { messages, currentChannel: channel, scrollToBottom, refresh } = useGroupChannelContext();
   const { resetSession } = useWidgetSetting();
   const { userId: currentUserId } = useWidgetSession();
 
   // NOTE: Filter out messages that should not be displayed.
-  const allMessages = messages.filter(
-    (message) => !shouldFilterOutMessage(message)
-  );
-  const { botInfo, welcomeMessages, suggestedRepliesDirection } =
-    botStudioEditProps ?? {};
+  const allMessages = messages.filter((message) => !shouldFilterOutMessage(message));
+  const { botInfo, welcomeMessages, suggestedRepliesDirection } = botStudioEditProps ?? {};
   const { profileUrl, nickname } = botInfo ?? {};
   const botUser = channel?.members.find((member) => member.userId === botId);
   const botProfileUrl = profileUrl ?? botUser?.profileUrl;
   const botNickname = nickname ?? botUser?.nickname;
   const lastMessageRef = useRef<HTMLDivElement>(null);
 
-  const lastMessage = allMessages?.[allMessages?.length - 1] as
-    | SendableMessage
-    | undefined;
+  const lastMessage = allMessages?.[allMessages?.length - 1] as SendableMessage | undefined;
 
-  const isLastBotMessage =
-    !(lastMessage?.messageType === 'admin') &&
-    lastMessage?.sender?.userId === botId;
+  const isLastBotMessage = !(lastMessage?.messageType === 'admin') && lastMessage?.sender?.userId === botId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
 
   const messageCount = allMessages?.length ?? 0;
 
-  const dynamicReplyOptions = (lastMessage?.extendedMessagePayload
-    ?.suggested_replies ?? []) as string[];
+  const dynamicReplyOptions = (lastMessage?.extendedMessagePayload?.suggested_replies ?? []) as string[];
 
   const isStaticReplyVisible = getStaticMessageVisibility(
     (lastMessage as UserMessage) ?? null,
     botUser?.userId,
     suggestedMessageContent,
-    enableEmojiFeedback
+    enableEmojiFeedback,
   );
 
   useAutoDismissMobileKeyboardHandler();
@@ -213,33 +191,24 @@ export function CustomChannelComponent() {
     }
   }, [lastMessage?.messageId]);
 
-  const groupedMessages = useMemo(
-    () => groupMessagesByShortSpanTime(allMessages),
-    [messageCount]
-  );
+  const groupedMessages = useMemo(() => groupMessagesByShortSpanTime(allMessages), [messageCount]);
 
   const botWelcomeMessages = useMemo(() => {
     if (!botId) return [];
     return getBotWelcomeMessages(allMessages, botId);
   }, [messageCount]);
-  const botWelcomeMessageIds = botWelcomeMessages.map(
-    (message) => message.messageId
-  );
+  const botWelcomeMessageIds = botWelcomeMessages.map((message) => message.messageId);
   const firstMessageCreatedAt = allMessages[0]?.createdAt;
-  const lastBotWelcomeMessage =
-    botWelcomeMessages[botWelcomeMessages.length - 1];
+  const lastBotWelcomeMessage = botWelcomeMessages[botWelcomeMessages.length - 1];
   const lastWelcomeMessageCreatedAt = lastBotWelcomeMessage?.createdAt;
   const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
-  const firstUserMessage = allMessages.find(
-    (message) => getSenderUserIdFromMessage(message) !== botId
-  );
+  const firstUserMessage = allMessages.find((message) => getSenderUserIdFromMessage(message) !== botId);
   /**
    * Injected welcome messages should have timestamp set to either:
    * 1. last real welcome message createdAt.
    * 2. first message of the channel. This is because welcome message should have timestamp <= of first message.
    */
-  const welcomeMessageTimeStamp =
-    lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
+  const welcomeMessageTimeStamp = lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
 
   const resetReqCounter = useRef(0);
 
@@ -253,9 +222,7 @@ export function CustomChannelComponent() {
         }}
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
-        renderMessageInput={() => (
-          <MessageInputWrapper disabled={isMessageInputDisabled} />
-        )}
+        renderMessageInput={() => <MessageInputWrapper disabled={isMessageInputDisabled} />}
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
           <CustomChannelHeader
@@ -276,58 +243,37 @@ export function CustomChannelComponent() {
                   botUser={botUser}
                   messageCount={messageCount}
                   lastMessageRef={lastMessageRef}
-                  showSuggestedReplies={
-                    lastMessage?.messageId === lastBotWelcomeMessage?.messageId
-                  }
+                  showSuggestedReplies={lastMessage?.messageId === lastBotWelcomeMessage?.messageId}
                   timestamp={welcomeMessageTimeStamp}
                 />
               )
             : undefined
         }
         renderMessage={({ message, ...props }) => {
-          const isBotWelcomeMessage = botWelcomeMessageIds.some(
-            (mid) => mid === message.messageId
-          );
+          const isBotWelcomeMessage = botWelcomeMessageIds.some((mid) => mid === message.messageId);
           /**
            * When welcome messages are given, they are rendered through renderWelcomeMessage. In this case, filter
            * out actual welcome messages.
            */
-          if (
-            isWelcomeMessagesGiven &&
-            botWelcomeMessageIds.includes(message.messageId)
-          )
-            return <></>;
+          if (isWelcomeMessagesGiven && botWelcomeMessageIds.includes(message.messageId)) return <></>;
           /**
            * Filter out any message that should be filtered out due to business requirement.
            */
           if (shouldFilterOutMessage(message)) return <></>;
-          const groupedMessage = groupedMessages.find(
-            (m) => m.messageId == message.messageId
-          );
+          const groupedMessage = groupedMessages.find((m) => m.messageId == message.messageId);
 
           let hasSeparator = props.hasSeparator;
           /**
            * For first user message, if welcome message is given and timestamps are different
            */
-          if (
-            isWelcomeMessagesGiven &&
-            welcomeMessageTimeStamp &&
-            message.messageId === firstUserMessage?.messageId
-          ) {
-            hasSeparator = !isSameDay(
-              message.createdAt,
-              welcomeMessageTimeStamp
-            );
+          if (isWelcomeMessagesGiven && welcomeMessageTimeStamp && message.messageId === firstUserMessage?.messageId) {
+            hasSeparator = !isSameDay(message.createdAt, welcomeMessageTimeStamp);
           }
 
           return (
             <Message {...props} hasSeparator={hasSeparator} message={message}>
               <div
-                style={
-                  message.messageId !== lastMessage?.messageId
-                    ? { marginBottom: '16px' }
-                    : undefined
-                }
+                style={message.messageId !== lastMessage?.messageId ? { marginBottom: '16px' } : undefined}
                 ref={lastMessageRef}
               >
                 <CustomMessage
@@ -350,10 +296,7 @@ export function CustomChannelComponent() {
                   (() => {
                     if (dynamicReplyOptions.length > 0) {
                       return (
-                        <DynamicRepliesPanel
-                          replyOptions={dynamicReplyOptions}
-                          type={suggestedRepliesDirection}
-                        />
+                        <DynamicRepliesPanel replyOptions={dynamicReplyOptions} type={suggestedRepliesDirection} />
                       );
                     }
                     if (isStaticReplyVisible) {
@@ -363,9 +306,7 @@ export function CustomChannelComponent() {
                   })()}
                 {message.messageId === lastMessage?.messageId &&
                   isDashboardPreview(customUserAgentParam) &&
-                  message.data && (
-                    <MessageDataContent messageData={message.data} />
-                  )}
+                  message.data && <MessageDataContent messageData={message.data} />}
               </div>
             </Message>
           );

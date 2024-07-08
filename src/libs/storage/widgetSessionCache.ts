@@ -13,10 +13,7 @@ export type WidgetSessionCache = {
   sessionToken?: string;
 };
 
-export function getWidgetSessionCache(params: {
-  appId: string;
-  botId: string;
-}): WidgetSessionCache | null {
+export function getWidgetSessionCache(params: { appId: string; botId: string }): WidgetSessionCache | null {
   const key = getKey(params.appId, params.botId);
   const value = localStorageHelper().getItem(key);
   try {
@@ -31,11 +28,7 @@ export function getWidgetSessionCache(params: {
   }
 }
 
-export function saveWidgetSessionCache(params: {
-  appId: string;
-  botId: string;
-  data: WidgetSessionCache;
-}) {
+export function saveWidgetSessionCache(params: { appId: string; botId: string; data: WidgetSessionCache }) {
   const key = getKey(params.appId, params.botId);
   const value = JSON.stringify(params.data);
   localStorageHelper().setItem(key, value);
@@ -45,10 +38,7 @@ export function saveWidgetSessionCache(params: {
  * Call this function if the bot has been deleted.
  * Otherwise, users may join channels where the bot does not exist.
  * */
-export function clearWidgetSessionCache(params: {
-  appId: string;
-  botId: string;
-}) {
+export function clearWidgetSessionCache(params: { appId: string; botId: string }) {
   const localStorageKey = getKey(params.appId, params.botId);
   localStorageHelper().deleteItem(localStorageKey);
 }

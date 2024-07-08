@@ -41,8 +41,7 @@ interface ButtonTextProps {
 }
 
 const ButtonText = styled.div<ButtonTextProps>`
-  color: ${({ theme, disabled }) =>
-    disabled ? 'inherit' : theme.textColor.activeButton};
+  color: ${({ theme, disabled }) => (disabled ? 'inherit' : theme.textColor.activeButton)};
 `;
 
 export default function FormMessage(props: Props) {
@@ -76,9 +75,7 @@ export default function FormMessage(props: Props) {
       }
       // If form is empty, ignore submit
       const isMissingRequired = formValues.some(
-        (formValue) =>
-          formValue.required &&
-          (!formValue.draftValues || formValue.draftValues.length === 0)
+        (formValue) => formValue.required && (!formValue.draftValues || formValue.draftValues.length === 0),
       );
       if (isMissingRequired) {
         setFormValues((oldFormValues) => {
@@ -144,10 +141,7 @@ export default function FormMessage(props: Props) {
           />
         );
       })}
-      <SubmitButton
-        onClick={handleSubmit}
-        disabled={(!isInputFocused && hasError) || isSubmitted}
-      >
+      <SubmitButton onClick={handleSubmit} disabled={(!isInputFocused && hasError) || isSubmitted}>
         <Label type={LabelTypography.BUTTON_2}>
           <ButtonText disabled={(!isInputFocused && hasError) || isSubmitted}>
             {isSubmitted ? 'Submitted successfully' : 'Submit'}

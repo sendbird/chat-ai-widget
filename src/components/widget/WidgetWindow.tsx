@@ -22,14 +22,18 @@ const StyledWidgetWindowWrapper = styled.div<{
   width: 400px;
   max-width: 80vw;
   max-height: 80vh;
-  box-shadow: 0px 16px 24px 2px rgba(33, 33, 33, 0.12),
+  box-shadow:
+    0px 16px 24px 2px rgba(33, 33, 33, 0.12),
     0px 6px 30px 5px rgba(33, 33, 33, 0.08),
     0px 6px 10px -5px rgba(33, 33, 33, 0.04);
   border-radius: 16px;
   overflow: hidden;
   transform-origin: right bottom;
-  transition: width 200ms ease 0s, height 200ms ease 0s,
-    max-height 200ms ease 0s, transform 150ms cubic-bezier(0, 1.2, 1, 1) 0s,
+  transition:
+    width 200ms ease 0s,
+    height 200ms ease 0s,
+    max-height 200ms ease 0s,
+    transform 150ms cubic-bezier(0, 1.2, 1, 1) 0s,
     opacity 83ms ease-out 0s;
   transform: scale(0.15);
   opacity: 0;
@@ -42,7 +46,9 @@ const StyledWidgetWindowWrapper = styled.div<{
         pointer-events: all;
         transform: scale(1);
         opacity: 1;
-        transition: width 200ms ease 0s, height 200ms ease 0s,
+        transition:
+          width 200ms ease 0s,
+          height 200ms ease 0s,
           max-height 200ms ease 0s,
           transform 300ms cubic-bezier(0, 1.2, 1, 1) 0s,
           opacity 83ms ease-out 0s;
@@ -110,24 +116,13 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <StyledWidgetWindowWrapper
-      isOpen={isOpen && isVisible}
-      isExpanded={isExpanded}
-      id={elementIds.widgetWindow}
-    >
+    <StyledWidgetWindowWrapper isOpen={isOpen && isVisible} isExpanded={isExpanded} id={elementIds.widgetWindow}>
       {callbacks?.onWidgetExpandStateChange && (
         <StyledExpandButton onClick={onExpandButtonToggle}>
-          {isExpanded ? (
-            <CollapseIcon id={elementIds.collapseIcon} />
-          ) : (
-            <ExpandIcon id={elementIds.expandIcon} />
-          )}
+          {isExpanded ? <CollapseIcon id={elementIds.collapseIcon} /> : <ExpandIcon id={elementIds.expandIcon} />}
         </StyledExpandButton>
       )}
-      <StyledCloseButton
-        aria-label="Close widget"
-        onClick={() => setIsOpen(false)}
-      >
+      <StyledCloseButton aria-label="Close widget" onClick={() => setIsOpen(false)}>
         <CloseIcon id={elementIds.closeIcon} />
       </StyledCloseButton>
       {children}

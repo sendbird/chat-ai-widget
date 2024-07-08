@@ -19,14 +19,11 @@ type State = Partial<{
 
 function BotMessageFeedback({ message }: { message: CoreMessageType }) {
   const { stringSet } = useConstantState();
-  const [state, setState] = useReducer(
-    (p: State, a: State) => ({ ...p, ...a }),
-    {
-      errorText: '',
-      modalVisible: false,
-      menuVisible: false,
-    }
-  );
+  const [state, setState] = useReducer((p: State, a: State) => ({ ...p, ...a }), {
+    errorText: '',
+    modalVisible: false,
+    menuVisible: false,
+  });
 
   const openFeedbackMenu = () => setState({ menuVisible: true });
   const closeFeedbackModal = () => setState({ modalVisible: false });
@@ -50,10 +47,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
               }
             }
           }}
-          disabled={
-            !!message.myFeedback &&
-            message.myFeedback.rating !== FeedbackRating.GOOD
-          }
+          disabled={!!message.myFeedback && message.myFeedback.rating !== FeedbackRating.GOOD}
         >
           <Icon type={IconTypes.FEEDBACK_LIKE} width="24px" height="24px" />
         </FeedbackIconButton>
@@ -72,10 +66,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
               }
             }
           }}
-          disabled={
-            !!message.myFeedback &&
-            message.myFeedback.rating !== FeedbackRating.BAD
-          }
+          disabled={!!message.myFeedback && message.myFeedback.rating !== FeedbackRating.BAD}
         >
           <Icon type={IconTypes.FEEDBACK_DISLIKE} width="24px" height="24px" />
         </FeedbackIconButton>

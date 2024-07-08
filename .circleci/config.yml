@@ -74,14 +74,14 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-  # CI - check lint
-  run-lint:
+  # CI - check format
+  run-format:
     executor: ci-node
     steps:
       - attach_project
       - run:
-          name: Run lint
-          command: yarn lint
+          name: Run lint and prettier check
+          command: yarn lint && yarn prettier
   # CI - check build
   run-build:
     executor: ci-node
@@ -165,7 +165,7 @@ workflows:
   ci:
     jobs:
       - prepare
-      - run-lint:
+      - run-format:
           requires:
             - prepare
       - run-build:

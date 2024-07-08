@@ -20,16 +20,10 @@ export const messageExtension = {
   },
   commerceShopItems: {
     isValid(message: UserMessage): boolean {
-      return (
-        (
-          (message.extendedMessagePayload?.commerce_shop_items ??
-            []) as unknown[]
-        ).length > 0
-      );
+      return ((message.extendedMessagePayload?.commerce_shop_items ?? []) as unknown[]).length > 0;
     },
     getItems(message: UserMessage): CommerceShopItem[] {
-      return (message.extendedMessagePayload?.commerce_shop_items ??
-        []) as CommerceShopItem[];
+      return (message.extendedMessagePayload?.commerce_shop_items ?? []) as CommerceShopItem[];
     },
     getValidItems(message: UserMessage): CommerceShopItem[] {
       const urls = extractUrls(message.message);

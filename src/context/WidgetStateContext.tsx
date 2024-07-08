@@ -18,25 +18,15 @@ interface VisibleState {
   setIsVisible: (value: boolean) => void;
 }
 
-const WidgetStateContext = createContext<(OpenState & VisibleState) | null>(
-  null
-);
+const WidgetStateContext = createContext<(OpenState & VisibleState) | null>(null);
 
 export const WidgetStateProvider = ({ children }: React.PropsWithChildren) => {
-  const {
-    widgetOpenState,
-    onWidgetOpenStateChange,
-    enableHideWidgetForDeactivatedUser,
-  } = useConstantState();
+  const { widgetOpenState, onWidgetOpenStateChange, enableHideWidgetForDeactivatedUser } = useConstantState();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(
-    !enableHideWidgetForDeactivatedUser
-  );
+  const [isVisible, setIsVisible] = useState(!enableHideWidgetForDeactivatedUser);
 
-  const isOpenControlled =
-    typeof widgetOpenState === 'boolean' &&
-    typeof onWidgetOpenStateChange === 'function';
+  const isOpenControlled = typeof widgetOpenState === 'boolean' && typeof onWidgetOpenStateChange === 'function';
 
   return (
     <WidgetStateContext.Provider
@@ -58,9 +48,7 @@ export const WidgetStateProvider = ({ children }: React.PropsWithChildren) => {
 export const useWidgetState = () => {
   const context = useContext(WidgetStateContext);
   if (context === null) {
-    throw new Error(
-      'useWidgetState must be used within an WidgetStateProvider'
-    );
+    throw new Error('useWidgetState must be used within an WidgetStateProvider');
   }
   return context;
 };
