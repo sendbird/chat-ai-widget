@@ -79,28 +79,14 @@ function TypingDots() {
   );
 }
 
-function CustomTypingIndicatorBubble({
-  botProfileUrl,
-}: {
-  botProfileUrl: string;
-}) {
+function CustomTypingIndicatorBubble({ botProfileUrl }: { botProfileUrl: string }) {
   return (
     <Root>
       <div>
         {botProfileUrl != null && botProfileUrl != '' ? (
-          <Avatar
-            src={botProfileUrl}
-            alt="botProfileImage"
-            height="28px"
-            width="28px"
-          />
+          <Avatar src={botProfileUrl} alt="botProfileImage" height="28px" width="28px" />
         ) : (
-          <BotProfileImage
-            width={28}
-            height={28}
-            iconWidth={16}
-            iconHeight={16}
-          />
+          <BotProfileImage width={28} height={28} iconWidth={16} iconHeight={16} />
         )}
       </div>
       <div className="sendbird-message-content__middle">

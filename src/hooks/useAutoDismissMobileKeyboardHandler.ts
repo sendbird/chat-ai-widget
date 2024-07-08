@@ -34,18 +34,9 @@ function useAutoDismissMobileKeyboardHandler(): void {
       mutations.forEach((mutation) => {
         if (mutation.type === 'childList') {
           mutation.addedNodes.forEach((node) => {
-            if (
-              node.nodeType === Node.ELEMENT_NODE &&
-              (node as Element).matches(SEND_BUTTON_SELECTOR)
-            ) {
-              (node as HTMLElement).removeEventListener(
-                'click',
-                handleDismissKeyboard
-              );
-              (node as HTMLElement).addEventListener(
-                'click',
-                handleDismissKeyboard
-              );
+            if (node.nodeType === Node.ELEMENT_NODE && (node as Element).matches(SEND_BUTTON_SELECTOR)) {
+              (node as HTMLElement).removeEventListener('click', handleDismissKeyboard);
+              (node as HTMLElement).addEventListener('click', handleDismissKeyboard);
               // Store added node for later removal
               addedButtons.current.push(node as HTMLElement);
             }
@@ -57,9 +48,7 @@ function useAutoDismissMobileKeyboardHandler(): void {
     const observerRef = new MutationObserver(observerCallback);
     const config = { childList: true, subtree: true };
 
-    const inputElement = document.querySelector<HTMLInputElement>(
-      INPUT_ELEMENT_SELECTOR
-    );
+    const inputElement = document.querySelector<HTMLInputElement>(INPUT_ELEMENT_SELECTOR);
     if (inputElement) {
       observerRef.observe(inputElement, config);
       inputElement.removeEventListener('keydown', handleKeyDown);
@@ -70,9 +59,7 @@ function useAutoDismissMobileKeyboardHandler(): void {
 
     return () => {
       observerRef.disconnect();
-      addedButtons.current.forEach((button) =>
-        button.removeEventListener('click', handleDismissKeyboard)
-      );
+      addedButtons.current.forEach((button) => button.removeEventListener('click', handleDismissKeyboard));
       if (inputElement) {
         inputElement.removeEventListener('keydown', handleKeyDown);
       }

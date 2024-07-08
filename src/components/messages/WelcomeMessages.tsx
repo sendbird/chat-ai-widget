@@ -24,18 +24,10 @@ interface WelcomeMessagesProps {
 
 export default function WelcomeMessages(props: WelcomeMessagesProps) {
   const { replacementTextList, botStudioEditProps } = useConstantState();
-  const { welcomeMessages, suggestedRepliesDirection } =
-    botStudioEditProps ?? {};
+  const { welcomeMessages, suggestedRepliesDirection } = botStudioEditProps ?? {};
   const store = useSendbirdStateContext();
 
-  const {
-    channel,
-    botUser,
-    messageCount,
-    lastMessageRef,
-    showSuggestedReplies,
-    timestamp,
-  } = props;
+  const { channel, botUser, messageCount, lastMessageRef, showSuggestedReplies, timestamp } = props;
 
   const sb = store.stores.sdkStore.sdk;
   const createdAt = timestamp ?? Date.now(); // channel.createdAt;
@@ -53,7 +45,7 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
         reactions: [],
         plugins: [],
       }) as ClientUserMessage,
-    []
+    [],
   );
 
   const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
@@ -74,18 +66,11 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
                 chainBottom={index === lastWelcomeMessageIndex}
                 messageCount={messageCount}
                 botUser={botUser}
-                bodyComponent={
-                  <ParsedBotMessageBody text={text} tokens={tokens} />
-                }
+                bodyComponent={<ParsedBotMessageBody text={text} tokens={tokens} />}
               />
-              {showSuggestedReplies &&
-                suggestedReplies &&
-                suggestedReplies.length && (
-                  <DynamicRepliesPanel
-                    replyOptions={suggestedReplies}
-                    type={suggestedRepliesDirection}
-                  />
-                )}
+              {showSuggestedReplies && suggestedReplies && suggestedReplies.length && (
+                <DynamicRepliesPanel replyOptions={suggestedReplies} type={suggestedRepliesDirection} />
+              )}
             </div>
           );
         } else {

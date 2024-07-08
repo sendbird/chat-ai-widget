@@ -169,36 +169,24 @@ function isObjectOfViewDetailData(object: any): object is FunctionCallData {
   );
 }
 
-function isValidFunctionCalls(
-  functionCallsData: object | undefined
-): functionCallsData is FunctionCallData[] {
+function isValidFunctionCalls(functionCallsData: object | undefined): functionCallsData is FunctionCallData[] {
   return (
     Array.isArray(functionCallsData) &&
     functionCallsData.length > 0 &&
-    functionCallsData.every((functionCallData) =>
-      isObjectOfViewDetailData(functionCallData)
-    )
+    functionCallsData.every((functionCallData) => isObjectOfViewDetailData(functionCallData))
   );
 }
 
 function isValidWorkflowData(object: any): object is WorkflowObject {
   const { name, intent_type } = object ?? {};
-  return (
-    typeof name === 'string' &&
-    Object.values(IntentPayload).includes(intent_type)
-  );
+  return typeof name === 'string' && Object.values(IntentPayload).includes(intent_type);
 }
 
-export default function MessageDataContent({
-  messageData,
-}: MessageDataContentProps) {
+export default function MessageDataContent({ messageData }: MessageDataContentProps) {
   const { callbacks } = useConstantState();
   const onViewDetailClick = callbacks?.onViewDetailClick;
 
-  function getMessageContentData(): [
-    WorkflowData | null,
-    FunctionCallRenderData[]
-  ] {
+  function getMessageContentData(): [WorkflowData | null, FunctionCallRenderData[]] {
     let newWorkflow: WorkflowData | null = null;
     const newFunctionCalls: FunctionCallRenderData[] = [];
 
@@ -206,17 +194,10 @@ export default function MessageDataContent({
       const messageDataObject: MessageDataObject = JSON.parse(messageData);
       const functionCallsData = messageDataObject?.function_calls;
 
-      if (
-        Array.isArray(functionCallsData) &&
-        functionCallsData.length > 0 &&
-        isValidFunctionCalls(functionCallsData)
-      ) {
+      if (Array.isArray(functionCallsData) && functionCallsData.length > 0 && isValidFunctionCalls(functionCallsData)) {
         functionCallsData.forEach((functionCallData) => {
           if (functionCallData.name) {
-            const functionCall =
-              typeof onViewDetailClick === 'function'
-                ? onViewDetailClick
-                : noop;
+            const functionCall = typeof onViewDetailClick === 'function' ? onViewDetailClick : noop;
             newFunctionCalls.push({
               name: functionCallData.name,
               onClick: () => functionCall(functionCallData),

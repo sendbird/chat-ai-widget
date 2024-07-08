@@ -56,6 +56,6 @@ export default function useMobileView() {
       width: dimensions.width,
       height: dimensions.height,
     }),
-    []
+    [],
   );
 }

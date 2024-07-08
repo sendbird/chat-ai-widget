@@ -15,9 +15,7 @@ export function PoweredByBanner() {
     return null;
   }
 
-  const inputElement = document.querySelector(
-    '.sendbird-message-input-wrapper'
-  );
+  const inputElement = document.querySelector('.sendbird-message-input-wrapper');
 
   return inputElement ? ReactDOM.createPortal(<Banner />, inputElement) : null;
 }
@@ -27,8 +25,7 @@ const InnerContainer = styled.div<{ chatBottomBackgroundColor?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${({ theme, chatBottomBackgroundColor }) =>
-    chatBottomBackgroundColor || theme.bgColor.bottomBanner};
+  background: ${({ theme, chatBottomBackgroundColor }) => chatBottomBackgroundColor || theme.bgColor.bottomBanner};
   color: ${({ theme }) => theme.textColor.bottomBanner.poweredBy};
   flex-wrap: wrap;
   font-size: 13px;
@@ -52,9 +49,7 @@ function Banner() {
   const { chatBottomContent } = useConstantState();
 
   return (
-    <InnerContainer
-      chatBottomBackgroundColor={chatBottomContent.backgroundColor}
-    >
+    <InnerContainer chatBottomBackgroundColor={chatBottomContent.backgroundColor}>
       {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
       <Highlighter
         aria-label="Learn more about Sendbird Chatbot"

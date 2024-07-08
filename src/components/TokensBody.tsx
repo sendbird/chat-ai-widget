@@ -19,11 +19,7 @@ type TokensBodyProps = {
 
 interface RegexTextPattern {
   regex: RegExp;
-  replacer(params: {
-    match: string;
-    groups: string[];
-    index: number;
-  }): string | ReactNode;
+  replacer(params: { match: string; groups: string[]; index: number }): string | ReactNode;
 }
 
 const BlockContainer = styled.div`
@@ -45,13 +41,7 @@ export const TextContainer = styled.div`
   white-space: pre-wrap;
 `;
 
-const RegexText = ({
-  children,
-  patterns,
-}: {
-  children: string;
-  patterns: RegexTextPattern[];
-}) => {
+const RegexText = ({ children, patterns }: { children: string; patterns: RegexTextPattern[] }) => {
   if (patterns.length === 0 || typeof children !== 'string') {
     return <>{children}</>;
   }
@@ -90,9 +80,7 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
                 {
                   regex: markdownBoldRegex,
                   replacer({ match, groups, index }) {
-                    return (
-                      <strong key={`${match}-${index}`}>{groups[1]}</strong>
-                    );
+                    return <strong key={`${match}-${index}`}>{groups[1]}</strong>;
                   },
                 },
                 {

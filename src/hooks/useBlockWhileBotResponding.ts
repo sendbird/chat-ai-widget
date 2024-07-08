@@ -14,14 +14,10 @@ interface UseDisableInputUntilReplyProps {
 /**
  * When current user sends a message, message input is disabled until bot reply is received and finished streaming.
  */
-export const useBlockWhileBotResponding = ({
-  lastMessage,
-  botUser,
-}: UseDisableInputUntilReplyProps) => {
+export const useBlockWhileBotResponding = ({ lastMessage, botUser }: UseDisableInputUntilReplyProps) => {
   const { userId: currentUserId } = useWidgetSession();
   const { messageInputControls } = useConstantState();
-  const blockInputWhileBotResponding =
-    messageInputControls?.blockWhileBotResponding;
+  const blockInputWhileBotResponding = messageInputControls?.blockWhileBotResponding;
   const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const [isMessageInputDisabled, setIsMessageInputDisabled] = useState(false);
 
@@ -42,13 +38,7 @@ export const useBlockWhileBotResponding = ({
   };
 
   useEffect(() => {
-    if (
-      !blockInputWhileBotResponding ||
-      !currentUserId ||
-      !botUser ||
-      !lastMessage
-    )
-      return;
+    if (!blockInputWhileBotResponding || !currentUserId || !botUser || !lastMessage) return;
     if (isSentBy(lastMessage, currentUserId)) {
       if (lastMessage.sendingStatus === 'pending') {
         setTimerAndBlock();
@@ -61,12 +51,7 @@ export const useBlockWhileBotResponding = ({
         clearAndUnblock();
       }
     }
-  }, [
-    currentUserId,
-    botUser?.userId,
-    lastMessage,
-    blockInputWhileBotResponding,
-  ]);
+  }, [currentUserId, botUser?.userId, lastMessage, blockInputWhileBotResponding]);
 
   return isMessageInputDisabled;
 };

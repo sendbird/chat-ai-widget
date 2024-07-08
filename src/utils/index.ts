@@ -84,11 +84,7 @@ export function splitText(inputString: string) {
   return result;
 }
 
-function isDelimiterIndex(
-  index: number,
-  inputString: string,
-  delimiter: string
-) {
+function isDelimiterIndex(index: number, inputString: string, delimiter: string) {
   return inputString.substring(index, index + delimiter.length) === delimiter;
 }
 
@@ -100,10 +96,7 @@ export function getSourceFromMetadata(message: BaseMessage) {
   return sources;
 }
 
-export function parseTextMessage(
-  inputString: string,
-  replacementTextList: [string, string][]
-): Token[] {
+export function parseTextMessage(inputString: string, replacementTextList: [string, string][]): Token[] {
   // const snippetRegex = /```(.*)```/g;
   // const snippetRegex = /(```([\w]*)\n([\S\s]+?)\n```)/g;
   // debugger
@@ -124,10 +117,7 @@ export function parseTextMessage(
   result.forEach((token: Token) => {
     if (token.type === 'String') {
       // Redact text to replacementTextList
-      token.value = replaceTextExtractsMultiple(
-        token.value,
-        replacementTextList
-      );
+      token.value = replaceTextExtractsMultiple(token.value, replacementTextList);
 
       // Convert url string to component --> handled by ParsedBotMessageBody > RegexText
       // token.value = replaceUrl(token.value);
@@ -136,10 +126,7 @@ export function parseTextMessage(
   return result;
 }
 
-export function replaceTextExtractsMultiple(
-  input: string,
-  replacements: [string, string][]
-): string {
+export function replaceTextExtractsMultiple(input: string, replacements: [string, string][]): string {
   let result = input;
   for (let i = 0; i < replacements.length; i++) {
     const [searchText, replaceText] = replacements[i];
@@ -148,11 +135,7 @@ export function replaceTextExtractsMultiple(
   return result;
 }
 
-export function replaceTextExtracts(
-  input: string,
-  searchText: string,
-  replaceText: string
-): string {
+export function replaceTextExtracts(input: string, searchText: string, replaceText: string): string {
   // gi => global (All matches; don't return on first match) + insensitive (Case insensitive match)
   const regex = new RegExp(searchText, 'gi');
   return input.replace(regex, replaceText);
@@ -208,7 +191,7 @@ export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
 export const replaceWithRegex = <T>(
   text: string,
   regex: RegExp,
-  replacer: (params: { match: string; groups: string[]; index: number }) => T
+  replacer: (params: { match: string; groups: string[]; index: number }) => T,
 ) => {
   const matches = [...text.matchAll(regex)];
   const founds = matches.map((value) => {
@@ -320,11 +303,7 @@ export async function openURL(url?: string | null) {
 }
 
 export function isDashboardPreview(userAgent: object | undefined) {
-  return (
-    userAgent &&
-    'chat-ai-widget-preview' in userAgent &&
-    userAgent['chat-ai-widget-preview'] === 'True'
-  );
+  return userAgent && 'chat-ai-widget-preview' in userAgent && userAgent['chat-ai-widget-preview'] === 'True';
 }
 
 export function getDefaultServiceName(injectedServiceName?: string) {

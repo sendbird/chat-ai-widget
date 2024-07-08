@@ -80,20 +80,13 @@ export default function UserMessageWithBodyInput(props: Props) {
       )}
       <BodyContainer>
         {displaySender && (
-          <Sender
-            type={LabelTypography.CAPTION_2}
-            color={LabelColors.ONBACKGROUND_2}
-          >
+          <Sender type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
             {user.nickname}
           </Sender>
         )}
         <Content>
           {bodyComponent}
-          {!!message?.createdAt && (
-            <SentTime>
-              {formatCreatedAtToAMPM(message.createdAt, locale)}
-            </SentTime>
-          )}
+          {!!message?.createdAt && <SentTime>{formatCreatedAtToAMPM(message.createdAt, locale)}</SentTime>}
         </Content>
       </BodyContainer>
     </Root>

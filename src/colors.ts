@@ -73,11 +73,7 @@ function hslToRgb(h: number, s: number, l: number): [number, number, number] {
   return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
 }
 
-function adjustColor(
-  color: string,
-  lightnessFactor: number,
-  saturationFactor: number
-): string {
+function adjustColor(color: string, lightnessFactor: number, saturationFactor: number): string {
   const [r, g, b] = hexToRgb(color);
   const [h, s, l] = rgbToHsl(r, g, b);
   const newL = Math.max(0, Math.min(1, l * lightnessFactor));
@@ -95,7 +91,7 @@ const getColorFactor = (variant: string, theme: string): [number, number] => {
 };
 export function generateColorVariants(
   baseColor: string,
-  theme = 'light'
+  theme = 'light',
 ): {
   [key: string]: string;
 } {
@@ -121,18 +117,12 @@ export function getColorBasedOnSaturation(hex: string, alpha?: number) {
   return calc > threshold ? '#000000' : '#ffffff';
 }
 
-export function generateCSSVariables(
-  accentColor: string,
-  themeType: string
-): Record<string, string> {
+export function generateCSSVariables(accentColor: string, themeType: string): Record<string, string> {
   const colorVariants = generateColorVariants(accentColor, themeType);
 
-  return Object.keys(colorVariants).reduce(
-    (acc: Record<string, string>, key: string) => {
-      const cssVariable = `--sendbird-${themeType}-primary-${key}`;
-      acc[cssVariable] = colorVariants[parseInt(key)];
-      return acc;
-    },
-    {}
-  );
+  return Object.keys(colorVariants).reduce((acc: Record<string, string>, key: string) => {
+    const cssVariable = `--sendbird-${themeType}-primary-${key}`;
+    acc[cssVariable] = colorVariants[parseInt(key)];
+    return acc;
+  }, {});
 }

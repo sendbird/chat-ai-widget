@@ -1,19 +1,13 @@
 import '../../css/index.css';
 
-import {
-  FileMessageCreateParams,
-  UserMessageCreateParams,
-} from '@sendbird/chat/message';
+import { FileMessageCreateParams, UserMessageCreateParams } from '@sendbird/chat/message';
 import { useEffect, useRef } from 'react';
 
 import { useSendbirdStateContext } from '@uikit/index';
 import { GroupChannelProvider } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 import { useConstantState } from '../../context/ConstantContext';
-import {
-  useWidgetSession,
-  useWidgetSetting,
-} from '../../context/WidgetSettingContext';
+import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
 import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
 import { CustomChannelComponent } from '../CustomChannelComponent';
 
@@ -41,11 +35,7 @@ const Chat = () => {
     stores.sdkStore.initialized,
   ]);
 
-  const onBeforeSendMessage = <
-    T extends UserMessageCreateParams | FileMessageCreateParams
-  >(
-    params: T
-  ) => {
+  const onBeforeSendMessage = <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => {
     if (aiAttributesRef.current) {
       return {
         ...params,

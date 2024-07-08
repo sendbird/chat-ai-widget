@@ -6,19 +6,9 @@ import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
 import { generateCSSVariables } from '../../colors';
-import {
-  ConstantStateProvider,
-  useConstantState,
-} from '../../context/ConstantContext';
-import {
-  useWidgetSession,
-  useWidgetSetting,
-  WidgetSettingProvider,
-} from '../../context/WidgetSettingContext';
-import {
-  useWidgetState,
-  WidgetStateProvider,
-} from '../../context/WidgetStateContext';
+import { ConstantStateProvider, useConstantState } from '../../context/ConstantContext';
+import { useWidgetSession, useWidgetSetting, WidgetSettingProvider } from '../../context/WidgetSettingContext';
+import { useWidgetState, WidgetStateProvider } from '../../context/WidgetStateContext';
 import { useAssignGlobalFunction } from '../../hooks/useAssignGlobalFunction';
 import { useStyledComponentsTarget } from '../../hooks/useStyledComponentsTarget';
 import { getTheme } from '../../theme';
@@ -107,9 +97,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
                 },
                 onFailed(error) {
                   if (enableHideWidgetForDeactivatedUser) {
-                    if (
-                      error.code === SendbirdErrorCode.USER_AUTH_DEACTIVATED
-                    ) {
+                    if (error.code === SendbirdErrorCode.USER_AUTH_DEACTIVATED) {
                       setIsVisible(false);
                     } else {
                       setIsVisible(true);

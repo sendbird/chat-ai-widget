@@ -6,11 +6,7 @@ import Avatar from '@uikit/ui/Avatar';
 import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import BotProfileImage from './BotProfileImage';
-import {
-  BodyContainer,
-  DefaultSentTime,
-  WideSentTime,
-} from './MessageComponent';
+import { BodyContainer, DefaultSentTime, WideSentTime } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
@@ -76,9 +72,7 @@ export default function BotMessageWithBodyInput(props: Props) {
     wideContainer = false,
   } = props;
 
-  const profilePaddingBottom =
-    (messageFeedback ? HEIGHTS.FEEDBACK : 0) +
-    (wideContainer ? HEIGHTS.TIMESTAMP : 0);
+  const profilePaddingBottom = (messageFeedback ? HEIGHTS.FEEDBACK : 0) + (wideContainer ? HEIGHTS.TIMESTAMP : 0);
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
@@ -92,19 +86,9 @@ export default function BotMessageWithBodyInput(props: Props) {
       {displayProfileImage ? (
         <div style={{ paddingBottom: profilePaddingBottom }}>
           {botProfileUrl != null && botProfileUrl != '' ? (
-            <Avatar
-              src={botProfileUrl}
-              alt="botProfileImage"
-              height="28px"
-              width="28px"
-            />
+            <Avatar src={botProfileUrl} alt="botProfileImage" height="28px" width="28px" />
           ) : (
-            <BotProfileImage
-              width={28}
-              height={28}
-              iconWidth={16}
-              iconHeight={16}
-            />
+            <BotProfileImage width={28} height={28} iconWidth={16} iconHeight={16} />
           )}
         </div>
       ) : (
@@ -113,10 +97,7 @@ export default function BotMessageWithBodyInput(props: Props) {
       <BodyContainer>
         {displaySender && (
           <Sender>
-            <Label
-              type={LabelTypography.CAPTION_2}
-              color={LabelColors.ONBACKGROUND_2}
-            >
+            <Label type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
               {botNickname}
             </Label>
           </Sender>
@@ -124,16 +105,10 @@ export default function BotMessageWithBodyInput(props: Props) {
         <Content>
           {bodyComponent}
           {!wideContainer && !!createdAt && (
-            <DefaultSentTime>
-              {formatCreatedAtToAMPM(createdAt, dateLocale)}
-            </DefaultSentTime>
+            <DefaultSentTime>{formatCreatedAtToAMPM(createdAt, dateLocale)}</DefaultSentTime>
           )}
         </Content>
-        {wideContainer && !!createdAt && (
-          <WideSentTime>
-            {formatCreatedAtToAMPM(createdAt, dateLocale)}
-          </WideSentTime>
-        )}
+        {wideContainer && !!createdAt && <WideSentTime>{formatCreatedAtToAMPM(createdAt, dateLocale)}</WideSentTime>}
         {displayProfileImage && messageFeedback}
       </BodyContainer>
     </Root>

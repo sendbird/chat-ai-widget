@@ -27,19 +27,11 @@ const ErrorMessage = styled(Label)`
   color: ${({ theme }) => theme.textColor.errorMessage};
 `;
 
-export default function ErrorContainer({
-  errorMessage,
-}: {
-  errorMessage: string;
-}) {
+export default function ErrorContainer({ errorMessage }: { errorMessage: string }) {
   return (
     <Container>
       <ErrorIcon />
-      <ErrorMessage
-        className="sendbird-input-label"
-        type={LabelTypography.BODY_1}
-        color={LabelColors.ONBACKGROUND_2}
-      >
+      <ErrorMessage className="sendbird-input-label" type={LabelTypography.BODY_1} color={LabelColors.ONBACKGROUND_2}>
         {errorMessage || 'Something went wrong'}
       </ErrorMessage>
     </Container>

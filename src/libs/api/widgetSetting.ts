@@ -64,10 +64,7 @@ export async function getWidgetSetting({
     create_channel: asBoolString(createChannel),
     user_id: userId,
   });
-  const path = resolvePath(
-    host,
-    `/v3/bots/${botId}/${appId}/widget_setting?${params}`
-  );
+  const path = resolvePath(host, `/v3/bots/${botId}/${appId}/widget_setting?${params}`);
 
   const response = await fetch(path);
   const result = await response.json();
@@ -114,14 +111,11 @@ function asQueryParams(obj: object) {
 export const widgetSettingHandler = (
   strategy: 'auto' | 'manual',
   useCachedSession: boolean,
-  params: Omit<Params, 'createChannel' | 'createUserAndChannel'>
+  params: Omit<Params, 'createChannel' | 'createUserAndChannel'>,
 ) => {
   type Callbacks = {
     BotStyle: (botStyle: Response['botStyle']) => void;
-    AutoNonCached: (response: {
-      user: ResponseUser;
-      channel: ResponseChannel;
-    }) => void;
+    AutoNonCached: (response: { user: ResponseUser; channel: ResponseChannel }) => void;
     AutoCached: (response: { channel?: ResponseChannel }) => void;
     ManualNonCached: (response?: { channel: ResponseChannel }) => void;
     ManualCached: (response: { channel?: ResponseChannel }) => void;
@@ -218,7 +212,7 @@ export const widgetSettingHandler = (
 function getParamsByStrategy(
   strategy: 'auto' | 'manual',
   useCachedSession: boolean,
-  params: Omit<Params, 'createChannel' | 'createUserAndChannel'>
+  params: Omit<Params, 'createChannel' | 'createUserAndChannel'>,
 ) {
   if (strategy === 'auto') {
     if (useCachedSession) {

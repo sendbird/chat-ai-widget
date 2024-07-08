@@ -1,10 +1,5 @@
 import { SessionHandler } from '@sendbird/chat';
-import {
-  createContext,
-  PropsWithChildren,
-  useCallback,
-  useContext,
-} from 'react';
+import { createContext, PropsWithChildren, useCallback, useContext } from 'react';
 
 import { ConfigureSessionTypes } from '@uikit/lib/hooks/useConnect/types';
 import { LabelStringSet } from '@uikit/ui/Label';
@@ -27,9 +22,7 @@ interface ConstantContextValue extends Constant {
 }
 const ConstantContext = createContext<ConstantContextValue | null>(null);
 
-export const ConstantStateProvider = (
-  props: PropsWithChildren<ConstantContextProps>
-) => {
+export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextProps>) => {
   const isMobileView = isMobile(props.deviceType);
   const defaultRefreshComponentSideLength = isMobileView ? '24px' : '16px';
 
@@ -53,7 +46,7 @@ export const ConstantStateProvider = (
         onSessionExpired: handler.onSessionExpired,
       });
     },
-    [props.configureSession]
+    [props.configureSession],
   );
 
   return (
@@ -67,8 +60,7 @@ export const ConstantStateProvider = (
         sessionToken: props.sessionToken,
         configureSession: props.configureSession ? configureSession : undefined,
         userNickName: props.userNickName ?? initialState.userNickName,
-        apiHost:
-          props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
+        apiHost: props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
         wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
         serviceName: getDefaultServiceName(props.serviceName),
         callbacks: props.callbacks,
@@ -78,8 +70,7 @@ export const ConstantStateProvider = (
         isMobileView,
         stringSet: {
           ...LabelStringSet,
-          MESSAGE_INPUT__PLACE_HOLDER__DISABLED:
-            widgetStringSet.messageInputDisabledPlaceholder,
+          MESSAGE_INPUT__PLACE_HOLDER__DISABLED: widgetStringSet.messageInputDisabledPlaceholder,
           ...props.stringSet,
         },
         botStudioEditProps: props.botStudioEditProps,
@@ -92,52 +83,31 @@ export const ConstantStateProvider = (
         dateLocale: props.dateLocale ?? initialState.dateLocale,
         // ----- Feature flag props ----- //
         autoOpen: props.autoOpen,
-        enableSourceMessage:
-          props.enableSourceMessage ?? initialState.enableSourceMessage,
-        enableEmojiFeedback:
-          props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
+        enableSourceMessage: props.enableSourceMessage ?? initialState.enableSourceMessage,
+        enableEmojiFeedback: props.enableEmojiFeedback ?? initialState.enableEmojiFeedback,
         enableMention: props.enableMention ?? initialState.enableMention,
-        enableResetHistoryOnConnect:
-          props.enableResetHistoryOnConnect ??
-          initialState.enableResetHistoryOnConnect,
+        enableResetHistoryOnConnect: props.enableResetHistoryOnConnect ?? initialState.enableResetHistoryOnConnect,
         enableHideWidgetForDeactivatedUser:
-          props.enableHideWidgetForDeactivatedUser ??
-          initialState.enableHideWidgetForDeactivatedUser,
+          props.enableHideWidgetForDeactivatedUser ?? initialState.enableHideWidgetForDeactivatedUser,
         // ----- Legacy props ----- //
         betaMark: props.betaMark ?? initialState.betaMark,
-        customBetaMarkText:
-          props.customBetaMarkText ?? initialState.customBetaMarkText,
+        customBetaMarkText: props.customBetaMarkText ?? initialState.customBetaMarkText,
         suggestedMessageContent: {
           replyContents:
-            props.suggestedMessageContent?.replyContents ??
-            initialState.suggestedMessageContent.replyContents,
+            props.suggestedMessageContent?.replyContents ?? initialState.suggestedMessageContent.replyContents,
           messageFilterList:
-            props.suggestedMessageContent?.messageFilterList ??
-            initialState.suggestedMessageContent.messageFilterList,
+            props.suggestedMessageContent?.messageFilterList ?? initialState.suggestedMessageContent.messageFilterList,
         },
         firstMessageData: props.firstMessageData ?? [],
-        createGroupChannelParams:
-          props.createGroupChannelParams ??
-          initialState.createGroupChannelParams,
-        chatBottomContent:
-          props.chatBottomContent ?? initialState.chatBottomContent,
-        messageBottomContent:
-          props.messageBottomContent ?? initialState.messageBottomContent,
-        replacementTextList:
-          props.replacementTextList ?? initialState.replacementTextList,
+        createGroupChannelParams: props.createGroupChannelParams ?? initialState.createGroupChannelParams,
+        chatBottomContent: props.chatBottomContent ?? initialState.chatBottomContent,
+        messageBottomContent: props.messageBottomContent ?? initialState.messageBottomContent,
+        replacementTextList: props.replacementTextList ?? initialState.replacementTextList,
         customRefreshComponent: {
-          icon:
-            props.customRefreshComponent?.icon ??
-            initialState.customRefreshComponent.icon,
-          width:
-            props.customRefreshComponent?.width ??
-            defaultRefreshComponentSideLength,
-          height:
-            props.customRefreshComponent?.height ??
-            defaultRefreshComponentSideLength,
-          onClick:
-            props.customRefreshComponent?.onClick ??
-            initialState.customRefreshComponent.onClick,
+          icon: props.customRefreshComponent?.icon ?? initialState.customRefreshComponent.icon,
+          width: props.customRefreshComponent?.width ?? defaultRefreshComponentSideLength,
+          height: props.customRefreshComponent?.height ?? defaultRefreshComponentSideLength,
+          onClick: props.customRefreshComponent?.onClick ?? initialState.customRefreshComponent.onClick,
           style: {
             ...initialState.customRefreshComponent.style,
             ...props.customRefreshComponent?.style,

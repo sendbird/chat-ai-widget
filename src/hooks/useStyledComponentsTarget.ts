@@ -2,10 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { version } from 'styled-components/package.json';
 
 function isSCTarget(node: Node): node is HTMLStyleElement {
-  return (
-    node instanceof HTMLStyleElement &&
-    node.getAttribute('data-styled-version') === version
-  );
+  return node instanceof HTMLStyleElement && node.getAttribute('data-styled-version') === version;
 }
 
 /**
@@ -21,9 +18,7 @@ export function useStyledComponentsTarget() {
 
   useLayoutEffect(() => {
     const observer = new MutationObserver((mutations) => {
-      const mutation = mutations.find(
-        (it) => it.target === document.head && it.addedNodes.length > 0
-      );
+      const mutation = mutations.find((it) => it.target === document.head && it.addedNodes.length > 0);
 
       for (const node of mutation?.addedNodes ?? []) {
         if (!isSCTarget(node)) continue;

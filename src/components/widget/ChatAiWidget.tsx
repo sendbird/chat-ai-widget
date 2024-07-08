@@ -58,8 +58,7 @@ const MobileComponent = () => {
   );
 };
 
-export interface ChatAiWidgetProps
-  extends Omit<Partial<Constant>, 'stringSet'> {
+export interface ChatAiWidgetProps extends Omit<Partial<Constant>, 'stringSet'> {
   applicationId: string;
   botId: string;
   hashedKey?: string;

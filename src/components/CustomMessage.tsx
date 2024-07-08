@@ -20,11 +20,7 @@ import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
-import {
-  isLastMessageInStreaming,
-  isLocalMessageCustomType,
-  isSentBy,
-} from '../utils/messages';
+import { isLastMessageInStreaming, isLocalMessageCustomType, isSentBy } from '../utils/messages';
 
 type Props = {
   message: CoreMessageType;
@@ -56,14 +52,12 @@ export default function CustomMessage(props: Props) {
     messageCount,
     message,
   };
-  const { replacementTextList, enableEmojiFeedback, botStudioEditProps } =
-    useConstantState();
+  const { replacementTextList, enableEmojiFeedback, botStudioEditProps } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
   const { profileUrl } = botStudioEditProps?.botInfo ?? {};
   const botUserId = botUser?.userId;
   const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';
-  const isWaitingForBotReply =
-    activeSpinnerId === message.messageId && !!botUser;
+  const isWaitingForBotReply = activeSpinnerId === message.messageId && !!botUser;
 
   const shouldRenderFeedback = () => {
     return (
@@ -95,9 +89,7 @@ export default function CustomMessage(props: Props) {
       return (
         <div>
           <CurrentUserMessage message={message} />
-          {isWaitingForBotReply && (
-            <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />
-          )}
+          {isWaitingForBotReply && <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />}
         </div>
       );
     }
@@ -110,9 +102,7 @@ export default function CustomMessage(props: Props) {
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}
-          bodyComponent={
-            <FormMessage form={message.messageForm} message={message} />
-          }
+          bodyComponent={<FormMessage form={message.messageForm} message={message} />}
           createdAt={message.createdAt}
         />
       );
@@ -140,9 +130,7 @@ export default function CustomMessage(props: Props) {
           wideContainer={isVideoMessage(message)}
           {...commonProps}
           botUser={botUser}
-          bodyComponent={
-            <FileMessage message={message} profileUrl={botProfileUrl} />
-          }
+          bodyComponent={<FileMessage message={message} profileUrl={botProfileUrl} />}
           createdAt={message.createdAt}
           messageFeedback={renderFeedbackButtons()}
         />
@@ -152,18 +140,9 @@ export default function CustomMessage(props: Props) {
     // for user message
     if (message.isUserMessage()) {
       const sources = getSourceFromMetadata(message);
-      const tokens: Token[] = parseTextMessage(
-        message.message,
-        replacementTextList
-      );
+      const tokens: Token[] = parseTextMessage(message.message, replacementTextList);
 
-      const textMessageBody = (
-        <ParsedBotMessageBody
-          text={message.message}
-          tokens={tokens}
-          sources={sources}
-        />
-      );
+      const textMessageBody = <ParsedBotMessageBody text={message.message} tokens={tokens} sources={sources} />;
 
       // commerce carousel message
       if (messageExtension.commerceShopItems.isValid(message)) {
@@ -173,11 +152,7 @@ export default function CustomMessage(props: Props) {
             {...commonProps}
             botUser={botUser}
             bodyComponent={
-              <ShopItemsMessage
-                message={message}
-                streamingBody={<TypingDots />}
-                textBody={textMessageBody}
-              />
+              <ShopItemsMessage message={message} streamingBody={<TypingDots />} textBody={textMessageBody} />
             }
             createdAt={message.createdAt}
             messageFeedback={renderFeedbackButtons()}

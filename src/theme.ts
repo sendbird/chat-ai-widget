@@ -86,8 +86,7 @@ export function getTheme({
       bgColor: {
         chatBottom: 'var(--sendbird-light-background-50)',
         messageInput: 'var(--sendbird-light-background-100)',
-        incomingMessage:
-          botMessageBGColor ?? 'var(--sendbird-dark-background-100)',
+        incomingMessage: botMessageBGColor ?? 'var(--sendbird-dark-background-100)',
         outgoingMessage: accentColor ?? 'var(--sendbird-light-primary-300)',
         suggestedReply: 'var(--sendbird-light-background-50)',
         bottomBanner: 'var(--sendbird-light-background-50)',
@@ -97,9 +96,7 @@ export function getTheme({
           incomingMessage: botMessageBGColor
             ? generateColorVariants(botMessageBGColor)[400]
             : 'var(--sendbird-light-background-200)',
-          outgoingMessage: accentColor
-            ? generateColorVariants(accentColor)[400]
-            : 'var(--sendbird-light-primary-400)',
+          outgoingMessage: accentColor ? generateColorVariants(accentColor)[400] : 'var(--sendbird-light-primary-400)',
           suggestedReply: 'var(--sendbird-light-background-100)',
           carouselButton: 'var(--sendbird-light-background-100)',
         },
@@ -121,9 +118,7 @@ export function getTheme({
         incomingMessage: botMessageBGColor
           ? getColorBasedOnSaturation(botMessageBGColor)
           : 'var(--sendbird-dark-onlight-01)',
-        outgoingMessage: accentColor
-          ? getColorBasedOnSaturation(accentColor)
-          : 'var(--sendbird-light-ondark-01)',
+        outgoingMessage: accentColor ? getColorBasedOnSaturation(accentColor) : 'var(--sendbird-light-ondark-01)',
         errorMessage: 'var(--sendbird-dark-onlight-01)',
         sentTime: 'var(--sendbird-dark-onlight-03)',
         sourceInfo: 'var(--sendbird-light-ondark-01)',
@@ -142,9 +137,7 @@ export function getTheme({
           hover: 'var(--sendbird-light-primary-300)',
           focus: 'var(--sendbird-light-onlight-02)',
         },
-        activeButton: accentColor
-          ? getColorBasedOnSaturation(accentColor, 0.88)
-          : 'var(--sendbird-dark-ondark-01)',
+        activeButton: accentColor ? getColorBasedOnSaturation(accentColor, 0.88) : 'var(--sendbird-dark-ondark-01)',
       },
       borderColor: {
         channelHeader: 'var(--sendbird-light-onlight-04)',
@@ -168,8 +161,7 @@ export function getTheme({
       bgColor: {
         chatBottom: 'var(--sendbird-dark-background-600)',
         messageInput: 'var(--sendbird-dark-background-500)',
-        incomingMessage:
-          botMessageBGColor ?? 'var(--sendbird-dark-background-400)',
+        incomingMessage: botMessageBGColor ?? 'var(--sendbird-dark-background-400)',
         outgoingMessage: accentColor ?? 'var(--sendbird-dark-primary-200)',
         suggestedReply: 'var(--sendbird-dark-background-600)',
         bottomBanner: 'var(--sendbird-dark-background-600)',
@@ -180,9 +172,7 @@ export function getTheme({
             ? generateColorVariants(botMessageBGColor)[200]
             : 'var(--sendbird-dark-background-400)',
           // Give 1 level darker color for hover
-          outgoingMessage: accentColor
-            ? generateColorVariants(accentColor)[400]
-            : 'var(--sendbird-dark-primary-300)',
+          outgoingMessage: accentColor ? generateColorVariants(accentColor)[400] : 'var(--sendbird-dark-primary-300)',
           suggestedReply: 'var(--sendbird-dark-background-500)',
           carouselButton: 'var(--sendbird-dark-background-500)',
         },
@@ -201,9 +191,7 @@ export function getTheme({
         },
       },
       textColor: {
-        outgoingMessage: accentColor
-          ? getColorBasedOnSaturation(accentColor)
-          : 'var(--sendbird-dark-onlight-01)',
+        outgoingMessage: accentColor ? getColorBasedOnSaturation(accentColor) : 'var(--sendbird-dark-onlight-01)',
         incomingMessage: botMessageBGColor
           ? getColorBasedOnSaturation(botMessageBGColor)
           : 'var(--sendbird-dark-ondark-01)',
@@ -225,9 +213,7 @@ export function getTheme({
           hover: 'var(--sendbird-dark-primary-200)',
           focus: 'var(--sendbird-dark-ondark-02)',
         },
-        activeButton: accentColor
-          ? getColorBasedOnSaturation(accentColor, 0.88)
-          : 'var(--sendbird-light-onlight-01)',
+        activeButton: accentColor ? getColorBasedOnSaturation(accentColor, 0.88) : 'var(--sendbird-light-onlight-01)',
       },
       borderColor: {
         channelHeader: 'var(--sendbird-dark-ondark-04)',

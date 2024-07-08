@@ -1,11 +1,4 @@
-import React, {
-  createContext,
-  ReactNode,
-  useContext,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { createContext, ReactNode, useContext, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { noop } from '../../../utils';
@@ -26,20 +19,18 @@ const Container = styled.div({
   },
 });
 
-const ItemContainer = styled.div<{ focused: boolean }>(
-  ({ theme, focused }) => ({
-    display: 'flex',
-    flexShrink: 0,
-    scrollSnapAlign: 'start',
-    flexDirection: 'column',
-    borderRadius: 16,
-    overflow: 'hidden',
-    border: `1px solid ${theme.borderColor.carouselItem}`,
-    backgroundColor: theme.bgColor.carouselItem,
-    boxSizing: 'border-box',
-    cursor: focused ? 'pointer' : 'auto',
-  })
-);
+const ItemContainer = styled.div<{ focused: boolean }>(({ theme, focused }) => ({
+  display: 'flex',
+  flexShrink: 0,
+  scrollSnapAlign: 'start',
+  flexDirection: 'column',
+  borderRadius: 16,
+  overflow: 'hidden',
+  border: `1px solid ${theme.borderColor.carouselItem}`,
+  backgroundColor: theme.bgColor.carouselItem,
+  boxSizing: 'border-box',
+  cursor: focused ? 'pointer' : 'auto',
+}));
 
 type SnapCarouselProps = {
   width?: number | string;
@@ -49,11 +40,7 @@ type SnapCarouselProps = {
   startPadding?: number;
   endPadding?: number;
   style?: React.CSSProperties;
-  renderButtons?: (props: {
-    activeIndex: number;
-    onClickPrev(): void;
-    onClickNext(): void;
-  }) => ReactNode;
+  renderButtons?: (props: { activeIndex: number; onClickPrev(): void; onClickNext(): void }) => ReactNode;
 };
 
 const Context = createContext<{
@@ -133,22 +120,11 @@ type SnapCarouselItemProps = {
   index?: number;
 };
 
-SnapCarousel.Item = function Item({
-  children,
-  onClick,
-  height,
-  width,
-  index = 0,
-}: SnapCarouselItemProps) {
+SnapCarousel.Item = function Item({ children, onClick, height, width, index = 0 }: SnapCarouselItemProps) {
   const { activeIndex } = useContext(Context);
   const focused = index === activeIndex;
   return (
-    <ItemContainer
-      focused={focused}
-      onClick={() => focused && onClick?.()}
-      role={'button'}
-      style={{ width, height }}
-    >
+    <ItemContainer focused={focused} onClick={() => focused && onClick?.()} role={'button'} style={{ width, height }}>
       {children}
     </ItemContainer>
   );

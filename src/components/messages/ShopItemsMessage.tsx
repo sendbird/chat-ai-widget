@@ -50,38 +50,31 @@ const Image = styled.img`
   background-color: ${({ theme }) => theme.bgColor.carouselItem};
 `;
 
-const Button = styled.button<{ direction: 'left' | 'right' }>(
-  ({ theme, direction }) => ({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    border: 'none',
-    cursor: 'pointer',
-    borderRadius:
-      direction === 'right' ? '100px 0px 0px 100px' : '0px 100px 100px 0px',
-    padding: direction === 'right' ? '8px 8px 8px 12px' : '8px 12px 8px 8px',
-    backgroundColor: theme.bgColor.carouselButton,
-    boxShadow:
-      '0px 8px 10px 1px rgba(13, 13, 13, 0.12), 0px 3px 14px 2px rgba(13, 13, 13, 0.08), 0px 3px 5px -3px rgba(13, 13, 13, 0.04)',
-    '&:hover': {
-      backgroundColor: theme.bgColor.hover.carouselButton,
-    },
-  })
-);
+const Button = styled.button<{ direction: 'left' | 'right' }>(({ theme, direction }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  border: 'none',
+  cursor: 'pointer',
+  borderRadius: direction === 'right' ? '100px 0px 0px 100px' : '0px 100px 100px 0px',
+  padding: direction === 'right' ? '8px 8px 8px 12px' : '8px 12px 8px 8px',
+  backgroundColor: theme.bgColor.carouselButton,
+  boxShadow:
+    '0px 8px 10px 1px rgba(13, 13, 13, 0.12), 0px 3px 14px 2px rgba(13, 13, 13, 0.08), 0px 3px 5px -3px rgba(13, 13, 13, 0.04)',
+  '&:hover': {
+    backgroundColor: theme.bgColor.hover.carouselButton,
+  },
+}));
 
 type Props = {
   message: UserMessage;
   textBody: ReactNode;
   streamingBody: ReactNode;
 };
-export const ShopItemsMessage = ({
-  message,
-  textBody,
-  streamingBody,
-}: Props) => {
+export const ShopItemsMessage = ({ message, textBody, streamingBody }: Props) => {
   const theme = useTheme();
   const { isMobileView } = useConstantState();
 
@@ -102,29 +95,13 @@ export const ShopItemsMessage = ({
           shouldRenderButtons && (
             <>
               {activeIndex !== 0 && (
-                <Button
-                  style={{ left: -leftMargin }}
-                  onClick={onClickPrev}
-                  direction={'left'}
-                >
-                  <ChevronLeft
-                    width={24}
-                    height={24}
-                    fill={theme.bgColor.carouselButtonIcon}
-                  />
+                <Button style={{ left: -leftMargin }} onClick={onClickPrev} direction={'left'}>
+                  <ChevronLeft width={24} height={24} fill={theme.bgColor.carouselButtonIcon} />
                 </Button>
               )}
               {activeIndex !== items.length - 1 && (
-                <Button
-                  style={{ right: -listPadding }}
-                  onClick={onClickNext}
-                  direction={'right'}
-                >
-                  <ChevronRight
-                    width={24}
-                    height={24}
-                    fill={theme.bgColor.carouselButtonIcon}
-                  />
+                <Button style={{ right: -listPadding }} onClick={onClickNext} direction={'right'}>
+                  <ChevronRight width={24} height={24} fill={theme.bgColor.carouselButtonIcon} />
                 </Button>
               )}
             </>
@@ -132,12 +109,7 @@ export const ShopItemsMessage = ({
         }
       >
         {items.map((item, index) => (
-          <SnapCarousel.Item
-            width={240}
-            height={198}
-            key={index}
-            onClick={() => openURL(item.url)}
-          >
+          <SnapCarousel.Item width={240} height={198} key={index} onClick={() => openURL(item.url)}>
             <Image src={item.featured_image} alt={item.title} />
             <div
               style={{
@@ -156,9 +128,7 @@ export const ShopItemsMessage = ({
   return (
     <Container>
       <BodyWrapper>{textBody}</BodyWrapper>
-      {shouldRenderCarouselBody && (
-        <BodyWrapper>{renderCarouselBody()}</BodyWrapper>
-      )}
+      {shouldRenderCarouselBody && <BodyWrapper>{renderCarouselBody()}</BodyWrapper>}
     </Container>
   );
 };
