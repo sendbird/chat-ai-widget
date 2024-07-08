@@ -1,4 +1,4 @@
-import { BaseMessage, MessageForm, MessageFormItemStyle } from '@sendbird/chat/message';
+import { MessageForm } from '@sendbird/chat/message';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
@@ -54,10 +54,8 @@ export default function FormMessage(props: Props) {
 
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
-    items.forEach(({ required, style }, index) => {
-      const { defaultOptions = [] } = style;
-      const layout = getFormItemLayout(message, index);
-
+    items.forEach(({ required, style }) => {
+      const { defaultOptions = [], layout } = style;
       initialFormValues.push({
         draftValues: layout === 'chip' ? defaultOptions : [],
         required,
@@ -108,11 +106,7 @@ export default function FormMessage(props: Props) {
             answers[item.id] = formValue.draftValues[0]
           }
         });
-        const data: { formId: number; answers: Record<string, string> } = {
-          formId,
-          answers,
-        };
-        await message.submitMessageForm(data);
+        await message.submitMessageForm({ formId, answers });
       }
     } catch (error) {
       setSubmitFailed(true);
@@ -129,7 +123,7 @@ export default function FormMessage(props: Props) {
         return (
           <FormInput
             key={id}
-            layout={getFormItemLayout(message, index)}
+            layout={item.style.layout}
             style={style}
             placeHolder={placeholder}
             values={item.submittedValues ?? draftValues}
@@ -181,11 +175,3 @@ export default function FormMessage(props: Props) {
   );
 }
 
-export function getFormItemLayout(message: BaseMessage, index: number): MessageFormItemStyle['layout'] {
-  return (
-    message.messageForm?.items?.[index]?.style.layout ??
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    message.extendedMessagePayload?.message_form?.items?.[index]?.item_type
-  );
-}
