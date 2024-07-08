@@ -1,4 +1,4 @@
-import { MessageForm } from '@sendbird/chat/message';
+import { BaseMessage, MessageForm, MessageFormItemStyle } from '@sendbird/chat/message';
 import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
@@ -51,10 +51,13 @@ export default function FormMessage(props: Props) {
 
   const [submitFailed, setSubmitFailed] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
+
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
-    items.forEach(({ required, style }) => {
-      const { layout, defaultOptions = [] } = style;
+    items.forEach(({ required, style }, index) => {
+      const { defaultOptions = [] } = style;
+      const layout = getFormItemLayout(message, index);
+
       initialFormValues.push({
         draftValues: layout === 'chip' ? defaultOptions : [],
         required,
@@ -63,6 +66,7 @@ export default function FormMessage(props: Props) {
     });
     return initialFormValues;
   });
+
   const isSubmitted = form.isSubmitted;
   const hasError = formValues.some(({ errorMessage }) => !!errorMessage);
 
@@ -110,6 +114,7 @@ export default function FormMessage(props: Props) {
         return (
           <FormInput
             key={id}
+            layout={getFormItemLayout(message, index)}
             style={style}
             placeHolder={placeholder}
             values={item.submittedValues ?? draftValues}
@@ -158,5 +163,14 @@ export default function FormMessage(props: Props) {
         />
       )}
     </Root>
+  );
+}
+
+export function getFormItemLayout(message: BaseMessage, index: number): MessageFormItemStyle['layout'] {
+  return (
+    message.messageForm?.items?.[index]?.style.layout ??
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    message.extendedMessagePayload?.message_form?.items?.[index]?.item_type
   );
 }
