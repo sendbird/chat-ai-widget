@@ -6,7 +6,7 @@ import Avatar from '@uikit/ui/Avatar';
 import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import BotProfileImage from './BotProfileImage';
-import { BodyContainer, DefaultSentTime, WideSentTime } from './MessageComponent';
+import { DefaultSentTime, FullBodyContainer, WideSentTime } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
@@ -29,6 +29,7 @@ const Sender = styled.div`
 `;
 
 const Content = styled.div`
+  flex: 1;
   display: flex;
   align-items: end;
   gap: 4px;
@@ -94,7 +95,7 @@ export default function BotMessageWithBodyInput(props: Props) {
       ) : (
         <EmptyImageContainer />
       )}
-      <BodyContainer>
+      <FullBodyContainer>
         {displaySender && (
           <Sender>
             <Label type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
@@ -110,7 +111,7 @@ export default function BotMessageWithBodyInput(props: Props) {
         </Content>
         {wideContainer && !!createdAt && <WideSentTime>{formatCreatedAtToAMPM(createdAt, dateLocale)}</WideSentTime>}
         {displayProfileImage && messageFeedback}
-      </BodyContainer>
+      </FullBodyContainer>
     </Root>
   );
 }
