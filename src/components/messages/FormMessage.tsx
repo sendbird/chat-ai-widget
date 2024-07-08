@@ -95,10 +95,25 @@ export default function FormMessage(props: Props) {
         });
         return;
       }
-      formValues.forEach((formValue, index) => {
-        items[index].draftValues = formValue.draftValues;
-      });
-      await message.submitMessageForm();
+      if (formValues.some((formValue) => formValue.draftValues.length > 1)) {
+        formValues.forEach((formValue, index) => {
+          items[index].draftValues = formValue.draftValues;
+        });
+        await message.submitMessageForm();
+      } else {
+        const answers: Record<string, string> = {};
+        formValues.forEach((formValue, index) => {
+          const item = items[index];
+          if (formValue.draftValues.length > 0) {
+            answers[item.id] = formValue.draftValues[0]
+          }
+        });
+        const data: { formId: number; answers: Record<string, string> } = {
+          formId,
+          answers,
+        };
+        await message.submitMessageForm(data);
+      }
     } catch (error) {
       setSubmitFailed(true);
       console.error(error);
