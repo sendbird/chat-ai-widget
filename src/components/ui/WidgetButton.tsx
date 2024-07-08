@@ -30,9 +30,7 @@ const ButtonContainer = styled.button<{
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow:
-    0px 16px 24px 2px rgba(33, 33, 33, 0.12),
-    0px 6px 30px 5px rgba(33, 33, 33, 0.08),
+  box-shadow: 0px 16px 24px 2px rgba(33, 33, 33, 0.12), 0px 6px 30px 5px rgba(33, 33, 33, 0.08),
     0px 6px 10px -5px rgba(33, 33, 33, 0.04);
 
   span {
@@ -40,10 +38,7 @@ const ButtonContainer = styled.button<{
     height: 100%;
     border-radius: 50%;
     overflow: hidden;
-    transition:
-      transform 0.16s linear,
-      opacity 0.08s linear,
-      scale 0.16s linear;
+    transition: transform 0.16s linear, opacity 0.08s linear, scale 0.16s linear;
     user-select: none;
     display: flex;
     justify-content: center;

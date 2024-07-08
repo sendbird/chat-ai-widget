@@ -104,7 +104,7 @@ export default function FormMessage(props: Props) {
         formValues.forEach((formValue, index) => {
           const item = items[index];
           if (formValue.draftValues.length > 0) {
-            answers[item.id] = formValue.draftValues[0]
+            answers[item.id] = formValue.draftValues[0];
           }
         });
         await message.submitMessageForm({ formId, answers });
@@ -175,4 +175,3 @@ export default function FormMessage(props: Props) {
     </Root>
   );
 }
-
