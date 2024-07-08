@@ -66,7 +66,7 @@ interface ChipProps {
 
 const Chip = styled.div<ChipProps>`
   border-radius: 100px;
-  padding: ${({ isSubmitted }) => (isSubmitted ? 6 : 5)}px 16px;
+  padding: ${({ isSubmitted }) => (isSubmitted ? '6px 16px' : '5px 15px')};
   display: flex;
   justify-content: center;
   align-items: center;
