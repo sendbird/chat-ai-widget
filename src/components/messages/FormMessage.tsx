@@ -23,6 +23,7 @@ interface FormValue {
 }
 
 const Root = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -51,10 +52,11 @@ export default function FormMessage(props: Props) {
 
   const [submitFailed, setSubmitFailed] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
+
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
     items.forEach(({ required, style }) => {
-      const { layout, defaultOptions = [] } = style;
+      const { defaultOptions = [], layout } = style;
       initialFormValues.push({
         draftValues: layout === 'chip' ? defaultOptions : [],
         required,
@@ -63,6 +65,7 @@ export default function FormMessage(props: Props) {
     });
     return initialFormValues;
   });
+
   const isSubmitted = form.isSubmitted;
   const hasError = formValues.some(({ errorMessage }) => !!errorMessage);
 
@@ -91,10 +94,21 @@ export default function FormMessage(props: Props) {
         });
         return;
       }
-      formValues.forEach((formValue, index) => {
-        items[index].draftValues = formValue.draftValues;
-      });
-      await message.submitMessageForm();
+      if (formValues.some((formValue) => formValue.draftValues.length > 1)) {
+        formValues.forEach((formValue, index) => {
+          items[index].draftValues = formValue.draftValues;
+        });
+        await message.submitMessageForm();
+      } else {
+        const answers: Record<string, string> = {};
+        formValues.forEach((formValue, index) => {
+          const item = items[index];
+          if (formValue.draftValues.length > 0) {
+            answers[item.id] = formValue.draftValues[0];
+          }
+        });
+        await message.submitMessageForm({ formId, answers });
+      }
     } catch (error) {
       setSubmitFailed(true);
       console.error(error);
@@ -110,6 +124,7 @@ export default function FormMessage(props: Props) {
         return (
           <FormInput
             key={id}
+            layout={item.style.layout}
             style={style}
             placeHolder={placeholder}
             values={item.submittedValues ?? draftValues}

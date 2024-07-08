@@ -29,6 +29,10 @@ export const BodyContainer = styled.div`
   letter-spacing: normal;
 `;
 
+export const FullBodyContainer = styled(BodyContainer)`
+  flex: 1;
+`;
+
 export const BodyComponent = styled.div`
   background-color: ${({ theme }) => theme.bgColor.outgoingMessage};
   color: ${({ theme }) => theme.textColor.outgoingMessage};

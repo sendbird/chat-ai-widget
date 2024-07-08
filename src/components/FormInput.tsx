@@ -66,7 +66,7 @@ interface ChipProps {
 
 const Chip = styled.div<ChipProps>`
   border-radius: 100px;
-  padding: ${({ isSubmitted }) => (isSubmitted ? 6 : 5)}px 16px;
+  padding: ${({ isSubmitted }) => (isSubmitted ? '6px 16px' : '5px 15px')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,6 +230,7 @@ export interface InputProps {
   onFocused?: (isFocus: boolean) => void;
   onChange: (values: string[]) => void;
   isSubmitted: boolean;
+  layout: MessageFormItemStyle['layout'];
 }
 
 type ChipState = 'default' | 'selected' | 'submittedDefault' | 'submittedSelected';
@@ -241,6 +242,7 @@ interface ChipData {
 
 const FormInput = (props: InputProps) => {
   const {
+    layout,
     name,
     required,
     disabled,
@@ -254,7 +256,7 @@ const FormInput = (props: InputProps) => {
     isSubmitted,
   } = props;
 
-  const { layout, options = [], resultCount }: MessageFormItemStyle = style;
+  const { options = [], resultCount }: MessageFormItemStyle = style;
   const { min = 1, max = 1 } = resultCount ?? {};
   const chipDataList: ChipData[] = getInitialChipDataList();
 
