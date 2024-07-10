@@ -3,11 +3,11 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Avatar from '@uikit/ui/Avatar';
-import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import BotProfileImage from './BotProfileImage';
 import { DefaultSentTime, FullBodyContainer, WideSentTime } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
+import { Label } from '../foundation/Label';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.span`
@@ -98,7 +98,7 @@ export default function BotMessageWithBodyInput(props: Props) {
       <FullBodyContainer>
         {displaySender && (
           <Sender>
-            <Label type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
+            <Label type={'caption2'} color={'onbackground2'}>
               {botNickname}
             </Label>
           </Sender>

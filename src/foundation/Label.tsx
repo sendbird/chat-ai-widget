@@ -169,7 +169,7 @@ const colors: Record<string, string> = {
       color: var(--sendbird-light-onlight-01);
     }
     .sendbird-theme--dark & {
-      color: var(--sendbird-dark-onlight-01);
+      color: var(--sendbird-dark-ondark-01);
     }
   `,
   onbackground2: css`
@@ -177,7 +177,7 @@ const colors: Record<string, string> = {
       color: var(--sendbird-light-onlight-02);
     }
     .sendbird-theme--dark & {
-      color: var(--sendbird-dark-onlight-02);
+      color: var(--sendbird-dark-ondark-02);
     }
   `,
   onbackground3: css`
@@ -185,7 +185,7 @@ const colors: Record<string, string> = {
       color: var(--sendbird-light-onlight-03);
     }
     .sendbird-theme--dark & {
-      color: var(--sendbird-dark-onlight-03);
+      color: var(--sendbird-dark-ondark-03);
     }
   `,
   onbackground4: css`
@@ -193,7 +193,7 @@ const colors: Record<string, string> = {
       color: var(--sendbird-light-onlight-04);
     }
     .sendbird-theme--dark & {
-      color: var(--sendbird-dark-onlight-04);
+      color: var(--sendbird-dark-ondark-04);
     }
   `,
   oncontent1: css`

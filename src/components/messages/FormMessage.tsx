@@ -3,12 +3,12 @@ import { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '@uikit/ui/Button';
-import Label, { LabelTypography } from '@uikit/ui/Label';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
 
 import { elementIds } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
+import { Label } from '../../foundation/Label';
 import FormInput from '../FormInput';
 
 interface Props {
@@ -157,7 +157,7 @@ export default function FormMessage(props: Props) {
         );
       })}
       <SubmitButton onClick={handleSubmit} disabled={(!isInputFocused && hasError) || isSubmitted}>
-        <Label type={LabelTypography.BUTTON_2}>
+        <Label type={'button2'}>
           <ButtonText disabled={(!isInputFocused && hasError) || isSubmitted}>
             {isSubmitted ? 'Submitted successfully' : 'Submit'}
           </ButtonText>
