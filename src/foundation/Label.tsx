@@ -46,16 +46,20 @@ type Props<C extends ElementType> = HTMLProps<C> & {
 
 export const Label = <C extends ElementType = 'span'>({
   as,
-  className,
   type,
   color,
+  style,
+  className,
   ...props
 }: SBUFoundationProps<Props<C>>) => {
   const Component = as || 'span';
   const localProps = useLocalProps(props);
+  const typoClassNames = type ? typo[type] : [];
+  const colorClassName = color ? colors[color] : undefined;
   return (
     <Component
-      className={cx('sendbird-label', ...(type ? typo[type] : []), color ? colors[color] : undefined, className)}
+      className={cx('sendbird-label', ...typoClassNames, colorClassName, className)}
+      style={{ color: color && !colorClassName ? color : undefined, ...style }}
       {...props}
       {...localProps}
     />
