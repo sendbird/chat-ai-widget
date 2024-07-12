@@ -1,11 +1,19 @@
+import path from 'node:path';
+
 import react from '@vitejs/plugin-react';
+import wyw from '@wyw-in-js/vite';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
-import path from 'node:path';
 
 export default defineConfig({
   plugins: [
     react(),
+    wyw({
+      include: ['**/*.{ts,tsx}'],
+      babelOptions: {
+        presets: ['@babel/preset-typescript', '@babel/preset-react', '@wyw-in-js/babel-preset'],
+      },
+    }),
     svgr({
       include: '**/*.svg',
       svgrOptions: {
