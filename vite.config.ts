@@ -2,12 +2,12 @@ import { resolve } from 'node:path';
 import * as path from 'node:path';
 
 import react from '@vitejs/plugin-react';
+import wyw from '@wyw-in-js/vite';
+import { terser } from 'rollup-plugin-terser';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import { terser } from 'rollup-plugin-terser';
 import svgr from 'vite-plugin-svgr';
-
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,6 +18,12 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    wyw({
+      include: ['**/*.{ts,tsx}'],
+      babelOptions: {
+        presets: ['@babel/preset-typescript', '@babel/preset-react', '@wyw-in-js/babel-preset'],
+      },
+    }),
     svgr({
       include: '**/*.svg',
       svgrOptions: {

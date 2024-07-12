@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
-
+import { Label } from '../foundation/Label';
 import Icon from '../icons/icon-error.svg';
 
 const Container = styled.div`
@@ -31,7 +30,7 @@ export default function ErrorContainer({ errorMessage }: { errorMessage: string 
   return (
     <Container>
       <ErrorIcon />
-      <ErrorMessage className="sendbird-input-label" type={LabelTypography.BODY_1} color={LabelColors.ONBACKGROUND_2}>
+      <ErrorMessage className="sendbird-input-label" type={'body1'} color={'onbackground2'}>
         {errorMessage || 'Something went wrong'}
       </ErrorMessage>
     </Container>

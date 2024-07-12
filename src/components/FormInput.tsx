@@ -3,13 +3,14 @@ import { ReactElement, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
 import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
-import UIKitLabel, { LabelColors, LabelTypography } from '@uikit/ui/Label';
+
+import { Label as UILabel } from '../foundation/Label';
 
 export interface InputLabelProps {
   children: ReactNode;
 }
 
-const Label = styled(UIKitLabel)`
+const Label = styled(UILabel)`
   line-height: 14px;
   display: block;
   margin: 0;
@@ -17,7 +18,7 @@ const Label = styled(UIKitLabel)`
 
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <div style={{ marginBottom: '6px' }}>
-    <Label className="sendbird-input-label" type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
+    <Label className="sendbird-input-label" type={'caption2'} color={'onbackground2'}>
       {children}
     </Label>
   </div>
@@ -423,7 +424,7 @@ const FormInput = (props: InputProps) => {
             }
           }
         })()}
-        {!isFocused && errorMessage && <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>}
+        {!isFocused && errorMessage && <ErrorLabel type={'caption3'}>{errorMessage}</ErrorLabel>}
       </div>
     </Root>
   );
