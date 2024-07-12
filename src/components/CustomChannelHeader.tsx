@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 import Avatar from '@uikit/ui/Avatar';
-import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import BotProfileImage from './BotProfileImage';
 import BetaLogo from './ui/BetaLogo';
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetState } from '../context/WidgetStateContext';
+import { Label } from '../foundation/Label';
 import CloseButton from '../icons/ic-widget-close.svg';
 import { isEmpty } from '../utils';
 
@@ -89,7 +89,7 @@ export default function CustomChannelHeader({ botProfileUrl, botNickname, channe
         ) : (
           <BotProfileImage width={34} height={34} iconWidth={20} iconHeight={20} />
         )}
-        <Title type={LabelTypography.H_2} color={LabelColors.ONBACKGROUND_1}>
+        <Title type={'h2'} color={'onbackground1'}>
           {botNickname || channelName}
         </Title>
         {!isMobileView && betaMark && <BetaLogo>{customBetaMarkText}</BetaLogo>}
