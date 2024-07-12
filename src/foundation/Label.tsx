@@ -1,7 +1,8 @@
 import { css, cx } from '@linaria/core';
 import React, { ElementType, HTMLAttributes } from 'react';
 
-import { type SBUFoundationProps, useLocalProps } from './index';
+import { useLocalProps } from './hooks/useLocalProps';
+import { SBUFoundationProps } from './types';
 
 type AsProp<C extends ElementType> = {
   as?: C;

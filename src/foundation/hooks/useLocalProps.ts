@@ -1,8 +1,4 @@
-import { css } from '@linaria/core';
-
-export type SBUFoundationProps<T = NonNullable<unknown>> = T & {
-  testId?: string;
-};
+import { SBUFoundationProps } from '../types';
 
 function deundefined<T extends { [key: string]: any }>(object: T): T {
   return Object.entries(object).reduce((acc, [key, value]) => {
@@ -18,5 +14,3 @@ export function useLocalProps<T extends SBUFoundationProps>(props: T) {
   return deundefined({ 'data-testid': testId });
   // return useMemo(() => deundefined({ 'data-testid': testId }), [testId]);
 }
-
-export const sbcss = css;
