@@ -35,6 +35,9 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
+    "@linaria/atomic": "^6.2.0",
+    "@linaria/core": "^6.2.0",
+    "@linaria/react": "^6.2.1",
     "@types/dompurify": "^3.0.5",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
@@ -42,6 +45,8 @@
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "@vitejs/plugin-react": "^4.2.1",
+    "@wyw-in-js/babel-preset": "^0.5.3",
+    "@wyw-in-js/vite": "^0.5.3",
     "date-fns": "^3.6.0",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",

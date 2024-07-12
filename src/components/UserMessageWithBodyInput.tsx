@@ -5,9 +5,9 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Avatar from '@uikit/ui/Avatar';
-import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import { SentTime } from './MessageComponent';
+import { Label } from '../foundation/Label';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.div`
@@ -80,7 +80,7 @@ export default function UserMessageWithBodyInput(props: Props) {
       )}
       <BodyContainer>
         {displaySender && (
-          <Sender type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
+          <Sender type={'caption2'} color={'onbackground2'}>
             {user.nickname}
           </Sender>
         )}
