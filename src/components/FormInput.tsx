@@ -15,6 +15,11 @@ const Label = styled(UIKitLabel)`
   margin: 0;
 `;
 
+const SubmittedPlaceholder = styled(Label)`
+  left: 12px !important;
+  top: 8px !important;
+`;
+
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <div style={{ marginBottom: '6px' }}>
     <Label className="sendbird-input-label" type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
@@ -363,6 +368,15 @@ const FormInput = (props: InputProps) => {
                           <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
                       )}
+                      {(placeHolder && !currentValue) && (
+                        <SubmittedPlaceholder
+                          className='sendbird-input__placeholder'
+                          type={LabelTypography.BODY_1}
+                          color={LabelColors.ONBACKGROUND_3}
+                        >
+                          No Response
+                        </SubmittedPlaceholder>
+                      )}
                     </SubmittedTextInputContainer>
                   ) : (
                     <TextArea
@@ -396,6 +410,15 @@ const FormInput = (props: InputProps) => {
                         <CheckIconContainer>
                           <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
+                      )}
+                      {(placeHolder && !currentValue) && (
+                        <SubmittedPlaceholder
+                          className='sendbird-input__placeholder'
+                          type={LabelTypography.BODY_1}
+                          color={LabelColors.ONBACKGROUND_3}
+                        >
+                          No Response
+                        </SubmittedPlaceholder>
                       )}
                     </SubmittedTextInputContainer>
                   ) : (
