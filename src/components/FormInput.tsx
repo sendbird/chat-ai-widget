@@ -368,9 +368,9 @@ const FormInput = (props: InputProps) => {
                           <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
                       )}
-                      {(placeHolder && !currentValue) && (
+                      {placeHolder && !currentValue && (
                         <SubmittedPlaceholder
-                          className='sendbird-input__placeholder'
+                          className="sendbird-input__placeholder"
                           type={LabelTypography.BODY_1}
                           color={LabelColors.ONBACKGROUND_3}
                         >
@@ -411,9 +411,9 @@ const FormInput = (props: InputProps) => {
                           <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
                       )}
-                      {(placeHolder && !currentValue) && (
+                      {placeHolder && !currentValue && (
                         <SubmittedPlaceholder
-                          className='sendbird-input__placeholder'
+                          className="sendbird-input__placeholder"
                           type={LabelTypography.BODY_1}
                           color={LabelColors.ONBACKGROUND_3}
                         >
