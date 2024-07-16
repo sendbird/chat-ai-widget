@@ -166,6 +166,11 @@ export interface Constant extends ConstantFeatureFlags {
   autoOpen?: boolean;
   /**
    * @public
+   * @description Sets the locale for the chatbot.
+   */
+  locale?: string;
+  /**
+   * @public
    * @description Locale value to be applied to string values of message timestamp and date separator.
    */
   dateLocale: Locale;
@@ -322,7 +327,6 @@ export const elementIds = {
   expandIcon: 'aichatbot-widget-expand-icon',
   closeIcon: 'aichatbot-widget-close-icon',
   refreshIcon: 'aichatbot-widget-refresh-icon',
-  uikitModal: 'sendbird-modal-root',
 };
 
 export const widgetServiceName = {

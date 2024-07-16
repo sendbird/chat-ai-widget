@@ -80,6 +80,7 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
           ...initialState.messageInputControls,
           ...props.messageInputControls,
         },
+        locale: props.locale,
         dateLocale: props.dateLocale ?? initialState.dateLocale,
         // ----- Feature flag props ----- //
         autoOpen: props.autoOpen,

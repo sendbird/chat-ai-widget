@@ -1,7 +1,8 @@
 import { SendbirdErrorCode } from '@sendbird/chat';
-import React, { useMemo } from 'react';
+import React, { PropsWithChildren, useEffect, useMemo } from 'react';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
 
+import { useSendbirdStateContext } from '@uikit/index';
 import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
@@ -33,7 +34,6 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     enableHideWidgetForDeactivatedUser,
   } = useConstantState();
 
-  useAssignGlobalFunction();
   const { setIsVisible } = useWidgetState();
   const { botStyle } = useWidgetSetting();
   const session = useWidgetSession();
@@ -136,9 +136,25 @@ export default function ProviderContainer(props: ProviderContainerProps) {
     <ConstantStateProvider {...props}>
       <WidgetSettingProvider>
         <WidgetStateProvider>
-          <SBComponent>{props.children}</SBComponent>
+          <SBComponent>
+            <HeadlessComponent>{props.children}</HeadlessComponent>
+          </SBComponent>
         </WidgetStateProvider>
       </WidgetSettingProvider>
     </ConstantStateProvider>
   );
 }
+
+const HeadlessComponent = ({ children }: PropsWithChildren) => {
+  useAssignGlobalFunction();
+  const { locale } = useConstantState();
+  const { stores } = useSendbirdStateContext();
+
+  useEffect(() => {
+    if (locale && stores.sdkStore.initialized && stores.sdkStore.sdk) {
+      stores.sdkStore.sdk.setLocaleForChatbot(locale);
+    }
+  }, [locale, stores.sdkStore.initialized, stores.sdkStore.sdk]);
+
+  return <>{children}</>;
+};

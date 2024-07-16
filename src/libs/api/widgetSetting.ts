@@ -30,6 +30,7 @@ type Params = {
   createChannel?: boolean;
   userId?: string;
   // sessionToken?: string;
+  locale?: string;
 };
 
 type Response = {
@@ -59,12 +60,14 @@ export async function getWidgetSetting({
   createUserAndChannel,
   createChannel,
   userId,
+  locale,
 }: Params): Promise<Response> {
   // const headers = sessionToken ? { 'Session-Key': sessionToken } : undefined;
   const params = asQueryParams({
     create_user_and_channel: asBoolString(createUserAndChannel),
     create_channel: asBoolString(createChannel),
     user_id: userId,
+    locale,
   });
   const path = resolvePath(host, `/v3/bots/${botId}/${appId}/widget_setting?${params}`);
 
@@ -221,7 +224,7 @@ function getParamsByStrategy(
     if (useCachedSession) {
       return { userId: params.userId };
     } else {
-      return { createUserAndChannel: true };
+      return { createUserAndChannel: true, locale: params.locale };
     }
   } else {
     if (useCachedSession) {

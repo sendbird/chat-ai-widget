@@ -47,6 +47,7 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
     botStudioEditProps,
     autoOpen,
     callbacks,
+    locale,
   } = useConstantState();
 
   if (!appId || !botId) {
@@ -91,6 +92,7 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
       appId,
       botId,
       userId: strategy === 'manual' ? injectedUserId : cachedSession?.userId,
+      locale,
     })
       .onError(callbacks?.onWidgetSettingFailure)
       .onGetBotStyle((style) => setBotStyle(style))
