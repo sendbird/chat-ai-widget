@@ -11,33 +11,30 @@ const TIME_SPAN = 3 * 60 * 1000;
  */
 export function groupMessagesByShortSpanTime(messages: BaseMessage[]): BaseMessage[] {
   // Create an object to group messages based on their creation time
-  const groupedMessagesByCreatedAt = messages.reduce(
-    (groups, message, idx) => {
-      // Get the key of the previous group
-      const prevKey = Object.keys(groups)[Object.keys(groups).length - 1];
+  const groupedMessagesByCreatedAt = messages.reduce((groups, message, idx) => {
+    // Get the key of the previous group
+    const prevKey = Object.keys(groups)[Object.keys(groups).length - 1];
 
-      // Check if the time difference between the current message and the previous one is within 3 minutes
-      if (
-        prevKey &&
-        message.createdAt - Number(prevKey) <= TIME_SPAN &&
-        !message.isAdminMessage() &&
-        getSenderUserIdFromMessage(message) === getSenderUserIdFromMessage(messages[idx - 1])
-      ) {
-        // Add the message to the existing group
-        return {
-          ...groups,
-          [prevKey]: [...(groups[prevKey] ?? []), message],
-        };
-      } else {
-        // Create a new group for the current message
-        return {
-          ...groups,
-          [message.createdAt]: [message],
-        };
-      }
-    },
-    {} as Record<string, BaseMessage[]>,
-  );
+    // Check if the time difference between the current message and the previous one is within 3 minutes
+    if (
+      prevKey &&
+      message.createdAt - Number(prevKey) <= TIME_SPAN &&
+      !message.isAdminMessage() &&
+      getSenderUserIdFromMessage(message) === getSenderUserIdFromMessage(messages[idx - 1])
+    ) {
+      // Add the message to the existing group
+      return {
+        ...groups,
+        [prevKey]: [...(groups[prevKey] ?? []), message],
+      };
+    } else {
+      // Create a new group for the current message
+      return {
+        ...groups,
+        [message.createdAt]: [message],
+      };
+    }
+  }, {} as Record<string, BaseMessage[]>);
 
   // Flatten the grouped messages and add chain indicators
   return Object.values(groupedMessagesByCreatedAt).flatMap((messages: BaseMessage[]) => {
