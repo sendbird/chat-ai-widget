@@ -67,6 +67,7 @@ const TypingDot = styled.span`
 const Root = styled.div`
   display: flex;
   align-items: flex-end;
+  margin-top: 16px;
 `;
 
 function TypingDots() {
