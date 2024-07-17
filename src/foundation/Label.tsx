@@ -1,6 +1,7 @@
 import { css, cx } from '@linaria/core';
 import React, { ElementType, HTMLAttributes } from 'react';
 
+import { textColors } from './colors/css';
 import { useLocalProps } from './hooks/useLocalProps';
 import { SBUFoundationProps } from './types';
 
@@ -29,19 +30,7 @@ type Props<C extends ElementType> = HTMLProps<C> & {
     | 'caption1'
     | 'caption2'
     | 'caption3';
-  color?:
-    | string
-    | 'onbackground1'
-    | 'onbackground2'
-    | 'onbackground3'
-    | 'onbackground4'
-    | 'oncontent1'
-    | 'oncontent2'
-    | 'oncontent_inverse1'
-    | 'oncontent_inverse3'
-    | 'primary'
-    | 'error'
-    | 'secondary3';
+  color?: keyof typeof textColors | string;
 };
 
 export const Label = <C extends ElementType = 'span'>({
@@ -55,7 +44,7 @@ export const Label = <C extends ElementType = 'span'>({
   const Component = as || 'span';
   const localProps = useLocalProps(props);
   const typoClassNames = type ? typo[type] : [];
-  const colorClassName = color ? colors[color] : undefined;
+  const colorClassName = color ? textColors[color as keyof typeof textColors] : undefined;
   return (
     <Component
       className={cx('sendbird-label', ...typoClassNames, colorClassName, className)}
@@ -166,95 +155,4 @@ const typo = {
   caption1: [styles.caption1, styles.base, styles.sm],
   caption2: [styles.caption2, styles.base, styles.sm],
   caption3: [styles.caption3, styles.base, styles.sm],
-};
-
-const colors: Record<string, string> = {
-  onbackground1: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-01);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-01);
-    }
-  `,
-  onbackground2: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-02);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-02);
-    }
-  `,
-  onbackground3: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-03);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-03);
-    }
-  `,
-  onbackground4: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-04);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-04);
-    }
-  `,
-  oncontent1: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-ondark-01);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-onlight-01);
-    }
-  `,
-  oncontent2: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-ondark-02);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-onlight-02);
-    }
-  `,
-  oncontent_inverse1: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-01);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-01);
-    }
-  `,
-  oncontent_inverse3: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-03);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-03);
-    }
-  `,
-  primary: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-primary-300);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-primary-200);
-    }
-  `,
-  error: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-error-300);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-error-200);
-    }
-  `,
-  secondary3: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-secondary-300);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-secondary-200);
-    }
-  `,
 };
