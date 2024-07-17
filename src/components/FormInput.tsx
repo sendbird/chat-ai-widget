@@ -15,11 +15,6 @@ const Label = styled(UIKitLabel)`
   margin: 0;
 `;
 
-const SubmittedPlaceholder = styled(Label)`
-  left: 12px !important;
-  top: 8px !important;
-`;
-
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <div style={{ marginBottom: '6px' }}>
     <Label className="sendbird-input-label" type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
@@ -199,6 +194,10 @@ const SubmittedText = styled.div`
   line-height: 20px;
 `;
 
+const NoResponseText = styled(SubmittedText)`
+  color: ${({ theme }) => theme.textColor.placeholder};
+`;
+
 const ErrorLabel = styled(Label)`
   margin-top: 4px;
   color: var(--sendbird-light-error-300);
@@ -358,24 +357,20 @@ const FormInput = (props: InputProps) => {
             }
             case 'textarea': {
               const currentValue = values.length > 0 ? values[0] : '';
+              const isOptionalEmpty = !required && values.length === 0;
+              
               return (
                 <InputContainer>
                   {isSubmitted ? (
                     <SubmittedTextInputContainer isTextarea={true}>
-                      <SubmittedText>{currentValue}</SubmittedText>
+                      {isOptionalEmpty
+                        ? <NoResponseText>No Response</NoResponseText>
+                        : <SubmittedText>{currentValue}</SubmittedText>
+                      }
                       {isValid && (
                         <CheckIconContainer>
                           <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
-                      )}
-                      {placeHolder && !currentValue && (
-                        <SubmittedPlaceholder
-                          className="sendbird-input__placeholder"
-                          type={LabelTypography.BODY_1}
-                          color={LabelColors.ONBACKGROUND_3}
-                        >
-                          No Response
-                        </SubmittedPlaceholder>
                       )}
                     </SubmittedTextInputContainer>
                   ) : (
@@ -401,24 +396,19 @@ const FormInput = (props: InputProps) => {
             case 'phone':
             case 'email': {
               const currentValue = values.length > 0 ? values[0] : '';
+              const isOptionalEmpty = !required && values.length === 0;
               return (
                 <InputContainer>
                   {isSubmitted ? (
                     <SubmittedTextInputContainer>
-                      <SubmittedText>{currentValue}</SubmittedText>
+                      {isOptionalEmpty
+                        ? <NoResponseText>No Response</NoResponseText>
+                        : <SubmittedText>{currentValue}</SubmittedText>
+                      }
                       {isValid && (
                         <CheckIconContainer>
                           <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
-                      )}
-                      {placeHolder && !currentValue && (
-                        <SubmittedPlaceholder
-                          className="sendbird-input__placeholder"
-                          type={LabelTypography.BODY_1}
-                          color={LabelColors.ONBACKGROUND_3}
-                        >
-                          No Response
-                        </SubmittedPlaceholder>
                       )}
                     </SubmittedTextInputContainer>
                   ) : (
