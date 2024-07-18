@@ -1,5 +1,18 @@
 import { css } from '@linaria/core';
 
+export const themedColors = {
+  onbackground1: 'var(--sb-bg-1)',
+  onbackground2: 'var(--sb-bg-2)',
+  onbackground3: 'var(--sb-bg-3)',
+  onbackground4: 'var(--sb-bg-4)',
+  oncontent1: 'var(--sb-content-1)',
+  oncontent2: 'var(--sb-content-2)',
+  oncontent_inverse1: 'var(--sb-content-inverse-1)',
+  oncontent_inverse2: 'var(--sb-content-inverse-2)',
+  primary: 'var(--sb-primary)',
+  error: 'var(--sb-error)',
+  secondary: 'var(--sb-secondary)',
+};
 export const themedColorVars = css`
   .sendbird-theme--light & {
     --sb-bg-1: var(--sendbird-light-onlight-01);
@@ -54,8 +67,8 @@ export const textColors = {
   oncontent_inverse1: css`
     color: var(--sb-content-inverse-1);
   `,
-  oncontent_inverse3: css`
-    color: var(--sb-content-inverse-3);
+  oncontent_inverse2: css`
+    color: var(--sb-content-inverse-2);
   `,
   primary: css`
     color: var(--sb-primary);
@@ -64,7 +77,7 @@ export const textColors = {
     color: var(--sb-error);
   `,
   secondary: css`
-    color: var(--sb-secondary-3);
+    color: var(--sb-secondary);
   `,
 };
 
@@ -91,7 +104,7 @@ export const bgColors = {
     background-color: var(--sb-primary);
   `,
   error: css`
-    background-color: var(--sb-error
+    background-color: var(--sb-error);
   `,
   secondary: css`
     background-color: var(--sb-secondary);
