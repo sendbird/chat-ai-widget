@@ -176,13 +176,13 @@ const SubmittedTextInputContainer = styled.div<SubmittedTextInputContainerProps>
   ${({ isTextarea }) => {
     return isTextarea
       ? {
-        padding: '9px 12px',
-        'min-height': '78px',
-      }
+          padding: '9px 12px',
+          'min-height': '78px',
+        }
       : {
-        padding: '8px 12px',
-        'min-height': '20px', // In case no value, min-height should be the font size.
-      };
+          padding: '8px 12px',
+          'min-height': '20px', // In case no value, min-height should be the font size.
+        };
   }};
   border-radius: 4px;
   overflow-wrap: break-word;
@@ -259,23 +259,23 @@ const FormInput = (props: InputProps) => {
     placeHolder,
     isSubmitted,
   } = props;
-  
+
   const { options = [], resultCount }: MessageFormItemStyle = style;
   const { min = 1, max = 1 } = resultCount ?? {};
   const chipDataList: ChipData[] = getInitialChipDataList();
-  
+
   const [isFocused, setIsFocused] = useState(false);
-  
+
   const handleFocus = () => {
     setIsFocused(true);
     onFocused?.(true);
   };
-  
+
   const handleBlur = () => {
     setIsFocused(false);
     onFocused?.(false);
   };
-  
+
   function getInitialChipDataList(): ChipData[] {
     if (isSubmitted) {
       return options.map((option) => ({
@@ -289,7 +289,7 @@ const FormInput = (props: InputProps) => {
       }));
     }
   }
-  
+
   const onChipClick = (index: number) => {
     if (isSubmitted) return;
     let newDraftedValues: string[];
@@ -318,7 +318,7 @@ const FormInput = (props: InputProps) => {
     }
     if (newDraftedValues.length > 0) onChange(newDraftedValues);
   };
-  
+
   return (
     <Root errorMessage={errorMessage}>
       <InputLabel>
@@ -366,46 +366,47 @@ const FormInput = (props: InputProps) => {
                 <InputContainer>
                   {isSubmitted ? (
                     <SubmittedTextInputContainer isTextarea={layout === 'textarea'}>
-                      {isOptionalEmpty
-                        ? <NoResponseText>No Response</NoResponseText>
-                        : <SubmittedText>{currentValue}</SubmittedText>
-                      }
+                      {isOptionalEmpty ? (
+                        <NoResponseText>No Response</NoResponseText>
+                      ) : (
+                        <SubmittedText>{currentValue}</SubmittedText>
+                      )}
                       {isValid && (
                         <CheckIconContainer>
                           <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
                         </CheckIconContainer>
                       )}
                     </SubmittedTextInputContainer>
+                  ) : layout === 'textarea' ? (
+                    <TextArea
+                      className="sendbird-input__input"
+                      required={required}
+                      disabled={disabled}
+                      value={currentValue}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        onChange(value ? [value] : []);
+                      }}
+                      placeholder={!disabled ? placeHolder : ''}
+                    />
                   ) : (
-                    layout === 'textarea'
-                      ? <TextArea
-                        className="sendbird-input__input"
-                        required={required}
-                        disabled={disabled}
-                        value={currentValue}
-                        onFocus={handleFocus}
-                        onBlur={handleBlur}
-                        onChange={(event) => {
-                          const value = event.target.value;
-                          onChange(value ? [value] : []);
-                        }}
-                        placeholder={!disabled ? placeHolder : ''}
-                      />
-                      : <Input
-                        type={layout === 'number' ? 'text' : layout}
-                        className="sendbird-input__input"
-                        name={name}
-                        required={required}
-                        disabled={disabled}
-                        value={currentValue}
-                        onFocus={handleFocus}
-                        onBlur={handleBlur}
-                        onChange={(event) => {
-                          const value = event.target.value;
-                          onChange(value ? [value] : []);
-                        }}
-                        placeholder={!disabled ? placeHolder : ''}
-                      />
+                    <Input
+                      type={layout === 'number' ? 'text' : layout}
+                      className="sendbird-input__input"
+                      name={name}
+                      required={required}
+                      disabled={disabled}
+                      value={currentValue}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
+                      onChange={(event) => {
+                        const value = event.target.value;
+                        onChange(value ? [value] : []);
+                      }}
+                      placeholder={!disabled ? placeHolder : ''}
+                    />
                   )}
                 </InputContainer>
               );
