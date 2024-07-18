@@ -112,8 +112,10 @@ const Root = styled.div<RootStyleProps>`
       }
     }
     .sendbird-message-input--placeholder {
-      top: 8px; // because top padding is 8px and the input has no border.
+      top: 30px; // because top padding is 8px and the input has no border.
       line-height: 24px; // because top & bottom padding is 8px each and the input height is 40px.
+      //top: 50%;
+      //transform: translateY(-50%);
     }
   }
 `;
@@ -302,7 +304,7 @@ export function CustomChannelComponent() {
                   messageCount={messageCount}
                 />
                 {message.messageId === lastMessage?.messageId &&
-                  true &&
+                  isDashboardPreview(customUserAgentParam) &&
                   message.data && <MessageDataContent messageData={message.data} />}
                 {message.messageId === lastMessage?.messageId &&
                   (() => {
