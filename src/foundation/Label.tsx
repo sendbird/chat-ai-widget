@@ -1,7 +1,7 @@
 import { css, cx } from '@linaria/core';
 import React, { ElementType, HTMLAttributes } from 'react';
 
-import { textColors } from './colors/css';
+import { themedColorVars, textColors } from './colors/css';
 import { useLocalProps } from './hooks/useLocalProps';
 import { SBUFoundationProps } from './types';
 
@@ -47,7 +47,7 @@ export const Label = <C extends ElementType = 'span'>({
   const colorClassName = color ? textColors[color as keyof typeof textColors] : undefined;
   return (
     <Component
-      className={cx('sendbird-label', ...typoClassNames, colorClassName, className)}
+      className={cx('sendbird-label', ...typoClassNames, themedColorVars, colorClassName, className)}
       style={{ color: color && !colorClassName ? color : undefined, ...style }}
       {...props}
       {...localProps}

@@ -3,7 +3,7 @@ import { styled } from '@linaria/react';
 import { format } from 'date-fns/format';
 import type { Locale } from 'date-fns/locale';
 
-import { bgColors } from './colors/css';
+import { bgColors, themedColorVars } from './colors/css';
 import { useLocalProps } from './hooks/useLocalProps';
 import { Label } from './Label';
 import { SBUFoundationProps } from './types';
@@ -43,7 +43,7 @@ export const DateSeparator = ({
   const colorClassName = separatorColor ? bgColors[separatorColor as keyof typeof bgColors] : bgColors.onbackground4;
 
   return (
-    <div className={cx('sendbird-separator', className)} {...localProps}>
+    <div className={cx('sendbird-separator', themedColorVars, className)} {...localProps}>
       <Separator className={colorClassName} color={separatorColor && !colorClassName ? separatorColor : undefined} />
       <Center>
         {children ?? (
