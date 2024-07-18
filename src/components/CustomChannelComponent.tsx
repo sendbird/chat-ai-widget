@@ -278,7 +278,6 @@ export function CustomChannelComponent() {
           if (isWelcomeMessagesGiven && welcomeMessageTimeStamp && message.messageId === firstUserMessage?.messageId) {
             hasSeparator = !isSameDay(message.createdAt, welcomeMessageTimeStamp);
           }
-
           return (
             <Message {...props} hasSeparator={hasSeparator} message={message}>
               <div
@@ -302,6 +301,9 @@ export function CustomChannelComponent() {
                   messageCount={messageCount}
                 />
                 {message.messageId === lastMessage?.messageId &&
+                  true &&
+                  message.data && <MessageDataContent messageData={message.data} />}
+                {message.messageId === lastMessage?.messageId &&
                   (() => {
                     if (dynamicReplyOptions.length > 0) {
                       return (
@@ -313,9 +315,6 @@ export function CustomChannelComponent() {
                     }
                     return null;
                   })()}
-                {message.messageId === lastMessage?.messageId &&
-                  isDashboardPreview(customUserAgentParam) &&
-                  message.data && <MessageDataContent messageData={message.data} />}
               </div>
             </Message>
           );
