@@ -176,18 +176,45 @@ const SubmittedTextInputContainer = styled.div<SubmittedTextInputContainerProps>
   ${({ isTextarea }) => {
     return isTextarea
       ? {
-          padding: '9px 12px',
-          'min-height': '78px',
-        }
+        padding: '9px 12px',
+        'min-height': '78px',
+      }
       : {
-          padding: '8px 12px',
-          'min-height': '20px', // In case no value, min-height should be the font size.
-        };
+        padding: '8px 12px',
+        'min-height': '20px', // In case no value, min-height should be the font size.
+      };
   }};
   border-radius: 4px;
   overflow-wrap: break-word;
   white-space: pre-wrap;
 `;
+
+interface SubmittedTextInputComponentProps {
+  layout: string;
+  isOptionalEmpty: boolean;
+  currentValue: string;
+  isValid: boolean | undefined;
+}
+
+const SubmittedTextInputComponent = ({
+  layout,
+  isOptionalEmpty,
+  currentValue,
+  isValid
+}: SubmittedTextInputComponentProps) => {
+  return <SubmittedTextInputContainer isTextarea={layout === 'textarea'}>
+    {isOptionalEmpty ? (
+      <NoResponseText>No Response</NoResponseText>
+    ) : (
+      <SubmittedText>{currentValue}</SubmittedText>
+    )}
+    {isValid && (
+      <CheckIconContainer>
+        <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
+      </CheckIconContainer>
+    )}
+  </SubmittedTextInputContainer>
+}
 
 const SubmittedText = styled.div`
   width: calc(100% - 24px);
@@ -259,23 +286,23 @@ const FormInput = (props: InputProps) => {
     placeHolder,
     isSubmitted,
   } = props;
-
+  
   const { options = [], resultCount }: MessageFormItemStyle = style;
   const { min = 1, max = 1 } = resultCount ?? {};
   const chipDataList: ChipData[] = getInitialChipDataList();
-
+  
   const [isFocused, setIsFocused] = useState(false);
-
+  
   const handleFocus = () => {
     setIsFocused(true);
     onFocused?.(true);
   };
-
+  
   const handleBlur = () => {
     setIsFocused(false);
     onFocused?.(false);
   };
-
+  
   function getInitialChipDataList(): ChipData[] {
     if (isSubmitted) {
       return options.map((option) => ({
@@ -289,7 +316,7 @@ const FormInput = (props: InputProps) => {
       }));
     }
   }
-
+  
   const onChipClick = (index: number) => {
     if (isSubmitted) return;
     let newDraftedValues: string[];
@@ -318,7 +345,7 @@ const FormInput = (props: InputProps) => {
     }
     if (newDraftedValues.length > 0) onChange(newDraftedValues);
   };
-
+  
   return (
     <Root errorMessage={errorMessage}>
       <InputLabel>
@@ -355,29 +382,19 @@ const FormInput = (props: InputProps) => {
                 </div>
               );
             }
-            case 'textarea':
-            case 'text':
-            case 'number':
-            case 'phone':
-            case 'email': {
+            case 'textarea': {
               const currentValue = values.length > 0 ? values[0] : '';
               const isOptionalEmpty = !required && values.length === 0;
               return (
                 <InputContainer>
                   {isSubmitted ? (
-                    <SubmittedTextInputContainer isTextarea={layout === 'textarea'}>
-                      {isOptionalEmpty ? (
-                        <NoResponseText>No Response</NoResponseText>
-                      ) : (
-                        <SubmittedText>{currentValue}</SubmittedText>
-                      )}
-                      {isValid && (
-                        <CheckIconContainer>
-                          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
-                        </CheckIconContainer>
-                      )}
-                    </SubmittedTextInputContainer>
-                  ) : layout === 'textarea' ? (
+                    <SubmittedTextInputComponent
+                      layout={layout}
+                      isOptionalEmpty={isOptionalEmpty}
+                      currentValue={currentValue}
+                      isValid={isValid}
+                    />
+                  ) : (
                     <TextArea
                       className="sendbird-input__input"
                       required={required}
@@ -390,6 +407,25 @@ const FormInput = (props: InputProps) => {
                         onChange(value ? [value] : []);
                       }}
                       placeholder={!disabled ? placeHolder : ''}
+                    />
+                  )}
+                </InputContainer>
+              );
+            }
+            case 'text':
+            case 'number':
+            case 'phone':
+            case 'email': {
+              const currentValue = values.length > 0 ? values[0] : '';
+              const isOptionalEmpty = !required && values.length === 0;
+              return (
+                <InputContainer>
+                  {isSubmitted ? (
+                    <SubmittedTextInputComponent
+                      layout={layout}
+                      isOptionalEmpty={isOptionalEmpty}
+                      currentValue={currentValue}
+                      isValid={isValid}
                     />
                   ) : (
                     <Input
