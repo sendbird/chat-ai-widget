@@ -112,8 +112,7 @@ const Root = styled.div<RootStyleProps>`
       }
     }
     .sendbird-message-input--placeholder {
-      top: 0;
-      transform: translateY(50%);
+      top: unset;
     }
   }
 `;
