@@ -35,21 +35,23 @@
 
     <!-- Initialize chat-ai-widget and render the widget component -->
     <script type="text/babel">
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-      const { ChatWindow } = window.ChatAiWidget
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      const { ChatWindow } = window.ChatAiWidget;
       const App = () => {
         const urlParams = new URLSearchParams(window.location.search);
         const appId = urlParams.get('app_id');
         const botId = urlParams.get('bot_id');
         const title = urlParams.get('title');
+        const region = urlParams.get('region');
         const mode = urlParams.get('mode') ? urlParams.get('mode') : isMobile ? 'mobile' : 'desktop';
+        const apiHost = region ? `https://api-cf-${region}.sendbird.com` : undefined;
 
         if (title) document.title = title;
         if (!appId || !botId) return null;
 
-        return <ChatWindow applicationId={appId} botId={botId} deviceType={mode} />;
-      }
-      ReactDOM.createRoot(document.querySelector('#root')).render(<App/>);
+        return <ChatWindow applicationId={appId} botId={botId} deviceType={mode} apiHost={apiHost} />;
+      };
+      ReactDOM.createRoot(document.querySelector('#root')).render(<App />);
     </script>
   </body>
 </html>
