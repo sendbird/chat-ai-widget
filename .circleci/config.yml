@@ -152,6 +152,11 @@ jobs:
           to: << parameters.s3_bucket >>/index.js
           profile_name: ci-web
       - aws-s3/copy:
+          arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type text/html'
+          from: << parameters.s3_bucket >>/playground/index.html
+          to: << parameters.s3_bucket >>/playground/index.html
+          profile_name: ci-web
+      - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type application/javascript --recursive'
           from: << parameters.s3_bucket >>/${CIRCLE_TAG}
           to: << parameters.s3_bucket >>/${CIRCLE_TAG}
