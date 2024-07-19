@@ -45,6 +45,7 @@ const components: Record<PlaceholderType, { module: null | Module; load: () => P
   },
 };
 
+// TODO: Add 'NO_RESULTS', 'SEARCH_IN', 'SEARCHING' types
 export const Placeholder = (props: SBUFoundationProps<Props>) => {
   const [state, setState] = React.useState(components);
   const localProps = useLocalProps(props);
@@ -72,18 +73,6 @@ export const Placeholder = (props: SBUFoundationProps<Props>) => {
 /**
  *
  * .sendbird-place-holder {
- *
- *   .sendbird-place-holder__body__reconnect {
- *     margin-top: 18px;
- *     display: flex;
- *     flex-direction: row;
- *     cursor: pointer;
- *
- *     .sendbird-place-holder__body__reconnect__icon {
- *       margin-right: 4px;
- *     }
- *   }
- *
  *   .sendbird-place-holder__body--align-top {
  *     position: absolute;
  *     top: 24px;
@@ -133,82 +122,6 @@ export const Placeholder = (props: SBUFoundationProps<Props>) => {
 //   const { stringSet } = useContext(LocalizationContext);
 //   return (
 //     <div className={[...(Array.isArray(className) ? className : [className]), 'sendbird-place-holder'].join(' ')}>
-//       {type === PlaceHolderTypes.LOADING && (
-//         <Loader width={iconSize || '48px'} height={iconSize || '48px'}>
-//           <Icon
-//             type={IconTypes.SPINNER}
-//             fillColor={IconColors.PRIMARY}
-//             width={iconSize || '48px'}
-//             height={iconSize || '48px'}
-//           />
-//         </Loader>
-//       )}
-//       {(type === PlaceHolderTypes.NO_CHANNELS ||
-//         type === PlaceHolderTypes.NO_MESSAGES ||
-//         type === PlaceHolderTypes.WRONG) && (
-//         <div className="sendbird-place-holder__body">
-//           {type === PlaceHolderTypes.NO_CHANNELS && (
-//             <Icon
-//               className="sendbird-place-holder__body__icon"
-//               type={IconTypes.CHAT}
-//               fillColor={IconColors.ON_BACKGROUND_3}
-//               width={iconSize || '64px'}
-//               height={iconSize || '64px'}
-//             />
-//           )}
-//           {type === PlaceHolderTypes.WRONG && (
-//             <Icon
-//               className="sendbird-place-holder__body__icon"
-//               type={IconTypes.ERROR}
-//               fillColor={IconColors.ON_BACKGROUND_3}
-//               width={iconSize || '64px'}
-//               height={iconSize || '64px'}
-//             />
-//           )}
-//           {type === PlaceHolderTypes.NO_MESSAGES && (
-//             <Icon
-//               className="sendbird-place-holder__body__icon"
-//               type={IconTypes.MESSAGE}
-//               fillColor={IconColors.ON_BACKGROUND_3}
-//               width={iconSize || '64px'}
-//               height={iconSize || '64px'}
-//             />
-//           )}
-//           <Label
-//             className="sendbird-place-holder__body__text"
-//             type={LabelTypography.BODY_1}
-//             color={LabelColors.ONBACKGROUND_2}
-//           >
-//             {type === PlaceHolderTypes.NO_CHANNELS && stringSet.PLACE_HOLDER__NO_CHANNEL}
-//             {type === PlaceHolderTypes.WRONG && stringSet.PLACE_HOLDER__WRONG}
-//             {type === PlaceHolderTypes.NO_MESSAGES && stringSet.PLACE_HOLDER__NO_MESSAGES}
-//           </Label>
-//           {retryToConnect && (
-//             <div
-//               className="sendbird-place-holder__body__reconnect"
-//               role="button"
-//               onClick={retryToConnect}
-//               onKeyPress={retryToConnect}
-//               tabIndex={0}
-//             >
-//               <Icon
-//                 className="sendbird-place-holder__body__reconnect__icon"
-//                 type={IconTypes.REFRESH}
-//                 fillColor={IconColors.PRIMARY}
-//                 width="20px"
-//                 height="20px"
-//               />
-//               <Label
-//                 className="sendbird-place-holder__body__reconnect__text"
-//                 type={LabelTypography.BUTTON_1}
-//                 color={LabelColors.PRIMARY}
-//               >
-//                 {stringSet.PLACE_HOLDER__RETRY_TO_CONNECT}
-//               </Label>
-//             </div>
-//           )}
-//         </div>
-//       )}
 //       {(type === PlaceHolderTypes.NO_RESULTS ||
 //         type === PlaceHolderTypes.SEARCH_IN ||
 //         type === PlaceHolderTypes.SEARCHING) && (
