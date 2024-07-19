@@ -14,4 +14,5 @@ export const placeholderBody = css`
   flex-direction: column;
   height: 104px;
   align-items: center;
+  gap: 20px;
 `;

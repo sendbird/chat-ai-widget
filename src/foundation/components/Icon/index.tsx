@@ -70,17 +70,12 @@ import { SBUFoundationProps } from '../../types';
  * icon-user.svg
  * */
 
+export type IconType = 'spinner' | 'chat' | 'message';
 type SVG = React.FC<React.SVGProps<SVGSVGElement>>;
-type IconType = 'spinner' | 'chat';
 type Props = {
   type: IconType;
   color?: string | keyof typeof themedColors;
   size?: number | string;
-};
-
-const types: Record<IconType, IconType> = {
-  spinner: 'spinner',
-  chat: 'chat',
 };
 
 const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG> }> = {
@@ -91,6 +86,10 @@ const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG
   chat: {
     module: null,
     load: () => import('../../../../packages/uikit/src/svgs/icon-chat.svg').then((it) => it.default),
+  },
+  message: {
+    module: null,
+    load: () => import('../../../../packages/uikit/src/svgs/icon-message.svg').then((it) => it.default),
   },
 };
 
@@ -128,7 +127,6 @@ export const Icon = (props: SBUFoundationProps<Props>) => {
     </Container>
   );
 };
-Icon.t = types;
 
 const Container = styled.div<{ size: number | string; color: string }>`
   width: ${resolveSize};

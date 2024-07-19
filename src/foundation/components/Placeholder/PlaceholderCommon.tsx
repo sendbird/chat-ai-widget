@@ -1,26 +1,22 @@
-import { styled } from '@linaria/atomic';
 import { cx } from '@linaria/core';
 
 import { placeholderBody } from './css';
 import { PlaceHolderProps } from './types';
-import { Icon } from '../Icon';
+import { Icon, IconType } from '../Icon';
 import { Label } from '../Label';
 
-const PlaceholderIcon = styled(Icon)`
-  margin-bottom: 10px;
-`;
-
 export interface PlaceholderCommonProps extends PlaceHolderProps {
-  icon: keyof typeof Icon.t;
-  message?: string;
+  icon: IconType;
+  label?: string;
 }
-const PlaceholderCommon = ({ iconSize = 64, icon, className, message }: PlaceholderCommonProps) => {
+const PlaceholderCommon = ({ iconSize = 64, icon, className, label, children }: PlaceholderCommonProps) => {
   return (
     <div className={cx(placeholderBody, className)}>
-      <PlaceholderIcon type={icon} size={iconSize} color={'onbackground3'} />
+      <Icon type={icon} size={iconSize} color={'onbackground3'} />
       <Label type={'body1'} color={'onbackground2'}>
-        {message}
+        {label}
       </Label>
+      {children}
     </div>
   );
 };

@@ -1,8 +1,7 @@
 import PlaceholderCommon, { PlaceholderCommonProps } from './PlaceholderCommon';
 
-// TODO: replace to string set
-const PlaceholderNoChannels = (props: Omit<PlaceholderCommonProps, 'icon' | 'message'>) => {
-  return <PlaceholderCommon icon={'chat'} message={'No channels'} {...props} />;
+const PlaceholderNoChannels = ({ label = 'No channels', ...props }: Omit<PlaceholderCommonProps, 'icon'>) => {
+  return <PlaceholderCommon icon={'chat'} label={label} {...props} />;
 };
 
 export default PlaceholderNoChannels;

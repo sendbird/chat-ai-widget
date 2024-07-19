@@ -6,16 +6,12 @@ import { PlaceHolderProps } from './types';
 import { useLocalProps } from '../../hooks/useLocalProps';
 import { SBUFoundationProps } from '../../types';
 
-type PlaceholderType = 'loading' | 'noChannels';
+export type PlaceholderType = 'loading' | 'noChannels' | 'noMessages';
 type Module = React.FC<Props> | ((props: Props) => React.JSX.Element);
 interface Props extends PlaceHolderProps {
   type: PlaceholderType;
+  label?: string;
 }
-
-const types: Record<PlaceholderType, PlaceholderType> = {
-  loading: 'loading',
-  noChannels: 'noChannels',
-};
 
 const components: Record<PlaceholderType, { module: null | Module; load: () => Promise<Module> }> = {
   loading: {
@@ -25,6 +21,10 @@ const components: Record<PlaceholderType, { module: null | Module; load: () => P
   noChannels: {
     module: null,
     load: () => import('./Placeholder.noChannels').then((it) => it.default),
+  },
+  noMessages: {
+    module: null,
+    load: () => import('./Placeholder.noMessages').then((it) => it.default),
   },
 };
 
@@ -51,7 +51,6 @@ export const Placeholder = (props: SBUFoundationProps<Props>) => {
     </div>
   );
 };
-Placeholder.t = types;
 
 /**
  *
