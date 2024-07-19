@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
-import { getWidgetVersion } from './scripts/widget-version.js';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
+
+import { getWidgetVersion } from './scripts/getWidgetVersion';
 
 const version = getWidgetVersion();
 
@@ -9,7 +10,7 @@ const version = getWidgetVersion();
 export default defineConfig({
   plugins: [react(), cssInjectedByJsPlugin()],
   build: {
-    outDir: `./dist/v${version}`,
+    outDir: `./dist/${version}`,
     rollupOptions: {
       output: {
         manualChunks: undefined,
@@ -19,4 +20,4 @@ export default defineConfig({
       },
     },
   },
-})
+});
