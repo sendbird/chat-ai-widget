@@ -114,7 +114,7 @@ jobs:
           command: |
             cd ./packages/self-service
             npm install
-            npm run build
+            npm run build version=${CIRCLE_TAG}
 #            TODO: update self-service to use yarn workspaces
 #            yarn install --immutable --immutable-cache
 #            yarn build
@@ -158,7 +158,7 @@ jobs:
           profile_name: ci-web
       - aws-create-invalidation:
           distribution-id: << parameters.distribution_id >>
-          paths: '/index.js'
+          paths: '"/index.js" "/playground/index.html"'
           profile: ci-web
 
 workflows:
