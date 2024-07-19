@@ -158,7 +158,7 @@ jobs:
           profile_name: ci-web
       - aws-create-invalidation:
           distribution-id: << parameters.distribution_id >>
-          paths: '/index.js'
+          paths: '"/index.js" "/playground/index.html"'
           profile: ci-web
 
 workflows:
