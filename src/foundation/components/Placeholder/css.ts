@@ -1,0 +1,17 @@
+import { css } from '@linaria/core';
+
+export const placeholderContainer = css`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
+export const placeholderBody = css`
+  display: flex;
+  flex-direction: column;
+  height: 104px;
+  align-items: center;
+`;

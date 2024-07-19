@@ -1,24 +1,30 @@
 import { cx } from '@linaria/core';
-import { styled } from '@linaria/react';
 import React, { useEffect } from 'react';
 
+import { placeholderContainer } from './css';
+import { PlaceHolderProps } from './types';
 import { useLocalProps } from '../../hooks/useLocalProps';
 import { SBUFoundationProps } from '../../types';
 
-type Module = React.FunctionComponent | (() => React.JSX.Element);
-type PlaceholderType = 'loading';
-type Props = {
+type PlaceholderType = 'loading' | 'noChannels';
+type Module = React.FC<Props> | ((props: Props) => React.JSX.Element);
+interface Props extends PlaceHolderProps {
   type: PlaceholderType;
-};
+}
 
 const types: Record<PlaceholderType, PlaceholderType> = {
   loading: 'loading',
+  noChannels: 'noChannels',
 };
 
 const components: Record<PlaceholderType, { module: null | Module; load: () => Promise<Module> }> = {
-  [types.loading]: {
+  loading: {
     module: null,
     load: () => import('./Placeholder.loading').then((it) => it.default),
+  },
+  noChannels: {
+    module: null,
+    load: () => import('./Placeholder.noChannels').then((it) => it.default),
   },
 };
 
@@ -40,21 +46,12 @@ export const Placeholder = (props: SBUFoundationProps<Props>) => {
   }, [helper]);
 
   return (
-    <Container className={cx(className, 'sendbird-place-holder')} {...localProps}>
-      {Component ? <Component /> : null}
-    </Container>
+    <div className={cx(className, 'sendbird-place-holder', placeholderContainer)} {...localProps}>
+      {Component ? <Component {...props} /> : null}
+    </div>
   );
 };
 Placeholder.t = types;
-
-const Container = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-`;
 
 /**
  *

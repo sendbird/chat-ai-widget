@@ -71,7 +71,7 @@ import { SBUFoundationProps } from '../../types';
  * */
 
 type SVG = React.FC<React.SVGProps<SVGSVGElement>>;
-type IconType = 'spinner';
+type IconType = 'spinner' | 'chat';
 type Props = {
   type: IconType;
   color?: string | keyof typeof themedColors;
@@ -80,12 +80,17 @@ type Props = {
 
 const types: Record<IconType, IconType> = {
   spinner: 'spinner',
+  chat: 'chat',
 };
 
 const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG> }> = {
-  [types.spinner]: {
+  spinner: {
     module: null,
     load: () => import('../../../../packages/uikit/src/svgs/icon-spinner.svg').then((it) => it.default),
+  },
+  chat: {
+    module: null,
+    load: () => import('../../../../packages/uikit/src/svgs/icon-chat.svg').then((it) => it.default),
   },
 };
 

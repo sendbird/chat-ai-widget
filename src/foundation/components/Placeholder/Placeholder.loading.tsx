@@ -1,12 +1,10 @@
+import { PlaceHolderProps } from './types';
 import { Icon } from '../Icon';
 import { Loader } from '../Loader';
 
-type Props = {
-  iconSize?: string | number;
-};
-const PlaceholderLoading = ({ iconSize = 48 }: Props) => {
+const PlaceholderLoading = ({ iconSize = 48, className }: PlaceHolderProps) => {
   return (
-    <Loader size={iconSize}>
+    <Loader size={iconSize} className={className}>
       <Icon type={'spinner'} size={iconSize} />
     </Loader>
   );
