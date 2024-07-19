@@ -7,9 +7,5 @@ const packageJson = JSON.parse(fs.readFileSync('../../package.json', 'utf8'));
  * */
 export function getWidgetVersion() {
   const version = process.argv[2];
-  const ret = version ? `${version.split('version=')[1]}` : `v${packageJson.version}`;
-
-  console.log('getWidgetVersion:', process.argv, ret);
-
-  return ret;
+  return version ? `${version.split('version=')[1]}` : `v${packageJson.version}`;
 }
