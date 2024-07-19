@@ -10,8 +10,5 @@ if (!version) {
 
 const content = `import(\`/v${version}/output.js\`).then(() => console.log("AI chatbot module has been successfully loaded"));`;
 
-// For development
-fs.writeFileSync('dist/index-dev.js', content);
-
-// For production
 fs.writeFileSync('dist/index.js', content);
+fs.cpSync('playground.html', 'dist/playground/index.html')
