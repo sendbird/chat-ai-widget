@@ -6,17 +6,34 @@ import { PlaceHolderProps } from './types';
 import { useLocalProps } from '../../hooks/useLocalProps';
 import { SBUFoundationProps } from '../../types';
 
-export type PlaceholderType = 'loading' | 'noChannels' | 'noMessages';
+export type PlaceholderType = 'loading' | 'error' | 'noChannels' | 'noMessages';
 type Module = React.FC<Props> | ((props: Props) => React.JSX.Element);
-interface Props extends PlaceHolderProps {
-  type: PlaceholderType;
-  label?: string;
-}
+
+type Props = PlaceHolderProps &
+  (
+    | {
+        type: 'loading';
+      }
+    | {
+        type: 'error';
+        label?: string;
+        action?: () => void;
+        actionLabel?: string;
+      }
+    | {
+        type: 'noChannels' | 'noMessages';
+        label?: string;
+      }
+  );
 
 const components: Record<PlaceholderType, { module: null | Module; load: () => Promise<Module> }> = {
   loading: {
     module: null,
     load: () => import('./Placeholder.loading').then((it) => it.default),
+  },
+  error: {
+    module: null,
+    load: () => import('./Placeholder.error').then((it) => it.default),
   },
   noChannels: {
     module: null,
@@ -55,21 +72,6 @@ export const Placeholder = (props: SBUFoundationProps<Props>) => {
 /**
  *
  * .sendbird-place-holder {
- *
- *   .sendbird-place-holder__body {
- *     display: flex;
- *     flex-direction: column;
- *     height: 104px;
- *     align-items: center;
- *
- *     .sendbird-place-holder__body__icon {
- *       margin-bottom: 10px;
- *     }
- *
- *     .sendbird-place-holder__body__text {
- *       margin-top: 10px;
- *     }
- *   }
  *
  *   .sendbird-place-holder__body__reconnect {
  *     margin-top: 18px;

@@ -33,7 +33,7 @@ export const Loader = (props: SBUFoundationProps<Props>) => {
   const localProps = useLocalProps(props);
   return (
     <Container className={cx(className, 'sendbird-loader')} size={size} {...localProps}>
-      {children ?? <Icon type={Icon.t.spinner} size={size} />}
+      {children ?? <Icon type={'spinner'} size={size} />}
     </Container>
   );
 };

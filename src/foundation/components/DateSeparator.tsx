@@ -1,4 +1,4 @@
-import { cx } from '@linaria/core';
+import { cx, css } from '@linaria/atomic';
 import { styled } from '@linaria/react';
 import { format } from 'date-fns/format';
 import type { Locale } from 'date-fns/locale';
@@ -24,7 +24,7 @@ const Separator = styled.div<{ color?: string }>`
   ${({ color }) => (color ? `background-color: ${color};` : '')}
 `;
 
-const Center = styled.div`
+const center = css`
   margin: 0 16px;
   display: flex;
   white-space: nowrap;
@@ -45,13 +45,13 @@ export const DateSeparator = ({
   return (
     <div className={cx('sendbird-separator', themedColorVars, className)} {...localProps}>
       <Separator className={colorClassName} color={separatorColor && !colorClassName ? separatorColor : undefined} />
-      <Center>
+      <div className={center}>
         {children ?? (
           <Label type={'caption2'} color={'onbackground2'}>
             {format(date, formatString, { locale })}
           </Label>
         )}
-      </Center>
+      </div>
       <Separator className={colorClassName} color={separatorColor && !colorClassName ? separatorColor : undefined} />
     </div>
   );
