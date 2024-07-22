@@ -39,10 +39,11 @@ export const Label = <C extends ElementType = 'span'>({
   color,
   style,
   className,
+  testId = 'sendbird-label',
   ...props
 }: SBUFoundationProps<Props<C>>) => {
   const Component = as || 'span';
-  const localProps = useLocalProps(props);
+  const localProps = useLocalProps({ testId });
   const typoClassNames = type ? typo[type] : [];
   const colorClassName = color ? textColors[color as keyof typeof textColors] : undefined;
   return (

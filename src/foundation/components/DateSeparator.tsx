@@ -37,9 +37,9 @@ export const DateSeparator = ({
   date = new Date(),
   formatString = 'MMMM dd, yyyy',
   separatorColor,
-  ...props
+  testId = 'sendbird-date-separator',
 }: SBUFoundationProps<Props>) => {
-  const localProps = useLocalProps(props);
+  const localProps = useLocalProps({ testId });
   const colorClassName = separatorColor ? bgColors[separatorColor as keyof typeof bgColors] : bgColors.onbackground4;
 
   return (

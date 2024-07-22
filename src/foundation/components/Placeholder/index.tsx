@@ -46,11 +46,15 @@ const components: Record<PlaceholderType, { module: null | Module; load: () => P
 };
 
 // TODO: Add 'NO_RESULTS', 'SEARCH_IN', 'SEARCHING' types
-export const Placeholder = (props: SBUFoundationProps<Props>) => {
+export const Placeholder = ({
+  className,
+  type = 'loading',
+  testId = 'sendbird-placeholder',
+  ...props
+}: SBUFoundationProps<Props>) => {
   const [state, setState] = React.useState(components);
-  const localProps = useLocalProps(props);
+  const localProps = useLocalProps({ testId: `${testId}-${type}` });
 
-  const { className, type = 'loading' } = props;
   const helper = state[type];
   const Component = helper.module;
 
@@ -65,7 +69,7 @@ export const Placeholder = (props: SBUFoundationProps<Props>) => {
 
   return (
     <div className={cx(className, 'sendbird-place-holder', placeholderContainer)} {...localProps}>
-      {Component ? <Component {...props} /> : null}
+      {Component ? <Component type={type} {...props} /> : null}
     </div>
   );
 };

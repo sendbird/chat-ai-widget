@@ -28,9 +28,8 @@ type Props = {
   size?: string | number;
 };
 
-export const Loader = (props: SBUFoundationProps<Props>) => {
-  const { className, children, size = 26 } = props;
-  const localProps = useLocalProps(props);
+export const Loader = ({ className, children, size = 26, testId = 'sendbird-loader' }: SBUFoundationProps<Props>) => {
+  const localProps = useLocalProps({ testId });
   return (
     <Container className={cx(className, 'sendbird-loader')} size={size} {...localProps}>
       {children ?? <Icon type={'spinner'} size={size} />}
