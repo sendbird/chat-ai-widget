@@ -16,3 +16,10 @@ export const placeholderBody = css`
   align-items: center;
   gap: 20px;
 `;
+
+export const actionButtonContainer = css`
+  all: unset;
+  display: flex;
+  cursor: pointer;
+  gap: 4px;
+`;
