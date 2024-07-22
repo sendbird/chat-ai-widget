@@ -8,7 +8,7 @@ import { CoreMessageType } from '@uikit/utils';
 
 import { elementIds } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
-import { Label } from '../../foundation/Label';
+import { Label } from '../../foundation/components/Label';
 import FormInput from '../FormInput';
 
 interface Props {

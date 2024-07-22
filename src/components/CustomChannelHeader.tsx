@@ -7,7 +7,7 @@ import BetaLogo from './ui/BetaLogo';
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetState } from '../context/WidgetStateContext';
-import { Label } from '../foundation/Label';
+import { Label } from '../foundation/components/Label';
 import CloseButton from '../icons/ic-widget-close.svg';
 import { isEmpty } from '../utils';
 
