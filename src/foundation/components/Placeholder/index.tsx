@@ -2,29 +2,12 @@ import { cx } from '@linaria/core';
 import React, { useEffect } from 'react';
 
 import { placeholderContainer } from './css';
-import { PlaceHolderProps } from './types';
+import { PlaceholderProps } from './types';
 import { useLocalProps } from '../../hooks/useLocalProps';
 import { SBUFoundationProps } from '../../types';
 
 export type PlaceholderType = 'loading' | 'error' | 'noChannels' | 'noMessages';
 type Module = React.FC<Props> | ((props: Props) => React.JSX.Element);
-
-type Props = PlaceHolderProps &
-  (
-    | {
-        type: 'loading';
-      }
-    | {
-        type: 'error';
-        label?: string;
-        action?: () => void;
-        actionLabel?: string;
-      }
-    | {
-        type: 'noChannels' | 'noMessages';
-        label?: string;
-      }
-  );
 
 const components: Record<PlaceholderType, { module: null | Module; load: () => Promise<Module> }> = {
   loading: {
@@ -45,12 +28,26 @@ const components: Record<PlaceholderType, { module: null | Module; load: () => P
   },
 };
 
+type PlaceholderPropsByType =
+  | {
+      type: 'loading';
+    }
+  | {
+      type: 'error';
+      label?: string;
+      action?: () => void;
+      actionLabel?: string;
+    }
+  | {
+      type: 'noChannels' | 'noMessages';
+      label?: string;
+    };
+type Props = SBUFoundationProps<PlaceholderProps & PlaceholderPropsByType>;
 // TODO: Add 'NO_RESULTS', 'SEARCH_IN', 'SEARCHING' types
-export const Placeholder = (props: SBUFoundationProps<Props>) => {
+export const Placeholder = ({ className, type = 'loading', testId = 'sendbird-placeholder', ...props }: Props) => {
   const [state, setState] = React.useState(components);
-  const localProps = useLocalProps(props);
+  const localProps = useLocalProps({ testId: `${testId}-${type}` });
 
-  const { className, type = 'loading' } = props;
   const helper = state[type];
   const Component = helper.module;
 
@@ -65,7 +62,7 @@ export const Placeholder = (props: SBUFoundationProps<Props>) => {
 
   return (
     <div className={cx(className, 'sendbird-place-holder', placeholderContainer)} {...localProps}>
-      {Component ? <Component {...props} /> : null}
+      {Component ? <Component type={type} {...props} /> : null}
     </div>
   );
 };

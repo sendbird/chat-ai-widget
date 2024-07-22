@@ -1,14 +1,15 @@
 import { cx } from '@linaria/core';
 
 import { placeholderBody } from './css';
-import { PlaceHolderProps } from './types';
+import { PlaceholderProps } from './types';
 import { Icon, IconType } from '../Icon';
 import { Label } from '../Label';
 
-export interface PlaceholderCommonProps extends PlaceHolderProps {
+export interface PlaceholderCommonProps extends PlaceholderProps {
   icon: IconType;
   label?: string;
 }
+
 const PlaceholderCommon = ({ iconSize = 64, icon, className, label, children }: PlaceholderCommonProps) => {
   return (
     <div className={cx(placeholderBody, className)}>
