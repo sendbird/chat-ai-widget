@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Label } from '../foundation/Label';
+import { Label } from '../foundation/components/Label';
 import Icon from '../icons/icon-error.svg';
 
 const Container = styled.div`

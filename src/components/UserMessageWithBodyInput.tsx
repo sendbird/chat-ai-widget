@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Avatar from '@uikit/ui/Avatar';
 
 import { SentTime } from './MessageComponent';
-import { Label } from '../foundation/Label';
+import { Label } from '../foundation/components/Label';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.div`
