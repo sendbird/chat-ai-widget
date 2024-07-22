@@ -9,7 +9,8 @@ function deundefined<T extends { [key: string]: any }>(object: T): T {
   }, {} as T);
 }
 
-export function useLocalProps<T extends SBUFoundationProps>(props: T) {
+type Params = Pick<SBUFoundationProps, 'testId'>;
+export function useLocalProps<T extends Params>(props: T) {
   const { testId } = props;
   return deundefined({ 'data-testid': testId });
   // return useMemo(() => deundefined({ 'data-testid': testId }), [testId]);

@@ -1,4 +1,4 @@
-import { css } from '@linaria/atomic';
+import { css } from '@linaria/core';
 
 export const placeholderContainer = css`
   position: relative;
@@ -15,4 +15,11 @@ export const placeholderBody = css`
   min-height: 104px;
   align-items: center;
   gap: 20px;
+`;
+
+export const actionButtonContainer = css`
+  all: unset;
+  display: flex;
+  cursor: pointer;
+  gap: 4px;
 `;
