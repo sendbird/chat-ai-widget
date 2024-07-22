@@ -1,6 +1,6 @@
-import { css } from '@linaria/core';
 import React from 'react';
 
+import { actionButtonContainer } from './css';
 import PlaceholderCommon, { PlaceholderCommonProps } from './PlaceholderCommon';
 import { Icon } from '../Icon';
 import { Label } from '../Label';
@@ -20,7 +20,7 @@ const PlaceholderError = ({ label = 'Something went wrong', action, actionLabel 
 
 const RetryButton = ({ label, onClick }: { label: string; onClick: React.MouseEventHandler<HTMLButtonElement> }) => {
   return (
-    <button className={buttonContainer} tabIndex={0} onClick={onClick}>
+    <button className={actionButtonContainer} tabIndex={0} onClick={onClick}>
       <Icon type={'refresh'} size={20} />
       <Label type={'button1'} color={'primary'}>
         {label}
@@ -28,12 +28,5 @@ const RetryButton = ({ label, onClick }: { label: string; onClick: React.MouseEv
     </button>
   );
 };
-
-const buttonContainer = css`
-  all: unset;
-  display: flex;
-  cursor: pointer;
-  gap: 4px;
-`;
 
 export default PlaceholderError;

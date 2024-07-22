@@ -70,13 +70,8 @@ import { SBUFoundationProps } from '../../types';
  * icon-user.svg
  * */
 
-export type IconType = 'spinner' | 'chat' | 'message' | 'error' | 'refresh';
+export type IconType = 'spinner' | 'chat' | 'message' | 'error' | 'refresh' | 'chevron-down';
 type SVG = React.FC<React.SVGProps<SVGSVGElement>>;
-type Props = {
-  type: IconType;
-  color?: string | keyof typeof themedColors;
-  size?: number | string;
-};
 
 const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG> }> = {
   spinner: {
@@ -99,9 +94,18 @@ const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG
     module: null,
     load: () => import('../../../../packages/uikit/src/svgs/icon-refresh.svg').then((it) => it.default),
   },
+  'chevron-down': {
+    module: null,
+    load: () => import('../../../../packages/uikit/src/svgs/icon-chevron-down.svg').then((it) => it.default),
+  },
 };
 
-export const Icon = (props: SBUFoundationProps<Props>) => {
+type Props = SBUFoundationProps<{
+  type: IconType;
+  color?: string | keyof typeof themedColors;
+  size?: number | string;
+}>;
+export const Icon = (props: Props) => {
   const [state, setState] = useState(components);
   const localProps = useLocalProps(props);
 
