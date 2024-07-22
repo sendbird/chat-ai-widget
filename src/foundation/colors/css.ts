@@ -1,151 +1,112 @@
 import { css } from '@linaria/core';
 
+export const themedColors = {
+  onbackground1: 'var(--sb-bg-1)',
+  onbackground2: 'var(--sb-bg-2)',
+  onbackground3: 'var(--sb-bg-3)',
+  onbackground4: 'var(--sb-bg-4)',
+  oncontent1: 'var(--sb-content-1)',
+  oncontent2: 'var(--sb-content-2)',
+  oncontent_inverse1: 'var(--sb-content-inverse-1)',
+  oncontent_inverse2: 'var(--sb-content-inverse-2)',
+  primary: 'var(--sb-primary)',
+  error: 'var(--sb-error)',
+  secondary: 'var(--sb-secondary)',
+};
+export const themedColorVars = css`
+  .sendbird-theme--light & {
+    --sb-bg-1: var(--sendbird-light-onlight-01);
+    --sb-bg-2: var(--sendbird-light-onlight-02);
+    --sb-bg-3: var(--sendbird-light-onlight-03);
+    --sb-bg-4: var(--sendbird-light-onlight-04);
+    --sb-content-1: var(--sendbird-light-ondark-01);
+    --sb-content-2: var(--sendbird-light-ondark-02);
+    --sb-content-inverse-1: var(--sendbird-light-onlight-01);
+    --sb-content-inverse-2: var(--sendbird-light-onlight-02);
+    --sb-primary: var(--sendbird-light-primary-300);
+    --sb-secondary: var(--sendbird-light-secondary-300);
+    --sb-error: var(--sendbird-light-error-300);
+  }
+  .sendbird-theme--dark & {
+    --sb-bg-1: var(--sendbird-dark-ondark-01);
+    --sb-bg-2: var(--sendbird-dark-ondark-02);
+    --sb-bg-3: var(--sendbird-dark-ondark-03);
+    --sb-bg-4: var(--sendbird-dark-ondark-04);
+    --sb-content-1: var(--sendbird-dark-onlight-01);
+    --sb-content-2: var(--sendbird-dark-onlight-02);
+    --sb-content-inverse-1: var(--sendbird-dark-ondark-01);
+    --sb-content-inverse-2: var(--sendbird-dark-ondark-02);
+    --sb-primary: var(--sendbird-dark-primary-200);
+    --sb-secondary: var(--sendbird-dark-secondary-200);
+    --sb-error: var(--sendbird-dark-error-200);
+  }
+`;
+
+/**
+ * To use this CSS, please add colorSetClassName to the className.
+ * */
 export const textColors = {
   onbackground1: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-01);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-01);
-    }
+    color: var(--sb-bg-1);
   `,
   onbackground2: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-02);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-02);
-    }
+    color: var(--sb-bg-2);
   `,
   onbackground3: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-03);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-03);
-    }
+    color: var(--sb-bg-3);
   `,
   onbackground4: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-04);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-04);
-    }
+    color: var(--sb-bg-4);
   `,
   oncontent1: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-ondark-01);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-onlight-01);
-    }
+    color: var(--sb-content-1);
   `,
   oncontent2: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-ondark-02);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-onlight-02);
-    }
+    color: var(--sb-content-2);
   `,
   oncontent_inverse1: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-01);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-01);
-    }
+    color: var(--sb-content-inverse-1);
   `,
-  oncontent_inverse3: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-onlight-03);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-ondark-03);
-    }
+  oncontent_inverse2: css`
+    color: var(--sb-content-inverse-2);
   `,
   primary: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-primary-300);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-primary-200);
-    }
+    color: var(--sb-primary);
   `,
   error: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-error-300);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-error-200);
-    }
+    color: var(--sb-error);
   `,
-  secondary3: css`
-    .sendbird-theme--light & {
-      color: var(--sendbird-light-secondary-300);
-    }
-    .sendbird-theme--dark & {
-      color: var(--sendbird-dark-secondary-200);
-    }
+  secondary: css`
+    color: var(--sb-secondary);
   `,
 };
 
+/**
+ * To use this CSS, please add colorSetClassName to the className.
+ * */
 export const bgColors = {
   onbackground1: css`
-    .sendbird-theme--light & {
-      background-color: var(--sendbird-light-onlight-01);
-    }
-    .sendbird-theme--dark & {
-      background-color: var(--sendbird-dark-ondark-01);
-    }
+    background-color: var(--sb-bg-1);
   `,
   onbackground2: css`
-    .sendbird-theme--light & {
-      background-color: var(--sendbird-light-onlight-02);
-    }
-    .sendbird-theme--dark & {
-      background-color: var(--sendbird-dark-ondark-02);
-    }
+    background-color: var(--sb-bg-2);
   `,
   onbackground3: css`
-    .sendbird-theme--light & {
-      background-color: var(--sendbird-light-onlight-03);
-    }
-    .sendbird-theme--dark & {
-      background-color: var(--sendbird-dark-ondark-03);
-    }
+    background-color: var(--sb-bg-3);
   `,
   onbackground4: css`
-    .sendbird-theme--light & {
-      background-color: var(--sendbird-light-onlight-04);
-    }
-    .sendbird-theme--dark & {
-      background-color: var(--sendbird-dark-ondark-04);
-    }
+    background-color: var(--sb-bg-4);
   `,
   oncontent1: css`
-    .sendbird-theme--light & {
-      background-color: var(--sendbird-light-ondark-01);
-    }
-    .sendbird-theme--dark & {
-      background-color: var(--sendbird-dark-onlight-01);
-    }
+    background-color: var(--sb-content-1);
   `,
   primary: css`
-    .sendbird-theme--light & {
-      background-color: var(--sendbird-light-primary-300);
-    }
-    .sendbird-theme--dark & {
-      background-color: var(--sendbird-dark-primary-200);
-    }
+    background-color: var(--sb-primary);
   `,
   error: css`
-    .sendbird-theme--light & {
-      background-color: var(--sendbird-light-error-300);
-    }
-    .sendbird-theme--dark & {
-      background-color: var(--sendbird-dark-error-200);
-    }
+    background-color: var(--sb-error);
+  `,
+  secondary: css`
+    background-color: var(--sb-secondary);
   `,
 };

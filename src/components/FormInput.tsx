@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
 
-import { Label as UILabel } from '../foundation/Label';
+import { Label as UILabel } from '../foundation/components/Label';
 
 export interface InputLabelProps {
   children: ReactNode;

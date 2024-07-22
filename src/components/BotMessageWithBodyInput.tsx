@@ -7,7 +7,7 @@ import Avatar from '@uikit/ui/Avatar';
 import BotProfileImage from './BotProfileImage';
 import { DefaultSentTime, FullBodyContainer, WideSentTime } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
-import { Label } from '../foundation/Label';
+import { Label } from '../foundation/components/Label';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.span`
