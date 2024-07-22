@@ -109,7 +109,7 @@ export const InfiniteMessageList = forwardRef<HTMLDivElement, Props>(function In
   };
 
   return (
-    <div className="sendbird-conversation__scroll-container">
+    <div className="sendbird-conversation__scroll-container sendbird-conversation__messages" style={{ flex: 1 }}>
       <div className="sendbird-conversation__padding" />
       <div
         ref={listRef}
@@ -121,7 +121,7 @@ export const InfiniteMessageList = forwardRef<HTMLDivElement, Props>(function In
         {messages.map((message, index) => renderMessage({ message, index }))}
         {messageBottomArea}
       </div>
-      <div style={{ position: 'absolute', width: '100%', height: '100%' }}>{overlayArea}</div>
+      <div style={{ position: 'absolute' }}>{overlayArea}</div>
     </div>
   );
 });

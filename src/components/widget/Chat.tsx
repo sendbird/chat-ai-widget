@@ -1,15 +1,12 @@
 import '../../css/index.css';
-
-import { FileMessageCreateParams, UserMessageCreateParams } from '@sendbird/chat/message';
 import { useEffect, useRef } from 'react';
 
 import { useSendbirdStateContext } from '@uikit/index';
-import { GroupChannelProvider } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 
 import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
 import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
-import { CustomChannelComponent } from '../CustomChannelComponent';
+import { WidgetChatting } from '../chat';
 
 const Chat = () => {
   useWidgetButtonActivityTimeout();
@@ -35,28 +32,30 @@ const Chat = () => {
     stores.sdkStore.initialized,
   ]);
 
-  const onBeforeSendMessage = <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => {
-    if (aiAttributesRef.current) {
-      return {
-        ...params,
-        data: JSON.stringify({ ai_attrs: aiAttributesRef.current }),
-      };
-    } else {
-      return params;
-    }
-  };
+  // const onBeforeSendMessage = <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => {
+  //   if (aiAttributesRef.current) {
+  //     return {
+  //       ...params,
+  //       data: JSON.stringify({ ai_attrs: aiAttributesRef.current }),
+  //     };
+  //   } else {
+  //     return params;
+  //   }
+  // };
 
-  return (
-    <GroupChannelProvider
-      channelUrl={widgetSession.channelUrl ?? ''}
-      scrollBehavior={'smooth'}
-      onBeforeSendUserMessage={onBeforeSendMessage}
-      onBeforeSendFileMessage={onBeforeSendMessage}
-    >
-      <CustomChannelComponent />
-      <div id={'sb_chat_root_for_z_index'} />
-    </GroupChannelProvider>
-  );
+  return <WidgetChatting />;
+
+  // return (
+  //   <GroupChannelProvider
+  //     channelUrl={widgetSession.channelUrl ?? ''}
+  //     scrollBehavior={'smooth'}
+  //     onBeforeSendUserMessage={onBeforeSendMessage}
+  //     onBeforeSendFileMessage={onBeforeSendMessage}
+  //   >
+  //     <CustomChannelComponent />
+  //     <div id={'sb_chat_root_for_z_index'} />
+  //   </GroupChannelProvider>
+  // );
 };
 
 export default Chat;

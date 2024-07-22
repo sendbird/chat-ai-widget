@@ -12,6 +12,8 @@ const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
   isExpanded: boolean;
 }>`
+  background: white;
+  display: flex;
   overscroll-behavior: none;
   -webkit-overflow-scrolling: auto;
   position: fixed;

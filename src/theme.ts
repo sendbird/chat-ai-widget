@@ -1,6 +1,7 @@
 import { getColorBasedOnSaturation, generateColorVariants } from './colors';
 export interface CommonTheme {
   bgColor: {
+    base: string;
     chatBottom: string;
     messageInput: string;
     incomingMessage: string;
@@ -84,6 +85,7 @@ export function getTheme({
   return {
     light: {
       bgColor: {
+        base: 'var(--sendbird-light-background-50)',
         chatBottom: 'var(--sendbird-light-background-50)',
         messageInput: 'var(--sendbird-light-background-100)',
         incomingMessage: botMessageBGColor ?? 'var(--sendbird-dark-background-100)',
@@ -159,6 +161,7 @@ export function getTheme({
     },
     dark: {
       bgColor: {
+        base: 'var(--sendbird-light-background-600)',
         chatBottom: 'var(--sendbird-dark-background-600)',
         messageInput: 'var(--sendbird-dark-background-500)',
         incomingMessage: botMessageBGColor ?? 'var(--sendbird-dark-background-400)',
