@@ -2,7 +2,7 @@ import { css } from '@linaria/core';
 
 export const infiniteListContainer = css`
   display: flex;
-  postion: relative;
+  position: relative;
   flex: 1;
 `;
 
