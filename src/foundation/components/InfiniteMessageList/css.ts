@@ -3,6 +3,7 @@ import { css } from '@linaria/core';
 export const infiniteListContainer = css`
   display: flex;
   postion: relative;
+  flex: 1;
 `;
 
 export const infiniteListInner = css`
@@ -10,7 +11,6 @@ export const infiniteListInner = css`
   flex: 1;
   flex-direction: column;
   overflow-y: scroll;
-  padding: 8px 0;
 `;
 
 export const infiniteListOverlayContainer = css`

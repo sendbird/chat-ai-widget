@@ -9,7 +9,6 @@ import { PoweredByBanner } from '../../ui/PoweredByBanner';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatUI = () => {
-  // const { resetSession, botStyle } = useWidgetSetting();
   // const { botInfo, welcomeMessages, suggestedRepliesDirection } = botStudioEditProps ?? {};
 
   const { channel } = useChatContext();
@@ -19,7 +18,7 @@ export const ChatUI = () => {
   const botUser = channel?.members.find((member) => member.userId === botId);
 
   return (
-    <div className={cx(container, themedColorVars, themedColors.bg1)}>
+    <div className={cx(container, themedColorVars)}>
       <ChatHeader
         profileUrl={profileUrl ?? botUser?.profileUrl}
         nickname={nickname ?? botUser?.nickname}
@@ -33,6 +32,8 @@ export const ChatUI = () => {
 };
 
 const container = css`
+  font-family: var(--sendbird-font-family-default);
+  background-color: ${themedColors.bg1};
   display: flex;
   flex-direction: column;
   flex: 1;

@@ -5,10 +5,10 @@ import { createContext, MutableRefObject, PropsWithChildren, useContext, useEffe
 
 import { useMessageListScroll } from '@uikit/modules/GroupChannel/context/hooks/useMessageListScroll';
 
+import { useWidgetSetting } from '../../../context/WidgetSettingContext';
 import { Placeholder } from '../../../foundation/components/Placeholder';
 
 export interface WidgetStringSet {
-  ERR_NOT_FOUND_CHANNEL: string;
   ERR_SOMETHING_WENT_WRONG: string;
 }
 
@@ -38,6 +38,7 @@ export interface ChatContainerProps {
 export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
   const { sdk, channelUrl, stringSet, children } = props;
 
+  const { resetSession } = useWidgetSetting();
   const [channel, setChannel] = useState<GroupChannel | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -56,7 +57,7 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
       })
       .catch((error: SendbirdError) => {
         if (error.code === SendbirdErrorCode.NOT_FOUND_IN_DATABASE) {
-          setErrorMessage(stringSet.ERR_NOT_FOUND_CHANNEL);
+          resetSession();
         } else {
           setErrorMessage(stringSet.ERR_SOMETHING_WENT_WRONG);
         }

@@ -6,6 +6,7 @@ export const themedColors = {
   onbackground3: 'var(--sb-on-bg-3)',
   onbackground4: 'var(--sb-on-bg-4)',
   bg1: 'var(--sb-bg-1)',
+  bg2: 'var(--sb-bg-2)',
   oncontent1: 'var(--sb-on-content-1)',
   oncontent2: 'var(--sb-on-content-2)',
   oncontent_inverse1: 'var(--sb-on-content-inverse-1)',
@@ -22,6 +23,7 @@ export const themedColorVars = css`
     --sb-on-bg-3: var(--sendbird-light-onlight-03);
     --sb-on-bg-4: var(--sendbird-light-onlight-04);
     --sb-bg-1: var(--sendbird-light-background-50);
+    --sb-bg-2: var(--sendbird-light-background-100);
     --sb-on-content-1: var(--sendbird-light-ondark-01);
     --sb-on-content-2: var(--sendbird-light-ondark-02);
     --sb-on-content-inverse-1: var(--sendbird-light-onlight-01);
@@ -36,6 +38,7 @@ export const themedColorVars = css`
     --sb-on-bg-3: var(--sendbird-dark-ondark-03);
     --sb-on-bg-4: var(--sendbird-dark-ondark-04);
     --sb-bg-1: var(--sendbird-dark-background-600);
+    --sb-bg-2: var(--sendbird-dark-background-500);
     --sb-on-content-1: var(--sendbird-dark-onlight-01);
     --sb-on-content-2: var(--sendbird-dark-onlight-02);
     --sb-on-content-inverse-1: var(--sendbird-dark-ondark-01);

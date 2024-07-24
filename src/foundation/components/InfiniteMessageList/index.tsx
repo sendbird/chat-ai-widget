@@ -110,14 +110,16 @@ export const InfiniteMessageList = forwardRef<HTMLDivElement, Props>(function In
   };
 
   return (
-    <div className={infiniteListContainer}>
-      <div ref={listRef} onScroll={handleScroll} className={infiniteListInner}>
+    <div id={'infinite-list-container'} className={infiniteListContainer}>
+      <div id={'infinite-list-inner'} ref={listRef} onScroll={handleScroll} className={infiniteListInner}>
         {messageTopArea}
         {messages.map((message, index) => renderMessage({ message, index }))}
         {messageBottomArea}
       </div>
-      <div className={infiniteListOverlayContainer}>
-        <div className={infiniteListOverlay}>{overlayArea}</div>
+      <div id={'infinite-list-overlay-container'} className={infiniteListOverlayContainer}>
+        <div id={'infinite-list-overlay'} className={infiniteListOverlay}>
+          {overlayArea}
+        </div>
       </div>
     </div>
   );

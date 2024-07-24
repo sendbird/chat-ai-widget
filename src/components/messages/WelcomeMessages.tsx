@@ -10,8 +10,8 @@ import { ClientUserMessage } from '@uikit/types';
 import { useConstantState } from '../../context/ConstantContext';
 import { parseTextMessage, Token } from '../../utils';
 import BotMessageWithBodyInput from '../BotMessageWithBodyInput';
-import DynamicRepliesPanel from '../DynamicRepliesPanel';
 import ParsedBotMessageBody from '../ParsedBotMessageBody';
+import SuggestedRepliesContainer from '../SuggestedRepliesContainer';
 
 interface WelcomeMessagesProps {
   channel: GroupChannel;
@@ -68,8 +68,8 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
                 botUser={botUser}
                 bodyComponent={<ParsedBotMessageBody text={text} tokens={tokens} />}
               />
-              {showSuggestedReplies && suggestedReplies && suggestedReplies.length && (
-                <DynamicRepliesPanel replyOptions={suggestedReplies} type={suggestedRepliesDirection} />
+              {showSuggestedReplies && (
+                <SuggestedRepliesContainer replies={suggestedReplies} type={suggestedRepliesDirection} />
               )}
             </div>
           );

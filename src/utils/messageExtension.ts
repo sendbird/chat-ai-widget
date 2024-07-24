@@ -32,6 +32,12 @@ export const messageExtension = {
         .sort((a, b) => urls.indexOf(a.url) - urls.indexOf(b.url));
     },
   },
+  getSuggestedReplies(message: BaseMessage | null): string[] {
+    return (message?.extendedMessagePayload?.suggested_replies ?? []) as string[];
+  },
+  isInputDisabled(message: BaseMessage | null) {
+    return !!message?.extendedMessagePayload?.disable_chat_input;
+  },
 };
 
 // const mock = [

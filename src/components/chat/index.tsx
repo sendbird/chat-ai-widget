@@ -34,7 +34,6 @@ export const WidgetChatting = () => {
       channelUrl={widgetSession?.channelUrl ?? ''}
       stringSet={{
         ERR_SOMETHING_WENT_WRONG: stringSet.PLACE_HOLDER__WRONG,
-        ERR_NOT_FOUND_CHANNEL: 'Not found channel',
       }}
       handlers={{
         onBeforeSendMessage,

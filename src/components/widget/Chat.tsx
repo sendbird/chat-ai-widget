@@ -29,18 +29,6 @@ const Chat = () => {
   ]);
 
   return <WidgetChatting />;
-
-  // return (
-  //   <GroupChannelProvider
-  //     channelUrl={widgetSession.channelUrl ?? ''}
-  //     scrollBehavior={'smooth'}
-  //     onBeforeSendUserMessage={onBeforeSendMessage}
-  //     onBeforeSendFileMessage={onBeforeSendMessage}
-  //   >
-  //     <CustomChannelComponent />
-  //     <div id={'sb_chat_root_for_z_index'} />
-  //   </GroupChannelProvider>
-  // );
 };
 
 export default Chat;

@@ -5,17 +5,23 @@ import { useGroupChannelMessages } from '@sendbird/uikit-tools';
 import { isSameDay } from 'date-fns/isSameDay';
 import { useRef } from 'react';
 
+import { getComponentKeyFromMessage } from '@uikit/modules/GroupChannel/context/utils';
 import { isSendableMessage } from '@uikit/utils';
 
+import { useConstantState } from '../../../context/ConstantContext';
 import { DateSeparator } from '../../../foundation/components/DateSeparator';
 import { InfiniteMessageList } from '../../../foundation/components/InfiniteMessageList';
 import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
 import { usePartialState } from '../../../foundation/hooks/usePartialState';
+import { noop } from '../../../utils';
+import { messageExtension } from '../../../utils/messageExtension';
 import CustomMessage from '../../CustomMessage';
+import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatMessageList = () => {
+  const { botStudioEditProps } = useConstantState();
   const { sdk, channel } = useChatContext();
   const ref = useRef<HTMLDivElement>(null);
   const [state, setState] = usePartialState({
@@ -28,7 +34,7 @@ export const ChatMessageList = () => {
   });
 
   return (
-    <div className={listContainer}>
+    <div id={'widget-chat-message-list'} className={listContainer}>
       {!dataSource.initialized && <Placeholder type={'loading'} />}
       {dataSource.initialized && dataSource.messages.length === 0 && <Placeholder type={'noMessages'} />}
       {dataSource.messages.length > 0 && (
@@ -39,22 +45,34 @@ export const ChatMessageList = () => {
           depsForResetScrollPositionToBottom={[dataSource.messages.length]}
           renderMessage={({ message, index }) => {
             const prevCreatedAt = dataSource.messages[index - 1]?.createdAt ?? 0;
+            const suggestedReplies = messageExtension.getSuggestedReplies(message);
+            const showRepliesOnLastMessage = message.messageId === channel?.lastMessage?.messageId;
 
             return (
-              <div style={{ padding: '0 16px' }}>
+              <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
                 {!isSameDay(prevCreatedAt, message.createdAt) && (
                   <DateSeparator className={dateSeparatorMargin} date={message.createdAt} />
                 )}
                 <CustomMessage
                   message={message as any}
+                  // TODO: typing indicator
                   activeSpinnerId={0}
                   botUser={isSendableMessage(message) ? message.sender : undefined}
+                  // TODO: message chain
                   chainTop={true}
                   chainBottom={true}
                   isBotWelcomeMessage={false}
                   isLastBotMessage={false}
                   messageCount={0}
                 />
+
+                {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
+                  <SuggestedRepliesContainer
+                    replies={suggestedReplies}
+                    type={botStudioEditProps?.suggestedRepliesDirection}
+                    sendUserMessage={(params) => dataSource.sendUserMessage(params, noop)}
+                  />
+                )}
               </div>
             );
           }}
@@ -86,7 +104,6 @@ export const ChatMessageList = () => {
 };
 
 const listContainer = css`
-  font-family: var(--sendbird-font-family-default);
   overflow-y: hidden;
   display: flex;
   flex: 1;
@@ -94,7 +111,7 @@ const listContainer = css`
 `;
 
 const dateSeparatorMargin = css`
-  margin-bottom: 8px;
+  margin: 8px 0;
 `;
 
 const scrollBottomPosition = css`
