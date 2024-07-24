@@ -1,7 +1,4 @@
 import { css } from '@linaria/core';
-import { SendbirdChatWith } from '@sendbird/chat';
-import { GroupChannel, GroupChannelModule } from '@sendbird/chat/groupChannel';
-import { useGroupChannelMessages } from '@sendbird/uikit-tools';
 import { isSameDay } from 'date-fns/isSameDay';
 import { useRef } from 'react';
 
@@ -21,84 +18,88 @@ import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatMessageList = () => {
+  const { channel, dataSource } = useChatContext();
   const { botStudioEditProps } = useConstantState();
-  const { sdk, channel } = useChatContext();
   const ref = useRef<HTMLDivElement>(null);
   const [state, setState] = usePartialState({
     scrollPosition: 'bottom',
   });
+  const render = () => {
+    if (!dataSource.initialized) {
+      return <Placeholder type={'loading'} />;
+    }
 
-  // NOTE: sdk and channel are nullable, but useGroupChannelMessages can handle it even if types are not.
-  const dataSource = useGroupChannelMessages(sdk as SendbirdChatWith<[GroupChannelModule]>, channel as GroupChannel, {
-    shouldCountNewMessages: () => false,
-  });
+    if (dataSource.messages.length === 0) {
+      return <Placeholder type={'noMessages'} />;
+    }
+
+    return (
+      <InfiniteMessageList
+        ref={ref}
+        onScrollPosition={(it) => setState({ scrollPosition: it })}
+        messages={dataSource.messages}
+        depsForResetScrollPositionToBottom={[dataSource.messages.length]}
+        renderMessage={({ message, index }) => {
+          const prevCreatedAt = dataSource.messages[index - 1]?.createdAt ?? 0;
+          const suggestedReplies = messageExtension.getSuggestedReplies(message);
+          const showRepliesOnLastMessage = message.messageId === channel?.lastMessage?.messageId;
+
+          return (
+            <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
+              {!isSameDay(prevCreatedAt, message.createdAt) && (
+                <DateSeparator className={dateSeparatorMargin} date={message.createdAt} />
+              )}
+              <CustomMessage
+                message={message as any}
+                // TODO: typing indicator
+                activeSpinnerId={0}
+                botUser={isSendableMessage(message) ? message.sender : undefined}
+                // TODO: message chain
+                chainTop={true}
+                chainBottom={true}
+                isBotWelcomeMessage={false}
+                isLastBotMessage={false}
+                messageCount={0}
+              />
+
+              {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
+                <SuggestedRepliesContainer
+                  replies={suggestedReplies}
+                  type={botStudioEditProps?.suggestedRepliesDirection}
+                  sendUserMessage={(params) => dataSource.sendUserMessage(params, noop)}
+                />
+              )}
+            </div>
+          );
+        }}
+        onLoadPrev={dataSource.loadPrevious}
+        onLoadNext={dataSource.loadNext}
+        overlayArea={
+          <>
+            {/**
+             * Note for unread status count & read status
+             *  Currently, the widget only handles cases of chatting with bots, so it is not supported.
+             *  However, if the product evolves in the future to include cases where users chat with a representative, we will need to add that feature.
+             *
+             *  <UnreadStatusSince />
+             */}
+            {state.scrollPosition !== 'bottom' && (
+              <ScrollToBottomButton
+                className={scrollBottomPosition}
+                onClick={() => {
+                  if (ref.current) ref.current.scrollTop = ref.current.scrollHeight;
+                }}
+              />
+            )}
+          </>
+        }
+      />
+    );
+  };
 
   return (
     <div id={'widget-chat-message-list'} className={listContainer}>
-      {!dataSource.initialized && <Placeholder type={'loading'} />}
-      {dataSource.initialized && dataSource.messages.length === 0 && <Placeholder type={'noMessages'} />}
-      {dataSource.messages.length > 0 && (
-        <InfiniteMessageList
-          ref={ref}
-          onScrollPosition={(it) => setState({ scrollPosition: it })}
-          messages={dataSource.messages}
-          depsForResetScrollPositionToBottom={[dataSource.messages.length]}
-          renderMessage={({ message, index }) => {
-            const prevCreatedAt = dataSource.messages[index - 1]?.createdAt ?? 0;
-            const suggestedReplies = messageExtension.getSuggestedReplies(message);
-            const showRepliesOnLastMessage = message.messageId === channel?.lastMessage?.messageId;
-
-            return (
-              <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
-                {!isSameDay(prevCreatedAt, message.createdAt) && (
-                  <DateSeparator className={dateSeparatorMargin} date={message.createdAt} />
-                )}
-                <CustomMessage
-                  message={message as any}
-                  // TODO: typing indicator
-                  activeSpinnerId={0}
-                  botUser={isSendableMessage(message) ? message.sender : undefined}
-                  // TODO: message chain
-                  chainTop={true}
-                  chainBottom={true}
-                  isBotWelcomeMessage={false}
-                  isLastBotMessage={false}
-                  messageCount={0}
-                />
-
-                {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
-                  <SuggestedRepliesContainer
-                    replies={suggestedReplies}
-                    type={botStudioEditProps?.suggestedRepliesDirection}
-                    sendUserMessage={(params) => dataSource.sendUserMessage(params, noop)}
-                  />
-                )}
-              </div>
-            );
-          }}
-          onLoadPrev={dataSource.loadPrevious}
-          onLoadNext={dataSource.loadNext}
-          overlayArea={
-            <>
-              {/**
-               * Note for unread status count & read status
-               *  Currently, the widget only handles cases of chatting with bots, so it is not supported.
-               *  However, if the product evolves in the future to include cases where users chat with a representative, we will need to add that feature.
-               *
-               *  <UnreadStatusSince />
-               */}
-              {state.scrollPosition !== 'bottom' && (
-                <ScrollToBottomButton
-                  className={scrollBottomPosition}
-                  onClick={() => {
-                    if (ref.current) ref.current.scrollTop = ref.current.scrollHeight;
-                  }}
-                />
-              )}
-            </>
-          }
-        />
-      )}
+      {render()}
     </div>
   );
 };

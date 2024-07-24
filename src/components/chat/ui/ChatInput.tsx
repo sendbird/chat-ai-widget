@@ -1,5 +1,4 @@
 import { css } from '@linaria/core';
-import { GroupChannel } from '@sendbird/chat/groupChannel';
 import { useRef } from 'react';
 
 import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/MessageInputWrapper/MessageInputWrapperView';
@@ -8,18 +7,17 @@ import { useConstantState } from '../../../context/ConstantContext';
 import { themedColors } from '../../../foundation/colors/css';
 import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotResponding';
 import { isIOSMobile, noop } from '../../../utils';
-import { messageExtension } from '../../../utils/messageExtension';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatInput = () => {
   const { botId } = useConstantState();
-  const { channel } = useChatContext();
+  const { channel, dataSource } = useChatContext();
 
+  const ref = useRef<HTMLDivElement>(null);
   const isMessageInputDisabled = useBlockWhileBotResponding({
-    lastMessage: channel?.lastMessage,
+    lastMessage: dataSource.messages[dataSource.messages.length - 1],
     botUser: channel?.members.find((it) => it.userId === botId),
   });
-  const ref = useRef<HTMLDivElement>(null);
 
   return (
     <div className={container}>
@@ -45,33 +43,6 @@ function throwError(): never {
   throw new Error('Not implemented');
 }
 
-export const useInputDisabledState = (channel: GroupChannel | null) => {
-  const { stringSet } = useConstantState();
-  if (!channel) {
-    return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__DISABLED };
-  }
-
-  if (channel.isFrozen && channel.myRole !== 'operator') {
-    return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__FROZEN };
-  }
-
-  if (channel.myMutedState === 'muted') {
-    return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__MUTED };
-  }
-
-  const lastMessage = channel.lastMessage;
-  if (lastMessage && messageExtension.isInputDisabled(lastMessage)) {
-    if (messageExtension.getSuggestedReplies(lastMessage).length > 0) {
-      return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__SUGGESTED_REPLIES };
-    }
-    if (lastMessage.messageForm) {
-      return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__MESSAGE_FORM };
-    }
-  }
-
-  return { disabled: false, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER };
-};
-
 const container = css`
   z-index: 0;
   border: none;
@@ -82,52 +53,35 @@ const container = css`
   }
 
   && {
-    .sendbird-message-input-wrapper {
-      width: 100%;
-    }
-
     .sendbird-message-input-wrapper__message-input {
       padding: 12px 16px;
-      display: flex;
-      -webkit-box-pack: justify;
-      justify-content: space-between;
-      -webkit-box-align: center;
-      align-items: center;
     }
 
     .sendbird-message-input {
       display: flex;
       align-items: center;
       .sendbird-message-input-text-field {
-        transition: width 0.5s;
-        transition-timing-function: ease;
         padding: 8px 16px;
+        height: 40px;
+        max-height: 116px;
+        border-radius: 20px;
         // Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
         // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
         font-size: ${isIOSMobile ? 16 : 14}px;
-        line-height: 20px;
         resize: none;
         border: none;
         outline: none;
-        height: 40px;
-        max-height: 116px;
-        background-color: ${themedColors.bg2};
-        border-radius: 20px;
+        box-shadow: none;
         text-align: start;
+        background-color: ${themedColors.bg2};
         ::placeholder {
           color: var(--sendbird-light-onlight-03);
-        }
-        :focus {
-          border: none;
-          box-shadow: none;
         }
       }
       .sendbird-message-input--send {
         position: relative;
-        right: 0;
-        bottom: 0;
-      }
-      .sendbird-iconbutton:hover {
+        right: unset;
+        bottom: unset;
         background-color: transparent;
       }
       .sendbird-message-input--placeholder {
@@ -139,6 +93,32 @@ const container = css`
   }
 `;
 
+// const useInputDisabledState = (channel: GroupChannel | null) => {
+//   const { stringSet } = useConstantState();
+//   if (!channel) {
+//     return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__DISABLED };
+//   }
+//
+//   if (channel.isFrozen && channel.myRole !== 'operator') {
+//     return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__FROZEN };
+//   }
+//
+//   if (channel.myMutedState === 'muted') {
+//     return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__MUTED };
+//   }
+//
+//   const lastMessage = channel.lastMessage;
+//   if (lastMessage && messageExtension.isInputDisabled(lastMessage)) {
+//     if (messageExtension.getSuggestedReplies(lastMessage).length > 0) {
+//       return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__SUGGESTED_REPLIES };
+//     }
+//     if (lastMessage.messageForm) {
+//       return { disabled: true, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER__MESSAGE_FORM };
+//     }
+//   }
+//
+//   return { disabled: false, placeholder: stringSet.MESSAGE_INPUT__PLACE_HOLDER };
+// };
 // <input className={cx(input)} disabled={disabled} placeholder={placeholder}/>
 
 // .sendbird-message-input-text-field {

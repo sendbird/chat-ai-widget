@@ -9,7 +9,7 @@ import { StringSet } from '@uikit/ui/Label/stringSet';
 
 import type { ToggleButtonProps } from './components/widget/WidgetToggleButton';
 import { BotStyle } from './context/WidgetSettingContext';
-import RefreshIcon from './icons/refresh-icon.svg';
+import RefreshIcon from './icons/ic-refresh.svg';
 import { SendbirdChatAICallbacks } from './types';
 import { noop } from './utils';
 
@@ -337,8 +337,8 @@ export interface MessageBottomContent {
 }
 
 type CustomRefreshProps = {
-  width?: string;
-  height?: string;
+  width?: string | number;
+  height?: string | number;
   onClick?: () => void;
   style?: React.CSSProperties;
   id?: string;

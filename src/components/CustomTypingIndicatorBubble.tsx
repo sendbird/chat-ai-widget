@@ -1,7 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 
-import Avatar from '@uikit/ui/Avatar';
-
 import BotProfileImage from './BotProfileImage';
 
 const DEFAULT_FRAME_CONFIG = {
@@ -82,13 +80,7 @@ function TypingDots() {
 function CustomTypingIndicatorBubble({ botProfileUrl }: { botProfileUrl: string }) {
   return (
     <Root>
-      <div>
-        {botProfileUrl != null && botProfileUrl != '' ? (
-          <Avatar src={botProfileUrl} alt="botProfileImage" height="28px" width="28px" />
-        ) : (
-          <BotProfileImage width={28} height={28} iconWidth={16} iconHeight={16} />
-        )}
-      </div>
+      <BotProfileImage size={28} profileUrl={botProfileUrl} />
       <div className="sendbird-message-content__middle">
         <TypingDots />
       </div>

@@ -18,17 +18,7 @@ export default function PendingMessage({ botProfileUrl }: { botProfileUrl?: stri
   return (
     <Container>
       <ImageContainer>
-        {botProfileUrl != null && botProfileUrl != '' ? (
-          <img
-            src={botProfileUrl}
-            alt="profileImage"
-            style={{
-              height: '28px',
-            }}
-          />
-        ) : (
-          <BotProfileImage width={28} height={28} iconWidth={16} iconHeight={16} />
-        )}
+        <BotProfileImage size={28} profileUrl={botProfileUrl} />
       </ImageContainer>
       <img
         src={typingIndicatorLogo}
