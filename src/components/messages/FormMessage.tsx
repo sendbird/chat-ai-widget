@@ -17,6 +17,7 @@ interface Props {
 }
 
 interface FormValue {
+  itemId: number;
   draftValues: string[];
   required: boolean;
   errorMessage: string | null;
@@ -55,9 +56,10 @@ export default function FormMessage(props: Props) {
 
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
-    items.forEach(({ required, style }) => {
+    items.forEach(({ id, required, style }) => {
       const { defaultOptions = [], layout } = style;
       initialFormValues.push({
+        itemId: id,
         draftValues: layout === 'chip' ? defaultOptions : [],
         required,
         errorMessage: null,
@@ -94,21 +96,10 @@ export default function FormMessage(props: Props) {
         });
         return;
       }
-      if (formValues.some((formValue) => formValue.draftValues.length > 1)) {
-        formValues.forEach((formValue, index) => {
+      formValues.forEach((formValue, index) => {
           items[index].draftValues = formValue.draftValues;
-        });
-        await message.submitMessageForm();
-      } else {
-        const answers: Record<string, string> = {};
-        formValues.forEach((formValue, index) => {
-          const item = items[index];
-          if (formValue.draftValues.length > 0) {
-            answers[item.id] = formValue.draftValues[0];
-          }
-        });
-        await message.submitMessageForm({ formId, answers });
-      }
+      });
+      await message.submitMessageForm();
     } catch (error) {
       setSubmitFailed(true);
       console.error(error);
