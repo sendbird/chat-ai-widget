@@ -10,16 +10,20 @@ import { SBUFoundationProps } from '../../types';
 import { Label } from '../Label';
 
 type Props = SBUFoundationProps<{
+  /** date or timestamp */
+  date?: Date | number;
+  /** locale for date-fns */
   locale?: Locale;
-  date?: Date;
+  /** format string for date-fns */
   formatString?: string;
+
   separatorColor?: keyof typeof bgColors | string;
 }>;
 export const DateSeparator = ({
   className,
   children,
   locale,
-  date = new Date(),
+  date = Date.now(),
   formatString = 'MMMM dd, yyyy',
   separatorColor,
   testId = 'sendbird-date-separator',

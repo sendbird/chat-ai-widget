@@ -1,23 +1,27 @@
 import { SendbirdChatWith, SendbirdError, SendbirdErrorCode } from '@sendbird/chat';
 import { GroupChannel, GroupChannelModule } from '@sendbird/chat/groupChannel';
-import { useGroupChannelMessages } from '@sendbird/uikit-tools';
+import { FileMessageCreateParams, UserMessageCreateParams } from '@sendbird/chat/message';
 import { createContext, MutableRefObject, PropsWithChildren, useContext, useEffect, useState } from 'react';
 
 import { useMessageListScroll } from '@uikit/modules/GroupChannel/context/hooks/useMessageListScroll';
 
-import { Placeholder } from '../../foundation/components/Placeholder';
+import { Placeholder } from '../../../foundation/components/Placeholder';
 
 export interface WidgetStringSet {
   ERR_NOT_FOUND_CHANNEL: string;
   ERR_SOMETHING_WENT_WRONG: string;
 }
 
-export interface ChatContextType {
-  channel: GroupChannel;
+export interface WidgetChatHandlers {
+  onBeforeSendMessage?: <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => T;
+}
 
-  dataSource: ReturnType<typeof useGroupChannelMessages>;
+export interface ChatContextType {
+  sdk: SendbirdChatWith<[GroupChannelModule]> | null;
+  channel: GroupChannel | null;
 
   stringSet: WidgetStringSet;
+  handlers: WidgetChatHandlers;
 
   scrollRef: MutableRefObject<HTMLDivElement | null>;
 }
@@ -25,10 +29,12 @@ export interface ChatContextType {
 const ChatContext = createContext<ChatContextType | null>(null);
 
 export interface ChatContainerProps {
-  sdk: SendbirdChatWith<[GroupChannelModule]>;
+  sdk: SendbirdChatWith<[GroupChannelModule]> | null;
   channelUrl: string;
   stringSet: WidgetStringSet;
+  handlers: WidgetChatHandlers;
 }
+
 export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
   const { sdk, channelUrl, stringSet, children } = props;
 
@@ -36,6 +42,10 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!sdk?.groupChannel) {
+      return;
+    }
+
     setChannel(null);
     setErrorMessage(null);
 
@@ -54,7 +64,6 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
   }, [sdk, channelUrl]);
 
   if (errorMessage) return <Placeholder type={'error'} label={errorMessage} />;
-  if (!channel) return <Placeholder type={'loading'} />;
 
   return (
     <ChatProvider channel={channel} {...props}>
@@ -64,28 +73,12 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
 };
 
 interface ChatProviderProps extends ChatContainerProps {
-  channel: GroupChannel;
+  channel: GroupChannel | null;
 }
-export const ChatProvider = ({ sdk, channel, stringSet, children }: PropsWithChildren<ChatProviderProps>) => {
+
+export const ChatProvider = (props: PropsWithChildren<ChatProviderProps>) => {
   const { scrollRef } = useMessageListScroll('smooth');
-  const dataSource = useGroupChannelMessages(sdk, channel, {
-    shouldCountNewMessages: () => false,
-  });
-
-  return (
-    <ChatContext.Provider
-      value={{
-        channel,
-        dataSource,
-
-        stringSet,
-
-        scrollRef,
-      }}
-    >
-      {children}
-    </ChatContext.Provider>
-  );
+  return <ChatContext.Provider value={{ ...props, scrollRef }}>{props.children}</ChatContext.Provider>;
 };
 
 export const useChatContext = () => {
