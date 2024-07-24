@@ -6,7 +6,7 @@ import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/Mess
 import { useConstantState } from '../../../context/ConstantContext';
 import { themedColors } from '../../../foundation/colors/css';
 import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotResponding';
-import { isIOSMobile, noop } from '../../../utils';
+import { isIOSMobile } from '../../../utils';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatInput = () => {
@@ -24,16 +24,12 @@ export const ChatInput = () => {
       <MessageInputWrapperView
         loading={false}
         disabled={isMessageInputDisabled}
-        quoteMessage={null}
         messageInputRef={ref}
         currentChannel={channel as any}
-        setQuoteMessage={noop}
         sendUserMessage={(params) => {
           channel?.sendUserMessage(params);
         }}
         sendFileMessage={throwError}
-        sendVoiceMessage={throwError}
-        sendMultipleFilesMessage={throwError}
       />
     </div>
   );
