@@ -281,10 +281,11 @@ export function getTheme({
           default: 'var(--sendbird-dark-ondark-01)',
           link: {
             default: colorVarsForAccentColor
-              ? colorVarsForAccentColor['dark'][200]
-              : 'var(--sendbird-dark-primary-200)',
-            hover: colorVarsForAccentColor ? colorVarsForAccentColor['dark'][300] : 'var(--sendbird-dark-primary-300)',
-            focus: colorVarsForAccentColor ? colorVarsForAccentColor['dark'][200] : 'var(--sendbird-dark-primary-200)',
+              ? colorVarsForAccentColor['dark'][200] : 'var(--sendbird-dark-primary-200)',
+            hover: colorVarsForAccentColor
+              ? colorVarsForAccentColor['dark'][300] : 'var(--sendbird-dark-primary-300)',
+            focus: colorVarsForAccentColor
+              ? colorVarsForAccentColor['dark'][200] : 'var(--sendbird-dark-primary-200)',
             active: 'var(--sendbird-dark-ondark-01)',
             disabled: 'var(--sendbird-dark-ondark-03)',
           },
