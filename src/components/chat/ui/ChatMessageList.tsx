@@ -86,7 +86,7 @@ export const ChatMessageList = () => {
 };
 
 const listContainer = css`
-  font-fmaily: var(--sendbird-font-family-default);
+  font-family: var(--sendbird-font-family-default);
   overflow-y: hidden;
   display: flex;
   flex: 1;
