@@ -154,7 +154,7 @@ export default function FormMessage(props: Props) {
           />
         );
       })}
-      <SubmitButton onClick={handleSubmit} disabled={(!isInputFocused && hasError) || isSubmitted}>
+      <SubmitButton onClick={handleSubmit} disabled={isButtonDisabled}>
         <Label type={LabelTypography.BUTTON_2}>
           <ButtonText disabled={(!isInputFocused && hasError) || isSubmitted}>
             {isSubmitted ? 'Submitted successfully' : 'Submit'}
