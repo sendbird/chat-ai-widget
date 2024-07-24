@@ -257,6 +257,7 @@ export interface InputProps {
   isValid?: boolean;
   errorMessage: string | null;
   values: string[];
+  isInvalidated: boolean;
   placeHolder?: string;
   onFocused?: (isFocus: boolean) => void;
   onChange: (values: string[]) => void;
@@ -280,6 +281,7 @@ const FormInput = (props: InputProps) => {
     errorMessage,
     isValid,
     values,
+    isInvalidated,
     style,
     onFocused,
     onChange,
@@ -324,12 +326,7 @@ const FormInput = (props: InputProps) => {
       // Single select
       newDraftedValues = chipDataList[index].state === 'selected' ? [] : [chipDataList[index].option];
     } else {
-      /**
-       * Multi select case
-       * Upon chip click, if it is:
-       *   1. not selected and can select more -> select the chip. Keep other selected chips as is.
-       *   2. already selected ->  deselect the chip. Keep other selected chips as is.
-       */
+      // Multi select
       newDraftedValues = chipDataList.reduce((acc, chipData, i) => {
         if (i === index) {
           if (chipData.state === 'default' && values.length < max) {
@@ -453,7 +450,11 @@ const FormInput = (props: InputProps) => {
             }
           }
         })()}
-        {!isFocused && errorMessage && <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>}
+        {
+          (isInvalidated || !isFocused)
+          && errorMessage
+          && <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>
+        }
       </div>
     </Root>
   );
