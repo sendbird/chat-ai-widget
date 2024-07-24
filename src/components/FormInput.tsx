@@ -322,7 +322,7 @@ const FormInput = (props: InputProps) => {
     let newDraftedValues: string[];
     if (min === 1 && max === 1) {
       // Single select
-      newDraftedValues = [chipDataList[index].option];
+      newDraftedValues = chipDataList[index].state === 'selected' ? [] : [chipDataList[index].option];
     } else {
       /**
        * Multi select case
@@ -343,7 +343,7 @@ const FormInput = (props: InputProps) => {
         return acc;
       }, [] as string[]);
     }
-    if (newDraftedValues.length > 0) onChange(newDraftedValues);
+    onChange(newDraftedValues);
   };
   
   return (
