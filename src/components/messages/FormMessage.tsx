@@ -53,7 +53,7 @@ export default function FormMessage(props: Props) {
 
   const [submitFailed, setSubmitFailed] = useState(false);
   const [isInputFocused, setIsInputFocused] = useState(false);
-
+  const [isInvalidated, setIsInvalidated] = useState(false);
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
     items.forEach(({ id, required, style }) => {
@@ -70,6 +70,7 @@ export default function FormMessage(props: Props) {
 
   const isSubmitted = form.isSubmitted;
   const hasError = formValues.some(({ errorMessage }) => !!errorMessage);
+  const isButtonDisabled = ((isInvalidated || !isInputFocused) && hasError) || isSubmitted;
 
   const handleSubmit = useCallback(async () => {
     try {
@@ -119,12 +120,18 @@ export default function FormMessage(props: Props) {
             style={style}
             placeHolder={placeholder}
             values={item.submittedValues ?? draftValues}
+            isInvalidated={isInvalidated}
             errorMessage={errorMessage}
             isValid={isSubmitted}
             disabled={isSubmitted}
             name={name}
             required={required}
-            onFocused={(isFocus) => setIsInputFocused(isFocus)}
+            onFocused={(isFocus) => {
+              if (errorMessage && !isInvalidated) {
+                setIsInvalidated(true);
+              }
+              setIsInputFocused(isFocus);
+            }}
             onChange={(values) => {
               setFormValues(([...newInputs]) => {
                 newInputs[index] = {
