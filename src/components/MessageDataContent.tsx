@@ -31,32 +31,37 @@ const TextButton = styled.div`
 const ViewDetails = styled.div`
   display: flex;
   align-items: center;
-  color: #6210cc;
-  path {
-    fill: #6210cc;
-  }
-  &:hover {
-    color: #4e11a1;
-    cursor: pointer;
-    path {
-      fill: #4e11a1;
+  ${({ theme }) => {
+    const linkColors = theme.textColor.messageDataContent.link;
+    return {
+      color: linkColors.default,
+      path: {
+        fill: linkColors.default,
+      },
+      '&:hover': {
+        color: linkColors.hover,
+        cursor: 'pointer',
+        path: {
+          fill: linkColors.hover,
+        }
+      },
+      '&:focus': {
+        border: `2px solid ${linkColors.focus}`,
+      },
+      '&:active': {
+        color: linkColors.active,
+        path: {
+          fill: linkColors.active,
+        }
+      },
+      '&:disabled': {
+        color: linkColors.disabled,
+        path: {
+          fill: linkColors.disabled,
+        }
+      }
     }
-  }
-  &:focus {
-    border: 1px solid #6210cc;
-  }
-  &:active {
-    color: #0d0d0d;
-    path {
-      fill: #0d0d0d;
-    }
-  }
-  &:disabled {
-    color: #a6a6a6;
-    path {
-      fill: #a6a6a6;
-    }
-  }
+  }};
 `;
 
 const LineHeightWrapper = styled.div`
@@ -67,7 +72,7 @@ const LineHeightWrapper = styled.div`
 
 const WorkFlowType = styled.div`
   border-radius: 2px;
-  border: 1px solid #ccc;
+  border: 1px solid ${({ theme }) => theme.borderColor.messageDataContent.intentType};
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
@@ -85,7 +90,7 @@ const Root = styled.div`
 const SideBar = styled.div`
   width: 4px;
   border-radius: 100px;
-  background-color: #e0e0e0;
+  background-color: ${({ theme }) => theme.bgColor.messageDataContent.sidebar};
   margin-left: 8px;
 `;
 
@@ -97,6 +102,7 @@ const DataContainer = styled.div`
   gap: 4px;
   margin-left: 16px;
   flex: 1; // Without this, Sidebar width is reduced.
+  color: ${({ theme }) => theme.textColor.messageDataContent.default};
 `;
 
 const DataRow = styled.div`
@@ -108,7 +114,7 @@ const DataRow = styled.div`
 `;
 
 const AdditionalInfo = styled.div`
-  color: #858585;
+  color: ${({ theme }) => theme.textColor.messageDataContent.sideNote};
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
@@ -121,6 +127,12 @@ const Icon = styled.div`
   align-items: center;
   width: 16px;
   height: 20px;
+
+  svg {
+    path {
+      fill: ${({ theme }) => theme.textColor.messageDataContent.default};
+    }
+  }
 `;
 
 interface MessageDataContentProps {
