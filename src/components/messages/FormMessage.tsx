@@ -31,7 +31,18 @@ const Root = styled.div`
   padding: 16px 12px;
   border-radius: 16px;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
+  ${({ theme }) => {
+    const disabledBgColor = theme.bgColor.formButton.disabled;
+    return {
+      'background-color': theme.bgColor.incomingMessage,
+      '.sendbird-button.sendbird-button__disabled': {
+        'background-color': disabledBgColor,
+        '&:hover': {
+          'background-color': disabledBgColor,
+        },
+      }
+    }
+  }};
 `;
 
 const SubmitButton = styled(Button)`
@@ -43,7 +54,9 @@ interface ButtonTextProps {
 }
 
 const ButtonText = styled.div<ButtonTextProps>`
-  color: ${({ theme, disabled }) => (disabled ? 'inherit' : theme.textColor.activeButton)};
+  color: ${({ theme, disabled }) => {
+    return disabled ? theme.textColor.formButton.disabled : theme.textColor.activeButton;
+  }};
 `;
 
 export default function FormMessage(props: Props) {
@@ -74,11 +87,6 @@ export default function FormMessage(props: Props) {
 
   const handleSubmit = useCallback(async () => {
     try {
-      // If any of required fields are not valid,
-      const hasError = formValues.some(({ errorMessage }) => errorMessage);
-      if (hasError) {
-        return;
-      }
       // If form is empty, ignore submit
       const isMissingRequired = formValues.some(
         (formValue) => formValue.required && (!formValue.draftValues || formValue.draftValues.length === 0),
@@ -95,6 +103,11 @@ export default function FormMessage(props: Props) {
             return formValue;
           });
         });
+        return;
+      }
+      // If any of required fields are not valid,
+      const hasError = formValues.some(({ errorMessage }) => errorMessage);
+      if (hasError) {
         return;
       }
       formValues.forEach((formValue, index) => {
