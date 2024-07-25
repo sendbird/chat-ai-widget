@@ -36,26 +36,26 @@ const Root = styled.div<Pick<InputProps, 'errorMessage'>>`
   width: 100%;
 
   .sendbird-input .sendbird-input__input {
-    color: ${({theme}) => theme.textColor.incomingMessage} !important;
+    color: ${({ theme }) => theme.textColor.incomingMessage} !important;
     height: fit-content;
-    background-color: ${({theme}) => theme.bgColor.formInput.default} !important;
-    border: ${({theme, errorMessage}) =>
+    background-color: ${({ theme }) => theme.bgColor.formInput.default} !important;
+    border: ${({ theme, errorMessage }) =>
       `solid 1px ${errorMessage ? theme.borderColor.formInput.error : theme.borderColor.formInput.default}`} !important;
 
     &:disabled {
       pointer-events: none;
-      background-color: ${({theme}) => theme.bgColor.formInput.disabled} !important;
+      background-color: ${({ theme }) => theme.bgColor.formInput.disabled} !important;
       border: none !important;
     }
 
     &:focus {
-      border: ${({theme}) => `solid 1px ${theme.borderColor.formInput.focus}`} !important;
+      border: ${({ theme }) => `solid 1px ${theme.borderColor.formInput.focus}`} !important;
       outline: none;
-      box-shadow: 0 0 0 1px ${({theme}) => theme.borderColor.formInput.focus};
+      box-shadow: 0 0 0 1px ${({ theme }) => theme.borderColor.formInput.focus};
     }
 
     &:active {
-      border: ${({theme}) => `solid 1px ${theme.borderColor.formInput.active}`} !important;
+      border: ${({ theme }) => `solid 1px ${theme.borderColor.formInput.active}`} !important;
     }
   }
 `;
@@ -77,7 +77,7 @@ const Placeholder = styled.div`
   left: 13px;
   font-size: 14px;
   line-height: 1.43;
-  color: ${({theme}) => theme.textColor.placeholder};
+  color: ${({ theme }) => theme.textColor.placeholder};
 `;
 
 const Chip = styled.div<ChipProps>`
@@ -192,13 +192,13 @@ const SubmittedTextInputContainer = styled.div<SubmittedTextInputContainerProps>
   ${({ isTextarea }) => {
     return isTextarea
       ? {
-        padding: '9px 12px',
-        'min-height': '78px',
-      }
+          padding: '9px 12px',
+          'min-height': '78px',
+        }
       : {
-        padding: '8px 12px',
-        'min-height': '20px', // In case no value, min-height should be the font size.
-      };
+          padding: '8px 12px',
+          'min-height': '20px', // In case no value, min-height should be the font size.
+        };
   }};
   border-radius: 4px;
   overflow-wrap: break-word;
@@ -211,20 +211,18 @@ interface SubmittedTextInputComponentProps {
   isValid: boolean | undefined;
 }
 
-const SubmittedTextInputComponent = ({
-  layout,
-  currentValue,
-  isValid
-}: SubmittedTextInputComponentProps) => {
-  return <SubmittedTextInputContainer isTextarea={layout === 'textarea'}>
-    <SubmittedText>{currentValue}</SubmittedText>
-    {isValid && (
-      <CheckIconContainer>
-        <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
-      </CheckIconContainer>
-    )}
-  </SubmittedTextInputContainer>
-}
+const SubmittedTextInputComponent = ({ layout, currentValue, isValid }: SubmittedTextInputComponentProps) => {
+  return (
+    <SubmittedTextInputContainer isTextarea={layout === 'textarea'}>
+      <SubmittedText>{currentValue}</SubmittedText>
+      {isValid && (
+        <CheckIconContainer>
+          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
+        </CheckIconContainer>
+      )}
+    </SubmittedTextInputContainer>
+  );
+};
 
 const SubmittedText = styled.div`
   width: calc(100% - 24px);
@@ -294,23 +292,23 @@ const FormInput = (props: InputProps) => {
     placeHolder,
     isSubmitted,
   } = props;
-  
+
   const { options = [], resultCount }: MessageFormItemStyle = style;
   const { min = 1, max = 1 } = resultCount ?? {};
   const chipDataList: ChipData[] = getInitialChipDataList();
-  
+
   const [isFocused, setIsFocused] = useState(false);
-  
+
   const handleFocus = () => {
     setIsFocused(true);
     onFocused?.(true);
   };
-  
+
   const handleBlur = () => {
     setIsFocused(false);
     onFocused?.(false);
   };
-  
+
   function getInitialChipDataList(): ChipData[] {
     if (isSubmitted) {
       return options.map((option) => ({
@@ -324,7 +322,7 @@ const FormInput = (props: InputProps) => {
       }));
     }
   }
-  
+
   const onChipClick = (index: number) => {
     if (isSubmitted) return;
     let newDraftedValues: string[];
@@ -348,7 +346,7 @@ const FormInput = (props: InputProps) => {
     }
     onChange(newDraftedValues);
   };
-  
+
   return (
     <Root errorMessage={errorMessage}>
       <InputLabel>
@@ -391,14 +389,8 @@ const FormInput = (props: InputProps) => {
                 <InputContainer>
                   {isSubmitted ? (
                     <>
-                      <SubmittedTextInputComponent
-                        layout={layout}
-                        currentValue={currentValue}
-                        isValid={isValid}
-                      />
-                      {(placeHolder && !currentValue) && (
-                        <Placeholder>No Response</Placeholder>
-                      )}
+                      <SubmittedTextInputComponent layout={layout} currentValue={currentValue} isValid={isValid} />
+                      {placeHolder && !currentValue && <Placeholder>No Response</Placeholder>}
                     </>
                   ) : (
                     <>
@@ -414,9 +406,7 @@ const FormInput = (props: InputProps) => {
                           onChange(value ? [value] : []);
                         }}
                       />
-                      {(!disabled && placeHolder && !currentValue) && (
-                        <Placeholder>{placeHolder}</Placeholder>
-                      )}
+                      {!disabled && placeHolder && !currentValue && <Placeholder>{placeHolder}</Placeholder>}
                     </>
                   )}
                 </InputContainer>
@@ -431,14 +421,8 @@ const FormInput = (props: InputProps) => {
                 <InputContainer>
                   {isSubmitted ? (
                     <>
-                      <SubmittedTextInputComponent
-                        layout={layout}
-                        currentValue={currentValue}
-                        isValid={isValid}
-                      />
-                      {(placeHolder && !currentValue) && (
-                        <Placeholder>No Response</Placeholder>
-                      )}
+                      <SubmittedTextInputComponent layout={layout} currentValue={currentValue} isValid={isValid} />
+                      {placeHolder && !currentValue && <Placeholder>No Response</Placeholder>}
                     </>
                   ) : (
                     <>
@@ -457,9 +441,7 @@ const FormInput = (props: InputProps) => {
                           onChange(value ? [value] : []);
                         }}
                       />
-                      {(!disabled && placeHolder && !currentValue) && (
-                        <Placeholder>{placeHolder}</Placeholder>
-                      )}
+                      {!disabled && placeHolder && !currentValue && <Placeholder>{placeHolder}</Placeholder>}
                     </>
                   )}
                 </InputContainer>
@@ -470,11 +452,9 @@ const FormInput = (props: InputProps) => {
             }
           }
         })()}
-        {
-          (isInvalidated || !isFocused)
-          && errorMessage
-          && <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>
-        }
+        {(isInvalidated || !isFocused) && errorMessage && (
+          <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>
+        )}
       </div>
     </Root>
   );
