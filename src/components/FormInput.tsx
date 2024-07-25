@@ -251,6 +251,7 @@ const CheckIconForChip = styled(Icon)<CheckIconProps>`
 
 const InputContainer = styled.div`
   width: 100%;
+  position: relative;
 `;
 
 export interface InputProps {
