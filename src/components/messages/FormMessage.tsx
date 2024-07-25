@@ -40,8 +40,8 @@ const Root = styled.div`
         '&:hover': {
           'background-color': disabledBgColor,
         },
-      }
-    }
+      },
+    };
   }};
 `;
 
@@ -111,7 +111,7 @@ export default function FormMessage(props: Props) {
         return;
       }
       formValues.forEach((formValue, index) => {
-          items[index].draftValues = formValue.draftValues;
+        items[index].draftValues = formValue.draftValues;
       });
       await message.submitMessageForm();
     } catch (error) {

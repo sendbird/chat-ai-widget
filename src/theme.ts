@@ -20,7 +20,7 @@ export interface CommonTheme {
     formInput: {
       default: string;
       disabled: string;
-    }
+    };
     formChip: {
       default: string;
       selected: string;
@@ -111,21 +111,21 @@ export function getTheme({
   accentColor?: string;
   botMessageBGColor?: string;
 }): Theme {
-  const colorVarsForBotMessageBGColor: ColorVariantsByTheme | undefined =
-    botMessageBGColor ? {
-      light: generateColorVariants(botMessageBGColor, 'light'),
-      dark: generateColorVariants(botMessageBGColor, 'dark'),
-    } : undefined;
-  const colorVarsForAccentColor: ColorVariantsByTheme | undefined =
-    accentColor ? {
-      light: generateColorVariants(accentColor, 'light'),
-      dark: generateColorVariants(accentColor, 'dark'),
-    } : undefined;
-  const satColorForBotMessageBGColor =
-    botMessageBGColor ? getColorBasedOnSaturation(botMessageBGColor) : undefined;
-  const satColorForAccentColor =
-    accentColor ? getColorBasedOnSaturation(accentColor) : undefined;
-  
+  const colorVarsForBotMessageBGColor: ColorVariantsByTheme | undefined = botMessageBGColor
+    ? {
+        light: generateColorVariants(botMessageBGColor, 'light'),
+        dark: generateColorVariants(botMessageBGColor, 'dark'),
+      }
+    : undefined;
+  const colorVarsForAccentColor: ColorVariantsByTheme | undefined = accentColor
+    ? {
+        light: generateColorVariants(accentColor, 'light'),
+        dark: generateColorVariants(accentColor, 'dark'),
+      }
+    : undefined;
+  const satColorForBotMessageBGColor = botMessageBGColor ? getColorBasedOnSaturation(botMessageBGColor) : undefined;
+  const satColorForAccentColor = accentColor ? getColorBasedOnSaturation(accentColor) : undefined;
+
   return {
     light: {
       bgColor: {
@@ -139,9 +139,11 @@ export function getTheme({
         hover: {
           // Give 1 level darker color for hover
           incomingMessage: colorVarsForBotMessageBGColor
-            ? colorVarsForBotMessageBGColor['light'][400] : 'var(--sendbird-light-background-200)',
+            ? colorVarsForBotMessageBGColor['light'][400]
+            : 'var(--sendbird-light-background-200)',
           outgoingMessage: colorVarsForAccentColor
-            ? colorVarsForAccentColor['light'][400] : 'var(--sendbird-light-primary-400)',
+            ? colorVarsForAccentColor['light'][400]
+            : 'var(--sendbird-light-primary-400)',
           suggestedReply: 'var(--sendbird-light-background-100)',
           carouselButton: 'var(--sendbird-light-background-100)',
         },
@@ -165,7 +167,7 @@ export function getTheme({
         },
         messageDataContent: {
           sidebar: 'var(--sendbird-light-background-200)',
-        }
+        },
       },
       textColor: {
         incomingMessage: satColorForBotMessageBGColor ?? 'var(--sendbird-dark-onlight-01)',
@@ -196,11 +198,14 @@ export function getTheme({
           default: 'var(--sendbird-light-onlight-01)',
           link: {
             default: colorVarsForAccentColor
-              ? colorVarsForAccentColor['light'][300] : 'var(--sendbird-light-primary-300)',
+              ? colorVarsForAccentColor['light'][300]
+              : 'var(--sendbird-light-primary-300)',
             hover: colorVarsForAccentColor
-              ? colorVarsForAccentColor['light'][400] : 'var(--sendbird-light-primary-400)',
+              ? colorVarsForAccentColor['light'][400]
+              : 'var(--sendbird-light-primary-400)',
             focus: colorVarsForAccentColor
-              ? colorVarsForAccentColor['light'][300] : 'var(--sendbird-light-primary-300)',
+              ? colorVarsForAccentColor['light'][300]
+              : 'var(--sendbird-light-primary-300)',
             active: 'var(--sendbird-light-onlight-01)',
             disabled: 'var(--sendbird-light-onlight-03)',
           },
@@ -224,7 +229,7 @@ export function getTheme({
         },
         messageDataContent: {
           intentType: 'var(--sendbird-light-onlight-04)',
-        }
+        },
       },
       accentColor: accentColor ?? 'var(--sendbird-light-primary-300)',
     },
@@ -240,10 +245,12 @@ export function getTheme({
         hover: {
           // Give 1 level lighter color for hover
           incomingMessage: colorVarsForBotMessageBGColor
-            ? colorVarsForBotMessageBGColor['dark'][200] : 'var(--sendbird-dark-background-400)',
+            ? colorVarsForBotMessageBGColor['dark'][200]
+            : 'var(--sendbird-dark-background-400)',
           // Give 1 level darker color for hover
           outgoingMessage: colorVarsForAccentColor
-            ? colorVarsForAccentColor['dark'][400] : 'var(--sendbird-dark-primary-300)',
+            ? colorVarsForAccentColor['dark'][400]
+            : 'var(--sendbird-dark-primary-300)',
           suggestedReply: 'var(--sendbird-dark-background-500)',
           carouselButton: 'var(--sendbird-dark-background-500)',
         },
@@ -267,7 +274,7 @@ export function getTheme({
         },
         messageDataContent: {
           sidebar: 'var(--sendbird-dark-background-400)',
-        }
+        },
       },
       textColor: {
         outgoingMessage: satColorForAccentColor ?? 'var(--sendbird-dark-onlight-01)',
@@ -298,16 +305,15 @@ export function getTheme({
           default: 'var(--sendbird-dark-ondark-01)',
           link: {
             default: colorVarsForAccentColor
-              ? colorVarsForAccentColor['dark'][200] : 'var(--sendbird-dark-primary-200)',
-            hover: colorVarsForAccentColor
-              ? colorVarsForAccentColor['dark'][300] : 'var(--sendbird-dark-primary-300)',
-            focus: colorVarsForAccentColor
-              ? colorVarsForAccentColor['dark'][200] : 'var(--sendbird-dark-primary-200)',
+              ? colorVarsForAccentColor['dark'][200]
+              : 'var(--sendbird-dark-primary-200)',
+            hover: colorVarsForAccentColor ? colorVarsForAccentColor['dark'][300] : 'var(--sendbird-dark-primary-300)',
+            focus: colorVarsForAccentColor ? colorVarsForAccentColor['dark'][200] : 'var(--sendbird-dark-primary-200)',
             active: 'var(--sendbird-dark-ondark-01)',
             disabled: 'var(--sendbird-dark-ondark-03)',
           },
           sideNote: 'var(--sendbird-dark-ondark-02)',
-        }
+        },
       },
       borderColor: {
         channelHeader: 'var(--sendbird-dark-ondark-04)',
@@ -326,7 +332,7 @@ export function getTheme({
         },
         messageDataContent: {
           intentType: 'var(--sendbird-dark-ondark-02)',
-        }
+        },
       },
       accentColor: accentColor ?? 'var(--sendbird-dark-primary-200)',
     },
