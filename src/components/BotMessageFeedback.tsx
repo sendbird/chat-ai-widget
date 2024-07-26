@@ -41,6 +41,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
             } else {
               try {
                 await message.submitFeedback({ rating: FeedbackRating.GOOD });
+                setState({ modalVisible: true });
               } catch (error) {
                 console.error?.('Channel: Submit feedback failed.', error);
                 setState({ errorText: stringSet.FEEDBACK_FAILED_SUBMIT });
@@ -60,6 +61,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
             } else {
               try {
                 await message.submitFeedback({ rating: FeedbackRating.BAD });
+                setState({ modalVisible: true });
               } catch (error) {
                 console.error?.('Channel: Submit feedback failed.', error);
                 setState({ errorText: stringSet.FEEDBACK_FAILED_SUBMIT });
