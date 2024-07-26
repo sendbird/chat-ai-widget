@@ -2,15 +2,17 @@ import { SendbirdChatWith, SendbirdError, SendbirdErrorCode } from '@sendbird/ch
 import { GroupChannel, GroupChannelModule } from '@sendbird/chat/groupChannel';
 import { FileMessageCreateParams, UserMessageCreateParams } from '@sendbird/chat/message';
 import { useGroupChannelMessages } from '@sendbird/uikit-tools';
-import { createContext, MutableRefObject, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
 
 import { useMessageListScroll } from '@uikit/modules/GroupChannel/context/hooks/useMessageListScroll';
 
+import { useConstantState } from '../../../context/ConstantContext';
 import { useWidgetSetting } from '../../../context/WidgetSettingContext';
 import { Placeholder } from '../../../foundation/components/Placeholder';
+import { clearWidgetSessionCache } from '../../../libs/storage/widgetSessionCache';
 
 export interface WidgetStringSet {
-  ERR_SOMETHING_WENT_WRONG: string;
+  ERR_CHANNEL_FETCH: string;
 }
 
 export interface WidgetChatHandlers {
@@ -21,11 +23,10 @@ export interface ChatContextType {
   sdk: SendbirdChatWith<[GroupChannelModule]> | null;
   channel: GroupChannel | null;
   dataSource: ReturnType<typeof useGroupChannelMessages>;
+  scrollSource: ReturnType<typeof useMessageListScroll>;
 
   stringSet: WidgetStringSet;
   handlers: WidgetChatHandlers;
-
-  scrollRef: MutableRefObject<HTMLDivElement | null>;
 }
 
 const ChatContext = createContext<ChatContextType | null>(null);
@@ -39,14 +40,26 @@ export interface ChatContainerProps {
 
 export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
   const { sdk, channelUrl, stringSet, children } = props;
-
+  const { applicationId: appId, botId } = useConstantState();
   const { resetSession } = useWidgetSetting();
+
   const [channel, setChannel] = useState<GroupChannel | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const scrollSource = useMessageListScroll('smooth');
 
   // NOTE: sdk and channel are nullable, but useGroupChannelMessages can handle it even if types are not.
   const dataSource = useGroupChannelMessages(sdk as SendbirdChatWith<[GroupChannelModule]>, channel as GroupChannel, {
     shouldCountNewMessages: () => false,
+    onChannelDeleted: () => {
+      clearWidgetSessionCache({ appId, botId });
+    },
+    onMessagesReceived: () => {
+      scrollSource.scrollPubSub.publish('scrollToBottom', {});
+    },
+    onMessagesUpdated: () => {
+      scrollSource.scrollPubSub.publish('scrollToBottom', {});
+    },
   });
 
   useEffect(() => {
@@ -59,14 +72,12 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
 
     sdk.groupChannel
       .getChannel(channelUrl)
-      .then((channel) => {
-        setChannel(channel);
-      })
+      .then(setChannel)
       .catch((error: SendbirdError) => {
         if (error.code === SendbirdErrorCode.NOT_FOUND_IN_DATABASE) {
           resetSession();
         } else {
-          setErrorMessage(stringSet.ERR_SOMETHING_WENT_WRONG);
+          setErrorMessage(stringSet.ERR_CHANNEL_FETCH);
         }
       });
   }, [sdk, channelUrl]);
@@ -74,7 +85,7 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
   if (errorMessage) return <Placeholder type={'error'} label={errorMessage} />;
 
   return (
-    <ChatProvider channel={channel} dataSource={dataSource} {...props}>
+    <ChatProvider channel={channel} dataSource={dataSource} scrollSource={scrollSource} {...props}>
       {children}
     </ChatProvider>
   );
@@ -83,11 +94,11 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
 interface ChatProviderProps extends ChatContainerProps {
   channel: GroupChannel | null;
   dataSource: ReturnType<typeof useGroupChannelMessages>;
+  scrollSource: ReturnType<typeof useMessageListScroll>;
 }
 
 export const ChatProvider = (props: PropsWithChildren<ChatProviderProps>) => {
-  const { scrollRef } = useMessageListScroll('smooth');
-  return <ChatContext.Provider value={{ ...props, scrollRef }}>{props.children}</ChatContext.Provider>;
+  return <ChatContext.Provider value={props}>{props.children}</ChatContext.Provider>;
 };
 
 export const useChatContext = () => {

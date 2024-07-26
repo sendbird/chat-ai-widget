@@ -1,16 +1,15 @@
 import { css } from '@linaria/core';
 import { isSameDay } from 'date-fns/isSameDay';
-import { useRef } from 'react';
 
 import { getComponentKeyFromMessage } from '@uikit/modules/GroupChannel/context/utils';
 import { isSendableMessage } from '@uikit/utils';
 
 import { useConstantState } from '../../../context/ConstantContext';
 import { DateSeparator } from '../../../foundation/components/DateSeparator';
+import FrozenBanner from '../../../foundation/components/FrozenBanner';
 import { InfiniteMessageList } from '../../../foundation/components/InfiniteMessageList';
 import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
-import { usePartialState } from '../../../foundation/hooks/usePartialState';
 import { noop } from '../../../utils';
 import { messageExtension } from '../../../utils/messageExtension';
 import CustomMessage from '../../CustomMessage';
@@ -18,12 +17,9 @@ import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatMessageList = () => {
-  const { channel, dataSource } = useChatContext();
+  const { channel, dataSource, scrollSource } = useChatContext();
   const { botStudioEditProps } = useConstantState();
-  const ref = useRef<HTMLDivElement>(null);
-  const [state, setState] = usePartialState({
-    scrollPosition: 'bottom',
-  });
+
   const render = () => {
     if (!dataSource.initialized) {
       return <Placeholder type={'loading'} />;
@@ -35,8 +31,10 @@ export const ChatMessageList = () => {
 
     return (
       <InfiniteMessageList
-        ref={ref}
-        onScrollPosition={(it) => setState({ scrollPosition: it })}
+        ref={scrollSource.scrollRef}
+        scrollPositionRef={scrollSource.scrollPositionRef}
+        scrollDistanceFromBottomRef={scrollSource.scrollDistanceFromBottomRef}
+        onScrollPosition={(it) => scrollSource.setIsScrollBottomReached(it === 'bottom')}
         messages={dataSource.messages}
         depsForResetScrollPositionToBottom={[dataSource.messages.length]}
         renderMessage={({ message, index }) => {
@@ -76,6 +74,7 @@ export const ChatMessageList = () => {
         onLoadNext={dataSource.loadNext}
         overlayArea={
           <>
+            {channel?.isFrozen && <FrozenBanner className={frozenBanner} />}
             {/**
              * Note for unread status count & read status
              *  Currently, the widget only handles cases of chatting with bots, so it is not supported.
@@ -83,12 +82,10 @@ export const ChatMessageList = () => {
              *
              *  <UnreadStatusSince />
              */}
-            {state.scrollPosition !== 'bottom' && (
+            {!scrollSource.isScrollBottomReached && (
               <ScrollToBottomButton
                 className={scrollBottomPosition}
-                onClick={() => {
-                  if (ref.current) ref.current.scrollTop = ref.current.scrollHeight;
-                }}
+                onClick={() => scrollSource.scrollPubSub.publish('scrollToBottom', {})}
               />
             )}
           </>
@@ -103,6 +100,13 @@ export const ChatMessageList = () => {
     </div>
   );
 };
+
+const frozenBanner = css`
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline: 0;
+  margin-inline: 24px;
+`;
 
 const listContainer = css`
   overflow-y: hidden;

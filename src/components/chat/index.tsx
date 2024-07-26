@@ -11,7 +11,8 @@ import { useWidgetSetting } from '../../context/WidgetSettingContext';
 export const WidgetChatting = () => {
   const { stores } = useSendbirdStateContext();
 
-  const { stringSet, botStudioEditProps } = useConstantState();
+  // const { stringSet, botStudioEditProps } = useConstantState();
+  const { botStudioEditProps } = useConstantState();
   const { widgetSession } = useWidgetSetting();
 
   const aiAttributesRef = useRef(botStudioEditProps?.aiAttributes);
@@ -33,7 +34,7 @@ export const WidgetChatting = () => {
       sdk={stores.sdkStore.sdk}
       channelUrl={widgetSession?.channelUrl ?? ''}
       stringSet={{
-        ERR_SOMETHING_WENT_WRONG: stringSet.PLACE_HOLDER__WRONG,
+        ERR_CHANNEL_FETCH: 'Failed to retrieve channel information',
       }}
       handlers={{
         onBeforeSendMessage,
