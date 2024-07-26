@@ -391,7 +391,7 @@ const FormInput = (props: InputProps) => {
                   {isSubmitted ? (
                     <>
                       <SubmittedTextInputComponent layout={layout} currentValue={currentValue} isValid={isValid} />
-                      {placeHolder && !currentValue && <Placeholder>No Response</Placeholder>}
+                      {!currentValue && <Placeholder>No Response</Placeholder>}
                     </>
                   ) : (
                     <>
@@ -423,7 +423,7 @@ const FormInput = (props: InputProps) => {
                   {isSubmitted ? (
                     <>
                       <SubmittedTextInputComponent layout={layout} currentValue={currentValue} isValid={isValid} />
-                      {placeHolder && !currentValue && <Placeholder>No Response</Placeholder>}
+                      {!currentValue && <Placeholder>No Response</Placeholder>}
                     </>
                   ) : (
                     <>
