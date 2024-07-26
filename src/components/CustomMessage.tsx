@@ -1,6 +1,5 @@
 import { User } from '@sendbird/chat';
 
-import TypingDots from '@uikit/ui/TypingIndicatorBubble/TypingDots';
 import { CoreMessageType, isVideoMessage } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
@@ -18,6 +17,7 @@ import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
+import { TypingBubble } from '../foundation/components/TypingBubble';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
 import { isLastMessageInStreaming, isLocalMessageCustomType, isSentBy } from '../utils/messages';
@@ -152,7 +152,7 @@ export default function CustomMessage(props: Props) {
             {...commonProps}
             botUser={botUser}
             bodyComponent={
-              <ShopItemsMessage message={message} streamingBody={<TypingDots />} textBody={textMessageBody} />
+              <ShopItemsMessage message={message} streamingBody={<TypingBubble />} textBody={textMessageBody} />
             }
             createdAt={message.createdAt}
             messageFeedback={renderFeedbackButtons()}
