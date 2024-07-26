@@ -331,9 +331,10 @@ export function isWordpress() {
 }
 
 export function asSafeURL(url: string) {
-  let safeURL = decodeURIComponent(url);
+  let safeURL = url;
 
   try {
+    safeURL = decodeURIComponent(url);
     const { protocol } = new URL(safeURL);
     if (['https:', 'http:'].some((it) => it === protocol.toLowerCase())) {
       return safeURL;
