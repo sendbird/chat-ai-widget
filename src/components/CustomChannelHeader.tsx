@@ -110,9 +110,9 @@ export default function CustomChannelHeader({ botProfileUrl, botNickname, channe
                     right: isMobileView
                       ? 0
                       : // to make the refresh icon appear next to the close icon in the widget window
-                        callbacks?.onWidgetExpandStateChange
-                        ? RIGHT_WITH_EXPAND_BUTTON
-                        : RIGHT_WITHOUT_EXPAND_BUTTON,
+                      callbacks?.onWidgetExpandStateChange
+                      ? RIGHT_WITH_EXPAND_BUTTON
+                      : RIGHT_WITHOUT_EXPAND_BUTTON,
                   }
                 : customRefreshComponent.style
             }
