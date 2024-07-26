@@ -10,15 +10,19 @@ import FrozenBanner from '../../../foundation/components/FrozenBanner';
 import { InfiniteMessageList } from '../../../foundation/components/InfiniteMessageList';
 import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
-import { noop } from '../../../utils';
+import { isDashboardPreview } from '../../../utils';
 import { messageExtension } from '../../../utils/messageExtension';
 import CustomMessage from '../../CustomMessage';
+import MessageDataContent from '../../MessageDataContent';
+import WelcomeMessages from '../../messages/WelcomeMessages';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatMessageList = () => {
-  const { channel, dataSource, scrollSource } = useChatContext();
-  const { botStudioEditProps } = useConstantState();
+  const { channel, dataSource, scrollSource, handlers } = useChatContext();
+  const { botStudioEditProps, botId, customUserAgentParam } = useConstantState();
+
+  const botUser = channel?.members.find((member) => member.userId === botId);
 
   const render = () => {
     if (!dataSource.initialized) {
@@ -36,7 +40,24 @@ export const ChatMessageList = () => {
         scrollDistanceFromBottomRef={scrollSource.scrollDistanceFromBottomRef}
         onScrollPosition={(it) => scrollSource.setIsScrollBottomReached(it === 'bottom')}
         messages={dataSource.messages}
-        depsForResetScrollPositionToBottom={[dataSource.messages.length]}
+        onLoadPrev={dataSource.loadPrevious}
+        onLoadNext={dataSource.loadNext}
+        depsForResetScrollPositionToBottom={[dataSource.initialized, dataSource.messages.length !== 0]}
+        messageTopArea={
+          <>
+            {channel && botUser && (
+              // TODO
+              <WelcomeMessages
+                botUser={botUser}
+                channel={channel}
+                messageCount={dataSource.messages.length}
+                timestamp={Date.now()}
+                showSuggestedReplies={true}
+                lastMessageRef={null as any}
+              />
+            )}
+          </>
+        }
         renderMessage={({ message, index }) => {
           const prevCreatedAt = dataSource.messages[index - 1]?.createdAt ?? 0;
           const suggestedReplies = messageExtension.getSuggestedReplies(message);
@@ -45,13 +66,14 @@ export const ChatMessageList = () => {
           return (
             <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
               {!isSameDay(prevCreatedAt, message.createdAt) && (
+                // TODO: remove when welcome messages given
                 <DateSeparator className={dateSeparatorMargin} date={message.createdAt} />
               )}
               <CustomMessage
                 message={message as any}
+                botUser={isSendableMessage(message) ? message.sender : undefined}
                 // TODO: typing indicator
                 activeSpinnerId={0}
-                botUser={isSendableMessage(message) ? message.sender : undefined}
                 // TODO: message chain
                 chainTop={true}
                 chainBottom={true}
@@ -60,18 +82,24 @@ export const ChatMessageList = () => {
                 messageCount={0}
               />
 
+              {message.data &&
+                isDashboardPreview(customUserAgentParam) &&
+                message.messageId === channel?.lastMessage?.messageId && (
+                  <MessageDataContent messageData={message.data} />
+                )}
+
               {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
                 <SuggestedRepliesContainer
                   replies={suggestedReplies}
                   type={botStudioEditProps?.suggestedRepliesDirection}
-                  sendUserMessage={(params) => dataSource.sendUserMessage(params, noop)}
+                  sendUserMessage={(params) => {
+                    dataSource.sendUserMessage(params, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
+                  }}
                 />
               )}
             </div>
           );
         }}
-        onLoadPrev={dataSource.loadPrevious}
-        onLoadNext={dataSource.loadNext}
         overlayArea={
           <>
             {channel?.isFrozen && <FrozenBanner className={frozenBanner} />}

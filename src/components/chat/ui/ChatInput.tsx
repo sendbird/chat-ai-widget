@@ -11,7 +11,7 @@ import { useChatContext } from '../context/ChatProvider';
 
 export const ChatInput = () => {
   const { botId } = useConstantState();
-  const { channel, dataSource } = useChatContext();
+  const { channel, dataSource, handlers } = useChatContext();
 
   const ref = useRef<HTMLDivElement>(null);
   const isMessageInputDisabled = useBlockWhileBotResponding({
@@ -27,7 +27,8 @@ export const ChatInput = () => {
         messageInputRef={ref}
         currentChannel={channel as any}
         sendUserMessage={(params) => {
-          channel?.sendUserMessage(params);
+          const processedParams = handlers.onBeforeSendMessage(params);
+          dataSource.sendUserMessage(processedParams, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
         }}
         sendFileMessage={throwError}
       />
