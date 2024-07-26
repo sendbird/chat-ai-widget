@@ -1,11 +1,6 @@
-import { ChannelType, User } from '@sendbird/chat';
+import { User } from '@sendbird/chat';
 import type { GroupChannel } from '@sendbird/chat/groupChannel';
-import { MessageType, SendingStatus } from '@sendbird/chat/message';
-import { RefObject, useMemo } from 'react';
-
-import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
-import Message from '@uikit/modules/GroupChannel/components/Message';
-import { ClientUserMessage } from '@uikit/types';
+import { RefObject } from 'react';
 
 import { useConstantState } from '../../context/ConstantContext';
 import { parseTextMessage, Token } from '../../utils';
@@ -25,34 +20,14 @@ interface WelcomeMessagesProps {
 export default function WelcomeMessages(props: WelcomeMessagesProps) {
   const { replacementTextList, botStudioEditProps } = useConstantState();
   const { welcomeMessages, suggestedRepliesDirection } = botStudioEditProps ?? {};
-  const store = useSendbirdStateContext();
 
-  const { channel, botUser, messageCount, lastMessageRef, showSuggestedReplies, timestamp } = props;
-
-  const sb = store.stores.sdkStore.sdk;
-  const createdAt = timestamp ?? Date.now(); // channel.createdAt;
-  const localMessage: ClientUserMessage = useMemo(
-    () =>
-      sb.message.buildMessageFromSerializedData({
-        messageId: channel.createdAt,
-        channelUrl: channel.url,
-        channelType: ChannelType.GROUP,
-        createdAt, // FIXME: ms? or seconds? sorted by this or id?
-        sender: botUser.serialize(),
-        sendingStatus: SendingStatus.SUCCEEDED,
-        messageType: MessageType.USER,
-        message: 'a welcome message',
-        reactions: [],
-        plugins: [],
-      }) as ClientUserMessage,
-    [],
-  );
+  const { botUser, messageCount, lastMessageRef, showSuggestedReplies } = props;
 
   const isWelcomeMessagesGiven = welcomeMessages && welcomeMessages.length > 0;
   if (!isWelcomeMessagesGiven) return <></>;
 
   return (
-    <Message message={localMessage} hasSeparator={true}>
+    <>
       {welcomeMessages.map((welcomeMsg, index) => {
         const lastWelcomeMessageIndex = welcomeMessages.length - 1;
         const suggestedReplies = welcomeMsg.suggestedReplies;
@@ -78,6 +53,6 @@ export default function WelcomeMessages(props: WelcomeMessagesProps) {
           return <></>;
         }
       })}
-    </Message>
+    </>
   );
 }

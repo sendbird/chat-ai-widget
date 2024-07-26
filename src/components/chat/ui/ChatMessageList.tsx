@@ -46,15 +46,17 @@ export const ChatMessageList = () => {
         messageTopArea={
           <>
             {channel && botUser && (
-              // TODO
-              <WelcomeMessages
-                botUser={botUser}
-                channel={channel}
-                messageCount={dataSource.messages.length}
-                timestamp={Date.now()}
-                showSuggestedReplies={true}
-                lastMessageRef={null as any}
-              />
+              <>
+                <DateSeparator className={dateSeparatorMargin} />
+                <WelcomeMessages
+                  botUser={botUser}
+                  channel={channel}
+                  messageCount={dataSource.messages.length}
+                  timestamp={Date.now()}
+                  showSuggestedReplies={true}
+                  lastMessageRef={null as any}
+                />
+              </>
             )}
           </>
         }

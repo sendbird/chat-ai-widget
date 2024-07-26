@@ -16,10 +16,7 @@ export const useWidgetChatHandlers = (params: { onScrollToBottom: () => void }) 
   return {
     onBeforeSendMessage: <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => {
       if (aiAttributesRef.current) {
-        return {
-          ...params,
-          data: JSON.stringify({ ai_attrs: aiAttributesRef.current }),
-        };
+        return { ...params, data: JSON.stringify({ ai_attrs: aiAttributesRef.current }) };
       } else {
         return params;
       }

@@ -2,8 +2,7 @@ import { MessageFormItemStyle } from '@sendbird/chat/message';
 import { ReactElement, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 
-import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
-
+import { Icon } from '../foundation/components/Icon';
 import { Label as UILabel } from '../foundation/components/Label';
 
 export interface InputLabelProps {
@@ -339,12 +338,7 @@ const FormInput = (props: InputProps) => {
                       >
                         <ChipText>{chipData.option}</ChipText>
                         {isSubmitted && chipData.state === 'submittedSelected' && (
-                          <CheckIconForChip
-                            type={IconTypes.DONE}
-                            fillColor={IconColors.SECONDARY_2}
-                            width="20px"
-                            height="20px"
-                          />
+                          <CheckIconForChip type={'done'} color={'secondary'} size={20} />
                         )}
                       </Chip>
                     );
@@ -361,7 +355,7 @@ const FormInput = (props: InputProps) => {
                       <SubmittedText>{currentValue}</SubmittedText>
                       {isValid && (
                         <CheckIconContainer>
-                          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
+                          <Icon type={'done'} color={'secondary'} size={20} />
                         </CheckIconContainer>
                       )}
                     </SubmittedTextInputContainer>
@@ -395,7 +389,7 @@ const FormInput = (props: InputProps) => {
                       <SubmittedText>{currentValue}</SubmittedText>
                       {isValid && (
                         <CheckIconContainer>
-                          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
+                          <Icon type={'done'} color={'secondary'} size={20} />
                         </CheckIconContainer>
                       )}
                     </SubmittedTextInputContainer>
