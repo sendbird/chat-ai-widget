@@ -44,8 +44,6 @@ type Props = {
   bodyComponent: ReactNode;
   chainTop?: boolean;
   chainBottom?: boolean;
-  messageCount?: number;
-  zIndex?: number;
   messageFeedback?: ReactNode;
   wideContainer?: boolean;
 };
@@ -59,17 +57,7 @@ const HEIGHTS = {
 export default function BotMessageWithBodyInput(props: Props) {
   const { botStudioEditProps, dateLocale } = useConstantState();
 
-  const {
-    botUser,
-    createdAt,
-    bodyComponent,
-    messageCount,
-    zIndex,
-    chainTop,
-    chainBottom,
-    messageFeedback,
-    wideContainer = false,
-  } = props;
+  const { botUser, createdAt, bodyComponent, chainTop, chainBottom, messageFeedback, wideContainer = false } = props;
 
   const profilePaddingBottom = (messageFeedback ? HEIGHTS.FEEDBACK : 0) + (wideContainer ? HEIGHTS.TIMESTAMP : 0);
 
@@ -81,7 +69,7 @@ export default function BotMessageWithBodyInput(props: Props) {
   const botNickname = nickname ?? botUser?.nickname;
 
   return (
-    <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
+    <Root>
       {displayProfileImage ? (
         <div style={{ paddingBottom: profilePaddingBottom }}>
           <BotProfileImage size={28} profileUrl={botProfileUrl} />

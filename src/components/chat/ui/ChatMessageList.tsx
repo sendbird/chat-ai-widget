@@ -67,8 +67,6 @@ export const ChatMessageList = () => {
                 // TODO: message chain
                 chainTop={true}
                 chainBottom={true}
-                isBotWelcomeMessage={false}
-                isLastBotMessage={false}
                 messageCount={0}
               />
 
