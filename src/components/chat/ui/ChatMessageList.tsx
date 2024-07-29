@@ -21,7 +21,7 @@ import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
 
 export const ChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
-  const { botStudioEditProps, customUserAgentParam } = useConstantState();
+  const { botStudioEditProps, customUserAgentParam, stringSet } = useConstantState();
 
   const typingTargetMessageId = useTypingTargetMessageId();
   const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();
@@ -54,7 +54,11 @@ export const ChatMessageList = () => {
           return (
             <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
               {!isSameDay(prevCreatedAt, message.createdAt) && shouldShowOriginalDate(index) && (
-                <DateSeparator className={dateSeparatorMargin} date={message.createdAt} />
+                <DateSeparator
+                  className={dateSeparatorMargin}
+                  date={message.createdAt}
+                  formatString={stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR}
+                />
               )}
               <CustomMessage
                 message={message as any}

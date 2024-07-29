@@ -11,7 +11,7 @@ import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
 
 export const useBotStudioView = () => {
-  const { botStudioEditProps = {}, botId, replacementTextList } = useConstantState();
+  const { botStudioEditProps = {}, botId, replacementTextList, stringSet } = useConstantState();
   const { dataSource, channel, handlers } = useChatContext();
   const { suggestedRepliesDirection, welcomeMessages = [] } = botStudioEditProps;
   const { messages } = dataSource;
@@ -48,7 +48,11 @@ export const useBotStudioView = () => {
 
       return (
         <>
-          <DateSeparator className={dateSeparatorMargin} date={originalWMs[0]?.createdAt} />
+          <DateSeparator
+            className={dateSeparatorMargin}
+            date={originalWMs[0]?.createdAt}
+            formatString={stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR}
+          />
           {welcomeMessages.map((msg, index) => {
             const suggestedReplies = msg.suggestedReplies;
             if ('message' in msg) {
