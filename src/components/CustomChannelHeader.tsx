@@ -106,14 +106,14 @@ export default function CustomChannelHeader({ botProfileUrl, botNickname, channe
             style={
               isEmpty(customRefreshComponent.style)
                 ? {
-                  position: 'relative',
-                  right: isMobileView
-                    ? 0
-                    : // to make the refresh icon appear next to the close icon in the widget window
-                    callbacks?.onWidgetExpandStateChange
-                      ? RIGHT_WITH_EXPAND_BUTTON
-                      : RIGHT_WITHOUT_EXPAND_BUTTON,
-                }
+                    position: 'relative',
+                    right: isMobileView
+                      ? 0
+                      : // to make the refresh icon appear next to the close icon in the widget window
+                        callbacks?.onWidgetExpandStateChange
+                        ? RIGHT_WITH_EXPAND_BUTTON
+                        : RIGHT_WITHOUT_EXPAND_BUTTON,
+                  }
                 : customRefreshComponent.style
             }
           />

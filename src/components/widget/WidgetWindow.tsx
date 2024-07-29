@@ -30,7 +30,8 @@ const StyledWidgetWindowWrapper = styled.div<{
   overflow: hidden;
   transform-origin: right bottom;
   transition:
-    width 200ms ease 0s, height 200ms ease 0s,
+    width 200ms ease 0s,
+    height 200ms ease 0s,
     max-height 200ms ease 0s,
     transform 150ms cubic-bezier(0, 1.2, 1, 1) 0s,
     opacity 83ms ease-out 0s;
@@ -46,7 +47,8 @@ const StyledWidgetWindowWrapper = styled.div<{
         transform: scale(1);
         opacity: 1;
         transition:
-          width 200ms ease 0s, height 200ms ease 0s,
+          width 200ms ease 0s,
+          height 200ms ease 0s,
           max-height 200ms ease 0s,
           transform 300ms cubic-bezier(0, 1.2, 1, 1) 0s,
           opacity 83ms ease-out 0s;

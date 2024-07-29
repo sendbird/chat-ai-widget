@@ -15,7 +15,7 @@ export function groupMessagesByShortSpanTime(messages: BaseMessage[]): BaseMessa
     (groups, message, idx) => {
       // Get the key of the previous group
       const prevKey = Object.keys(groups)[Object.keys(groups).length - 1];
-      
+
       // Check if the time difference between the current message and the previous one is within 3 minutes
       if (
         prevKey &&
