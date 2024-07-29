@@ -60,20 +60,17 @@ export function groupMessagesByShortSpanTime(messages: BaseMessage[]): BaseMessa
   });
 }
 
+export function isBotWelcomeMessage(message: BaseMessage, botId: string | null) {
+  if ((message.isUserMessage() || message.isFileMessage()) && message.sender.userId === botId) {
+    const data = parseMessageDataSafely(message.data);
+    return !data?.respond_mesg_id && !data?.stream;
+  }
+
+  return false;
+}
+
 export function getBotWelcomeMessages(messages: BaseMessage[], botUserId: string | null) {
-  // if the list is empty or the first message is not from bot,
-  // we just assume there's no welcome messages
-  if (messages.length === 0 || getSenderUserIdFromMessage(messages[0]) !== botUserId) {
-    return [];
-  }
-
-  // if the list has only bot messages, then just return the whole list
-  if (messages.every((message) => getSenderUserIdFromMessage(message) === botUserId)) {
-    return messages;
-  }
-
-  const firstUserMessage = messages.find((message) => getSenderUserIdFromMessage(message) !== botUserId);
-  return messages.slice(0, firstUserMessage ? messages.indexOf(firstUserMessage) : -1);
+  return messages.filter((it) => isBotWelcomeMessage(it, botUserId));
 }
 
 export function isSentBy(message: BaseMessage, userId?: string | null) {

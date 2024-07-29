@@ -14,17 +14,17 @@ import { isDashboardPreview } from '../../../utils';
 import { messageExtension } from '../../../utils/messageExtension';
 import CustomMessage from '../../CustomMessage';
 import MessageDataContent from '../../MessageDataContent';
-import WelcomeMessages from '../../messages/WelcomeMessages';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
+import { useBotStudioView } from '../hooks/useBotStudioView';
 import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
 
 export const ChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
-  const { botStudioEditProps, botId, customUserAgentParam } = useConstantState();
+  const { botStudioEditProps, customUserAgentParam } = useConstantState();
 
-  const botUser = channel?.members.find((member) => member.userId === botId);
   const typingTargetMessageId = useTypingTargetMessageId();
+  const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();
 
   const render = () => {
     if (!dataSource.initialized) {
@@ -41,36 +41,19 @@ export const ChatMessageList = () => {
         scrollPositionRef={scrollSource.scrollPositionRef}
         scrollDistanceFromBottomRef={scrollSource.scrollDistanceFromBottomRef}
         onScrollPosition={(it) => scrollSource.setIsScrollBottomReached(it === 'bottom')}
-        messages={dataSource.messages}
+        messages={filteredMessages}
         onLoadPrev={dataSource.loadPrevious}
         onLoadNext={dataSource.loadNext}
         depsForResetScrollPositionToBottom={[dataSource.initialized, dataSource.messages.length !== 0]}
-        messageTopArea={
-          <>
-            {channel && botUser && (
-              <>
-                <DateSeparator className={dateSeparatorMargin} />
-                <WelcomeMessages
-                  botUser={botUser}
-                  channel={channel}
-                  messageCount={dataSource.messages.length}
-                  timestamp={Date.now()}
-                  showSuggestedReplies={true}
-                  lastMessageRef={null as any}
-                />
-              </>
-            )}
-          </>
-        }
+        messageTopArea={<>{renderBotStudioWelcomeMessages()}</>}
         renderMessage={({ message, index }) => {
-          const prevCreatedAt = dataSource.messages[index - 1]?.createdAt ?? 0;
+          const prevCreatedAt = filteredMessages[index - 1]?.createdAt ?? 0;
           const suggestedReplies = messageExtension.getSuggestedReplies(message);
           const showRepliesOnLastMessage = message.messageId === channel?.lastMessage?.messageId;
 
           return (
             <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
-              {!isSameDay(prevCreatedAt, message.createdAt) && (
-                // TODO: remove when welcome messages given
+              {!isSameDay(prevCreatedAt, message.createdAt) && shouldShowOriginalDate(index) && (
                 <DateSeparator className={dateSeparatorMargin} date={message.createdAt} />
               )}
               <CustomMessage
