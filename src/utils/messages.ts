@@ -60,17 +60,8 @@ export function groupMessagesByShortSpanTime(messages: BaseMessage[]): BaseMessa
   });
 }
 
-export function isBotWelcomeMessage(message: BaseMessage, botId: string | null) {
-  if ((message.isUserMessage() || message.isFileMessage()) && message.sender.userId === botId) {
-    const data = parseMessageDataSafely(message.data);
-    return !data?.respond_mesg_id && !data?.stream;
-  }
-
-  return false;
-}
-
 export function getBotWelcomeMessages(messages: BaseMessage[], botUserId: string | null) {
-  return messages.filter((it) => isBotWelcomeMessage(it, botUserId));
+  return messages.filter((it) => messageExtension.isBotWelcomeMsg(it, botUserId));
 }
 
 export function isSentBy(message: BaseMessage, userId?: string | null) {

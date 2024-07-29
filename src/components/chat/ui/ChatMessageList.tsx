@@ -11,7 +11,6 @@ import { InfiniteMessageList } from '../../../foundation/components/InfiniteMess
 import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
 import { isDashboardPreview } from '../../../utils';
-import { messageExtension } from '../../../utils/messageExtension';
 import CustomMessage from '../../CustomMessage';
 import MessageDataContent from '../../MessageDataContent';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
@@ -48,7 +47,7 @@ export const ChatMessageList = () => {
         messageTopArea={<>{renderBotStudioWelcomeMessages()}</>}
         renderMessage={({ message, index }) => {
           const prevCreatedAt = filteredMessages[index - 1]?.createdAt ?? 0;
-          const suggestedReplies = messageExtension.getSuggestedReplies(message);
+          const suggestedReplies = message.suggestedReplies ?? [];
           const showRepliesOnLastMessage = message.messageId === channel?.lastMessage?.messageId;
 
           return (
@@ -67,7 +66,6 @@ export const ChatMessageList = () => {
                 // TODO: message chain
                 chainTop={true}
                 chainBottom={true}
-                messageCount={0}
               />
 
               {message.data &&

@@ -51,7 +51,6 @@ type Props = {
   bodyComponent: ReactNode;
   chainTop?: boolean;
   chainBottom?: boolean;
-  isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
   locale?: Locale;
 };

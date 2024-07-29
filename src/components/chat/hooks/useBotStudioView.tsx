@@ -4,7 +4,8 @@ import { isSameDay } from 'date-fns';
 import { useConstantState } from '../../../context/ConstantContext';
 import { DateSeparator } from '../../../foundation/components/DateSeparator';
 import { parseTextMessage, Token } from '../../../utils';
-import { getBotWelcomeMessages, isBotWelcomeMessage, shouldFilterOutMessage } from '../../../utils/messages';
+import { messageExtension } from '../../../utils/messageExtension';
+import { getBotWelcomeMessages, shouldFilterOutMessage } from '../../../utils/messages';
 import BotMessageWithBodyInput from '../../BotMessageWithBodyInput';
 import ParsedBotMessageBody from '../../ParsedBotMessageBody';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
@@ -29,7 +30,7 @@ export const useBotStudioView = () => {
       // Removes messages based on hardcoded rules.
       if (shouldFilterOutMessage(it)) return false;
       // If live edit is required, removes welcome messages.
-      if (welcomeMessages.length > 0) return !isBotWelcomeMessage(it, botId);
+      if (welcomeMessages.length > 0) return !messageExtension.isBotWelcomeMsg(it, botId);
       return true;
     }),
     /**
