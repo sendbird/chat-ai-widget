@@ -66,6 +66,7 @@ export const DEFAULT_CONSTANT = {
   enableEmojiFeedback: true,
   enableMention: true,
   enableResetHistoryOnConnect: false,
+  enableWidgetExpandButton: false,
   dateLocale: enUS,
   enableHideWidgetForDeactivatedUser: false,
   messageInputControls: {
@@ -303,6 +304,11 @@ interface ConstantFeatureFlags {
    * @description Hide widget for deactivated user.
    * */
   enableHideWidgetForDeactivatedUser: boolean;
+  /**
+   * @public
+   * @description Enable widget expand button.
+   * */
+  enableWidgetExpandButton: boolean;
 }
 
 export interface SuggestedReply {

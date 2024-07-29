@@ -89,6 +89,7 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
         enableResetHistoryOnConnect: props.enableResetHistoryOnConnect ?? initialState.enableResetHistoryOnConnect,
         enableHideWidgetForDeactivatedUser:
           props.enableHideWidgetForDeactivatedUser ?? initialState.enableHideWidgetForDeactivatedUser,
+        enableWidgetExpandButton: props.enableWidgetExpandButton ?? initialState.enableWidgetExpandButton,
         // ----- Legacy props ----- //
         betaMark: props.betaMark ?? initialState.betaMark,
         customBetaMarkText: props.customBetaMarkText ?? initialState.customBetaMarkText,

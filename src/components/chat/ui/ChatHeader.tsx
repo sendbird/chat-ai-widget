@@ -10,11 +10,18 @@ import { Label } from '../../../foundation/components/Label';
 import CloseIcon from '../../../icons/ic-close.svg';
 import ExpandIcon from '../../../icons/ic-expand.svg';
 import CollapsedIcon from '../../../icons/icon-collapse.svg';
+import { isDashboardPreview } from '../../../utils';
 import BotProfileImage from '../../BotProfileImage';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatHeader = () => {
-  const { botId, botStudioEditProps, isMobileView, callbacks } = useConstantState();
+  const {
+    botId,
+    botStudioEditProps,
+    isMobileView,
+    customUserAgentParam: agent,
+    enableWidgetExpandButton,
+  } = useConstantState();
   const { channel, dataSource } = useChatContext();
   const { setIsOpen } = useWidgetState();
 
@@ -45,7 +52,7 @@ export const ChatHeader = () => {
       </div>
       <div className={buttonsContainer}>
         <RefreshButton size={buttonSize} onClick={handleRefresh} />
-        {callbacks?.onWidgetExpandStateChange && <ExpandButton size={buttonSize} />}
+        {(isDashboardPreview(agent) || enableWidgetExpandButton) && <ExpandButton size={buttonSize} />}
         <CloseButton size={buttonSize} onClick={handleClose} />
       </div>
     </div>
