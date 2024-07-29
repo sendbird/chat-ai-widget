@@ -28,5 +28,15 @@ export const useTypingTargetMessageId = () => {
     }
   }, [lastMessage?.messageId]);
 
+  // useGroupChannelHandler(sdk, {
+  //   onTypingStatusUpdated: (it) => {
+  //     if (it.url === channel?.url) {
+  //       const shouldActivateSpinner = it.getTypingUsers().find((it) => it.userId === botId);
+  //       setMessageId(shouldActivateSpinner ? lastMessage.messageId : -1);
+  //       setTimeout(() => scrollSource.scrollPubSub.publish('scrollToBottom', {}), 150);
+  //     }
+  //   },
+  // });
+
   return messageId;
 };
