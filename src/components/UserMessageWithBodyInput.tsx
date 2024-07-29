@@ -55,8 +55,6 @@ type Props = {
   locale?: Locale;
 };
 
-const ImageContainer = styled.div``;
-
 const EmptyImageContainer = styled.div`
   width: 28px;
 `;
@@ -71,9 +69,9 @@ export default function UserMessageWithBodyInput(props: Props) {
   return (
     <Root>
       {displayProfileImage ? (
-        <ImageContainer>
+        <div>
           <Avatar height="28px" width="28px" src={user?.profileUrl} />
-        </ImageContainer>
+        </div>
       ) : (
         <EmptyImageContainer />
       )}
