@@ -24,11 +24,12 @@ import { isLastMessageInStreaming, isLocalMessageCustomType, isSentBy } from '..
 
 type Props = {
   message: CoreMessageType;
-  activeSpinnerId: number;
-  botUser?: User;
   isBotWelcomeMessage: boolean;
   isLastBotMessage: boolean;
   messageCount: number;
+  typingUserIds: string[];
+  isLastMessage: boolean;
+  botUser?: User;
   chainTop?: boolean;
   chainBottom?: boolean;
 };
@@ -36,13 +37,14 @@ type Props = {
 export default function CustomMessage(props: Props) {
   const {
     message,
-    activeSpinnerId,
-    botUser,
-    chainTop,
-    chainBottom,
     isBotWelcomeMessage,
     isLastBotMessage,
     messageCount,
+    typingUserIds,
+    isLastMessage,
+    botUser,
+    chainTop,
+    chainBottom,
   } = props;
   const commonProps = {
     chainTop,
@@ -57,7 +59,7 @@ export default function CustomMessage(props: Props) {
   const { profileUrl } = botStudioEditProps?.botInfo ?? {};
   const botUserId = botUser?.userId;
   const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';
-  const isWaitingForBotReply = activeSpinnerId === message.messageId && !!botUser;
+  const isWaitingForBotReply = isLastMessage && (botUser?.userId ? typingUserIds.includes(botUser.userId) : false);
 
   const shouldRenderFeedback = () => {
     return (

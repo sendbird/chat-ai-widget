@@ -1,7 +1,7 @@
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus, UserMessage } from '@sendbird/chat/message';
 import { isSameDay } from 'date-fns/isSameDay';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import styled from 'styled-components';
 
 import GroupChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
@@ -22,6 +22,7 @@ import useAutoDismissMobileKeyboardHandler from '../hooks/useAutoDismissMobileKe
 import { useBlockWhileBotResponding } from '../hooks/useBlockWhileBotResponding';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
+import useTypingUserIds from '../hooks/useTypingUserIds';
 import { isDashboardPreview, isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,
@@ -136,8 +137,6 @@ export function CustomChannelComponent() {
 
   const isLastBotMessage = !(lastMessage?.messageType === 'admin') && lastMessage?.sender?.userId === botId;
 
-  const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
-
   const messageCount = allMessages?.length ?? 0;
 
   const dynamicReplyOptions = (lastMessage?.extendedMessagePayload?.suggested_replies ?? []) as string[];
@@ -149,6 +148,7 @@ export function CustomChannelComponent() {
     enableEmojiFeedback,
   );
 
+  const typingUserIds = useTypingUserIds();
   useAutoDismissMobileKeyboardHandler();
   useResetHistoryOnConnected();
   useScrollOnStreaming({
@@ -179,12 +179,10 @@ export function CustomChannelComponent() {
       // this bubble loading should be shown only when there're only bot and 1 user in the channel
       channel?.memberCount === 2
     ) {
-      setActiveSpinnerId(lastMessage.messageId);
       setTimeout(() => {
         scrollToBottom();
       }, 150);
     } else {
-      setActiveSpinnerId(-1);
       setTimeout(() => {
         scrollToBottom();
       }, 150);
@@ -278,7 +276,6 @@ export function CustomChannelComponent() {
               >
                 <CustomMessage
                   message={message}
-                  activeSpinnerId={activeSpinnerId}
                   botUser={botUser}
                   // FIXME: Remove data pollution.
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -291,6 +288,8 @@ export function CustomChannelComponent() {
                   isBotWelcomeMessage={isBotWelcomeMessage}
                   isLastBotMessage={isLastBotMessage}
                   messageCount={messageCount}
+                  typingUserIds={typingUserIds}
+                  isLastMessage={channel?.lastMessage?.messageId === message.messageId}
                 />
                 {message.messageId === lastMessage?.messageId &&
                   (() => {
