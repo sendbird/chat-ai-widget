@@ -17,12 +17,14 @@ import MessageDataContent from '../../MessageDataContent';
 import WelcomeMessages from '../../messages/WelcomeMessages';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
+import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
 
 export const ChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
   const { botStudioEditProps, botId, customUserAgentParam } = useConstantState();
 
   const botUser = channel?.members.find((member) => member.userId === botId);
+  const typingTargetMessageId = useTypingTargetMessageId();
 
   const render = () => {
     if (!dataSource.initialized) {
@@ -74,8 +76,7 @@ export const ChatMessageList = () => {
               <CustomMessage
                 message={message as any}
                 botUser={isSendableMessage(message) ? message.sender : undefined}
-                // TODO: typing indicator
-                activeSpinnerId={0}
+                activeSpinnerId={typingTargetMessageId}
                 // TODO: message chain
                 chainTop={true}
                 chainBottom={true}

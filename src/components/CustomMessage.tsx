@@ -20,7 +20,7 @@ import { useWidgetSession } from '../context/WidgetSettingContext';
 import { TypingBubble } from '../foundation/components/TypingBubble';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
-import { isLastMessageInStreaming, isLocalMessageCustomType, isSentBy } from '../utils/messages';
+import { isLocalMessageCustomType, isSentBy } from '../utils/messages';
 
 type Props = {
   message: CoreMessageType;
@@ -64,7 +64,7 @@ export default function CustomMessage(props: Props) {
       enableEmojiFeedback &&
       message.myFeedbackStatus !== 'NOT_APPLICABLE' &&
       !isBotWelcomeMessage &&
-      !(isLastBotMessage && isLastMessageInStreaming(message.data))
+      !(isLastBotMessage && messageExtension.isStreaming(message))
     );
   };
 

@@ -42,7 +42,7 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const scrollSource = useMessageListScroll('smooth');
-  const onScrollToBottom = () => scrollSource.scrollPubSub.publish('scrollToBottom', {});
+  const onScrollToBottom = () => setTimeout(() => scrollSource.scrollPubSub.publish('scrollToBottom', {}), 25);
   const handlers = useWidgetChatHandlers({ onScrollToBottom });
 
   // NOTE: sdk and channel are nullable, but useGroupChannelMessages can handle it even if types are not.

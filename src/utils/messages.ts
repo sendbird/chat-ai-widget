@@ -1,5 +1,6 @@
 import { AdminMessage, BaseMessage, UserMessage } from '@sendbird/chat/message';
 
+import { messageExtension } from './messageExtension';
 import { LOCAL_MESSAGE_CUSTOM_TYPE, type SuggestedMessageContent } from '../const';
 
 const TIME_SPAN = 3 * 60 * 1000;
@@ -79,14 +80,6 @@ export function isSentBy(message: BaseMessage, userId?: string | null) {
   return getSenderUserIdFromMessage(message) === userId;
 }
 
-export function isLastMessageInStreaming(messageData?: string) {
-  if (!messageData) {
-    return false;
-  }
-  const messageMetaData = parseMessageDataSafely(messageData);
-  return 'stream' in messageMetaData && messageMetaData.stream;
-}
-
 export function isLocalMessageCustomType(customType: string | undefined) {
   if (customType == undefined) {
     return false;
@@ -114,7 +107,7 @@ export function isStaticReplyVisible(
   return (
     !(lastMessage.messageType === 'admin') &&
     lastMessage.sender?.userId === botUserId &&
-    !isLastMessageInStreaming(lastMessage.data) &&
+    !messageExtension.isStreaming(lastMessage) &&
     !isLocalMessageCustomType(lastMessage.customType) &&
     suggestedMessageContent?.replyContents?.length > 0 &&
     !isSpecialMessage(lastMessage.message, suggestedMessageContent.messageFilterList)
