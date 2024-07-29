@@ -27,8 +27,7 @@ type Props = {
   isBotWelcomeMessage: boolean;
   isLastBotMessage: boolean;
   messageCount: number;
-  typingUserIds: string[];
-  isLastMessage: boolean;
+  isWaitingForBotReply: boolean;
   botUser?: User;
   chainTop?: boolean;
   chainBottom?: boolean;
@@ -40,8 +39,7 @@ export default function CustomMessage(props: Props) {
     isBotWelcomeMessage,
     isLastBotMessage,
     messageCount,
-    typingUserIds,
-    isLastMessage,
+    isWaitingForBotReply,
     botUser,
     chainTop,
     chainBottom,
@@ -59,7 +57,6 @@ export default function CustomMessage(props: Props) {
   const { profileUrl } = botStudioEditProps?.botInfo ?? {};
   const botUserId = botUser?.userId;
   const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';
-  const isWaitingForBotReply = isLastMessage && (botUser?.userId ? typingUserIds.includes(botUser.userId) : false);
 
   const shouldRenderFeedback = () => {
     return (

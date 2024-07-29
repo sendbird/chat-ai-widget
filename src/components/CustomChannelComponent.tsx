@@ -288,8 +288,10 @@ export function CustomChannelComponent() {
                   isBotWelcomeMessage={isBotWelcomeMessage}
                   isLastBotMessage={isLastBotMessage}
                   messageCount={messageCount}
-                  typingUserIds={typingUserIds}
-                  isLastMessage={channel?.lastMessage?.messageId === message.messageId}
+                  isWaitingForBotReply={
+                    channel?.lastMessage?.messageId === message.messageId &&
+                    (botUser?.userId ? typingUserIds.includes(botUser.userId) : false)
+                  }
                 />
                 {message.messageId === lastMessage?.messageId &&
                   (() => {
