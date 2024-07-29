@@ -11,6 +11,7 @@ import { InfiniteMessageList } from '../../../foundation/components/InfiniteMess
 import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
 import { isDashboardPreview } from '../../../utils';
+import { getMessageGrouping } from '../../../utils/messages';
 import CustomMessage from '../../CustomMessage';
 import MessageDataContent from '../../MessageDataContent';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
@@ -50,6 +51,8 @@ export const ChatMessageList = () => {
           const suggestedReplies = message.suggestedReplies ?? [];
           const showRepliesOnLastMessage = message.messageId === channel?.lastMessage?.messageId;
 
+          const [top, bottom] = getMessageGrouping(message, filteredMessages[index - 1], filteredMessages[index + 1]);
+
           return (
             <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
               {!isSameDay(prevCreatedAt, message.createdAt) && shouldShowOriginalDate(index) && (
@@ -63,9 +66,8 @@ export const ChatMessageList = () => {
                 message={message as any}
                 botUser={isSendableMessage(message) ? message.sender : undefined}
                 activeSpinnerId={typingTargetMessageId}
-                // TODO: message chain
-                chainTop={true}
-                chainBottom={true}
+                chainTop={top}
+                chainBottom={bottom}
               />
 
               {message.data &&

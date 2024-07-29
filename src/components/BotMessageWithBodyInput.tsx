@@ -62,8 +62,8 @@ export default function BotMessageWithBodyInput(props: Props) {
   const profilePaddingBottom = (messageFeedback ? HEIGHTS.FEEDBACK : 0) + (wideContainer ? HEIGHTS.TIMESTAMP : 0);
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
-  const displayProfileImage = nonChainedMessage || chainBottom;
   const displaySender = nonChainedMessage || chainTop;
+  const displayProfileImage = nonChainedMessage || chainBottom;
   const { profileUrl, nickname } = botStudioEditProps?.botInfo ?? {};
   const botProfileUrl = profileUrl ?? botUser?.profileUrl;
   const botNickname = nickname ?? botUser?.nickname;

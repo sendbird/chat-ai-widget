@@ -1,64 +1,30 @@
 import { AdminMessage, BaseMessage, UserMessage } from '@sendbird/chat/message';
+import { isSameMinute } from 'date-fns';
 
 import { messageExtension } from './messageExtension';
 import { LOCAL_MESSAGE_CUSTOM_TYPE, type SuggestedMessageContent } from '../const';
 
-const TIME_SPAN = 3 * 60 * 1000;
-/**
- * Function to group messages based on their creation time
- *
- * @param {EveryMessage[]} messages - Array of messages to group
- * @returns {EveryMessage[]} - Array of messages grouped by creation time
- */
-export function groupMessagesByShortSpanTime(messages: BaseMessage[]): BaseMessage[] {
-  // Create an object to group messages based on their creation time
-  const groupedMessagesByCreatedAt = messages.reduce(
-    (groups, message, idx) => {
-      // Get the key of the previous group
-      const prevKey = Object.keys(groups)[Object.keys(groups).length - 1];
+export const getMessageGrouping = (curr: BaseMessage, prev?: BaseMessage, next?: BaseMessage): [boolean, boolean] => {
+  if (!curr.isUserMessage() && !curr.isFileMessage()) {
+    return [false, false];
+  }
 
-      // Check if the time difference between the current message and the previous one is within 3 minutes
-      if (
-        prevKey &&
-        message.createdAt - Number(prevKey) <= TIME_SPAN &&
-        !message.isAdminMessage() &&
-        getSenderUserIdFromMessage(message) === getSenderUserIdFromMessage(messages[idx - 1])
-      ) {
-        // Add the message to the existing group
-        return {
-          ...groups,
-          [prevKey]: [...(groups[prevKey] ?? []), message],
-        };
-      } else {
-        // Create a new group for the current message
-        return {
-          ...groups,
-          [message.createdAt]: [message],
-        };
-      }
-    },
-    {} as Record<string, BaseMessage[]>,
-  );
+  const getTop = () => {
+    if (!prev || (!prev.isUserMessage() && !prev.isFileMessage())) return true;
+    const isSameSender = prev.sender.userId === curr.sender.userId;
+    const isSameGroup = isSameMinute(prev.createdAt, curr.createdAt);
+    return !isSameSender || !isSameGroup;
+  };
 
-  // Flatten the grouped messages and add chain indicators
-  return Object.values(groupedMessagesByCreatedAt).flatMap((messages: BaseMessage[]) => {
-    if (messages.length > 1) {
-      // Add chain indicators to the first and last messages in the group
-      messages.forEach((message, index) => {
-        // FIXME: Remove data pollution.
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        message.chainTop = index === 0;
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        message.chainBottom = index === messages.length - 1;
-      });
+  const getBottom = () => {
+    if (!next || (!next.isUserMessage() && !next.isFileMessage())) return true;
+    const isSameSender = next.sender.userId === curr.sender.userId;
+    const isSameGroup = isSameMinute(next.createdAt, curr.createdAt);
+    return !isSameSender || !isSameGroup;
+  };
 
-      return messages;
-    }
-    return messages;
-  });
-}
+  return [getTop(), getBottom()];
+};
 
 export function getBotWelcomeMessages(messages: BaseMessage[], botUserId: string | null) {
   return messages.filter((it) => messageExtension.isBotWelcomeMsg(it, botUserId));

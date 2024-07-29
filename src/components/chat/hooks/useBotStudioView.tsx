@@ -55,10 +55,13 @@ export const useBotStudioView = () => {
             formatString={stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR}
           />
           {welcomeMessages.map((msg, index) => {
-            const suggestedReplies = msg.suggestedReplies;
             if ('message' in msg) {
               const text = msg.message;
               const tokens: Token[] = parseTextMessage(text, replacementTextList);
+
+              const noUserInputs = originalWMs.length === messages.length;
+              const isLastMessage = index === welcomeMessages.length - 1;
+
               return (
                 <div key={index} style={{ padding: '0 16px' }}>
                   <BotMessageWithBodyInput
@@ -69,9 +72,9 @@ export const useBotStudioView = () => {
                     createdAt={originalWMs[0]?.createdAt}
                   />
 
-                  {originalWMs.length === messages.length && (
+                  {noUserInputs && isLastMessage && (
                     <SuggestedRepliesContainer
-                      replies={suggestedReplies}
+                      replies={msg.suggestedReplies}
                       type={suggestedRepliesDirection}
                       sendUserMessage={(params) => {
                         dataSource
