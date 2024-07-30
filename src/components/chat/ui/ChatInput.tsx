@@ -30,15 +30,13 @@ export const ChatInput = () => {
           const processedParams = handlers.onBeforeSendMessage(params);
           dataSource.sendUserMessage(processedParams, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
         }}
-        sendFileMessage={throwError}
+        sendFileMessage={() => {
+          throw new Error('Not implemented');
+        }}
       />
     </div>
   );
 };
-
-function throwError(): never {
-  throw new Error('Not implemented');
-}
 
 const container = css`
   z-index: 0;
