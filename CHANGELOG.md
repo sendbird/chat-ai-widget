@@ -1,3 +1,9 @@
+## [1.7.4] (July 30, 2024)
+### Fix:
+- Fixed a UX issue where the feedback modal was displaying unintended behavior
+- Fixed a bug with URL handling in Markdown syntax
+- Fixed a bug where the self-service widget was broken in Angular.js
+
 ## [1.7.3] (July 09, 2024)
 ### Fix:
 - Fixed a broken backward compatibility of `FormMessage` introduced in v1.7.2
