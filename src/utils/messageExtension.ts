@@ -21,6 +21,7 @@ export const messageExtension = {
   isBotWelcomeMsg(message: BaseMessage, botId: string | null) {
     if ((message.isUserMessage() || message.isFileMessage()) && message.sender.userId === botId) {
       const data = parseMessageDataSafely(message.data);
+      // Note: respond_mesg_id and stream is only set when the bot message is a response to a user message.
       return !data?.respond_mesg_id && !data?.stream;
     }
 
