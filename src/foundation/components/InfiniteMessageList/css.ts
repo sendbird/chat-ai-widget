@@ -4,6 +4,7 @@ export const infiniteListContainer = css`
   display: flex;
   position: relative;
   flex: 1;
+  overflow: hidden;
 `;
 
 export const infiniteListInner = css`
