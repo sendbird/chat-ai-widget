@@ -48,8 +48,8 @@ export const ChatHeader = () => {
       <div style={{ marginRight: 6 }}>
         <BotProfileImage size={34} profileUrl={profileUrl} />
       </div>
-      <div style={{ flex: 1 }}>
-        <Label type={'h2'} color={'onbackground1'}>
+      <div className={headerCenter}>
+        <Label type={'h2'} color={'onbackground1'} className={titleInline}>
           {botNickname || channel?.name}
         </Label>
 
@@ -116,6 +116,20 @@ const container = css`
 
   padding: 11px 12px;
   border-bottom: 1px solid ${themedColors.onbackground4};
+`;
+
+const headerCenter = css`
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 8px;
+`;
+
+const titleInline = css`
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 192px;
 `;
 
 const buttonsContainer = css`
