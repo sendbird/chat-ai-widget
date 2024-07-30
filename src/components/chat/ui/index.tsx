@@ -20,6 +20,7 @@ export const ChatUI = () => {
 const container = css`
   font-family: var(--sendbird-font-family-default);
   height: 100%;
+  width: 100%;
   background-color: ${themedColors.bg1};
   display: flex;
   flex-direction: column;
