@@ -3022,7 +3022,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sendbird/chat-ai-widget@npm:1.7.3, @sendbird/chat-ai-widget@workspace:.":
+"@sendbird/chat-ai-widget@npm:1.7.3":
+  version: 1.7.3
+  resolution: "@sendbird/chat-ai-widget@npm:1.7.3"
+  dependencies:
+    styled-components: "npm:^5.3.11"
+  peerDependencies:
+    date-fns: ^3.6.0
+    react: ^16.8.6 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    date-fns:
+      optional: true
+  checksum: 10c0/f43f86f6bd5a648a05365be64f9a230af4668e3c39dae4c50d275e4b8e9ab25fab44a06e7bb1d277e36af9b44e224e8099c274260db1b4b62dc8f293a63bd2dc
+  languageName: node
+  linkType: hard
+
+"@sendbird/chat-ai-widget@workspace:.":
   version: 0.0.0-use.local
   resolution: "@sendbird/chat-ai-widget@workspace:."
   dependencies:
