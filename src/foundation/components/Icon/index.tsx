@@ -70,7 +70,16 @@ import { SBUFoundationProps } from '../../types';
  * icon-user.svg
  * */
 
-export type IconType = 'spinner' | 'chat' | 'message' | 'error' | 'refresh' | 'chevron-down';
+export type IconType =
+  | 'spinner'
+  | 'chat'
+  | 'message'
+  | 'error'
+  | 'refresh'
+  | 'chevron-down'
+  | 'feedback-like'
+  | 'feedback-dislike'
+  | 'done';
 type SVG = React.FC<React.SVGProps<SVGSVGElement>>;
 
 const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG> }> = {
@@ -97,6 +106,18 @@ const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG
   'chevron-down': {
     module: null,
     load: () => import('../../../../packages/uikit/src/svgs/icon-chevron-down.svg').then((it) => it.default),
+  },
+  'feedback-like': {
+    module: null,
+    load: () => import('../../../../packages/uikit/src/svgs/icon-feedback-like.svg').then((it) => it.default),
+  },
+  'feedback-dislike': {
+    module: null,
+    load: () => import('../../../../packages/uikit/src/svgs/icon-feedback-dislike.svg').then((it) => it.default),
+  },
+  'done': {
+    module: null,
+    load: () => import('../../../../packages/uikit/src/svgs/icon-done.svg').then((it) => it.default),
   },
 };
 

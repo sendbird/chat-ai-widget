@@ -2,8 +2,6 @@ import { User } from '@sendbird/chat';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import Avatar from '@uikit/ui/Avatar';
-
 import BotProfileImage from './BotProfileImage';
 import { DefaultSentTime, FullBodyContainer, WideSentTime } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
@@ -46,8 +44,6 @@ type Props = {
   bodyComponent: ReactNode;
   chainTop?: boolean;
   chainBottom?: boolean;
-  messageCount?: number;
-  zIndex?: number;
   messageFeedback?: ReactNode;
   wideContainer?: boolean;
 };
@@ -61,36 +57,22 @@ const HEIGHTS = {
 export default function BotMessageWithBodyInput(props: Props) {
   const { botStudioEditProps, dateLocale } = useConstantState();
 
-  const {
-    botUser,
-    createdAt,
-    bodyComponent,
-    messageCount,
-    zIndex,
-    chainTop,
-    chainBottom,
-    messageFeedback,
-    wideContainer = false,
-  } = props;
+  const { botUser, createdAt, bodyComponent, chainTop, chainBottom, messageFeedback, wideContainer = false } = props;
 
   const profilePaddingBottom = (messageFeedback ? HEIGHTS.FEEDBACK : 0) + (wideContainer ? HEIGHTS.TIMESTAMP : 0);
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
-  const displayProfileImage = nonChainedMessage || chainBottom;
   const displaySender = nonChainedMessage || chainTop;
+  const displayProfileImage = nonChainedMessage || chainBottom;
   const { profileUrl, nickname } = botStudioEditProps?.botInfo ?? {};
   const botProfileUrl = profileUrl ?? botUser?.profileUrl;
   const botNickname = nickname ?? botUser?.nickname;
 
   return (
-    <Root style={{ zIndex: messageCount === 1 && zIndex ? zIndex : 0 }}>
+    <Root>
       {displayProfileImage ? (
         <div style={{ paddingBottom: profilePaddingBottom }}>
-          {botProfileUrl != null && botProfileUrl != '' ? (
-            <Avatar src={botProfileUrl} alt="botProfileImage" height="28px" width="28px" />
-          ) : (
-            <BotProfileImage width={28} height={28} iconWidth={16} iconHeight={16} />
-          )}
+          <BotProfileImage size={28} profileUrl={botProfileUrl} />
         </div>
       ) : (
         <EmptyImageContainer />

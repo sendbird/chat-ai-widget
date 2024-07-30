@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import FileViewer from '@uikit/modules/GroupChannel/components/FileViewer';
 import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
-import Avatar from '@uikit/ui/Avatar';
 import { isImageMessage, isVideoMessage } from '@uikit/utils';
 
 import BotProfileImage from './BotProfileImage';
@@ -49,13 +48,7 @@ export default function FileMessage(props: Props) {
         <FileViewer
           message={message}
           onCancel={() => setShowFileViewer(false)}
-          profile={
-            profileUrl != '' ? (
-              <Avatar src={profileUrl} alt="botProfileImage" height="32px" width="32px" />
-            ) : (
-              <BotProfileImage width={32} height={32} iconWidth={18} iconHeight={18} />
-            )
-          }
+          profile={<BotProfileImage size={32} profileUrl={profileUrl} />}
         />
       )}
     </div>

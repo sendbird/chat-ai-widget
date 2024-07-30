@@ -1,17 +1,14 @@
-import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
-import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetState } from '../../context/WidgetStateContext';
-import CloseIcon from '../../icons/ic-widget-close.svg';
-import CollapseIcon from '../../icons/icon-collapse.svg';
-import ExpandIcon from '../../icons/icon-expand.svg';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
   isExpanded: boolean;
 }>`
+  background: ${({ theme }) => theme.bgColor.base};
+  display: flex;
   overscroll-behavior: none;
   -webkit-overflow-scrolling: auto;
   position: fixed;
@@ -55,10 +52,6 @@ const StyledWidgetWindowWrapper = styled.div<{
       `
     );
   }}
-  /** widget close button for mobile version */
-  .widget-close-button {
-    display: none;
-  }
 
   ${({ isExpanded }) =>
     isExpanded &&
@@ -68,63 +61,11 @@ const StyledWidgetWindowWrapper = styled.div<{
     `}
 `;
 
-const StyledExpandButton = styled.button`
-  position: fixed;
-  right: 42px;
-  top: 16px;
-  width: 24px;
-  height: 24px;
-  background: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    cursor: pointer;
-  }
-`;
-
-const StyledCloseButton = styled.button`
-  position: fixed;
-  right: 12px;
-  top: 16px;
-  width: 24px;
-  height: 24px;
-  background: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    cursor: pointer;
-  }
-`;
-
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
-  const { isVisible, isOpen, setIsOpen } = useWidgetState();
-  const [isExpanded, setIsExpanded] = useState(false);
-  const { callbacks, enableWidgetExpandButton } = useConstantState();
-
-  const onExpandButtonToggle = () => {
-    setIsExpanded((prev) => {
-      const newIsExpanded = !prev;
-      callbacks?.onWidgetExpandStateChange?.(newIsExpanded);
-      return newIsExpanded;
-    });
-  };
+  const { isVisible, isOpen, isExpanded } = useWidgetState();
 
   return (
     <StyledWidgetWindowWrapper isOpen={isOpen && isVisible} isExpanded={isExpanded} id={elementIds.widgetWindow}>
-      {enableWidgetExpandButton && (
-        <StyledExpandButton onClick={onExpandButtonToggle}>
-          {isExpanded ? <CollapseIcon id={elementIds.collapseIcon} /> : <ExpandIcon id={elementIds.expandIcon} />}
-        </StyledExpandButton>
-      )}
-      <StyledCloseButton aria-label="Close widget" onClick={() => setIsOpen(false)}>
-        <CloseIcon id={elementIds.closeIcon} />
-      </StyledCloseButton>
       {children}
     </StyledWidgetWindowWrapper>
   );

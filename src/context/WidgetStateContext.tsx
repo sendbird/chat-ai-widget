@@ -18,12 +18,22 @@ interface VisibleState {
   setIsVisible: (value: boolean) => void;
 }
 
-const WidgetStateContext = createContext<(OpenState & VisibleState) | null>(null);
+/**
+ * Controls the expand state of the widget.
+ */
+interface ExpandState {
+  isExpanded: boolean;
+  setIsExpanded: (value: boolean) => void;
+}
+
+const WidgetStateContext = createContext<(OpenState & VisibleState & ExpandState) | null>(null);
 
 export const WidgetStateProvider = ({ children }: React.PropsWithChildren) => {
-  const { widgetOpenState, onWidgetOpenStateChange, enableHideWidgetForDeactivatedUser } = useConstantState();
+  const { widgetOpenState, onWidgetOpenStateChange, enableHideWidgetForDeactivatedUser, callbacks } =
+    useConstantState();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [isVisible, setIsVisible] = useState(!enableHideWidgetForDeactivatedUser);
 
   const isOpenControlled = typeof widgetOpenState === 'boolean' && typeof onWidgetOpenStateChange === 'function';
@@ -38,6 +48,11 @@ export const WidgetStateProvider = ({ children }: React.PropsWithChildren) => {
         },
         isVisible,
         setIsVisible,
+        isExpanded,
+        setIsExpanded: (value) => {
+          setIsExpanded(value);
+          callbacks?.onWidgetExpandStateChange?.(value);
+        },
       }}
     >
       {children}

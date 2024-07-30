@@ -2,7 +2,6 @@ import { Feedback, FeedbackRating } from '@sendbird/chat/message';
 import { useReducer } from 'react';
 
 import FeedbackIconButton from '@uikit/ui/FeedbackIconButton';
-import Icon, { IconTypes } from '@uikit/ui/Icon';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
 import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
@@ -10,6 +9,7 @@ import { CoreMessageType } from '@uikit/utils';
 
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
+import { Icon } from '../foundation/components/Icon';
 
 type State = Partial<{
   errorText: string;
@@ -50,7 +50,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
           }}
           disabled={!!message.myFeedback && message.myFeedback.rating !== FeedbackRating.GOOD}
         >
-          <Icon type={IconTypes.FEEDBACK_LIKE} width="24px" height="24px" />
+          <Icon type={'feedback-like'} size={24} />
         </FeedbackIconButton>
         <FeedbackIconButton
           aria-label="Dislike the bot answer"
@@ -70,7 +70,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
           }}
           disabled={!!message.myFeedback && message.myFeedback.rating !== FeedbackRating.BAD}
         >
-          <Icon type={IconTypes.FEEDBACK_DISLIKE} width="24px" height="24px" />
+          <Icon type={'feedback-dislike'} size={24} />
         </FeedbackIconButton>
       </div>
       {
