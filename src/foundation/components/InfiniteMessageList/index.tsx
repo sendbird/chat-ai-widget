@@ -9,6 +9,7 @@ import {
   useRef,
 } from 'react';
 
+import { infiniteListContainer, infiniteListInner, infiniteListOverlay, infiniteListOverlayContainer } from './css';
 import { noop } from '../../../utils';
 
 type Props = {
@@ -109,19 +110,17 @@ export const InfiniteMessageList = forwardRef<HTMLDivElement, Props>(function In
   };
 
   return (
-    <div className="sendbird-conversation__scroll-container">
-      <div className="sendbird-conversation__padding" />
-      <div
-        ref={listRef}
-        className="sendbird-conversation__messages-padding"
-        data-testid="sendbird-message-list-container"
-        onScroll={handleScroll}
-      >
+    <div id={'infinite-list-container'} className={infiniteListContainer}>
+      <div id={'infinite-list-inner'} ref={listRef} onScroll={handleScroll} className={infiniteListInner}>
         {messageTopArea}
         {messages.map((message, index) => renderMessage({ message, index }))}
         {messageBottomArea}
       </div>
-      <div style={{ position: 'absolute', width: '100%', height: '100%' }}>{overlayArea}</div>
+      <div id={'infinite-list-overlay-container'} className={infiniteListOverlayContainer}>
+        <div id={'infinite-list-overlay'} className={infiniteListOverlay}>
+          {overlayArea}
+        </div>
+      </div>
     </div>
   );
 });

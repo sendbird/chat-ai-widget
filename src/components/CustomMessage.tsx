@@ -1,6 +1,5 @@
 import { User } from '@sendbird/chat';
 
-import TypingDots from '@uikit/ui/TypingIndicatorBubble/TypingDots';
 import { CoreMessageType, isVideoMessage } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
@@ -18,53 +17,32 @@ import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
+import { TypingBubble } from '../foundation/components/TypingBubble';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
-import { isLastMessageInStreaming, isLocalMessageCustomType, isSentBy } from '../utils/messages';
+import { isLocalMessageCustomType, isSentBy } from '../utils/messages';
 
 type Props = {
   message: CoreMessageType;
   activeSpinnerId: number;
   botUser?: User;
-  isBotWelcomeMessage: boolean;
-  isLastBotMessage: boolean;
-  messageCount: number;
   chainTop?: boolean;
   chainBottom?: boolean;
 };
 
 export default function CustomMessage(props: Props) {
-  const {
-    message,
-    activeSpinnerId,
-    botUser,
-    chainTop,
-    chainBottom,
-    isBotWelcomeMessage,
-    isLastBotMessage,
-    messageCount,
-  } = props;
-  const commonProps = {
-    chainTop,
-    chainBottom,
-    isBotWelcomeMessage,
-    isLastBotMessage,
-    messageCount,
-    message,
-  };
+  const { message, activeSpinnerId, botUser } = props;
   const { replacementTextList, enableEmojiFeedback, botStudioEditProps } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
   const { profileUrl } = botStudioEditProps?.botInfo ?? {};
+
   const botUserId = botUser?.userId;
   const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';
   const isWaitingForBotReply = activeSpinnerId === message.messageId && !!botUser;
 
   const shouldRenderFeedback = () => {
     return (
-      enableEmojiFeedback &&
-      message.myFeedbackStatus !== 'NOT_APPLICABLE' &&
-      !isBotWelcomeMessage &&
-      !(isLastBotMessage && isLastMessageInStreaming(message.data))
+      enableEmojiFeedback && message.myFeedbackStatus !== 'NOT_APPLICABLE' && !messageExtension.isStreaming(message)
     );
   };
 
@@ -100,7 +78,7 @@ export default function CustomMessage(props: Props) {
     if (message.messageForm) {
       return (
         <BotMessageWithBodyInput
-          {...commonProps}
+          {...props}
           botUser={botUser}
           bodyComponent={<FormMessage form={message.messageForm} message={message} />}
           createdAt={message.createdAt}
@@ -113,7 +91,7 @@ export default function CustomMessage(props: Props) {
       if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
         return (
           <BotMessageWithBodyInput
-            {...commonProps}
+            {...props}
             botUser={botUser}
             bodyComponent={<SuggestedReplyMessageBody message={message} />}
             createdAt={message.createdAt}
@@ -128,7 +106,7 @@ export default function CustomMessage(props: Props) {
       return (
         <BotMessageWithBodyInput
           wideContainer={isVideoMessage(message)}
-          {...commonProps}
+          {...props}
           botUser={botUser}
           bodyComponent={<FileMessage message={message} profileUrl={botProfileUrl} />}
           createdAt={message.createdAt}
@@ -149,10 +127,10 @@ export default function CustomMessage(props: Props) {
         return (
           <BotMessageWithBodyInput
             wideContainer
-            {...commonProps}
+            {...props}
             botUser={botUser}
             bodyComponent={
-              <ShopItemsMessage message={message} streamingBody={<TypingDots />} textBody={textMessageBody} />
+              <ShopItemsMessage message={message} streamingBody={<TypingBubble />} textBody={textMessageBody} />
             }
             createdAt={message.createdAt}
             messageFeedback={renderFeedbackButtons()}
@@ -163,7 +141,7 @@ export default function CustomMessage(props: Props) {
       // text message
       return (
         <BotMessageWithBodyInput
-          {...commonProps}
+          {...props}
           botUser={botUser}
           bodyComponent={textMessageBody}
           createdAt={message.createdAt}
@@ -177,7 +155,7 @@ export default function CustomMessage(props: Props) {
   if (message.isUserMessage()) {
     return (
       <UserMessageWithBodyInput
-        {...commonProps}
+        {...props}
         message={message}
         user={message.sender}
         bodyComponent={<CustomMessageBody message={message.message} />}

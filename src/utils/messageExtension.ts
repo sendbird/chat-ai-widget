@@ -18,6 +18,15 @@ export const messageExtension = {
       return false;
     }
   },
+  isBotWelcomeMsg(message: BaseMessage, botId: string | null) {
+    if ((message.isUserMessage() || message.isFileMessage()) && message.sender.userId === botId) {
+      const data = parseMessageDataSafely(message.data);
+      // Note: respond_mesg_id and stream is only set when the bot message is a response to a user message.
+      return !data?.respond_mesg_id && !data?.stream;
+    }
+
+    return false;
+  },
   commerceShopItems: {
     isValid(message: UserMessage): boolean {
       return ((message.extendedMessagePayload?.commerce_shop_items ?? []) as unknown[]).length > 0;
@@ -31,6 +40,9 @@ export const messageExtension = {
         .filter((it) => urls.includes(it.url))
         .sort((a, b) => urls.indexOf(a.url) - urls.indexOf(b.url));
     },
+  },
+  isInputDisabled(message: BaseMessage | null) {
+    return !!message?.extendedMessagePayload?.disable_chat_input;
   },
 };
 
