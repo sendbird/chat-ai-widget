@@ -21,6 +21,7 @@ export const useBotStudioView = () => {
   const originalWMs = getBotWelcomeMessages(messages, botId);
 
   const firstUserMsg = messages[originalWMs.length + 1];
+  const firstOriginalWM = originalWMs[0] ?? firstUserMsg;
 
   return {
     /**
@@ -39,7 +40,7 @@ export const useBotStudioView = () => {
     shouldShowOriginalDate: (index: number) => {
       if (index > 0) return true;
       if (welcomeMessages.length === 0) return true;
-      return firstUserMsg && !isSameDay(firstUserMsg.createdAt, originalWMs[0]?.createdAt);
+      return firstUserMsg && !isSameDay(firstUserMsg.createdAt, firstOriginalWM?.createdAt);
     },
     /**
      * Renders the list of welcome messages from Bot Studio.
@@ -51,7 +52,7 @@ export const useBotStudioView = () => {
         <>
           <DateSeparator
             className={dateSeparatorMargin}
-            date={originalWMs[0]?.createdAt}
+            date={firstOriginalWM?.createdAt}
             formatString={stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR}
           />
           {welcomeMessages.map((msg, index) => {
@@ -69,7 +70,7 @@ export const useBotStudioView = () => {
                     chainBottom={index === welcomeMessages.length - 1}
                     botUser={botUser}
                     bodyComponent={<ParsedBotMessageBody text={text} tokens={tokens} />}
-                    createdAt={originalWMs[0]?.createdAt}
+                    createdAt={firstOriginalWM?.createdAt}
                   />
 
                   {noUserInputs && isLastMessage && (

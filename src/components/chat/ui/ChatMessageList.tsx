@@ -45,7 +45,7 @@ export const ChatMessageList = () => {
         onLoadPrev={dataSource.loadPrevious}
         onLoadNext={dataSource.loadNext}
         depsForResetScrollPositionToBottom={[dataSource.initialized, dataSource.messages.length !== 0]}
-        messageTopArea={<>{renderBotStudioWelcomeMessages()}</>}
+        messageTopArea={renderBotStudioWelcomeMessages()}
         renderMessage={({ message, index }) => {
           const prevCreatedAt = filteredMessages[index - 1]?.createdAt ?? 0;
           const suggestedReplies = message.suggestedReplies ?? [];
