@@ -13,6 +13,7 @@ import CollapsedIcon from '../../../icons/icon-collapse.svg';
 import { isDashboardPreview } from '../../../utils';
 import BotProfileImage from '../../BotProfileImage';
 import { useChatContext } from '../context/ChatProvider';
+import BetaLogo from '../../ui/BetaLogo';
 
 export const ChatHeader = () => {
   const {
@@ -21,6 +22,8 @@ export const ChatHeader = () => {
     isMobileView,
     customUserAgentParam: agent,
     enableWidgetExpandButton,
+    betaMark,
+    customBetaMarkText,
   } = useConstantState();
   const { channel, dataSource } = useChatContext();
   const { setIsOpen } = useWidgetState();
@@ -49,6 +52,8 @@ export const ChatHeader = () => {
         <Label type={'h2'} color={'onbackground1'}>
           {botNickname || channel?.name}
         </Label>
+
+        {!isMobileView && betaMark && <BetaLogo>{customBetaMarkText}</BetaLogo>}
       </div>
       <div className={buttonsContainer}>
         <RefreshButton size={buttonSize} onClick={handleRefresh} />
