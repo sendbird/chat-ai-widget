@@ -9,10 +9,10 @@ import { Label } from '../Label';
 type Props = SBUFoundationProps<{
   label?: string;
 }>;
-export const FrozenNotification = ({
+export const FrozenBanner = ({
   className,
   label = 'Channel frozen',
-  testId = 'sendbird-frozen-notification',
+  testId = 'sendbird-frozen-banner',
 }: Props): React.ReactElement => {
   const localProps = useLocalProps({ testId });
   return (
@@ -22,4 +22,4 @@ export const FrozenNotification = ({
   );
 };
 
-export default FrozenNotification;
+export default FrozenBanner;

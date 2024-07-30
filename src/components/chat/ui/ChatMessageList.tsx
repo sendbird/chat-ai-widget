@@ -90,7 +90,7 @@ export const ChatMessageList = () => {
         }}
         overlayArea={
           <>
-            {channel?.isFrozen && <FrozenBanner className={frozenBanner} />}
+            {channel?.isFrozen && <FrozenBanner className={frozenBanner} label={stringSet.CHANNEL_FROZEN} />}
             {/**
              * Note for unread status count & read status
              *  Currently, the widget only handles cases of chatting with bots, so it is not supported.
