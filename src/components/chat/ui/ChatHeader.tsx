@@ -12,8 +12,8 @@ import ExpandIcon from '../../../icons/ic-expand.svg';
 import CollapsedIcon from '../../../icons/icon-collapse.svg';
 import { isDashboardPreview } from '../../../utils';
 import BotProfileImage from '../../BotProfileImage';
-import { useChatContext } from '../context/ChatProvider';
 import BetaLogo from '../../ui/BetaLogo';
+import { useChatContext } from '../context/ChatProvider';
 
 export const ChatHeader = () => {
   const {
