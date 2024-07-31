@@ -1,6 +1,6 @@
-import Chat from './Chat';
 import { ChatAiWidgetProps } from './ChatAiWidget';
 import ProviderContainer from './ProviderContainer';
+import Chat from '../chat';
 
 /**
  * NOTE: External purpose only.
