@@ -1,6 +1,7 @@
 import { css } from '@linaria/core';
 import { useRef } from 'react';
 
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/MessageInputWrapper/MessageInputWrapperView';
 
 import { useConstantState } from '../../../context/ConstantContext';
@@ -14,6 +15,8 @@ export const ChatInput = () => {
   const { channel, dataSource, handlers } = useChatContext();
 
   const ref = useRef<HTMLDivElement>(null);
+
+  const { config } = useSendbirdStateContext();
   const isMessageInputDisabled = useBlockWhileBotResponding({
     lastMessage: dataSource.messages[dataSource.messages.length - 1],
     botUser: channel?.members.find((it) => it.userId === botId),
@@ -23,7 +26,7 @@ export const ChatInput = () => {
     <div className={container}>
       <MessageInputWrapperView
         loading={false}
-        disabled={isMessageInputDisabled}
+        disabled={config.isOnline ? isMessageInputDisabled : true}
         messageInputRef={ref}
         currentChannel={channel as any}
         sendUserMessage={(params) => {
