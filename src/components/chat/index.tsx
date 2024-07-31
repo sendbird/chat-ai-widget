@@ -5,29 +5,10 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import { ChatContainer } from './context/ChatProvider';
 import { ChatUI } from './ui';
 import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
+import { useResetHistoryOnConnected } from '../../hooks/useResetHistoryOnConnected';
 import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
 
-export const WidgetChatting = () => {
-  const { stores } = useSendbirdStateContext();
-
-  // const { stringSet, botStudioEditProps } = useConstantState();
-  const { widgetSession } = useWidgetSetting();
-
-  return (
-    <ChatContainer
-      sdk={stores.sdkStore.sdk}
-      channelUrl={widgetSession?.channelUrl ?? ''}
-      stringSet={{
-        ERR_CHANNEL_FETCH: 'Failed to retrieve channel information',
-      }}
-    >
-      <ChatUI />
-    </ChatContainer>
-  );
-};
-
 const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
-  useWidgetButtonActivityTimeout(fullscreen);
   const { stores } = useSendbirdStateContext();
   const widgetSetting = useWidgetSetting();
   const widgetSession = useWidgetSession();
@@ -47,7 +28,25 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
     stores.sdkStore.initialized,
   ]);
 
-  return <WidgetChatting />;
+  return (
+    <ChatContainer
+      sdk={stores.sdkStore.sdk}
+      channelUrl={widgetSession?.channelUrl ?? ''}
+      stringSet={{
+        ERR_CHANNEL_FETCH: 'Failed to retrieve channel information',
+      }}
+    >
+      <HeadlessForHooks fullscreen={fullscreen} />
+      <ChatUI />
+    </ChatContainer>
+  );
+};
+
+const HeadlessForHooks = ({ fullscreen }: { fullscreen: boolean }) => {
+  useWidgetButtonActivityTimeout(fullscreen);
+  useResetHistoryOnConnected();
+
+  return null;
 };
 
 export default Chat;

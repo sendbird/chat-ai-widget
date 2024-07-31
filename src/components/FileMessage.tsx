@@ -3,10 +3,10 @@ import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
 import { useState } from 'react';
 
 import FileViewer from '@uikit/modules/GroupChannel/components/FileViewer';
-import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
 import { isImageMessage, isVideoMessage } from '@uikit/utils';
 
 import BotProfileImage from './BotProfileImage';
+import { useChatContext } from './chat/context/ChatProvider';
 
 type Props = {
   message: ChatFileMessage;
@@ -15,7 +15,7 @@ type Props = {
 
 export default function FileMessage(props: Props) {
   const { message, profileUrl } = props;
-  const { scrollToBottom } = useGroupChannelContext();
+  const { scrollSource } = useChatContext();
   const [showFileViewer, setShowFileViewer] = useState(false);
 
   // const root = document.getElementById('aichatbot-widget-window');
@@ -38,9 +38,7 @@ export default function FileMessage(props: Props) {
           className="sendbird-ai-widget-file-message"
           src={message.url}
           alt={''}
-          onLoad={() => {
-            scrollToBottom();
-          }}
+          onLoad={() => scrollSource.scrollPubSub.publish('scrollToBottom', {})}
           onClick={() => setShowFileViewer(true)}
         />
       )}
