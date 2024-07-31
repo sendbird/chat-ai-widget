@@ -1,19 +1,18 @@
 import { useEffect } from 'react';
 
-import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
-
+import { useChatContext } from '../components/chat/context/ChatProvider';
 import { useConstantState } from '../context/ConstantContext';
 
 export function useResetHistoryOnConnected() {
   const { enableResetHistoryOnConnect } = useConstantState();
-  const { currentChannel, refresh } = useGroupChannelContext();
+  const { channel, dataSource } = useChatContext();
 
   useEffect(() => {
-    if (enableResetHistoryOnConnect && currentChannel) {
+    if (enableResetHistoryOnConnect && channel && dataSource.initialized) {
       (async () => {
-        await currentChannel.resetMyHistory();
-        await refresh();
+        await channel.resetMyHistory();
+        await dataSource.refresh();
       })();
     }
-  }, [enableResetHistoryOnConnect, currentChannel?.url]);
+  }, [enableResetHistoryOnConnect, channel?.url, dataSource.initialized]);
 }

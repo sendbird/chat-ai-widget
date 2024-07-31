@@ -5,7 +5,7 @@ import { StringSet } from '@uikit/ui/Label/stringSet';
 import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
-import { elementIds, type Constant, WIDGET_WINDOW_Z_INDEX } from '../../const';
+import { type Constant, elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
 import { useWidgetState } from '../../context/WidgetStateContext';
 import useMobileView from '../../hooks/useMobileView';
 import { useWidgetAutoOpen } from '../../hooks/useWidgetAutoOpen';
@@ -25,7 +25,6 @@ const MobileContainer = styled.div<{ width: number }>`
 
 const DesktopComponent = () => {
   const { isVisible } = useWidgetState();
-
   useWidgetAutoOpen();
 
   return (
@@ -41,8 +40,6 @@ const DesktopComponent = () => {
 const MobileComponent = () => {
   const { isOpen, isVisible } = useWidgetState();
   const { width: mobileContainerWidth } = useMobileView();
-
-  useWidgetAutoOpen();
 
   return (
     <>

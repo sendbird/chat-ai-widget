@@ -5,11 +5,11 @@ import { createContext, PropsWithChildren, useContext, useEffect, useState } fro
 
 import { useMessageListScroll } from '@uikit/modules/GroupChannel/context/hooks/useMessageListScroll';
 
-import { useWidgetChatHandlers, WidgetChatHandlers } from './useWidgetChatHandlers';
 import { useConstantState } from '../../../context/ConstantContext';
 import { useWidgetSetting } from '../../../context/WidgetSettingContext';
 import { Placeholder } from '../../../foundation/components/Placeholder';
 import { clearWidgetSessionCache } from '../../../libs/storage/widgetSessionCache';
+import { useWidgetChatHandlers, WidgetChatHandlers } from '../hooks/useWidgetChatHandlers';
 
 export interface WidgetStringSet {
   ERR_CHANNEL_FETCH: string;

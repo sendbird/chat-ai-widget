@@ -6,28 +6,9 @@ import { ChatContainer } from './context/ChatProvider';
 import { ChatUI } from './ui';
 import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
 import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
-
-export const WidgetChatting = () => {
-  const { stores } = useSendbirdStateContext();
-
-  // const { stringSet, botStudioEditProps } = useConstantState();
-  const { widgetSession } = useWidgetSetting();
-
-  return (
-    <ChatContainer
-      sdk={stores.sdkStore.sdk}
-      channelUrl={widgetSession?.channelUrl ?? ''}
-      stringSet={{
-        ERR_CHANNEL_FETCH: 'Failed to retrieve channel information',
-      }}
-    >
-      <ChatUI />
-    </ChatContainer>
-  );
-};
+import { useResetHistoryOnConnected } from '../../hooks/useResetHistoryOnConnected';
 
 const Chat = () => {
-  useWidgetButtonActivityTimeout();
   const { stores } = useSendbirdStateContext();
   const widgetSetting = useWidgetSetting();
   const widgetSession = useWidgetSession();
@@ -47,7 +28,25 @@ const Chat = () => {
     stores.sdkStore.initialized,
   ]);
 
-  return <WidgetChatting />;
+  return (
+    <ChatContainer
+      sdk={stores.sdkStore.sdk}
+      channelUrl={widgetSession?.channelUrl ?? ''}
+      stringSet={{
+        ERR_CHANNEL_FETCH: 'Failed to retrieve channel information',
+      }}
+    >
+      <HeadlessForHooks />
+      <ChatUI />
+    </ChatContainer>
+  );
+};
+
+const HeadlessForHooks = () => {
+  useWidgetButtonActivityTimeout();
+  useResetHistoryOnConnected();
+
+  return null;
 };
 
 export default Chat;
