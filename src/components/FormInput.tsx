@@ -65,12 +65,17 @@ interface ChipProps {
   isSubmitted?: boolean;
 }
 
-const Placeholder = styled.div`
+interface PlaceholderProps {
+  numMaxLines?: number;
+}
+
+const Placeholder = styled.div<PlaceholderProps>`
   width: calc(100% - 26px); // (12px side padding + 1px border) * 2 = 26px
   height: calc(100% - 16px); // (7px padding + 1px border) * 2 = 16px
   overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: ${({ numMaxLines }) => numMaxLines ?? 1};
+  -webkit-box-orient: vertical;
   position: absolute;
   pointer-events: none;
   top: 8px;
@@ -407,7 +412,7 @@ const FormInput = (props: InputProps) => {
                           onChange(value ? [value] : []);
                         }}
                       />
-                      {!disabled && placeHolder && !currentValue && <Placeholder>{placeHolder}</Placeholder>}
+                      {!disabled && placeHolder && !currentValue && <Placeholder numMaxLines={4}>{placeHolder}</Placeholder>}
                     </>
                   )}
                 </InputContainer>
