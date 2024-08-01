@@ -1,3 +1,7 @@
+## [1.7.5] (Aug 1, 2024)
+### Fix:
+- Fixed a bug where directly managing the widget open state caused a disconnection after 3 minutes and prevented reconnection.
+
 ## [1.7.4] (July 30, 2024)
 ### Fix:
 - Fixed a UX issue where the feedback modal was displaying unintended behavior
