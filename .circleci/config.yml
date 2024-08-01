@@ -81,7 +81,7 @@ jobs:
       - attach_project
       - run:
           name: Run lint and prettier check
-          command: yarn lint && yarn prettier
+          command: yarn format:check
   # CI - check build
   run-build:
     executor: ci-node
