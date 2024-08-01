@@ -5,8 +5,8 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import { ChatContainer } from './context/ChatProvider';
 import { ChatUI } from './ui';
 import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
-import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
 import { useResetHistoryOnConnected } from '../../hooks/useResetHistoryOnConnected';
+import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
 
 const Chat = () => {
   const { stores } = useSendbirdStateContext();
