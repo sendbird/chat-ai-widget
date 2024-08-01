@@ -1,5 +1,5 @@
 import { MessageForm } from '@sendbird/chat/message';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '@uikit/ui/Button';
@@ -61,7 +61,7 @@ const ButtonText = styled.div<ButtonTextProps>`
 
 export default function FormMessage(props: Props) {
   const { message, form } = props;
-  const { items, id: formId } = form;
+  const { items } = form;
   const { stringSet } = useConstantState();
 
   const [submitFailed, setSubmitFailed] = useState(false);
@@ -85,7 +85,7 @@ export default function FormMessage(props: Props) {
   const hasError = formValues.some(({ errorMessage }) => !!errorMessage);
   const isButtonDisabled = ((isInvalidated || !isInputFocused) && hasError) || isSubmitted;
 
-  const handleSubmit = useCallback(async () => {
+  const handleSubmit = async () => {
     try {
       // If form is empty, ignore submit
       const isMissingRequired = formValues.some(
@@ -118,7 +118,7 @@ export default function FormMessage(props: Props) {
       setSubmitFailed(true);
       console.error(error);
     }
-  }, [formValues, message.messageId, message.submitMessageForm, formId]);
+  };
 
   return (
     <Root>
