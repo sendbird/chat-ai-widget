@@ -1,4 +1,4 @@
-import { AdminMessage, BaseMessage } from '@sendbird/chat/message';
+import { BaseMessage } from '@sendbird/chat/message';
 import { isSameMinute } from 'date-fns';
 
 import { messageExtension } from './messageExtension';
@@ -53,16 +53,9 @@ export function getSenderUserIdFromMessage(message?: BaseMessage | null): string
   return message?.sender?.userId ?? undefined;
 }
 
-const msgFilter = {
-  sys: {
-    isCustomTypeUpdated: (message: AdminMessage) => {
-      return message.message === "The channel's custom_type was updated.";
-    },
-  },
-};
 export function shouldFilterOutMessage(message: BaseMessage) {
   if (message.isAdminMessage()) {
-    return msgFilter.sys.isCustomTypeUpdated(message);
+    return message.message === "The channel's custom_type was updated.";
   }
   return false;
 }
