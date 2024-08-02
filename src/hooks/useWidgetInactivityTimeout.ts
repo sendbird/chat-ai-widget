@@ -7,10 +7,10 @@ import { useWidgetState } from '../context/WidgetStateContext';
 const WS_IDLE_TIMEOUT = 1000 * 60 * 3;
 
 /**
- * This hook is used to disconnect the websocket connection
- * when the widget is not opened for a certain amount of time
+ * This hook disconnects the websocket connection
+ * when the widget has not been opened for a certain amount of time.
  */
-function useWidgetButtonActivityTimeout() {
+export function useWidgetInactivityTimeout() {
   const { isOpen } = useWidgetState();
   const store = useSendbirdStateContext();
   const disconnectTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -35,5 +35,3 @@ function useWidgetButtonActivityTimeout() {
     }
   }, [sdk, initialized, isOpen]);
 }
-
-export default useWidgetButtonActivityTimeout;

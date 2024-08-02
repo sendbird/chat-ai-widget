@@ -5,8 +5,9 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import { ChatContainer } from './context/ChatProvider';
 import { ChatUI } from './ui';
 import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
+import useAutoDismissMobileKeyboardHandler from '../../hooks/useAutoDismissMobileKeyboardHandler';
 import { useResetHistoryOnConnected } from '../../hooks/useResetHistoryOnConnected';
-import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
+import { useWidgetInactivityTimeout } from '../../hooks/useWidgetInactivityTimeout';
 
 const Chat = () => {
   const { stores } = useSendbirdStateContext();
@@ -43,8 +44,9 @@ const Chat = () => {
 };
 
 const HeadlessForHooks = () => {
-  useWidgetButtonActivityTimeout();
   useResetHistoryOnConnected();
+  useWidgetInactivityTimeout();
+  useAutoDismissMobileKeyboardHandler();
 
   return null;
 };
