@@ -59,13 +59,14 @@ export const SnapCarousel = ({
   const ref = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveState] = useState(0);
   const itemLength = React.Children.toArray(children).length;
-  const cursorSize = useMemo(() => {
-    const containerWidth = (ref.current?.scrollWidth ?? 0) - startPadding;
-    return containerWidth / itemLength + gap;
-  }, [ref.current?.scrollWidth, itemLength, gap, startPadding]);
+
+  const itemWidth = useMemo(() => {
+    const total = ref.current?.scrollWidth ?? 0;
+    return total - (startPadding + endPadding + gap * (itemLength - 1)) / itemLength;
+  }, [ref.current?.scrollWidth, itemLength, gap, startPadding, endPadding]);
 
   const onScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const idx = Math.round(e.currentTarget.scrollLeft / cursorSize);
+    const idx = Math.round(e.currentTarget.scrollLeft / itemWidth);
     if (idx !== activeIndex) setActiveState(idx);
   };
 
@@ -73,7 +74,7 @@ export const SnapCarousel = ({
     if (ref.current) {
       const nextIdx = Math.min(Math.max(0, index), itemLength - 1);
       ref.current.scroll({
-        left: nextIdx * cursorSize,
+        left: nextIdx * itemWidth,
         behavior: 'smooth',
       });
     }
