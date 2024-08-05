@@ -1,8 +1,7 @@
-import { AdminMessage, BaseMessage, UserMessage } from '@sendbird/chat/message';
+import { BaseMessage } from '@sendbird/chat/message';
 import { isSameMinute } from 'date-fns';
 
 import { messageExtension } from './messageExtension';
-import { LOCAL_MESSAGE_CUSTOM_TYPE, type SuggestedMessageContent } from '../const';
 
 export const getMessageGrouping = (curr: BaseMessage, prev?: BaseMessage, next?: BaseMessage): [boolean, boolean] => {
   if (!curr.isUserMessage() && !curr.isFileMessage()) {
@@ -34,40 +33,6 @@ export function isSentBy(message: BaseMessage, userId?: string | null) {
   return getSenderUserIdFromMessage(message) === userId;
 }
 
-export function isLocalMessageCustomType(customType: string | undefined) {
-  if (customType == undefined) {
-    return false;
-  }
-  return Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) !== -1;
-}
-
-function isSpecialMessage(message: string, specialMessageList: string[]): boolean {
-  return (
-    specialMessageList.findIndex((substr: string) => {
-      return message.includes(substr);
-    }) > -1
-  );
-}
-
-export function isStaticReplyVisible(
-  lastMessage: UserMessage | null,
-  botUserId: string | undefined,
-  suggestedMessageContent: SuggestedMessageContent,
-  enableEmojiFeedback: boolean,
-) {
-  if (lastMessage == null || enableEmojiFeedback) {
-    return false;
-  }
-  return (
-    !(lastMessage.messageType === 'admin') &&
-    lastMessage.sender?.userId === botUserId &&
-    !messageExtension.isStreaming(lastMessage) &&
-    !isLocalMessageCustomType(lastMessage.customType) &&
-    suggestedMessageContent?.replyContents?.length > 0 &&
-    !isSpecialMessage(lastMessage.message, suggestedMessageContent.messageFilterList)
-  );
-}
-
 export function parseMessageDataSafely(messageData: string) {
   try {
     return JSON.parse(messageData === '' ? '{}' : messageData);
@@ -88,16 +53,9 @@ export function getSenderUserIdFromMessage(message?: BaseMessage | null): string
   return message?.sender?.userId ?? undefined;
 }
 
-const msgFilter = {
-  sys: {
-    isCustomTypeUpdated: (message: AdminMessage) => {
-      return message.message === "The channel's custom_type was updated.";
-    },
-  },
-};
 export function shouldFilterOutMessage(message: BaseMessage) {
   if (message.isAdminMessage()) {
-    return msgFilter.sys.isCustomTypeUpdated(message);
+    return message.message === "The channel's custom_type was updated.";
   }
   return false;
 }

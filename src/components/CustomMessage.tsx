@@ -12,15 +12,13 @@ import FileMessage from './FileMessage';
 import FormMessage from './messages/FormMessage';
 import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
-import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
-import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
 import { TypingBubble } from '../foundation/components/TypingBubble';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
-import { isLocalMessageCustomType, isSentBy } from '../utils/messages';
+import { isSentBy } from '../utils/messages';
 
 type Props = {
   message: CoreMessageType;
@@ -84,21 +82,6 @@ export default function CustomMessage(props: Props) {
           createdAt={message.createdAt}
         />
       );
-    }
-
-    // for static suggested replies
-    if (isLocalMessageCustomType(message.customType)) {
-      if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
-        return (
-          <BotMessageWithBodyInput
-            {...props}
-            botUser={botUser}
-            bodyComponent={<SuggestedReplyMessageBody message={message} />}
-            createdAt={message.createdAt}
-            messageFeedback={renderFeedbackButtons()}
-          />
-        );
-      }
     }
 
     // for file message

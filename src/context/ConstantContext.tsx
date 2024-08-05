@@ -93,12 +93,6 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
         // ----- Legacy props ----- //
         betaMark: props.betaMark ?? initialState.betaMark,
         customBetaMarkText: props.customBetaMarkText ?? initialState.customBetaMarkText,
-        suggestedMessageContent: {
-          replyContents:
-            props.suggestedMessageContent?.replyContents ?? initialState.suggestedMessageContent.replyContents,
-          messageFilterList:
-            props.suggestedMessageContent?.messageFilterList ?? initialState.suggestedMessageContent.messageFilterList,
-        },
         firstMessageData: props.firstMessageData ?? [],
         createGroupChannelParams: props.createGroupChannelParams ?? initialState.createGroupChannelParams,
         chatBottomContent: props.chatBottomContent ?? initialState.chatBottomContent,
