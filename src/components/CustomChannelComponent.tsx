@@ -178,7 +178,7 @@ export function CustomChannelComponent() {
       isSentBy(lastMessage, currentUserId) &&
       !(lastMessage?.messageType === 'admin') &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
-      // this bubble loading should be shown only when there're only bot and 1 user in the channel
+      // this bubble loading should be shown only when there are only bot and 1 user in the channel
       channel?.memberCount === 2
     ) {
       setActiveSpinnerId(lastMessage.messageId);
@@ -211,6 +211,8 @@ export function CustomChannelComponent() {
    * 2. first message of the channel. This is because welcome message should have timestamp <= of first message.
    */
   const welcomeMessageTimeStamp = lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
+  const { config } = useSendbirdStateContext();
+  const isOnline = config.isOnline;
 
   const resetReqCounter = useRef(0);
 
@@ -224,7 +226,7 @@ export function CustomChannelComponent() {
         }}
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
-        renderMessageInput={() => <MessageInputWrapper disabled={isMessageInputDisabled} />}
+        renderMessageInput={() => <MessageInputWrapper disabled={isOnline ? isMessageInputDisabled : true} />}
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
           <CustomChannelHeader
