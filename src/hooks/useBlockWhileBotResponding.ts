@@ -1,6 +1,8 @@
 import { SendableMessage, Member } from '@sendbird/chat/lib/__definition';
 import { useEffect, useRef, useState } from 'react';
 
+import {useSendbirdStateContext} from "@uikit/index";
+
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
 import { messageExtension } from '../utils/messageExtension';
@@ -17,6 +19,8 @@ interface UseDisableInputUntilReplyProps {
 export const useBlockWhileBotResponding = ({ lastMessage, botUser }: UseDisableInputUntilReplyProps) => {
   const { userId: currentUserId } = useWidgetSession();
   const { messageInputControls } = useConstantState();
+  const { config } = useSendbirdStateContext();
+  const isOnline = config.isOnline;
   const blockInputWhileBotResponding = messageInputControls?.blockWhileBotResponding;
   const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const [isMessageInputDisabled, setIsMessageInputDisabled] = useState(false);
@@ -39,6 +43,10 @@ export const useBlockWhileBotResponding = ({ lastMessage, botUser }: UseDisableI
 
   useEffect(() => {
     if (!blockInputWhileBotResponding || !currentUserId || !botUser || !lastMessage) return;
+    if (!isOnline) {
+      setIsMessageInputDisabled(true);
+      return;
+    }
     if (isSentBy(lastMessage, currentUserId)) {
       if (lastMessage.sendingStatus === 'pending') {
         setTimerAndBlock();
@@ -51,7 +59,7 @@ export const useBlockWhileBotResponding = ({ lastMessage, botUser }: UseDisableI
         clearAndUnblock();
       }
     }
-  }, [currentUserId, botUser?.userId, lastMessage, blockInputWhileBotResponding]);
+  }, [currentUserId, botUser?.userId, lastMessage, blockInputWhileBotResponding, isOnline]);
 
   return isMessageInputDisabled;
 };
