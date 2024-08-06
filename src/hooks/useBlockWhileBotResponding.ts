@@ -1,7 +1,7 @@
 import { SendableMessage, Member } from '@sendbird/chat/lib/__definition';
 import { useEffect, useRef, useState } from 'react';
 
-import {useSendbirdStateContext} from "@uikit/index";
+import { useSendbirdStateContext } from '@uikit/index';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
