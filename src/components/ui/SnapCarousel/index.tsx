@@ -62,7 +62,7 @@ export const SnapCarousel = ({
 
   const itemWidth = useMemo(() => {
     const total = ref.current?.scrollWidth ?? 0;
-    return total - (startPadding + endPadding + gap * (itemLength - 1)) / itemLength;
+    return (total - (startPadding + endPadding + gap * (itemLength - 1))) / itemLength;
   }, [ref.current?.scrollWidth, itemLength, gap, startPadding, endPadding]);
 
   const onScroll = (e: React.UIEvent<HTMLDivElement>) => {
