@@ -1,3 +1,12 @@
+## [1.7.6] (Aug 7, 2024)
+### Fix:
+- Added a root element to the full-screen component for the modal to avoid crashes when clicking feedback.
+- Fixed the carousel index calculation.
+
+### Chore:
+- Updated disconnect WS timeout to 1 minute.
+- Updated Sendbird banner link attributes.
+
 ## [1.7.5] (Aug 1, 2024)
 ### Fix:
 - Fixed a bug where directly managing the widget open state caused a disconnection after 3 minutes and prevented reconnection.
