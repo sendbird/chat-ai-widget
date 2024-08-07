@@ -4,7 +4,7 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 import { useWidgetState } from '../context/WidgetStateContext';
 
-const WS_IDLE_TIMEOUT = 1000 * 60 * 3;
+const WS_IDLE_TIMEOUT = 1000 * 60;
 
 /**
  * This hook is used to disconnect the websocket connection
