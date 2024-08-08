@@ -4,6 +4,7 @@ import { isSameDay } from 'date-fns/isSameDay';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import GroupChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import MessageInputWrapper from '@uikit/modules/GroupChannel/components/MessageInputWrapper';
@@ -31,7 +32,6 @@ import {
   isStaticReplyVisible as getStaticMessageVisibility,
   shouldFilterOutMessage,
 } from '../utils/messages';
-import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 interface RootStyleProps {
   height: string;
