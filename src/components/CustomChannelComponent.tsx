@@ -31,6 +31,7 @@ import {
   isStaticReplyVisible as getStaticMessageVisibility,
   shouldFilterOutMessage,
 } from '../utils/messages';
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 interface RootStyleProps {
   height: string;
@@ -122,6 +123,7 @@ export function CustomChannelComponent() {
   const { messages, currentChannel: channel, scrollToBottom, refresh } = useGroupChannelContext();
   const { resetSession } = useWidgetSetting();
   const { userId: currentUserId } = useWidgetSession();
+  const { stores } = useSendbirdStateContext();
 
   // NOTE: Filter out messages that should not be displayed.
   const allMessages = messages.filter((message) => !shouldFilterOutMessage(message));
@@ -230,8 +232,13 @@ export function CustomChannelComponent() {
             botNickname={botNickname}
             channelName={channel?.name}
             onRenewButtonClick={async () => {
-              await channel?.resetMyHistory();
-              await refresh();
+              if (channel) {
+                await Promise.allSettled([
+                  stores.sdkStore.sdk.clearCachedMessages([channel.url]),
+                  channel.resetMyHistory(),
+                ]);
+                await refresh();
+              }
             }}
           />
         )}
