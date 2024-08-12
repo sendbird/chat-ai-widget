@@ -15,14 +15,8 @@ import BetaLogo from '../../ui/BetaLogo';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatHeader = () => {
-  const {
-    botId,
-    botStudioEditProps,
-    isMobileView,
-    enableWidgetExpandButton,
-    betaMark,
-    customBetaMarkText,
-  } = useConstantState();
+  const { botId, botStudioEditProps, isMobileView, enableWidgetExpandButton, betaMark, customBetaMarkText } =
+    useConstantState();
   const { sdk, channel, dataSource } = useChatContext();
   const { setIsOpen } = useWidgetState();
 
