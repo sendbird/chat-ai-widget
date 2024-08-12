@@ -4,6 +4,7 @@ import { isSameDay } from 'date-fns/isSameDay';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import GroupChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import MessageInputWrapper from '@uikit/modules/GroupChannel/components/MessageInputWrapper';
@@ -122,6 +123,7 @@ export function CustomChannelComponent() {
   const { messages, currentChannel: channel, scrollToBottom, refresh } = useGroupChannelContext();
   const { resetSession } = useWidgetSetting();
   const { userId: currentUserId } = useWidgetSession();
+  const { stores } = useSendbirdStateContext();
 
   // NOTE: Filter out messages that should not be displayed.
   const allMessages = messages.filter((message) => !shouldFilterOutMessage(message));
@@ -230,8 +232,13 @@ export function CustomChannelComponent() {
             botNickname={botNickname}
             channelName={channel?.name}
             onRenewButtonClick={async () => {
-              await channel?.resetMyHistory();
-              await refresh();
+              if (channel) {
+                await Promise.allSettled([
+                  stores.sdkStore.sdk.clearCachedMessages([channel.url]),
+                  channel.resetMyHistory(),
+                ]);
+                await refresh();
+              }
             }}
           />
         )}
