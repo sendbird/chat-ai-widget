@@ -1,9 +1,12 @@
 name: self-service build and publish
 
+env:
+  DEFAULT_BRANCH: develop
+
 on:
   pull_request:
     branches:
-      - develop # default branch
+      - ${{ env.DEFAULT_BRANCH }}
     types:
       - closed
 
@@ -13,18 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CIRCLECI_TOKEN: ${{ secrets.CIRCLECI_API_TOKEN }}
+      DEFAULT_BRANCH: ${{ env.DEFAULT_BRANCH }}
     steps:
       - name: Check if the source branch is a release branch
         run: |
           PR_BRANCH="${{ github.event.pull_request.head.ref }}"
           echo "Source branch is $PR_BRANCH"
-
           if [[ "$PR_BRANCH" == release/* ]]; then
             echo "The source branch is a release branch, proceed with deployment."
-            echo "Triggering CircleCI workflow..."
-            curl -d '{"branch": "develop", "parameters": {"run_deploy_prod": true}}' \
+            curl -d '{\"branch\": \"${DEFAULT_BRANCH}\", \"parameters\": {\"run_deploy_prod\": true}}' \
               -H 'Content-Type: application/json' \
-              -H "Circle-Token: ${CIRCLECI_TOKEN}" \
+              -H 'Circle-Token: ${CIRCLECI_TOKEN}' \
               -X POST https://circleci.com/api/v2/project/gh/sendbird/chat-ai-widget/pipeline
           else
             echo "The source branch is not a release branch, skipping deployment."
