@@ -126,6 +126,7 @@ export default App;
 | `messageInputControls.blockWhileBotResponding` | `boolean \| number` | No | N/A | Allows to control enabled/disabled state of the message input for waiting for the bot's reply mesage. If number value is given, a timer will be set to force unblock the message input. |
 | `dateLocale` | `Locale` | No | `enUS` | Locale value to be applied to string values of message timestamp and date separator. Locale values must be imported from `date-fns`.                                                    |
 | `enableHideWidgetForDeactivatedUser` | `boolean`  | No       | `false`       | Determines whether the chatbot widget is hidden when the user is deactivated.                                                                                                           |
+| `enableWidgetExpandButton` | `boolean` | No | `false` | Determines whether the expand button is displayed in the chatbot widget. |
 
 ## For internal contributors
 - [Release guide](./release-guide.md)
