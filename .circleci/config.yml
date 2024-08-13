@@ -112,6 +112,7 @@ jobs:
     parameters:
       widget_version:
         type: string
+        default: "v0.0.0"
     steps:
       - checkout
       - run:
@@ -183,11 +184,9 @@ workflows:
           requires:
             - prepare
   test:
-    when: << pipeline.parameters.run_workflow_release >>
     jobs:
       - build:
           name: build
-          widget_version: ""
           filters:
             branches:
               only: /ci\/.*/
