@@ -189,7 +189,7 @@ workflows:
           widget_version: ""
           filters:
             branches:
-              only: /ci\/.*/
+              only: /test\/.*/
 
   deploy_prod:
     when: << pipeline.parameters.run_workflow_release >>
