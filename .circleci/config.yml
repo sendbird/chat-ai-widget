@@ -191,7 +191,8 @@ workflows:
           widget_version: ""
           filters: &release_branch_trigger
             branches:
-              only: /release\/.*/
+              only:
+                - develop
       - upload_to_s3_and_invalidate_cache:
           name: upload_to_s3_and_invalidate_cache
           filters: *release_branch_trigger
