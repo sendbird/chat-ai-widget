@@ -4,7 +4,7 @@ orbs:
   aws-s3: circleci/aws-s3@4.0.0
 
 parameters:
-  run_workflow_release:
+  run_deploy_prod:
       type: boolean
       default: false
 
@@ -184,7 +184,7 @@ workflows:
             - prepare
 
   deploy_prod:
-    when: << pipeline.parameters.run_workflow_release >>
+    when: << pipeline.parameters.run_deploy_prod >>
     jobs:
       - build:
           name: build
