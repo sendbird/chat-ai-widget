@@ -318,25 +318,13 @@ export function getDefaultServiceName(injectedServiceName?: string) {
   }
 }
 
-export function isShopify() {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  return typeof window !== 'undefined' && !!window['Shopify'];
-}
-
-export function isWordpress() {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  return typeof window !== 'undefined' && !!window['wp'];
-}
-
 export function asSafeURL(url: string) {
   let safeURL = url;
 
   try {
     safeURL = decodeURIComponent(url);
     const { protocol } = new URL(safeURL);
-    if (['https:', 'http:'].some((it) => it === protocol.toLowerCase())) {
+    if (['https:', 'http:', 'tel:', 'mailto:', 'sms:'].some((it) => it === protocol.toLowerCase())) {
       return safeURL;
     } else {
       return '#';
@@ -348,4 +336,19 @@ export function asSafeURL(url: string) {
   }
 
   return safeURL;
+}
+
+declare global {
+  interface Window {
+    wp?: unknown;
+    Shopify?: unknown;
+  }
+}
+
+export function isShopify() {
+  return typeof window !== 'undefined' && !!window['Shopify'];
+}
+
+export function isWordpress() {
+  return typeof window !== 'undefined' && !!window['wp'];
 }
