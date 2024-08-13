@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-import { WIDGET_WINDOW_Z_INDEX, elementIds } from '../../const';
+import { elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetState } from '../../context/WidgetStateContext';
 import CloseIcon from '../../icons/ic-widget-close.svg';
@@ -105,7 +105,7 @@ const StyledCloseButton = styled.button`
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
   const { isVisible, isOpen, setIsOpen } = useWidgetState();
   const [isExpanded, setIsExpanded] = useState(false);
-  const { callbacks } = useConstantState();
+  const { callbacks, enableWidgetExpandButton } = useConstantState();
 
   const onExpandButtonToggle = () => {
     setIsExpanded((prev) => {
@@ -117,7 +117,7 @@ const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <StyledWidgetWindowWrapper isOpen={isOpen && isVisible} isExpanded={isExpanded} id={elementIds.widgetWindow}>
-      {callbacks?.onWidgetExpandStateChange && (
+      {enableWidgetExpandButton && (
         <StyledExpandButton onClick={onExpandButtonToggle}>
           {isExpanded ? <CollapseIcon id={elementIds.collapseIcon} /> : <ExpandIcon id={elementIds.expandIcon} />}
         </StyledExpandButton>

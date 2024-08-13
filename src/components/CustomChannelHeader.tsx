@@ -68,7 +68,8 @@ interface Props {
   channelName?: string;
 }
 export default function CustomChannelHeader({ botProfileUrl, botNickname, channelName, onRenewButtonClick }: Props) {
-  const { betaMark, customBetaMarkText, customRefreshComponent, isMobileView, callbacks } = useConstantState();
+  const { betaMark, customBetaMarkText, customRefreshComponent, isMobileView, enableWidgetExpandButton } =
+    useConstantState();
   const { setIsOpen } = useWidgetState();
 
   async function handleRenewButtonClick() {
@@ -110,7 +111,7 @@ export default function CustomChannelHeader({ botProfileUrl, botNickname, channe
                     right: isMobileView
                       ? 0
                       : // to make the refresh icon appear next to the close icon in the widget window
-                        callbacks?.onWidgetExpandStateChange
+                        enableWidgetExpandButton
                         ? RIGHT_WITH_EXPAND_BUTTON
                         : RIGHT_WITHOUT_EXPAND_BUTTON,
                   }
