@@ -10,14 +10,14 @@ const WS_IDLE_TIMEOUT = 1000 * 60;
  * This hook is used to disconnect the websocket connection
  * when the widget is not opened for a certain amount of time
  */
-function useWidgetButtonActivityTimeout() {
+function useWidgetButtonActivityTimeout(fullscreen: boolean) {
   const { isOpen } = useWidgetState();
   const store = useSendbirdStateContext();
   const disconnectTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { sdk, initialized } = store.stores.sdkStore;
 
   useEffect(() => {
-    if (!sdk || !initialized) return;
+    if (fullscreen || !sdk || !initialized) return;
 
     if (isOpen) {
       if (sdk.connectionState === 'CLOSED') {
@@ -33,7 +33,7 @@ function useWidgetButtonActivityTimeout() {
         sdk.disconnectWebSocket();
       }, WS_IDLE_TIMEOUT);
     }
-  }, [sdk, initialized, isOpen]);
+  }, [fullscreen, sdk, initialized, isOpen]);
 }
 
 export default useWidgetButtonActivityTimeout;
