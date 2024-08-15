@@ -63,7 +63,7 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
       .getChannel(channelUrl)
       .then(setChannel)
       .catch((error: SendbirdError) => {
-        if (error.code === SendbirdErrorCode.NOT_FOUND_IN_DATABASE) {
+        if (error.code === SendbirdErrorCode.NOT_FOUND_IN_DATABASE || error.code === SendbirdErrorCode.NON_AUTHORIZED) {
           resetSession();
         } else {
           setErrorMessage(stringSet.ERR_CHANNEL_FETCH);
