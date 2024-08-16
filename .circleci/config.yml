@@ -126,6 +126,11 @@ jobs:
 #            TODO: update self-service to use yarn workspaces
 #            yarn install --immutable --immutable-cache
 #            yarn build
+      - run:
+          name: Set default widget version
+          command: |
+            VERSION=v$(node -p "require('./package.json').version")
+            echo "export WIDGET_VERSION=$VERSION" >> $BASH_ENV
       - persist_to_workspace:
           root: ./packages/self-service
           paths:
@@ -139,6 +144,8 @@ jobs:
       distribution_id:
         type: string
       role_arn:
+        type: string
+      widget_version:
         type: string
     steps:
       - attach_workspace:
@@ -161,8 +168,8 @@ jobs:
           profile_name: ci-web
       - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type application/javascript --recursive'
-          from: << parameters.s3_bucket >>/${CIRCLE_TAG}
-          to: << parameters.s3_bucket >>/${CIRCLE_TAG}
+          from: << parameters.s3_bucket >>/<< parameters.widget_version >>
+          to: << parameters.s3_bucket >>/<< parameters.widget_version >>
           profile_name: ci-web
       - aws-create-invalidation:
           distribution-id: << parameters.distribution_id >>
@@ -199,6 +206,7 @@ workflows:
           s3_bucket: $S3_BUCKET
           distribution_id: $DISTRIBUTION_ID
           role_arn: $ROLE_ARN
+          widget_version: $WIDGET_VERSION
           requires:
             - build
           context:
@@ -220,6 +228,7 @@ workflows:
           s3_bucket: $S3_BUCKET_STAGING
           distribution_id: $DISTRIBUTION_ID_STAGING
           role_arn: $ROLE_ARN_STAGING
+          widget_version: $CIRCLE_TAG
           requires:
             - build_staging
           context:
