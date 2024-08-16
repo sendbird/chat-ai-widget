@@ -12,7 +12,6 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     env:
-      CIRCLECI_TOKEN: ${{ secrets.CIRCLECI_API_TOKEN }}
       DEFAULT_BRANCH: develop
     steps:
       - name: Check if the source branch is a release branch
@@ -21,9 +20,9 @@ jobs:
           echo "Source branch is $PR_BRANCH"
           if [[ "$PR_BRANCH" == release/* ]]; then
             echo "The source branch is a release branch, proceed with deployment."
-            curl -d '{\"branch\": \"${DEFAULT_BRANCH}\", \"parameters\": {\"run_deploy_prod\": true}}' \
+            curl -d '{"branch": "${{ env.DEFAULT_BRANCH }}", "parameters": {"run_deploy_prod": true}}' \
               -H 'Content-Type: application/json' \
-              -H 'Circle-Token: ${CIRCLECI_TOKEN}' \
+              -H 'Circle-Token: ${{ secrets.CIRCLECI_API_TOKEN }}' \
               -X POST https://circleci.com/api/v2/project/gh/sendbird/chat-ai-widget/pipeline
           else
             echo "The source branch is not a release branch, skipping deployment."
