@@ -6,7 +6,7 @@ env:
 on:
   pull_request:
     branches:
-      - ${{ env.DEFAULT_BRANCH }}
+      - develop
     types:
       - closed
 
