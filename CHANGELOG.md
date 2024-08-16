@@ -1,3 +1,13 @@
+## [1.7.8] (Aug 16, 2024)
+### Fix:
+- Fixed a bug where session not being reset on unauthorized error during channel fetch
+- Fixed a bug where browser cached messages are not being cleared on refreshing the channel
+
+### Chore:
+- Added `enableWidgetExpandButton` in `Constant`. Refer to [**Available props** section in **README.md**](./README.md#available-props) file for details
+- `WidgetWindowFullScreen` no longer disconnects when widget is closed
+- Texts in user message that start with `tel:`, `mailto:`, or `sms:` are now being considered as url
+
 ## [1.7.7] (Aug 7, 2024)
 ### Fix:
 - Added a root element to the full-screen component for the modal to avoid crashes when clicking feedback.
