@@ -5,7 +5,7 @@
 
 ### Chore:
 - Added `enableWidgetExpandButton` in `Constant`. Refer to [**Available props** section in **README.md**](./README.md#available-props) file for details
-- `WidgetWindowFullScreen` no longer disconnects when widget is closed
+- `WidgetWindowFullScreen` no longer disconnects while network is connected
 - Texts in user message that start with `tel:`, `mailto:`, or `sms:` are now being considered as url
 
 ## [1.7.7] (Aug 7, 2024)
