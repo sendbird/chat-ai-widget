@@ -38,7 +38,7 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
       }}
     >
       <HeadlessForHooks fullscreen={fullscreen} />
-      <ChatUI />
+      <ChatUI fullscreen={fullscreen} />
     </ChatContainer>
   );
 };

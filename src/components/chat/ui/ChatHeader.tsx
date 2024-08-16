@@ -14,7 +14,10 @@ import BotProfileImage from '../../BotProfileImage';
 import BetaLogo from '../../ui/BetaLogo';
 import { useChatContext } from '../context/ChatProvider';
 
-export const ChatHeader = () => {
+type Props = {
+  fullscreen: boolean;
+};
+export const ChatHeader = ({ fullscreen }: Props) => {
   const { botId, botStudioEditProps, isMobileView, enableWidgetExpandButton, betaMark, customBetaMarkText } =
     useConstantState();
   const { sdk, channel, dataSource } = useChatContext();
@@ -25,6 +28,7 @@ export const ChatHeader = () => {
   const botNickname = botInfo?.nickname ?? botUser?.nickname;
   const profileUrl = botInfo?.profileUrl ?? botUser?.profileUrl;
   const buttonSize = isMobileView ? 24 : 16;
+  const isExpandableMode = !fullscreen && !isMobileView;
 
   const handleRefresh = async () => {
     if (sdk && channel) {
@@ -51,7 +55,7 @@ export const ChatHeader = () => {
       </div>
       <div className={buttonsContainer}>
         <RefreshButton size={buttonSize} onClick={handleRefresh} />
-        {enableWidgetExpandButton && <ExpandButton size={buttonSize} />}
+        {isExpandableMode && enableWidgetExpandButton && <ExpandButton size={buttonSize} />}
         <CloseButton size={buttonSize} onClick={handleClose} />
       </div>
     </div>

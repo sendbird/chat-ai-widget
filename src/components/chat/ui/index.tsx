@@ -6,10 +6,13 @@ import { ChatMessageList } from './ChatMessageList';
 import { themedColors, themedColorVars } from '../../../foundation/colors/css';
 import { PoweredByBanner } from '../../ui/PoweredByBanner';
 
-export const ChatUI = () => {
+type Props = {
+  fullscreen: boolean;
+};
+export const ChatUI = ({ fullscreen }: Props) => {
   return (
     <div className={cx(container, themedColorVars)}>
-      <ChatHeader />
+      <ChatHeader fullscreen={fullscreen} />
       <ChatMessageList />
       <ChatInput />
       <PoweredByBanner />
