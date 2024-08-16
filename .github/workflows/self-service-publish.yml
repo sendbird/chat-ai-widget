@@ -1,8 +1,5 @@
 name: self-service build and publish
 
-env:
-  DEFAULT_BRANCH: develop
-
 on:
   pull_request:
     branches:
@@ -16,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CIRCLECI_TOKEN: ${{ secrets.CIRCLECI_API_TOKEN }}
-      DEFAULT_BRANCH: ${{ env.DEFAULT_BRANCH }}
+      DEFAULT_BRANCH: develop
     steps:
       - name: Check if the source branch is a release branch
         run: |
