@@ -21,6 +21,7 @@ interface FormValue {
   draftValues: string[];
   required: boolean;
   errorMessage: string | null;
+  isInvalidated: boolean;
 }
 
 const Root = styled.div`
@@ -65,8 +66,8 @@ export default function FormMessage(props: Props) {
   const { stringSet } = useConstantState();
 
   const [submitFailed, setSubmitFailed] = useState(false);
-  const [isInputFocused, setIsInputFocused] = useState(false);
-  const [isInvalidated, setIsInvalidated] = useState(false);
+  const [focusedInputIndex, setFocusedInputIndex] = useState(-1);
+  const [isSubmitTried, setIsSubmitTried] = useState(false);
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
     items.forEach(({ id, required, style }) => {
@@ -76,6 +77,7 @@ export default function FormMessage(props: Props) {
         draftValues: layout === 'chip' ? defaultOptions : [],
         required,
         errorMessage: null,
+        isInvalidated: false,
       });
     });
     return initialFormValues;
@@ -83,9 +85,14 @@ export default function FormMessage(props: Props) {
 
   const isSubmitted = form.isSubmitted;
   const hasError = formValues.some(({ errorMessage }) => !!errorMessage);
-  const isButtonDisabled = ((isInvalidated || !isInputFocused) && hasError) || isSubmitted;
+  const isFocusedInvalidated =
+    focusedInputIndex > -1
+      ? formValues[focusedInputIndex].isInvalidated
+      : formValues.some(({ isInvalidated }) => isInvalidated);
+  const isButtonDisabled = (hasError && (isSubmitTried || isFocusedInvalidated)) || isSubmitted;
 
   const handleSubmit = async () => {
+    setIsSubmitTried(true);
     try {
       // If form is empty, ignore submit
       const isMissingRequired = formValues.some(
@@ -133,17 +140,24 @@ export default function FormMessage(props: Props) {
             style={style}
             placeHolder={placeholder}
             values={item.submittedValues ?? draftValues}
-            isInvalidated={isInvalidated}
+            isInvalidated={formValues[index].isInvalidated}
+            isSubmitTried={isSubmitTried}
             errorMessage={errorMessage}
             isValid={isSubmitted}
             disabled={isSubmitted}
             name={name}
             required={required}
             onFocused={(isFocus) => {
-              if (errorMessage && !isInvalidated) {
-                setIsInvalidated(true);
+              if (errorMessage && !isFocus && !formValues[index].isInvalidated) {
+                setFormValues(([...newInputs]) => {
+                  newInputs[index] = {
+                    ...newInputs[index],
+                    isInvalidated: true,
+                  };
+                  return newInputs;
+                });
               }
-              setIsInputFocused(isFocus);
+              setFocusedInputIndex(isFocus ? index : -1);
             }}
             onChange={(values) => {
               setFormValues(([...newInputs]) => {
@@ -169,9 +183,7 @@ export default function FormMessage(props: Props) {
       })}
       <SubmitButton onClick={handleSubmit} disabled={isButtonDisabled}>
         <Label type={LabelTypography.BUTTON_2}>
-          <ButtonText disabled={(!isInputFocused && hasError) || isSubmitted}>
-            {isSubmitted ? 'Submitted successfully' : 'Submit'}
-          </ButtonText>
+          <ButtonText disabled={isButtonDisabled}>{isSubmitted ? 'Submitted successfully' : 'Submit'}</ButtonText>
         </Label>
       </SubmitButton>
       {submitFailed && (
