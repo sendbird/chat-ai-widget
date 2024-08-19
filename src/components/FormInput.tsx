@@ -1,5 +1,5 @@
 import { MessageFormItemStyle } from '@sendbird/chat/message';
-import { ReactElement, ReactNode, useState } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
@@ -268,6 +268,7 @@ export interface InputProps {
   errorMessage: string | null;
   values: string[];
   isInvalidated: boolean;
+  isSubmitTried: boolean;
   placeHolder?: string;
   onFocused?: (isFocus: boolean) => void;
   onChange: (values: string[]) => void;
@@ -292,6 +293,7 @@ const FormInput = (props: InputProps) => {
     isValid,
     values,
     isInvalidated,
+    isSubmitTried,
     style,
     onFocused,
     onChange,
@@ -303,15 +305,11 @@ const FormInput = (props: InputProps) => {
   const { min = 1, max = 1 } = resultCount ?? {};
   const chipDataList: ChipData[] = getInitialChipDataList();
 
-  const [isFocused, setIsFocused] = useState(false);
-
   const handleFocus = () => {
-    setIsFocused(true);
     onFocused?.(true);
   };
 
   const handleBlur = () => {
-    setIsFocused(false);
     onFocused?.(false);
   };
 
@@ -412,7 +410,9 @@ const FormInput = (props: InputProps) => {
                           onChange(value ? [value] : []);
                         }}
                       />
-                      {!disabled && placeHolder && !currentValue && <Placeholder numMaxLines={4}>{placeHolder}</Placeholder>}
+                      {!disabled && placeHolder && !currentValue && (
+                        <Placeholder numMaxLines={4}>{placeHolder}</Placeholder>
+                      )}
                     </>
                   )}
                 </InputContainer>
@@ -458,7 +458,12 @@ const FormInput = (props: InputProps) => {
             }
           }
         })()}
-        {(isInvalidated || !isFocused) && errorMessage && (
+        {/*
+        If there is an error message for the input, display it IFF any of below is true:
+        1. Submit button has been clicked after initial load.
+        2. Input has been focused out.
+        */}
+        {errorMessage && (isSubmitTried || isInvalidated) && (
           <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>
         )}
       </div>
