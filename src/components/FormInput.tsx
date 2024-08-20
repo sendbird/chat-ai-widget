@@ -262,18 +262,17 @@ const InputContainer = styled.div`
 export interface InputProps {
   name: string;
   style: MessageFormItemStyle;
-  required?: boolean;
-  disabled?: boolean;
-  isValid?: boolean;
+  isSubmitted: boolean;
   errorMessage: string | null;
   values: string[];
   isInvalidated: boolean;
   isSubmitTried: boolean;
+  onChange: (values: string[]) => void;
+  layout: MessageFormItemStyle['layout'];
+  required?: boolean;
+  isValid?: boolean;
   placeHolder?: string;
   onFocused?: (isFocus: boolean) => void;
-  onChange: (values: string[]) => void;
-  isSubmitted: boolean;
-  layout: MessageFormItemStyle['layout'];
 }
 
 type ChipState = 'default' | 'selected' | 'submittedDefault' | 'submittedSelected';
@@ -288,7 +287,6 @@ const FormInput = (props: InputProps) => {
     layout,
     name,
     required,
-    disabled,
     errorMessage,
     isValid,
     values,
@@ -401,7 +399,7 @@ const FormInput = (props: InputProps) => {
                       <TextArea
                         className="sendbird-input__input"
                         required={required}
-                        disabled={disabled}
+                        disabled={isSubmitted}
                         value={currentValue}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
@@ -410,7 +408,7 @@ const FormInput = (props: InputProps) => {
                           onChange(value ? [value] : []);
                         }}
                       />
-                      {!disabled && placeHolder && !currentValue && (
+                      {placeHolder && !currentValue && (
                         <Placeholder numMaxLines={4}>{placeHolder}</Placeholder>
                       )}
                     </>
@@ -438,7 +436,7 @@ const FormInput = (props: InputProps) => {
                         className="sendbird-input__input"
                         name={name}
                         required={required}
-                        disabled={disabled}
+                        disabled={isSubmitted}
                         value={currentValue}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
@@ -447,7 +445,7 @@ const FormInput = (props: InputProps) => {
                           onChange(value ? [value] : []);
                         }}
                       />
-                      {!disabled && placeHolder && !currentValue && <Placeholder>{placeHolder}</Placeholder>}
+                      {placeHolder && !currentValue && <Placeholder>{placeHolder}</Placeholder>}
                     </>
                   )}
                 </InputContainer>
