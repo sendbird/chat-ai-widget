@@ -14,13 +14,16 @@
 3. Enter the target version (e.g., 1.3.1) in the version field, and specify `rc` / `alpha` / `beta` for the `npm_tag` field if necessary.
 <img width="450px" alt="workflow-guide" src="screenshot/workflow-guide.png">
 4. Hit "Run workflow" button.
-
-Once all the steps in the workflow are successfully completed:
+5. Once all the steps in the workflow are successfully completed:
    - The build output will be published to npm. (if `npm_tag` is provided, we stop the workflow from here)
    - A commit will be pushed to the release PR created in Step 0. This commit includes:
      - `@sendbird/chat-ai-widget` dependency version updated in `/packages/*`.
-   - A new tag(`v{version}`) will be pushed to the origin to trigger the self-service script deployment.
-     -  Check the progress in [Circle CI dashboard](https://app.circleci.com/pipelines/github/sendbird/chat-ai-widget).
+   - A new tag(`v{version}`) will be pushed to the origin ~~to trigger the self-service script deployment.~~
+
+## Step 2 - Publish a new self-service script (using automated workflow)
+1. Merge the PR created in Step 0.
+2. When the release branch is merged into the default branch, the [self-service-publish](./.github/workflows/self-service-publish.yml) workflow will deploy the self-service script.
+   - Check the progress in [Circle CI dashboard](https://app.circleci.com/pipelines/github/sendbird/chat-ai-widget).
 
 ### Want to publish `@sendbird/chat-ai-widget` manually?
 1. Update the `version` field in `package.json`.

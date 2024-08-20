@@ -3,6 +3,11 @@ orbs:
   aws-cli: circleci/aws-cli@2.1.0
   aws-s3: circleci/aws-s3@4.0.0
 
+parameters:
+  run_deploy_prod:
+      type: boolean
+      default: false
+
 executors:
   ci-aws:
     docker:
@@ -81,7 +86,7 @@ jobs:
       - attach_project
       - run:
           name: Run lint and prettier check
-          command: yarn lint && yarn prettier
+          command: yarn format:check
   # CI - check build
   run-build:
     executor: ci-node
@@ -104,6 +109,9 @@ jobs:
   # Publish - build self-service
   build:
     executor: node
+    parameters:
+      widget_version:
+        type: string
     steps:
       - checkout
       - run:
@@ -114,14 +122,21 @@ jobs:
           command: |
             cd ./packages/self-service
             npm install
-            npm run build version=${CIRCLE_TAG}
+            npm run build version=<< parameters.widget_version >>
 #            TODO: update self-service to use yarn workspaces
 #            yarn install --immutable --immutable-cache
 #            yarn build
+      - run:
+          name: Set default widget version
+          command: |
+            VERSION=v$(node -p "require('./package.json').version")
+            echo "export WIDGET_VERSION=$VERSION" >> $BASH_ENV
+            cp $BASH_ENV ./packages/self-service/widget.env
       - persist_to_workspace:
           root: ./packages/self-service
           paths:
             - dist
+            - widget.env
   # Publish - upload self-service to S3 and invalidate cache
   upload_to_s3_and_invalidate_cache:
     executor: ci-aws
@@ -132,9 +147,15 @@ jobs:
         type: string
       role_arn:
         type: string
+      widget_version:
+        type: string
     steps:
       - attach_workspace:
           at: .
+      - run:
+          name: Load environment variables
+          command: |
+            cat widget.env >> $BASH_ENV
       - aws-cli/setup:
           profile-name: default
           configure-default-region: false
@@ -147,18 +168,23 @@ jobs:
           to: << parameters.s3_bucket >>
           profile_name: ci-web
       - aws-s3/copy:
+          arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type application/javascript --recursive'
+          from: << parameters.s3_bucket >>/<< parameters.widget_version >>
+          to: << parameters.s3_bucket >>/<< parameters.widget_version >>
+          profile_name: ci-web
+      - aws-s3/copy:
           arguments: '--metadata-directive REPLACE --cache-control "max-age=0" --content-type application/javascript'
           from: << parameters.s3_bucket >>/index.js
           to: << parameters.s3_bucket >>/index.js
           profile_name: ci-web
       - aws-s3/copy:
-          arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type application/javascript --recursive'
-          from: << parameters.s3_bucket >>/${CIRCLE_TAG}
-          to: << parameters.s3_bucket >>/${CIRCLE_TAG}
+          arguments: '--metadata-directive REPLACE --cache-control "max-age=86400" --content-type text/html'
+          from: << parameters.s3_bucket >>/playground/index.html
+          to: << parameters.s3_bucket >>/playground/index.html
           profile_name: ci-web
       - aws-create-invalidation:
           distribution-id: << parameters.distribution_id >>
-          paths: '"/index.js" "/playground/index.html"'
+          paths: '"/index.js" "/playground/*"'
           profile: ci-web
 
 workflows:
@@ -174,27 +200,34 @@ workflows:
       - run-test:
           requires:
             - prepare
-  deploy_to_s3:
+
+  deploy_prod:
+    when: << pipeline.parameters.run_deploy_prod >>
     jobs:
       - build:
           name: build
-          filters: &only_version_tag_trigger
-            tags:
-              only: /^v\d+\.\d+\.\d+$/
+          widget_version: ""
+          filters: &default_branch_trigger
             branches:
-              ignore: /.*/
+              only:
+                - develop
       - upload_to_s3_and_invalidate_cache:
           name: upload_to_s3_and_invalidate_cache
-          filters: *only_version_tag_trigger
+          filters: *default_branch_trigger
           s3_bucket: $S3_BUCKET
           distribution_id: $DISTRIBUTION_ID
           role_arn: $ROLE_ARN
+          widget_version: $WIDGET_VERSION
           requires:
             - build
           context:
             - circleci-dashboard-bot
+
+  deploy_stg:
+    jobs:
       - build:
           name: build_staging
+          widget_version: $CIRCLE_TAG
           filters: &only_version_tag_trigger_staging
             tags:
               only: /^v\d+\.\d+\.\d+-staging(\.\d+)?$/
@@ -206,6 +239,7 @@ workflows:
           s3_bucket: $S3_BUCKET_STAGING
           distribution_id: $DISTRIBUTION_ID_STAGING
           role_arn: $ROLE_ARN_STAGING
+          widget_version: $CIRCLE_TAG
           requires:
             - build_staging
           context:

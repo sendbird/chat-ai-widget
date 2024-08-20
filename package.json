@@ -1,6 +1,6 @@
 {
   "name": "@sendbird/chat-ai-widget",
-  "version": "1.7.3",
+  "version": "1.7.8",
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
@@ -24,10 +24,9 @@
     "build:npm": "node scripts/prebuild.mjs && yarn build",
     "build:pages": "rm -rf ./dist && tsc-silent -p './tsconfig.json' --suppress @ && vite build --config vite.config.pages.ts",
     "format": "yarn prettier:fix && yarn lint:fix",
-    "lint": "npx eslint src",
-    "lint:fix": "yarn lint --fix",
-    "prettier": "npx prettier src --check",
-    "prettier:fix": "yarn prettier --write",
+    "format:check": "yarn prettier src --check && yarn eslint src",
+    "lint:fix": "yarn eslint src --fix",
+    "prettier:fix": "yarn prettier src --write",
     "preview": "vite preview",
     "test": "vitest run"
   },

@@ -44,7 +44,6 @@ const Highlighter = styled.a`
   justify-content: center;
 `;
 
-// link: https://dashboard.sendbird.com/auth/signup
 function Banner() {
   const { chatBottomContent } = useConstantState();
 
@@ -52,10 +51,10 @@ function Banner() {
     <InnerContainer chatBottomBackgroundColor={chatBottomContent.backgroundColor}>
       {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
       <Highlighter
-        aria-label="Learn more about Sendbird Chatbot"
-        href="https://sendbird.com/products/ai-chatbot"
+        aria-label="Learn more about Sendbird"
+        href="https://sendbird.com"
+        rel="noopener noreferrer nofollow"
         target="_blank"
-        rel="noopener noreferrer"
       >
         <SendbirdLogo width={'75px'} />
       </Highlighter>

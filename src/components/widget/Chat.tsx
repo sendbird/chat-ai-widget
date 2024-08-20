@@ -11,8 +11,11 @@ import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingC
 import useWidgetButtonActivityTimeout from '../../hooks/useWidgetButtonActivityTimeout';
 import { CustomChannelComponent } from '../CustomChannelComponent';
 
-const Chat = () => {
-  useWidgetButtonActivityTimeout();
+interface Props {
+  fullscreen?: boolean;
+}
+const Chat = ({ fullscreen = false }: Props) => {
+  useWidgetButtonActivityTimeout(fullscreen);
   const { stores } = useSendbirdStateContext();
   const widgetSetting = useWidgetSetting();
   const widgetSession = useWidgetSession();

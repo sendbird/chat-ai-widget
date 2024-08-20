@@ -17,3 +17,4 @@ jobs:
           framework: 'react'
           product_jira_project_key: 'AC'
           product_jira_version_prefix: 'js_chat_ai_widget'
+          changelog_file: 'CHANGELOG.md'

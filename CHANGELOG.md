@@ -1,3 +1,34 @@
+## [1.7.8] (Aug 16, 2024)
+### Fix:
+- Fixed a bug where session not being reset on unauthorized error during channel fetch
+- Fixed a bug where browser cached messages are not being cleared on refreshing the channel
+
+### Chore:
+- Added `enableWidgetExpandButton` in `Constant`. Refer to [**Available props** section in **README.md**](./README.md#available-props) file for details
+- `WidgetWindowFullScreen` no longer disconnects while network is connected
+- Texts in user message that start with `tel:`, `mailto:`, or `sms:` are now being considered as url
+
+## [1.7.7] (Aug 7, 2024)
+### Fix:
+- Added a root element to the full-screen component for the modal to avoid crashes when clicking feedback.
+- Fixed the carousel index calculation.
+
+### Chore:
+- Updated disconnect WS timeout to 1 minute.
+- Updated Sendbird banner link attributes.
+
+## [Deprecated] [1.7.6]
+
+## [1.7.5] (Aug 1, 2024)
+### Fix:
+- Fixed a bug where directly managing the widget open state caused a disconnection after 3 minutes and prevented reconnection.
+
+## [1.7.4] (July 30, 2024)
+### Fix:
+- Fixed a UX issue where the feedback modal was displaying unintended behavior
+- Fixed a bug with URL handling in Markdown syntax
+- Fixed a bug where the self-service widget was broken in Angular.js
+
 ## [1.7.3] (July 09, 2024)
 ### Fix:
 - Fixed a broken backward compatibility of `FormMessage` introduced in v1.7.2

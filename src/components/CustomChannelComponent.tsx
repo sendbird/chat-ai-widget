@@ -4,6 +4,7 @@ import { isSameDay } from 'date-fns/isSameDay';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
 
+import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import GroupChannelUI from '@uikit/modules/GroupChannel/components/GroupChannelUI';
 import Message from '@uikit/modules/GroupChannel/components/Message';
 import MessageInputWrapper from '@uikit/modules/GroupChannel/components/MessageInputWrapper';
@@ -122,6 +123,7 @@ export function CustomChannelComponent() {
   const { messages, currentChannel: channel, scrollToBottom, refresh } = useGroupChannelContext();
   const { resetSession } = useWidgetSetting();
   const { userId: currentUserId } = useWidgetSession();
+  const { stores } = useSendbirdStateContext();
 
   // NOTE: Filter out messages that should not be displayed.
   const allMessages = messages.filter((message) => !shouldFilterOutMessage(message));
@@ -176,7 +178,7 @@ export function CustomChannelComponent() {
       isSentBy(lastMessage, currentUserId) &&
       !(lastMessage?.messageType === 'admin') &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
-      // this bubble loading should be shown only when there're only bot and 1 user in the channel
+      // this bubble loading should be shown only when there are only bot and 1 user in the channel
       channel?.memberCount === 2
     ) {
       setActiveSpinnerId(lastMessage.messageId);
@@ -209,6 +211,8 @@ export function CustomChannelComponent() {
    * 2. first message of the channel. This is because welcome message should have timestamp <= of first message.
    */
   const welcomeMessageTimeStamp = lastWelcomeMessageCreatedAt ?? firstMessageCreatedAt;
+  const { config } = useSendbirdStateContext();
+  const isOnline = config.isOnline;
 
   const resetReqCounter = useRef(0);
 
@@ -222,7 +226,7 @@ export function CustomChannelComponent() {
         }}
         renderFileUploadIcon={() => <></>}
         renderVoiceMessageIcon={() => <></>}
-        renderMessageInput={() => <MessageInputWrapper disabled={isMessageInputDisabled} />}
+        renderMessageInput={() => <MessageInputWrapper disabled={isOnline ? isMessageInputDisabled : true} />}
         renderTypingIndicator={() => <></>}
         renderChannelHeader={() => (
           <CustomChannelHeader
@@ -230,8 +234,13 @@ export function CustomChannelComponent() {
             botNickname={botNickname}
             channelName={channel?.name}
             onRenewButtonClick={async () => {
-              await channel?.resetMyHistory();
-              await refresh();
+              if (channel) {
+                await Promise.allSettled([
+                  stores.sdkStore.sdk.clearCachedMessages([channel.url]),
+                  channel.resetMyHistory(),
+                ]);
+                await refresh();
+              }
             }}
           />
         )}
