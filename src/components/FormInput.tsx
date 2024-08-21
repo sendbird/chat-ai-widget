@@ -408,9 +408,7 @@ const FormInput = (props: InputProps) => {
                           onChange(value ? [value] : []);
                         }}
                       />
-                      {placeHolder && !currentValue && (
-                        <Placeholder numMaxLines={4}>{placeHolder}</Placeholder>
-                      )}
+                      {placeHolder && !currentValue && <Placeholder numMaxLines={4}>{placeHolder}</Placeholder>}
                     </>
                   )}
                 </InputContainer>
