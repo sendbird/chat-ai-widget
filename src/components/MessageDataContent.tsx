@@ -43,7 +43,7 @@ const ViewDetails = styled.div`
         cursor: 'pointer',
         path: {
           fill: linkColors.hover,
-        }
+        },
       },
       '&:focus': {
         border: `2px solid ${linkColors.focus}`,
@@ -52,15 +52,15 @@ const ViewDetails = styled.div`
         color: linkColors.active,
         path: {
           fill: linkColors.active,
-        }
+        },
       },
       '&:disabled': {
         color: linkColors.disabled,
         path: {
           fill: linkColors.disabled,
-        }
-      }
-    }
+        },
+      },
+    };
   }};
 `;
 
