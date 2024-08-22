@@ -23,7 +23,7 @@ import useAutoDismissMobileKeyboardHandler from '../hooks/useAutoDismissMobileKe
 import { useBlockWhileBotResponding } from '../hooks/useBlockWhileBotResponding';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import {isDashboardPreview, isIOSMobile} from '../utils';
+import { isDashboardPreview, isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,
   getSenderUserIdFromMessage,
@@ -118,7 +118,8 @@ const Root = styled.div<RootStyleProps>`
 `;
 
 export function CustomChannelComponent() {
-  const { suggestedMessageContent, botId, enableEmojiFeedback, botStudioEditProps, customUserAgentParam } = useConstantState();
+  const { suggestedMessageContent, botId, enableEmojiFeedback, botStudioEditProps, customUserAgentParam } =
+    useConstantState();
   const { messages, currentChannel: channel, scrollToBottom, refresh } = useGroupChannelContext();
   const { resetSession } = useWidgetSetting();
   const { userId: currentUserId } = useWidgetSession();
