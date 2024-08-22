@@ -1,3 +1,11 @@
+## [1.7.9] (Aug 23, 2024)
+### Feat:
+- Added `callbacks.onWidgetSettingFailure` in `Constant` for handling widget setting failure
+- Added error page to widget playground
+
+### Fix:
+- Fixed a broken message data content UI in dark theme
+
 ## [1.7.8] (Aug 16, 2024)
 ### Fix:
 - Fixed a bug where session not being reset on unauthorized error during channel fetch
