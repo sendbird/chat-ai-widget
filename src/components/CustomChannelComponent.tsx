@@ -23,7 +23,7 @@ import useAutoDismissMobileKeyboardHandler from '../hooks/useAutoDismissMobileKe
 import { useBlockWhileBotResponding } from '../hooks/useBlockWhileBotResponding';
 import { useResetHistoryOnConnected } from '../hooks/useResetHistoryOnConnected';
 import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
-import { isDashboardPreview, isIOSMobile } from '../utils';
+import { isIOSMobile } from '../utils';
 import {
   getBotWelcomeMessages,
   getSenderUserIdFromMessage,
@@ -118,7 +118,7 @@ const Root = styled.div<RootStyleProps>`
 `;
 
 export function CustomChannelComponent() {
-  const { suggestedMessageContent, botId, enableEmojiFeedback, customUserAgentParam, botStudioEditProps } =
+  const { suggestedMessageContent, botId, enableEmojiFeedback, botStudioEditProps } =
     useConstantState();
   const { messages, currentChannel: channel, scrollToBottom, refresh } = useGroupChannelContext();
   const { resetSession } = useWidgetSetting();
@@ -300,9 +300,9 @@ export function CustomChannelComponent() {
                   isLastBotMessage={isLastBotMessage}
                   messageCount={messageCount}
                 />
-                {message.messageId === lastMessage?.messageId &&
-                  true &&
-                  message.data && <MessageDataContent messageData={message.data} />}
+                {message.messageId === lastMessage?.messageId && true && message.data && (
+                  <MessageDataContent messageData={message.data} />
+                )}
                 {message.messageId === lastMessage?.messageId &&
                   (() => {
                     if (dynamicReplyOptions.length > 0) {
