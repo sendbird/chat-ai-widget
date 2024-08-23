@@ -29,6 +29,7 @@ export const ChatInput = () => {
         disabled={config.isOnline ? isMessageInputDisabled : true}
         messageInputRef={ref}
         currentChannel={channel as any}
+        messages={dataSource.messages}
         sendUserMessage={(params) => {
           const processedParams = handlers.onBeforeSendMessage(params);
           dataSource.sendUserMessage(processedParams, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
