@@ -52,7 +52,7 @@ jobs:
             });
             const pr = pullRequests.data.find(pr => pr.head.ref === currentBranch && pr.base.ref === 'develop');
             if (!pr) {
-              core.setFailed(`No open pull request found for ${currentBranch} to main`);
+              core.setFailed(`No open pull request found for ${currentBranch} to develop`);
             }
       - name: Check if the release branch exists
         run: |
