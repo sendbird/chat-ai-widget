@@ -50,7 +50,7 @@ jobs:
               sort: 'created',
               direction: 'desc',
             });
-            const pr = pullRequests.data.find(pr => pr.head.ref === currentBranch && pr.base.ref === 'main');
+            const pr = pullRequests.data.find(pr => pr.head.ref === currentBranch && pr.base.ref === 'develop');
             if (!pr) {
               core.setFailed(`No open pull request found for ${currentBranch} to main`);
             }
