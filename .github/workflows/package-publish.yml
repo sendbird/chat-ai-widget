@@ -40,8 +40,8 @@ jobs:
               core.setFailed(`User ${context.actor} does not have write or admin permissions to this repository.`);
             }
             const currentBranch = context.ref.replace('refs/heads/', '');
-            if (currentBranch !== `release/${{ github.event.inputs.version }}`) {
-              core.setFailed(`Current branch ${currentBranch} does not match release/${{ github.event.inputs.version }}`);
+            if (currentBranch !== `release/v${{ github.event.inputs.version }}`) {
+              core.setFailed(`Current branch ${currentBranch} does not match release/v${{ github.event.inputs.version }}`);
             }
             const pullRequests = await github.rest.pulls.list({
               owner: context.repo.owner,
