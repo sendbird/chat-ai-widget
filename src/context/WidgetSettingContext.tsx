@@ -46,6 +46,7 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
     firstMessageData,
     botStudioEditProps,
     autoOpen,
+    callbacks,
   } = useConstantState();
 
   if (!appId || !botId) {
@@ -91,6 +92,7 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
       botId,
       userId: strategy === 'manual' ? injectedUserId : cachedSession?.userId,
     })
+      .onError(callbacks?.onWidgetSettingFailure)
       .onGetBotStyle((style) => setBotStyle(style))
       .onAutoNonCached(({ user, channel }) => {
         const session = {

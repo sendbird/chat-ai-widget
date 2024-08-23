@@ -119,7 +119,7 @@ const Root = styled.div<RootStyleProps>`
 `;
 
 export function CustomChannelComponent() {
-  const { suggestedMessageContent, botId, enableEmojiFeedback, customUserAgentParam, botStudioEditProps } =
+  const { suggestedMessageContent, botId, enableEmojiFeedback, botStudioEditProps, customUserAgentParam } =
     useConstantState();
   const { messages, currentChannel: channel, scrollToBottom, refresh } = useGroupChannelContext();
   const { resetSession } = useWidgetSetting();

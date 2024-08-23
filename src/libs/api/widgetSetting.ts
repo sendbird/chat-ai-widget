@@ -1,4 +1,6 @@
-import { resolvePath } from '../../utils';
+import { SendbirdError } from '@sendbird/chat';
+
+import { noop, resolvePath } from '../../utils';
 
 type APIResponse = {
   bot_style: {
@@ -69,7 +71,7 @@ export async function getWidgetSetting({
   const response = await fetch(path);
   const result = await response.json();
   if (!response.ok) {
-    throw new Error(result.message || 'Something went wrong');
+    throw new SendbirdError(result);
   }
 
   const json = result as APIResponse;
@@ -119,33 +121,30 @@ export const widgetSettingHandler = (
     AutoCached: (response: { channel?: ResponseChannel }) => void;
     ManualNonCached: (response?: { channel: ResponseChannel }) => void;
     ManualCached: (response: { channel?: ResponseChannel }) => void;
+    Error: (error: Error) => void;
   };
 
   const callbacks: {
+    onError: Callbacks['Error'];
     onGetBotStyle: Callbacks['BotStyle'];
     onAutoNonCached: Callbacks['AutoNonCached'];
     onAutoCached: Callbacks['AutoCached'];
     onManualNonCached: Callbacks['ManualNonCached'];
     onManualCached: Callbacks['ManualCached'];
   } = {
-    onGetBotStyle: () => {
-      /* empty */
-    },
-    onAutoNonCached: () => {
-      /* empty */
-    },
-    onAutoCached: () => {
-      /* empty */
-    },
-    onManualNonCached: () => {
-      /* empty */
-    },
-    onManualCached: () => {
-      /* empty */
-    },
+    onError: noop,
+    onGetBotStyle: noop,
+    onAutoNonCached: noop,
+    onAutoCached: noop,
+    onManualNonCached: noop,
+    onManualCached: noop,
   };
 
   const handlers = {
+    onError: (callback?: Callbacks['Error']) => {
+      if (callback) callbacks.onError = callback;
+      return handlers;
+    },
     onGetBotStyle: (callback: Callbacks['BotStyle']) => {
       callbacks.onGetBotStyle = callback;
       return handlers;
@@ -167,16 +166,20 @@ export const widgetSettingHandler = (
       return handlers;
     },
     get: async () => {
-      const response = await getWidgetSetting({
-        host: params.host,
-        appId: params.appId,
-        botId: params.botId,
-        ...getParamsByStrategy(strategy, useCachedSession, params),
-      });
+      try {
+        const response = await getWidgetSetting({
+          host: params.host,
+          appId: params.appId,
+          botId: params.botId,
+          ...getParamsByStrategy(strategy, useCachedSession, params),
+        });
 
-      callbacks.onGetBotStyle(response.botStyle);
-      if (strategy === 'auto') handleAutoStrategy(response);
-      if (strategy === 'manual') handleManualStrategy(response);
+        callbacks.onGetBotStyle(response.botStyle);
+        if (strategy === 'auto') handleAutoStrategy(response);
+        if (strategy === 'manual') handleManualStrategy(response);
+      } catch (error) {
+        if (error instanceof Error) callbacks.onError(error);
+      }
     },
   };
 
