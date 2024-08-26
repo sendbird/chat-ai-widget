@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chatbot playground</title>
+
+    <!-- Load React first and then, ReactDOM. Also, these two libs' version should be same -->
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <!-- Load chat-ai-widget script and set process.env to prevent it get undefined -->
+    <script>
+      process = { env: { NODE_ENV: '' } };
+    </script>
+    <script crossorigin src="https://unpkg.com/@sendbird/chat-ai-widget@latest/dist/index.umd.js"></script>
+    <link href="https://unpkg.com/@sendbird/chat-ai-widget@latest/dist/style.css" rel="stylesheet" />
+
+    <!--Optional; to enable JSX syntax-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      #aichatbot-widget-close-icon {
+        display: none;
+      }
+      .hide {
+        display: none;
+      }
+      .sb-pg-not-found {
+        padding-block-start: 54px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: sans-serif;
+      }
+      .sb-pg-not-found-title {
+        color: #0d0d0d;
+        font-size: 64px;
+        font-weight: 900;
+        margin-bottom: 20px;
+      }
+      .sb-pg-not-found-desc {
+        color: #424242;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        margin-bottom: 40px;
+      }
+      .sb-pg-button {
+        width: fit-content;
+        border-radius: 200px;
+        padding: 13px 32px;
+        text-align: center;
+        font-weight: 500;
+        color: white;
+        background-color: #6210cc;
+        margin-bottom: 56px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .sb-pg-button:hover {
+        background-color: #4b11a1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="error" class="hide" style="min-width: 640px">
+      <header style="box-sizing: border-box; height: 86px; padding: 32px 5%">
+        <a href="https://sendbird.com">
+          <svg xmlns="http://www.w3.org/2000/svg" width="129" height="22" viewBox="0 0 129 22" fill="none">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M128.564 18.9619V0.664062H124.758V7.60037C123.841 6.22375 122.41 5.4413 120.548 5.4413C117.121 5.4413 114.395 8.5179 114.395 12.3231C114.395 16.1281 117.121 19.2319 120.548 19.2319C122.41 19.2319 123.841 18.4491 124.758 17.0728V18.9619H128.564ZM124.758 12.3202C124.758 14.1821 123.301 15.5856 121.439 15.5856C119.604 15.5856 118.12 14.1553 118.12 12.3202C118.12 10.5122 119.604 9.05469 121.439 9.05469C123.301 9.05469 124.758 10.485 124.758 12.3202ZM112.744 8.86497C113.203 8.86497 113.662 8.94585 114.121 9.05375V5.59926C113.689 5.51838 113.257 5.4375 112.852 5.4375C111.368 5.4375 110.207 6.08521 109.425 7.21869V5.70732H105.62V18.9581H109.425V12.4272C109.425 9.97128 110.909 8.86497 112.744 8.86497ZM103.948 2.29399C103.948 1.05244 102.896 0 101.627 0C100.359 0 99.3062 1.05244 99.3062 2.29399C99.3062 3.56222 100.359 4.61466 101.627 4.61466C102.896 4.61466 103.948 3.56222 103.948 2.29399ZM98.3641 12.3231C98.3641 8.5179 95.6384 5.4413 92.2109 5.4413C90.3759 5.4413 88.9455 6.1969 88.028 7.57319V0.664062H84.2227V18.9619H88.028V17.0998C88.9455 18.4763 90.3759 19.2319 92.2109 19.2319C95.6384 19.2319 98.3641 16.1281 98.3641 12.3231ZM94.6403 12.3202C94.6403 14.1553 93.1828 15.5856 91.3477 15.5856C89.4855 15.5856 88.0283 14.1821 88.0283 12.3202C88.0283 10.485 89.4855 9.05469 91.3477 9.05469C93.1828 9.05469 94.6403 10.5122 94.6403 12.3202ZM78.3394 18.9619H82.1446V0.664062H78.3394V7.60037C77.4218 6.22375 75.9915 5.4413 74.1293 5.4413C70.7021 5.4413 67.9761 8.5179 67.9761 12.3231C67.9761 16.1281 70.7021 19.2319 74.1293 19.2319C75.9915 19.2319 77.4218 18.4491 78.3394 17.0728V18.9619ZM78.339 12.3202C78.339 14.1821 76.8817 15.5856 75.0196 15.5856C73.1845 15.5856 71.7002 14.1553 71.7002 12.3202C71.7002 10.5122 73.1845 9.05469 75.0196 9.05469C76.8817 9.05469 78.339 10.485 78.339 12.3202ZM62.777 18.9581H66.5822V11.4556C66.5822 7.70431 64.5314 5.4375 61.1308 5.4375C59.6195 5.4375 58.3782 6.16625 57.5417 7.43465V5.70732H53.7363V18.9581H57.5417V11.9416C57.5417 10.2142 58.5671 9.0806 60.1592 9.0806C61.7244 9.0806 62.777 10.2142 62.777 11.9416V18.9581ZM52.2763 13.2368C52.3304 12.8051 52.3572 12.1844 52.3572 11.8875C52.3572 8.24396 49.4157 5.4375 45.8263 5.4375C41.9671 5.4375 38.9443 8.40588 38.9443 12.2653C38.9443 16.1785 41.9941 19.2281 45.9072 19.2281C49.2266 19.2281 51.7365 17.3659 52.1684 14.5052H48.4441C48.2282 15.4228 47.2835 16.0706 45.7994 16.0706C44.0181 16.0706 42.6957 14.964 42.4258 13.2368H52.2763ZM48.3904 10.8093H42.6152C43.0738 9.24421 44.2076 8.51562 45.6648 8.51562C47.0683 8.51562 48.2827 9.46017 48.3904 10.8093ZM30.0876 9.51252C30.0876 8.89182 30.7354 8.59499 31.5991 8.59499C32.8135 8.59499 33.542 9.18866 33.5961 9.86338H37.4283C37.1044 6.92185 34.5408 5.4375 31.6801 5.4375C28.4144 5.4375 26.4173 7.32643 26.4173 9.78234C26.4173 14.7212 33.8661 12.7782 33.8661 14.964C33.8661 15.5847 33.2182 15.9626 32.0849 15.9626C30.8163 15.9626 29.8716 15.3687 29.7907 14.478H26.1475C26.4173 17.4738 28.8192 19.2281 32.2737 19.2281C35.2692 19.2281 37.5632 17.3659 37.5632 14.937C37.5632 9.40478 30.0876 11.5637 30.0876 9.51252ZM22 11C22 4.92476 17.0751 0 11 0H10.9964H0V5.5C0 8.49976 2.40269 10.934 5.38822 10.9942H0C0 17.0694 4.92493 21.9942 11 21.9942V22C17.0751 22 22 17.0751 22 11ZM99.7383 18.9617H103.544V5.71094H99.7383V18.9617Z"
+              fill="#6210CC"
+            /></svg
+        ></a>
+      </header>
+      <main class="sb-pg-not-found">
+        <span class="sb-pg-not-found-title">Page not found</span>
+        <span class="sb-pg-not-found-desc">We can't seem to find the page you are looking for.</span>
+        <a class="sb-pg-button" href="https://sendbird.com/products/ai-chatbot">Explore Sendbird AI chatbot</a>
+        <img alt="not-found" src="./chatbot-404.png" style="width: 640px; height: 384px; object-fit: contain" />
+      </main>
+    </div>
+    <!-- div element for chat-ai-widget container -->
+    <div id="root"></div>
+
+    <!-- Initialize chat-ai-widget and render the widget component -->
+    <script type="text/babel">
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      const { ChatWindow } = window.ChatAiWidget;
+      const App = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const appId = urlParams.get('app_id');
+        const botId = urlParams.get('bot_id');
+        const title = urlParams.get('title');
+        const region = urlParams.get('region');
+        const mode = urlParams.get('mode') ? urlParams.get('mode') : isMobile ? 'mobile' : 'desktop';
+        const apiHost = region ? `https://api-cf-${region}.sendbird.com` : undefined;
+
+        if (title) document.title = title;
+        if (!appId || !botId) {
+          window.document.getElementById('root').classList.add('hide');
+          window.document.getElementById('error').classList.remove('hide');
+          return null;
+        }
+
+        return (
+          <ChatWindow
+            applicationId={appId}
+            botId={botId}
+            deviceType={mode}
+            apiHost={apiHost}
+            callbacks={{
+              onWidgetSettingFailure() {
+                window.document.getElementById('root').classList.add('hide');
+                window.document.getElementById('error').classList.remove('hide');
+              },
+            }}
+          />
+        );
+      };
+      ReactDOM.createRoot(document.querySelector('#root')).render(<App />);
+    </script>
+  </body>
+</html>

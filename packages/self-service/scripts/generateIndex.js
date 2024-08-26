@@ -9,5 +9,5 @@ export function generateIndexFile(version) {
   const content = `import(\`/${version}/output.js\`).then(() => console.log("AI chatbot module has been successfully loaded"));`;
 
   fs.writeFileSync('dist/index.js', content);
-  fs.cpSync('playground.html', 'dist/playground/index.html');
+  fs.cpSync('playground', 'dist/playground', { recursive: true });
 }
