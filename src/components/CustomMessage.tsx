@@ -15,7 +15,7 @@ import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
-import { LOCAL_MESSAGE_CUSTOM_TYPE, widgetStringSet } from '../const';
+import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
