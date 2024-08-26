@@ -64,7 +64,6 @@ const ButtonText = styled.div<ButtonTextProps>`
 
 export default function FormMessage(props: Props) {
   const { message, form } = props;
-
   const { items } = form;
   const { stringSet } = useConstantState();
 
