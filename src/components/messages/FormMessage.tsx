@@ -2,12 +2,14 @@ import { MessageForm } from '@sendbird/chat/message';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import { isFormVersionCompatible } from '@uikit/modules/GroupChannel/context/utils';
 import Button from '@uikit/ui/Button';
 import Label, { LabelTypography } from '@uikit/ui/Label';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
 
-import { elementIds } from '../../const';
+import FallbackUserMessage from './FallbackUserMessage';
+import { elementIds, widgetStringSet } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
 import FormInput from '../FormInput';
 
@@ -62,6 +64,7 @@ const ButtonText = styled.div<ButtonTextProps>`
 
 export default function FormMessage(props: Props) {
   const { message, form } = props;
+
   const { items } = form;
   const { stringSet } = useConstantState();
 
@@ -82,6 +85,10 @@ export default function FormMessage(props: Props) {
     });
     return initialFormValues;
   });
+
+  if (!isFormVersionCompatible(props.form.version)) {
+    return <FallbackUserMessage text={widgetStringSet.formVersionInvalidFallbackMessage} />;
+  }
 
   const isSubmitted = form.isSubmitted;
   const hasError = formValues.some(({ errorMessage }) => !!errorMessage);

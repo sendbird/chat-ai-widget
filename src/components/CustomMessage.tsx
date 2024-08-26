@@ -1,6 +1,5 @@
 import { User } from '@sendbird/chat';
 
-import { isFormVersionCompatible } from '@uikit/modules/GroupChannel/context/utils';
 import TypingDots from '@uikit/ui/TypingIndicatorBubble/TypingDots';
 import { CoreMessageType, isVideoMessage } from '@uikit/utils';
 
@@ -11,7 +10,6 @@ import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
-import FallbackUserMessage from './messages/FallbackUserMessage';
 import FormMessage from './messages/FormMessage';
 import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
@@ -104,13 +102,7 @@ export default function CustomMessage(props: Props) {
         <BotMessageWithBodyInput
           {...commonProps}
           botUser={botUser}
-          bodyComponent={
-            !isFormVersionCompatible(message.messageForm.version) ? (
-              <FallbackUserMessage text={widgetStringSet.formVersionInvalidFallbackMessage} />
-            ) : (
-              <FormMessage form={message.messageForm} message={message} />
-            )
-          }
+          bodyComponent={<FormMessage form={message.messageForm} message={message} />}
           createdAt={message.createdAt}
         />
       );
