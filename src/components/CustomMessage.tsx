@@ -17,8 +17,7 @@ import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
-import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
-import { stringSet } from '../consts/stringSet';
+import { LOCAL_MESSAGE_CUSTOM_TYPE, widgetStringSet } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
@@ -107,7 +106,7 @@ export default function CustomMessage(props: Props) {
           botUser={botUser}
           bodyComponent={
             !isFormVersionCompatible(message.messageForm.version) ? (
-              <FallbackUserMessage text={stringSet.FORM_VERSION_ERROR} />
+              <FallbackUserMessage text={widgetStringSet.formVersionInvalidFallbackMessage} />
             ) : (
               <FormMessage form={message.messageForm} message={message} />
             )
