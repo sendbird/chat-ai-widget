@@ -34,22 +34,22 @@ const Root = styled.div`
   padding: 16px 12px;
   border-radius: 16px;
   overflow: hidden;
-  ${({ theme }) => {
-    const disabledBgColor = theme.bgColor.formButton.disabled;
-    return {
-      'background-color': theme.bgColor.incomingMessage,
-      '.sendbird-button.sendbird-button__disabled': {
-        'background-color': disabledBgColor,
-        '&:hover': {
-          'background-color': disabledBgColor,
-        },
-      },
-    };
-  }};
+  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
 `;
 
 const SubmitButton = styled(Button)`
   width: 100%;
+  ${({ theme, disabled }) => {
+    if (disabled) {
+      const disabledBgColor = `${theme.bgColor.formButton.disabled} !important`;
+      return {
+        'background-color': disabledBgColor,
+        '&:hover': {
+          'background-color': disabledBgColor,
+        },
+      };
+    }
+  }};
 `;
 
 interface ButtonTextProps {
