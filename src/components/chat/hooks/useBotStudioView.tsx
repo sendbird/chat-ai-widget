@@ -99,4 +99,5 @@ export const useBotStudioView = () => {
 
 const dateSeparatorMargin = css`
   margin: 8px 0;
+  padding: 0 16px;
 `;
