@@ -40,7 +40,10 @@ export default function CustomMessage(props: Props) {
 
   const shouldRenderFeedback = () => {
     return (
-      enableEmojiFeedback && message.myFeedbackStatus !== 'NOT_APPLICABLE' && !messageExtension.isStreaming(message)
+      enableEmojiFeedback &&
+      message.myFeedbackStatus !== 'NOT_APPLICABLE' &&
+      !messageExtension.isStreaming(message) &&
+      !messageExtension.isBotWelcomeMsg(message, botUserId ?? '')
     );
   };
 
