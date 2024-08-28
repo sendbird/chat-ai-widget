@@ -39,17 +39,20 @@ const Root = styled.div`
 
 const SubmitButton = styled(Button)`
   width: 100%;
-  ${({ theme, disabled }) => {
-    if (disabled) {
-      const disabledBgColor = `${theme.bgColor.formButton.disabled} !important`;
-      return {
-        'background-color': disabledBgColor,
-        '&:hover': {
+
+  &&& {
+    ${({ theme, disabled }) => {
+      if (disabled) {
+        const disabledBgColor = `${theme.bgColor.formButton.disabled};`;
+        return {
           'background-color': disabledBgColor,
-        },
-      };
-    }
-  }};
+          '&:hover': {
+            'background-color': disabledBgColor,
+          },
+        };
+      }
+    }};
+  }
 `;
 
 interface ButtonTextProps {
