@@ -62,29 +62,31 @@ export const ChatMessageList = () => {
                   formatString={stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR}
                 />
               )}
-              <CustomMessage
-                message={message as any}
-                botUser={isSendableMessage(message) ? message.sender : undefined}
-                activeSpinnerId={typingTargetMessageId}
-                chainTop={top}
-                chainBottom={bottom}
-              />
-
-              {message.data &&
-                isDashboardPreview(customUserAgentParam) &&
-                message.messageId === channel?.lastMessage?.messageId && (
-                  <MessageDataContent messageData={message.data} />
-                )}
-
-              {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
-                <SuggestedRepliesContainer
-                  replies={suggestedReplies}
-                  type={botStudioEditProps?.suggestedRepliesDirection}
-                  sendUserMessage={(params) => {
-                    dataSource.sendUserMessage(params, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
-                  }}
+              <div style={{ marginBottom: index === filteredMessages.length - 1 ? 0 : 16 }}>
+                <CustomMessage
+                  message={message as any}
+                  botUser={isSendableMessage(message) ? message.sender : undefined}
+                  activeSpinnerId={typingTargetMessageId}
+                  chainTop={top}
+                  chainBottom={bottom}
                 />
-              )}
+
+                {message.data &&
+                  isDashboardPreview(customUserAgentParam) &&
+                  message.messageId === channel?.lastMessage?.messageId && (
+                    <MessageDataContent messageData={message.data} />
+                  )}
+
+                {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
+                  <SuggestedRepliesContainer
+                    replies={suggestedReplies}
+                    type={botStudioEditProps?.suggestedRepliesDirection}
+                    sendUserMessage={(params) => {
+                      dataSource.sendUserMessage(params, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
+                    }}
+                  />
+                )}
+              </div>
             </div>
           );
         }}

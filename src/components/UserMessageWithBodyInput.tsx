@@ -13,7 +13,6 @@ import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 const Root = styled.div`
   display: flex;
   align-items: flex-end;
-  margin-bottom: 6px;
   flex-wrap: wrap;
   gap: 8px;
   position: relative;

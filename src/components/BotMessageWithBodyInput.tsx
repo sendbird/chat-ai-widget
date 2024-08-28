@@ -12,7 +12,6 @@ const Root = styled.span`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  margin-bottom: 6px;
   gap: 8px;
   position: relative;
 `;
