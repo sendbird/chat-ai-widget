@@ -454,9 +454,7 @@ const FormInput = (props: InputProps) => {
         1. Submit button has been clicked after initial load.
         2. Input has been focused out.
         */}
-        {errorMessage && (isSubmitTried || isInvalidated) && (
-          <ErrorLabel type={'caption3'}>{errorMessage}</ErrorLabel>
-        )}
+        {errorMessage && (isSubmitTried || isInvalidated) && <ErrorLabel type={'caption3'}>{errorMessage}</ErrorLabel>}
       </div>
     </Root>
   );
