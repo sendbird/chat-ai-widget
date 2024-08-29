@@ -30,12 +30,12 @@ type Props = {
 
 export default function CustomMessage(props: Props) {
   const { message, activeSpinnerId, botUser } = props;
-  const { replacementTextList, enableEmojiFeedback, botStudioEditProps } = useConstantState();
+  const { replacementTextList, enableEmojiFeedback, botStudioEditProps = {} } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
-  const { profileUrl } = botStudioEditProps?.botInfo ?? {};
+  const { botInfo } = botStudioEditProps;
 
   const botUserId = botUser?.userId;
-  const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';
+  const botProfileUrl = botInfo?.profileUrl ?? botUser?.profileUrl ?? '';
   const isWaitingForBotReply = activeSpinnerId === message.messageId && !!botUser;
 
   const shouldRenderFeedback = () => {
@@ -68,7 +68,7 @@ export default function CustomMessage(props: Props) {
       return (
         <div>
           <CurrentUserMessage message={message} />
-          {isWaitingForBotReply && <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />}
+          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
         </div>
       );
     }

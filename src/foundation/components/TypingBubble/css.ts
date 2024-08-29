@@ -2,7 +2,7 @@ import { css } from '@linaria/core';
 
 export const typingDotContainer = css`
   align-items: center;
-  border-radius: 16px;
+  border-radius: 100px;
   display: flex;
   gap: 6px;
   justify-content: center;
