@@ -1,3 +1,7 @@
+## [1.7.10] (Aug 29, 2024)
+### Update:
+- Improved user interface and experience of form message feature
+
 ## [1.7.9] (Aug 23, 2024)
 ### Feat:
 - Added `callbacks.onWidgetSettingFailure` in `Constant` for handling widget setting failure
