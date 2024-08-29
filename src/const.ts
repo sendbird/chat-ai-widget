@@ -379,4 +379,5 @@ export const widgetServiceName = {
 
 export const widgetStringSet = {
   messageInputDisabledPlaceholder: 'Waiting for the bot’s reply…',
+  formVersionInvalidFallbackMessage: 'Form type messages are not available in this version.',
 };

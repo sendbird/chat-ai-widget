@@ -35,7 +35,7 @@ const blink = keyframes`
 
 const TypingDotsContainer = styled.div`
   align-items: center;
-  border-radius: 16px;
+  border-radius: 100px;
   display: flex;
   gap: 6px;
   justify-content: center;
@@ -67,6 +67,7 @@ const TypingDot = styled.span`
 const Root = styled.div`
   display: flex;
   align-items: flex-end;
+  margin-top: 16px;
 `;
 
 function TypingDots() {

@@ -1,13 +1,15 @@
 import { MessageForm } from '@sendbird/chat/message';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
+import { isFormVersionCompatible } from '@uikit/modules/GroupChannel/context/utils';
 import Button from '@uikit/ui/Button';
 import Label, { LabelTypography } from '@uikit/ui/Label';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import { CoreMessageType } from '@uikit/utils';
 
-import { elementIds } from '../../const';
+import FallbackUserMessage from './FallbackUserMessage';
+import { elementIds, widgetStringSet } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
 import FormInput from '../FormInput';
 
@@ -17,9 +19,11 @@ interface Props {
 }
 
 interface FormValue {
+  itemId: number;
   draftValues: string[];
   required: boolean;
   errorMessage: string | null;
+  isInvalidated: boolean;
 }
 
 const Root = styled.div`
@@ -35,6 +39,20 @@ const Root = styled.div`
 
 const SubmitButton = styled(Button)`
   width: 100%;
+
+  &&& {
+    ${({ theme, disabled }) => {
+      if (disabled) {
+        const disabledBgColor = `${theme.bgColor.formButton.disabled};`;
+        return {
+          'background-color': disabledBgColor,
+          '&:hover': {
+            'background-color': disabledBgColor,
+          },
+        };
+      }
+    }};
+  }
 `;
 
 interface ButtonTextProps {
@@ -42,40 +60,45 @@ interface ButtonTextProps {
 }
 
 const ButtonText = styled.div<ButtonTextProps>`
-  color: ${({ theme, disabled }) => (disabled ? 'inherit' : theme.textColor.activeButton)};
+  color: ${({ theme, disabled }) => {
+    return disabled ? theme.textColor.formButton.disabled : theme.textColor.activeButton;
+  }};
 `;
 
 export default function FormMessage(props: Props) {
   const { message, form } = props;
-  const { items, id: formId } = form;
+  const { items } = form;
   const { stringSet } = useConstantState();
 
   const [submitFailed, setSubmitFailed] = useState(false);
-  const [isInputFocused, setIsInputFocused] = useState(false);
-
+  const [isSubmitTried, setIsSubmitTried] = useState(false);
   const [formValues, setFormValues] = useState<FormValue[]>(() => {
     const initialFormValues: FormValue[] = [];
-    items.forEach(({ required, style }) => {
+    items.forEach(({ id, required, style }) => {
       const { defaultOptions = [], layout } = style;
       initialFormValues.push({
+        itemId: id,
         draftValues: layout === 'chip' ? defaultOptions : [],
         required,
         errorMessage: null,
+        isInvalidated: false,
       });
     });
     return initialFormValues;
   });
 
+  if (!isFormVersionCompatible(props.form.version)) {
+    return <FallbackUserMessage text={widgetStringSet.formVersionInvalidFallbackMessage} />;
+  }
+
   const isSubmitted = form.isSubmitted;
   const hasError = formValues.some(({ errorMessage }) => !!errorMessage);
+  const hasInvalidated = formValues.some(({ isInvalidated }) => isInvalidated);
+  const isButtonDisabled = (hasError && (isSubmitTried || hasInvalidated)) || isSubmitted;
 
-  const handleSubmit = useCallback(async () => {
+  const handleSubmit = async () => {
+    setIsSubmitTried(true);
     try {
-      // If any of required fields are not valid,
-      const hasError = formValues.some(({ errorMessage }) => errorMessage);
-      if (hasError) {
-        return;
-      }
       // If form is empty, ignore submit
       const isMissingRequired = formValues.some(
         (formValue) => formValue.required && (!formValue.draftValues || formValue.draftValues.length === 0),
@@ -94,26 +117,20 @@ export default function FormMessage(props: Props) {
         });
         return;
       }
-      if (formValues.some((formValue) => formValue.draftValues.length > 1)) {
-        formValues.forEach((formValue, index) => {
-          items[index].draftValues = formValue.draftValues;
-        });
-        await message.submitMessageForm();
-      } else {
-        const answers: Record<string, string> = {};
-        formValues.forEach((formValue, index) => {
-          const item = items[index];
-          if (formValue.draftValues.length > 0) {
-            answers[item.id] = formValue.draftValues[0];
-          }
-        });
-        await message.submitMessageForm({ formId, answers });
+      // If any of required fields are not valid,
+      const hasError = formValues.some(({ errorMessage }) => errorMessage);
+      if (hasError) {
+        return;
       }
+      formValues.forEach((formValue, index) => {
+        items[index].draftValues = formValue.draftValues;
+      });
+      await message.submitMessageForm();
     } catch (error) {
       setSubmitFailed(true);
       console.error(error);
     }
-  }, [formValues, message.messageId, message.submitMessageForm, formId]);
+  };
 
   return (
     <Root>
@@ -128,12 +145,32 @@ export default function FormMessage(props: Props) {
             style={style}
             placeHolder={placeholder}
             values={item.submittedValues ?? draftValues}
+            isInvalidated={formValues[index].isInvalidated}
+            isSubmitTried={isSubmitTried}
             errorMessage={errorMessage}
             isValid={isSubmitted}
-            disabled={isSubmitted}
+            isSubmitted={isSubmitted}
             name={name}
             required={required}
-            onFocused={(isFocus) => setIsInputFocused(isFocus)}
+            onFocused={(isFocus) => {
+              if (errorMessage && !isFocus && !formValues[index].isInvalidated) {
+                setFormValues(([...newInputs]) => {
+                  newInputs[index] = {
+                    ...newInputs[index],
+                    isInvalidated: true,
+                  };
+                  return newInputs;
+                });
+              } else if (!errorMessage) {
+                setFormValues(([...newInputs]) => {
+                  newInputs[index] = {
+                    ...newInputs[index],
+                    isInvalidated: false,
+                  };
+                  return newInputs;
+                });
+              }
+            }}
             onChange={(values) => {
               setFormValues(([...newInputs]) => {
                 newInputs[index] = {
@@ -152,15 +189,12 @@ export default function FormMessage(props: Props) {
                 return newInputs; // Return the new array
               });
             }}
-            isSubmitted={isSubmitted}
           />
         );
       })}
-      <SubmitButton onClick={handleSubmit} disabled={(!isInputFocused && hasError) || isSubmitted}>
+      <SubmitButton onClick={handleSubmit} disabled={isButtonDisabled}>
         <Label type={LabelTypography.BUTTON_2}>
-          <ButtonText disabled={(!isInputFocused && hasError) || isSubmitted}>
-            {isSubmitted ? 'Submitted successfully' : 'Submit'}
-          </ButtonText>
+          <ButtonText disabled={isButtonDisabled}>{isSubmitted ? 'Submitted successfully' : 'Submit'}</ButtonText>
         </Label>
       </SubmitButton>
       {submitFailed && (

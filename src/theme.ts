@@ -17,8 +17,10 @@ export interface CommonTheme {
     carouselItem: string;
     carouselButton: string;
     carouselButtonIcon: string;
-    formInput: string;
-    formInputDisabled: string;
+    formInput: {
+      default: string;
+      disabled: string;
+    };
     formChip: {
       default: string;
       selected: string;
@@ -26,6 +28,9 @@ export interface CommonTheme {
       submittedSelected: string;
       hover: string;
       focus: string;
+    };
+    formButton: {
+      disabled: string;
     };
     messageDataContent: {
       sidebar: string;
@@ -51,6 +56,9 @@ export interface CommonTheme {
       submittedSelected: string;
       hover: string;
       focus: string;
+    };
+    formButton: {
+      disabled: string;
     };
     activeButton: string;
     messageDataContent: {
@@ -142,8 +150,10 @@ export function getTheme({
         carouselItem: 'var(--sendbird-light-background-50)',
         carouselButton: 'var(--sendbird-light-background-50)',
         carouselButtonIcon: 'var(--sendbird-light-background-400)',
-        formInput: 'var(--sendbird-light-background-50)',
-        formInputDisabled: 'var(--sendbird-dark-ondark-02)',
+        formInput: {
+          default: 'var(--sendbird-light-background-50)',
+          disabled: 'var(--sendbird-dark-ondark-02)',
+        },
         formChip: {
           default: 'var(--sendbird-light-background-50)',
           selected: 'var(--sendbird-light-primary-100)',
@@ -151,6 +161,9 @@ export function getTheme({
           submittedSelected: 'var(--sendbird-dark-ondark-02)',
           hover: 'var(--sendbird-light-background-50)',
           focus: 'var(--sendbird-light-background-50)',
+        },
+        formButton: {
+          disabled: 'var(--sendbird-light-onlight-04)',
         },
         messageDataContent: {
           sidebar: 'var(--sendbird-light-background-200)',
@@ -176,6 +189,9 @@ export function getTheme({
           submittedSelected: 'var(--sendbird-light-onlight-01)',
           hover: 'var(--sendbird-light-primary-300)',
           focus: 'var(--sendbird-light-onlight-02)',
+        },
+        formButton: {
+          disabled: 'var(--sendbird-light-background-50)',
         },
         activeButton: satColorForAccentColor ?? 'var(--sendbird-dark-ondark-01)',
         messageDataContent: {
@@ -241,8 +257,10 @@ export function getTheme({
         carouselItem: 'var(--sendbird-dark-background-500)',
         carouselButton: 'var(--sendbird-dark-background-400)',
         carouselButtonIcon: 'var(--sendbird-dark-background-50)',
-        formInput: 'var(--sendbird-light-onlight-03)',
-        formInputDisabled: 'var(--sendbird-light-onlight-04)',
+        formInput: {
+          default: 'var(--sendbird-light-onlight-03)',
+          disabled: 'var(--sendbird-light-onlight-04)',
+        },
         formChip: {
           default: 'var(--sendbird-light-onlight-03)',
           selected: 'var(--sendbird-dark-background-600)',
@@ -250,6 +268,9 @@ export function getTheme({
           submittedSelected: 'var(--sendbird-light-onlight-04)',
           hover: 'var(--sendbird-light-onlight-03)',
           focus: 'var(--sendbird-light-onlight-03)',
+        },
+        formButton: {
+          disabled: 'var(--sendbird-dark-ondark-04)',
         },
         messageDataContent: {
           sidebar: 'var(--sendbird-dark-background-400)',
@@ -275,6 +296,9 @@ export function getTheme({
           submittedSelected: 'var(--sendbird-dark-ondark-01)',
           hover: 'var(--sendbird-dark-primary-200)',
           focus: 'var(--sendbird-dark-ondark-02)',
+        },
+        formButton: {
+          disabled: 'var(--sendbird-light-onlight-01)',
         },
         activeButton: accentColor ? getColorBasedOnSaturation(accentColor, 0.88) : 'var(--sendbird-light-onlight-01)',
         messageDataContent: {

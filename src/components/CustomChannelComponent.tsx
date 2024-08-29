@@ -80,7 +80,7 @@ const Root = styled.div<RootStyleProps>`
       // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
       font-size: ${isIOSMobile ? 16 : 14}px;
       font-family: 'Roboto', sans-serif;
-      line-height: 20px;
+      line-height: 24px; // because top & bottom padding is 8px each and the input height is 40px.
       resize: none;
       border: none;
       outline: none;
@@ -112,7 +112,8 @@ const Root = styled.div<RootStyleProps>`
       }
     }
     .sendbird-message-input--placeholder {
-      top: 9px;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 `;

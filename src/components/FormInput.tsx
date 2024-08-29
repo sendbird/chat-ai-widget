@@ -1,5 +1,5 @@
 import { MessageFormItemStyle } from '@sendbird/chat/message';
-import { ReactElement, ReactNode, useState } from 'react';
+import { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Icon, { IconColors, IconTypes } from '@uikit/ui/Icon';
@@ -34,25 +34,26 @@ const OptionalText = styled.span`
 const Root = styled.div<Pick<InputProps, 'errorMessage'>>`
   padding-bottom: 12px;
   width: 100%;
+
   .sendbird-input .sendbird-input__input {
     color: ${({ theme }) => theme.textColor.incomingMessage} !important;
     height: fit-content;
-    background-color: ${({ theme }) => theme.bgColor.formInput} !important;
+    background-color: ${({ theme }) => theme.bgColor.formInput.default} !important;
     border: ${({ theme, errorMessage }) =>
       `solid 1px ${errorMessage ? theme.borderColor.formInput.error : theme.borderColor.formInput.default}`} !important;
-    ::placeholder {
-      color: ${({ theme }) => theme.textColor.placeholder};
-    }
+
     &:disabled {
       pointer-events: none;
-      background-color: ${({ theme }) => theme.bgColor.formInputDisabled} !important;
+      background-color: ${({ theme }) => theme.bgColor.formInput.disabled} !important;
       border: none !important;
     }
+
     &:focus {
       border: ${({ theme }) => `solid 1px ${theme.borderColor.formInput.focus}`} !important;
       outline: none;
       box-shadow: 0 0 0 1px ${({ theme }) => theme.borderColor.formInput.focus};
     }
+
     &:active {
       border: ${({ theme }) => `solid 1px ${theme.borderColor.formInput.active}`} !important;
     }
@@ -63,6 +64,26 @@ interface ChipProps {
   state: ChipState;
   isSubmitted?: boolean;
 }
+
+interface PlaceholderProps {
+  numMaxLines?: number;
+}
+
+const Placeholder = styled.div<PlaceholderProps>`
+  width: calc(100% - 26px); // (12px side padding + 1px border) * 2 = 26px
+  height: calc(100% - 16px); // (7px padding + 1px border) * 2 = 16px
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: ${({ numMaxLines }) => numMaxLines ?? 1};
+  -webkit-box-orient: vertical;
+  position: absolute;
+  pointer-events: none;
+  top: 8px;
+  left: 13px;
+  font-size: 14px;
+  line-height: 1.43;
+  color: ${({ theme }) => theme.textColor.placeholder};
+`;
 
 const Chip = styled.div<ChipProps>`
   border-radius: 100px;
@@ -170,7 +191,7 @@ const SubmittedTextInputContainer = styled.div<SubmittedTextInputContainerProps>
   word-wrap: break-word;
   width: calc(100% - 24px);
   color: ${({ theme }) => theme.textColor.incomingMessage};
-  background-color: ${({ theme }) => theme.bgColor.formInputDisabled} !important;
+  background-color: ${({ theme }) => theme.bgColor.formInput.disabled} !important;
   border: none;
   pointer-events: none;
   ${({ isTextarea }) => {
@@ -188,6 +209,25 @@ const SubmittedTextInputContainer = styled.div<SubmittedTextInputContainerProps>
   overflow-wrap: break-word;
   white-space: pre-wrap;
 `;
+
+interface SubmittedTextInputComponentProps {
+  layout: string;
+  currentValue: string;
+  isValid: boolean | undefined;
+}
+
+const SubmittedTextInputComponent = ({ layout, currentValue, isValid }: SubmittedTextInputComponentProps) => {
+  return (
+    <SubmittedTextInputContainer isTextarea={layout === 'textarea'}>
+      <SubmittedText>{currentValue}</SubmittedText>
+      {isValid && (
+        <CheckIconContainer>
+          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
+        </CheckIconContainer>
+      )}
+    </SubmittedTextInputContainer>
+  );
+};
 
 const SubmittedText = styled.div`
   width: calc(100% - 24px);
@@ -216,21 +256,23 @@ const CheckIconForChip = styled(Icon)<CheckIconProps>`
 
 const InputContainer = styled.div`
   width: 100%;
+  position: relative;
 `;
 
 export interface InputProps {
   name: string;
   style: MessageFormItemStyle;
-  required?: boolean;
-  disabled?: boolean;
-  isValid?: boolean;
+  isSubmitted: boolean;
   errorMessage: string | null;
   values: string[];
+  isInvalidated: boolean;
+  isSubmitTried: boolean;
+  onChange: (values: string[]) => void;
+  layout: MessageFormItemStyle['layout'];
+  required?: boolean;
+  isValid?: boolean;
   placeHolder?: string;
   onFocused?: (isFocus: boolean) => void;
-  onChange: (values: string[]) => void;
-  isSubmitted: boolean;
-  layout: MessageFormItemStyle['layout'];
 }
 
 type ChipState = 'default' | 'selected' | 'submittedDefault' | 'submittedSelected';
@@ -245,10 +287,11 @@ const FormInput = (props: InputProps) => {
     layout,
     name,
     required,
-    disabled,
     errorMessage,
     isValid,
     values,
+    isInvalidated,
+    isSubmitTried,
     style,
     onFocused,
     onChange,
@@ -260,15 +303,11 @@ const FormInput = (props: InputProps) => {
   const { min = 1, max = 1 } = resultCount ?? {};
   const chipDataList: ChipData[] = getInitialChipDataList();
 
-  const [isFocused, setIsFocused] = useState(false);
-
   const handleFocus = () => {
-    setIsFocused(true);
     onFocused?.(true);
   };
 
   const handleBlur = () => {
-    setIsFocused(false);
     onFocused?.(false);
   };
 
@@ -291,14 +330,9 @@ const FormInput = (props: InputProps) => {
     let newDraftedValues: string[];
     if (min === 1 && max === 1) {
       // Single select
-      newDraftedValues = [chipDataList[index].option];
+      newDraftedValues = chipDataList[index].state === 'selected' ? [] : [chipDataList[index].option];
     } else {
-      /**
-       * Multi select case
-       * Upon chip click, if it is:
-       *   1. not selected and can select more -> select the chip. Keep other selected chips as is.
-       *   2. already selected ->  deselect the chip. Keep other selected chips as is.
-       */
+      // Multi select
       newDraftedValues = chipDataList.reduce((acc, chipData, i) => {
         if (i === index) {
           if (chipData.state === 'default' && values.length < max) {
@@ -312,7 +346,7 @@ const FormInput = (props: InputProps) => {
         return acc;
       }, [] as string[]);
     }
-    if (newDraftedValues.length > 0) onChange(newDraftedValues);
+    onChange(newDraftedValues);
   };
 
   return (
@@ -356,28 +390,26 @@ const FormInput = (props: InputProps) => {
               return (
                 <InputContainer>
                   {isSubmitted ? (
-                    <SubmittedTextInputContainer isTextarea={true}>
-                      <SubmittedText>{currentValue}</SubmittedText>
-                      {isValid && (
-                        <CheckIconContainer>
-                          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
-                        </CheckIconContainer>
-                      )}
-                    </SubmittedTextInputContainer>
+                    <>
+                      <SubmittedTextInputComponent layout={layout} currentValue={currentValue} isValid={isValid} />
+                      {!currentValue && <Placeholder>No Response</Placeholder>}
+                    </>
                   ) : (
-                    <TextArea
-                      className="sendbird-input__input"
-                      required={required}
-                      disabled={disabled}
-                      value={currentValue}
-                      onFocus={handleFocus}
-                      onBlur={handleBlur}
-                      onChange={(event) => {
-                        const value = event.target.value;
-                        onChange(value ? [value] : []);
-                      }}
-                      placeholder={!disabled ? placeHolder : ''}
-                    />
+                    <>
+                      <TextArea
+                        className="sendbird-input__input"
+                        required={required}
+                        disabled={isSubmitted}
+                        value={currentValue}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        onChange={(event) => {
+                          const value = event.target.value;
+                          onChange(value ? [value] : []);
+                        }}
+                      />
+                      {placeHolder && !currentValue && <Placeholder numMaxLines={4}>{placeHolder}</Placeholder>}
+                    </>
                   )}
                 </InputContainer>
               );
@@ -390,30 +422,29 @@ const FormInput = (props: InputProps) => {
               return (
                 <InputContainer>
                   {isSubmitted ? (
-                    <SubmittedTextInputContainer>
-                      <SubmittedText>{currentValue}</SubmittedText>
-                      {isValid && (
-                        <CheckIconContainer>
-                          <Icon type={IconTypes.DONE} fillColor={IconColors.SECONDARY_2} width="20px" height="20px" />
-                        </CheckIconContainer>
-                      )}
-                    </SubmittedTextInputContainer>
+                    <>
+                      <SubmittedTextInputComponent layout={layout} currentValue={currentValue} isValid={isValid} />
+                      {!currentValue && <Placeholder>No Response</Placeholder>}
+                    </>
                   ) : (
-                    <Input
-                      type={layout}
-                      className="sendbird-input__input"
-                      name={name}
-                      required={required}
-                      disabled={disabled}
-                      value={currentValue}
-                      onFocus={handleFocus}
-                      onBlur={handleBlur}
-                      onChange={(event) => {
-                        const value = event.target.value;
-                        onChange(value ? [value] : []);
-                      }}
-                      placeholder={!disabled ? placeHolder : ''}
-                    />
+                    <>
+                      <Input
+                        type={layout === 'number' ? 'text' : layout}
+                        inputMode={layout === 'number' ? 'numeric' : 'text'}
+                        className="sendbird-input__input"
+                        name={name}
+                        required={required}
+                        disabled={isSubmitted}
+                        value={currentValue}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        onChange={(event) => {
+                          const value = event.target.value;
+                          onChange(value ? [value] : []);
+                        }}
+                      />
+                      {placeHolder && !currentValue && <Placeholder>{placeHolder}</Placeholder>}
+                    </>
                   )}
                 </InputContainer>
               );
@@ -423,7 +454,14 @@ const FormInput = (props: InputProps) => {
             }
           }
         })()}
-        {!isFocused && errorMessage && <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>}
+        {/*
+        If there is an error message for the input, display it IFF any of below is true:
+        1. Submit button has been clicked after initial load.
+        2. Input has been focused out.
+        */}
+        {errorMessage && (isSubmitTried || isInvalidated) && (
+          <ErrorLabel type={LabelTypography.CAPTION_3}>{errorMessage}</ErrorLabel>
+        )}
       </div>
     </Root>
   );
