@@ -33,7 +33,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
   } = useConstantState();
 
   const { setIsVisible } = useWidgetState();
-  const { botStyle } = useWidgetSetting();
+  const { botConfigs, botStyle } = useWidgetSetting();
   const session = useWidgetSession();
   const target = useStyledComponentsTarget();
 
@@ -107,7 +107,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
             uikitOptions={{
               groupChannel: {
                 input: {
-                  enableDocument: true,
+                  enableDocument: botConfigs.replyToFile,
                 },
                 enableVoiceMessage: false,
                 enableSuggestedReplies: true,
