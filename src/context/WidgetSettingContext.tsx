@@ -24,10 +24,14 @@ export interface BotStyle {
   toggleButtonUrl?: string;
   autoOpen: boolean;
 }
+export interface BotConfigs {
+  replyToFile: boolean;
+}
 
 type Context = {
   initialized: boolean;
   botStyle: BotStyle;
+  botConfigs: BotConfigs;
   widgetSession: WidgetSession | null;
   initManualSession: (sdk: SendbirdChatWith<[GroupChannelModule]>) => void;
   resetSession: () => Promise<void>;
@@ -59,6 +63,8 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
 
   const inProgress = React.useRef(false);
   const [initialized, setInitialized] = useState(false);
+
+  const [botConfigs, setBotConfigs] = useState<BotConfigs>({ replyToFile: false });
   const [botStyle, setBotStyle] = useState<BotStyle>({
     theme: 'light',
     accentColor: '#742DDD',
@@ -95,6 +101,7 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
       locale,
     })
       .onError(callbacks?.onWidgetSettingFailure)
+      .onGetBotConfigs((configs) => setBotConfigs(configs))
       .onGetBotStyle((style) => setBotStyle(style))
       .onAutoNonCached(({ user, channel }) => {
         const session = {
@@ -196,6 +203,7 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
             botStudioEditProps?.styles?.accentColor ?? botStudioEditProps?.styles?.primaryColor ?? botStyle.accentColor,
           autoOpen: autoOpen ?? botStyle.autoOpen,
         },
+        botConfigs,
         widgetSession,
         initManualSession,
         resetSession: () => initSessionByStrategy(sessionStrategy, true),
