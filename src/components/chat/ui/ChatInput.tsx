@@ -54,13 +54,19 @@ const container = css`
       padding: 12px 16px;
     }
 
+    .sendbird-message-input--area {
+      background-color: ${themedColors.bg2};
+    }
+
     .sendbird-message-input {
       display: flex;
       align-items: center;
       .sendbird-message-input-text-field {
-        padding: 8px 16px;
+        min-height: 40px;
+        max-height: 100px;
         height: 40px;
-        max-height: 116px;
+        overflow-y: auto;
+        padding: 8px 16px;
         border-radius: 20px;
         // Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
         // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
