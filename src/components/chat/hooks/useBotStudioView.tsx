@@ -64,7 +64,7 @@ export const useBotStudioView = () => {
               const isLastMessage = index === welcomeMessages.length - 1;
 
               return (
-                <div key={index} style={{ padding: '0 16px' }}>
+                <div key={index} style={{ padding: '0 16px', marginBottom: 16 }}>
                   <BotMessageWithBodyInput
                     chainTop={index === 0}
                     chainBottom={index === welcomeMessages.length - 1}
