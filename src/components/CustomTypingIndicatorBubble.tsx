@@ -4,10 +4,9 @@ import { useConstantState } from '../context/ConstantContext';
 import { TypingBubble } from '../foundation/components/TypingBubble';
 
 function CustomTypingIndicatorBubble() {
-  const { botStudioEditProps = {}, botId } = useConstantState();
-  const { channel } = useChatContext();
+  const { botStudioEditProps = {} } = useConstantState();
+  const { botUser } = useChatContext();
 
-  const botUser = channel?.members.find((member) => member.userId === botId);
   const botInfo = botStudioEditProps.botInfo;
   const botProfileUrl = botInfo?.profileUrl ?? botUser?.profileUrl;
 

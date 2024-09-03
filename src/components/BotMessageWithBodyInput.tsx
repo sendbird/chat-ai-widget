@@ -1,8 +1,8 @@
-import { User } from '@sendbird/chat';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import BotProfileImage from './BotProfileImage';
+import { useChatContext } from './chat/context/ChatProvider';
 import { DefaultSentTime, FullBodyContainer, WideSentTime } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
 import { Label } from '../foundation/components/Label';
@@ -37,7 +37,6 @@ const EmptyImageContainer = styled.div`
 `;
 
 type Props = {
-  botUser?: User;
   createdAt?: number;
   messageData?: string;
   bodyComponent: ReactNode;
@@ -54,9 +53,10 @@ const HEIGHTS = {
 };
 
 export default function BotMessageWithBodyInput(props: Props) {
+  const { botUser } = useChatContext();
   const { botStudioEditProps, dateLocale } = useConstantState();
 
-  const { botUser, createdAt, bodyComponent, chainTop, chainBottom, messageFeedback, wideContainer = false } = props;
+  const { createdAt, bodyComponent, chainTop, chainBottom, messageFeedback, wideContainer = false } = props;
 
   const profilePaddingBottom = (messageFeedback ? HEIGHTS.FEEDBACK : 0) + (wideContainer ? HEIGHTS.TIMESTAMP : 0);
 

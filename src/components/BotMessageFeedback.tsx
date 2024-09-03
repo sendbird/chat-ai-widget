@@ -1,11 +1,10 @@
-import { Feedback, FeedbackRating } from '@sendbird/chat/message';
+import { BaseMessage, Feedback, FeedbackRating } from '@sendbird/chat/message';
 import { useReducer } from 'react';
 
 import FeedbackIconButton from '@uikit/ui/FeedbackIconButton';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
 import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
-import { CoreMessageType } from '@uikit/utils';
 
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
@@ -17,7 +16,7 @@ type State = Partial<{
   menuVisible: boolean;
 }>;
 
-function BotMessageFeedback({ message }: { message: CoreMessageType }) {
+function BotMessageFeedback({ message }: { message: BaseMessage }) {
   const { stringSet } = useConstantState();
   const [state, setState] = useReducer((p: State, a: State) => ({ ...p, ...a }), {
     errorText: '',
@@ -104,7 +103,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
             isMobile
             rootElementId={elementIds.widgetWindow}
             selectedFeedback={message.myFeedback.rating}
-            message={message}
+            message={message as any}
             onUpdate={async (selectedFeedback, comment) => {
               if (message.myFeedback) {
                 try {

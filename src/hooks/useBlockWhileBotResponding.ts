@@ -1,4 +1,4 @@
-import { Member } from '@sendbird/chat/lib/__definition';
+import { User } from '@sendbird/chat';
 import { BaseMessage } from '@sendbird/chat/message';
 import { useEffect, useRef, useState } from 'react';
 
@@ -11,7 +11,7 @@ import { isSentBy } from '../utils/messages';
 
 interface UseDisableInputUntilReplyProps {
   lastMessage?: BaseMessage | null;
-  botUser?: Member;
+  botUser?: User;
 }
 
 /**

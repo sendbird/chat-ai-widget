@@ -18,13 +18,12 @@ type Props = {
   fullscreen: boolean;
 };
 export const ChatHeader = ({ fullscreen }: Props) => {
-  const { botId, botStudioEditProps, isMobileView, enableWidgetExpandButton, betaMark, customBetaMarkText } =
+  const { botStudioEditProps, isMobileView, enableWidgetExpandButton, betaMark, customBetaMarkText } =
     useConstantState();
-  const { sdk, channel, dataSource } = useChatContext();
+  const { sdk, channel, botUser, dataSource } = useChatContext();
   const { setIsOpen } = useWidgetState();
 
   const { botInfo } = botStudioEditProps ?? {};
-  const botUser = channel?.members.find((member) => member.userId === botId);
   const botNickname = botInfo?.nickname ?? botUser?.nickname;
   const profileUrl = botInfo?.profileUrl ?? botUser?.profileUrl;
   const buttonSize = isMobileView ? 24 : 16;

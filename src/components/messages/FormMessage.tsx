@@ -1,11 +1,10 @@
-import { MessageForm } from '@sendbird/chat/message';
+import { BaseMessage, MessageForm } from '@sendbird/chat/message';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 import { isFormVersionCompatible } from '@uikit/modules/GroupChannel/context/utils';
 import Button from '@uikit/ui/Button';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
-import { CoreMessageType } from '@uikit/utils';
 
 import FallbackUserMessage from './FallbackUserMessage';
 import { elementIds, widgetStringSet } from '../../const';
@@ -14,7 +13,7 @@ import { Label } from '../../foundation/components/Label';
 import FormInput from '../FormInput';
 
 interface Props {
-  message: CoreMessageType;
+  message: BaseMessage;
   form: MessageForm;
 }
 

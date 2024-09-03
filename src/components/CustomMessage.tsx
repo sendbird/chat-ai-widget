@@ -1,10 +1,11 @@
-import { User } from '@sendbird/chat';
+import { BaseMessage } from '@sendbird/chat/message';
 
-import { CoreMessageType, isVideoMessage } from '@uikit/utils';
+import { isVideoMessage } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
 import BotMessageFeedback from './BotMessageFeedback';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
+import { useChatContext } from './chat/context/ChatProvider';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
@@ -21,15 +22,15 @@ import { messageExtension } from '../utils/messageExtension';
 import { isSentBy } from '../utils/messages';
 
 type Props = {
-  message: CoreMessageType;
+  message: BaseMessage;
   activeSpinnerId: number;
-  botUser?: User;
   chainTop?: boolean;
   chainBottom?: boolean;
 };
 
 export default function CustomMessage(props: Props) {
-  const { message, activeSpinnerId, botUser } = props;
+  const { botUser } = useChatContext();
+  const { message, activeSpinnerId } = props;
   const { replacementTextList, enableEmojiFeedback, botStudioEditProps = {} } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
   const { botInfo } = botStudioEditProps;
@@ -80,7 +81,6 @@ export default function CustomMessage(props: Props) {
       return (
         <BotMessageWithBodyInput
           {...props}
-          botUser={botUser}
           bodyComponent={<FormMessage form={message.messageForm} message={message} />}
           createdAt={message.createdAt}
         />
@@ -93,7 +93,6 @@ export default function CustomMessage(props: Props) {
         <BotMessageWithBodyInput
           wideContainer={isVideoMessage(message)}
           {...props}
-          botUser={botUser}
           bodyComponent={<FileMessage message={message} profileUrl={botProfileUrl} />}
           createdAt={message.createdAt}
           messageFeedback={renderFeedbackButtons()}
@@ -114,7 +113,6 @@ export default function CustomMessage(props: Props) {
           <BotMessageWithBodyInput
             wideContainer
             {...props}
-            botUser={botUser}
             bodyComponent={
               <ShopItemsMessage message={message} streamingBody={<TypingBubble />} textBody={textMessageBody} />
             }
@@ -128,7 +126,6 @@ export default function CustomMessage(props: Props) {
       return (
         <BotMessageWithBodyInput
           {...props}
-          botUser={botUser}
           bodyComponent={textMessageBody}
           createdAt={message.createdAt}
           messageFeedback={renderFeedbackButtons()}

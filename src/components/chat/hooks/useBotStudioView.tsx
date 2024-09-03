@@ -13,11 +13,10 @@ import { useChatContext } from '../context/ChatProvider';
 
 export const useBotStudioView = () => {
   const { botStudioEditProps = {}, botId, replacementTextList, stringSet } = useConstantState();
-  const { dataSource, channel, handlers } = useChatContext();
+  const { dataSource, handlers } = useChatContext();
   const { suggestedRepliesDirection, welcomeMessages = [] } = botStudioEditProps;
   const { messages } = dataSource;
 
-  const botUser = channel?.members.find((member) => member.userId === botId);
   const originalWMs = getBotWelcomeMessages(messages, botId);
 
   const firstUserMsg = messages[originalWMs.length + 1];
@@ -68,7 +67,6 @@ export const useBotStudioView = () => {
                   <BotMessageWithBodyInput
                     chainTop={index === 0}
                     chainBottom={index === welcomeMessages.length - 1}
-                    botUser={botUser}
                     bodyComponent={<ParsedBotMessageBody text={text} tokens={tokens} />}
                     createdAt={firstOriginalWM?.createdAt}
                   />

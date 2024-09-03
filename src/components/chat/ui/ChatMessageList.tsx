@@ -2,7 +2,6 @@ import { css } from '@linaria/core';
 import { isSameDay } from 'date-fns/isSameDay';
 
 import { getComponentKeyFromMessage } from '@uikit/modules/GroupChannel/context/utils';
-import { isSendableMessage } from '@uikit/utils';
 
 import { useConstantState } from '../../../context/ConstantContext';
 import { DateSeparator } from '../../../foundation/components/DateSeparator';
@@ -65,7 +64,6 @@ export const ChatMessageList = () => {
               <div style={{ marginBottom: index === filteredMessages.length - 1 ? 0 : 16 }}>
                 <CustomMessage
                   message={message as any}
-                  botUser={isSendableMessage(message) ? message.sender : undefined}
                   activeSpinnerId={typingTargetMessageId}
                   chainTop={top}
                   chainBottom={bottom}
