@@ -12,6 +12,7 @@ import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
 import { CarouselMessage } from './messages/CarouselMessage';
 import FormMessage from './messages/FormMessage';
+import { OutgoingFileMessage } from './messages/OutgoingFileMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { useConstantState } from '../context/ConstantContext';
@@ -71,6 +72,15 @@ export default function CustomMessage(props: Props) {
       return (
         <div>
           <CurrentUserMessage message={message} />
+          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
+        </div>
+      );
+    }
+
+    if (message.isFileMessage()) {
+      return (
+        <div>
+          <OutgoingFileMessage message={message} />
           {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
         </div>
       );

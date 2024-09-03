@@ -28,9 +28,11 @@ export const ChatInput = () => {
         messageInputRef={ref}
         currentChannel={channel as any}
         messages={dataSource.messages}
-        sendUserMessage={(params) => {
-          const processedParams = handlers.onBeforeSendMessage(params);
-          dataSource.sendUserMessage(processedParams, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
+        sendUserMessage={async (params) => {
+          const processedParams = await handlers.onBeforeSendMessage(params);
+          const message = await dataSource.sendUserMessage(processedParams, () => handlers.onAfterSendMessage());
+          handlers.onAfterSendMessage();
+          return message;
         }}
         sendFileMessage={() => {
           throw new Error('Not implemented');
