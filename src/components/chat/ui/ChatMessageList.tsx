@@ -48,7 +48,8 @@ export const ChatMessageList = () => {
         renderMessage={({ message, index }) => {
           const prevCreatedAt = filteredMessages[index - 1]?.createdAt ?? 0;
           const suggestedReplies = message.suggestedReplies ?? [];
-          const showRepliesOnLastMessage = message.messageId === channel?.lastMessage?.messageId;
+          const lastMessageInChannel = filteredMessages[filteredMessages.length - 1];
+          const showRepliesOnLastMessage = message.messageId === lastMessageInChannel?.messageId;
 
           const [top, bottom] = getMessageGrouping(message, filteredMessages[index - 1], filteredMessages[index + 1]);
 
