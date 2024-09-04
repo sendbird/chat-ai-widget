@@ -11,6 +11,7 @@ import { useWidgetSession, useWidgetSetting, WidgetSettingProvider } from '../..
 import { useWidgetState, WidgetStateProvider } from '../../context/WidgetStateContext';
 import { useStyledComponentsTarget } from '../../hooks/useStyledComponentsTarget';
 import { getTheme } from '../../theme';
+import { DragDropProvider } from '../../tools/hooks/useDragDropFiles';
 import { isDashboardPreview } from '../../utils';
 
 const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
@@ -133,7 +134,9 @@ export default function ProviderContainer(props: ProviderContainerProps) {
     <ConstantStateProvider {...props}>
       <WidgetSettingProvider>
         <WidgetStateProvider>
-          <SBComponent>{props.children}</SBComponent>
+          <DragDropProvider>
+            <SBComponent>{props.children}</SBComponent>
+          </DragDropProvider>
         </WidgetStateProvider>
       </WidgetSettingProvider>
     </ConstantStateProvider>
