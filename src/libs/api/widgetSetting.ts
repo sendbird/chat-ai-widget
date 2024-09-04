@@ -87,7 +87,7 @@ export async function getWidgetSetting({
   return {
     bot: {
       // FIXME(file-support): default set to false
-      replyToFile: json.bot?.reply_to_file ?? true,
+      replyToFile: json.bot?.reply_to_file ?? false,
     },
     botStyle: {
       theme: json.bot_style.color.theme,

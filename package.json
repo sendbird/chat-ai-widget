@@ -84,6 +84,6 @@
   ],
   "packageManager": "yarn@4.2.2",
   "resolutions": {
-    "@sendbird/chat": "file:./sendbird-chat-4.14.1.tgz"
+    "@sendbird/chat": "file:./sendbird-chat-4.14.2.tgz"
   }
 }
