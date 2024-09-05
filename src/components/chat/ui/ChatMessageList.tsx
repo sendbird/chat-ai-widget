@@ -31,6 +31,8 @@ export const ChatMessageList = () => {
     }
 
     if (dataSource.messages.length === 0) {
+      const welcomeMessages = renderBotStudioWelcomeMessages();
+      if (welcomeMessages) return <div style={{ width: '100%' }}>{welcomeMessages}</div>;
       return <Placeholder type={'noMessages'} />;
     }
 
@@ -91,7 +93,6 @@ export const ChatMessageList = () => {
         }}
         overlayArea={
           <>
-            {channel?.isFrozen && <FrozenBanner className={frozenBanner} label={stringSet.CHANNEL_FROZEN} />}
             {/**
              * Note for unread status count & read status
              *  Currently, the widget only handles cases of chatting with bots, so it is not supported.
@@ -114,6 +115,7 @@ export const ChatMessageList = () => {
   return (
     <div id={'widget-chat-message-list'} className={listContainer}>
       {render()}
+      {channel?.isFrozen && <FrozenBanner className={frozenBanner} label={stringSet.CHANNEL_FROZEN} />}
     </div>
   );
 };
@@ -123,6 +125,7 @@ const frozenBanner = css`
   inset-block-start: 8px;
   inset-inline: 0;
   margin-inline: 24px;
+  z-index: 10;
 `;
 
 const listContainer = css`
