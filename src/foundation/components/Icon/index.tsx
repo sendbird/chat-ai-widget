@@ -79,7 +79,8 @@ export type IconType =
   | 'chevron-down'
   | 'feedback-like'
   | 'feedback-dislike'
-  | 'done';
+  | 'done'
+  | 'file-document';
 type SVG = React.FC<React.SVGProps<SVGSVGElement>>;
 
 const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG> }> = {
@@ -118,6 +119,10 @@ const components: Record<IconType, { module: null | SVG; load: () => Promise<SVG
   'done': {
     module: null,
     load: () => import('../../../../packages/uikit/src/svgs/icon-done.svg').then((it) => it.default),
+  },
+  'file-document': {
+    module: null,
+    load: () => import('../../../../packages/uikit/src/svgs/icon-file-document.svg').then((it) => it.default),
   },
 };
 

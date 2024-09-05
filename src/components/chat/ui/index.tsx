@@ -4,14 +4,16 @@ import { ChatHeader } from './ChatHeader';
 import { ChatInput } from './ChatInput';
 import { ChatMessageList } from './ChatMessageList';
 import { themedColors, themedColorVars } from '../../../foundation/colors/css';
+import { useDragDropArea } from '../../../tools/hooks/useDragDropFiles';
 import { PoweredByBanner } from '../../ui/PoweredByBanner';
 
 type Props = {
   fullscreen: boolean;
 };
 export const ChatUI = ({ fullscreen }: Props) => {
+  const dragHandlers = useDragDropArea();
   return (
-    <div className={cx(container, themedColorVars)}>
+    <div className={cx(container, themedColorVars)} {...dragHandlers}>
       <ChatHeader fullscreen={fullscreen} />
       <ChatMessageList />
       <ChatInput />

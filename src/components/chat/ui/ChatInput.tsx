@@ -34,8 +34,11 @@ export const ChatInput = () => {
           handlers.onAfterSendMessage();
           return message;
         }}
-        sendFileMessage={() => {
-          throw new Error('Not implemented');
+        sendFileMessage={async (params) => {
+          const processedParams = await handlers.onBeforeSendMessage(params);
+          const message = await dataSource.sendFileMessage(processedParams, () => handlers.onAfterSendMessage());
+          handlers.onAfterSendMessage();
+          return message;
         }}
       />
     </div>

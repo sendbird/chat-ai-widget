@@ -2,11 +2,10 @@ import { FileMessage } from '@sendbird/chat/message';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import Icon, { IconTypes } from '@uikit/ui/Icon';
-import Label from '@uikit/ui/Label';
-import Loader from '@uikit/ui/Loader';
-
 import { useConstantState } from '../../context/ConstantContext';
+import { Icon } from '../../foundation/components/Icon';
+import { Label } from '../../foundation/components/Label';
+import { Loader } from '../../foundation/components/Loader';
 import { META_ARRAY_ASPECT_RATIO_KEY } from '../../utils/getImageAspectRatio';
 import { formatCreatedAtToAMPM } from '../../utils/messageTimestamp';
 import { BodyComponent, BodyContainer, DefaultSentTime } from '../MessageComponent';
@@ -93,13 +92,13 @@ const PDFPreview = ({ message }: Props) => {
     <div className={'sendbird-message-input--file'}>
       <div className={'pdf'} style={{ flex: 1 }}>
         <div className={'pdf-icon'}>
-          <Icon type={IconTypes.FILE_DOCUMENT} width={'24px'} height={'24px'} />
+          <Icon type={'file-document'} size={24} />
         </div>
         <div className={'pdf-info'}>
-          <Label type={'BUTTON_1'} className={'pdf-name'} title={message.name}>
+          <Label type={'button1'} className={'pdf-name'} title={message.name}>
             {message.name}
           </Label>
-          <Label type={'CAPTION_3'} className={'pdf-type'}>
+          <Label type={'caption3'} className={'pdf-type'}>
             {'PDF'}
           </Label>
         </div>
@@ -152,9 +151,9 @@ const ImageWithPlaceholder = ({ src, alt, aspectRatio }: { src: string; alt: str
 
   return (
     <ImageContainer ratio={aspectRatio}>
-      {!loaded && (
-        <Loader>
-          <Icon type={'SPINNER'} fillColor={'ON_BACKGROUND_3'} />
+      {loaded && (
+        <Loader size={26}>
+          <Icon type={'spinner'} color={'onbackground3'} size={26} />
         </Loader>
       )}
       <Placeholder loaded={loaded}></Placeholder>
