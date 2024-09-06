@@ -4,13 +4,13 @@ import styled from 'styled-components';
 
 import { isFormVersionCompatible } from '@uikit/modules/GroupChannel/context/utils';
 import Button from '@uikit/ui/Button';
-import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 
 import FallbackUserMessage from './FallbackUserMessage';
-import { elementIds, widgetStringSet } from '../../const';
+import { widgetStringSet } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
 import { Label } from '../../foundation/components/Label';
 import FormInput from '../FormInput';
+import { AlertModal } from '../ui/AlertModal';
 
 interface Props {
   message: BaseMessage;
@@ -196,15 +196,7 @@ export default function FormMessage(props: Props) {
           <ButtonText disabled={isButtonDisabled}>{isSubmitted ? 'Submitted successfully' : 'Submit'}</ButtonText>
         </Label>
       </SubmitButton>
-      {submitFailed && (
-        <MessageFeedbackFailedModal
-          text={'Submit failed.'}
-          rootElementId={elementIds.widgetWindow}
-          onCancel={() => {
-            setSubmitFailed(false);
-          }}
-        />
-      )}
+      {submitFailed && <AlertModal message={'Submit failed.'} onClose={() => setSubmitFailed(false)} />}
     </Root>
   );
 }

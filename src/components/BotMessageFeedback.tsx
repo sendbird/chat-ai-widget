@@ -2,10 +2,10 @@ import { BaseMessage, Feedback, FeedbackRating } from '@sendbird/chat/message';
 import { useReducer } from 'react';
 
 import FeedbackIconButton from '@uikit/ui/FeedbackIconButton';
-import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
 import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
 
+import { AlertModal } from './ui/AlertModal';
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { Icon } from '../foundation/components/Icon';
@@ -137,13 +137,7 @@ function BotMessageFeedback({ message }: { message: BaseMessage }) {
       }
       {
         // error modal
-        !!state.errorText && (
-          <MessageFeedbackFailedModal
-            text={state.errorText}
-            rootElementId={elementIds.widgetWindow}
-            onCancel={() => setState({ errorText: '' })}
-          />
-        )
+        !!state.errorText && <AlertModal message={state.errorText} onClose={() => setState({ errorText: '' })} />
       }
     </>
   );

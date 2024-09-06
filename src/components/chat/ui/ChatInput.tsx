@@ -1,5 +1,5 @@
 import { css } from '@linaria/core';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/MessageInputWrapper/MessageInputWrapperView';
@@ -7,6 +7,7 @@ import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/Mess
 import { themedColors } from '../../../foundation/colors/css';
 import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotResponding';
 import { isIOSMobile } from '../../../utils';
+import { AlertModal } from '../../ui/AlertModal';
 import { useChatContext } from '../context/ChatProvider';
 
 // TODO: Remove UIKit
@@ -14,6 +15,7 @@ export const ChatInput = () => {
   const { channel, botUser, dataSource, handlers } = useChatContext();
 
   const ref = useRef<HTMLDivElement>(null);
+  const [limitError, setLimitError] = useState(false);
 
   const { config } = useSendbirdStateContext();
   const isMessageInputDisabled = useBlockWhileBotResponding({
@@ -41,7 +43,11 @@ export const ChatInput = () => {
           handlers.onAfterSendMessage();
           return message;
         }}
+        onFileLimitError={() => setLimitError(true)}
       />
+      {limitError && (
+        <AlertModal message={"You can't upload more than one image"} onClose={() => setLimitError(false)} />
+      )}
     </div>
   );
 };
