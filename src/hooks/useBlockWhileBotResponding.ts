@@ -1,5 +1,8 @@
-import { SendableMessage, Member } from '@sendbird/chat/lib/__definition';
+import { User } from '@sendbird/chat';
+import { BaseMessage } from '@sendbird/chat/message';
 import { useEffect, useRef, useState } from 'react';
+
+import { isSendableMessage } from '@uikit/utils';
 
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
@@ -7,8 +10,8 @@ import { messageExtension } from '../utils/messageExtension';
 import { isSentBy } from '../utils/messages';
 
 interface UseDisableInputUntilReplyProps {
-  lastMessage?: SendableMessage;
-  botUser?: Member;
+  lastMessage?: BaseMessage | null;
+  botUser?: User;
 }
 
 /**
@@ -39,7 +42,7 @@ export const useBlockWhileBotResponding = ({ lastMessage, botUser }: UseDisableI
 
   useEffect(() => {
     if (!blockInputWhileBotResponding || !currentUserId || !botUser || !lastMessage) return;
-    if (isSentBy(lastMessage, currentUserId)) {
+    if (isSendableMessage(lastMessage) && isSentBy(lastMessage, currentUserId)) {
       if (lastMessage.sendingStatus === 'pending') {
         setTimerAndBlock();
       } else if (lastMessage.sendingStatus === 'failed') {

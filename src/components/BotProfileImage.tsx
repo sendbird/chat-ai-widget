@@ -1,39 +1,43 @@
-import styled from 'styled-components';
+import { styled } from '@linaria/react';
+import { useTheme } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../colors';
-import Icon from '../icons/bot-profile-image-small.svg';
+import BotProfileIcon from '../icons/bot-profile-image-small.svg';
 
-interface ImageProps {
-  width: number;
-  height: number;
-  iconWidth: number;
-  iconHeight: number;
-}
-const StyledBotImage = styled.span<ImageProps>`
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
-  background: ${({ theme }) => theme.accentColor};
+const Container = styled.span<{ backgroundColor: string; size: number }>`
+  width: ${({ size }) => `${size}px`};
+  height: ${({ size }) => `${size}px`};
+  background: ${({ backgroundColor }) => backgroundColor};
+  box-sizing: border-box;
+  padding: 6px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }`;
 
-const ChatBotIcon = styled(Icon)`
+const Icon = styled(BotProfileIcon)<{ fill: string }>`
   path {
-    fill: ${({ theme }) => getColorBasedOnSaturation(theme.accentColor)};
+    fill: ${({ fill }) => fill};
   }
 `;
-const StyledBotIcon = styled(ChatBotIcon).attrs(({ width, height }) => ({
-  width,
-  height,
-}))``;
 
-function BotProfileImage(props: ImageProps) {
+type Props = {
+  profileUrl?: string;
+  size: number;
+};
+
+function BotProfileImage({ size, profileUrl }: Props) {
+  const theme = useTheme();
+
+  if (profileUrl) {
+    return <img src={profileUrl} style={{ borderRadius: '50%', width: size, height: size }} alt={'bot profile'} />;
+  }
+
   return (
-    <StyledBotImage {...props}>
-      <StyledBotIcon width={props.iconWidth} height={props.iconHeight} />
-    </StyledBotImage>
+    <Container size={size} backgroundColor={theme.accentColor}>
+      <Icon fill={getColorBasedOnSaturation(theme.accentColor)} />
+    </Container>
   );
 }
 

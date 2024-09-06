@@ -1,7 +1,7 @@
-import Chat from './Chat';
 import { ChatAiWidgetProps } from './ChatAiWidget';
 import ProviderContainer from './ProviderContainer';
 import { elementIds } from '../../const';
+import Chat from '../chat';
 
 /**
  * NOTE: External purpose only.

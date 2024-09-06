@@ -5,15 +5,14 @@ import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 import Avatar from '@uikit/ui/Avatar';
-import Label, { LabelColors, LabelTypography } from '@uikit/ui/Label';
 
 import { SentTime } from './MessageComponent';
+import { Label } from '../foundation/components/Label';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.div`
   display: flex;
   align-items: flex-end;
-  margin-bottom: 6px;
   flex-wrap: wrap;
   gap: 8px;
   position: relative;
@@ -51,12 +50,9 @@ type Props = {
   bodyComponent: ReactNode;
   chainTop?: boolean;
   chainBottom?: boolean;
-  isBotWelcomeMessage?: boolean;
   isFormMessage?: boolean;
   locale?: Locale;
 };
-
-const ImageContainer = styled.div``;
 
 const EmptyImageContainer = styled.div`
   width: 28px;
@@ -72,15 +68,15 @@ export default function UserMessageWithBodyInput(props: Props) {
   return (
     <Root>
       {displayProfileImage ? (
-        <ImageContainer>
+        <div>
           <Avatar height="28px" width="28px" src={user?.profileUrl} />
-        </ImageContainer>
+        </div>
       ) : (
         <EmptyImageContainer />
       )}
       <BodyContainer>
         {displaySender && (
-          <Sender type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
+          <Sender type={'caption2'} color={'onbackground2'}>
             {user.nickname}
           </Sender>
         )}

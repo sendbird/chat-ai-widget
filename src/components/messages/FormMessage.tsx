@@ -1,20 +1,19 @@
-import { MessageForm } from '@sendbird/chat/message';
+import { BaseMessage, MessageForm } from '@sendbird/chat/message';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 import { isFormVersionCompatible } from '@uikit/modules/GroupChannel/context/utils';
 import Button from '@uikit/ui/Button';
-import Label, { LabelTypography } from '@uikit/ui/Label';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
-import { CoreMessageType } from '@uikit/utils';
 
 import FallbackUserMessage from './FallbackUserMessage';
 import { elementIds, widgetStringSet } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
+import { Label } from '../../foundation/components/Label';
 import FormInput from '../FormInput';
 
 interface Props {
-  message: CoreMessageType;
+  message: BaseMessage;
   form: MessageForm;
 }
 
@@ -193,7 +192,7 @@ export default function FormMessage(props: Props) {
         );
       })}
       <SubmitButton onClick={handleSubmit} disabled={isButtonDisabled}>
-        <Label type={LabelTypography.BUTTON_2}>
+        <Label type={'button2'}>
           <ButtonText disabled={isButtonDisabled}>{isSubmitted ? 'Submitted successfully' : 'Submit'}</ButtonText>
         </Label>
       </SubmitButton>

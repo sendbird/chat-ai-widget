@@ -9,7 +9,7 @@ import { StringSet } from '@uikit/ui/Label/stringSet';
 
 import type { ToggleButtonProps } from './components/widget/WidgetToggleButton';
 import { BotStyle } from './context/WidgetSettingContext';
-import RefreshIcon from './icons/refresh-icon.svg';
+import RefreshIcon from './icons/ic-refresh.svg';
 import { SendbirdChatAICallbacks } from './types';
 import { noop } from './utils';
 
@@ -22,10 +22,6 @@ export const DEFAULT_CONSTANT = {
   userNickName: 'User',
   betaMark: false,
   customBetaMarkText: 'BETA',
-  suggestedMessageContent: {
-    replyContents: [],
-    messageFilterList: [],
-  },
   firstMessageData: [
     // {
     //   data: {
@@ -98,19 +94,6 @@ export interface WelcomeUserMessage {
   message: string;
   suggestedReplies?: string[];
 }
-
-// TODO: support this later.
-// export interface WelcomeFileMessage {
-//   file?: File | Blob | FileUrlInfo;
-//   suggestedReplies?: string[];
-// }
-
-// export interface FileUrlInfo {
-//   url?: string;
-//   name?: string;
-//   size?: number;
-//   type?: string; // mime type
-// }
 
 export interface BotInfo {
   profileUrl?: string;
@@ -201,11 +184,6 @@ export interface Constant extends ConstantFeatureFlags {
    * @description Custom text to be shown as the beta mark.
    */
   customBetaMarkText: string;
-  /**
-   * @private
-   * @description Suggested message content.
-   */
-  suggestedMessageContent: SuggestedMessageContent;
   /**
    * @private
    * @description Group channel creation parameters.
@@ -311,27 +289,10 @@ interface ConstantFeatureFlags {
   enableWidgetExpandButton: boolean;
 }
 
-export interface SuggestedReply {
-  title: string;
-  text: string;
-  buttonText: string;
-  link: string;
-}
-
-export interface SuggestedMessageContent {
-  replyContents: SuggestedReply[];
-  messageFilterList: string[];
-}
-
 export interface CreateGroupChannelParams {
   name?: string;
   coverUrl?: string;
 }
-
-export const LOCAL_MESSAGE_CUSTOM_TYPE = {
-  linkSuggestion: 'linkSuggestion',
-  confirmation: 'confirmation',
-};
 
 export interface ChatBottomContent {
   text: string;
@@ -343,8 +304,8 @@ export interface MessageBottomContent {
 }
 
 type CustomRefreshProps = {
-  width?: string;
-  height?: string;
+  width?: string | number;
+  height?: string | number;
   onClick?: () => void;
   style?: React.CSSProperties;
   id?: string;

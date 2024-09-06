@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
@@ -15,9 +14,10 @@ export function PoweredByBanner() {
     return null;
   }
 
-  const inputElement = document.querySelector('.sendbird-message-input-wrapper');
-
-  return inputElement ? ReactDOM.createPortal(<Banner />, inputElement) : null;
+  return <Banner />;
+  // const inputElement = document.querySelector('.sendbird-message-input-wrapper');
+  //
+  // return inputElement ? ReactDOM.createPortal(<Banner />, inputElement) : null;
 }
 
 const InnerContainer = styled.div<{ chatBottomBackgroundColor?: string }>`

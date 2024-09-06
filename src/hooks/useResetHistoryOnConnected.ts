@@ -1,24 +1,18 @@
 import { useEffect } from 'react';
 
-import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
-import { useGroupChannelContext } from '@uikit/modules/GroupChannel/context/GroupChannelProvider';
-
+import { useChatContext } from '../components/chat/context/ChatProvider';
 import { useConstantState } from '../context/ConstantContext';
 
 export function useResetHistoryOnConnected() {
   const { enableResetHistoryOnConnect } = useConstantState();
-  const { stores } = useSendbirdStateContext();
-  const { currentChannel, refresh } = useGroupChannelContext();
+  const { sdk, channel, dataSource } = useChatContext();
 
   useEffect(() => {
-    if (enableResetHistoryOnConnect && currentChannel) {
+    if (enableResetHistoryOnConnect && channel && sdk && dataSource.initialized) {
       (async () => {
-        await Promise.allSettled([
-          stores.sdkStore.sdk.clearCachedMessages([currentChannel.url]),
-          currentChannel.resetMyHistory(),
-        ]);
-        await refresh();
+        await Promise.allSettled([sdk.clearCachedMessages([channel.url]), channel.resetMyHistory()]);
+        await dataSource.refresh();
       })();
     }
-  }, [enableResetHistoryOnConnect, currentChannel?.url]);
+  }, [enableResetHistoryOnConnect, channel?.url, sdk, dataSource.initialized]);
 }

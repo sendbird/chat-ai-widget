@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 import { Token } from '../../utils';
 
+/* For the copy button positioning */
 const CodeContainer = styled.div`
-  position: relative; /* For the copy button positioning */
+  position: relative;
   padding: 20px;
   background: #000;
 `;

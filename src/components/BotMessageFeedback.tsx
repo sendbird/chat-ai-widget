@@ -1,15 +1,14 @@
-import { Feedback, FeedbackRating } from '@sendbird/chat/message';
+import { BaseMessage, Feedback, FeedbackRating } from '@sendbird/chat/message';
 import { useReducer } from 'react';
 
 import FeedbackIconButton from '@uikit/ui/FeedbackIconButton';
-import Icon, { IconTypes } from '@uikit/ui/Icon';
 import MessageFeedbackFailedModal from '@uikit/ui/MessageFeedbackFailedModal';
 import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
 import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
-import { CoreMessageType } from '@uikit/utils';
 
 import { elementIds } from '../const';
 import { useConstantState } from '../context/ConstantContext';
+import { Icon } from '../foundation/components/Icon';
 
 type State = Partial<{
   errorText: string;
@@ -17,7 +16,7 @@ type State = Partial<{
   menuVisible: boolean;
 }>;
 
-function BotMessageFeedback({ message }: { message: CoreMessageType }) {
+function BotMessageFeedback({ message }: { message: BaseMessage }) {
   const { stringSet } = useConstantState();
   const [state, setState] = useReducer((p: State, a: State) => ({ ...p, ...a }), {
     errorText: '',
@@ -50,7 +49,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
           }}
           disabled={!!message.myFeedback && message.myFeedback.rating !== FeedbackRating.GOOD}
         >
-          <Icon type={IconTypes.FEEDBACK_LIKE} width="24px" height="24px" />
+          <Icon type={'feedback-like'} size={24} />
         </FeedbackIconButton>
         <FeedbackIconButton
           aria-label="Dislike the bot answer"
@@ -70,7 +69,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
           }}
           disabled={!!message.myFeedback && message.myFeedback.rating !== FeedbackRating.BAD}
         >
-          <Icon type={IconTypes.FEEDBACK_DISLIKE} width="24px" height="24px" />
+          <Icon type={'feedback-dislike'} size={24} />
         </FeedbackIconButton>
       </div>
       {
@@ -104,7 +103,7 @@ function BotMessageFeedback({ message }: { message: CoreMessageType }) {
             isMobile
             rootElementId={elementIds.widgetWindow}
             selectedFeedback={message.myFeedback.rating}
-            message={message}
+            message={message as any}
             onUpdate={async (selectedFeedback, comment) => {
               if (message.myFeedback) {
                 try {

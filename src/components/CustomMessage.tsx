@@ -1,11 +1,11 @@
-import { User } from '@sendbird/chat';
+import { BaseMessage } from '@sendbird/chat/message';
 
-import TypingDots from '@uikit/ui/TypingIndicatorBubble/TypingDots';
-import { CoreMessageType, isVideoMessage } from '@uikit/utils';
+import { isVideoMessage } from '@uikit/utils';
 
 import AdminMessage from './AdminMessage';
 import BotMessageFeedback from './BotMessageFeedback';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
+import { useChatContext } from './chat/context/ChatProvider';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
@@ -13,58 +13,38 @@ import FileMessage from './FileMessage';
 import FormMessage from './messages/FormMessage';
 import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
-import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
-import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
+import { TypingBubble } from '../foundation/components/TypingBubble';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
-import { isLastMessageInStreaming, isLocalMessageCustomType, isSentBy } from '../utils/messages';
+import { isSentBy } from '../utils/messages';
 
 type Props = {
-  message: CoreMessageType;
+  message: BaseMessage;
   activeSpinnerId: number;
-  botUser?: User;
-  isBotWelcomeMessage: boolean;
-  isLastBotMessage: boolean;
-  messageCount: number;
   chainTop?: boolean;
   chainBottom?: boolean;
 };
 
 export default function CustomMessage(props: Props) {
-  const {
-    message,
-    activeSpinnerId,
-    botUser,
-    chainTop,
-    chainBottom,
-    isBotWelcomeMessage,
-    isLastBotMessage,
-    messageCount,
-  } = props;
-  const commonProps = {
-    chainTop,
-    chainBottom,
-    isBotWelcomeMessage,
-    isLastBotMessage,
-    messageCount,
-    message,
-  };
-  const { replacementTextList, enableEmojiFeedback, botStudioEditProps } = useConstantState();
+  const { botUser } = useChatContext();
+  const { message, activeSpinnerId } = props;
+  const { replacementTextList, enableEmojiFeedback, botStudioEditProps = {} } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
-  const { profileUrl } = botStudioEditProps?.botInfo ?? {};
+  const { botInfo } = botStudioEditProps;
+
   const botUserId = botUser?.userId;
-  const botProfileUrl = profileUrl ?? botUser?.profileUrl ?? '';
+  const botProfileUrl = botInfo?.profileUrl ?? botUser?.profileUrl ?? '';
   const isWaitingForBotReply = activeSpinnerId === message.messageId && !!botUser;
 
   const shouldRenderFeedback = () => {
     return (
       enableEmojiFeedback &&
       message.myFeedbackStatus !== 'NOT_APPLICABLE' &&
-      !isBotWelcomeMessage &&
-      !(isLastBotMessage && isLastMessageInStreaming(message.data))
+      !messageExtension.isStreaming(message) &&
+      !messageExtension.isBotWelcomeMsg(message, botUserId ?? '')
     );
   };
 
@@ -89,7 +69,7 @@ export default function CustomMessage(props: Props) {
       return (
         <div>
           <CurrentUserMessage message={message} />
-          {isWaitingForBotReply && <CustomTypingIndicatorBubble botProfileUrl={botProfileUrl} />}
+          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
         </div>
       );
     }
@@ -100,27 +80,11 @@ export default function CustomMessage(props: Props) {
     if (message.messageForm) {
       return (
         <BotMessageWithBodyInput
-          {...commonProps}
-          botUser={botUser}
+          {...props}
           bodyComponent={<FormMessage form={message.messageForm} message={message} />}
           createdAt={message.createdAt}
         />
       );
-    }
-
-    // for static suggested replies
-    if (isLocalMessageCustomType(message.customType)) {
-      if (message.customType === LOCAL_MESSAGE_CUSTOM_TYPE.linkSuggestion) {
-        return (
-          <BotMessageWithBodyInput
-            {...commonProps}
-            botUser={botUser}
-            bodyComponent={<SuggestedReplyMessageBody message={message} />}
-            createdAt={message.createdAt}
-            messageFeedback={renderFeedbackButtons()}
-          />
-        );
-      }
     }
 
     // for file message
@@ -128,8 +92,7 @@ export default function CustomMessage(props: Props) {
       return (
         <BotMessageWithBodyInput
           wideContainer={isVideoMessage(message)}
-          {...commonProps}
-          botUser={botUser}
+          {...props}
           bodyComponent={<FileMessage message={message} profileUrl={botProfileUrl} />}
           createdAt={message.createdAt}
           messageFeedback={renderFeedbackButtons()}
@@ -149,10 +112,9 @@ export default function CustomMessage(props: Props) {
         return (
           <BotMessageWithBodyInput
             wideContainer
-            {...commonProps}
-            botUser={botUser}
+            {...props}
             bodyComponent={
-              <ShopItemsMessage message={message} streamingBody={<TypingDots />} textBody={textMessageBody} />
+              <ShopItemsMessage message={message} streamingBody={<TypingBubble />} textBody={textMessageBody} />
             }
             createdAt={message.createdAt}
             messageFeedback={renderFeedbackButtons()}
@@ -163,8 +125,7 @@ export default function CustomMessage(props: Props) {
       // text message
       return (
         <BotMessageWithBodyInput
-          {...commonProps}
-          botUser={botUser}
+          {...props}
           bodyComponent={textMessageBody}
           createdAt={message.createdAt}
           messageFeedback={renderFeedbackButtons()}
@@ -177,7 +138,7 @@ export default function CustomMessage(props: Props) {
   if (message.isUserMessage()) {
     return (
       <UserMessageWithBodyInput
-        {...commonProps}
+        {...props}
         message={message}
         user={message.sender}
         bodyComponent={<CustomMessageBody message={message.message} />}
