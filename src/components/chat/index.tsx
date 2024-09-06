@@ -4,13 +4,16 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 import { ChatContainer } from './context/ChatProvider';
 import { ChatUI } from './ui';
+import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
+import { useAssignGlobalFunction } from '../../hooks/useAssignGlobalFunction';
 import useAutoDismissMobileKeyboardHandler from '../../hooks/useAutoDismissMobileKeyboardHandler';
 import { useResetHistoryOnConnected } from '../../hooks/useResetHistoryOnConnected';
 import { useWidgetInactivityTimeout } from '../../hooks/useWidgetInactivityTimeout';
 
 const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
   const { stores } = useSendbirdStateContext();
+  const { locale } = useConstantState();
   const widgetSetting = useWidgetSetting();
   const widgetSession = useWidgetSession();
 
@@ -29,6 +32,13 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
     stores.sdkStore.initialized,
   ]);
 
+  // Set locale for chatbot
+  useEffect(() => {
+    if (locale && stores.sdkStore.initialized && stores.sdkStore.sdk) {
+      stores.sdkStore.sdk.setLocaleForChatbot(locale);
+    }
+  }, [locale, stores.sdkStore.initialized, stores.sdkStore.sdk]);
+
   return (
     <ChatContainer
       sdk={stores.sdkStore.sdk}
@@ -44,6 +54,7 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
 };
 
 const HeadlessForHooks = ({ fullscreen }: { fullscreen: boolean }) => {
+  useAssignGlobalFunction();
   useResetHistoryOnConnected();
   useWidgetInactivityTimeout(fullscreen);
   useAutoDismissMobileKeyboardHandler();

@@ -1,8 +1,7 @@
 import { SendbirdErrorCode } from '@sendbird/chat';
-import React, { PropsWithChildren, useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
 
-import { useSendbirdStateContext } from '@uikit/index';
 import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
@@ -10,7 +9,6 @@ import { generateCSSVariables } from '../../colors';
 import { ConstantStateProvider, useConstantState } from '../../context/ConstantContext';
 import { useWidgetSession, useWidgetSetting, WidgetSettingProvider } from '../../context/WidgetSettingContext';
 import { useWidgetState, WidgetStateProvider } from '../../context/WidgetStateContext';
-import { useAssignGlobalFunction } from '../../hooks/useAssignGlobalFunction';
 import { useStyledComponentsTarget } from '../../hooks/useStyledComponentsTarget';
 import { getTheme } from '../../theme';
 import { isDashboardPreview } from '../../utils';
@@ -136,25 +134,9 @@ export default function ProviderContainer(props: ProviderContainerProps) {
     <ConstantStateProvider {...props}>
       <WidgetSettingProvider>
         <WidgetStateProvider>
-          <SBComponent>
-            <HeadlessComponent>{props.children}</HeadlessComponent>
-          </SBComponent>
+          <SBComponent>{props.children}</SBComponent>
         </WidgetStateProvider>
       </WidgetSettingProvider>
     </ConstantStateProvider>
   );
 }
-
-const HeadlessComponent = ({ children }: PropsWithChildren) => {
-  useAssignGlobalFunction();
-  const { locale } = useConstantState();
-  const { stores } = useSendbirdStateContext();
-
-  useEffect(() => {
-    if (locale && stores.sdkStore.initialized && stores.sdkStore.sdk) {
-      stores.sdkStore.sdk.setLocaleForChatbot(locale);
-    }
-  }, [locale, stores.sdkStore.initialized, stores.sdkStore.sdk]);
-
-  return <>{children}</>;
-};
