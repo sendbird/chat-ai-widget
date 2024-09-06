@@ -33,13 +33,11 @@ type Props = {
 export default function CustomMessage(props: Props) {
   const { botUser } = useChatContext();
   const { message, activeSpinnerId } = props;
-  const { replacementTextList, enableEmojiFeedback, botStudioEditProps = {} } = useConstantState();
+  const { replacementTextList, enableEmojiFeedback } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
-  const { botInfo } = botStudioEditProps;
   const getCarouselItems = useCarouselItems(message);
 
   const botUserId = botUser?.userId;
-  const botProfileUrl = botInfo?.profileUrl ?? botUser?.profileUrl ?? '';
   const isWaitingForBotReply = activeSpinnerId === message.messageId && !!botUser;
 
   const shouldRenderFeedback = () => {
@@ -105,7 +103,7 @@ export default function CustomMessage(props: Props) {
         <BotMessageWithBodyInput
           wideContainer={isVideoMessage(message)}
           {...props}
-          bodyComponent={<FileMessage message={message} profileUrl={botProfileUrl} />}
+          bodyComponent={<FileMessage message={message} />}
           createdAt={message.createdAt}
           messageFeedback={renderFeedbackButtons()}
         />

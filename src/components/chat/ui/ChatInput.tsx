@@ -9,6 +9,7 @@ import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotRespo
 import { isIOSMobile } from '../../../utils';
 import { useChatContext } from '../context/ChatProvider';
 
+// TODO: Remove UIKit
 export const ChatInput = () => {
   const { channel, botUser, dataSource, handlers } = useChatContext();
 

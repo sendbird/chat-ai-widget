@@ -1,3 +1,4 @@
+import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { FileMessage } from '@sendbird/chat/message';
 import { useState } from 'react';
@@ -9,7 +10,7 @@ import { Loader } from '../../foundation/components/Loader';
 import { META_ARRAY_ASPECT_RATIO_KEY } from '../../utils/getImageAspectRatio';
 import { formatCreatedAtToAMPM } from '../../utils/messageTimestamp';
 import { BodyComponent, BodyContainer, DefaultSentTime } from '../MessageComponent';
-import { css } from '@linaria/core';
+import { FileViewer } from '../ui/FileViewer';
 
 type Props = {
   message: FileMessage;
@@ -87,11 +88,22 @@ const timestampContainer = css`
 `;
 
 const ImagePreview = ({ message }: Props) => {
+  const [viewer, setViewer] = useState(false);
   const [fileUrl] = useState(() =>
     message.messageParams?.file instanceof File ? URL.createObjectURL(message.messageParams?.file) : message.url,
   );
   const aspectRatio = message.metaArrays.find((it) => it.key === META_ARRAY_ASPECT_RATIO_KEY)?.value?.[0];
-  return <ImageWithPlaceholder src={fileUrl} alt={'file preview'} aspectRatio={aspectRatio ?? '1'} />;
+  return (
+    <>
+      <ImageWithPlaceholder
+        src={fileUrl}
+        alt={'file preview'}
+        aspectRatio={aspectRatio ?? '1'}
+        onClick={() => setViewer(true)}
+      />
+      {viewer && <FileViewer message={message} onClose={() => setViewer(false)} />}
+    </>
+  );
 };
 
 // TODO: Refactor
@@ -125,6 +137,7 @@ const ImageContainer = styled.div<{ ratio: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   .sendbird-theme--light & {
     background-color: var(--sendbird-dark-background-100);
   }
@@ -144,12 +157,22 @@ const StyledImage = styled.img<{ loaded: boolean }>`
   transition: opacity 0.5s ease;
 `;
 
-const ImageWithPlaceholder = ({ src, alt, aspectRatio }: { src: string; alt: string; aspectRatio: string }) => {
+const ImageWithPlaceholder = ({
+  src,
+  alt,
+  aspectRatio,
+  onClick,
+}: {
+  src: string;
+  alt: string;
+  aspectRatio: string;
+  onClick?: () => void;
+}) => {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <ImageContainer ratio={aspectRatio}>
-      {loaded && (
+    <ImageContainer ratio={aspectRatio} onClick={onClick}>
+      {!loaded && (
         <Loader size={26}>
           <Icon type={'spinner'} color={'onbackground3'} size={26} />
         </Loader>
