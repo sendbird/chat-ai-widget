@@ -11,11 +11,13 @@ interface Props {
 const SuggestedRepliesContainer = ({ replies = [], type = 'vertical', sendUserMessage }: Props) => {
   if (replies.length <= 0) return null;
   return (
-    <SuggestedReplies
-      replyOptions={replies}
-      onSendMessage={({ message }) => sendUserMessage?.({ message })}
-      type={type}
-    />
+    <div style={{ marginTop: 8 }}>
+      <SuggestedReplies
+        replyOptions={replies}
+        onSendMessage={({ message }) => sendUserMessage?.({ message })}
+        type={type}
+      />
+    </div>
   );
 };
 

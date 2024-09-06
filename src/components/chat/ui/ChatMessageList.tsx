@@ -2,7 +2,6 @@ import { css } from '@linaria/core';
 import { isSameDay } from 'date-fns/isSameDay';
 
 import { getComponentKeyFromMessage } from '@uikit/modules/GroupChannel/context/utils';
-import { isSendableMessage } from '@uikit/utils';
 
 import { useConstantState } from '../../../context/ConstantContext';
 import { DateSeparator } from '../../../foundation/components/DateSeparator';
@@ -32,6 +31,8 @@ export const ChatMessageList = () => {
     }
 
     if (dataSource.messages.length === 0) {
+      const welcomeMessages = renderBotStudioWelcomeMessages();
+      if (welcomeMessages) return <div style={{ width: '100%' }}>{welcomeMessages}</div>;
       return <Placeholder type={'noMessages'} />;
     }
 
@@ -49,7 +50,8 @@ export const ChatMessageList = () => {
         renderMessage={({ message, index }) => {
           const prevCreatedAt = filteredMessages[index - 1]?.createdAt ?? 0;
           const suggestedReplies = message.suggestedReplies ?? [];
-          const showRepliesOnLastMessage = message.messageId === channel?.lastMessage?.messageId;
+          const lastMessageInChannel = filteredMessages[filteredMessages.length - 1];
+          const showRepliesOnLastMessage = message.messageId === lastMessageInChannel?.messageId;
 
           const [top, bottom] = getMessageGrouping(message, filteredMessages[index - 1], filteredMessages[index + 1]);
 
@@ -62,35 +64,35 @@ export const ChatMessageList = () => {
                   formatString={stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR}
                 />
               )}
-              <CustomMessage
-                message={message as any}
-                botUser={isSendableMessage(message) ? message.sender : undefined}
-                activeSpinnerId={typingTargetMessageId}
-                chainTop={top}
-                chainBottom={bottom}
-              />
-
-              {message.data &&
-                isDashboardPreview(customUserAgentParam) &&
-                message.messageId === channel?.lastMessage?.messageId && (
-                  <MessageDataContent messageData={message.data} />
-                )}
-
-              {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
-                <SuggestedRepliesContainer
-                  replies={suggestedReplies}
-                  type={botStudioEditProps?.suggestedRepliesDirection}
-                  sendUserMessage={(params) => {
-                    dataSource.sendUserMessage(params, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
-                  }}
+              <div style={{ marginBottom: index === filteredMessages.length - 1 ? 0 : 16 }}>
+                <CustomMessage
+                  message={message as any}
+                  activeSpinnerId={typingTargetMessageId}
+                  chainTop={top}
+                  chainBottom={bottom}
                 />
-              )}
+
+                {message.data &&
+                  isDashboardPreview(customUserAgentParam) &&
+                  message.messageId === channel?.lastMessage?.messageId && (
+                    <MessageDataContent messageData={message.data} />
+                  )}
+
+                {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
+                  <SuggestedRepliesContainer
+                    replies={suggestedReplies}
+                    type={botStudioEditProps?.suggestedRepliesDirection}
+                    sendUserMessage={(params) => {
+                      dataSource.sendUserMessage(params, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
+                    }}
+                  />
+                )}
+              </div>
             </div>
           );
         }}
         overlayArea={
           <>
-            {channel?.isFrozen && <FrozenBanner className={frozenBanner} label={stringSet.CHANNEL_FROZEN} />}
             {/**
              * Note for unread status count & read status
              *  Currently, the widget only handles cases of chatting with bots, so it is not supported.
@@ -113,6 +115,7 @@ export const ChatMessageList = () => {
   return (
     <div id={'widget-chat-message-list'} className={listContainer}>
       {render()}
+      {channel?.isFrozen && <FrozenBanner className={frozenBanner} label={stringSet.CHANNEL_FROZEN} />}
     </div>
   );
 };
@@ -122,6 +125,7 @@ const frozenBanner = css`
   inset-block-start: 8px;
   inset-inline: 0;
   margin-inline: 24px;
+  z-index: 10;
 `;
 
 const listContainer = css`

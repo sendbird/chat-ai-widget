@@ -13,11 +13,10 @@ import { useChatContext } from '../context/ChatProvider';
 
 export const useBotStudioView = () => {
   const { botStudioEditProps = {}, botId, replacementTextList, stringSet } = useConstantState();
-  const { dataSource, channel, handlers } = useChatContext();
+  const { dataSource, handlers } = useChatContext();
   const { suggestedRepliesDirection, welcomeMessages = [] } = botStudioEditProps;
   const { messages } = dataSource;
 
-  const botUser = channel?.members.find((member) => member.userId === botId);
   const originalWMs = getBotWelcomeMessages(messages, botId);
 
   const firstUserMsg = messages[originalWMs.length + 1];
@@ -64,11 +63,10 @@ export const useBotStudioView = () => {
               const isLastMessage = index === welcomeMessages.length - 1;
 
               return (
-                <div key={index} style={{ padding: '0 16px' }}>
+                <div key={index} style={{ padding: '0 16px', marginBottom: 16 }}>
                   <BotMessageWithBodyInput
                     chainTop={index === 0}
                     chainBottom={index === welcomeMessages.length - 1}
-                    botUser={botUser}
                     bodyComponent={<ParsedBotMessageBody text={text} tokens={tokens} />}
                     createdAt={firstOriginalWM?.createdAt}
                   />
@@ -99,4 +97,5 @@ export const useBotStudioView = () => {
 
 const dateSeparatorMargin = css`
   margin: 8px 0;
+  padding: 0 16px;
 `;

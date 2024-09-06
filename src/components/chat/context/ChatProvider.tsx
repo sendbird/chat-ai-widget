@@ -1,4 +1,4 @@
-import { SendbirdChatWith, SendbirdError, SendbirdErrorCode } from '@sendbird/chat';
+import { SendbirdChatWith, SendbirdError, SendbirdErrorCode, User } from '@sendbird/chat';
 import { GroupChannel, GroupChannelModule } from '@sendbird/chat/groupChannel';
 import { useGroupChannelMessages } from '@sendbird/uikit-tools';
 import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
@@ -18,6 +18,7 @@ export interface WidgetStringSet {
 export interface ChatContextType {
   sdk: SendbirdChatWith<[GroupChannelModule]> | null;
   channel: GroupChannel | null;
+  botUser?: User;
   dataSource: ReturnType<typeof useGroupChannelMessages>;
   scrollSource: ReturnType<typeof useMessageListScroll>;
 
@@ -74,7 +75,14 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
   if (errorMessage) return <Placeholder type={'error'} label={errorMessage} />;
 
   return (
-    <ChatProvider channel={channel} dataSource={dataSource} scrollSource={scrollSource} handlers={handlers} {...props}>
+    <ChatProvider
+      channel={channel}
+      botUser={channel?.members.find((it) => it.userId === botId)}
+      dataSource={dataSource}
+      scrollSource={scrollSource}
+      handlers={handlers}
+      {...props}
+    >
       {children}
     </ChatProvider>
   );
@@ -82,6 +90,7 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
 
 interface ChatProviderProps extends ChatContainerProps {
   channel: GroupChannel | null;
+  botUser?: User;
   dataSource: ReturnType<typeof useGroupChannelMessages>;
   scrollSource: ReturnType<typeof useMessageListScroll>;
   handlers: WidgetChatHandlers;

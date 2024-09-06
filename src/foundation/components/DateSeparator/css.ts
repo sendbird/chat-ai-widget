@@ -3,7 +3,7 @@ import { css } from '@linaria/core';
 export const dateSeparatorContainer = css`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  align-items: center;
 `;
 
 export const dateSeparatorLabel = css`

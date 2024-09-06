@@ -4,22 +4,20 @@ import { useRef } from 'react';
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/MessageInputWrapper/MessageInputWrapperView';
 
-import { useConstantState } from '../../../context/ConstantContext';
 import { themedColors } from '../../../foundation/colors/css';
 import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotResponding';
 import { isIOSMobile } from '../../../utils';
 import { useChatContext } from '../context/ChatProvider';
 
 export const ChatInput = () => {
-  const { botId } = useConstantState();
-  const { channel, dataSource, handlers } = useChatContext();
+  const { channel, botUser, dataSource, handlers } = useChatContext();
 
   const ref = useRef<HTMLDivElement>(null);
 
   const { config } = useSendbirdStateContext();
   const isMessageInputDisabled = useBlockWhileBotResponding({
     lastMessage: dataSource.messages[dataSource.messages.length - 1],
-    botUser: channel?.members.find((it) => it.userId === botId),
+    botUser,
   });
 
   return (

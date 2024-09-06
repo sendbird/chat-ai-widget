@@ -9,9 +9,7 @@ const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   display: flex;
   justify-content: flex-end;
   align-items: end;
-  margin-bottom: 6px;
   gap: 4px;
-  margin-top: ${({ enableEmojiFeedback }) => (enableEmojiFeedback ? '16px' : '0')};
 `;
 
 type Props = {
