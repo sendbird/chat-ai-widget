@@ -1,6 +1,6 @@
+import { styled } from '@linaria/react';
 import { FileMessage } from '@sendbird/chat/message';
 import { useState } from 'react';
-import styled from 'styled-components';
 
 import { useConstantState } from '../../context/ConstantContext';
 import { Icon } from '../../foundation/components/Icon';
@@ -9,6 +9,7 @@ import { Loader } from '../../foundation/components/Loader';
 import { META_ARRAY_ASPECT_RATIO_KEY } from '../../utils/getImageAspectRatio';
 import { formatCreatedAtToAMPM } from '../../utils/messageTimestamp';
 import { BodyComponent, BodyContainer, DefaultSentTime } from '../MessageComponent';
+import { css } from '@linaria/core';
 
 type Props = {
   message: FileMessage;
@@ -31,42 +32,24 @@ export const OutgoingFileMessage = ({ message }: Props) => {
       return <PDFPreview message={message} />;
     }
   })();
+  const renderTimestamp = () => {
+    return (
+      <div className={timestampContainer}>
+        <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>
+      </div>
+    );
+  };
 
-  // TODO: Refactor
   return (
-    <div style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'flex-end', gap: 2 }}>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
-          alignItems: 'flex-end',
-          width: '100%',
-          gap: 4,
-        }}
-      >
-        {!hasMessageBubble && preview && (
-          <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-            <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>
-          </div>
-        )}
-        <div style={{ maxWidth: 244, display: 'flex', flex: 1 }}>{preview}</div>
+    <div className={container}>
+      <div className={bubbleContainer}>
+        {!hasMessageBubble && preview && renderTimestamp()}
+        <div className={previewContainer}>{preview}</div>
       </div>
 
       {(hasMessageBubble || type === 'unknown') && (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'flex-end',
-            alignItems: 'flex-end',
-            width: '100%',
-            gap: 4,
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-            <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>
-          </div>
+        <div className={bubbleContainer}>
+          {renderTimestamp()}
           <BodyContainer style={{ maxWidth: 244 }}>
             <BodyComponent>
               <div className="sendbird-word">{message.message || 'Unknown file type'}</div>
@@ -77,6 +60,31 @@ export const OutgoingFileMessage = ({ message }: Props) => {
     </div>
   );
 };
+
+const container = css`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2;
+`;
+const bubbleContainer = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  gap: 4;
+`;
+const previewContainer = css`
+  display: flex;
+  flex: 1;
+  max-width: 244px;
+`;
+const timestampContainer = css`
+  display: flex;
+  align-items: flex-end;
+`;
 
 const ImagePreview = ({ message }: Props) => {
   const [fileUrl] = useState(() =>
@@ -107,7 +115,6 @@ const PDFPreview = ({ message }: Props) => {
   );
 };
 
-// TODO: Refactor
 const ImageContainer = styled.div<{ ratio: string }>`
   width: 100%;
   height: auto;
@@ -127,23 +134,14 @@ const ImageContainer = styled.div<{ ratio: string }>`
 `;
 
 const StyledImage = styled.img<{ loaded: boolean }>`
+  position: absolute;
   width: 100%;
   height: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   object-fit: cover;
   opacity: ${(props) => (props.loaded ? 1 : 0)};
-  position: absolute;
-  top: 0;
-  left: 0;
   transition: opacity 0.5s ease;
-`;
-
-const Placeholder = styled.div<{ loaded: boolean }>`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: ${(props) => (props.loaded ? 'none' : 'block')};
 `;
 
 const ImageWithPlaceholder = ({ src, alt, aspectRatio }: { src: string; alt: string; aspectRatio: string }) => {
@@ -156,8 +154,7 @@ const ImageWithPlaceholder = ({ src, alt, aspectRatio }: { src: string; alt: str
           <Icon type={'spinner'} color={'onbackground3'} size={26} />
         </Loader>
       )}
-      <Placeholder loaded={loaded}></Placeholder>
-      <StyledImage src={src} alt={alt} loaded={loaded} onLoad={() => setLoaded(true)} />
+      <StyledImage loaded={loaded} src={src} alt={alt} onLoad={() => setLoaded(true)} />
     </ImageContainer>
   );
 };

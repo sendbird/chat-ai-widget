@@ -92,6 +92,19 @@ const container = css`
         bottom: unset;
         background-color: transparent;
       }
+      .sendbird-iconbutton__inner {
+        height: unset;
+      }
+      .sendbird-message-input--attach {
+        right: unset;
+        bottom: unset;
+        inset-inline-end: 12px;
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+        path {
+          fill: ${themedColors.onbackground1};
+        }
+      }
       .sendbird-message-input--placeholder {
         position: absolute;
         top: 50%;
