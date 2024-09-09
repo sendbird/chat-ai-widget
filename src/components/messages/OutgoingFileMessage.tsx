@@ -67,7 +67,7 @@ const container = css`
   width: 100%;
   flex-direction: column;
   align-items: flex-end;
-  gap: 2;
+  gap: 2px;
 `;
 const bubbleContainer = css`
   display: flex;
@@ -75,7 +75,7 @@ const bubbleContainer = css`
   justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
-  gap: 4;
+  gap: 4px;
 `;
 const previewContainer = css`
   display: flex;
