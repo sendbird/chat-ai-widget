@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components';
 import { useConstantState } from '../../context/ConstantContext';
 import ChevronLeft from '../../icons/chevron-left.svg';
 import ChevronRight from '../../icons/chevron-right.svg';
+import { WidgetCarouselItem } from '../../types';
 import { openURL } from '../../utils';
 import { messageExtension } from '../../utils/messageExtension';
 import { SnapCarousel } from '../ui/SnapCarousel';
@@ -73,12 +74,12 @@ type Props = {
   message: UserMessage;
   textBody: ReactNode;
   streamingBody: ReactNode;
+  items: WidgetCarouselItem[];
 };
-export const ShopItemsMessage = ({ message, textBody, streamingBody }: Props) => {
+export const CarouselMessage = ({ message, textBody, streamingBody, items }: Props) => {
   const theme = useTheme();
   const { isMobileView } = useConstantState();
 
-  const items = messageExtension.commerceShopItems.getValidItems(message);
   const isStreaming = messageExtension.isStreaming(message);
   const shouldRenderCarouselBody = isStreaming || items.length > 0;
   const shouldRenderButtons = !isMobileView && items.length >= 2;

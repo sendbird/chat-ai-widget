@@ -7,10 +7,8 @@ export interface SendbirdChatAICallbacks {
   onWidgetSettingFailure?: (error: Error) => void;
 }
 
-export interface FunctionCallRequestInfo {
-  headers: {
-    'Api-Token': string;
-  };
+export interface FunctionCallRequest {
+  headers: object;
   method: string;
   query_params: object;
   request_body: object;
@@ -19,7 +17,23 @@ export interface FunctionCallRequestInfo {
 
 export interface FunctionCallData {
   name: string;
-  request: FunctionCallRequestInfo;
+  request: FunctionCallRequest;
   response_text: string;
   status_code: number;
+}
+
+export interface WidgetCarouselItem {
+  title: string;
+  url: string;
+  featured_image: string;
+}
+
+export interface FunctionCallAdapterParams {
+  name: string;
+  request: FunctionCallRequest;
+  response: unknown;
+}
+
+export interface FunctionCallAdapter<T> {
+  (params: FunctionCallAdapterParams): T;
 }

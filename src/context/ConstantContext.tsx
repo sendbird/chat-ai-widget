@@ -108,6 +108,12 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
             ...props.customRefreshComponent?.style,
           },
         },
+        tools: {
+          functionCall: {
+            carouselAdapter:
+              props.tools?.functionCall?.carouselAdapter ?? initialState.tools.functionCall.carouselAdapter,
+          },
+        },
       }}
     >
       {props.children}

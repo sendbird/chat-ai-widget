@@ -33,7 +33,7 @@ export function isSentBy(message: BaseMessage, userId?: string | null) {
   return getSenderUserIdFromMessage(message) === userId;
 }
 
-export function parseMessageDataSafely(messageData: string) {
+export function jsonParseSafely(messageData: string) {
   try {
     return JSON.parse(messageData === '' ? '{}' : messageData);
   } catch (error) {

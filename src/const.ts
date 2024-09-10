@@ -10,7 +10,7 @@ import { StringSet } from '@uikit/ui/Label/stringSet';
 import type { ToggleButtonProps } from './components/widget/WidgetToggleButton';
 import { BotStyle } from './context/WidgetSettingContext';
 import RefreshIcon from './icons/ic-refresh.svg';
-import { SendbirdChatAICallbacks } from './types';
+import { FunctionCallAdapter, SendbirdChatAICallbacks, WidgetCarouselItem } from './types';
 import { noop } from './utils';
 
 // Most of browsers use a 32-bit signed integer as the maximum value for z-index
@@ -68,18 +68,25 @@ export const DEFAULT_CONSTANT = {
   messageInputControls: {
     blockWhileBotResponding: 10000,
   },
+  tools: {
+    functionCall: {
+      carouselAdapter({ response }) {
+        if (isMealsResponse(response)) {
+          return response.meals.map((it) => ({ title: it.strMeal, url: '', featured_image: it.strMealThumb }));
+        }
+
+        return [];
+      },
+    },
+  },
 } satisfies Partial<Constant>;
+
+function isMealsResponse(response: unknown): response is { meals: { strMeal: string; strMealThumb: string }[] } {
+  return !!response && typeof response === 'object' && 'meals' in response && Array.isArray(response.meals);
+}
 
 type ConfigureSession = (sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat) => SessionHandler;
 
-type MessageData = {
-  suggested_replies?: string[];
-};
-
-type FirstMessageItem = {
-  data: MessageData;
-  message: string;
-};
 type MatchString = string;
 type ReplaceString = string;
 
@@ -123,7 +130,7 @@ export interface OnWidgetOpenStateChangeParams {
   value: boolean;
 }
 
-export interface Constant extends ConstantFeatureFlags {
+export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
   /**
    * @public
    * @description User nickname to be used in the widget.
@@ -208,7 +215,7 @@ export interface Constant extends ConstantFeatureFlags {
    * @private
    * @description First message data to be sent when the widget is opened.
    */
-  firstMessageData: FirstMessageItem[];
+  firstMessageData: { data: { suggested_replies?: string[] }; message: string }[];
   /**
    * @private
    * @description Custom API host.
@@ -254,6 +261,18 @@ export interface Constant extends ConstantFeatureFlags {
    * @description Callback to be called when the widget open state changes.
    */
   onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
+}
+
+interface ConstantAIFeatures {
+  /**
+   * @public
+   * @description tools to be used in the widget.
+   * */
+  tools: {
+    functionCall: {
+      carouselAdapter?: FunctionCallAdapter<WidgetCarouselItem[]>;
+    };
+  };
 }
 
 interface ConstantFeatureFlags {

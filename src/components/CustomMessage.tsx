@@ -10,13 +10,14 @@ import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
+import { CarouselMessage } from './messages/CarouselMessage';
 import FormMessage from './messages/FormMessage';
-import { ShopItemsMessage } from './messages/ShopItemsMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { useConstantState } from '../context/ConstantContext';
 import { useWidgetSession } from '../context/WidgetSettingContext';
 import { TypingBubble } from '../foundation/components/TypingBubble';
+import { WidgetCarouselItem } from '../types';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
 import { isSentBy } from '../utils/messages';
@@ -34,6 +35,7 @@ export default function CustomMessage(props: Props) {
   const { replacementTextList, enableEmojiFeedback, botStudioEditProps = {} } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
   const { botInfo } = botStudioEditProps;
+  const getCarouselItems = useCarouselItems(message);
 
   const botUserId = botUser?.userId;
   const botProfileUrl = botInfo?.profileUrl ?? botUser?.profileUrl ?? '';
@@ -107,14 +109,20 @@ export default function CustomMessage(props: Props) {
 
       const textMessageBody = <ParsedBotMessageBody text={message.message} tokens={tokens} sources={sources} />;
 
-      // commerce carousel message
-      if (messageExtension.commerceShopItems.isValid(message)) {
+      // carousel message
+      const carouselItems = getCarouselItems();
+      if (carouselItems.length > 0) {
         return (
           <BotMessageWithBodyInput
             wideContainer
             {...props}
             bodyComponent={
-              <ShopItemsMessage message={message} streamingBody={<TypingBubble />} textBody={textMessageBody} />
+              <CarouselMessage
+                items={carouselItems}
+                message={message}
+                streamingBody={<TypingBubble />}
+                textBody={textMessageBody}
+              />
             }
             createdAt={message.createdAt}
             messageFeedback={renderFeedbackButtons()}
@@ -147,4 +155,28 @@ export default function CustomMessage(props: Props) {
   }
 
   return <></>;
+}
+
+function useCarouselItems(message: BaseMessage) {
+  const { tools } = useConstantState();
+  return () => {
+    if (messageExtension.commerceShopItems.isValid(message)) {
+      return messageExtension.commerceShopItems.getValidItems(message);
+    }
+
+    const functionCalls = messageExtension.functionCalls.getAdapterParams(message);
+    if (functionCalls.length > 0 && tools.functionCall.carouselAdapter) {
+      try {
+        return functionCalls
+          .map((fn) => tools.functionCall.carouselAdapter?.(fn))
+          .flat()
+          .filter((it): it is WidgetCarouselItem => !!it);
+      } catch (err) {
+        console.warn('Failed to run carousel adapter:', err);
+        return [];
+      }
+    }
+
+    return [];
+  };
 }
