@@ -19,14 +19,14 @@ export const useWidgetChatHandlers = (params: { onScrollToBottom: () => void }) 
       const metaArray = await getImageAspectRatioMetaArray(params);
       if (aiAttributesRef.current) {
         return {
-          metaArrays: metaArray ? [metaArray] : undefined,
           ...params,
+          metaArrays: metaArray ? [metaArray] : undefined,
           data: JSON.stringify({ ai_attrs: aiAttributesRef.current }),
         };
       } else {
         return {
-          metaArrays: metaArray ? [metaArray] : undefined,
           ...params,
+          metaArrays: metaArray ? [metaArray] : undefined,
         };
       }
     },
