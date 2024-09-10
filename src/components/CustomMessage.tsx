@@ -118,8 +118,8 @@ export default function CustomMessage(props: Props) {
             {...props}
             bodyComponent={
               <CarouselMessage
+                streaming={messageExtension.isStreaming(message)}
                 items={carouselItems}
-                message={message}
                 streamingBody={<TypingBubble />}
                 textBody={textMessageBody}
               />

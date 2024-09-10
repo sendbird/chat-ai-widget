@@ -1,4 +1,3 @@
-import { UserMessage } from '@sendbird/chat/message';
 import { ReactNode } from 'react';
 import styled, { useTheme } from 'styled-components';
 
@@ -7,7 +6,6 @@ import ChevronLeft from '../../icons/chevron-left.svg';
 import ChevronRight from '../../icons/chevron-right.svg';
 import { WidgetCarouselItem } from '../../types';
 import { openURL } from '../../utils';
-import { messageExtension } from '../../utils/messageExtension';
 import { SnapCarousel } from '../ui/SnapCarousel';
 
 const listPadding = 16;
@@ -71,20 +69,19 @@ const Button = styled.button<{ direction: 'left' | 'right' }>(({ theme, directio
 }));
 
 type Props = {
-  message: UserMessage;
+  streaming: boolean;
   textBody: ReactNode;
   streamingBody: ReactNode;
   items: WidgetCarouselItem[];
 };
-export const CarouselMessage = ({ message, textBody, streamingBody, items }: Props) => {
+export const CarouselMessage = ({ streaming, textBody, streamingBody, items }: Props) => {
   const theme = useTheme();
   const { isMobileView } = useConstantState();
 
-  const isStreaming = messageExtension.isStreaming(message);
-  const shouldRenderCarouselBody = isStreaming || items.length > 0;
+  const shouldRenderCarouselBody = streaming || items.length > 0;
   const shouldRenderButtons = !isMobileView && items.length >= 2;
   const renderCarouselBody = () => {
-    if (isStreaming) return streamingBody;
+    if (streaming) return streamingBody;
 
     return (
       <SnapCarousel
