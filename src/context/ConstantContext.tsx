@@ -109,6 +109,12 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
             ...props.customRefreshComponent?.style,
           },
         },
+        tools: {
+          functionCall: {
+            ...initialState.tools.functionCall,
+            ...props.tools?.functionCall,
+          },
+        },
       }}
     >
       {props.children}

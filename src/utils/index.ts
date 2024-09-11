@@ -1,7 +1,7 @@
 import type SendbirdChat from '@sendbird/chat';
 import { BaseMessage } from '@sendbird/chat/message';
 
-import { parseMessageDataSafely } from './messages';
+import { jsonParseSafely } from './messages';
 import { Source } from '../components/SourceContainer';
 import { widgetServiceName } from '../const';
 
@@ -89,7 +89,7 @@ function isDelimiterIndex(index: number, inputString: string, delimiter: string)
 }
 
 export function getSourceFromMetadata(message: BaseMessage) {
-  const data: MessageMetaData = parseMessageDataSafely(message.data);
+  const data: MessageMetaData = jsonParseSafely(message.data);
   const sources: Source[] = Array.isArray(data['metadatas'])
     ? data['metadatas']?.filter((source) => source.source_type !== 'file')
     : [];
