@@ -107,6 +107,11 @@ const container = css`
         & .sendbird-iconbutton__inner {
           height: 16px;
         }
+        &:hover {
+          path {
+            fill: ${themedColors.oncontent_inverse1};
+          }
+        }
       }
       .sendbird-message-input--placeholder {
         position: absolute;
