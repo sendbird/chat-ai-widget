@@ -78,7 +78,7 @@ const container = css`
         max-height: 100px;
         height: 40px;
         overflow-y: auto;
-        padding: 8px 16px;
+        padding: 10px 16px 8px 16px;
         border-radius: 20px;
         // Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
         // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
@@ -99,15 +99,11 @@ const container = css`
         bottom: unset;
         background-color: transparent;
       }
-      .sendbird-iconbutton__inner {
-        height: unset;
-      }
       .sendbird-message-input--attach {
         right: unset;
         bottom: unset;
         inset-inline-end: 12px;
-        inset-block-start: 50%;
-        transform: translateY(-50%);
+        inset-block-end: 4px;
       }
       .sendbird-message-input--placeholder {
         position: absolute;
