@@ -78,7 +78,9 @@ const container = css`
         max-height: 100px;
         height: 36px;
         overflow-y: auto;
-        padding: 8px 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-inline-start: 16px;
         border-radius: 20px;
         // Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
         // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
