@@ -108,9 +108,6 @@ const container = css`
         inset-inline-end: 12px;
         inset-block-start: 50%;
         transform: translateY(-50%);
-        path {
-          fill: ${themedColors.onbackground1};
-        }
       }
       .sendbird-message-input--placeholder {
         position: absolute;
