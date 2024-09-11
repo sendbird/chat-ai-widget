@@ -74,11 +74,13 @@ const container = css`
       display: flex;
       align-items: center;
       .sendbird-message-input-text-field {
-        min-height: 40px;
+        min-height: 36px;
         max-height: 100px;
-        height: 40px;
+        height: 36px;
         overflow-y: auto;
-        padding: 8px 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-inline-start: 16px;
         border-radius: 20px;
         // Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
         // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
@@ -99,17 +101,18 @@ const container = css`
         bottom: unset;
         background-color: transparent;
       }
-      .sendbird-iconbutton__inner {
-        height: unset;
-      }
       .sendbird-message-input--attach {
         right: unset;
         bottom: unset;
         inset-inline-end: 12px;
-        inset-block-start: 50%;
-        transform: translateY(-50%);
-        path {
-          fill: ${themedColors.onbackground1};
+        inset-block-end: 2px;
+        & .sendbird-iconbutton__inner {
+          height: 16px;
+        }
+        &:hover {
+          path {
+            fill: ${themedColors.oncontent_inverse1};
+          }
         }
       }
       .sendbird-message-input--placeholder {

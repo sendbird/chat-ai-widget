@@ -113,6 +113,11 @@ const Chip = styled.div<ChipProps>`
             outline: 'none',
             'box-shadow': `0 0 0 1px ${theme.borderColor.formChip.focus}`,
           },
+          '&:active': {
+            color: theme.textColor.formChip.selected,
+            backgroundColor: theme.bgColor.formChip.selected,
+            border: `1px solid ${theme.borderColor.formChip.selected}`,
+          },
         };
       }
       case 'selected': {
@@ -132,6 +137,11 @@ const Chip = styled.div<ChipProps>`
             border: `1px solid ${theme.borderColor.formChip.focus}`,
             outline: 'none',
             'box-shadow': `0 0 0 1px ${theme.borderColor.formChip.focus}`,
+          },
+          '&:active': {
+            color: theme.textColor.formChip.selected,
+            backgroundColor: theme.bgColor.formChip.selected,
+            border: `1px solid ${theme.borderColor.formChip.selected}`,
           },
         };
       }
