@@ -104,15 +104,7 @@ const CloseIconWrapper = styled(IconWrapper)<IconWrapperProps>`
 const Icon = {
   Open: (props: { url?: string }) => {
     const { url } = props;
-
-    if (url) {
-      if (url.endsWith('.svg')) {
-        return <img src={url} alt={'widget-toggle-button'} data-svg={true} />;
-      } else {
-        return <img src={url} alt={'widget-toggle-button'} />;
-      }
-    }
-
+    if (url) return <img src={url} alt={'widget-toggle-button'} data-svg={url.endsWith('.svg')} />;
     return <BotOutlinedIcon />;
   },
   Close: () => <ChevronDownIcon />,
