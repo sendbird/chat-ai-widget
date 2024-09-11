@@ -91,16 +91,6 @@ input:focus {
   z-index: 2147483647;
 }
 
-/* Hide scroll bar in Firefox */
-.sendbird-message-input-text-field {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-/* Hide scroll bar in WebKit */
-.sendbird-message-input-text-field::-webkit-scrollbar {
-  display: none;
-}
-
 .sendbird-modal__content {
   max-width: calc(100% - 80px);
 }

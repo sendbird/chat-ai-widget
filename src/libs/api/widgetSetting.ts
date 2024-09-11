@@ -3,6 +3,9 @@ import { SendbirdError } from '@sendbird/chat';
 import { noop, resolvePath } from '../../utils';
 
 type APIResponse = {
+  bot?: {
+    reply_to_file?: boolean;
+  };
   bot_style: {
     color: {
       theme: 'light' | 'dark';
@@ -34,6 +37,9 @@ type Params = {
 };
 
 type Response = {
+  bot: {
+    replyToFile: boolean;
+  };
   botStyle: {
     theme: 'light' | 'dark';
     accentColor: string;
@@ -79,6 +85,9 @@ export async function getWidgetSetting({
 
   const json = result as APIResponse;
   return {
+    bot: {
+      replyToFile: json.bot?.reply_to_file ?? false,
+    },
     botStyle: {
       theme: json.bot_style.color.theme,
       accentColor: json.bot_style.color.accent_color,
@@ -119,6 +128,7 @@ export const widgetSettingHandler = (
   params: Omit<Params, 'createChannel' | 'createUserAndChannel'>,
 ) => {
   type Callbacks = {
+    BotConfigs: (bot: Response['bot']) => void;
     BotStyle: (botStyle: Response['botStyle']) => void;
     AutoNonCached: (response: { user: ResponseUser; channel: ResponseChannel }) => void;
     AutoCached: (response: { channel?: ResponseChannel }) => void;
@@ -129,6 +139,7 @@ export const widgetSettingHandler = (
 
   const callbacks: {
     onError: Callbacks['Error'];
+    onGetBotConfigs: Callbacks['BotConfigs'];
     onGetBotStyle: Callbacks['BotStyle'];
     onAutoNonCached: Callbacks['AutoNonCached'];
     onAutoCached: Callbacks['AutoCached'];
@@ -136,6 +147,7 @@ export const widgetSettingHandler = (
     onManualCached: Callbacks['ManualCached'];
   } = {
     onError: noop,
+    onGetBotConfigs: noop,
     onGetBotStyle: noop,
     onAutoNonCached: noop,
     onAutoCached: noop,
@@ -146,6 +158,10 @@ export const widgetSettingHandler = (
   const handlers = {
     onError: (callback?: Callbacks['Error']) => {
       if (callback) callbacks.onError = callback;
+      return handlers;
+    },
+    onGetBotConfigs: (callback: Callbacks['BotConfigs']) => {
+      callbacks.onGetBotConfigs = callback;
       return handlers;
     },
     onGetBotStyle: (callback: Callbacks['BotStyle']) => {
@@ -177,6 +193,7 @@ export const widgetSettingHandler = (
           ...getParamsByStrategy(strategy, useCachedSession, params),
         });
 
+        callbacks.onGetBotConfigs(response.bot);
         callbacks.onGetBotStyle(response.botStyle);
         if (strategy === 'auto') handleAutoStrategy(response);
         if (strategy === 'manual') handleManualStrategy(response);

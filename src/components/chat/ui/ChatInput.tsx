@@ -1,5 +1,5 @@
 import { css } from '@linaria/core';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/MessageInputWrapper/MessageInputWrapperView';
@@ -7,12 +7,15 @@ import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/Mess
 import { themedColors } from '../../../foundation/colors/css';
 import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotResponding';
 import { isIOSMobile } from '../../../utils';
+import { AlertModal } from '../../ui/AlertModal';
 import { useChatContext } from '../context/ChatProvider';
 
+// TODO: Remove UIKit
 export const ChatInput = () => {
   const { channel, botUser, dataSource, handlers } = useChatContext();
 
   const ref = useRef<HTMLDivElement>(null);
+  const [limitError, setLimitError] = useState(false);
 
   const { config } = useSendbirdStateContext();
   const isMessageInputDisabled = useBlockWhileBotResponding({
@@ -28,14 +31,23 @@ export const ChatInput = () => {
         messageInputRef={ref}
         currentChannel={channel as any}
         messages={dataSource.messages}
-        sendUserMessage={(params) => {
-          const processedParams = handlers.onBeforeSendMessage(params);
-          dataSource.sendUserMessage(processedParams, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
+        sendUserMessage={async (params) => {
+          const processedParams = await handlers.onBeforeSendMessage(params);
+          const message = await dataSource.sendUserMessage(processedParams, () => handlers.onAfterSendMessage());
+          handlers.onAfterSendMessage();
+          return message;
         }}
-        sendFileMessage={() => {
-          throw new Error('Not implemented');
+        sendFileMessage={async (params) => {
+          const processedParams = await handlers.onBeforeSendMessage(params);
+          const message = await dataSource.sendFileMessage(processedParams, () => handlers.onAfterSendMessage());
+          handlers.onAfterSendMessage();
+          return message;
         }}
+        onFileLimitError={() => setLimitError(true)}
       />
+      {limitError && (
+        <AlertModal message={"You can't upload more than one image"} onClose={() => setLimitError(false)} />
+      )}
     </div>
   );
 };
@@ -54,13 +66,21 @@ const container = css`
       padding: 12px 16px;
     }
 
+    .sendbird-message-input--area {
+      background-color: ${themedColors.bg2};
+    }
+
     .sendbird-message-input {
       display: flex;
       align-items: center;
       .sendbird-message-input-text-field {
-        padding: 8px 16px;
-        height: 40px;
-        max-height: 116px;
+        min-height: 36px;
+        max-height: 100px;
+        height: 36px;
+        overflow-y: auto;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-inline-start: 16px;
         border-radius: 20px;
         // Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
         // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
@@ -80,6 +100,20 @@ const container = css`
         right: unset;
         bottom: unset;
         background-color: transparent;
+      }
+      .sendbird-message-input--attach {
+        right: unset;
+        bottom: unset;
+        inset-inline-end: 12px;
+        inset-block-end: 2px;
+        & .sendbird-iconbutton__inner {
+          height: 16px;
+        }
+        &:hover {
+          path {
+            fill: ${themedColors.oncontent_inverse1};
+          }
+        }
       }
       .sendbird-message-input--placeholder {
         position: absolute;

@@ -25,7 +25,6 @@ export const ChatHeader = ({ fullscreen }: Props) => {
 
   const { botInfo } = botStudioEditProps ?? {};
   const botNickname = botInfo?.nickname ?? botUser?.nickname;
-  const profileUrl = botInfo?.profileUrl ?? botUser?.profileUrl;
   const buttonSize = isMobileView ? 24 : 16;
   const isExpandableMode = !fullscreen && !isMobileView;
 
@@ -43,7 +42,7 @@ export const ChatHeader = ({ fullscreen }: Props) => {
   return (
     <div className={container}>
       <div style={{ marginRight: 6 }}>
-        <BotProfileImage size={34} profileUrl={profileUrl} />
+        <BotProfileImage size={34} />
       </div>
       <div className={headerCenter}>
         <Label type={'h2'} color={'onbackground1'} className={titleInline}>

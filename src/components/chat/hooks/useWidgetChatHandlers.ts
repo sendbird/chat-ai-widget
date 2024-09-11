@@ -2,9 +2,10 @@ import type { FileMessageCreateParams, UserMessageCreateParams } from '@sendbird
 import { useRef } from 'react';
 
 import { useConstantState } from '../../../context/ConstantContext';
+import { getImageAspectRatioMetaArray } from '../../../utils/getImageAspectRatio';
 
 export interface WidgetChatHandlers {
-  onBeforeSendMessage: <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => T;
+  onBeforeSendMessage: <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => Promise<T>;
   onAfterSendMessage: () => void;
 }
 
@@ -14,11 +15,19 @@ export const useWidgetChatHandlers = (params: { onScrollToBottom: () => void }) 
   aiAttributesRef.current = botStudioEditProps?.aiAttributes;
 
   return {
-    onBeforeSendMessage: <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => {
+    onBeforeSendMessage: async <T extends UserMessageCreateParams | FileMessageCreateParams>(params: T) => {
+      const metaArray = await getImageAspectRatioMetaArray(params);
       if (aiAttributesRef.current) {
-        return { ...params, data: JSON.stringify({ ai_attrs: aiAttributesRef.current }) };
+        return {
+          ...params,
+          metaArrays: metaArray ? [metaArray] : undefined,
+          data: JSON.stringify({ ai_attrs: aiAttributesRef.current }),
+        };
       } else {
-        return params;
+        return {
+          ...params,
+          metaArrays: metaArray ? [metaArray] : undefined,
+        };
       }
     },
     onAfterSendMessage: params.onScrollToBottom,

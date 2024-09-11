@@ -3308,9 +3308,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sendbird/chat@npm:^4.14.1":
-  version: 4.14.1
-  resolution: "@sendbird/chat@npm:4.14.1"
+"@sendbird/chat@file:./sendbird-chat-4.14.2.tgz::locator=%40sendbird%2Fchat-ai-widget%40workspace%3A.":
+  version: 4.14.2
+  resolution: "@sendbird/chat@file:./sendbird-chat-4.14.2.tgz#./sendbird-chat-4.14.2.tgz::hash=a20935&locator=%40sendbird%2Fchat-ai-widget%40workspace%3A."
   peerDependencies:
     "@react-native-async-storage/async-storage": ^1.17.6
     react-native-mmkv: ^2.0.0
@@ -3319,7 +3319,7 @@ __metadata:
       optional: true
     react-native-mmkv:
       optional: true
-  checksum: 10c0/8cac6a9a3cb1ce4a5d35faaa6516274fcd182e4e7816dfff40ca468e498c2500e6fcb586b854eddb869029a571d52fe5c3b22dd24ba98613110e9c214d97e756
+  checksum: 10c0/67397ec51dcecd605fb997d1827cd7f436711c779ce888f7cbac6de9ca3e0ec0e3b9be21a881433aaad16eee60a328d970a4c1ccc75ed641b078add3383dadba
   languageName: node
   linkType: hard
 

@@ -12,6 +12,7 @@ import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
 import { CarouselMessage } from './messages/CarouselMessage';
 import FormMessage from './messages/FormMessage';
+import { OutgoingFileMessage } from './messages/OutgoingFileMessage';
 import ParsedBotMessageBody from './ParsedBotMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { useConstantState } from '../context/ConstantContext';
@@ -32,13 +33,11 @@ type Props = {
 export default function CustomMessage(props: Props) {
   const { botUser } = useChatContext();
   const { message, activeSpinnerId } = props;
-  const { replacementTextList, enableEmojiFeedback, botStudioEditProps = {} } = useConstantState();
+  const { replacementTextList, enableEmojiFeedback } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
-  const { botInfo } = botStudioEditProps;
   const getCarouselItems = useCarouselItems(message);
 
   const botUserId = botUser?.userId;
-  const botProfileUrl = botInfo?.profileUrl ?? botUser?.profileUrl ?? '';
   const isWaitingForBotReply = activeSpinnerId === message.messageId && !!botUser;
 
   const shouldRenderFeedback = () => {
@@ -75,6 +74,15 @@ export default function CustomMessage(props: Props) {
         </div>
       );
     }
+
+    if (message.isFileMessage()) {
+      return (
+        <div>
+          <OutgoingFileMessage message={message} />
+          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
+        </div>
+      );
+    }
   }
 
   // Sent by bot user
@@ -95,7 +103,7 @@ export default function CustomMessage(props: Props) {
         <BotMessageWithBodyInput
           wideContainer={isVideoMessage(message)}
           {...props}
-          bodyComponent={<FileMessage message={message} profileUrl={botProfileUrl} />}
+          bodyComponent={<FileMessage message={message} />}
           createdAt={message.createdAt}
           messageFeedback={renderFeedbackButtons()}
         />

@@ -2,19 +2,17 @@ import '../css/index.css';
 import { FileMessage as ChatFileMessage } from '@sendbird/chat/message';
 import { useState } from 'react';
 
-import FileViewer from '@uikit/modules/GroupChannel/components/FileViewer';
 import { isImageMessage, isVideoMessage } from '@uikit/utils';
 
-import BotProfileImage from './BotProfileImage';
 import { useChatContext } from './chat/context/ChatProvider';
+import { FileViewer } from './ui/FileViewer';
 
 type Props = {
   message: ChatFileMessage;
-  profileUrl: string;
 };
 
 export default function FileMessage(props: Props) {
-  const { message, profileUrl } = props;
+  const { message } = props;
   const { scrollSource } = useChatContext();
   const [showFileViewer, setShowFileViewer] = useState(false);
 
@@ -42,13 +40,7 @@ export default function FileMessage(props: Props) {
           onClick={() => setShowFileViewer(true)}
         />
       )}
-      {showFileViewer && (
-        <FileViewer
-          message={message}
-          onCancel={() => setShowFileViewer(false)}
-          profile={<BotProfileImage size={32} profileUrl={profileUrl} />}
-        />
-      )}
+      {showFileViewer && <FileViewer message={message} onClose={() => setShowFileViewer(false)} />}
     </div>
   );
 }
