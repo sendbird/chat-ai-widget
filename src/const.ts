@@ -81,12 +81,12 @@ export const DEFAULT_CONSTANT = {
   },
 } satisfies Partial<Constant>;
 
+// TODO: Remove this function when the Demo is finished
 function isMealsResponse(response: unknown): response is { meals: { strMeal: string; strMealThumb: string }[] } {
   return !!response && typeof response === 'object' && 'meals' in response && Array.isArray(response.meals);
 }
 
 type ConfigureSession = (sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat) => SessionHandler;
-
 type MatchString = string;
 type ReplaceString = string;
 
