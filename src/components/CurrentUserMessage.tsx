@@ -51,7 +51,7 @@ export default function CurrentUserMessage(props: Props) {
       case SendingStatus.PENDING:
         return (
           <IconContainer isSpinning={true}>
-            <Icon type="spinner" color={theme.bgColor.outgoingMessage} size={SpinnerSize} />
+            <Icon type={"spinner"} color={theme.bgColor.outgoingMessage} size={16} />
           </IconContainer>
         );
       case SendingStatus.FAILED:
