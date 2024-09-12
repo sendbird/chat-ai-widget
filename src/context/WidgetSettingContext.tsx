@@ -1,10 +1,12 @@
 import { SendbirdChatWith } from '@sendbird/chat';
 import { GroupChannelModule } from '@sendbird/chat/groupChannel';
-import React, { createContext, useContext, useLayoutEffect, useState } from 'react';
+import React, { createContext, useContext, useLayoutEffect, useMemo, useState } from 'react';
 
 import { useConstantState } from './ConstantContext';
+import { generateCSSVariables } from '../colors';
 import { widgetSettingHandler } from '../libs/api/widgetSetting';
 import { getWidgetSessionCache, saveWidgetSessionCache, WidgetSessionCache } from '../libs/storage/widgetSessionCache';
+import { CommonTheme, getTheme } from '../theme';
 import { getDateNDaysLater, isPastTime } from '../utils';
 
 interface WidgetSession {
@@ -31,6 +33,8 @@ export interface BotConfigs {
 type Context = {
   initialized: boolean;
   botStyle: BotStyle;
+  theme: CommonTheme;
+  colorSet?: Record<string, string>;
   botConfigs: BotConfigs;
   widgetSession: WidgetSession | null;
   initManualSession: (sdk: SendbirdChatWith<[GroupChannelModule]>) => void;
@@ -192,6 +196,24 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
     });
   }, [sessionStrategy]);
 
+  const { theme, accentColor, botMessageBGColor } = botStyle;
+
+  const styledTheme = getTheme({
+    accentColor,
+    botMessageBGColor,
+  })[theme];
+
+  const customColorSet = useMemo(() => {
+    if (!accentColor) return undefined;
+
+    return ['light', 'dark'].reduce((acc, cur) => {
+      return {
+        ...acc,
+        ...generateCSSVariables(accentColor, cur),
+      };
+    }, {});
+  }, [accentColor]);
+
   return (
     <WidgetSettingContext.Provider
       value={{
@@ -203,6 +225,8 @@ export const WidgetSettingProvider = ({ children }: React.PropsWithChildren) => 
             botStudioEditProps?.styles?.accentColor ?? botStudioEditProps?.styles?.primaryColor ?? botStyle.accentColor,
           autoOpen: autoOpen ?? botStyle.autoOpen,
         },
+        theme: styledTheme,
+        colorSet: customColorSet,
         botConfigs,
         widgetSession,
         initManualSession,

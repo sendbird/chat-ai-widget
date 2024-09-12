@@ -5,12 +5,10 @@ import { StyleSheetManager, ThemeProvider } from 'styled-components';
 import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
-import { generateCSSVariables } from '../../colors';
 import { ConstantStateProvider, useConstantState } from '../../context/ConstantContext';
 import { useWidgetSession, useWidgetSetting, WidgetSettingProvider } from '../../context/WidgetSettingContext';
 import { useWidgetState, WidgetStateProvider } from '../../context/WidgetStateContext';
 import { useStyledComponentsTarget } from '../../hooks/useStyledComponentsTarget';
-import { getTheme } from '../../theme';
 import { DragDropProvider } from '../../tools/hooks/useDragDropFiles';
 import { isDashboardPreview } from '../../utils';
 
@@ -34,7 +32,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
   } = useConstantState();
 
   const { setIsVisible } = useWidgetState();
-  const { botConfigs, botStyle } = useWidgetSetting();
+  const { botConfigs, botStyle, theme, colorSet } = useWidgetSetting();
   const session = useWidgetSession();
   const target = useStyledComponentsTarget();
 
@@ -51,27 +49,9 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     return userAgent;
   }, []);
 
-  const { theme, accentColor, botMessageBGColor } = botStyle;
-
-  const styledTheme = getTheme({
-    accentColor,
-    botMessageBGColor,
-  })[theme];
-
-  const customColorSet = useMemo(() => {
-    if (!accentColor) return undefined;
-
-    return ['light', 'dark'].reduce((acc, cur) => {
-      return {
-        ...acc,
-        ...generateCSSVariables(accentColor, cur),
-      };
-    }, {});
-  }, [accentColor]);
-
   return (
     <StyleSheetManager target={target}>
-      <ThemeProvider theme={styledTheme}>
+      <ThemeProvider theme={theme}>
         {applicationId && session.userId && (
           <SendbirdProvider
             appId={applicationId}
@@ -83,8 +63,8 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
             configureSession={configureSession}
             customExtensionParams={userAgentCustomParams}
             breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.
-            theme={theme}
-            colorSet={customColorSet}
+            theme={botStyle.theme}
+            colorSet={colorSet}
             stringSet={stringSet}
             dateLocale={dateLocale}
             eventHandlers={{
