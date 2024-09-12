@@ -1,5 +1,5 @@
 import { styled } from '@linaria/react';
-import { UserMessage } from '@sendbird/chat/message';
+import { SendingStatus, UserMessage } from '@sendbird/chat/message';
 
 import { DefaultSentTime, BodyContainer, BodyComponent } from './MessageComponent';
 import { useConstantState } from '../context/ConstantContext';
@@ -9,12 +9,16 @@ import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const SpinnerSize = '16px';
 
-const IconContainer = styled.div`
+interface IconContainerProps {
+  isSpinning?: boolean;
+}
+
+const IconContainer = styled.div<IconContainerProps>`
   display: grid;
   justify-content: center;
   align-items: center;
-  animation: spinner 1.5s linear infinite;
   margin-bottom: 2px;
+  animation: ${({ isSpinning }) => (isSpinning ? 'spinner 1.5s linear infinite' : 'unset')};
 
   @keyframes spinner {
     from {
@@ -42,15 +46,28 @@ export default function CurrentUserMessage(props: Props) {
   const { theme } = useWidgetSetting();
   const { message } = props;
 
+  const MessageStatus = () => {
+    switch (message.sendingStatus) {
+      case SendingStatus.PENDING:
+        return (
+          <IconContainer isSpinning={true}>
+            <Icon type="spinner" color={theme.bgColor.outgoingMessage} size={SpinnerSize} />
+          </IconContainer>
+        );
+      case SendingStatus.FAILED:
+        return (
+          <IconContainer>
+            <Icon type="error" color="error" size={SpinnerSize} />
+          </IconContainer>
+        );
+      default:
+        return <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>;
+    }
+  };
+
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
-      {message.sendingStatus === 'pending' ? (
-        <IconContainer>
-          <Icon type="spinner" color={theme.bgColor.outgoingMessage} size={SpinnerSize} />
-        </IconContainer>
-      ) : (
-        <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>
-      )}
+      <MessageStatus />
       <BodyContainer>
         <BodyComponent>
           <div className="sendbird-word">{message.message}</div>
