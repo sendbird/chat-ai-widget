@@ -1,4 +1,4 @@
-import { css } from '@linaria/core';
+import { css, cx } from '@linaria/core';
 import { useRef, useState } from 'react';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
@@ -24,7 +24,7 @@ export const ChatInput = () => {
   });
 
   return (
-    <div className={container}>
+    <div className={cx(container, isIOSMobile && iosMobileContainer)}>
       <MessageInputWrapperView
         loading={false}
         disabled={config.isOnline ? isMessageInputDisabled : true}
@@ -51,6 +51,25 @@ export const ChatInput = () => {
     </div>
   );
 };
+
+// Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
+// @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
+const iosMobileContainer = css`
+  &&&& {
+    .sendbird-message-input-text-field {
+      min-height: 40px;
+      height: 40px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    .sendbird-message-input--placeholder {
+      font-size: 16px;
+    }
+    .sendbird-message-input--attach {
+      inset-block-end: 4px;
+    }
+  }
+`;
 
 const container = css`
   z-index: 0;
@@ -82,9 +101,6 @@ const container = css`
         padding-bottom: 8px;
         padding-inline-start: 16px;
         border-radius: 20px;
-        // Not to zoom in on mobile set font-size to 16px which blocks the zooming on iOS
-        // @link: https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
-        font-size: ${isIOSMobile ? 16 : 14}px;
         resize: none;
         border: none;
         outline: none;
