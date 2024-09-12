@@ -1,3 +1,41 @@
+## [1.8.0] (Sep 12, 2024)
+
+### Feat:
+- **File Message Support**: File attachment in messages is now supported. Of course, drag-and-drop and copy-paste actions are also supported.
+- **Locale Support**: Added a `locale` option to support multiple languages for welcome messages and suggested replies. If not specified, the browser's default language will be used. (support for multilingual settings will be available in the dashboard). 
+- **Carousel Adapter for Function Call**: Introduced an adapter to convert function call responses into a carousel UI. Example usage is as follows:
+  ```tsx
+  interface MealFunctionCallResponse {
+    meals: { strYoutube: string; strMeal: string; strMealThumb: string }[];
+  }
+  
+  function isMealsResponse(response: unknown): response is MealFunctionCallResponse {
+    return !!response && typeof response === 'object' && 'meals' in response && Array.isArray(response.meals);
+  }
+  
+  const App = () => {
+    return (
+      <ChatAiWidget
+        tools={{
+          functionCall: {
+            carouselAdapter({ response }) {
+              if (isMealsResponse(response)) {
+                return response.meals.map((it) => ({
+                  title: it.strMeal, // Carousel card title
+                  featured_image: it.strMealThumb, // Carousel card image
+                  url: it.strYoutube, // URL to open when the carousel card is clicked
+                }));
+              }
+  
+              return [];
+            },
+          },
+        }}
+      />
+    );
+  };
+  ```
+
 ## [1.7.10] (Aug 29, 2024)
 ### Update:
 - Improved user interface and experience of form message feature
