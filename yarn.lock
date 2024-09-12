@@ -3259,23 +3259,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sendbird/chat-ai-widget@npm:1.7.10":
-  version: 1.7.10
-  resolution: "@sendbird/chat-ai-widget@npm:1.7.10"
-  dependencies:
-    styled-components: "npm:^5.3.11"
-  peerDependencies:
-    date-fns: ^3.6.0
-    react: ^16.8.6 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.6 || ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    date-fns:
-      optional: true
-  checksum: 10c0/dc79601cc0024d3aa1229412a147abee9fb6ed264a0fd406d1916360042193cb2150a5a678394b1fcf1c4145a44bb6f028f7cb9d18da2765aaeaa789bbae7e44
-  languageName: node
-  linkType: hard
-
-"@sendbird/chat-ai-widget@workspace:.":
+"@sendbird/chat-ai-widget@npm:1.8.0, @sendbird/chat-ai-widget@workspace:.":
   version: 0.0.0-use.local
   resolution: "@sendbird/chat-ai-widget@workspace:."
   dependencies:
@@ -15972,7 +15956,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "self-service@workspace:packages/self-service"
   dependencies:
-    "@sendbird/chat-ai-widget": "npm:1.7.10"
+    "@sendbird/chat-ai-widget": "npm:1.8.0"
     "@types/react": "npm:^18.0.37"
     "@types/react-dom": "npm:^18.0.11"
     "@vitejs/plugin-react": "npm:^4.2.1"
