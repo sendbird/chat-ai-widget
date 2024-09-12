@@ -14,7 +14,7 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
-    "@sendbird/chat-ai-widget": "1.8.0",
+    "@sendbird/chat-ai-widget": "1.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
