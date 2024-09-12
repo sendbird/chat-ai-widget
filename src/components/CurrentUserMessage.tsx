@@ -57,7 +57,7 @@ export default function CurrentUserMessage(props: Props) {
       case SendingStatus.FAILED:
         return (
           <IconContainer>
-            <Icon type="error" color="error" size={SpinnerSize} />
+            <Icon type={"error"} color={"error"} size={16} />
           </IconContainer>
         );
       default:
