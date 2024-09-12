@@ -1,3 +1,7 @@
+## [1.8.1] (Sep 12, 2024)
+### Fix:
+- Fixed that prevent zoom when focusing on input in iOS mobile
+
 ## [1.8.0] (Sep 12, 2024)
 
 ### Feat:
