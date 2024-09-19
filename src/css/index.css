@@ -1,66 +1,15 @@
-.sendbird-message-content-menu__reaction-menu {
-  display: none;
-}
-
-.sendbird-theme--light {
-  margin: 0 !important;
-}
-
-.sendbird-conversation__footer {
-  padding-bottom: 0 !important;
-  margin: 0 !important;
-}
-
-#root {
-  height: 100%;
-  border: none !important;
-}
-
-.sendbird-conversation {
-  border: none !important;
-}
-
-@keyframes spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 10px solid #b771fd; /* Light grey */
-  border-top: 10px solid white; /* Blue */
-  border-radius: 50%;
-  animation: spinner 1.5s linear infinite;
-}
-
-.spinner-container {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  height: 350px;
-}
-
+/**
+ * NOTE: Since we are not using Shadow DOM, all written styles will affect the client's code.
+ * Therefore, until Shadow DOM is introduced, do not write styles in a general manner.
+ *  Example: #root { ... }, input { ... }
+ */
 .sendbird-modal__content {
   width: calc(100% - 20px);
-}
-
-.sendbird-fileviewer__header__left {
+  max-width: calc(100% - 80px);
 }
 
 .sendbird-fileviewer {
   outline: none;
-}
-
-textarea:focus,
-input:focus {
-  &:active {
-    outline: none;
-  }
 }
 
 .sendbird-ai-widget-file-message-root {
@@ -91,10 +40,6 @@ input:focus {
   z-index: 2147483647;
 }
 
-.sendbird-modal__content {
-  max-width: calc(100% - 80px);
-}
-
 .sendbird-suggested-replies {
   margin: 0 !important;
   padding: 8px 0 16px;
@@ -109,5 +54,5 @@ input:focus {
 }
 
 .sendbird-form-chip {
-  padding: 0px 12px;
+  padding: 0 12px;
 }
