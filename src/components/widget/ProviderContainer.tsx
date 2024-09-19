@@ -83,7 +83,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
             configureSession={configureSession}
             customExtensionParams={userAgentCustomParams}
             breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.
-            theme={botStyle.theme}
+            theme={theme}
             colorSet={customColorSet}
             stringSet={stringSet}
             dateLocale={dateLocale}
