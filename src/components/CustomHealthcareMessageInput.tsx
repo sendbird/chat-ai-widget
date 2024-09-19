@@ -18,7 +18,8 @@ import { ReactComponent as IconChevronLeft } from '../icons/icon-chevron-left.sv
 import { ReactComponent as IconChevronUp } from '../icons/icon-chevron-up.svg';
 import { ReactComponent as IconMagicWand } from '../icons/icon-magic-wand-filled.svg';
 import { ReactComponent as SendIcon } from '../icons/send-icon.svg';
-import { categoryColors } from '../utils/category';
+import ModalBackground from "../icons/modal-background.svg";
+import { categoryColors } from "../utils/category";
 
 interface InputContainerProps {
   botCategory?: string;
@@ -26,19 +27,35 @@ interface InputContainerProps {
 }
 
 const InputContainer = styled.div<InputContainerProps>`
+  position: relative;
   background: ${({ botCategory }) =>
     botCategory
-      ? categoryColors[botCategory]['input-container-color']
-      : '#eeeeee'};
+      ? `url(${ModalBackground}) no-repeat center center`
+      : "#eeeeee"};
+  background-size: cover;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 `;
 
-const InnerContainer = styled.div`
+const CommonInnerContainerStyles = `
   padding: 10px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const InnerContainer = styled.div`
+  ${CommonInnerContainerStyles}
+  background: #dce1fb;
+`;
+
+interface TopInnerContainerProps {
+  isFolded?: boolean;
+}
+
+const TopInnerContainer = styled.div<TopInnerContainerProps>`
+  ${CommonInnerContainerStyles}
+  background: transparent;
 `;
 
 interface InputProps {
@@ -48,13 +65,13 @@ interface InputProps {
 
 const InputComponent = styled.textarea<InputProps>`
   width: ${(props: InputProps) =>
-    props.isActive ? 'calc(100% - 30px)' : '100%'};
+    props.isActive ? "calc(100% - 30px)" : "100%"};
   transition: ${(props: InputProps) =>
-    props.isActive ? 'none' : 'width 0.5s'};
+    props.isActive ? "none" : "width 0.5s"};
   transition-timing-function: ease;
   padding: 8px 16px;
   font-size: 14px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   line-height: 20px;
   color: rgba(0, 0, 0, 0.88);
   resize: none;
@@ -63,8 +80,8 @@ const InputComponent = styled.textarea<InputProps>`
   max-height: 116px;
   background: ${({ botCategory }) =>
     botCategory
-      ? categoryColors[botCategory]['input-message-background-color']
-      : '#eeeeee'};
+      ? categoryColors[botCategory]["input-message-background-color"]
+      : "rgba(255, 255, 255, 0.38)"};
   border-radius: 8px;
   height: auto;
   ::placeholder {
@@ -94,10 +111,10 @@ const AIAssistantBodyContainer = styled.div`
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 8px;
-  gap: 8px;
+  gap: 12px;
   display: flex;
   flex-direction: column;
-  max-height: 200px;
+  max-height: 240px;
   overflow-y: auto;
 `;
 
@@ -119,9 +136,11 @@ const PatientHistoryListBody = styled.div`
 `;
 
 const PatientHistoryListContainer = styled.div`
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: 12px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 12px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
 `;
 
 interface SecondardButtonContainerInputProps {
@@ -130,13 +149,13 @@ interface SecondardButtonContainerInputProps {
 
 const SecondardButtonContainer = styled.div<SecondardButtonContainerInputProps>`
   display: flex;
-  flex-direction: ${({ showTip }) => (showTip ? 'column' : 'row')};
+  flex-direction: ${({ showTip }) => (showTip ? "column" : "row")};
   justify-content: space-between;
   gap: 8px;
 `;
 
 const PrimaryButton = styled.div`
-  padding: 8px 16px;
+  padding: 4px 12px;
   background-color: var(--sendbird-light-primary-300); // Blue background
   color: var(--sendbird-light-background-50-0); // White text
   border: 1px solid var(--sendbird-light-primary-300);
@@ -146,18 +165,18 @@ const PrimaryButton = styled.div`
 `;
 
 const SecondaryButton = styled.div<SecondardButtonContainerInputProps>`
-  padding: 8px 16px;
-  background-color: var(--sendbird-light-background-50-0);
+  padding: 4px 12px;
+  background-color: transparent;
   color: var(--sendbird-light-primary-300);
   border: 1px solid var(--sendbird-light-primary-300); // Blue border
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
-  ${({ showTip }) => !showTip && 'width: 100%;'}
+  ${({ showTip }) => !showTip && "width: 100%;"}
 `;
 
 const TextContainer = styled.div`
-  background-color: #eeeeee;
+  background-color: rgba(255, 255, 255, 0.4);
   height: 84px;
   color: black;
   border-radius: 8px;
@@ -169,7 +188,7 @@ const TextContainer = styled.div`
 `;
 
 const PatientChartContainer = styled.div`
-  background-color: #eeeeee;
+  background-color: rgba(255, 255, 255, 0.4);
   height: 172px;
   color: black;
   border-radius: 8px;
@@ -193,7 +212,7 @@ const AIAssistantHeadText = styled(Label)`
 `;
 
 const AIAssistantBodyText = styled(Label)`
-  padding: 12px 8px;
+  padding: 12px;
   font-weight: 500;
   white-space: normal;
   display: -webkit-box;
@@ -211,6 +230,10 @@ const PatientBodyText = styled(Label)`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: auto;
+
+  & > div {
+    overflow: auto;
+  }
 `;
 
 const AIAssistantBodyHeadText = styled(Label)`
@@ -229,7 +252,7 @@ const NewInput = styled.textarea`
   outline: none;
   resize: none;
   height: 36px;
-  background: #eeeeee;
+  background: rgba(255, 255, 255, 0.4);
 
   ::placeholder {
     color: rgba(0, 0, 0, 0.38);
@@ -237,8 +260,9 @@ const NewInput = styled.textarea`
 `;
 
 const SendButton = styled.button`
-  padding: 8px 16px;
-  background-color: ${(props) => (props.disabled ? '#cccccc' : '#007bff')};
+  padding: 4px 12px;
+  background-color: ${(props) =>
+    props.disabled ? "rgba(0, 0, 0, 0.12)" : "#007bff"};
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -250,8 +274,8 @@ const SendButton = styled.button`
 `;
 
 const CancelButton = styled.button`
-  padding: 8px 16px;
-  background: #ffffff;
+  padding: 4px 12px;
+  background: transparent;
   border: 1px solid var(--sendbird-light-primary-300);
   border-radius: 8px;
   cursor: pointer;
@@ -270,11 +294,22 @@ const ListItemContainer = styled.div`
   cursor: pointer;
   transition: background-color 0.3s ease;
 
-  &:last-child {
-    border-bottom: none;
-  }
   &:hover {
     background-color: #cccccc; /* Hover 시 회색으로 배경색 변경 */
+
+    &:first-child {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+  &:last-child > div {
+    border-bottom: none;
   }
 `;
 
@@ -294,9 +329,9 @@ const useAutosizeTextArea = (
 ) => {
   useEffect(() => {
     if (textAreaRef) {
-      textAreaRef.style.height = '0';
+      textAreaRef.style.height = "0";
       const scrollHeight = textAreaRef.scrollHeight;
-      textAreaRef.style.height = scrollHeight + 'px';
+      textAreaRef.style.height = scrollHeight + "px";
     }
   }, [textAreaRef, value]);
 };
@@ -324,27 +359,27 @@ export function HealthcareMessageInput({
   setShowModal: (show: boolean) => void;
 }) {
   const { inputValue, botId, userId } = useConstantState();
-  const [askToAIMessage, setAskToAIMessage] = useState<string>('');
+  const [askToAIMessage, setAskToAIMessage] = useState<string>("");
   const [AIResponse, setAIResponse] = useState<AIResponseMessage | null>(null);
   const [currentFunctionCall, setCurrentFunctionCall] =
     useState<FunctionCalls | null>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [showSendButton, setShowSendButton] = useState<boolean>(false);
-  const [message, setMessage] = useState(inputValue?.value ?? '');
+  const [message, setMessage] = useState(inputValue?.value ?? "");
   const { botCategory } = useConstantState();
   const [isFolded, setIsFolded] = useState(false); // New state to manage fold/unfold
   const [isAskingAssistant, setIsAskingAssistant] = useState(false);
-  const [recommendMessage, setRecommendMessage] = useState('' as string);
+  const [recommendMessage, setRecommendMessage] = useState("" as string);
   const [showTip, setShowTip] = useState(false);
   const [showPatientChart, setShowPatientChart] = useState(false);
   const headers = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   };
   const { allMessages } = useChannelContext();
   const medicalHistory = [
     {
-      symptom: 'headache',
-      date: '2021-10-01',
+      symptom: "headache",
+      date: "2024.02.21",
       medicalHistory: `
   - Diagnosis: Common Cold
   - A 28-year-old male (example patient information), experiencing high fever, cough, body aches, and other flu-like symptoms since last week.
@@ -355,8 +390,8 @@ export function HealthcareMessageInput({
   - Scheduled for flu diagnosis and appropriate treatment plan through interaction with a doctor.`,
     },
     {
-      symptom: 'stomachache',
-      date: '2022-02-15',
+      symptom: "stomachache",
+      date: "2024.02.10",
       medicalHistory: `
   - Diagnosis: Gastritis
   - A 35-year-old female, complaining of persistent stomach pain, nausea, and bloating after meals.
@@ -366,8 +401,8 @@ export function HealthcareMessageInput({
   - Scheduled for further evaluation and treatment under the care of a gastroenterologist.`,
     },
     {
-      symptom: 'back pain',
-      date: '2022-05-10',
+      symptom: "back pain",
+      date: "2024.01.01",
       medicalHistory: `
   - Diagnosis: Lumbar Strain
   - A 45-year-old male, reporting sudden onset of lower back pain after lifting heavy objects.
@@ -377,8 +412,8 @@ export function HealthcareMessageInput({
   - Advised on proper lifting techniques and referred for physiotherapy sessions.`,
     },
     {
-      symptom: 'fever',
-      date: '2022-08-20',
+      symptom: "fever",
+      date: "2023.10.21",
       medicalHistory: `
   - Diagnosis: Urinary Tract Infection (UTI)
   - A 30-year-old female, presenting with high fever, frequent urination, and burning sensation during urination.
@@ -388,8 +423,8 @@ export function HealthcareMessageInput({
   - Prescribed antibiotics and advised to follow up with a urologist if symptoms persist.`,
     },
     {
-      symptom: 'cough',
-      date: '2023-01-05',
+      symptom: "cough",
+      date: "2023.06.15",
       medicalHistory: `
   - Diagnosis: Acute Bronchitis
   - A 40-year-old male, complaining of persistent cough with yellowish sputum production, chest discomfort, and mild fever.
@@ -407,7 +442,7 @@ export function HealthcareMessageInput({
   useEffect(() => {
     if (allMessages.length > 0) {
       const lastMessage = allMessages[allMessages.length - 1];
-      if (lastMessage?.messageType === 'user') {
+      if (lastMessage?.messageType === "user") {
         const lastUserMessage = lastMessage as UserMessage;
         if (lastUserMessage.sender?.userId === userId) {
           setShowTip(true);
@@ -429,11 +464,11 @@ export function HealthcareMessageInput({
         try {
           const response = await getRecommendMessage([
             {
-              role: 'user',
+              role: "user",
               content: "I'm now talking to Patient X. ",
             },
             {
-              role: 'user',
+              role: "user",
               content: inputValue.value,
             },
           ]);
@@ -444,10 +479,10 @@ export function HealthcareMessageInput({
             setCurrentFunctionCall(response.response_method?.function_calls[0]);
           }
         } catch (error) {
-          console.error('Failed to fetch AI response', error);
+          console.error("Failed to fetch AI response", error);
         }
 
-        setAskToAIMessage(''); // Clear input after sending
+        setAskToAIMessage(""); // Clear input after sending
       }
     };
 
@@ -455,14 +490,14 @@ export function HealthcareMessageInput({
   }, [inputValue?.value, inputValue?.id]);
 
   useEffect(() => {
-    if (typeof message === 'string' && message.length > 0) {
+    if (typeof message === "string" && message.length > 0) {
       setShowSendButton(true);
     }
   }, [message]);
 
   useEffect(() => {
     setTimeout(() => {
-      sendMessage('How can I help you today?');
+      sendMessage("How can I help you today?");
     }, 500);
   }, []);
 
@@ -471,20 +506,20 @@ export function HealthcareMessageInput({
   }
 
   const filteredMessages = allMessages.filter(
-    (message) => message.messageType === 'user'
+    (message) => message.messageType === "user"
   );
   const bodyInput = filteredMessages.map((message) => ({
-    role: message.sender.userId === botId ? 'user' : 'assistant',
+    role: message.sender.userId === botId ? "user" : "assistant",
     content: message.message,
   }));
 
   const { isPending, error, refetch } = useQuery({
-    queryKey: ['getAIRecommendMessage', bodyInput],
+    queryKey: ["getAIRecommendMessage", bodyInput],
     queryFn: () =>
       axios
         .post(`/api/assistant`, {
           params: {
-            botId: 'healthcare',
+            botId: "healthcare",
           },
           data: {
             messages: bodyInput,
@@ -500,9 +535,9 @@ export function HealthcareMessageInput({
   });
 
   async function getRecommendMessage(bodyInput?: any[]) {
-    const response = await axios.post('/api/assistant', {
+    const response = await axios.post("/api/assistant", {
       params: {
-        botId: 'healthcare',
+        botId: "healthcare",
       },
       data: {
         messages: bodyInput,
@@ -516,11 +551,11 @@ export function HealthcareMessageInput({
   async function handleAskAISendMessage() {
     const response = await getRecommendMessage([
       {
-        role: 'user',
+        role: "user",
         content: "I'm now talking to Patient X. ",
       },
       {
-        role: 'user',
+        role: "user",
         content: askToAIMessage,
       },
     ]);
@@ -529,7 +564,7 @@ export function HealthcareMessageInput({
     if (response.response_method?.function_calls?.length > 0) {
       setCurrentFunctionCall(response.response_method?.function_calls[0]);
     }
-    setAskToAIMessage(''); // Clear input after sending
+    setAskToAIMessage(""); // Clear input after sending
   }
 
   function handleAskAIMessageChange(event: {
@@ -541,7 +576,7 @@ export function HealthcareMessageInput({
   function handleSendMessage() {
     onSendMessage?.(message);
     sendMessage(message);
-    setMessage('');
+    setMessage("");
   }
 
   function handleMessageChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -567,7 +602,7 @@ export function HealthcareMessageInput({
   function handleAskTheAssistant() {
     setIsAskingAssistant(!isAskingAssistant);
     setAIResponse(null);
-    setAskToAIMessage('');
+    setAskToAIMessage("");
     setShowPatientChart(false);
   }
 
@@ -578,9 +613,9 @@ export function HealthcareMessageInput({
   function handlePasteThisAnswerFromResponse() {
     setIsAskingAssistant(!isAskingAssistant);
     setIsFolded(true);
-    setMessage(AIResponse?.reply_messages[0] ?? '');
+    setMessage(AIResponse?.reply_messages[0] ?? "");
     setAIResponse(null);
-    setAskToAIMessage('');
+    setAskToAIMessage("");
   }
 
   function handleCancel() {
@@ -591,7 +626,7 @@ export function HealthcareMessageInput({
     return (
       <>
         {medicalHistory.map((item, index) => (
-          <ListItemContainer>
+          <ListItemContainer key={`${item.symptom}-${item.date}-${index}`}>
             <ListItem
               key={index}
               onClick={() => {
@@ -600,15 +635,15 @@ export function HealthcareMessageInput({
             >
               <div
                 style={{
-                  fontSize: '14px',
+                  fontSize: "14px",
                 }}
               >
                 {item.symptom}
               </div>
               <div
                 style={{
-                  color: 'rgba(0, 0, 0, 0.5)',
-                  fontSize: '12px',
+                  color: "rgba(0, 0, 0, 0.5)",
+                  fontSize: "12px",
                 }}
               >
                 {item.date}
@@ -631,7 +666,7 @@ export function HealthcareMessageInput({
 
   function renderFunctionCall() {
     switch (currentFunctionCall?.name) {
-      case 'get_medical_history':
+      case "get_medical_history":
         return (
           <>
             <AIAssistantBodyContainer>
@@ -653,13 +688,13 @@ export function HealthcareMessageInput({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.PRIMARY}
                 >
-                  {'Cancel'}
+                  {"Cancel"}
                 </Label>
               </CancelButton>
             </AIAssistantBodyContainer>
           </>
         );
-      case 'get_user_info':
+      case "get_user_info":
         return <div>User Info</div>;
       default:
         return <div>Default Case</div>;
@@ -669,9 +704,11 @@ export function HealthcareMessageInput({
   function handleBackToAssistant() {
     setIsAskingAssistant(false);
     setAIResponse(null);
-    setAskToAIMessage('');
+    setAskToAIMessage("");
     setShowPatientChart(false);
   }
+
+  console.log(botCategory);
 
   return (
     <InputContainer botCategory={botCategory} isFolded={isFolded}>
@@ -681,24 +718,25 @@ export function HealthcareMessageInput({
             type={LabelTypography.BODY_1}
             color={LabelColors.ONBACKGROUND_1}
           >
-            {'AI medical assistant'}
+            {"AI medical assistant"}
           </Label>
           <IconChevronUp
             style={{
-              paddingLeft: '4px',
-              width: '10px',
-              height: '10px',
+              paddingLeft: "4px",
+              width: "10px",
+              height: "10px",
             }}
           />
         </ToggleText>
       ) : isAskingAssistant ? (
         <AIAssistantContainer>
-          <InnerContainer
+          <TopInnerContainer
             onClick={handleAskTheAssistant}
             style={{
-              cursor: 'pointer',
-              display: 'flex',
-              justifyContent: 'flex-start',
+              cursor: "pointer",
+              display: "flex",
+              justifyContent: "flex-start",
+              gap: "8px",
             }}
           >
             <IconChevronLeft />
@@ -708,7 +746,7 @@ export function HealthcareMessageInput({
             >
               Ask the assistant
             </AIAssistantHeadText>
-          </InnerContainer>
+          </TopInnerContainer>
           {AIResponse && AIResponse.reply_messages.length > 0 ? (
             AIResponse.response_method?.function_calls?.length > 0 ? (
               renderFunctionCall()
@@ -717,23 +755,23 @@ export function HealthcareMessageInput({
                 <TextContainer>
                   <div
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      paddingTop: '8px',
-                      paddingLeft: '12px',
-                      paddingRight: '12px',
+                      display: "flex",
+                      alignItems: "center",
+                      paddingTop: "8px",
+                      paddingLeft: "12px",
+                      paddingRight: "12px",
                     }}
                   >
                     <IconAIChatBot
                       style={{
-                        paddingRight: '4px',
+                        paddingRight: "4px",
                       }}
                     />
                     <AIAssistantBodyHeadText
                       type={LabelTypography.CAPTION_2}
                       color={LabelColors.ONBACKGROUND_2}
                     >
-                      {'AI medical assistant'}
+                      {"AI medical assistant"}
                     </AIAssistantBodyHeadText>
                   </div>
                   <AIAssistantBodyText
@@ -748,7 +786,7 @@ export function HealthcareMessageInput({
                     type={LabelTypography.BODY_1}
                     color={LabelColors.ONCONTENT_1}
                   >
-                    {'Paste this answer'}
+                    {"Paste this answer"}
                   </Label>
                 </SendButton>
                 <CancelButton onClick={handleCancel}>
@@ -756,13 +794,17 @@ export function HealthcareMessageInput({
                     type={LabelTypography.BODY_1}
                     color={LabelColors.PRIMARY}
                   >
-                    {'Cancel'}
+                    {"Cancel"}
                   </Label>
                 </CancelButton>
               </AIAssistantBodyContainer>
             )
           ) : (
-            <AIAssistantBodyContainer>
+            <AIAssistantBodyContainer
+              style={{
+                paddingBottom: "80px",
+              }}
+            >
               <Label
                 type={LabelTypography.BODY_1}
                 color={LabelColors.ONBACKGROUND_1}
@@ -783,7 +825,7 @@ export function HealthcareMessageInput({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.ONCONTENT_1}
                 >
-                  {'Send'}
+                  {"Send"}
                 </Label>
               </SendButton>
             </AIAssistantBodyContainer>
@@ -791,12 +833,13 @@ export function HealthcareMessageInput({
         </AIAssistantContainer>
       ) : showPatientChart ? (
         <AIAssistantContainer>
-          <InnerContainer
+          <TopInnerContainer
             onClick={handleBackToAssistant}
             style={{
-              cursor: 'pointer',
-              display: 'flex',
-              justifyContent: 'flex-start',
+              cursor: "pointer",
+              display: "flex",
+              justifyContent: "flex-start",
+              gap: "8px",
             }}
           >
             <IconChevronLeft />
@@ -806,28 +849,30 @@ export function HealthcareMessageInput({
             >
               Patient X
             </AIAssistantHeadText>
-          </InnerContainer>
+          </TopInnerContainer>
           <AIAssistantBodyContainer>
             <PatientChartContainer>
               <div
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  paddingTop: '8px',
-                  paddingLeft: '12px',
-                  paddingRight: '12px',
+                  display: "flex",
+                  alignItems: "center",
+                  paddingTop: "8px",
+                  paddingLeft: "12px",
+                  paddingRight: "12px",
                 }}
               >
                 <IconMagicWand
                   style={{
-                    paddingRight: '4px',
+                    paddingRight: "4px",
                   }}
                 />
                 <AIAssistantBodyHeadText
                   type={LabelTypography.CAPTION_2}
-                  color={LabelColors.ONBACKGROUND_2}
+                  color={LabelColors.ONBACKGROUND_1}
                 >
-                  {showTip ? 'Tips for using AI assistant' : 'Suggested by AI'}
+                  {showTip
+                    ? "Tips for using AI assistant"
+                    : "AI Medical Assistant"}
                 </AIAssistantBodyHeadText>
               </div>
               <PatientBodyText
@@ -844,7 +889,7 @@ export function HealthcareMessageInput({
         </AIAssistantContainer>
       ) : (
         <AIAssistantContainer>
-          <InnerContainer onClick={toggleFold} style={{ cursor: 'pointer' }}>
+          <TopInnerContainer onClick={toggleFold} style={{ cursor: "pointer" }}>
             <AIAssistantHeadText
               type={LabelTypography.SUBTITLE_1}
               color={LabelColors.ONBACKGROUND_1}
@@ -852,37 +897,37 @@ export function HealthcareMessageInput({
               AI medical assistant
             </AIAssistantHeadText>
             <IconChevronDown />
-          </InnerContainer>
+          </TopInnerContainer>
           <AIContainer>
             <TextContainer>
               <div
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  paddingTop: '8px',
-                  paddingLeft: '12px',
-                  paddingRight: '12px',
+                  display: "flex",
+                  alignItems: "center",
+                  paddingTop: "8px",
+                  paddingLeft: "12px",
+                  paddingRight: "12px",
                 }}
               >
                 <IconMagicWand
                   style={{
-                    paddingRight: '4px',
+                    paddingRight: "4px",
                   }}
                 />
                 <AIAssistantBodyHeadText
                   type={LabelTypography.CAPTION_2}
                   color={LabelColors.ONBACKGROUND_2}
                 >
-                  {showTip ? 'Tips for using AI assistant' : 'Suggested by AI'}
+                  {showTip ? "Tips for using AI assistant" : "Suggested by AI"}
                 </AIAssistantBodyHeadText>
               </div>
               {isPending ? (
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%',
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%",
                   }}
                 >
                   <LoadingDots />
@@ -893,7 +938,7 @@ export function HealthcareMessageInput({
                   color={LabelColors.ONBACKGROUND_1}
                 >
                   {showTip
-                    ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor '
+                    ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
                     : recommendMessage}
                 </AIAssistantBodyText>
               )}
@@ -904,7 +949,7 @@ export function HealthcareMessageInput({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.ONCONTENT_1}
                 >
-                  {'Paste this answer'}
+                  {"Paste this answer"}
                 </Label>
               </PrimaryButton>
             )}
@@ -914,7 +959,7 @@ export function HealthcareMessageInput({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.PRIMARY}
                 >
-                  {'Patient chart'}
+                  {"Patient chart"}
                 </Label>
               </SecondaryButton>
               <SecondaryButton
@@ -925,7 +970,7 @@ export function HealthcareMessageInput({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.PRIMARY}
                 >
-                  {'Ask the assistant'}
+                  {"Ask the assistant"}
                 </Label>
               </SecondaryButton>
             </SecondardButtonContainer>
