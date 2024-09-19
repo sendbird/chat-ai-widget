@@ -111,10 +111,3 @@ input:focus {
 .sendbird-form-chip {
   padding: 0px 12px;
 }
-
-.sendbird-loader {
-  margin-bottom: 2px;
-  &.no-animation {
-    animation: unset;
-  }
-}

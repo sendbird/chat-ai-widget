@@ -1,12 +1,16 @@
+import { css } from '@linaria/core';
 import { SendableMessage } from '@sendbird/chat/lib/__definition';
 import { SendingStatus } from '@sendbird/chat/message';
 import { Locale } from 'date-fns';
+import { useTheme } from 'styled-components';
 
 import { DefaultSentTime } from './MessageComponent';
 import { Icon } from '../foundation/components/Icon';
-import { Loader } from '../foundation/components/Loader';
+import { Container } from '../foundation/components/Loader';
+import { useLocalProps } from '../foundation/hooks/useLocalProps';
 import { CommonTheme } from '../theme';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
+
 
 interface MyMessageStatusProps {
   message: SendableMessage;
@@ -15,21 +19,28 @@ interface MyMessageStatusProps {
 }
 
 export default function MyMessageStatus(props: MyMessageStatusProps) {
-  const { message, dateLocale, theme } = props;
+  const { message, dateLocale } = props;
+  const theme = useTheme();
+  const localProps = useLocalProps({ testId: 'sendbird-loader' });
+
   switch (message.sendingStatus) {
     case SendingStatus.PENDING:
       return (
-        <Loader size={16} className="sendbird-loader">
+        <Container className={sendbirdLoader} size={16} {...localProps}>
           <Icon type={'spinner'} color={theme.bgColor.outgoingMessage} size={16} />
-        </Loader>
+        </Container>
       );
     case SendingStatus.FAILED:
       return (
-        <Loader size={16} className="sendbird-loader no-animation">
+        <Container className={sendbirdLoader} size={16} {...localProps} style={{ animation: 'unset' }}>
           <Icon type={'error'} color={'error'} size={16} />
-        </Loader>
+        </Container>
       );
     default:
       return <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>;
   }
 }
+
+const sendbirdLoader = css`
+  margin-bottom: 2px;
+`;

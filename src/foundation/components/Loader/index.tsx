@@ -18,7 +18,7 @@ export const Loader = ({ className, children, size = 26, testId = 'sendbird-load
   );
 };
 
-const Container = styled.div<{ size: string | number }>`
+export const Container = styled.div<{ size: string | number }>`
   display: inline-block;
   animation: 1s infinite linear;
   animation-name: rotate;
