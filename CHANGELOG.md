@@ -1,9 +1,12 @@
+## [1.8.2] (Sep 19, 2024)
+### Fix:
+- Removed CSS styles that could potentially affect the client's website
+
 ## [1.8.1] (Sep 12, 2024)
 ### Fix:
 - Fixed that prevent zoom when focusing on input in iOS mobile
 
 ## [1.8.0] (Sep 12, 2024)
-
 ### Feat:
 - **File Message Support**: File attachment in messages is now supported. Of course, drag-and-drop and copy-paste actions are also supported.
 - **Locale Support**: Added a `locale` option to support multiple languages for welcome messages and suggested replies. If not specified, the browser's default language will be used. (support for multilingual settings will be available in the dashboard). 
