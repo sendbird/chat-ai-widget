@@ -25,7 +25,7 @@ export const categoryColors = {
     '--sendbird-light-background-50': '#C8D9FA',
     'background-header-color': '#C8D9FA',
     'input-container-color': '#FFFFFF',
-    'input-message-background-color': '#EEEEEE',
+    'input-message-background-color': 'rgba(255, 255, 255, 0.38)',
     'icon-color': '#000000',
     'sendbird-conversation__messages-background-color': '#C8D9FA',
   },
