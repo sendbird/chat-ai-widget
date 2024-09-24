@@ -7,7 +7,6 @@ import { useTheme } from 'styled-components';
 import { DefaultSentTime } from './MessageComponent';
 import { Icon } from '../foundation/components/Icon';
 import { Loader } from '../foundation/components/Loader';
-import { CommonTheme } from '../theme';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 interface MyMessageStatusProps {
