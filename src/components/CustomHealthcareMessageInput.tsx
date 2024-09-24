@@ -1,24 +1,24 @@
-import { UserMessage } from '@sendbird/chat/message';
-import { useChannelContext } from '@sendbird/uikit-react/Channel/context';
+import { UserMessage } from "@sendbird/chat/message";
+import { useChannelContext } from "@sendbird/uikit-react/Channel/context";
 import Label, {
   LabelColors,
   LabelTypography,
-} from '@sendbird/uikit-react/ui/Label';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { SetStateAction, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+} from "@sendbird/uikit-react/ui/Label";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { SetStateAction, useEffect, useRef, useState } from "react";
+import styled from "styled-components";
 
-import LoadingDots from './LoadingDots';
-import { useConstantState } from '../context/ConstantContext';
-import { useSendMessage } from '../hooks/useSendMessage';
-import { ReactComponent as IconAIChatBot } from '../icons/icon-aichatbot.svg';
-import { ReactComponent as IconChevronDown } from '../icons/icon-chevron-down.svg';
-import { ReactComponent as IconChevronLeft } from '../icons/icon-chevron-left.svg';
-import { ReactComponent as IconChevronUp } from '../icons/icon-chevron-up.svg';
-import { ReactComponent as IconMagicWand } from '../icons/icon-magic-wand-filled.svg';
-import { ReactComponent as SendIcon } from '../icons/send-icon.svg';
+import LoadingDots from "./LoadingDots";
+import { useConstantState } from "../context/ConstantContext";
+import { useSendMessage } from "../hooks/useSendMessage";
+import { ReactComponent as IconAIChatBot } from "../icons/icon-aichatbot.svg";
+import { ReactComponent as IconChevronDown } from "../icons/icon-chevron-down.svg";
+import { ReactComponent as IconChevronLeft } from "../icons/icon-chevron-left.svg";
+import { ReactComponent as IconChevronUp } from "../icons/icon-chevron-up.svg";
+import { ReactComponent as IconMagicWand } from "../icons/icon-magic-wand-filled.svg";
 import ModalBackground from "../icons/modal-background.svg";
+import { ReactComponent as SendIcon } from "../icons/send-icon.svg";
 import { categoryColors } from "../utils/category";
 
 interface InputContainerProps {
@@ -152,6 +152,11 @@ const SecondardButtonContainer = styled.div<SecondardButtonContainerInputProps>`
   flex-direction: ${({ showTip }) => (showTip ? "column" : "row")};
   justify-content: space-between;
   gap: 8px;
+  flex: 1 1 auto;
+
+  > div {
+    width: 100%;
+  }
 `;
 
 const PrimaryButton = styled.div`
@@ -177,7 +182,7 @@ const SecondaryButton = styled.div<SecondardButtonContainerInputProps>`
 
 const TextContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.4);
-  height: 84px;
+  height: 140px;
   color: black;
   border-radius: 8px;
   text-align: start;
@@ -185,18 +190,6 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 8px;
-`;
-
-const PatientChartContainer = styled.div`
-  background-color: rgba(255, 255, 255, 0.4);
-  height: 172px;
-  color: black;
-  border-radius: 8px;
-  text-align: start;
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 16px;
 `;
 
 const Button = styled.div`
@@ -216,24 +209,9 @@ const AIAssistantBodyText = styled(Label)`
   font-weight: 500;
   white-space: normal;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: auto;
-`;
-
-const PatientBodyText = styled(Label)`
-  padding: 12px;
-  font-weight: 500;
-  white-space: normal;
-  height: 100%;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: auto;
-
-  & > div {
-    overflow: auto;
-  }
 `;
 
 const AIAssistantBodyHeadText = styled(Label)`
@@ -271,6 +249,16 @@ const SendButton = styled.button`
   &:disabled {
     cursor: not-allowed;
   }
+`;
+
+const PendingSendButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 12px;
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  cursor: not-allowed;
 `;
 
 const CancelButton = styled.button`
@@ -368,10 +356,11 @@ export function HealthcareMessageInput({
   const [message, setMessage] = useState(inputValue?.value ?? "");
   const { botCategory } = useConstantState();
   const [isFolded, setIsFolded] = useState(false); // New state to manage fold/unfold
-  const [isAskingAssistant, setIsAskingAssistant] = useState(false);
-  const [recommendMessage, setRecommendMessage] = useState("" as string);
+  const [isAskingAssistantMode, setIsAskingAssistantMode] = useState(false);
+  const [isAskingAssistantRequestSending, setIsAskingAssistantRequestSending] =
+    useState(false);
+  const [recommendMessage, setRecommendMessage] = useState("");
   const [showTip, setShowTip] = useState(false);
-  const [showPatientChart, setShowPatientChart] = useState(false);
   const headers = {
     "Content-Type": "application/json",
   };
@@ -457,9 +446,11 @@ export function HealthcareMessageInput({
   useEffect(() => {
     const fetchData = async () => {
       if (inputValue?.value != null && inputValue.value.length > 0) {
-        setIsAskingAssistant(true);
+        setIsAskingAssistantMode(true);
         setAIResponse(null);
         setAskToAIMessage(inputValue.value);
+        setIsAskingAssistantRequestSending(true);
+        setIsFolded(false);
 
         try {
           const response = await getRecommendMessage([
@@ -472,8 +463,8 @@ export function HealthcareMessageInput({
               content: inputValue.value,
             },
           ]);
+
           setAIResponse(response);
-          console.log(response);
 
           if (response.response_method?.function_calls?.length > 0) {
             setCurrentFunctionCall(response.response_method?.function_calls[0]);
@@ -483,6 +474,7 @@ export function HealthcareMessageInput({
         }
 
         setAskToAIMessage(""); // Clear input after sending
+        setIsAskingAssistantRequestSending(false);
       }
     };
 
@@ -513,7 +505,7 @@ export function HealthcareMessageInput({
     content: message.message,
   }));
 
-  const { isPending, error, refetch } = useQuery({
+  const { isPending } = useQuery({
     queryKey: ["getAIRecommendMessage", bodyInput],
     queryFn: () =>
       axios
@@ -549,6 +541,7 @@ export function HealthcareMessageInput({
   }
 
   async function handleAskAISendMessage() {
+    setIsAskingAssistantRequestSending(true);
     const response = await getRecommendMessage([
       {
         role: "user",
@@ -559,11 +552,13 @@ export function HealthcareMessageInput({
         content: askToAIMessage,
       },
     ]);
+
     setAIResponse(response);
-    console.log(response);
     if (response.response_method?.function_calls?.length > 0) {
       setCurrentFunctionCall(response.response_method?.function_calls[0]);
     }
+
+    setIsAskingAssistantRequestSending(false);
     setAskToAIMessage(""); // Clear input after sending
   }
 
@@ -595,27 +590,23 @@ export function HealthcareMessageInput({
     }
   }
 
-  function handlePatientChart() {
-    setShowPatientChart(true);
-  }
-
   function handleAskTheAssistant() {
-    setIsAskingAssistant(!isAskingAssistant);
+    setIsAskingAssistantMode(!isAskingAssistantMode);
     setAIResponse(null);
     setAskToAIMessage("");
-    setShowPatientChart(false);
   }
 
   function handlePasteThisAnswer() {
     setMessage(recommendMessage);
+    setIsFolded(true);
   }
 
   function handlePasteThisAnswerFromResponse() {
-    setIsAskingAssistant(!isAskingAssistant);
-    setIsFolded(true);
-    setMessage(AIResponse?.reply_messages[0] ?? "");
-    setAIResponse(null);
+    setIsAskingAssistantMode(!isAskingAssistantMode);
     setAskToAIMessage("");
+    setMessage(AIResponse?.reply_messages[0] ?? "");
+    setIsFolded(true);
+    setAIResponse(null);
   }
 
   function handleCancel() {
@@ -701,15 +692,6 @@ export function HealthcareMessageInput({
     }
   }
 
-  function handleBackToAssistant() {
-    setIsAskingAssistant(false);
-    setAIResponse(null);
-    setAskToAIMessage("");
-    setShowPatientChart(false);
-  }
-
-  console.log(botCategory);
-
   return (
     <InputContainer botCategory={botCategory} isFolded={isFolded}>
       {isFolded ? (
@@ -728,7 +710,7 @@ export function HealthcareMessageInput({
             }}
           />
         </ToggleText>
-      ) : isAskingAssistant ? (
+      ) : isAskingAssistantMode ? (
         <AIAssistantContainer>
           <TopInnerContainer
             onClick={handleAskTheAssistant}
@@ -817,75 +799,25 @@ export function HealthcareMessageInput({
                 onChange={handleAskAIMessageChange}
                 placeholder="Ask the assistant"
               />
-              <SendButton
-                onClick={handleAskAISendMessage}
-                disabled={!askToAIMessage.trim()}
-              >
-                <Label
-                  type={LabelTypography.BODY_1}
-                  color={LabelColors.ONCONTENT_1}
+              {isAskingAssistantRequestSending ? (
+                <PendingSendButton>
+                  <LoadingDots />
+                </PendingSendButton>
+              ) : (
+                <SendButton
+                  onClick={handleAskAISendMessage}
+                  disabled={!askToAIMessage.trim()}
                 >
-                  {"Send"}
-                </Label>
-              </SendButton>
+                  <Label
+                    type={LabelTypography.BODY_1}
+                    color={LabelColors.ONCONTENT_1}
+                  >
+                    {"Send"}
+                  </Label>
+                </SendButton>
+              )}
             </AIAssistantBodyContainer>
           )}
-        </AIAssistantContainer>
-      ) : showPatientChart ? (
-        <AIAssistantContainer>
-          <TopInnerContainer
-            onClick={handleBackToAssistant}
-            style={{
-              cursor: "pointer",
-              display: "flex",
-              justifyContent: "flex-start",
-              gap: "8px",
-            }}
-          >
-            <IconChevronLeft />
-            <AIAssistantHeadText
-              type={LabelTypography.SUBTITLE_1}
-              color={LabelColors.ONBACKGROUND_1}
-            >
-              Patient X
-            </AIAssistantHeadText>
-          </TopInnerContainer>
-          <AIAssistantBodyContainer>
-            <PatientChartContainer>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  paddingTop: "8px",
-                  paddingLeft: "12px",
-                  paddingRight: "12px",
-                }}
-              >
-                <IconMagicWand
-                  style={{
-                    paddingRight: "4px",
-                  }}
-                />
-                <AIAssistantBodyHeadText
-                  type={LabelTypography.CAPTION_2}
-                  color={LabelColors.ONBACKGROUND_1}
-                >
-                  {showTip
-                    ? "Tips for using AI assistant"
-                    : "AI Medical Assistant"}
-                </AIAssistantBodyHeadText>
-              </div>
-              <PatientBodyText
-                type={LabelTypography.BODY_1}
-                color={LabelColors.ONBACKGROUND_1}
-              >
-                <div>Gender: Male</div>
-                <div>Phone number: 000-000-0000</div>
-                <div>Email: @sendbird.com</div>
-                <div>Last visited date: Feb 1st, 2024</div>
-              </PatientBodyText>
-            </PatientChartContainer>
-          </AIAssistantBodyContainer>
         </AIAssistantContainer>
       ) : (
         <AIAssistantContainer>
@@ -943,25 +875,17 @@ export function HealthcareMessageInput({
                 </AIAssistantBodyText>
               )}
             </TextContainer>
-            {!showTip && (
-              <PrimaryButton onClick={handlePasteThisAnswer}>
-                <Label
-                  type={LabelTypography.BODY_1}
-                  color={LabelColors.ONCONTENT_1}
-                >
-                  {"Paste this answer"}
-                </Label>
-              </PrimaryButton>
-            )}
             <SecondardButtonContainer showTip={showTip}>
-              <SecondaryButton onClick={handlePatientChart} showTip={showTip}>
-                <Label
-                  type={LabelTypography.BODY_1}
-                  color={LabelColors.PRIMARY}
-                >
-                  {"Patient chart"}
-                </Label>
-              </SecondaryButton>
+              {!showTip && (
+                <PrimaryButton onClick={handlePasteThisAnswer}>
+                  <Label
+                    type={LabelTypography.BODY_1}
+                    color={LabelColors.ONCONTENT_1}
+                  >
+                    {"Paste this answer"}
+                  </Label>
+                </PrimaryButton>
+              )}
               <SecondaryButton
                 onClick={handleAskTheAssistant}
                 showTip={showTip}
@@ -977,7 +901,7 @@ export function HealthcareMessageInput({
           </AIContainer>
         </AIAssistantContainer>
       )}
-      {!isAskingAssistant && (
+      {!isAskingAssistantMode && (
         <InnerContainer>
           <InputComponent
             isActive={showSendButton}
