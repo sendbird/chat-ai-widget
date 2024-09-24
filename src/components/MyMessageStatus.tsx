@@ -27,9 +27,7 @@ export default function MyMessageStatus(props: MyMessageStatusProps) {
       );
     case SendingStatus.FAILED:
       return (
-        <div
-          className={sendbirdLoader}
-        >
+        <div className={sendbirdLoader}>
           <Icon type={'error'} color={'error'} size={16} />
         </div>
       );
