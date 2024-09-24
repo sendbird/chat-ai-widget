@@ -2,7 +2,6 @@ import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { FileMessage } from '@sendbird/chat/message';
 import { useState } from 'react';
-import { useTheme } from 'styled-components';
 
 import { useConstantState } from '../../context/ConstantContext';
 import { Icon } from '../../foundation/components/Icon';
@@ -19,7 +18,6 @@ type Props = {
 
 export const OutgoingFileMessage = ({ message }: Props) => {
   const { dateLocale } = useConstantState();
-  const theme = useTheme();
 
   const hasMessageBubble = !!message.message;
   const type = (() => {
@@ -38,7 +36,7 @@ export const OutgoingFileMessage = ({ message }: Props) => {
   const renderTimestamp = () => {
     return (
       <div className={timestampContainer}>
-        <MyMessageStatus message={message} dateLocale={dateLocale} theme={theme} />
+        <MyMessageStatus message={message} dateLocale={dateLocale} />
       </div>
     );
   };
