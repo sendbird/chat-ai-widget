@@ -29,10 +29,6 @@ export default function MyMessageStatus(props: MyMessageStatusProps) {
       return (
         <div
           className={sendbirdLoader}
-          style={{
-            width: '16px',
-            height: '16px',
-          }}
         >
           <Icon type={'error'} color={'error'} size={16} />
         </div>
@@ -44,4 +40,6 @@ export default function MyMessageStatus(props: MyMessageStatusProps) {
 
 const sendbirdLoader = css`
   margin-bottom: 2px;
+  width: 16px;
+  height: 16px;
 `;
