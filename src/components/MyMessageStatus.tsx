@@ -29,8 +29,8 @@ export default function MyMessageStatus(props: MyMessageStatusProps) {
     case SendingStatus.FAILED:
       return (
         <div
+          className={sendbirdLoader}
           style={{
-            display: 'inline-block',
             width: '16px',
             height: '16px',
           }}
