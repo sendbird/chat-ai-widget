@@ -6,7 +6,6 @@ import { BodyContainer, BodyComponent } from './MessageComponent';
 import MyMessageStatus from './MyMessageStatus';
 import { useConstantState } from '../context/ConstantContext';
 
-
 const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   display: flex;
   justify-content: flex-end;

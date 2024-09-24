@@ -6,11 +6,9 @@ import { useTheme } from 'styled-components';
 
 import { DefaultSentTime } from './MessageComponent';
 import { Icon } from '../foundation/components/Icon';
-import { Container } from '../foundation/components/Loader';
-import { useLocalProps } from '../foundation/hooks/useLocalProps';
+import { Loader } from '../foundation/components/Loader';
 import { CommonTheme } from '../theme';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
-
 
 interface MyMessageStatusProps {
   message: SendableMessage;
@@ -21,20 +19,25 @@ interface MyMessageStatusProps {
 export default function MyMessageStatus(props: MyMessageStatusProps) {
   const { message, dateLocale } = props;
   const theme = useTheme();
-  const localProps = useLocalProps({ testId: 'sendbird-loader' });
 
   switch (message.sendingStatus) {
     case SendingStatus.PENDING:
       return (
-        <Container className={sendbirdLoader} size={16} {...localProps}>
+        <Loader className={sendbirdLoader} size={16}>
           <Icon type={'spinner'} color={theme.bgColor.outgoingMessage} size={16} />
-        </Container>
+        </Loader>
       );
     case SendingStatus.FAILED:
       return (
-        <Container className={sendbirdLoader} size={16} {...localProps} style={{ animation: 'unset' }}>
+        <div
+          style={{
+            display: 'inline-block',
+            width: '16px',
+            height: '16px',
+          }}
+        >
           <Icon type={'error'} color={'error'} size={16} />
-        </Container>
+        </div>
       );
     default:
       return <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>;
