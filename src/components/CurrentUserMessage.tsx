@@ -23,7 +23,7 @@ export default function CurrentUserMessage(props: Props) {
 
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
-      <MyMessageStatus message={message} dateLocale={dateLocale} theme={theme} />
+      <MyMessageStatus message={message} dateLocale={dateLocale} />
       <BodyContainer>
         <BodyComponent>
           <div className="sendbird-word">{message.message}</div>
