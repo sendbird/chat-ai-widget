@@ -19,8 +19,6 @@ type Props = {
 
 export default function CurrentUserMessage(props: Props) {
   const { enableEmojiFeedback, dateLocale } = useConstantState();
-  const theme = useTheme();
-
   const { message } = props;
 
   return (
