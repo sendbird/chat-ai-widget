@@ -1,6 +1,5 @@
 import { styled } from '@linaria/react';
 import { UserMessage } from '@sendbird/chat/message';
-import { useTheme } from 'styled-components';
 
 import { BodyContainer, BodyComponent } from './MessageComponent';
 import MyMessageStatus from './MyMessageStatus';
