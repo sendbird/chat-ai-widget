@@ -13,7 +13,6 @@ import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 interface MyMessageStatusProps {
   message: SendableMessage;
   dateLocale: Locale;
-  theme: CommonTheme;
 }
 
 export default function MyMessageStatus(props: MyMessageStatusProps) {
