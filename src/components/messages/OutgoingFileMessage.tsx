@@ -8,8 +8,8 @@ import { Icon } from '../../foundation/components/Icon';
 import { Label } from '../../foundation/components/Label';
 import { Loader } from '../../foundation/components/Loader';
 import { META_ARRAY_ASPECT_RATIO_KEY } from '../../utils/getImageAspectRatio';
-import { formatCreatedAtToAMPM } from '../../utils/messageTimestamp';
-import { BodyComponent, BodyContainer, DefaultSentTime } from '../MessageComponent';
+import { BodyComponent, BodyContainer } from '../MessageComponent';
+import MyMessageStatus from '../MyMessageStatus';
 import { FileViewer } from '../ui/FileViewer';
 
 type Props = {
@@ -36,7 +36,7 @@ export const OutgoingFileMessage = ({ message }: Props) => {
   const renderTimestamp = () => {
     return (
       <div className={timestampContainer}>
-        <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>
+        <MyMessageStatus message={message} dateLocale={dateLocale} />
       </div>
     );
   };

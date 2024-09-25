@@ -1,9 +1,9 @@
+import { styled } from '@linaria/react';
 import { UserMessage } from '@sendbird/chat/message';
-import styled from 'styled-components';
 
-import { DefaultSentTime, BodyContainer, BodyComponent } from './MessageComponent';
+import { BodyContainer, BodyComponent } from './MessageComponent';
+import MyMessageStatus from './MyMessageStatus';
 import { useConstantState } from '../context/ConstantContext';
-import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   display: flex;
@@ -22,7 +22,7 @@ export default function CurrentUserMessage(props: Props) {
 
   return (
     <Root enableEmojiFeedback={enableEmojiFeedback}>
-      <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>
+      <MyMessageStatus message={message} dateLocale={dateLocale} />
       <BodyContainer>
         <BodyComponent>
           <div className="sendbird-word">{message.message}</div>

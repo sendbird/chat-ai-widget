@@ -9,7 +9,7 @@ const spinner = keyframes`
   100% {
     transform: rotate(360deg);
   }
-}`;
+`;
 
 const Container = styled.div`
   width: 100%;
