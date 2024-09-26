@@ -42,6 +42,7 @@ export const ChatMessageList = () => {
         scrollPositionRef={scrollSource.scrollPositionRef}
         scrollDistanceFromBottomRef={scrollSource.scrollDistanceFromBottomRef}
         onScrollPosition={(it) => scrollSource.setIsScrollBottomReached(it === 'bottom')}
+        stackDirection={'bottom'}
         messages={filteredMessages}
         onLoadPrev={dataSource.loadPrevious}
         onLoadNext={dataSource.loadNext}
