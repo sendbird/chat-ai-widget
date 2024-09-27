@@ -42,7 +42,7 @@
 
 .sendbird-suggested-replies {
   margin: 0 !important;
-  padding: 8px 0 16px;
+  padding: 8px 0 4px 0;
 }
 
 .sendbird-form-chip__container {
