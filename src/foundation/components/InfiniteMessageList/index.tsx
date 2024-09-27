@@ -29,6 +29,8 @@ type Props = {
 
   scrollPositionRef?: MutableRefObject<number>;
   scrollDistanceFromBottomRef?: MutableRefObject<number>;
+
+  stackDirection?: 'top' | 'bottom';
 };
 
 export const InfiniteMessageList = forwardRef<HTMLDivElement, Props>(function InfiniteMessageList(props, ref) {
@@ -49,6 +51,7 @@ export const InfiniteMessageList = forwardRef<HTMLDivElement, Props>(function In
 
     scrollPositionRef: _scrollPositionRef,
     scrollDistanceFromBottomRef: _scrollDistanceFromBottomRef,
+    stackDirection = 'top',
   } = props;
 
   const listRef = ref && 'current' in ref ? ref : { current: null };
@@ -112,6 +115,7 @@ export const InfiniteMessageList = forwardRef<HTMLDivElement, Props>(function In
   return (
     <div id={'infinite-list-container'} className={infiniteListContainer}>
       <div id={'infinite-list-inner'} ref={listRef} onScroll={handleScroll} className={infiniteListInner}>
+        {stackDirection === 'bottom' && <div style={{ flexGrow: 1 }} />}
         {messageTopArea}
         {messages.map((message, index) => renderMessage({ message, index }))}
         {messageBottomArea}

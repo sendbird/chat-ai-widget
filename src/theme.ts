@@ -2,7 +2,6 @@ import { getColorBasedOnSaturation, generateColorVariants } from './colors';
 export interface CommonTheme {
   bgColor: {
     base: string;
-    chatBottom: string;
     messageInput: string;
     incomingMessage: string;
     outgoingMessage: string;
@@ -131,7 +130,6 @@ export function getTheme({
     light: {
       bgColor: {
         base: 'var(--sendbird-light-background-50)',
-        chatBottom: 'var(--sendbird-light-background-50)',
         messageInput: 'var(--sendbird-light-background-100)',
         incomingMessage: botMessageBGColor ?? 'var(--sendbird-dark-background-100)',
         outgoingMessage: accentColor ?? 'var(--sendbird-light-primary-300)',
@@ -237,14 +235,13 @@ export function getTheme({
     },
     dark: {
       bgColor: {
-        base: 'var(--sendbird-light-background-600)',
-        chatBottom: 'var(--sendbird-dark-background-600)',
+        base: 'var(--sendbird-dark-background-700)',
         messageInput: 'var(--sendbird-dark-background-500)',
         incomingMessage: botMessageBGColor ?? 'var(--sendbird-dark-background-400)',
         outgoingMessage: accentColor ?? 'var(--sendbird-dark-primary-200)',
         suggestedReply: 'var(--sendbird-dark-background-600)',
-        bottomBanner: 'var(--sendbird-dark-background-600)',
-        loadingScreen: 'var(--sendbird-dark-background-600)',
+        bottomBanner: 'var(--sendbird-dark-background-700)',
+        loadingScreen: 'var(--sendbird-dark-background-700)',
         hover: {
           // Give 1 level lighter color for hover
           incomingMessage: colorVarsForBotMessageBGColor
