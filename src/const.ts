@@ -350,6 +350,7 @@ export const elementIds = {
 
 export const widgetServiceName = {
   default: 'genai-chatbot-widget',
+  playground: 'genai-widget-playground',
   self: {
     default: 'genai-self-service',
     wordpress: 'genai-wordpress-self-service',

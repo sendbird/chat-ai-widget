@@ -93,7 +93,7 @@
     <!-- Initialize chat-ai-widget and render the widget component -->
     <script type="text/babel">
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const { ChatWindow } = window.ChatAiWidget;
+      const { ChatWindow, widgetServiceName } = window.ChatAiWidget;
       function getHost(region) {
         if (region && region.startsWith('no')) {
           return { apiHost: `https://api-${region}.sendbirdtest.com`, wsHost: `wss://ws-${region}.sendbirdtest.com` };
@@ -127,6 +127,7 @@
             deviceType={mode}
             apiHost={apiHost}
             wsHost={wsHost}
+            serviceName={widgetServiceName.playground}
             callbacks={{
               onWidgetSettingFailure() {
                 window.document.getElementById('root').classList.add('hide');
