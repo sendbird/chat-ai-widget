@@ -241,13 +241,13 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     setShowModal(false);
   }
 
-  useScrollOnStreaming({
-    isLastBotMessage,
-    lastMessageRef,
-    // the reply panel component height is about 50px * 3(max replies) = 150px
-    bottomBuffer:
-      dynamicReplyOptions.length > 0 || isStaticReplyVisible ? 150 : 0,
-  });
+  // useScrollOnStreaming({
+  //   isLastBotMessage,
+  //   lastMessageRef,
+  //   // the reply panel component height is about 50px * 3(max replies) = 150px
+  //   bottomBuffer:
+  //     dynamicReplyOptions.length > 0 || isStaticReplyVisible ? 150 : 0,
+  // });
 
   /**
    * If the updated last message is sent by the current user, activate spinner for the sent message.
@@ -269,7 +269,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     } else {
       setActiveSpinnerId(-1);
     }
-    scrollUtil();
+    // scrollUtil();
   }, [lastMessage?.messageId]);
 
   const grouppedMessages = useMemo(
