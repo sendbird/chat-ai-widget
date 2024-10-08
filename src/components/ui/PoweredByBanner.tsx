@@ -52,7 +52,7 @@ function Banner() {
       {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
       <Highlighter
         aria-label="Learn more about Sendbird"
-        href="https://sendbird.com"
+        href="https://sendbird.com?utm_medium=product&utm_source=chatbot&utm_campaign=fy25-glbl-ai-chat-poweredby"
         rel="noopener noreferrer nofollow"
         target="_blank"
       >
