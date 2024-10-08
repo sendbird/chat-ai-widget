@@ -269,7 +269,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     } else {
       setActiveSpinnerId(-1);
     }
-    // scrollUtil();
+    scrollUtil();
   }, [lastMessage?.messageId]);
 
   const grouppedMessages = useMemo(
