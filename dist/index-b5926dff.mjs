@@ -3165,7 +3165,7 @@ var ux = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
           case 0:
             t = n.path, l = n.method, a = n.uploadProgressHandler, d = ![Re.GET, Re.DELETE].includes(l), r = this._sdkState.api, i = "".concat(r.host).concat(t).concat(d ? "" : n.query), c = d ? n.payload : null, V = this._createHeader(n, c instanceof FormData ? c : void 0), o = new AbortController(), s = o.signal, this._abortControl.set(n.requestId, o), U = Date.now(), k.label = 1;
           case 1:
-            return k.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-47b93c58.mjs")] : [3, 6];
+            return k.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-cec73177.mjs")] : [3, 6];
           case 2:
             N = k.sent().xmlHttpRequest, k.label = 3;
           case 3:
@@ -3177,11 +3177,11 @@ var ux = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
               throw h;
             return this._logger.debug("XMLHttpRequest is not available in this environment. progressHandler is ignored."), [3, 6];
           case 6:
-            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-938a4a60.mjs").then((S) => S._)];
+            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-ca0ad664.mjs").then((S) => S._)];
           case 7:
             k.sent(), k.label = 8;
           case 8:
-            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-8acc230e.mjs").then((S) => S._)];
+            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-6a30658d.mjs").then((S) => S._)];
           case 9:
             k.sent(), k.label = 10;
           case 10:
@@ -28369,7 +28369,7 @@ var FF = function() {
     return MediaRecorder.isTypeSupported(k);
   })) !== null && n !== void 0 ? n : "";
   d && !m && a.error("VoiceRecorder: Browser does not support mimeType", { mimmeTypes: ip }), _e(function() {
-    d && !W && import("./bundle-f5U_VL0z-ad2f68d7.mjs").then(function(k) {
+    d && !W && import("./bundle-f5U_VL0z-1cf2701f.mjs").then(function(k) {
       F(k);
     });
   }, [d, W]);
@@ -50440,7 +50440,7 @@ function _te(e) {
   ] });
 }
 const Pte = _v(
-  () => import("./CodeBlock-1e237f80.mjs").then(({ CodeBlock: e }) => ({ default: e }))
+  () => import("./CodeBlock-8266a6d6.mjs").then(({ CodeBlock: e }) => ({ default: e }))
 ), Ate = A.div`
   display: flex;
   ${({ botCategory: e }) => e && aa`
@@ -51122,7 +51122,7 @@ function One({
   bottomBuffer: t
 }) {
   const l = Xne((a) => {
-    a.scrollIntoView({ block: "end", behavior: "smooth" }), t > 0 && (a.style.scrollMarginBottom = `${t}px`);
+    a.scrollIntoView({ block: "start", behavior: "smooth" }), t > 0 && (a.style.scrollMarginBottom = `${t}px`);
   }, 0);
   _e(() => {
     const a = new ResizeObserver((d) => {
