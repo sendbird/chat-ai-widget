@@ -12,6 +12,7 @@ type FirstMessageItem = {
     message: string;
 };
 export interface Constant {
+    apiHost?: string;
     botCategory: string;
     botNickName: string;
     userId: string;

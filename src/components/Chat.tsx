@@ -19,10 +19,11 @@ import {
   useChatWindowLoadTime,
 } from '../hooks/useInteractiveDemoSharableData';
 import { assert, isMobile } from '../utils';
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const SBComponent = () => {
   const {
+    apiHost,
     applicationId,
     botId,
     userId,
@@ -32,10 +33,12 @@ const SBComponent = () => {
     enableMention,
   } = useConstantState();
 
+  assert(apiHost !== null, 'apiHost must be provided');
   assert(
     applicationId !== null && botId !== null,
     'applicationId and botId must be provided'
   );
+
   const { sbConnectionStatus } = useSbConnectionState();
   const sdkInitParams = useMemo(
     () => ({
@@ -62,7 +65,7 @@ const SBComponent = () => {
       appId={applicationId}
       userId={userId}
       nickname={userNickName}
-      customApiHost={`https://api-${applicationId}.sendbird.com`}
+      customApiHost={apiHost || `https://api-${applicationId}.sendbird.com`}
       customWebSocketHost={`wss://ws-${applicationId}.sendbird.com`}
       sdkInitParams={sdkInitParams}
       configureSession={configureSession}
@@ -88,6 +91,7 @@ const SBComponent = () => {
 };
 
 const Chat = ({
+  apiHost,
   applicationId,
   botId,
   hashedKey,
@@ -99,6 +103,7 @@ const Chat = ({
   const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
 
+  assert(apiHost !== null, 'apiHost must be provided');
   assert(
     applicationId !== null && botId !== null,
     'applicationId and botId must be provided'
@@ -119,6 +124,7 @@ const Chat = ({
       <ConstantStateProvider
         // If env is not provided, prop will be used instead.
         // But Either should be provided.
+        apiHost={apiHost}
         applicationId={CHAT_WIDGET_APP_ID ?? applicationId}
         botId={CHAT_WIDGET_BOT_ID ?? botId}
         {...constantProps}
