@@ -858,7 +858,7 @@ export function HealthcareMessageInput({
                   {showTip ? "Tips for using AI assistant" : "Suggested by AI"}
                 </AIAssistantBodyHeadText>
               </div>
-              {isPending ? (
+              {isPending || showTip ? (
                 <div
                   style={{
                     display: "flex",
@@ -874,9 +874,7 @@ export function HealthcareMessageInput({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.ONBACKGROUND_1}
                 >
-                  {showTip
-                    ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
-                    : recommendMessage}
+                  {recommendMessage}
                 </AIAssistantBodyText>
               )}
             </TextContainer>
