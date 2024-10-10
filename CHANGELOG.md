@@ -1,3 +1,12 @@
+## [1.8.3] (Oct 10, 2024)
+### Feat:
+- Added stack direction to message list and set as bottom
+- Added pending & failed icon to sent messages
+
+### Chore:
+- Added service name to playground
+- Added utm source to banner link
+
 ## [1.8.2] (Sep 19, 2024)
 ### Fix:
 - Removed CSS styles that could potentially affect the client's website
