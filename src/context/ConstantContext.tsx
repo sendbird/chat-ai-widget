@@ -19,6 +19,7 @@ type ProviderProps = React.PropsWithChildren<ConstantContextProps>;
 export const ConstantStateProvider = (props: ProviderProps) => {
   const memoizedValue = useMemo(
     () => ({
+      apiHost: props.apiHost,
       applicationId: props.applicationId,
       botId: props.botId,
       botCategory: props.botCategory ?? initialState.botCategory,

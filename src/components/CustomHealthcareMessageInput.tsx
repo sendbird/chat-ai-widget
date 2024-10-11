@@ -507,8 +507,12 @@ export function HealthcareMessageInput({
 
   const { isPending } = useQuery({
     queryKey: ["getAIRecommendMessage", bodyInput],
-    queryFn: () =>
-      axios
+    queryFn: () => {
+      // bodyinput must includes 2 objects, role and assistant
+      const isInvalidBodyInput = !bodyInput || bodyInput.length < 2;
+      if (isInvalidBodyInput) return Promise.resolve([]);
+
+      return axios
         .post(`/api/assistant`, {
           params: {
             botId: "healthcare",
@@ -523,7 +527,8 @@ export function HealthcareMessageInput({
           setShowTip(false);
           setRecommendMessage(response.data.reply_messages[0]);
           return response.data;
-        }),
+        });
+    },
   });
 
   async function getRecommendMessage(bodyInput?: any[]) {
@@ -853,7 +858,7 @@ export function HealthcareMessageInput({
                   {showTip ? "Tips for using AI assistant" : "Suggested by AI"}
                 </AIAssistantBodyHeadText>
               </div>
-              {isPending ? (
+              {isPending || showTip ? (
                 <div
                   style={{
                     display: "flex",
@@ -869,9 +874,7 @@ export function HealthcareMessageInput({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.ONBACKGROUND_1}
                 >
-                  {showTip
-                    ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
-                    : recommendMessage}
+                  {recommendMessage}
                 </AIAssistantBodyText>
               )}
             </TextContainer>
