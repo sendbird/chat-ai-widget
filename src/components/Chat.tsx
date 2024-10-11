@@ -33,7 +33,6 @@ const SBComponent = () => {
     enableMention,
   } = useConstantState();
 
-  assert(apiHost !== null, 'apiHost must be provided');
   assert(
     applicationId !== null && botId !== null,
     'applicationId and botId must be provided'
@@ -103,7 +102,6 @@ const Chat = ({
   const CHAT_WIDGET_APP_ID = import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const CHAT_WIDGET_BOT_ID = import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
 
-  assert(apiHost !== null, 'apiHost must be provided');
   assert(
     applicationId !== null && botId !== null,
     'applicationId and botId must be provided'
