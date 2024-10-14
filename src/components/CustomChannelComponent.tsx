@@ -283,7 +283,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   useEffect(() => {
     channel?.createMetaData({ bot_id: botUser.userId });
-  }, []);
+  }, [channel]);
 
   return (
     <Root

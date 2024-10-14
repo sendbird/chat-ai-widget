@@ -6,7 +6,7 @@ import React from 'react';
 import { ReactComponent as StartingPageLogo } from './icons/icon-widget-chatbot.svg';
 import { ReactComponent as RefreshIcon } from './icons/refresh-icon.svg';
 import { ReactComponent as StartingPageBackground } from './icons/starting-page-bg-image-svg.svg';
-import { noop, uuid } from './utils';
+import { uuid } from './utils';
 
 const USER_ID = uuid();
 // get your app_id -> https://dashboard.sendbird.com/auth/signin
@@ -101,7 +101,6 @@ export const DEFAULT_CONSTANT: Constant = {
     icon: RefreshIcon,
     width: '20px',
     height: '18px',
-    onClick: noop,
   },
   enableSourceMessage: true,
   enableEmojiFeedback: false,
