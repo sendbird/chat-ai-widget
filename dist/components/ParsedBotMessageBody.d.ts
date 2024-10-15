@@ -1,5 +1,5 @@
 import { EveryMessage } from 'SendbirdUIKitGlobal';
-import { Token } from '../utils';
+import { Token } from "../utils";
 type Props = {
     message: EveryMessage;
     tokens: Token[];

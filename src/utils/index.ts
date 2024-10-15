@@ -153,6 +153,18 @@ export function isNotLocalMessageCustomType(customType: string | undefined) {
   );
 }
 
+export function isValidJSON(str: any) {
+  if (typeof str !== "string") {
+    return false;
+  }
+  try {
+    JSON.parse(str);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
 export function replaceTextExtractsMultiple(
   input: string,
   replacements: Array<[string, string]>
