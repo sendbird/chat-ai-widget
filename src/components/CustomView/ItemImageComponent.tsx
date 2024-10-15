@@ -16,6 +16,7 @@ export class ItemImageComponent extends Component<{
           borderRadius: 8,
           objectFit: 'cover',
           objectPosition: 'center',
+          filter: 'brightness(80%)',
         }}
       />
     );

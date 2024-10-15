@@ -1,6 +1,7 @@
 export declare function uuid(): string;
 export declare const scrollUtil: () => void;
 export declare function formatCreatedAtToAMPM(createdAt: number): string;
+export declare function capitalize(word: string): string;
 export declare enum Languages {
     typescript = "typescript",
     javascript = "javascript",

@@ -27,15 +27,16 @@ import ParsedBotMessageBody from './ParsedBotMessageBody';
 import PendingMessage from './PendingMessage';
 import SuggestedReplyMessageBody from './SuggestedReplyMessageBody';
 import UserMessageWithBodyInput from './UserMessageWithBodyInput';
-import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
-import { useConstantState } from '../context/ConstantContext';
+import { ECOMMERCE_AGENT_ID, LOCAL_MESSAGE_CUSTOM_TYPE } from "../const";
+import { useConstantState } from "../context/ConstantContext";
 import {
+  capitalize,
   isNotLocalMessageCustomType,
   MessageTextParser,
   replaceTextExtractsMultiple,
   replaceUrl,
   Token,
-} from '../utils';
+} from "../utils";
 import {
   isFormMessage,
   isCurrentBalanceMessage,
@@ -48,7 +49,7 @@ import {
   isOrderDetailsMessage,
   isCancelOrderMessage,
   isRecommendItemsMessage,
-} from '../utils/messages';
+} from "../utils/messages";
 
 type Props = {
   message: EveryMessage;
@@ -89,7 +90,7 @@ export default function CustomMessage(props: Props) {
     if (
       messageMeta &&
       messageMeta.function_calls?.[0] &&
-      messageMeta.function_calls[0]?.response_text !== ''
+      messageMeta.function_calls[0]?.response_text !== ""
     ) {
       return JSON.parse(messageMeta.function_calls[0].response_text);
     }
@@ -97,7 +98,7 @@ export default function CustomMessage(props: Props) {
   }, [messageMeta]);
 
   // admin message
-  if (message.messageType === 'admin') {
+  if (message.messageType === "admin") {
     return <div>{<AdminMessage message={message.message} />}</div>;
   }
 
@@ -108,7 +109,7 @@ export default function CustomMessage(props: Props) {
         botUser={botUser}
         message={message}
         bodyComponent={<FormMessage form={forms[0]} message={message} />}
-        bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
+        bodyStyle={{ maxWidth: "320px", width: "calc(100% - 98px)" }}
         messageCount={allMessages.length}
         chainTop={chainTop}
         chainBottom={chainBottom}
@@ -245,7 +246,7 @@ export default function CustomMessage(props: Props) {
           chainBottom={chainBottom}
           newLineSentTime={false}
           disableProfileContainer={true}
-          marginBottom={'3px'}
+          marginBottom={"3px"}
         />
         <RecommendItemsMessage message={functionCallMessage} />
       </>
@@ -271,11 +272,15 @@ export default function CustomMessage(props: Props) {
     const userMessage = message as UserMessage;
     return (
       <div ref={lastMessageRef}>
-        {userMessage.sender?.userId === 'luke' &&
+        {userMessage.sender?.userId === ECOMMERCE_AGENT_ID &&
           userMessage.message ===
-            'Hello! This is Luke from Sendbird Shopping. How can I help you?' && (
+            `Hello! This is ${capitalize(
+              ECOMMERCE_AGENT_ID
+            )} from Sendbird Shopping. How can I help you?` && (
             <AdminMessage
-              message={'Luke from Sendbird Shopping has joined the chat.'}
+              message={`${capitalize(
+                ECOMMERCE_AGENT_ID
+              )} from Sendbird Shopping has joined the chat.`}
             />
           )}
         <UserMessageWithBodyInput
@@ -302,7 +307,7 @@ export default function CustomMessage(props: Props) {
           bodyComponent={
             <SuggestedReplyMessageBody message={message as UserMessage} />
           }
-          bodyStyle={{ maxWidth: '320px', width: 'calc(100% - 98px)' }}
+          bodyStyle={{ maxWidth: "320px", width: "calc(100% - 98px)" }}
           messageCount={allMessages.length}
           chainTop={chainTop}
           chainBottom={chainBottom}
@@ -315,7 +320,7 @@ export default function CustomMessage(props: Props) {
   // Normal message
   const tokens: Token[] = MessageTextParser((message as UserMessage).message);
   tokens.forEach((token: Token) => {
-    if (token.type === 'String') {
+    if (token.type === "String") {
       token.value = replaceUrl(token.value);
       token.value = replaceTextExtractsMultiple(
         token.value,

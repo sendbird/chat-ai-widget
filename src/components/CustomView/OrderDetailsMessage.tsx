@@ -175,7 +175,7 @@ const OrderDetailsMessage = ({ message }: { message: FunctionCallMessage }) => {
         <ListRow
           key={item.name}
           icon={
-            <ItemImageComponent image={item.image} width={40} height={40}/>
+            <ItemImageComponent image={item.image} width={40} height={40} />
           }
           title={
             <ItemsText

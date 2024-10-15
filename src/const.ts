@@ -107,6 +107,8 @@ export const DEFAULT_CONSTANT: Constant = {
   enableMention: true,
 };
 
+export const ECOMMERCE_AGENT_ID = 'luke';
+
 type ConfigureSession = (
   sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat
 ) => SessionHandler;

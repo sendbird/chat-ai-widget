@@ -66,7 +66,9 @@ export default function ParsedBotMessageBody(props: Props) {
   const { message, tokens } = props;
   const { enableSourceMessage } = useConstantState();
   const { botCategory } = useConstantState();
-  const data: MetaData = JSON.parse(message.data === '' ? '{}' : message.data);
+  const data: MetaData = JSON.parse(
+    message.data === "" || message.data === "None" ? "{}" : message.data
+  );
   const sources: Source[] = Array.isArray(data['metadatas'])
     ? data['metadatas']
     : [];
