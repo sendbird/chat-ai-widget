@@ -27,6 +27,7 @@ export declare function splitText(inputString: string): string[];
 export declare function MessageTextParser(inputString: string): Token[];
 export declare function isNotLocalMessageCustomType(customType: string | undefined): boolean;
 export declare function isValidJSON(str: any): boolean;
+export declare function boldifyMessage(text: string): string;
 export declare function replaceTextExtractsMultiple(input: string, replacements: Array<[string, string]>): string;
 export declare function replaceTextExtracts(input: string, searchText: string, replaceText: string): string;
 export declare function replaceUrl(input: string): string;

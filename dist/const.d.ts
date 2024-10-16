@@ -25,7 +25,7 @@ export interface Constant {
     startingPageContent: StartingPageContent;
     chatBottomContent: ChatBottomContent;
     messageBottomContent: MessageBottomContent;
-    replacementTextList: string[][];
+    replacementTextList: [string, string][];
     instantConnect: boolean;
     customRefreshComponent: CustomRefreshComponent;
     configureSession: ConfigureSession;

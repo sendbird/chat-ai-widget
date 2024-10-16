@@ -30,6 +30,7 @@ import UserMessageWithBodyInput from './UserMessageWithBodyInput';
 import { ECOMMERCE_AGENT_ID, LOCAL_MESSAGE_CUSTOM_TYPE } from "../const";
 import { useConstantState } from "../context/ConstantContext";
 import {
+  boldifyMessage,
   capitalize,
   isNotLocalMessageCustomType,
   MessageTextParser,
@@ -326,6 +327,7 @@ export default function CustomMessage(props: Props) {
         token.value,
         replacementTextList
       );
+      token.value = boldifyMessage(token.value);
     }
   });
 

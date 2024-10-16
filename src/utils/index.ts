@@ -165,6 +165,10 @@ export function isValidJSON(str: any) {
   }
 }
 
+export function boldifyMessage(text: string) {
+  return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+}
+
 export function replaceTextExtractsMultiple(
   input: string,
   replacements: Array<[string, string]>
