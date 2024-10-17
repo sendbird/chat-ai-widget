@@ -35,6 +35,10 @@ export function formatCreatedAtToAMPM(createdAt: number) {
   return strTime;
 }
 
+export function capitalize(word: string) {
+	return word.charAt(0).toUpperCase() + word.slice(1)
+}
+
 // Fixme: Add more languages
 export enum Languages {
   typescript = 'typescript',
@@ -147,6 +151,22 @@ export function isNotLocalMessageCustomType(customType: string | undefined) {
     !customType ||
     Object.values(LOCAL_MESSAGE_CUSTOM_TYPE).indexOf(customType) === -1
   );
+}
+
+export function isValidJSON(str: any) {
+  if (typeof str !== "string") {
+    return false;
+  }
+  try {
+    JSON.parse(str);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+export function boldifyMessage(text: string) {
+  return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 }
 
 export function replaceTextExtractsMultiple(

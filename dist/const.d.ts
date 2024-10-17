@@ -3,6 +3,7 @@ import { type SendbirdGroupChat } from '@sendbird/chat/groupChannel';
 import { type SendbirdOpenChat } from '@sendbird/chat/openChannel';
 import React from 'react';
 export declare const DEFAULT_CONSTANT: Constant;
+export declare const ECOMMERCE_AGENT_ID = "luke";
 type ConfigureSession = (sdk: SendbirdChat | SendbirdGroupChat | SendbirdOpenChat) => SessionHandler;
 type MessageData = {
     suggested_replies?: string[];
@@ -24,7 +25,7 @@ export interface Constant {
     startingPageContent: StartingPageContent;
     chatBottomContent: ChatBottomContent;
     messageBottomContent: MessageBottomContent;
-    replacementTextList: string[][];
+    replacementTextList: [string, string][];
     instantConnect: boolean;
     customRefreshComponent: CustomRefreshComponent;
     configureSession: ConfigureSession;

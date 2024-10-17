@@ -1,6 +1,7 @@
 export declare function uuid(): string;
 export declare const scrollUtil: () => void;
 export declare function formatCreatedAtToAMPM(createdAt: number): string;
+export declare function capitalize(word: string): string;
 export declare enum Languages {
     typescript = "typescript",
     javascript = "javascript",
@@ -25,6 +26,8 @@ export type Token = StringToken | CodeSnippetToken;
 export declare function splitText(inputString: string): string[];
 export declare function MessageTextParser(inputString: string): Token[];
 export declare function isNotLocalMessageCustomType(customType: string | undefined): boolean;
+export declare function isValidJSON(str: any): boolean;
+export declare function boldifyMessage(text: string): string;
 export declare function replaceTextExtractsMultiple(input: string, replacements: Array<[string, string]>): string;
 export declare function replaceTextExtracts(input: string, searchText: string, replaceText: string): string;
 export declare function replaceUrl(input: string): string;

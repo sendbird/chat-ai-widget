@@ -94,8 +94,7 @@ export default function CustomChannelHeader(props: Props) {
     setFirstMessage(null);
     createGroupChannel();
     resetStorageData();
-    customRefreshComponent?.onClick?.();
-    // window.location.reload();
+    customRefreshComponent?.onClick?.() ?? window.location.reload();
   }
 
   return (

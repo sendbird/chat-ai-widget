@@ -32,6 +32,7 @@ import {
   getBotWelcomeMessages,
   type MessageMeta,
 } from '../utils/messages';
+import { ECOMMERCE_AGENT_ID } from "../const";
 
 interface RootStyleProps {
   hidePlaceholder: boolean;
@@ -256,14 +257,14 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   useEffect(() => {
     if (
       lastMessage &&
-      !(lastMessage?.messageType === 'admin') &&
+      !(lastMessage?.messageType === "admin") &&
       lastMessage.sender?.userId === userId &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
       // this bubble loading should be shown only when there're only bot and 1 user in the channel
       channel?.memberCount === 2 &&
       !currentGroupChannel?.members
         .map((member) => member.userId)
-        .includes('luke')
+        .includes(ECOMMERCE_AGENT_ID)
     ) {
       setActiveSpinnerId(lastMessage.messageId);
     } else {
@@ -283,7 +284,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   useEffect(() => {
     channel?.createMetaData({ bot_id: botUser.userId });
-  }, []);
+  }, [channel]);
 
   return (
     <Root
