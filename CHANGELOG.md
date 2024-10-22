@@ -1,3 +1,7 @@
+## [1.8.4] (Oct 22, 2024)
+### Fix:
+- Passed missing locale to DateSeparator component
+
 ## [1.8.3] (Oct 10, 2024)
 ### Feat:
 - Added stack direction to message list and set as bottom
