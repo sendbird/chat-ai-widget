@@ -3165,7 +3165,7 @@ var Mx = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
           case 0:
             t = n.path, l = n.method, a = n.uploadProgressHandler, d = ![he.GET, he.DELETE].includes(l), r = this._sdkState.api, i = "".concat(r.host).concat(t).concat(d ? "" : n.query), c = d ? n.payload : null, V = this._createHeader(n, c instanceof FormData ? c : void 0), s = new AbortController(), o = s.signal, this._abortControl.set(n.requestId, s), U = Date.now(), b.label = 1;
           case 1:
-            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-6b39f507.mjs")] : [3, 6];
+            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-642b8be0.mjs")] : [3, 6];
           case 2:
             N = b.sent().xmlHttpRequest, b.label = 3;
           case 3:
@@ -3177,11 +3177,11 @@ var Mx = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
               throw h;
             return this._logger.debug("XMLHttpRequest is not available in this environment. progressHandler is ignored."), [3, 6];
           case 6:
-            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-ead953f9.mjs").then((k) => k._)];
+            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-38c879a2.mjs").then((k) => k._)];
           case 7:
             b.sent(), b.label = 8;
           case 8:
-            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-bc1fdd49.mjs").then((k) => k._)];
+            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-9b59198e.mjs").then((k) => k._)];
           case 9:
             b.sent(), b.label = 10;
           case 10:
@@ -7598,7 +7598,7 @@ var lV, Bl = function(e) {
       });
     });
   }, n;
-}(U3), fn = function(e) {
+}(U3), wn = function(e) {
   function n(t, l) {
     var a, d, r, i, c = this;
     if ((c = e.call(this, t, l) || this).reqId = "", c.replyToChannel = !1, c.errorCode = 0, c.sender = l.user ? new Yc(c._iid, l.user) : l.sender_id, c.reqId = (d = (a = l.req_id) !== null && a !== void 0 ? a : l.request_id) !== null && d !== void 0 ? d : "", c.replyToChannel = (r = l.is_reply_to_channel) !== null && r !== void 0 && r, l.request_state && Qt($t, l.request_state) && (c.sendingStatus = l.request_state), !c.sendingStatus)
@@ -7720,7 +7720,7 @@ var lV, Bl = function(e) {
   }, Object.defineProperty(n.prototype, "poll", { get: function() {
     return this._poll;
   }, enumerable: !1, configurable: !0 }), n;
-}(fn), Da = function(e) {
+}(wn), Da = function(e) {
   function n(t, l) {
     var a, d, r, i, c, V = this;
     if ((V = e.call(this, t, l) || this).messageParams = null, V.fileInfoList = [], V.messageSurvivalSeconds = -1, V.messageType = Gn.FILE, V.fileInfoList = (d = (a = l.files) === null || a === void 0 ? void 0 : a.map(function(o) {
@@ -7754,7 +7754,7 @@ var lV, Bl = function(e) {
     var l = t.fileInfoList;
     return Array.isArray(l);
   }, n;
-}(fn);
+}(wn);
 (function(e) {
   e.SENT = "SENT", e.READ = "READ";
 })(lV || (lV = {}));
@@ -7836,7 +7836,7 @@ var SV = function(e) {
       });
     });
   }, n;
-}(fn), dR = function(e) {
+}(wn), dR = function(e) {
   function n(t, l) {
     var a = l.file, d = l.fileUrl, r = l.fileName, i = l.fileSize, c = l.mimeType, V = l.thumbnailSizes, s = l._uploadedMetaData, o = l._thumbnails, U = e.call(this, t) || this;
     return U._plainUrl = d, U.file = a, U.fileName = r, U.fileSize = i, U.mimeType = c, U.thumbnailSizes = V, U._uploadedMetaData = s, U._thumbnails = o, U;
@@ -9802,7 +9802,7 @@ var Jn, VR = function(e) {
     });
   }, n.prototype.resendMessage = function(t, l) {
     var a, d;
-    if (Ze(t instanceof fn && !t.scheduledInfo && t.isResendable).throw(j.invalidParameters), t.isUserMessage()) {
+    if (Ze(t instanceof wn && !t.scheduledInfo && t.isResendable).throw(j.invalidParameters), t.isUserMessage()) {
       var r = (a = t.messageParams) !== null && a !== void 0 ? a : fT(t);
       return this._sendUserMessage(r, pl.RESEND, t.reqId);
     }
@@ -9861,7 +9861,7 @@ var Jn, VR = function(e) {
       });
     });
   }, n.prototype.copyMessage = function(t, l) {
-    Ze(t instanceof n && l instanceof fn && l.sendingStatus === $t.SUCCEEDED && this.url === l.channelUrl && !l.scheduledInfo).throw(j.invalidParameters);
+    Ze(t instanceof n && l instanceof wn && l.sendingStatus === $t.SUCCEEDED && this.url === l.channelUrl && !l.scheduledInfo).throw(j.invalidParameters);
     var a = l, d = t;
     if (a.isUserMessage()) {
       Ze(!a.poll).throw(j.notSupportedError);
@@ -9998,7 +9998,7 @@ var Jn, VR = function(e) {
       return p(this, function(V) {
         switch (V.label) {
           case 0:
-            return Ze(t instanceof fn && Qt(Cs, l) && B("string", a)).throw(j.invalidParameters), d = D.of(this._iid), r = d.sdkState, i = d.requestQueue, c = new d5({ channelUrl: this.url, channelType: this.channelType, userId: r.userId, offendingUserId: t.sender.userId, messageId: t.messageId, category: l, description: a }), [4, i.send(c)];
+            return Ze(t instanceof wn && Qt(Cs, l) && B("string", a)).throw(j.invalidParameters), d = D.of(this._iid), r = d.sdkState, i = d.requestQueue, c = new d5({ channelUrl: this.url, channelType: this.channelType, userId: r.userId, offendingUserId: t.sender.userId, messageId: t.messageId, category: l, description: a }), [4, i.send(c)];
           case 1:
             return V.sent(), [2];
         }
@@ -13571,7 +13571,7 @@ var Wl, dB = function() {
         if (n.messageType !== Gn.ADMIN)
           return !1;
     }
-    if (this.customTypesFilter && this.customTypesFilter.length > 0 && !this.customTypesFilter.includes("*") && !this.customTypesFilter.includes(n.customType) || this.senderUserIdsFilter && this.senderUserIdsFilter.length > 0 && (!(n instanceof fn) || !this.senderUserIdsFilter.includes(n.sender.userId)))
+    if (this.customTypesFilter && this.customTypesFilter.length > 0 && !this.customTypesFilter.includes("*") && !this.customTypesFilter.includes(n.customType) || this.senderUserIdsFilter && this.senderUserIdsFilter.length > 0 && (!(n instanceof wn) || !this.senderUserIdsFilter.includes(n.sender.userId)))
       return !1;
     if (n instanceof Bl)
       switch (this.replyType) {
@@ -13580,7 +13580,7 @@ var Wl, dB = function() {
             return !1;
           break;
         case al.ONLY_REPLY_TO_CHANNEL:
-          if (n instanceof fn && n.parentMessageId > 0 && !n.replyToChannel)
+          if (n instanceof wn && n.parentMessageId > 0 && !n.replyToChannel)
             return !1;
       }
     return !0;
@@ -14445,7 +14445,7 @@ var _s, wd = function(e) {
                         return [4, this._messageCache.upsert(r)];
                       case 1:
                         return v.sent(), [4, this._unsentMessageCache.remove(r.map(function(G) {
-                          return G instanceof fn ? G.reqId : null;
+                          return G instanceof wn ? G.reqId : null;
                         }).filter(function(G) {
                           return G !== null;
                         }))];
@@ -16600,9 +16600,9 @@ var Rr, FD = function(e) {
                   return Ne = new hD(d), this._requestQueue.send(Ne), [2];
                 });
               });
-            }), I = this._groupChannelCache.isCachedInMemory(d.channelUrl), v = d instanceof fn && d.sender.userId === this._sdkState.userId, [4, this.getChannel(d.channelUrl, !0)])) : [3, 3];
+            }), I = this._groupChannelCache.isCachedInMemory(d.channelUrl), v = d instanceof wn && d.sender.userId === this._sdkState.userId, [4, this.getChannel(d.channelUrl, !0)])) : [3, 3];
           case 2:
-            if ((c = gt.sent()).hiddenState === yl.HIDDEN_ALLOW_AUTO_UNHIDE && (c.hiddenState = yl.UNHIDDEN), d instanceof fn) {
+            if ((c = gt.sent()).hiddenState === yl.HIDDEN_ALLOW_AUTO_UNHIDE && (c.hiddenState = yl.UNHIDDEN), d instanceof wn) {
               V = D.of(this._iid).useMemberInfoInMessage;
               try {
                 for (s = be(c.members), o = s.next(); !o.done; o = s.next())
@@ -16688,7 +16688,7 @@ var Rr, FD = function(e) {
           case 4:
             return U = null, t.code === "MEDI" ? U = t.as(rR) : t.code === "FEDI" ? U = t.as(iR) : t.code === "AEDI" && (U = t.as(K3)), U ? (N = U.message, R = U.mentionCountChange, N.threadInfo && (N.threadInfo.unreadReplyCount = void 0), N.channelType !== Xt.GROUP ? [3, 6] : (I = this._groupChannelCache.isCachedInMemory(N.channelUrl), [4, this.getChannel(N.channelUrl, !0)])) : [3, 6];
           case 5:
-            h = gt.sent(), v = N instanceof fn && N.sender.userId === this._sdkState.userId, Z = !1, v ? (W = N.sender, (F = this._sessionManager.currentUser) && (F.nickname = W.nickname, F.plainProfileUrl = W.plainProfileUrl, F.metaData = W.metaData)) : h.isReadMessage(N) || R !== 0 && !N.silent && I && (h._updateUnreadCount(h.unreadMessageCount, h.unreadMentionCount + R), Z = !0), h._updateLastMessage(N) ? Z = !0 : !((a = h.lastMessage) === null || a === void 0) && a.isIdentical(N) && (I ? h._updateLastMessage(N) && (Z = !0) : Z = !0), m = !1, h.lastPinnedMessage && h.lastPinnedMessage.messageId === N.messageId && (h.lastPinnedMessage = N, Z = !0, m = !0), Z && (this._dispatcher.dispatch(new Dt({ channels: [h], source: m ? ne.EVENT_PINNED_MESSAGE_UPDATED : ne.EVENT_MESSAGE_UPDATED })), N.silent && !v || Le(function() {
+            h = gt.sent(), v = N instanceof wn && N.sender.userId === this._sdkState.userId, Z = !1, v ? (W = N.sender, (F = this._sessionManager.currentUser) && (F.nickname = W.nickname, F.plainProfileUrl = W.plainProfileUrl, F.metaData = W.metaData)) : h.isReadMessage(N) || R !== 0 && !N.silent && I && (h._updateUnreadCount(h.unreadMessageCount, h.unreadMentionCount + R), Z = !0), h._updateLastMessage(N) ? Z = !0 : !((a = h.lastMessage) === null || a === void 0) && a.isIdentical(N) && (I ? h._updateLastMessage(N) && (Z = !0) : Z = !0), m = !1, h.lastPinnedMessage && h.lastPinnedMessage.messageId === N.messageId && (h.lastPinnedMessage = N, Z = !0, m = !0), Z && (this._dispatcher.dispatch(new Dt({ channels: [h], source: m ? ne.EVENT_PINNED_MESSAGE_UPDATED : ne.EVENT_MESSAGE_UPDATED })), N.silent && !v || Le(function() {
               return M(on, void 0, void 0, function() {
                 var Ne, C, Et, st, St;
                 return p(this, function(Dn) {
@@ -17761,8 +17761,8 @@ var Rr, FD = function(e) {
     });
   }, n;
 }(L3), Ea = function(e, n) {
-  return n instanceof fn ? e.findIndex(function(t) {
-    return t instanceof fn && n.isIdentical(t);
+  return n instanceof wn ? e.findIndex(function(t) {
+    return t instanceof wn && n.isIdentical(t);
   }) : e.findIndex(function(t) {
     return t.isIdentical(n);
   });
@@ -19035,7 +19035,7 @@ var As, qs, $s, YD = function() {
               this._messages.splice(N, 0, U);
             }
           } else
-            U instanceof fn && (Z = Ea(this._unsentMessages, U)) < 0 && Ea(this._messages, U) < 0 && (this._unsentMessages.push(U), c.push(U));
+            U instanceof wn && (Z = Ea(this._unsentMessages, U)) < 0 && Ea(this._messages, U) < 0 && (this._unsentMessages.push(U), c.push(U));
         else if (U.messageId > 0) {
           if ((Z = Ea(this._messages, U)) < 0) {
             var R = Ea(this._unsentMessages, U);
@@ -19046,7 +19046,7 @@ var As, qs, $s, YD = function() {
             var h = this._updateChildMessagesInView(U);
             V.push.apply(V, ot([], et(h), !1));
           }
-        } else if (U instanceof fn) {
+        } else if (U instanceof wn) {
           var Z;
           (Z = Ea(this._unsentMessages, U)) < 0 ? Ea(this._messages, U) < 0 && (this._unsentMessages.push(U), c.push(U)) : (V.push(U), this._unsentMessages[Z] = U);
         }
@@ -19096,7 +19096,7 @@ var As, qs, $s, YD = function() {
             }
           }
         else
-          N instanceof fn && (U = Ea(this._unsentMessages, N)) >= 0 && (c.push(N), this._unsentMessages[U] = N);
+          N instanceof wn && (U = Ea(this._unsentMessages, N)) >= 0 && (c.push(N), this._unsentMessages[U] = N);
       }
     } catch (F) {
       a = { error: F };
@@ -19469,7 +19469,7 @@ var ja = function(e) {
       return Ga.payloadify(l);
     }), last_message: t.lastMessage ? ou(t.lastMessage) : null, inviter: t.inviter ? xt.payloadify(t.inviter) : null, invited_at: t.invitedAt, joined_ts: t.joinedAt, pinned_message_ids: t.pinnedMessageIds, latest_pinned_message: t.lastPinnedMessage ? ou(t.lastPinnedMessage) : null })));
   }, n.prototype._shouldUpdateLastMessageWith = function(t) {
-    return !(t instanceof fn && t.parentMessageId > 0 && !t.replyToChannel) && !t.silent && (!this.lastMessage || this.lastMessage.createdAt < t.createdAt || this.lastMessage.createdAt === t.createdAt && this.lastMessage.messageId === t.messageId && this.lastMessage.updatedAt < t.updatedAt);
+    return !(t instanceof wn && t.parentMessageId > 0 && !t.replyToChannel) && !t.silent && (!this.lastMessage || this.lastMessage.createdAt < t.createdAt || this.lastMessage.createdAt === t.createdAt && this.lastMessage.messageId === t.messageId && this.lastMessage.updatedAt < t.updatedAt);
   }, n.prototype._tryUpdateLastMessageAndCallEvents = function(t, l) {
     var a = D.of(this._iid).dispatcher, d = cl.of(this._iid);
     this._updateLastMessage(l), d.handlers.map(function(r) {
@@ -19541,7 +19541,7 @@ var ja = function(e) {
     return !1;
   }, n.prototype.getUnreadMemberCount = function(t) {
     var l, a;
-    if (t instanceof fn && !this.isExclusive && !this.isSuper && !this.isBroadcast) {
+    if (t instanceof wn && !this.isExclusive && !this.isSuper && !this.isBroadcast) {
       var d = D.of(this._iid).sdkState, r = t.createdAt, i = 0;
       try {
         for (var c = be(this.members), V = c.next(); !V.done; V = c.next()) {
@@ -19563,7 +19563,7 @@ var ja = function(e) {
     return 0;
   }, n.prototype.getUndeliveredMemberCount = function(t) {
     var l, a;
-    if (t instanceof fn && !this.isExclusive && !this.isSuper && !this.isBroadcast) {
+    if (t instanceof wn && !this.isExclusive && !this.isSuper && !this.isBroadcast) {
       var d = D.of(this._iid).sdkState, r = t.createdAt, i = 0;
       try {
         for (var c = be(this.members), V = c.next(); !V.done; V = c.next()) {
@@ -19589,7 +19589,7 @@ var ja = function(e) {
     var d = D.of(this._iid).sdkState;
     if (!d.userId || this.isExclusive || this.isSuper || this.isBroadcast)
       return [];
-    var r = t instanceof fn ? t.sender : null, i = [];
+    var r = t instanceof wn ? t.sender : null, i = [];
     return this.members.forEach(function(c) {
       if (l || c.userId !== d.userId && c.userId !== (r == null ? void 0 : r.userId)) {
         var V = a._unreadMemberStateMap.get(c.userId);
@@ -19602,7 +19602,7 @@ var ja = function(e) {
     var d = D.of(this._iid).sdkState;
     if (!d.userId || this.isExclusive || this.isSuper || this.isBroadcast)
       return [];
-    var r = t instanceof fn ? t.sender : null, i = [];
+    var r = t instanceof wn ? t.sender : null, i = [];
     return this.members.forEach(function(c) {
       if (l || c.userId !== d.userId && c.userId !== (r == null ? void 0 : r.userId)) {
         var V = a._unreadMemberStateMap.get(c.userId);
@@ -19871,7 +19871,7 @@ var ja = function(e) {
           case 0:
             return [4, e.prototype.deleteMessage.call(this, t)];
           case 1:
-            return l.sent(), t.messageId === 0 && t instanceof fn && D.of(this._iid).dispatcher.dispatch(new n3({ reqId: t.reqId, source: ne.EVENT_MESSAGE_DELETED })), [2];
+            return l.sent(), t.messageId === 0 && t instanceof wn && D.of(this._iid).dispatcher.dispatch(new n3({ reqId: t.reqId, source: ne.EVENT_MESSAGE_DELETED })), [2];
         }
       });
     });
@@ -20133,7 +20133,7 @@ var ja = function(e) {
     });
   }, n.prototype.resendMessage = function(t, l) {
     var a, d = this;
-    if (Ze(t instanceof fn && !t.scheduledInfo && t.isResendable).throw(j.invalidParameters), t.isUserMessage()) {
+    if (Ze(t instanceof wn && !t.scheduledInfo && t.isResendable).throw(j.invalidParameters), t.isUserMessage()) {
       var r = (a = t.messageParams) !== null && a !== void 0 ? a : fT(t), i = new oa();
       return this._sendUserMessage(r, pl.RESEND, t.reqId).onPending(function(o) {
         i._trigger(o);
@@ -20170,7 +20170,7 @@ var ja = function(e) {
     }
   }, n.prototype.copyMessage = function(t, l) {
     var a = this;
-    if (Ze(t instanceof VR && l instanceof fn && l.sendingStatus === $t.SUCCEEDED && this.url === l.channelUrl && !l.scheduledInfo).throw(j.invalidParameters), l.isUserMessage()) {
+    if (Ze(t instanceof VR && l instanceof wn && l.sendingStatus === $t.SUCCEEDED && this.url === l.channelUrl && !l.scheduledInfo).throw(j.invalidParameters), l.isUserMessage()) {
       Ze(!l.poll).throw(j.notSupportedError);
       var d = W3(l), r = new oa();
       return t._sendUserMessage(d).onPending(function(V) {
@@ -25289,25 +25289,25 @@ var uj = function(e) {
       });
     });
   }, n;
-}(CR), Hn;
+}(CR), fn;
 (function(e) {
   e.NONE = "NONE", e.PENDING = "PENDING", e.SENT = "SENT", e.FAILED = "FAILED", e.DELIVERED = "DELIVERED", e.READ = "READ";
-})(Hn || (Hn = {}));
+})(fn || (fn = {}));
 var Mb = function(e, n) {
   var t, l, a, d, r;
   if (!n || !("sendingStatus" in n))
-    return Hn.NONE;
+    return fn.NONE;
   if (n.sendingStatus === "pending")
-    return Hn.PENDING;
+    return fn.PENDING;
   if (n.sendingStatus === "failed")
-    return Hn.FAILED;
+    return fn.FAILED;
   if (!((t = e == null ? void 0 : e.isGroupChannel) === null || t === void 0) && t.call(e)) {
     if (((a = (l = e).getUnreadMemberCount) === null || a === void 0 ? void 0 : a.call(l, n)) === 0)
-      return Hn.READ;
+      return fn.READ;
     if (((r = (d = e).getUndeliveredMemberCount) === null || r === void 0 ? void 0 : r.call(d, n)) === 0)
-      return Hn.DELIVERED;
+      return fn.DELIVERED;
   }
-  return n.sendingStatus === "succeeded" ? Hn.SENT : Hn.NONE;
+  return n.sendingStatus === "succeeded" ? fn.SENT : fn.NONE;
 }, dV = {
   IMAGE: [
     "image/jpeg",
@@ -25445,13 +25445,13 @@ var Mb = function(e, n) {
 }, So = function(e) {
   return e.sendingStatus === "succeeded";
 }, ap = function(e, n) {
-  return Mb(e, n) === Hn.READ;
+  return Mb(e, n) === fn.READ;
 }, Ba = function(e) {
   return (e == null ? void 0 : e.sendingStatus) === "failed";
 }, Fd = function(e) {
   return (e == null ? void 0 : e.sendingStatus) === "pending";
 }, bj = function(e) {
-  return e === Hn.SENT || e === Hn.DELIVERED || e === Hn.READ;
+  return e === fn.SENT || e === fn.DELIVERED || e === fn.READ;
 }, Yj = function(e) {
   return e && (e.isAdminMessage && typeof e.isAdminMessage == "function" ? e.isAdminMessage() : (e == null ? void 0 : e.messageType) === "admin");
 }, dd = function(e) {
@@ -28369,7 +28369,7 @@ var WF = function() {
     return MediaRecorder.isTypeSupported(b);
   })) !== null && n !== void 0 ? n : "";
   d && !m && a.error("VoiceRecorder: Browser does not support mimeType", { mimmeTypes: ip }), _e(function() {
-    d && !W && import("./bundle-f5U_VL0z-0348ec31.mjs").then(function(b) {
+    d && !W && import("./bundle-f5U_VL0z-b15c90bf.mjs").then(function(b) {
       F(b);
     });
   }, [d, W]);
@@ -32987,17 +32987,17 @@ var iI = function(e) {
   return r ? tI(r) ? Sr(r, "p", i) : rI(r) ? d.MESSAGE_STATUS__YESTERDAY || "Yesterday" : lI(r) ? Sr(r, "MMM d", i) : Sr(r, "yyyy/M/d", i) : "";
 };
 function VI(e) {
-  var n, t, l, a = e.className, d = e.message, r = e.channel, i = e.isDateSeparatorConsidered, c = i === void 0 ? !0 : i, V = ca(), s = V.stringSet, o = V.dateLocale, U = Mb(r, d), N = ((l = r == null ? void 0 : r.isGroupChannel) === null || l === void 0 ? void 0 : l.call(r)) && (r.isSuper || r.isPublic || r.isBroadcast) && !(U === Hn.PENDING || U === Hn.FAILED), R = (n = {}, n[Hn.SENT] = Ie.DONE, n[Hn.DELIVERED] = Ie.DONE_ALL, n[Hn.READ] = Ie.DONE_ALL, n[Hn.FAILED] = Ie.ERROR, n), h = (t = {}, t[Hn.SENT] = Pe.SENT, t[Hn.DELIVERED] = Pe.SENT, t[Hn.READ] = Pe.READ, t[Hn.FAILED] = Pe.ERROR, t);
+  var n, t, l, a = e.className, d = e.message, r = e.channel, i = e.isDateSeparatorConsidered, c = i === void 0 ? !0 : i, V = ca(), s = V.stringSet, o = V.dateLocale, U = Mb(r, d), N = ((l = r == null ? void 0 : r.isGroupChannel) === null || l === void 0 ? void 0 : l.call(r)) && (r.isSuper || r.isPublic || r.isBroadcast) && !(U === fn.PENDING || U === fn.FAILED), R = (n = {}, n[fn.SENT] = Ie.DONE, n[fn.DELIVERED] = Ie.DONE_ALL, n[fn.READ] = Ie.DONE_ALL, n[fn.FAILED] = Ie.ERROR, n), h = (t = {}, t[fn.SENT] = Pe.SENT, t[fn.DELIVERED] = Pe.SENT, t[fn.READ] = Pe.READ, t[fn.FAILED] = Pe.ERROR, t);
   return T.createElement(
     "div",
     { className: Ut(Ut([], Array.isArray(a) ? a : [a], !0), [
       "sendbird-message-status"
     ], !1).join(" ") },
-    U === Hn.PENDING ? T.createElement(
+    U === fn.PENDING ? T.createElement(
       Vh,
       { className: "sendbird-message-status__icon", width: "16px", height: "16px" },
       T.createElement(dt, { type: Ie.SPINNER, fillColor: Pe.PRIMARY, width: "16px", height: "16px" })
-    ) : T.createElement(dt, { className: "sendbird-message-status__icon ".concat(N ? "hide-icon" : "", " ").concat(U === Hn.FAILED ? "" : "sendbird-message-status--sent"), type: R[U] || Ie.ERROR, fillColor: h[U], width: "16px", height: "16px" }),
+    ) : T.createElement(dt, { className: "sendbird-message-status__icon ".concat(N ? "hide-icon" : "", " ").concat(U === fn.FAILED ? "" : "sendbird-message-status--sent"), type: R[U] || Ie.ERROR, fillColor: h[U], width: "16px", height: "16px" }),
     bj(U) && T.createElement(Fe, { className: "sendbird-message-status__text", type: oe.CAPTION_3, color: ie.ONBACKGROUND_2 }, c ? Sr((d == null ? void 0 : d.createdAt) || 0, "p", { locale: o }) : iI({ channel: r, locale: o, stringSet: s }))
   );
 }
@@ -37521,13 +37521,13 @@ const wZ = "chat-ai-widget", oU = () => {
     [e]
   );
   return /* @__PURE__ */ Y.jsx($Y.Provider, { value: n, children: e.children });
-}, wn = () => Gt($Y), eQ = _l({
+}, jn = () => Gt($Y), eQ = _l({
   sbConnectionStatus: "INIT",
   setSbConnectionStatus: F2,
   firstMessage: null,
   setFirstMessage: F2
 }), TC = (e) => {
-  const { instantConnect: n } = wn(), [t, l] = (
+  const { instantConnect: n } = jn(), [t, l] = (
     // Don't need to use this state if instantConnect is true
     me(n ? "CONNECTED" : "INIT")
   ), [a, d] = me(null);
@@ -37664,7 +37664,7 @@ const oh = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIgAAACICAYAAAA8uqNSAA
   padding: 15px 20px 12px;
 `;
 function yC(e) {
-  const { channel: n, createGroupChannel: t, botUser: l } = e, { customRefreshComponent: a } = wn(), { botCategory: d } = wn(), { setFirstMessage: r } = UU(), i = MC();
+  const { channel: n, createGroupChannel: t, botUser: l } = e, { customRefreshComponent: a } = jn(), { botCategory: d } = jn(), { setFirstMessage: r } = UU(), i = MC();
   function c() {
     var V;
     r(null), t(), i(), ((V = a == null ? void 0 : a.onClick) == null ? void 0 : V.call(a)) ?? window.location.reload();
@@ -38956,7 +38956,7 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
   clear() {
     _(this, Tl).clear(), _(this, li).clear();
   }
-}, Tl = new WeakMap(), li = new WeakMap(), ai = new WeakMap(), Nc = new WeakMap(), Rc = new WeakMap(), di = new WeakMap(), hc = new WeakMap(), Zc = new WeakMap(), _S), sa, jn, Io, ql, UV, Tc, yd, Lo, Fc, Wc, NV, RV, ri, mc, hV, Js, Co, xF, Ko, GF, _o, yF, Po, BF, Ao, DF, qo, XF, $o, OF, HR, VQ, PS, $C = (PS = class extends NU {
+}, Tl = new WeakMap(), li = new WeakMap(), ai = new WeakMap(), Nc = new WeakMap(), Rc = new WeakMap(), di = new WeakMap(), hc = new WeakMap(), Zc = new WeakMap(), _S), sa, Hn, Io, ql, UV, Tc, yd, Lo, Fc, Wc, NV, RV, ri, mc, hV, Js, Co, xF, Ko, GF, _o, yF, Po, BF, Ao, DF, qo, XF, $o, OF, HR, VQ, PS, $C = (PS = class extends NU {
   constructor(n, t) {
     super();
     Yt(this, hV);
@@ -38969,7 +38969,7 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
     Yt(this, $o);
     Yt(this, HR);
     Yt(this, sa, void 0);
-    Yt(this, jn, void 0);
+    Yt(this, Hn, void 0);
     Yt(this, Io, void 0);
     Yt(this, ql, void 0);
     Yt(this, UV, void 0);
@@ -38990,50 +38990,50 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
     this.refetch = this.refetch.bind(this);
   }
   onSubscribe() {
-    this.listeners.size === 1 && (_(this, jn).addObserver(this), E2(_(this, jn), this.options) ? Un(this, hV, Js).call(this) : this.updateResult(), Un(this, Po, BF).call(this));
+    this.listeners.size === 1 && (_(this, Hn).addObserver(this), E2(_(this, Hn), this.options) ? Un(this, hV, Js).call(this) : this.updateResult(), Un(this, Po, BF).call(this));
   }
   onUnsubscribe() {
     this.hasListeners() || this.destroy();
   }
   shouldFetchOnReconnect() {
     return jF(
-      _(this, jn),
+      _(this, Hn),
       this.options,
       this.options.refetchOnReconnect
     );
   }
   shouldFetchOnWindowFocus() {
     return jF(
-      _(this, jn),
+      _(this, Hn),
       this.options,
       this.options.refetchOnWindowFocus
     );
   }
   destroy() {
-    this.listeners = /* @__PURE__ */ new Set(), Un(this, Ao, DF).call(this), Un(this, qo, XF).call(this), _(this, jn).removeObserver(this);
+    this.listeners = /* @__PURE__ */ new Set(), Un(this, Ao, DF).call(this), Un(this, qo, XF).call(this), _(this, Hn).removeObserver(this);
   }
   setOptions(n, t) {
-    const l = this.options, a = _(this, jn);
+    const l = this.options, a = _(this, Hn);
     if (this.options = _(this, sa).defaultQueryOptions(n), this.options.enabled !== void 0 && typeof this.options.enabled != "boolean")
       throw new Error("Expected enabled to be a boolean");
     Un(this, $o, OF).call(this), JF(this.options, l) || _(this, sa).getQueryCache().notify({
       type: "observerOptionsUpdated",
-      query: _(this, jn),
+      query: _(this, Hn),
       observer: this
     });
     const d = this.hasListeners();
     d && S2(
-      _(this, jn),
+      _(this, Hn),
       a,
       this.options,
       l
-    ) && Un(this, hV, Js).call(this), this.updateResult(t), d && (_(this, jn) !== a || this.options.enabled !== l.enabled || this.options.staleTime !== l.staleTime) && Un(this, Co, xF).call(this);
+    ) && Un(this, hV, Js).call(this), this.updateResult(t), d && (_(this, Hn) !== a || this.options.enabled !== l.enabled || this.options.staleTime !== l.staleTime) && Un(this, Co, xF).call(this);
     const r = Un(this, Ko, GF).call(this);
-    d && (_(this, jn) !== a || this.options.enabled !== l.enabled || r !== _(this, ri)) && Un(this, _o, yF).call(this, r);
+    d && (_(this, Hn) !== a || this.options.enabled !== l.enabled || r !== _(this, ri)) && Un(this, _o, yF).call(this, r);
   }
   getOptimisticResult(n) {
     const t = _(this, sa).getQueryCache().build(_(this, sa), n), l = this.createResult(t, n);
-    return tK(this, l) && (Tt(this, ql, l), Tt(this, Tc, this.options), Tt(this, UV, _(this, jn).state)), l;
+    return tK(this, l) && (Tt(this, ql, l), Tt(this, Tc, this.options), Tt(this, UV, _(this, Hn).state)), l;
   }
   getCurrentResult() {
     return _(this, ql);
@@ -39052,7 +39052,7 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
     _(this, mc).add(n);
   }
   getCurrentQuery() {
-    return _(this, jn);
+    return _(this, Hn);
   }
   refetch({ ...n } = {}) {
     return this.fetch({
@@ -39071,7 +39071,7 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
   }
   createResult(n, t) {
     var k;
-    const l = _(this, jn), a = this.options, d = _(this, ql), r = _(this, UV), i = _(this, Tc), V = n !== l ? n.state : _(this, Io), { state: s } = n;
+    const l = _(this, Hn), a = this.options, d = _(this, ql), r = _(this, UV), i = _(this, Tc), V = n !== l ? n.state : _(this, Io), { state: s } = n;
     let { error: o, errorUpdatedAt: U, fetchStatus: N, status: R } = s, h = !1, Z;
     if (t._optimisticResults) {
       const Q = this.hasListeners(), S = !Q && E2(n, t), v = Q && S2(n, l, t, a);
@@ -39137,8 +39137,8 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
     };
   }
   updateResult(n) {
-    const t = _(this, ql), l = this.createResult(_(this, jn), this.options);
-    if (Tt(this, UV, _(this, jn).state), Tt(this, Tc, this.options), _(this, UV).data !== void 0 && Tt(this, Wc, _(this, jn)), JF(l, t))
+    const t = _(this, ql), l = this.createResult(_(this, Hn), this.options);
+    if (Tt(this, UV, _(this, Hn).state), Tt(this, Tc, this.options), _(this, UV).data !== void 0 && Tt(this, Wc, _(this, Hn)), JF(l, t))
       return;
     Tt(this, ql, l);
     const a = {}, d = () => {
@@ -39160,9 +39160,9 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
   onQueryUpdate() {
     this.updateResult(), this.hasListeners() && Un(this, Po, BF).call(this);
   }
-}, sa = new WeakMap(), jn = new WeakMap(), Io = new WeakMap(), ql = new WeakMap(), UV = new WeakMap(), Tc = new WeakMap(), yd = new WeakMap(), Lo = new WeakMap(), Fc = new WeakMap(), Wc = new WeakMap(), NV = new WeakMap(), RV = new WeakMap(), ri = new WeakMap(), mc = new WeakMap(), hV = new WeakSet(), Js = function(n) {
+}, sa = new WeakMap(), Hn = new WeakMap(), Io = new WeakMap(), ql = new WeakMap(), UV = new WeakMap(), Tc = new WeakMap(), yd = new WeakMap(), Lo = new WeakMap(), Fc = new WeakMap(), Wc = new WeakMap(), NV = new WeakMap(), RV = new WeakMap(), ri = new WeakMap(), mc = new WeakMap(), hV = new WeakSet(), Js = function(n) {
   Un(this, $o, OF).call(this);
-  let t = _(this, jn).fetch(
+  let t = _(this, Hn).fetch(
     this.options,
     n
   );
@@ -39178,7 +39178,7 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
     _(this, ql).isStale || this.updateResult();
   }, t));
 }, Ko = new WeakSet(), GF = function() {
-  return (typeof this.options.refetchInterval == "function" ? this.options.refetchInterval(_(this, jn)) : this.options.refetchInterval) ?? !1;
+  return (typeof this.options.refetchInterval == "function" ? this.options.refetchInterval(_(this, Hn)) : this.options.refetchInterval) ?? !1;
 }, _o = new WeakSet(), yF = function(n) {
   Un(this, qo, XF).call(this), Tt(this, ri, n), !(xc || this.options.enabled === !1 || !QF(_(this, ri)) || _(this, ri) === 0) && Tt(this, RV, setInterval(() => {
     (this.options.refetchIntervalInBackground || bR.isFocused()) && Un(this, hV, Js).call(this);
@@ -39191,16 +39191,16 @@ var Tl, li, ai, Nc, Rc, di, hc, Zc, _S, qC = (_S = class {
   _(this, RV) && (clearInterval(_(this, RV)), Tt(this, RV, void 0));
 }, $o = new WeakSet(), OF = function() {
   const n = _(this, sa).getQueryCache().build(_(this, sa), this.options);
-  if (n === _(this, jn))
+  if (n === _(this, Hn))
     return;
-  const t = _(this, jn);
-  Tt(this, jn, n), Tt(this, Io, n.state), this.hasListeners() && (t == null || t.removeObserver(this), n.addObserver(this));
+  const t = _(this, Hn);
+  Tt(this, Hn, n), Tt(this, Io, n.state), this.hasListeners() && (t == null || t.removeObserver(this), n.addObserver(this));
 }, HR = new WeakSet(), VQ = function(n) {
   Xl.batch(() => {
     n.listeners && this.listeners.forEach((t) => {
       t(_(this, ql));
     }), _(this, sa).getQueryCache().notify({
-      query: _(this, jn),
+      query: _(this, Hn),
       type: "observerResultsUpdated"
     });
   });
@@ -41057,7 +41057,7 @@ function l_({
   setShowModal: t
 }) {
   var we, Me;
-  const { inputValue: l, botId: a, userId: d } = wn(), [r, i] = me(""), [c, V] = me(null), [s, o] = me(null), U = Wt(null), [N, R] = me(!1), [h, Z] = me((l == null ? void 0 : l.value) ?? ""), { botCategory: W } = wn(), [F, m] = me(!1), [E, u] = me(!1), [b, k] = me(!1), [Q, S] = me(""), [v, G] = me(!1), w = {
+  const { inputValue: l, botId: a, userId: d } = jn(), [r, i] = me(""), [c, V] = me(null), [s, o] = me(null), U = Wt(null), [N, R] = me(!1), [h, Z] = me((l == null ? void 0 : l.value) ?? ""), { botCategory: W } = jn(), [F, m] = me(!1), [E, u] = me(!1), [b, k] = me(!1), [Q, S] = me(""), [v, G] = me(!1), w = {
     "Content-Type": "application/json"
   }, { allMessages: y } = fl(), g = [
     {
@@ -41712,7 +41712,7 @@ const s_ = A.div`
   width: 28px;
 `;
 function Ud(e) {
-  const { enableEmojiFeedback: n } = wn(), {
+  const { enableEmojiFeedback: n } = jn(), {
     botUser: t,
     message: l,
     bodyComponent: a,
@@ -41812,7 +41812,7 @@ const h_ = A.div`
   white-space: pre-line;
 `;
 function m_(e) {
-  const { message: n } = e, { botCategory: t } = wn();
+  const { message: n } = e, { botCategory: t } = jn();
   return /* @__PURE__ */ Y.jsxs(h_, { children: [
     /* @__PURE__ */ Y.jsx(T_, { children: /* @__PURE__ */ Y.jsx("div", { children: kR(n.createdAt) }) }),
     /* @__PURE__ */ Y.jsx(Z_, { children: /* @__PURE__ */ Y.jsx(F_, { botCategory: t, children: /* @__PURE__ */ Y.jsx(W_, { children: n.message }) }) })
@@ -41841,7 +41841,7 @@ const u_ = A.div`
   line-height: 1.43;
 `;
 function M_(e) {
-  const { message: n } = e, t = t1.sanitize(n), { botCategory: l } = wn();
+  const { message: n } = e, t = t1.sanitize(n), { botCategory: l } = jn();
   return /* @__PURE__ */ Y.jsx(u_, { botCategory: l, children: /* @__PURE__ */ Y.jsx(p_, { children: t }) });
 }
 class Fh extends VW {
@@ -47401,7 +47401,7 @@ const uv = ({
 `, A7 = ({
   message: e
 }) => {
-  const [n, t] = me(!1), l = JSON.parse((e == null ? void 0 : e.transaction_history) ?? "[]"), { inputValue: a } = wn();
+  const [n, t] = me(!1), l = JSON.parse((e == null ? void 0 : e.transaction_history) ?? "[]"), { inputValue: a } = jn();
   return _e(() => {
     t(!1);
   }, [a == null ? void 0 : a.value]), /* @__PURE__ */ Y.jsxs(L7, { children: [
@@ -48784,10 +48784,12 @@ const Q$ = A(nr.Container)`
   opacity: ${({ disabled: e }) => e ? 0.4 : 1};
   font-weight: 500;
 `, lee = ({ message: e }) => {
-  const [n, t] = me(!1), l = (d) => {
-    a(d), t(!0);
-  }, a = Ji();
-  return /* @__PURE__ */ Y.jsxs(eee, { children: [
+  const [n, t] = me(!1), { inputValue: l } = jn(), a = Ji(), d = (r) => {
+    a(r), t(!0);
+  };
+  return _e(() => {
+    t(!1);
+  }, [l == null ? void 0 : l.value]), /* @__PURE__ */ Y.jsxs(eee, { children: [
     /* @__PURE__ */ Y.jsxs(Fe, { children: [
       "Send to ",
       (e == null ? void 0 : e.recipient) ?? "Jin Ku"
@@ -48802,7 +48804,7 @@ const Q$ = A(nr.Container)`
         {
           disabled: n,
           onClick: () => {
-            l("Cancel");
+            d("Cancel");
           },
           children: /* @__PURE__ */ Y.jsx(
             ES,
@@ -48819,7 +48821,7 @@ const Q$ = A(nr.Container)`
         {
           disabled: n,
           onClick: () => {
-            l("Send");
+            d("Send");
           },
           children: /* @__PURE__ */ Y.jsx(ES, { disabled: n, children: "Send" })
         }
@@ -48851,7 +48853,7 @@ const Q$ = A(nr.Container)`
 }) => {
   const n = JSON.parse(
     (e == null ? void 0 : e.transaction_history) ?? "[]"
-  ), [t, l] = me(!1), { inputValue: a } = wn();
+  ), [t, l] = me(!1), { inputValue: a } = jn();
   return _e(() => {
     l(!1);
   }, [a == null ? void 0 : a.value]), /* @__PURE__ */ Y.jsxs(aee, { children: [
@@ -49009,7 +49011,7 @@ function Fee(e) {
       isValid: !1
     };
   });
-  const [r, i] = me(d), { botCategory: c } = wn();
+  const [r, i] = me(d), { botCategory: c } = jn();
   _e(() => {
     if (a) {
       const o = {};
@@ -50391,7 +50393,7 @@ const Ote = A.div`
   }
 `;
 function Ite() {
-  const { messageBottomContent: e } = wn(), n = "auto", { getTooltipProps: t, setTooltipRef: l, setTriggerRef: a } = Dte({
+  const { messageBottomContent: e } = jn(), n = "auto", { getTooltipProps: t, setTooltipRef: l, setTriggerRef: a } = Dte({
     placement: n
   }), [d, r] = me(!1);
   return /* @__PURE__ */ Y.jsxs(Y.Fragment, { children: [
@@ -50460,7 +50462,7 @@ function qte(e) {
   ] });
 }
 const $te = Av(
-  () => import("./CodeBlock-eabfc153.mjs").then(({ CodeBlock: e }) => ({ default: e }))
+  () => import("./CodeBlock-f082f6aa.mjs").then(({ CodeBlock: e }) => ({ default: e }))
 ), ene = A.div`
   display: flex;
   ${({ botCategory: e }) => e && aa`
@@ -50484,7 +50486,7 @@ const $te = Av(
   width: 100%;
 `;
 function nne(e) {
-  const { message: n, tokens: t } = e, { enableSourceMessage: l } = wn(), { botCategory: a } = wn(), d = JSON.parse(
+  const { message: n, tokens: t } = e, { enableSourceMessage: l } = jn(), { botCategory: a } = jn(), d = JSON.parse(
     n.data === "" || n.data === "None" || !iC(n.data) ? "{}" : n.data
   ), r = Array.isArray(d.metadatas) ? d.metadatas : [];
   return t.length > 0 ? /* @__PURE__ */ Y.jsxs(ene, { botCategory: a, children: [
@@ -50766,7 +50768,7 @@ function zne(e) {
     chainTop: d,
     chainBottom: r,
     isBotWelcomeMessage: i
-  } = e, { replacementTextList: c, userId: V } = wn(), { currentGroupChannel: s } = fl(), { allMessages: o } = fl(), U = nn(() => {
+  } = e, { replacementTextList: c, userId: V } = jn(), { currentGroupChannel: s } = fl(), { allMessages: o } = fl(), U = nn(() => {
     let F;
     try {
       F = n != null && n.data ? JSON.parse(n.data) : null;
@@ -51038,7 +51040,7 @@ const xne = A.textarea`
 function gv({
   onSendMessage: e
 }) {
-  const { inputValue: n } = wn(), t = Wt(null), [l, a] = me(!1), [d, r] = me((n == null ? void 0 : n.value) ?? ""), { botCategory: i } = wn(), c = Ji();
+  const { inputValue: n } = jn(), t = Wt(null), [l, a] = me(!1), [d, r] = me((n == null ? void 0 : n.value) ?? ""), { botCategory: i } = jn(), c = Ji();
   Dne(t.current, d), _e(() => {
     (n == null ? void 0 : n.value) != null && n.value.length > 0 && c(n.value);
   }, [n == null ? void 0 : n.value, n == null ? void 0 : n.id]), _e(() => {
@@ -51236,7 +51238,7 @@ const Xne = A.div`
 `;
 function Ine(e) {
   var k, Q;
-  const { botUser: n, createGroupChannel: t } = e, { userId: l, suggestedMessageContent: a } = wn(), { botCategory: d } = wn(), { allMessages: r, currentGroupChannel: i } = fl(), c = Wt(null), [V, s] = me(!1), [o, U] = me({
+  const { botUser: n, createGroupChannel: t } = e, { userId: l, suggestedMessageContent: a } = jn(), { botCategory: d } = jn(), { allMessages: r, currentGroupChannel: i } = fl(), c = Wt(null), [V, s] = me(!1), [o, U] = me({
     symptom: "",
     date: "",
     medicalHistory: ""
@@ -51459,7 +51461,7 @@ const Pne = A.div`
   justify-content: center;
 `;
 function tle() {
-  const { chatBottomContent: e } = wn();
+  const { chatBottomContent: e } = jn();
   return /* @__PURE__ */ Y.jsx(qne, { children: /* @__PURE__ */ Y.jsxs(
     $ne,
     {
@@ -51569,7 +51571,7 @@ const nle = A.div`
   width: 100%;
 `;
 function Lv(e) {
-  const { isStartingPage: n } = e, { startingPageContent: t, betaMark: l, customBetaMarkText: a, botNickName: d } = wn(), {
+  const { isStartingPage: n } = e, { startingPageContent: t, betaMark: l, customBetaMarkText: a, botNickName: d } = jn(), {
     sbConnectionStatus: r,
     setSbConnectionStatus: i,
     firstMessage: c,
@@ -51637,7 +51639,7 @@ function Lv(e) {
   ] });
 }
 function sle(e, n) {
-  const [t, l] = me(null), [a, d] = me(!1), r = zn(), i = r.stores.sdkStore.sdk, c = kY(r), { createGroupChannelParams: V, instantConnect: s, firstMessageData: o } = wn(), { setSbConnectionStatus: U, firstMessage: N } = UU(), R = Pt(async () => {
+  const [t, l] = me(null), [a, d] = me(!1), r = zn(), i = r.stores.sdkStore.sdk, c = kY(r), { createGroupChannelParams: V, instantConnect: s, firstMessageData: o } = jn(), { setSbConnectionStatus: U, firstMessage: N } = UU(), R = Pt(async () => {
     if (!(!e || !n))
       try {
         d(!0);
@@ -51686,7 +51688,7 @@ function Nle(e, n) {
   }, [e == null ? void 0 : e.userId, n, d]), t;
 }
 function Rle(e) {
-  const { instantConnect: n } = wn(), { sbConnectionStatus: t } = UU(), { setInitialTimeStamp: l } = fl(), [a, d] = me(!1);
+  const { instantConnect: n } = jn(), { sbConnectionStatus: t } = UU(), { setInitialTimeStamp: l } = fl(), [a, d] = me(!1);
   return _e(() => {
     t === "CONNECTED" && setTimeout(() => {
       d(!0), l(null);
@@ -51694,7 +51696,7 @@ function Rle(e) {
   }, [t]), a ? /* @__PURE__ */ Y.jsx(Ine, { ...e }) : n ? /* @__PURE__ */ Y.jsx(Iv, {}) : /* @__PURE__ */ Y.jsx(Lv, { isStartingPage: !0 });
 }
 function hle() {
-  const { botId: e, instantConnect: n } = wn(), l = zn().stores.sdkStore.sdk;
+  const { botId: e, instantConnect: n } = jn(), l = zn().stores.sdkStore.sdk;
   i1(e !== null, "botId must be provided");
   const a = Nle(l.currentUser, e), [d, r] = sle(
     l.currentUser,
@@ -51720,7 +51722,7 @@ const Zle = () => {
     configureSession: d,
     enableEmojiFeedback: r,
     enableMention: i
-  } = wn();
+  } = jn();
   i1(
     n !== null && t !== null,
     "applicationId and botId must be provided"
