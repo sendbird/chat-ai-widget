@@ -12,7 +12,7 @@ import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
 
 export const useBotStudioView = () => {
-  const { botStudioEditProps = {}, botId, replacementTextList, stringSet } = useConstantState();
+  const { botStudioEditProps = {}, botId, replacementTextList, stringSet, dateLocale } = useConstantState();
   const { dataSource, handlers } = useChatContext();
   const { suggestedRepliesDirection, welcomeMessages = [] } = botStudioEditProps;
   const { messages } = dataSource;
@@ -53,6 +53,7 @@ export const useBotStudioView = () => {
             className={dateSeparatorMargin}
             date={firstOriginalWM?.createdAt}
             formatString={stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR}
+            locale={dateLocale}
           />
           {welcomeMessages.map((msg, index) => {
             if ('message' in msg) {

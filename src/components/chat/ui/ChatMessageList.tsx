@@ -20,7 +20,7 @@ import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
 
 export const ChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
-  const { botStudioEditProps, customUserAgentParam, stringSet } = useConstantState();
+  const { botStudioEditProps, customUserAgentParam, stringSet, dateLocale } = useConstantState();
 
   const typingTargetMessageId = useTypingTargetMessageId();
   const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();
@@ -63,6 +63,7 @@ export const ChatMessageList = () => {
                   className={dateSeparatorMargin}
                   date={message.createdAt}
                   formatString={stringSet.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR}
+                  locale={dateLocale}
                 />
               )}
               <div style={{ marginBottom: index === filteredMessages.length - 1 ? 0 : 16 }}>
