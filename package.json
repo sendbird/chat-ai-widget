@@ -82,8 +82,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@4.2.2",
-  "resolutions": {
-    "@sendbird/chat": "file:./sendbird-chat-4.14.2.tgz"
-  }
+  "packageManager": "yarn@4.2.2"
 }
