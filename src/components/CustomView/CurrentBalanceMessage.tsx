@@ -3,12 +3,13 @@ import Label, {
   LabelTypography,
   LabelColors,
 } from '@sendbird/uikit-react/ui/Label';
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 import styled from 'styled-components';
 
 import TransactionHistoryBottomSheet from './TransactionHistoryBottomSheet';
 import { ReactComponent as WalletIcon } from '../../icons/icon-wallet.svg';
 import { FunctionCallMessage } from '../../utils/messages';
+import { useConstantState } from "../../context/ConstantContext";
 
 const Container = styled.div`
   display: flex;
@@ -53,6 +54,11 @@ const CurrentBalanceMessage = ({
 }) => {
   const [bottomSheetOpen, setBottomSheetOpen] = useState(false);
   const historyList = JSON.parse(message?.transaction_history ?? '[]');
+  const { inputValue } = useConstantState();
+
+  useEffect(() => {
+    setBottomSheetOpen(false);
+  }, [inputValue?.value]);
 
   return (
     <Container>

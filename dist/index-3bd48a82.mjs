@@ -15,7 +15,7 @@ var _ = (e, n, t) => (Ih(e, n, "read from private field"), t ? t.call(e) : n.get
   }
 }), Un = (e, n, t) => (Ih(e, n, "access private method"), t);
 import * as z from "react";
-import T, { useRef as Wt, useContext as Gt, createElement as na, useCallback as Pt, createContext as _l, useState as me, useEffect as Pe, useLayoutEffect as ud, useMemo as nn, useReducer as zs, Component as VW, useInsertionEffect as AS, forwardRef as vV, useId as cW, cloneElement as qS, Children as $S, isValidElement as _v, useImperativeHandle as Pv, lazy as Av, Suspense as qv, Fragment as $v } from "react";
+import T, { useRef as Wt, useContext as Gt, createElement as na, useCallback as Pt, createContext as _l, useState as me, useEffect as _e, useLayoutEffect as ud, useMemo as nn, useReducer as zs, Component as VW, useInsertionEffect as AS, forwardRef as vV, useId as cW, cloneElement as qS, Children as $S, isValidElement as _v, useImperativeHandle as Pv, lazy as Av, Suspense as qv, Fragment as $v } from "react";
 import * as ek from "react-dom";
 import { createPortal as Yi } from "react-dom";
 var Qle = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
@@ -3165,7 +3165,7 @@ var Mx = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
           case 0:
             t = n.path, l = n.method, a = n.uploadProgressHandler, d = ![he.GET, he.DELETE].includes(l), r = this._sdkState.api, i = "".concat(r.host).concat(t).concat(d ? "" : n.query), c = d ? n.payload : null, V = this._createHeader(n, c instanceof FormData ? c : void 0), s = new AbortController(), o = s.signal, this._abortControl.set(n.requestId, s), U = Date.now(), b.label = 1;
           case 1:
-            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-6ed036a1.mjs")] : [3, 6];
+            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-6b39f507.mjs")] : [3, 6];
           case 2:
             N = b.sent().xmlHttpRequest, b.label = 3;
           case 3:
@@ -3177,11 +3177,11 @@ var Mx = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
               throw h;
             return this._logger.debug("XMLHttpRequest is not available in this environment. progressHandler is ignored."), [3, 6];
           case 6:
-            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-f911b4bd.mjs").then((k) => k._)];
+            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-ead953f9.mjs").then((k) => k._)];
           case 7:
             b.sent(), b.label = 8;
           case 8:
-            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-94e79294.mjs").then((k) => k._)];
+            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-bc1fdd49.mjs").then((k) => k._)];
           case 9:
             b.sent(), b.label = 10;
           case 10:
@@ -4000,7 +4000,7 @@ var ws = (e, n, t, l, a, d, r, i) => {
   }
   return Q !== 0 && (a[N + Q] = h - u << 24 | 64 << 16 | 0), i.bits = m, 0;
 };
-const { Z_FINISH: fm, Z_BLOCK: aG, Z_TREES: XU, Z_OK: Ci, Z_STREAM_END: dG, Z_NEED_DICT: rG, Z_STREAM_ERROR: Aa, Z_DATA_ERROR: wm, Z_MEM_ERROR: gm, Z_BUF_ERROR: iG, Z_DEFLATED: Im } = GV, wR = 16180, OU = 16190, Vr = 16191, tZ = 16192, nZ = 16194, jU = 16199, HU = 16200, lZ = 16206, gn = 16209, Lm = (e) => (e >>> 24 & 255) + (e >>> 8 & 65280) + ((65280 & e) << 8) + ((255 & e) << 24);
+const { Z_FINISH: fm, Z_BLOCK: aG, Z_TREES: XU, Z_OK: Ci, Z_STREAM_END: dG, Z_NEED_DICT: rG, Z_STREAM_ERROR: Aa, Z_DATA_ERROR: wm, Z_MEM_ERROR: gm, Z_BUF_ERROR: iG, Z_DEFLATED: Im } = GV, wR = 16180, OU = 16190, Vr = 16191, tZ = 16192, nZ = 16194, jU = 16199, HU = 16200, lZ = 16206, In = 16209, Lm = (e) => (e >>> 24 & 255) + (e >>> 8 & 65280) + ((65280 & e) << 8) + ((255 & e) << 24);
 function VG() {
   this.strm = null, this.mode = 0, this.last = !1, this.wrap = 0, this.havedict = !1, this.flags = 0, this.dmax = 0, this.check = 0, this.total = 0, this.head = null, this.wbits = 0, this.wsize = 0, this.whave = 0, this.wnext = 0, this.window = null, this.hold = 0, this.bits = 0, this.length = 0, this.offset = 0, this.extra = 0, this.lencode = null, this.distcode = null, this.lenbits = 0, this.distbits = 0, this.ncode = 0, this.nlen = 0, this.ndist = 0, this.have = 0, this.next = null, this.lens = new Uint16Array(320), this.work = new Uint16Array(288), this.lendyn = null, this.distdyn = null, this.sane = 0, this.back = 0, this.was = 0;
 }
@@ -4082,15 +4082,15 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
             break;
           }
           if (t.head && (t.head.done = !1), !(1 & t.wrap) || (((255 & V) << 8) + (V >> 8)) % 31) {
-            e.msg = "incorrect header check", t.mode = gn;
+            e.msg = "incorrect header check", t.mode = In;
             break;
           }
           if ((15 & V) !== Im) {
-            e.msg = "unknown compression method", t.mode = gn;
+            e.msg = "unknown compression method", t.mode = In;
             break;
           }
           if (V >>>= 4, s -= 4, b = 8 + (15 & V), t.wbits === 0 && (t.wbits = b), b > 15 || b > t.wbits) {
-            e.msg = "invalid window size", t.mode = gn;
+            e.msg = "invalid window size", t.mode = In;
             break;
           }
           t.dmax = 1 << t.wbits, t.flags = 0, e.adler = t.check = 1, t.mode = 512 & V ? 16189 : Vr, V = 0, s = 0;
@@ -4102,11 +4102,11 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
             i--, V += l[d++] << s, s += 8;
           }
           if (t.flags = V, (255 & t.flags) !== Im) {
-            e.msg = "unknown compression method", t.mode = gn;
+            e.msg = "unknown compression method", t.mode = In;
             break;
           }
           if (57344 & t.flags) {
-            e.msg = "unknown header flags set", t.mode = gn;
+            e.msg = "unknown header flags set", t.mode = In;
             break;
           }
           t.head && (t.head.text = V >> 8 & 1), 512 & t.flags && 4 & t.wrap && (S[0] = 255 & V, S[1] = V >>> 8 & 255, t.check = El(t.check, S, 2, 0)), V = 0, s = 0, t.mode = 16182;
@@ -4173,7 +4173,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
               i--, V += l[d++] << s, s += 8;
             }
             if (4 & t.wrap && V !== (65535 & t.check)) {
-              e.msg = "header crc mismatch", t.mode = gn;
+              e.msg = "header crc mismatch", t.mode = In;
               break;
             }
             V = 0, s = 0;
@@ -4218,7 +4218,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
               t.mode = 16196;
               break;
             case 3:
-              e.msg = "invalid block type", t.mode = gn;
+              e.msg = "invalid block type", t.mode = In;
           }
           V >>>= 2, s -= 2;
           break;
@@ -4229,7 +4229,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
             i--, V += l[d++] << s, s += 8;
           }
           if ((65535 & V) != (V >>> 16 ^ 65535)) {
-            e.msg = "invalid stored block lengths", t.mode = gn;
+            e.msg = "invalid stored block lengths", t.mode = In;
             break;
           }
           if (t.length = 65535 & V, V = 0, s = 0, t.mode = nZ, n === XU)
@@ -4252,7 +4252,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
             i--, V += l[d++] << s, s += 8;
           }
           if (t.nlen = 257 + (31 & V), V >>>= 5, s -= 5, t.ndist = 1 + (31 & V), V >>>= 5, s -= 5, t.ncode = 4 + (15 & V), V >>>= 4, s -= 4, t.nlen > 286 || t.ndist > 30) {
-            e.msg = "too many length or distance symbols", t.mode = gn;
+            e.msg = "too many length or distance symbols", t.mode = In;
             break;
           }
           t.have = 0, t.mode = 16197;
@@ -4268,7 +4268,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
           for (; t.have < 19; )
             t.lens[w[t.have++]] = 0;
           if (t.lencode = t.lendyn, t.lenbits = 7, v = { bits: t.lenbits }, k = ws(0, t.lens, 0, 19, t.lencode, 0, t.work, v), t.lenbits = v.bits, k) {
-            e.msg = "invalid code lengths set", t.mode = gn;
+            e.msg = "invalid code lengths set", t.mode = In;
             break;
           }
           t.have = 0, t.mode = 16198;
@@ -4289,7 +4289,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
                   i--, V += l[d++] << s, s += 8;
                 }
                 if (V >>>= Z, s -= Z, t.have === 0) {
-                  e.msg = "invalid bit length repeat", t.mode = gn;
+                  e.msg = "invalid bit length repeat", t.mode = In;
                   break;
                 }
                 b = t.lens[t.have - 1], N = 3 + (3 & V), V >>>= 2, s -= 2;
@@ -4309,25 +4309,25 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
                 V >>>= Z, s -= Z, b = 0, N = 11 + (127 & V), V >>>= 7, s -= 7;
               }
               if (t.have + N > t.nlen + t.ndist) {
-                e.msg = "invalid bit length repeat", t.mode = gn;
+                e.msg = "invalid bit length repeat", t.mode = In;
                 break;
               }
               for (; N--; )
                 t.lens[t.have++] = b;
             }
           }
-          if (t.mode === gn)
+          if (t.mode === In)
             break;
           if (t.lens[256] === 0) {
-            e.msg = "invalid code -- missing end-of-block", t.mode = gn;
+            e.msg = "invalid code -- missing end-of-block", t.mode = In;
             break;
           }
           if (t.lenbits = 9, v = { bits: t.lenbits }, k = ws(1, t.lens, 0, t.nlen, t.lencode, 0, t.work, v), t.lenbits = v.bits, k) {
-            e.msg = "invalid literal/lengths set", t.mode = gn;
+            e.msg = "invalid literal/lengths set", t.mode = In;
             break;
           }
           if (t.distbits = 6, t.distcode = t.distdyn, v = { bits: t.distbits }, k = ws(2, t.lens, t.nlen, t.ndist, t.distcode, 0, t.work, v), t.distbits = v.bits, k) {
-            e.msg = "invalid distances set", t.mode = gn;
+            e.msg = "invalid distances set", t.mode = In;
             break;
           }
           if (t.mode = jU, n === XU)
@@ -4361,7 +4361,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
             break;
           }
           if (64 & W) {
-            e.msg = "invalid literal/length code", t.mode = gn;
+            e.msg = "invalid literal/length code", t.mode = In;
             break;
           }
           t.extra = 15 & W, t.mode = 16201;
@@ -4390,7 +4390,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
             V >>>= m, s -= m, t.back += m;
           }
           if (V >>>= Z, s -= Z, t.back += Z, 64 & W) {
-            e.msg = "invalid distance code", t.mode = gn;
+            e.msg = "invalid distance code", t.mode = In;
             break;
           }
           t.offset = F, t.extra = 15 & W, t.mode = 16203;
@@ -4404,7 +4404,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
             t.offset += V & (1 << t.extra) - 1, V >>>= t.extra, s -= t.extra, t.back += t.extra;
           }
           if (t.offset > t.dmax) {
-            e.msg = "invalid distance too far back", t.mode = gn;
+            e.msg = "invalid distance too far back", t.mode = In;
             break;
           }
           t.mode = 16204;
@@ -4413,7 +4413,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
             break e;
           if (N = U - c, t.offset > N) {
             if (N = t.offset - N, N > t.whave && t.sane) {
-              e.msg = "invalid distance too far back", t.mode = gn;
+              e.msg = "invalid distance too far back", t.mode = In;
               break;
             }
             N > t.wnext ? (N -= t.wnext, R = t.wsize - N) : R = t.wnext - N, N > t.length && (N = t.length), h = t.window;
@@ -4438,7 +4438,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
               i--, V |= l[d++] << s, s += 8;
             }
             if (U -= c, e.total_out += U, t.total += U, 4 & t.wrap && U && (e.adler = t.check = t.flags ? El(t.check, a, U, r - U) : js(t.check, a, U, r - U)), U = c, 4 & t.wrap && (t.flags ? V : Lm(V)) !== t.check) {
-              e.msg = "incorrect data check", t.mode = gn;
+              e.msg = "incorrect data check", t.mode = In;
               break;
             }
             V = 0, s = 0;
@@ -4452,7 +4452,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
               i--, V += l[d++] << s, s += 8;
             }
             if (4 & t.wrap && V !== (4294967295 & t.total)) {
-              e.msg = "incorrect length check", t.mode = gn;
+              e.msg = "incorrect length check", t.mode = In;
               break;
             }
             V = 0, s = 0;
@@ -4461,7 +4461,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
         case 16208:
           k = dG;
           break e;
-        case gn:
+        case In:
           k = wm;
           break e;
         case 16210:
@@ -4469,7 +4469,7 @@ var Zr = { inflateReset: Hk, inflateReset2: fk, inflateResetKeep: jk, inflateIni
         default:
           return Aa;
       }
-  return e.next_out = r, e.avail_out = c, e.next_in = d, e.avail_in = i, t.hold = V, t.bits = s, (t.wsize || U !== e.avail_out && t.mode < gn && (t.mode < lZ || n !== fm)) && _m(e, e.output, e.next_out, U - e.avail_out), o -= e.avail_in, U -= e.avail_out, e.total_in += o, e.total_out += U, t.total += U, 4 & t.wrap && U && (e.adler = t.check = t.flags ? El(t.check, a, U, e.next_out - U) : js(t.check, a, U, e.next_out - U)), e.data_type = t.bits + (t.last ? 64 : 0) + (t.mode === Vr ? 128 : 0) + (t.mode === jU || t.mode === nZ ? 256 : 0), (o === 0 && U === 0 || n === fm) && k === Ci && (k = iG), k;
+  return e.next_out = r, e.avail_out = c, e.next_in = d, e.avail_in = i, t.hold = V, t.bits = s, (t.wsize || U !== e.avail_out && t.mode < In && (t.mode < lZ || n !== fm)) && _m(e, e.output, e.next_out, U - e.avail_out), o -= e.avail_in, U -= e.avail_out, e.total_in += o, e.total_out += U, t.total += U, 4 & t.wrap && U && (e.adler = t.check = t.flags ? El(t.check, a, U, e.next_out - U) : js(t.check, a, U, e.next_out - U)), e.data_type = t.bits + (t.last ? 64 : 0) + (t.mode === Vr ? 128 : 0) + (t.mode === jU || t.mode === nZ ? 256 : 0), (o === 0 && U === 0 || n === fm) && k === Ci && (k = iG), k;
 }, inflateEnd: (e) => {
   if (tV(e))
     return Aa;
@@ -7781,7 +7781,7 @@ var SV = function(e) {
     case Gn.USER:
       return kl.payloadify(e);
     case Gn.FILE:
-      return e.fileInfoList ? Da.payloadify(e) : In.payloadify(e);
+      return e.fileInfoList ? Da.payloadify(e) : Ln.payloadify(e);
     case Gn.ADMIN:
       return Qc.payloadify(e);
     default:
@@ -7794,14 +7794,14 @@ var SV = function(e) {
     case "MESG":
       return new kl(e, n);
     case "FILE":
-      return Da._isMultipleFilesMessagePayload(n) ? new Da(e, n) : new In(e, n);
+      return Da._isMultipleFilesMessagePayload(n) ? new Da(e, n) : new Ln(e, n);
     case "ADMM":
     case "BRDM":
       return new Qc(e, n);
     default:
       return null;
   }
-}, In = function(e) {
+}, Ln = function(e) {
   function n(t, l) {
     var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F = this;
     (F = e.call(this, t, l) || this).messageParams = null, F.plainUrl = "", F.requireAuth = !1, F.thumbnails = [], F.messageSurvivalSeconds = -1, F.messageType = Gn.FILE;
@@ -7878,7 +7878,7 @@ var SV = function(e) {
 }(Te), SW = function(e) {
   function n(t, l, a) {
     var d, r, i, c, V = this;
-    (V = e.call(this, t, "FILE", a) || this).message = a.files && a.files.length >= 2 ? new Da(t, a) : new In(t, a);
+    (V = e.call(this, t, "FILE", a) || this).message = a.files && a.files.length >= 2 ? new Da(t, a) : new Ln(t, a);
     var s = D.of(t).sdkState;
     return V.isMentioned = Ec(V.message.mentionType, (i = (d = V.message.mentionedUserIds) !== null && d !== void 0 ? d : (r = V.message.mentionedUsers) === null || r === void 0 ? void 0 : r.map(function(o) {
       return o.userId;
@@ -7888,7 +7888,7 @@ var SV = function(e) {
 }(Wn), Ty = function(e) {
   function n(t, l) {
     var a, d, r, i, c = this;
-    (c = e.call(this, t, l) || this).message = l.files && l.files.length >= 2 ? new Da(t, l) : new In(t, l);
+    (c = e.call(this, t, l) || this).message = l.files && l.files.length >= 2 ? new Da(t, l) : new Ln(t, l);
     var V = D.of(t).sdkState;
     return c.isMentioned = Ec(c.message.mentionType, (r = (a = c.message.mentionedUserIds) !== null && a !== void 0 ? a : (d = c.message.mentionedUsers) === null || d === void 0 ? void 0 : d.map(function(s) {
       return s.userId;
@@ -8824,7 +8824,7 @@ var J3 = function(e) {
 }(Yl), iR = function(e) {
   function n(t, l, a) {
     var d, r, i, c, V, s = this;
-    (s = e.call(this, t, "FEDI", a) || this).message = new In(t, a);
+    (s = e.call(this, t, "FEDI", a) || this).message = new Ln(t, a);
     var o = D.of(t).sdkState;
     return s.mentionCountChange = hW({ mentionType: (d = a.old_values) === null || d === void 0 ? void 0 : d.mention_type, mentionedUserIds: (i = (r = a.old_values) === null || r === void 0 ? void 0 : r.mentioned_user_ids) !== null && i !== void 0 ? i : [] }, Ae({ mentionType: s.message.mentionType, mentionedUserIds: (c = s.message.mentionedUserIds) !== null && c !== void 0 ? c : (V = s.message.mentionedUsers) === null || V === void 0 ? void 0 : V.map(function(U) {
       return U.userId;
@@ -8925,7 +8925,7 @@ var v3 = function(e) {
 }(Te), Z5 = function(e) {
   function n(t, l) {
     var a = e.call(this, t, l) || this;
-    return a.message = new In(t, l), a;
+    return a.message = new Ln(t, l), a;
   }
   return J(n, e), n;
 }(ue), T5 = function(e) {
@@ -9503,7 +9503,7 @@ var Jn, VR = function(e) {
   }, n.prototype._createPendingFileMessage = function(t, l, a) {
     var d, r, i, c, V, s, o, U = Oe(x(x({}, this._createPendingSendableMessagePayload(t, l, a)), { type: Gn.FILE, url: t.fileUrl, file: { name: (d = t.fileName) !== null && d !== void 0 ? d : (r = t.file) === null || r === void 0 ? void 0 : r.name, size: (i = t.fileSize) !== null && i !== void 0 ? i : (c = t.file) === null || c === void 0 ? void 0 : c.size, type: (V = t.mimeType) !== null && V !== void 0 ? V : (s = t.file) === null || s === void 0 ? void 0 : s.type, data: t.data }, thumbnails: (o = t._thumbnails) === null || o === void 0 ? void 0 : o.map(function(R) {
       return Br.payloadify(R);
-    }) })), N = new In(this._iid, U);
+    }) })), N = new Ln(this._iid, U);
     return N.messageParams = t, N;
   }, n.prototype._createPendingMultipleFilesMessage = function(t, l, a) {
     var d = Oe(x(x({}, this._createPendingSendableMessagePayload(t, l, a)), { type: Gn.FILE })), r = new Da(this._iid, d);
@@ -9696,7 +9696,7 @@ var Jn, VR = function(e) {
       });
     }), s;
   }, n.prototype._autoResendFileMessage = function(t) {
-    Ze(t instanceof In && !!t.messageParams).throw(j.invalidParameters);
+    Ze(t instanceof Ln && !!t.messageParams).throw(j.invalidParameters);
     var l = D.of(this._iid).logger;
     return l.debug("autoResendFileMessage pending", t), this._sendFileMessage(t.messageParams, pl.SEND, t.reqId).onFailed(function(a) {
       l.debug("autoResendFileMessage failed", a);
@@ -9793,7 +9793,7 @@ var Jn, VR = function(e) {
     return M(this, void 0, void 0, function() {
       var a, d, r;
       return p(this, function(i) {
-        return a = this._validateFailedFileMessageHasFile(t, l), Ze(t instanceof In && a && !t.scheduledInfo).throw(j.invalidParameters), d = new Ll(), r = wT(t, l), this._sendFileMessage(r, pl.RESEND, t.reqId).onFailed(function(c) {
+        return a = this._validateFailedFileMessageHasFile(t, l), Ze(t instanceof Ln && a && !t.scheduledInfo).throw(j.invalidParameters), d = new Ll(), r = wT(t, l), this._sendFileMessage(r, pl.RESEND, t.reqId).onFailed(function(c) {
           return d.reject(c);
         }).onSucceeded(function(c) {
           return d.resolve(c);
@@ -9849,7 +9849,7 @@ var Jn, VR = function(e) {
     return M(this, void 0, void 0, function() {
       var i, c;
       return p(this, function(V) {
-        return Ze(t instanceof n && l instanceof In && l.sendingStatus === $t.SUCCEEDED && this.url === l.channelUrl && !l.scheduledInfo).throw(j.invalidParameters), i = new Ll(), c = Ae(x(x({}, l), { fileUrl: l.url, fileName: l.name, fileSize: l.size, mimeType: l.type, mentionType: l.mentionType, mentionedUserIds: (a = l.mentionedUserIds) !== null && a !== void 0 ? a : (d = l.mentionedUsers) === null || d === void 0 ? void 0 : d.map(function(s) {
+        return Ze(t instanceof n && l instanceof Ln && l.sendingStatus === $t.SUCCEEDED && this.url === l.channelUrl && !l.scheduledInfo).throw(j.invalidParameters), i = new Ll(), c = Ae(x(x({}, l), { fileUrl: l.url, fileName: l.name, fileSize: l.size, mimeType: l.type, mentionType: l.mentionType, mentionedUserIds: (a = l.mentionedUserIds) !== null && a !== void 0 ? a : (d = l.mentionedUsers) === null || d === void 0 ? void 0 : d.map(function(s) {
           return s.userId;
         }), pushNotificationDeliveryOption: pd.DEFAULT, parentMessageId: null, isReplyToChannel: !1, thumbnailSizes: (r = l.thumbnails) === null || r === void 0 ? void 0 : r.map(function(s) {
           return { maxWidth: s.width, maxHeight: s.height };
@@ -9940,7 +9940,7 @@ var Jn, VR = function(e) {
       return p(this, function(d) {
         return Ze(t instanceof Bl && t.messageId > 0 && Jt("string", l)).throw(j.invalidParameters), a = l.map(function(r) {
           return new Ol({ key: r });
-        }), t instanceof In ? [2, this._updateFileMessageMetaArray(t.messageId, a, "add", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, a, "add", !0)];
+        }), t instanceof Ln ? [2, this._updateFileMessageMetaArray(t.messageId, a, "add", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, a, "add", !0)];
       });
     });
   }, n.prototype.deleteMessageMetaArrayKeys = function(t, l) {
@@ -9949,7 +9949,7 @@ var Jn, VR = function(e) {
       return p(this, function(d) {
         return Ze(t instanceof Bl && t.messageId > 0 && Jt("string", l)).throw(j.invalidParameters), a = l.map(function(r) {
           return new Ol({ key: r });
-        }), t instanceof In ? [2, this._updateFileMessageMetaArray(t.messageId, a, "remove", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, a, "remove", !0)];
+        }), t instanceof Ln ? [2, this._updateFileMessageMetaArray(t.messageId, a, "remove", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, a, "remove", !0)];
       });
     });
   }, n.prototype.addMessageMetaArrayValues = function(t, l) {
@@ -9957,7 +9957,7 @@ var Jn, VR = function(e) {
       return p(this, function(a) {
         return Ze(t instanceof Bl && t.messageId > 0 && l.every(function(d) {
           return d instanceof Ol;
-        })).throw(j.invalidParameters), t instanceof In ? [2, this._updateFileMessageMetaArray(t.messageId, l, "add", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, l, "add", !0)];
+        })).throw(j.invalidParameters), t instanceof Ln ? [2, this._updateFileMessageMetaArray(t.messageId, l, "add", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, l, "add", !0)];
       });
     });
   }, n.prototype.removeMessageMetaArrayValues = function(t, l) {
@@ -9965,7 +9965,7 @@ var Jn, VR = function(e) {
       return p(this, function(a) {
         return Ze(t instanceof Bl && t.messageId > 0 && l.every(function(d) {
           return d instanceof Ol;
-        })).throw(j.invalidParameters), t instanceof In ? [2, this._updateFileMessageMetaArray(t.messageId, l, "remove", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, l, "remove", !0)];
+        })).throw(j.invalidParameters), t instanceof Ln ? [2, this._updateFileMessageMetaArray(t.messageId, l, "remove", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, l, "remove", !0)];
       });
     });
   }, n.prototype.report = function(t, l) {
@@ -13624,7 +13624,7 @@ var _s, wd = function(e) {
     if (t.messageId > 0)
       throw j.invalidParameters;
     var l, a = x({}, t.serialize());
-    return t instanceof kl ? (t.messageParams && (a.messageParams = hu(t.messageParams)), t.scheduledInfo && t.scheduledInfo.scheduledMessageParams && (a.scheduledInfo.scheduledMessageParams = (l = t.scheduledInfo.scheduledMessageParams, x(x({}, hu(l)), { scheduledAt: l.scheduledAt })))) : t instanceof In ? (t.messageParams && (a.messageParams = Zu(t.messageParams)), t.scheduledInfo && t.scheduledInfo.scheduledMessageParams && (a.scheduledInfo.scheduledMessageParams = function(d) {
+    return t instanceof kl ? (t.messageParams && (a.messageParams = hu(t.messageParams)), t.scheduledInfo && t.scheduledInfo.scheduledMessageParams && (a.scheduledInfo.scheduledMessageParams = (l = t.scheduledInfo.scheduledMessageParams, x(x({}, hu(l)), { scheduledAt: l.scheduledAt })))) : t instanceof Ln ? (t.messageParams && (a.messageParams = Zu(t.messageParams)), t.scheduledInfo && t.scheduledInfo.scheduledMessageParams && (a.scheduledInfo.scheduledMessageParams = function(d) {
       return x(x({}, Zu(d)), { scheduledAt: d.scheduledAt });
     }(t.scheduledInfo.scheduledMessageParams))) : t instanceof Da && t.messageParams && (a.messageParams = function(d) {
       return Oe({ fileInfoList: d.fileInfoList, isReplyToChannel: d.isReplyToChannel, pushNotificationDeliveryOption: d.pushNotificationDeliveryOption });
@@ -13640,7 +13640,7 @@ var _s, wd = function(e) {
           case 0:
             return r = tl.of(this._iid), i = this._deserialize(t), t.messageParams ? i instanceof kl ? (V = t.messageParams, i.messageParams = r.buildUserMessageCreateParamsFromSerializedData(V, i), [3, 6]) : [3, 1] : [3, 6];
           case 1:
-            return i instanceof In ? (V = t.messageParams).fileKey && typeof V.fileKey == "string" && UZ((l = V.fileType) !== null && l !== void 0 ? l : "") ? (c = V, [4, this.collection.getBlob(V.fileKey)]) : [3, 3] : [3, 4];
+            return i instanceof Ln ? (V = t.messageParams).fileKey && typeof V.fileKey == "string" && UZ((l = V.fileType) !== null && l !== void 0 ? l : "") ? (c = V, [4, this.collection.getBlob(V.fileKey)]) : [3, 3] : [3, 4];
           case 2:
             c.file = (a = N.sent()) !== null && a !== void 0 ? a : void 0, N.label = 3;
           case 3:
@@ -13666,7 +13666,7 @@ var _s, wd = function(e) {
           case 6:
             return i.scheduledInfo && t.scheduledInfo && t.scheduledInfo.scheduledMessageParams ? i instanceof kl ? (s = t.scheduledInfo.scheduledMessageParams, i.scheduledInfo.scheduledMessageParams = r.buildScheduledUserMessageCreateParamsFromSerializedData(s, i), [3, 10]) : [3, 7] : [3, 10];
           case 7:
-            return i instanceof In ? (s = t.scheduledInfo.scheduledMessageParams).fileKey && typeof s.fileKey == "string" && typeof s.fileType == "string" && UZ(s.fileType) ? (o = s, [4, this.collection.getBlob(s.fileKey)]) : [3, 9] : [3, 10];
+            return i instanceof Ln ? (s = t.scheduledInfo.scheduledMessageParams).fileKey && typeof s.fileKey == "string" && typeof s.fileType == "string" && UZ(s.fileType) ? (o = s, [4, this.collection.getBlob(s.fileKey)]) : [3, 9] : [3, 10];
           case 8:
             o.file = (d = N.sent()) !== null && d !== void 0 ? d : void 0, N.label = 9;
           case 9:
@@ -13747,7 +13747,7 @@ var _s, wd = function(e) {
                 return p(this, function(i) {
                   switch (i.label) {
                     case 0:
-                      return d instanceof In || d instanceof Da ? [4, this._mutex.lock()] : [3, 4];
+                      return d instanceof Ln || d instanceof Da ? [4, this._mutex.lock()] : [3, 4];
                     case 1:
                       return i.sent(), [4, this.saveBlob(d)];
                     case 2:
@@ -13869,7 +13869,7 @@ var _s, wd = function(e) {
       return p(this, function(i) {
         switch (i.label) {
           case 0:
-            return t instanceof In ? t.messageParams && (d = t.messageParams).file && EN(d.file) ? [4, this.collection.saveBlob(d.file, t.reqId)] : [3, 2] : [3, 5];
+            return t instanceof Ln ? t.messageParams && (d = t.messageParams).file && EN(d.file) ? [4, this.collection.saveBlob(d.file, t.reqId)] : [3, 2] : [3, 5];
           case 1:
             a = i.sent(), d.fileKey = a, d.fileType = FV.BLOB, i.label = 2;
           case 2:
@@ -14181,7 +14181,7 @@ var _s, wd = function(e) {
                 return p(this, function(c) {
                   switch (c.label) {
                     case 0:
-                      return d instanceof In && d.messageParams && (r = d.messageParams).file && EN(r.file) ? [4, this.collection.saveBlob(r.file, d.reqId)] : [3, 2];
+                      return d instanceof Ln && d.messageParams && (r = d.messageParams).file && EN(r.file) ? [4, this.collection.saveBlob(r.file, d.reqId)] : [3, 2];
                     case 1:
                       i = c.sent(), r.fileKey = i, c.label = 2;
                     case 2:
@@ -14803,7 +14803,7 @@ var _s, wd = function(e) {
       case Gn.USER:
         return new kl(this._iid, kl.payloadify(t));
       case Gn.FILE:
-        return Da._isMultipleFilesMessageSerializedData(t) ? new Da(this._iid, Da.payloadify(t)) : new In(this._iid, In.payloadify(t));
+        return Da._isMultipleFilesMessageSerializedData(t) ? new Da(this._iid, Da.payloadify(t)) : new Ln(this._iid, Ln.payloadify(t));
       case Gn.ADMIN:
         return new Qc(this._iid, Qc.payloadify(t));
     }
@@ -16406,7 +16406,7 @@ var Rr, FD = function(e) {
             case 0:
               return i = r.message, [4, this.getChannel(i.channelUrl, !0)];
             case 1:
-              return c = V.sent(), i instanceof kl ? c._autoResendUserMessage(i) : i instanceof In && c._autoResendFileMessage(i), [2];
+              return c = V.sent(), i instanceof kl ? c._autoResendUserMessage(i) : i instanceof Ln && c._autoResendFileMessage(i), [2];
           }
         });
       }) : r instanceof w3 ? d.reduceDBSize() : r instanceof Z3 && M(d, void 0, void 0, function() {
@@ -16556,7 +16556,7 @@ var Rr, FD = function(e) {
   }, n.prototype._handleEvent = function(t) {
     var l, a;
     return M(this, void 0, void 0, function() {
-      var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Re, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, we, Me, We, Be, Ke, lt, De, je, at, Ge, $e, He, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ce, Je, de, qe, nt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, ge, it, ze, ht, Ft, X, Ue, pe, fe, Nt, Ee, H, Ve, ye, Zt, Mt, Ct, Ht, Sn, bt, rn, en, wn, An, xi, ir, yh, bd, MU, _c, Pc, Ac, Gi, EU, SU, kU, bU, Xr, YU, $1, em, tm, Bh, Dh, Xh, QU, JU, Oh, jh, nm, Hh, lm, fh, am, wh, dm, gh, rm, on = this;
+      var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Re, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, we, Me, We, Be, Ke, lt, De, je, at, Ge, $e, He, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ce, Je, de, qe, nt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, ge, it, ze, ht, Ft, X, Ue, pe, fe, Nt, Ee, H, Ve, ye, Zt, Mt, Ct, Ht, Sn, bt, rn, en, gn, An, xi, ir, yh, bd, MU, _c, Pc, Ac, Gi, EU, SU, kU, bU, Xr, YU, $1, em, tm, Bh, Dh, Xh, QU, JU, Oh, jh, nm, Hh, lm, fh, am, wh, dm, gh, rm, on = this;
       return p(this, function(gt) {
         switch (gt.label) {
           case 0:
@@ -17287,7 +17287,7 @@ var Rr, FD = function(e) {
           case 63:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 64:
-            return bt = gt.sent(), rn = t.as(sD), en = rn.allowAutoUnhide, wn = rn.hidePreviousMessages, An = rn.messageOffsetTimestamp, en !== null && (bt.hiddenState = en ? yl.HIDDEN_ALLOW_AUTO_UNHIDE : yl.HIDDEN_PREVENT_AUTO_UNHIDE), wn !== null && wn && bt._updateUnreadCount(0, 0), An !== null && (bt.messageOffsetTimestamp = An), this._dispatcher.dispatch(new Dt({ channels: [bt], source: ne.EVENT_CHANNEL_HIDDEN })), Le(function() {
+            return bt = gt.sent(), rn = t.as(sD), en = rn.allowAutoUnhide, gn = rn.hidePreviousMessages, An = rn.messageOffsetTimestamp, en !== null && (bt.hiddenState = en ? yl.HIDDEN_ALLOW_AUTO_UNHIDE : yl.HIDDEN_PREVENT_AUTO_UNHIDE), gn !== null && gn && bt._updateUnreadCount(0, 0), An !== null && (bt.messageOffsetTimestamp = An), this._dispatcher.dispatch(new Dt({ channels: [bt], source: ne.EVENT_CHANNEL_HIDDEN })), Le(function() {
               return M(on, void 0, void 0, function() {
                 return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(C) {
@@ -19264,7 +19264,7 @@ var HD = function(e) {
 }(Te), KD = function(e) {
   function n(t, l) {
     var a = e.call(this, t, l) || this;
-    return a.message = new In(t, l), a;
+    return a.message = new Ln(t, l), a;
   }
   return J(n, e), n;
 }(ue), _D = function(e) {
@@ -24194,7 +24194,7 @@ function ij(e, n) {
     // window is undefined in SSR env
     typeof window < "u" && (l = (t = window == null ? void 0 : window.navigator) === null || t === void 0 ? void 0 : t.onLine) !== null && l !== void 0 ? l : !0
   ), d = a[0], r = a[1];
-  return Pe(function() {
+  return _e(function() {
     var i = zr();
     try {
       n.warning("sdk changed", i);
@@ -24221,7 +24221,7 @@ function ij(e, n) {
       } catch {
       }
     };
-  }, [e]), Pe(function() {
+  }, [e]), _e(function() {
     var i = function() {
       try {
         n.warning("Try reconnecting SDK"), e.connectionState !== "OPEN" && e.reconnect();
@@ -24231,7 +24231,7 @@ function ij(e, n) {
     return window.addEventListener("online", i), function() {
       window.removeEventListener("online", i);
     };
-  }, [e]), Pe(function() {
+  }, [e]), _e(function() {
     var i = document.querySelector("body");
     if (!d && !(e != null && e.isCacheEnabled))
       try {
@@ -24306,7 +24306,7 @@ function cj(e, n) {
       }
     });
   }, []);
-  return Pe(function() {
+  return _e(function() {
     l || d.clear();
   }, [l]), GW(function() {
     d.clear();
@@ -26396,14 +26396,14 @@ var YH = /^(\d+)(th|st|nd|rd)?/i, QH = /\d+/i, JH = {
     weekStartsOn: 0,
     firstWeekContainsDate: 1
   }
-}, Xb = fH, Cn = T.createContext({
+}, Xb = fH, Kn = T.createContext({
   stringSet: ZR("en"),
   dateLocale: Xb
 }), wH = function(e) {
   var n = e.children;
-  return T.createElement(Cn.Provider, { value: e }, n);
+  return T.createElement(Kn.Provider, { value: e }, n);
 }, ca = function() {
-  return T.useContext(Cn);
+  return T.useContext(Kn);
 }, gH = !1, Ob = "sendbird--mobile-mode", jb = T.createContext({
   breakpoint: gH,
   isMobile: !1
@@ -26421,7 +26421,7 @@ var YH = /^(\d+)(th|st|nd|rd)?/i, QH = /\d+/i, JH = {
   }
 }, IH = function(e) {
   var n = e.children, t = e.logger, l = (e == null ? void 0 : e.breakpoint) || !1, a = me(!1), d = a[0], r = a[1];
-  return Pe(function() {
+  return _e(function() {
     var i, c = function() {
       var V, s, o, U, N;
       if (typeof l == "boolean")
@@ -28298,7 +28298,7 @@ function dt(e) {
     _H(d)
   ], !1).join(" "), role: "button", onClick: o, onKeyDown: o, tabIndex: 0, style: R }, N || aw(l));
 }
-var Ie = ke, _e = Zl, ko = "sendbird-modal-root", dw = function(e) {
+var Ie = ke, Pe = Zl, ko = "sendbird-modal-root", dw = function(e) {
   var n = e.titleText;
   return T.createElement(
     "div",
@@ -28313,7 +28313,7 @@ var Ie = ke, _e = Zl, ko = "sendbird-modal-root", dw = function(e) {
     T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_2 }, n)
   );
 }, FF = function(e) {
-  var n = e.submitText, t = e.disabled, l = t === void 0 ? !1 : t, a = e.hideCancelButton, d = a === void 0 ? !1 : a, r = e.type, i = r === void 0 ? nl.DANGER : r, c = e.onSubmit, V = e.onCancel, s = Gt(Cn).stringSet;
+  var n = e.submitText, t = e.disabled, l = t === void 0 ? !1 : t, a = e.hideCancelButton, d = a === void 0 ? !1 : a, r = e.type, i = r === void 0 ? nl.DANGER : r, c = e.onSubmit, V = e.onCancel, s = Gt(Kn).stringSet;
   return T.createElement(
     "div",
     { className: "sendbird-modal__footer" },
@@ -28347,7 +28347,7 @@ function Ic(e) {
         T.createElement(
           Fi,
           { width: "32px", height: "32px", onClick: v },
-          T.createElement(dt, { type: Ie.CLOSE, fillColor: _e.DEFAULT, width: "24px", height: "24px" })
+          T.createElement(dt, { type: Ie.CLOSE, fillColor: Pe.DEFAULT, width: "24px", height: "24px" })
         )
       )
     ),
@@ -28368,8 +28368,8 @@ var WF = function() {
   var n, t = e.children, l = zn().config, a = l.logger, d = l.isVoiceMessageEnabled, r = me(null), i = r[0], c = r[1], V = me(!1), s = V[0], o = V[1], U = me(!1), N = U[0], R = U[1], h = ca().stringSet, Z = me(null), W = Z[0], F = Z[1], m = (n = ip.find(function(b) {
     return MediaRecorder.isTypeSupported(b);
   })) !== null && n !== void 0 ? n : "";
-  d && !m && a.error("VoiceRecorder: Browser does not support mimeType", { mimmeTypes: ip }), Pe(function() {
-    d && !W && import("./bundle-f5U_VL0z-64d6256c.mjs").then(function(b) {
+  d && !m && a.error("VoiceRecorder: Browser does not support mimeType", { mimmeTypes: ip }), _e(function() {
+    d && !W && import("./bundle-f5U_VL0z-0348ec31.mjs").then(function(b) {
       F(b);
     });
   }, [d, W]);
@@ -28845,7 +28845,7 @@ function kw(e, n) {
     appId: "",
     userId: ""
   });
-  Pe(function() {
+  _e(function() {
     var v;
     (v = V == null ? void 0 : V.info) === null || v === void 0 || v.call(V, "SendbirdProvider | useConnect/useEffect", { userId: a, appId: d, accessToken: r }), !(Q.current.appId === d && Q.current.userId === a) && (Q.current = { appId: d, userId: a }, WM({
       userId: a,
@@ -28960,7 +28960,7 @@ var Sa = {
   }, Qw());
 };
 function Jw(e, n) {
-  e === void 0 && (e = []), n === void 0 && (n = "unknown"), Pe(function() {
+  e === void 0 && (e = []), n === void 0 && (n = "unknown"), _e(function() {
     var t = document.querySelector(n);
     return t && e.forEach(function(l) {
       var a = document.createElement("div");
@@ -29031,7 +29031,7 @@ function xw(e, n) {
       }
     });
   }, []);
-  return Pe(function() {
+  return _e(function() {
     t || a.clear();
   }, [t]), GW(function() {
     a.clear();
@@ -29294,7 +29294,7 @@ var fw = function(e) {
       userDispatcher: xe,
       sdk: de
     });
-  }, [de.disconnect]), Pe(function() {
+  }, [de.disconnect]), _e(function() {
     Ge(mM(we));
   }, [we]), Jw([
     "sendbird-modal-root",
@@ -29302,12 +29302,12 @@ var fw = function(e) {
     "sendbird-emoji-list-portal"
   ], "body");
   var ft = me(N), qt = ft[0], jt = ft[1];
-  Pe(function() {
+  _e(function() {
     jt(N);
-  }, [N]), Pe(function() {
+  }, [N]), _e(function() {
     var Ue = document.querySelector("body");
     Ue.classList.remove("sendbird-experimental__rem__units"), Ke && Ue.classList.add("sendbird-experimental__rem__units");
-  }, [Ke]), Pe(function() {
+  }, [Ke]), _e(function() {
     at.info("Setup theme", "Theme: ".concat(qt));
     try {
       var Ue = document.querySelector("body");
@@ -30480,14 +30480,14 @@ function Qg(e, n) {
       });
     }
   }, [s, a, l]);
-  return Pe(function() {
+  return _e(function() {
     o();
   }, [o]), o;
 }
 function Jg(e, n, t) {
   t === void 0 && (t = !0);
   var l = me(!1), a = l[0], d = l[1], r = !e;
-  Pe(function() {
+  _e(function() {
     var c = function() {
       t && d(document.hidden);
     };
@@ -30786,7 +30786,7 @@ function Dg(e, n) {
   var t, l, a, d = e.sdkInit, r = e.currentGroupChannel, i = e.disableMarkAsRead, c = n.sdk, V = n.logger, s = n.scrollRef, o = n.setQuoteMessage, U = n.messagesDispatcher, N = zn(), R = N.config, h = R.markAsReadScheduler, Z = R.markAsDeliveredScheduler, W = R.disableMarkAsDelivered, F = (a = (l = (t = N.stores.sdkStore.sdk) === null || t === void 0 ? void 0 : t.appInfo) === null || l === void 0 ? void 0 : l.premiumFeatureList) === null || a === void 0 ? void 0 : a.find(function(m) {
     return m === Bg;
   });
-  Pe(function() {
+  _e(function() {
     var m, E = r == null ? void 0 : r.url, u = zr();
     if (E && d) {
       var b = {
@@ -30931,7 +30931,7 @@ function Dg(e, n) {
 }
 function Xg(e, n) {
   var t = e.channelUrl, l = e.sdkInit, a = e.disableMarkAsRead, d = n.messagesDispatcher, r = n.sdk, i = n.logger, c = n.markAsReadScheduler;
-  Pe(function() {
+  _e(function() {
     t && l && r && r.groupChannel && (i.info("Channel | useSetChannel fetching channel", t), r.groupChannel.getChannel(t).then(function(V) {
       i.info("Channel | useSetChannel fetched channel", V), d({
         type: ba,
@@ -30953,7 +30953,7 @@ function Xg(e, n) {
 }
 function Og(e, n) {
   var t = e.isOnline, l = e.replyType, a = e.disableMarkAsRead, d = e.reconnectOnIdle, r = n.logger, i = n.sdk, c = n.scrollRef, V = n.currentGroupChannel, s = n.messagesDispatcher, o = n.markAsReadScheduler, U = n.userFilledMessageListQuery, N = Jg(t, V, d).shouldReconnect;
-  Pe(function() {
+  _e(function() {
     return function() {
       var R, h;
       if (N) {
@@ -31314,7 +31314,7 @@ var Pg = function(e, n) {
   return [c];
 }, Ag = function(e) {
   var n = e.channelUrl, t = e.sdkInit, l = e.pubSub, a = e.dispatcher, d = e.scrollRef;
-  Pe(function() {
+  _e(function() {
     var r = /* @__PURE__ */ new Map();
     return l != null && l.subscribe && (r.set(Gl.SEND_USER_MESSAGE, l.subscribe(Gl.SEND_USER_MESSAGE, function(i) {
       var c = i.channel, V = i.message;
@@ -31376,11 +31376,11 @@ var Pg = function(e, n) {
   ]);
 }, iY = T.createContext(void 0), qg = function(e) {
   var n, t, l, a, d, r, i = e.channelUrl, c = e.children, V = e.isReactionEnabled, s = e.isMessageGroupingEnabled, o = s === void 0 ? !0 : s, U = e.isMultipleFilesMessageEnabled, N = e.showSearchIcon, R = e.animatedMessage, h = e.highlightedMessage, Z = e.startingPoint, W = e.onBeforeSendUserMessage, F = e.onBeforeSendFileMessage, m = e.onBeforeUpdateUserMessage, E = e.onBeforeSendVoiceMessage, u = e.onBeforeSendMultipleFilesMessage, b = e.onChatHeaderActionClick, k = e.onSearchClick, Q = e.onBackClick, S = e.replyType, v = e.threadReplySelectType, G = e.queries, w = e.filterMessageList, y = e.disableMarkAsRead, g = y === void 0 ? !1 : y, f = e.onReplyInThread, I = e.onQuoteMessageClick, K = e.onMessageAnimated, Re = e.onMessageHighlighted, q = e.scrollBehavior, ae = q === void 0 ? "auto" : q, se = e.reconnectOnIdle, le = se === void 0 ? !0 : se, L = zn(), $ = L.config, ee = S ?? $.replyType, O = $.pubSub, re = $.logger, te = $.userId, Qe = $.isOnline, Ye = $.imageCompression, Se = $.isMentionEnabled, P = $.onUserProfileMessage, we = $.markAsReadScheduler, Me = $.groupChannel, We = (t = (n = L == null ? void 0 : L.stores) === null || n === void 0 ? void 0 : n.sdkStore) === null || t === void 0 ? void 0 : t.sdk, Be = (a = (l = L == null ? void 0 : L.stores) === null || l === void 0 ? void 0 : l.sdkStore) === null || a === void 0 ? void 0 : a.initialized, Ke = L == null ? void 0 : L.config, lt = me(Z), De = lt[0], je = lt[1];
-  Pe(function() {
+  _e(function() {
     je(Z);
   }, [Z, i]);
   var at = me(null), Ge = at[0], $e = at[1], He = me(h), Xe = He[0], pt = He[1];
-  Pe(function() {
+  _e(function() {
     pt(h);
   }, [h]);
   var Vt = G == null ? void 0 : G.messageListParams, yt = me(null), xe = yt[0], At = yt[1], kt = me(!1), Kt = kt[0], ln = kt[1], vt = zs(yg, Gg), Rt = vt[0], Ce = vt[1], Je = Wt(null), de = Rt.allMessages, qe = Rt.localMessages, nt = Rt.loading, ct = Rt.initialized, Ot = Rt.unreadSince, zt = Rt.unreadSinceDate, cn = Rt.isInvalid, mt = Rt.currentGroupChannel, sn = Rt.hasMorePrev, hn = Rt.oldestMessageTimeStamp, ft = Rt.hasMoreNext, qt = Rt.latestMessageTimeStamp, jt = Rt.emojiContainer, Bt = Rt.readStatus, ge = Rt.typingMembers, it = (mt == null ? void 0 : mt.isSuper) || !1, ze = (mt == null ? void 0 : mt.isBroadcast) || !1, ht = $w({
@@ -31393,7 +31393,7 @@ var Pg = function(e, n) {
   }, [jt]), X = nn(function() {
     return ht && mt ? Kw(mt == null ? void 0 : mt.members) : /* @__PURE__ */ new Map();
   }, [mt == null ? void 0 : mt.members]);
-  Pe(function() {
+  _e(function() {
     R && $e(R);
   }, [R]);
   var Ue = jg({
@@ -31422,7 +31422,7 @@ var Pg = function(e, n) {
     messagesDispatcher: Ce,
     sdk: We
   }), Nt = zg(mt, re);
-  Xg({ channelUrl: i, sdkInit: Be, disableMarkAsRead: g }, { messagesDispatcher: Ce, sdk: We, logger: re, markAsReadScheduler: we }), Pe(function() {
+  Xg({ channelUrl: i, sdkInit: Be, disableMarkAsRead: g }, { messagesDispatcher: Ce, sdk: We, logger: re, markAsReadScheduler: we }), _e(function() {
     At(null);
   }, [i]), Dg({
     currentGroupChannel: mt,
@@ -31684,7 +31684,7 @@ var el = function(e) {
   return NaN;
 }, cY = function(e) {
   var n = e.width, t = e.height, l = e.text, a = mR(n), d = mR(t);
-  return typeof a == "number" && !Number.isNaN(a) && (a *= 0.575), typeof d == "number" && !Number.isNaN(d) && (d *= 0.575), T.createElement("div", { className: "sendbird-avatar-img--default ".concat(l ? "text" : ""), style: { width: n, height: t } }, l ? T.createElement("div", { className: "sendbird-avatar-text" }, l) : T.createElement(dt, { type: Ie.USER, fillColor: _e.CONTENT, width: a, height: d }));
+  return typeof a == "number" && !Number.isNaN(a) && (a *= 0.575), typeof d == "number" && !Number.isNaN(d) && (d *= 0.575), T.createElement("div", { className: "sendbird-avatar-img--default ".concat(l ? "text" : ""), style: { width: n, height: t } }, l ? T.createElement("div", { className: "sendbird-avatar-text" }, l) : T.createElement(dt, { type: Ie.USER, fillColor: Pe.CONTENT, width: a, height: d }));
 }, cr = "sendbird-avatar-img", a4 = function(e) {
   var n = e.src, t = n === void 0 ? "" : n, l = e.alt, a = l === void 0 ? "" : l, d = e.height, r = e.width, i = e.customDefaultComponent, c = function() {
     return i ? i({ width: r, height: d }) : T.createElement(cY, { width: r, height: d });
@@ -31748,7 +31748,7 @@ function i4(e) {
         justifyContent: "center",
         alignItems: "center"
       } },
-      T.createElement(dt, { type: Ie.BROADCAST, fillColor: _e.CONTENT, width: d * 0.575, height: i * 0.575 })
+      T.createElement(dt, { type: Ie.BROADCAST, fillColor: Pe.CONTENT, width: d * 0.575, height: i * 0.575 })
     ) : T.createElement(da, { className: "sendbird-chat-header--avatar--broadcast-channel", src: QZ(n, t), width: d, height: i, alt: n == null ? void 0 : n.name }) : T.createElement(da, { className: "sendbird-chat-header--avatar--group-channel", src: QZ(n, t), width: "".concat(d, "px"), height: "".concat(i, "px"), alt: n == null ? void 0 : n.name });
   }, [QZ(n, t), l]);
   return T.createElement(T.Fragment, null, V);
@@ -31770,7 +31770,7 @@ var V4 = function(e, n, t) {
     T.createElement(
       "div",
       { className: "sendbird-chat-header__left" },
-      o && T.createElement(dt, { className: "sendbird-chat-header__icon_back", onClick: d, fillColor: _e.PRIMARY, width: "24px", height: "24px", type: Ie.ARROW_LEFT }),
+      o && T.createElement(dt, { className: "sendbird-chat-header__icon_back", onClick: d, fillColor: Pe.PRIMARY, width: "24px", height: "24px", type: Ie.ARROW_LEFT }),
       T.createElement(i4, { theme: s, channel: l, userId: V, height: 32, width: 32 }),
       T.createElement(Fe, { className: "sendbird-chat-header__left__title", type: oe.H_2, color: ie.ONBACKGROUND_1 }, V4(l, V, U)),
       T.createElement(Fe, { className: "sendbird-chat-header__left__subtitle", type: oe.BODY_1, color: ie.ONBACKGROUND_2 }, R)
@@ -31778,16 +31778,16 @@ var V4 = function(e, n, t) {
     T.createElement(
       "div",
       { className: "sendbird-chat-header__right" },
-      N && T.createElement(dt, { className: "sendbird-chat-header__right__mute", type: Ie.NOTIFICATIONS_OFF_FILLED, fillColor: _e.ON_BACKGROUND_2, width: "24px", height: "24px" }),
+      N && T.createElement(dt, { className: "sendbird-chat-header__right__mute", type: Ie.NOTIFICATIONS_OFF_FILLED, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" }),
       a && !(l != null && l.isEphemeral) && T.createElement(
         Fi,
         { className: "sendbird-chat-header__right__search", width: "32px", height: "32px", onClick: r },
-        T.createElement(dt, { type: Ie.SEARCH, fillColor: _e.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Ie.SEARCH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       T.createElement(
         Fi,
         { className: "sendbird-chat-header__right__info", width: "32px", height: "32px", onClick: i },
-        T.createElement(dt, { type: Ie.INFO, fillColor: _e.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Ie.INFO, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       )
     )
   );
@@ -31797,13 +31797,13 @@ var V4 = function(e, n, t) {
 }, s4 = function(e) {
   var n = e.members;
   function t() {
-    var l = Gt(Cn).stringSet;
+    var l = Gt(Kn).stringSet;
     return !n || n.length === 0 ? "" : n && n.length === 1 ? "".concat(n[0].nickname, " ").concat(l.TYPING_INDICATOR__IS_TYPING) : n && n.length === 2 ? "".concat(n[0].nickname, " ").concat(l.TYPING_INDICATOR__AND, " ").concat(n[1].nickname, " ").concat(l.TYPING_INDICATOR__ARE_TYPING) : l.TYPING_INDICATOR__MULTIPLE_TYPING;
   }
   return T.createElement(T.Fragment, null, t());
 }, o4 = function(e) {
   var n, t, l, a = e.channelUrl, d = zn(), r = (t = (n = d == null ? void 0 : d.stores) === null || n === void 0 ? void 0 : n.sdkStore) === null || t === void 0 ? void 0 : t.sdk, i = (l = d == null ? void 0 : d.config) === null || l === void 0 ? void 0 : l.logger, c = me(zr()), V = c[0], s = c[1], o = me([]), U = o[0], N = o[1];
-  return Pe(function() {
+  return _e(function() {
     var R;
     if (!((R = r == null ? void 0 : r.groupChannel) === null || R === void 0) && R.addGroupChannelHandler) {
       r.groupChannel.removeGroupChannelHandler(V);
@@ -31831,12 +31831,12 @@ var V4 = function(e, n, t) {
   e.Text = "text", e.Bubble = "bubble";
 })(uR || (uR = {}));
 function U4() {
-  var e = Gt(Cn).stringSet;
+  var e = Gt(Kn).stringSet;
   return T.createElement(
     "div",
     { className: "sendbird-connection-status" },
     T.createElement(Fe, { type: oe.BODY_2, color: ie.ONBACKGROUND_2 }, e.TRYING_TO_CONNECT),
-    T.createElement(dt, { type: Ie.DISCONNECTED, fillColor: _e.SENT, width: "14px", height: "14px" })
+    T.createElement(dt, { type: Ie.DISCONNECTED, fillColor: Pe.SENT, width: "14px", height: "14px" })
   );
 }
 function Vh(e) {
@@ -31848,7 +31848,7 @@ function Vh(e) {
     height: typeof r == "string" ? r : "".concat(r, "px")
   } }, i || T.createElement(dt, { type: Ie.SPINNER, width: "26px", height: "26px" }));
 }
-var Kn = {
+var _n = {
   LOADING: "LOADING",
   NO_CHANNELS: "NO_CHANNELS",
   NO_MESSAGES: "NO_MESSAGES",
@@ -31858,55 +31858,55 @@ var Kn = {
   NO_RESULTS: "NO_RESULTS"
 };
 function rV(e) {
-  var n = e.className, t = n === void 0 ? "" : n, l = e.type, a = e.iconSize, d = e.searchInString, r = d === void 0 ? "" : d, i = e.retryToConnect, c = i === void 0 ? null : i, V = Gt(Cn).stringSet;
+  var n = e.className, t = n === void 0 ? "" : n, l = e.type, a = e.iconSize, d = e.searchInString, r = d === void 0 ? "" : d, i = e.retryToConnect, c = i === void 0 ? null : i, V = Gt(Kn).stringSet;
   return T.createElement(
     "div",
     { className: Ut(Ut([], Array.isArray(t) ? t : [t], !0), [
       "sendbird-place-holder"
     ], !1).join(" ") },
-    l === Kn.LOADING && T.createElement(
+    l === _n.LOADING && T.createElement(
       Vh,
       { width: a || "48px", height: a || "48px" },
-      T.createElement(dt, { type: Ie.SPINNER, fillColor: _e.PRIMARY, width: a || "48px", height: a || "48px" })
+      T.createElement(dt, { type: Ie.SPINNER, fillColor: Pe.PRIMARY, width: a || "48px", height: a || "48px" })
     ),
-    (l === Kn.NO_CHANNELS || l === Kn.NO_MESSAGES || l === Kn.WRONG) && T.createElement(
+    (l === _n.NO_CHANNELS || l === _n.NO_MESSAGES || l === _n.WRONG) && T.createElement(
       "div",
       { className: "sendbird-place-holder__body" },
-      l === Kn.NO_CHANNELS && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.CHAT, fillColor: _e.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
-      l === Kn.WRONG && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.ERROR, fillColor: _e.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
-      l === Kn.NO_MESSAGES && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.MESSAGE, fillColor: _e.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
+      l === _n.NO_CHANNELS && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.CHAT, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
+      l === _n.WRONG && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.ERROR, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
+      l === _n.NO_MESSAGES && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.MESSAGE, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
       T.createElement(
         Fe,
         { className: "sendbird-place-holder__body__text", type: oe.BODY_1, color: ie.ONBACKGROUND_2 },
-        l === Kn.NO_CHANNELS && V.PLACE_HOLDER__NO_CHANNEL,
-        l === Kn.WRONG && V.PLACE_HOLDER__WRONG,
-        l === Kn.NO_MESSAGES && V.PLACE_HOLDER__NO_MESSAGES
+        l === _n.NO_CHANNELS && V.PLACE_HOLDER__NO_CHANNEL,
+        l === _n.WRONG && V.PLACE_HOLDER__WRONG,
+        l === _n.NO_MESSAGES && V.PLACE_HOLDER__NO_MESSAGES
       ),
       c && T.createElement(
         "div",
         { className: "sendbird-place-holder__body__reconnect", role: "button", onClick: c, onKeyPress: c, tabIndex: 0 },
-        T.createElement(dt, { className: "sendbird-place-holder__body__reconnect__icon", type: Ie.REFRESH, fillColor: _e.PRIMARY, width: "20px", height: "20px" }),
+        T.createElement(dt, { className: "sendbird-place-holder__body__reconnect__icon", type: Ie.REFRESH, fillColor: Pe.PRIMARY, width: "20px", height: "20px" }),
         T.createElement(Fe, { className: "sendbird-place-holder__body__reconnect__text", type: oe.BUTTON_1, color: ie.PRIMARY }, V.PLACE_HOLDER__RETRY_TO_CONNECT)
       )
     ),
-    (l === Kn.NO_RESULTS || l === Kn.SEARCH_IN || l === Kn.SEARCHING) && T.createElement(
+    (l === _n.NO_RESULTS || l === _n.SEARCH_IN || l === _n.SEARCHING) && T.createElement(
       "div",
       { className: "sendbird-place-holder__body--align-top" },
-      l === Kn.SEARCH_IN && T.createElement(
+      l === _n.SEARCH_IN && T.createElement(
         "div",
         { className: "sendbird-place-holder__body--align-top__text" },
         T.createElement(Fe, { className: "sendbird-place-holder__body--align-top__text__search-in", type: oe.BUTTON_2, color: ie.ONBACKGROUND_2 }, V.SEARCH_IN),
         T.createElement(Fe, { className: "sendbird-place-holder__body--align-top__text__channel-name", type: oe.BUTTON_2, color: ie.PRIMARY }, "'".concat(r)),
         T.createElement(Fe, { className: "sendbird-place-holder__body--align-top__text__quote", type: oe.BUTTON_2, color: ie.PRIMARY }, "'")
       ),
-      l === Kn.SEARCHING && T.createElement(Fe, { className: "sendbird-place-hlder__body--align-top__searching", type: oe.BODY_1, color: ie.ONBACKGROUND_2 }, V.SEARCHING),
-      l === Kn.NO_RESULTS && T.createElement(Fe, { className: "sendbird-place-hlder__body--align-top__no-result", type: oe.BODY_1, color: ie.ONBACKGROUND_2 }, V.NO_SEARCHED_MESSAGE)
+      l === _n.SEARCHING && T.createElement(Fe, { className: "sendbird-place-hlder__body--align-top__searching", type: oe.BODY_1, color: ie.ONBACKGROUND_2 }, V.SEARCHING),
+      l === _n.NO_RESULTS && T.createElement(Fe, { className: "sendbird-place-hlder__body--align-top__no-result", type: oe.BODY_1, color: ie.ONBACKGROUND_2 }, V.NO_SEARCHED_MESSAGE)
     )
   );
 }
 var N4 = function(e) {
   var n, t, l, a, d = e.isLoading, r = e.isInvalid, i = e.channelUrl, c = e.renderChannelHeader, V = e.renderMessageList, s = e.renderMessageInput, o = e.renderTypingIndicator, U = e.renderPlaceholderLoader, N = e.renderPlaceholderInvalid, R = zn(), h = R.stores, Z = R.config, W = (n = h == null ? void 0 : h.sdkStore) === null || n === void 0 ? void 0 : n.error, F = Z.logger, m = Z.isOnline;
-  return d ? T.createElement("div", { className: "sendbird-conversation" }, (U == null ? void 0 : U()) || T.createElement(rV, { type: Kn.LOADING })) : i ? r ? T.createElement("div", { className: "sendbird-conversation" }, (N == null ? void 0 : N()) || T.createElement(rV, { type: Kn.WRONG })) : W ? T.createElement("div", { className: "sendbird-conversation" }, (N == null ? void 0 : N()) || T.createElement(rV, { type: Kn.WRONG, retryToConnect: function() {
+  return d ? T.createElement("div", { className: "sendbird-conversation" }, (U == null ? void 0 : U()) || T.createElement(rV, { type: _n.LOADING })) : i ? r ? T.createElement("div", { className: "sendbird-conversation" }, (N == null ? void 0 : N()) || T.createElement(rV, { type: _n.WRONG })) : W ? T.createElement("div", { className: "sendbird-conversation" }, (N == null ? void 0 : N()) || T.createElement(rV, { type: _n.WRONG, retryToConnect: function() {
     F.info("Channel: reconnecting");
   } })) : T.createElement(
     "div",
@@ -31924,7 +31924,7 @@ var N4 = function(e) {
         !m && T.createElement(U4, null)
       )
     )
-  ) : T.createElement("div", { className: "sendbird-conversation" }, (N == null ? void 0 : N()) || T.createElement(rV, { type: Kn.NO_CHANNELS }));
+  ) : T.createElement("div", { className: "sendbird-conversation" }, (N == null ? void 0 : N()) || T.createElement(rV, { type: _n.NO_CHANNELS }));
 }, pR = function(e) {
   return e ? e.isFrozen && e.myRole !== "operator" : !1;
 }, Yo = function(e) {
@@ -31944,7 +31944,7 @@ function UY(e, n) {
       var c = xM(a);
       i(c);
     }
-  }, [a]), Pe(function() {
+  }, [a]), _e(function() {
     var c = { childList: !0, subtree: !0 }, V = function(o) {
       var U = o.length > 0;
       U && i(xM(a));
@@ -32747,16 +32747,16 @@ var P4 = function(e) {
       } catch {
       }
   }, []), mt = e == null ? void 0 : e.value;
-  Pe(function() {
+  _e(function() {
     var ge, it = xe == null ? void 0 : xe.current;
     try {
       it.innerHTML = mt, eI(it, mt == null ? void 0 : mt.length);
     } catch {
     }
     nt([]), Je(((ge = it == null ? void 0 : it.textContent) === null || ge === void 0 ? void 0 : ge.trim().length) > 0), cn();
-  }, [mt]), Pe(function() {
+  }, [mt]), _e(function() {
     N || (Je(!1), DZ(xe));
-  }, [ee]), Pe(function() {
+  }, [ee]), _e(function() {
     var ge, it, ze;
     if (N && (S != null && S.messageId)) {
       var ht = xe == null ? void 0 : xe.current;
@@ -32801,7 +32801,7 @@ var P4 = function(e) {
     }
     Je(((ge = it.textContent) === null || ge === void 0 ? void 0 : ge.trim().length) > 0);
   }, [Ot, W]);
-  Pe(function() {
+  _e(function() {
     var ge, it;
     if (W && re) {
       var ze = Ot.targetString, ht = Ot.startNodeIndex, Ft = Ot.startOffsetIndex, X = Ot.endNodeIndex, Ue = Ot.endOffsetIndex;
@@ -32915,14 +32915,14 @@ var P4 = function(e) {
       ((r = (d = (a = xe == null ? void 0 : xe.current) === null || a === void 0 ? void 0 : a.textContent) === null || d === void 0 ? void 0 : d.length) !== null && r !== void 0 ? r : 0) === 0 && T.createElement(Fe, { className: "sendbird-message-input--placeholder", type: oe.BODY_1, color: k ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_3 }, G || kt.MESSAGE_INPUT__PLACE_HOLDER),
       !N && Ce && T.createElement(Fi, { className: "sendbird-message-input--send", height: "32px", width: "32px", onClick: function() {
         return ft();
-      } }, (Xe == null ? void 0 : Xe()) || T.createElement(dt, { type: Ie.SEND, fillColor: k ? _e.ON_BACKGROUND_4 : _e.PRIMARY, width: "20px", height: "20px" })),
+      } }, (Xe == null ? void 0 : Xe()) || T.createElement(dt, { type: Ie.SEND, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "20px", height: "20px" })),
       !N && !Ce && ((at == null ? void 0 : at()) || ln && T.createElement(
         Fi,
         { className: "sendbird-message-input--attach ".concat(m ? "is-voice-message-enabled" : ""), height: "32px", width: "32px", onClick: function() {
           var ge, it;
           (it = (ge = vt == null ? void 0 : vt.current) === null || ge === void 0 ? void 0 : ge.click) === null || it === void 0 || it.call(ge);
         } },
-        T.createElement(dt, { type: Ie.ATTACH, fillColor: k ? _e.ON_BACKGROUND_4 : _e.CONTENT_INVERSE, width: "20px", height: "20px" }),
+        T.createElement(dt, { type: Ie.ATTACH, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.CONTENT_INVERSE, width: "20px", height: "20px" }),
         T.createElement("input", {
           className: "sendbird-message-input--attach-input",
           type: "file",
@@ -32936,7 +32936,7 @@ var P4 = function(e) {
           multiple: u && B4(i)
         })
       )),
-      m && !N && !Ce && T.createElement(Fi, { className: "sendbird-message-input--voice-message", width: "32px", height: "32px", onClick: We }, ($e == null ? void 0 : $e()) || T.createElement(dt, { type: Ie.AUDIO_ON_LINED, fillColor: k ? _e.ON_BACKGROUND_4 : _e.CONTENT_INVERSE, width: "20px", height: "20px" }))
+      m && !N && !Ce && T.createElement(Fi, { className: "sendbird-message-input--voice-message", width: "32px", height: "32px", onClick: We }, ($e == null ? void 0 : $e()) || T.createElement(dt, { type: Ie.AUDIO_ON_LINED, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.CONTENT_INVERSE, width: "20px", height: "20px" }))
     ),
     N && T.createElement(
       "div",
@@ -32987,7 +32987,7 @@ var iI = function(e) {
   return r ? tI(r) ? Sr(r, "p", i) : rI(r) ? d.MESSAGE_STATUS__YESTERDAY || "Yesterday" : lI(r) ? Sr(r, "MMM d", i) : Sr(r, "yyyy/M/d", i) : "";
 };
 function VI(e) {
-  var n, t, l, a = e.className, d = e.message, r = e.channel, i = e.isDateSeparatorConsidered, c = i === void 0 ? !0 : i, V = ca(), s = V.stringSet, o = V.dateLocale, U = Mb(r, d), N = ((l = r == null ? void 0 : r.isGroupChannel) === null || l === void 0 ? void 0 : l.call(r)) && (r.isSuper || r.isPublic || r.isBroadcast) && !(U === Hn.PENDING || U === Hn.FAILED), R = (n = {}, n[Hn.SENT] = Ie.DONE, n[Hn.DELIVERED] = Ie.DONE_ALL, n[Hn.READ] = Ie.DONE_ALL, n[Hn.FAILED] = Ie.ERROR, n), h = (t = {}, t[Hn.SENT] = _e.SENT, t[Hn.DELIVERED] = _e.SENT, t[Hn.READ] = _e.READ, t[Hn.FAILED] = _e.ERROR, t);
+  var n, t, l, a = e.className, d = e.message, r = e.channel, i = e.isDateSeparatorConsidered, c = i === void 0 ? !0 : i, V = ca(), s = V.stringSet, o = V.dateLocale, U = Mb(r, d), N = ((l = r == null ? void 0 : r.isGroupChannel) === null || l === void 0 ? void 0 : l.call(r)) && (r.isSuper || r.isPublic || r.isBroadcast) && !(U === Hn.PENDING || U === Hn.FAILED), R = (n = {}, n[Hn.SENT] = Ie.DONE, n[Hn.DELIVERED] = Ie.DONE_ALL, n[Hn.READ] = Ie.DONE_ALL, n[Hn.FAILED] = Ie.ERROR, n), h = (t = {}, t[Hn.SENT] = Pe.SENT, t[Hn.DELIVERED] = Pe.SENT, t[Hn.READ] = Pe.READ, t[Hn.FAILED] = Pe.ERROR, t);
   return T.createElement(
     "div",
     { className: Ut(Ut([], Array.isArray(a) ? a : [a], !0), [
@@ -32996,7 +32996,7 @@ function VI(e) {
     U === Hn.PENDING ? T.createElement(
       Vh,
       { className: "sendbird-message-status__icon", width: "16px", height: "16px" },
-      T.createElement(dt, { type: Ie.SPINNER, fillColor: _e.PRIMARY, width: "16px", height: "16px" })
+      T.createElement(dt, { type: Ie.SPINNER, fillColor: Pe.PRIMARY, width: "16px", height: "16px" })
     ) : T.createElement(dt, { className: "sendbird-message-status__icon ".concat(N ? "hide-icon" : "", " ").concat(U === Hn.FAILED ? "" : "sendbird-message-status--sent"), type: R[U] || Ie.ERROR, fillColor: h[U], width: "16px", height: "16px" }),
     bj(U) && T.createElement(Fe, { className: "sendbird-message-status__text", type: oe.CAPTION_3, color: ie.ONBACKGROUND_2 }, c ? Sr((d == null ? void 0 : d.createdAt) || 0, "p", { locale: o }) : iI({ channel: r, locale: o, stringSet: s }))
   );
@@ -33073,11 +33073,11 @@ var sI = 60, oI = (
   }(T.Component)
 ), UI = { x: 0, y: 0, left: 0, top: 0, height: 0 }, NI = function(e) {
   var n = e.children, t = e.parentRef, l = e.parentContainRef, a = e.spaceFromTrigger, d = a === void 0 ? { x: 0, y: 0 } : a, r = e.closeDropdown, i = me({ left: 0, top: 0 }), c = i[0], V = i[1], s = Wt(null);
-  Pe(function() {
+  _e(function() {
     return l && (l != null && l.current) && l.current.classList.add("sendbird-reactions--pressed"), function() {
       l && (l != null && l.current) && l.current.classList.remove("sendbird-reactions--pressed");
     };
-  }, []), Pe(function() {
+  }, []), _e(function() {
     var U = function(N) {
       var R, h;
       s != null && s.current && !(!((h = (R = s == null ? void 0 : s.current) === null || R === void 0 ? void 0 : R.contains) === null || h === void 0) && h.call(R, N.target)) && r();
@@ -33085,7 +33085,7 @@ var sI = 60, oI = (
     return document.addEventListener("mousedown", U), function() {
       document.removeEventListener("mousedown", U);
     };
-  }, []), Pe(function() {
+  }, []), _e(function() {
     var U, N, R, h = (d == null ? void 0 : d.x) || 0, Z = (d == null ? void 0 : d.y) || 0, W = (N = (U = t == null ? void 0 : t.current) === null || U === void 0 ? void 0 : U.getBoundingClientRect()) !== null && N !== void 0 ? N : UI, F = W.x || W.left, m = W.y || W.top, E = {
       top: m,
       left: F
@@ -33145,7 +33145,7 @@ var hI = {
   NONE: "none"
 };
 function ZI(e) {
-  var n, t = e.className, l = e.message, a = e.channel, d = e.isByMe, r = d === void 0 ? !1 : d, i = e.disabled, c = i === void 0 ? !1 : i, V = e.replyType, s = e.disableDeleteMessage, o = s === void 0 ? null : s, U = e.showEdit, N = e.showRemove, R = e.deleteMessage, h = e.resendMessage, Z = e.setQuoteMessage, W = e.setSupposedHover, F = e.onReplyInThread, m = e.onMoveToParentMessage, E = m === void 0 ? null : m, u = Gt(Cn).stringSet, b = Wt(null), k = Wt(null), Q = dd(l), S = !(a != null && a.isEphemeral) && dd(l) && So(l) && r, v = Ba(l) && (l == null ? void 0 : l.isResendable) && r, G = !(a != null && a.isEphemeral) && !Fd(l) && r, w = E !== null, y = !Ba(l) && !Fd(l) && ((n = a == null ? void 0 : a.isGroupChannel) === null || n === void 0 ? void 0 : n.call(a)) && !(a != null && a.isEphemeral) && ((a == null ? void 0 : a.isBroadcast) && (a == null ? void 0 : a.myRole) === hI.OPERATOR || !(a != null && a.isBroadcast)), g = y && V === "QUOTE_REPLY", f = y && V === "THREAD" && !(l != null && l.parentMessageId) && F;
+  var n, t = e.className, l = e.message, a = e.channel, d = e.isByMe, r = d === void 0 ? !1 : d, i = e.disabled, c = i === void 0 ? !1 : i, V = e.replyType, s = e.disableDeleteMessage, o = s === void 0 ? null : s, U = e.showEdit, N = e.showRemove, R = e.deleteMessage, h = e.resendMessage, Z = e.setQuoteMessage, W = e.setSupposedHover, F = e.onReplyInThread, m = e.onMoveToParentMessage, E = m === void 0 ? null : m, u = Gt(Kn).stringSet, b = Wt(null), k = Wt(null), Q = dd(l), S = !(a != null && a.isEphemeral) && dd(l) && So(l) && r, v = Ba(l) && (l == null ? void 0 : l.isResendable) && r, G = !(a != null && a.isEphemeral) && !Fd(l) && r, w = E !== null, y = !Ba(l) && !Fd(l) && ((n = a == null ? void 0 : a.isGroupChannel) === null || n === void 0 ? void 0 : n.call(a)) && !(a != null && a.isEphemeral) && ((a == null ? void 0 : a.isBroadcast) && (a == null ? void 0 : a.myRole) === hI.OPERATOR || !(a != null && a.isBroadcast)), g = y && V === "QUOTE_REPLY", f = y && V === "THREAD" && !(l != null && l.parentMessageId) && F;
   return Q || g || f || w || S || v || G ? T.createElement(
     "div",
     { className: vn([t, "sendbird-message-item-menu"]), ref: k },
@@ -33157,7 +33157,7 @@ function ZI(e) {
         }, onBlur: function() {
           W(!1);
         } },
-        T.createElement(dt, { className: "sendbird-message-item-menu__trigger__icon", type: Ie.MORE, fillColor: _e.CONTENT_INVERSE, width: "24px", height: "24px" })
+        T.createElement(dt, { className: "sendbird-message-item-menu__trigger__icon", type: Ie.MORE, fillColor: Pe.CONTENT_INVERSE, width: "24px", height: "24px" })
       );
     }, menuItems: function(I) {
       var K, Re = function() {
@@ -33262,7 +33262,7 @@ function WI(e) {
         }, onBlur: function() {
           c(!1);
         } },
-        T.createElement(dt, { className: "sendbird-message-item-reaction-menu__trigger__icon", type: Ie.EMOJI_MORE, fillColor: _e.CONTENT_INVERSE, width: "24px", height: "24px" })
+        T.createElement(dt, { className: "sendbird-message-item-reaction-menu__trigger__icon", type: Ie.EMOJI_MORE, fillColor: Pe.CONTENT_INVERSE, width: "24px", height: "24px" })
       );
     }, menuItems: function(o) {
       var U = function() {
@@ -33284,7 +33284,7 @@ function WI(e) {
             return T.createElement(
               "div",
               { style: m },
-              T.createElement(dt, { type: Ie.QUESTION, fillColor: _e.ON_BACKGROUND_3, width: "28px", height: "28px" })
+              T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
             );
           } })
         );
@@ -33337,7 +33337,7 @@ function mI(e) {
         height: "".concat(t, "px"),
         width: "".concat(a, "px")
       } }),
-      T.createElement(dt, { type: Ie.MUTE, fillColor: _e.WHITE, width: "".concat(t - 8, "px"), height: "".concat(a - 8, "px") })
+      T.createElement(dt, { type: Ie.MUTE, fillColor: Pe.WHITE, width: "".concat(t - 8, "px"), height: "".concat(a - 8, "px") })
     )
   );
 }
@@ -33406,7 +33406,7 @@ var pI = function(e) {
   };
 };
 function a1(e) {
-  var n, t, l = e.user, a = e.currentUserId, d = e.disableMessaging, r = d === void 0 ? !1 : d, i = e.onSuccess, c = zn(), V = MI(c), s = (n = c == null ? void 0 : c.config) === null || n === void 0 ? void 0 : n.logger, o = Gt(Cn).stringSet, U = a || ((t = c == null ? void 0 : c.config) === null || t === void 0 ? void 0 : t.userId), N = Gt(nh).onUserProfileMessage;
+  var n, t, l = e.user, a = e.currentUserId, d = e.disableMessaging, r = d === void 0 ? !1 : d, i = e.onSuccess, c = zn(), V = MI(c), s = (n = c == null ? void 0 : c.config) === null || n === void 0 ? void 0 : n.logger, o = Gt(Kn).stringSet, U = a || ((t = c == null ? void 0 : c.config) === null || t === void 0 ? void 0 : t.userId), N = Gt(nh).onUserProfileMessage;
   return T.createElement(
     "div",
     { className: "sendbird__user-profile" },
@@ -33444,7 +33444,7 @@ function a1(e) {
   );
 }
 function SI(e) {
-  var n = e.user, t = e.className, l = e.checked, a = e.checkBox, d = e.isOperator, r = e.disabled, i = e.disableMessaging, c = e.currentUser, V = e.action, s = e.onChange, o = e.avatarSize, U = o === void 0 ? "40px" : o, N = e.onClick, R = n.userId, h = T.useRef(null), Z = T.useRef(null), W = T.useRef(null), F = Gt(nh), m = F.disableUserProfile, E = F.renderUserProfile, u = Gt(Cn).stringSet;
+  var n = e.user, t = e.className, l = e.checked, a = e.checkBox, d = e.isOperator, r = e.disabled, i = e.disableMessaging, c = e.currentUser, V = e.action, s = e.onChange, o = e.avatarSize, U = o === void 0 ? "40px" : o, N = e.onClick, R = n.userId, h = T.useRef(null), Z = T.useRef(null), W = T.useRef(null), F = Gt(nh), m = F.disableUserProfile, E = F.renderUserProfile, u = Gt(Kn).stringSet;
   return T.createElement(
     "div",
     { className: Ut(Ut([], Array.isArray(t) ? t : [t], !0), [
@@ -33577,7 +33577,7 @@ var QI = {
             return T.createElement(
               "div",
               { style: E },
-              T.createElement(dt, { type: Ie.QUESTION, fillColor: _e.ON_BACKGROUND_3, width: "28px", height: "28px" })
+              T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
             );
           } }),
           T.createElement(Fe, { type: oe.BUTTON_2, color: R === W.key ? ie.PRIMARY : ie.ONBACKGROUND_3 }, W.userIds.length)
@@ -33603,7 +33603,7 @@ var QI = {
   );
 };
 function vI(e) {
-  var n, t = e.reaction, l = e.memberNicknamesMap, a = e.setEmojiKey, d = e.toggleReaction, r = e.emojisMap, i = e.channel, c = e.message, V = zn(), s = dr().isMobile, o = YY(), U = Gt(Cn).stringSet, N = V.config.userId, R = Qb(N, t), h = t.userIds.length > 0 && (i == null ? void 0 : i.isGroupChannel()) && !i.isSuper, Z = function() {
+  var n, t = e.reaction, l = e.memberNicknamesMap, a = e.setEmojiKey, d = e.toggleReaction, r = e.emojisMap, i = e.channel, c = e.message, V = zn(), s = dr().isMobile, o = YY(), U = Gt(Kn).stringSet, N = V.config.userId, R = Qb(N, t), h = t.userIds.length > 0 && (i == null ? void 0 : i.isGroupChannel()) && !i.isSuper, Z = function() {
     a(""), d == null || d(c ?? (o == null ? void 0 : o.message), t.key, R);
   }, W = cU({
     onLongPress: function() {
@@ -33643,7 +33643,7 @@ var zI = function(e) {
     T.createElement(
       l1,
       { isAdd: !0 },
-      T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: _e.ON_BACKGROUND_3, width: "20px", height: "20px" })
+      T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "20px", height: "20px" })
     )
   );
 }, xI = function(e) {
@@ -33669,7 +33669,7 @@ var zI = function(e) {
           return T.createElement(
             "div",
             { style: R },
-            T.createElement(dt, { type: Ie.QUESTION, fillColor: _e.ON_BACKGROUND_3, width: "28px", height: "28px" })
+            T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
           );
         } })
       );
@@ -33694,7 +33694,7 @@ var zI = function(e) {
           var f;
           y(), (f = g == null ? void 0 : g.stopPropagation) === null || f === void 0 || f.call(g);
         } },
-        T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: _e.ON_BACKGROUND_3, width: "20px", height: "20px" })
+        T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "20px", height: "20px" })
       );
     }, menuItems: function(y) {
       return T.createElement(EY, { parentRef: E, parentContainRef: E, closeDropdown: y, spaceFromTrigger: R }, eh(o).map(function(g) {
@@ -33713,7 +33713,7 @@ var zI = function(e) {
             return T.createElement(
               "div",
               { style: ae },
-              T.createElement(dt, { type: Ie.QUESTION, fillColor: _e.ON_BACKGROUND_3, width: "28px", height: "28px" })
+              T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
             );
           } })
         );
@@ -33792,7 +33792,7 @@ function JY(e) {
   return n && n.length > 0 ? n[0].url : "";
 }
 function DI(e) {
-  var n, t, l, a, d, r, i, c = e.message, V = e.userId, s = V === void 0 ? "" : V, o = e.isByMe, U = o === void 0 ? !1 : o, N = e.className, R = N === void 0 ? "" : N, h = e.isUnavailable, Z = h === void 0 ? !1 : h, W = e.onClick, F = Gt(Cn).stringSet, m = c.parentMessage, E = m == null ? void 0 : m.sender, u = s === (E == null ? void 0 : E.userId) ? F.QUOTED_MESSAGE__CURRENT_USER : E == null ? void 0 : E.nickname, b = SR(m), k = ER(m), Q = s === ((t = c == null ? void 0 : c.sender) === null || t === void 0 ? void 0 : t.userId) ? F.QUOTED_MESSAGE__CURRENT_USER : (l = c == null ? void 0 : c.sender) === null || l === void 0 ? void 0 : l.nickname, S = me(!1), v = S[0], G = S[1], w = kj(), y = (d = (a = QY(m)) === null || a === void 0 ? void 0 : a.split("/")) !== null && d !== void 0 ? d : b.split("/");
+  var n, t, l, a, d, r, i, c = e.message, V = e.userId, s = V === void 0 ? "" : V, o = e.isByMe, U = o === void 0 ? !1 : o, N = e.className, R = N === void 0 ? "" : N, h = e.isUnavailable, Z = h === void 0 ? !1 : h, W = e.onClick, F = Gt(Kn).stringSet, m = c.parentMessage, E = m == null ? void 0 : m.sender, u = s === (E == null ? void 0 : E.userId) ? F.QUOTED_MESSAGE__CURRENT_USER : E == null ? void 0 : E.nickname, b = SR(m), k = ER(m), Q = s === ((t = c == null ? void 0 : c.sender) === null || t === void 0 ? void 0 : t.userId) ? F.QUOTED_MESSAGE__CURRENT_USER : (l = c == null ? void 0 : c.sender) === null || l === void 0 ? void 0 : l.nickname, S = me(!1), v = S[0], G = S[1], w = kj(), y = (d = (a = QY(m)) === null || a === void 0 ? void 0 : a.split("/")) !== null && d !== void 0 ? d : b.split("/");
   return T.createElement(
     "div",
     { className: vn([R, "sendbird-quote-message", U ? "outgoing" : "incoming", Z ? "unavailable" : ""]), key: m == null ? void 0 : m.messageId, onClick: function() {
@@ -33803,7 +33803,7 @@ function DI(e) {
     T.createElement(
       "div",
       { className: "sendbird-quote-message__replied-to" },
-      T.createElement(dt, { className: "sendbird-quote-message__replied-to__icon", type: Ie.REPLY, fillColor: _e.ON_BACKGROUND_3, width: "12px", height: "12px" }),
+      T.createElement(dt, { className: "sendbird-quote-message__replied-to__icon", type: Ie.REPLY, fillColor: Pe.ON_BACKGROUND_3, width: "12px", height: "12px" }),
       T.createElement(
         Fe,
         { className: "sendbird-quote-message__replied-to__text", type: oe.CAPTION_2, color: ie.ONBACKGROUND_3 },
@@ -33841,7 +33841,7 @@ function DI(e) {
           T.createElement(
             "div",
             { className: "sendbird-quote-message__replied-message__thumbnail-message__placeholder__icon" },
-            T.createElement(dt, { type: YV(k) ? Ie.PLAY : Ie.PHOTO, fillColor: _e.ON_BACKGROUND_2, width: "22px", height: "22px" })
+            T.createElement(dt, { type: YV(k) ? Ie.PLAY : Ie.PHOTO, fillColor: Pe.ON_BACKGROUND_2, width: "22px", height: "22px" })
           )
         ) }),
         YV(k) && !(((i = m == null ? void 0 : m.thumbnails) === null || i === void 0 ? void 0 : i.length) > 0) && T.createElement(
@@ -33858,7 +33858,7 @@ function DI(e) {
             T.createElement(
               "div",
               { className: "sendbird-quote-message__replied-message__thumbnail-message__cover__icon" },
-              T.createElement(dt, { type: Ie.PLAY, fillColor: _e.ON_BACKGROUND_2, width: "14px", height: "14px" })
+              T.createElement(dt, { type: Ie.PLAY, fillColor: Pe.ON_BACKGROUND_2, width: "14px", height: "14px" })
             )
           )
         ),
@@ -33868,14 +33868,14 @@ function DI(e) {
           T.createElement(
             "div",
             { className: "sendbird-quote-message__replied-message__thumbnail-message__cover__icon" },
-            T.createElement(dt, { type: Ie.GIF, fillColor: _e.THUMBNAIL_ICON, width: "14px", height: "14px" })
+            T.createElement(dt, { type: Ie.GIF, fillColor: Pe.THUMBNAIL_ICON, width: "14px", height: "14px" })
           )
         )
       ),
       BW(m) === vd.FILE && b && !Z && T.createElement(
         "div",
         { className: "sendbird-quote-message__replied-message__file-message" },
-        T.createElement(dt, { className: "sendbird-quote-message__replied-message__file-message__type-icon", type: (n = {}, n[w.IMAGE] = Ie.PHOTO, n[w.VIDEO] = Ie.PLAY, n[w.AUDIO] = Ie.FILE_AUDIO, n[w.GIF] = Ie.GIF, n[w.OTHERS] = Ie.FILE_DOCUMENT, n)[Sb(k)], fillColor: _e.ON_BACKGROUND_3, width: "16px", height: "16px" }),
+        T.createElement(dt, { className: "sendbird-quote-message__replied-message__file-message__type-icon", type: (n = {}, n[w.IMAGE] = Ie.PHOTO, n[w.VIDEO] = Ie.PLAY, n[w.AUDIO] = Ie.FILE_AUDIO, n[w.GIF] = Ie.GIF, n[w.OTHERS] = Ie.FILE_DOCUMENT, n)[Sb(k)], fillColor: Pe.ON_BACKGROUND_3, width: "16px", height: "16px" }),
         T.createElement(Fe, { className: "sendbird-quote-message__replied-message__file-message__file-name", type: oe.BODY_2, color: ie.ONBACKGROUND_3 }, Jb(y[y.length - 1]))
       )
     )
@@ -33894,7 +33894,7 @@ var XI = function(e) {
           a(), XW(r == null ? void 0 : r.message);
         }, dataSbId: "ui_mobile_message_item_menu_copy" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E == null ? void 0 : E.MESSAGE_MENU__COPY),
-        T.createElement(dt, { type: Ie.COPY, fillColor: _e.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Ie.COPY, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       y && T.createElement(
         Na,
@@ -33902,7 +33902,7 @@ var XI = function(e) {
           a(), R(r);
         }, disable: ((I = r == null ? void 0 : r.parentMessageId) !== null && I !== void 0 ? I : 0) > 0, dataSbId: "ui_mobile_message_item_menu_reply" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ((K = r == null ? void 0 : r.parentMessageId) !== null && K !== void 0 ? K : 0) > 0 ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__REPLY),
-        T.createElement(dt, { type: Ie.REPLY, fillColor: ((Re = r == null ? void 0 : r.parentMessageId) !== null && Re !== void 0 ? Re : 0) > 0 ? _e.ON_BACKGROUND_4 : _e.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Ie.REPLY, fillColor: ((Re = r == null ? void 0 : r.parentMessageId) !== null && Re !== void 0 ? Re : 0) > 0 ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       g && T.createElement(
         Na,
@@ -33910,7 +33910,7 @@ var XI = function(e) {
           a(), Z == null || Z({ message: r });
         }, dataSbId: "ui_mobile_message_item_menu_thread" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__THREAD),
-        T.createElement(dt, { type: Ie.THREAD, fillColor: _e.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Ie.THREAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       b && T.createElement(
         Na,
@@ -33918,7 +33918,7 @@ var XI = function(e) {
           a(), s(!0);
         }, dataSbId: "ui_mobile_message_item_menu_edit" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__EDIT),
-        T.createElement(dt, { type: Ie.EDIT, fillColor: _e.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Ie.EDIT, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       k && T.createElement(
         Na,
@@ -33926,7 +33926,7 @@ var XI = function(e) {
           a(), V(r);
         }, dataSbId: "ui_mobile_message_item_menu_resend" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__RESEND),
-        T.createElement(dt, { type: Ie.REFRESH, fillColor: _e.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Ie.REFRESH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       v && T.createElement(
         Na,
@@ -33934,7 +33934,7 @@ var XI = function(e) {
           Ba(r) ? (a(), N == null || N(r)) : G || (a(), o == null || o(!0));
         }, disable: G, dataSbId: "ui_mobile_message_item_menu_delete" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: G ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__DELETE),
-        T.createElement(dt, { type: Ie.DELETE, fillColor: G ? _e.ON_BACKGROUND_4 : _e.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Ie.DELETE, fillColor: G ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       w && T.createElement(
         Na,
@@ -33945,7 +33945,7 @@ var XI = function(e) {
           "a",
           { className: "sendbird-message__contextmenu--hyperlink", rel: "noopener noreferrer", href: f == null ? void 0 : f.url, target: "_blank" },
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__SAVE),
-          T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: _e.PRIMARY, width: "24px", height: "24px" })
+          T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
         )
       )
     );
@@ -33986,7 +33986,7 @@ var XI = function(e) {
                   return T.createElement(
                     "div",
                     { style: We },
-                    T.createElement(dt, { type: Ie.QUESTION, fillColor: _e.ON_BACKGROUND_3, width: "28px", height: "28px" })
+                    T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
                   );
                 } })
               );
@@ -34001,7 +34001,7 @@ var XI = function(e) {
                 return T.createElement(
                   "div",
                   { style: Ye },
-                  T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: _e.ON_BACKGROUND_3, width: "28px", height: "28px" })
+                  T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
                 );
               } })
             )
@@ -34016,7 +34016,7 @@ var XI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             a(), XW(i == null ? void 0 : i.message);
           } },
-          T.createElement(dt, { type: Ie.COPY, fillColor: _e.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Ie.COPY, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__COPY)
         ),
         v && T.createElement(
@@ -34024,7 +34024,7 @@ var XI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             a(), R(!0);
           } },
-          T.createElement(dt, { type: Ie.EDIT, fillColor: _e.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Ie.EDIT, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__EDIT)
         ),
         G && T.createElement(
@@ -34032,7 +34032,7 @@ var XI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             a(), s(i);
           } },
-          T.createElement(dt, { type: Ie.REFRESH, fillColor: _e.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Ie.REFRESH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__RESEND)
         ),
         Re && T.createElement(
@@ -34042,7 +34042,7 @@ var XI = function(e) {
                     `), role: "menuitem", "aria-disabled": !!ae, onClick: function() {
             ae || (a(), W(i));
           } },
-          T.createElement(dt, { type: Ie.REPLY, fillColor: ae ? _e.ON_BACKGROUND_3 : _e.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Ie.REPLY, fillColor: ae ? Pe.ON_BACKGROUND_3 : Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ae ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__REPLY)
         ),
         q && T.createElement(
@@ -34050,7 +34050,7 @@ var XI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             a(), F == null || F({ message: i });
           } },
-          T.createElement(dt, { type: Ie.THREAD, fillColor: _e.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Ie.THREAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b.MESSAGE_MENU__THREAD)
         ),
         g && T.createElement(
@@ -34058,7 +34058,7 @@ var XI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             Ba(i) ? (a(), o == null || o(i)) : f || (a(), h == null || h(!0));
           } },
-          T.createElement(dt, { type: Ie.DELETE, fillColor: f ? _e.ON_BACKGROUND_4 : _e.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Ie.DELETE, fillColor: f ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: f ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__DELETE)
         ),
         I && T.createElement(
@@ -34069,7 +34069,7 @@ var XI = function(e) {
           T.createElement(
             "a",
             { className: "sendbird-message__bottomsheet--hyperlink", rel: "noopener noreferrer", href: se == null ? void 0 : se.url, target: "_blank" },
-            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: _e.PRIMARY, width: "24px", height: "24px" }),
+            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
             T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__SAVE)
           )
         )
@@ -34103,12 +34103,12 @@ function HI(e) {
         T.createElement(
           "div",
           { className: "sendbird-ui-thread-replies__user-profiles__avatar__plus" },
-          T.createElement(dt, { type: Ie.PLUS, fillColor: _e.WHITE, width: "16px", height: "16px" })
+          T.createElement(dt, { type: Ie.PLUS, fillColor: Pe.WHITE, width: "16px", height: "16px" })
         )
       )
     ),
     T.createElement(Fe, { className: "sendbird-ui-thread-replies__reply-counts", type: oe.CAPTION_2, color: ie.PRIMARY }, i === 1 ? "".concat(i, " ").concat(c.CHANNEL__THREAD_REPLY) : "".concat(i > 99 ? c.CHANNEL__THREAD_OVER_MAX : i, " ").concat(c.CHANNEL__THREAD_REPLIES)),
-    T.createElement(dt, { className: "sendbird-ui-thread-replies__icon", type: Ie.CHEVRON_RIGHT, fillColor: _e.PRIMARY, width: "16px", height: "16px" })
+    T.createElement(dt, { className: "sendbird-ui-thread-replies__icon", type: Ie.CHEVRON_RIGHT, fillColor: Pe.PRIMARY, width: "16px", height: "16px" })
   );
 }
 function fI(e) {
@@ -34205,7 +34205,7 @@ function vY(e) {
 }
 function LI(e) {
   var n, t, l, a, d, r, i, c, V, s, o, U, N = e.className, R = e.message, h = e.isByMe, Z = h === void 0 ? !1 : h, W = e.mouseHover, F = W === void 0 ? !1 : W, m = e.isMentionEnabled, E = m === void 0 ? !1 : m, u = e.isReactionEnabled, b = u === void 0 ? !1 : u, k = e.onMessageHeightChange, Q = k === void 0 ? function() {
-  } : k, S = Wt(null), v = Gt(Cn).stringSet, G = function() {
+  } : k, S = Wt(null), v = Gt(Kn).stringSet, G = function() {
     var g, f = (g = R == null ? void 0 : R.ogMetaData) === null || g === void 0 ? void 0 : g.url;
     f && (!f.startsWith("http://") && !f.startsWith("https://") && (f = "https://" + f), window.open(f));
   }, w = E && ((n = R == null ? void 0 : R.mentionedMessageTemplate) === null || n === void 0 ? void 0 : n.length) > 0 && ((t = R == null ? void 0 : R.mentionedUsers) === null || t === void 0 ? void 0 : t.length) > 0, y = nn(function() {
@@ -34263,7 +34263,7 @@ function LI(e) {
   );
 }
 function CI(e) {
-  var n, t, l, a = e.className, d = a === void 0 ? "" : a, r = e.message, i = e.isByMe, c = i === void 0 ? !1 : i, V = e.mouseHover, s = V === void 0 ? !1 : V, o = e.isMentionEnabled, U = o === void 0 ? !1 : o, N = e.isReactionEnabled, R = N === void 0 ? !1 : N, h = Gt(Cn).stringSet, Z = U && ((n = r == null ? void 0 : r.mentionedMessageTemplate) === null || n === void 0 ? void 0 : n.length) > 0 && ((t = r == null ? void 0 : r.mentionedUsers) === null || t === void 0 ? void 0 : t.length) > 0, W = nn(function() {
+  var n, t, l, a = e.className, d = a === void 0 ? "" : a, r = e.message, i = e.isByMe, c = i === void 0 ? !1 : i, V = e.mouseHover, s = V === void 0 ? !1 : V, o = e.isMentionEnabled, U = o === void 0 ? !1 : o, N = e.isReactionEnabled, R = N === void 0 ? !1 : N, h = Gt(Kn).stringSet, Z = U && ((n = r == null ? void 0 : r.mentionedMessageTemplate) === null || n === void 0 ? void 0 : n.length) > 0 && ((t = r == null ? void 0 : r.mentionedUsers) === null || t === void 0 ? void 0 : t.length) > 0, W = nn(function() {
     return Jo(Z ? {
       mentionedUsers: r == null ? void 0 : r.mentionedUsers,
       messageText: r == null ? void 0 : r.mentionedMessageTemplate
@@ -34321,7 +34321,7 @@ function KI(e) {
         AUDIO: Ie.FILE_AUDIO,
         GIF: Ie.GIF,
         OTHERS: Ie.FILE_DOCUMENT
-      }[Sb(l == null ? void 0 : l.type)], fillColor: _e.PRIMARY, width: "24px", height: "24px" })
+      }[Sb(l == null ? void 0 : l.type)], fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
     ),
     T.createElement(
       zY,
@@ -34383,7 +34383,7 @@ function AI(e) {
     return t ? T.createElement(
       "div",
       { className: "sendbird-fileviewer__header__right__actions__delete ".concat(a) },
-      T.createElement(dt, { className: l ? "disabled" : "", type: Ie.DELETE, fillColor: l ? _e.GRAY : _e.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function(d) {
+      T.createElement(dt, { className: l ? "disabled" : "", type: Ie.DELETE, fillColor: l ? Pe.GRAY : Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function(d) {
         l || n == null || n(d);
       } })
     ) : T.createElement(T.Fragment, null);
@@ -34399,14 +34399,14 @@ function qI(e) {
       T.createElement(
         "div",
         { className: "sendbird-file-viewer-arrow--left" },
-        T.createElement(dt, { type: Ie.SLIDE_LEFT, fillColor: _e.ON_BACKGROUND_1, height: eN, width: eN, onClick: function(l) {
+        T.createElement(dt, { type: Ie.SLIDE_LEFT, fillColor: Pe.ON_BACKGROUND_1, height: eN, width: eN, onClick: function(l) {
           n == null || n(), l.stopPropagation();
         } })
       ),
       T.createElement(
         "div",
         { className: "sendbird-file-viewer-arrow--right" },
-        T.createElement(dt, { type: Ie.SLIDE_LEFT, fillColor: _e.ON_BACKGROUND_1, height: eN, width: eN, onClick: function(l) {
+        T.createElement(dt, { type: Ie.SLIDE_LEFT, fillColor: Pe.ON_BACKGROUND_1, height: eN, width: eN, onClick: function(l) {
           l.stopPropagation(), t == null || t();
         } })
       )
@@ -34425,7 +34425,7 @@ var _M = function(e) {
     ArrowRight: function() {
       return i == null ? void 0 : i();
     }
-  }), V = PI({ props: e }), s = V.name, o = V.type, U = V.url, N = Gt(Cn).stringSet;
+  }), V = PI({ props: e }), s = V.name, o = V.type, U = V.url, N = Gt(Kn).stringSet;
   return T.createElement(
     "div",
     {
@@ -34458,14 +34458,14 @@ var _M = function(e) {
           T.createElement(
             "a",
             { className: "sendbird-fileviewer__header__right__actions__download", rel: "noopener noreferrer", href: U, target: "_blank" },
-            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: _e.ON_BACKGROUND_1, height: "24px", width: "24px" })
+            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px" })
           ),
           T.createElement(AI, ce({ className: "sendbird-fileviewer__header__right__actions__delete" }, e))
         ),
         T.createElement(
           "div",
           { className: "sendbird-fileviewer__header__right__actions__close" },
-          T.createElement(dt, { type: Ie.CLOSE, fillColor: _e.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function(R) {
+          T.createElement(dt, { type: Ie.CLOSE, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function(R) {
             return a == null ? void 0 : a(R);
           } })
         )
@@ -34574,7 +34574,7 @@ var HZ = {
     return T.createElement(
       "div",
       { className: "sendbird-multiple-files-image-renderer__thumbnail__placeholder", style: n },
-      T.createElement(dt, { type: Ie.PHOTO, fillColor: _e.ON_BACKGROUND_2, width: PV, height: PV })
+      T.createElement(dt, { type: Ie.PHOTO, fillColor: Pe.ON_BACKGROUND_2, width: PV, height: PV })
     );
   },
   GIF: function(e) {
@@ -34585,7 +34585,7 @@ var HZ = {
       T.createElement(
         "div",
         { className: "sendbird-multiple-files-image-renderer__thumbnail__placeholder__icon" },
-        T.createElement(dt, { type: Ie.GIF, fillColor: _e.THUMBNAIL_ICON, width: PV, height: PV })
+        T.createElement(dt, { type: Ie.GIF, fillColor: Pe.THUMBNAIL_ICON, width: PV, height: PV })
       )
     );
   },
@@ -34593,7 +34593,7 @@ var HZ = {
     return T.createElement(
       "div",
       { className: "sendbird-multiple-files-image-renderer__thumbnail__placeholder" },
-      T.createElement(dt, { type: Ie.THUMBNAIL_NONE, fillColor: _e.ON_BACKGROUND_2, width: PV, height: PV })
+      T.createElement(dt, { type: Ie.THUMBNAIL_NONE, fillColor: Pe.ON_BACKGROUND_2, width: PV, height: PV })
     );
   }
 };
@@ -34617,7 +34617,7 @@ var U9 = function(e) {
       return URL.revokeObjectURL(a);
     }), n.current.clear());
   };
-  return Pe(function() {
+  return _e(function() {
     return function() {
       return l();
     };
@@ -34653,7 +34653,7 @@ var U9 = function(e) {
   }, E = function(u) {
     u === void 0 && (u = ""), R == null || R(u);
   };
-  return Pe(function() {
+  return _e(function() {
     return function() {
       var u;
       if (i || V) {
@@ -34686,7 +34686,7 @@ var U9 = function(e) {
     key: "".concat(l == null ? void 0 : l.messageId),
     audioFileUrl: l == null ? void 0 : l.url
   }), N = U.play, R = U.pause, h = U.playbackTime, Z = h === void 0 ? 0 : h, W = U.duration, F = U.playingStatus, m = F === void 0 ? Td.IDLE : F;
-  Pe(function() {
+  _e(function() {
     var u;
     c && ((u = l == null ? void 0 : l.reactions) === null || u === void 0 ? void 0 : u.length) > 0 ? o(!0) : o(!1);
   }, [c, (n = l == null ? void 0 : l.reactions) === null || n === void 0 ? void 0 : n.length]);
@@ -34710,12 +34710,12 @@ var U9 = function(e) {
       (m === Td.IDLE || m === Td.PAUSED) && T.createElement(
         "div",
         { className: "sendbird-voice-message-item-body__status-button__button", onClick: N },
-        T.createElement(dt, { width: "18px", height: "18px", type: Ie.PLAY, fillColor: _e.PRIMARY })
+        T.createElement(dt, { width: "18px", height: "18px", type: Ie.PLAY, fillColor: Pe.PRIMARY })
       ),
       m === Td.PREPARING && T.createElement(
         Vh,
         { width: "22.2px", height: "22.2px" },
-        T.createElement(dt, { width: "22.2px", height: "22.2px", type: Ie.SPINNER, fillColor: _e.PRIMARY_2 })
+        T.createElement(dt, { width: "22.2px", height: "22.2px", type: Ie.SPINNER, fillColor: Pe.PRIMARY_2 })
       ),
       m === Td.PLAYING && T.createElement(
         "div",
@@ -34767,13 +34767,13 @@ function h9(e) {
       T.createElement(
         "div",
         { className: "sendbird-thumbnail-message-item-body__icon-wrapper__icon" },
-        T.createElement(dt, { type: dc(d) ? Ie.PLAY : Ie.GIF, fillColor: _e.THUMBNAIL_ICON, width: "34px", height: "34px" })
+        T.createElement(dt, { type: dc(d) ? Ie.PLAY : Ie.GIF, fillColor: Pe.THUMBNAIL_ICON, width: "34px", height: "34px" })
       )
     )
   );
 }
 function Z9(e) {
-  var n, t = e.className, l = e.message, a = e.isByMe, d = a === void 0 ? !1 : a, r = e.mouseHover, i = r === void 0 ? !1 : r, c = e.isReactionEnabled, V = c === void 0 ? !1 : c, s = Gt(Cn).stringSet;
+  var n, t = e.className, l = e.message, a = e.isByMe, d = a === void 0 ? !1 : a, r = e.mouseHover, i = r === void 0 ? !1 : r, c = e.isReactionEnabled, V = c === void 0 ? !1 : c, s = Gt(Kn).stringSet;
   return T.createElement(
     "div",
     { className: vn([
@@ -34982,13 +34982,13 @@ const E9 = (e) => {
 }, S9 = (e) => {
   var { metaData: n, tintColor: t } = e, l = M9(e, ["metaData", "tintColor"]);
   const a = Wt(null), [d, r] = me(), i = nn(() => n != null && n.pixelHeight && (n != null && n.pixelWidth) ? { width: n.pixelWidth, height: n.pixelHeight } : d, [d, n == null ? void 0 : n.pixelHeight, n == null ? void 0 : n.pixelWidth]);
-  return Pe(() => {
+  return _e(() => {
     if (i == null && (console.log("Canvas_ReactMessageTemplateImage: no metaData, render fit to container"), a.current)) {
       a.current.style.width = "100%", a.current.style.height = "100%";
       const c = a.current.getBoundingClientRect();
       r(c);
     }
-  }, [i]), Pe(() => {
+  }, [i]), _e(() => {
     if (l.src) {
       const c = new Image(), V = () => {
         if (a.current && t && i) {
@@ -35027,7 +35027,7 @@ const $M = (e) => {
   return l.onError && console.warn("`onError` is intercepted and not executed in the ReactMessageTemplateImage."), a ? T.createElement(b9, Object.assign({}, l)) : n ? T.createElement(E9, Object.assign({}, l, { onError: d, tintColor: n, metaData: t })) : T.createElement(k9, Object.assign({}, l, { onError: d }));
 }, Q9 = (e) => {
   const [n, t] = me(!1);
-  return Pe(() => t(!1), [e]), {
+  return _e(() => t(!1), [e]), {
     hasError: n,
     onError: Pt(() => t(!0), [])
   };
@@ -35047,7 +35047,7 @@ function z9(e) {
 const e2 = ({ size: e, option: n }) => n === "wrap" ? e.type === "flex" && e.value == Zn.WrapContent : n === "fill" ? e.type === "flex" && e.value == Zn.FillParent : e.type === "fixed";
 function HY(e) {
   const n = Wt(e);
-  return Pe(() => {
+  return _e(() => {
     n.current = e;
   }, [e]), Pt((...t) => n.current(...t), [n]);
 }
@@ -35100,7 +35100,7 @@ function dN({ width: e = br.view.size.width, height: n = br.view.size.height, pa
 }
 function D9(e) {
   const { style: n, props: t } = e, l = y9(), { ref: a } = l, d = B9(l, ["ref"]), { updateSize: r, sizes: i } = m9(), { id: c, siblings: V, parentLayout: s } = t, { width: o, height: U, paddingWidth: N, paddingHeight: R, contentWidth: h, contentHeight: Z } = d;
-  return Pe(() => {
+  return _e(() => {
     r({
       id: t.id,
       width: o,
@@ -35346,7 +35346,7 @@ function _9(e) {
   return T.createElement(K9, { templateItems: n });
 }
 function fZ(e) {
-  var n = e.className, t = e.message, l = e.isByMe, a = Gt(Cn).stringSet, d = t.message;
+  var n = e.className, t = e.message, l = e.isByMe, a = Gt(Kn).stringSet, d = t.message;
   return T.createElement("div", { className: vn([
     n,
     l ? "outgoing" : "incoming",
@@ -35375,7 +35375,7 @@ function P9(e) {
     T.createElement(
       Vh,
       { className: "sendbird-message-status__icon", width: rN, height: rN },
-      T.createElement(dt, { type: Ie.SPINNER, fillColor: _e.CONTENT_INVERSE_5, width: rN, height: rN })
+      T.createElement(dt, { type: Ie.SPINNER, fillColor: Pe.CONTENT_INVERSE_5, width: rN, height: rN })
     )
   );
 }
@@ -35495,7 +35495,7 @@ function nL(e) {
     var Q = k[0], S = k[1];
     return [Q, S.requestedAt, S.isError].join("-");
   }).join(",");
-  return Pe(function() {
+  return _e(function() {
     var k;
     if (W.length === 0) {
       var Q = N(s);
@@ -35573,7 +35573,7 @@ var aL = T.forwardRef(function(e, n) {
   );
 });
 function dL(e) {
-  var n, t, l = e.selectedFeedback, a = e.message, d = e.onClose, r = e.onSubmit, i = e.onUpdate, c = e.onRemove, V = Gt(Cn).stringSet, s = dr().isMobile, o = (a == null ? void 0 : a.myFeedback) && l === a.myFeedback.rating, U = (n = a == null ? void 0 : a.myFeedback) === null || n === void 0 ? void 0 : n.comment, N = function() {
+  var n, t, l = e.selectedFeedback, a = e.message, d = e.onClose, r = e.onSubmit, i = e.onUpdate, c = e.onRemove, V = Gt(Kn).stringSet, s = dr().isMobile, o = (a == null ? void 0 : a.myFeedback) && l === a.myFeedback.rating, U = (n = a == null ? void 0 : a.myFeedback) === null || n === void 0 ? void 0 : n.comment, N = function() {
     var W;
     if (l) {
       var F = (W = h.current.value) !== null && W !== void 0 ? W : "";
@@ -35716,7 +35716,7 @@ var bF;
   e.NOT_APPLICABLE = "NOT_APPLICABLE", e.NO_FEEDBACK = "NO_FEEDBACK", e.SUBMITTED = "SUBMITTED";
 })(bF || (bF = {}));
 function cL(e) {
-  var n = e.text, t = e.onCancel, l = Gt(Cn).stringSet, a = Wt(null), d = d1(a, {
+  var n = e.text, t = e.onCancel, l = Gt(Kn).stringSet, a = Wt(null), d = d1(a, {
     Enter: function() {
       return t == null ? void 0 : t();
     },
@@ -35759,7 +35759,7 @@ function sL(e) {
     return T.createElement(GI, ce({}, bt));
   } : at, $e = e.renderMobileMenuOnLongPress, He = $e === void 0 ? function(bt) {
     return T.createElement(jI, ce({}, bt));
-  } : $e, Xe = ca().dateLocale, pt = (zn == null ? void 0 : zn()) || {}, Vt = pt.config, yt = pt.eventHandlers, xe = (t = yt == null ? void 0 : yt.reaction) === null || t === void 0 ? void 0 : t.onPressUserProfile, At = Wt(null), kt = dr().isMobile, Kt = me(!1), ln = Kt[0], vt = Kt[1], Rt = me(!1), Ce = Rt[0], Je = Rt[1], de = me(!1), qe = de[0], nt = de[1], ct = me(!1), Ot = ct[0], zt = ct[1], cn = me(!1), mt = cn[0], sn = cn[1], hn = me(""), ft = hn[0], qt = hn[1], jt = Gt(Cn).stringSet, Bt = m === ((l = u == null ? void 0 : u.sender) === null || l === void 0 ? void 0 : l.userId) || (u == null ? void 0 : u.sendingStatus) === "pending" || (u == null ? void 0 : u.sendingStatus) === "failed", ge = Bt ? "outgoing" : "incoming", it = S ? "chain-top" : "", ze = y && !(E != null && E.isEphemeral), ht = ze ? "use-reactions" : "", Ft = qe ? "sendbird-mouse-hover" : "", X = !!((I === "QUOTE_REPLY" || I === "THREAD") && (u != null && u.parentMessageId) && (u != null && u.parentMessage) && !f), Ue = X ? "use-quote" : "", pe = ((a = u == null ? void 0 : u.threadInfo) === null || a === void 0 ? void 0 : a.replyCount) > 0 && I === "THREAD", fe = !Bt && (u == null ? void 0 : u.myFeedbackStatus) && u.myFeedbackStatus !== bF.NOT_APPLICABLE, Nt = ((d = Vt == null ? void 0 : Vt.groupChannel) === null || d === void 0 ? void 0 : d.enableFeedback) && fe, Ee = Nt ? "sendbird-message-content__feedback" : "", H = !zN(u), Ve = H && kt, ye = H && Bt && !kt, Zt = H && pe, Mt = H && !Bt && !kt, Ct = function() {
+  } : $e, Xe = ca().dateLocale, pt = (zn == null ? void 0 : zn()) || {}, Vt = pt.config, yt = pt.eventHandlers, xe = (t = yt == null ? void 0 : yt.reaction) === null || t === void 0 ? void 0 : t.onPressUserProfile, At = Wt(null), kt = dr().isMobile, Kt = me(!1), ln = Kt[0], vt = Kt[1], Rt = me(!1), Ce = Rt[0], Je = Rt[1], de = me(!1), qe = de[0], nt = de[1], ct = me(!1), Ot = ct[0], zt = ct[1], cn = me(!1), mt = cn[0], sn = cn[1], hn = me(""), ft = hn[0], qt = hn[1], jt = Gt(Kn).stringSet, Bt = m === ((l = u == null ? void 0 : u.sender) === null || l === void 0 ? void 0 : l.userId) || (u == null ? void 0 : u.sendingStatus) === "pending" || (u == null ? void 0 : u.sendingStatus) === "failed", ge = Bt ? "outgoing" : "incoming", it = S ? "chain-top" : "", ze = y && !(E != null && E.isEphemeral), ht = ze ? "use-reactions" : "", Ft = qe ? "sendbird-mouse-hover" : "", X = !!((I === "QUOTE_REPLY" || I === "THREAD") && (u != null && u.parentMessageId) && (u != null && u.parentMessage) && !f), Ue = X ? "use-quote" : "", pe = ((a = u == null ? void 0 : u.threadInfo) === null || a === void 0 ? void 0 : a.replyCount) > 0 && I === "THREAD", fe = !Bt && (u == null ? void 0 : u.myFeedbackStatus) && u.myFeedbackStatus !== bF.NOT_APPLICABLE, Nt = ((d = Vt == null ? void 0 : Vt.groupChannel) === null || d === void 0 ? void 0 : d.enableFeedback) && fe, Ee = Nt ? "sendbird-message-content__feedback" : "", H = !zN(u), Ve = H && kt, ye = H && Bt && !kt, Zt = H && pe, Mt = H && !Bt && !kt, Ct = function() {
     sn(!1);
   }, Ht = function() {
     kt ? zt(!0) : sn(!0);
@@ -35877,7 +35877,7 @@ function sL(e) {
             c2,
             { isSelected: ((o = u == null ? void 0 : u.myFeedback) === null || o === void 0 ? void 0 : o.rating) === _r.GOOD, onClick: function() {
               return ol(n, void 0, void 0, function() {
-                var bt, rn, en, wn;
+                var bt, rn, en, gn;
                 return Ul(this, function(An) {
                   switch (An.label) {
                     case 0:
@@ -35891,7 +35891,7 @@ function sL(e) {
                     case 2:
                       return An.sent(), Ht(), [3, 4];
                     case 3:
-                      return bt = An.sent(), (wn = (en = Vt == null ? void 0 : Vt.logger) === null || en === void 0 ? void 0 : en.error) === null || wn === void 0 || wn.call(en, "Channel: Submit feedback failed.", bt), qt(jt.FEEDBACK_FAILED_SUBMIT), [3, 4];
+                      return bt = An.sent(), (gn = (en = Vt == null ? void 0 : Vt.logger) === null || en === void 0 ? void 0 : en.error) === null || gn === void 0 || gn.call(en, "Channel: Submit feedback failed.", bt), qt(jt.FEEDBACK_FAILED_SUBMIT), [3, 4];
                     case 4:
                       return [3, 6];
                     case 5:
@@ -35911,7 +35911,7 @@ function sL(e) {
             c2,
             { isSelected: ((U = u == null ? void 0 : u.myFeedback) === null || U === void 0 ? void 0 : U.rating) === _r.BAD, onClick: function() {
               return ol(n, void 0, void 0, function() {
-                var bt, rn, en, wn;
+                var bt, rn, en, gn;
                 return Ul(this, function(An) {
                   switch (An.label) {
                     case 0:
@@ -35925,7 +35925,7 @@ function sL(e) {
                     case 2:
                       return An.sent(), Ht(), [3, 4];
                     case 3:
-                      return bt = An.sent(), (wn = (en = Vt == null ? void 0 : Vt.logger) === null || en === void 0 ? void 0 : en.error) === null || wn === void 0 || wn.call(en, "Channel: Submit feedback failed.", bt), qt(jt.FEEDBACK_FAILED_SUBMIT), [3, 4];
+                      return bt = An.sent(), (gn = (en = Vt == null ? void 0 : Vt.logger) === null || en === void 0 ? void 0 : en.error) === null || gn === void 0 || gn.call(en, "Channel: Submit feedback failed.", bt), qt(jt.FEEDBACK_FAILED_SUBMIT), [3, 4];
                     case 4:
                       return [3, 6];
                     case 5:
@@ -36010,14 +36010,14 @@ function sL(e) {
     }, onRemoveFeedback: function() {
       return ol(n, void 0, void 0, function() {
         var bt, rn, en;
-        return Ul(this, function(wn) {
-          switch (wn.label) {
+        return Ul(this, function(gn) {
+          switch (gn.label) {
             case 0:
-              return wn.trys.push([0, 2, , 3]), [4, u.deleteFeedback(u.myFeedback.id)];
+              return gn.trys.push([0, 2, , 3]), [4, u.deleteFeedback(u.myFeedback.id)];
             case 1:
-              return wn.sent(), [3, 3];
+              return gn.sent(), [3, 3];
             case 2:
-              return bt = wn.sent(), (en = (rn = Vt == null ? void 0 : Vt.logger) === null || rn === void 0 ? void 0 : rn.error) === null || en === void 0 || en.call(rn, "Channel: Delete feedback failed.", bt), qt(jt.FEEDBACK_FAILED_DELETE), [3, 3];
+              return bt = gn.sent(), (en = (rn = Vt == null ? void 0 : Vt.logger) === null || rn === void 0 ? void 0 : rn.error) === null || en === void 0 || en.call(rn, "Channel: Delete feedback failed.", bt), qt(jt.FEEDBACK_FAILED_DELETE), [3, 3];
             case 3:
               return zt(!1), [
                 2
@@ -36029,7 +36029,7 @@ function sL(e) {
     } }),
     ((W = u == null ? void 0 : u.myFeedback) === null || W === void 0 ? void 0 : W.rating) && mt && T.createElement(dL, { selectedFeedback: u.myFeedback.rating, message: u, onUpdate: function(bt, rn) {
       return ol(n, void 0, void 0, function() {
-        var en, wn, An, xi;
+        var en, gn, An, xi;
         return Ul(this, function(ir) {
           switch (ir.label) {
             case 0:
@@ -36043,7 +36043,7 @@ function sL(e) {
             case 2:
               return ir.sent(), [3, 4];
             case 3:
-              return wn = ir.sent(), (xi = (An = Vt == null ? void 0 : Vt.logger) === null || An === void 0 ? void 0 : An.error) === null || xi === void 0 || xi.call(An, "Channel: Update feedback failed.", wn), qt(jt.FEEDBACK_FAILED_SAVE), [3, 4];
+              return gn = ir.sent(), (xi = (An = Vt == null ? void 0 : Vt.logger) === null || An === void 0 ? void 0 : An.error) === null || xi === void 0 || xi.call(An, "Channel: Update feedback failed.", gn), qt(jt.FEEDBACK_FAILED_SAVE), [3, 4];
             case 4:
               return Ct(), [
                 2
@@ -36055,14 +36055,14 @@ function sL(e) {
     }, onClose: Ct, onRemove: function() {
       return ol(n, void 0, void 0, function() {
         var bt, rn, en;
-        return Ul(this, function(wn) {
-          switch (wn.label) {
+        return Ul(this, function(gn) {
+          switch (gn.label) {
             case 0:
-              return wn.trys.push([0, 2, , 3]), [4, u.deleteFeedback(u.myFeedback.id)];
+              return gn.trys.push([0, 2, , 3]), [4, u.deleteFeedback(u.myFeedback.id)];
             case 1:
-              return wn.sent(), [3, 3];
+              return gn.sent(), [3, 3];
             case 2:
-              return bt = wn.sent(), (en = (rn = Vt == null ? void 0 : Vt.logger) === null || rn === void 0 ? void 0 : rn.error) === null || en === void 0 || en.call(rn, "Channel: Delete feedback failed.", bt), qt(jt.FEEDBACK_FAILED_DELETE), [3, 3];
+              return bt = gn.sent(), (en = (rn = Vt == null ? void 0 : Vt.logger) === null || rn === void 0 ? void 0 : rn.error) === null || en === void 0 || en.call(rn, "Channel: Delete feedback failed.", bt), qt(jt.FEEDBACK_FAILED_DELETE), [3, 3];
             case 3:
               return Ct(), [
                 2
@@ -36088,8 +36088,8 @@ var oL = function(e) {
   }));
 };
 function UL(e) {
-  var n = e.member, t = e.isFocused, l = t === void 0 ? !1 : t, a = e.parentScrollRef, d = e.onClick, r = e.onMouseOver, i = e.onMouseMove, c = e.renderUserMentionItem, V = Wt(null), s = Gt(Cn).stringSet;
-  Pe(function() {
+  var n = e.member, t = e.isFocused, l = t === void 0 ? !1 : t, a = e.parentScrollRef, d = e.onClick, r = e.onMouseOver, i = e.onMouseMove, c = e.renderUserMentionItem, V = Wt(null), s = Gt(Kn).stringSet;
+  _e(function() {
     l && (a == null ? void 0 : a.current) != null && (V == null ? void 0 : V.current) != null && (a.current.scrollTop >= V.current.offsetTop || a.current.scrollTop + a.current.clientHeight <= V.current.offsetTop) && V.current.scrollIntoView({ block: "nearest", inline: "nearest" });
   }, [l]);
   var o = nn(function() {
@@ -36146,11 +36146,11 @@ function RL(e, n, t, l) {
 }
 var hL = 300, CY = function(e) {
   var n, t, l, a = e.className, d = e.currentChannel, r = e.targetNickname, i = r === void 0 ? "" : r, c = e.onUserItemClick, V = e.onFocusItemChange, s = e.onFetchUsers, o = e.renderUserMentionItem, U = e.inputEvent, N = e.ableAddMention, R = N === void 0 ? !0 : N, h = e.maxMentionCount, Z = h === void 0 ? qb : h, W = e.maxSuggestionCount, F = W === void 0 ? $b : W, m = zn(), E = m.config, u = m.stores, b = E.logger, k = ((l = (t = (n = u == null ? void 0 : u.sdkStore) === null || n === void 0 ? void 0 : n.sdk) === null || t === void 0 ? void 0 : t.currentUser) === null || l === void 0 ? void 0 : l.userId) || "", Q = Wt(null), S = ca().stringSet, v = me(null), G = v[0], w = v[1], y = me(""), g = y[0], f = y[1], I = me(""), K = I[0], Re = I[1], q = me(null), ae = q[0], se = q[1], le = me([]), L = le[0], $ = le[1];
-  return Pe(function() {
+  return _e(function() {
     clearTimeout(G), w(setTimeout(function() {
       f(i);
     }, hL));
-  }, [i]), Pe(function() {
+  }, [i]), _e(function() {
     if ((U == null ? void 0 : U.key) === Wd.Enter && L.length > 0 && c(ae), (U == null ? void 0 : U.key) === Wd.ArrowUp) {
       var ee = L.findIndex(function(O) {
         return (O == null ? void 0 : O.userId) === (ae == null ? void 0 : ae.userId);
@@ -36163,7 +36163,7 @@ var hL = 300, CY = function(e) {
       });
       ee < L.length - 1 && (se(L[ee + 1]), V(L[ee + 1]));
     }
-  }, [U]), Pe(function() {
+  }, [U]), _e(function() {
     if (!(K && g.indexOf(K) === 0 && L.length === 0)) {
       if (d != null && d.isSuper && !(d != null && d.createMemberListQuery)) {
         b.warning("SuggestedMentionList: Creating member list query failed");
@@ -36205,13 +36205,13 @@ var hL = 300, CY = function(e) {
     !R && T.createElement(
       "div",
       { className: "sendbird-mention-suggest-list__notice-item" },
-      T.createElement(dt, { className: "sendbird-mention-suggest-list__notice-item__icon", type: Ie.INFO, fillColor: _e.ON_BACKGROUND_2, width: "20px", height: "20px" }),
+      T.createElement(dt, { className: "sendbird-mention-suggest-list__notice-item__icon", type: Ie.INFO, fillColor: Pe.ON_BACKGROUND_2, width: "20px", height: "20px" }),
       T.createElement(Fe, { className: "sendbird-mention-suggest-list__notice-item__text", type: oe.SUBTITLE_2, color: ie.ONBACKGROUND_2 }, S.MENTION_COUNT__OVER_LIMIT.replace("%d", String(Z)))
     )
   );
 }, s2 = function(e, n) {
   var t = me(!1), l = t[0], a = t[1];
-  Pe(function() {
+  _e(function() {
     l ? e() : a(!0);
   }, n);
 }, ZL = function(e) {
@@ -36220,7 +36220,7 @@ var hL = 300, CY = function(e) {
   } : r, c = e.renderSuggestedReplies, V = c === void 0 ? function(ze) {
     return T.createElement(oL, ce({}, ze));
   } : c, s = e.renderCustomSeparator, o = e.renderEditInput, U = e.hasSeparator, N = e.chainTop, R = e.chainBottom, h = e.handleScroll, Z = e.channel, W = e.emojiContainer, F = e.editInputDisabled, m = e.shouldRenderSuggestedReplies, E = e.isReactionEnabled, u = e.replyType, b = e.threadReplySelectType, k = e.nicknamesMap, Q = e.renderUserMentionItem, S = e.scrollToMessage, v = e.toggleReaction, G = e.setQuoteMessage, w = e.onQuoteMessageClick, y = e.onReplyInThreadClick, g = e.sendUserMessage, f = e.updateUserMessage, I = e.resendMessage, K = e.deleteMessage, Re = e.renderFileViewer, q = e.renderRemoveMessageModal, ae = e.setAnimatedMessageId, se = e.animatedMessageId, le = e.onMessageAnimated, L = e.usedInLegacy, $ = L === void 0 ? !0 : L, ee = ca(), O = ee.dateLocale, re = ee.stringSet, te = zn(), Qe = te.config, Ye = Qe.userId, Se = Qe.isOnline, P = Qe.isMentionEnabled, we = Qe.userMention, Me = Qe.logger, We = (we == null ? void 0 : we.maxMentionCount) || qb, Be = (we == null ? void 0 : we.maxSuggestionCount) || $b, Ke = me(!1), lt = Ke[0], De = Ke[1], je = me(!1), at = je[0], Ge = je[1], $e = me(!1), He = $e[0], Xe = $e[1], pt = me(!1), Vt = pt[0], yt = pt[1], xe = me(""), At = xe[0], kt = xe[1], Kt = me([]), ln = Kt[0], vt = Kt[1], Rt = me([]), Ce = Rt[0], Je = Rt[1], de = me(null), qe = de[0], nt = de[1], ct = me(null), Ot = ct[0], zt = ct[1], cn = me([]), mt = cn[0], sn = cn[1], hn = Wt(null), ft = Wt(null), qt = Se && P && At.length > 0 && !pR(Z) && !Yo(Z), jt = UY({ ref: hn }, { logger: Me }), Bt = (jt == null ? void 0 : jt.length) < We;
-  Pe(function() {
+  _e(function() {
     vt(ln.filter(function(ze) {
       var ht = ze.userId, Ft = Ce.indexOf(ht);
       return Ft < 0 ? !1 : (Ce.splice(Ft, 1), !0);
@@ -36376,12 +36376,12 @@ var hL = 300, CY = function(e) {
           T.createElement(
             "a",
             { className: "sendbird-fileviewer__header__right__actions__download", rel: "noopener noreferrer", href: d, target: "_blank" },
-            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: _e.ON_BACKGROUND_1, height: "24px", width: "24px" })
+            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px" })
           ),
           c && r && T.createElement(
             "div",
             { className: "sendbird-fileviewer__header__right__actions__delete" },
-            T.createElement(dt, { className: V ? "disabled" : "", type: Ie.DELETE, fillColor: V ? _e.GRAY : _e.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function() {
+            T.createElement(dt, { className: V ? "disabled" : "", type: Ie.DELETE, fillColor: V ? Pe.GRAY : Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function() {
               V || c();
             } })
           )
@@ -36389,7 +36389,7 @@ var hL = 300, CY = function(e) {
         T.createElement(
           "div",
           { className: "sendbird-fileviewer__header__right__actions__close" },
-          T.createElement(dt, { type: Ie.CLOSE, fillColor: _e.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: i })
+          T.createElement(dt, { type: Ie.CLOSE, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: i })
         )
       )
     ),
@@ -36423,7 +36423,7 @@ function mL(e, n) {
 }
 var uL = function(e) {
   var n, t = e.onSubmit, l = t === void 0 ? function() {
-  } : t, a = e.onCancel, d = e.message, r = e.deleteMessage, i = Gt(Cn).stringSet;
+  } : t, a = e.onCancel, d = e.message, r = e.deleteMessage, i = Gt(Kn).stringSet;
   return T.createElement(Ic, { type: nl.DANGER, disabled: ((n = d == null ? void 0 : d.threadInfo) === null || n === void 0 ? void 0 : n.replyCount) > 0, onCancel: a, onSubmit: function() {
     (d.isUserMessage() || d.isFileMessage() || d.isMultipleFilesMessage()) && r(d).then(function() {
       l(), a();
@@ -36453,7 +36453,7 @@ var uL = function(e) {
     return T.createElement(pL, ce({}, w));
   } }));
 }, ML = function(e) {
-  var n = e.className, t = n === void 0 ? "" : n, l = e.count, a = l === void 0 ? 0 : l, d = e.time, r = d === void 0 ? "" : d, i = e.onClick, c = e.lastReadAt, V = Gt(Cn), s = V.stringSet, o = V.dateLocale, U = nn(function() {
+  var n = e.className, t = n === void 0 ? "" : n, l = e.count, a = l === void 0 ? 0 : l, d = e.time, r = d === void 0 ? "" : d, i = e.onClick, c = e.lastReadAt, V = Gt(Kn), s = V.stringSet, o = V.dateLocale, U = nn(function() {
     var N, R;
     if (s.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON !== "on") {
       var h = ((R = (N = r == null ? void 0 : r.toString) === null || N === void 0 ? void 0 : N.call(r)) === null || R === void 0 ? void 0 : R.split(" ")) || [];
@@ -36471,10 +36471,10 @@ var uL = function(e) {
       s.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE,
       " ".concat(U)
     ),
-    T.createElement(dt, { width: "24px", height: "24px", type: Ie.CHEVRON_DOWN, fillColor: _e.CONTENT })
+    T.createElement(dt, { width: "24px", height: "24px", type: Ie.CHEVRON_DOWN, fillColor: Pe.CONTENT })
   );
 }, EL = function(e) {
-  var n = e.className, t = n === void 0 ? "" : n, l = Gt(Cn).stringSet;
+  var n = e.className, t = n === void 0 ? "" : n, l = Gt(Kn).stringSet;
   return T.createElement(
     "div",
     { className: "sendbird-notification sendbird-notification--frozen ".concat(t) },
@@ -36487,7 +36487,7 @@ function r1(e, n, t) {
     trailing: !1
   });
   var l = Wt(null), a = Wt(null);
-  return Pe(function() {
+  return _e(function() {
     return function() {
       l.current && clearTimeout(l.current);
     };
@@ -36630,7 +36630,7 @@ var yL = function(e, n, t, l, a) {
 }, BL = 100;
 function DL(e) {
   var n = e.loading, t = me(0), l = t[0], a = t[1];
-  Pe(function() {
+  _e(function() {
     n && a(0);
   }, [n]);
   var d = function(r) {
@@ -36647,15 +36647,15 @@ function DL(e) {
 }
 function XL() {
   var e = fl(), n = e.scrollRef, t = e.scrollBehavior, l = t === void 0 ? "auto" : t;
-  return Pe(function() {
+  return _e(function() {
     n.current && (n.current.style.scrollBehavior = l);
   }, [n.current]), null;
 }
 var OL = 50, jL = function(e) {
   var n, t, l, a, d, r = e.className, i = r === void 0 ? "" : r, c = e.renderMessage, V = e.renderMessageContent, s = e.renderSuggestedReplies, o = e.renderCustomSeparator, U = e.renderPlaceholderLoader, N = U === void 0 ? function() {
-    return T.createElement(rV, { type: Kn.LOADING });
+    return T.createElement(rV, { type: _n.LOADING });
   } : U, R = e.renderPlaceholderEmpty, h = R === void 0 ? function() {
-    return T.createElement(rV, { className: "sendbird-conversation__no-messages", type: Kn.NO_MESSAGES });
+    return T.createElement(rV, { className: "sendbird-conversation__no-messages", type: _n.NO_MESSAGES });
   } : R, Z = e.renderFrozenNotification, W = Z === void 0 ? function() {
     return T.createElement(EL, { className: "sendbird-conversation__messages__notification" });
   } : Z, F = fl(), m = F.allMessages, E = F.localMessages, u = F.hasMorePrev, b = F.hasMoreNext, k = F.setInitialTimeStamp, Q = F.setAnimatedMessageId, S = F.setHighLightedMessageId, v = F.isMessageGroupingEnabled, G = F.scrollRef, w = F.onScrollCallback, y = F.onScrollDownCallback, g = F.messagesDispatcher, f = F.messageActionTypes, I = F.currentGroupChannel, K = F.disableMarkAsRead, Re = F.filterMessageList, q = F.replyType, ae = F.loading, se = F.isScrolled, le = F.unreadSince, L = F.unreadSinceDate, $ = F.typingMembers, ee = zn(), O = typeof Re == "function" ? m.filter(Re) : m, re = ee.config.markAsReadScheduler, te = me(!1), Qe = te[0], Ye = te[1];
@@ -36701,7 +36701,7 @@ var OL = 50, jL = function(e) {
   return ae ? N() : O.length < 1 ? h() : T.createElement(
     T.Fragment,
     null,
-    !se && T.createElement(rV, { type: Kn.LOADING }),
+    !se && T.createElement(rV, { type: _n.LOADING }),
     T.createElement(
       "div",
       { className: "sendbird-conversation__messages ".concat(i) },
@@ -36782,7 +36782,7 @@ var OL = 50, jL = function(e) {
       lt > OL && T.createElement(
         "div",
         { className: "sendbird-conversation__scroll-bottom-button", onClick: P, onKeyDown: P, tabIndex: 0, role: "button" },
-        T.createElement(dt, { width: "24px", height: "24px", type: Ie.CHEVRON_DOWN, fillColor: _e.PRIMARY })
+        T.createElement(dt, { width: "24px", height: "24px", type: Ie.CHEVRON_DOWN, fillColor: Pe.PRIMARY })
       )
     )
   );
@@ -36804,15 +36804,15 @@ function fL(e) {
   ) : (Qi(l) || Fa(l)) && a ? T.createElement(el, { className: cN, url: a, alt: ER(l), width: "44px", height: "44px", fixedSize: !0 }) : vj(l) ? T.createElement(
     "div",
     { className: cN },
-    T.createElement(dt, { type: Ie.FILE_AUDIO, fillColor: _e.ON_BACKGROUND_2, width: "24px", height: "24px" })
+    T.createElement(dt, { type: Ie.FILE_AUDIO, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" })
   ) : T.createElement(
     "div",
     { className: cN },
-    T.createElement(dt, { type: Ie.FILE_DOCUMENT, fillColor: _e.ON_BACKGROUND_2, width: "24px", height: "24px" })
+    T.createElement(dt, { type: Ie.FILE_DOCUMENT, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" })
   );
 }
 function wL(e) {
-  var n = e.className, t = e.replyingMessage, l = e.onClose, a = Gt(Cn).stringSet, d = t, r = t == null ? void 0 : t.sender, i = (wa(t) || Fa(t)) && !Mi(t);
+  var n = e.className, t = e.replyingMessage, l = e.onClose, a = Gt(Kn).stringSet, d = t, r = t == null ? void 0 : t.sender, i = (wa(t) || Fa(t)) && !Mi(t);
   return T.createElement(
     "div",
     { className: vn(["sendbird-quote_message_input", n]) },
@@ -36836,7 +36836,7 @@ function wL(e) {
         Mi(t) && a.VOICE_MESSAGE
       )
     ),
-    T.createElement(dt, { className: "sendbird-quote_message_input__close-button", type: Ie.CLOSE, fillColor: _e.ON_BACKGROUND_2, width: "24px", height: "24px", onClick: function() {
+    T.createElement(dt, { className: "sendbird-quote_message_input__close-button", type: Ie.CLOSE, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px", onClick: function() {
       return l(t);
     } })
   );
@@ -36849,7 +36849,7 @@ var qi = {
 }, h2 = function() {
 }, gL = function(e) {
   var n = e.onRecordingStarted, t = n === void 0 ? h2 : n, l = e.onRecordingEnded, a = l === void 0 ? h2 : l, d = zn().config, r = d.voiceRecord, i = r.maxRecordingTime, c = gb(), V = c.isRecordable, s = me(null), o = s[0], U = s[1], N = me(qi.PREPARING), R = N[0], h = N[1];
-  Pe(function() {
+  _e(function() {
     V && R === qi.PREPARING && h(qi.READY_TO_RECORD);
   }, [V]);
   var Z = Pt(function() {
@@ -36879,7 +36879,7 @@ var qi = {
   function Q() {
     clearInterval(b), b = null;
   }
-  return Pe(function() {
+  return _e(function() {
     E > i && W();
   }, [E, i, W]), {
     start: Z,
@@ -36903,7 +36903,7 @@ var qi = {
     case $n.RECORDING:
       return T.createElement("div", { className: "sendbird-controler-icon stop-icon" });
     case $n.READY_TO_PLAY:
-      return T.createElement(dt, { className: "sendbird-controler-icon play-icon", width: "20px", height: "20px", type: Ie.PLAY, fillColor: _e.ON_BACKGROUND_1 });
+      return T.createElement(dt, { className: "sendbird-controler-icon play-icon", width: "20px", height: "20px", type: Ie.PLAY, fillColor: Pe.ON_BACKGROUND_1 });
     case $n.PLAYING:
       return T.createElement(
         "div",
@@ -36963,7 +36963,7 @@ var qi = {
       (U == null ? void 0 : U()) || T.createElement(
         "div",
         { className: "sendbird-voice-message-input__controler__submit ".concat(F ? "voice-message--disabled" : ""), onClick: k },
-        T.createElement(dt, { width: "19px", height: "19px", type: Ie.SEND, fillColor: F ? _e.ON_BACKGROUND_4 : _e.CONTENT })
+        T.createElement(dt, { width: "19px", height: "19px", type: Ie.SEND, fillColor: F ? Pe.ON_BACKGROUND_4 : Pe.CONTENT })
       )
     )
   );
@@ -37048,11 +37048,11 @@ var qi = {
     key: d,
     audioFile: i
   }), I = f.play, K = f.pause, Re = f.playbackTime, q = f.playingStatus, ae = f.stop;
-  return Pe(function() {
+  return _e(function() {
     pR(t) || Yo(t) ? W(!0) : W(!1);
-  }, [t == null ? void 0 : t.myRole, t == null ? void 0 : t.isFrozen, t == null ? void 0 : t.myMutedState]), Pe(function() {
+  }, [t == null ? void 0 : t.myRole, t == null ? void 0 : t.isFrozen, t == null ? void 0 : t.myMutedState]), _e(function() {
     N && i && (a(i, w), R(!1), c(null));
-  }, [N, i, w]), Pe(function() {
+  }, [N, i, w]), _e(function() {
     i && (w < k ? (o($n.READY_TO_RECORD), c(null)) : q === Td.PLAYING ? o($n.PLAYING) : o($n.READY_TO_PLAY));
   }, [i, w, q]), T.createElement(
     "div",
@@ -37166,9 +37166,9 @@ var qi = {
   }, [t, l, a]);
 }, AL = T.forwardRef(function(e, n) {
   var t = e.currentChannel, l = e.isMultipleFilesMessageEnabled, a = e.loading, d = e.quoteMessage, r = e.setQuoteMessage, i = e.messageInputRef, c = e.sendUserMessage, V = e.sendFileMessage, s = e.sendVoiceMessage, o = e.sendMultipleFilesMessage, U = e.renderUserMentionItem, N = e.renderFileUploadIcon, R = e.renderVoiceMessageIcon, h = e.renderSendMessageIcon, Z = e.acceptableMimeTypes, W = e.disabled, F = ca().stringSet, m = dr().isMobile, E = zn(), u = E.stores, b = E.config, k = b.isOnline, Q = b.isMentionEnabled, S = b.isVoiceMessageEnabled, v = b.isMultipleFilesMessageEnabled, G = b.userMention, w = b.logger, y = u.sdkStore.sdk, g = G.maxMentionCount, f = G.maxSuggestionCount, I = t == null ? void 0 : t.isBroadcast, K = (t == null ? void 0 : t.myRole) === "operator", Re = me(""), q = Re[0], ae = Re[1], se = me([]), le = se[0], L = se[1], $ = me([]), ee = $[0], O = $[1], re = me(null), te = re[0], Qe = re[1], Ye = me([]), Se = Ye[0], P = Ye[1], we = me(null), Me = we[0], We = we[1], Be = me(!1), Ke = Be[0], lt = Be[1], De = a || !t || pR(t) || Yo(t) || !k && !(y != null && y.isCacheEnabled) || W, je = !De && Q && q.length > 0 && !I, at = l ?? v, Ge = UY({ ref: n || i }, { logger: w }), $e = (Ge == null ? void 0 : Ge.length) < g;
-  Pe(function() {
+  _e(function() {
     ae(""), L([]), O([]), Qe(null), P([]), We(null), lt(!1);
-  }, [t == null ? void 0 : t.url]), Pe(function() {
+  }, [t == null ? void 0 : t.url]), _e(function() {
     L(le.filter(function(Xe) {
       var pt = Xe.userId, Vt = ee.indexOf(pt);
       return Vt < 0 ? !1 : (ee.splice(Vt, 1), !0);
@@ -37521,13 +37521,13 @@ const wZ = "chat-ai-widget", oU = () => {
     [e]
   );
   return /* @__PURE__ */ Y.jsx($Y.Provider, { value: n, children: e.children });
-}, _n = () => Gt($Y), eQ = _l({
+}, wn = () => Gt($Y), eQ = _l({
   sbConnectionStatus: "INIT",
   setSbConnectionStatus: F2,
   firstMessage: null,
   setFirstMessage: F2
 }), TC = (e) => {
-  const { instantConnect: n } = _n(), [t, l] = (
+  const { instantConnect: n } = wn(), [t, l] = (
     // Don't need to use this state if instantConnect is true
     me(n ? "CONNECTED" : "INIT")
   ), [a, d] = me(null);
@@ -37546,13 +37546,13 @@ const wZ = "chat-ai-widget", oU = () => {
 }, UU = () => Gt(eQ), tQ = "load-time", nQ = "num-of-messages", FC = "member-ids", WC = "bot-id";
 function mC(e) {
   const n = Wt(oU());
-  Pe(() => {
+  _e(() => {
     n.current.setItem(WC, e), window.dispatchEvent(new Event("storage"));
   }, []);
 }
 function uC() {
   const e = Wt(oU());
-  Pe(() => {
+  _e(() => {
     e.current.setItem(
       tQ,
       Math.floor(Date.now() / 1e3).toString()
@@ -37564,7 +37564,7 @@ function pC(e) {
     var d;
     return ((d = a.sender) == null ? void 0 : d.userId) === e;
   }).length) ?? 0;
-  Pe(() => {
+  _e(() => {
     n.current.setItem(nQ, l.toString()), window.dispatchEvent(new Event("storage"));
   }, [l]);
 }
@@ -37579,7 +37579,7 @@ function MC() {
 }
 function EC() {
   const e = Wt(oU()), { currentGroupChannel: n } = fl(), t = (n == null ? void 0 : n.members.map((l) => l.userId)) ?? [];
-  Pe(() => {
+  _e(() => {
     e.current.setItem(FC, t.toString()), window.dispatchEvent(new Event("storage"));
   }, [t]);
 }
@@ -37664,7 +37664,7 @@ const oh = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIgAAACICAYAAAA8uqNSAA
   padding: 15px 20px 12px;
 `;
 function yC(e) {
-  const { channel: n, createGroupChannel: t, botUser: l } = e, { customRefreshComponent: a } = _n(), { botCategory: d } = _n(), { setFirstMessage: r } = UU(), i = MC();
+  const { channel: n, createGroupChannel: t, botUser: l } = e, { customRefreshComponent: a } = wn(), { botCategory: d } = wn(), { setFirstMessage: r } = UU(), i = MC();
   function c() {
     var V;
     r(null), t(), i(), ((V = a == null ? void 0 : a.onClick) == null ? void 0 : V.call(a)) ?? window.location.reload();
@@ -40764,7 +40764,7 @@ hl.HttpStatusCode = x6;
 hl.default = hl;
 const D2 = hl, X2 = () => {
   const [e, n] = me(0);
-  return Pe(() => {
+  return _e(() => {
     const t = setInterval(() => {
       n((l) => (l + 1) % 3);
     }, 300);
@@ -41043,7 +41043,7 @@ const G6 = (e) => /* @__PURE__ */ z.createElement("svg", { width: 12, height: 12
   margin-right: 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.38);
 `, n_ = (e, n) => {
-  Pe(() => {
+  _e(() => {
     if (e) {
       e.style.height = "0";
       const t = e.scrollHeight;
@@ -41057,7 +41057,7 @@ function l_({
   setShowModal: t
 }) {
   var we, Me;
-  const { inputValue: l, botId: a, userId: d } = _n(), [r, i] = me(""), [c, V] = me(null), [s, o] = me(null), U = Wt(null), [N, R] = me(!1), [h, Z] = me((l == null ? void 0 : l.value) ?? ""), { botCategory: W } = _n(), [F, m] = me(!1), [E, u] = me(!1), [b, k] = me(!1), [Q, S] = me(""), [v, G] = me(!1), w = {
+  const { inputValue: l, botId: a, userId: d } = wn(), [r, i] = me(""), [c, V] = me(null), [s, o] = me(null), U = Wt(null), [N, R] = me(!1), [h, Z] = me((l == null ? void 0 : l.value) ?? ""), { botCategory: W } = wn(), [F, m] = me(!1), [E, u] = me(!1), [b, k] = me(!1), [Q, S] = me(""), [v, G] = me(!1), w = {
     "Content-Type": "application/json"
   }, { allMessages: y } = fl(), g = [
     {
@@ -41117,14 +41117,14 @@ function l_({
   - Recommended rest, hydration, and follow-up visit if symptoms worsen or persist beyond two weeks.`
     }
   ], f = Ji();
-  n_(U.current, h), Pe(() => {
+  n_(U.current, h), _e(() => {
     var We;
     if (y.length > 0) {
       const Be = y[y.length - 1];
       (Be == null ? void 0 : Be.messageType) === "user" && ((We = Be.sender) == null ? void 0 : We.userId) === d && G(!0);
     }
     y.length == 0 && G(!0);
-  }, [y]), Pe(() => {
+  }, [y]), _e(() => {
     (async () => {
       var Be, Ke, lt;
       if ((l == null ? void 0 : l.value) != null && l.value.length > 0) {
@@ -41147,9 +41147,9 @@ function l_({
         i(""), k(!1);
       }
     })();
-  }, [l == null ? void 0 : l.value, l == null ? void 0 : l.id]), Pe(() => {
+  }, [l == null ? void 0 : l.value, l == null ? void 0 : l.id]), _e(() => {
     typeof h == "string" && h.length > 0 && R(!0);
-  }, [h]), Pe(() => {
+  }, [h]), _e(() => {
     setTimeout(() => {
       f("How can I help you today?");
     }, 500);
@@ -41712,7 +41712,7 @@ const s_ = A.div`
   width: 28px;
 `;
 function Ud(e) {
-  const { enableEmojiFeedback: n } = _n(), {
+  const { enableEmojiFeedback: n } = wn(), {
     botUser: t,
     message: l,
     bodyComponent: a,
@@ -41812,7 +41812,7 @@ const h_ = A.div`
   white-space: pre-line;
 `;
 function m_(e) {
-  const { message: n } = e, { botCategory: t } = _n();
+  const { message: n } = e, { botCategory: t } = wn();
   return /* @__PURE__ */ Y.jsxs(h_, { children: [
     /* @__PURE__ */ Y.jsx(T_, { children: /* @__PURE__ */ Y.jsx("div", { children: kR(n.createdAt) }) }),
     /* @__PURE__ */ Y.jsx(Z_, { children: /* @__PURE__ */ Y.jsx(F_, { botCategory: t, children: /* @__PURE__ */ Y.jsx(W_, { children: n.message }) }) })
@@ -41841,7 +41841,7 @@ const u_ = A.div`
   line-height: 1.43;
 `;
 function M_(e) {
-  const { message: n } = e, t = t1.sanitize(n), { botCategory: l } = _n();
+  const { message: n } = e, t = t1.sanitize(n), { botCategory: l } = wn();
   return /* @__PURE__ */ Y.jsx(u_, { botCategory: l, children: /* @__PURE__ */ Y.jsx(p_, { children: t }) });
 }
 class Fh extends VW {
@@ -42012,7 +42012,7 @@ const E_ = A.div`
   transformPagePoint: (e) => e,
   isStatic: !1,
   reducedMotion: "never"
-}), Wh = _l({}), mh = _l(null), uh = typeof document < "u", ph = uh ? ud : Pe, GQ = _l({ strict: !1 }), T1 = (e) => e.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase(), x_ = "framerAppearId", yQ = "data-" + T1(x_);
+}), Wh = _l({}), mh = _l(null), uh = typeof document < "u", ph = uh ? ud : _e, GQ = _l({ strict: !1 }), T1 = (e) => e.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase(), x_ = "framerAppearId", yQ = "data-" + T1(x_);
 function G_(e, n, t, l) {
   const { visualElement: a } = Gt(Wh), d = Gt(GQ), r = Gt(mh), i = Gt(Z1).reducedMotion, c = Wt();
   l = l || d.renderer, !c.current && l && (c.current = l(e, {
@@ -42030,7 +42030,7 @@ function G_(e, n, t, l) {
   const s = Wt(!!(t[yQ] && !window.HandoffComplete));
   return ph(() => {
     V && (V.render(), s.current && V.animationState && V.animationState.animateChanges());
-  }), Pe(() => {
+  }), _e(() => {
     V && (V.updateFeatures(), !s.current && V.animationState && V.animationState.animateChanges(), s.current && (s.current = !1, window.HandoffComplete = !0));
   }), V;
 }
@@ -43099,7 +43099,7 @@ const KF = {
   test: (e) => iV.test(e) || KF.test(e) || ec.test(e),
   parse: (e) => iV.test(e) ? iV.parse(e) : ec.test(e) ? ec.parse(e) : KF.parse(e),
   transform: (e) => TU(e) ? e : e.hasOwnProperty("red") ? iV.transform(e) : ec.transform(e)
-}, Ln = (e, n, t) => -t * e + t * n + e;
+}, Cn = (e, n, t) => -t * e + t * n + e;
 function eT(e, n, t) {
   return t < 0 && (t += 1), t > 1 && (t -= 1), t < 1 / 6 ? e + (n - e) * 6 * t : t < 1 / 2 ? n : t < 2 / 3 ? e + (n - e) * (2 / 3 - t) * 6 : e;
 }
@@ -43131,7 +43131,7 @@ function VE(e) {
 }
 const hJ = (e, n) => {
   const t = VE(e), l = VE(n), a = { ...t };
-  return (d) => (a.red = tT(t.red, l.red, d), a.green = tT(t.green, l.green, d), a.blue = tT(t.blue, l.blue, d), a.alpha = Ln(t.alpha, l.alpha, d), iV.transform(a));
+  return (d) => (a.red = tT(t.red, l.red, d), a.green = tT(t.green, l.green, d), a.blue = tT(t.blue, l.blue, d), a.alpha = Cn(t.alpha, l.alpha, d), iV.transform(a));
 };
 function qP(e) {
   var n, t;
@@ -43192,7 +43192,7 @@ const ki = {
   getAnimatableNone: eA
 }, uJ = (e, n) => (t) => `${t > 0 ? n : e}`;
 function pJ(e, n) {
-  return typeof e == "number" ? (t) => Ln(e, n, t) : $l.test(e) ? hJ(e, n) : e.startsWith("var(") ? uJ(e, n) : EJ(e, n);
+  return typeof e == "number" ? (t) => Cn(e, n, t) : $l.test(e) ? hJ(e, n) : e.startsWith("var(") ? uJ(e, n) : EJ(e, n);
 }
 const MJ = (e, n) => {
   const t = [...e], l = t.length, a = e.map((d, r) => pJ(d, n[r]));
@@ -43216,7 +43216,7 @@ const MJ = (e, n) => {
 }, yc = (e, n, t) => {
   const l = n - e;
   return l === 0 ? 1 : (t - e) / l;
-}, cE = (e, n) => (t) => Ln(e, n, t);
+}, cE = (e, n) => (t) => Cn(e, n, t);
 function nA(e) {
   return typeof e == "number" ? cE : typeof e == "string" ? $l.test(e) ? hJ : EJ : Array.isArray(e) ? MJ : typeof e == "object" ? tA : cE;
 }
@@ -43251,7 +43251,7 @@ function SJ(e, n) {
   const t = e[e.length - 1];
   for (let l = 1; l <= n; l++) {
     const a = yc(0, n, l);
-    e.push(Ln(t, 1, a));
+    e.push(Cn(t, 1, a));
   }
 }
 function kJ(e) {
@@ -44411,7 +44411,7 @@ function tW(e, n = 0, t = 0.01) {
   return Math.abs(e - n) <= t;
 }
 function ZE(e, n, t, l = 0.5) {
-  e.origin = l, e.originPoint = Ln(n.min, n.max, e.origin), e.scale = Ha(t) / Ha(n), (tW(e.scale, 1, 1e-4) || isNaN(e.scale)) && (e.scale = 1), e.translate = Ln(t.min, t.max, e.origin) - e.originPoint, (tW(e.translate) || isNaN(e.translate)) && (e.translate = 0);
+  e.origin = l, e.originPoint = Cn(n.min, n.max, e.origin), e.scale = Ha(t) / Ha(n), (tW(e.scale, 1, 1e-4) || isNaN(e.scale)) && (e.scale = 1), e.translate = Cn(t.min, t.max, e.origin) - e.originPoint, (tW(e.translate) || isNaN(e.translate)) && (e.translate = 0);
 }
 function Vo(e, n, t, l) {
   ZE(e.x, n.x, t.x, l ? l.originX : void 0), ZE(e.y, n.y, t.y, l ? l.originY : void 0);
@@ -44429,7 +44429,7 @@ function co(e, n, t) {
   FE(e.x, n.x, t.x), FE(e.y, n.y, t.y);
 }
 function U8(e, { min: n, max: t }, l) {
-  return n !== void 0 && e < n ? e = l ? Ln(n, e, l.min) : Math.max(e, n) : t !== void 0 && e > t && (e = l ? Ln(t, e, l.max) : Math.min(e, t)), e;
+  return n !== void 0 && e < n ? e = l ? Cn(n, e, l.min) : Math.max(e, n) : t !== void 0 && e > t && (e = l ? Cn(t, e, l.max) : Math.min(e, t)), e;
 }
 function WE(e, n, t) {
   return {
@@ -44564,7 +44564,7 @@ function Ar(e, n) {
   e.min = e.min + n, e.max = e.max + n;
 }
 function YE(e, n, [t, l, a]) {
-  const d = n[a] !== void 0 ? n[a] : 0.5, r = Ln(e.min, e.max, d);
+  const d = n[a] !== void 0 ? n[a] : 0.5, r = Cn(e.min, e.max, d);
   aW(e, n[t], n[l], r, n.scale);
 }
 const u8 = ["x", "scaleX", "originX"], p8 = ["y", "scaleY", "originY"];
@@ -44737,7 +44737,7 @@ class S8 {
       const { projection: a } = this.visualElement, d = this.getAxisMotionValue(t);
       if (a && a.layout) {
         const { min: r, max: i } = a.layout.layoutBox[t];
-        d.set(n[t] - Ln(r, i, 0.5));
+        d.set(n[t] - Cn(r, i, 0.5));
       }
     });
   }
@@ -44766,7 +44766,7 @@ class S8 {
       if (!hN(r, n, null))
         return;
       const i = this.getAxisMotionValue(r), { min: c, max: V } = this.constraints[r];
-      i.set(Ln(c, V, a[r]));
+      i.set(Cn(c, V, a[r]));
     });
   }
   addListeners() {
@@ -44862,7 +44862,7 @@ function Q8() {
   if (e === null)
     return [!0, null];
   const { isPresent: n, onExitComplete: t, register: l } = e, a = cW();
-  return Pe(() => l(a), []), !n && t ? [!1, () => t && t(a)] : [!0];
+  return _e(() => l(a), []), !n && t ? [!1, () => t && t(a)] : [!0];
 }
 const fN = {
   /**
@@ -44898,7 +44898,7 @@ const Fs = {
       return l;
     const d = ki.createTransformer(e), r = typeof a[0] != "number" ? 1 : 0, i = t.x.scale * n.x, c = t.y.scale * n.y;
     a[0 + r] /= i, a[1 + r] /= c;
-    const V = Ln(i, c, 0.5);
+    const V = Cn(i, c, 0.5);
     return typeof a[2 + r] == "number" && (a[2 + r] /= V), typeof a[3 + r] == "number" && (a[3 + r] /= V), d(a);
   }
 };
@@ -44963,20 +44963,20 @@ const z8 = {
   boxShadow: J8
 }, wJ = ["TopLeft", "TopRight", "BottomLeft", "BottomRight"], x8 = wJ.length, vE = (e) => typeof e == "string" ? parseFloat(e) : e, zE = (e) => typeof e == "number" || wt.test(e);
 function G8(e, n, t, l, a, d) {
-  a ? (e.opacity = Ln(
+  a ? (e.opacity = Cn(
     0,
     // TODO Reinstate this if only child
     t.opacity !== void 0 ? t.opacity : 1,
     y8(l)
-  ), e.opacityExit = Ln(n.opacity !== void 0 ? n.opacity : 1, 0, B8(l))) : d && (e.opacity = Ln(n.opacity !== void 0 ? n.opacity : 1, t.opacity !== void 0 ? t.opacity : 1, l));
+  ), e.opacityExit = Cn(n.opacity !== void 0 ? n.opacity : 1, 0, B8(l))) : d && (e.opacity = Cn(n.opacity !== void 0 ? n.opacity : 1, t.opacity !== void 0 ? t.opacity : 1, l));
   for (let r = 0; r < x8; r++) {
     const i = `border${wJ[r]}Radius`;
     let c = xE(n, i), V = xE(t, i);
     if (c === void 0 && V === void 0)
       continue;
-    c || (c = 0), V || (V = 0), c === 0 || V === 0 || zE(c) === zE(V) ? (e[i] = Math.max(Ln(vE(c), vE(V), l), 0), (Pd.test(V) || Pd.test(c)) && (e[i] += "%")) : e[i] = V;
+    c || (c = 0), V || (V = 0), c === 0 || V === 0 || zE(c) === zE(V) ? (e[i] = Math.max(Cn(vE(c), vE(V), l), 0), (Pd.test(V) || Pd.test(c)) && (e[i] += "%")) : e[i] = V;
   }
-  (n.rotate || t.rotate) && (e.rotate = Ln(n.rotate || 0, t.rotate || 0, l));
+  (n.rotate || t.rotate) && (e.rotate = Cn(n.rotate || 0, t.rotate || 0, l));
 }
 function xE(e, n) {
   return e[n] !== void 0 ? e[n] : e.borderRadius;
@@ -44995,9 +44995,9 @@ function yE(e, n, t, l, a) {
   return e -= n, e = DR(e, 1 / t, l), a !== void 0 && (e = DR(e, 1 / a, l)), e;
 }
 function D8(e, n = 0, t = 1, l = 0.5, a, d = e, r = e) {
-  if (Pd.test(n) && (n = parseFloat(n), n = Ln(r.min, r.max, n / 100) - r.min), typeof n != "number")
+  if (Pd.test(n) && (n = parseFloat(n), n = Cn(r.min, r.max, n / 100) - r.min), typeof n != "number")
     return;
-  let i = Ln(d.min, d.max, l);
+  let i = Cn(d.min, d.max, l);
   e === d && (i -= n), e.min = yE(e.min, n, t, i, a), e.max = yE(e.max, n, t, i, a);
 }
 function BE(e, n, [t, l, a], d, r) {
@@ -45646,10 +45646,10 @@ function aq(e) {
   e.removeLeadSnapshot();
 }
 function IE(e, n, t) {
-  e.translate = Ln(n.translate, 0, t), e.scale = Ln(n.scale, 1, t), e.origin = n.origin, e.originPoint = n.originPoint;
+  e.translate = Cn(n.translate, 0, t), e.scale = Cn(n.scale, 1, t), e.origin = n.origin, e.originPoint = n.originPoint;
 }
 function LE(e, n, t, l) {
-  e.min = Ln(n.min, t.min, l), e.max = Ln(n.max, t.max, l);
+  e.min = Cn(n.min, t.min, l), e.max = Cn(n.max, t.max, l);
 }
 function dq(e, n, t, l) {
   LE(e.x, n.x, t.x, l), LE(e.y, n.y, t.y, l);
@@ -46296,7 +46296,7 @@ function yq() {
   return /* @__PURE__ */ new Map();
 }
 function Bq(e) {
-  return Pe(() => () => e(), []);
+  return _e(() => () => e(), []);
 }
 const wi = (e) => e.key || "";
 function Dq(e, n) {
@@ -46365,7 +46365,7 @@ function Oo(e) {
   const n = kh(() => QV(e)), { isStatic: t } = Gt(Z1);
   if (t) {
     const [, l] = me(e);
-    Pe(() => n.on("change", l), []);
+    _e(() => n.on("change", l), []);
   }
   return n;
 }
@@ -46553,7 +46553,7 @@ function Aq(e, n, t, l, a, d) {
   for (let r = 0; r < n.length; r++)
     e.push({
       value: n[r],
-      at: Ln(a, d, l[r]),
+      at: Cn(a, d, l[r]),
       easing: _q(t, r)
     });
 }
@@ -46792,12 +46792,12 @@ function f1(e) {
 function T7() {
   return typeof window > "u" ? !1 : "ontouchstart" in window || navigator.maxTouchPoints > 0;
 }
-var w1 = Uv ? Pe : ud;
+var w1 = Uv ? _e : ud;
 function F7(e, n) {
   var t = Nv(e);
-  Pe(function() {
+  _e(function() {
     n && !t && e ? h7(n) : n && !e && t && VS(n);
-  }, [e, t]), Pe(function() {
+  }, [e, t]), _e(function() {
     return function() {
       n && e && VS(n);
     };
@@ -46807,7 +46807,7 @@ function W7(e, n) {
   var t = Nv(e), l = Wt(!1), a = Pt(function() {
     l.current ? (n.current.onCloseEnd == null || n.current.onCloseEnd(), l.current = !1) : (n.current.onOpenEnd == null || n.current.onOpenEnd(), l.current = !0);
   }, [e, t]);
-  return Pe(function() {
+  return _e(function() {
     !t && e ? n.current.onOpenStart == null || n.current.onOpenStart() : !e && t && (n.current.onCloseStart == null || n.current.onCloseStart());
   }, [e, t]), {
     handleAnimationComplete: a
@@ -46826,7 +46826,7 @@ function m7() {
 }
 function Nv(e) {
   var n = Wt();
-  return Pe(function() {
+  return _e(function() {
     n.current = e;
   }), n.current;
 }
@@ -47078,7 +47078,7 @@ var pr = {
     }
     w.set(0);
   });
-  Pe(function() {
+  _e(function() {
     if (!(!U || !i)) {
       var O = o ? m : U.length - 1;
       i(O);
@@ -47401,8 +47401,10 @@ const uv = ({
 `, A7 = ({
   message: e
 }) => {
-  const [n, t] = me(!1), l = JSON.parse((e == null ? void 0 : e.transaction_history) ?? "[]");
-  return /* @__PURE__ */ Y.jsxs(L7, { children: [
+  const [n, t] = me(!1), l = JSON.parse((e == null ? void 0 : e.transaction_history) ?? "[]"), { inputValue: a } = wn();
+  return _e(() => {
+    t(!1);
+  }, [a == null ? void 0 : a.value]), /* @__PURE__ */ Y.jsxs(L7, { children: [
     /* @__PURE__ */ Y.jsx(C7, { children: /* @__PURE__ */ Y.jsx(I7, {}) }),
     /* @__PURE__ */ Y.jsxs(K7, { children: [
       /* @__PURE__ */ Y.jsx(Fe, { type: oe.BODY_1, children: "Your balance" }),
@@ -48849,24 +48851,26 @@ const Q$ = A(nr.Container)`
 }) => {
   const n = JSON.parse(
     (e == null ? void 0 : e.transaction_history) ?? "[]"
-  ), [t, l] = me(!1);
-  return /* @__PURE__ */ Y.jsxs(aee, { children: [
-    n.length > 0 && n.slice(0, 4).map((a, d) => /* @__PURE__ */ Y.jsx("div", { style: { marginBottom: 16 }, children: /* @__PURE__ */ Y.jsx(
+  ), [t, l] = me(!1), { inputValue: a } = wn();
+  return _e(() => {
+    l(!1);
+  }, [a == null ? void 0 : a.value]), /* @__PURE__ */ Y.jsxs(aee, { children: [
+    n.length > 0 && n.slice(0, 4).map((d, r) => /* @__PURE__ */ Y.jsx("div", { style: { marginBottom: 16 }, children: /* @__PURE__ */ Y.jsx(
       Cc,
       {
-        icon: SS[d % SS.length],
+        icon: SS[r % SS.length],
         title: /* @__PURE__ */ Y.jsx(
           iee,
           {
             type: oe.SUBTITLE_1,
             color: ie.PRIMARY,
-            children: a.amount
+            children: d.amount
           }
         ),
-        description: /* @__PURE__ */ Y.jsx(Fe, { type: oe.CAPTION_3, children: a.description })
+        description: /* @__PURE__ */ Y.jsx(Fe, { type: oe.CAPTION_3, children: d.description })
       },
-      a.transactionId
-    ) }, a.transactionId)),
+      d.transactionId
+    ) }, d.transactionId)),
     /* @__PURE__ */ Y.jsx(dee, { children: /* @__PURE__ */ Y.jsx(
       ree,
       {
@@ -48969,7 +48973,7 @@ const Q$ = A(nr.Container)`
         Nee,
         {
           type: Ie.DONE,
-          fillColor: _e.SECONDARY,
+          fillColor: Pe.SECONDARY,
           width: "24px",
           height: "24px"
         }
@@ -49005,8 +49009,8 @@ function Fee(e) {
       isValid: !1
     };
   });
-  const [r, i] = me(d), { botCategory: c } = _n();
-  Pe(() => {
+  const [r, i] = me(d), { botCategory: c } = wn();
+  _e(() => {
     if (a) {
       const o = {};
       Object.entries(r).forEach(([U, N]) => {
@@ -50387,7 +50391,7 @@ const Ote = A.div`
   }
 `;
 function Ite() {
-  const { messageBottomContent: e } = _n(), n = "auto", { getTooltipProps: t, setTooltipRef: l, setTriggerRef: a } = Dte({
+  const { messageBottomContent: e } = wn(), n = "auto", { getTooltipProps: t, setTooltipRef: l, setTriggerRef: a } = Dte({
     placement: n
   }), [d, r] = me(!1);
   return /* @__PURE__ */ Y.jsxs(Y.Fragment, { children: [
@@ -50456,7 +50460,7 @@ function qte(e) {
   ] });
 }
 const $te = Av(
-  () => import("./CodeBlock-e46d1480.mjs").then(({ CodeBlock: e }) => ({ default: e }))
+  () => import("./CodeBlock-eabfc153.mjs").then(({ CodeBlock: e }) => ({ default: e }))
 ), ene = A.div`
   display: flex;
   ${({ botCategory: e }) => e && aa`
@@ -50480,7 +50484,7 @@ const $te = Av(
   width: 100%;
 `;
 function nne(e) {
-  const { message: n, tokens: t } = e, { enableSourceMessage: l } = _n(), { botCategory: a } = _n(), d = JSON.parse(
+  const { message: n, tokens: t } = e, { enableSourceMessage: l } = wn(), { botCategory: a } = wn(), d = JSON.parse(
     n.data === "" || n.data === "None" || !iC(n.data) ? "{}" : n.data
   ), r = Array.isArray(d.metadatas) ? d.metadatas : [];
   return t.length > 0 ? /* @__PURE__ */ Y.jsxs(ene, { botCategory: a, children: [
@@ -50762,7 +50766,7 @@ function zne(e) {
     chainTop: d,
     chainBottom: r,
     isBotWelcomeMessage: i
-  } = e, { replacementTextList: c, userId: V } = _n(), { currentGroupChannel: s } = fl(), { allMessages: o } = fl(), U = nn(() => {
+  } = e, { replacementTextList: c, userId: V } = wn(), { currentGroupChannel: s } = fl(), { allMessages: o } = fl(), U = nn(() => {
     let F;
     try {
       F = n != null && n.data ? JSON.parse(n.data) : null;
@@ -51023,7 +51027,7 @@ const xne = A.textarea`
   align-items: center;
   cursor: pointer;
 `, Dne = (e, n) => {
-  Pe(() => {
+  _e(() => {
     if (e) {
       e.style.height = "0";
       const t = e.scrollHeight;
@@ -51034,10 +51038,10 @@ const xne = A.textarea`
 function gv({
   onSendMessage: e
 }) {
-  const { inputValue: n } = _n(), t = Wt(null), [l, a] = me(!1), [d, r] = me((n == null ? void 0 : n.value) ?? ""), { botCategory: i } = _n(), c = Ji();
-  Dne(t.current, d), Pe(() => {
+  const { inputValue: n } = wn(), t = Wt(null), [l, a] = me(!1), [d, r] = me((n == null ? void 0 : n.value) ?? ""), { botCategory: i } = wn(), c = Ji();
+  Dne(t.current, d), _e(() => {
     (n == null ? void 0 : n.value) != null && n.value.length > 0 && c(n.value);
-  }, [n == null ? void 0 : n.value, n == null ? void 0 : n.id]), Pe(() => {
+  }, [n == null ? void 0 : n.value, n == null ? void 0 : n.id]), _e(() => {
     typeof d == "string" && d.length > 0 && a(!0);
   }, [d]);
   function V() {
@@ -51232,7 +51236,7 @@ const Xne = A.div`
 `;
 function Ine(e) {
   var k, Q;
-  const { botUser: n, createGroupChannel: t } = e, { userId: l, suggestedMessageContent: a } = _n(), { botCategory: d } = _n(), { allMessages: r, currentGroupChannel: i } = fl(), c = Wt(null), [V, s] = me(!1), [o, U] = me({
+  const { botUser: n, createGroupChannel: t } = e, { userId: l, suggestedMessageContent: a } = wn(), { botCategory: d } = wn(), { allMessages: r, currentGroupChannel: i } = fl(), c = Wt(null), [V, s] = me(!1), [o, U] = me({
     symptom: "",
     date: "",
     medicalHistory: ""
@@ -51257,7 +51261,7 @@ function Ine(e) {
   function E() {
     s(!1);
   }
-  Pe(() => {
+  _e(() => {
     var S;
     R && (R == null ? void 0 : R.messageType) !== "admin" && ((S = R.sender) == null ? void 0 : S.userId) === l && R.sendingStatus === $t.SUCCEEDED && // this bubble loading should be shown only when there're only bot and 1 user in the channel
     (N == null ? void 0 : N.memberCount) === 2 && !(i != null && i.members.map((v) => v.userId).includes(BN)) ? Z(R.messageId) : Z(-1);
@@ -51266,7 +51270,7 @@ function Ine(e) {
     () => une(r),
     [r.length]
   ), b = nn(() => pne(r, n.userId), [r.length]);
-  return Pe(() => {
+  return _e(() => {
     N == null || N.createMetaData({ bot_id: n.userId });
   }, [N]), /* @__PURE__ */ Y.jsxs(
     fne,
@@ -51455,7 +51459,7 @@ const Pne = A.div`
   justify-content: center;
 `;
 function tle() {
-  const { chatBottomContent: e } = _n();
+  const { chatBottomContent: e } = wn();
   return /* @__PURE__ */ Y.jsx(qne, { children: /* @__PURE__ */ Y.jsxs(
     $ne,
     {
@@ -51565,7 +51569,7 @@ const nle = A.div`
   width: 100%;
 `;
 function Lv(e) {
-  const { isStartingPage: n } = e, { startingPageContent: t, betaMark: l, customBetaMarkText: a, botNickName: d } = _n(), {
+  const { isStartingPage: n } = e, { startingPageContent: t, betaMark: l, customBetaMarkText: a, botNickName: d } = wn(), {
     sbConnectionStatus: r,
     setSbConnectionStatus: i,
     firstMessage: c,
@@ -51633,7 +51637,7 @@ function Lv(e) {
   ] });
 }
 function sle(e, n) {
-  const [t, l] = me(null), [a, d] = me(!1), r = zn(), i = r.stores.sdkStore.sdk, c = kY(r), { createGroupChannelParams: V, instantConnect: s, firstMessageData: o } = _n(), { setSbConnectionStatus: U, firstMessage: N } = UU(), R = Pt(async () => {
+  const [t, l] = me(null), [a, d] = me(!1), r = zn(), i = r.stores.sdkStore.sdk, c = kY(r), { createGroupChannelParams: V, instantConnect: s, firstMessageData: o } = wn(), { setSbConnectionStatus: U, firstMessage: N } = UU(), R = Pt(async () => {
     if (!(!e || !n))
       try {
         d(!0);
@@ -51655,7 +51659,7 @@ function sle(e, n) {
         d(!1), U("CONNECTED");
       }
   }, [e == null ? void 0 : e.userId, n == null ? void 0 : n.userId, N]);
-  return Pe(() => {
+  return _e(() => {
     e && n && i && R();
   }, [e == null ? void 0 : e.userId, n == null ? void 0 : n.userId, N]), [t, R, a];
 }
@@ -51664,7 +51668,7 @@ const Cv = _l({
 }), ole = (e) => /* @__PURE__ */ Y.jsx(Cv.Provider, { value: { hashedKey: e.hashedKey }, children: e.children }), Ule = () => Gt(Cv);
 function Nle(e, n) {
   const [t, l] = me(null), a = zn(), { hashedKey: d } = Ule(), r = a.stores.sdkStore.sdk;
-  return Pe(() => {
+  return _e(() => {
     if (e && n) {
       const i = r.createApplicationUserListQuery(
         {
@@ -51682,15 +51686,15 @@ function Nle(e, n) {
   }, [e == null ? void 0 : e.userId, n, d]), t;
 }
 function Rle(e) {
-  const { instantConnect: n } = _n(), { sbConnectionStatus: t } = UU(), { setInitialTimeStamp: l } = fl(), [a, d] = me(!1);
-  return Pe(() => {
+  const { instantConnect: n } = wn(), { sbConnectionStatus: t } = UU(), { setInitialTimeStamp: l } = fl(), [a, d] = me(!1);
+  return _e(() => {
     t === "CONNECTED" && setTimeout(() => {
       d(!0), l(null);
     }, 500);
   }, [t]), a ? /* @__PURE__ */ Y.jsx(Ine, { ...e }) : n ? /* @__PURE__ */ Y.jsx(Iv, {}) : /* @__PURE__ */ Y.jsx(Lv, { isStartingPage: !0 });
 }
 function hle() {
-  const { botId: e, instantConnect: n } = _n(), l = zn().stores.sdkStore.sdk;
+  const { botId: e, instantConnect: n } = wn(), l = zn().stores.sdkStore.sdk;
   i1(e !== null, "botId must be provided");
   const a = Nle(l.currentUser, e), [d, r] = sle(
     l.currentUser,
@@ -51716,7 +51720,7 @@ const Zle = () => {
     configureSession: d,
     enableEmojiFeedback: r,
     enableMention: i
-  } = _n();
+  } = wn();
   i1(
     n !== null && t !== null,
     "applicationId and botId must be provided"
@@ -51914,7 +51918,7 @@ const Zle = () => {
   const [n, t] = me(e.autoOpen ?? !1), l = Wt(null), a = () => {
     l.current !== null && (clearTimeout(l.current), l.current = null), t((d) => !d);
   };
-  return Pe(() => {
+  return _e(() => {
     Sle("chatbot").length === 0 && (l.current = setTimeout(() => t(() => !0), 1e3), Ele("chatbot"));
   }, []), /* @__PURE__ */ Y.jsxs($v, { children: [
     /* @__PURE__ */ Y.jsx(Wle, { isOpen: n, setIsOpen: t, ...e }),

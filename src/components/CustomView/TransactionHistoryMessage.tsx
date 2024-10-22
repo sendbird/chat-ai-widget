@@ -3,7 +3,7 @@ import Label, {
   LabelTypography,
   LabelColors,
 } from '@sendbird/uikit-react/ui/Label';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import ListRow from './ListRow';
@@ -12,6 +12,7 @@ import { ReactComponent as TransactionIcon1 } from '../../icons/icon-transaction
 import { ReactComponent as TransactionIcon2 } from '../../icons/icon-transaction-type-2.svg';
 import { ReactComponent as TransactionIcon3 } from '../../icons/icon-transaction-type-3.svg';
 import { FunctionCallMessage } from '../../utils/messages';
+import { useConstantState } from "../../context/ConstantContext";
 
 const icons = [
   <TransactionIcon1 key="1" />,
@@ -61,6 +62,11 @@ const TransactionHistoryMessage = ({
     message?.transaction_history ?? '[]'
   ) as HistoryItem[];
   const [bottomSheetOpen, setBottomSheetOpen] = useState(false);
+  const { inputValue } = useConstantState();
+
+  useEffect(() => {
+    setBottomSheetOpen(false);
+  }, [inputValue?.value])
 
   return (
     <Container>
