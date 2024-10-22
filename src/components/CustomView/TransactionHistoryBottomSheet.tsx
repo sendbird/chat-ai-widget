@@ -22,6 +22,7 @@ const icons = [
 const BottomSheetContainer = styled(BottomSheet.Container)`
   padding-bottom: 16px;
   border-radius: 15px 15px 0 0 !important;
+  max-height: initial !important;
 `;
 
 const BottomSheetHeader = styled(BottomSheet.Header)`
@@ -101,6 +102,7 @@ const TransactionHistoryBottomSheet = ({
         <BottomSheetHeader>
           <Label type={LabelTypography.H_2}>Transaction history</Label>
           <CloseIcon
+            style={{ cursor: "pointer" }}
             onClick={() => {
               setBottomSheetOpen(false);
             }}

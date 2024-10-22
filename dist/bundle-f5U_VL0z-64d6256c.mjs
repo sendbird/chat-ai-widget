@@ -1,4 +1,4 @@
-import { V as g2 } from "./index-1bed5370.mjs";
+import { V as g2 } from "./index-db15c99b.mjs";
 import "react";
 import "react-dom";
 function Mt(H) {
