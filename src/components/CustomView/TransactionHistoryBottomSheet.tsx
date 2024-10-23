@@ -23,6 +23,7 @@ const BottomSheetContainer = styled(BottomSheet.Container)`
   padding-bottom: 16px;
   border-radius: 15px 15px 0 0 !important;
   max-height: initial !important;
+  -webkit-font-smoothing: subpixel-antialiased;
 `;
 
 const BottomSheetHeader = styled(BottomSheet.Header)`
