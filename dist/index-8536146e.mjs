@@ -3165,7 +3165,7 @@ var Ex = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
           case 0:
             t = n.path, l = n.method, a = n.uploadProgressHandler, d = ![he.GET, he.DELETE].includes(l), r = this._sdkState.api, i = "".concat(r.host).concat(t).concat(d ? "" : n.query), c = d ? n.payload : null, V = this._createHeader(n, c instanceof FormData ? c : void 0), s = new AbortController(), o = s.signal, this._abortControl.set(n.requestId, s), U = Date.now(), b.label = 1;
           case 1:
-            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-0b109124.mjs")] : [3, 6];
+            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-1b44d126.mjs")] : [3, 6];
           case 2:
             N = b.sent().xmlHttpRequest, b.label = 3;
           case 3:
@@ -3177,11 +3177,11 @@ var Ex = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
               throw h;
             return this._logger.debug("XMLHttpRequest is not available in this environment. progressHandler is ignored."), [3, 6];
           case 6:
-            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-17b5eae8.mjs").then((k) => k._)];
+            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-ab26ac04.mjs").then((k) => k._)];
           case 7:
             b.sent(), b.label = 8;
           case 8:
-            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-dae2ce8a.mjs").then((k) => k._)];
+            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-bb9379c7.mjs").then((k) => k._)];
           case 9:
             b.sent(), b.label = 10;
           case 10:
@@ -28369,7 +28369,7 @@ var mF = function() {
     return MediaRecorder.isTypeSupported(b);
   })) !== null && n !== void 0 ? n : "";
   d && !m && a.error("VoiceRecorder: Browser does not support mimeType", { mimmeTypes: Vp }), _e(function() {
-    d && !W && import("./bundle-f5U_VL0z-ef01bc9e.mjs").then(function(b) {
+    d && !W && import("./bundle-f5U_VL0z-d54eeb74.mjs").then(function(b) {
       F(b);
     });
   }, [d, W]);
@@ -47419,7 +47419,7 @@ const pv = ({
   const [n, t] = me(!1), l = JSON.parse((e == null ? void 0 : e.transaction_history) ?? "[]"), { inputValue: a } = jn();
   return _e(() => {
     t(!1);
-  }, [a == null ? void 0 : a.value]), /* @__PURE__ */ Y.jsxs(L7, { children: [
+  }, [a == null ? void 0 : a.value, a == null ? void 0 : a.id]), /* @__PURE__ */ Y.jsxs(L7, { children: [
     /* @__PURE__ */ Y.jsx(C7, { children: /* @__PURE__ */ Y.jsx(I7, {}) }),
     /* @__PURE__ */ Y.jsxs(K7, { children: [
       /* @__PURE__ */ Y.jsx(Fe, { type: oe.BODY_1, children: "Your balance" }),
@@ -48872,7 +48872,7 @@ const Q$ = A(nr.Container)`
   ), [t, l] = me(!1), { inputValue: a } = jn();
   return _e(() => {
     l(!1);
-  }, [a == null ? void 0 : a.value]), /* @__PURE__ */ Y.jsxs(aee, { children: [
+  }, [a == null ? void 0 : a.value, a == null ? void 0 : a.id]), /* @__PURE__ */ Y.jsxs(aee, { children: [
     n.length > 0 && n.slice(0, 4).map((d, r) => /* @__PURE__ */ Y.jsx("div", { style: { marginBottom: 16 }, children: /* @__PURE__ */ Y.jsx(
       Cc,
       {
@@ -50478,7 +50478,7 @@ function qte(e) {
   ] });
 }
 const $te = qv(
-  () => import("./CodeBlock-4c2fb6b0.mjs").then(({ CodeBlock: e }) => ({ default: e }))
+  () => import("./CodeBlock-2d1d3662.mjs").then(({ CodeBlock: e }) => ({ default: e }))
 ), ene = A.div`
   display: flex;
   ${({ botCategory: e }) => e && aa`

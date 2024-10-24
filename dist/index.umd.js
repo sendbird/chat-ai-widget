@@ -848,7 +848,7 @@ See https://s-c.sh/2BAXzed for more info.`),window["__styled-components-init__"]
   line-height: 20px;
   letter-spacing: -0.01em;
   margin-top: 6px;
-`,_ee=({message:e})=>{const[n,t]=R.useState(!1),l=JSON.parse((e==null?void 0:e.transaction_history)??"[]"),{inputValue:a}=Ln();return R.useEffect(()=>{t(!1)},[a==null?void 0:a.value]),O.jsxs(Iee,{children:[O.jsx(Lee,{children:O.jsx(gee,{})}),O.jsxs(Cee,{children:[O.jsx(ge,{type:Xe.BODY_1,children:"Your balance"}),O.jsx(Aee,{children:(e==null?void 0:e.current_balance)??"$0"}),(e==null?void 0:e.transaction_history)!=null&&O.jsx(Kee,{onClick:()=>{t(!0)},children:O.jsx(ge,{type:Xe.BUTTON_2,color:Ge.ONCONTENT_1,children:"View transaction history"})})]}),O.jsx(w5,{historyList:l,bottomSheetOpen:n,setBottomSheetOpen:t})]})},Pee=Qe.div`
+`,_ee=({message:e})=>{const[n,t]=R.useState(!1),l=JSON.parse((e==null?void 0:e.transaction_history)??"[]"),{inputValue:a}=Ln();return R.useEffect(()=>{t(!1)},[a==null?void 0:a.value,a==null?void 0:a.id]),O.jsxs(Iee,{children:[O.jsx(Lee,{children:O.jsx(gee,{})}),O.jsxs(Cee,{children:[O.jsx(ge,{type:Xe.BODY_1,children:"Your balance"}),O.jsx(Aee,{children:(e==null?void 0:e.current_balance)??"$0"}),(e==null?void 0:e.transaction_history)!=null&&O.jsx(Kee,{onClick:()=>{t(!0)},children:O.jsx(ge,{type:Xe.BUTTON_2,color:Ge.ONCONTENT_1,children:"View transaction history"})})]}),O.jsx(w5,{historyList:l,bottomSheetOpen:n,setBottomSheetOpen:t})]})},Pee=Qe.div`
   display: flex;
   flex-direction: column;
   width: 244px;
@@ -1035,7 +1035,7 @@ See https://s-c.sh/2BAXzed for more info.`),window["__styled-components-init__"]
   border-radius: 8px;
 `,dne=Qe(ge)`
   font-weight: 500;
-`,ine=({message:e})=>{const n=JSON.parse((e==null?void 0:e.transaction_history)??"[]"),[t,l]=R.useState(!1),{inputValue:a}=Ln();return R.useEffect(()=>{l(!1)},[a==null?void 0:a.value]),O.jsxs(lne,{children:[n.length>0&&n.slice(0,4).map((r,d)=>O.jsx("div",{style:{marginBottom:16},children:O.jsx(qs,{icon:sJ[d%sJ.length],title:O.jsx(dne,{type:Xe.SUBTITLE_1,color:Ge.PRIMARY,children:r.amount}),description:O.jsx(ge,{type:Xe.CAPTION_3,children:r.description})},r.transactionId)},r.transactionId)),O.jsx(ane,{children:O.jsx(rne,{onClick:()=>{l(!0)},children:O.jsx(ge,{type:Xe.BUTTON_2,color:Ge.ONCONTENT_1,children:"See more"})})}),O.jsx(w5,{historyList:n,bottomSheetOpen:t,setBottomSheetOpen:l})]})},oJ=Qe(ge)`
+`,ine=({message:e})=>{const n=JSON.parse((e==null?void 0:e.transaction_history)??"[]"),[t,l]=R.useState(!1),{inputValue:a}=Ln();return R.useEffect(()=>{l(!1)},[a==null?void 0:a.value,a==null?void 0:a.id]),O.jsxs(lne,{children:[n.length>0&&n.slice(0,4).map((r,d)=>O.jsx("div",{style:{marginBottom:16},children:O.jsx(qs,{icon:sJ[d%sJ.length],title:O.jsx(dne,{type:Xe.SUBTITLE_1,color:Ge.PRIMARY,children:r.amount}),description:O.jsx(ge,{type:Xe.CAPTION_3,children:r.description})},r.transactionId)},r.transactionId)),O.jsx(ane,{children:O.jsx(rne,{onClick:()=>{l(!0)},children:O.jsx(ge,{type:Xe.BUTTON_2,color:Ge.ONCONTENT_1,children:"See more"})})}),O.jsx(w5,{historyList:n,bottomSheetOpen:t,setBottomSheetOpen:l})]})},oJ=Qe(ge)`
   font-size: 11px;
   position: relative;
   bottom: 4px;

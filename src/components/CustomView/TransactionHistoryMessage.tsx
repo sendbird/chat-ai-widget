@@ -66,7 +66,7 @@ const TransactionHistoryMessage = ({
 
   useEffect(() => {
     setBottomSheetOpen(false);
-  }, [inputValue?.value])
+  }, [inputValue?.value, inputValue?.id])
 
   return (
     <Container>
