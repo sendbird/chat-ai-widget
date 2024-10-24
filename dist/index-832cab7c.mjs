@@ -67,25 +67,25 @@ function nz() {
     function Z(X) {
       if (X === null || typeof X != "object")
         return null;
-      var Ue = R && X[R] || X[h];
-      return typeof Ue == "function" ? Ue : null;
+      var Ne = R && X[R] || X[h];
+      return typeof Ne == "function" ? Ne : null;
     }
     var W = e.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
     function F(X) {
       {
-        for (var Ue = arguments.length, pe = new Array(Ue > 1 ? Ue - 1 : 0), fe = 1; fe < Ue; fe++)
-          pe[fe - 1] = arguments[fe];
+        for (var Ne = arguments.length, pe = new Array(Ne > 1 ? Ne - 1 : 0), we = 1; we < Ne; we++)
+          pe[we - 1] = arguments[we];
         m("error", X, pe);
       }
     }
-    function m(X, Ue, pe) {
+    function m(X, Ne, pe) {
       {
-        var fe = W.ReactDebugCurrentFrame, Nt = fe.getStackAddendum();
-        Nt !== "" && (Ue += "%s", pe = pe.concat([Nt]));
+        var we = W.ReactDebugCurrentFrame, Nt = we.getStackAddendum();
+        Nt !== "" && (Ne += "%s", pe = pe.concat([Nt]));
         var Ee = pe.map(function(H) {
           return String(H);
         });
-        Ee.unshift("Warning: " + Ue), Function.prototype.apply.call(console[X], console, Ee);
+        Ee.unshift("Warning: " + Ne), Function.prototype.apply.call(console[X], console, Ee);
       }
     }
     var E = !1, u = !1, b = !1, k = !1, Q = !1, S;
@@ -97,11 +97,11 @@ function nz() {
       // with.
       X.$$typeof === S || X.getModuleId !== void 0));
     }
-    function G(X, Ue, pe) {
-      var fe = X.displayName;
-      if (fe)
-        return fe;
-      var Nt = Ue.displayName || Ue.name || "";
+    function G(X, Ne, pe) {
+      var we = X.displayName;
+      if (we)
+        return we;
+      var Nt = Ne.displayName || Ne.name || "";
       return Nt !== "" ? pe + "(" + Nt + ")" : pe;
     }
     function w(X) {
@@ -131,16 +131,16 @@ function nz() {
       if (typeof X == "object")
         switch (X.$$typeof) {
           case i:
-            var Ue = X;
-            return w(Ue) + ".Consumer";
+            var Ne = X;
+            return w(Ne) + ".Consumer";
           case r:
             var pe = X;
             return w(pe._context) + ".Provider";
           case c:
             return G(X, X.render, "ForwardRef");
           case o:
-            var fe = X.displayName || null;
-            return fe !== null ? fe : y(X.type) || "Memo";
+            var we = X.displayName || null;
+            return we !== null ? we : y(X.type) || "Memo";
           case U: {
             var Nt = X, Ee = Nt._payload, H = Nt._init;
             try {
@@ -152,14 +152,14 @@ function nz() {
         }
       return null;
     }
-    var g = Object.assign, f = 0, I, K, Re, q, ae, se, le;
+    var g = Object.assign, f = 0, I, K, Ue, q, ae, se, le;
     function L() {
     }
     L.__reactDisabledLog = !0;
     function $() {
       {
         if (f === 0) {
-          I = console.log, K = console.info, Re = console.warn, q = console.error, ae = console.group, se = console.groupCollapsed, le = console.groupEnd;
+          I = console.log, K = console.info, Ue = console.warn, q = console.error, ae = console.group, se = console.groupCollapsed, le = console.groupEnd;
           var X = {
             configurable: !0,
             enumerable: !0,
@@ -195,7 +195,7 @@ function nz() {
               value: K
             }),
             warn: g({}, X, {
-              value: Re
+              value: Ue
             }),
             error: g({}, X, {
               value: q
@@ -215,14 +215,14 @@ function nz() {
       }
     }
     var O = W.ReactCurrentDispatcher, re;
-    function te(X, Ue, pe) {
+    function te(X, Ne, pe) {
       {
         if (re === void 0)
           try {
             throw Error();
           } catch (Nt) {
-            var fe = Nt.stack.trim().match(/\n( *(at )?)/);
-            re = fe && fe[1] || "";
+            var we = Nt.stack.trim().match(/\n( *(at )?)/);
+            re = we && we[1] || "";
           }
         return `
 ` + re + X;
@@ -233,7 +233,7 @@ function nz() {
       var Se = typeof WeakMap == "function" ? WeakMap : Map;
       Ye = new Se();
     }
-    function P(X, Ue) {
+    function P(X, Ne) {
       if (!X || Qe)
         return "";
       {
@@ -241,14 +241,14 @@ function nz() {
         if (pe !== void 0)
           return pe;
       }
-      var fe;
+      var we;
       Qe = !0;
       var Nt = Error.prepareStackTrace;
       Error.prepareStackTrace = void 0;
       var Ee;
       Ee = O.current, O.current = null, $();
       try {
-        if (Ue) {
+        if (Ne) {
           var H = function() {
             throw Error();
           };
@@ -260,14 +260,14 @@ function nz() {
             try {
               Reflect.construct(H, []);
             } catch (bt) {
-              fe = bt;
+              we = bt;
             }
             Reflect.construct(X, [], H);
           } else {
             try {
               H.call();
             } catch (bt) {
-              fe = bt;
+              we = bt;
             }
             X.call(H.prototype);
           }
@@ -275,14 +275,14 @@ function nz() {
           try {
             throw Error();
           } catch (bt) {
-            fe = bt;
+            we = bt;
           }
           X();
         }
       } catch (bt) {
-        if (bt && fe && typeof bt.stack == "string") {
+        if (bt && we && typeof bt.stack == "string") {
           for (var Ve = bt.stack.split(`
-`), ye = fe.stack.split(`
+`), ye = we.stack.split(`
 `), Zt = Ve.length - 1, Mt = ye.length - 1; Zt >= 1 && Mt >= 0 && Ve[Zt] !== ye[Mt]; )
             Mt--;
           for (; Zt >= 1 && Mt >= 0; Zt--, Mt--)
@@ -304,14 +304,14 @@ function nz() {
       var Ht = X ? X.displayName || X.name : "", Sn = Ht ? te(Ht) : "";
       return typeof X == "function" && Ye.set(X, Sn), Sn;
     }
-    function we(X, Ue, pe) {
+    function ge(X, Ne, pe) {
       return P(X, !1);
     }
     function Me(X) {
-      var Ue = X.prototype;
-      return !!(Ue && Ue.isReactComponent);
+      var Ne = X.prototype;
+      return !!(Ne && Ne.isReactComponent);
     }
-    function We(X, Ue, pe) {
+    function We(X, Ne, pe) {
       if (X == null)
         return "";
       if (typeof X == "function")
@@ -327,43 +327,43 @@ function nz() {
       if (typeof X == "object")
         switch (X.$$typeof) {
           case c:
-            return we(X.render);
+            return ge(X.render);
           case o:
-            return We(X.type, Ue, pe);
+            return We(X.type, Ne, pe);
           case U: {
-            var fe = X, Nt = fe._payload, Ee = fe._init;
+            var we = X, Nt = we._payload, Ee = we._init;
             try {
-              return We(Ee(Nt), Ue, pe);
+              return We(Ee(Nt), Ne, pe);
             } catch {
             }
           }
         }
       return "";
     }
-    var Be = Object.prototype.hasOwnProperty, Ke = {}, lt = W.ReactDebugCurrentFrame;
-    function De(X) {
+    var De = Object.prototype.hasOwnProperty, Oe = {}, tt = W.ReactDebugCurrentFrame;
+    function Be(X) {
       if (X) {
-        var Ue = X._owner, pe = We(X.type, X._source, Ue ? Ue.type : null);
-        lt.setExtraStackFrame(pe);
+        var Ne = X._owner, pe = We(X.type, X._source, Ne ? Ne.type : null);
+        tt.setExtraStackFrame(pe);
       } else
-        lt.setExtraStackFrame(null);
+        tt.setExtraStackFrame(null);
     }
-    function je(X, Ue, pe, fe, Nt) {
+    function He(X, Ne, pe, we, Nt) {
       {
-        var Ee = Function.call.bind(Be);
+        var Ee = Function.call.bind(De);
         for (var H in X)
           if (Ee(X, H)) {
             var Ve = void 0;
             try {
               if (typeof X[H] != "function") {
-                var ye = Error((fe || "React class") + ": " + pe + " type `" + H + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof X[H] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                var ye = Error((we || "React class") + ": " + pe + " type `" + H + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof X[H] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
                 throw ye.name = "Invariant Violation", ye;
               }
-              Ve = X[H](Ue, H, fe, pe, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+              Ve = X[H](Ne, H, we, pe, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
             } catch (Zt) {
               Ve = Zt;
             }
-            Ve && !(Ve instanceof Error) && (De(Nt), F("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", fe || "React class", pe, H, typeof Ve), De(null)), Ve instanceof Error && !(Ve.message in Ke) && (Ke[Ve.message] = !0, De(Nt), F("Failed %s type: %s", pe, Ve.message), De(null));
+            Ve && !(Ve instanceof Error) && (Be(Nt), F("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", we || "React class", pe, H, typeof Ve), Be(null)), Ve instanceof Error && !(Ve.message in Oe) && (Oe[Ve.message] = !0, Be(Nt), F("Failed %s type: %s", pe, Ve.message), Be(null));
           }
       }
     }
@@ -373,11 +373,11 @@ function nz() {
     }
     function $e(X) {
       {
-        var Ue = typeof Symbol == "function" && Symbol.toStringTag, pe = Ue && X[Symbol.toStringTag] || X.constructor.name || "Object";
+        var Ne = typeof Symbol == "function" && Symbol.toStringTag, pe = Ne && X[Symbol.toStringTag] || X.constructor.name || "Object";
         return pe;
       }
     }
-    function He(X) {
+    function fe(X) {
       try {
         return Xe(X), !1;
       } catch {
@@ -388,7 +388,7 @@ function nz() {
       return "" + X;
     }
     function pt(X) {
-      if (He(X))
+      if (fe(X))
         return F("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", $e(X)), Xe(X);
     }
     var Vt = W.ReactCurrentOwner, yt = {
@@ -399,31 +399,31 @@ function nz() {
     }, xe, At, kt;
     kt = {};
     function Kt(X) {
-      if (Be.call(X, "ref")) {
-        var Ue = Object.getOwnPropertyDescriptor(X, "ref").get;
-        if (Ue && Ue.isReactWarning)
+      if (De.call(X, "ref")) {
+        var Ne = Object.getOwnPropertyDescriptor(X, "ref").get;
+        if (Ne && Ne.isReactWarning)
           return !1;
       }
       return X.ref !== void 0;
     }
     function ln(X) {
-      if (Be.call(X, "key")) {
-        var Ue = Object.getOwnPropertyDescriptor(X, "key").get;
-        if (Ue && Ue.isReactWarning)
+      if (De.call(X, "key")) {
+        var Ne = Object.getOwnPropertyDescriptor(X, "key").get;
+        if (Ne && Ne.isReactWarning)
           return !1;
       }
       return X.key !== void 0;
     }
-    function vt(X, Ue) {
-      if (typeof X.ref == "string" && Vt.current && Ue && Vt.current.stateNode !== Ue) {
+    function vt(X, Ne) {
+      if (typeof X.ref == "string" && Vt.current && Ne && Vt.current.stateNode !== Ne) {
         var pe = y(Vt.current.type);
         kt[pe] || (F('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', y(Vt.current.type), X.ref), kt[pe] = !0);
       }
     }
-    function Rt(X, Ue) {
+    function Rt(X, Ne) {
       {
         var pe = function() {
-          xe || (xe = !0, F("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", Ue));
+          xe || (xe = !0, F("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", Ne));
         };
         pe.isReactWarning = !0, Object.defineProperty(X, "key", {
           get: pe,
@@ -431,10 +431,10 @@ function nz() {
         });
       }
     }
-    function Ce(X, Ue) {
+    function Ke(X, Ne) {
       {
         var pe = function() {
-          At || (At = !0, F("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", Ue));
+          At || (At = !0, F("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", Ne));
         };
         pe.isReactWarning = !0, Object.defineProperty(X, "ref", {
           get: pe,
@@ -442,13 +442,13 @@ function nz() {
         });
       }
     }
-    var Je = function(X, Ue, pe, fe, Nt, Ee, H) {
+    var Je = function(X, Ne, pe, we, Nt, Ee, H) {
       var Ve = {
         // This tag allows us to uniquely identify this as a React Element
         $$typeof: n,
         // Built-in properties that belong on the element
         type: X,
-        key: Ue,
+        key: Ne,
         ref: pe,
         props: H,
         // Record the component responsible for creating this element.
@@ -463,7 +463,7 @@ function nz() {
         configurable: !1,
         enumerable: !1,
         writable: !1,
-        value: fe
+        value: we
       }), Object.defineProperty(Ve, "_source", {
         configurable: !1,
         enumerable: !1,
@@ -471,12 +471,12 @@ function nz() {
         value: Nt
       }), Object.freeze && (Object.freeze(Ve.props), Object.freeze(Ve)), Ve;
     };
-    function de(X, Ue, pe, fe, Nt) {
+    function de(X, Ne, pe, we, Nt) {
       {
         var Ee, H = {}, Ve = null, ye = null;
-        pe !== void 0 && (pt(pe), Ve = "" + pe), ln(Ue) && (pt(Ue.key), Ve = "" + Ue.key), Kt(Ue) && (ye = Ue.ref, vt(Ue, Nt));
-        for (Ee in Ue)
-          Be.call(Ue, Ee) && !yt.hasOwnProperty(Ee) && (H[Ee] = Ue[Ee]);
+        pe !== void 0 && (pt(pe), Ve = "" + pe), ln(Ne) && (pt(Ne.key), Ve = "" + Ne.key), Kt(Ne) && (ye = Ne.ref, vt(Ne, Nt));
+        for (Ee in Ne)
+          De.call(Ne, Ee) && !yt.hasOwnProperty(Ee) && (H[Ee] = Ne[Ee]);
         if (X && X.defaultProps) {
           var Zt = X.defaultProps;
           for (Ee in Zt)
@@ -484,18 +484,18 @@ function nz() {
         }
         if (Ve || ye) {
           var Mt = typeof X == "function" ? X.displayName || X.name || "Unknown" : X;
-          Ve && Rt(H, Mt), ye && Ce(H, Mt);
+          Ve && Rt(H, Mt), ye && Ke(H, Mt);
         }
-        return Je(X, Ve, ye, Nt, fe, Vt.current, H);
+        return Je(X, Ve, ye, Nt, we, Vt.current, H);
       }
     }
-    var qe = W.ReactCurrentOwner, nt = W.ReactDebugCurrentFrame;
+    var qe = W.ReactCurrentOwner, lt = W.ReactDebugCurrentFrame;
     function ct(X) {
       if (X) {
-        var Ue = X._owner, pe = We(X.type, X._source, Ue ? Ue.type : null);
-        nt.setExtraStackFrame(pe);
+        var Ne = X._owner, pe = We(X.type, X._source, Ne ? Ne.type : null);
+        lt.setExtraStackFrame(pe);
       } else
-        nt.setExtraStackFrame(null);
+        lt.setExtraStackFrame(null);
     }
     var Ot;
     Ot = !1;
@@ -517,10 +517,10 @@ Check the render method of \`` + X + "`.";
     function mt(X) {
       {
         if (X !== void 0) {
-          var Ue = X.fileName.replace(/^.*[\\\/]/, ""), pe = X.lineNumber;
+          var Ne = X.fileName.replace(/^.*[\\\/]/, ""), pe = X.lineNumber;
           return `
 
-Check your code at ` + Ue + ":" + pe + ".";
+Check your code at ` + Ne + ":" + pe + ".";
         }
         return "";
       }
@@ -528,37 +528,37 @@ Check your code at ` + Ue + ":" + pe + ".";
     var sn = {};
     function hn(X) {
       {
-        var Ue = cn();
-        if (!Ue) {
+        var Ne = cn();
+        if (!Ne) {
           var pe = typeof X == "string" ? X : X.displayName || X.name;
-          pe && (Ue = `
+          pe && (Ne = `
 
 Check the top-level render call using <` + pe + ">.");
         }
-        return Ue;
+        return Ne;
       }
     }
-    function ft(X, Ue) {
+    function ft(X, Ne) {
       {
         if (!X._store || X._store.validated || X.key != null)
           return;
         X._store.validated = !0;
-        var pe = hn(Ue);
+        var pe = hn(Ne);
         if (sn[pe])
           return;
         sn[pe] = !0;
-        var fe = "";
-        X && X._owner && X._owner !== qe.current && (fe = " It was passed a child from " + y(X._owner.type) + "."), ct(X), F('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', pe, fe), ct(null);
+        var we = "";
+        X && X._owner && X._owner !== qe.current && (we = " It was passed a child from " + y(X._owner.type) + "."), ct(X), F('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', pe, we), ct(null);
       }
     }
-    function qt(X, Ue) {
+    function qt(X, Ne) {
       {
         if (typeof X != "object")
           return;
         if (Ge(X))
           for (var pe = 0; pe < X.length; pe++) {
-            var fe = X[pe];
-            zt(fe) && ft(fe, Ue);
+            var we = X[pe];
+            zt(we) && ft(we, Ne);
           }
         else if (zt(X))
           X._store && (X._store.validated = !0);
@@ -566,48 +566,48 @@ Check the top-level render call using <` + pe + ">.");
           var Nt = Z(X);
           if (typeof Nt == "function" && Nt !== X.entries)
             for (var Ee = Nt.call(X), H; !(H = Ee.next()).done; )
-              zt(H.value) && ft(H.value, Ue);
+              zt(H.value) && ft(H.value, Ne);
         }
       }
     }
     function jt(X) {
       {
-        var Ue = X.type;
-        if (Ue == null || typeof Ue == "string")
+        var Ne = X.type;
+        if (Ne == null || typeof Ne == "string")
           return;
         var pe;
-        if (typeof Ue == "function")
-          pe = Ue.propTypes;
-        else if (typeof Ue == "object" && (Ue.$$typeof === c || // Note: Memo only checks outer props here.
+        if (typeof Ne == "function")
+          pe = Ne.propTypes;
+        else if (typeof Ne == "object" && (Ne.$$typeof === c || // Note: Memo only checks outer props here.
         // Inner props are checked in the reconciler.
-        Ue.$$typeof === o))
-          pe = Ue.propTypes;
+        Ne.$$typeof === o))
+          pe = Ne.propTypes;
         else
           return;
         if (pe) {
-          var fe = y(Ue);
-          je(pe, X.props, "prop", fe, X);
-        } else if (Ue.PropTypes !== void 0 && !Ot) {
+          var we = y(Ne);
+          He(pe, X.props, "prop", we, X);
+        } else if (Ne.PropTypes !== void 0 && !Ot) {
           Ot = !0;
-          var Nt = y(Ue);
+          var Nt = y(Ne);
           F("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", Nt || "Unknown");
         }
-        typeof Ue.getDefaultProps == "function" && !Ue.getDefaultProps.isReactClassApproved && F("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
+        typeof Ne.getDefaultProps == "function" && !Ne.getDefaultProps.isReactClassApproved && F("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
       }
     }
     function Bt(X) {
       {
-        for (var Ue = Object.keys(X.props), pe = 0; pe < Ue.length; pe++) {
-          var fe = Ue[pe];
-          if (fe !== "children" && fe !== "key") {
-            ct(X), F("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", fe), ct(null);
+        for (var Ne = Object.keys(X.props), pe = 0; pe < Ne.length; pe++) {
+          var we = Ne[pe];
+          if (we !== "children" && we !== "key") {
+            ct(X), F("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", we), ct(null);
             break;
           }
         }
         X.ref !== null && (ct(X), F("Invalid attribute `ref` supplied to `React.Fragment`."), ct(null));
       }
     }
-    function ge(X, Ue, pe, fe, Nt, Ee) {
+    function Ie(X, Ne, pe, we, Nt, Ee) {
       {
         var H = v(X);
         if (!H) {
@@ -618,13 +618,13 @@ Check the top-level render call using <` + pe + ">.");
           var Zt;
           X === null ? Zt = "null" : Ge(X) ? Zt = "array" : X !== void 0 && X.$$typeof === n ? (Zt = "<" + (y(X.type) || "Unknown") + " />", Ve = " Did you accidentally export a JSX literal instead of a component?") : Zt = typeof X, F("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", Zt, Ve);
         }
-        var Mt = de(X, Ue, pe, Nt, Ee);
+        var Mt = de(X, Ne, pe, Nt, Ee);
         if (Mt == null)
           return Mt;
         if (H) {
-          var Ct = Ue.children;
+          var Ct = Ne.children;
           if (Ct !== void 0)
-            if (fe)
+            if (we)
               if (Ge(Ct)) {
                 for (var Ht = 0; Ht < Ct.length; Ht++)
                   qt(Ct[Ht], X);
@@ -637,11 +637,11 @@ Check the top-level render call using <` + pe + ">.");
         return X === l ? Bt(Mt) : jt(Mt), Mt;
       }
     }
-    function it(X, Ue, pe) {
-      return ge(X, Ue, pe, !0);
+    function it(X, Ne, pe) {
+      return Ie(X, Ne, pe, !0);
     }
-    function ze(X, Ue, pe) {
-      return ge(X, Ue, pe, !1);
+    function ze(X, Ne, pe) {
+      return Ie(X, Ne, pe, !1);
     }
     var ht = ze, Ft = it;
     $c.Fragment = l, $c.jsx = ht, $c.jsxs = Ft;
@@ -755,24 +755,24 @@ function az() {
         var We = Me.$$typeof;
         switch (We) {
           case e:
-            var Be = Me.type;
-            switch (Be) {
+            var De = Me.type;
+            switch (De) {
               case t:
               case a:
               case l:
               case V:
               case s:
-                return Be;
+                return De;
               default:
-                var Ke = Be && Be.$$typeof;
-                switch (Ke) {
+                var Oe = De && De.$$typeof;
+                switch (Oe) {
                   case i:
                   case r:
                   case c:
                   case U:
                   case o:
                   case d:
-                    return Ke;
+                    return Oe;
                   default:
                     return We;
                 }
@@ -782,9 +782,9 @@ function az() {
         }
       }
     }
-    var b = r, k = d, Q = e, S = c, v = t, G = U, w = o, y = n, g = a, f = l, I = V, K = s, Re = !1, q = !1;
+    var b = r, k = d, Q = e, S = c, v = t, G = U, w = o, y = n, g = a, f = l, I = V, K = s, Ue = !1, q = !1;
     function ae(Me) {
-      return Re || (Re = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 18+.")), !1;
+      return Ue || (Ue = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 18+.")), !1;
     }
     function se(Me) {
       return q || (q = !0, console.warn("The ReactIs.isConcurrentMode() alias has been deprecated, and will be removed in React 18+.")), !1;
@@ -822,19 +822,19 @@ function az() {
     function P(Me) {
       return u(Me) === V;
     }
-    function we(Me) {
+    function ge(Me) {
       return u(Me) === s;
     }
-    bn.ContextConsumer = b, bn.ContextProvider = k, bn.Element = Q, bn.ForwardRef = S, bn.Fragment = v, bn.Lazy = G, bn.Memo = w, bn.Portal = y, bn.Profiler = g, bn.StrictMode = f, bn.Suspense = I, bn.SuspenseList = K, bn.isAsyncMode = ae, bn.isConcurrentMode = se, bn.isContextConsumer = le, bn.isContextProvider = L, bn.isElement = $, bn.isForwardRef = ee, bn.isFragment = O, bn.isLazy = re, bn.isMemo = te, bn.isPortal = Qe, bn.isProfiler = Ye, bn.isStrictMode = Se, bn.isSuspense = P, bn.isSuspenseList = we, bn.isValidElementType = E, bn.typeOf = u;
+    bn.ContextConsumer = b, bn.ContextProvider = k, bn.Element = Q, bn.ForwardRef = S, bn.Fragment = v, bn.Lazy = G, bn.Memo = w, bn.Portal = y, bn.Profiler = g, bn.StrictMode = f, bn.Suspense = I, bn.SuspenseList = K, bn.isAsyncMode = ae, bn.isConcurrentMode = se, bn.isContextConsumer = le, bn.isContextProvider = L, bn.isElement = $, bn.isForwardRef = ee, bn.isFragment = O, bn.isLazy = re, bn.isMemo = te, bn.isPortal = Qe, bn.isProfiler = Ye, bn.isStrictMode = Se, bn.isSuspense = P, bn.isSuspenseList = ge, bn.isValidElementType = E, bn.typeOf = u;
   }()), bn;
 }
 process.env.NODE_ENV === "production" ? WT.exports = lz() : WT.exports = az();
 var oW = WT.exports;
 function dz(e) {
   function n(le, L, $, ee, O) {
-    for (var re = 0, te = 0, Qe = 0, Ye = 0, Se, P, we = 0, Me = 0, We, Be = We = Se = 0, Ke = 0, lt = 0, De = 0, je = 0, at = $.length, Ge = at - 1, $e, He = "", Xe = "", pt = "", Vt = "", yt; Ke < at; ) {
-      if (P = $.charCodeAt(Ke), Ke === Ge && te + Ye + Qe + re !== 0 && (te !== 0 && (P = te === 47 ? 10 : 47), Ye = Qe = re = 0, at++, Ge++), te + Ye + Qe + re === 0) {
-        if (Ke === Ge && (0 < lt && (He = He.replace(U, "")), 0 < He.trim().length)) {
+    for (var re = 0, te = 0, Qe = 0, Ye = 0, Se, P, ge = 0, Me = 0, We, De = We = Se = 0, Oe = 0, tt = 0, Be = 0, He = 0, at = $.length, Ge = at - 1, $e, fe = "", Xe = "", pt = "", Vt = "", yt; Oe < at; ) {
+      if (P = $.charCodeAt(Oe), Oe === Ge && te + Ye + Qe + re !== 0 && (te !== 0 && (P = te === 47 ? 10 : 47), Ye = Qe = re = 0, at++, Ge++), te + Ye + Qe + re === 0) {
+        if (Oe === Ge && (0 < tt && (fe = fe.replace(U, "")), 0 < fe.trim().length)) {
           switch (P) {
             case 32:
             case 9:
@@ -843,14 +843,14 @@ function dz(e) {
             case 10:
               break;
             default:
-              He += $.charAt(Ke);
+              fe += $.charAt(Oe);
           }
           P = 59;
         }
         switch (P) {
           case 123:
-            for (He = He.trim(), Se = He.charCodeAt(0), We = 1, je = ++Ke; Ke < at; ) {
-              switch (P = $.charCodeAt(Ke)) {
+            for (fe = fe.trim(), Se = fe.charCodeAt(0), We = 1, He = ++Oe; Oe < at; ) {
+              switch (P = $.charCodeAt(Oe)) {
                 case 123:
                   We++;
                   break;
@@ -858,25 +858,25 @@ function dz(e) {
                   We--;
                   break;
                 case 47:
-                  switch (P = $.charCodeAt(Ke + 1)) {
+                  switch (P = $.charCodeAt(Oe + 1)) {
                     case 42:
                     case 47:
                       e: {
-                        for (Be = Ke + 1; Be < Ge; ++Be)
-                          switch ($.charCodeAt(Be)) {
+                        for (De = Oe + 1; De < Ge; ++De)
+                          switch ($.charCodeAt(De)) {
                             case 47:
-                              if (P === 42 && $.charCodeAt(Be - 1) === 42 && Ke + 2 !== Be) {
-                                Ke = Be + 1;
+                              if (P === 42 && $.charCodeAt(De - 1) === 42 && Oe + 2 !== De) {
+                                Oe = De + 1;
                                 break e;
                               }
                               break;
                             case 10:
                               if (P === 47) {
-                                Ke = Be + 1;
+                                Oe = De + 1;
                                 break e;
                               }
                           }
-                        Ke = Be;
+                        Oe = De;
                       }
                   }
                   break;
@@ -886,69 +886,69 @@ function dz(e) {
                   P++;
                 case 34:
                 case 39:
-                  for (; Ke++ < Ge && $.charCodeAt(Ke) !== P; )
+                  for (; Oe++ < Ge && $.charCodeAt(Oe) !== P; )
                     ;
               }
               if (We === 0)
                 break;
-              Ke++;
+              Oe++;
             }
-            switch (We = $.substring(je, Ke), Se === 0 && (Se = (He = He.replace(o, "").trim()).charCodeAt(0)), Se) {
+            switch (We = $.substring(He, Oe), Se === 0 && (Se = (fe = fe.replace(o, "").trim()).charCodeAt(0)), Se) {
               case 64:
-                switch (0 < lt && (He = He.replace(U, "")), P = He.charCodeAt(1), P) {
+                switch (0 < tt && (fe = fe.replace(U, "")), P = fe.charCodeAt(1), P) {
                   case 100:
                   case 109:
                   case 115:
                   case 45:
-                    lt = L;
+                    tt = L;
                     break;
                   default:
-                    lt = I;
+                    tt = I;
                 }
-                if (We = n(L, lt, We, P, O + 1), je = We.length, 0 < Re && (lt = t(I, He, De), yt = i(3, We, lt, L, y, w, je, P, O, ee), He = lt.join(""), yt !== void 0 && (je = (We = yt.trim()).length) === 0 && (P = 0, We = "")), 0 < je)
+                if (We = n(L, tt, We, P, O + 1), He = We.length, 0 < Ue && (tt = t(I, fe, Be), yt = i(3, We, tt, L, y, w, He, P, O, ee), fe = tt.join(""), yt !== void 0 && (He = (We = yt.trim()).length) === 0 && (P = 0, We = "")), 0 < He)
                   switch (P) {
                     case 115:
-                      He = He.replace(b, r);
+                      fe = fe.replace(b, r);
                     case 100:
                     case 109:
                     case 45:
-                      We = He + "{" + We + "}";
+                      We = fe + "{" + We + "}";
                       break;
                     case 107:
-                      He = He.replace(F, "$1 $2"), We = He + "{" + We + "}", We = f === 1 || f === 2 && d("@" + We, 3) ? "@-webkit-" + We + "@" + We : "@" + We;
+                      fe = fe.replace(F, "$1 $2"), We = fe + "{" + We + "}", We = f === 1 || f === 2 && d("@" + We, 3) ? "@-webkit-" + We + "@" + We : "@" + We;
                       break;
                     default:
-                      We = He + We, ee === 112 && (We = (Xe += We, ""));
+                      We = fe + We, ee === 112 && (We = (Xe += We, ""));
                   }
                 else
                   We = "";
                 break;
               default:
-                We = n(L, t(L, He, De), We, ee, O + 1);
+                We = n(L, t(L, fe, Be), We, ee, O + 1);
             }
-            pt += We, We = De = lt = Be = Se = 0, He = "", P = $.charCodeAt(++Ke);
+            pt += We, We = Be = tt = De = Se = 0, fe = "", P = $.charCodeAt(++Oe);
             break;
           case 125:
           case 59:
-            if (He = (0 < lt ? He.replace(U, "") : He).trim(), 1 < (je = He.length))
-              switch (Be === 0 && (Se = He.charCodeAt(0), Se === 45 || 96 < Se && 123 > Se) && (je = (He = He.replace(" ", ":")).length), 0 < Re && (yt = i(1, He, L, le, y, w, Xe.length, ee, O, ee)) !== void 0 && (je = (He = yt.trim()).length) === 0 && (He = "\0\0"), Se = He.charCodeAt(0), P = He.charCodeAt(1), Se) {
+            if (fe = (0 < tt ? fe.replace(U, "") : fe).trim(), 1 < (He = fe.length))
+              switch (De === 0 && (Se = fe.charCodeAt(0), Se === 45 || 96 < Se && 123 > Se) && (He = (fe = fe.replace(" ", ":")).length), 0 < Ue && (yt = i(1, fe, L, le, y, w, Xe.length, ee, O, ee)) !== void 0 && (He = (fe = yt.trim()).length) === 0 && (fe = "\0\0"), Se = fe.charCodeAt(0), P = fe.charCodeAt(1), Se) {
                 case 0:
                   break;
                 case 64:
                   if (P === 105 || P === 99) {
-                    Vt += He + $.charAt(Ke);
+                    Vt += fe + $.charAt(Oe);
                     break;
                   }
                 default:
-                  He.charCodeAt(je - 1) !== 58 && (Xe += a(He, Se, P, He.charCodeAt(2)));
+                  fe.charCodeAt(He - 1) !== 58 && (Xe += a(fe, Se, P, fe.charCodeAt(2)));
               }
-            De = lt = Be = Se = 0, He = "", P = $.charCodeAt(++Ke);
+            Be = tt = De = Se = 0, fe = "", P = $.charCodeAt(++Oe);
         }
       }
       switch (P) {
         case 13:
         case 10:
-          te === 47 ? te = 0 : 1 + Se === 0 && ee !== 107 && 0 < He.length && (lt = 1, He += "\0"), 0 < Re * ae && i(0, He, L, le, y, w, Xe.length, ee, O, ee), w = 1, y++;
+          te === 47 ? te = 0 : 1 + Se === 0 && ee !== 107 && 0 < fe.length && (tt = 1, fe += "\0"), 0 < Ue * ae && i(0, fe, L, le, y, w, Xe.length, ee, O, ee), w = 1, y++;
           break;
         case 59:
         case 125:
@@ -957,11 +957,11 @@ function dz(e) {
             break;
           }
         default:
-          switch (w++, $e = $.charAt(Ke), P) {
+          switch (w++, $e = $.charAt(Oe), P) {
             case 9:
             case 32:
               if (Ye + re + te === 0)
-                switch (we) {
+                switch (ge) {
                   case 44:
                   case 58:
                   case 9:
@@ -982,22 +982,22 @@ function dz(e) {
               $e = "\\v";
               break;
             case 38:
-              Ye + te + re === 0 && (lt = De = 1, $e = "\f" + $e);
+              Ye + te + re === 0 && (tt = Be = 1, $e = "\f" + $e);
               break;
             case 108:
-              if (Ye + te + re + g === 0 && 0 < Be)
-                switch (Ke - Be) {
+              if (Ye + te + re + g === 0 && 0 < De)
+                switch (Oe - De) {
                   case 2:
-                    we === 112 && $.charCodeAt(Ke - 3) === 58 && (g = we);
+                    ge === 112 && $.charCodeAt(Oe - 3) === 58 && (g = ge);
                   case 8:
                     Me === 111 && (g = Me);
                 }
               break;
             case 58:
-              Ye + te + re === 0 && (Be = Ke);
+              Ye + te + re === 0 && (De = Oe);
               break;
             case 44:
-              te + Qe + Ye + re === 0 && (lt = 1, $e += "\r");
+              te + Qe + Ye + re === 0 && (tt = 1, $e += "\r");
               break;
             case 34:
             case 39:
@@ -1015,7 +1015,7 @@ function dz(e) {
             case 40:
               if (Ye + te + re === 0) {
                 if (Se === 0)
-                  switch (2 * we + 3 * Me) {
+                  switch (2 * ge + 3 * Me) {
                     case 533:
                       break;
                     default:
@@ -1025,33 +1025,33 @@ function dz(e) {
               }
               break;
             case 64:
-              te + Qe + Ye + re + Be + We === 0 && (We = 1);
+              te + Qe + Ye + re + De + We === 0 && (We = 1);
               break;
             case 42:
             case 47:
               if (!(0 < Ye + re + Qe))
                 switch (te) {
                   case 0:
-                    switch (2 * P + 3 * $.charCodeAt(Ke + 1)) {
+                    switch (2 * P + 3 * $.charCodeAt(Oe + 1)) {
                       case 235:
                         te = 47;
                         break;
                       case 220:
-                        je = Ke, te = 42;
+                        He = Oe, te = 42;
                     }
                     break;
                   case 42:
-                    P === 47 && we === 42 && je + 2 !== Ke && ($.charCodeAt(je + 2) === 33 && (Xe += $.substring(je, Ke + 1)), $e = "", te = 0);
+                    P === 47 && ge === 42 && He + 2 !== Oe && ($.charCodeAt(He + 2) === 33 && (Xe += $.substring(He, Oe + 1)), $e = "", te = 0);
                 }
           }
-          te === 0 && (He += $e);
+          te === 0 && (fe += $e);
       }
-      Me = we, we = P, Ke++;
+      Me = ge, ge = P, Oe++;
     }
-    if (je = Xe.length, 0 < je) {
-      if (lt = L, 0 < Re && (yt = i(2, Xe, lt, le, y, w, je, ee, O, ee), yt !== void 0 && (Xe = yt).length === 0))
+    if (He = Xe.length, 0 < He) {
+      if (tt = L, 0 < Ue && (yt = i(2, Xe, tt, le, y, w, He, ee, O, ee), yt !== void 0 && (Xe = yt).length === 0))
         return Vt + Xe + pt;
-      if (Xe = lt.join(",") + "{" + Xe + "}", f * g !== 0) {
+      if (Xe = tt.join(",") + "{" + Xe + "}", f * g !== 0) {
         switch (f !== 2 || d(Xe, 2) || (g = 0), g) {
           case 111:
             Xe = Xe.replace(E, ":-moz-$1") + Xe;
@@ -1214,28 +1214,28 @@ function dz(e) {
     return $ !== L + ";" ? $.replace(k, " or ($1)").substring(4) : "(" + L + ")";
   }
   function i(le, L, $, ee, O, re, te, Qe, Ye, Se) {
-    for (var P = 0, we = L, Me; P < Re; ++P)
-      switch (Me = K[P].call(s, le, we, $, ee, O, re, te, Qe, Ye, Se)) {
+    for (var P = 0, ge = L, Me; P < Ue; ++P)
+      switch (Me = K[P].call(s, le, ge, $, ee, O, re, te, Qe, Ye, Se)) {
         case void 0:
         case !1:
         case !0:
         case null:
           break;
         default:
-          we = Me;
+          ge = Me;
       }
-    if (we !== L)
-      return we;
+    if (ge !== L)
+      return ge;
   }
   function c(le) {
     switch (le) {
       case void 0:
       case null:
-        Re = K.length = 0;
+        Ue = K.length = 0;
         break;
       default:
         if (typeof le == "function")
-          K[Re++] = le;
+          K[Ue++] = le;
         else if (typeof le == "object")
           for (var L = 0, $ = le.length; L < $; ++L)
             c(le[L]);
@@ -1249,14 +1249,14 @@ function dz(e) {
   }
   function s(le, L) {
     var $ = le;
-    if (33 > $.charCodeAt(0) && ($ = $.trim()), se = $, $ = [se], 0 < Re) {
+    if (33 > $.charCodeAt(0) && ($ = $.trim()), se = $, $ = [se], 0 < Ue) {
       var ee = i(-1, L, $, $, y, w, 0, 0, 0, 0);
       ee !== void 0 && typeof ee == "string" && (L = ee);
     }
     var O = n(I, $, L, 0, 0);
-    return 0 < Re && (ee = i(-2, O, $, $, y, w, O.length, 0, 0, 0), ee !== void 0 && (O = ee)), se = "", g = 0, w = y = 1, O;
+    return 0 < Ue && (ee = i(-2, O, $, $, y, w, O.length, 0, 0, 0), ee !== void 0 && (O = ee)), se = "", g = 0, w = y = 1, O;
   }
-  var o = /^\0+/g, U = /[\0\r\f]/g, N = /: */g, R = /zoo|gra/, h = /([,: ])(transform)/g, Z = /,\r+?/g, W = /([\t\r\n ])*\f?&/g, F = /@(k\w+)\s*(\S*)\s*/, m = /::(place)/g, E = /:(read-only)/g, u = /[svh]\w+-[tblr]{2}/, b = /\(\s*(.*)\s*\)/g, k = /([\s\S]*?);/g, Q = /-self|flex-/g, S = /[^]*?(:[rp][el]a[\w-]+)[^]*/, v = /stretch|:\s*\w+\-(?:conte|avail)/, G = /([^-])(image-set\()/, w = 1, y = 1, g = 0, f = 1, I = [], K = [], Re = 0, q = null, ae = 0, se = "";
+  var o = /^\0+/g, U = /[\0\r\f]/g, N = /: */g, R = /zoo|gra/, h = /([,: ])(transform)/g, Z = /,\r+?/g, W = /([\t\r\n ])*\f?&/g, F = /@(k\w+)\s*(\S*)\s*/, m = /::(place)/g, E = /:(read-only)/g, u = /[svh]\w+-[tblr]{2}/, b = /\(\s*(.*)\s*\)/g, k = /([\s\S]*?);/g, Q = /-self|flex-/g, S = /[^]*?(:[rp][el]a[\w-]+)[^]*/, v = /stretch|:\s*\w+\-(?:conte|avail)/, G = /([^-])(image-set\()/, w = 1, y = 1, g = 0, f = 1, I = [], K = [], Ue = 0, q = null, ae = 0, se = "";
   return s.use = c, s.set = V, e !== void 0 && V(e), s;
 }
 var rz = {
@@ -1413,8 +1413,8 @@ function sz() {
     }
     function E(P) {
       if (typeof P == "object" && P !== null) {
-        var we = P.$$typeof;
-        switch (we) {
+        var ge = P.$$typeof;
+        switch (ge) {
           case n:
             var Me = P.type;
             switch (Me) {
@@ -1435,17 +1435,17 @@ function sz() {
                   case r:
                     return We;
                   default:
-                    return we;
+                    return ge;
                 }
             }
           case t:
-            return we;
+            return ge;
         }
       }
     }
-    var u = c, b = V, k = i, Q = r, S = n, v = s, G = l, w = R, y = N, g = t, f = d, I = a, K = o, Re = !1;
+    var u = c, b = V, k = i, Q = r, S = n, v = s, G = l, w = R, y = N, g = t, f = d, I = a, K = o, Ue = !1;
     function q(P) {
-      return Re || (Re = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.")), ae(P) || E(P) === c;
+      return Ue || (Ue = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.")), ae(P) || E(P) === c;
     }
     function ae(P) {
       return E(P) === V;
@@ -2070,17 +2070,17 @@ function Rk(e, n, t) {
         ee === void 0 && (ee = si);
         var te = Wr({}, O, { theme: ee }), Qe = {};
         return re.forEach(function(Ye) {
-          var Se, P, we, Me = Ye;
+          var Se, P, ge, Me = Ye;
           for (Se in Ro(Me) && (Me = Me(te)), Me)
-            te[Se] = Qe[Se] = Se === "className" ? (P = Qe[Se], we = Me[Se], P && we ? P + " " + we : P || we) : Me[Se];
+            te[Se] = Qe[Se] = Se === "className" ? (P = Qe[Se], ge = Me[Se], P && ge ? P + " " + ge : P || ge) : Me[Se];
         }), [te, Qe];
-      }(Az(u, Gt(Nk), v) || si, u, Q), I = f[0], K = f[1], Re = function(ee, O, re, te) {
+      }(Az(u, Gt(Nk), v) || si, u, Q), I = f[0], K = f[1], Ue = function(ee, O, re, te) {
         var Qe = gz(), Ye = Iz(), Se = O ? ee.generateAndInjectStyles(si, Qe, Ye) : ee.generateAndInjectStyles(re, Qe, Ye);
         return process.env.NODE_ENV !== "production" && !O && te && te(Se), Se;
       }(S, k, I, process.env.NODE_ENV !== "production" ? E.warnTooManyClasses : void 0), q = b, ae = K.$as || u.$as || K.as || u.as || g, se = GU(ae), le = K !== u ? Wr({}, u, {}, K) : u, L = {};
       for (var $ in le)
         $[0] !== "$" && $ !== "as" && ($ === "forwardedAs" ? L.as = le[$] : (w ? w($, Um, ae) : !se || Um($)) && (L[$] = le[$]));
-      return u.style && K.style !== u.style && (L.style = Wr({}, u.style, {}, K.style)), L.className = Array.prototype.concat(G, y, Re !== y ? Re : null, u.className, K.className).filter(Boolean).join(" "), L.ref = q, na(ae, L);
+      return u.style && K.style !== u.style && (L.style = Wr({}, u.style, {}, K.style)), L.className = Array.prototype.concat(G, y, Ue !== y ? Ue : null, u.className, K.className).filter(Boolean).join(" "), L.ref = q, na(ae, L);
     }(R, F, m, Z);
   };
   return W.displayName = s, (R = T.forwardRef(W)).attrs = U, R.componentStyle = h, R.displayName = s, R.shouldForwardProp = N, R.foldedComponentIds = l ? Array.prototype.concat(e.foldedComponentIds, e.styledComponentId) : IN, R.styledComponentId = o, R.target = l ? e.target : e, R.withComponent = function(F) {
@@ -2441,7 +2441,7 @@ function ot(e, n, t) {
       !l && a in n || (l || (l = Array.prototype.slice.call(n, 0, a)), l[a] = n[a]);
   return e.concat(l || Array.prototype.slice.call(n));
 }
-var tt, Zk = "4.11.2", oi = function() {
+var nt, Zk = "4.11.2", oi = function() {
   function e() {
   }
   return Object.defineProperty(e, "OS_VERSION", { get: function() {
@@ -2458,7 +2458,7 @@ var tt, Zk = "4.11.2", oi = function() {
 }();
 (function(e) {
   e[e.NON_AUTHORIZED = 400108] = "NON_AUTHORIZED", e[e.INVALID_TOKEN = 400111] = "INVALID_TOKEN", e[e.NOT_FOUND_IN_DATABASE = 400201] = "NOT_FOUND_IN_DATABASE", e[e.USER_AUTH_DEACTIVATED = 400300] = "USER_AUTH_DEACTIVATED", e[e.USER_AUTH_DELETED_OR_NOT_FOUND = 400301] = "USER_AUTH_DELETED_OR_NOT_FOUND", e[e.SESSION_TOKEN_EXPIRED = 400302] = "SESSION_TOKEN_EXPIRED", e[e.APPLICATION_NOT_FOUND = 400304] = "APPLICATION_NOT_FOUND", e[e.SESSION_KEY_EXPIRED = 400309] = "SESSION_KEY_EXPIRED", e[e.SESSION_REVOKED = 400310] = "SESSION_REVOKED", e[e.INVALID_SESSION_TYPE = 400312] = "INVALID_SESSION_TYPE", e[e.STAT_UPLOAD_NOT_ALLOWED = 403200] = "STAT_UPLOAD_NOT_ALLOWED", e[e.NOT_SUPPORTED_PINNED_MESSAGE_IN_REVIEW_MESSAGE = 400940] = "NOT_SUPPORTED_PINNED_MESSAGE_IN_REVIEW_MESSAGE", e[e.INTERNAL_SERVER_ERROR = 500901] = "INTERNAL_SERVER_ERROR", e[e.RATE_LIMIT_EXCEEDED = 500910] = "RATE_LIMIT_EXCEEDED", e[e.INVALID_FORM_KEY = 400111] = "INVALID_FORM_KEY", e[e.INVALID_REQUIRED_FORM_VALUE = 400105] = "INVALID_REQUIRED_FORM_VALUE", e[e.UNKNOWN_SERVER_ERROR = 900200] = "UNKNOWN_SERVER_ERROR", e[e.NOT_SUPPORTED_FEATURE_IN_IN_REVIEW_MESSAGE = 901500] = "NOT_SUPPORTED_FEATURE_IN_IN_REVIEW_MESSAGE", e[e.ERR_DUPLICATED_DATA = 400202] = "ERR_DUPLICATED_DATA", e[e.DEBUG_MODE_REQUIRED = 7e5] = "DEBUG_MODE_REQUIRED", e[e.LOST_INSTANCE = 700100] = "LOST_INSTANCE", e[e.CONNECTION_RENEW = 700102] = "CONNECTION_RENEW", e[e.INVALID_CONNECTION_STATE_TRANSITION = 700200] = "INVALID_CONNECTION_STATE_TRANSITION", e[e.INVALID_COMMAND = 700700] = "INVALID_COMMAND", e[e.XMLHTTPREQUEST_NOT_SUPPORTED = 700800] = "XMLHTTPREQUEST_NOT_SUPPORTED", e[e.UNKNOWN_ERROR = 77e4] = "UNKNOWN_ERROR", e[e.INVALID_INITIALIZATION = 800100] = "INVALID_INITIALIZATION", e[e.CONNECTION_REQUIRED = 800101] = "CONNECTION_REQUIRED", e[e.CONNECTION_CANCELED = 800102] = "CONNECTION_CANCELED", e[e.INVALID_PARAMETER = 800110] = "INVALID_PARAMETER", e[e.NOT_SUPPORTED_ERROR = 800111] = "NOT_SUPPORTED_ERROR", e[e.NETWORK_ERROR = 800120] = "NETWORK_ERROR", e[e.NETWORK_ROUTING_ERROR = 800121] = "NETWORK_ROUTING_ERROR", e[e.MALFORMED_DATA = 800130] = "MALFORMED_DATA", e[e.MALFORMED_ERROR_DATA = 800140] = "MALFORMED_ERROR_DATA", e[e.WRONG_CHANNEL_TYPE = 800150] = "WRONG_CHANNEL_TYPE", e[e.MARK_AS_READ_RATE_LIMIT_EXCEEDED = 800160] = "MARK_AS_READ_RATE_LIMIT_EXCEEDED", e[e.QUERY_IN_PROGRESS = 800170] = "QUERY_IN_PROGRESS", e[e.ACK_TIMEOUT = 800180] = "ACK_TIMEOUT", e[e.LOGIN_TIMEOUT = 800190] = "LOGIN_TIMEOUT", e[e.WEBSOCKET_CONNECTION_CLOSED = 800200] = "WEBSOCKET_CONNECTION_CLOSED", e[e.WEBSOCKET_CONNECTION_FAILED = 800210] = "WEBSOCKET_CONNECTION_FAILED", e[e.REQUEST_FAILED = 800220] = "REQUEST_FAILED", e[e.FILE_UPLOAD_CANCEL_FAILED = 800230] = "FILE_UPLOAD_CANCEL_FAILED", e[e.REQUEST_CANCELED = 800240] = "REQUEST_CANCELED", e[e.REQUEST_DUPLICATED = 800250] = "REQUEST_DUPLICATED", e[e.FILE_SIZE_LIMIT_EXCEEDED = 800260] = "FILE_SIZE_LIMIT_EXCEEDED", e[e.SESSION_TOKEN_REQUEST_FAILED = 800500] = "SESSION_TOKEN_REQUEST_FAILED", e[e.SESSION_TOKEN_REFRESHED = 800501] = "SESSION_TOKEN_REFRESHED", e[e.SESSION_TOKEN_REFRESH_FAILED = 800502] = "SESSION_TOKEN_REFRESH_FAILED", e[e.COLLECTION_DISPOSED = 800600] = "COLLECTION_DISPOSED", e[e.DATABASE_ERROR = 800700] = "DATABASE_ERROR";
-})(tt || (tt = {}));
+})(nt || (nt = {}));
 var wl, $i, sl, QT, Gs, Il = function(e) {
   return !(e instanceof j && !e.shouldThrowOutside);
 }, j = function(e) {
@@ -2471,79 +2471,79 @@ var wl, $i, sl, QT, Gs, Il = function(e) {
   }, enumerable: !1, configurable: !0 }), n.prototype.setDetail = function(t) {
     this._detail = t;
   }, Object.defineProperty(n.prototype, "isInvalidTokenError", { get: function() {
-    return this.code === tt.INVALID_TOKEN;
+    return this.code === nt.INVALID_TOKEN;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "isSessionExpiredError", { get: function() {
     return this.isSessionTokenExpiredError || this.isSessionKeyExpiredError;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "isSessionTokenExpiredError", { get: function() {
-    return this.code === tt.SESSION_TOKEN_EXPIRED;
+    return this.code === nt.SESSION_TOKEN_EXPIRED;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "isSessionKeyExpiredError", { get: function() {
-    return this.code === tt.SESSION_KEY_EXPIRED;
+    return this.code === nt.SESSION_KEY_EXPIRED;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "isSessionInvalidatedError", { get: function() {
     return this.isSessionRevokedError || this.isUserAuthDeactivedError || this.isUserAuthDeletedOrNotFoundError;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "isSessionRevokedError", { get: function() {
-    return this.code === tt.SESSION_REVOKED;
+    return this.code === nt.SESSION_REVOKED;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "isUserAuthDeactivedError", { get: function() {
-    return this.code === tt.USER_AUTH_DEACTIVATED;
+    return this.code === nt.USER_AUTH_DEACTIVATED;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "isUserAuthDeletedOrNotFoundError", { get: function() {
-    return this.code === tt.USER_AUTH_DELETED_OR_NOT_FOUND;
+    return this.code === nt.USER_AUTH_DELETED_OR_NOT_FOUND;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "isNetworkError", { get: function() {
-    return this.code === tt.NETWORK_ERROR || this.code === tt.NETWORK_ROUTING_ERROR;
+    return this.code === nt.NETWORK_ERROR || this.code === nt.NETWORK_ROUTING_ERROR;
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "debugModeRequired", { get: function() {
-    return new n({ code: tt.DEBUG_MODE_REQUIRED, message: "Cannot run this operation in production mode." });
+    return new n({ code: nt.DEBUG_MODE_REQUIRED, message: "Cannot run this operation in production mode." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "lostInstance", { get: function() {
-    return new n({ code: tt.LOST_INSTANCE, message: "Instance ID is missing. It should belong to an instance." });
+    return new n({ code: nt.LOST_INSTANCE, message: "Instance ID is missing. It should belong to an instance." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "invalidCommand", { get: function() {
-    return new n({ code: tt.INVALID_COMMAND, message: "Cannot send invalid command." });
+    return new n({ code: nt.INVALID_COMMAND, message: "Cannot send invalid command." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "unknown", { get: function() {
-    return new n({ code: tt.UNKNOWN_ERROR, message: "Unknown error occurred." });
+    return new n({ code: nt.UNKNOWN_ERROR, message: "Unknown error occurred." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "connectionRenew", { get: function() {
-    return new n({ code: tt.CONNECTION_RENEW, message: "Connection restarts." });
+    return new n({ code: nt.CONNECTION_RENEW, message: "Connection restarts." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "invalidConnectionStateTransition", { get: function() {
-    return new n({ code: tt.INVALID_CONNECTION_STATE_TRANSITION, message: "Invalid connection state transition." });
+    return new n({ code: nt.INVALID_CONNECTION_STATE_TRANSITION, message: "Invalid connection state transition." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "xmlHttpRequestNotSupported", { get: function() {
-    return new n({ code: tt.XMLHTTPREQUEST_NOT_SUPPORTED, message: "Cannot upload file. XMLHttpRequest is not defined in this environment." });
+    return new n({ code: nt.XMLHTTPREQUEST_NOT_SUPPORTED, message: "Cannot upload file. XMLHttpRequest is not defined in this environment." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "connectionRequired", { get: function() {
-    return new n({ code: tt.CONNECTION_REQUIRED, message: "Connection is required." });
+    return new n({ code: nt.CONNECTION_REQUIRED, message: "Connection is required." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "connectionCanceled", { get: function() {
-    return new n({ code: tt.CONNECTION_CANCELED, message: "Connection is canceled." });
+    return new n({ code: nt.CONNECTION_CANCELED, message: "Connection is canceled." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "invalidParameters", { get: function() {
-    return new n({ code: tt.INVALID_PARAMETER, message: "Invalid parameters." });
+    return new n({ code: nt.INVALID_PARAMETER, message: "Invalid parameters." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "notSupportedError", { get: function() {
-    return new n({ code: tt.NOT_SUPPORTED_ERROR, message: "Given parameters are not supported." });
+    return new n({ code: nt.NOT_SUPPORTED_ERROR, message: "Given parameters are not supported." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "channelTypeNotSupportedError", { get: function() {
-    return new n({ code: tt.NOT_SUPPORTED_ERROR, message: "Called method is not supported in the current channel's channel type." });
+    return new n({ code: nt.NOT_SUPPORTED_ERROR, message: "Called method is not supported in the current channel's channel type." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "networkError", { get: function() {
-    return new n({ code: tt.NETWORK_ERROR, message: "There was a network error." });
+    return new n({ code: nt.NETWORK_ERROR, message: "There was a network error." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "markAsReadAllRateLimitExceeded", { get: function() {
-    return new n({ code: tt.MARK_AS_READ_RATE_LIMIT_EXCEEDED, message: "markAsRead rate limit exceeded." });
+    return new n({ code: nt.MARK_AS_READ_RATE_LIMIT_EXCEEDED, message: "markAsRead rate limit exceeded." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "queryInProgress", { get: function() {
-    return new n({ code: tt.QUERY_IN_PROGRESS, message: "Query in progress." });
+    return new n({ code: nt.QUERY_IN_PROGRESS, message: "Query in progress." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "noAckTimeout", { get: function() {
-    return new n({ code: tt.ACK_TIMEOUT, message: "Command received no ack." });
+    return new n({ code: nt.ACK_TIMEOUT, message: "Command received no ack." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "loginTimeout", { get: function() {
-    return new n({ code: tt.LOGIN_TIMEOUT, message: "Connection timeout." });
+    return new n({ code: nt.LOGIN_TIMEOUT, message: "Connection timeout." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "connectionClosed", { get: function() {
-    return new n({ code: tt.WEBSOCKET_CONNECTION_CLOSED, message: "Connection is closed. Please reconnect." });
+    return new n({ code: nt.WEBSOCKET_CONNECTION_CLOSED, message: "Connection is closed. Please reconnect." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "requestFailed", { get: function() {
-    return new n({ code: tt.REQUEST_FAILED, message: "Request failed." });
+    return new n({ code: nt.REQUEST_FAILED, message: "Request failed." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "alreadyConnectedAsAnotherUser", { get: function() {
-    return new n({ code: tt.REQUEST_FAILED, message: "Already logged in as a different user. Call disconnect() first." });
+    return new n({ code: nt.REQUEST_FAILED, message: "Already logged in as a different user. Call disconnect() first." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "fileUploadCanceled", { get: function() {
-    return new n({ code: tt.FILE_UPLOAD_CANCEL_FAILED, message: "File upload has been canceled." });
+    return new n({ code: nt.FILE_UPLOAD_CANCEL_FAILED, message: "File upload has been canceled." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "requestCanceled", { get: function() {
-    return new n({ code: tt.REQUEST_CANCELED, message: "Request has been canceled." });
+    return new n({ code: nt.REQUEST_CANCELED, message: "Request has been canceled." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "sessionTokenRefreshFailed", { get: function() {
-    return new n({ code: tt.SESSION_TOKEN_REFRESH_FAILED, message: "Failed to refresh the session key." });
+    return new n({ code: nt.SESSION_TOKEN_REFRESH_FAILED, message: "Failed to refresh the session key." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "sessionTokenRequestFailed", { get: function() {
-    return new n({ code: tt.SESSION_TOKEN_REQUEST_FAILED, message: "Failed to get the session token." });
+    return new n({ code: nt.SESSION_TOKEN_REQUEST_FAILED, message: "Failed to get the session token." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "databaseError", { get: function() {
-    return new n({ code: tt.DATABASE_ERROR, message: "Database error." });
+    return new n({ code: nt.DATABASE_ERROR, message: "Database error." });
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n, "fileSizeLimitExceededError", { get: function() {
-    return new n({ code: tt.FILE_SIZE_LIMIT_EXCEEDED, message: "File size exceeds the file size limit." });
+    return new n({ code: nt.FILE_SIZE_LIMIT_EXCEEDED, message: "File size exceeds the file size limit." });
   }, enumerable: !1, configurable: !0 }), n.prototype.throwOutside = function() {
     throw this.shouldThrowOutside = !0, this;
   }, n;
-}(Error), ax = [tt.CONNECTION_REQUIRED, tt.NETWORK_ERROR, tt.ACK_TIMEOUT, tt.WEBSOCKET_CONNECTION_CLOSED, tt.WEBSOCKET_CONNECTION_FAILED, tt.FILE_UPLOAD_CANCEL_FAILED, tt.REQUEST_CANCELED, tt.INTERNAL_SERVER_ERROR, tt.RATE_LIMIT_EXCEEDED, tt.UNKNOWN_SERVER_ERROR], dx = [tt.WEBSOCKET_CONNECTION_CLOSED, tt.WEBSOCKET_CONNECTION_FAILED, tt.CONNECTION_REQUIRED], Tk = function(e, n) {
+}(Error), ax = [nt.CONNECTION_REQUIRED, nt.NETWORK_ERROR, nt.ACK_TIMEOUT, nt.WEBSOCKET_CONNECTION_CLOSED, nt.WEBSOCKET_CONNECTION_FAILED, nt.FILE_UPLOAD_CANCEL_FAILED, nt.REQUEST_CANCELED, nt.INTERNAL_SERVER_ERROR, nt.RATE_LIMIT_EXCEEDED, nt.UNKNOWN_SERVER_ERROR], dx = [nt.WEBSOCKET_CONNECTION_CLOSED, nt.WEBSOCKET_CONNECTION_FAILED, nt.CONNECTION_REQUIRED], Tk = function(e, n) {
   if (e !== n) {
     var t = x({}, e), l = x({}, n);
     return (!t.hasOwnProperty("messageId") || !l.hasOwnProperty("messageId") || t.messageId === l.messageId) && (!t.hasOwnProperty("reqId") || !l.hasOwnProperty("reqId") || t.reqId === l.reqId) && (t.hasOwnProperty("messageId") && delete t.messageId, t.hasOwnProperty("reqId") && delete t.reqId, l.hasOwnProperty("messageId") && delete l.messageId, l.hasOwnProperty("reqId") && delete l.reqId, JSON.stringify(t) === JSON.stringify(l));
@@ -2861,7 +2861,7 @@ var Xt, ed, Od, Gn, bl, Mc, Jl, al, pd, $t, bm, JT, vT, ox = function() {
     this._dispatcher.dispatch("event", n);
   }, e;
 }(), un = function() {
-}, Oe = function(e) {
+}, je = function(e) {
   var n = {};
   return e && Object.keys(e).forEach(function(t) {
     e[t] === void 0 || Number.isNaN(e[t]) || e[t] === null || (n[t] = e[t]);
@@ -2977,12 +2977,12 @@ var Mn, Te = function(e) {
       return l.encodeParams(a);
     }).join(",") : encodeURIComponent(typeof t == "object" ? JSON.stringify(t) : String(t));
   }, Object.defineProperty(n.prototype, "query", { get: function() {
-    var t = this, l = Oe(this.params);
+    var t = this, l = je(this.params);
     return "?".concat(Object.keys(l).map(function(a) {
       return "".concat(encodeURIComponent(a), "=").concat(t.encodeParams(l[a]));
     }).join("&"));
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "payload", { get: function() {
-    var t = Oe(this.params);
+    var t = je(this.params);
     return Object.keys(t).some(function(l) {
       return Nl(t[l]);
     }) ? Sk(t) : JSON.stringify(t);
@@ -3005,13 +3005,13 @@ var Mn, Te = function(e) {
   return J(n, e), n;
 }(un), Sc = function(e) {
   function n(t) {
-    var l = t.expires_in, a = t.reason, d = a === void 0 ? tt.SESSION_KEY_EXPIRED : a, r = e.call(this) || this;
+    var l = t.expires_in, a = t.reason, d = a === void 0 ? nt.SESSION_KEY_EXPIRED : a, r = e.call(this) || this;
     switch (r.expiresIn = l ?? 0, d) {
-      case tt.SESSION_KEY_EXPIRED:
-      case tt.SESSION_TOKEN_EXPIRED:
-      case tt.SESSION_REVOKED:
-      case tt.USER_AUTH_DEACTIVATED:
-      case tt.USER_AUTH_DELETED_OR_NOT_FOUND:
+      case nt.SESSION_KEY_EXPIRED:
+      case nt.SESSION_TOKEN_EXPIRED:
+      case nt.SESSION_REVOKED:
+      case nt.USER_AUTH_DEACTIVATED:
+      case nt.USER_AUTH_DELETED_OR_NOT_FOUND:
         r.error = new j({ code: d });
     }
     return r;
@@ -3053,7 +3053,7 @@ var Mn, Te = function(e) {
 }(un), TW = function(e) {
   function n(t) {
     var l = t.userId, a = t.authToken, d = t.services, r = t.expiringSession, i = r === void 0 || r, c = e.call(this) || this;
-    return c.path = "".concat(It, "/").concat(l, "/session_key"), c.method = he.POST, c.params = Oe({ token: a, services: d, expiring_session: !!i }), c.requireAuth = !1, c;
+    return c.path = "".concat(It, "/").concat(l, "/session_key"), c.method = he.POST, c.params = je({ token: a, services: d, expiring_session: !!i }), c.requireAuth = !1, c;
   }
   return J(n, e), n;
 }(Te), ux = function(e) {
@@ -3096,7 +3096,7 @@ var ys, ZV, Cr, Ml = function() {
     this.type = t, this.createdAt = d, this.data = l;
   }
   return e.payloadify = function(n) {
-    return Oe({ stat_type: n.type, ts: n.createdAt, data: Oe(n.data) });
+    return je({ stat_type: n.type, ts: n.createdAt, data: je(n.data) });
   }, e;
 }(), xT = function() {
   return typeof document > "u" && typeof navigator < "u" && navigator.product == "ReactNative";
@@ -3165,7 +3165,7 @@ var Ex = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
           case 0:
             t = n.path, l = n.method, a = n.uploadProgressHandler, d = ![he.GET, he.DELETE].includes(l), r = this._sdkState.api, i = "".concat(r.host).concat(t).concat(d ? "" : n.query), c = d ? n.payload : null, V = this._createHeader(n, c instanceof FormData ? c : void 0), s = new AbortController(), o = s.signal, this._abortControl.set(n.requestId, s), U = Date.now(), b.label = 1;
           case 1:
-            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-1b44d126.mjs")] : [3, 6];
+            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-d5b78161.mjs")] : [3, 6];
           case 2:
             N = b.sent().xmlHttpRequest, b.label = 3;
           case 3:
@@ -3173,15 +3173,15 @@ var Ex = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
           case 4:
             return R = b.sent(), this._logger.debug("receive api response", n.requestId), this._statLogApiResult(n, U), [2, R];
           case 5:
-            if (!((h = b.sent()) instanceof j && h.code === tt.XMLHTTPREQUEST_NOT_SUPPORTED))
+            if (!((h = b.sent()) instanceof j && h.code === nt.XMLHTTPREQUEST_NOT_SUPPORTED))
               throw h;
             return this._logger.debug("XMLHttpRequest is not available in this environment. progressHandler is ignored."), [3, 6];
           case 6:
-            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-ab26ac04.mjs").then((k) => k._)];
+            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-5df51bbf.mjs").then((k) => k._)];
           case 7:
             b.sent(), b.label = 8;
           case 8:
-            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-bb9379c7.mjs").then((k) => k._)];
+            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-69886d30.mjs").then((k) => k._)];
           case 9:
             b.sent(), b.label = 10;
           case 10:
@@ -4776,7 +4776,7 @@ var ua = function(e) {
     this.isEnabled = (t = n.enabled) !== null && t !== void 0 && t, this.feedChannels = (l = n.feed_channels) !== null && l !== void 0 ? l : {}, this.templateListToken = (a = n.template_list_token) !== null && a !== void 0 ? a : null, this.settingsUpdatedAt = (d = n.settings_updated_at) !== null && d !== void 0 ? d : 0;
   }
   return e.payloadify = function(n) {
-    return Oe(Ae({ enabled: n.isEnabled, feed_channels: n.feedChannels, template_list_token: n.templateListToken, settings_updated_at: n.settingsUpdatedAt }));
+    return je(Ae({ enabled: n.isEnabled, feed_channels: n.feedChannels, template_list_token: n.templateListToken, settings_updated_at: n.settingsUpdatedAt }));
   }, e;
 }(), uW = function(e) {
   return "sendbird@".concat(e, "/changelog_include_chat_notifications");
@@ -4786,7 +4786,7 @@ var ua = function(e) {
     this.lastUpdatedAt = (t = n.last_updated_at) !== null && t !== void 0 ? t : 0;
   }
   return e.payloadify = function(n) {
-    return Oe(Ae({ last_updated_at: n.lastUpdatedAt }));
+    return je(Ae({ last_updated_at: n.lastUpdatedAt }));
   }, e;
 }(), tu = function() {
   function e(n) {
@@ -4794,7 +4794,7 @@ var ua = function(e) {
     this.token = (t = n.template_list_token) !== null && t !== void 0 ? t : "";
   }
   return e.payloadify = function(n) {
-    return Oe(Ae({ template_list_token: n.token }));
+    return je(Ae({ template_list_token: n.token }));
   }, e;
 }(), nu = 1048576, YG = 5, lu = function() {
   function e(n) {
@@ -4802,7 +4802,7 @@ var ua = function(e) {
     n === void 0 && (n = {}), this.emojiHash = n.emoji_hash || "", this.uploadSizeLimit = n.file_upload_size_limit ? n.file_upload_size_limit * nu : Number.MAX_SAFE_INTEGER, this.useReaction = !!n.use_reaction, this.applicationAttributes = (t = n.application_attributes) !== null && t !== void 0 ? t : [], this.premiumFeatureList = (l = n.premium_feature_list) !== null && l !== void 0 ? l : [], this.deviceTokenCache = this.applicationAttributes.includes("sdk_device_token_cache"), this.enabledChannelMemberShipHistory = this.applicationAttributes.includes("channel_membership_history"), this.multipleFilesMessageFileCountLimit = (a = n.multiple_file_send_max_size) !== null && a !== void 0 ? a : 5, this.allowSdkStatsUpload = (d = n.allow_sdk_log_ingestion) === null || d === void 0 || d, this.uikitConfigInfo = new eu((r = n.uikit_config) !== null && r !== void 0 ? r : {}), this.notificationInfo = n.notifications ? new $m(n.notifications) : null, this.messageTemplateInfo = n.message_template ? new tu(n.message_template) : null;
   }
   return e.payloadify = function(n) {
-    return Oe(Ae({ emoji_hash: n.emojiHash, file_upload_size_limit: n.uploadSizeLimit / nu, application_attributes: n.applicationAttributes, premium_feature_list: n.premiumFeatureList, use_reaction: n.useReaction, allow_sdk_log_ingestion: n.allowSdkStatsUpload, uikit_config: n.uikitConfigInfo ? eu.payloadify(n.uikitConfigInfo) : null, notifications: n.notificationInfo ? $m.payloadify(n.notificationInfo) : null, message_template: n.messageTemplateInfo ? tu.payloadify(n.messageTemplateInfo) : null }));
+    return je(Ae({ emoji_hash: n.emojiHash, file_upload_size_limit: n.uploadSizeLimit / nu, application_attributes: n.applicationAttributes, premium_feature_list: n.premiumFeatureList, use_reaction: n.useReaction, allow_sdk_log_ingestion: n.allowSdkStatsUpload, uikit_config: n.uikitConfigInfo ? eu.payloadify(n.uikitConfigInfo) : null, notifications: n.notificationInfo ? $m.payloadify(n.notificationInfo) : null, message_template: n.messageTemplateInfo ? tu.payloadify(n.messageTemplateInfo) : null }));
   }, e;
 }(), ml = function() {
   function e(n) {
@@ -4884,7 +4884,7 @@ var kc, xt = function(e) {
     return (Z = e.call(this, t) || this).userId = (d = (a = l.guest_id) !== null && a !== void 0 ? a : l.user_id) !== null && d !== void 0 ? d : "", Z.nickname = (i = (r = l.nickname) !== null && r !== void 0 ? r : l.name) !== null && i !== void 0 ? i : "", Z.plainProfileUrl = (V = (c = l.profile_url) !== null && c !== void 0 ? c : l.image) !== null && V !== void 0 ? V : "", Z.requireAuth = (s = l.require_auth_for_profile_image) !== null && s !== void 0 && s, Z.metaData = (o = l.metadata) !== null && o !== void 0 ? o : {}, Z.connectionStatus = qV.NON_AVAILABLE, Qt(qV, l.is_online) ? Z.connectionStatus = l.is_online : B("boolean", l.is_online) && (Z.connectionStatus = l.is_online ? qV.ONLINE : qV.OFFLINE), Z.isActive = (U = l.is_active) === null || U === void 0 || U, Z.lastSeenAt = (N = l.last_seen_at) !== null && N !== void 0 ? N : null, Z.preferredLanguages = l.preferred_languages ? ot([], et(l.preferred_languages), !1) : null, Z.friendDiscoveryKey = (R = l.friend_discovery_key) !== null && R !== void 0 ? R : null, Z.friendName = (h = l.friend_name) !== null && h !== void 0 ? h : null, Z;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { user_id: t.userId, nickname: t.nickname, profile_url: t.plainProfileUrl, require_auth_for_profile_image: t.requireAuth, metadata: t.metaData, is_online: t.connectionStatus, is_active: t.isActive, last_seen_at: t.lastSeenAt, preferred_languages: t.preferredLanguages, friend_discovery_key: t.friendDiscoveryKey, friend_name: t.friendName })));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { user_id: t.userId, nickname: t.nickname, profile_url: t.plainProfileUrl, require_auth_for_profile_image: t.requireAuth, metadata: t.metaData, is_online: t.connectionStatus, is_active: t.isActive, last_seen_at: t.lastSeenAt, preferred_languages: t.preferredLanguages, friend_discovery_key: t.friendDiscoveryKey, friend_name: t.friendName })));
   }, Object.defineProperty(n.prototype, "profileUrl", { get: function() {
     var t = D.of(this._iid).sessionManager;
     return this.requireAuth && t.ekey ? "".concat(this.plainProfileUrl, "?auth=").concat(t.ekey) : this.plainProfileUrl;
@@ -4962,7 +4962,7 @@ var kc, xt = function(e) {
     this._iid = n, this.appInfo = new lu(t), this.user = new xt(n, t), this.connectedAt = (l = t.login_ts) !== null && l !== void 0 ? l : 0, this.firstConnectedAt = 0, this.pingInterval = (a = t.ping_interval) !== null && a !== void 0 ? a : 15e3, this.pongTimeout = (d = t.pong_timeout) !== null && d !== void 0 ? d : 5e3, this.reconnectInterval = (i = (r = t.reconnect) === null || r === void 0 ? void 0 : r.interval) !== null && i !== void 0 ? i : 3e3, this.reconnectMaxInterval = (V = (c = t.reconnect) === null || c === void 0 ? void 0 : c.max_interval) !== null && V !== void 0 ? V : 6e4, this.reconnectRetryCount = (o = (s = t.reconnect) === null || s === void 0 ? void 0 : s.retry_cnt) !== null && o !== void 0 ? o : 5, this.reconnectIntervalMultiple = (N = (U = t.reconnect) === null || U === void 0 ? void 0 : U.mul) !== null && N !== void 0 ? N : 2, this.maxUnreadCountOnSuperGroup = (R = t.max_unread_cnt_on_super_group) !== null && R !== void 0 ? R : 100, this.profileImageEncryption = !!t.profile_image_encryption, this.concurrentCallLimit = (h = t.concurrent_call_limit) !== null && h !== void 0 ? h : 5, this.backOffDelay = (Z = t.back_off_delay) !== null && Z !== void 0 ? Z : 100;
   }
   return e.payloadify = function(n) {
-    return Oe(Ae(x(x(x({}, xt.payloadify(n.user)), lu.payloadify(n.appInfo)), { login_ts: n.connectedAt, ping_interval: n.pingInterval, pong_timeout: n.pongTimeout, reconnect: { interval: n.reconnectInterval, max_interval: n.reconnectMaxInterval, retry_cnt: n.reconnectRetryCount, mul: n.reconnectIntervalMultiple }, max_unread_cnt_on_super_group: n.maxUnreadCountOnSuperGroup, profile_image_encryption: n.profileImageEncryption, concurrent_call_limit: n.concurrentCallLimit, back_off_delay: n.backOffDelay })));
+    return je(Ae(x(x(x({}, xt.payloadify(n.user)), lu.payloadify(n.appInfo)), { login_ts: n.connectedAt, ping_interval: n.pingInterval, pong_timeout: n.pongTimeout, reconnect: { interval: n.reconnectInterval, max_interval: n.reconnectMaxInterval, retry_cnt: n.reconnectRetryCount, mul: n.reconnectIntervalMultiple }, max_unread_cnt_on_super_group: n.maxUnreadCountOnSuperGroup, profile_image_encryption: n.profileImageEncryption, concurrent_call_limit: n.concurrentCallLimit, back_off_delay: n.backOffDelay })));
   }, e.prototype.apply = function() {
     var n = this.reconnectInterval, t = this.reconnectMaxInterval, l = this.reconnectIntervalMultiple, a = D.of(this._iid);
     a.sdkState.websocket && (a.sdkState.websocket.pingInterval = 1e3 * this.pingInterval, a.sdkState.websocket.pongTimeout = 1e3 * this.pongTimeout, a.sdkState.websocket.reconnectMaxRetry = this.reconnectRetryCount, a.sdkState.websocket.reconnectRetryStrategy = { calcTimeout: function(d) {
@@ -5044,7 +5044,7 @@ var kc, xt = function(e) {
       });
     });
   }, e;
-}(), Le = function(e) {
+}(), Ce = function(e) {
   return M(void 0, void 0, void 0, function() {
     var n;
     return p(this, function(t) {
@@ -5092,7 +5092,7 @@ var kc, xt = function(e) {
           case 1:
             return r.sent(), [4, t.changeState(new pW(), l)];
           case 2:
-            return r.sent(), this._wasPreviouslyConnected && Le(function() {
+            return r.sent(), this._wasPreviouslyConnected && Ce(function() {
               return M(d, void 0, void 0, function() {
                 return p(this, function(i) {
                   return t.connectionHandlers.forEach(function(c) {
@@ -5305,7 +5305,7 @@ var kc, xt = function(e) {
           case 0:
             l = Date.now(), a = new Ll(), this._callbacks.push(function(o) {
               return o ? a.reject(o) : a.resolve();
-            }), Le(function() {
+            }), Ce(function() {
               return M(V, void 0, void 0, function() {
                 return p(this, function(o) {
                   return t.connectionHandlers.forEach(function(U) {
@@ -5328,7 +5328,7 @@ var kc, xt = function(e) {
                       return R.sent(), [3, 4];
                     case 3:
                       if (N = R.sent(), t.clearLoginTimer(), N instanceof j) {
-                        if (N.code === tt.CONNECTION_CANCELED)
+                        if (N.code === nt.CONNECTION_CANCELED)
                           return o(N), [2];
                         if (N.isSessionExpiredError || N.isSessionInvalidatedError)
                           return o(N), [2];
@@ -5343,7 +5343,7 @@ var kc, xt = function(e) {
           case 2:
             return s.sent(), [4, t.changeState(new Ak(), l)];
           case 3:
-            return s.sent(), this._flushCallbacks(), Le(function() {
+            return s.sent(), this._flushCallbacks(), Ce(function() {
               return M(V, void 0, void 0, function() {
                 return p(this, function(o) {
                   return t.connectionHandlers.forEach(function(U) {
@@ -5353,11 +5353,11 @@ var kc, xt = function(e) {
               });
             }), [3, 9];
           case 4:
-            return c = s.sent(), Il(c) ? [3, 7] : c instanceof j ? c.code === tt.CONNECTION_CANCELED ? [3, 6] : [4, t.changeState(new $N({ autoReconnect: !1 }), l)] : [3, 6];
+            return c = s.sent(), Il(c) ? [3, 7] : c instanceof j ? c.code === nt.CONNECTION_CANCELED ? [3, 6] : [4, t.changeState(new $N({ autoReconnect: !1 }), l)] : [3, 6];
           case 5:
             s.sent(), s.label = 6;
           case 6:
-            return this._flushCallbacks(c), Le(function() {
+            return this._flushCallbacks(c), Ce(function() {
               return M(V, void 0, void 0, function() {
                 return p(this, function(o) {
                   return t.connectionHandlers.forEach(function(U) {
@@ -5665,7 +5665,7 @@ var yG = function() {
                     case 2:
                       return s.sent(), [3, 4];
                     case 3:
-                      if (V = s.sent(), t.clearLoginTimer(), V instanceof j && V.code === tt.CONNECTION_CANCELED)
+                      if (V = s.sent(), t.clearLoginTimer(), V instanceof j && V.code === nt.CONNECTION_CANCELED)
                         return c(V), [2];
                       throw V;
                     case 4:
@@ -5677,7 +5677,7 @@ var yG = function() {
           case 2:
             return i.sent(), [4, t.changeState(new Ak(), l)];
           case 3:
-            return i.sent(), Le(function() {
+            return i.sent(), Ce(function() {
               return M(r, void 0, void 0, function() {
                 return p(this, function(c) {
                   return this._flushCallbacks(), t.connectionHandlers.forEach(function(V) {
@@ -5689,11 +5689,11 @@ var yG = function() {
           case 4:
             return d = i.sent(), Il(d) ? [3, 8] : [4, t.disconnect()];
           case 5:
-            return i.sent(), d instanceof j ? d.code === tt.CONNECTION_CANCELED ? [3, 7] : [4, t.changeState(new pW(), l)] : [3, 7];
+            return i.sent(), d instanceof j ? d.code === nt.CONNECTION_CANCELED ? [3, 7] : [4, t.changeState(new pW(), l)] : [3, 7];
           case 6:
             i.sent(), i.label = 7;
           case 7:
-            return Le(function() {
+            return Ce(function() {
               return M(r, void 0, void 0, function() {
                 return p(this, function(c) {
                   return this._flushCallbacks(d), [2];
@@ -5976,7 +5976,7 @@ var Kr, pW = function(e) {
 }(zV), $k = function(e) {
   function n(t) {
     var l = t.appId, a = t.userId, d = t.services, r = t.includeUIKitConfig, i = r !== void 0 && r, c = t.localCacheEnabled, V = c === void 0 || c, s = t.expiringSession, o = s === void 0 || s, U = e.call(this) || this;
-    return U.path = "".concat(It, "/").concat(a, "/login"), U.method = he.POST, U.params = Oe({ expiring_session: !!o, services: d, include_logi: !0, include_extra_data: String(qk), uikit_config: i, use_local_cache: V, app_id: l }), U.requireAuth = !1, U;
+    return U.path = "".concat(It, "/").concat(a, "/login"), U.method = he.POST, U.params = je({ expiring_session: !!o, services: d, include_logi: !0, include_extra_data: String(qk), uikit_config: i, use_local_cache: V, app_id: l }), U.requireAuth = !1, U;
   }
   return J(n, e), n;
 }(Te), OG = function(e) {
@@ -6149,7 +6149,7 @@ var Qd, jG = [TW, $k], HG = function() {
     this.type = t, this.token = l;
   }
   return e.payloadify = function(n) {
-    return Oe(Ae({ type: n.type, token: n.token }));
+    return je(Ae({ type: n.type, token: n.token }));
   }, e;
 }(), UZ = /* @__PURE__ */ new WeakMap(), fG = function(e) {
   function n(t) {
@@ -6272,7 +6272,7 @@ var Qd, jG = [TW, $k], HG = function() {
       };
       d = setTimeout(function() {
         return c();
-      }, 1e3 * this._sdkState.sessionTokenRefreshTimeout), Le(function() {
+      }, 1e3 * this._sdkState.sessionTokenRefreshTimeout), Ce(function() {
         return M(l, void 0, void 0, function() {
           var V;
           return p(this, function(s) {
@@ -6289,7 +6289,7 @@ var Qd, jG = [TW, $k], HG = function() {
       return p(this, function(d) {
         switch (d.label) {
           case 0:
-            return t instanceof j && (t.isSessionTokenExpiredError || t.code === tt.APPLICATION_NOT_FOUND) ? (this.session.authToken = void 0, l ? [4, this._receiveNewAuthToken()] : [3, 6]) : [3, 6];
+            return t instanceof j && (t.isSessionTokenExpiredError || t.code === nt.APPLICATION_NOT_FOUND) ? (this.session.authToken = void 0, l ? [4, this._receiveNewAuthToken()] : [3, 6]) : [3, 6];
           case 1:
             return (a = d.sent()) ? (this.session.authToken = a, [4, this._refreshSessionKey(this.session.authToken, !1)]) : [3, 3];
           case 2:
@@ -6361,7 +6361,7 @@ var Qd, jG = [TW, $k], HG = function() {
     });
   }, n.prototype.complete = function() {
     var t = this;
-    this.dispatch("refresh"), this._dispatcher.dispatch(new Lk()), Le(function() {
+    this.dispatch("refresh"), this._dispatcher.dispatch(new Lk()), Ce(function() {
       return M(t, void 0, void 0, function() {
         var l;
         return p(this, function(a) {
@@ -6371,7 +6371,7 @@ var Qd, jG = [TW, $k], HG = function() {
     });
   }, n.prototype.error = function(t) {
     var l = this;
-    Le(function() {
+    Ce(function() {
       return M(l, void 0, void 0, function() {
         var a;
         return p(this, function(d) {
@@ -6381,7 +6381,7 @@ var Qd, jG = [TW, $k], HG = function() {
     });
   }, n.prototype.close = function() {
     var t = this;
-    this.dispatch("close"), this._dispatcher.dispatch(new Ck()), Le(function() {
+    this.dispatch("close"), this._dispatcher.dispatch(new Ck()), Ce(function() {
       return M(t, void 0, void 0, function() {
         var l;
         return p(this, function(a) {
@@ -6575,11 +6575,11 @@ var Tr, gG = function(e) {
           case 4:
             return [3, 10];
           case 5:
-            return (r = i.sent()) instanceof j ? r.code !== tt.NON_AUTHORIZED ? [3, 7] : [4, this.clear()] : [3, 8];
+            return (r = i.sent()) instanceof j ? r.code !== nt.NON_AUTHORIZED ? [3, 7] : [4, this.clear()] : [3, 8];
           case 6:
             return i.sent(), this.enabledState = Qd.DISABLED, [3, 8];
           case 7:
-            r.code === tt.STAT_UPLOAD_NOT_ALLOWED && (this.enabledState = Qd.COLLECT_ONLY), i.label = 8;
+            r.code === nt.STAT_UPLOAD_NOT_ALLOWED && (this.enabledState = Qd.COLLECT_ONLY), i.label = 8;
           case 8:
             return this.limit = this.limit + 20, [3, 10];
           case 9:
@@ -6599,7 +6599,7 @@ var Tr, gG = function(e) {
           case 1:
             return (l = r.sent()) ? (this.deviceId = l.deviceId, this.queue = l.statLogs.map(function(i) {
               var c;
-              return i.stat_type === Mn.FEATURE_LOCALCACHE_EVENT && (i.data = x({ message_init_policy: "", starting_point: 0 }, i.data)), i.stat_type === Mn.NOTIFICATION && (i.data = Oe(x(x({}, i.data), { message_id: (c = i.data.notificationId) !== null && c !== void 0 ? c : i.data.message_id, notificationId: void 0 }))), new Ml({ type: i.stat_type, ts: i.ts, data: i.data });
+              return i.stat_type === Mn.FEATURE_LOCALCACHE_EVENT && (i.data = x({ message_init_policy: "", starting_point: 0 }, i.data)), i.stat_type === Mn.NOTIFICATION && (i.data = je(x(x({}, i.data), { message_id: (c = i.data.notificationId) !== null && c !== void 0 ? c : i.data.message_id, notificationId: void 0 }))), new Ml({ type: i.stat_type, ts: i.ts, data: i.data });
             }), this.generation = l.generation, this.lastFlushedAt = l.lastFlushedAt, this.isReadyToFlush ? (a = Math.min(Math.floor(18e4 * Math.random()), 100), [4, Qa(a)]) : [3, 4]) : [3, 4];
           case 2:
             return r.sent(), [4, this._flush()];
@@ -6807,7 +6807,7 @@ var d3 = "removed", OT = function(e) {
     return (o = e.call(this, t) || this).pollId = 0, o.id = 0, o.text = null, o.voteCount = 0, o.createdBy = null, o.createdAt = 0, o.updatedAt = 0, o._lastVotedAt = 0, o.pollId = (a = l.poll_id) !== null && a !== void 0 ? a : 0, o.id = (d = l.id) !== null && d !== void 0 ? d : 0, o.text = (r = l.text) !== null && r !== void 0 ? r : null, o.voteCount = (i = l.vote_count) !== null && i !== void 0 ? i : 0, o.createdBy = (c = l.created_by) !== null && c !== void 0 ? c : null, o.createdAt = (V = l.created_at) !== null && V !== void 0 ? V : 0, o.updatedAt = (s = l.updated_at) !== null && s !== void 0 ? s : 0, o;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { vote_count: t.voteCount, poll_id: t.pollId, text: t.text, created_at: t.createdAt, id: t.id, created_by: t.createdBy, updated_at: t.updatedAt })));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { vote_count: t.voteCount, poll_id: t.pollId, text: t.text, created_at: t.createdAt, id: t.id, created_by: t.createdBy, updated_at: t.updatedAt })));
   }, n;
 }(ml), ld = function(e) {
   function n(t, l) {
@@ -6826,7 +6826,7 @@ var d3 = "removed", OT = function(e) {
       return U.id;
     })), this.allowUserSuggestion = (V = t.allow_user_suggestion) !== null && V !== void 0 ? V : this.allowUserSuggestion, this.allowMultipleVotes = (s = t.allow_multiple_votes) !== null && s !== void 0 ? s : this.allowMultipleVotes;
   }, n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { id: t.id, title: t.title, created_at: t.createdAt, updated_at: t.updatedAt, close_at: t.closeAt, status: t.status, message_id: t.messageId, data: t.data, voter_count: t.voterCount, options: t.options.map(function(l) {
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { id: t.id, title: t.title, created_at: t.createdAt, updated_at: t.updatedAt, close_at: t.closeAt, status: t.status, message_id: t.messageId, data: t.data, voter_count: t.voterCount, options: t.options.map(function(l) {
       return MN.payloadify(l);
     }), created_by: t.createdBy, allow_user_suggestion: t.allowUserSuggestion, allow_multiple_votes: t.allowMultipleVotes, voted_option_ids: t.votedPollOptionIds })));
   }, n.prototype.applyPollUpdateEvent = function(t) {
@@ -6909,7 +6909,7 @@ var d3 = "removed", OT = function(e) {
 }(ue), $G = function(e) {
   function n(t) {
     var l = t.channelType, a = t.channelUrl, d = t.timestamp, r = t.token, i = e.call(this) || this;
-    return i.method = he.GET, i.path = "".concat(Lt(l), "/").concat(encodeURIComponent(a), "/polls/changelogs"), i.params = Oe({ change_ts: d, token: r }), i;
+    return i.method = he.GET, i.path = "".concat(Lt(l), "/").concat(encodeURIComponent(a), "/polls/changelogs"), i.params = je({ change_ts: d, token: r }), i;
   }
   return J(n, e), n;
 }(Te), ey = function(e) {
@@ -7083,7 +7083,7 @@ var d3 = "removed", OT = function(e) {
     this.width = 0, this.height = 0, this.realWidth = 0, this.realHeight = 0, this._requireAuth = !1, this._iid = n, this.plainUrl = t.url, this.width = t.width, this.height = t.height, this.realWidth = (a = t.real_width) !== null && a !== void 0 ? a : t.width, this.realHeight = (d = t.real_height) !== null && d !== void 0 ? d : t.height, this._requireAuth = l;
   }
   return e.payloadify = function(n) {
-    return Oe(Ae(n instanceof e ? { url: n.plainUrl, width: n.width, height: n.height, real_width: n.realWidth, real_height: n.realHeight } : { url: "", width: n.maxWidth, height: n.maxHeight, real_width: 0, real_height: 0 }));
+    return je(Ae(n instanceof e ? { url: n.plainUrl, width: n.width, height: n.height, real_width: n.realWidth, real_height: n.realHeight } : { url: "", width: n.maxWidth, height: n.maxHeight, real_width: 0, real_height: 0 }));
   }, Object.defineProperty(e.prototype, "url", { get: function() {
     var n = D.of(this._iid).sessionManager;
     return this._requireAuth && n.ekey ? "".concat(this.plainUrl, "?auth=").concat(n.ekey) : this.plainUrl;
@@ -7091,7 +7091,7 @@ var d3 = "removed", OT = function(e) {
 }(), nR = function(e) {
   function n(t) {
     var l = e.call(this) || this;
-    if (l.method = he.POST, l.path = "".concat(Nx), l.params = Oe({ file: t.file, channel_url: t.channelUrl }), t.thumbnailSizes)
+    if (l.method = he.POST, l.path = "".concat(Nx), l.params = je({ file: t.file, channel_url: t.channelUrl }), t.thumbnailSizes)
       for (var a = 0; a < t.thumbnailSizes.length; a++) {
         var d = t.thumbnailSizes[a], r = d.maxWidth, i = d.maxHeight;
         l.params["thumbnail".concat(a + 1)] = "".concat(r, ",").concat(i);
@@ -7115,7 +7115,7 @@ var d3 = "removed", OT = function(e) {
     }) : [], V.unreadReplyCount = (r = l.unread_message_count) !== null && r !== void 0 ? r : 0, V.isPushNotificationEnabled = typeof l.push_enabled == "number" ? l.push_enabled > 0 : void 0, V.lastRepliedAt = (i = l.last_replied_at) !== null && i !== void 0 ? i : 0, V.updatedAt = (c = l.updated_at) !== null && c !== void 0 ? c : 0, V;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { reply_count: t.replyCount, unread_message_count: t.unreadReplyCount, member_count: t.memberCount, most_replies: Array.isArray(t.mostRepliedUsers) ? t.mostRepliedUsers.map(function(l) {
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { reply_count: t.replyCount, unread_message_count: t.unreadReplyCount, member_count: t.memberCount, most_replies: Array.isArray(t.mostRepliedUsers) ? t.mostRepliedUsers.map(function(l) {
       return xt.payloadify(l);
     }) : [], push_enabled: typeof t.isPushNotificationEnabled == "boolean" ? t.isPushNotificationEnabled ? 1 : 0 : void 0, last_replied_at: t.lastRepliedAt, updated_at: t.updatedAt })));
   }, Object.defineProperty(n.prototype, "_isUpdateRequired", { get: function() {
@@ -7155,7 +7155,7 @@ var _r, SW = function(e) {
   return Object.defineProperty(e.prototype, "isEmpty", { get: function() {
     return this.userIds.length === 0;
   }, enumerable: !1, configurable: !0 }), e.payloadify = function(n) {
-    return Oe(Ae({ key: n.key, user_ids: n.userIds, updated_at: n.updatedAt }));
+    return je(Ae({ key: n.key, user_ids: n.userIds, updated_at: n.updatedAt }));
   }, e.prototype.applyEvent = function(n) {
     if (n.key === this.key && this.updatedAt <= n.updatedAt) {
       if (!this._version[n.userId] || this._version[n.userId] <= n.updatedAt) {
@@ -7178,14 +7178,14 @@ var _r, SW = function(e) {
   }
   return e.payloadify = function(n) {
     var t, l;
-    return Oe(Ae({ url: n.url, secure_url: n.secureUrl, type: n.type, width: (t = n.width) !== null && t !== void 0 ? t : 0, height: (l = n.height) !== null && l !== void 0 ? l : 0, alt: n.alt }));
+    return je(Ae({ url: n.url, secure_url: n.secureUrl, type: n.type, width: (t = n.width) !== null && t !== void 0 ? t : 0, height: (l = n.height) !== null && l !== void 0 ? l : 0, alt: n.alt }));
   }, e;
 }(), iu = function() {
   function e(n) {
     this.title = null, this.url = null, this.description = null, this.defaultImage = null, n["og:title"] && (this.title = n["og:title"]), n["og:url"] && (this.url = n["og:url"]), n["og:description"] && (this.description = n["og:description"]), n["og:image"] && (this.defaultImage = new ru(n["og:image"]));
   }
   return e.payloadify = function(n) {
-    return Oe(Ae({ "og:title": n.title, "og:url": n.url, "og:description": n.description, "og:image": n.defaultImage ? ru.payloadify(n.defaultImage) : null }));
+    return je(Ae({ "og:title": n.title, "og:url": n.url, "og:description": n.description, "og:image": n.defaultImage ? ru.payloadify(n.defaultImage) : null }));
   }, e;
 }(), ad = function() {
   function e(n) {
@@ -7195,7 +7195,7 @@ var _r, SW = function(e) {
   return e.prototype.serialize = function() {
     return { name: this.name, volume: this.volume };
   }, e.payloadify = function(n) {
-    return Oe(Ae({ name: n.name, volume: n.volume }));
+    return je(Ae({ name: n.name, volume: n.volume }));
   }, e;
 }();
 (function(e) {
@@ -7208,7 +7208,7 @@ var Vu, TV = function() {
   return e.parseFeedbackStatusFromPayload = function(n) {
     return n && n.id !== null && n.rating !== null ? "SUBMITTED" : "NOT_APPLICABLE";
   }, e.payloadify = function(n) {
-    return Oe(Ae({ id: n.id, rating: n.rating, comment: n.comment }));
+    return je(Ae({ id: n.id, rating: n.rating, comment: n.comment }));
   }, e;
 }(), Yc = function(e) {
   function n(t, l) {
@@ -7216,7 +7216,7 @@ var Vu, TV = function() {
     return (d = e.call(this, t, l) || this).isBlockedByMe = !1, d.role = Qt(ed, l.role) ? l.role : ed.NONE, d.isBlockedByMe = (a = l.is_blocked_by_me) !== null && a !== void 0 && a, d;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { role: t.role, is_blocked_by_me: t.isBlockedByMe })));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { role: t.role, is_blocked_by_me: t.isBlockedByMe })));
   }, n;
 }(xt), Ol = function() {
   function e(n) {
@@ -7224,7 +7224,7 @@ var Vu, TV = function() {
   }
   return e.payloadify = function(n) {
     var t;
-    return Oe(Ae({ key: n.key, value: (t = n.value) !== null && t !== void 0 ? t : [] }));
+    return je(Ae({ key: n.key, value: (t = n.value) !== null && t !== void 0 ? t : [] }));
   }, e;
 }(), U3 = function(e) {
   switch (e) {
@@ -7259,7 +7259,7 @@ var Vu, TV = function() {
   }
   return J(n, e), n.payloadify = function(t) {
     var l, a;
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { channel_url: t.channelUrl, channel_type: t.channelType, type: U3(t.messageType), data: t.data, custom_type: t.customType, mention_type: t.mentionType, mentioned_user_ids: t.mentionedUserIds, mentioned_users: (l = t.mentionedUsers) === null || l === void 0 ? void 0 : l.map(function(d) {
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { channel_url: t.channelUrl, channel_type: t.channelType, type: U3(t.messageType), data: t.data, custom_type: t.customType, mention_type: t.mentionType, mentioned_user_ids: t.mentionedUserIds, mentioned_users: (l = t.mentionedUsers) === null || l === void 0 ? void 0 : l.map(function(d) {
       return xt.payloadify(d);
     }), mentioned_message_template: t.mentionedMessageTemplate, sorted_metaarray: (a = t.metaArrays) === null || a === void 0 ? void 0 : a.map(function(d) {
       return Ol.payloadify(d);
@@ -7305,7 +7305,7 @@ var wU = function() {
     return (t = this.answers) === null || t === void 0 ? void 0 : t[n];
   }, e.payloadify = function(n) {
     var t;
-    return Oe(Ae({ key: (t = n.formKey) !== null && t !== void 0 ? t : n.key, fields: n.fields.map(function(l) {
+    return je(Ae({ key: (t = n.formKey) !== null && t !== void 0 ? t : n.key, fields: n.fields.map(function(l) {
       return R3.payloadify(l);
     }) }));
   }, e.isFormPayload = function(n) {
@@ -7328,7 +7328,7 @@ var wU = function() {
     return !(this.temporaryAnswer != null && !this.isValid(this.temporaryAnswer) || this.required && this.temporaryAnswer == null);
   }, enumerable: !1, configurable: !0 }), e.payloadify = function(n) {
     var t;
-    return Oe(Ae({ key: (t = n.fieldKey) !== null && t !== void 0 ? t : n.key, input_type: n.inputType, title: n.title, required: n.required, regex: n.regex, placeholder: n.placeholder }));
+    return je(Ae({ key: (t = n.fieldKey) !== null && t !== void 0 ? t : n.key, input_type: n.inputType, title: n.title, required: n.required, regex: n.regex, placeholder: n.placeholder }));
   }, e;
 }(), h3 = function(e) {
   function n(t, l) {
@@ -7346,7 +7346,7 @@ var wU = function() {
 (function(e) {
   function n(t) {
     var l = e.call(this) || this, a = t.channelUrl, d = t.channelType, r = t.userId, i = t.notificationIds;
-    return l.method = he.PUT, l.path = "".concat(Lt(d), "/").concat(encodeURIComponent(a), "/messages/mark_as_read"), l.params = Oe(Ae({ user_id: r, message_ids: i })), l;
+    return l.method = he.PUT, l.path = "".concat(Lt(d), "/").concat(encodeURIComponent(a), "/messages/mark_as_read"), l.params = je(Ae({ user_id: r, message_ids: i })), l;
   }
   return J(n, e), n;
 })(Te);
@@ -7386,7 +7386,7 @@ var cy = function(e) {
 var cu = function(e) {
   function n(t) {
     var l = e.call(this) || this;
-    return l.method = he.POST, l.path = "".concat(vl, "/").concat(encodeURIComponent(t.channelUrl), "/messages/").concat(t.messageId, "/submit_forms"), l.params = Oe({ forms: t.forms }), l;
+    return l.method = he.POST, l.path = "".concat(vl, "/").concat(encodeURIComponent(t.channelUrl), "/messages/").concat(t.messageId, "/submit_forms"), l.params = je({ forms: t.forms }), l;
   }
   return J(n, e), n;
 }(Te), oy = function(e) {
@@ -7437,7 +7437,7 @@ var ii, xa, jT = function(e) {
   }
   return J(n, e), n.payloadify = function(t) {
     var l;
-    return Oe(Ae({ url: t.plainUrl, file_name: t.fileName, file_type: t.mimeType, file_size: t.fileSize, thumbnails: (l = t.thumbnails) === null || l === void 0 ? void 0 : l.map(function(a) {
+    return je(Ae({ url: t.plainUrl, file_name: t.fileName, file_type: t.mimeType, file_size: t.fileSize, thumbnails: (l = t.thumbnails) === null || l === void 0 ? void 0 : l.map(function(a) {
       var d;
       return { url: ((d = a.plainUrl) !== null && d !== void 0 ? d : "").split("auth=")[0], width: a.width, height: a.height, real_width: a.realWidth, real_height: a.realHeight };
     }), require_auth: t._requireAuth }));
@@ -7467,13 +7467,13 @@ var lV, Bl = function(e) {
   }
   return J(n, e), n.payloadify = function(t) {
     var l, a;
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { message_id: t.messageId, parent_message_id: t.parentMessageId, thread_info: t.threadInfo ? aR.payloadify(t.threadInfo) : null, reactions: t.reactions.map(function(d) {
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { message_id: t.messageId, parent_message_id: t.parentMessageId, thread_info: t.threadInfo ? aR.payloadify(t.threadInfo) : null, reactions: t.reactions.map(function(d) {
       return fU.payloadify(d);
     }), og_tag: t.ogMetaData ? iu.payloadify(t.ogMetaData) : null, silent: t.silent, is_op_msg: t.isOperatorMessage, apple_critical_alert_options: t.appleCriticalAlertOptions ? ad.payloadify(t.appleCriticalAlertOptions) : null, scheduled_message_id: (l = t.scheduledInfo) === null || l === void 0 ? void 0 : l.scheduledMessageId, scheduled_at: (a = t.scheduledInfo) === null || a === void 0 ? void 0 : a.scheduledAt, scheduled_status: t._scheduledStatus, feedback: t.myFeedback ? TV.payloadify(t.myFeedback) : null, my_feedback_status: t.myFeedbackStatus, forms: t.forms ? t.forms.map(function(d) {
       return wU.payloadify(d);
     }) : null })));
   }, n._getParentMessageInfoPayload = function(t) {
-    return Oe(Ae({ type: U3(t.messageType), ts: t.createdAt, user: t.sender ? Yc.payloadify(t.sender) : null, message: t.message, file: { url: t.plainUrl, name: t.name, type: t.type, require_auth: t.requireAuth }, files: Array.isArray(t.fileInfoList) ? t.fileInfoList.map(function(l) {
+    return je(Ae({ type: U3(t.messageType), ts: t.createdAt, user: t.sender ? Yc.payloadify(t.sender) : null, message: t.message, file: { url: t.plainUrl, name: t.name, type: t.type, require_auth: t.requireAuth }, files: Array.isArray(t.fileInfoList) ? t.fileInfoList.map(function(l) {
       return jT.payloadify(l);
     }) : null }));
   }, n.prototype.isIdentical = function(t) {
@@ -7542,11 +7542,11 @@ var lV, Bl = function(e) {
             if (Ze(t.form && t.form instanceof wU || B("string", t.formId) && B("object", t.answers)).throw(j.invalidParameters), l = D.of(this._iid), a = l.requestQueue, d = l.sdkState, r = l.logger, !t.form)
               return [3, 2];
             if (!(i = t.form).isSubmittable)
-              throw new j({ code: tt.INVALID_PARAMETER, message: "The given form is not submittable." });
+              throw new j({ code: nt.INVALID_PARAMETER, message: "The given form is not submittable." });
             if (i.isSubmitted)
-              throw new j({ code: tt.INVALID_PARAMETER, message: "The given form is already submitted." });
+              throw new j({ code: nt.INVALID_PARAMETER, message: "The given form is already submitted." });
             if (i.messageId != this.messageId)
-              throw new j({ code: tt.INVALID_PARAMETER, message: "This form does not belong to the message." });
+              throw new j({ code: nt.INVALID_PARAMETER, message: "This form does not belong to the message." });
             return c = i.fields.reduce(function(o, U) {
               return o[U.key] = U.temporaryAnswer, o;
             }, {}), V = new cu({ userId: d.userId, channelUrl: this.channelUrl, channelType: this.channelType, messageId: this.messageId, forms: [{ form_key: i.key, data: c }] }), [4, a.send(V)];
@@ -7625,7 +7625,7 @@ var lV, Bl = function(e) {
     return c.errorCode = (i = l.error_code) !== null && i !== void 0 ? i : 0, c;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { user: Yc.payloadify(t.sender), req_id: t.reqId, is_reply_to_channel: t.replyToChannel, request_state: t.sendingStatus, error_code: t.errorCode })));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { user: Yc.payloadify(t.sender), req_id: t.reqId, is_reply_to_channel: t.replyToChannel, request_state: t.sendingStatus, error_code: t.errorCode })));
   }, Object.defineProperty(n.prototype, "isResendable", { get: function() {
     return (this.sendingStatus === $t.FAILED || this.sendingStatus === $t.CANCELED) && ix(this.errorCode);
   }, enumerable: !1, configurable: !0 }), n.prototype.isIdentical = function(t) {
@@ -7638,12 +7638,12 @@ var lV, Bl = function(e) {
     var a, d, r, i, c = this;
     if ((c = e.call(this, t, l) || this).translations = {}, c.message = (a = l.message) !== null && a !== void 0 ? a : "", c.messageType = Gn.ADMIN, c.translations = (d = l.translations) !== null && d !== void 0 ? d : {}, l.parent_message_info) {
       var V = l.parent_message_info;
-      c.parentMessage = Hl(t, Oe(Ae(x(x({}, V), { message_id: c.parentMessageId, channel_url: c.channelUrl, channel_type: c.channelType, file: V.file, url: (r = V.file) === null || r === void 0 ? void 0 : r.url, require_auth: (i = V.file) === null || i === void 0 ? void 0 : i.require_auth }))));
+      c.parentMessage = Hl(t, je(Ae(x(x({}, V), { message_id: c.parentMessageId, channel_url: c.channelUrl, channel_type: c.channelType, file: V.file, url: (r = V.file) === null || r === void 0 ? void 0 : r.url, require_auth: (i = V.file) === null || i === void 0 ? void 0 : i.require_auth }))));
     }
     return c;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { message: t.message, translations: t.translations, parent_message_info: t.parentMessage ? e._getParentMessageInfoPayload.call(this, t.parentMessage) : null })));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { message: t.message, translations: t.translations, parent_message_info: t.parentMessage ? e._getParentMessageInfoPayload.call(this, t.parentMessage) : null })));
   }, n.prototype.getThreadedMessagesByTimestamp = function(t, l) {
     return M(this, void 0, void 0, function() {
       var a;
@@ -7663,14 +7663,14 @@ var lV, Bl = function(e) {
     this.detail = {}, this.type = (t = n.type) !== null && t !== void 0 ? t : "", this.vendor = (l = n.vendor) !== null && l !== void 0 ? l : "", n.detail && B("object", n.detail) && !Array.isArray(n.detail) && (this.detail = n.detail);
   }
   return e.payloadify = function(n) {
-    return Oe(Ae({ type: n.type, vendor: n.vendor, detail: n.detail }));
+    return je(Ae({ type: n.type, vendor: n.vendor, detail: n.detail }));
   }, e;
 }(), ou = function() {
   function e(n) {
     this.status = n.status, n.original_message_info && (this.originalMessageInfo = { createdAt: n.original_message_info.ts, messageId: n.original_message_info.id });
   }
   return e.payloadify = function(n) {
-    return Oe({ status: n.status, original_message_info: n.originalMessageInfo ? { id: n.originalMessageInfo.messageId, ts: n.originalMessageInfo.createdAt } : void 0 });
+    return je({ status: n.status, original_message_info: n.originalMessageInfo ? { id: n.originalMessageInfo.messageId, ts: n.originalMessageInfo.createdAt } : void 0 });
   }, e;
 }(), kl = function(e) {
   function n(t, l) {
@@ -7695,12 +7695,12 @@ var lV, Bl = function(e) {
       return new su(Z);
     }) : [], o._poll = l.poll ? new ld(o._iid, l.poll) : null, l.parent_message_info) {
       var h = l.parent_message_info;
-      o.parentMessage = Hl(t, Oe(Ae(x(x({}, h), { created_at: h.ts, message_id: o.parentMessageId, channel_url: o.channelUrl, channel_type: o.channelType, file: h.file, url: (V = h.file) === null || V === void 0 ? void 0 : V.url, require_auth: (s = h.file) === null || s === void 0 ? void 0 : s.require_auth }))));
+      o.parentMessage = Hl(t, je(Ae(x(x({}, h), { created_at: h.ts, message_id: o.parentMessageId, channel_url: o.channelUrl, channel_type: o.channelType, file: h.file, url: (V = h.file) === null || V === void 0 ? void 0 : V.url, require_auth: (s = h.file) === null || s === void 0 ? void 0 : s.require_auth }))));
     }
     return l.review_info && (o.messageReviewInfo = new ou(l.review_info)), o;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { message: t.message, translations: t.translations, message_survival_seconds: t.messageSurvivalSeconds, plugins: t.plugins.map(function(l) {
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { message: t.message, translations: t.translations, message_survival_seconds: t.messageSurvivalSeconds, plugins: t.plugins.map(function(l) {
       return su.payloadify(l);
     }), poll: t._poll ? ld.payloadify(t._poll) : null, parent_message_info: t.parentMessage ? e._getParentMessageInfoPayload.call(this, t.parentMessage) : null, review_info: t.messageReviewInfo ? ou.payloadify(t.messageReviewInfo) : void 0 })));
   }, n.prototype.getThreadedMessagesByTimestamp = function(t, l) {
@@ -7727,7 +7727,7 @@ var lV, Bl = function(e) {
       return new jT(t, o);
     })) !== null && d !== void 0 ? d : [], V.messageSurvivalSeconds = (r = l.message_survival_seconds) !== null && r !== void 0 ? r : -1, l.parent_message_info) {
       var s = l.parent_message_info;
-      V.parentMessage = Hl(t, Oe(Ae(x(x({}, s), { created_at: s.ts, message_id: V.parentMessageId, channel_url: V.channelUrl, channel_type: V.channelType, file: s.file, url: (i = s.file) === null || i === void 0 ? void 0 : i.url, require_auth: (c = s.file) === null || c === void 0 ? void 0 : c.require_auth }))));
+      V.parentMessage = Hl(t, je(Ae(x(x({}, s), { created_at: s.ts, message_id: V.parentMessageId, channel_url: V.channelUrl, channel_type: V.channelType, file: s.file, url: (i = s.file) === null || i === void 0 ? void 0 : i.url, require_auth: (c = s.file) === null || c === void 0 ? void 0 : c.require_auth }))));
     }
     return V;
   }
@@ -7744,7 +7744,7 @@ var lV, Bl = function(e) {
       });
     });
   }, n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { files: Array.isArray(t.fileInfoList) ? t.fileInfoList.map(function(l) {
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { files: Array.isArray(t.fileInfoList) ? t.fileInfoList.map(function(l) {
       return jT.payloadify(l);
     }) : null, message_survival_seconds: t.messageSurvivalSeconds, parent_message_info: t.parentMessage ? e._getParentMessageInfoPayload.call(this, t.parentMessage) : null })));
   }, n._isMultipleFilesMessagePayload = function(t) {
@@ -7770,7 +7770,7 @@ var SV = function(e) {
     return r;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { notification_message_id: t.notificationId, message_status: t.messageStatus, priority: t.priority })));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { notification_message_id: t.notificationId, message_status: t.messageStatus, priority: t.priority })));
   }, n.prototype.isIdentical = function(t) {
     return this.notificationId === t.notificationId;
   }, n;
@@ -7811,13 +7811,13 @@ var SV = function(e) {
       return new Br(F._iid, typeof u == "string" ? { url: u, width: 0, height: 0 } : x(x({}, u), { url: ((b = u.url) !== null && b !== void 0 ? b : "").split("auth=")[0] }), F.requireAuth);
     }) : [], F.messageSurvivalSeconds = (h = l.message_survival_seconds) !== null && h !== void 0 ? h : -1, l.parent_message_info) {
       var E = l.parent_message_info;
-      F.parentMessage = Hl(t, Oe(Ae(x(x({}, E), { created_at: E.ts, message_id: F.parentMessageId, channel_url: F.channelUrl, channel_type: F.channelType, file: E.file, url: (Z = E.file) === null || Z === void 0 ? void 0 : Z.url, require_auth: (W = E.file) === null || W === void 0 ? void 0 : W.require_auth }))));
+      F.parentMessage = Hl(t, je(Ae(x(x({}, E), { created_at: E.ts, message_id: F.parentMessageId, channel_url: F.channelUrl, channel_type: F.channelType, file: E.file, url: (Z = E.file) === null || Z === void 0 ? void 0 : Z.url, require_auth: (W = E.file) === null || W === void 0 ? void 0 : W.require_auth }))));
     }
     return F;
   }
   return J(n, e), n.payloadify = function(t) {
     var l;
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { url: t.plainUrl, require_auth: t.requireAuth, file: { name: t.name, size: t.size, type: t.type, data: t.data }, thumbnails: (l = t.thumbnails) === null || l === void 0 ? void 0 : l.map(function(a) {
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { url: t.plainUrl, require_auth: t.requireAuth, file: { name: t.name, size: t.size, type: t.type, data: t.data }, thumbnails: (l = t.thumbnails) === null || l === void 0 ? void 0 : l.map(function(a) {
       return { url: a.plainUrl, width: a.width, height: a.height, real_width: a.realWidth, real_height: a.realHeight };
     }), message_survival_seconds: t.messageSurvivalSeconds, parent_message_info: t.parentMessage ? e._getParentMessageInfoPayload.call(this, t.parentMessage) : null })));
   }, Object.defineProperty(n.prototype, "url", { get: function() {
@@ -7856,7 +7856,7 @@ var SV = function(e) {
     var l, a, d, r, i = [];
     return t.mentionType === Jl.USERS && (t.mentionedUserIds ? i = t.mentionedUserIds : t.mentionedUsers && (i = t.mentionedUsers.map(function(c) {
       return c.userId;
-    }))), e.call(this, { code: "FILE", ackRequired: !0, payload: Oe(Ae({ channel_url: t.channelUrl, files: t.files ? F3(t.files) : null, url: t.url, name: (l = t.fileName) !== null && l !== void 0 ? l : "", type: (a = t.mimeType) !== null && a !== void 0 ? a : "", size: (d = t.fileSize) !== null && d !== void 0 ? d : 0, custom: t.data, custom_type: t.customType, thumbnails: (r = t._thumbnails) === null || r === void 0 ? void 0 : r.map(function(c) {
+    }))), e.call(this, { code: "FILE", ackRequired: !0, payload: je(Ae({ channel_url: t.channelUrl, files: t.files ? F3(t.files) : null, url: t.url, name: (l = t.fileName) !== null && l !== void 0 ? l : "", type: (a = t.mimeType) !== null && a !== void 0 ? a : "", size: (d = t.fileSize) !== null && d !== void 0 ? d : 0, custom: t.data, custom_type: t.customType, thumbnails: (r = t._thumbnails) === null || r === void 0 ? void 0 : r.map(function(c) {
       return Br.payloadify(c);
     }), require_auth: t.requireAuth, metaarray: t.metaArrays, mention_type: t.mentionType, mentioned_user_ids: i, push_option: t.pushNotificationDeliveryOption && t.pushNotificationDeliveryOption !== pd.DEFAULT ? t.pushNotificationDeliveryOption : void 0, apple_critical_alert_options: t.appleCriticalAlertOptions ? ad.payloadify(t.appleCriticalAlertOptions) : null, silent: t.silent, reply_to_channel: t.isReplyToChannel, parent_message_id: t.parentMessageId ? t.parentMessageId : null, req_id: t.reqId, pin_message: t.isPinnedMessage })) }) || this;
   }
@@ -7868,7 +7868,7 @@ var SV = function(e) {
     var r = [];
     return t.mentionType === Jl.USERS && (t.mentionedUserIds ? r = t.mentionedUserIds : t.mentionedUsers && (r = t.mentionedUsers.map(function(i) {
       return i.userId;
-    }))), d.method = he.POST, d.path = "".concat(Lt(t.channelType), "/").concat(encodeURIComponent(t.channelUrl), "/messages"), d.params = Oe(Ae({ message_type: Gn.FILE, user_id: t.userId, files: t.files ? F3(t.files) : null, url: t.fileUrl, mention_type: t.mentionType, mentioned_user_ids: r, file_name: t.fileName, file_size: t.fileSize, file_type: t.mimeType, data: t.data, custom_type: t.customType, thumbnails: (l = t._thumbnails) === null || l === void 0 ? void 0 : l.map(function(i) {
+    }))), d.method = he.POST, d.path = "".concat(Lt(t.channelType), "/").concat(encodeURIComponent(t.channelUrl), "/messages"), d.params = je(Ae({ message_type: Gn.FILE, user_id: t.userId, files: t.files ? F3(t.files) : null, url: t.fileUrl, mention_type: t.mentionType, mentioned_user_ids: r, file_name: t.fileName, file_size: t.fileSize, file_type: t.mimeType, data: t.data, custom_type: t.customType, thumbnails: (l = t._thumbnails) === null || l === void 0 ? void 0 : l.map(function(i) {
       return Br.payloadify(i);
     }), require_auth: t.requireAuth, sorted_metaarray: (a = t.metaArrays) === null || a === void 0 ? void 0 : a.map(function(i) {
       return Ol.payloadify(i);
@@ -7899,7 +7899,7 @@ var SV = function(e) {
 function F3(e) {
   return e.map(function(n) {
     var t, l;
-    return Oe(Ae({ url: dR.getPlainUrl(n), file_name: n.fileName, file_type: n.mimeType, file_size: n.fileSize, thumbnails: (t = n._thumbnails) === null || t === void 0 ? void 0 : t.map(function(a) {
+    return je(Ae({ url: dR.getPlainUrl(n), file_name: n.fileName, file_type: n.mimeType, file_size: n.fileSize, thumbnails: (t = n._thumbnails) === null || t === void 0 ? void 0 : t.map(function(a) {
       return Br.payloadify(a);
     }), require_auth: (l = n._uploadedMetaData) === null || l === void 0 ? void 0 : l.requireAuth }));
   });
@@ -7989,7 +7989,7 @@ var Wy = function() {
           case 11:
             return [3, 13];
           case 12:
-            return o = (t = c.error) !== null && t !== void 0 ? t : j.unknown, c.deferred.reject(o.code === tt.REQUEST_CANCELED ? j.fileUploadCanceled : o), [3, 13];
+            return o = (t = c.error) !== null && t !== void 0 ? t : j.unknown, c.deferred.reject(o.code === nt.REQUEST_CANCELED ? j.fileUploadCanceled : o), [3, 13];
           case 13:
             return i = r.next(), [3, 2];
           case 14:
@@ -8073,10 +8073,10 @@ var Wy = function() {
             return [3, 8];
           case 7:
             switch ((V = s.sent()).code) {
-              case tt.REQUEST_FAILED:
-                l.error = new j({ code: tt.NETWORK_ERROR, message: "Failed to upload a file." });
+              case nt.REQUEST_FAILED:
+                l.error = new j({ code: nt.NETWORK_ERROR, message: "Failed to upload a file." });
                 break;
-              case tt.REQUEST_CANCELED:
+              case nt.REQUEST_CANCELED:
                 l.error = j.fileUploadCanceled;
                 break;
               default:
@@ -8184,7 +8184,7 @@ var Wy = function() {
 }(ue), gU = function(e) {
   function n(t) {
     var l = t.channelType, a = t.channelUrl, d = t.timestamp, r = t.token, i = t.prevResultSize, c = t.nextResultSize, V = t.isInclusive, s = t.reverse, o = t.messageTypeFilter, U = t.customTypesFilter, N = t.senderUserIdsFilter, R = t.replyType, h = t.includeMetaArray, Z = t.includeReactions, W = t.parentMessageId, F = t.includeThreadInfo, m = t.includeParentMessageInfo, E = t.showSubchannelMessagesOnly, u = t.checkingHasNext, b = t.checkingContinuousMessages, k = e.call(this) || this;
-    return k.method = he.GET, k.path = "".concat(Lt(l), "/").concat(encodeURIComponent(a), "/messages"), k.params = Oe(Ae({ is_sdk: !0, prev_limit: i, next_limit: c, include: V, reverse: s, message_ts: d, message_id: r, message_type: o ?? null, custom_types: U, sender_ids: N, include_reply_type: R, with_sorted_meta_array: h, include_reactions: Z, parent_message_id: W, include_thread_info: F, include_parent_message_info: m, show_subchannel_message_only: E, include_poll_details: !0, checking_has_next: u, checking_continuous_messages: b })), k;
+    return k.method = he.GET, k.path = "".concat(Lt(l), "/").concat(encodeURIComponent(a), "/messages"), k.params = je(Ae({ is_sdk: !0, prev_limit: i, next_limit: c, include: V, reverse: s, message_ts: d, message_id: r, message_type: o ?? null, custom_types: U, sender_ids: N, include_reply_type: R, with_sorted_meta_array: h, include_reactions: Z, parent_message_id: W, include_thread_info: F, include_parent_message_info: m, show_subchannel_message_only: E, include_poll_details: !0, checking_has_next: u, checking_continuous_messages: b })), k;
   }
   return J(n, e), n;
 }(Te), IU = function(e) {
@@ -8233,7 +8233,7 @@ var hu = function() {
     this.restrictionType = null, Qt(HT, n.restriction_type) && (this.restrictionType = n.restriction_type), this.description = (t = n.description) !== null && t !== void 0 ? t : null, this.endAt = (a = (l = n.end_at) !== null && l !== void 0 ? l : n.muted_end_at) !== null && a !== void 0 ? a : -1, this.remainingDuration = (d = n.remaining_duration) !== null && d !== void 0 ? d : -1;
   }
   return e.payloadify = function(n) {
-    return Oe(Ae({ restriction_type: n.restrictionType, description: n.description, end_at: n.endAt, remaining_duration: n.remainingDuration }));
+    return je(Ae({ restriction_type: n.restrictionType, description: n.description, end_at: n.endAt, remaining_duration: n.remainingDuration }));
   }, e;
 }(), BV = function(e) {
   function n(t, l) {
@@ -8241,7 +8241,7 @@ var hu = function() {
     return a.restrictionInfo = new hu(l), a;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), hu.payloadify(t.restrictionInfo))));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), hu.payloadify(t.restrictionInfo))));
   }, n;
 }(xt), ky = function(e) {
   function n(t, l) {
@@ -8288,7 +8288,7 @@ function m3(e) {
 }
 var FV, wT = function(e) {
   var n;
-  return Oe(Ae({ data: e.data, customType: e.customType, mentionType: e.mentionType, mentionedUsers: e.mentionedUsers, mentionedUserIds: e.mentionedUserIds, mentionedMessageTemplate: e.mentionedMessageTemplate, metaArrays: e.metaArrays, pollId: (n = e.poll) === null || n === void 0 ? void 0 : n.id, parentMessageId: e.parentMessageId, appleCriticalAlertOptions: e.appleCriticalAlertOptions, message: e.message, translationTargetLanguages: Object.keys(e.translations), extendedMessagePayload: e.extendedMessagePayload }));
+  return je(Ae({ data: e.data, customType: e.customType, mentionType: e.mentionType, mentionedUsers: e.mentionedUsers, mentionedUserIds: e.mentionedUserIds, mentionedMessageTemplate: e.mentionedMessageTemplate, metaArrays: e.metaArrays, pollId: (n = e.poll) === null || n === void 0 ? void 0 : n.id, parentMessageId: e.parentMessageId, appleCriticalAlertOptions: e.appleCriticalAlertOptions, message: e.message, translationTargetLanguages: Object.keys(e.translations), extendedMessagePayload: e.extendedMessagePayload }));
 }, u3 = function(e) {
   return AR(e) && B("string", e.message) && Jt("string", e.translationTargetLanguages, !0) && B("number", e.pollId, !0) && B("object", e.extendedMessagePayload, !0);
 };
@@ -8312,7 +8312,7 @@ function p3(e) {
 }
 var Cs, gT = function(e, n) {
   var t;
-  return e.messageParams ? (!e.url && Nl(n) && (e.messageParams.file = n), e.messageParams) : Oe(Ae({ data: e.data, customType: e.customType, mentionType: e.mentionType, mentionedUsers: e.mentionedUsers, mentionedUserIds: e.mentionedUserIds, metaArrays: e.metaArrays, parentMessageId: e.parentMessageId, appleCriticalAlertOptions: e.appleCriticalAlertOptions, file: n, fileUrl: e.url, fileName: e.name, fileSize: e.size, mimeType: e.type, thumbnailSizes: (t = e.thumbnails) === null || t === void 0 ? void 0 : t.map(function(l) {
+  return e.messageParams ? (!e.url && Nl(n) && (e.messageParams.file = n), e.messageParams) : je(Ae({ data: e.data, customType: e.customType, mentionType: e.mentionType, mentionedUsers: e.mentionedUsers, mentionedUserIds: e.mentionedUserIds, metaArrays: e.metaArrays, parentMessageId: e.parentMessageId, appleCriticalAlertOptions: e.appleCriticalAlertOptions, file: n, fileUrl: e.url, fileName: e.name, fileSize: e.size, mimeType: e.type, thumbnailSizes: (t = e.thumbnails) === null || t === void 0 ? void 0 : t.map(function(l) {
     return { maxWidth: l.width, maxHeight: l.height };
   }) }));
 }, Wu = function(e) {
@@ -8444,7 +8444,7 @@ var Cs, gT = function(e, n) {
 }(ar), yy = function(e) {
   function n(t) {
     var l = this, a = t.channelUrl, d = t.channelType, r = t.limit, i = t.token;
-    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(Lt(d), "/").concat(encodeURIComponent(a), "/ban"), l.params = Oe({ limit: r, token: i }), l;
+    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(Lt(d), "/").concat(encodeURIComponent(a), "/ban"), l.params = je({ limit: r, token: i }), l;
   }
   return J(n, e), n;
 }(Te), By = function(e) {
@@ -8705,7 +8705,7 @@ var Y3 = function(e) {
 }(Wn), n5 = function(e) {
   function n(t) {
     var l = this, a = t.channelUrl, d = t.channelType, r = t.userId, i = t.seconds, c = t.description;
-    return (l = e.call(this) || this).method = he.POST, l.path = "".concat(Lt(d), "/").concat(encodeURIComponent(a), "/ban"), l.params = Oe({ user_id: r, seconds: i, description: c }), l;
+    return (l = e.call(this) || this).method = he.POST, l.path = "".concat(Lt(d), "/").concat(encodeURIComponent(a), "/ban"), l.params = je({ user_id: r, seconds: i, description: c }), l;
   }
   return J(n, e), n;
 }(Te);
@@ -8782,7 +8782,7 @@ var v3 = function(e) {
     var l = [];
     return t.mentionType === Jl.USERS && (t.mentionedUserIds ? l = t.mentionedUserIds : t.mentionedUsers && (l = t.mentionedUsers.map(function(a) {
       return a.userId;
-    }))), e.call(this, { code: "MESG", ackRequired: !0, payload: Oe(Ae({ channel_url: t.channelUrl, message: t.message, data: t.data, custom_type: t.customType, metaarray: t.metaArrays, mention_type: t.mentionType, mentioned_user_ids: l, mentioned_message_template: t.mentionedMessageTemplate, target_langs: t.translationTargetLanguages, push_option: t.pushNotificationDeliveryOption && t.pushNotificationDeliveryOption !== pd.DEFAULT ? t.pushNotificationDeliveryOption : void 0, apple_critical_alert_options: t.appleCriticalAlertOptions, silent: t.silent, reply_to_channel: t.isReplyToChannel, parent_message_id: t.parentMessageId ? t.parentMessageId : null, req_id: t.reqId, poll_id: t.pollId, pin_message: t.isPinnedMessage, extended_message_payload: t.extendedMessagePayload })) }) || this;
+    }))), e.call(this, { code: "MESG", ackRequired: !0, payload: je(Ae({ channel_url: t.channelUrl, message: t.message, data: t.data, custom_type: t.customType, metaarray: t.metaArrays, mention_type: t.mentionType, mentioned_user_ids: l, mentioned_message_template: t.mentionedMessageTemplate, target_langs: t.translationTargetLanguages, push_option: t.pushNotificationDeliveryOption && t.pushNotificationDeliveryOption !== pd.DEFAULT ? t.pushNotificationDeliveryOption : void 0, apple_critical_alert_options: t.appleCriticalAlertOptions, silent: t.silent, reply_to_channel: t.isReplyToChannel, parent_message_id: t.parentMessageId ? t.parentMessageId : null, req_id: t.reqId, poll_id: t.pollId, pin_message: t.isPinnedMessage, extended_message_payload: t.extendedMessagePayload })) }) || this;
   }
   return J(n, e), n;
 }(Yl), QW = function(e) {
@@ -8800,7 +8800,7 @@ var v3 = function(e) {
     var l = null;
     return t.mentionType === Jl.USERS && (t.mentionedUserIds ? l = t.mentionedUserIds : t.mentionedUsers && (l = t.mentionedUsers.map(function(a) {
       return a.userId;
-    }))), e.call(this, { code: "MEDI", ackRequired: !0, payload: Oe(Ae({ channel_url: t.channelUrl, msg_id: t.messageId, message: t.message, data: t.data, custom_type: t.customType, metaarray: t.metaArrayParams, mention_type: t.mentionType, mentioned_user_ids: l, mentioned_message_template: t.mentionedMessageTemplate, apple_critical_alert_options: t.appleCriticalAlertOptions ? ad.payloadify(t.appleCriticalAlertOptions) : null, poll_id: t.pollId })) }) || this;
+    }))), e.call(this, { code: "MEDI", ackRequired: !0, payload: je(Ae({ channel_url: t.channelUrl, msg_id: t.messageId, message: t.message, data: t.data, custom_type: t.customType, metaarray: t.metaArrayParams, mention_type: t.mentionType, mentioned_user_ids: l, mentioned_message_template: t.mentionedMessageTemplate, apple_critical_alert_options: t.appleCriticalAlertOptions ? ad.payloadify(t.appleCriticalAlertOptions) : null, poll_id: t.pollId })) }) || this;
   }
   return J(n, e), n;
 }(Yl), rR = function(e) {
@@ -8818,7 +8818,7 @@ var v3 = function(e) {
     var l = null;
     return t.mentionType === Jl.USERS && (t.mentionedUserIds ? l = t.mentionedUserIds : t.mentionedUsers && (l = t.mentionedUsers.map(function(a) {
       return a.userId;
-    }))), e.call(this, { code: "FEDI", ackRequired: !0, payload: Oe(Ae({ channel_url: t.channelUrl, msg_id: t.messageId, data: t.data, custom_type: t.customType, metaarray: t.metaArrayParams, mention_type: t.mentionType, mentioned_user_ids: l, apple_critical_alert_options: t.appleCriticalAlertOptions })) }) || this;
+    }))), e.call(this, { code: "FEDI", ackRequired: !0, payload: je(Ae({ channel_url: t.channelUrl, msg_id: t.messageId, data: t.data, custom_type: t.customType, metaarray: t.metaArrayParams, mention_type: t.mentionType, mentioned_user_ids: l, apple_critical_alert_options: t.appleCriticalAlertOptions })) }) || this;
   }
   return J(n, e), n;
 }(Yl), iR = function(e) {
@@ -8895,7 +8895,7 @@ var z3 = function(e) {
       return c.userId;
     })));
     var r = t.channelType, i = t.channelUrl;
-    return a.method = he.POST, a.path = "".concat(Lt(r), "/").concat(encodeURIComponent(i), "/scheduled_messages"), a.params = Oe(Ae({ req_id: t.reqId, scheduled_at: t.scheduledAt, message_type: Mc.USER, message: t.message, custom_type: t.customType, data: t.data, mention_type: t.mentionType, mentioned_user_ids: d, sorted_metaarray: (l = t.metaArrays) === null || l === void 0 ? void 0 : l.map(function(c) {
+    return a.method = he.POST, a.path = "".concat(Lt(r), "/").concat(encodeURIComponent(i), "/scheduled_messages"), a.params = je(Ae({ req_id: t.reqId, scheduled_at: t.scheduledAt, message_type: Mc.USER, message: t.message, custom_type: t.customType, data: t.data, mention_type: t.mentionType, mentioned_user_ids: d, sorted_metaarray: (l = t.metaArrays) === null || l === void 0 ? void 0 : l.map(function(c) {
       return Ol.payloadify(c);
     }), apple_critical_alert_options: t.appleCriticalAlertOptions ? ad.payloadify(t.appleCriticalAlertOptions) : null, target_langs: t.translationTargetLanguages, push_option: t.pushNotificationDeliveryOption })), a;
   }
@@ -9005,7 +9005,7 @@ var u5 = function(e) {
 var Y5 = function(e) {
   function n(t) {
     var l = t.reqId, a = t.channelType, d = t.channelUrl, r = t.pollId, i = t.pollOptionIds;
-    return e.call(this, { code: "VOTE", ackRequired: !0, payload: Oe({ req_id: l, channel_type: a === Xt.OPEN ? "open_channels" : "group_channels", channel_url: d, poll_id: r, option_ids: i }) }) || this;
+    return e.call(this, { code: "VOTE", ackRequired: !0, payload: je({ req_id: l, channel_type: a === Xt.OPEN ? "open_channels" : "group_channels", channel_url: d, poll_id: r, option_ids: i }) }) || this;
   }
   return J(n, e), n;
 }(Yl), JW = function(e) {
@@ -9068,7 +9068,7 @@ var Jn, VR = function(e) {
   }, enumerable: !1, configurable: !0 }), n.prototype.toJSON = function() {
     return x(x({}, this), { url: this._url, name: this._name, createdAt: this._createdAt });
   }, n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { channel_url: t.url, name: t.name, cover_url: t.coverUrl, custom_type: t.customType, data: t.data, freeze: t.isFrozen, is_ephemeral: t.isEphemeral, created_by: t.creator ? xt.payloadify(t.creator) : null, created_at: t.createdAt / 1e3 })));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { channel_url: t.url, name: t.name, cover_url: t.coverUrl, custom_type: t.customType, data: t.data, freeze: t.isFrozen, is_ephemeral: t.isEphemeral, created_by: t.creator ? xt.payloadify(t.creator) : null, created_at: t.createdAt / 1e3 })));
   }, n.prototype.isGroupChannel = function() {
     return this.channelType === Xt.GROUP;
   }, n.prototype.isOpenChannel = function() {
@@ -9085,7 +9085,7 @@ var Jn, VR = function(e) {
   }, enumerable: !1, configurable: !0 }), n.prototype._updateMessageCollectionLastAccessedAt = function() {
     this._messageCollectionLastAccessedAt = Date.now();
   }, n.prototype._update = function(t) {
-    var l = Oe(t);
+    var l = je(t);
     Object.assign(this, l);
   }, n.prototype._upsertCachedMetaData = function(t, l) {
     var a = this;
@@ -9474,7 +9474,7 @@ var Jn, VR = function(e) {
     });
   }, n.prototype._createPendingSendableMessagePayload = function(t, l, a) {
     var d, r = D.of(this._iid).sessionManager;
-    return Oe(Ae({ channel_url: this.url, channel_type: this.channelType, msg_id: 0, parent_message_id: t.parentMessageId, data: t.data, custom_type: t.customType, mention_type: t.mentionType, sorted_metaarray: t.metaArrays ? t.metaArrays.map(function(i) {
+    return je(Ae({ channel_url: this.url, channel_type: this.channelType, msg_id: 0, parent_message_id: t.parentMessageId, data: t.data, custom_type: t.customType, mention_type: t.mentionType, sorted_metaarray: t.metaArrays ? t.metaArrays.map(function(i) {
       return Ol.payloadify(i);
     }) : null, apple_critical_alert_options: t.appleCriticalAlertOptions ? ad.payloadify(t.appleCriticalAlertOptions) : null, created_at: a, user: r.currentUser ? Yc.payloadify(r.currentUser) : null, req_id: l, request_state: $t.PENDING, mentioned_user_ids: t.mentionedUserIds, mentioned_users: (d = t.mentionedUsers) === null || d === void 0 ? void 0 : d.map(function(i) {
       return xt.payloadify(i);
@@ -9495,18 +9495,18 @@ var Jn, VR = function(e) {
             throw d.error;
         }
       }
-    var s = Oe(x(x({}, this._createPendingSendableMessagePayload(t, l, a)), { type: Gn.USER, message: t.message, translations: i, extended_message_payload: t.extendedMessagePayload })), o = new kl(this._iid, s);
+    var s = je(x(x({}, this._createPendingSendableMessagePayload(t, l, a)), { type: Gn.USER, message: t.message, translations: i, extended_message_payload: t.extendedMessagePayload })), o = new kl(this._iid, s);
     return o.messageParams = t, o;
   }, n.prototype._createPendingScheduledUserMessage = function(t, l, a) {
     var d = this._createPendingUserMessage(t, l, a);
     return d.scheduledInfo = { scheduledMessageId: 0, scheduledAt: t.scheduledAt, scheduledMessageParams: t }, d;
   }, n.prototype._createPendingFileMessage = function(t, l, a) {
-    var d, r, i, c, V, s, o, U = Oe(x(x({}, this._createPendingSendableMessagePayload(t, l, a)), { type: Gn.FILE, url: t.fileUrl, file: { name: (d = t.fileName) !== null && d !== void 0 ? d : (r = t.file) === null || r === void 0 ? void 0 : r.name, size: (i = t.fileSize) !== null && i !== void 0 ? i : (c = t.file) === null || c === void 0 ? void 0 : c.size, type: (V = t.mimeType) !== null && V !== void 0 ? V : (s = t.file) === null || s === void 0 ? void 0 : s.type, data: t.data }, thumbnails: (o = t._thumbnails) === null || o === void 0 ? void 0 : o.map(function(R) {
+    var d, r, i, c, V, s, o, U = je(x(x({}, this._createPendingSendableMessagePayload(t, l, a)), { type: Gn.FILE, url: t.fileUrl, file: { name: (d = t.fileName) !== null && d !== void 0 ? d : (r = t.file) === null || r === void 0 ? void 0 : r.name, size: (i = t.fileSize) !== null && i !== void 0 ? i : (c = t.file) === null || c === void 0 ? void 0 : c.size, type: (V = t.mimeType) !== null && V !== void 0 ? V : (s = t.file) === null || s === void 0 ? void 0 : s.type, data: t.data }, thumbnails: (o = t._thumbnails) === null || o === void 0 ? void 0 : o.map(function(R) {
       return Br.payloadify(R);
     }) })), N = new Ln(this._iid, U);
     return N.messageParams = t, N;
   }, n.prototype._createPendingMultipleFilesMessage = function(t, l, a) {
-    var d = Oe(x(x({}, this._createPendingSendableMessagePayload(t, l, a)), { type: Gn.FILE })), r = new Da(this._iid, d);
+    var d = je(x(x({}, this._createPendingSendableMessagePayload(t, l, a)), { type: Gn.FILE })), r = new Da(this._iid, d);
     return r.messageParams = t, r;
   }, n.prototype._validateFailedFileMessageHasFile = function(t, l) {
     var a;
@@ -9515,7 +9515,7 @@ var Jn, VR = function(e) {
     var d = this._createPendingFileMessage(t, l, a);
     return d.scheduledInfo = { scheduledMessageId: 0, scheduledAt: t.scheduledAt, scheduledMessageParams: t }, d;
   }, n.prototype._markMessageAsFailed = function(t, l, a) {
-    a === void 0 && (a = !1), t.errorCode = l.code, l.code === tt.REQUEST_CANCELED || l.code === tt.FILE_UPLOAD_CANCEL_FAILED ? t.sendingStatus = $t.CANCELED : a || (t.sendingStatus = $t.FAILED);
+    a === void 0 && (a = !1), t.errorCode = l.code, l.code === nt.REQUEST_CANCELED || l.code === nt.FILE_UPLOAD_CANCEL_FAILED ? t.sendingStatus = $t.CANCELED : a || (t.sendingStatus = $t.FAILED);
   }, n.prototype.sendUserMessage = function(t) {
     var l = x(x({}, W3), t);
     return Ze(u3(l)).throw(j.invalidParameters), this._sendUserMessage(l);
@@ -9525,7 +9525,7 @@ var Jn, VR = function(e) {
     var r = D.of(this._iid), i = r.dispatcher, c = r.requestQueue, V = a ?? this._generateRequestId(), s = Date.now(), o = new oa();
     return Qa(2).then(function() {
       var U = d._createPendingUserMessage(t, V, s);
-      i.dispatch(new En({ messages: [U], source: l === pl.RESEND ? ne.LOCAL_MESSAGE_RESEND_STARTED : ne.EVENT_MESSAGE_SENT_PENDING })), Le(function() {
+      i.dispatch(new En({ messages: [U], source: l === pl.RESEND ? ne.LOCAL_MESSAGE_RESEND_STARTED : ne.EVENT_MESSAGE_SENT_PENDING })), Ce(function() {
         return M(d, void 0, void 0, function() {
           return p(this, function(R) {
             return [2, o._trigger(U)];
@@ -9535,7 +9535,7 @@ var Jn, VR = function(e) {
       var N = new i5(x(x({}, t), { channelUrl: d.url, channelType: d.channelType, reqId: V }));
       c.send(N).then(function(R) {
         var h = R.as(QW).message;
-        i.dispatch(new En({ messages: [h], source: ne.EVENT_MESSAGE_SENT_SUCCESS })), Le(function() {
+        i.dispatch(new En({ messages: [h], source: ne.EVENT_MESSAGE_SENT_SUCCESS })), Ce(function() {
           return M(d, void 0, void 0, function() {
             return p(this, function(Z) {
               return [2, o._trigger(h)];
@@ -9547,7 +9547,7 @@ var Jn, VR = function(e) {
           throw R;
         Qa(2).then(function() {
           var h = d._createPendingUserMessage(t, V, s), Z = D.of(d._iid).cacheContext, W = Z.localCacheEnabled && Z.localCacheConfig.enableAutoResend && CN(R.code);
-          d._markMessageAsFailed(h, R, W), i.dispatch(new En({ messages: [h], source: h.sendingStatus === $t.PENDING ? ne.REQUEST_RESEND_MESSAGE : ne.EVENT_MESSAGE_SENT_FAILED })), Le(function() {
+          d._markMessageAsFailed(h, R, W), i.dispatch(new En({ messages: [h], source: h.sendingStatus === $t.PENDING ? ne.REQUEST_RESEND_MESSAGE : ne.EVENT_MESSAGE_SENT_FAILED })), Ce(function() {
             return M(d, void 0, void 0, function() {
               return p(this, function(F) {
                 return [2, o._triggerFailed(R, h)];
@@ -9613,7 +9613,7 @@ var Jn, VR = function(e) {
     var a = this, d = D.of(this._iid).requestQueue, r = Date.now(), i = this._generateRequestId();
     Qa(2).then(function() {
       var V = a._createPendingScheduledUserMessage(t, i, r);
-      Le(function() {
+      Ce(function() {
         return M(a, void 0, void 0, function() {
           return p(this, function(s) {
             return [2, l._trigger(V)];
@@ -9624,7 +9624,7 @@ var Jn, VR = function(e) {
     var c = new h5(x({ reqId: i, channelType: this.channelType, channelUrl: this.url }, t));
     d.send(c).then(function(V) {
       var s = V.as(x3).message;
-      Le(function() {
+      Ce(function() {
         return M(a, void 0, void 0, function() {
           return p(this, function(o) {
             return [2, l._trigger(s)];
@@ -9636,7 +9636,7 @@ var Jn, VR = function(e) {
         throw V;
       Qa(2).then(function() {
         var s = a._createPendingScheduledUserMessage(t, i, r);
-        a._markMessageAsFailed(s, V), Le(function() {
+        a._markMessageAsFailed(s, V), Ce(function() {
           return M(a, void 0, void 0, function() {
             return p(this, function(o) {
               return [2, l._triggerFailed(V, s)];
@@ -9666,14 +9666,14 @@ var Jn, VR = function(e) {
     var r = D.of(this._iid).dispatcher, i = tl.of(this._iid).fileMessageQueue, c = a ?? this._generateRequestId(), V = Date.now(), s = new oa();
     return Qa(2).then(function() {
       var o = d._createPendingFileMessage(t, c, V);
-      r.dispatch(new En({ messages: [o], source: l === pl.RESEND ? ne.LOCAL_MESSAGE_RESEND_STARTED : ne.EVENT_MESSAGE_SENT_PENDING })), Le(function() {
+      r.dispatch(new En({ messages: [o], source: l === pl.RESEND ? ne.LOCAL_MESSAGE_RESEND_STARTED : ne.EVENT_MESSAGE_SENT_PENDING })), Ce(function() {
         return M(d, void 0, void 0, function() {
           return p(this, function(U) {
             return [2, s._trigger(o)];
           });
         });
       }), i.request(d, c, t).then(function(U) {
-        r.dispatch(new En({ messages: [U], source: ne.EVENT_MESSAGE_SENT_SUCCESS })), Le(function() {
+        r.dispatch(new En({ messages: [U], source: ne.EVENT_MESSAGE_SENT_SUCCESS })), Ce(function() {
           return M(d, void 0, void 0, function() {
             return p(this, function(N) {
               return [2, s._trigger(U)];
@@ -9685,7 +9685,7 @@ var Jn, VR = function(e) {
           throw U;
         Qa(2).then(function() {
           var N = d._createPendingFileMessage(t, c, V), R = D.of(d._iid).cacheContext, h = R.localCacheEnabled && R.localCacheConfig.enableAutoResend && CN(U.code);
-          d._markMessageAsFailed(N, U, h), r.dispatch(new En({ messages: [N], source: N.sendingStatus === $t.PENDING ? ne.REQUEST_RESEND_MESSAGE : U.code === tt.FILE_UPLOAD_CANCEL_FAILED ? ne.LOCAL_MESSAGE_CANCELED : ne.EVENT_MESSAGE_SENT_FAILED })), Le(function() {
+          d._markMessageAsFailed(N, U, h), r.dispatch(new En({ messages: [N], source: N.sendingStatus === $t.PENDING ? ne.REQUEST_RESEND_MESSAGE : U.code === nt.FILE_UPLOAD_CANCEL_FAILED ? ne.LOCAL_MESSAGE_CANCELED : ne.EVENT_MESSAGE_SENT_FAILED })), Ce(function() {
             return M(d, void 0, void 0, function() {
               return p(this, function(Z) {
                 return [2, s._triggerFailed(U, N)];
@@ -9707,14 +9707,14 @@ var Jn, VR = function(e) {
     var d = this, r = D.of(this._iid).dispatcher, i = tl.of(this._iid).fileMessageQueue, c = a ?? this._generateRequestId(), V = Date.now(), s = new SN();
     return Qa(2).then(function() {
       var o = d._createPendingMultipleFilesMessage(t, c, V);
-      r.dispatch(new En({ messages: [o], source: l === pl.RESEND ? ne.LOCAL_MESSAGE_RESEND_STARTED : ne.EVENT_MESSAGE_SENT_PENDING })), Le(function() {
+      r.dispatch(new En({ messages: [o], source: l === pl.RESEND ? ne.LOCAL_MESSAGE_RESEND_STARTED : ne.EVENT_MESSAGE_SENT_PENDING })), Ce(function() {
         return M(d, void 0, void 0, function() {
           return p(this, function(U) {
             return [2, s._trigger(o)];
           });
         });
       }), i.request(d, c, t, { requestHandler: s, isCopy: l === pl.COPY }).then(function(U) {
-        r.dispatch(new En({ messages: [U], source: ne.EVENT_MESSAGE_SENT_SUCCESS })), Le(function() {
+        r.dispatch(new En({ messages: [U], source: ne.EVENT_MESSAGE_SENT_SUCCESS })), Ce(function() {
           return M(d, void 0, void 0, function() {
             return p(this, function(N) {
               return [2, s._trigger(U)];
@@ -9726,7 +9726,7 @@ var Jn, VR = function(e) {
           throw U;
         Qa(2).then(function() {
           var N = d._createPendingMultipleFilesMessage(t, c, V);
-          d._markMessageAsFailed(N, U), r.dispatch(new En({ messages: [N], source: ne.EVENT_MESSAGE_SENT_FAILED })), Le(function() {
+          d._markMessageAsFailed(N, U), r.dispatch(new En({ messages: [N], source: ne.EVENT_MESSAGE_SENT_FAILED })), Ce(function() {
             return M(d, void 0, void 0, function() {
               return p(this, function(R) {
                 return [2, s._triggerFailed(U, N)];
@@ -9740,7 +9740,7 @@ var Jn, VR = function(e) {
     var r = this, i = D.of(this._iid).requestQueue, c = new Z5(x(x({ reqId: a, channelType: this.channelType, channelUrl: this.url }, t), { fileUrl: t.fileUrl, requireAuth: t.requireAuth }));
     i.send(c).then(function(V) {
       var s = V.as(T5).message;
-      Le(function() {
+      Ce(function() {
         return M(r, void 0, void 0, function() {
           return p(this, function(o) {
             return [2, l._trigger(s)];
@@ -9752,7 +9752,7 @@ var Jn, VR = function(e) {
         throw V;
       Qa(2).then(function() {
         var s = r._createPendingScheduledFileMessage(t, a, d);
-        r._markMessageAsFailed(s, V), Le(function() {
+        r._markMessageAsFailed(s, V), Ce(function() {
           return M(r, void 0, void 0, function() {
             return p(this, function(o) {
               return [2, l._triggerFailed(V, s)];
@@ -10155,7 +10155,7 @@ var Jn, VR = function(e) {
 }), f5 = function(e) {
   function n(t) {
     var l = t.limit, a = t.token, d = t.userIdsFilter, r = t.metaDataKeyFilter, i = t.metaDataValuesFilter, c = t.nicknameStartsWithFilter, V = e.call(this) || this;
-    return V.method = he.GET, V.path = It, V.params = Oe({ limit: l, token: a, user_ids: d, metadatakey: r, metadatavalues_in: i, nickname_startswith: c }), V;
+    return V.method = he.GET, V.path = It, V.params = je({ limit: l, token: a, user_ids: d, metadatakey: r, metadatavalues_in: i, nickname_startswith: c }), V;
   }
   return J(n, e), n;
 }(Te), w5 = function(e) {
@@ -10199,7 +10199,7 @@ var Jn, VR = function(e) {
 }(yr), I5 = function(e) {
   function n(t) {
     var l = t.userId, a = t.limit, d = t.token, r = t.userIdsFilter, i = e.call(this) || this;
-    return i.method = he.GET, i.path = "".concat(It, "/").concat(l, "/block"), i.params = Oe({ limit: a, token: d, user_ids: r }), i;
+    return i.method = he.GET, i.path = "".concat(It, "/").concat(l, "/block"), i.params = je({ limit: a, token: d, user_ids: r }), i;
   }
   return J(n, e), n;
 }(Te), L5 = function(e) {
@@ -13627,7 +13627,7 @@ var _s, wd = function(e) {
     return t instanceof kl ? (t.messageParams && (a.messageParams = Zu(t.messageParams)), t.scheduledInfo && t.scheduledInfo.scheduledMessageParams && (a.scheduledInfo.scheduledMessageParams = (l = t.scheduledInfo.scheduledMessageParams, x(x({}, Zu(l)), { scheduledAt: l.scheduledAt })))) : t instanceof Ln ? (t.messageParams && (a.messageParams = Tu(t.messageParams)), t.scheduledInfo && t.scheduledInfo.scheduledMessageParams && (a.scheduledInfo.scheduledMessageParams = function(d) {
       return x(x({}, Tu(d)), { scheduledAt: d.scheduledAt });
     }(t.scheduledInfo.scheduledMessageParams))) : t instanceof Da && t.messageParams && (a.messageParams = function(d) {
-      return Oe({ fileInfoList: d.fileInfoList, isReplyToChannel: d.isReplyToChannel, pushNotificationDeliveryOption: d.pushNotificationDeliveryOption });
+      return je({ fileInfoList: d.fileInfoList, isReplyToChannel: d.isReplyToChannel, pushNotificationDeliveryOption: d.pushNotificationDeliveryOption });
     }(t.messageParams)), a;
   }, n.prototype._deserialize = function(t) {
     return t = x(x({}, t), { messageId: parseInt(t.messageId) }), tl.of(this._iid).buildMessageFromSerializedData(t);
@@ -14765,7 +14765,7 @@ var _s, wd = function(e) {
 }(ml), RB = function(e) {
   function n(t) {
     var l = this, a = t.reverse, d = a !== void 0 && a, r = t.limit, i = r === void 0 ? 20 : r, c = t.token;
-    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(Mk), l.params = Oe({ token: c, limit: i, reverse: d, order: vT.UPDATED_AT, show_ui_template: !0, show_color_variables: !0 }), l;
+    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(Mk), l.params = je({ token: c, limit: i, reverse: d, order: vT.UPDATED_AT, show_ui_template: !0, show_color_variables: !0 }), l;
   }
   return J(n, e), n;
 }(Te), hB = function(e) {
@@ -14809,15 +14809,15 @@ var _s, wd = function(e) {
     }
     throw j.invalidParameters;
   }, e.prototype.buildUserMessageCreateParamsFromSerializedData = function(n, t) {
-    return Oe(Ae({ data: t.data, customType: t.customType, mentionType: t.mentionType, mentionedUserIds: t.mentionedUserIds, mentionedUsers: t.mentionedUsers, mentionedMessageTemplate: t.mentionedMessageTemplate, metaArrays: t.metaArrays, parentMessageId: t.parentMessageId, isReplyToChannel: n.isReplyToChannel, pushNotificationDeliveryOption: n.pushNotificationDeliveryOption, appleCriticalAlertOptions: t.appleCriticalAlertOptions, reqId: t.reqId, message: t.message, translationTargetLanguages: Object.keys(t.translations), pollId: n.pollId }));
+    return je(Ae({ data: t.data, customType: t.customType, mentionType: t.mentionType, mentionedUserIds: t.mentionedUserIds, mentionedUsers: t.mentionedUsers, mentionedMessageTemplate: t.mentionedMessageTemplate, metaArrays: t.metaArrays, parentMessageId: t.parentMessageId, isReplyToChannel: n.isReplyToChannel, pushNotificationDeliveryOption: n.pushNotificationDeliveryOption, appleCriticalAlertOptions: t.appleCriticalAlertOptions, reqId: t.reqId, message: t.message, translationTargetLanguages: Object.keys(t.translations), pollId: n.pollId }));
   }, e.prototype.buildFileMessageCreateParamsFromSerializedData = function(n, t) {
     var l;
-    return Oe(Ae({ data: t.data, customType: t.customType, mentionType: t.mentionType, mentionedUserIds: t.mentionedUserIds, mentionedUsers: t.mentionedUsers, mentionedMessageTemplate: t.mentionedMessageTemplate, metaArrays: t.metaArrays, parentMessageId: t.parentMessageId, isReplyToChannel: n.isReplyToChannel, pushNotificationDeliveryOption: n.pushNotificationDeliveryOption, appleCriticalAlertOptions: t.appleCriticalAlertOptions, reqId: t.reqId, file: n.file, fileKey: n.fileKey, fileUrl: t.plainUrl, fileName: t.name, fileSize: t.size, mimeType: t.type, thumbnailSizes: (l = t.thumbnails) === null || l === void 0 ? void 0 : l.map(function(a) {
+    return je(Ae({ data: t.data, customType: t.customType, mentionType: t.mentionType, mentionedUserIds: t.mentionedUserIds, mentionedUsers: t.mentionedUsers, mentionedMessageTemplate: t.mentionedMessageTemplate, metaArrays: t.metaArrays, parentMessageId: t.parentMessageId, isReplyToChannel: n.isReplyToChannel, pushNotificationDeliveryOption: n.pushNotificationDeliveryOption, appleCriticalAlertOptions: t.appleCriticalAlertOptions, reqId: t.reqId, file: n.file, fileKey: n.fileKey, fileUrl: t.plainUrl, fileName: t.name, fileSize: t.size, mimeType: t.type, thumbnailSizes: (l = t.thumbnails) === null || l === void 0 ? void 0 : l.map(function(a) {
       return { maxWidth: a.width, maxHeight: a.height };
     }), fileType: n.fileType, requireAuth: t.requireAuth }));
   }, e.prototype.buildMultipleFilesMessageCreateParamsFromSerializedData = function(n, t) {
     var l = this;
-    return Oe({ data: t.data, customType: t.customType, mentionType: t.mentionType, mentionedUserIds: t.mentionedUserIds, mentionedUsers: t.mentionedUsers, mentionedMessageTemplate: t.mentionedMessageTemplate, metaArrays: t.metaArrays, parentMessageId: t.parentMessageId, isReplyToChannel: n.isReplyToChannel, pushNotificationDeliveryOption: n.pushNotificationDeliveryOption, appleCriticalAlertOptions: t.appleCriticalAlertOptions, reqId: t.reqId, fileInfoList: n.fileInfoList.map(function(a) {
+    return je({ data: t.data, customType: t.customType, mentionType: t.mentionType, mentionedUserIds: t.mentionedUserIds, mentionedUsers: t.mentionedUsers, mentionedMessageTemplate: t.mentionedMessageTemplate, metaArrays: t.metaArrays, parentMessageId: t.parentMessageId, isReplyToChannel: n.isReplyToChannel, pushNotificationDeliveryOption: n.pushNotificationDeliveryOption, appleCriticalAlertOptions: t.appleCriticalAlertOptions, reqId: t.reqId, fileInfoList: n.fileInfoList.map(function(a) {
       return new dR(l._iid, a);
     }) });
   }, e.prototype.buildScheduledUserMessageCreateParamsFromSerializedData = function(n, t) {
@@ -14931,7 +14931,7 @@ var _s, wd = function(e) {
       return p(this, function(R) {
         switch (R.label) {
           case 0:
-            return r = new py(Oe(Ae(x(x({ channelType: t, channelUrl: n, timestamp: typeof l == "number" ? l : null, token: typeof l == "string" ? l : null }, fT), a)))), [4, this._requestQueue.send(r)];
+            return r = new py(je(Ae(x(x({ channelType: t, channelUrl: n, timestamp: typeof l == "number" ? l : null, token: typeof l == "string" ? l : null }, fT), a)))), [4, this._requestQueue.send(r)];
           case 1:
             return i = R.sent(), c = i.as(My), V = c.updatedMessages, s = c.deletedMessagesInfo, o = c.hasMore, U = c.nextToken, N = s.map(function(h) {
               return h.messageId;
@@ -14999,7 +14999,7 @@ var uB = function(e) {
 }(yr), pB = function(e) {
   function n(t) {
     var l = t.channelType, a = t.channelUrl, d = t.limit, r = t.token, i = e.call(this) || this;
-    return i.method = he.GET, i.path = "".concat(Lt(l), "/").concat(encodeURIComponent(a), "/messages/parent_thread_message"), i.params = Oe(Ae({ limit: d, token: r })), i;
+    return i.method = he.GET, i.path = "".concat(Lt(l), "/").concat(encodeURIComponent(a), "/messages/parent_thread_message"), i.params = je(Ae({ limit: d, token: r })), i;
   }
   return J(n, e), n;
 }(Te), MB = function(e) {
@@ -15148,7 +15148,7 @@ var uo, bN = function(e) {
             n = i.sent();
             try {
               for (t = be(n), l = t.next(); !l.done; l = t.next())
-                (a = l.value).errorCode === 0 && (this._logger.debug("cached pending message is not auto-resend registered. changing its sending status to failed: ", a.reqId), a.sendingStatus = $t.FAILED, a.errorCode = tt.ACK_TIMEOUT, this._dispatcher.dispatch(new En({ messages: [a], source: ne.LOCAL_MESSAGE_FAILED })));
+                (a = l.value).errorCode === 0 && (this._logger.debug("cached pending message is not auto-resend registered. changing its sending status to failed: ", a.reqId), a.sendingStatus = $t.FAILED, a.errorCode = nt.ACK_TIMEOUT, this._dispatcher.dispatch(new En({ messages: [a], source: ne.LOCAL_MESSAGE_FAILED })));
             } catch (c) {
               d = { error: c };
             } finally {
@@ -15406,7 +15406,7 @@ var Cd, ta, la, Ti, Zd, oR, Er, po, Ga = function(e) {
     return a.state = null, a.role = null, a.isMuted = !1, a.isBlockedByMe = !1, a.isBlockingMe = !1, a.state = Qt(On, l.state) ? l.state : null, a.role = Qt(ed, l.role) ? l.role : null, typeof l.is_muted == "boolean" && (a.isMuted = l.is_muted), typeof l.is_blocked_by_me == "boolean" && (a.isBlockedByMe = l.is_blocked_by_me), typeof l.is_blocking_me == "boolean" && (a.isBlockingMe = l.is_blocking_me), a;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { state: t.state, role: t.role, is_muted: t.isMuted, is_blocked_by_me: t.isBlockedByMe, is_blocking_me: t.isBlockingMe })));
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { state: t.state, role: t.role, is_muted: t.isMuted, is_blocked_by_me: t.isBlockedByMe, is_blocking_me: t.isBlockingMe })));
   }, n;
 }(BV);
 (function(e) {
@@ -16018,7 +16018,7 @@ var QN = function(e) {
 }(), BB = function(e) {
   function n(t) {
     var l = t.userId, a = t.ts, d = t.token, r = t.filter, i = t.includeChatNotification, c = i !== void 0 && i, V = e.call(this) || this, s = x(x({}, UR), r), o = s.customTypes, U = s.includeEmpty, N = s.includeFrozen;
-    return V.method = he.GET, V.path = "".concat(It, "/").concat(encodeURIComponent(l), "/my_group_channels/changelogs"), V.params = Oe(Ae({ show_delivery_receipt: !0, show_member: !0, show_read_receipt: !0, change_ts: a || null, token: d, custom_types: o, show_empty: U, show_frozen: N, include_chat_notification: c })), V;
+    return V.method = he.GET, V.path = "".concat(It, "/").concat(encodeURIComponent(l), "/my_group_channels/changelogs"), V.params = je(Ae({ show_delivery_receipt: !0, show_member: !0, show_read_receipt: !0, change_ts: a || null, token: d, custom_types: o, show_empty: U, show_frozen: N, include_chat_notification: c })), V;
   }
   return J(n, e), n;
 }(Te), DB = function(e) {
@@ -16043,8 +16043,8 @@ var QN = function(e) {
   return J(n, e), n;
 }(ue), gV = { includeEmpty: !1, includeFrozen: !0, includeMetaData: !0, includeChatNotification: !1, channelUrlsFilter: void 0, customTypesFilter: void 0, customTypeStartsWithFilter: void 0, nicknameContainsFilter: void 0, nicknameStartsWithFilter: void 0, nicknameExactMatchFilter: void 0, channelNameContainsFilter: void 0, myMemberStateFilter: ta.ALL, unreadChannelFilter: Ti.ALL, superChannelFilter: la.ALL, publicChannelFilter: Cd.ALL, hiddenChannelFilter: Zd.ALL, userIdsFilter: { userIds: [], includeMode: !0, queryType: Er.AND }, searchFilter: { query: void 0, fields: [] }, metadataKey: void 0, metadataValues: void 0, metadataOrderKeyFilter: void 0, metadataValueStartsWith: void 0, order: Xn.LATEST_LAST_MESSAGE, createdAfter: void 0, createdBefore: void 0 }, XB = function(e) {
   function n(t) {
-    var l = this, a = t.userId, d = t.token, r = t.limit, i = t.order, c = t.includeEmpty, V = t.myMemberStateFilter, s = t.superChannelFilter, o = t.publicChannelFilter, U = t.unreadChannelFilter, N = t.nicknameContainsFilter, R = t.nicknameStartsWithFilter, h = t.nicknameExactMatchFilter, Z = t.channelNameContainsFilter, W = t.channelUrlsFilter, F = t.customTypesFilter, m = t.customTypeStartsWithFilter, E = t.hiddenChannelFilter, u = t.metadataOrderKeyFilter, b = t.metadataKey, k = t.metadataValues, Q = t.metadataValueStartsWith, S = t.includeFrozen, v = t.includeMetaData, G = t.searchFilter, w = t.userIdsFilter, y = t.includeChatNotification, g = y !== void 0 && y, f = t.includeLeftChannel, I = f !== void 0 && f, K = t.createdAfter, Re = t.createdBefore;
-    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(It, "/").concat(encodeURIComponent(a), "/my_group_channels"), l.params = Oe({ token: d, limit: r, order: i ?? gV.order, show_member: !0, show_read_receipt: !0, show_delivery_receipt: !0, show_empty: c ?? gV.includeEmpty, member_state_filter: V ?? gV.myMemberStateFilter, super_mode: s ?? gV.superChannelFilter, public_mode: o ?? gV.publicChannelFilter, unread_filter: U ?? gV.unreadChannelFilter, members_nickname_contains: N, members_nickname_startswith: R, members_nickname: h, name_contains: Z, channel_urls: W, custom_types: F, custom_type_startswith: m, hidden_mode: E, metadata_order_key: u, metadata_key: b, metadata_values: k, metadata_value_startswith: Q, show_frozen: S, show_metadata: v, include_chat_notification: g, include_left_channel: I, created_after: K, created_before: Re }), G && G.query && G.fields && (l.params.search_query = G.query, l.params.search_fields = G.fields), w && w.userIds && w.userIds.length > 0 && (w.includeMode ? (l.params.members_include_in = w.userIds, l.params.query_type = w.queryType.toUpperCase()) : l.params.members_exactly_in = w.userIds), l;
+    var l = this, a = t.userId, d = t.token, r = t.limit, i = t.order, c = t.includeEmpty, V = t.myMemberStateFilter, s = t.superChannelFilter, o = t.publicChannelFilter, U = t.unreadChannelFilter, N = t.nicknameContainsFilter, R = t.nicknameStartsWithFilter, h = t.nicknameExactMatchFilter, Z = t.channelNameContainsFilter, W = t.channelUrlsFilter, F = t.customTypesFilter, m = t.customTypeStartsWithFilter, E = t.hiddenChannelFilter, u = t.metadataOrderKeyFilter, b = t.metadataKey, k = t.metadataValues, Q = t.metadataValueStartsWith, S = t.includeFrozen, v = t.includeMetaData, G = t.searchFilter, w = t.userIdsFilter, y = t.includeChatNotification, g = y !== void 0 && y, f = t.includeLeftChannel, I = f !== void 0 && f, K = t.createdAfter, Ue = t.createdBefore;
+    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(It, "/").concat(encodeURIComponent(a), "/my_group_channels"), l.params = je({ token: d, limit: r, order: i ?? gV.order, show_member: !0, show_read_receipt: !0, show_delivery_receipt: !0, show_empty: c ?? gV.includeEmpty, member_state_filter: V ?? gV.myMemberStateFilter, super_mode: s ?? gV.superChannelFilter, public_mode: o ?? gV.publicChannelFilter, unread_filter: U ?? gV.unreadChannelFilter, members_nickname_contains: N, members_nickname_startswith: R, members_nickname: h, name_contains: Z, channel_urls: W, custom_types: F, custom_type_startswith: m, hidden_mode: E, metadata_order_key: u, metadata_key: b, metadata_values: k, metadata_value_startswith: Q, show_frozen: S, show_metadata: v, include_chat_notification: g, include_left_channel: I, created_after: K, created_before: Ue }), G && G.query && G.fields && (l.params.search_query = G.query, l.params.search_fields = G.fields), w && w.userIds && w.userIds.length > 0 && (w.includeMode ? (l.params.members_include_in = w.userIds, l.params.query_type = w.queryType.toUpperCase()) : l.params.members_exactly_in = w.userIds), l;
   }
   return J(n, e), n;
 }(Te), OB = function(e) {
@@ -16072,7 +16072,7 @@ var QN = function(e) {
 }(ue), fB = function(e) {
   function n(t) {
     var l = t.userId, a = t.filter, d = e.call(this) || this, r = a.keys;
-    return d.method = he.GET, d.path = "".concat(It, "/").concat(encodeURIComponent(l), "/unread_item_count"), d.params = Oe({ item_keys: r }), d;
+    return d.method = he.GET, d.path = "".concat(It, "/").concat(encodeURIComponent(l), "/unread_item_count"), d.params = je({ item_keys: r }), d;
   }
   return J(n, e), n;
 }(Te), wB = function(e) {
@@ -16139,7 +16139,7 @@ var QN = function(e) {
 }, AB = function(e) {
   function n(t) {
     var l = this, a = t.userId, d = t.channelUrl, r = t.coverUrl, i = t.coverImage, c = t.isDistinct, V = t.isSuper, s = t.isBroadcast, o = t.isPublic, U = t.isExclusive, N = t.isDiscoverable, R = t.isStrict, h = t.isEphemeral, Z = t.accessCode, W = t.name, F = t.data, m = t.customType, E = t.messageSurvivalSeconds, u = t.invitedUserIds, b = t.operatorUserIds;
-    return (l = e.call(this) || this).method = he.POST, l.path = vl, l.params = Oe({ user_ids: ot([a], et(u ?? []), !1).filter(function(k, Q, S) {
+    return (l = e.call(this) || this).method = he.POST, l.path = vl, l.params = je({ user_ids: ot([a], et(u ?? []), !1).filter(function(k, Q, S) {
       return Q === S.indexOf(k);
     }), channel_url: d, cover_url: r, cover_file: i, is_distinct: c, is_super: V, is_broadcast: s, is_exclusive: U, is_public: o, is_discoverable: N, strict: R, is_ephemeral: h, access_code: Z, name: W, data: F, custom_type: m, operator_ids: b, message_survival_seconds: E }), l;
   }
@@ -16333,7 +16333,7 @@ var VD = function(e) {
 }(Wn), FD = function(e) {
   function n(t) {
     var l = t.channelUrl, a = t.userId, d = e.call(this) || this;
-    return d.method = he.PUT, d.path = "".concat(vl, "/").concat(encodeURIComponent(l), "/messages/mark_as_delivered"), d.params = Oe({ userId: a }), d;
+    return d.method = he.PUT, d.path = "".concat(vl, "/").concat(encodeURIComponent(l), "/messages/mark_as_delivered"), d.params = je({ userId: a }), d;
   }
   return J(n, e), n;
 }(Te);
@@ -16416,7 +16416,7 @@ var Rr, WD = function(e) {
             case 0:
               return i = r.channelUrl, c = r.channelType, V = r.parentMessage, s = new H3(this._iid, { channel_type: Xt.GROUP, channel_url: i, parent_message_id: V.messageId, thread_info: aR.payloadify(V.threadInfo) }), c !== Xt.GROUP ? [3, 2] : [4, this.getChannel(i, !0)];
             case 1:
-              o = N.sent(), Le(function() {
+              o = N.sent(), Ce(function() {
                 return M(U, void 0, void 0, function() {
                   var R, h, Z, W, F;
                   return p(this, function(m) {
@@ -16556,7 +16556,7 @@ var Rr, WD = function(e) {
   }, n.prototype._handleEvent = function(t) {
     var l, a;
     return M(this, void 0, void 0, function() {
-      var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Re, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, we, Me, We, Be, Ke, lt, De, je, at, Ge, $e, He, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ce, Je, de, qe, nt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, ge, it, ze, ht, Ft, X, Ue, pe, fe, Nt, Ee, H, Ve, ye, Zt, Mt, Ct, Ht, Sn, bt, rn, en, gn, An, xi, ir, Bh, bd, MU, _c, Pc, Ac, Gi, EU, SU, kU, bU, Xr, YU, em, tm, nm, Dh, Xh, Oh, QU, JU, jh, Hh, lm, fh, am, wh, dm, gh, rm, Ih, im, on = this;
+      var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Ue, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, ge, Me, We, De, Oe, tt, Be, He, at, Ge, $e, fe, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ke, Je, de, qe, lt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, Ie, it, ze, ht, Ft, X, Ne, pe, we, Nt, Ee, H, Ve, ye, Zt, Mt, Ct, Ht, Sn, bt, rn, en, gn, An, xi, ir, Bh, bd, MU, _c, Pc, Ac, Gi, EU, SU, kU, bU, Xr, YU, em, tm, nm, Dh, Xh, Oh, QU, JU, jh, Hh, lm, fh, am, wh, dm, gh, rm, Ih, im, on = this;
       return p(this, function(gt) {
         switch (gt.label) {
           case 0:
@@ -16595,9 +16595,9 @@ var Rr, WD = function(e) {
           case 1:
             return U = null, t.code === "MESG" ? U = t.as(QW) : t.code === "FILE" ? U = t.as(kW) : t.code !== "ADMM" && t.code != "BRDM" || (U = t.as(K3)), U ? (d = U.message, r = U.isMentioned, i = U.forceUpdateLastMessage, d.channelType !== Xt.GROUP ? [3, 3] : (this._disableMack || yn(function() {
               return M(on, void 0, void 0, function() {
-                var Ne;
+                var Re;
                 return p(this, function(C) {
-                  return Ne = new ZD(d), this._requestQueue.send(Ne), [2];
+                  return Re = new ZD(d), this._requestQueue.send(Re), [2];
                 });
               });
             }), I = this._groupChannelCache.isCachedInMemory(d.channelUrl), v = d instanceof wn && d.sender.userId === this._sdkState.userId, [4, this.getChannel(d.channelUrl, !0)])) : [3, 3];
@@ -16610,8 +16610,8 @@ var Rr, WD = function(e) {
                     V || (d.sender.nickname = Ee.nickname, d.sender.plainProfileUrl = Ee.plainProfileUrl, d.sender.metaData = Ee.metaData, d.sender.isBlockedByMe = Ee.isBlockedByMe);
                     break;
                   }
-              } catch (Ne) {
-                Hh = { error: Ne };
+              } catch (Re) {
+                Hh = { error: Re };
               } finally {
                 try {
                   o && !o.done && (lm = s.return) && lm.call(s);
@@ -16620,13 +16620,13 @@ var Rr, WD = function(e) {
                     throw Hh.error;
                 }
               }
-              !V && r && ((l = d.mentionedUsers) === null || l === void 0 || l.forEach(function(Ne) {
+              !V && r && ((l = d.mentionedUsers) === null || l === void 0 || l.forEach(function(Re) {
                 var C, Et;
                 try {
                   for (var st = be(c.members), St = st.next(); !St.done; St = st.next()) {
                     var Dn = St.value;
-                    if (Ne.userId === Dn.userId) {
-                      Ne.nickname = Dn.nickname, Ne.plainProfileUrl = Dn.plainProfileUrl, Ne.metaData = Dn.metaData;
+                    if (Re.userId === Dn.userId) {
+                      Re.nickname = Dn.nickname, Re.plainProfileUrl = Dn.plainProfileUrl, Re.metaData = Dn.metaData;
                       break;
                     }
                   }
@@ -16642,18 +16642,18 @@ var Rr, WD = function(e) {
                 }
               })), v && (F = this._sessionManager.currentUser) && (F.nickname = d.sender.nickname, F.plainProfileUrl = d.sender.plainProfileUrl, F.metaData = d.sender.metaData);
             }
-            d.silent && !v || (c.isEphemeral || I) && (c._updateLastMessage(d), v || c._updateUnreadCount(c.unreadMessageCount + 1, c.unreadMentionCount + (r ? 1 : 0))), i && c._updateLastMessage(d), this._dispatcher.dispatch(new Dt({ channels: [c], source: ne.EVENT_MESSAGE_RECEIVED })), d.silent && !v || Le(function() {
+            d.silent && !v || (c.isEphemeral || I) && (c._updateLastMessage(d), v || c._updateUnreadCount(c.unreadMessageCount + 1, c.unreadMentionCount + (r ? 1 : 0))), i && c._updateLastMessage(d), this._dispatcher.dispatch(new Dt({ channels: [c], source: ne.EVENT_MESSAGE_RECEIVED })), d.silent && !v || Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onChannelChanged && Et.onChannelChanged(c);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16662,18 +16662,18 @@ var Rr, WD = function(e) {
                   return [2];
                 });
               });
-            }), this._dispatcher.dispatch(new En({ messages: [d], source: ne.EVENT_MESSAGE_RECEIVED })), Le(function() {
+            }), this._dispatcher.dispatch(new En({ messages: [d], source: ne.EVENT_MESSAGE_RECEIVED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onMessageReceived && Et.onMessageReceived(c, d), r && Et.onMentionReceived && Et.onMentionReceived(c, d);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16688,18 +16688,18 @@ var Rr, WD = function(e) {
           case 4:
             return U = null, t.code === "MEDI" ? U = t.as(rR) : t.code === "FEDI" ? U = t.as(iR) : t.code === "AEDI" && (U = t.as(_3)), U ? (N = U.message, R = U.mentionCountChange, N.threadInfo && (N.threadInfo.unreadReplyCount = void 0), N.channelType !== Xt.GROUP ? [3, 6] : (I = this._groupChannelCache.isCachedInMemory(N.channelUrl), [4, this.getChannel(N.channelUrl, !0)])) : [3, 6];
           case 5:
-            h = gt.sent(), v = N instanceof wn && N.sender.userId === this._sdkState.userId, Z = !1, v ? (W = N.sender, (F = this._sessionManager.currentUser) && (F.nickname = W.nickname, F.plainProfileUrl = W.plainProfileUrl, F.metaData = W.metaData)) : h.isReadMessage(N) || R !== 0 && !N.silent && I && (h._updateUnreadCount(h.unreadMessageCount, h.unreadMentionCount + R), Z = !0), h._updateLastMessage(N) ? Z = !0 : !((a = h.lastMessage) === null || a === void 0) && a.isIdentical(N) && (I ? h._updateLastMessage(N) && (Z = !0) : Z = !0), m = !1, h.lastPinnedMessage && h.lastPinnedMessage.messageId === N.messageId && (h.lastPinnedMessage = N, Z = !0, m = !0), Z && (this._dispatcher.dispatch(new Dt({ channels: [h], source: m ? ne.EVENT_PINNED_MESSAGE_UPDATED : ne.EVENT_MESSAGE_UPDATED })), N.silent && !v || Le(function() {
+            h = gt.sent(), v = N instanceof wn && N.sender.userId === this._sdkState.userId, Z = !1, v ? (W = N.sender, (F = this._sessionManager.currentUser) && (F.nickname = W.nickname, F.plainProfileUrl = W.plainProfileUrl, F.metaData = W.metaData)) : h.isReadMessage(N) || R !== 0 && !N.silent && I && (h._updateUnreadCount(h.unreadMessageCount, h.unreadMentionCount + R), Z = !0), h._updateLastMessage(N) ? Z = !0 : !((a = h.lastMessage) === null || a === void 0) && a.isIdentical(N) && (I ? h._updateLastMessage(N) && (Z = !0) : Z = !0), m = !1, h.lastPinnedMessage && h.lastPinnedMessage.messageId === N.messageId && (h.lastPinnedMessage = N, Z = !0, m = !0), Z && (this._dispatcher.dispatch(new Dt({ channels: [h], source: m ? ne.EVENT_PINNED_MESSAGE_UPDATED : ne.EVENT_MESSAGE_UPDATED })), N.silent && !v || Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onChannelChanged && Et.onChannelChanged(h);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16708,18 +16708,18 @@ var Rr, WD = function(e) {
                   return [2];
                 });
               });
-            }), m && Le(function() {
+            }), m && Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onPinnedMessageUpdated && Et.onPinnedMessageUpdated(h);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16728,18 +16728,18 @@ var Rr, WD = function(e) {
                   return [2];
                 });
               });
-            })), this._dispatcher.dispatch(new En({ messages: [N], source: ne.EVENT_MESSAGE_UPDATED })), Le(function() {
+            })), this._dispatcher.dispatch(new En({ messages: [N], source: ne.EVENT_MESSAGE_UPDATED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onMessageUpdated && Et.onMessageUpdated(h, N), R > 0 && Et.onMentionReceived && Et.onMentionReceived(h, N);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16752,20 +16752,20 @@ var Rr, WD = function(e) {
           case 6:
             return [3, 79];
           case 7:
-            return E = t.as(z3), De = E.channelUrl, je = E.channelType, u = E.messageId, b = E.silent, k = E.messageCreatedAt, Q = E.senderId, je !== Xt.GROUP ? [3, 9] : [4, this.getChannel(De, !0)];
+            return E = t.as(z3), Be = E.channelUrl, He = E.channelType, u = E.messageId, b = E.silent, k = E.messageCreatedAt, Q = E.senderId, He !== Xt.GROUP ? [3, 9] : [4, this.getChannel(Be, !0)];
           case 8:
-            S = gt.sent(), v = Q === this._sdkState.userId, b || v || k > 0 && S.myLastRead < k && S.unreadMessageCount > 0 && S._updateUnreadCount(S.unreadMessageCount - 1, 0), this._dispatcher.dispatch(new MW({ messageIds: [u], source: ne.EVENT_MESSAGE_DELETED })), Le(function() {
+            S = gt.sent(), v = Q === this._sdkState.userId, b || v || k > 0 && S.myLastRead < k && S.unreadMessageCount > 0 && S._updateUnreadCount(S.unreadMessageCount - 1, 0), this._dispatcher.dispatch(new MW({ messageIds: [u], source: ne.EVENT_MESSAGE_DELETED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onMessageDeleted && Et.onMessageDeleted(S, u);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16780,18 +16780,18 @@ var Rr, WD = function(e) {
           case 10:
             return (G = t.as(Z3).readStatus).channelType !== Xt.GROUP ? [3, 12] : (I = this._groupChannelCache.isCachedInMemory(G.channelUrl), [4, this.getChannel(G.channelUrl, !0)]);
           case 11:
-            w = gt.sent(), I && w._updateUnreadMemberState(G.reader.userId, G.readAt), G.reader.userId === this._sdkState.userId ? I ? (w.unreadMessageCount > 0 || w.unreadMentionCount > 0) && (w._updateUnreadCount(0, 0), this._dispatcher.dispatch(new Dt({ channels: [w], source: ne.EVENT_CHANNEL_READ })), Le(function() {
+            w = gt.sent(), I && w._updateUnreadMemberState(G.reader.userId, G.readAt), G.reader.userId === this._sdkState.userId ? I ? (w.unreadMessageCount > 0 || w.unreadMentionCount > 0) && (w._updateUnreadCount(0, 0), this._dispatcher.dispatch(new Dt({ channels: [w], source: ne.EVENT_CHANNEL_READ })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onChannelChanged && Et.onChannelChanged(w);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16800,18 +16800,18 @@ var Rr, WD = function(e) {
                   return [2];
                 });
               });
-            })) : w.unreadMessageCount !== 0 && w.unreadMentionCount !== 0 || (this._dispatcher.dispatch(new Dt({ channels: [w], source: ne.EVENT_CHANNEL_READ })), Le(function() {
+            })) : w.unreadMessageCount !== 0 && w.unreadMentionCount !== 0 || (this._dispatcher.dispatch(new Dt({ channels: [w], source: ne.EVENT_CHANNEL_READ })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onChannelChanged && Et.onChannelChanged(w);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16820,18 +16820,18 @@ var Rr, WD = function(e) {
                   return [2];
                 });
               });
-            })) : (this._dispatcher.dispatch(new Dt({ channels: [w], source: ne.EVENT_CHANNEL_READ })), Le(function() {
+            })) : (this._dispatcher.dispatch(new Dt({ channels: [w], source: ne.EVENT_CHANNEL_READ })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onUnreadMemberStatusUpdated && Et.onUnreadMemberStatusUpdated(w);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16844,25 +16844,25 @@ var Rr, WD = function(e) {
           case 12:
             return [3, 79];
           case 13:
-            return y = t.as(WD), De = y.channelUrl, g = y.deliveredStateUpdate, f = g === void 0 ? {} : g, I = this._groupChannelCache.isCachedInMemory(De), [4, this.getChannel(De, !0)];
+            return y = t.as(WD), Be = y.channelUrl, g = y.deliveredStateUpdate, f = g === void 0 ? {} : g, I = this._groupChannelCache.isCachedInMemory(Be), [4, this.getChannel(Be, !0)];
           case 14:
             if (K = gt.sent(), I)
-              for (Re in f)
-                K._updateUndeliveredMemberState(Re, f[Re]);
-            return Object.keys(f).some(function(Ne) {
-              return Ne !== on._sdkState.userId;
-            }) && (this._dispatcher.dispatch(new Dt({ channels: [K], source: ne.EVENT_CHANNEL_DELIVERED })), Le(function() {
+              for (Ue in f)
+                K._updateUndeliveredMemberState(Ue, f[Ue]);
+            return Object.keys(f).some(function(Re) {
+              return Re !== on._sdkState.userId;
+            }) && (this._dispatcher.dispatch(new Dt({ channels: [K], source: ne.EVENT_CHANNEL_DELIVERED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onUndeliveredMemberStatusUpdated && Et.onUndeliveredMemberStatusUpdated(K);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16873,22 +16873,22 @@ var Rr, WD = function(e) {
               });
             })), [3, 79];
           case 15:
-            return q = t.as(P3), De = q.channelUrl, je = q.channelType, ae = q.event, je !== Xt.GROUP ? [3, 18] : [4, this.getChannel(De, !0)];
+            return q = t.as(P3), Be = q.channelUrl, He = q.channelType, ae = q.event, He !== Xt.GROUP ? [3, 18] : [4, this.getChannel(Be, !0)];
           case 16:
             return se = gt.sent(), [4, this.getMessageFromCache(ae.messageId)];
           case 17:
-            ($ = gt.sent()) ? $ instanceof Bl && ($.applyReactionEvent(ae), this._dispatcher.dispatch(new En({ messages: [$], source: ne.EVENT_MESSAGE_REACTION_UPDATED }))) : this._dispatcher.dispatch(new t3({ event: ae, source: ne.EVENT_MESSAGE_REACTION_UPDATED })), Le(function() {
+            ($ = gt.sent()) ? $ instanceof Bl && ($.applyReactionEvent(ae), this._dispatcher.dispatch(new En({ messages: [$], source: ne.EVENT_MESSAGE_REACTION_UPDATED }))) : this._dispatcher.dispatch(new t3({ event: ae, source: ne.EVENT_MESSAGE_REACTION_UPDATED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onReactionUpdated && Et.onReactionUpdated(se, ae);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16905,18 +16905,18 @@ var Rr, WD = function(e) {
           case 20:
             return L = gt.sent(), [4, this.getMessageFromCache(le.targetMessageId)];
           case 21:
-            ($ = gt.sent()) ? $ instanceof Bl && ($.applyThreadInfoUpdateEvent(le), this._dispatcher.dispatch(new En({ messages: [$], source: ne.EVENT_MESSAGE_THREADINFO_UPDATED }))) : this._dispatcher.dispatch(new n3({ event: le, source: ne.EVENT_MESSAGE_THREADINFO_UPDATED })), Le(function() {
+            ($ = gt.sent()) ? $ instanceof Bl && ($.applyThreadInfoUpdateEvent(le), this._dispatcher.dispatch(new En({ messages: [$], source: ne.EVENT_MESSAGE_THREADINFO_UPDATED }))) : this._dispatcher.dispatch(new n3({ event: le, source: ne.EVENT_MESSAGE_THREADINFO_UPDATED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onThreadInfoUpdated && Et.onThreadInfoUpdated(L, le);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16933,7 +16933,7 @@ var Rr, WD = function(e) {
           case 24:
             gt.trys.push([24, 29, 30, 31]), re = be(ee), te = re.next(), gt.label = 25;
           case 25:
-            return te.done ? [3, 28] : (Qe = te.value, De = Qe.channelUrl, jt = Qe.memberCount, Bt = Qe.joinedMemberCount, Ye = Qe.updatedAt, [4, this.getChannelFromCache(De)]);
+            return te.done ? [3, 28] : (Qe = te.value, Be = Qe.channelUrl, jt = Qe.memberCount, Bt = Qe.joinedMemberCount, Ye = Qe.updatedAt, [4, this.getChannelFromCache(Be)]);
           case 26:
             (Se = gt.sent()) && Se._setLatestMemberCount(jt, Bt, Ye) && O.push(Se), gt.label = 27;
           case 27:
@@ -16951,18 +16951,18 @@ var Rr, WD = function(e) {
             }
             return [7];
           case 31:
-            return O.length > 0 && (this._dispatcher.dispatch(new Dt({ channels: O, source: ne.EVENT_CHANNEL_MEMBER_COUNT_UPDATED })), Le(function() {
+            return O.length > 0 && (this._dispatcher.dispatch(new Dt({ channels: O, source: ne.EVENT_CHANNEL_MEMBER_COUNT_UPDATED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onChannelMemberCountChanged && Et.onChannelMemberCountChanged(O);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16973,20 +16973,20 @@ var Rr, WD = function(e) {
               });
             })), [3, 79];
           case 32:
-            return we = t.as($3), Me = we.event, We = we.status, De = we.channelUrl, je = we.channelType, De && je === Xt.GROUP ? [4, this.getChannel(De, !0)] : [3, 34];
+            return ge = t.as($3), Me = ge.event, We = ge.status, Be = ge.channelUrl, He = ge.channelType, Be && He === Xt.GROUP ? [4, this.getChannel(Be, !0)] : [3, 34];
           case 33:
-            Be = gt.sent(), this._dispatcher.dispatch(new EW({ event: Me, source: ne.EVENT_POLL_UPDATED })), Le(We === d3 ? function() {
+            De = gt.sent(), this._dispatcher.dispatch(new EW({ event: Me, source: ne.EVENT_POLL_UPDATED })), Ce(We === d3 ? function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
-                      (Et = C.value).onPollDeleted && Et.onPollDeleted(Be, Me.pollId);
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
+                      (Et = C.value).onPollDeleted && Et.onPollDeleted(De, Me.pollId);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -16997,16 +16997,16 @@ var Rr, WD = function(e) {
               });
             } : function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
-                      (Et = C.value).onPollUpdated && Et.onPollUpdated(Be, Me);
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
+                      (Et = C.value).onPollUpdated && Et.onPollUpdated(De, Me);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -17019,20 +17019,20 @@ var Rr, WD = function(e) {
           case 34:
             return [3, 79];
           case 35:
-            return Ke = t.as(JW), lt = Ke.event, De = Ke.channelUrl, je = Ke.channelType, De && je === Xt.GROUP ? [4, this.getChannel(De, !0)] : [3, 37];
+            return Oe = t.as(JW), tt = Oe.event, Be = Oe.channelUrl, He = Oe.channelType, Be && He === Xt.GROUP ? [4, this.getChannel(Be, !0)] : [3, 37];
           case 36:
-            at = gt.sent(), this._dispatcher.dispatch(new KR({ event: lt, source: ne.EVENT_POLL_VOTED })), Le(function() {
+            at = gt.sent(), this._dispatcher.dispatch(new KR({ event: tt, source: ne.EVENT_POLL_VOTED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
-                      (Et = C.value).onPollVoted && Et.onPollVoted(at, lt);
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
+                      (Et = C.value).onPollVoted && Et.onPollVoted(at, tt);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -17090,11 +17090,11 @@ var Rr, WD = function(e) {
           case 39:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 40:
-            return $e = gt.sent(), He = t.as(tD), Xe = He.memberCount, pt = He.joinedMemberCount, Vt = He.members, yt = !1, Vt.forEach(function(Ne) {
-              $e.isExclusive || $e.isSuper || $e.isBroadcast ? yt = yt || $e._setLatestMemberCount(Xe, pt, Ge.ts) : (Ne.state = On.JOINED, $e.addMember(Ne, Ge.ts), on._updateJoinedMemberCount($e)), Ne.userId === on._sdkState.userId && ($e.myMemberState = On.JOINED);
-            }), this._dispatcher.dispatch(new Dt({ channels: [$e], source: ne.EVENT_CHANNEL_JOINED })), Le(function() {
+            return $e = gt.sent(), fe = t.as(tD), Xe = fe.memberCount, pt = fe.joinedMemberCount, Vt = fe.members, yt = !1, Vt.forEach(function(Re) {
+              $e.isExclusive || $e.isSuper || $e.isBroadcast ? yt = yt || $e._setLatestMemberCount(Xe, pt, Ge.ts) : (Re.state = On.JOINED, $e.addMember(Re, Ge.ts), on._updateJoinedMemberCount($e)), Re.userId === on._sdkState.userId && ($e.myMemberState = On.JOINED);
+            }), this._dispatcher.dispatch(new Dt({ channels: [$e], source: ne.EVENT_CHANNEL_JOINED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     var Et, st;
                     try {
@@ -17124,11 +17124,11 @@ var Rr, WD = function(e) {
           case 43:
             At = gt.sent(), gt.label = 44;
           case 44:
-            return xe = At, kt = t.as(lD), jt = kt.memberCount, Bt = kt.joinedMemberCount, Kt = kt.member, ln = !1, vt = D.of(this._iid).appInfo, xe.isExclusive || xe.isSuper || xe.isBroadcast ? ln = xe._setLatestMemberCount(jt, Bt, Ge.ts) : (vt != null && vt.enabledChannelMemberShipHistory ? ((Rt = xe.members.find(function(Ne) {
-              return Ne.userId === Kt.userId;
-            })) && (Rt.state = On.LEFT), xe.memberCount = jt) : xe.removeMember(Kt), this._updateJoinedMemberCount(xe)), Kt.userId === this._sdkState.userId ? (xe.myMemberState = On.NONE, xe.invitedAt = 0, xe.joinedAt = 0, xe._updateUnreadCount(0, 0), xe.isPublic ? this._dispatcher.dispatch(new Dt({ channels: [xe], source: ne.EVENT_CHANNEL_LEFT })) : (this._markAsLeave(xe), this._dispatcher.dispatch(new sr({ channelUrls: [xe.url], source: ne.EVENT_CHANNEL_LEFT })))) : this._dispatcher.dispatch(new Dt({ channels: [xe], source: ne.EVENT_CHANNEL_LEFT })), Le(function() {
+            return xe = At, kt = t.as(lD), jt = kt.memberCount, Bt = kt.joinedMemberCount, Kt = kt.member, ln = !1, vt = D.of(this._iid).appInfo, xe.isExclusive || xe.isSuper || xe.isBroadcast ? ln = xe._setLatestMemberCount(jt, Bt, Ge.ts) : (vt != null && vt.enabledChannelMemberShipHistory ? ((Rt = xe.members.find(function(Re) {
+              return Re.userId === Kt.userId;
+            })) && (Rt.state = On.LEFT), xe.memberCount = jt) : xe.removeMember(Kt), this._updateJoinedMemberCount(xe)), Kt.userId === this._sdkState.userId ? (xe.myMemberState = On.NONE, xe.invitedAt = 0, xe.joinedAt = 0, xe._updateUnreadCount(0, 0), xe.isPublic ? this._dispatcher.dispatch(new Dt({ channels: [xe], source: ne.EVENT_CHANNEL_LEFT })) : (this._markAsLeave(xe), this._dispatcher.dispatch(new sr({ channelUrls: [xe.url], source: ne.EVENT_CHANNEL_LEFT })))) : this._dispatcher.dispatch(new Dt({ channels: [xe], source: ne.EVENT_CHANNEL_LEFT })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onUserLeft && C.onUserLeft(xe, Kt), xe.isBroadcast && ln && C.onChannelMemberCountChanged && C.onChannelMemberCountChanged([xe]);
                   }), [2];
@@ -17138,27 +17138,27 @@ var Rr, WD = function(e) {
           case 45:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 46:
-            Ce = gt.sent(), Je = t.as(L3).operators, de = Je.map(function(Ne) {
-              return Ne.userId;
+            Ke = gt.sent(), Je = t.as(L3).operators, de = Je.map(function(Re) {
+              return Re.userId;
             });
             try {
-              for (qe = be(Ce.members), nt = qe.next(); !nt.done; nt = qe.next())
-                (Ee = nt.value).role = de.includes(Ee.userId) ? ed.OPERATOR : ed.NONE;
-            } catch (Ne) {
-              wh = { error: Ne };
+              for (qe = be(Ke.members), lt = qe.next(); !lt.done; lt = qe.next())
+                (Ee = lt.value).role = de.includes(Ee.userId) ? ed.OPERATOR : ed.NONE;
+            } catch (Re) {
+              wh = { error: Re };
             } finally {
               try {
-                nt && !nt.done && (dm = qe.return) && dm.call(qe);
+                lt && !lt.done && (dm = qe.return) && dm.call(qe);
               } finally {
                 if (wh)
                   throw wh.error;
               }
             }
-            return Ce.myRole = de.includes(this._sdkState.userId) ? ed.OPERATOR : ed.NONE, this._dispatcher.dispatch(new Dt({ channels: [Ce], source: ne.EVENT_CHANNEL_OPERATOR_UPDATED })), Le(function() {
+            return Ke.myRole = de.includes(this._sdkState.userId) ? ed.OPERATOR : ed.NONE, this._dispatcher.dispatch(new Dt({ channels: [Ke], source: ne.EVENT_CHANNEL_OPERATOR_UPDATED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
-                    C.onOperatorUpdated && C.onOperatorUpdated(Ce, Je);
+                    C.onOperatorUpdated && C.onOperatorUpdated(Ke, Je);
                   }), [2];
                 });
               });
@@ -17166,14 +17166,14 @@ var Rr, WD = function(e) {
           case 47:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 48:
-            ct = gt.sent(), Ot = t.as(rD), jt = Ot.memberCount, Bt = Ot.joinedMemberCount, zt = Ot.inviter, (cn = Ot.invitees).forEach(function(Ne) {
-              return Ne.state = On.INVITED;
+            ct = gt.sent(), Ot = t.as(rD), jt = Ot.memberCount, Bt = Ot.joinedMemberCount, zt = Ot.inviter, (cn = Ot.invitees).forEach(function(Re) {
+              return Re.state = On.INVITED;
             });
             try {
               for (mt = be(cn), sn = mt.next(); !sn.done; sn = mt.next())
                 hn = sn.value, ct.isExclusive || ct.isSuper || ct.isBroadcast ? ct._setLatestMemberCount(jt, Bt, Ge.ts) : ct.addMember(hn, Ge.ts), this._sdkState.userId === hn.userId && (ct.hiddenState = yl.UNHIDDEN, ct.myMemberState !== On.JOINED && (ct.myMemberState = On.INVITED), ct.invitedAt = Ge.ts);
-            } catch (Ne) {
-              gh = { error: Ne };
+            } catch (Re) {
+              gh = { error: Re };
             } finally {
               try {
                 sn && !sn.done && (rm = mt.return) && rm.call(mt);
@@ -17182,9 +17182,9 @@ var Rr, WD = function(e) {
                   throw gh.error;
               }
             }
-            return this._dispatcher.dispatch(new Dt({ channels: [ct], source: ne.EVENT_CHANNEL_INVITED })), Le(function() {
+            return this._dispatcher.dispatch(new Dt({ channels: [ct], source: ne.EVENT_CHANNEL_INVITED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onUserReceivedInvitation && C.onUserReceivedInvitation(ct, zt, cn);
                   }), [2];
@@ -17194,11 +17194,11 @@ var Rr, WD = function(e) {
           case 49:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 50:
-            return ft = gt.sent(), qt = t.as(VD), jt = qt.memberCount, Bt = qt.joinedMemberCount, ge = qt.inviter, it = qt.invitee, ft.isExclusive || ft.isSuper || ft.isBroadcast ? ft._setLatestMemberCount(jt, Bt, Ge.ts) : ft.removeMember(it), this._sdkState.userId === it.userId ? (ft.invitedAt = 0, ft.myMemberState = On.NONE, ft.isPublic ? this._dispatcher.dispatch(new Dt({ channels: [ft], source: ne.EVENT_CHANNEL_DECLINED_INVITE })) : this._dispatcher.dispatch(new sr({ channelUrls: [ft.url], source: ne.EVENT_CHANNEL_DECLINED_INVITE }))) : this._dispatcher.dispatch(new Dt({ channels: [ft], source: ne.EVENT_CHANNEL_DECLINED_INVITE })), Le(function() {
+            return ft = gt.sent(), qt = t.as(VD), jt = qt.memberCount, Bt = qt.joinedMemberCount, Ie = qt.inviter, it = qt.invitee, ft.isExclusive || ft.isSuper || ft.isBroadcast ? ft._setLatestMemberCount(jt, Bt, Ge.ts) : ft.removeMember(it), this._sdkState.userId === it.userId ? (ft.invitedAt = 0, ft.myMemberState = On.NONE, ft.isPublic ? this._dispatcher.dispatch(new Dt({ channels: [ft], source: ne.EVENT_CHANNEL_DECLINED_INVITE })) : this._dispatcher.dispatch(new sr({ channelUrls: [ft.url], source: ne.EVENT_CHANNEL_DECLINED_INVITE }))) : this._dispatcher.dispatch(new Dt({ channels: [ft], source: ne.EVENT_CHANNEL_DECLINED_INVITE })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
-                    C.onUserDeclinedInvitation && C.onUserDeclinedInvitation(ft, ge, it);
+                    C.onUserDeclinedInvitation && C.onUserDeclinedInvitation(ft, Ie, it);
                   }), [2];
                 });
               });
@@ -17206,9 +17206,9 @@ var Rr, WD = function(e) {
           case 51:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 52:
-            return ze = gt.sent(), ht = Ge.category === Vn.TYPING_START, Ft = t.as(ht ? ND : hD).user, ze._updateTypingStatus(Ft, ht ? Ge.ts : 0), this._dispatcher.dispatch(new Dt({ channels: [ze], source: ne.EVENT_CHANNEL_TYPING_STATUS_UPDATE })), Le(function() {
+            return ze = gt.sent(), ht = Ge.category === Vn.TYPING_START, Ft = t.as(ht ? ND : hD).user, ze._updateTypingStatus(Ft, ht ? Ge.ts : 0), this._dispatcher.dispatch(new Dt({ channels: [ze], source: ne.EVENT_CHANNEL_TYPING_STATUS_UPDATE })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onTypingStatusUpdated && C.onTypingStatusUpdated(ze);
                   }), [2];
@@ -17218,28 +17218,28 @@ var Rr, WD = function(e) {
           case 53:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 54:
-            X = gt.sent(), Ue = Ge.category === Vn.USER_CHANNEL_MUTE, (pe = t.as(Ue ? b3 : Y3).user).userId === this._sdkState.userId && (X.myMutedState = Ue ? Od.MUTED : Od.UNMUTED, X._myMutedRemainingTime = pe.restrictionInfo.remainingDuration);
+            X = gt.sent(), Ne = Ge.category === Vn.USER_CHANNEL_MUTE, (pe = t.as(Ne ? b3 : Y3).user).userId === this._sdkState.userId && (X.myMutedState = Ne ? Od.MUTED : Od.UNMUTED, X._myMutedRemainingTime = pe.restrictionInfo.remainingDuration);
             try {
-              for (fe = be(X.members), Nt = fe.next(); !Nt.done; Nt = fe.next())
+              for (we = be(X.members), Nt = we.next(); !Nt.done; Nt = we.next())
                 if ((Ee = Nt.value).userId === pe.userId) {
-                  Ee.isMuted = Ue;
+                  Ee.isMuted = Ne;
                   break;
                 }
-            } catch (Ne) {
-              Ih = { error: Ne };
+            } catch (Re) {
+              Ih = { error: Re };
             } finally {
               try {
-                Nt && !Nt.done && (im = fe.return) && im.call(fe);
+                Nt && !Nt.done && (im = we.return) && im.call(we);
               } finally {
                 if (Ih)
                   throw Ih.error;
               }
             }
-            return this._dispatcher.dispatch(new Dt({ channels: [X], source: Ue ? ne.EVENT_CHANNEL_MUTED : ne.EVENT_CHANNEL_UNMUTED, data: pe.userId })), Le(function() {
+            return this._dispatcher.dispatch(new Dt({ channels: [X], source: Ne ? ne.EVENT_CHANNEL_MUTED : ne.EVENT_CHANNEL_UNMUTED, data: pe.userId })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
-                    Ue ? C.onUserMuted && C.onUserMuted(X, pe) : C.onUserUnmuted && C.onUserUnmuted(X, pe);
+                    Ne ? C.onUserMuted && C.onUserMuted(X, pe) : C.onUserUnmuted && C.onUserUnmuted(X, pe);
                   }), [2];
                 });
               });
@@ -17251,9 +17251,9 @@ var Rr, WD = function(e) {
           case 57:
             ye = gt.sent(), gt.label = 58;
           case 58:
-            return Ve = ye, this._markAsLeave(Ve), Zt = t.as(Q3).user, Zt.userId === this._sdkState.userId && this._dispatcher.dispatch(new sr({ channelUrls: [Ve.url], source: ne.EVENT_CHANNEL_BANNED })), Le(function() {
+            return Ve = ye, this._markAsLeave(Ve), Zt = t.as(Q3).user, Zt.userId === this._sdkState.userId && this._dispatcher.dispatch(new sr({ channelUrls: [Ve.url], source: ne.EVENT_CHANNEL_BANNED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onUserBanned && C.onUserBanned(Ve, Zt);
                   }), [2];
@@ -17263,9 +17263,9 @@ var Rr, WD = function(e) {
           case 59:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 60:
-            return Mt = gt.sent(), Ct = t.as(J3).user, Ct.userId === this._sdkState.userId && this._dispatcher.dispatch(new sr({ channelUrls: [Mt.url], source: ne.EVENT_CHANNEL_UNBANNED })), Le(function() {
+            return Mt = gt.sent(), Ct = t.as(J3).user, Ct.userId === this._sdkState.userId && this._dispatcher.dispatch(new sr({ channelUrls: [Mt.url], source: ne.EVENT_CHANNEL_UNBANNED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onUserUnbanned && C.onUserUnbanned(Mt, Ct);
                   }), [2];
@@ -17275,9 +17275,9 @@ var Rr, WD = function(e) {
           case 61:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 62:
-            return Ht = gt.sent(), Sn = t.as(v3).freeze, Ht.isFrozen = Sn, this._dispatcher.dispatch(new Dt({ channels: [Ht], source: Sn ? ne.EVENT_CHANNEL_FROZEN : ne.EVENT_CHANNEL_UNFROZEN })), Le(function() {
+            return Ht = gt.sent(), Sn = t.as(v3).freeze, Ht.isFrozen = Sn, this._dispatcher.dispatch(new Dt({ channels: [Ht], source: Sn ? ne.EVENT_CHANNEL_FROZEN : ne.EVENT_CHANNEL_UNFROZEN })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     Sn ? C.onChannelFrozen && C.onChannelFrozen(Ht) : C.onChannelUnfrozen && C.onChannelUnfrozen(Ht);
                   }), [2];
@@ -17287,9 +17287,9 @@ var Rr, WD = function(e) {
           case 63:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 64:
-            return bt = gt.sent(), rn = t.as(oD), en = rn.allowAutoUnhide, gn = rn.hidePreviousMessages, An = rn.messageOffsetTimestamp, en !== null && (bt.hiddenState = en ? yl.HIDDEN_ALLOW_AUTO_UNHIDE : yl.HIDDEN_PREVENT_AUTO_UNHIDE), gn !== null && gn && bt._updateUnreadCount(0, 0), An !== null && (bt.messageOffsetTimestamp = An), this._dispatcher.dispatch(new Dt({ channels: [bt], source: ne.EVENT_CHANNEL_HIDDEN })), Le(function() {
+            return bt = gt.sent(), rn = t.as(oD), en = rn.allowAutoUnhide, gn = rn.hidePreviousMessages, An = rn.messageOffsetTimestamp, en !== null && (bt.hiddenState = en ? yl.HIDDEN_ALLOW_AUTO_UNHIDE : yl.HIDDEN_PREVENT_AUTO_UNHIDE), gn !== null && gn && bt._updateUnreadCount(0, 0), An !== null && (bt.messageOffsetTimestamp = An), this._dispatcher.dispatch(new Dt({ channels: [bt], source: ne.EVENT_CHANNEL_HIDDEN })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onChannelHidden && C.onChannelHidden(bt);
                   }), [2];
@@ -17299,9 +17299,9 @@ var Rr, WD = function(e) {
           case 65:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 66:
-            return (xi = gt.sent()).hiddenState = yl.UNHIDDEN, this._dispatcher.dispatch(new Dt({ channels: [xi], source: ne.EVENT_CHANNEL_UNHIDDEN })), Le(function() {
+            return (xi = gt.sent()).hiddenState = yl.UNHIDDEN, this._dispatcher.dispatch(new Dt({ channels: [xi], source: ne.EVENT_CHANNEL_UNHIDDEN })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onChannelChanged && C.onChannelChanged(xi);
                   }), [2];
@@ -17311,9 +17311,9 @@ var Rr, WD = function(e) {
           case 67:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 68:
-            return ir = gt.sent(), this._dispatcher.dispatch(new sr({ channelUrls: [Ge.channelUrl], source: ne.EVENT_CHANNEL_DELETED })), Le(function() {
+            return ir = gt.sent(), this._dispatcher.dispatch(new sr({ channelUrls: [Ge.channelUrl], source: ne.EVENT_CHANNEL_DELETED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onChannelDeleted && C.onChannelDeleted(ir.url, ir.channelType);
                   }), [2];
@@ -17323,9 +17323,9 @@ var Rr, WD = function(e) {
           case 69:
             return [4, this.getChannelWithoutCache(Ge.channelUrl, !0)];
           case 70:
-            return Bh = gt.sent(), this._dispatcher.dispatch(new Dt({ channels: [Bh], source: ne.EVENT_CHANNEL_UPDATED })), Le(function() {
+            return Bh = gt.sent(), this._dispatcher.dispatch(new Dt({ channels: [Bh], source: ne.EVENT_CHANNEL_UPDATED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onChannelChanged && C.onChannelChanged(Bh);
                   }), [2];
@@ -17335,9 +17335,9 @@ var Rr, WD = function(e) {
           case 71:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 72:
-            return bd = gt.sent(), MU = t.as(S3), _c = MU.created, Pc = MU.updated, Ac = MU.deleted, _c && (bd._upsertCachedMetaData(_c, Ge.ts), this._dispatcher.dispatch(new Dt({ channels: [bd], source: ne.EVENT_CHANNEL_METADATA_CREATED }))), Pc && (bd._upsertCachedMetaData(Pc, Ge.ts), this._dispatcher.dispatch(new Dt({ channels: [bd], source: ne.EVENT_CHANNEL_METADATA_UPDATED }))), Ac && (bd._removeFromCachedMetaData(Ac, Ge.ts), this._dispatcher.dispatch(new Dt({ channels: [bd], source: ne.EVENT_CHANNEL_METADATA_DELETED }))), Le(function() {
+            return bd = gt.sent(), MU = t.as(S3), _c = MU.created, Pc = MU.updated, Ac = MU.deleted, _c && (bd._upsertCachedMetaData(_c, Ge.ts), this._dispatcher.dispatch(new Dt({ channels: [bd], source: ne.EVENT_CHANNEL_METADATA_CREATED }))), Pc && (bd._upsertCachedMetaData(Pc, Ge.ts), this._dispatcher.dispatch(new Dt({ channels: [bd], source: ne.EVENT_CHANNEL_METADATA_UPDATED }))), Ac && (bd._removeFromCachedMetaData(Ac, Ge.ts), this._dispatcher.dispatch(new Dt({ channels: [bd], source: ne.EVENT_CHANNEL_METADATA_DELETED }))), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     _c && C.onMetaDataCreated && C.onMetaDataCreated(bd, _c), Pc && C.onMetaDataUpdated && C.onMetaDataUpdated(bd, Pc), Ac && C.onMetaDataDeleted && C.onMetaDataDeleted(bd, Ac);
                   }), [2];
@@ -17347,9 +17347,9 @@ var Rr, WD = function(e) {
           case 73:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 74:
-            return Gi = gt.sent(), EU = t.as(k3), SU = EU.created, kU = EU.updated, bU = EU.deleted, SU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: ne.EVENT_CHANNEL_METACOUNTER_CREATED })), kU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: ne.EVENT_CHANNEL_METACOUNTER_UPDATED })), bU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: ne.EVENT_CHANNEL_METACOUNTER_DELETED })), Le(function() {
+            return Gi = gt.sent(), EU = t.as(k3), SU = EU.created, kU = EU.updated, bU = EU.deleted, SU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: ne.EVENT_CHANNEL_METACOUNTER_CREATED })), kU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: ne.EVENT_CHANNEL_METACOUNTER_UPDATED })), bU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: ne.EVENT_CHANNEL_METACOUNTER_DELETED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     SU && C.onMetaCounterCreated && C.onMetaCounterCreated(Gi, SU), kU && C.onMetaCounterUpdated && C.onMetaCounterUpdated(Gi, kU), bU && C.onMetaCounterDeleted && C.onMetaCounterDeleted(Gi, bU);
                   }), [2];
@@ -17359,18 +17359,18 @@ var Rr, WD = function(e) {
           case 75:
             return [4, this.getChannel(Ge.channelUrl, !0)];
           case 76:
-            return Xr = gt.sent(), YU = t.as(TD), em = YU.pinnedMessageIds, tm = YU.latestPinnedMessage, (nm = YU.ts) > Xr._pinnedMessagesUpdatedAt && (Xr.pinnedMessageIds = em, Xr.lastPinnedMessage = tm, Xr._pinnedMessagesUpdatedAt = nm, this._dispatcher.dispatch(new Dt({ channels: [Xr], source: ne.EVENT_PINNED_MESSAGE_UPDATED })), Le(function() {
+            return Xr = gt.sent(), YU = t.as(TD), em = YU.pinnedMessageIds, tm = YU.latestPinnedMessage, (nm = YU.ts) > Xr._pinnedMessagesUpdatedAt && (Xr.pinnedMessageIds = em, Xr.lastPinnedMessage = tm, Xr._pinnedMessagesUpdatedAt = nm, this._dispatcher.dispatch(new Dt({ channels: [Xr], source: ne.EVENT_PINNED_MESSAGE_UPDATED })), Ce(function() {
               return M(on, void 0, void 0, function() {
-                var Ne, C, Et, st, St;
+                var Re, C, Et, st, St;
                 return p(this, function(Dn) {
                   try {
-                    for (Ne = be(this._groupChannelHandlers.values()), C = Ne.next(); !C.done; C = Ne.next())
+                    for (Re = be(this._groupChannelHandlers.values()), C = Re.next(); !C.done; C = Re.next())
                       (Et = C.value).onChannelChanged && Et.onChannelChanged(Xr);
                   } catch (Rn) {
                     st = { error: Rn };
                   } finally {
                     try {
-                      C && !C.done && (St = Ne.return) && St.call(Ne);
+                      C && !C.done && (St = Re.return) && St.call(Re);
                     } finally {
                       if (st)
                         throw st.error;
@@ -17379,9 +17379,9 @@ var Rr, WD = function(e) {
                   return [2];
                 });
               });
-            }), Le(function() {
+            }), Ce(function() {
               return M(on, void 0, void 0, function() {
-                return p(this, function(Ne) {
+                return p(this, function(Re) {
                   return this._groupChannelHandlers.forEach(function(C) {
                     C.onPinnedMessageUpdated && C.onPinnedMessageUpdated(Xr);
                   }), [2];
@@ -17489,7 +17489,7 @@ var Rr, WD = function(e) {
           case 4:
             return [3, 6];
           case 5:
-            return (V = s.sent()).code !== tt.NON_AUTHORIZED && V.code !== tt.NOT_FOUND_IN_DATABASE || this._dispatcher.dispatch(new sr({ channelUrls: [t], source: a })), [3, 6];
+            return (V = s.sent()).code !== nt.NON_AUTHORIZED && V.code !== nt.NOT_FOUND_IN_DATABASE || this._dispatcher.dispatch(new sr({ channelUrls: [t], source: a })), [3, 6];
           case 6:
             return [2];
         }
@@ -17541,7 +17541,7 @@ var Rr, WD = function(e) {
               return Jt(il, E.keys);
             }(l)).throw(j.invalidParameters), a = D.of(this._iid), d = a.sdkState, r = a.requestQueue, i = new fB({ userId: d.userId, filter: l }), [4, r.send(i)];
           case 1:
-            return c = m.sent(), V = c.as(wB), s = V.groupChannelUnreadMentionCount, o = V.groupChannelUnreadMessageCount, U = V.groupChannelInvitationCount, N = V.superGroupChannelUnreadMentionCount, R = V.superGroupChannelUnreadMessageCount, h = V.superGroupChannelInvitationCount, Z = V.nonSuperGroupChannelUnreadMentionCount, W = V.nonSuperGroupChannelUnreadMessageCount, F = V.nonSuperGroupChannelInvitationCount, [2, Oe({ groupChannelUnreadMentionCount: s, groupChannelUnreadMessageCount: o, groupChannelInvitationCount: U, superGroupChannelUnreadMentionCount: N, superGroupChannelUnreadMessageCount: R, superGroupChannelInvitationCount: h, nonSuperGroupChannelUnreadMentionCount: Z, nonSuperGroupChannelUnreadMessageCount: W, nonSuperGroupChannelInvitationCount: F })];
+            return c = m.sent(), V = c.as(wB), s = V.groupChannelUnreadMentionCount, o = V.groupChannelUnreadMessageCount, U = V.groupChannelInvitationCount, N = V.superGroupChannelUnreadMentionCount, R = V.superGroupChannelUnreadMessageCount, h = V.superGroupChannelInvitationCount, Z = V.nonSuperGroupChannelUnreadMentionCount, W = V.nonSuperGroupChannelUnreadMessageCount, F = V.nonSuperGroupChannelInvitationCount, [2, je({ groupChannelUnreadMentionCount: s, groupChannelUnreadMessageCount: o, groupChannelInvitationCount: U, superGroupChannelUnreadMentionCount: N, superGroupChannelUnreadMessageCount: R, superGroupChannelInvitationCount: h, nonSuperGroupChannelUnreadMentionCount: Z, nonSuperGroupChannelUnreadMessageCount: W, nonSuperGroupChannelInvitationCount: F })];
         }
       });
     });
@@ -18172,7 +18172,7 @@ var t0, ui = function(e) {
 var ED = function(e) {
   function n(t) {
     var l, a, d, r, i, c, V, s, o, U, N = this;
-    return (N = e.call(this) || this).method = he.GET, N.path = "".concat(Lt(t.channelType), "/").concat(t.channelUrl, "/messages_gap"), N.params = Oe({ prev_start_ts: t.prevStart, prev_end_ts: t.prevEnd, prev_cache_count: t.prevCount, next_start_ts: t.nextStart, next_end_ts: t.nextEnd, next_cache_count: t.nextCount, huge_gap_threshold: (l = t.threshold) !== null && l !== void 0 ? l : null, reverse: !0, custom_types: (a = t.customTypes) !== null && a !== void 0 ? a : ["*"], message_type: (d = t.messageType) !== null && d !== void 0 ? d : null, include_reply_type: (r = t.replyType) !== null && r !== void 0 ? r : al.NONE, include_reactions: (i = t.includeReactions) === null || i === void 0 || i, include_meta_array: (c = t.includeMetaArray) === null || c === void 0 || c, include_thread_info: (V = t.includeThreadInfo) === null || V === void 0 || V, include_parent_message_info: (s = t.includeParentMessageInfo) === null || s === void 0 || s, with_sorted_meta_array: (o = t.includeMetaArray) === null || o === void 0 || o, show_subchannel_messages_only: (U = t.showSubchannelMessagesOnly) !== null && U !== void 0 && U, include_poll_details: !0, checking_continuous_messages: t.checkingContinuousMessages }), N;
+    return (N = e.call(this) || this).method = he.GET, N.path = "".concat(Lt(t.channelType), "/").concat(t.channelUrl, "/messages_gap"), N.params = je({ prev_start_ts: t.prevStart, prev_end_ts: t.prevEnd, prev_cache_count: t.prevCount, next_start_ts: t.nextStart, next_end_ts: t.nextEnd, next_cache_count: t.nextCount, huge_gap_threshold: (l = t.threshold) !== null && l !== void 0 ? l : null, reverse: !0, custom_types: (a = t.customTypes) !== null && a !== void 0 ? a : ["*"], message_type: (d = t.messageType) !== null && d !== void 0 ? d : null, include_reply_type: (r = t.replyType) !== null && r !== void 0 ? r : al.NONE, include_reactions: (i = t.includeReactions) === null || i === void 0 || i, include_meta_array: (c = t.includeMetaArray) === null || c === void 0 || c, include_thread_info: (V = t.includeThreadInfo) === null || V === void 0 || V, include_parent_message_info: (s = t.includeParentMessageInfo) === null || s === void 0 || s, with_sorted_meta_array: (o = t.includeMetaArray) === null || o === void 0 || o, show_subchannel_messages_only: (U = t.showSubchannelMessagesOnly) !== null && U !== void 0 && U, include_poll_details: !0, checking_continuous_messages: t.checkingContinuousMessages }), N;
   }
   return J(n, e), n;
 }(Te), SD = function(e) {
@@ -18219,7 +18219,7 @@ var As, qs, $s, QD = function() {
   }
   return e.prototype._invokeResponse = function(n, t, l) {
     var a = this;
-    Le(function() {
+    Ce(function() {
       return M(a, void 0, void 0, function() {
         return p(this, function(d) {
           switch (n) {
@@ -18277,7 +18277,7 @@ var As, qs, $s, QD = function() {
           case ne.EVENT_CHANNEL_LEFT:
             b.isPublic && U._clearCheckMyMutedTimer();
         }
-        Le(function() {
+        Ce(function() {
           return M(U, void 0, void 0, function() {
             var g, f;
             return p(this, function(I) {
@@ -18288,7 +18288,7 @@ var As, qs, $s, QD = function() {
       }), U._postprocessChannelUpdateEvent(F[u], m));
     }, onRemove: function(F, m) {
       var E = F.indexOf(U.channel.url);
-      E >= 0 && (U._clearCheckMyMutedTimer(), Le(function() {
+      E >= 0 && (U._clearCheckMyMutedTimer(), Ce(function() {
         return M(U, void 0, void 0, function() {
           var u, b;
           return p(this, function(k) {
@@ -18464,7 +18464,7 @@ var As, qs, $s, QD = function() {
       case this.channel.isFeedChannel():
         return new kD(n);
       default:
-        throw new j({ code: tt.WRONG_CHANNEL_TYPE, message: "Wrong channel type" });
+        throw new j({ code: nt.WRONG_CHANNEL_TYPE, message: "Wrong channel type" });
     }
   }, e.prototype._createMessageEventContext = function(n) {
     switch (!0) {
@@ -18473,7 +18473,7 @@ var As, qs, $s, QD = function() {
       case this.channel.isFeedChannel():
         return new YD(n);
       default:
-        throw new j({ code: tt.WRONG_CHANNEL_TYPE, message: "Wrong channel type" });
+        throw new j({ code: nt.WRONG_CHANNEL_TYPE, message: "Wrong channel type" });
     }
   }, e.prototype._createChannelUpdateEventCommand = function(n) {
     switch (!0) {
@@ -18513,7 +18513,7 @@ var As, qs, $s, QD = function() {
           throw l.error;
       }
     }
-    return r.length > 0 && Nr(t) && Le(function() {
+    return r.length > 0 && Nr(t) && Ce(function() {
       return M(d, void 0, void 0, function() {
         var U, N, R;
         return p(this, function(h) {
@@ -18525,7 +18525,7 @@ var As, qs, $s, QD = function() {
     var l = this, a = ls(this._messages, n.messageId);
     if (a >= 0) {
       var d = this._messages[a];
-      d && d.isUserMessage() && d.poll && d.poll.applyPollUpdateEvent(n) && Nr(t) && Le(function() {
+      d && d.isUserMessage() && d.poll && d.poll.applyPollUpdateEvent(n) && Nr(t) && Ce(function() {
         return M(l, void 0, void 0, function() {
           var r, i, c;
           return p(this, function(V) {
@@ -18538,7 +18538,7 @@ var As, qs, $s, QD = function() {
     var l = this, a = ls(this._messages, n.messageId);
     if (a >= 0) {
       var d = this._messages[a];
-      d && d.isUserMessage() && d.poll && d.poll.applyPollVoteEvent(n) && Nr(t) && Le(function() {
+      d && d.isUserMessage() && d.poll && d.poll.applyPollVoteEvent(n) && Nr(t) && Ce(function() {
         return M(l, void 0, void 0, function() {
           var r, i, c;
           return p(this, function(V) {
@@ -18551,7 +18551,7 @@ var As, qs, $s, QD = function() {
     var l = this, a = ls(this._messages, n.messageId);
     if (a >= 0) {
       var d = this._messages[a];
-      d && (d.isUserMessage() || d.isFileMessage() || d.isMultipleFilesMessage()) && Nr(t) && (d.applyReactionEvent(n), Le(function() {
+      d && (d.isUserMessage() || d.isFileMessage() || d.isMultipleFilesMessage()) && Nr(t) && (d.applyReactionEvent(n), Ce(function() {
         return M(l, void 0, void 0, function() {
           var r, i, c;
           return p(this, function(V) {
@@ -18564,7 +18564,7 @@ var As, qs, $s, QD = function() {
     var l = this, a = ls(this._messages, n.targetMessageId);
     if (a >= 0) {
       var d = this._messages[a];
-      d && (d.isUserMessage() || d.isFileMessage() || d.isMultipleFilesMessage()) && Nr(t) && (d.applyThreadInfoUpdateEvent(n), Le(function() {
+      d && (d.isUserMessage() || d.isFileMessage() || d.isMultipleFilesMessage()) && Nr(t) && (d.applyThreadInfoUpdateEvent(n), Ce(function() {
         return M(l, void 0, void 0, function() {
           var r, i, c;
           return p(this, function(V) {
@@ -18596,7 +18596,7 @@ var As, qs, $s, QD = function() {
           throw l.error;
       }
     }
-    return Nr(t) && i.length > 0 && Le(function() {
+    return Nr(t) && i.length > 0 && Ce(function() {
       return M(d, void 0, void 0, function() {
         var U, N, R;
         return p(this, function(h) {
@@ -18670,24 +18670,24 @@ var As, qs, $s, QD = function() {
           case 3:
             return I.trys.push([3, 5, 6, 7]), [4, IR(function() {
               return M(f, void 0, void 0, function() {
-                var K, Re, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, we, Me = this;
+                var K, Ue, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, ge, Me = this;
                 return p(this, function(We) {
                   switch (We.label) {
                     case 0:
                       return K = new ED(x(x({ channelUrl: this._channel.url, channelType: this._channel.channelType, prevStart: N, prevEnd: U, prevCount: Z, nextStart: R, nextEnd: h, nextCount: W, checkingContinuousMessages: V.localCacheEnabled }, this.filter), Xu)), [4, c.send(K)];
                     case 1:
-                      return Re = We.sent(), q = Re.as(SD), ae = q.isHugeGap, se = q.prevMessages, le = se === void 0 ? [] : se, L = q.prevHasMore, $ = q.isContinuousPrevMessages, ee = q.nextMessages, O = ee === void 0 ? [] : ee, re = q.nextHasmore, te = q.isContinuousNextMessages, ae ? Le(function() {
+                      return Ue = We.sent(), q = Ue.as(SD), ae = q.isHugeGap, se = q.prevMessages, le = se === void 0 ? [] : se, L = q.prevHasMore, $ = q.isContinuousPrevMessages, ee = q.nextMessages, O = ee === void 0 ? [] : ee, re = q.nextHasmore, te = q.isContinuousNextMessages, ae ? Ce(function() {
                         return M(Me, void 0, void 0, function() {
-                          var Be;
-                          return p(this, function(Ke) {
-                            return !((Be = this._handler) === null || Be === void 0) && Be.onHugeGapDetected && this._handler.onHugeGapDetected(), [2];
+                          var De;
+                          return p(this, function(Oe) {
+                            return !((De = this._handler) === null || De === void 0) && De.onHugeGapDetected && this._handler.onHugeGapDetected(), [2];
                           });
                         });
-                      }) : (Qe = this.viewTop, Ye = this.viewBottom, Se = Math.min.apply(Math, ot([Number.MAX_SAFE_INTEGER, Qe], et(le.map(function(Be) {
-                        return Be.createdAt;
-                      })), !1)), P = Math.max.apply(Math, ot([0, Ye], et(O.map(function(Be) {
-                        return Be.createdAt;
-                      })), !1)), i.dispatch(new En({ messages: le, source: ne.SYNC_MESSAGE_FILL })), i.dispatch(new En({ messages: O, source: ne.SYNC_MESSAGE_FILL })), this._syncRange.extends(Se, P), ($ || te) && ((we = this._backgroundSync) === null || we === void 0 || we.range.extends(Se, P)), L && this._prevFill.start(Se), re && this._nextFill.start(P)), [2];
+                      }) : (Qe = this.viewTop, Ye = this.viewBottom, Se = Math.min.apply(Math, ot([Number.MAX_SAFE_INTEGER, Qe], et(le.map(function(De) {
+                        return De.createdAt;
+                      })), !1)), P = Math.max.apply(Math, ot([0, Ye], et(O.map(function(De) {
+                        return De.createdAt;
+                      })), !1)), i.dispatch(new En({ messages: le, source: ne.SYNC_MESSAGE_FILL })), i.dispatch(new En({ messages: O, source: ne.SYNC_MESSAGE_FILL })), this._syncRange.extends(Se, P), ($ || te) && ((ge = this._backgroundSync) === null || ge === void 0 || ge.range.extends(Se, P)), L && this._prevFill.start(Se), re && this._nextFill.start(P)), [2];
                   }
                 });
               });
@@ -18715,7 +18715,7 @@ var As, qs, $s, QD = function() {
               this._hasPrevious = !1, this._hasNext = !1;
             return [3, 13];
           case 11:
-            return (y = I.sent()) instanceof j && y.code === tt.NOT_FOUND_IN_DATABASE && (this._hasPrevious = !1, this._hasNext = !1), [3, 13];
+            return (y = I.sent()) instanceof j && y.code === nt.NOT_FOUND_IN_DATABASE && (this._hasPrevious = !1, this._hasNext = !1), [3, 13];
           case 12:
             return s.put(new Ml({ type: Mn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, measured_on: "gap_check", event: "cache_fetch", max_db_size: (d = (a = V.localCacheConfig) === null || a === void 0 ? void 0 : a.maxSize) !== null && d !== void 0 ? d : 0, use_local_cache: V.localCacheEnabled, starting_point: 0, message_init_policy: "" } })), [7];
           case 13:
@@ -18853,7 +18853,7 @@ var As, qs, $s, QD = function() {
         switch (N.label) {
           case 0:
             if (this._isDisposed)
-              throw new j({ code: tt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
+              throw new j({ code: nt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
             return a = D.of(this._iid), d = a.cacheContext, r = a.statLogCollector, i = a.logger, this._hasPrevious ? this._isLoadingPrevious ? (i.warn("Messages are already fetching."), [2, []]) : (this._isLoadingPrevious = !0, c = this.viewTop, V = [], [4, yn(function() {
               return M(U, void 0, void 0, function() {
                 var R;
@@ -18902,7 +18902,7 @@ var As, qs, $s, QD = function() {
         switch (N.label) {
           case 0:
             if (this._isDisposed)
-              throw new j({ code: tt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
+              throw new j({ code: nt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
             return a = D.of(this._iid), d = a.cacheContext, r = a.statLogCollector, i = a.logger, this._hasNext ? this._isLoadingNext ? (i.warn("Messages are already fetching."), [2, []]) : (this._isLoadingNext = !0, c = this.viewBottom, V = [], [4, yn(function() {
               return M(U, void 0, void 0, function() {
                 var R;
@@ -18950,7 +18950,7 @@ var As, qs, $s, QD = function() {
         switch (l.label) {
           case 0:
             if (this._isDisposed)
-              throw new j({ code: tt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
+              throw new j({ code: nt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
             return [4, this._channelManager.removeFailedMessageFromCache(n)];
           case 1:
             return l.sent(), (t = this._unsentMessages.findIndex(function(a) {
@@ -19061,7 +19061,7 @@ var As, qs, $s, QD = function() {
           throw a.error;
       }
     }
-    Nr(l) && Le(function() {
+    Nr(l) && Ce(function() {
       return M(r, void 0, void 0, function() {
         var W, F, m, E, u;
         return p(this, function(b) {
@@ -19108,7 +19108,7 @@ var As, qs, $s, QD = function() {
           throw a.error;
       }
     }
-    return Nr(l) && Le(function() {
+    return Nr(l) && Ce(function() {
       return M(r, void 0, void 0, function() {
         var F, m, E, u, b;
         return p(this, function(k) {
@@ -19186,7 +19186,7 @@ var yD = function(e) {
 }(ue), XD = function(e) {
   function n(t) {
     var l = this, a = t.channelUrl, d = t.isDistinct, r = t.isPublic, i = t.isDiscoverable, c = t.coverUrl, V = t.coverImage, s = t.accessCode, o = t.name, U = t.data, N = t.customType, R = t.operatorUserIds, h = t.messageSurvivalSeconds;
-    return (l = e.call(this) || this).method = he.PUT, l.path = "".concat(vl, "/").concat(encodeURIComponent(a)), l.params = Oe({ is_distinct: d, is_public: r, is_discoverable: i, name: o, data: U, custom_type: N, cover_url: c, cover_file: V, access_code: s, operator_ids: R, message_survival_seconds: h }), l;
+    return (l = e.call(this) || this).method = he.PUT, l.path = "".concat(vl, "/").concat(encodeURIComponent(a)), l.params = je({ is_distinct: d, is_public: r, is_discoverable: i, name: o, data: U, custom_type: N, cover_url: c, cover_file: V, access_code: s, operator_ids: R, message_survival_seconds: h }), l;
   }
   return J(n, e), n;
 }(Te), OD = function(e) {
@@ -19254,7 +19254,7 @@ var fD = function(e) {
       return s.userId;
     })));
     var i = t.channelType, c = t.channelUrl, V = t.scheduledMessageId;
-    return d.method = he.PUT, d.path = "".concat(Lt(i), "/").concat(encodeURIComponent(c), "/scheduled_messages/").concat(encodeURIComponent(V)), d.params = Oe(Ae({ req_id: t.reqId, scheduled_at: t.scheduledAt, message_type: Mc.FILE, url: t.fileUrl, file_name: t.fileName, file_size: t.fileSize, file_type: t.mimeType, thumbnails: (l = t._thumbnails) === null || l === void 0 ? void 0 : l.map(function(s) {
+    return d.method = he.PUT, d.path = "".concat(Lt(i), "/").concat(encodeURIComponent(c), "/scheduled_messages/").concat(encodeURIComponent(V)), d.params = je(Ae({ req_id: t.reqId, scheduled_at: t.scheduledAt, message_type: Mc.FILE, url: t.fileUrl, file_name: t.fileName, file_size: t.fileSize, file_type: t.mimeType, thumbnails: (l = t._thumbnails) === null || l === void 0 ? void 0 : l.map(function(s) {
       return Br.payloadify(s);
     }), custom_type: t.customType, data: t.data, require_auth: t.requireAuth, mention_type: t.mentionType, mentioned_user_ids: r, sorted_metaarray: (a = t.metaArrays) === null || a === void 0 ? void 0 : a.map(function(s) {
       return Ol.payloadify(s);
@@ -19276,7 +19276,7 @@ var fD = function(e) {
       return V.userId;
     })));
     var r = t.channelType, i = t.channelUrl, c = t.scheduledMessageId;
-    return a.method = he.PUT, a.path = "".concat(Lt(r), "/").concat(encodeURIComponent(i), "/scheduled_messages/").concat(encodeURIComponent(c)), a.params = Oe(Ae({ req_id: t.reqId, scheduled_at: t.scheduledAt, message_type: Mc.USER, message: t.message, custom_type: t.customType, data: t.data, mention_type: t.mentionType, mentioned_user_ids: d, sorted_metaarray: (l = t.metaArrays) === null || l === void 0 ? void 0 : l.map(function(V) {
+    return a.method = he.PUT, a.path = "".concat(Lt(r), "/").concat(encodeURIComponent(i), "/scheduled_messages/").concat(encodeURIComponent(c)), a.params = je(Ae({ req_id: t.reqId, scheduled_at: t.scheduledAt, message_type: Mc.USER, message: t.message, custom_type: t.customType, data: t.data, mention_type: t.mentionType, mentioned_user_ids: d, sorted_metaarray: (l = t.metaArrays) === null || l === void 0 ? void 0 : l.map(function(V) {
       return Ol.payloadify(V);
     }), apple_critical_alert_options: t.appleCriticalAlertOptions ? ad.payloadify(t.appleCriticalAlertOptions) : null, target_langs: t.translationTargetLanguages, push_option: t.pushNotificationDeliveryOption })), a;
   }
@@ -19360,7 +19360,7 @@ var Ja, yl, dX = function(e) {
 }(ml), rX = function(e) {
   function n(t) {
     var l = this, a = t.channelType, d = t.channelUrl, r = t.limit, i = t.token, c = t.includeReactions, V = t.includeMetaArray, s = t.includeParentMessageInfo, o = t.includeThreadInfo, U = t.includePollDetails;
-    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(Lt(a), "/").concat(encodeURIComponent(d), "/pinned_messages"), l.params = Oe({ limit: r, token: i, include_reactions: c, with_sorted_meta_array: V, include_thread_info: o, include_parent_message_info: s, include_poll_details: U }), l;
+    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(Lt(a), "/").concat(encodeURIComponent(d), "/pinned_messages"), l.params = je({ limit: r, token: i, include_reactions: c, with_sorted_meta_array: V, include_thread_info: o, include_parent_message_info: s, include_poll_details: U }), l;
   }
   return J(n, e), n;
 }(Te), iX = function(e) {
@@ -19465,7 +19465,7 @@ var ja = function(e) {
     }
     return a;
   }, enumerable: !1, configurable: !0 }), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { is_access_code_required: t.isAccessCodeRequired, is_distinct: t.isDistinct, is_super: t.isSuper, is_broadcast: t.isBroadcast, is_exclusive: t.isExclusive, is_public: t.isPublic, is_discoverable: t.isDiscoverable, is_muted: t.myMutedState, is_push_enabled: t.isPushEnabled, unread_message_count: t.unreadMessageCount, unread_mention_count: t.unreadMentionCount, total_unread_thread_message_count: t.totalUnreadReplyCount, push_trigger_option: t.myPushTriggerOption, count_preference: t.myCountPreference, hidden_state: t.hiddenState, member_count: t.memberCount, joined_member_count: t.joinedMemberCount, member_state: t.myMemberState, my_role: t.myRole, user_last_read: t.myLastRead, ts_message_offset: t.messageOffsetTimestamp, message_survival_seconds: t.messageSurvivalSeconds, read_receipt: t.cachedUnreadMemberState, delivery_receipt: t.cachedUndeliveredMemberState, members: t.members.map(function(l) {
+    return je(Ae(x(x({}, e.payloadify.call(this, t)), { is_access_code_required: t.isAccessCodeRequired, is_distinct: t.isDistinct, is_super: t.isSuper, is_broadcast: t.isBroadcast, is_exclusive: t.isExclusive, is_public: t.isPublic, is_discoverable: t.isDiscoverable, is_muted: t.myMutedState, is_push_enabled: t.isPushEnabled, unread_message_count: t.unreadMessageCount, unread_mention_count: t.unreadMentionCount, total_unread_thread_message_count: t.totalUnreadReplyCount, push_trigger_option: t.myPushTriggerOption, count_preference: t.myCountPreference, hidden_state: t.hiddenState, member_count: t.memberCount, joined_member_count: t.joinedMemberCount, member_state: t.myMemberState, my_role: t.myRole, user_last_read: t.myLastRead, ts_message_offset: t.messageOffsetTimestamp, message_survival_seconds: t.messageSurvivalSeconds, read_receipt: t.cachedUnreadMemberState, delivery_receipt: t.cachedUndeliveredMemberState, members: t.members.map(function(l) {
       return Ga.payloadify(l);
     }), last_message: t.lastMessage ? Uu(t.lastMessage) : null, inviter: t.inviter ? xt.payloadify(t.inviter) : null, invited_at: t.invitedAt, joined_ts: t.joinedAt, pinned_message_ids: t.pinnedMessageIds, latest_pinned_message: t.lastPinnedMessage ? Uu(t.lastPinnedMessage) : null })));
   }, n.prototype._shouldUpdateLastMessageWith = function(t) {
@@ -19991,7 +19991,7 @@ var ja = function(e) {
     var a = Date.now(), d = this._generateRequestId(), r = new oa();
     return Qa(O5).then(function() {
       var i = l._createPendingScheduledFileMessage(t, d, a);
-      Le(function() {
+      Ce(function() {
         return M(l, void 0, void 0, function() {
           return p(this, function(c) {
             return [2, r._trigger(i)];
@@ -20536,7 +20536,7 @@ var ja = function(e) {
             throw r.error;
         }
       }
-    QN(t) && Le(function() {
+    QN(t) && Ce(function() {
       return M(c, void 0, void 0, function() {
         var E, u, b, k;
         return p(this, function(Q) {
@@ -20566,7 +20566,7 @@ var ja = function(e) {
           throw l.error;
       }
     }
-    return QN(t) && r.length > 0 && Le(function() {
+    return QN(t) && r.length > 0 && Ce(function() {
       return M(d, void 0, void 0, function() {
         var o, U;
         return p(this, function(N) {
@@ -20637,7 +20637,7 @@ var ja = function(e) {
         switch (r.label) {
           case 0:
             if (this._isDisposed)
-              throw new j({ code: tt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
+              throw new j({ code: nt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
             return this._hasMore ? (n = D.of(this._iid), t = n.cacheContext, l = n.connectionManager, a = [], !t.localCacheEnabled || l.isConnected && !this._backgroundSync.completed ? [3, 2] : [4, yn(function() {
               return M(d, void 0, void 0, function() {
                 return p(this, function(i) {
@@ -20672,7 +20672,7 @@ var ja = function(e) {
 }(), RX = function(e) {
   function n(t) {
     var l = this, a = t.token, d = t.limit, r = t.order, i = t.includeEmpty, c = t.membershipFilter, V = t.channelNameContainsFilter, s = t.channelUrlsFilter, o = t.customTypesFilter, U = t.customTypeStartsWithFilter, N = t.superChannelFilter, R = t.metadataOrderKeyFilter, h = t.metadataKey, Z = t.metadataValues, W = t.metadataValueStartsWith, F = t.includeFrozen, m = t.includeMetaData;
-    return (l = e.call(this) || this).method = he.GET, l.path = vl, l.params = Oe(Ae({ token: a, limit: d, order: r, show_member: !0, show_read_receipt: !0, show_delivery_receipt: !0, show_empty: i, public_mode: Cd.PUBLIC, public_membership_mode: c, name_contains: V, channel_urls: s, custom_types: o, custom_type_startswith: U, super_mode: N, metadata_order_key: R, metadata_key: h, metadata_values: Z, metadata_value_startswith: W, show_frozen: F, show_metadata: m })), l;
+    return (l = e.call(this) || this).method = he.GET, l.path = vl, l.params = je(Ae({ token: a, limit: d, order: r, show_member: !0, show_read_receipt: !0, show_delivery_receipt: !0, show_empty: i, public_mode: Cd.PUBLIC, public_membership_mode: c, name_contains: V, channel_urls: s, custom_types: o, custom_type_startswith: U, super_mode: N, metadata_order_key: R, metadata_key: h, metadata_values: Z, metadata_value_startswith: W, show_frozen: F, show_metadata: m })), l;
   }
   return J(n, e), n;
 }(Te), hX = function(e) {
@@ -20737,7 +20737,7 @@ var ZX = function(e) {
 }(rb)), TX = function(e) {
   function n(t) {
     var l = this, a = t.token, d = t.limit, r = t.order, i = t.reverse, c = t.channelUrl, V = t.messageTypeFilter, s = t.scheduledStatus;
-    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(pk), l.params = Oe(Ae({ token: a, limit: d, reverse: i, channel_url: c, order: r, message_type: V, status: s })), l;
+    return (l = e.call(this) || this).method = he.GET, l.path = "".concat(pk), l.params = je(Ae({ token: a, limit: d, reverse: i, channel_url: c, order: r, message_type: V, status: s })), l;
   }
   return J(n, e), n;
 }(Te), FX = function(e) {
@@ -21165,7 +21165,7 @@ var uX = function(e) {
 }(), fu = function(e) {
   function n(t) {
     var l = t.userId, a = t.nickname, d = t.profileUrl, r = t.profileImage, i = t.preferredLanguages, c = e.call(this) || this;
-    return c.method = he.PUT, c.path = "".concat(It, "/").concat(encodeURIComponent(l)), c.params = Oe(Ae({ nickname: a, profile_url: d, profile_file: r, preferred_languages: i })), c;
+    return c.method = he.PUT, c.path = "".concat(It, "/").concat(encodeURIComponent(l)), c.params = je(Ae({ nickname: a, profile_url: d, profile_file: r, preferred_languages: i })), c;
   }
   return J(n, e), n;
 }(Te), wu = function(e) {
@@ -21631,7 +21631,7 @@ var as, hO = function(e) {
           var W = h.as(I3).event;
           if (W.category === uo.FRIEND_DISCOVERED) {
             var F = sR.getDataAsFriendDiscoveredEvent(n, W).friendDiscoveries;
-            Le(function() {
+            Ce(function() {
               return M(a, void 0, void 0, function() {
                 return p(this, function(k) {
                   return [2, U.forEach(function(Q) {
@@ -21650,7 +21650,7 @@ var as, hO = function(e) {
               m.customTypes[b] !== h.customTypes[b] && (E = !0), m.customTypes[b] = h.customTypes[b];
           E = E && m.ts > 0, m.ts = u;
         }
-        E && Le(function() {
+        E && Ce(function() {
           return M(a, void 0, void 0, function() {
             return p(this, function(k) {
               return [2, U.forEach(function(Q) {
@@ -22762,12 +22762,12 @@ function JO(e, n, t) {
   vO(e, n, t), zO(e, n, t), xO(e, n, t), GO(e, n, t);
 }
 function vO(e, n, t) {
-  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Re, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, we, Me, We, Be, Ke, lt, De, je, at, Ge, $e, He, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ce, Je, de, qe, nt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, ge, it, ze, ht, Ft, X, Ue, pe, fe, Nt, Ee, H, Ve;
-  !((l = t.groupChannel) === null || l === void 0) && l.channel && _t((d = (a = t.groupChannel) === null || a === void 0 ? void 0 : a.channel) === null || d === void 0 ? void 0 : d.enableOgtag) && (e.channel.enableOgtag = t.groupChannel.channel.enableOgtag), !((r = n.groupChannel) === null || r === void 0) && r.channel && _t((c = (i = n.groupChannel) === null || i === void 0 ? void 0 : i.channel) === null || c === void 0 ? void 0 : c.enableOgtag) && (e.channel.enableOgtag = (s = (V = n.groupChannel) === null || V === void 0 ? void 0 : V.channel) === null || s === void 0 ? void 0 : s.enableOgtag), !((o = t.groupChannel) === null || o === void 0) && o.channel && _t((N = (U = t.groupChannel) === null || U === void 0 ? void 0 : U.channel) === null || N === void 0 ? void 0 : N.enableTypingIndicator) && (e.channel.enableTypingIndicator = (h = (R = t.groupChannel) === null || R === void 0 ? void 0 : R.channel) === null || h === void 0 ? void 0 : h.enableTypingIndicator), !((Z = n.groupChannel) === null || Z === void 0) && Z.channel && _t((F = (W = n.groupChannel) === null || W === void 0 ? void 0 : W.channel) === null || F === void 0 ? void 0 : F.enableTypingIndicator) && (e.channel.enableTypingIndicator = (E = (m = n.groupChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.enableTypingIndicator), !((u = t.groupChannel) === null || u === void 0) && u.channel && _t((k = (b = t.groupChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.enableReactions) && (e.channel.enableReactions = (S = (Q = t.groupChannel) === null || Q === void 0 ? void 0 : Q.channel) === null || S === void 0 ? void 0 : S.enableReactions), !((v = n.groupChannel) === null || v === void 0) && v.channel && _t((w = (G = n.groupChannel) === null || G === void 0 ? void 0 : G.channel) === null || w === void 0 ? void 0 : w.enableReactions) && (e.channel.enableReactions = (g = (y = n.groupChannel) === null || y === void 0 ? void 0 : y.channel) === null || g === void 0 ? void 0 : g.enableReactions), !((f = t.groupChannel) === null || f === void 0) && f.channel && _t((K = (I = t.groupChannel) === null || I === void 0 ? void 0 : I.channel) === null || K === void 0 ? void 0 : K.enableReactionsSupergroup) && (e.channel.enableReactionsSupergroup = (q = (Re = t.groupChannel) === null || Re === void 0 ? void 0 : Re.channel) === null || q === void 0 ? void 0 : q.enableReactionsSupergroup), !((ae = n.groupChannel) === null || ae === void 0) && ae.channel && _t((le = (se = n.groupChannel) === null || se === void 0 ? void 0 : se.channel) === null || le === void 0 ? void 0 : le.enableReactionsSupergroup) && (e.channel.enableReactionsSupergroup = ($ = (L = n.groupChannel) === null || L === void 0 ? void 0 : L.channel) === null || $ === void 0 ? void 0 : $.enableReactionsSupergroup), !((ee = t.groupChannel) === null || ee === void 0) && ee.channel && _t((re = (O = t.groupChannel) === null || O === void 0 ? void 0 : O.channel) === null || re === void 0 ? void 0 : re.enableMention) && (e.channel.enableMention = (Qe = (te = t.groupChannel) === null || te === void 0 ? void 0 : te.channel) === null || Qe === void 0 ? void 0 : Qe.enableMention), !((Ye = n.groupChannel) === null || Ye === void 0) && Ye.channel && _t((P = (Se = n.groupChannel) === null || Se === void 0 ? void 0 : Se.channel) === null || P === void 0 ? void 0 : P.enableMention) && (e.channel.enableMention = (Me = (we = n.groupChannel) === null || we === void 0 ? void 0 : we.channel) === null || Me === void 0 ? void 0 : Me.enableMention), !((We = t.groupChannel) === null || We === void 0) && We.channel && ds((Ke = (Be = t.groupChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || Ke === void 0 ? void 0 : Ke.replyType, ["none", "quote_reply", "thread"]) && (e.channel.replyType = (De = (lt = t.groupChannel) === null || lt === void 0 ? void 0 : lt.channel) === null || De === void 0 ? void 0 : De.replyType), !((je = n.groupChannel) === null || je === void 0) && je.channel && ds((Ge = (at = n.groupChannel) === null || at === void 0 ? void 0 : at.channel) === null || Ge === void 0 ? void 0 : Ge.replyType, ["none", "quote_reply", "thread"]) && (e.channel.replyType = (He = ($e = n.groupChannel) === null || $e === void 0 ? void 0 : $e.channel) === null || He === void 0 ? void 0 : He.replyType), !((Xe = t.groupChannel) === null || Xe === void 0) && Xe.channel && ds((Vt = (pt = t.groupChannel) === null || pt === void 0 ? void 0 : pt.channel) === null || Vt === void 0 ? void 0 : Vt.threadReplySelectType, ["thread", "parent"]) && (e.channel.threadReplySelectType = (xe = (yt = t.groupChannel) === null || yt === void 0 ? void 0 : yt.channel) === null || xe === void 0 ? void 0 : xe.threadReplySelectType), !((At = n.groupChannel) === null || At === void 0) && At.channel && ds((Kt = (kt = n.groupChannel) === null || kt === void 0 ? void 0 : kt.channel) === null || Kt === void 0 ? void 0 : Kt.threadReplySelectType, ["thread", "parent"]) && (e.channel.threadReplySelectType = (vt = (ln = n.groupChannel) === null || ln === void 0 ? void 0 : ln.channel) === null || vt === void 0 ? void 0 : vt.threadReplySelectType), !((Rt = t.groupChannel) === null || Rt === void 0) && Rt.channel && _t((Je = (Ce = t.groupChannel) === null || Ce === void 0 ? void 0 : Ce.channel) === null || Je === void 0 ? void 0 : Je.enableVoiceMessage) && (e.channel.enableVoiceMessage = (qe = (de = t.groupChannel) === null || de === void 0 ? void 0 : de.channel) === null || qe === void 0 ? void 0 : qe.enableVoiceMessage), !((nt = n.groupChannel) === null || nt === void 0) && nt.channel && _t((Ot = (ct = n.groupChannel) === null || ct === void 0 ? void 0 : ct.channel) === null || Ot === void 0 ? void 0 : Ot.enableVoiceMessage) && (e.channel.enableVoiceMessage = (cn = (zt = n.groupChannel) === null || zt === void 0 ? void 0 : zt.channel) === null || cn === void 0 ? void 0 : cn.enableVoiceMessage), !((mt = n.groupChannel) === null || mt === void 0) && mt.channel && EO((hn = (sn = n.groupChannel) === null || sn === void 0 ? void 0 : sn.channel) === null || hn === void 0 ? void 0 : hn.typingIndicatorTypes) && (e.channel.typingIndicatorTypes = (qt = (ft = n.groupChannel) === null || ft === void 0 ? void 0 : ft.channel) === null || qt === void 0 ? void 0 : qt.typingIndicatorTypes), !((jt = n.groupChannel) === null || jt === void 0) && jt.channel && _t((ge = (Bt = n.groupChannel) === null || Bt === void 0 ? void 0 : Bt.channel) === null || ge === void 0 ? void 0 : ge.enableFeedback) && (e.channel.enableFeedback = (ze = (it = n.groupChannel) === null || it === void 0 ? void 0 : it.channel) === null || ze === void 0 ? void 0 : ze.enableFeedback), !((ht = n.groupChannel) === null || ht === void 0) && ht.channel && _t((X = (Ft = n.groupChannel) === null || Ft === void 0 ? void 0 : Ft.channel) === null || X === void 0 ? void 0 : X.enableSuggestedReplies) && (e.channel.enableSuggestedReplies = (pe = (Ue = n.groupChannel) === null || Ue === void 0 ? void 0 : Ue.channel) === null || pe === void 0 ? void 0 : pe.enableSuggestedReplies), !((fe = n.groupChannel) === null || fe === void 0) && fe.channel && ds((Ee = (Nt = n.groupChannel) === null || Nt === void 0 ? void 0 : Nt.channel) === null || Ee === void 0 ? void 0 : Ee.showSuggestedRepliesFor, ["all_messages", "last_message_only"]) && (e.channel.showSuggestedRepliesFor = (Ve = (H = n.groupChannel) === null || H === void 0 ? void 0 : H.channel) === null || Ve === void 0 ? void 0 : Ve.showSuggestedRepliesFor);
+  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Ue, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, ge, Me, We, De, Oe, tt, Be, He, at, Ge, $e, fe, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ke, Je, de, qe, lt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, Ie, it, ze, ht, Ft, X, Ne, pe, we, Nt, Ee, H, Ve;
+  !((l = t.groupChannel) === null || l === void 0) && l.channel && _t((d = (a = t.groupChannel) === null || a === void 0 ? void 0 : a.channel) === null || d === void 0 ? void 0 : d.enableOgtag) && (e.channel.enableOgtag = t.groupChannel.channel.enableOgtag), !((r = n.groupChannel) === null || r === void 0) && r.channel && _t((c = (i = n.groupChannel) === null || i === void 0 ? void 0 : i.channel) === null || c === void 0 ? void 0 : c.enableOgtag) && (e.channel.enableOgtag = (s = (V = n.groupChannel) === null || V === void 0 ? void 0 : V.channel) === null || s === void 0 ? void 0 : s.enableOgtag), !((o = t.groupChannel) === null || o === void 0) && o.channel && _t((N = (U = t.groupChannel) === null || U === void 0 ? void 0 : U.channel) === null || N === void 0 ? void 0 : N.enableTypingIndicator) && (e.channel.enableTypingIndicator = (h = (R = t.groupChannel) === null || R === void 0 ? void 0 : R.channel) === null || h === void 0 ? void 0 : h.enableTypingIndicator), !((Z = n.groupChannel) === null || Z === void 0) && Z.channel && _t((F = (W = n.groupChannel) === null || W === void 0 ? void 0 : W.channel) === null || F === void 0 ? void 0 : F.enableTypingIndicator) && (e.channel.enableTypingIndicator = (E = (m = n.groupChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.enableTypingIndicator), !((u = t.groupChannel) === null || u === void 0) && u.channel && _t((k = (b = t.groupChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.enableReactions) && (e.channel.enableReactions = (S = (Q = t.groupChannel) === null || Q === void 0 ? void 0 : Q.channel) === null || S === void 0 ? void 0 : S.enableReactions), !((v = n.groupChannel) === null || v === void 0) && v.channel && _t((w = (G = n.groupChannel) === null || G === void 0 ? void 0 : G.channel) === null || w === void 0 ? void 0 : w.enableReactions) && (e.channel.enableReactions = (g = (y = n.groupChannel) === null || y === void 0 ? void 0 : y.channel) === null || g === void 0 ? void 0 : g.enableReactions), !((f = t.groupChannel) === null || f === void 0) && f.channel && _t((K = (I = t.groupChannel) === null || I === void 0 ? void 0 : I.channel) === null || K === void 0 ? void 0 : K.enableReactionsSupergroup) && (e.channel.enableReactionsSupergroup = (q = (Ue = t.groupChannel) === null || Ue === void 0 ? void 0 : Ue.channel) === null || q === void 0 ? void 0 : q.enableReactionsSupergroup), !((ae = n.groupChannel) === null || ae === void 0) && ae.channel && _t((le = (se = n.groupChannel) === null || se === void 0 ? void 0 : se.channel) === null || le === void 0 ? void 0 : le.enableReactionsSupergroup) && (e.channel.enableReactionsSupergroup = ($ = (L = n.groupChannel) === null || L === void 0 ? void 0 : L.channel) === null || $ === void 0 ? void 0 : $.enableReactionsSupergroup), !((ee = t.groupChannel) === null || ee === void 0) && ee.channel && _t((re = (O = t.groupChannel) === null || O === void 0 ? void 0 : O.channel) === null || re === void 0 ? void 0 : re.enableMention) && (e.channel.enableMention = (Qe = (te = t.groupChannel) === null || te === void 0 ? void 0 : te.channel) === null || Qe === void 0 ? void 0 : Qe.enableMention), !((Ye = n.groupChannel) === null || Ye === void 0) && Ye.channel && _t((P = (Se = n.groupChannel) === null || Se === void 0 ? void 0 : Se.channel) === null || P === void 0 ? void 0 : P.enableMention) && (e.channel.enableMention = (Me = (ge = n.groupChannel) === null || ge === void 0 ? void 0 : ge.channel) === null || Me === void 0 ? void 0 : Me.enableMention), !((We = t.groupChannel) === null || We === void 0) && We.channel && ds((Oe = (De = t.groupChannel) === null || De === void 0 ? void 0 : De.channel) === null || Oe === void 0 ? void 0 : Oe.replyType, ["none", "quote_reply", "thread"]) && (e.channel.replyType = (Be = (tt = t.groupChannel) === null || tt === void 0 ? void 0 : tt.channel) === null || Be === void 0 ? void 0 : Be.replyType), !((He = n.groupChannel) === null || He === void 0) && He.channel && ds((Ge = (at = n.groupChannel) === null || at === void 0 ? void 0 : at.channel) === null || Ge === void 0 ? void 0 : Ge.replyType, ["none", "quote_reply", "thread"]) && (e.channel.replyType = (fe = ($e = n.groupChannel) === null || $e === void 0 ? void 0 : $e.channel) === null || fe === void 0 ? void 0 : fe.replyType), !((Xe = t.groupChannel) === null || Xe === void 0) && Xe.channel && ds((Vt = (pt = t.groupChannel) === null || pt === void 0 ? void 0 : pt.channel) === null || Vt === void 0 ? void 0 : Vt.threadReplySelectType, ["thread", "parent"]) && (e.channel.threadReplySelectType = (xe = (yt = t.groupChannel) === null || yt === void 0 ? void 0 : yt.channel) === null || xe === void 0 ? void 0 : xe.threadReplySelectType), !((At = n.groupChannel) === null || At === void 0) && At.channel && ds((Kt = (kt = n.groupChannel) === null || kt === void 0 ? void 0 : kt.channel) === null || Kt === void 0 ? void 0 : Kt.threadReplySelectType, ["thread", "parent"]) && (e.channel.threadReplySelectType = (vt = (ln = n.groupChannel) === null || ln === void 0 ? void 0 : ln.channel) === null || vt === void 0 ? void 0 : vt.threadReplySelectType), !((Rt = t.groupChannel) === null || Rt === void 0) && Rt.channel && _t((Je = (Ke = t.groupChannel) === null || Ke === void 0 ? void 0 : Ke.channel) === null || Je === void 0 ? void 0 : Je.enableVoiceMessage) && (e.channel.enableVoiceMessage = (qe = (de = t.groupChannel) === null || de === void 0 ? void 0 : de.channel) === null || qe === void 0 ? void 0 : qe.enableVoiceMessage), !((lt = n.groupChannel) === null || lt === void 0) && lt.channel && _t((Ot = (ct = n.groupChannel) === null || ct === void 0 ? void 0 : ct.channel) === null || Ot === void 0 ? void 0 : Ot.enableVoiceMessage) && (e.channel.enableVoiceMessage = (cn = (zt = n.groupChannel) === null || zt === void 0 ? void 0 : zt.channel) === null || cn === void 0 ? void 0 : cn.enableVoiceMessage), !((mt = n.groupChannel) === null || mt === void 0) && mt.channel && EO((hn = (sn = n.groupChannel) === null || sn === void 0 ? void 0 : sn.channel) === null || hn === void 0 ? void 0 : hn.typingIndicatorTypes) && (e.channel.typingIndicatorTypes = (qt = (ft = n.groupChannel) === null || ft === void 0 ? void 0 : ft.channel) === null || qt === void 0 ? void 0 : qt.typingIndicatorTypes), !((jt = n.groupChannel) === null || jt === void 0) && jt.channel && _t((Ie = (Bt = n.groupChannel) === null || Bt === void 0 ? void 0 : Bt.channel) === null || Ie === void 0 ? void 0 : Ie.enableFeedback) && (e.channel.enableFeedback = (ze = (it = n.groupChannel) === null || it === void 0 ? void 0 : it.channel) === null || ze === void 0 ? void 0 : ze.enableFeedback), !((ht = n.groupChannel) === null || ht === void 0) && ht.channel && _t((X = (Ft = n.groupChannel) === null || Ft === void 0 ? void 0 : Ft.channel) === null || X === void 0 ? void 0 : X.enableSuggestedReplies) && (e.channel.enableSuggestedReplies = (pe = (Ne = n.groupChannel) === null || Ne === void 0 ? void 0 : Ne.channel) === null || pe === void 0 ? void 0 : pe.enableSuggestedReplies), !((we = n.groupChannel) === null || we === void 0) && we.channel && ds((Ee = (Nt = n.groupChannel) === null || Nt === void 0 ? void 0 : Nt.channel) === null || Ee === void 0 ? void 0 : Ee.showSuggestedRepliesFor, ["all_messages", "last_message_only"]) && (e.channel.showSuggestedRepliesFor = (Ve = (H = n.groupChannel) === null || H === void 0 ? void 0 : H.channel) === null || Ve === void 0 ? void 0 : Ve.showSuggestedRepliesFor);
 }
 function zO(e, n, t) {
-  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Re, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, we, Me, We, Be, Ke, lt, De, je, at, Ge, $e, He, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ce, Je, de, qe, nt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, ge, it, ze, ht, Ft, X, Ue, pe, fe, Nt, Ee, H, Ve, ye, Zt, Mt, Ct, Ht, Sn;
-  !((a = (l = t.groupChannel) === null || l === void 0 ? void 0 : l.channel) === null || a === void 0) && a.input && _t((i = (r = (d = t.groupChannel) === null || d === void 0 ? void 0 : d.channel) === null || r === void 0 ? void 0 : r.input) === null || i === void 0 ? void 0 : i.enableDocument) && (e.channel.input.enableDocument = (s = (V = (c = t.groupChannel) === null || c === void 0 ? void 0 : c.channel) === null || V === void 0 ? void 0 : V.input) === null || s === void 0 ? void 0 : s.enableDocument), !((U = (o = n.groupChannel) === null || o === void 0 ? void 0 : o.channel) === null || U === void 0) && U.input && _t((h = (R = (N = n.groupChannel) === null || N === void 0 ? void 0 : N.channel) === null || R === void 0 ? void 0 : R.input) === null || h === void 0 ? void 0 : h.enableDocument) && (e.channel.input.enableDocument = (F = (W = (Z = n.groupChannel) === null || Z === void 0 ? void 0 : Z.channel) === null || W === void 0 ? void 0 : W.input) === null || F === void 0 ? void 0 : F.enableDocument), !((u = (E = (m = t.groupChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.input) === null || u === void 0) && u.camera && _t((S = (Q = (k = (b = t.groupChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.input) === null || Q === void 0 ? void 0 : Q.camera) === null || S === void 0 ? void 0 : S.enablePhoto) && (e.channel.input.camera.enablePhoto = (y = (w = (G = (v = t.groupChannel) === null || v === void 0 ? void 0 : v.channel) === null || G === void 0 ? void 0 : G.input) === null || w === void 0 ? void 0 : w.camera) === null || y === void 0 ? void 0 : y.enablePhoto), !((I = (f = (g = n.groupChannel) === null || g === void 0 ? void 0 : g.channel) === null || f === void 0 ? void 0 : f.input) === null || I === void 0) && I.camera && _t((ae = (q = (Re = (K = n.groupChannel) === null || K === void 0 ? void 0 : K.channel) === null || Re === void 0 ? void 0 : Re.input) === null || q === void 0 ? void 0 : q.camera) === null || ae === void 0 ? void 0 : ae.enablePhoto) && (e.channel.input.camera.enablePhoto = ($ = (L = (le = (se = n.groupChannel) === null || se === void 0 ? void 0 : se.channel) === null || le === void 0 ? void 0 : le.input) === null || L === void 0 ? void 0 : L.camera) === null || $ === void 0 ? void 0 : $.enablePhoto), !((re = (O = (ee = t.groupChannel) === null || ee === void 0 ? void 0 : ee.channel) === null || O === void 0 ? void 0 : O.input) === null || re === void 0) && re.camera && _t((Se = (Ye = (Qe = (te = t.groupChannel) === null || te === void 0 ? void 0 : te.channel) === null || Qe === void 0 ? void 0 : Qe.input) === null || Ye === void 0 ? void 0 : Ye.camera) === null || Se === void 0 ? void 0 : Se.enableVideo) && (e.channel.input.camera.enableVideo = (We = (Me = (we = (P = t.groupChannel) === null || P === void 0 ? void 0 : P.channel) === null || we === void 0 ? void 0 : we.input) === null || Me === void 0 ? void 0 : Me.camera) === null || We === void 0 ? void 0 : We.enableVideo), !((lt = (Ke = (Be = n.groupChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || Ke === void 0 ? void 0 : Ke.input) === null || lt === void 0) && lt.camera && _t((Ge = (at = (je = (De = n.groupChannel) === null || De === void 0 ? void 0 : De.channel) === null || je === void 0 ? void 0 : je.input) === null || at === void 0 ? void 0 : at.camera) === null || Ge === void 0 ? void 0 : Ge.enableVideo) && (e.channel.input.camera.enableVideo = (pt = (Xe = (He = ($e = n.groupChannel) === null || $e === void 0 ? void 0 : $e.channel) === null || He === void 0 ? void 0 : He.input) === null || Xe === void 0 ? void 0 : Xe.camera) === null || pt === void 0 ? void 0 : pt.enableVideo), !((xe = (yt = (Vt = t.groupChannel) === null || Vt === void 0 ? void 0 : Vt.channel) === null || yt === void 0 ? void 0 : yt.input) === null || xe === void 0) && xe.gallery && _t((ln = (Kt = (kt = (At = t.groupChannel) === null || At === void 0 ? void 0 : At.channel) === null || kt === void 0 ? void 0 : kt.input) === null || Kt === void 0 ? void 0 : Kt.gallery) === null || ln === void 0 ? void 0 : ln.enablePhoto) && (e.channel.input.gallery.enablePhoto = (Je = (Ce = (Rt = (vt = t.groupChannel) === null || vt === void 0 ? void 0 : vt.channel) === null || Rt === void 0 ? void 0 : Rt.input) === null || Ce === void 0 ? void 0 : Ce.gallery) === null || Je === void 0 ? void 0 : Je.enablePhoto), !((nt = (qe = (de = n.groupChannel) === null || de === void 0 ? void 0 : de.channel) === null || qe === void 0 ? void 0 : qe.input) === null || nt === void 0) && nt.gallery && _t((cn = (zt = (Ot = (ct = n.groupChannel) === null || ct === void 0 ? void 0 : ct.channel) === null || Ot === void 0 ? void 0 : Ot.input) === null || zt === void 0 ? void 0 : zt.gallery) === null || cn === void 0 ? void 0 : cn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (ft = (hn = (sn = (mt = n.groupChannel) === null || mt === void 0 ? void 0 : mt.channel) === null || sn === void 0 ? void 0 : sn.input) === null || hn === void 0 ? void 0 : hn.gallery) === null || ft === void 0 ? void 0 : ft.enablePhoto), !((Bt = (jt = (qt = t.groupChannel) === null || qt === void 0 ? void 0 : qt.channel) === null || jt === void 0 ? void 0 : jt.input) === null || Bt === void 0) && Bt.gallery && _t((ht = (ze = (it = (ge = t.groupChannel) === null || ge === void 0 ? void 0 : ge.channel) === null || it === void 0 ? void 0 : it.input) === null || ze === void 0 ? void 0 : ze.gallery) === null || ht === void 0 ? void 0 : ht.enableVideo) && (e.channel.input.gallery.enableVideo = (pe = (Ue = (X = (Ft = t.groupChannel) === null || Ft === void 0 ? void 0 : Ft.channel) === null || X === void 0 ? void 0 : X.input) === null || Ue === void 0 ? void 0 : Ue.gallery) === null || pe === void 0 ? void 0 : pe.enableVideo), !((Ee = (Nt = (fe = n.groupChannel) === null || fe === void 0 ? void 0 : fe.channel) === null || Nt === void 0 ? void 0 : Nt.input) === null || Ee === void 0) && Ee.gallery && _t((Zt = (ye = (Ve = (H = n.groupChannel) === null || H === void 0 ? void 0 : H.channel) === null || Ve === void 0 ? void 0 : Ve.input) === null || ye === void 0 ? void 0 : ye.gallery) === null || Zt === void 0 ? void 0 : Zt.enableVideo) && (e.channel.input.gallery.enableVideo = (Sn = (Ht = (Ct = (Mt = n.groupChannel) === null || Mt === void 0 ? void 0 : Mt.channel) === null || Ct === void 0 ? void 0 : Ct.input) === null || Ht === void 0 ? void 0 : Ht.gallery) === null || Sn === void 0 ? void 0 : Sn.enableVideo);
+  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Ue, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, ge, Me, We, De, Oe, tt, Be, He, at, Ge, $e, fe, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ke, Je, de, qe, lt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, Ie, it, ze, ht, Ft, X, Ne, pe, we, Nt, Ee, H, Ve, ye, Zt, Mt, Ct, Ht, Sn;
+  !((a = (l = t.groupChannel) === null || l === void 0 ? void 0 : l.channel) === null || a === void 0) && a.input && _t((i = (r = (d = t.groupChannel) === null || d === void 0 ? void 0 : d.channel) === null || r === void 0 ? void 0 : r.input) === null || i === void 0 ? void 0 : i.enableDocument) && (e.channel.input.enableDocument = (s = (V = (c = t.groupChannel) === null || c === void 0 ? void 0 : c.channel) === null || V === void 0 ? void 0 : V.input) === null || s === void 0 ? void 0 : s.enableDocument), !((U = (o = n.groupChannel) === null || o === void 0 ? void 0 : o.channel) === null || U === void 0) && U.input && _t((h = (R = (N = n.groupChannel) === null || N === void 0 ? void 0 : N.channel) === null || R === void 0 ? void 0 : R.input) === null || h === void 0 ? void 0 : h.enableDocument) && (e.channel.input.enableDocument = (F = (W = (Z = n.groupChannel) === null || Z === void 0 ? void 0 : Z.channel) === null || W === void 0 ? void 0 : W.input) === null || F === void 0 ? void 0 : F.enableDocument), !((u = (E = (m = t.groupChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.input) === null || u === void 0) && u.camera && _t((S = (Q = (k = (b = t.groupChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.input) === null || Q === void 0 ? void 0 : Q.camera) === null || S === void 0 ? void 0 : S.enablePhoto) && (e.channel.input.camera.enablePhoto = (y = (w = (G = (v = t.groupChannel) === null || v === void 0 ? void 0 : v.channel) === null || G === void 0 ? void 0 : G.input) === null || w === void 0 ? void 0 : w.camera) === null || y === void 0 ? void 0 : y.enablePhoto), !((I = (f = (g = n.groupChannel) === null || g === void 0 ? void 0 : g.channel) === null || f === void 0 ? void 0 : f.input) === null || I === void 0) && I.camera && _t((ae = (q = (Ue = (K = n.groupChannel) === null || K === void 0 ? void 0 : K.channel) === null || Ue === void 0 ? void 0 : Ue.input) === null || q === void 0 ? void 0 : q.camera) === null || ae === void 0 ? void 0 : ae.enablePhoto) && (e.channel.input.camera.enablePhoto = ($ = (L = (le = (se = n.groupChannel) === null || se === void 0 ? void 0 : se.channel) === null || le === void 0 ? void 0 : le.input) === null || L === void 0 ? void 0 : L.camera) === null || $ === void 0 ? void 0 : $.enablePhoto), !((re = (O = (ee = t.groupChannel) === null || ee === void 0 ? void 0 : ee.channel) === null || O === void 0 ? void 0 : O.input) === null || re === void 0) && re.camera && _t((Se = (Ye = (Qe = (te = t.groupChannel) === null || te === void 0 ? void 0 : te.channel) === null || Qe === void 0 ? void 0 : Qe.input) === null || Ye === void 0 ? void 0 : Ye.camera) === null || Se === void 0 ? void 0 : Se.enableVideo) && (e.channel.input.camera.enableVideo = (We = (Me = (ge = (P = t.groupChannel) === null || P === void 0 ? void 0 : P.channel) === null || ge === void 0 ? void 0 : ge.input) === null || Me === void 0 ? void 0 : Me.camera) === null || We === void 0 ? void 0 : We.enableVideo), !((tt = (Oe = (De = n.groupChannel) === null || De === void 0 ? void 0 : De.channel) === null || Oe === void 0 ? void 0 : Oe.input) === null || tt === void 0) && tt.camera && _t((Ge = (at = (He = (Be = n.groupChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || He === void 0 ? void 0 : He.input) === null || at === void 0 ? void 0 : at.camera) === null || Ge === void 0 ? void 0 : Ge.enableVideo) && (e.channel.input.camera.enableVideo = (pt = (Xe = (fe = ($e = n.groupChannel) === null || $e === void 0 ? void 0 : $e.channel) === null || fe === void 0 ? void 0 : fe.input) === null || Xe === void 0 ? void 0 : Xe.camera) === null || pt === void 0 ? void 0 : pt.enableVideo), !((xe = (yt = (Vt = t.groupChannel) === null || Vt === void 0 ? void 0 : Vt.channel) === null || yt === void 0 ? void 0 : yt.input) === null || xe === void 0) && xe.gallery && _t((ln = (Kt = (kt = (At = t.groupChannel) === null || At === void 0 ? void 0 : At.channel) === null || kt === void 0 ? void 0 : kt.input) === null || Kt === void 0 ? void 0 : Kt.gallery) === null || ln === void 0 ? void 0 : ln.enablePhoto) && (e.channel.input.gallery.enablePhoto = (Je = (Ke = (Rt = (vt = t.groupChannel) === null || vt === void 0 ? void 0 : vt.channel) === null || Rt === void 0 ? void 0 : Rt.input) === null || Ke === void 0 ? void 0 : Ke.gallery) === null || Je === void 0 ? void 0 : Je.enablePhoto), !((lt = (qe = (de = n.groupChannel) === null || de === void 0 ? void 0 : de.channel) === null || qe === void 0 ? void 0 : qe.input) === null || lt === void 0) && lt.gallery && _t((cn = (zt = (Ot = (ct = n.groupChannel) === null || ct === void 0 ? void 0 : ct.channel) === null || Ot === void 0 ? void 0 : Ot.input) === null || zt === void 0 ? void 0 : zt.gallery) === null || cn === void 0 ? void 0 : cn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (ft = (hn = (sn = (mt = n.groupChannel) === null || mt === void 0 ? void 0 : mt.channel) === null || sn === void 0 ? void 0 : sn.input) === null || hn === void 0 ? void 0 : hn.gallery) === null || ft === void 0 ? void 0 : ft.enablePhoto), !((Bt = (jt = (qt = t.groupChannel) === null || qt === void 0 ? void 0 : qt.channel) === null || jt === void 0 ? void 0 : jt.input) === null || Bt === void 0) && Bt.gallery && _t((ht = (ze = (it = (Ie = t.groupChannel) === null || Ie === void 0 ? void 0 : Ie.channel) === null || it === void 0 ? void 0 : it.input) === null || ze === void 0 ? void 0 : ze.gallery) === null || ht === void 0 ? void 0 : ht.enableVideo) && (e.channel.input.gallery.enableVideo = (pe = (Ne = (X = (Ft = t.groupChannel) === null || Ft === void 0 ? void 0 : Ft.channel) === null || X === void 0 ? void 0 : X.input) === null || Ne === void 0 ? void 0 : Ne.gallery) === null || pe === void 0 ? void 0 : pe.enableVideo), !((Ee = (Nt = (we = n.groupChannel) === null || we === void 0 ? void 0 : we.channel) === null || Nt === void 0 ? void 0 : Nt.input) === null || Ee === void 0) && Ee.gallery && _t((Zt = (ye = (Ve = (H = n.groupChannel) === null || H === void 0 ? void 0 : H.channel) === null || Ve === void 0 ? void 0 : Ve.input) === null || ye === void 0 ? void 0 : ye.gallery) === null || Zt === void 0 ? void 0 : Zt.enableVideo) && (e.channel.input.gallery.enableVideo = (Sn = (Ht = (Ct = (Mt = n.groupChannel) === null || Mt === void 0 ? void 0 : Mt.channel) === null || Ct === void 0 ? void 0 : Ct.input) === null || Ht === void 0 ? void 0 : Ht.gallery) === null || Sn === void 0 ? void 0 : Sn.enableVideo);
 }
 function xO(e, n, t) {
   var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E;
@@ -22785,8 +22785,8 @@ function BO(e, n, t) {
   !((l = t.openChannel) === null || l === void 0) && l.channel && _t((d = (a = t.openChannel) === null || a === void 0 ? void 0 : a.channel) === null || d === void 0 ? void 0 : d.enableOgtag) && (e.channel.enableOgtag = t.openChannel.channel.enableOgtag), !((r = n.openChannel) === null || r === void 0) && r.channel && _t((c = (i = n.openChannel) === null || i === void 0 ? void 0 : i.channel) === null || c === void 0 ? void 0 : c.enableOgtag) && (e.channel.enableOgtag = (s = (V = n.openChannel) === null || V === void 0 ? void 0 : V.channel) === null || s === void 0 ? void 0 : s.enableOgtag);
 }
 function DO(e, n, t) {
-  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Re, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, we, Me, We, Be, Ke, lt, De, je, at, Ge, $e, He, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ce, Je, de, qe, nt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, ge, it, ze, ht, Ft, X, Ue, pe, fe, Nt, Ee, H, Ve, ye, Zt, Mt, Ct, Ht, Sn;
-  !((a = (l = t.openChannel) === null || l === void 0 ? void 0 : l.channel) === null || a === void 0) && a.input && _t((i = (r = (d = t.openChannel) === null || d === void 0 ? void 0 : d.channel) === null || r === void 0 ? void 0 : r.input) === null || i === void 0 ? void 0 : i.enableDocument) && (e.channel.input.enableDocument = (s = (V = (c = t.openChannel) === null || c === void 0 ? void 0 : c.channel) === null || V === void 0 ? void 0 : V.input) === null || s === void 0 ? void 0 : s.enableDocument), !((U = (o = n.openChannel) === null || o === void 0 ? void 0 : o.channel) === null || U === void 0) && U.input && _t((h = (R = (N = n.openChannel) === null || N === void 0 ? void 0 : N.channel) === null || R === void 0 ? void 0 : R.input) === null || h === void 0 ? void 0 : h.enableDocument) && (e.channel.input.enableDocument = (F = (W = (Z = n.openChannel) === null || Z === void 0 ? void 0 : Z.channel) === null || W === void 0 ? void 0 : W.input) === null || F === void 0 ? void 0 : F.enableDocument), !((u = (E = (m = t.openChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.input) === null || u === void 0) && u.camera && _t((S = (Q = (k = (b = t.openChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.input) === null || Q === void 0 ? void 0 : Q.camera) === null || S === void 0 ? void 0 : S.enablePhoto) && (e.channel.input.camera.enablePhoto = (y = (w = (G = (v = t.openChannel) === null || v === void 0 ? void 0 : v.channel) === null || G === void 0 ? void 0 : G.input) === null || w === void 0 ? void 0 : w.camera) === null || y === void 0 ? void 0 : y.enablePhoto), !((I = (f = (g = n.openChannel) === null || g === void 0 ? void 0 : g.channel) === null || f === void 0 ? void 0 : f.input) === null || I === void 0) && I.camera && _t((ae = (q = (Re = (K = n.openChannel) === null || K === void 0 ? void 0 : K.channel) === null || Re === void 0 ? void 0 : Re.input) === null || q === void 0 ? void 0 : q.camera) === null || ae === void 0 ? void 0 : ae.enablePhoto) && (e.channel.input.camera.enablePhoto = ($ = (L = (le = (se = n.openChannel) === null || se === void 0 ? void 0 : se.channel) === null || le === void 0 ? void 0 : le.input) === null || L === void 0 ? void 0 : L.camera) === null || $ === void 0 ? void 0 : $.enablePhoto), !((re = (O = (ee = t.openChannel) === null || ee === void 0 ? void 0 : ee.channel) === null || O === void 0 ? void 0 : O.input) === null || re === void 0) && re.camera && _t((Se = (Ye = (Qe = (te = t.openChannel) === null || te === void 0 ? void 0 : te.channel) === null || Qe === void 0 ? void 0 : Qe.input) === null || Ye === void 0 ? void 0 : Ye.camera) === null || Se === void 0 ? void 0 : Se.enableVideo) && (e.channel.input.camera.enableVideo = (We = (Me = (we = (P = t.openChannel) === null || P === void 0 ? void 0 : P.channel) === null || we === void 0 ? void 0 : we.input) === null || Me === void 0 ? void 0 : Me.camera) === null || We === void 0 ? void 0 : We.enableVideo), !((lt = (Ke = (Be = n.openChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || Ke === void 0 ? void 0 : Ke.input) === null || lt === void 0) && lt.camera && _t((Ge = (at = (je = (De = n.openChannel) === null || De === void 0 ? void 0 : De.channel) === null || je === void 0 ? void 0 : je.input) === null || at === void 0 ? void 0 : at.camera) === null || Ge === void 0 ? void 0 : Ge.enableVideo) && (e.channel.input.camera.enableVideo = (pt = (Xe = (He = ($e = n.openChannel) === null || $e === void 0 ? void 0 : $e.channel) === null || He === void 0 ? void 0 : He.input) === null || Xe === void 0 ? void 0 : Xe.camera) === null || pt === void 0 ? void 0 : pt.enableVideo), !((xe = (yt = (Vt = t.openChannel) === null || Vt === void 0 ? void 0 : Vt.channel) === null || yt === void 0 ? void 0 : yt.input) === null || xe === void 0) && xe.gallery && _t((ln = (Kt = (kt = (At = t.openChannel) === null || At === void 0 ? void 0 : At.channel) === null || kt === void 0 ? void 0 : kt.input) === null || Kt === void 0 ? void 0 : Kt.gallery) === null || ln === void 0 ? void 0 : ln.enablePhoto) && (e.channel.input.gallery.enablePhoto = (Je = (Ce = (Rt = (vt = t.openChannel) === null || vt === void 0 ? void 0 : vt.channel) === null || Rt === void 0 ? void 0 : Rt.input) === null || Ce === void 0 ? void 0 : Ce.gallery) === null || Je === void 0 ? void 0 : Je.enablePhoto), !((nt = (qe = (de = n.openChannel) === null || de === void 0 ? void 0 : de.channel) === null || qe === void 0 ? void 0 : qe.input) === null || nt === void 0) && nt.gallery && _t((cn = (zt = (Ot = (ct = n.openChannel) === null || ct === void 0 ? void 0 : ct.channel) === null || Ot === void 0 ? void 0 : Ot.input) === null || zt === void 0 ? void 0 : zt.gallery) === null || cn === void 0 ? void 0 : cn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (ft = (hn = (sn = (mt = n.openChannel) === null || mt === void 0 ? void 0 : mt.channel) === null || sn === void 0 ? void 0 : sn.input) === null || hn === void 0 ? void 0 : hn.gallery) === null || ft === void 0 ? void 0 : ft.enablePhoto), !((Bt = (jt = (qt = t.openChannel) === null || qt === void 0 ? void 0 : qt.channel) === null || jt === void 0 ? void 0 : jt.input) === null || Bt === void 0) && Bt.gallery && _t((ht = (ze = (it = (ge = t.openChannel) === null || ge === void 0 ? void 0 : ge.channel) === null || it === void 0 ? void 0 : it.input) === null || ze === void 0 ? void 0 : ze.gallery) === null || ht === void 0 ? void 0 : ht.enableVideo) && (e.channel.input.gallery.enableVideo = (pe = (Ue = (X = (Ft = t.openChannel) === null || Ft === void 0 ? void 0 : Ft.channel) === null || X === void 0 ? void 0 : X.input) === null || Ue === void 0 ? void 0 : Ue.gallery) === null || pe === void 0 ? void 0 : pe.enableVideo), !((Ee = (Nt = (fe = n.openChannel) === null || fe === void 0 ? void 0 : fe.channel) === null || Nt === void 0 ? void 0 : Nt.input) === null || Ee === void 0) && Ee.gallery && _t((Zt = (ye = (Ve = (H = n.openChannel) === null || H === void 0 ? void 0 : H.channel) === null || Ve === void 0 ? void 0 : Ve.input) === null || ye === void 0 ? void 0 : ye.gallery) === null || Zt === void 0 ? void 0 : Zt.enableVideo) && (e.channel.input.gallery.enableVideo = (Sn = (Ht = (Ct = (Mt = n.openChannel) === null || Mt === void 0 ? void 0 : Mt.channel) === null || Ct === void 0 ? void 0 : Ct.input) === null || Ht === void 0 ? void 0 : Ht.gallery) === null || Sn === void 0 ? void 0 : Sn.enableVideo);
+  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Ue, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, ge, Me, We, De, Oe, tt, Be, He, at, Ge, $e, fe, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt, Ke, Je, de, qe, lt, ct, Ot, zt, cn, mt, sn, hn, ft, qt, jt, Bt, Ie, it, ze, ht, Ft, X, Ne, pe, we, Nt, Ee, H, Ve, ye, Zt, Mt, Ct, Ht, Sn;
+  !((a = (l = t.openChannel) === null || l === void 0 ? void 0 : l.channel) === null || a === void 0) && a.input && _t((i = (r = (d = t.openChannel) === null || d === void 0 ? void 0 : d.channel) === null || r === void 0 ? void 0 : r.input) === null || i === void 0 ? void 0 : i.enableDocument) && (e.channel.input.enableDocument = (s = (V = (c = t.openChannel) === null || c === void 0 ? void 0 : c.channel) === null || V === void 0 ? void 0 : V.input) === null || s === void 0 ? void 0 : s.enableDocument), !((U = (o = n.openChannel) === null || o === void 0 ? void 0 : o.channel) === null || U === void 0) && U.input && _t((h = (R = (N = n.openChannel) === null || N === void 0 ? void 0 : N.channel) === null || R === void 0 ? void 0 : R.input) === null || h === void 0 ? void 0 : h.enableDocument) && (e.channel.input.enableDocument = (F = (W = (Z = n.openChannel) === null || Z === void 0 ? void 0 : Z.channel) === null || W === void 0 ? void 0 : W.input) === null || F === void 0 ? void 0 : F.enableDocument), !((u = (E = (m = t.openChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.input) === null || u === void 0) && u.camera && _t((S = (Q = (k = (b = t.openChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.input) === null || Q === void 0 ? void 0 : Q.camera) === null || S === void 0 ? void 0 : S.enablePhoto) && (e.channel.input.camera.enablePhoto = (y = (w = (G = (v = t.openChannel) === null || v === void 0 ? void 0 : v.channel) === null || G === void 0 ? void 0 : G.input) === null || w === void 0 ? void 0 : w.camera) === null || y === void 0 ? void 0 : y.enablePhoto), !((I = (f = (g = n.openChannel) === null || g === void 0 ? void 0 : g.channel) === null || f === void 0 ? void 0 : f.input) === null || I === void 0) && I.camera && _t((ae = (q = (Ue = (K = n.openChannel) === null || K === void 0 ? void 0 : K.channel) === null || Ue === void 0 ? void 0 : Ue.input) === null || q === void 0 ? void 0 : q.camera) === null || ae === void 0 ? void 0 : ae.enablePhoto) && (e.channel.input.camera.enablePhoto = ($ = (L = (le = (se = n.openChannel) === null || se === void 0 ? void 0 : se.channel) === null || le === void 0 ? void 0 : le.input) === null || L === void 0 ? void 0 : L.camera) === null || $ === void 0 ? void 0 : $.enablePhoto), !((re = (O = (ee = t.openChannel) === null || ee === void 0 ? void 0 : ee.channel) === null || O === void 0 ? void 0 : O.input) === null || re === void 0) && re.camera && _t((Se = (Ye = (Qe = (te = t.openChannel) === null || te === void 0 ? void 0 : te.channel) === null || Qe === void 0 ? void 0 : Qe.input) === null || Ye === void 0 ? void 0 : Ye.camera) === null || Se === void 0 ? void 0 : Se.enableVideo) && (e.channel.input.camera.enableVideo = (We = (Me = (ge = (P = t.openChannel) === null || P === void 0 ? void 0 : P.channel) === null || ge === void 0 ? void 0 : ge.input) === null || Me === void 0 ? void 0 : Me.camera) === null || We === void 0 ? void 0 : We.enableVideo), !((tt = (Oe = (De = n.openChannel) === null || De === void 0 ? void 0 : De.channel) === null || Oe === void 0 ? void 0 : Oe.input) === null || tt === void 0) && tt.camera && _t((Ge = (at = (He = (Be = n.openChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || He === void 0 ? void 0 : He.input) === null || at === void 0 ? void 0 : at.camera) === null || Ge === void 0 ? void 0 : Ge.enableVideo) && (e.channel.input.camera.enableVideo = (pt = (Xe = (fe = ($e = n.openChannel) === null || $e === void 0 ? void 0 : $e.channel) === null || fe === void 0 ? void 0 : fe.input) === null || Xe === void 0 ? void 0 : Xe.camera) === null || pt === void 0 ? void 0 : pt.enableVideo), !((xe = (yt = (Vt = t.openChannel) === null || Vt === void 0 ? void 0 : Vt.channel) === null || yt === void 0 ? void 0 : yt.input) === null || xe === void 0) && xe.gallery && _t((ln = (Kt = (kt = (At = t.openChannel) === null || At === void 0 ? void 0 : At.channel) === null || kt === void 0 ? void 0 : kt.input) === null || Kt === void 0 ? void 0 : Kt.gallery) === null || ln === void 0 ? void 0 : ln.enablePhoto) && (e.channel.input.gallery.enablePhoto = (Je = (Ke = (Rt = (vt = t.openChannel) === null || vt === void 0 ? void 0 : vt.channel) === null || Rt === void 0 ? void 0 : Rt.input) === null || Ke === void 0 ? void 0 : Ke.gallery) === null || Je === void 0 ? void 0 : Je.enablePhoto), !((lt = (qe = (de = n.openChannel) === null || de === void 0 ? void 0 : de.channel) === null || qe === void 0 ? void 0 : qe.input) === null || lt === void 0) && lt.gallery && _t((cn = (zt = (Ot = (ct = n.openChannel) === null || ct === void 0 ? void 0 : ct.channel) === null || Ot === void 0 ? void 0 : Ot.input) === null || zt === void 0 ? void 0 : zt.gallery) === null || cn === void 0 ? void 0 : cn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (ft = (hn = (sn = (mt = n.openChannel) === null || mt === void 0 ? void 0 : mt.channel) === null || sn === void 0 ? void 0 : sn.input) === null || hn === void 0 ? void 0 : hn.gallery) === null || ft === void 0 ? void 0 : ft.enablePhoto), !((Bt = (jt = (qt = t.openChannel) === null || qt === void 0 ? void 0 : qt.channel) === null || jt === void 0 ? void 0 : jt.input) === null || Bt === void 0) && Bt.gallery && _t((ht = (ze = (it = (Ie = t.openChannel) === null || Ie === void 0 ? void 0 : Ie.channel) === null || it === void 0 ? void 0 : it.input) === null || ze === void 0 ? void 0 : ze.gallery) === null || ht === void 0 ? void 0 : ht.enableVideo) && (e.channel.input.gallery.enableVideo = (pe = (Ne = (X = (Ft = t.openChannel) === null || Ft === void 0 ? void 0 : Ft.channel) === null || X === void 0 ? void 0 : X.input) === null || Ne === void 0 ? void 0 : Ne.gallery) === null || pe === void 0 ? void 0 : pe.enableVideo), !((Ee = (Nt = (we = n.openChannel) === null || we === void 0 ? void 0 : we.channel) === null || Nt === void 0 ? void 0 : Nt.input) === null || Ee === void 0) && Ee.gallery && _t((Zt = (ye = (Ve = (H = n.openChannel) === null || H === void 0 ? void 0 : H.channel) === null || Ve === void 0 ? void 0 : Ve.input) === null || ye === void 0 ? void 0 : ye.gallery) === null || Zt === void 0 ? void 0 : Zt.enableVideo) && (e.channel.input.gallery.enableVideo = (Sn = (Ht = (Ct = (Mt = n.openChannel) === null || Mt === void 0 ? void 0 : Mt.channel) === null || Ct === void 0 ? void 0 : Ct.input) === null || Ht === void 0 ? void 0 : Ht.gallery) === null || Sn === void 0 ? void 0 : Sn.enableVideo);
 }
 function XO(e, n) {
   const t = xW();
@@ -23212,8 +23212,8 @@ function GW(e) {
       K && (g = g.replace(/"(?:\\"|[^"])*"|'(?:\\'|[^'])*'/g, function(q) {
         return q.replace(/,/g, "‌");
       }));
-      var Re = /,/.test(g);
-      return Re ? f = g.split(/\s*(?![^(]*\)),\s*/) : f = [g], K && (f = f.map(function(q) {
+      var Ue = /,/.test(g);
+      return Ue ? f = g.split(/\s*(?![^(]*\)),\s*/) : f = [g], K && (f = f.map(function(q) {
         return q.replace(/\u200C/g, ",");
       })), f;
     }
@@ -23385,10 +23385,10 @@ function GW(e) {
           return e = e.slice(y.end + 1), {};
       }
     }
-    var I = U() || [], K = l.preserveStatic ? R() : R().filter(function(Re) {
+    var I = U() || [], K = l.preserveStatic ? R() : R().filter(function(Ue) {
       var q = I.some(function(se) {
         return /:(?:root|host)(?![.:#(])/.test(se);
-      }) && /^--\S/.test(Re.property), ae = /var\(/.test(Re.value);
+      }) && /^--\S/.test(Ue.property), ae = /var\(/.test(Ue.value);
       return q || ae;
     });
     return I.length || d("selector missing"), {
@@ -24380,7 +24380,7 @@ var oj = function(e) {
 }(ue), Nj = function(e) {
   function n(t) {
     var l = this, a = t.channelUrl, d = t.coverUrlOrImage, r = t.name, i = t.data, c = t.customType, V = t.operatorUserIds, s = t.isEphemeral;
-    return (l = e.call(this) || this).method = he.POST, l.path = xV, l.params = Oe(Ae({ channel_url: a, cover_url: B("string", d) ? d : null, cover_file: Nl(d) ? d : null, name: r, data: i, custom_type: c, operators: V, is_ephemeral: s })), l;
+    return (l = e.call(this) || this).method = he.POST, l.path = xV, l.params = je(Ae({ channel_url: a, cover_url: B("string", d) ? d : null, cover_file: Nl(d) ? d : null, name: r, data: i, custom_type: c, operators: V, is_ephemeral: s })), l;
   }
   return J(n, e), n;
 }(Te);
@@ -24513,11 +24513,11 @@ var Rj = function(e) {
     this._openChannelCache.exit(t.url);
   }, n.prototype._handleEvent = function(t) {
     return M(this, void 0, void 0, function() {
-      var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Re, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, we, Me, We, Be, Ke, lt, De, je, at, Ge, $e, He, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt = this;
-      return p(this, function(Ce) {
-        switch (Ce.label) {
+      var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y, g, f, I, K, Ue, q, ae, se, le, L, $, ee, O, re, te, Qe, Ye, Se, P, ge, Me, We, De, Oe, tt, Be, He, at, Ge, $e, fe, Xe, pt, Vt, yt, xe, At, kt, Kt, ln, vt, Rt = this;
+      return p(this, function(Ke) {
+        switch (Ke.label) {
           case 0:
-            switch (Ce.trys.push([0, 57, , 58]), t.code) {
+            switch (Ke.trys.push([0, 57, , 58]), t.code) {
               case "MESG":
               case "FILE":
               case "ADMM":
@@ -24546,147 +24546,147 @@ var Rj = function(e) {
           case 1:
             return r = null, t.code === "MESG" ? r = t.as(QW) : t.code === "FILE" ? r = t.as(kW) : t.code !== "ADMM" && t.code != "BRDM" || (r = t.as(K3)), r ? (l = r.message, a = r.isMentioned, l.channelType !== Xt.OPEN ? [3, 3] : [4, this.getChannel(l.channelUrl, !0)]) : [3, 3];
           case 2:
-            d = Ce.sent(), Le(function() {
+            d = Ke.sent(), Ce(function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       qe = de.value, this._openChannelCache.isEnteredChannel(d.url) && (qe.onMessageReceived && qe.onMessageReceived(d, l), a && qe.onMentionReceived && qe.onMentionReceived(d, l));
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
                 });
               });
-            }), Ce.label = 3;
+            }), Ke.label = 3;
           case 3:
             return [3, 56];
           case 4:
             return r = null, t.code === "MEDI" ? r = t.as(rR) : t.code === "FEDI" ? r = t.as(iR) : t.code === "AEDI" && (r = t.as(_3)), r ? (i = r.message, c = r.mentionCountChange, i.channelType !== Xt.OPEN ? [3, 6] : [4, this.getChannel(i.channelUrl, !0)]) : [3, 6];
           case 5:
-            V = Ce.sent(), Le(function() {
+            V = Ke.sent(), Ce(function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       qe = de.value, this._openChannelCache.isEnteredChannel(V.url) && (qe.onMessageUpdated && qe.onMessageUpdated(V, i), c > 0 && qe.onMentionReceived && qe.onMentionReceived(V, i));
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
                 });
               });
-            }), Ce.label = 6;
+            }), Ke.label = 6;
           case 6:
             return [3, 56];
           case 7:
-            return s = t.as(z3), K = s.channelUrl, Re = s.channelType, o = s.messageId, Re !== Xt.OPEN ? [3, 9] : [4, this.getChannel(K, !0)];
+            return s = t.as(z3), K = s.channelUrl, Ue = s.channelType, o = s.messageId, Ue !== Xt.OPEN ? [3, 9] : [4, this.getChannel(K, !0)];
           case 8:
-            U = Ce.sent(), Le(function() {
+            U = Ke.sent(), Ce(function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       qe = de.value, this._openChannelCache.isEnteredChannel(U.url) && qe.onMessageDeleted && qe.onMessageDeleted(U, o);
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
                 });
               });
-            }), Ce.label = 9;
+            }), Ke.label = 9;
           case 9:
             return [3, 56];
           case 10:
-            return N = t.as(P3), K = N.channelUrl, Re = N.channelType, R = N.event, Re !== Xt.OPEN ? [3, 12] : [4, this.getChannel(K, !0)];
+            return N = t.as(P3), K = N.channelUrl, Ue = N.channelType, R = N.event, Ue !== Xt.OPEN ? [3, 12] : [4, this.getChannel(K, !0)];
           case 11:
-            h = Ce.sent(), Le(function() {
+            h = Ke.sent(), Ce(function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       qe = de.value, this._openChannelCache.isEnteredChannel(h.url) && qe.onReactionUpdated && qe.onReactionUpdated(h, R);
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
                 });
               });
-            }), Ce.label = 12;
+            }), Ke.label = 12;
           case 12:
             return [3, 56];
           case 13:
             return (Z = t.as(A3).event).channelType !== Xt.OPEN ? [3, 15] : [4, this.getChannel(Z.channelUrl, !0)];
           case 14:
-            W = Ce.sent(), Le(function() {
+            W = Ke.sent(), Ce(function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       qe = de.value, this._openChannelCache.isEnteredChannel(W.url) && qe.onThreadInfoUpdated && qe.onThreadInfoUpdated(W, Z);
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
                 });
               });
-            }), Ce.label = 15;
+            }), Ke.label = 15;
           case 15:
             return [3, 56];
           case 16:
-            F = t.as(q3).openChannelMemberCounts, m = [], Ce.label = 17;
+            F = t.as(q3).openChannelMemberCounts, m = [], Ke.label = 17;
           case 17:
-            Ce.trys.push([17, 22, 23, 24]), E = be(F), u = E.next(), Ce.label = 18;
+            Ke.trys.push([17, 22, 23, 24]), E = be(F), u = E.next(), Ke.label = 18;
           case 18:
             return u.done ? [3, 21] : (b = u.value, K = b.channelUrl, re = b.participantCount, k = b.updatedAt, [4, this.getChannelFromCache(K)]);
           case 19:
-            (Q = Ce.sent()) && Q._updateParticipantCount(re, k) && m.push(Q), Ce.label = 20;
+            (Q = Ke.sent()) && Q._updateParticipantCount(re, k) && m.push(Q), Ke.label = 20;
           case 20:
             return u = E.next(), [3, 18];
           case 21:
             return [3, 24];
           case 22:
-            return S = Ce.sent(), ln = { error: S }, [3, 24];
+            return S = Ke.sent(), ln = { error: S }, [3, 24];
           case 23:
             try {
               u && !u.done && (vt = E.return) && vt.call(E);
@@ -24698,47 +24698,47 @@ var Rj = function(e) {
           case 24:
             return m.length > 0 ? [4, this.upsertChannelsToCache(m)] : [3, 26];
           case 25:
-            v = Ce.sent(), Le(function() {
+            v = Ke.sent(), Ce(function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       (qe = de.value).onChannelMemberCountChanged && qe.onChannelMemberCountChanged(v);
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
                 });
               });
-            }), Ce.label = 26;
+            }), Ke.label = 26;
           case 26:
             return [3, 56];
           case 27:
-            return G = t.as($3), w = G.event, y = G.status, K = G.channelUrl, Re = G.channelType, K && Re === Xt.OPEN ? [4, this.getChannel(K, !0)] : [3, 29];
+            return G = t.as($3), w = G.event, y = G.status, K = G.channelUrl, Ue = G.channelType, K && Ue === Xt.OPEN ? [4, this.getChannel(K, !0)] : [3, 29];
           case 28:
-            g = Ce.sent(), this._dispatcher.dispatch(new EW({ event: w, source: ne.EVENT_POLL_UPDATED })), Le(y === d3 ? function() {
+            g = Ke.sent(), this._dispatcher.dispatch(new EW({ event: w, source: ne.EVENT_POLL_UPDATED })), Ce(y === d3 ? function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       (qe = de.value).onPollDeleted && qe.onPollDeleted(g, w.pollId);
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
@@ -24746,51 +24746,51 @@ var Rj = function(e) {
               });
             } : function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       (qe = de.value).onPollUpdated && qe.onPollUpdated(g, w);
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
                 });
               });
-            }), Ce.label = 29;
+            }), Ke.label = 29;
           case 29:
             return [3, 56];
           case 30:
-            return f = t.as(JW), I = f.event, K = f.channelUrl, Re = f.channelType, K && Re === Xt.OPEN ? [4, this.getChannel(K, !0)] : [3, 32];
+            return f = t.as(JW), I = f.event, K = f.channelUrl, Ue = f.channelType, K && Ue === Xt.OPEN ? [4, this.getChannel(K, !0)] : [3, 32];
           case 31:
-            q = Ce.sent(), this._dispatcher.dispatch(new KR({ event: I, source: ne.EVENT_POLL_VOTED })), Le(function() {
+            q = Ke.sent(), this._dispatcher.dispatch(new KR({ event: I, source: ne.EVENT_POLL_VOTED })), Ce(function() {
               return M(Rt, void 0, void 0, function() {
-                var Je, de, qe, nt, ct;
+                var Je, de, qe, lt, ct;
                 return p(this, function(Ot) {
                   try {
                     for (Je = be(this._openChannelHandlers.values()), de = Je.next(); !de.done; de = Je.next())
                       (qe = de.value).onPollVoted && qe.onPollVoted(q, I);
                   } catch (zt) {
-                    nt = { error: zt };
+                    lt = { error: zt };
                   } finally {
                     try {
                       de && !de.done && (ct = Je.return) && ct.call(Je);
                     } finally {
-                      if (nt)
-                        throw nt.error;
+                      if (lt)
+                        throw lt.error;
                     }
                   }
                   return [2];
                 });
               });
-            }), Ce.label = 32;
+            }), Ke.label = 32;
           case 32:
             return [3, 56];
           case 33:
@@ -24825,7 +24825,7 @@ var Rj = function(e) {
           case 34:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 35:
-            return se = Ce.sent(), le = t.as(pb), re = le.participantCount, L = le.user, $ = se._updateParticipantCount(re, ae.ts), Le(function() {
+            return se = Ke.sent(), le = t.as(pb), re = le.participantCount, L = le.user, $ = se._updateParticipantCount(re, ae.ts), Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
@@ -24837,7 +24837,7 @@ var Rj = function(e) {
           case 36:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 37:
-            return ee = Ce.sent(), O = t.as(Mb), re = O.participantCount, te = O.user, Qe = ee._updateParticipantCount(re, ae.ts), Le(function() {
+            return ee = Ke.sent(), O = t.as(Mb), re = O.participantCount, te = O.user, Qe = ee._updateParticipantCount(re, ae.ts), Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
@@ -24849,7 +24849,7 @@ var Rj = function(e) {
           case 38:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 39:
-            return Ye = Ce.sent(), Se = t.as(L3).operators, Ye.operators = Se, this.upsertChannelsToCache([Ye]), Le(function() {
+            return Ye = Ke.sent(), Se = t.as(L3).operators, Ye.operators = Se, this.upsertChannelsToCache([Ye]), Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
@@ -24861,11 +24861,11 @@ var Rj = function(e) {
           case 40:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 41:
-            return P = Ce.sent(), we = ae.category === Vn.USER_CHANNEL_MUTE, Me = t.as(we ? b3 : Y3).user, Le(function() {
+            return P = Ke.sent(), ge = ae.category === Vn.USER_CHANNEL_MUTE, Me = t.as(ge ? b3 : Y3).user, Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
-                    we ? de.onUserMuted && de.onUserMuted(P, Me) : de.onUserUnmuted && de.onUserUnmuted(P, Me);
+                    ge ? de.onUserMuted && de.onUserMuted(P, Me) : de.onUserUnmuted && de.onUserUnmuted(P, Me);
                   }), [2];
                 });
               });
@@ -24873,11 +24873,11 @@ var Rj = function(e) {
           case 42:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 43:
-            return We = Ce.sent(), Be = ae.category === Vn.USER_CHANNEL_BAN, Ke = t.as(Be ? Q3 : J3).user, Le(function() {
+            return We = Ke.sent(), De = ae.category === Vn.USER_CHANNEL_BAN, Oe = t.as(De ? Q3 : J3).user, Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
-                    Be ? de.onUserBanned && de.onUserBanned(We, Ke) : de.onUserUnbanned && de.onUserUnbanned(We, Ke);
+                    De ? de.onUserBanned && de.onUserBanned(We, Oe) : de.onUserUnbanned && de.onUserUnbanned(We, Oe);
                   }), [2];
                 });
               });
@@ -24885,11 +24885,11 @@ var Rj = function(e) {
           case 44:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 45:
-            return lt = Ce.sent(), De = t.as(v3).freeze, lt.isFrozen = De, this.upsertChannelsToCache([lt]), Le(function() {
+            return tt = Ke.sent(), Be = t.as(v3).freeze, tt.isFrozen = Be, this.upsertChannelsToCache([tt]), Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
-                    De ? de.onChannelFrozen && de.onChannelFrozen(lt) : de.onChannelUnfrozen && de.onChannelUnfrozen(lt);
+                    Be ? de.onChannelFrozen && de.onChannelFrozen(tt) : de.onChannelUnfrozen && de.onChannelUnfrozen(tt);
                   }), [2];
                 });
               });
@@ -24897,13 +24897,13 @@ var Rj = function(e) {
           case 46:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 47:
-            return je = Ce.sent(), [4, this.removeChannelsFromCache([je.url])];
+            return He = Ke.sent(), [4, this.removeChannelsFromCache([He.url])];
           case 48:
-            return Ce.sent(), Le(function() {
+            return Ke.sent(), Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
-                    de.onChannelDeleted && de.onChannelDeleted(je.url, je.channelType);
+                    de.onChannelDeleted && de.onChannelDeleted(He.url, He.channelType);
                   }), [2];
                 });
               });
@@ -24911,7 +24911,7 @@ var Rj = function(e) {
           case 49:
             return [4, this.getChannelWithoutCache(ae.channelUrl, !0)];
           case 50:
-            return at = Ce.sent(), Le(function() {
+            return at = Ke.sent(), Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
@@ -24923,11 +24923,11 @@ var Rj = function(e) {
           case 51:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 52:
-            return Ge = Ce.sent(), $e = t.as(S3), He = $e.created, Xe = $e.updated, pt = $e.deleted, He && Ge._upsertCachedMetaData(He, ae.ts), Xe && Ge._upsertCachedMetaData(Xe, ae.ts), pt && Ge._removeFromCachedMetaData(pt, ae.ts), Le(function() {
+            return Ge = Ke.sent(), $e = t.as(S3), fe = $e.created, Xe = $e.updated, pt = $e.deleted, fe && Ge._upsertCachedMetaData(fe, ae.ts), Xe && Ge._upsertCachedMetaData(Xe, ae.ts), pt && Ge._removeFromCachedMetaData(pt, ae.ts), Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
-                    He && de.onMetaDataCreated && de.onMetaDataCreated(Ge, He), Xe && de.onMetaDataUpdated && de.onMetaDataUpdated(Ge, Xe), pt && de.onMetaDataDeleted && de.onMetaDataDeleted(Ge, pt);
+                    fe && de.onMetaDataCreated && de.onMetaDataCreated(Ge, fe), Xe && de.onMetaDataUpdated && de.onMetaDataUpdated(Ge, Xe), pt && de.onMetaDataDeleted && de.onMetaDataDeleted(Ge, pt);
                   }), [2];
                 });
               });
@@ -24935,7 +24935,7 @@ var Rj = function(e) {
           case 53:
             return [4, this.getChannel(ae.channelUrl, !0)];
           case 54:
-            return Vt = Ce.sent(), yt = t.as(k3), xe = yt.created, At = yt.updated, kt = yt.deleted, Le(function() {
+            return Vt = Ke.sent(), yt = t.as(k3), xe = yt.created, At = yt.updated, kt = yt.deleted, Ce(function() {
               return M(Rt, void 0, void 0, function() {
                 return p(this, function(Je) {
                   return this._openChannelHandlers.forEach(function(de) {
@@ -24949,7 +24949,7 @@ var Rj = function(e) {
           case 56:
             return [3, 58];
           case 57:
-            if (Kt = Ce.sent(), Il(Kt))
+            if (Kt = Ke.sent(), Il(Kt))
               throw Kt;
             return [3, 58];
           case 58:
@@ -25060,7 +25060,7 @@ var Rj = function(e) {
 }(ar), Wj = function(e) {
   function n(t) {
     var l = this, a = t.channelUrl, d = t.coverUrlOrImage, r = t.name, i = t.data, c = t.customType, V = t.operatorUserIds;
-    return (l = e.call(this) || this).method = he.PUT, l.path = "".concat(xV, "/").concat(encodeURIComponent(a)), l.params = Oe(Ae({ cover_url: B("string", d) ? d : null, cover_file: Nl(d) ? d : null, name: r, data: i, custom_type: c, operators: V })), l;
+    return (l = e.call(this) || this).method = he.PUT, l.path = "".concat(xV, "/").concat(encodeURIComponent(a)), l.params = je(Ae({ cover_url: B("string", d) ? d : null, cover_file: Nl(d) ? d : null, name: r, data: i, custom_type: c, operators: V })), l;
   }
   return J(n, e), n;
 }(Te), mj = function(e) {
@@ -25090,7 +25090,7 @@ var Jc = function(e) {
     }) : [], d;
   }
   return J(n, e), n.payloadify = function(t) {
-    return Oe(Ae(x(x({}, VR.payloadify(t)), { participant_count: t.participantCount, operators: t.operators.map(function(l) {
+    return je(Ae(x(x({}, VR.payloadify(t)), { participant_count: t.participantCount, operators: t.operators.map(function(l) {
       return xt.payloadify(l);
     }) })));
   }, n.prototype.serialize = function() {
@@ -25200,7 +25200,7 @@ var Jc = function(e) {
 var pj = function(e) {
   function n(t) {
     var l = this, a = t.token, d = t.limit, r = t.nameKeyword, i = t.urlKeyword, c = t.customTypes, V = t.includeFrozen, s = t.includeMetaData;
-    return (l = e.call(this) || this).method = he.GET, l.path = xV, l.params = Oe({ token: a, limit: d, name_contains: r, url_contains: i, custom_types: c, show_frozen: V, show_metadata: s }), l;
+    return (l = e.call(this) || this).method = he.GET, l.path = xV, l.params = je({ token: a, limit: d, name_contains: r, url_contains: i, custom_types: c, show_frozen: V, show_metadata: s }), l;
   }
   return J(n, e), n;
 }(Te), Mj = function(e) {
@@ -28298,7 +28298,7 @@ function dt(e) {
     PH(d)
   ], !1).join(" "), role: "button", onClick: o, onKeyDown: o, tabIndex: 0, style: R }, N || dw(l));
 }
-var Ie = ke, Pe = Zl, ko = "sendbird-modal-root", rw = function(e) {
+var Le = ke, Pe = Zl, ko = "sendbird-modal-root", rw = function(e) {
   var n = e.titleText;
   return T.createElement(
     "div",
@@ -28347,7 +28347,7 @@ function Ic(e) {
         T.createElement(
           Fi,
           { width: "32px", height: "32px", onClick: v },
-          T.createElement(dt, { type: Ie.CLOSE, fillColor: Pe.DEFAULT, width: "24px", height: "24px" })
+          T.createElement(dt, { type: Le.CLOSE, fillColor: Pe.DEFAULT, width: "24px", height: "24px" })
         )
       )
     ),
@@ -28369,7 +28369,7 @@ var mF = function() {
     return MediaRecorder.isTypeSupported(b);
   })) !== null && n !== void 0 ? n : "";
   d && !m && a.error("VoiceRecorder: Browser does not support mimeType", { mimmeTypes: Vp }), _e(function() {
-    d && !W && import("./bundle-f5U_VL0z-d54eeb74.mjs").then(function(b) {
+    d && !W && import("./bundle-f5U_VL0z-8c4e893b.mjs").then(function(b) {
       F(b);
     });
   }, [d, W]);
@@ -28402,14 +28402,14 @@ var mF = function() {
           lastModified: (/* @__PURE__ */ new Date()).getTime(),
           type: to
         });
-        W == null || W.downsampleToWav(K, function(Re) {
-          var q = W == null ? void 0 : W.encodeMp3(Re), ae = new Blob(q, { type: to }), se = new File([ae], hR, {
+        W == null || W.downsampleToWav(K, function(Ue) {
+          var q = W == null ? void 0 : W.encodeMp3(Ue), ae = new Blob(q, { type: to }), se = new File([ae], hR, {
             lastModified: (/* @__PURE__ */ new Date()).getTime(),
             type: to
           });
           b == null || b.onRecordingEnded(se), a.info("VoiceRecorder: Succeeded converting audio file.", se);
-        }), (I = (g = v == null ? void 0 : v.getAudioTracks) === null || g === void 0 ? void 0 : (f = g.call(v)).forEach) === null || I === void 0 || I.call(f, function(Re) {
-          return Re == null ? void 0 : Re.stop();
+        }), (I = (g = v == null ? void 0 : v.getAudioTracks) === null || g === void 0 ? void 0 : (f = g.call(v)).forEach) === null || I === void 0 || I.call(f, function(Ue) {
+          return Ue == null ? void 0 : Ue.stop();
         }), o(!1);
       }, w.onstart = (G = b == null ? void 0 : b.onRecordingStarted) !== null && G !== void 0 ? G : mF, w == null || w.start(), c(w);
     }).catch(function(v) {
@@ -28704,7 +28704,7 @@ function kw(e) {
     var E = this;
     return Ul(this, function(u) {
       return [2, new Promise(function(b, k) {
-        var Q, S, v, G, w, y, g, f, I, K, Re;
+        var Q, S, v, G, w, y, g, f, I, K, Ue;
         (Q = n == null ? void 0 : n.info) === null || Q === void 0 || Q.call(n, "SendbirdProvider | useConnect/setupConnection/init", { userId: d, appId: r });
         var q = (S = F == null ? void 0 : F.connection) === null || S === void 0 ? void 0 : S.onFailed;
         if (t({ type: Fw, payload: !0 }), d && r) {
@@ -28789,7 +28789,7 @@ function kw(e) {
           });
         } else {
           var $ = Mw({ userId: d, appId: r });
-          t({ type: WM }), q == null || q({ message: $ }), (Re = n == null ? void 0 : n.error) === null || Re === void 0 || Re.call(n, $), k($);
+          t({ type: WM }), q == null || q({ message: $ }), (Ue = n == null ? void 0 : n.error) === null || Ue === void 0 || Ue.call(n, $), k($);
         }
       })];
     });
@@ -28982,7 +28982,7 @@ var zw = function(e) {
   );
 };
 function xw(e) {
-  var n, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y = e.legacyConfig, g = e.uikitOptions, f = g === void 0 ? {} : g, I = y.replyType, K = y.isMentionEnabled, Re = y.isReactionEnabled, q = y.disableUserProfile, ae = y.isVoiceMessageEnabled, se = y.isTypingIndicatorEnabledOnChannelList, le = y.isMessageReceiptStatusEnabledOnChannelList, L = y.showSearchIcon;
+  var n, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Q, S, v, G, w, y = e.legacyConfig, g = e.uikitOptions, f = g === void 0 ? {} : g, I = y.replyType, K = y.isMentionEnabled, Ue = y.isReactionEnabled, q = y.disableUserProfile, ae = y.isVoiceMessageEnabled, se = y.isTypingIndicatorEnabledOnChannelList, le = y.isMessageReceiptStatusEnabledOnChannelList, L = y.showSearchIcon;
   return {
     common: {
       enableUsingDefaultUserProfile: (t = (n = f.common) === null || n === void 0 ? void 0 : n.enableUsingDefaultUserProfile) !== null && t !== void 0 ? t : typeof q == "boolean" ? !q : void 0
@@ -28990,7 +28990,7 @@ function xw(e) {
     groupChannel: {
       enableOgtag: (l = f.groupChannel) === null || l === void 0 ? void 0 : l.enableOgtag,
       enableMention: (d = (a = f.groupChannel) === null || a === void 0 ? void 0 : a.enableMention) !== null && d !== void 0 ? d : K,
-      enableReactions: (i = (r = f.groupChannel) === null || r === void 0 ? void 0 : r.enableReactions) !== null && i !== void 0 ? i : Re,
+      enableReactions: (i = (r = f.groupChannel) === null || r === void 0 ? void 0 : r.enableReactions) !== null && i !== void 0 ? i : Ue,
       enableTypingIndicator: (c = f.groupChannel) === null || c === void 0 ? void 0 : c.enableTypingIndicator,
       enableVoiceMessage: (s = (V = f.groupChannel) === null || V === void 0 ? void 0 : V.enableVoiceMessage) !== null && s !== void 0 ? s : ae,
       replyType: (U = (o = f.groupChannel) === null || o === void 0 ? void 0 : o.replyType) !== null && U !== void 0 ? U : I != null ? Lb(I).lowerCase : void 0,
@@ -29252,9 +29252,9 @@ function fw(e) {
   );
 }
 var ww = function(e) {
-  var n, t, l, a = e.appId, d = e.userId, r = e.children, i = e.accessToken, c = e.customApiHost, V = e.customWebSocketHost, s = e.configureSession, o = s === void 0 ? null : s, U = e.theme, N = U === void 0 ? "light" : U, R = e.config, h = R === void 0 ? {} : R, Z = e.nickname, W = Z === void 0 ? "" : Z, F = e.colorSet, m = F === void 0 ? null : F, E = e.stringSet, u = E === void 0 ? null : E, b = e.dateLocale, k = b === void 0 ? null : b, Q = e.profileUrl, S = Q === void 0 ? "" : Q, v = e.voiceRecord, G = e.userListQuery, w = G === void 0 ? null : G, y = e.imageCompression, g = y === void 0 ? {} : y, f = e.allowProfileEdit, I = f === void 0 ? !1 : f, K = e.disableMarkAsDelivered, Re = K === void 0 ? !1 : K, q = e.renderUserProfile, ae = q === void 0 ? null : q, se = e.onUserProfileMessage, le = se === void 0 ? null : se, L = e.breakpoint, $ = L === void 0 ? !1 : L, ee = e.isUserIdUsedForNickname, O = ee === void 0 ? !0 : ee, re = e.sdkInitParams, te = e.customExtensionParams, Qe = e.isMultipleFilesMessageEnabled, Ye = Qe === void 0 ? !1 : Qe, Se = e.eventHandlers, P = h.logLevel, we = P === void 0 ? "" : P, Me = h.userMention, We = Me === void 0 ? {} : Me, Be = h.isREMUnitEnabled, Ke = Be === void 0 ? !1 : Be, lt = h.pubSub, De = dr().isMobile, je = me(uM(we)), at = je[0], Ge = je[1], $e = me(function() {
-    return lt ?? Ij();
-  })[0], He = zs(Nw, _b), Xe = He[0], pt = He[1], Vt = zs(Rw, Pb), yt = Vt[0], xe = Vt[1], At = zs(hw, Zw), kt = At[0], Kt = At[1], ln = fO(), vt = ln.configs, Rt = ln.configsWithAppAttr, Ce = ln.initDashboardConfigs, Je = Xe.initialized, de = Xe == null ? void 0 : Xe.sdk, qe = (n = de == null ? void 0 : de.appInfo) !== null && n !== void 0 ? n : {}, nt = qe.uploadSizeLimit, ct = qe.multipleFilesMessageFileCountLimit;
+  var n, t, l, a = e.appId, d = e.userId, r = e.children, i = e.accessToken, c = e.customApiHost, V = e.customWebSocketHost, s = e.configureSession, o = s === void 0 ? null : s, U = e.theme, N = U === void 0 ? "light" : U, R = e.config, h = R === void 0 ? {} : R, Z = e.nickname, W = Z === void 0 ? "" : Z, F = e.colorSet, m = F === void 0 ? null : F, E = e.stringSet, u = E === void 0 ? null : E, b = e.dateLocale, k = b === void 0 ? null : b, Q = e.profileUrl, S = Q === void 0 ? "" : Q, v = e.voiceRecord, G = e.userListQuery, w = G === void 0 ? null : G, y = e.imageCompression, g = y === void 0 ? {} : y, f = e.allowProfileEdit, I = f === void 0 ? !1 : f, K = e.disableMarkAsDelivered, Ue = K === void 0 ? !1 : K, q = e.renderUserProfile, ae = q === void 0 ? null : q, se = e.onUserProfileMessage, le = se === void 0 ? null : se, L = e.breakpoint, $ = L === void 0 ? !1 : L, ee = e.isUserIdUsedForNickname, O = ee === void 0 ? !0 : ee, re = e.sdkInitParams, te = e.customExtensionParams, Qe = e.isMultipleFilesMessageEnabled, Ye = Qe === void 0 ? !1 : Qe, Se = e.eventHandlers, P = h.logLevel, ge = P === void 0 ? "" : P, Me = h.userMention, We = Me === void 0 ? {} : Me, De = h.isREMUnitEnabled, Oe = De === void 0 ? !1 : De, tt = h.pubSub, Be = dr().isMobile, He = me(uM(ge)), at = He[0], Ge = He[1], $e = me(function() {
+    return tt ?? Ij();
+  })[0], fe = zs(Nw, _b), Xe = fe[0], pt = fe[1], Vt = zs(Rw, Pb), yt = Vt[0], xe = Vt[1], At = zs(hw, Zw), kt = At[0], Kt = At[1], ln = fO(), vt = ln.configs, Rt = ln.configsWithAppAttr, Ke = ln.initDashboardConfigs, Je = Xe.initialized, de = Xe == null ? void 0 : Xe.sdk, qe = (n = de == null ? void 0 : de.appInfo) !== null && n !== void 0 ? n : {}, lt = qe.uploadSizeLimit, ct = qe.multipleFilesMessageFileCountLimit;
   Uw(m);
   var Ot = Hw({
     sdk: de,
@@ -29269,7 +29269,7 @@ var ww = function(e) {
     userId: d,
     accessToken: i,
     isUserIdUsedForNickname: O,
-    isMobile: De
+    isMobile: Be
   }, {
     logger: at,
     nickname: W,
@@ -29283,7 +29283,7 @@ var ww = function(e) {
     sdkDispatcher: pt,
     userDispatcher: xe,
     appInfoDispatcher: Kt,
-    initDashboardConfigs: Ce,
+    initDashboardConfigs: Ke,
     eventHandlers: Se,
     initializeMessageTemplatesInfo: mt
   });
@@ -29295,8 +29295,8 @@ var ww = function(e) {
       sdk: de
     });
   }, [de.disconnect]), _e(function() {
-    Ge(uM(we));
-  }, [we]), vw([
+    Ge(uM(ge));
+  }, [ge]), vw([
     "sendbird-modal-root",
     "sendbird-dropdown-portal",
     "sendbird-emoji-list-portal"
@@ -29305,13 +29305,13 @@ var ww = function(e) {
   _e(function() {
     jt(N);
   }, [N]), _e(function() {
-    var Ue = document.querySelector("body");
-    Ue.classList.remove("sendbird-experimental__rem__units"), Ke && Ue.classList.add("sendbird-experimental__rem__units");
-  }, [Ke]), _e(function() {
+    var Ne = document.querySelector("body");
+    Ne.classList.remove("sendbird-experimental__rem__units"), Oe && Ne.classList.add("sendbird-experimental__rem__units");
+  }, [Oe]), _e(function() {
     at.info("Setup theme", "Theme: ".concat(qt));
     try {
-      var Ue = document.querySelector("body");
-      Ue.classList.remove("sendbird-theme--light"), Ue.classList.remove("sendbird-theme--dark"), Ue.classList.add("sendbird-theme--".concat(qt || "light")), at.info("Finish setup theme");
+      var Ne = document.querySelector("body");
+      Ne.classList.remove("sendbird-theme--light"), Ne.classList.remove("sendbird-theme--dark"), Ne.classList.add("sendbird-theme--".concat(qt || "light")), at.info("Finish setup theme");
     } catch (pe) {
       at.warning("Setup theme failed", "".concat(pe));
     }
@@ -29323,13 +29323,13 @@ var ww = function(e) {
       }
     };
   }, [qt]);
-  var Bt = Vj(Xe.sdk, at), ge = Gw({ isConnected: Bt }, { logger: at }), it = sj({ isConnected: Bt }, { logger: at }), ze = T.useMemo(function() {
+  var Bt = Vj(Xe.sdk, at), Ie = Gw({ isConnected: Bt }, { logger: at }), it = sj({ isConnected: Bt }, { logger: at }), ze = T.useMemo(function() {
     return u ? ce(ce({}, ZR("en")), u) : ZR("en");
   }, [u]), ht = nn(function() {
     return Math.min(Aj, ct ?? Number.MAX_SAFE_INTEGER);
   }, [ct]), Ft = nn(function() {
-    return nt;
-  }, [nt]), X = nn(function() {
+    return lt;
+  }, [lt]), X = nn(function() {
     return new yw({
       sdk: de,
       logger: at
@@ -29350,7 +29350,7 @@ var ww = function(e) {
         reconnect: hn
       },
       config: {
-        disableMarkAsDelivered: Re,
+        disableMarkAsDelivered: Ue,
         renderUserProfile: ae,
         onUserProfileMessage: le,
         allowProfileEdit: I,
@@ -29376,7 +29376,7 @@ var ww = function(e) {
           maxMentionCount: (We == null ? void 0 : We.maxMentionCount) || 10,
           maxSuggestionCount: (We == null ? void 0 : We.maxSuggestionCount) || 15
         },
-        markAsReadScheduler: ge,
+        markAsReadScheduler: Ie,
         markAsDeliveredScheduler: it,
         // From UIKitConfigProvider.localConfigs
         disableUserProfile: !vt.common.enableUsingDefaultUserProfile,
@@ -31375,15 +31375,15 @@ var Ag = function(e, n) {
     t
   ]);
 }, VY = T.createContext(void 0), $g = function(e) {
-  var n, t, l, a, d, r, i = e.channelUrl, c = e.children, V = e.isReactionEnabled, s = e.isMessageGroupingEnabled, o = s === void 0 ? !0 : s, U = e.isMultipleFilesMessageEnabled, N = e.showSearchIcon, R = e.animatedMessage, h = e.highlightedMessage, Z = e.startingPoint, W = e.onBeforeSendUserMessage, F = e.onBeforeSendFileMessage, m = e.onBeforeUpdateUserMessage, E = e.onBeforeSendVoiceMessage, u = e.onBeforeSendMultipleFilesMessage, b = e.onChatHeaderActionClick, k = e.onSearchClick, Q = e.onBackClick, S = e.replyType, v = e.threadReplySelectType, G = e.queries, w = e.filterMessageList, y = e.disableMarkAsRead, g = y === void 0 ? !1 : y, f = e.onReplyInThread, I = e.onQuoteMessageClick, K = e.onMessageAnimated, Re = e.onMessageHighlighted, q = e.scrollBehavior, ae = q === void 0 ? "auto" : q, se = e.reconnectOnIdle, le = se === void 0 ? !0 : se, L = zn(), $ = L.config, ee = S ?? $.replyType, O = $.pubSub, re = $.logger, te = $.userId, Qe = $.isOnline, Ye = $.imageCompression, Se = $.isMentionEnabled, P = $.onUserProfileMessage, we = $.markAsReadScheduler, Me = $.groupChannel, We = (t = (n = L == null ? void 0 : L.stores) === null || n === void 0 ? void 0 : n.sdkStore) === null || t === void 0 ? void 0 : t.sdk, Be = (a = (l = L == null ? void 0 : L.stores) === null || l === void 0 ? void 0 : l.sdkStore) === null || a === void 0 ? void 0 : a.initialized, Ke = L == null ? void 0 : L.config, lt = me(Z), De = lt[0], je = lt[1];
+  var n, t, l, a, d, r, i = e.channelUrl, c = e.children, V = e.isReactionEnabled, s = e.isMessageGroupingEnabled, o = s === void 0 ? !0 : s, U = e.isMultipleFilesMessageEnabled, N = e.showSearchIcon, R = e.animatedMessage, h = e.highlightedMessage, Z = e.startingPoint, W = e.onBeforeSendUserMessage, F = e.onBeforeSendFileMessage, m = e.onBeforeUpdateUserMessage, E = e.onBeforeSendVoiceMessage, u = e.onBeforeSendMultipleFilesMessage, b = e.onChatHeaderActionClick, k = e.onSearchClick, Q = e.onBackClick, S = e.replyType, v = e.threadReplySelectType, G = e.queries, w = e.filterMessageList, y = e.disableMarkAsRead, g = y === void 0 ? !1 : y, f = e.onReplyInThread, I = e.onQuoteMessageClick, K = e.onMessageAnimated, Ue = e.onMessageHighlighted, q = e.scrollBehavior, ae = q === void 0 ? "auto" : q, se = e.reconnectOnIdle, le = se === void 0 ? !0 : se, L = zn(), $ = L.config, ee = S ?? $.replyType, O = $.pubSub, re = $.logger, te = $.userId, Qe = $.isOnline, Ye = $.imageCompression, Se = $.isMentionEnabled, P = $.onUserProfileMessage, ge = $.markAsReadScheduler, Me = $.groupChannel, We = (t = (n = L == null ? void 0 : L.stores) === null || n === void 0 ? void 0 : n.sdkStore) === null || t === void 0 ? void 0 : t.sdk, De = (a = (l = L == null ? void 0 : L.stores) === null || l === void 0 ? void 0 : l.sdkStore) === null || a === void 0 ? void 0 : a.initialized, Oe = L == null ? void 0 : L.config, tt = me(Z), Be = tt[0], He = tt[1];
   _e(function() {
-    je(Z);
+    He(Z);
   }, [Z, i]);
-  var at = me(null), Ge = at[0], $e = at[1], He = me(h), Xe = He[0], pt = He[1];
+  var at = me(null), Ge = at[0], $e = at[1], fe = me(h), Xe = fe[0], pt = fe[1];
   _e(function() {
     pt(h);
   }, [h]);
-  var Vt = G == null ? void 0 : G.messageListParams, yt = me(null), xe = yt[0], At = yt[1], kt = me(!1), Kt = kt[0], ln = kt[1], vt = zs(Bg, yg), Rt = vt[0], Ce = vt[1], Je = Wt(null), de = Rt.allMessages, qe = Rt.localMessages, nt = Rt.loading, ct = Rt.initialized, Ot = Rt.unreadSince, zt = Rt.unreadSinceDate, cn = Rt.isInvalid, mt = Rt.currentGroupChannel, sn = Rt.hasMorePrev, hn = Rt.oldestMessageTimeStamp, ft = Rt.hasMoreNext, qt = Rt.latestMessageTimeStamp, jt = Rt.emojiContainer, Bt = Rt.readStatus, ge = Rt.typingMembers, it = (mt == null ? void 0 : mt.isSuper) || !1, ze = (mt == null ? void 0 : mt.isBroadcast) || !1, ht = eg({
+  var Vt = G == null ? void 0 : G.messageListParams, yt = me(null), xe = yt[0], At = yt[1], kt = me(!1), Kt = kt[0], ln = kt[1], vt = zs(Bg, yg), Rt = vt[0], Ke = vt[1], Je = Wt(null), de = Rt.allMessages, qe = Rt.localMessages, lt = Rt.loading, ct = Rt.initialized, Ot = Rt.unreadSince, zt = Rt.unreadSinceDate, cn = Rt.isInvalid, mt = Rt.currentGroupChannel, sn = Rt.hasMorePrev, hn = Rt.oldestMessageTimeStamp, ft = Rt.hasMoreNext, qt = Rt.latestMessageTimeStamp, jt = Rt.emojiContainer, Bt = Rt.readStatus, Ie = Rt.typingMembers, it = (mt == null ? void 0 : mt.isSuper) || !1, ze = (mt == null ? void 0 : mt.isBroadcast) || !1, ht = eg({
     isBroadcast: ze,
     isSuper: it,
     globalLevel: $ == null ? void 0 : $.isReactionEnabled,
@@ -31396,7 +31396,7 @@ var Ag = function(e, n) {
   _e(function() {
     R && $e(R);
   }, [R]);
-  var Ue = Hg({
+  var Ne = Hg({
     currentGroupChannel: mt,
     oldestMessageTimeStamp: hn,
     userFilledMessageListQuery: Vt,
@@ -31404,14 +31404,14 @@ var Ag = function(e, n) {
   }, {
     hasMorePrev: sn,
     logger: re,
-    messagesDispatcher: Ce,
+    messagesDispatcher: Ke,
     sdk: We
   }), pe = Pg({
-    setInitialTimeStamp: je,
+    setInitialTimeStamp: He,
     setAnimatedMessageId: $e,
     allMessages: de,
     scrollRef: Je
-  }, { logger: re }), fe = fg({
+  }, { logger: re }), we = fg({
     currentGroupChannel: mt,
     latestMessageTimeStamp: qt,
     userFilledMessageListQuery: Vt,
@@ -31419,18 +31419,18 @@ var Ag = function(e, n) {
     replyType: ee
   }, {
     logger: re,
-    messagesDispatcher: Ce,
+    messagesDispatcher: Ke,
     sdk: We
   }), Nt = xg(mt, re);
-  Og({ channelUrl: i, sdkInit: Be, disableMarkAsRead: g }, { messagesDispatcher: Ce, sdk: We, logger: re, markAsReadScheduler: we }), _e(function() {
+  Og({ channelUrl: i, sdkInit: De, disableMarkAsRead: g }, { messagesDispatcher: Ke, sdk: We, logger: re, markAsReadScheduler: ge }), _e(function() {
     At(null);
   }, [i]), Xg({
     currentGroupChannel: mt,
-    sdkInit: Be,
+    sdkInit: De,
     currentUserId: te,
     disableMarkAsRead: g
   }, {
-    messagesDispatcher: Ce,
+    messagesDispatcher: Ke,
     sdk: We,
     logger: re,
     scrollRef: Je,
@@ -31438,29 +31438,29 @@ var Ag = function(e, n) {
   }), Jg({
     currentGroupChannel: mt,
     userFilledMessageListQuery: Vt,
-    initialTimeStamp: De,
+    initialTimeStamp: Be,
     replyType: ee,
     setIsScrolled: ln
   }, {
     logger: re,
     scrollRef: Je,
-    messagesDispatcher: Ce
+    messagesDispatcher: Ke
   }), qg({
     channelUrl: i,
-    sdkInit: Be,
+    sdkInit: De,
     pubSub: O,
-    dispatcher: Ce,
+    dispatcher: Ke,
     scrollRef: Je
   }), jg({ isOnline: Qe, replyType: ee, disableMarkAsRead: g, reconnectOnIdle: le }, {
     logger: re,
     sdk: We,
     scrollRef: Je,
     currentGroupChannel: mt,
-    messagesDispatcher: Ce,
+    messagesDispatcher: Ke,
     userFilledMessageListQuery: Vt,
-    markAsReadScheduler: we
+    markAsReadScheduler: ge
   });
-  var Ee = wg({ currentGroupChannel: mt, messagesDispatcher: Ce }, { logger: re }), H = gg({ currentGroupChannel: mt, messagesDispatcher: Ce, onBeforeUpdateUserMessage: m, isMentionEnabled: Se }, { logger: re, pubSub: O }), Ve = Ig({ currentGroupChannel: mt, messagesDispatcher: Ce }, { logger: re, pubSub: O }), ye = Lg({
+  var Ee = wg({ currentGroupChannel: mt, messagesDispatcher: Ke }, { logger: re }), H = gg({ currentGroupChannel: mt, messagesDispatcher: Ke, onBeforeUpdateUserMessage: m, isMentionEnabled: Se }, { logger: re, pubSub: O }), Ve = Ig({ currentGroupChannel: mt, messagesDispatcher: Ke }, { logger: re, pubSub: O }), ye = Lg({
     currentGroupChannel: mt,
     isMentionEnabled: Se,
     onBeforeSendUserMessage: W
@@ -31468,7 +31468,7 @@ var Ag = function(e, n) {
     logger: re,
     pubSub: O,
     scrollRef: Je,
-    messagesDispatcher: Ce
+    messagesDispatcher: Ke
   }), Zt = ye[0], Mt = ye[1], Ct = Cg({
     currentGroupChannel: mt,
     imageCompression: Ye,
@@ -31477,7 +31477,7 @@ var Ag = function(e, n) {
     logger: re,
     pubSub: O,
     scrollRef: Je,
-    messagesDispatcher: Ce
+    messagesDispatcher: Ke
   })[0], Ht = Ag({
     currentGroupChannel: mt,
     onBeforeSendVoiceMessage: E
@@ -31485,7 +31485,7 @@ var Ag = function(e, n) {
     logger: re,
     pubSub: O,
     scrollRef: Je,
-    messagesDispatcher: Ce
+    messagesDispatcher: Ke
   })[0], Sn = Gg({
     currentChannel: mt,
     onBeforeSendMultipleFilesMessage: u,
@@ -31503,7 +31503,7 @@ var Ag = function(e, n) {
       isReactionEnabled: ht,
       isMessageGroupingEnabled: o,
       isMultipleFilesMessageEnabled: U,
-      showSearchIcon: N ?? Ke.showSearchIcon,
+      showSearchIcon: N ?? Oe.showSearchIcon,
       highlightedMessage: h,
       startingPoint: Z,
       onBeforeSendUserMessage: W,
@@ -31520,11 +31520,11 @@ var Ag = function(e, n) {
       onReplyInThread: f,
       onQuoteMessageClick: I,
       onMessageAnimated: K,
-      onMessageHighlighted: Re,
+      onMessageHighlighted: Ue,
       // messagesStore
       allMessages: de,
       localMessages: qe,
-      loading: nt,
+      loading: lt,
       initialized: ct,
       unreadSince: Ot,
       unreadSinceDate: zt,
@@ -31536,7 +31536,7 @@ var Ag = function(e, n) {
       latestMessageTimeStamp: qt,
       emojiContainer: jt,
       readStatus: Bt,
-      typingMembers: ge,
+      typingMembers: Ie,
       // utils
       scrollToMessage: pe,
       quoteMessage: xe,
@@ -31549,18 +31549,18 @@ var Ag = function(e, n) {
       sendFileMessage: Ct,
       sendVoiceMessage: Ht,
       sendMultipleFilesMessage: Sn,
-      initialTimeStamp: De,
+      initialTimeStamp: Be,
       messageActionTypes: Qg,
-      messagesDispatcher: Ce,
-      setInitialTimeStamp: je,
+      messagesDispatcher: Ke,
+      setInitialTimeStamp: He,
       setAnimatedMessageId: $e,
       setHighLightedMessageId: pt,
       animatedMessageId: Ge,
       highLightedMessageId: Xe,
       nicknamesMap: X,
       emojiAllMap: Ft,
-      onScrollCallback: Ue,
-      onScrollDownCallback: fe,
+      onScrollCallback: Ne,
+      onScrollDownCallback: we,
       scrollRef: Je,
       scrollBehavior: ae,
       toggleReaction: Nt,
@@ -31609,7 +31609,7 @@ function l4(e, n, t) {
   return "".concat(d, "px ").concat(r, "px ").concat(i, "px ").concat(c, "px");
 }
 var el = function(e) {
-  var n = e.className, t = n === void 0 ? "" : n, l = e.url, a = e.alt, d = a === void 0 ? "" : a, r = e.width, i = r === void 0 ? null : r, c = e.maxSideLength, V = c === void 0 ? null : c, s = e.height, o = s === void 0 ? null : s, U = e.circle, N = U === void 0 ? !1 : U, R = e.fixedSize, h = R === void 0 ? !1 : R, Z = e.placeHolder, W = Z === void 0 ? null : Z, F = e.defaultComponent, m = F === void 0 ? null : F, E = e.borderRadius, u = E === void 0 ? null : E, b = e.onLoad, k = b === void 0 ? dl : b, Q = e.onError, S = Q === void 0 ? dl : Q, v = e.shadeOnHover, G = e.isUploaded, w = G === void 0 ? !0 : G, y = Wt(null), g = n4(y), f = g ? l : null, I = me(!1), K = I[0], Re = I[1], q = me(!0), ae = q[0], se = q[1], le = e4({
+  var n = e.className, t = n === void 0 ? "" : n, l = e.url, a = e.alt, d = a === void 0 ? "" : a, r = e.width, i = r === void 0 ? null : r, c = e.maxSideLength, V = c === void 0 ? null : c, s = e.height, o = s === void 0 ? null : s, U = e.circle, N = U === void 0 ? !1 : U, R = e.fixedSize, h = R === void 0 ? !1 : R, Z = e.placeHolder, W = Z === void 0 ? null : Z, F = e.defaultComponent, m = F === void 0 ? null : F, E = e.borderRadius, u = E === void 0 ? null : E, b = e.onLoad, k = b === void 0 ? dl : b, Q = e.onError, S = Q === void 0 ? dl : Q, v = e.shadeOnHover, G = e.isUploaded, w = G === void 0 ? !0 : G, y = Wt(null), g = n4(y), f = g ? l : null, I = me(!1), K = I[0], Ue = I[1], q = me(!0), ae = q[0], se = q[1], le = e4({
     width: i,
     height: o,
     maxSideLength: V,
@@ -31650,11 +31650,11 @@ var el = function(e) {
     K ? O() : re(),
     v && T.createElement("div", { className: "sendbird-multiple-files-image-renderer__image-cover", style: ce({ borderRadius: xM(N, u) }, w ? {} : { display: "inline-flex" }) }),
     f && T.createElement(a4, { src: f, alt: d, onLoadStart: function() {
-      se(!0), Re(!1);
+      se(!0), Ue(!1);
     }, onLoad: function() {
-      se(!1), Re(!1), k();
+      se(!1), Ue(!1), k();
     }, onError: function() {
-      se(!1), Re(!0), S();
+      se(!1), Ue(!0), S();
     } })
   );
 }, a4 = function(e) {
@@ -31684,7 +31684,7 @@ var el = function(e) {
   return NaN;
 }, sY = function(e) {
   var n = e.width, t = e.height, l = e.text, a = mR(n), d = mR(t);
-  return typeof a == "number" && !Number.isNaN(a) && (a *= 0.575), typeof d == "number" && !Number.isNaN(d) && (d *= 0.575), T.createElement("div", { className: "sendbird-avatar-img--default ".concat(l ? "text" : ""), style: { width: n, height: t } }, l ? T.createElement("div", { className: "sendbird-avatar-text" }, l) : T.createElement(dt, { type: Ie.USER, fillColor: Pe.CONTENT, width: a, height: d }));
+  return typeof a == "number" && !Number.isNaN(a) && (a *= 0.575), typeof d == "number" && !Number.isNaN(d) && (d *= 0.575), T.createElement("div", { className: "sendbird-avatar-img--default ".concat(l ? "text" : ""), style: { width: n, height: t } }, l ? T.createElement("div", { className: "sendbird-avatar-text" }, l) : T.createElement(dt, { type: Le.USER, fillColor: Pe.CONTENT, width: a, height: d }));
 }, cr = "sendbird-avatar-img", d4 = function(e) {
   var n = e.src, t = n === void 0 ? "" : n, l = e.alt, a = l === void 0 ? "" : l, d = e.height, r = e.width, i = e.customDefaultComponent, c = function() {
     return i ? i({ width: r, height: d }) : T.createElement(sY, { width: r, height: d });
@@ -31748,7 +31748,7 @@ function V4(e) {
         justifyContent: "center",
         alignItems: "center"
       } },
-      T.createElement(dt, { type: Ie.BROADCAST, fillColor: Pe.CONTENT, width: d * 0.575, height: i * 0.575 })
+      T.createElement(dt, { type: Le.BROADCAST, fillColor: Pe.CONTENT, width: d * 0.575, height: i * 0.575 })
     ) : T.createElement(da, { className: "sendbird-chat-header--avatar--broadcast-channel", src: JZ(n, t), width: d, height: i, alt: n == null ? void 0 : n.name }) : T.createElement(da, { className: "sendbird-chat-header--avatar--group-channel", src: JZ(n, t), width: "".concat(d, "px"), height: "".concat(i, "px"), alt: n == null ? void 0 : n.name });
   }, [JZ(n, t), l]);
   return T.createElement(T.Fragment, null, V);
@@ -31770,7 +31770,7 @@ var c4 = function(e, n, t) {
     T.createElement(
       "div",
       { className: "sendbird-chat-header__left" },
-      o && T.createElement(dt, { className: "sendbird-chat-header__icon_back", onClick: d, fillColor: Pe.PRIMARY, width: "24px", height: "24px", type: Ie.ARROW_LEFT }),
+      o && T.createElement(dt, { className: "sendbird-chat-header__icon_back", onClick: d, fillColor: Pe.PRIMARY, width: "24px", height: "24px", type: Le.ARROW_LEFT }),
       T.createElement(V4, { theme: s, channel: l, userId: V, height: 32, width: 32 }),
       T.createElement(Fe, { className: "sendbird-chat-header__left__title", type: oe.H_2, color: ie.ONBACKGROUND_1 }, c4(l, V, U)),
       T.createElement(Fe, { className: "sendbird-chat-header__left__subtitle", type: oe.BODY_1, color: ie.ONBACKGROUND_2 }, R)
@@ -31778,16 +31778,16 @@ var c4 = function(e, n, t) {
     T.createElement(
       "div",
       { className: "sendbird-chat-header__right" },
-      N && T.createElement(dt, { className: "sendbird-chat-header__right__mute", type: Ie.NOTIFICATIONS_OFF_FILLED, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" }),
+      N && T.createElement(dt, { className: "sendbird-chat-header__right__mute", type: Le.NOTIFICATIONS_OFF_FILLED, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" }),
       a && !(l != null && l.isEphemeral) && T.createElement(
         Fi,
         { className: "sendbird-chat-header__right__search", width: "32px", height: "32px", onClick: r },
-        T.createElement(dt, { type: Ie.SEARCH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Le.SEARCH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       T.createElement(
         Fi,
         { className: "sendbird-chat-header__right__info", width: "32px", height: "32px", onClick: i },
-        T.createElement(dt, { type: Ie.INFO, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Le.INFO, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       )
     )
   );
@@ -31836,7 +31836,7 @@ function N4() {
     "div",
     { className: "sendbird-connection-status" },
     T.createElement(Fe, { type: oe.BODY_2, color: ie.ONBACKGROUND_2 }, e.TRYING_TO_CONNECT),
-    T.createElement(dt, { type: Ie.DISCONNECTED, fillColor: Pe.SENT, width: "14px", height: "14px" })
+    T.createElement(dt, { type: Le.DISCONNECTED, fillColor: Pe.SENT, width: "14px", height: "14px" })
   );
 }
 function Vh(e) {
@@ -31846,7 +31846,7 @@ function Vh(e) {
   ], !1).join(" "), style: {
     width: typeof a == "string" ? a : "".concat(a, "px"),
     height: typeof r == "string" ? r : "".concat(r, "px")
-  } }, i || T.createElement(dt, { type: Ie.SPINNER, width: "26px", height: "26px" }));
+  } }, i || T.createElement(dt, { type: Le.SPINNER, width: "26px", height: "26px" }));
 }
 var _n = {
   LOADING: "LOADING",
@@ -31867,14 +31867,14 @@ function rV(e) {
     l === _n.LOADING && T.createElement(
       Vh,
       { width: a || "48px", height: a || "48px" },
-      T.createElement(dt, { type: Ie.SPINNER, fillColor: Pe.PRIMARY, width: a || "48px", height: a || "48px" })
+      T.createElement(dt, { type: Le.SPINNER, fillColor: Pe.PRIMARY, width: a || "48px", height: a || "48px" })
     ),
     (l === _n.NO_CHANNELS || l === _n.NO_MESSAGES || l === _n.WRONG) && T.createElement(
       "div",
       { className: "sendbird-place-holder__body" },
-      l === _n.NO_CHANNELS && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.CHAT, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
-      l === _n.WRONG && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.ERROR, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
-      l === _n.NO_MESSAGES && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Ie.MESSAGE, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
+      l === _n.NO_CHANNELS && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Le.CHAT, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
+      l === _n.WRONG && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Le.ERROR, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
+      l === _n.NO_MESSAGES && T.createElement(dt, { className: "sendbird-place-holder__body__icon", type: Le.MESSAGE, fillColor: Pe.ON_BACKGROUND_3, width: a || "64px", height: a || "64px" }),
       T.createElement(
         Fe,
         { className: "sendbird-place-holder__body__text", type: oe.BODY_1, color: ie.ONBACKGROUND_2 },
@@ -31885,7 +31885,7 @@ function rV(e) {
       c && T.createElement(
         "div",
         { className: "sendbird-place-holder__body__reconnect", role: "button", onClick: c, onKeyPress: c, tabIndex: 0 },
-        T.createElement(dt, { className: "sendbird-place-holder__body__reconnect__icon", type: Ie.REFRESH, fillColor: Pe.PRIMARY, width: "20px", height: "20px" }),
+        T.createElement(dt, { className: "sendbird-place-holder__body__reconnect__icon", type: Le.REFRESH, fillColor: Pe.PRIMARY, width: "20px", height: "20px" }),
         T.createElement(Fe, { className: "sendbird-place-holder__body__reconnect__text", type: oe.BUTTON_1, color: ie.PRIMARY }, V.PLACE_HOLDER__RETRY_TO_CONNECT)
       )
     ),
@@ -32168,7 +32168,7 @@ function TY() {
     ATTR_WHITESPACE: K
   } = HM;
   let {
-    IS_ALLOWED_URI: Re
+    IS_ALLOWED_URI: Ue
   } = HM, q = null;
   const ae = an({}, [...DM, ...xZ, ...GZ, ...yZ, ...XM]);
   let se = null;
@@ -32192,25 +32192,25 @@ function TY() {
       enumerable: !0,
       value: !1
     }
-  })), $ = null, ee = null, O = !0, re = !0, te = !1, Qe = !0, Ye = !1, Se = !1, P = !1, we = !1, Me = !1, We = !1, Be = !1, Ke = !0, lt = !1;
-  const De = "user-content-";
-  let je = !0, at = !1, Ge = {}, $e = null;
-  const He = an({}, ["annotation-xml", "audio", "colgroup", "desc", "foreignobject", "head", "iframe", "math", "mi", "mn", "mo", "ms", "mtext", "noembed", "noframes", "noscript", "plaintext", "script", "style", "svg", "template", "thead", "title", "video", "xmp"]);
+  })), $ = null, ee = null, O = !0, re = !0, te = !1, Qe = !0, Ye = !1, Se = !1, P = !1, ge = !1, Me = !1, We = !1, De = !1, Oe = !0, tt = !1;
+  const Be = "user-content-";
+  let He = !0, at = !1, Ge = {}, $e = null;
+  const fe = an({}, ["annotation-xml", "audio", "colgroup", "desc", "foreignobject", "head", "iframe", "math", "mi", "mn", "mo", "ms", "mtext", "noembed", "noframes", "noscript", "plaintext", "script", "style", "svg", "template", "thead", "title", "video", "xmp"]);
   let Xe = null;
   const pt = an({}, ["audio", "video", "img", "source", "image", "track"]);
   let Vt = null;
   const yt = an({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]), xe = "http://www.w3.org/1998/Math/MathML", At = "http://www.w3.org/2000/svg", kt = "http://www.w3.org/1999/xhtml";
   let Kt = kt, ln = !1, vt = null;
   const Rt = an({}, [xe, At, kt], zZ);
-  let Ce;
+  let Ke;
   const Je = ["application/xhtml+xml", "text/html"], de = "text/html";
-  let qe, nt = null;
+  let qe, lt = null;
   const ct = a.createElement("form"), Ot = function(H) {
     return H instanceof RegExp || H instanceof Function;
   }, zt = function(H) {
-    if (!(nt && nt === H)) {
-      if ((!H || typeof H != "object") && (H = {}), H = KV(H), Ce = // eslint-disable-next-line unicorn/prefer-includes
-      Je.indexOf(H.PARSER_MEDIA_TYPE) === -1 ? Ce = de : Ce = H.PARSER_MEDIA_TYPE, qe = Ce === "application/xhtml+xml" ? zZ : GN, q = "ALLOWED_TAGS" in H ? an({}, H.ALLOWED_TAGS, qe) : ae, se = "ALLOWED_ATTR" in H ? an({}, H.ALLOWED_ATTR, qe) : le, vt = "ALLOWED_NAMESPACES" in H ? an({}, H.ALLOWED_NAMESPACES, zZ) : Rt, Vt = "ADD_URI_SAFE_ATTR" in H ? an(
+    if (!(lt && lt === H)) {
+      if ((!H || typeof H != "object") && (H = {}), H = KV(H), Ke = // eslint-disable-next-line unicorn/prefer-includes
+      Je.indexOf(H.PARSER_MEDIA_TYPE) === -1 ? Ke = de : Ke = H.PARSER_MEDIA_TYPE, qe = Ke === "application/xhtml+xml" ? zZ : GN, q = "ALLOWED_TAGS" in H ? an({}, H.ALLOWED_TAGS, qe) : ae, se = "ALLOWED_ATTR" in H ? an({}, H.ALLOWED_ATTR, qe) : le, vt = "ALLOWED_NAMESPACES" in H ? an({}, H.ALLOWED_NAMESPACES, zZ) : Rt, Vt = "ADD_URI_SAFE_ATTR" in H ? an(
         KV(yt),
         // eslint-disable-line indent
         H.ADD_URI_SAFE_ATTR,
@@ -32224,7 +32224,7 @@ function TY() {
         // eslint-disable-line indent
         qe
         // eslint-disable-line indent
-      ) : pt, $e = "FORBID_CONTENTS" in H ? an({}, H.FORBID_CONTENTS, qe) : He, $ = "FORBID_TAGS" in H ? an({}, H.FORBID_TAGS, qe) : {}, ee = "FORBID_ATTR" in H ? an({}, H.FORBID_ATTR, qe) : {}, Ge = "USE_PROFILES" in H ? H.USE_PROFILES : !1, O = H.ALLOW_ARIA_ATTR !== !1, re = H.ALLOW_DATA_ATTR !== !1, te = H.ALLOW_UNKNOWN_PROTOCOLS || !1, Qe = H.ALLOW_SELF_CLOSE_IN_ATTR !== !1, Ye = H.SAFE_FOR_TEMPLATES || !1, Se = H.WHOLE_DOCUMENT || !1, Me = H.RETURN_DOM || !1, We = H.RETURN_DOM_FRAGMENT || !1, Be = H.RETURN_TRUSTED_TYPE || !1, we = H.FORCE_BODY || !1, Ke = H.SANITIZE_DOM !== !1, lt = H.SANITIZE_NAMED_PROPS || !1, je = H.KEEP_CONTENT !== !1, at = H.IN_PLACE || !1, Re = H.ALLOWED_URI_REGEXP || hY, Kt = H.NAMESPACE || kt, L = H.CUSTOM_ELEMENT_HANDLING || {}, H.CUSTOM_ELEMENT_HANDLING && Ot(H.CUSTOM_ELEMENT_HANDLING.tagNameCheck) && (L.tagNameCheck = H.CUSTOM_ELEMENT_HANDLING.tagNameCheck), H.CUSTOM_ELEMENT_HANDLING && Ot(H.CUSTOM_ELEMENT_HANDLING.attributeNameCheck) && (L.attributeNameCheck = H.CUSTOM_ELEMENT_HANDLING.attributeNameCheck), H.CUSTOM_ELEMENT_HANDLING && typeof H.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements == "boolean" && (L.allowCustomizedBuiltInElements = H.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements), Ye && (re = !1), We && (Me = !0), Ge && (q = an({}, [...XM]), se = [], Ge.html === !0 && (an(q, DM), an(se, OM)), Ge.svg === !0 && (an(q, xZ), an(se, BZ), an(se, nN)), Ge.svgFilters === !0 && (an(q, GZ), an(se, BZ), an(se, nN)), Ge.mathMl === !0 && (an(q, yZ), an(se, jM), an(se, nN))), H.ADD_TAGS && (q === ae && (q = KV(q)), an(q, H.ADD_TAGS, qe)), H.ADD_ATTR && (se === le && (se = KV(se)), an(se, H.ADD_ATTR, qe)), H.ADD_URI_SAFE_ATTR && an(Vt, H.ADD_URI_SAFE_ATTR, qe), H.FORBID_CONTENTS && ($e === He && ($e = KV($e)), an($e, H.FORBID_CONTENTS, qe)), je && (q["#text"] = !0), Se && an(q, ["html", "head", "body"]), q.table && (an(q, ["tbody"]), delete $.tbody), H.TRUSTED_TYPES_POLICY) {
+      ) : pt, $e = "FORBID_CONTENTS" in H ? an({}, H.FORBID_CONTENTS, qe) : fe, $ = "FORBID_TAGS" in H ? an({}, H.FORBID_TAGS, qe) : {}, ee = "FORBID_ATTR" in H ? an({}, H.FORBID_ATTR, qe) : {}, Ge = "USE_PROFILES" in H ? H.USE_PROFILES : !1, O = H.ALLOW_ARIA_ATTR !== !1, re = H.ALLOW_DATA_ATTR !== !1, te = H.ALLOW_UNKNOWN_PROTOCOLS || !1, Qe = H.ALLOW_SELF_CLOSE_IN_ATTR !== !1, Ye = H.SAFE_FOR_TEMPLATES || !1, Se = H.WHOLE_DOCUMENT || !1, Me = H.RETURN_DOM || !1, We = H.RETURN_DOM_FRAGMENT || !1, De = H.RETURN_TRUSTED_TYPE || !1, ge = H.FORCE_BODY || !1, Oe = H.SANITIZE_DOM !== !1, tt = H.SANITIZE_NAMED_PROPS || !1, He = H.KEEP_CONTENT !== !1, at = H.IN_PLACE || !1, Ue = H.ALLOWED_URI_REGEXP || hY, Kt = H.NAMESPACE || kt, L = H.CUSTOM_ELEMENT_HANDLING || {}, H.CUSTOM_ELEMENT_HANDLING && Ot(H.CUSTOM_ELEMENT_HANDLING.tagNameCheck) && (L.tagNameCheck = H.CUSTOM_ELEMENT_HANDLING.tagNameCheck), H.CUSTOM_ELEMENT_HANDLING && Ot(H.CUSTOM_ELEMENT_HANDLING.attributeNameCheck) && (L.attributeNameCheck = H.CUSTOM_ELEMENT_HANDLING.attributeNameCheck), H.CUSTOM_ELEMENT_HANDLING && typeof H.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements == "boolean" && (L.allowCustomizedBuiltInElements = H.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements), Ye && (re = !1), We && (Me = !0), Ge && (q = an({}, [...XM]), se = [], Ge.html === !0 && (an(q, DM), an(se, OM)), Ge.svg === !0 && (an(q, xZ), an(se, BZ), an(se, nN)), Ge.svgFilters === !0 && (an(q, GZ), an(se, BZ), an(se, nN)), Ge.mathMl === !0 && (an(q, yZ), an(se, jM), an(se, nN))), H.ADD_TAGS && (q === ae && (q = KV(q)), an(q, H.ADD_TAGS, qe)), H.ADD_ATTR && (se === le && (se = KV(se)), an(se, H.ADD_ATTR, qe)), H.ADD_URI_SAFE_ATTR && an(Vt, H.ADD_URI_SAFE_ATTR, qe), H.FORBID_CONTENTS && ($e === fe && ($e = KV($e)), an($e, H.FORBID_CONTENTS, qe)), He && (q["#text"] = !0), Se && an(q, ["html", "head", "body"]), q.table && (an(q, ["tbody"]), delete $.tbody), H.TRUSTED_TYPES_POLICY) {
         if (typeof H.TRUSTED_TYPES_POLICY.createHTML != "function")
           throw os('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
         if (typeof H.TRUSTED_TYPES_POLICY.createScriptURL != "function")
@@ -32232,7 +32232,7 @@ function TY() {
         m = H.TRUSTED_TYPES_POLICY, E = m.createHTML("");
       } else
         m === void 0 && (m = y4(N, l)), m !== null && typeof E == "string" && (E = m.createHTML(""));
-      ra && ra(H), nt = H;
+      ra && ra(H), lt = H;
     }
   }, cn = an({}, ["mi", "mo", "mn", "ms", "mtext"]), mt = an({}, ["foreignobject", "desc", "title", "annotation-xml"]), sn = an({}, ["title", "style", "font", "a", "script"]), hn = an({}, xZ);
   an(hn, GZ), an(hn, S4);
@@ -32245,7 +32245,7 @@ function TY() {
       tagName: "template"
     });
     const ye = GN(H.tagName), Zt = GN(Ve.tagName);
-    return vt[H.namespaceURI] ? H.namespaceURI === At ? Ve.namespaceURI === kt ? ye === "svg" : Ve.namespaceURI === xe ? ye === "svg" && (Zt === "annotation-xml" || cn[Zt]) : !!hn[ye] : H.namespaceURI === xe ? Ve.namespaceURI === kt ? ye === "math" : Ve.namespaceURI === At ? ye === "math" && mt[Zt] : !!ft[ye] : H.namespaceURI === kt ? Ve.namespaceURI === At && !mt[Zt] || Ve.namespaceURI === xe && !cn[Zt] ? !1 : !ft[ye] && (sn[ye] || !hn[ye]) : !!(Ce === "application/xhtml+xml" && vt[H.namespaceURI]) : !1;
+    return vt[H.namespaceURI] ? H.namespaceURI === At ? Ve.namespaceURI === kt ? ye === "svg" : Ve.namespaceURI === xe ? ye === "svg" && (Zt === "annotation-xml" || cn[Zt]) : !!hn[ye] : H.namespaceURI === xe ? Ve.namespaceURI === kt ? ye === "math" : Ve.namespaceURI === At ? ye === "math" && mt[Zt] : !!ft[ye] : H.namespaceURI === kt ? Ve.namespaceURI === At && !mt[Zt] || Ve.namespaceURI === xe && !cn[Zt] ? !1 : !ft[ye] && (sn[ye] || !hn[ye]) : !!(Ke === "application/xhtml+xml" && vt[H.namespaceURI]) : !1;
   }, jt = function(H) {
     ss(n.removed, {
       element: H
@@ -32278,19 +32278,19 @@ function TY() {
           Ve.setAttribute(H, "");
         } catch {
         }
-  }, ge = function(H) {
+  }, Ie = function(H) {
     let Ve, ye;
-    if (we)
+    if (ge)
       H = "<remove></remove>" + H;
     else {
       const Ct = u4(H, /^[\r\n\t ]+/);
       ye = Ct && Ct[0];
     }
-    Ce === "application/xhtml+xml" && Kt === kt && (H = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + H + "</body></html>");
+    Ke === "application/xhtml+xml" && Kt === kt && (H = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + H + "</body></html>");
     const Zt = m ? m.createHTML(H) : H;
     if (Kt === kt)
       try {
-        Ve = new U().parseFromString(Zt, Ce);
+        Ve = new U().parseFromString(Zt, Ke);
       } catch {
       }
     if (!Ve || !Ve.documentElement) {
@@ -32317,7 +32317,7 @@ function TY() {
     return typeof i == "object" ? H instanceof i : H && typeof H == "object" && typeof H.nodeType == "number" && typeof H.nodeName == "string";
   }, Ft = function(H, Ve, ye) {
     v[H] && m4(v[H], (Zt) => {
-      Zt.call(n, Ve, ye, nt);
+      Zt.call(n, Ve, ye, lt);
     });
   }, X = function(H) {
     let Ve;
@@ -32332,7 +32332,7 @@ function TY() {
     if (!q[ye] || $[ye]) {
       if (!$[ye] && pe(ye) && (L.tagNameCheck instanceof RegExp && pa(L.tagNameCheck, ye) || L.tagNameCheck instanceof Function && L.tagNameCheck(ye)))
         return !1;
-      if (je && !$e[ye]) {
+      if (He && !$e[ye]) {
         const Zt = F(H) || H.parentNode, Mt = W(H) || H.childNodes;
         if (Mt && Zt) {
           const Ct = Mt.length;
@@ -32345,8 +32345,8 @@ function TY() {
     return H instanceof c && !qt(H) || (ye === "noscript" || ye === "noembed" || ye === "noframes") && pa(/<\/no(script|embed|frames)/i, H.innerHTML) ? (jt(H), !0) : (Ye && H.nodeType === 3 && (Ve = H.textContent, Ve = od(Ve, G, " "), Ve = od(Ve, w, " "), Ve = od(Ve, y, " "), H.textContent !== Ve && (ss(n.removed, {
       element: H.cloneNode()
     }), H.textContent = Ve)), Ft("afterSanitizeElements", H, null), !1);
-  }, Ue = function(H, Ve, ye) {
-    if (Ke && (Ve === "id" || Ve === "name") && (ye in a || ye in ct))
+  }, Ne = function(H, Ve, ye) {
+    if (Oe && (Ve === "id" || Ve === "name") && (ye in a || ye in ct))
       return !1;
     if (!(re && !ee[Ve] && pa(g, Ve))) {
       if (!(O && pa(f, Ve))) {
@@ -32361,7 +32361,7 @@ function TY() {
           )
             return !1;
         } else if (!Vt[Ve]) {
-          if (!pa(Re, od(ye, K, ""))) {
+          if (!pa(Ue, od(ye, K, ""))) {
             if (!((Ve === "src" || Ve === "xlink:href" || Ve === "href") && H !== "script" && p4(ye, "data:") === 0 && Xe[H])) {
               if (!(te && !pa(I, od(ye, K, "")))) {
                 if (ye)
@@ -32375,7 +32375,7 @@ function TY() {
     return !0;
   }, pe = function(H) {
     return H.indexOf("-") > 0;
-  }, fe = function(H) {
+  }, we = function(H) {
     let Ve, ye, Zt, Mt;
     Ft("beforeSanitizeAttributes", H, null);
     const {
@@ -32403,8 +32403,8 @@ function TY() {
       }
       Ye && (ye = od(ye, G, " "), ye = od(ye, w, " "), ye = od(ye, y, " "));
       const rn = qe(H.nodeName);
-      if (Ue(rn, Zt, ye)) {
-        if (lt && (Zt === "id" || Zt === "name") && (Bt(Sn, H), ye = De + ye), m && typeof N == "object" && typeof N.getAttributeType == "function" && !bt)
+      if (Ne(rn, Zt, ye)) {
+        if (tt && (Zt === "id" || Zt === "name") && (Bt(Sn, H), ye = Be + ye), m && typeof N == "object" && typeof N.getAttributeType == "function" && !bt)
           switch (N.getAttributeType(rn, Zt)) {
             case "TrustedHTML": {
               ye = m.createHTML(ye);
@@ -32426,7 +32426,7 @@ function TY() {
     let Ve;
     const ye = it(H);
     for (Ft("beforeSanitizeShadowDOM", H, null); Ve = ye.nextNode(); )
-      Ft("uponSanitizeShadowNode", Ve, null), !X(Ve) && (Ve.content instanceof d && Ee(Ve.content), fe(Ve));
+      Ft("uponSanitizeShadowNode", Ve, null), !X(Ve) && (Ve.content instanceof d && Ee(Ve.content), we(Ve));
     Ft("afterSanitizeShadowDOM", H, null);
   };
   return n.sanitize = function(Ee) {
@@ -32446,18 +32446,18 @@ function TY() {
           throw os("root node is forbidden and cannot be sanitized in-place");
       }
     } else if (Ee instanceof i)
-      Ve = ge("<!---->"), ye = Ve.ownerDocument.importNode(Ee, !0), ye.nodeType === 1 && ye.nodeName === "BODY" || ye.nodeName === "HTML" ? Ve = ye : Ve.appendChild(ye);
+      Ve = Ie("<!---->"), ye = Ve.ownerDocument.importNode(Ee, !0), ye.nodeType === 1 && ye.nodeName === "BODY" || ye.nodeName === "HTML" ? Ve = ye : Ve.appendChild(ye);
     else {
       if (!Me && !Ye && !Se && // eslint-disable-next-line unicorn/prefer-includes
       Ee.indexOf("<") === -1)
-        return m && Be ? m.createHTML(Ee) : Ee;
-      if (Ve = ge(Ee), !Ve)
-        return Me ? null : Be ? E : "";
+        return m && De ? m.createHTML(Ee) : Ee;
+      if (Ve = Ie(Ee), !Ve)
+        return Me ? null : De ? E : "";
     }
-    Ve && we && jt(Ve.firstChild);
+    Ve && ge && jt(Ve.firstChild);
     const Ct = it(at ? Ee : Ve);
     for (; Zt = Ct.nextNode(); )
-      X(Zt) || (Zt.content instanceof d && Nt(Zt.content), fe(Zt));
+      X(Zt) || (Zt.content instanceof d && Nt(Zt.content), we(Zt));
     if (at)
       return Ee;
     if (Me) {
@@ -32470,15 +32470,15 @@ function TY() {
     }
     let Ht = Se ? Ve.outerHTML : Ve.innerHTML;
     return Se && q["!doctype"] && Ve.ownerDocument && Ve.ownerDocument.doctype && Ve.ownerDocument.doctype.name && pa(ZY, Ve.ownerDocument.doctype.name) && (Ht = "<!DOCTYPE " + Ve.ownerDocument.doctype.name + `>
-` + Ht), Ye && (Ht = od(Ht, G, " "), Ht = od(Ht, w, " "), Ht = od(Ht, y, " ")), m && Be ? m.createHTML(Ht) : Ht;
+` + Ht), Ye && (Ht = od(Ht, G, " "), Ht = od(Ht, w, " "), Ht = od(Ht, y, " ")), m && De ? m.createHTML(Ht) : Ht;
   }, n.setConfig = function(Ee) {
     zt(Ee), P = !0;
   }, n.clearConfig = function() {
-    nt = null, P = !1;
+    lt = null, P = !1;
   }, n.isValidAttribute = function(Ee, H, Ve) {
-    nt || zt({});
+    lt || zt({});
     const ye = qe(Ee), Zt = qe(H);
-    return Ue(ye, Zt, Ve);
+    return Ne(ye, Zt, Ve);
   }, n.addHook = function(Ee, H) {
     typeof H == "function" && (v[Ee] = v[Ee] || [], ss(v[Ee], H));
   }, n.removeHook = function(Ee) {
@@ -32735,41 +32735,41 @@ var A4 = function(e) {
   endNodeIndex: null,
   endOffsetIndex: null
 }, EY = T.forwardRef(function(e, n) {
-  var t, l, a, d, r, i = e.channel, c = e.className, V = c === void 0 ? "" : c, s = e.messageFieldId, o = s === void 0 ? "" : s, U = e.isEdit, N = U === void 0 ? !1 : U, R = e.isMobile, h = R === void 0 ? !1 : R, Z = e.isMentionEnabled, W = Z === void 0 ? !1 : Z, F = e.isVoiceMessageEnabled, m = F === void 0 ? !0 : F, E = e.isSelectingMultipleFilesEnabled, u = E === void 0 ? !1 : E, b = e.disabled, k = b === void 0 ? !1 : b, Q = e.message, S = Q === void 0 ? null : Q, v = e.placeholder, G = v === void 0 ? "" : v, w = e.maxLength, y = w === void 0 ? 5e3 : w, g = e.onFileUpload, f = g === void 0 ? Al : g, I = e.onSendMessage, K = I === void 0 ? Al : I, Re = e.onUpdateMessage, q = Re === void 0 ? Al : Re, ae = e.onCancelEdit, se = ae === void 0 ? Al : ae, le = e.onStartTyping, L = le === void 0 ? Al : le, $ = e.channelUrl, ee = $ === void 0 ? "" : $, O = e.mentionSelectedUser, re = O === void 0 ? null : O, te = e.onUserMentioned, Qe = te === void 0 ? Al : te, Ye = e.onMentionStringChange, Se = Ye === void 0 ? Al : Ye, P = e.onMentionedUserIdsUpdated, we = P === void 0 ? Al : P, Me = e.onVoiceMessageIconClick, We = Me === void 0 ? Al : Me, Be = e.onKeyUp, Ke = Be === void 0 ? Al : Be, lt = e.onKeyDown, De = lt === void 0 ? Al : lt, je = e.renderFileUploadIcon, at = je === void 0 ? Al : je, Ge = e.renderVoiceMessageIcon, $e = Ge === void 0 ? Al : Ge, He = e.renderSendMessageIcon, Xe = He === void 0 ? Al : He, pt = e.setMentionedUsers, Vt = pt === void 0 ? Al : pt, yt = e.acceptableMimeTypes, xe = n && "current" in n ? n : null, At = o || q4, kt = ca().stringSet, Kt = zn().config, ln = A4({
+  var t, l, a, d, r, i = e.channel, c = e.className, V = c === void 0 ? "" : c, s = e.messageFieldId, o = s === void 0 ? "" : s, U = e.isEdit, N = U === void 0 ? !1 : U, R = e.isMobile, h = R === void 0 ? !1 : R, Z = e.isMentionEnabled, W = Z === void 0 ? !1 : Z, F = e.isVoiceMessageEnabled, m = F === void 0 ? !0 : F, E = e.isSelectingMultipleFilesEnabled, u = E === void 0 ? !1 : E, b = e.disabled, k = b === void 0 ? !1 : b, Q = e.message, S = Q === void 0 ? null : Q, v = e.placeholder, G = v === void 0 ? "" : v, w = e.maxLength, y = w === void 0 ? 5e3 : w, g = e.onFileUpload, f = g === void 0 ? Al : g, I = e.onSendMessage, K = I === void 0 ? Al : I, Ue = e.onUpdateMessage, q = Ue === void 0 ? Al : Ue, ae = e.onCancelEdit, se = ae === void 0 ? Al : ae, le = e.onStartTyping, L = le === void 0 ? Al : le, $ = e.channelUrl, ee = $ === void 0 ? "" : $, O = e.mentionSelectedUser, re = O === void 0 ? null : O, te = e.onUserMentioned, Qe = te === void 0 ? Al : te, Ye = e.onMentionStringChange, Se = Ye === void 0 ? Al : Ye, P = e.onMentionedUserIdsUpdated, ge = P === void 0 ? Al : P, Me = e.onVoiceMessageIconClick, We = Me === void 0 ? Al : Me, De = e.onKeyUp, Oe = De === void 0 ? Al : De, tt = e.onKeyDown, Be = tt === void 0 ? Al : tt, He = e.renderFileUploadIcon, at = He === void 0 ? Al : He, Ge = e.renderVoiceMessageIcon, $e = Ge === void 0 ? Al : Ge, fe = e.renderSendMessageIcon, Xe = fe === void 0 ? Al : fe, pt = e.setMentionedUsers, Vt = pt === void 0 ? Al : pt, yt = e.acceptableMimeTypes, xe = n && "current" in n ? n : null, At = o || q4, kt = ca().stringSet, Kt = zn().config, ln = A4({
     channel: i,
     config: Kt
-  }), vt = Wt(null), Rt = me(!1), Ce = Rt[0], Je = Rt[1], de = me([]), qe = de[0], nt = de[1], ct = me(ce({}, IM)), Ot = ct[0], zt = ct[1], cn = Pt(function() {
-    var ge = xe == null ? void 0 : xe.current;
-    if (ge)
+  }), vt = Wt(null), Rt = me(!1), Ke = Rt[0], Je = Rt[1], de = me([]), qe = de[0], lt = de[1], ct = me(ce({}, IM)), Ot = ct[0], zt = ct[1], cn = Pt(function() {
+    var Ie = xe == null ? void 0 : xe.current;
+    if (Ie)
       try {
         var it = window.document.body.offsetHeight || eI, ze = it * 0.6;
-        ge.scrollHeight >= $4 ? ze < ge.scrollHeight ? (ge.style.height = "auto", ge.style.height = "".concat(ze, "px")) : (ge.style.height = "auto", ge.style.height = "".concat(ge.scrollHeight, "px")) : ge.style.height = "";
+        Ie.scrollHeight >= $4 ? ze < Ie.scrollHeight ? (Ie.style.height = "auto", Ie.style.height = "".concat(ze, "px")) : (Ie.style.height = "auto", Ie.style.height = "".concat(Ie.scrollHeight, "px")) : Ie.style.height = "";
       } catch {
       }
   }, []), mt = e == null ? void 0 : e.value;
   _e(function() {
-    var ge, it = xe == null ? void 0 : xe.current;
+    var Ie, it = xe == null ? void 0 : xe.current;
     try {
       it.innerHTML = mt, tI(it, mt == null ? void 0 : mt.length);
     } catch {
     }
-    nt([]), Je(((ge = it == null ? void 0 : it.textContent) === null || ge === void 0 ? void 0 : ge.trim().length) > 0), cn();
+    lt([]), Je(((Ie = it == null ? void 0 : it.textContent) === null || Ie === void 0 ? void 0 : Ie.trim().length) > 0), cn();
   }, [mt]), _e(function() {
     N || (Je(!1), XZ(xe));
   }, [ee]), _e(function() {
-    var ge, it, ze;
+    var Ie, it, ze;
     if (N && (S != null && S.messageId)) {
       var ht = xe == null ? void 0 : xe.current;
-      if (W && ((ge = S == null ? void 0 : S.mentionedUsers) === null || ge === void 0 ? void 0 : ge.length) > 0 && ((it = S == null ? void 0 : S.mentionedMessageTemplate) === null || it === void 0 ? void 0 : it.length) > 0) {
-        var Ft = S.mentionedUsers, X = Ft === void 0 ? [] : Ft, Ue = Jo({
+      if (W && ((Ie = S == null ? void 0 : S.mentionedUsers) === null || Ie === void 0 ? void 0 : Ie.length) > 0 && ((it = S == null ? void 0 : S.mentionedMessageTemplate) === null || it === void 0 ? void 0 : it.length) > 0) {
+        var Ft = S.mentionedUsers, X = Ft === void 0 ? [] : Ft, Ne = Jo({
           messageText: S == null ? void 0 : S.mentionedMessageTemplate,
           mentionedUsers: X
         });
-        ht.innerHTML = Ue.map(function(pe) {
+        ht.innerHTML = Ne.map(function(pe) {
           if (pe.type === ha.mention) {
-            var fe = X.find(function(Ee) {
+            var we = X.find(function(Ee) {
               return Ee.userId === pe.userId;
-            }), Nt = "".concat(iU).concat((fe == null ? void 0 : fe.nickname) || pe.value || kt.MENTION_NAME__NO_NAME);
+            }), Nt = "".concat(iU).concat((we == null ? void 0 : we.nickname) || pe.value || kt.MENTION_NAME__NO_NAME);
             return SF({
               userId: pe.userId,
               nickname: Nt
@@ -32782,13 +32782,13 @@ var A4 = function(e) {
           ht.innerHTML = Qo(S == null ? void 0 : S.message);
         } catch {
         }
-        nt([]);
+        lt([]);
       }
       Je(((ze = ht == null ? void 0 : ht.textContent) === null || ze === void 0 ? void 0 : ze.trim().length) > 0), cn();
     }
   }, [N, S]);
   var sn = Pt(function() {
-    var ge, it = xe == null ? void 0 : xe.current;
+    var Ie, it = xe == null ? void 0 : xe.current;
     if (W) {
       var ze = Array.from(it.getElementsByClassName("sendbird-mention-user-label")).map(
         // @ts-ignore
@@ -32797,25 +32797,25 @@ var A4 = function(e) {
           return (Ft = ht == null ? void 0 : ht.dataset) === null || Ft === void 0 ? void 0 : Ft.userid;
         }
       );
-      (!wj(qe, ze) || ze.length === 0) && (we(ze), nt(ze));
+      (!wj(qe, ze) || ze.length === 0) && (ge(ze), lt(ze));
     }
-    Je(((ge = it.textContent) === null || ge === void 0 ? void 0 : ge.trim().length) > 0);
+    Je(((Ie = it.textContent) === null || Ie === void 0 ? void 0 : Ie.trim().length) > 0);
   }, [Ot, W]);
   _e(function() {
-    var ge, it;
+    var Ie, it;
     if (W && re) {
-      var ze = Ot.targetString, ht = Ot.startNodeIndex, Ft = Ot.startOffsetIndex, X = Ot.endNodeIndex, Ue = Ot.endOffsetIndex;
+      var ze = Ot.targetString, ht = Ot.startNodeIndex, Ft = Ot.startOffsetIndex, X = Ot.endNodeIndex, Ne = Ot.endOffsetIndex;
       if (ze && ht !== null && Ft !== null) {
-        var pe = xe == null ? void 0 : xe.current, fe = yN(pe == null ? void 0 : pe.childNodes), Nt = document == null ? void 0 : document.createTextNode((ge = fe[ht]) === null || ge === void 0 ? void 0 : ge.textContent.slice(0, Ft)), Ee = document == null ? void 0 : document.createTextNode(" ".concat((it = fe[X]) === null || it === void 0 ? void 0 : it.textContent.slice(Ue))), H = SF({
+        var pe = xe == null ? void 0 : xe.current, we = yN(pe == null ? void 0 : pe.childNodes), Nt = document == null ? void 0 : document.createTextNode((Ie = we[ht]) === null || Ie === void 0 ? void 0 : Ie.textContent.slice(0, Ft)), Ee = document == null ? void 0 : document.createTextNode(" ".concat((it = we[X]) === null || it === void 0 ? void 0 : it.textContent.slice(Ne))), H = SF({
           userId: re == null ? void 0 : re.userId,
           nickname: "".concat(no).concat((re == null ? void 0 : re.nickname) || kt.MENTION_NAME__NO_NAME)
         }), Ve = document.createElement("div");
         Ve.innerHTML = H;
-        var ye = Ut(Ut(Ut([], fe.slice(0, ht), !0), [
+        var ye = Ut(Ut(Ut([], we.slice(0, ht), !0), [
           Nt,
           Ve.childNodes[0],
           Ee
-        ], !1), fe.slice(X + 1), !0);
+        ], !1), we.slice(X + 1), !0);
         if (pe.innerHTML = "", ye.forEach(function(Ct) {
           pe.appendChild(Ct);
         }), Qe(re), window.getSelection || document.getSelection) {
@@ -32829,27 +32829,27 @@ var A4 = function(e) {
     }
   }, [re, W]);
   var hn = Pt(function() {
-    var ge, it, ze = ((ge = window == null ? void 0 : window.getSelection) === null || ge === void 0 ? void 0 : ge.call(window)) || ((it = document == null ? void 0 : document.getSelection) === null || it === void 0 ? void 0 : it.call(document)), ht = xe == null ? void 0 : xe.current;
+    var Ie, it, ze = ((Ie = window == null ? void 0 : window.getSelection) === null || Ie === void 0 ? void 0 : Ie.call(window)) || ((it = document == null ? void 0 : document.getSelection) === null || it === void 0 ? void 0 : it.call(document)), ht = xe == null ? void 0 : xe.current;
     if (ze.anchorNode === ht && Se(""), W && ze && ze.anchorNode === ze.focusNode && ze.anchorOffset === ze.focusOffset)
-      for (var Ft = "", X = null, Ue = null, pe = 0; pe < ht.childNodes.length; pe += 1) {
-        var fe = ht.childNodes[pe];
-        if (fe.nodeType === pF.TextNode) {
-          var Nt = fe === ze.anchorNode ? (fe == null ? void 0 : fe.textContent.slice(0, ze.anchorOffset)) || "" : (fe == null ? void 0 : fe.textContent) || "";
+      for (var Ft = "", X = null, Ne = null, pe = 0; pe < ht.childNodes.length; pe += 1) {
+        var we = ht.childNodes[pe];
+        if (we.nodeType === pF.TextNode) {
+          var Nt = we === ze.anchorNode ? (we == null ? void 0 : we.textContent.slice(0, ze.anchorOffset)) || "" : (we == null ? void 0 : we.textContent) || "";
           if (Ft.length > 0)
             Ft += Nt;
           else {
             for (var Ee = Nt.lastIndexOf(no), H = Ee - 1; H > -1 && Nt[H] === no; H -= 1)
               Ee = H;
-            Ee > -1 && (Ft = Nt, X = pe, Ue = Ee);
+            Ee > -1 && (Ft = Nt, X = pe, Ne = Ee);
           }
         } else
-          Ft = "", X = null, Ue = null;
-        if (fe === ze.anchorNode) {
-          var Ve = Ft ? Ft.slice(Ue) : "";
+          Ft = "", X = null, Ne = null;
+        if (we === ze.anchorNode) {
+          var Ve = Ft ? Ft.slice(Ne) : "";
           zt({
             targetString: Ve,
             startNodeIndex: X,
-            startOffsetIndex: Ue,
+            startOffsetIndex: Ne,
             endNodeIndex: pe,
             endOffsetIndex: ze.anchorOffset
           }), Se(Ve);
@@ -32857,15 +32857,15 @@ var A4 = function(e) {
         }
       }
   }, [W]), ft = function() {
-    var ge = xe == null ? void 0 : xe.current;
-    if (!N && (ge != null && ge.textContent)) {
-      var it = fM(ge.childNodes), ze = it.messageText, ht = it.mentionTemplate, Ft = { message: ze, mentionTemplate: ht };
-      K(Ft), XZ(xe), ge.focus(), Je(!1), cn();
+    var Ie = xe == null ? void 0 : xe.current;
+    if (!N && (Ie != null && Ie.textContent)) {
+      var it = fM(Ie.childNodes), ze = it.messageText, ht = it.mentionTemplate, Ft = { message: ze, mentionTemplate: ht };
+      K(Ft), XZ(xe), Ie.focus(), Je(!1), cn();
     }
   }, qt = !(!((l = (t = xe == null ? void 0 : xe.current) === null || t === void 0 ? void 0 : t.textContent) === null || l === void 0) && l.trim()), jt = function() {
-    var ge = xe == null ? void 0 : xe.current, it = S == null ? void 0 : S.messageId;
+    var Ie = xe == null ? void 0 : xe.current, it = S == null ? void 0 : S.messageId;
     if (N && it) {
-      var ze = fM(ge.childNodes), ht = ze.messageText, Ft = ze.mentionTemplate, X = { messageId: it, message: ht, mentionTemplate: Ft };
+      var ze = fM(Ie.childNodes), ht = ze.messageText, Ft = ze.mentionTemplate, X = { messageId: it, message: ht, mentionTemplate: Ft };
       q(X), XZ(xe);
     }
   }, Bt = I4({
@@ -32895,48 +32895,48 @@ var A4 = function(e) {
         // @ts-ignore
         disabled: k,
         maxLength: y,
-        onKeyDown: function(ge) {
-          var it, ze, ht, Ft, X, Ue, pe, fe, Nt, Ee, H = De(ge);
-          H ? ge.preventDefault() : (!ge.shiftKey && ge.key === Wd.Enter && !h && ((ze = (it = xe == null ? void 0 : xe.current) === null || it === void 0 ? void 0 : it.textContent) === null || ze === void 0 ? void 0 : ze.trim().length) > 0 && ((ht = ge == null ? void 0 : ge.nativeEvent) === null || ht === void 0 ? void 0 : ht.isComposing) !== !0 && (gj(navigator.userAgent) || ge.preventDefault(), ft()), ge.key === Wd.Backspace && ((X = (Ft = xe == null ? void 0 : xe.current) === null || Ft === void 0 ? void 0 : Ft.childNodes) === null || X === void 0 ? void 0 : X.length) === 2 && !(!((fe = (pe = (Ue = xe == null ? void 0 : xe.current) === null || Ue === void 0 ? void 0 : Ue.childNodes) === null || pe === void 0 ? void 0 : pe[0]) === null || fe === void 0) && fe.textContent) && ((Ee = (Nt = xe == null ? void 0 : xe.current.childNodes) === null || Nt === void 0 ? void 0 : Nt[1]) === null || Ee === void 0 ? void 0 : Ee.nodeType) === pF.ElementNode && (xe == null || xe.current.removeChild(xe == null ? void 0 : xe.current.childNodes[1])));
+        onKeyDown: function(Ie) {
+          var it, ze, ht, Ft, X, Ne, pe, we, Nt, Ee, H = Be(Ie);
+          H ? Ie.preventDefault() : (!Ie.shiftKey && Ie.key === Wd.Enter && !h && ((ze = (it = xe == null ? void 0 : xe.current) === null || it === void 0 ? void 0 : it.textContent) === null || ze === void 0 ? void 0 : ze.trim().length) > 0 && ((ht = Ie == null ? void 0 : Ie.nativeEvent) === null || ht === void 0 ? void 0 : ht.isComposing) !== !0 && (gj(navigator.userAgent) || Ie.preventDefault(), ft()), Ie.key === Wd.Backspace && ((X = (Ft = xe == null ? void 0 : xe.current) === null || Ft === void 0 ? void 0 : Ft.childNodes) === null || X === void 0 ? void 0 : X.length) === 2 && !(!((we = (pe = (Ne = xe == null ? void 0 : xe.current) === null || Ne === void 0 ? void 0 : Ne.childNodes) === null || pe === void 0 ? void 0 : pe[0]) === null || we === void 0) && we.textContent) && ((Ee = (Nt = xe == null ? void 0 : xe.current.childNodes) === null || Nt === void 0 ? void 0 : Nt[1]) === null || Ee === void 0 ? void 0 : Ee.nodeType) === pF.ElementNode && (xe == null || xe.current.removeChild(xe == null ? void 0 : xe.current.childNodes[1])));
         },
-        onKeyUp: function(ge) {
-          var it = Ke(ge);
-          it ? ge.preventDefault() : hn();
+        onKeyUp: function(Ie) {
+          var it = Oe(Ie);
+          it ? Ie.preventDefault() : hn();
         },
         onClick: function() {
           hn();
         },
         onInput: function() {
-          var ge, it;
-          cn(), L(), Je(((it = (ge = xe == null ? void 0 : xe.current) === null || ge === void 0 ? void 0 : ge.textContent) === null || it === void 0 ? void 0 : it.trim().length) > 0), sn();
+          var Ie, it;
+          cn(), L(), Je(((it = (Ie = xe == null ? void 0 : xe.current) === null || Ie === void 0 ? void 0 : Ie.textContent) === null || it === void 0 ? void 0 : it.trim().length) > 0), sn();
         },
         onPaste: Bt
       }),
       ((r = (d = (a = xe == null ? void 0 : xe.current) === null || a === void 0 ? void 0 : a.textContent) === null || d === void 0 ? void 0 : d.length) !== null && r !== void 0 ? r : 0) === 0 && T.createElement(Fe, { className: "sendbird-message-input--placeholder", type: oe.BODY_1, color: k ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_3 }, G || kt.MESSAGE_INPUT__PLACE_HOLDER),
-      !N && Ce && T.createElement(Fi, { className: "sendbird-message-input--send", height: "32px", width: "32px", onClick: function() {
+      !N && Ke && T.createElement(Fi, { className: "sendbird-message-input--send", height: "32px", width: "32px", onClick: function() {
         return ft();
-      } }, (Xe == null ? void 0 : Xe()) || T.createElement(dt, { type: Ie.SEND, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "20px", height: "20px" })),
-      !N && !Ce && ((at == null ? void 0 : at()) || ln && T.createElement(
+      } }, (Xe == null ? void 0 : Xe()) || T.createElement(dt, { type: Le.SEND, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "20px", height: "20px" })),
+      !N && !Ke && ((at == null ? void 0 : at()) || ln && T.createElement(
         Fi,
         { className: "sendbird-message-input--attach ".concat(m ? "is-voice-message-enabled" : ""), height: "32px", width: "32px", onClick: function() {
-          var ge, it;
-          (it = (ge = vt == null ? void 0 : vt.current) === null || ge === void 0 ? void 0 : ge.click) === null || it === void 0 || it.call(ge);
+          var Ie, it;
+          (it = (Ie = vt == null ? void 0 : vt.current) === null || Ie === void 0 ? void 0 : Ie.click) === null || it === void 0 || it.call(Ie);
         } },
-        T.createElement(dt, { type: Ie.ATTACH, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.CONTENT_INVERSE, width: "20px", height: "20px" }),
+        T.createElement(dt, { type: Le.ATTACH, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.CONTENT_INVERSE, width: "20px", height: "20px" }),
         T.createElement("input", {
           className: "sendbird-message-input--attach-input",
           type: "file",
           ref: vt,
           // It will affect to <Channel /> and <Thread />
-          onChange: function(ge) {
-            var it = ge.currentTarget.files;
-            f(it && it.length === 1 ? [it[0]] : Array.from(it)), ge.target.value = "";
+          onChange: function(Ie) {
+            var it = Ie.currentTarget.files;
+            f(it && it.length === 1 ? [it[0]] : Array.from(it)), Ie.target.value = "";
           },
           accept: kj(yt),
           multiple: u && D4(i)
         })
       )),
-      m && !N && !Ce && T.createElement(Fi, { className: "sendbird-message-input--voice-message", width: "32px", height: "32px", onClick: We }, ($e == null ? void 0 : $e()) || T.createElement(dt, { type: Ie.AUDIO_ON_LINED, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.CONTENT_INVERSE, width: "20px", height: "20px" }))
+      m && !N && !Ke && T.createElement(Fi, { className: "sendbird-message-input--voice-message", width: "32px", height: "32px", onClick: We }, ($e == null ? void 0 : $e()) || T.createElement(dt, { type: Le.AUDIO_ON_LINED, fillColor: k ? Pe.ON_BACKGROUND_4 : Pe.CONTENT_INVERSE, width: "20px", height: "20px" }))
     ),
     N && T.createElement(
       "div",
@@ -32987,7 +32987,7 @@ var VI = function(e) {
   return r ? nI(r) ? Sr(r, "p", i) : iI(r) ? d.MESSAGE_STATUS__YESTERDAY || "Yesterday" : aI(r) ? Sr(r, "MMM d", i) : Sr(r, "yyyy/M/d", i) : "";
 };
 function cI(e) {
-  var n, t, l, a = e.className, d = e.message, r = e.channel, i = e.isDateSeparatorConsidered, c = i === void 0 ? !0 : i, V = ca(), s = V.stringSet, o = V.dateLocale, U = Eb(r, d), N = ((l = r == null ? void 0 : r.isGroupChannel) === null || l === void 0 ? void 0 : l.call(r)) && (r.isSuper || r.isPublic || r.isBroadcast) && !(U === fn.PENDING || U === fn.FAILED), R = (n = {}, n[fn.SENT] = Ie.DONE, n[fn.DELIVERED] = Ie.DONE_ALL, n[fn.READ] = Ie.DONE_ALL, n[fn.FAILED] = Ie.ERROR, n), h = (t = {}, t[fn.SENT] = Pe.SENT, t[fn.DELIVERED] = Pe.SENT, t[fn.READ] = Pe.READ, t[fn.FAILED] = Pe.ERROR, t);
+  var n, t, l, a = e.className, d = e.message, r = e.channel, i = e.isDateSeparatorConsidered, c = i === void 0 ? !0 : i, V = ca(), s = V.stringSet, o = V.dateLocale, U = Eb(r, d), N = ((l = r == null ? void 0 : r.isGroupChannel) === null || l === void 0 ? void 0 : l.call(r)) && (r.isSuper || r.isPublic || r.isBroadcast) && !(U === fn.PENDING || U === fn.FAILED), R = (n = {}, n[fn.SENT] = Le.DONE, n[fn.DELIVERED] = Le.DONE_ALL, n[fn.READ] = Le.DONE_ALL, n[fn.FAILED] = Le.ERROR, n), h = (t = {}, t[fn.SENT] = Pe.SENT, t[fn.DELIVERED] = Pe.SENT, t[fn.READ] = Pe.READ, t[fn.FAILED] = Pe.ERROR, t);
   return T.createElement(
     "div",
     { className: Ut(Ut([], Array.isArray(a) ? a : [a], !0), [
@@ -32996,8 +32996,8 @@ function cI(e) {
     U === fn.PENDING ? T.createElement(
       Vh,
       { className: "sendbird-message-status__icon", width: "16px", height: "16px" },
-      T.createElement(dt, { type: Ie.SPINNER, fillColor: Pe.PRIMARY, width: "16px", height: "16px" })
-    ) : T.createElement(dt, { className: "sendbird-message-status__icon ".concat(N ? "hide-icon" : "", " ").concat(U === fn.FAILED ? "" : "sendbird-message-status--sent"), type: R[U] || Ie.ERROR, fillColor: h[U], width: "16px", height: "16px" }),
+      T.createElement(dt, { type: Le.SPINNER, fillColor: Pe.PRIMARY, width: "16px", height: "16px" })
+    ) : T.createElement(dt, { className: "sendbird-message-status__icon ".concat(N ? "hide-icon" : "", " ").concat(U === fn.FAILED ? "" : "sendbird-message-status--sent"), type: R[U] || Le.ERROR, fillColor: h[U], width: "16px", height: "16px" }),
     Yj(U) && T.createElement(Fe, { className: "sendbird-message-status__text", type: oe.CAPTION_3, color: ie.ONBACKGROUND_2 }, c ? Sr((d == null ? void 0 : d.createdAt) || 0, "p", { locale: o }) : VI({ channel: r, locale: o, stringSet: s }))
   );
 }
@@ -33157,35 +33157,35 @@ function TI(e) {
         }, onBlur: function() {
           W(!1);
         } },
-        T.createElement(dt, { className: "sendbird-message-item-menu__trigger__icon", type: Ie.MORE, fillColor: Pe.CONTENT_INVERSE, width: "24px", height: "24px" })
+        T.createElement(dt, { className: "sendbird-message-item-menu__trigger__icon", type: Le.MORE, fillColor: Pe.CONTENT_INVERSE, width: "24px", height: "24px" })
       );
     }, menuItems: function(I) {
-      var K, Re = function() {
+      var K, Ue = function() {
         I(), W(!1);
       };
       return T.createElement(
         VU,
-        { className: "sendbird-message-item-menu__list", parentRef: b, parentContainRef: k, closeDropdown: Re, openLeft: r },
+        { className: "sendbird-message-item-menu__list", parentRef: b, parentContainRef: k, closeDropdown: Ue, openLeft: r },
         Q && T.createElement(Na, { className: "sendbird-message-item-menu__list__menu-item menu-item-copy", onClick: function() {
-          OW(l == null ? void 0 : l.message), Re();
+          OW(l == null ? void 0 : l.message), Ue();
         }, dataSbId: "ui_message_item_menu_copy" }, u.MESSAGE_MENU__COPY),
         g && T.createElement(Na, { className: "sendbird-message-item-menu__list__menu-item menu-item-reply", onClick: function() {
-          Z(l), Re();
+          Z(l), Ue();
         }, disable: (l == null ? void 0 : l.parentMessageId) > 0, dataSbId: "ui_message_item_menu_reply" }, u.MESSAGE_MENU__REPLY),
         f && T.createElement(Na, { className: "sendbird-message-item-menu__list__menu-item menu-item-thread", onClick: function() {
-          F == null || F({ message: l }), Re();
+          F == null || F({ message: l }), Ue();
         }, dataSbId: "ui_message_item_menu_thread" }, u.MESSAGE_MENU__THREAD),
         w && T.createElement(Na, { className: "sendbird-message-item-menu__list__menu-item menu-item-open-channel", onClick: function() {
-          E == null || E(), Re();
+          E == null || E(), Ue();
         }, dataSbId: "ui_message_item_menu_open_in_channel" }, u.MESSAGE_MENU__OPEN_IN_CHANNEL),
         S && T.createElement(Na, { className: "sendbird-message-item-menu__list__menu-item menu-item-edit", onClick: function() {
-          c || (U(!0), Re());
+          c || (U(!0), Ue());
         }, dataSbId: "ui_message_item_menu_edit" }, u.MESSAGE_MENU__EDIT),
         v && T.createElement(Na, { className: "sendbird-message-item-menu__list__menu-item menu-item-resend", onClick: function() {
-          c || (h(l), Re());
+          c || (h(l), Ue());
         }, dataSbId: "ui_message_item_menu_resend" }, u.MESSAGE_MENU__RESEND),
         G && T.createElement(Na, { className: "sendbird-message-item-menu__list__menu-item menu-item-delete", onClick: function() {
-          Ba(l) ? R == null || R(l) : c || (N(!0), Re());
+          Ba(l) ? R == null || R(l) : c || (N(!0), Ue());
         }, disable: typeof o == "boolean" ? o : ((K = l == null ? void 0 : l.threadInfo) === null || K === void 0 ? void 0 : K.replyCount) > 0, dataSbId: "ui_message_item_menu_delete" }, u.MESSAGE_MENU__DELETE)
       );
     } })
@@ -33262,7 +33262,7 @@ function mI(e) {
         }, onBlur: function() {
           c(!1);
         } },
-        T.createElement(dt, { className: "sendbird-message-item-reaction-menu__trigger__icon", type: Ie.EMOJI_MORE, fillColor: Pe.CONTENT_INVERSE, width: "24px", height: "24px" })
+        T.createElement(dt, { className: "sendbird-message-item-reaction-menu__trigger__icon", type: Le.EMOJI_MORE, fillColor: Pe.CONTENT_INVERSE, width: "24px", height: "24px" })
       );
     }, menuItems: function(o) {
       var U = function() {
@@ -33284,7 +33284,7 @@ function mI(e) {
             return T.createElement(
               "div",
               { style: m },
-              T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
+              T.createElement(dt, { type: Le.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
             );
           } })
         );
@@ -33337,7 +33337,7 @@ function uI(e) {
         height: "".concat(t, "px"),
         width: "".concat(a, "px")
       } }),
-      T.createElement(dt, { type: Ie.MUTE, fillColor: Pe.WHITE, width: "".concat(t - 8, "px"), height: "".concat(a - 8, "px") })
+      T.createElement(dt, { type: Le.MUTE, fillColor: Pe.WHITE, width: "".concat(t - 8, "px"), height: "".concat(a - 8, "px") })
     )
   );
 }
@@ -33577,7 +33577,7 @@ var JI = {
             return T.createElement(
               "div",
               { style: E },
-              T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
+              T.createElement(dt, { type: Le.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
             );
           } }),
           T.createElement(Fe, { type: oe.BUTTON_2, color: R === W.key ? ie.PRIMARY : ie.ONBACKGROUND_3 }, W.userIds.length)
@@ -33623,7 +33623,7 @@ function zI(e) {
       T.createElement(
         a1,
         { count: t.userIds.length, selected: R },
-        T.createElement(el, { circle: !0, url: ((n = r.get(t == null ? void 0 : t.key)) === null || n === void 0 ? void 0 : n.url) || "", width: "20px", height: "20px", defaultComponent: T.createElement(dt, { width: "20px", height: "20px", type: Ie.QUESTION }) })
+        T.createElement(el, { circle: !0, url: ((n = r.get(t == null ? void 0 : t.key)) === null || n === void 0 ? void 0 : n.url) || "", width: "20px", height: "20px", defaultComponent: T.createElement(dt, { width: "20px", height: "20px", type: Le.QUESTION }) })
       )
     )
   );
@@ -33643,7 +33643,7 @@ var xI = function(e) {
     T.createElement(
       a1,
       { isAdd: !0 },
-      T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "20px", height: "20px" })
+      T.createElement(dt, { type: Le.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "20px", height: "20px" })
     )
   );
 }, GI = function(e) {
@@ -33669,7 +33669,7 @@ var xI = function(e) {
           return T.createElement(
             "div",
             { style: R },
-            T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
+            T.createElement(dt, { type: Le.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
           );
         } })
       );
@@ -33694,26 +33694,26 @@ var xI = function(e) {
           var f;
           y(), (f = g == null ? void 0 : g.stopPropagation) === null || f === void 0 || f.call(g);
         } },
-        T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "20px", height: "20px" })
+        T.createElement(dt, { type: Le.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "20px", height: "20px" })
       );
     }, menuItems: function(y) {
       return T.createElement(SY, { parentRef: E, parentContainRef: E, closeDropdown: y, spaceFromTrigger: R }, eh(o).map(function(g) {
-        var f, I, K, Re = ((K = (I = (f = V == null ? void 0 : V.reactions) === null || f === void 0 ? void 0 : f.find(function(q) {
+        var f, I, K, Ue = ((K = (I = (f = V == null ? void 0 : V.reactions) === null || f === void 0 ? void 0 : f.find(function(q) {
           return q.key === g.key;
         })) === null || I === void 0 ? void 0 : I.userIds) === null || K === void 0 ? void 0 : K.some(function(q) {
           return q === c;
         })) || !1;
         return T.createElement(
           zc,
-          { key: g.key, width: "36px", height: "36px", selected: Re, onClick: function(q) {
-            y(), W == null || W(V, g.key, Re), q == null || q.stopPropagation();
+          { key: g.key, width: "36px", height: "36px", selected: Ue, onClick: function(q) {
+            y(), W == null || W(V, g.key, Ue), q == null || q.stopPropagation();
           }, dataSbId: "ui_emoji_reactions_menu_".concat(g.key) },
           T.createElement(el, { url: (g == null ? void 0 : g.url) || "", width: "28px", height: "28px", placeHolder: function(q) {
             var ae = q.style;
             return T.createElement(
               "div",
               { style: ae },
-              T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
+              T.createElement(dt, { type: Le.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
             );
           } })
         );
@@ -33803,7 +33803,7 @@ function XI(e) {
     T.createElement(
       "div",
       { className: "sendbird-quote-message__replied-to" },
-      T.createElement(dt, { className: "sendbird-quote-message__replied-to__icon", type: Ie.REPLY, fillColor: Pe.ON_BACKGROUND_3, width: "12px", height: "12px" }),
+      T.createElement(dt, { className: "sendbird-quote-message__replied-to__icon", type: Le.REPLY, fillColor: Pe.ON_BACKGROUND_3, width: "12px", height: "12px" }),
       T.createElement(
         Fe,
         { className: "sendbird-quote-message__replied-to__text", type: oe.CAPTION_2, color: ie.ONBACKGROUND_3 },
@@ -33841,7 +33841,7 @@ function XI(e) {
           T.createElement(
             "div",
             { className: "sendbird-quote-message__replied-message__thumbnail-message__placeholder__icon" },
-            T.createElement(dt, { type: YV(k) ? Ie.PLAY : Ie.PHOTO, fillColor: Pe.ON_BACKGROUND_2, width: "22px", height: "22px" })
+            T.createElement(dt, { type: YV(k) ? Le.PLAY : Le.PHOTO, fillColor: Pe.ON_BACKGROUND_2, width: "22px", height: "22px" })
           )
         ) }),
         YV(k) && !(((i = m == null ? void 0 : m.thumbnails) === null || i === void 0 ? void 0 : i.length) > 0) && T.createElement(
@@ -33858,7 +33858,7 @@ function XI(e) {
             T.createElement(
               "div",
               { className: "sendbird-quote-message__replied-message__thumbnail-message__cover__icon" },
-              T.createElement(dt, { type: Ie.PLAY, fillColor: Pe.ON_BACKGROUND_2, width: "14px", height: "14px" })
+              T.createElement(dt, { type: Le.PLAY, fillColor: Pe.ON_BACKGROUND_2, width: "14px", height: "14px" })
             )
           )
         ),
@@ -33868,14 +33868,14 @@ function XI(e) {
           T.createElement(
             "div",
             { className: "sendbird-quote-message__replied-message__thumbnail-message__cover__icon" },
-            T.createElement(dt, { type: Ie.GIF, fillColor: Pe.THUMBNAIL_ICON, width: "14px", height: "14px" })
+            T.createElement(dt, { type: Le.GIF, fillColor: Pe.THUMBNAIL_ICON, width: "14px", height: "14px" })
           )
         )
       ),
       DW(m) === vd.FILE && b && !Z && T.createElement(
         "div",
         { className: "sendbird-quote-message__replied-message__file-message" },
-        T.createElement(dt, { className: "sendbird-quote-message__replied-message__file-message__type-icon", type: (n = {}, n[w.IMAGE] = Ie.PHOTO, n[w.VIDEO] = Ie.PLAY, n[w.AUDIO] = Ie.FILE_AUDIO, n[w.GIF] = Ie.GIF, n[w.OTHERS] = Ie.FILE_DOCUMENT, n)[kb(k)], fillColor: Pe.ON_BACKGROUND_3, width: "16px", height: "16px" }),
+        T.createElement(dt, { className: "sendbird-quote-message__replied-message__file-message__type-icon", type: (n = {}, n[w.IMAGE] = Le.PHOTO, n[w.VIDEO] = Le.PLAY, n[w.AUDIO] = Le.FILE_AUDIO, n[w.GIF] = Le.GIF, n[w.OTHERS] = Le.FILE_DOCUMENT, n)[kb(k)], fillColor: Pe.ON_BACKGROUND_3, width: "16px", height: "16px" }),
         T.createElement(Fe, { className: "sendbird-quote-message__replied-message__file-message__file-name", type: oe.BODY_2, color: ie.ONBACKGROUND_3 }, vb(y[y.length - 1]))
       )
     )
@@ -33884,7 +33884,7 @@ function XI(e) {
 var OI = function(e) {
   var n, t, l, a = e.hideMenu, d = e.channel, r = e.message, i = e.replyType, c = e.userId, V = e.resendMessage, s = e.showEdit, o = e.showRemove, U = e.deleteMenuState, N = e.deleteMessage, R = e.setQuoteMessage, h = e.parentRef, Z = e.onReplyInThread, W = e.isOpenedFromThread, F = W === void 0 ? !1 : W, m = ((n = r == null ? void 0 : r.sender) === null || n === void 0 ? void 0 : n.userId) === c, E = ca().stringSet, u = dd(r), b = dd(r) && So(r) && m, k = Ba(r) && (r == null ? void 0 : r.isResendable) && m, Q = !Fd(r) && m, S = m && (U === void 0 || U !== "HIDE"), v = S && Q, G = U !== void 0 && U === "DISABLE" || ((l = (t = r == null ? void 0 : r.threadInfo) === null || t === void 0 ? void 0 : t.replyCount) !== null && l !== void 0 ? l : 0) > 0, w = !Fd(r) && wa(r) && !(Mi(r) && (d != null && d.isSuper || d != null && d.isBroadcast)), y = i === "QUOTE_REPLY" && !Ba(r) && !Fd(r) && (d == null ? void 0 : d.isGroupChannel()), g = i === "THREAD" && !F && !Ba(r) && !Fd(r) && !bb(r) && (d == null ? void 0 : d.isGroupChannel()), f = r;
   return T.createElement(OV, { isOpen: !0, menuItems: function() {
-    var I, K, Re;
+    var I, K, Ue;
     return T.createElement(
       VU,
       { className: "sendbird-message__mobile-context-menu", parentRef: h, parentContainRef: h, closeDropdown: a },
@@ -33894,7 +33894,7 @@ var OI = function(e) {
           a(), OW(r == null ? void 0 : r.message);
         }, dataSbId: "ui_mobile_message_item_menu_copy" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E == null ? void 0 : E.MESSAGE_MENU__COPY),
-        T.createElement(dt, { type: Ie.COPY, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Le.COPY, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       y && T.createElement(
         Na,
@@ -33902,7 +33902,7 @@ var OI = function(e) {
           a(), R(r);
         }, disable: ((I = r == null ? void 0 : r.parentMessageId) !== null && I !== void 0 ? I : 0) > 0, dataSbId: "ui_mobile_message_item_menu_reply" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ((K = r == null ? void 0 : r.parentMessageId) !== null && K !== void 0 ? K : 0) > 0 ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__REPLY),
-        T.createElement(dt, { type: Ie.REPLY, fillColor: ((Re = r == null ? void 0 : r.parentMessageId) !== null && Re !== void 0 ? Re : 0) > 0 ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Le.REPLY, fillColor: ((Ue = r == null ? void 0 : r.parentMessageId) !== null && Ue !== void 0 ? Ue : 0) > 0 ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       g && T.createElement(
         Na,
@@ -33910,7 +33910,7 @@ var OI = function(e) {
           a(), Z == null || Z({ message: r });
         }, dataSbId: "ui_mobile_message_item_menu_thread" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__THREAD),
-        T.createElement(dt, { type: Ie.THREAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Le.THREAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       b && T.createElement(
         Na,
@@ -33918,7 +33918,7 @@ var OI = function(e) {
           a(), s(!0);
         }, dataSbId: "ui_mobile_message_item_menu_edit" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__EDIT),
-        T.createElement(dt, { type: Ie.EDIT, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Le.EDIT, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       k && T.createElement(
         Na,
@@ -33926,7 +33926,7 @@ var OI = function(e) {
           a(), V(r);
         }, dataSbId: "ui_mobile_message_item_menu_resend" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__RESEND),
-        T.createElement(dt, { type: Ie.REFRESH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Le.REFRESH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       v && T.createElement(
         Na,
@@ -33934,7 +33934,7 @@ var OI = function(e) {
           Ba(r) ? (a(), N == null || N(r)) : G || (a(), o == null || o(!0));
         }, disable: G, dataSbId: "ui_mobile_message_item_menu_delete" },
         T.createElement(Fe, { type: oe.SUBTITLE_1, color: G ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__DELETE),
-        T.createElement(dt, { type: Ie.DELETE, fillColor: G ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" })
+        T.createElement(dt, { type: Le.DELETE, fillColor: G ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       w && T.createElement(
         Na,
@@ -33945,13 +33945,13 @@ var OI = function(e) {
           "a",
           { className: "sendbird-message__contextmenu--hyperlink", rel: "noopener noreferrer", href: f == null ? void 0 : f.url, target: "_blank" },
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, E.MESSAGE_MENU__SAVE),
-          T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
+          T.createElement(dt, { type: Le.DOWNLOAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
         )
       )
     );
   } });
 }, OZ = 38, jI = function(e) {
-  var n, t, l, a = e.hideMenu, d = e.channel, r = e.emojiContainer, i = e.message, c = e.replyType, V = e.userId, s = e.resendMessage, o = e.deleteMessage, U = e.toggleReaction, N = e.isReactionEnabled, R = e.showEdit, h = e.showRemove, Z = e.deleteMenuState, W = e.setQuoteMessage, F = e.onReplyInThread, m = e.isOpenedFromThread, E = m === void 0 ? !1 : m, u = ((n = i == null ? void 0 : i.sender) === null || n === void 0 ? void 0 : n.userId) === V, b = ca().stringSet, k = zn(), Q = k.config.isOnline, S = dd(i), v = dd(i) && So(i) && u, G = Q && Ba(i) && (i == null ? void 0 : i.isResendable) && u, w = !Fd(i) && u, y = u && (Z === void 0 || Z !== "HIDE"), g = y && w, f = Z !== void 0 && Z === "DISABLE" || ((l = (t = i == null ? void 0 : i.threadInfo) === null || t === void 0 ? void 0 : t.replyCount) !== null && l !== void 0 ? l : 0) > 0, I = So(i) && wa(i) && !Mi(i), K = !Ba(i) && !Fd(i) && N, Re = c === "QUOTE_REPLY" && !Ba(i) && !Fd(i) && (d == null ? void 0 : d.isGroupChannel()) && !(d != null && d.isBroadcast), q = c === "THREAD" && !E && !Ba(i) && !Fd(i) && !bb(i) && (d == null ? void 0 : d.isGroupChannel()) && !(d != null && d.isBroadcast), ae = (i == null ? void 0 : i.parentMessageId) > 0, se = i, le = Math.floor(window.innerWidth / OZ) - 1, L = me(!1), $ = L[0], ee = L[1], O = eh(r), re = $ ? O : O == null ? void 0 : O.slice(0, le), te = O.length > le;
+  var n, t, l, a = e.hideMenu, d = e.channel, r = e.emojiContainer, i = e.message, c = e.replyType, V = e.userId, s = e.resendMessage, o = e.deleteMessage, U = e.toggleReaction, N = e.isReactionEnabled, R = e.showEdit, h = e.showRemove, Z = e.deleteMenuState, W = e.setQuoteMessage, F = e.onReplyInThread, m = e.isOpenedFromThread, E = m === void 0 ? !1 : m, u = ((n = i == null ? void 0 : i.sender) === null || n === void 0 ? void 0 : n.userId) === V, b = ca().stringSet, k = zn(), Q = k.config.isOnline, S = dd(i), v = dd(i) && So(i) && u, G = Q && Ba(i) && (i == null ? void 0 : i.isResendable) && u, w = !Fd(i) && u, y = u && (Z === void 0 || Z !== "HIDE"), g = y && w, f = Z !== void 0 && Z === "DISABLE" || ((l = (t = i == null ? void 0 : i.threadInfo) === null || t === void 0 ? void 0 : t.replyCount) !== null && l !== void 0 ? l : 0) > 0, I = So(i) && wa(i) && !Mi(i), K = !Ba(i) && !Fd(i) && N, Ue = c === "QUOTE_REPLY" && !Ba(i) && !Fd(i) && (d == null ? void 0 : d.isGroupChannel()) && !(d != null && d.isBroadcast), q = c === "THREAD" && !E && !Ba(i) && !Fd(i) && !bb(i) && (d == null ? void 0 : d.isGroupChannel()) && !(d != null && d.isBroadcast), ae = (i == null ? void 0 : i.parentMessageId) > 0, se = i, le = Math.floor(window.innerWidth / OZ) - 1, L = me(!1), $ = L[0], ee = L[1], O = eh(r), re = $ ? O : O == null ? void 0 : O.slice(0, le), te = O.length > le;
   return T.createElement(
     ch,
     { onBackdropClick: a },
@@ -33971,22 +33971,22 @@ var OI = function(e) {
                     `.concat($ ? "sendbird-message__bottomsheet-reaction-bar__all" : "", `
                   `) },
             re.map(function(Qe) {
-              var Ye, Se, P, we = (P = (Se = (Ye = i == null ? void 0 : i.reactions) === null || Ye === void 0 ? void 0 : Ye.filter(function(Me) {
+              var Ye, Se, P, ge = (P = (Se = (Ye = i == null ? void 0 : i.reactions) === null || Ye === void 0 ? void 0 : Ye.filter(function(Me) {
                 return Me.key === Qe.key;
               })[0]) === null || Se === void 0 ? void 0 : Se.userIds) === null || P === void 0 ? void 0 : P.some(function(Me) {
                 return Me === V;
               });
               return T.createElement(
                 zc,
-                { key: Qe.key, width: "".concat(OZ, "px"), height: "".concat(OZ, "px"), selected: we, onClick: function() {
-                  a(), U(i, Qe.key, we);
+                { key: Qe.key, width: "".concat(OZ, "px"), height: "".concat(OZ, "px"), selected: ge, onClick: function() {
+                  a(), U(i, Qe.key, ge);
                 }, dataSbId: "ui_mobile_emoji_reactions_menu_".concat(Qe.key) },
                 T.createElement(el, { url: (Qe == null ? void 0 : Qe.url) || "", width: "28px", height: "28px", placeHolder: function(Me) {
                   var We = Me.style;
                   return T.createElement(
                     "div",
                     { style: We },
-                    T.createElement(dt, { type: Ie.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
+                    T.createElement(dt, { type: Le.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
                   );
                 } })
               );
@@ -34001,7 +34001,7 @@ var OI = function(e) {
                 return T.createElement(
                   "div",
                   { style: Ye },
-                  T.createElement(dt, { type: Ie.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
+                  T.createElement(dt, { type: Le.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
                 );
               } })
             )
@@ -34016,7 +34016,7 @@ var OI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             a(), OW(i == null ? void 0 : i.message);
           } },
-          T.createElement(dt, { type: Ie.COPY, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Le.COPY, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__COPY)
         ),
         v && T.createElement(
@@ -34024,7 +34024,7 @@ var OI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             a(), R(!0);
           } },
-          T.createElement(dt, { type: Ie.EDIT, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Le.EDIT, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__EDIT)
         ),
         G && T.createElement(
@@ -34032,17 +34032,17 @@ var OI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             a(), s(i);
           } },
-          T.createElement(dt, { type: Ie.REFRESH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Le.REFRESH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__RESEND)
         ),
-        Re && T.createElement(
+        Ue && T.createElement(
           "div",
           { className: `sendbird-message__bottomsheet--action
                       `.concat(ae ? "sendbird-message__bottomsheet--action-disabled" : "", `
                     `), role: "menuitem", "aria-disabled": !!ae, onClick: function() {
             ae || (a(), W(i));
           } },
-          T.createElement(dt, { type: Ie.REPLY, fillColor: ae ? Pe.ON_BACKGROUND_3 : Pe.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Le.REPLY, fillColor: ae ? Pe.ON_BACKGROUND_3 : Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ae ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__REPLY)
         ),
         q && T.createElement(
@@ -34050,7 +34050,7 @@ var OI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             a(), F == null || F({ message: i });
           } },
-          T.createElement(dt, { type: Ie.THREAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Le.THREAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b.MESSAGE_MENU__THREAD)
         ),
         g && T.createElement(
@@ -34058,7 +34058,7 @@ var OI = function(e) {
           { className: "sendbird-message__bottomsheet--action", onClick: function() {
             Ba(i) ? (a(), o == null || o(i)) : f || (a(), h == null || h(!0));
           } },
-          T.createElement(dt, { type: Ie.DELETE, fillColor: f ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" }),
+          T.createElement(dt, { type: Le.DELETE, fillColor: f ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" }),
           T.createElement(Fe, { type: oe.SUBTITLE_1, color: f ? ie.ONBACKGROUND_4 : ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__DELETE)
         ),
         I && T.createElement(
@@ -34069,7 +34069,7 @@ var OI = function(e) {
           T.createElement(
             "a",
             { className: "sendbird-message__bottomsheet--hyperlink", rel: "noopener noreferrer", href: se == null ? void 0 : se.url, target: "_blank" },
-            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
+            T.createElement(dt, { type: Le.DOWNLOAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" }),
             T.createElement(Fe, { type: oe.SUBTITLE_1, color: ie.ONBACKGROUND_1 }, b == null ? void 0 : b.MESSAGE_MENU__SAVE)
           )
         )
@@ -34103,12 +34103,12 @@ function fI(e) {
         T.createElement(
           "div",
           { className: "sendbird-ui-thread-replies__user-profiles__avatar__plus" },
-          T.createElement(dt, { type: Ie.PLUS, fillColor: Pe.WHITE, width: "16px", height: "16px" })
+          T.createElement(dt, { type: Le.PLUS, fillColor: Pe.WHITE, width: "16px", height: "16px" })
         )
       )
     ),
     T.createElement(Fe, { className: "sendbird-ui-thread-replies__reply-counts", type: oe.CAPTION_2, color: ie.PRIMARY }, i === 1 ? "".concat(i, " ").concat(c.CHANNEL__THREAD_REPLY) : "".concat(i > 99 ? c.CHANNEL__THREAD_OVER_MAX : i, " ").concat(c.CHANNEL__THREAD_REPLIES)),
-    T.createElement(dt, { className: "sendbird-ui-thread-replies__icon", type: Ie.CHEVRON_RIGHT, fillColor: Pe.PRIMARY, width: "16px", height: "16px" })
+    T.createElement(dt, { className: "sendbird-ui-thread-replies__icon", type: Le.CHEVRON_RIGHT, fillColor: Pe.PRIMARY, width: "16px", height: "16px" })
   );
 }
 function wI(e) {
@@ -34249,7 +34249,7 @@ function CI(e) {
       }, defaultComponent: T.createElement(
         "div",
         { className: "sendbird-og-message-item-body__og-thumbnail__place-holder" },
-        T.createElement(dt, { className: "sendbird-og-message-item-body__og-thumbnail__place-holder__icon", type: Ie.THUMBNAIL_NONE, width: "56px", height: "56px" })
+        T.createElement(dt, { className: "sendbird-og-message-item-body__og-thumbnail__place-holder__icon", type: Le.THUMBNAIL_NONE, width: "56px", height: "56px" })
       ) })
     ),
     T.createElement(
@@ -34316,11 +34316,11 @@ function _I(e) {
       "div",
       { className: "sendbird-file-message-item-body__file-icon" },
       T.createElement(dt, { className: "sendbird-file-message-item-body__file-icon__icon", type: {
-        IMAGE: Ie.PHOTO,
-        VIDEO: Ie.PLAY,
-        AUDIO: Ie.FILE_AUDIO,
-        GIF: Ie.GIF,
-        OTHERS: Ie.FILE_DOCUMENT
+        IMAGE: Le.PHOTO,
+        VIDEO: Le.PLAY,
+        AUDIO: Le.FILE_AUDIO,
+        GIF: Le.GIF,
+        OTHERS: Le.FILE_DOCUMENT
       }[kb(l == null ? void 0 : l.type)], fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
     ),
     T.createElement(
@@ -34383,7 +34383,7 @@ function qI(e) {
     return t ? T.createElement(
       "div",
       { className: "sendbird-fileviewer__header__right__actions__delete ".concat(a) },
-      T.createElement(dt, { className: l ? "disabled" : "", type: Ie.DELETE, fillColor: l ? Pe.GRAY : Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function(d) {
+      T.createElement(dt, { className: l ? "disabled" : "", type: Le.DELETE, fillColor: l ? Pe.GRAY : Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function(d) {
         l || n == null || n(d);
       } })
     ) : T.createElement(T.Fragment, null);
@@ -34399,14 +34399,14 @@ function $I(e) {
       T.createElement(
         "div",
         { className: "sendbird-file-viewer-arrow--left" },
-        T.createElement(dt, { type: Ie.SLIDE_LEFT, fillColor: Pe.ON_BACKGROUND_1, height: eN, width: eN, onClick: function(l) {
+        T.createElement(dt, { type: Le.SLIDE_LEFT, fillColor: Pe.ON_BACKGROUND_1, height: eN, width: eN, onClick: function(l) {
           n == null || n(), l.stopPropagation();
         } })
       ),
       T.createElement(
         "div",
         { className: "sendbird-file-viewer-arrow--right" },
-        T.createElement(dt, { type: Ie.SLIDE_LEFT, fillColor: Pe.ON_BACKGROUND_1, height: eN, width: eN, onClick: function(l) {
+        T.createElement(dt, { type: Le.SLIDE_LEFT, fillColor: Pe.ON_BACKGROUND_1, height: eN, width: eN, onClick: function(l) {
           l.stopPropagation(), t == null || t();
         } })
       )
@@ -34458,14 +34458,14 @@ var PM = function(e) {
           T.createElement(
             "a",
             { className: "sendbird-fileviewer__header__right__actions__download", rel: "noopener noreferrer", href: U, target: "_blank" },
-            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px" })
+            T.createElement(dt, { type: Le.DOWNLOAD, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px" })
           ),
           T.createElement(qI, ce({ className: "sendbird-fileviewer__header__right__actions__delete" }, e))
         ),
         T.createElement(
           "div",
           { className: "sendbird-fileviewer__header__right__actions__close" },
-          T.createElement(dt, { type: Ie.CLOSE, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function(R) {
+          T.createElement(dt, { type: Le.CLOSE, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function(R) {
             return a == null ? void 0 : a(R);
           } })
         )
@@ -34574,7 +34574,7 @@ var fZ = {
     return T.createElement(
       "div",
       { className: "sendbird-multiple-files-image-renderer__thumbnail__placeholder", style: n },
-      T.createElement(dt, { type: Ie.PHOTO, fillColor: Pe.ON_BACKGROUND_2, width: PV, height: PV })
+      T.createElement(dt, { type: Le.PHOTO, fillColor: Pe.ON_BACKGROUND_2, width: PV, height: PV })
     );
   },
   GIF: function(e) {
@@ -34585,7 +34585,7 @@ var fZ = {
       T.createElement(
         "div",
         { className: "sendbird-multiple-files-image-renderer__thumbnail__placeholder__icon" },
-        T.createElement(dt, { type: Ie.GIF, fillColor: Pe.THUMBNAIL_ICON, width: PV, height: PV })
+        T.createElement(dt, { type: Le.GIF, fillColor: Pe.THUMBNAIL_ICON, width: PV, height: PV })
       )
     );
   },
@@ -34593,7 +34593,7 @@ var fZ = {
     return T.createElement(
       "div",
       { className: "sendbird-multiple-files-image-renderer__thumbnail__placeholder" },
-      T.createElement(dt, { type: Ie.THUMBNAIL_NONE, fillColor: Pe.ON_BACKGROUND_2, width: PV, height: PV })
+      T.createElement(dt, { type: Le.THUMBNAIL_NONE, fillColor: Pe.ON_BACKGROUND_2, width: PV, height: PV })
     );
   }
 };
@@ -34710,12 +34710,12 @@ var N9 = function(e) {
       (m === Td.IDLE || m === Td.PAUSED) && T.createElement(
         "div",
         { className: "sendbird-voice-message-item-body__status-button__button", onClick: N },
-        T.createElement(dt, { width: "18px", height: "18px", type: Ie.PLAY, fillColor: Pe.PRIMARY })
+        T.createElement(dt, { width: "18px", height: "18px", type: Le.PLAY, fillColor: Pe.PRIMARY })
       ),
       m === Td.PREPARING && T.createElement(
         Vh,
         { width: "22.2px", height: "22.2px" },
-        T.createElement(dt, { width: "22.2px", height: "22.2px", type: Ie.SPINNER, fillColor: Pe.PRIMARY_2 })
+        T.createElement(dt, { width: "22.2px", height: "22.2px", type: Le.SPINNER, fillColor: Pe.PRIMARY_2 })
       ),
       m === Td.PLAYING && T.createElement(
         "div",
@@ -34767,7 +34767,7 @@ function Z9(e) {
       T.createElement(
         "div",
         { className: "sendbird-thumbnail-message-item-body__icon-wrapper__icon" },
-        T.createElement(dt, { type: dc(d) ? Ie.PLAY : Ie.GIF, fillColor: Pe.THUMBNAIL_ICON, width: "34px", height: "34px" })
+        T.createElement(dt, { type: dc(d) ? Le.PLAY : Le.GIF, fillColor: Pe.THUMBNAIL_ICON, width: "34px", height: "34px" })
       )
     )
   );
@@ -35235,10 +35235,10 @@ const L9 = (e = "") => ["http://", "https://", "ftp://"].some((n) => e.startsWit
   }, w = !((a = l.viewStyle) === null || a === void 0) && a.borderWidth ? " sb-message-template__border" : "";
   if (e === "sb-message-template__text-button")
     return T.createElement("button", { className: `${e}${w}`, "data-sb-template-id": l.elementId, style: Object.assign(Object.assign({}, n), { paddingTop: (r = (d = l.viewStyle) === null || d === void 0 ? void 0 : d.padding) === null || r === void 0 ? void 0 : r.top, paddingRight: (c = (i = l.viewStyle) === null || i === void 0 ? void 0 : i.padding) === null || c === void 0 ? void 0 : c.right, paddingBottom: (s = (V = l.viewStyle) === null || V === void 0 ? void 0 : V.padding) === null || s === void 0 ? void 0 : s.bottom, paddingLeft: (U = (o = l.viewStyle) === null || o === void 0 ? void 0 : o.padding) === null || U === void 0 ? void 0 : U.left }), onClick: G }, t);
-  const { display: y, flexDirection: g, justifyContent: f, alignItems: I, objectFit: K } = u, Re = I9(u, ["display", "flexDirection", "justifyContent", "alignItems", "objectFit"]);
+  const { display: y, flexDirection: g, justifyContent: f, alignItems: I, objectFit: K } = u, Ue = I9(u, ["display", "flexDirection", "justifyContent", "alignItems", "objectFit"]);
   return T.createElement(
     "div",
-    { ref: b, className: `${e}${w} ${l != null && l.action ? "sb-message-template__action" : ""}`, "data-sb-template-id": l.elementId, style: Re, onClick: G },
+    { ref: b, className: `${e}${w} ${l != null && l.action ? "sb-message-template__action" : ""}`, "data-sb-template-id": l.elementId, style: Ue, onClick: G },
     T.createElement("div", { style: {
       display: y,
       flexDirection: g,
@@ -35375,7 +35375,7 @@ function A9(e) {
     T.createElement(
       Vh,
       { className: "sendbird-message-status__icon", width: rN, height: rN },
-      T.createElement(dt, { type: Ie.SPINNER, fillColor: Pe.CONTENT_INVERSE_5, width: rN, height: rN })
+      T.createElement(dt, { type: Le.SPINNER, fillColor: Pe.CONTENT_INVERSE_5, width: rN, height: rN })
     )
   );
 }
@@ -35745,21 +35745,21 @@ function sL(e) {
   );
 }
 function oL(e) {
-  var n = this, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F = e.className, m = e.userId, E = e.channel, u = e.message, b = e.disabled, k = b === void 0 ? !1 : b, Q = e.chainTop, S = Q === void 0 ? !1 : Q, v = e.chainBottom, G = v === void 0 ? !1 : v, w = e.isReactionEnabled, y = w === void 0 ? !1 : w, g = e.disableQuoteMessage, f = g === void 0 ? !1 : g, I = e.replyType, K = e.threadReplySelectType, Re = e.nicknamesMap, q = e.emojiContainer, ae = e.scrollToMessage, se = e.showEdit, le = e.showRemove, L = e.showFileViewer, $ = e.resendMessage, ee = e.deleteMessage, O = e.toggleReaction, re = e.setQuoteMessage, te = e.onReplyInThread, Qe = e.onQuoteMessageClick, Ye = e.onMessageHeightChange, Se = e.renderSenderProfile, P = Se === void 0 ? function(bt) {
+  var n = this, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F = e.className, m = e.userId, E = e.channel, u = e.message, b = e.disabled, k = b === void 0 ? !1 : b, Q = e.chainTop, S = Q === void 0 ? !1 : Q, v = e.chainBottom, G = v === void 0 ? !1 : v, w = e.isReactionEnabled, y = w === void 0 ? !1 : w, g = e.disableQuoteMessage, f = g === void 0 ? !1 : g, I = e.replyType, K = e.threadReplySelectType, Ue = e.nicknamesMap, q = e.emojiContainer, ae = e.scrollToMessage, se = e.showEdit, le = e.showRemove, L = e.showFileViewer, $ = e.resendMessage, ee = e.deleteMessage, O = e.toggleReaction, re = e.setQuoteMessage, te = e.onReplyInThread, Qe = e.onQuoteMessageClick, Ye = e.onMessageHeightChange, Se = e.renderSenderProfile, P = Se === void 0 ? function(bt) {
     return T.createElement(iL, ce({}, bt));
-  } : Se, we = e.renderMessageBody, Me = we === void 0 ? function(bt) {
+  } : Se, ge = e.renderMessageBody, Me = ge === void 0 ? function(bt) {
     return T.createElement(VL, ce({}, bt));
-  } : we, We = e.renderMessageHeader, Be = We === void 0 ? function(bt) {
+  } : ge, We = e.renderMessageHeader, De = We === void 0 ? function(bt) {
     return T.createElement(cL, ce({}, bt));
-  } : We, Ke = e.renderMessageMenu, lt = Ke === void 0 ? function(bt) {
+  } : We, Oe = e.renderMessageMenu, tt = Oe === void 0 ? function(bt) {
     return T.createElement(TI, ce({}, bt));
-  } : Ke, De = e.renderEmojiMenu, je = De === void 0 ? function(bt) {
+  } : Oe, Be = e.renderEmojiMenu, He = Be === void 0 ? function(bt) {
     return T.createElement(mI, ce({}, bt));
-  } : De, at = e.renderEmojiReactions, Ge = at === void 0 ? function(bt) {
+  } : Be, at = e.renderEmojiReactions, Ge = at === void 0 ? function(bt) {
     return T.createElement(yI, ce({}, bt));
-  } : at, $e = e.renderMobileMenuOnLongPress, He = $e === void 0 ? function(bt) {
+  } : at, $e = e.renderMobileMenuOnLongPress, fe = $e === void 0 ? function(bt) {
     return T.createElement(HI, ce({}, bt));
-  } : $e, Xe = ca().dateLocale, pt = (zn == null ? void 0 : zn()) || {}, Vt = pt.config, yt = pt.eventHandlers, xe = (t = yt == null ? void 0 : yt.reaction) === null || t === void 0 ? void 0 : t.onPressUserProfile, At = Wt(null), kt = dr().isMobile, Kt = me(!1), ln = Kt[0], vt = Kt[1], Rt = me(!1), Ce = Rt[0], Je = Rt[1], de = me(!1), qe = de[0], nt = de[1], ct = me(!1), Ot = ct[0], zt = ct[1], cn = me(!1), mt = cn[0], sn = cn[1], hn = me(""), ft = hn[0], qt = hn[1], jt = Gt(Kn).stringSet, Bt = m === ((l = u == null ? void 0 : u.sender) === null || l === void 0 ? void 0 : l.userId) || (u == null ? void 0 : u.sendingStatus) === "pending" || (u == null ? void 0 : u.sendingStatus) === "failed", ge = Bt ? "outgoing" : "incoming", it = S ? "chain-top" : "", ze = y && !(E != null && E.isEphemeral), ht = ze ? "use-reactions" : "", Ft = qe ? "sendbird-mouse-hover" : "", X = !!((I === "QUOTE_REPLY" || I === "THREAD") && (u != null && u.parentMessageId) && (u != null && u.parentMessage) && !f), Ue = X ? "use-quote" : "", pe = ((a = u == null ? void 0 : u.threadInfo) === null || a === void 0 ? void 0 : a.replyCount) > 0 && I === "THREAD", fe = !Bt && (u == null ? void 0 : u.myFeedbackStatus) && u.myFeedbackStatus !== YF.NOT_APPLICABLE, Nt = ((d = Vt == null ? void 0 : Vt.groupChannel) === null || d === void 0 ? void 0 : d.enableFeedback) && fe, Ee = Nt ? "sendbird-message-content__feedback" : "", H = !zN(u), Ve = H && kt, ye = H && Bt && !kt, Zt = H && pe, Mt = H && !Bt && !kt, Ct = function() {
+  } : $e, Xe = ca().dateLocale, pt = (zn == null ? void 0 : zn()) || {}, Vt = pt.config, yt = pt.eventHandlers, xe = (t = yt == null ? void 0 : yt.reaction) === null || t === void 0 ? void 0 : t.onPressUserProfile, At = Wt(null), kt = dr().isMobile, Kt = me(!1), ln = Kt[0], vt = Kt[1], Rt = me(!1), Ke = Rt[0], Je = Rt[1], de = me(!1), qe = de[0], lt = de[1], ct = me(!1), Ot = ct[0], zt = ct[1], cn = me(!1), mt = cn[0], sn = cn[1], hn = me(""), ft = hn[0], qt = hn[1], jt = Gt(Kn).stringSet, Bt = m === ((l = u == null ? void 0 : u.sender) === null || l === void 0 ? void 0 : l.userId) || (u == null ? void 0 : u.sendingStatus) === "pending" || (u == null ? void 0 : u.sendingStatus) === "failed", Ie = Bt ? "outgoing" : "incoming", it = S ? "chain-top" : "", ze = y && !(E != null && E.isEphemeral), ht = ze ? "use-reactions" : "", Ft = qe ? "sendbird-mouse-hover" : "", X = !!((I === "QUOTE_REPLY" || I === "THREAD") && (u != null && u.parentMessageId) && (u != null && u.parentMessage) && !f), Ne = X ? "use-quote" : "", pe = ((a = u == null ? void 0 : u.threadInfo) === null || a === void 0 ? void 0 : a.replyCount) > 0 && I === "THREAD", we = !Bt && (u == null ? void 0 : u.myFeedbackStatus) && u.myFeedbackStatus !== YF.NOT_APPLICABLE, Nt = ((d = Vt == null ? void 0 : Vt.groupChannel) === null || d === void 0 ? void 0 : d.enableFeedback) && we, Ee = Nt ? "sendbird-message-content__feedback" : "", H = !zN(u), Ve = H && kt, ye = H && Bt && !kt, Zt = H && pe, Mt = H && !Bt && !kt, Ct = function() {
     sn(!1);
   }, Ht = function() {
     kt ? zt(!0) : sn(!0);
@@ -35774,19 +35774,19 @@ function oL(e) {
   });
   return !((r = u == null ? void 0 : u.isAdminMessage) === null || r === void 0) && r.call(u) || (u == null ? void 0 : u.messageType) === "admin" ? T.createElement(BI, { message: u }) : T.createElement(
     "div",
-    { className: vn([F, "sendbird-message-content", ge, Ee]), onMouseOver: function() {
+    { className: vn([F, "sendbird-message-content", Ie, Ee]), onMouseOver: function() {
       return Je(!0);
     }, onMouseLeave: function() {
       return Je(!1);
     } },
     T.createElement(
       "div",
-      { className: vn(["sendbird-message-content__left", ht, ge, Ue]) },
+      { className: vn(["sendbird-message-content__left", ht, Ie, Ne]) },
       P(ce(ce({}, e), { isByMe: Bt, displayThreadReplies: pe })),
       ye && T.createElement(
         "div",
-        { className: vn(["sendbird-message-content-menu", ht, Ft, ge]) },
-        lt({
+        { className: vn(["sendbird-message-content-menu", ht, Ft, Ie]) },
+        tt({
           channel: E,
           message: u,
           isByMe: Bt,
@@ -35796,19 +35796,19 @@ function oL(e) {
           showRemove: le,
           resendMessage: $,
           setQuoteMessage: re,
-          setSupposedHover: nt,
+          setSupposedHover: lt,
           onReplyInThread: function(bt) {
             var rn, en = bt.message;
             K === Rd.THREAD ? te({ message: en }) : K === Rd.PARENT && ae((rn = en.parentMessage) === null || rn === void 0 ? void 0 : rn.createdAt, en.parentMessageId);
           },
           deleteMessage: ee
         }),
-        ze && je({
+        ze && He({
           message: u,
           userId: m,
           emojiContainer: q,
           toggleReaction: O,
-          setSupposedHover: nt
+          setSupposedHover: lt
         })
       )
     ),
@@ -35818,10 +35818,10 @@ function oL(e) {
         "sendbird-message-content__middle",
         zN(u) ? "sendbird-message-content__middle__for_template_message" : ""
       ]) }, kt ? ce({}, Sn) : {}, { ref: At }),
-      !Bt && !S && !X && Be(e),
+      !Bt && !S && !X && De(e),
       X ? T.createElement(
         "div",
-        { className: vn(["sendbird-message-content__middle__quote-message", Bt ? "outgoing" : "incoming", Ue]) },
+        { className: vn(["sendbird-message-content__middle__quote-message", Bt ? "outgoing" : "incoming", Ne]) },
         T.createElement(XI, { className: "sendbird-message-content__middle__quote-message__quote", message: u, userId: m, isByMe: Bt, isUnavailable: ((i = E == null ? void 0 : E.messageOffsetTimestamp) !== null && i !== void 0 ? i : 0) > ((V = (c = u.parentMessage) === null || c === void 0 ? void 0 : c.createdAt) !== null && V !== void 0 ? V : 0), onClick: function() {
           var bt;
           I === "THREAD" && K === Rd.THREAD && (Qe == null || Qe({ message: u })), (I === "QUOTE_REPLY" || I === "THREAD" && K === Rd.PARENT) && (!((bt = u == null ? void 0 : u.parentMessage) === null || bt === void 0) && bt.createdAt) && (u != null && u.parentMessageId) && ae(u.parentMessage.createdAt, u.parentMessageId);
@@ -35847,7 +35847,7 @@ function oL(e) {
           channel: E,
           showFileViewer: L,
           onMessageHeightChange: Ye,
-          mouseHover: Ce,
+          mouseHover: Ke,
           isMobile: kt,
           config: Vt,
           isReactionEnabledInChannel: ze,
@@ -35856,14 +35856,14 @@ function oL(e) {
         ze && ((s = u == null ? void 0 : u.reactions) === null || s === void 0 ? void 0 : s.length) > 0 && T.createElement("div", { className: vn([
           "sendbird-message-content-reactions",
           Fa(u) ? "image-grid" : !Bt || Qi(u) || BW(u) ? "" : "primary",
-          Ce ? "mouse-hover" : ""
+          Ke ? "mouse-hover" : ""
         ]) }, Ge({
           userId: m,
           message: u,
           channel: E,
           isByMe: Bt,
           emojiContainer: q,
-          memberNicknamesMap: Re,
+          memberNicknamesMap: Ue,
           toggleReaction: O,
           onPressUserProfile: xe
         })),
@@ -35905,7 +35905,7 @@ function oL(e) {
                 });
               });
             }, disabled: (u == null ? void 0 : u.myFeedback) && u.myFeedback.rating !== _r.GOOD },
-            T.createElement(dt, { type: Ie.FEEDBACK_LIKE, width: "24px", height: "24px" })
+            T.createElement(dt, { type: Le.FEEDBACK_LIKE, width: "24px", height: "24px" })
           ),
           T.createElement(
             s2,
@@ -35939,7 +35939,7 @@ function oL(e) {
                 });
               });
             }, disabled: (u == null ? void 0 : u.myFeedback) && u.myFeedback.rating !== _r.BAD },
-            T.createElement(dt, { type: Ie.FEEDBACK_DISLIKE, width: "24px", height: "24px" })
+            T.createElement(dt, { type: Le.FEEDBACK_DISLIKE, width: "24px", height: "24px" })
           )
         ),
         !Bt && !G && T.createElement(Fe, { className: vn(["sendbird-message-content__middle__body-container__created-at", "right", Ft]), type: oe.CAPTION_3, color: ie.ONBACKGROUND_2 }, Sr((u == null ? void 0 : u.createdAt) || 0, "p", {
@@ -35950,18 +35950,18 @@ function oL(e) {
         return te == null ? void 0 : te({ message: u });
       } })
     ),
-    T.createElement("div", { className: vn(["sendbird-message-content__right", it, ht, Ue]) }, Mt && T.createElement(
+    T.createElement("div", { className: vn(["sendbird-message-content__right", it, ht, Ne]) }, Mt && T.createElement(
       "div",
-      { className: vn(["sendbird-message-content-menu", it, Ft, ge]) },
-      ze && je({
+      { className: vn(["sendbird-message-content-menu", it, Ft, Ie]) },
+      ze && He({
         className: "sendbird-message-content-menu__reaction-menu",
         message: u,
         userId: m,
         emojiContainer: q,
         toggleReaction: O,
-        setSupposedHover: nt
+        setSupposedHover: lt
       }),
-      lt({
+      tt({
         className: "sendbird-message-content-menu__normal-menu",
         channel: E,
         message: u,
@@ -35971,7 +35971,7 @@ function oL(e) {
         showRemove: le,
         resendMessage: $,
         setQuoteMessage: re,
-        setSupposedHover: nt,
+        setSupposedHover: lt,
         onReplyInThread: function(bt) {
           var rn, en = bt.message;
           K === Rd.THREAD ? te({ message: en }) : K === Rd.PARENT && ae((rn = en.parentMessage) === null || rn === void 0 ? void 0 : rn.createdAt, en.parentMessageId);
@@ -35979,7 +35979,7 @@ function oL(e) {
         deleteMessage: ee
       })
     )),
-    ln && (((N = u == null ? void 0 : u.isUserMessage) === null || N === void 0 ? void 0 : N.call(u)) || ((R = u == null ? void 0 : u.isFileMessage) === null || R === void 0 ? void 0 : R.call(u)) || ((h = u == null ? void 0 : u.isMultipleFilesMessage) === null || h === void 0 ? void 0 : h.call(u))) && He({
+    ln && (((N = u == null ? void 0 : u.isUserMessage) === null || N === void 0 ? void 0 : N.call(u)) || ((R = u == null ? void 0 : u.isFileMessage) === null || R === void 0 ? void 0 : R.call(u)) || ((h = u == null ? void 0 : u.isMultipleFilesMessage) === null || h === void 0 ? void 0 : h.call(u))) && fe({
       parentRef: At,
       channel: E,
       hideMenu: function() {
@@ -36145,7 +36145,7 @@ function hL(e, n, t, l) {
   });
 }
 var ZL = 300, KY = function(e) {
-  var n, t, l, a = e.className, d = e.currentChannel, r = e.targetNickname, i = r === void 0 ? "" : r, c = e.onUserItemClick, V = e.onFocusItemChange, s = e.onFetchUsers, o = e.renderUserMentionItem, U = e.inputEvent, N = e.ableAddMention, R = N === void 0 ? !0 : N, h = e.maxMentionCount, Z = h === void 0 ? $b : h, W = e.maxSuggestionCount, F = W === void 0 ? eY : W, m = zn(), E = m.config, u = m.stores, b = E.logger, k = ((l = (t = (n = u == null ? void 0 : u.sdkStore) === null || n === void 0 ? void 0 : n.sdk) === null || t === void 0 ? void 0 : t.currentUser) === null || l === void 0 ? void 0 : l.userId) || "", Q = Wt(null), S = ca().stringSet, v = me(null), G = v[0], w = v[1], y = me(""), g = y[0], f = y[1], I = me(""), K = I[0], Re = I[1], q = me(null), ae = q[0], se = q[1], le = me([]), L = le[0], $ = le[1];
+  var n, t, l, a = e.className, d = e.currentChannel, r = e.targetNickname, i = r === void 0 ? "" : r, c = e.onUserItemClick, V = e.onFocusItemChange, s = e.onFetchUsers, o = e.renderUserMentionItem, U = e.inputEvent, N = e.ableAddMention, R = N === void 0 ? !0 : N, h = e.maxMentionCount, Z = h === void 0 ? $b : h, W = e.maxSuggestionCount, F = W === void 0 ? eY : W, m = zn(), E = m.config, u = m.stores, b = E.logger, k = ((l = (t = (n = u == null ? void 0 : u.sdkStore) === null || n === void 0 ? void 0 : n.sdk) === null || t === void 0 ? void 0 : t.currentUser) === null || l === void 0 ? void 0 : l.userId) || "", Q = Wt(null), S = ca().stringSet, v = me(null), G = v[0], w = v[1], y = me(""), g = y[0], f = y[1], I = me(""), K = I[0], Ue = I[1], q = me(null), ae = q[0], se = q[1], le = me([]), L = le[0], $ = le[1];
   return _e(function() {
     clearTimeout(G), w(setTimeout(function() {
       f(i);
@@ -36171,7 +36171,7 @@ var ZL = 300, KY = function(e) {
       }
       var ee = d != null && d.isSuper ? hL : RL;
       ee(k, d, F, g.slice(no.length)).then(function(O) {
-        O.length < 1 ? b.info("SuggestedMentionList: Fetched member list is empty") : (b.info("SuggestedMentionList: Fetching member list succeeded", { memberList: O }), se(O[0])), Re(g), s(O), $(O);
+        O.length < 1 ? b.info("SuggestedMentionList: Fetched member list is empty") : (b.info("SuggestedMentionList: Fetching member list succeeded", { memberList: O }), se(O[0])), Ue(g), s(O), $(O);
       }).catch(function(O) {
         O && b.error("SuggestedMentionList: Fetching member list failed", O);
       });
@@ -36205,7 +36205,7 @@ var ZL = 300, KY = function(e) {
     !R && T.createElement(
       "div",
       { className: "sendbird-mention-suggest-list__notice-item" },
-      T.createElement(dt, { className: "sendbird-mention-suggest-list__notice-item__icon", type: Ie.INFO, fillColor: Pe.ON_BACKGROUND_2, width: "20px", height: "20px" }),
+      T.createElement(dt, { className: "sendbird-mention-suggest-list__notice-item__icon", type: Le.INFO, fillColor: Pe.ON_BACKGROUND_2, width: "20px", height: "20px" }),
       T.createElement(Fe, { className: "sendbird-mention-suggest-list__notice-item__text", type: oe.SUBTITLE_2, color: ie.ONBACKGROUND_2 }, S.MENTION_COUNT__OVER_LIMIT.replace("%d", String(Z)))
     )
   );
@@ -36219,15 +36219,15 @@ var ZL = 300, KY = function(e) {
     return T.createElement(oL, ce({}, ze));
   } : r, c = e.renderSuggestedReplies, V = c === void 0 ? function(ze) {
     return T.createElement(UL, ce({}, ze));
-  } : c, s = e.renderCustomSeparator, o = e.renderEditInput, U = e.hasSeparator, N = e.chainTop, R = e.chainBottom, h = e.handleScroll, Z = e.channel, W = e.emojiContainer, F = e.editInputDisabled, m = e.shouldRenderSuggestedReplies, E = e.isReactionEnabled, u = e.replyType, b = e.threadReplySelectType, k = e.nicknamesMap, Q = e.renderUserMentionItem, S = e.scrollToMessage, v = e.toggleReaction, G = e.setQuoteMessage, w = e.onQuoteMessageClick, y = e.onReplyInThreadClick, g = e.sendUserMessage, f = e.updateUserMessage, I = e.resendMessage, K = e.deleteMessage, Re = e.renderFileViewer, q = e.renderRemoveMessageModal, ae = e.setAnimatedMessageId, se = e.animatedMessageId, le = e.onMessageAnimated, L = e.usedInLegacy, $ = L === void 0 ? !0 : L, ee = ca(), O = ee.dateLocale, re = ee.stringSet, te = zn(), Qe = te.config, Ye = Qe.userId, Se = Qe.isOnline, P = Qe.isMentionEnabled, we = Qe.userMention, Me = Qe.logger, We = (we == null ? void 0 : we.maxMentionCount) || $b, Be = (we == null ? void 0 : we.maxSuggestionCount) || eY, Ke = me(!1), lt = Ke[0], De = Ke[1], je = me(!1), at = je[0], Ge = je[1], $e = me(!1), He = $e[0], Xe = $e[1], pt = me(!1), Vt = pt[0], yt = pt[1], xe = me(""), At = xe[0], kt = xe[1], Kt = me([]), ln = Kt[0], vt = Kt[1], Rt = me([]), Ce = Rt[0], Je = Rt[1], de = me(null), qe = de[0], nt = de[1], ct = me(null), Ot = ct[0], zt = ct[1], cn = me([]), mt = cn[0], sn = cn[1], hn = Wt(null), ft = Wt(null), qt = Se && P && At.length > 0 && !pR(Z) && !Yo(Z), jt = NY({ ref: hn }, { logger: Me }), Bt = (jt == null ? void 0 : jt.length) < We;
+  } : c, s = e.renderCustomSeparator, o = e.renderEditInput, U = e.hasSeparator, N = e.chainTop, R = e.chainBottom, h = e.handleScroll, Z = e.channel, W = e.emojiContainer, F = e.editInputDisabled, m = e.shouldRenderSuggestedReplies, E = e.isReactionEnabled, u = e.replyType, b = e.threadReplySelectType, k = e.nicknamesMap, Q = e.renderUserMentionItem, S = e.scrollToMessage, v = e.toggleReaction, G = e.setQuoteMessage, w = e.onQuoteMessageClick, y = e.onReplyInThreadClick, g = e.sendUserMessage, f = e.updateUserMessage, I = e.resendMessage, K = e.deleteMessage, Ue = e.renderFileViewer, q = e.renderRemoveMessageModal, ae = e.setAnimatedMessageId, se = e.animatedMessageId, le = e.onMessageAnimated, L = e.usedInLegacy, $ = L === void 0 ? !0 : L, ee = ca(), O = ee.dateLocale, re = ee.stringSet, te = zn(), Qe = te.config, Ye = Qe.userId, Se = Qe.isOnline, P = Qe.isMentionEnabled, ge = Qe.userMention, Me = Qe.logger, We = (ge == null ? void 0 : ge.maxMentionCount) || $b, De = (ge == null ? void 0 : ge.maxSuggestionCount) || eY, Oe = me(!1), tt = Oe[0], Be = Oe[1], He = me(!1), at = He[0], Ge = He[1], $e = me(!1), fe = $e[0], Xe = $e[1], pt = me(!1), Vt = pt[0], yt = pt[1], xe = me(""), At = xe[0], kt = xe[1], Kt = me([]), ln = Kt[0], vt = Kt[1], Rt = me([]), Ke = Rt[0], Je = Rt[1], de = me(null), qe = de[0], lt = de[1], ct = me(null), Ot = ct[0], zt = ct[1], cn = me([]), mt = cn[0], sn = cn[1], hn = Wt(null), ft = Wt(null), qt = Se && P && At.length > 0 && !pR(Z) && !Yo(Z), jt = NY({ ref: hn }, { logger: Me }), Bt = (jt == null ? void 0 : jt.length) < We;
   _e(function() {
     vt(ln.filter(function(ze) {
-      var ht = ze.userId, Ft = Ce.indexOf(ht);
-      return Ft < 0 ? !1 : (Ce.splice(Ft, 1), !0);
+      var ht = ze.userId, Ft = Ke.indexOf(ht);
+      return Ft < 0 ? !1 : (Ke.splice(Ft, 1), !0);
     }));
-  }, [Ce]), o2(function() {
+  }, [Ke]), o2(function() {
     h == null || h();
-  }, [lt, (n = l == null ? void 0 : l.reactions) === null || n === void 0 ? void 0 : n.length]), o2(function() {
+  }, [tt, (n = l == null ? void 0 : l.reactions) === null || n === void 0 ? void 0 : n.length]), o2(function() {
     h == null || h(!0);
   }, [l == null ? void 0 : l.updatedAt, l == null ? void 0 : l.message]), ud(function() {
     $ && (h == null || h(!0));
@@ -36243,7 +36243,7 @@ var ZL = 300, KY = function(e) {
       });
     };
   }, [se, ft.current, l.messageId]);
-  var ge = nn(function() {
+  var Ie = nn(function() {
     var ze;
     return (ze = s == null ? void 0 : s({ message: l })) !== null && ze !== void 0 ? ze : null;
   }, [l, s]), it = function() {
@@ -36270,7 +36270,7 @@ var ZL = 300, KY = function(e) {
         threadReplySelectType: b,
         nicknamesMap: k,
         emojiContainer: W,
-        showEdit: De,
+        showEdit: Be,
         showRemove: Ge,
         showFileViewer: Xe,
         resendMessage: I,
@@ -36289,34 +36289,34 @@ var ZL = 300, KY = function(e) {
       at && q({ message: l, onCancel: function() {
         return Ge(!1);
       } }),
-      He && Re({ message: l, onCancel: function() {
+      fe && Ue({ message: l, onCancel: function() {
         return Xe(!1);
       } })
     );
   };
-  return lt && (!((t = l == null ? void 0 : l.isUserMessage) === null || t === void 0) && t.call(l)) ? (o == null ? void 0 : o()) || T.createElement(
+  return tt && (!((t = l == null ? void 0 : l.isUserMessage) === null || t === void 0) && t.call(l)) ? (o == null ? void 0 : o()) || T.createElement(
     T.Fragment,
     null,
     qt && T.createElement(KY, { currentChannel: Z, targetNickname: At, inputEvent: qe, renderUserMentionItem: Q, onUserItemClick: function(ze) {
-      ze && vt(Ut(Ut([], ln, !0), [ze], !1)), kt(""), zt(ze), nt(null);
+      ze && vt(Ut(Ut([], ln, !0), [ze], !1)), kt(""), zt(ze), lt(null);
     }, onFocusItemChange: function() {
-      nt(null);
+      lt(null);
     }, onFetchUsers: function(ze) {
       sn(ze);
-    }, ableAddMention: Bt, maxMentionCount: We, maxSuggestionCount: Be }),
+    }, ableAddMention: Bt, maxMentionCount: We, maxSuggestionCount: De }),
     T.createElement(EY, { isEdit: !0, channel: Z, disabled: F, ref: hn, mentionSelectedUser: Ot, isMentionEnabled: P, message: l, onStartTyping: function() {
       var ze;
       (ze = Z == null ? void 0 : Z.startTyping) === null || ze === void 0 || ze.call(Z);
     }, onUpdateMessage: function(ze) {
-      var ht, Ft = ze.messageId, X = ze.message, Ue = ze.mentionTemplate;
+      var ht, Ft = ze.messageId, X = ze.message, Ne = ze.mentionTemplate;
       f(Ft, {
         message: X,
         mentionedUsers: ln,
-        mentionedMessageTemplate: Ue
-      }), De(!1), (ht = Z == null ? void 0 : Z.endTyping) === null || ht === void 0 || ht.call(Z);
+        mentionedMessageTemplate: Ne
+      }), Be(!1), (ht = Z == null ? void 0 : Z.endTyping) === null || ht === void 0 || ht.call(Z);
     }, onCancelEdit: function() {
       var ze;
-      kt(""), vt([]), Je([]), sn([]), De(!1), (ze = Z == null ? void 0 : Z.endTyping) === null || ze === void 0 || ze.call(Z);
+      kt(""), vt([]), Je([]), sn([]), Be(!1), (ze = Z == null ? void 0 : Z.endTyping) === null || ze === void 0 || ze.call(Z);
     }, onUserMentioned: function(ze) {
       (Ot == null ? void 0 : Ot.userId) === (ze == null ? void 0 : ze.userId) && (zt(null), kt(""));
     }, onMentionStringChange: function(ze) {
@@ -36324,7 +36324,7 @@ var ZL = 300, KY = function(e) {
     }, onMentionedUserIdsUpdated: function(ze) {
       Je(ze);
     }, onKeyDown: function(ze) {
-      return qt && (mt == null ? void 0 : mt.length) > 0 && (ze.key === Wd.Enter && Bt || ze.key === Wd.ArrowUp || ze.key === Wd.ArrowDown) ? (nt(ze), !0) : !1;
+      return qt && (mt == null ? void 0 : mt.length) > 0 && (ze.key === Wd.Enter && Bt || ze.key === Wd.ArrowUp || ze.key === Wd.ArrowDown) ? (lt(ze), !0) : !1;
     } })
   ) : T.createElement(
     "div",
@@ -36332,7 +36332,7 @@ var ZL = 300, KY = function(e) {
       "sendbird-msg-hoc sendbird-msg--scroll-ref",
       Vt ? "sendbird-msg-hoc__animated" : ""
     ]), style: d || a ? void 0 : { marginBottom: "2px" }, "data-sb-message-id": l.messageId, "data-sb-created-at": l.createdAt, ref: ft },
-    U && (ge || T.createElement(
+    U && (Ie || T.createElement(
       h4,
       null,
       T.createElement(Fe, { type: oe.CAPTION_2, color: ie.ONBACKGROUND_2 }, Sr(l.createdAt, re.DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR, {
@@ -36376,12 +36376,12 @@ var ZL = 300, KY = function(e) {
           T.createElement(
             "a",
             { className: "sendbird-fileviewer__header__right__actions__download", rel: "noopener noreferrer", href: d, target: "_blank" },
-            T.createElement(dt, { type: Ie.DOWNLOAD, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px" })
+            T.createElement(dt, { type: Le.DOWNLOAD, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px" })
           ),
           c && r && T.createElement(
             "div",
             { className: "sendbird-fileviewer__header__right__actions__delete" },
-            T.createElement(dt, { className: V ? "disabled" : "", type: Ie.DELETE, fillColor: V ? Pe.GRAY : Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function() {
+            T.createElement(dt, { className: V ? "disabled" : "", type: Le.DELETE, fillColor: V ? Pe.GRAY : Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: function() {
               V || c();
             } })
           )
@@ -36389,7 +36389,7 @@ var ZL = 300, KY = function(e) {
         T.createElement(
           "div",
           { className: "sendbird-fileviewer__header__right__actions__close" },
-          T.createElement(dt, { type: Ie.CLOSE, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: i })
+          T.createElement(dt, { type: Le.CLOSE, fillColor: Pe.ON_BACKGROUND_1, height: "24px", width: "24px", onClick: i })
         )
       )
     ),
@@ -36471,7 +36471,7 @@ var pL = function(e) {
       s.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE,
       " ".concat(U)
     ),
-    T.createElement(dt, { width: "24px", height: "24px", type: Ie.CHEVRON_DOWN, fillColor: Pe.CONTENT })
+    T.createElement(dt, { width: "24px", height: "24px", type: Le.CHEVRON_DOWN, fillColor: Pe.CONTENT })
   );
 }, SL = function(e) {
   var n = e.className, t = n === void 0 ? "" : n, l = Gt(Kn).stringSet;
@@ -36658,26 +36658,26 @@ var jL = 50, HL = function(e) {
     return T.createElement(rV, { className: "sendbird-conversation__no-messages", type: _n.NO_MESSAGES });
   } : R, Z = e.renderFrozenNotification, W = Z === void 0 ? function() {
     return T.createElement(SL, { className: "sendbird-conversation__messages__notification" });
-  } : Z, F = fl(), m = F.allMessages, E = F.localMessages, u = F.hasMorePrev, b = F.hasMoreNext, k = F.setInitialTimeStamp, Q = F.setAnimatedMessageId, S = F.setHighLightedMessageId, v = F.isMessageGroupingEnabled, G = F.scrollRef, w = F.onScrollCallback, y = F.onScrollDownCallback, g = F.messagesDispatcher, f = F.messageActionTypes, I = F.currentGroupChannel, K = F.disableMarkAsRead, Re = F.filterMessageList, q = F.replyType, ae = F.loading, se = F.isScrolled, le = F.unreadSince, L = F.unreadSinceDate, $ = F.typingMembers, ee = zn(), O = typeof Re == "function" ? m.filter(Re) : m, re = ee.config.markAsReadScheduler, te = me(!1), Qe = te[0], Ye = te[1];
+  } : Z, F = fl(), m = F.allMessages, E = F.localMessages, u = F.hasMorePrev, b = F.hasMoreNext, k = F.setInitialTimeStamp, Q = F.setAnimatedMessageId, S = F.setHighLightedMessageId, v = F.isMessageGroupingEnabled, G = F.scrollRef, w = F.onScrollCallback, y = F.onScrollDownCallback, g = F.messagesDispatcher, f = F.messageActionTypes, I = F.currentGroupChannel, K = F.disableMarkAsRead, Ue = F.filterMessageList, q = F.replyType, ae = F.loading, se = F.isScrolled, le = F.unreadSince, L = F.unreadSinceDate, $ = F.typingMembers, ee = zn(), O = typeof Ue == "function" ? m.filter(Ue) : m, re = ee.config.markAsReadScheduler, te = me(!1), Qe = te[0], Ye = te[1];
   OL();
-  var Se = function(De) {
-    var je = G == null ? void 0 : G.current;
-    if (je != null) {
-      var at = je.scrollTop, Ge = je.clientHeight, $e = je.scrollHeight;
-      u && pV(at, 0, Vi) && w(De), b && pV(Ge + at, $e, Vi) && y(De), !K && pV(Ge + at, $e, Vi) && I && (g({
+  var Se = function(Be) {
+    var He = G == null ? void 0 : G.current;
+    if (He != null) {
+      var at = He.scrollTop, Ge = He.clientHeight, $e = He.scrollHeight;
+      u && pV(at, 0, Vi) && w(Be), b && pV(Ge + at, $e, Vi) && y(Be), !K && pV(Ge + at, $e, Vi) && I && (g({
         type: f.MARK_AS_READ,
         payload: { channel: I }
       }), re.push(I));
     }
   }, P = function() {
-    var De, je, at, Ge, $e;
-    k == null || k(null), Q == null || Q(null), S == null || S(null), ((De = G == null ? void 0 : G.current) === null || De === void 0 ? void 0 : De.scrollTop) > -1 && (G.current.scrollTop = ((at = (je = G == null ? void 0 : G.current) === null || je === void 0 ? void 0 : je.scrollHeight) !== null && at !== void 0 ? at : 0) - (($e = (Ge = G == null ? void 0 : G.current) === null || Ge === void 0 ? void 0 : Ge.offsetHeight) !== null && $e !== void 0 ? $e : 0));
-  }, we = function(De) {
-    De === void 0 && (De = !1);
-    var je = G == null ? void 0 : G.current;
-    if (je) {
-      var at = je.scrollHeight - je.scrollTop - je.offsetHeight;
-      lt < at && (!De || lt < Vi) && (je.scrollTop += at - lt);
+    var Be, He, at, Ge, $e;
+    k == null || k(null), Q == null || Q(null), S == null || S(null), ((Be = G == null ? void 0 : G.current) === null || Be === void 0 ? void 0 : Be.scrollTop) > -1 && (G.current.scrollTop = ((at = (He = G == null ? void 0 : G.current) === null || He === void 0 ? void 0 : He.scrollHeight) !== null && at !== void 0 ? at : 0) - (($e = (Ge = G == null ? void 0 : G.current) === null || Ge === void 0 ? void 0 : Ge.offsetHeight) !== null && $e !== void 0 ? $e : 0));
+  }, ge = function(Be) {
+    Be === void 0 && (Be = !1);
+    var He = G == null ? void 0 : G.current;
+    if (He) {
+      var at = He.scrollHeight - He.scrollTop - He.offsetHeight;
+      tt < at && (!Be || tt < Vi) && (He.scrollTop += at - tt);
     }
   }, Me = YL({
     hasMore: u,
@@ -36697,7 +36697,7 @@ var jL = 50, HL = function(e) {
     onInBetween: function() {
       Ye(!1);
     }
-  }), Be = XL({ loading: ae }), Ke = Be.scrollToBottomHandler, lt = Be.scrollBottom;
+  }), De = XL({ loading: ae }), Oe = De.scrollToBottomHandler, tt = De.scrollBottom;
   return ae ? N() : O.length < 1 ? h() : T.createElement(
     T.Fragment,
     null,
@@ -36711,26 +36711,26 @@ var jL = 50, HL = function(e) {
         T.createElement("div", { className: "sendbird-conversation__padding" }),
         T.createElement(
           "div",
-          { className: "sendbird-conversation__messages-padding", ref: G, onScroll: function(De) {
-            Me(), Ke(De), We(De);
+          { className: "sendbird-conversation__messages-padding", ref: G, onScroll: function(Be) {
+            Me(), Oe(Be), We(Be);
           } },
-          O.map(function(De, je) {
+          O.map(function(Be, He) {
             var at, Ge, $e = h2({
               allMessages: O,
               replyType: q,
               isMessageGroupingEnabled: v,
-              currentIndex: je,
-              currentMessage: De,
+              currentIndex: He,
+              currentMessage: Be,
               currentChannel: I
-            }), He = $e.chainTop, Xe = $e.chainBottom, pt = $e.hasSeparator, Vt = ((at = De == null ? void 0 : De.sender) === null || at === void 0 ? void 0 : at.userId) === ((Ge = ee == null ? void 0 : ee.config) === null || Ge === void 0 ? void 0 : Ge.userId);
+            }), fe = $e.chainTop, Xe = $e.chainBottom, pt = $e.hasSeparator, Vt = ((at = Be == null ? void 0 : Be.sender) === null || at === void 0 ? void 0 : at.userId) === ((Ge = ee == null ? void 0 : ee.config) === null || Ge === void 0 ? void 0 : Ge.userId);
             return T.createElement(
               _M,
-              { message: De, key: De == null ? void 0 : De.messageId, isByMe: Vt },
+              { message: Be, key: Be == null ? void 0 : Be.messageId, isByMe: Vt },
               T.createElement(U2, {
-                handleScroll: we,
-                message: De,
+                handleScroll: ge,
+                message: Be,
                 hasSeparator: pt,
-                chainTop: He,
+                chainTop: fe,
                 chainBottom: Xe,
                 renderMessageContent: V,
                 renderSuggestedReplies: s,
@@ -36740,22 +36740,22 @@ var jL = 50, HL = function(e) {
               })
             );
           }),
-          E.map(function(De, je) {
+          E.map(function(Be, He) {
             var at, Ge, $e = h2({
               allMessages: O,
               replyType: q,
               isMessageGroupingEnabled: v,
-              currentIndex: je,
-              currentMessage: De,
+              currentIndex: He,
+              currentMessage: Be,
               currentChannel: I
-            }), He = $e.chainTop, Xe = $e.chainBottom, pt = ((at = De == null ? void 0 : De.sender) === null || at === void 0 ? void 0 : at.userId) === ((Ge = ee == null ? void 0 : ee.config) === null || Ge === void 0 ? void 0 : Ge.userId);
+            }), fe = $e.chainTop, Xe = $e.chainBottom, pt = ((at = Be == null ? void 0 : Be.sender) === null || at === void 0 ? void 0 : at.userId) === ((Ge = ee == null ? void 0 : ee.config) === null || Ge === void 0 ? void 0 : Ge.userId);
             return T.createElement(
               _M,
-              { message: De, key: De == null ? void 0 : De.messageId, isByMe: pt },
+              { message: Be, key: Be == null ? void 0 : Be.messageId, isByMe: pt },
               T.createElement(U2, {
-                handleScroll: we,
-                message: De,
-                chainTop: He,
+                handleScroll: ge,
+                message: Be,
+                chainTop: fe,
                 chainBottom: Xe,
                 renderMessageContent: V,
                 renderSuggestedReplies: s,
@@ -36765,7 +36765,7 @@ var jL = 50, HL = function(e) {
               })
             );
           }),
-          !b && ((t = (n = ee == null ? void 0 : ee.config) === null || n === void 0 ? void 0 : n.groupChannel) === null || t === void 0 ? void 0 : t.enableTypingIndicator) && ((d = (a = (l = ee == null ? void 0 : ee.config) === null || l === void 0 ? void 0 : l.groupChannel) === null || a === void 0 ? void 0 : a.typingIndicatorTypes) === null || d === void 0 ? void 0 : d.has(uR.Bubble)) && T.createElement(xL, { typingMembers: $, handleScroll: we })
+          !b && ((t = (n = ee == null ? void 0 : ee.config) === null || n === void 0 ? void 0 : n.groupChannel) === null || t === void 0 ? void 0 : t.enableTypingIndicator) && ((d = (a = (l = ee == null ? void 0 : ee.config) === null || l === void 0 ? void 0 : l.groupChannel) === null || a === void 0 ? void 0 : a.typingIndicatorTypes) === null || d === void 0 ? void 0 : d.has(uR.Bubble)) && T.createElement(xL, { typingMembers: $, handleScroll: ge })
         )
       ),
       (I == null ? void 0 : I.isFrozen) && W(),
@@ -36779,10 +36779,10 @@ var jL = 50, HL = function(e) {
         })), k(null), Q(null), S(null);
       } }),
       // This flag is an unmatched variable
-      lt > jL && T.createElement(
+      tt > jL && T.createElement(
         "div",
         { className: "sendbird-conversation__scroll-bottom-button", onClick: P, onKeyDown: P, tabIndex: 0, role: "button" },
-        T.createElement(dt, { width: "24px", height: "24px", type: Ie.CHEVRON_DOWN, fillColor: Pe.PRIMARY })
+        T.createElement(dt, { width: "24px", height: "24px", type: Le.CHEVRON_DOWN, fillColor: Pe.PRIMARY })
       )
     )
   );
@@ -36804,11 +36804,11 @@ function wL(e) {
   ) : (Qi(l) || Fa(l)) && a ? T.createElement(el, { className: cN, url: a, alt: ER(l), width: "44px", height: "44px", fixedSize: !0 }) : zj(l) ? T.createElement(
     "div",
     { className: cN },
-    T.createElement(dt, { type: Ie.FILE_AUDIO, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" })
+    T.createElement(dt, { type: Le.FILE_AUDIO, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" })
   ) : T.createElement(
     "div",
     { className: cN },
-    T.createElement(dt, { type: Ie.FILE_DOCUMENT, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" })
+    T.createElement(dt, { type: Le.FILE_DOCUMENT, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px" })
   );
 }
 function gL(e) {
@@ -36836,7 +36836,7 @@ function gL(e) {
         Mi(t) && a.VOICE_MESSAGE
       )
     ),
-    T.createElement(dt, { className: "sendbird-quote_message_input__close-button", type: Ie.CLOSE, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px", onClick: function() {
+    T.createElement(dt, { className: "sendbird-quote_message_input__close-button", type: Le.CLOSE, fillColor: Pe.ON_BACKGROUND_2, width: "24px", height: "24px", onClick: function() {
       return l(t);
     } })
   );
@@ -36903,7 +36903,7 @@ var qi = {
     case $n.RECORDING:
       return T.createElement("div", { className: "sendbird-controler-icon stop-icon" });
     case $n.READY_TO_PLAY:
-      return T.createElement(dt, { className: "sendbird-controler-icon play-icon", width: "20px", height: "20px", type: Ie.PLAY, fillColor: Pe.ON_BACKGROUND_1 });
+      return T.createElement(dt, { className: "sendbird-controler-icon play-icon", width: "20px", height: "20px", type: Le.PLAY, fillColor: Pe.ON_BACKGROUND_1 });
     case $n.PLAYING:
       return T.createElement(
         "div",
@@ -36963,7 +36963,7 @@ var qi = {
       (U == null ? void 0 : U()) || T.createElement(
         "div",
         { className: "sendbird-voice-message-input__controler__submit ".concat(F ? "voice-message--disabled" : ""), onClick: k },
-        T.createElement(dt, { width: "19px", height: "19px", type: Ie.SEND, fillColor: F ? Pe.ON_BACKGROUND_4 : Pe.CONTENT })
+        T.createElement(dt, { width: "19px", height: "19px", type: Le.SEND, fillColor: F ? Pe.ON_BACKGROUND_4 : Pe.CONTENT })
       )
     )
   );
@@ -37047,7 +37047,7 @@ var qi = {
     channelUrl: t == null ? void 0 : t.url,
     key: d,
     audioFile: i
-  }), I = f.play, K = f.pause, Re = f.playbackTime, q = f.playingStatus, ae = f.stop;
+  }), I = f.play, K = f.pause, Ue = f.playbackTime, q = f.playingStatus, ae = f.stop;
   return _e(function() {
     pR(t) || Yo(t) ? W(!0) : W(!1);
   }, [t == null ? void 0 : t.myRole, t == null ? void 0 : t.isFrozen, t == null ? void 0 : t.myMutedState]), _e(function() {
@@ -37057,7 +37057,7 @@ var qi = {
   }, [i, w, q]), T.createElement(
     "div",
     { className: "sendbird-voice-message-input-wrapper" },
-    T.createElement(CL, { currentValue: y === qi.COMPLETED ? Re : w, maximumValue: y === qi.COMPLETED ? w : g, currentType: s, onCancelClick: function() {
+    T.createElement(CL, { currentValue: y === qi.COMPLETED ? Ue : w, maximumValue: y === qi.COMPLETED ? w : g, currentType: s, onCancelClick: function() {
       l(), G(), ae();
     }, onSubmitClick: function() {
       Z ? (E(!0), o($n.READY_TO_RECORD)) : (v(), K(), R(!0));
@@ -37165,24 +37165,24 @@ var qi = {
     });
   }, [t, l, a]);
 }, qL = T.forwardRef(function(e, n) {
-  var t = e.currentChannel, l = e.isMultipleFilesMessageEnabled, a = e.loading, d = e.quoteMessage, r = e.setQuoteMessage, i = e.messageInputRef, c = e.sendUserMessage, V = e.sendFileMessage, s = e.sendVoiceMessage, o = e.sendMultipleFilesMessage, U = e.renderUserMentionItem, N = e.renderFileUploadIcon, R = e.renderVoiceMessageIcon, h = e.renderSendMessageIcon, Z = e.acceptableMimeTypes, W = e.disabled, F = ca().stringSet, m = dr().isMobile, E = zn(), u = E.stores, b = E.config, k = b.isOnline, Q = b.isMentionEnabled, S = b.isVoiceMessageEnabled, v = b.isMultipleFilesMessageEnabled, G = b.userMention, w = b.logger, y = u.sdkStore.sdk, g = G.maxMentionCount, f = G.maxSuggestionCount, I = t == null ? void 0 : t.isBroadcast, K = (t == null ? void 0 : t.myRole) === "operator", Re = me(""), q = Re[0], ae = Re[1], se = me([]), le = se[0], L = se[1], $ = me([]), ee = $[0], O = $[1], re = me(null), te = re[0], Qe = re[1], Ye = me([]), Se = Ye[0], P = Ye[1], we = me(null), Me = we[0], We = we[1], Be = me(!1), Ke = Be[0], lt = Be[1], De = a || !t || pR(t) || Yo(t) || !k && !(y != null && y.isCacheEnabled) || W, je = !De && Q && q.length > 0 && !I, at = l ?? v, Ge = NY({ ref: n || i }, { logger: w }), $e = (Ge == null ? void 0 : Ge.length) < g;
+  var t = e.currentChannel, l = e.isMultipleFilesMessageEnabled, a = e.loading, d = e.quoteMessage, r = e.setQuoteMessage, i = e.messageInputRef, c = e.sendUserMessage, V = e.sendFileMessage, s = e.sendVoiceMessage, o = e.sendMultipleFilesMessage, U = e.renderUserMentionItem, N = e.renderFileUploadIcon, R = e.renderVoiceMessageIcon, h = e.renderSendMessageIcon, Z = e.acceptableMimeTypes, W = e.disabled, F = ca().stringSet, m = dr().isMobile, E = zn(), u = E.stores, b = E.config, k = b.isOnline, Q = b.isMentionEnabled, S = b.isVoiceMessageEnabled, v = b.isMultipleFilesMessageEnabled, G = b.userMention, w = b.logger, y = u.sdkStore.sdk, g = G.maxMentionCount, f = G.maxSuggestionCount, I = t == null ? void 0 : t.isBroadcast, K = (t == null ? void 0 : t.myRole) === "operator", Ue = me(""), q = Ue[0], ae = Ue[1], se = me([]), le = se[0], L = se[1], $ = me([]), ee = $[0], O = $[1], re = me(null), te = re[0], Qe = re[1], Ye = me([]), Se = Ye[0], P = Ye[1], ge = me(null), Me = ge[0], We = ge[1], De = me(!1), Oe = De[0], tt = De[1], Be = a || !t || pR(t) || Yo(t) || !k && !(y != null && y.isCacheEnabled) || W, He = !Be && Q && q.length > 0 && !I, at = l ?? v, Ge = NY({ ref: n || i }, { logger: w }), $e = (Ge == null ? void 0 : Ge.length) < g;
   _e(function() {
-    ae(""), L([]), O([]), Qe(null), P([]), We(null), lt(!1);
+    ae(""), L([]), O([]), Qe(null), P([]), We(null), tt(!1);
   }, [t == null ? void 0 : t.url]), _e(function() {
     L(le.filter(function(Xe) {
       var pt = Xe.userId, Vt = ee.indexOf(pt);
       return Vt < 0 ? !1 : (ee.splice(Vt, 1), !0);
     }));
   }, [ee]);
-  var He = AL({
+  var fe = AL({
     sendFileMessage: V,
     sendMultipleFilesMessage: o,
     quoteMessage: d
   }, { logger: w });
   return I && !K ? null : T.createElement(
     "div",
-    { className: "sendbird-message-input-wrapper".concat(Ke ? "--voice-message" : "") },
-    je && T.createElement(fL, { currentChannel: t, targetNickname: q, inputEvent: Me, renderUserMentionItem: U, onUserItemClick: function(Xe) {
+    { className: "sendbird-message-input-wrapper".concat(Oe ? "--voice-message" : "") },
+    He && T.createElement(fL, { currentChannel: t, targetNickname: q, inputEvent: Me, renderUserMentionItem: U, onUserItemClick: function(Xe) {
       Xe && L(Ut(Ut([], le, !0), [Xe], !1)), ae(""), Qe(Xe), We(null);
     }, onFocusItemChange: function() {
       We(null);
@@ -37196,13 +37196,13 @@ var qi = {
         return r(null);
       } })
     ),
-    Ke ? T.createElement(PL, { channel: t, onSubmitClick: function(Xe, pt) {
-      s({ file: Xe, parentMessageId: d == null ? void 0 : d.messageId }, pt), r(null), lt(!1);
+    Oe ? T.createElement(PL, { channel: t, onSubmitClick: function(Xe, pt) {
+      s({ file: Xe, parentMessageId: d == null ? void 0 : d.messageId }, pt), r(null), tt(!1);
     }, onCancelClick: function() {
-      lt(!1);
+      tt(!1);
     } }) : T.createElement(EY, { className: "sendbird-message-input-wrapper__message-input", channel: t, channelUrl: t == null ? void 0 : t.url, isMobile: m, acceptableMimeTypes: Z, mentionSelectedUser: te, isMentionEnabled: Q, isVoiceMessageEnabled: S, isSelectingMultipleFilesEnabled: at, onVoiceMessageIconClick: function() {
-      lt(!0);
-    }, setMentionedUsers: L, placeholder: d && F.MESSAGE_INPUT__QUOTE_REPLY__PLACE_HOLDER || (W || pR(t)) && F.MESSAGE_INPUT__PLACE_HOLDER__DISABLED || Yo(t) && (m ? F.MESSAGE_INPUT__PLACE_HOLDER__MUTED_SHORT : F.MESSAGE_INPUT__PLACE_HOLDER__MUTED), ref: n || i, disabled: De, renderFileUploadIcon: N, renderSendMessageIcon: h, renderVoiceMessageIcon: R, onStartTyping: function() {
+      tt(!0);
+    }, setMentionedUsers: L, placeholder: d && F.MESSAGE_INPUT__QUOTE_REPLY__PLACE_HOLDER || (W || pR(t)) && F.MESSAGE_INPUT__PLACE_HOLDER__DISABLED || Yo(t) && (m ? F.MESSAGE_INPUT__PLACE_HOLDER__MUTED_SHORT : F.MESSAGE_INPUT__PLACE_HOLDER__MUTED), ref: n || i, disabled: Be, renderFileUploadIcon: N, renderSendMessageIcon: h, renderVoiceMessageIcon: R, onStartTyping: function() {
       t == null || t.startTyping();
     }, onSendMessage: function(Xe) {
       var pt, Vt = Xe.message, yt = Xe.mentionTemplate;
@@ -37213,7 +37213,7 @@ var qi = {
         parentMessageId: d == null ? void 0 : d.messageId
       }), ae(""), L([]), r(null), (pt = t == null ? void 0 : t.endTyping) === null || pt === void 0 || pt.call(t);
     }, onFileUpload: function(Xe) {
-      He(Xe), r(null);
+      fe(Xe), r(null);
     }, onUserMentioned: function(Xe) {
       (te == null ? void 0 : te.userId) === (Xe == null ? void 0 : Xe.userId) && (Qe(null), ae(""));
     }, onMentionStringChange: function(Xe) {
@@ -37221,7 +37221,7 @@ var qi = {
     }, onMentionedUserIdsUpdated: function(Xe) {
       O(Xe);
     }, onKeyDown: function(Xe) {
-      return je && (Se == null ? void 0 : Se.length) > 0 && (Xe.key === Wd.Enter && $e || Xe.key === Wd.ArrowUp || Xe.key === Wd.ArrowDown) ? (We(Xe), !0) : !1;
+      return He && (Se == null ? void 0 : Se.length) > 0 && (Xe.key === Wd.Enter && $e || Xe.key === Wd.ArrowUp || Xe.key === Wd.ArrowDown) ? (We(Xe), !0) : !1;
     } })
   );
 }), $L = function(e) {
@@ -41056,7 +41056,7 @@ function l_({
   setModalContent: n,
   setShowModal: t
 }) {
-  var we, Me;
+  var ge, Me;
   const { inputValue: l, botId: a, userId: d } = jn(), [r, i] = me(""), [c, V] = me(null), [s, o] = me(null), U = Wt(null), [N, R] = me(!1), [h, Z] = me((l == null ? void 0 : l.value) ?? ""), { botCategory: W } = jn(), [F, m] = me(!1), [E, u] = me(!1), [b, k] = me(!1), [Q, S] = me(""), [v, G] = me(!1), w = {
     "Content-Type": "application/json"
   }, { allMessages: y } = fl(), g = [
@@ -41120,17 +41120,17 @@ function l_({
   n_(U.current, h), _e(() => {
     var We;
     if (y.length > 0) {
-      const Be = y[y.length - 1];
-      (Be == null ? void 0 : Be.messageType) === "user" && ((We = Be.sender) == null ? void 0 : We.userId) === d && G(!0);
+      const De = y[y.length - 1];
+      (De == null ? void 0 : De.messageType) === "user" && ((We = De.sender) == null ? void 0 : We.userId) === d && G(!0);
     }
     y.length == 0 && G(!0);
   }, [y]), _e(() => {
     (async () => {
-      var Be, Ke, lt;
+      var De, Oe, tt;
       if ((l == null ? void 0 : l.value) != null && l.value.length > 0) {
         u(!0), V(null), i(l.value), k(!0), m(!1);
         try {
-          const De = await ae([
+          const Be = await ae([
             {
               role: "user",
               content: "I'm now talking to Patient X. "
@@ -41140,9 +41140,9 @@ function l_({
               content: l.value
             }
           ]);
-          V(De), ((Ke = (Be = De.response_method) == null ? void 0 : Be.function_calls) == null ? void 0 : Ke.length) > 0 && o((lt = De.response_method) == null ? void 0 : lt.function_calls[0]);
-        } catch (De) {
-          console.error("Failed to fetch AI response", De);
+          V(Be), ((Oe = (De = Be.response_method) == null ? void 0 : De.function_calls) == null ? void 0 : Oe.length) > 0 && o((tt = Be.response_method) == null ? void 0 : tt.function_calls[0]);
+        } catch (Be) {
+          console.error("Failed to fetch AI response", Be);
         }
         i(""), k(!1);
       }
@@ -41157,23 +41157,31 @@ function l_({
   function I() {
     m(!F);
   }
-  const Re = y.filter(
+  const Ue = y.filter(
     (We) => We.messageType === "user"
   ).map((We) => ({
     role: We.sender.userId === a ? "user" : "assistant",
     content: We.message
   })), { isPending: q } = ZK({
-    queryKey: ["getAIRecommendMessage", Re],
-    queryFn: () => !Re || Re.length < 2 ? Promise.resolve([]) : X2.post("/api/assistant", {
+    queryKey: ["getAIRecommendMessage", Ue],
+    queryFn: async () => !Ue || Ue.length < 1 ? Promise.resolve([]) : (Ue.length < 2 && !y.filter(
+      (Oe) => (Oe == null ? void 0 : Oe.message) === "How can I help you today?"
+    ) && Ue.unshift({
+      role: "assistant",
+      content: "How can I help you today?"
+    }), await X2.post("/api/assistant", {
       params: {
         botId: "healthcare"
       },
       data: {
-        messages: Re,
+        messages: Ue,
         include_response_method: !0
       },
       headers: w
-    }).then((Be) => (G(!1), S(Be.data.reply_messages[0]), Be.data))
+    }).then((Oe) => {
+      const tt = Oe.data.reply_messages[0];
+      return tt && !(tt === "How can I assist you today?") && (G(!1), S(Oe.data.reply_messages[0])), Oe.data;
+    }))
   });
   async function ae(We) {
     return (await X2.post("/api/assistant", {
@@ -41188,7 +41196,7 @@ function l_({
     })).data;
   }
   async function se() {
-    var Be, Ke, lt;
+    var De, Oe, tt;
     k(!0);
     const We = await ae([
       {
@@ -41200,7 +41208,7 @@ function l_({
         content: r
       }
     ]);
-    V(We), ((Ke = (Be = We.response_method) == null ? void 0 : Be.function_calls) == null ? void 0 : Ke.length) > 0 && o((lt = We.response_method) == null ? void 0 : lt.function_calls[0]), k(!1), i("");
+    V(We), ((Oe = (De = We.response_method) == null ? void 0 : De.function_calls) == null ? void 0 : Oe.length) > 0 && o((tt = We.response_method) == null ? void 0 : tt.function_calls[0]), k(!1), i("");
   }
   function le(We) {
     i(We.target.value);
@@ -41211,8 +41219,8 @@ function l_({
   function $(We) {
     if (h == null)
       return;
-    const Be = We.target.value;
-    Z(Be), R(Be.length > 0);
+    const De = We.target.value;
+    Z(De), R(De.length > 0);
   }
   function ee(We) {
     !We.shiftKey && We.charCode === 13 && h != null && (We.preventDefault(), L());
@@ -41230,7 +41238,7 @@ function l_({
     V(null);
   }
   function Ye() {
-    return /* @__PURE__ */ Y.jsx(Y.Fragment, { children: g.map((We, Be) => /* @__PURE__ */ Y.jsx(e_, { children: /* @__PURE__ */ Y.jsxs(
+    return /* @__PURE__ */ Y.jsx(Y.Fragment, { children: g.map((We, De) => /* @__PURE__ */ Y.jsx(e_, { children: /* @__PURE__ */ Y.jsxs(
       t_,
       {
         onClick: () => {
@@ -41258,8 +41266,8 @@ function l_({
           )
         ]
       },
-      Be
-    ) }, `${We.symptom}-${We.date}-${Be}`)) });
+      De
+    ) }, `${We.symptom}-${We.date}-${De}`)) });
   }
   function Se(We) {
     n(We), t(!0);
@@ -41336,7 +41344,7 @@ function l_({
           ]
         }
       ),
-      c && c.reply_messages.length > 0 ? ((Me = (we = c.response_method) == null ? void 0 : we.function_calls) == null ? void 0 : Me.length) > 0 ? P() : /* @__PURE__ */ Y.jsxs(sN, { children: [
+      c && c.reply_messages.length > 0 ? ((Me = (ge = c.response_method) == null ? void 0 : ge.function_calls) == null ? void 0 : Me.length) > 0 ? P() : /* @__PURE__ */ Y.jsxs(sN, { children: [
         /* @__PURE__ */ Y.jsxs(f2, { children: [
           /* @__PURE__ */ Y.jsxs(
             "div",
@@ -43510,12 +43518,12 @@ function yR({ autoplay: e = !0, delay: n = 0, driver: t = ZA, keyframes: l, type
     let { done: re } = O;
     !L && G !== null && (re = N >= 0 ? g >= y : g <= 0);
     const te = Q === null && (k === "finished" || k === "running" && re);
-    return o && o(O.value), te && Re(), O;
+    return o && o(O.value), te && Ue(), O;
   }, I = () => {
     F && F.stop(), F = void 0;
   }, K = () => {
     k = "idle", I(), h(), W(), S = v = null;
-  }, Re = () => {
+  }, Ue = () => {
     k = "finished", s && s(), I(), h();
   }, q = () => {
     if (R)
@@ -44222,11 +44230,11 @@ function t8(e) {
         S = !0, N.has(I) && (v = !0, N.delete(I)), m.needsAnimating[I] = !0;
       };
       for (const I in g) {
-        const K = w[I], Re = y[I];
+        const K = w[I], Ue = y[I];
         if (R.hasOwnProperty(I))
           continue;
         let q = !1;
-        zR(K) && zR(Re) ? q = !lJ(K, Re) : q = K !== Re, q ? K !== void 0 ? f(I) : N.add(I) : K !== void 0 && N.has(I) ? f(I) : m.protectedKeys[I] = !0;
+        zR(K) && zR(Ue) ? q = !lJ(K, Ue) : q = K !== Ue, q ? K !== void 0 ? f(I) : N.add(I) : K !== void 0 && N.has(I) ? f(I) : m.protectedKeys[I] = !0;
       }
       m.prevProp = E, m.prevResolvedValues = w, m.isActive && (R = { ...R, ...w }), l && e.blockInitialAnimation && (S = !1), S && (!k || v) && U.push(...G.map((I) => ({
         animation: I,
@@ -46606,10 +46614,10 @@ function e7(e, { defaultTransition: n = {}, ...t } = {}, l) {
         y = le.ease, g = le.duration;
       }
       g ?? (g = a);
-      const K = s + f, Re = K + g;
+      const K = s + f, Ue = K + g;
       v.length === 1 && v[0] === 0 && (v[1] = 1);
       const q = v.length - Q.length;
-      q > 0 && kJ(v, q), Q.length === 1 && Q.unshift(null), Aq(u, Q, y, v, K, Re), W = Math.max(f + g, W), o = Math.max(Re, o);
+      q > 0 && kJ(v, q), Q.length === 1 && Q.unshift(null), Aq(u, Q, y, v, K, Ue), W = Math.max(f + g, W), o = Math.max(Ue, o);
     };
     if (Kl(R)) {
       const m = nS(R, r);
@@ -47044,7 +47052,7 @@ var pr = {
 }, b7 = ["onOpenStart", "onOpenEnd", "onClose", "onCloseStart", "onCloseEnd", "onSnap", "children", "disableScrollLocking", "isOpen", "snapPoints", "rootId", "mountPoint", "style", "detent", "initialSnap", "disableDrag", "prefersReducedMotion", "tweenConfig"], Y7 = /* @__PURE__ */ vV(function(e, n) {
   var t = e.onOpenStart, l = e.onOpenEnd, a = e.onClose, d = e.onCloseStart, r = e.onCloseEnd, i = e.onSnap, c = e.children, V = e.disableScrollLocking, s = V === void 0 ? !1 : V, o = e.isOpen, U = e.snapPoints, N = e.rootId, R = e.mountPoint, h = e.style, Z = e.detent, W = Z === void 0 ? "full-height" : Z, F = e.initialSnap, m = F === void 0 ? 0 : F, E = e.disableDrag, u = E === void 0 ? !1 : E, b = e.prefersReducedMotion, k = b === void 0 ? !1 : b, Q = e.tweenConfig, S = Q === void 0 ? o7 : Q, v = Kc(e, b7), G = Wt(null), w = Oo(0), y = m7(), g = Vv(), f = !!(k || g), I = md({
     type: "tween"
-  }, f ? U7 : S), K = Oo(0), Re = bi(K, function(O) {
+  }, f ? U7 : S), K = Oo(0), Ue = bi(K, function(O) {
     return O >= y ? -1 : 9999999;
   }), q = bi(K, function(O) {
     return O >= y ? "hidden" : "visible";
@@ -47074,10 +47082,10 @@ var pr = {
     else {
       var Qe = G.current, Ye = Qe.getBoundingClientRect().height, Se = K.get(), P = 0;
       if (U) {
-        var we = U.map(function(lt) {
-          return Ye - Math.min(lt, Ye);
+        var ge = U.map(function(tt) {
+          return Ye - Math.min(tt, Ye);
         });
-        W === "content-height" && !we.includes(0) && we.unshift(0), P = VS(we, Se);
+        W === "content-height" && !ge.includes(0) && ge.unshift(0), P = VS(ge, Se);
       } else
         Se / Ye > N7 && (P = Ye);
       if (P = sS({
@@ -47087,8 +47095,8 @@ var pr = {
         var Me = Math.abs(Math.round(U[0] - P)), We = U.indexOf(VS(U, Me));
         i(We);
       }
-      var Be = Math.round(Ye), Ke = P >= Be;
-      Ke && a();
+      var De = Math.round(Ye), Oe = P >= De;
+      Oe && a();
     }
     w.set(0);
   });
@@ -47143,7 +47151,7 @@ var pr = {
   }, na(Cl.div, Object.assign({}, v, {
     ref: n,
     style: md({}, pr.wrapper, {
-      zIndex: Re,
+      zIndex: Ue,
       visibility: q
     }, h)
   }), na(dv, null, o ? na(p7, null, ek.map(c, function(O, re) {
@@ -48168,7 +48176,7 @@ const Mr = {
       animationOptions: S,
       reduceMotion: Q,
       disableDrag: h
-    }, Re = /* @__PURE__ */ Y.jsx(Yv.Provider, { value: K, children: /* @__PURE__ */ Y.jsx(
+    }, Ue = /* @__PURE__ */ Y.jsx(Yv.Provider, { value: K, children: /* @__PURE__ */ Y.jsx(
       Cl.div,
       {
         ...F,
@@ -48180,7 +48188,7 @@ const Mr = {
         ) }) : null })
       }
     ) });
-    return Sv ? Re : tk.createPortal(Re, o ?? document.body);
+    return Sv ? Ue : tk.createPortal(Ue, o ?? document.body);
   }
 ), E$ = z.forwardRef(
   ({ children: e, style: n = {}, className: t = "", ...l }, a) => {
@@ -48990,7 +48998,7 @@ const Q$ = A(nr.Container)`
       d && /* @__PURE__ */ Y.jsx(
         Nee,
         {
-          type: Ie.DONE,
+          type: Le.DONE,
           fillColor: Pe.SECONDARY,
           width: "24px",
           height: "24px"
@@ -49674,8 +49682,8 @@ function lte(e) {
         padding: V
       }), K = g ? y ? Vd : Ta : y ? id : Za;
       u[f] > b[f] && (K = wN(K));
-      var Re = wN(K), q = [];
-      if (d && q.push(I[w] <= 0), i && q.push(I[K] <= 0, I[Re] <= 0), q.every(function($) {
+      var Ue = wN(K), q = [];
+      if (d && q.push(I[w] <= 0), i && q.push(I[K] <= 0, I[Ue] <= 0), q.every(function($) {
         return $;
       })) {
         S = G, Q = !1;
@@ -49815,15 +49823,15 @@ function Nte(e) {
   };
   if (b) {
     if (d) {
-      var y, g = E === "y" ? Za : Ta, f = E === "y" ? id : Vd, I = E === "y" ? "height" : "width", K = b[E], Re = K + Z[g], q = K - Z[f], ae = N ? -Q[I] / 2 : 0, se = F === Xc ? k[I] : Q[I], le = F === Xc ? -Q[I] : -k[I], L = n.elements.arrow, $ = N && L ? _1(L) : {
+      var y, g = E === "y" ? Za : Ta, f = E === "y" ? id : Vd, I = E === "y" ? "height" : "width", K = b[E], Ue = K + Z[g], q = K - Z[f], ae = N ? -Q[I] / 2 : 0, se = F === Xc ? k[I] : Q[I], le = F === Xc ? -Q[I] : -k[I], L = n.elements.arrow, $ = N && L ? _1(L) : {
         width: 0,
         height: 0
-      }, ee = n.modifiersData["arrow#persistent"] ? n.modifiersData["arrow#persistent"].padding : Dv(), O = ee[g], re = ee[f], te = Uo(0, k[I], $[I]), Qe = m ? k[I] / 2 - ae - te - O - v.mainAxis : se - te - O - v.mainAxis, Ye = m ? -k[I] / 2 + ae + te + re + v.mainAxis : le + te + re + v.mainAxis, Se = n.elements.arrow && pU(n.elements.arrow), P = Se ? E === "y" ? Se.clientTop || 0 : Se.clientLeft || 0 : 0, we = (y = G == null ? void 0 : G[E]) != null ? y : 0, Me = K + Qe - we - P, We = K + Ye - we, Be = Uo(N ? jR(Re, Me) : Re, K, N ? MV(q, We) : q);
-      b[E] = Be, w[E] = Be - K;
+      }, ee = n.modifiersData["arrow#persistent"] ? n.modifiersData["arrow#persistent"].padding : Dv(), O = ee[g], re = ee[f], te = Uo(0, k[I], $[I]), Qe = m ? k[I] / 2 - ae - te - O - v.mainAxis : se - te - O - v.mainAxis, Ye = m ? -k[I] / 2 + ae + te + re + v.mainAxis : le + te + re + v.mainAxis, Se = n.elements.arrow && pU(n.elements.arrow), P = Se ? E === "y" ? Se.clientTop || 0 : Se.clientLeft || 0 : 0, ge = (y = G == null ? void 0 : G[E]) != null ? y : 0, Me = K + Qe - ge - P, We = K + Ye - ge, De = Uo(N ? jR(Ue, Me) : Ue, K, N ? MV(q, We) : q);
+      b[E] = De, w[E] = De - K;
     }
     if (i) {
-      var Ke, lt = E === "x" ? Za : Ta, De = E === "x" ? id : Vd, je = b[u], at = u === "y" ? "height" : "width", Ge = je + Z[lt], $e = je - Z[De], He = [Za, Ta].indexOf(W) !== -1, Xe = (Ke = G == null ? void 0 : G[u]) != null ? Ke : 0, pt = He ? Ge : je - k[at] - Q[at] - Xe + v.altAxis, Vt = He ? je + k[at] + Q[at] - Xe - v.altAxis : $e, yt = N && He ? Dee(pt, je, Vt) : Uo(N ? pt : Ge, je, N ? Vt : $e);
-      b[u] = yt, w[u] = yt - je;
+      var Oe, tt = E === "x" ? Za : Ta, Be = E === "x" ? id : Vd, He = b[u], at = u === "y" ? "height" : "width", Ge = He + Z[tt], $e = He - Z[Be], fe = [Za, Ta].indexOf(W) !== -1, Xe = (Oe = G == null ? void 0 : G[u]) != null ? Oe : 0, pt = fe ? Ge : He - k[at] - Q[at] - Xe + v.altAxis, Vt = fe ? He + k[at] + Q[at] - Xe - v.altAxis : $e, yt = N && fe ? Dee(pt, He, Vt) : Uo(N ? pt : Ge, He, N ? Vt : $e);
+      b[u] = yt, w[u] = yt - He;
     }
     n.modifiersData[l] = w;
   }
@@ -50277,7 +50285,7 @@ function Dte(e, n) {
   z.useEffect(function() {
     if (k().finalConfig.closeOnOutsideClick) {
       var f = function(K) {
-        var Re, q = k(), ae = q.tooltipRef, se = q.triggerRef, le = (K.composedPath == null || (Re = K.composedPath()) == null ? void 0 : Re[0]) || K.target;
+        var Ue, q = k(), ae = q.tooltipRef, se = q.triggerRef, le = (K.composedPath == null || (Ue = K.composedPath()) == null ? void 0 : Ue[0]) || K.target;
         le instanceof Node && ae != null && se != null && !ae.contains(le) && !se.contains(le) && S();
       };
       return document.addEventListener("mousedown", f), function() {
@@ -50326,8 +50334,8 @@ function Dte(e, n) {
     if (!d.followCursor || V == null)
       return;
     function f(I) {
-      var K = I.clientX, Re = I.clientY;
-      XS.getBoundingClientRect = wv(K, Re), b == null || b();
+      var K = I.clientX, Ue = I.clientY;
+      XS.getBoundingClientRect = wv(K, Ue), b == null || b();
     }
     return V.addEventListener("mousemove", f), function() {
       return V.removeEventListener("mousemove", f);
@@ -50478,7 +50486,7 @@ function qte(e) {
   ] });
 }
 const $te = qv(
-  () => import("./CodeBlock-2d1d3662.mjs").then(({ CodeBlock: e }) => ({ default: e }))
+  () => import("./CodeBlock-9860c6c9.mjs").then(({ CodeBlock: e }) => ({ default: e }))
 ), ene = A.div`
   display: flex;
   ${({ botCategory: e }) => e && aa`

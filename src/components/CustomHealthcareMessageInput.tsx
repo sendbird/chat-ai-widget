@@ -439,6 +439,7 @@ export function HealthcareMessageInput({
         }
       }
     }
+
     if (allMessages.length == 0) {
       setShowTip(true);
     }
@@ -508,12 +509,25 @@ export function HealthcareMessageInput({
 
   const { isPending } = useQuery({
     queryKey: ["getAIRecommendMessage", bodyInput],
-    queryFn: () => {
+    queryFn: async () => {
       // bodyinput must includes 2 objects, role and assistant
-      const isInvalidBodyInput = !bodyInput || bodyInput.length < 2;
+      const isInvalidBodyInput = !bodyInput || bodyInput.length < 1;
       if (isInvalidBodyInput) return Promise.resolve([]);
 
-      return axios
+      const isAssistantWelcomeMessageMissing =
+        bodyInput.length < 2 &&
+        !allMessages.filter(
+          (message) => message?.message === "How can I help you today?"
+        );
+
+      if (isAssistantWelcomeMessageMissing) {
+        bodyInput.unshift({
+          role: "assistant",
+          content: "How can I help you today?",
+        });
+      }
+
+      return await axios
         .post(`/api/assistant`, {
           params: {
             botId: "healthcare",
@@ -525,8 +539,13 @@ export function HealthcareMessageInput({
           headers,
         })
         .then((response) => {
-          setShowTip(false);
-          setRecommendMessage(response.data.reply_messages[0]);
+          const replyMessage = response.data.reply_messages[0]
+          const isDefaultMockMessage = replyMessage === 'How can I assist you today?'
+          if (replyMessage && !isDefaultMockMessage) {
+            setShowTip(false);
+            setRecommendMessage(response.data.reply_messages[0]);
+          }
+
           return response.data;
         });
     },
@@ -548,6 +567,7 @@ export function HealthcareMessageInput({
 
   async function handleAskAISendMessage() {
     setIsAskingAssistantRequestSending(true);
+
     const response = await getRecommendMessage([
       {
         role: "user",
