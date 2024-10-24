@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 
 export function uuid() {
@@ -166,7 +167,8 @@ export function isValidJSON(str: any) {
 }
 
 export function boldifyMessage(text: string) {
-  return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  const boldifiedText = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  return DOMPurify.sanitize(boldifiedText);
 }
 
 export function replaceTextExtractsMultiple(
