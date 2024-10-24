@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import BotMessageBottom from './BotMessageBottom';
 import SourceContainer, { Source } from './SourceContainer';
 import { useConstantState } from '../context/ConstantContext';
-import { isValidJSON, Token, TokenType } from "../utils";
+import { boldifyMessage, isValidJSON, Token, TokenType } from "../utils";
 import { categoryColors } from "../utils/category";
 
 const LazyCodeBlock = lazy(() =>
@@ -85,7 +85,9 @@ export default function ParsedBotMessageBody(props: Props) {
             return (
               <Text
                 key={"token" + i}
-                dangerouslySetInnerHTML={{ __html: token.value }}
+                dangerouslySetInnerHTML={{
+                  __html: boldifyMessage(token.value),
+                }}
               />
             );
           }
