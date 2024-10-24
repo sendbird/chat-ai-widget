@@ -10,7 +10,7 @@ import BotProfileIcon from '../icons/bot-profile-image-small.svg';
 function isMaybeFavicon(url: string) {
   if (url.length < 4) return false;
   const fileName = url.substring(url.lastIndexOf('/') + 1);
-  return /fav_|favicon|\.ico/.test(fileName);
+  return fileName.startsWith('fav_');
 }
 
 const FaviconContainer = styled.div<{ size: number }>`
