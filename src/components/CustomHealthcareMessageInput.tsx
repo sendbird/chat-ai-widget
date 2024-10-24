@@ -19,6 +19,7 @@ import { ReactComponent as IconChevronUp } from "../icons/icon-chevron-up.svg";
 import { ReactComponent as IconMagicWand } from "../icons/icon-magic-wand-filled.svg";
 import ModalBackground from "../icons/modal-background.svg";
 import { ReactComponent as SendIcon } from "../icons/send-icon.svg";
+import { boldifyMessage } from "../utils";
 import { categoryColors } from "../utils/category";
 
 interface InputContainerProps {
@@ -874,7 +875,11 @@ export function HealthcareMessageInput({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.ONBACKGROUND_1}
                 >
-                  {recommendMessage}
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: boldifyMessage(recommendMessage),
+                    }}
+                  />
                 </AIAssistantBodyText>
               )}
             </TextContainer>
