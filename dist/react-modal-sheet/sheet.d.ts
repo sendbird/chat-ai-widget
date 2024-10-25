@@ -1,3 +1,4 @@
+/// <reference types="trusted-types" />
 import * as React from 'react';
 declare const Sheet: React.ForwardRefExoticComponent<{
     isOpen: boolean;

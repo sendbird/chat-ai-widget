@@ -1,10 +1,11 @@
 import Button from '@sendbird/uikit-react/ui/Button';
 import Label, { LabelTypography } from '@sendbird/uikit-react/ui/Label';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { useSendMessage } from '../../hooks/useSendMessage';
 import { FunctionCallMessage } from '../../utils/messages';
+import { useConstantState } from '../../context/ConstantContext';
 
 const Container = styled.div`
   display: flex;
@@ -43,11 +44,17 @@ const ButtonLabel = styled(Label)<{ disabled?: boolean; fontColor?: string }>`
 
 const SendingMoneyMessage = ({ message }: { message: FunctionCallMessage }) => {
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const { inputValue } = useConstantState();
+  const sendMessage = useSendMessage();
+
   const handleClick = (message: string) => {
     sendMessage(message);
     setIsConfirmed(true);
   };
-  const sendMessage = useSendMessage();
+
+  useEffect(() => {
+    setIsConfirmed(false);
+  }, [inputValue?.value]);
 
   return (
     <Container>

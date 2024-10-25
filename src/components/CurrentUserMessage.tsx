@@ -1,9 +1,9 @@
 import { UserMessage } from '@sendbird/chat/message';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
-import { formatCreatedAtToAMPM } from '../utils';
-import {categoryColors} from "../utils/category";
+import { boldifyMessage, formatCreatedAtToAMPM } from '../utils';
+import { categoryColors } from '../utils/category';
 
 const Root = styled.div`
   display: flex;
@@ -84,7 +84,13 @@ export default function CurrentUserMessage(props: Props) {
       </SentTime>
       <BodyContainer>
         <BodyComponent botCategory={botCategory}>
-          <TextComponent>{message.message}</TextComponent>
+          <TextComponent>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: boldifyMessage(message.message),
+              }}
+            />
+          </TextComponent>
         </BodyComponent>
       </BodyContainer>
     </Root>

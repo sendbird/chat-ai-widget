@@ -34,6 +34,7 @@ const styles: { [key: string]: CSS.Properties } = {
     display: 'flex',
     flexDirection: 'column',
     pointerEvents: 'auto',
+    WebkitFontSmoothing: 'subpixel-antialised',
   },
   headerWrapper: {
     width: '100%',
