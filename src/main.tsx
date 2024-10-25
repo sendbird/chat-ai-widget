@@ -41,7 +41,7 @@ const WidgetApp = () => {
         disableTimestamps
           ? {
               DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR: "'DATE SEPARATOR'",
-              MESSAGE_TIMESTAMP_FORMAT: "'SENT TIME'",
+              MESSAGE_TIMESTAMP_FORMAT: "'00:00 AM'",
             }
           : undefined
       }
