@@ -1,4 +1,5 @@
-import DOMPurify from "dompurify";
+import DOMPurify from 'dompurify';
+
 import { LOCAL_MESSAGE_CUSTOM_TYPE } from '../const';
 
 export function uuid() {
