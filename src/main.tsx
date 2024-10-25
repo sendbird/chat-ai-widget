@@ -28,7 +28,7 @@ const WidgetApp = () => {
   if (!appId || !botId) {
     return null;
   }
-  
+
   const host = getHost(region);
   return (
     <App
@@ -45,6 +45,7 @@ const WidgetApp = () => {
             }
           : undefined
       }
+      enableMessageGrouping={!disableTimestamps}
     />
   );
 };

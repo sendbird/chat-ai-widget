@@ -36,13 +36,13 @@ test('100', async ({ page, browserName }) => {
   await input.fill('trigger workflow1');
   await assertScreenshot(page, `100-1.${browserName}`);
   await input.press('Enter');
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(1000);
   await assertScreenshot(page, `100-2.${browserName}`);
 
   // 2
   let options = page.locator('.sendbird-suggested-replies__option');
   await options.first().click();
-  await page.waitForTimeout(500);
+  await page.waitForTimeout(1000);
   await assertScreenshot(page, `100-3.${browserName}`);
 
   // 3
@@ -60,18 +60,18 @@ test('100', async ({ page, browserName }) => {
   await chipContainer.locator(':scope > *').nth(5).click();
   submitButton = page.locator('button.sendbird-button--primary');
   await submitButton.click();
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(1000);
   await assertScreenshot(page, `100-5.${browserName}`);
 
   // 5
   options = page.locator('.sendbird-suggested-replies__option');
   await options.first().click();
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(1000);
   await assertScreenshot(page, `100-6.${browserName}`);
 
   // 6
   options = page.locator('.sendbird-suggested-replies__option');
   await options.nth(1).click();
-  await page.waitForTimeout(100);
+  await page.waitForTimeout(1000);
   await assertScreenshot(page, `100-7.${browserName}`);
 });

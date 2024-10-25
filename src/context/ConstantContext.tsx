@@ -92,6 +92,7 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
         enableHideWidgetForDeactivatedUser:
           props.enableHideWidgetForDeactivatedUser ?? initialState.enableHideWidgetForDeactivatedUser,
         enableWidgetExpandButton: props.enableWidgetExpandButton ?? initialState.enableWidgetExpandButton,
+        enableMessageGrouping: props.enableMessageGrouping ?? initialState.enableMessageGrouping,
         // ----- Legacy props ----- //
         betaMark: props.betaMark ?? initialState.betaMark,
         customBetaMarkText: props.customBetaMarkText ?? initialState.customBetaMarkText,
