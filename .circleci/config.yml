@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
-  aws-cli: circleci/aws-cli@2.1.0
-  aws-s3: circleci/aws-s3@4.0.0
+  aws-cli: circleci/aws-cli@5.1.1
+  aws-s3: circleci/aws-s3@4.1.0
 
 parameters:
   run_deploy_prod:
@@ -157,12 +157,13 @@ jobs:
           command: |
             cat widget.env >> $BASH_ENV
       - aws-cli/setup:
-          profile-name: default
-          configure-default-region: false
-      - aws-cli/role-arn-setup:
-          profile-name: ci-web
-          source-profile: default
-          role-arn: << parameters.role_arn >>
+          role_arn: ${AWS_ID_ROLE_ARN}
+          region: us-east-1
+          profile_name: aws-id
+      - aws-cli/role_arn_setup:
+          profile_name: chat-ai-widget
+          source_profile: aws-id
+          role_arn: << parameters.role_arn >>
       - aws-s3/sync:
           from: dist/
           to: << parameters.s3_bucket >>
