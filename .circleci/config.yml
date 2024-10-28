@@ -161,7 +161,7 @@ jobs:
           region: us-east-1
           profile_name: aws-id
       - aws-cli/role_arn_setup:
-          profile_name: chat-ai-widget
+          profile_name: ci-web
           source_profile: aws-id
           role_arn: << parameters.role_arn >>
       - aws-s3/sync:
