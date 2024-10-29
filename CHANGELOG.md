@@ -1,3 +1,7 @@
+## [1.8.5] (Oct 29, 2024)
+### Chore:
+- Added bot profile style for the favicon from onboarding 
+
 ## [1.8.4] (Oct 22, 2024)
 ### Fix:
 - Passed missing locale to DateSeparator component
