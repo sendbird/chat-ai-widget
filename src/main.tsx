@@ -12,6 +12,7 @@ const WidgetApp = () => {
   if (disableTimestampsStr !== null) {
     disableTimestamps = JSON.parse(disableTimestampsStr);
   }
+
   const locale = urlParams.get('locale') ?? undefined;
   const region = urlParams.get('region') ?? undefined;
 
@@ -41,7 +42,7 @@ const WidgetApp = () => {
         disableTimestamps
           ? {
               DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR: "'DATE SEPARATOR'",
-              MESSAGE_TIMESTAMP_FORMAT: "'00:00 AM'",
+              DATE_FORMAT__MESSAGE_TIMESTAMP: "'00:00 AM'",
             }
           : undefined
       }

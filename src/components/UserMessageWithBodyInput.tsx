@@ -85,7 +85,9 @@ export default function UserMessageWithBodyInput(props: Props) {
         <Content>
           {bodyComponent}
           {!!message?.createdAt && (
-            <SentTime>{formatCreatedAtToAMPM(message.createdAt, stringSet.MESSAGE_TIMESTAMP_FORMAT, locale)}</SentTime>
+            <SentTime>
+              {formatCreatedAtToAMPM(message.createdAt, stringSet.DATE_FORMAT__MESSAGE_TIMESTAMP, locale)}
+            </SentTime>
           )}
         </Content>
       </BodyContainer>

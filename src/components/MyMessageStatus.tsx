@@ -36,7 +36,7 @@ export default function MyMessageStatus(props: MyMessageStatusProps) {
     default:
       return (
         <DefaultSentTime>
-          {formatCreatedAtToAMPM(message.createdAt, stringSet.MESSAGE_TIMESTAMP_FORMAT, dateLocale)}
+          {formatCreatedAtToAMPM(message.createdAt, stringSet.DATE_FORMAT__MESSAGE_TIMESTAMP, dateLocale)}
         </DefaultSentTime>
       );
   }

@@ -87,13 +87,13 @@ export default function BotMessageWithBodyInput(props: Props) {
           {bodyComponent}
           {!wideContainer && !!createdAt && (
             <DefaultSentTime>
-              {formatCreatedAtToAMPM(createdAt, stringSet.MESSAGE_TIMESTAMP_FORMAT, dateLocale)}
+              {formatCreatedAtToAMPM(createdAt, stringSet.DATE_FORMAT__MESSAGE_TIMESTAMP, dateLocale)}
             </DefaultSentTime>
           )}
         </Content>
         {wideContainer && !!createdAt && (
           <WideSentTime>
-            {formatCreatedAtToAMPM(createdAt, stringSet.MESSAGE_TIMESTAMP_FORMAT, dateLocale)}
+            {formatCreatedAtToAMPM(createdAt, stringSet.DATE_FORMAT__MESSAGE_TIMESTAMP, dateLocale)}
           </WideSentTime>
         )}
         {displayProfileImage && messageFeedback}
