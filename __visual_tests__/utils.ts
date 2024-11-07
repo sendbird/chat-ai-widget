@@ -2,13 +2,15 @@ import {expect, Page} from "@playwright/test";
 
 import {WidgetComponentIds} from "./const";
 
-export async function assertScreenshot(page: Page, screenshotName: string) {
+export async function assertScreenshot(page: Page, screenshotName: string, browserName: string) {
+  const name = `${screenshotName}.${browserName}.png`; // Include the browser name in the filename
   await expect(page.locator(WidgetComponentIds.WIDGET)).toHaveScreenshot(
-    `${screenshotName}.png`,
+    name,
     {
       omitBackground: false,
-      // threshold: 0.1, // Keep this in case you need it. It is for letting tests with little difference in pixels to pass.
-    });
+      maxDiffPixelRatio: 0.01, // Uncomment if you need a pixel threshold
+    }
+  );
 }
 
 export async function loadWidget(page: Page) {

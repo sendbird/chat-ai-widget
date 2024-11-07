@@ -22,6 +22,10 @@ executors:
       - image: cimg/node:20.13.1
     resource_class: medium
     working_directory: ~/project
+  ci-macos:
+    macos:
+      xcode: 15.0.0  # Use the closest available version of macOS (Sonoma equivalent may not be available yet)
+    working_directory: ~/project
 
 commands:
   attach_project:
@@ -75,10 +79,31 @@ jobs:
           paths:
             - node_modules
             - packages/self-service/node_modules
-            # - packages/uikit/node_modules --> submodules are not cached
       - persist_to_workspace:
           root: .
           paths: .
+
+  # CI - install dependencies for macOS
+  prepare-macos:
+    executor: ci-macos
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /Users/distiller/project
+      - run:
+          name: Install dependencies
+          command: |
+            git submodule update --init --recursive
+            yarn install --immutable
+      - save_cache:
+          key: v2-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - packages/self-service/node_modules
+      - persist_to_workspace:
+          root: /Users/distiller/project
+          paths: .
+
   # CI - check format
   run-format:
     executor: ci-node
@@ -105,6 +130,31 @@ jobs:
           no_output_timeout: 15m
           name: Run test
           command: yarn test
+  # CI - Run snapshot tests
+  run-snapshot-test:
+    executor: ci-macos
+    steps:
+      - attach_project
+      - run:
+          name: Clean and reinstall dependencies
+          command: |
+            rm -rf node_modules package-lock.json
+            yarn install
+      - run:
+          name: Install Playwright dependencies
+          command: sudo yarn playwright install-deps
+      - run:
+          name: Install Playwright browsers
+          command: yarn playwright install
+      - run:
+          name: List all __visual_tests__ snapshots
+          command: find /Users/distiller/project/__visual_tests__ -type f
+      - run:
+          name: Run Playwright snapshot tests
+          command: SNAPSHOT_TEST_APP_ID=$SNAPSHOT_TEST_APP_ID SNAPSHOT_TEST_BOT_ID=$SNAPSHOT_TEST_BOT_ID yarn playwright test
+      - store_artifacts:
+          path: /Users/distiller/project/test-results
+          destination: playwright-test-results
 
   # Publish - build self-service
   build:
@@ -201,6 +251,12 @@ workflows:
       - run-test:
           requires:
             - prepare
+  ci-snapshot-test:
+    jobs:
+      - prepare-macos
+      - run-snapshot-test:
+          requires:
+            - prepare-macos
 
   deploy_prod:
     when: << pipeline.parameters.run_deploy_prod >>

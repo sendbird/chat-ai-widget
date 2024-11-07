@@ -6,67 +6,7 @@ import {assertScreenshot, clickNthChip, loadWidget, sendTextMessage} from "./uti
 
 test.beforeEach(async ({ page }) => {
   await page.goto(TEST_URL);
-});
-
-/**
- * 001
- * Test workflow1
- * Scenario:
- * 1. Trigger workflow1
- * 2. Get form message response
- * 3. Submit without filling the form
- * 4. Fill form message and then submit
- * 5. Go back // If possible to remove go back, remove it.
- * 6. Get text message response
- * Verify after each step
- */
-test.skip('001', async ({ page, browserName }) => {
-  await page.click(WidgetComponentIds.WIDGET_BUTTON);
   await page.waitForTimeout(2500);
-  const input = page.locator(WidgetComponentIds.MESSAGE_INPUT);
-
-  // 1
-  await input.fill('trigger workflow1');
-  await assertScreenshot(page, `100-1.${browserName}`);
-  await input.press('Enter');
-  await page.waitForTimeout(1000);
-  await assertScreenshot(page, `100-2.${browserName}`);
-
-  // 2
-  let options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
-  await options.first().click();
-  await page.waitForTimeout(1000);
-  await assertScreenshot(page, `100-3.${browserName}`);
-
-  // 3
-  let submitButton = page.locator(WidgetComponentIds.BUTTON);
-  await submitButton.click();
-  await assertScreenshot(page, `100-4.${browserName}`);
-
-  // 4
-  const inputs = page.locator(WidgetComponentIds.INPUT);
-  await inputs.nth(0).fill('guy ordering food');
-  await inputs.nth(2).fill('2');
-  await inputs.nth(3).fill('guy.ordering.food@food.com');
-  await inputs.nth(4).fill('123-456-7890');
-  const chipContainer = page.locator(WidgetComponentIds.CHIPS_CONTAINER);
-  await chipContainer.locator(':scope > *').nth(5).click();
-  submitButton = page.locator(WidgetComponentIds.BUTTON);
-  await submitButton.click();
-  await page.waitForTimeout(1000);
-  await assertScreenshot(page, `100-5.${browserName}`);
-
-  // 5
-  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
-  await options.first().click();
-  await page.waitForTimeout(1000);
-  await assertScreenshot(page, `100-6.${browserName}`);
-
-  // 6
-  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
-  await options.nth(1).click();
-  await page.waitForTimeout(1000);
-  await assertScreenshot(page, `100-7.${browserName}`);
 });
 
 /**
@@ -80,14 +20,15 @@ test.skip('001', async ({ page, browserName }) => {
  */
 test('100', async ({ page, browserName }) => {
   await loadWidget(page);
+  
   // 1
   await sendTextMessage(page, 'Give me a food order form');
-  await assertScreenshot(page, `100-1.${browserName}`);
+  await assertScreenshot(page, '100-1', browserName);
   
   // 2
   let submitButton = page.locator(WidgetComponentIds.BUTTON);
   await submitButton.click();
-  await assertScreenshot(page, `100-2.${browserName}`);
+  await assertScreenshot(page, '100-2', browserName);
   
   // 3
   const inputs = page.locator(WidgetComponentIds.INPUT);
@@ -98,7 +39,7 @@ test('100', async ({ page, browserName }) => {
   await clickNthChip(page, 4);
   submitButton = page.locator(WidgetComponentIds.BUTTON);
   await page.waitForTimeout(1000);
-  await assertScreenshot(page, `100-3.${browserName}`);
+  await assertScreenshot(page, '100-3', browserName);
   
   // 4
   await inputs.nth(2).fill('2');
@@ -106,7 +47,7 @@ test('100', async ({ page, browserName }) => {
   await inputs.nth(4).fill('123-456-7890');
   await submitButton.click();
   await page.waitForTimeout(1000);
-  await assertScreenshot(page, `100-4.${browserName}`);
+  await assertScreenshot(page, '100-4', browserName);
 });
 
 /**
@@ -118,8 +59,8 @@ test('100', async ({ page, browserName }) => {
 test('101', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
-  await sendTextMessage(page, 'Tell me about one cat breed');
-  await assertScreenshot(page, `101-1.${browserName}`);
+  await sendTextMessage(page, 'Tell me about one cat breed', 2000);
+  await assertScreenshot(page, '101-1', browserName);
 });
 
 /**
@@ -132,7 +73,7 @@ test('102', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
   await sendTextMessage(page, 'Give me a travel agency poster', 4000);
-  await assertScreenshot(page, `102-1.${browserName}`);
+  await assertScreenshot(page, '102-1', browserName);
 });
 
 /**
@@ -150,35 +91,35 @@ test('103', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
   await sendTextMessage(page, 'Suggested replies', 2000);
-  await assertScreenshot(page, `103-1.${browserName}`);
+  await assertScreenshot(page, '103-1', browserName);
   
   // 2
   let options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).click();
   await page.waitForTimeout(1000);
-  await assertScreenshot(page, `103-2.${browserName}`);
+  await assertScreenshot(page, '103-2', browserName);
   
   // 3
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).click();
   await page.waitForTimeout(1000);
-  await assertScreenshot(page, `103-3.${browserName}`);
+  await assertScreenshot(page, '103-3', browserName);
   
   // 4
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(1).click();
-  await page.waitForTimeout(2000);
-  await assertScreenshot(page, `103-4.${browserName}`);
+  await page.waitForTimeout(3000);
+  await assertScreenshot(page, '103-4', browserName);
   
   // 5
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).click();
   await page.waitForTimeout(1000);
-  await assertScreenshot(page, `103-5.${browserName}`);
+  await assertScreenshot(page, '103-5', browserName);
   
   // 6
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(2).click();
   await page.waitForTimeout(1000);
-  await assertScreenshot(page, `103-6.${browserName}`);
+  await assertScreenshot(page, '103-6', browserName);
 });
