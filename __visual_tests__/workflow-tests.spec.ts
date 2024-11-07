@@ -113,12 +113,12 @@ test('100', async ({ page, browserName }) => {
  * 101
  * Workflow - Function calls: user message
  * Steps:
- * 1. Send the trigger message: "Tell me about some cat breeds"
+ * 1. Send the trigger message: "Tell me about one cat breed"
  */
-test.skip('101', async ({ page, browserName }) => {
+test('101', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
-  await sendTextMessage(page, 'Tell me about a cat breed called Russian Blue');
+  await sendTextMessage(page, 'Tell me about one cat breed');
   await assertScreenshot(page, `101-1.${browserName}`);
 });
 
