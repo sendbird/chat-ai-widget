@@ -151,7 +151,7 @@ jobs:
           command: find /Users/distiller/project/__visual_tests__ -type f
       - run:
           name: Run Playwright snapshot tests
-          command: SNAPSHOT_TEST_APP_ID=$SNAPSHOT_TEST_APP_ID SNAPSHOT_TEST_BOT_ID=$SNAPSHOT_TEST_BOT_ID yarn playwright test
+          command: yarn playwright test
       - store_artifacts:
           path: /Users/distiller/project/test-results
           destination: playwright-test-results
