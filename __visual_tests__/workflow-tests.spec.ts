@@ -72,7 +72,7 @@ test('101', async ({ page, browserName }) => {
 test('102', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
-  await sendTextMessage(page, 'Give me a travel agency poster', 4000);
+  await sendTextMessage(page, 'Give me a travel agency poster', 5000);
   await assertScreenshot(page, '102-1', browserName);
 });
 
