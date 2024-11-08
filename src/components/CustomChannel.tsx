@@ -31,7 +31,7 @@ function Channel() {
         // Initialize the timestamp to be sure the first message is successfully sent,
         // and then render the channel UI after 1 second.
         setInitialTimeStamp(null);
-      }, 500);
+      }, 0);
     }
   }, [sbConnectionStatus]);
 
