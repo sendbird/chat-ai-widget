@@ -1,5 +1,3 @@
-import { type SendbirdGroupChat } from "@sendbird/chat/groupChannel";
-import useSendbirdStateContext from "@sendbird/uikit-react/useSendbirdStateContext";
 import {
   ChannelProvider,
   useChannelContext,

@@ -1,27 +1,27 @@
 import '@sendbird/uikit-react/dist/index.css';
 import '../css/index.css';
-import SendbirdProvider from "@sendbird/uikit-react/SendbirdProvider";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useMemo, useRef } from "react";
+import SendbirdProvider from '@sendbird/uikit-react/SendbirdProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useMemo, useRef } from 'react';
 
-import { type Props as ChatWidgetProps } from "./ChatAiWidget";
-import CustomChannel from "./CustomChannel";
-import { StartingPage } from "./StartingPage";
+import { type Props as ChatWidgetProps } from './ChatAiWidget';
+import CustomChannel from './CustomChannel';
+import LoadingScreen from './LoadingScreen';
+import { StartingPage } from './StartingPage';
 import {
   useConstantState,
   ConstantStateProvider,
-} from "../context/ConstantContext";
-import { HashedKeyProvider } from "../context/HashedKeyContext";
+} from '../context/ConstantContext';
+import { HashedKeyProvider } from '../context/HashedKeyContext';
 import SBConnectionStateProvider, {
   useSbConnectionState,
-} from "../context/SBConnectionContext";
+} from '../context/SBConnectionContext';
+import { useCreateGroupChannel } from '../hooks/useCreateGroupChannel';
 import {
   useBotId,
   useChatWindowLoadTime,
-} from "../hooks/useInteractiveDemoSharableData";
-import { assert, isMobile } from "../utils";
-import { useCreateGroupChannel } from "../hooks/useCreateGroupChannel";
-import LoadingScreen from "./LoadingScreen";
+} from '../hooks/useInteractiveDemoSharableData';
+import { assert, isMobile } from '../utils';
 
 const SBComponent = () => {
   const {
@@ -38,7 +38,7 @@ const SBComponent = () => {
 
   assert(
     applicationId !== null && botId !== null,
-    "applicationId and botId must be provided"
+    'applicationId and botId must be provided'
   );
 
   const { sbConnectionStatus } = useSbConnectionState();
@@ -52,11 +52,11 @@ const SBComponent = () => {
   useBotId(botId);
   useChatWindowLoadTime();
 
-  const userAgentCustomParams = useRef({ "chat-ai-widget": "True" });
+  const userAgentCustomParams = useRef({ 'chat-ai-widget': 'True' });
   // Until the user sends a first message,
   // we will display a fake channel UI not to establish a connection to Sendbird Chat SDK
   // `sbConnectionStatus` will be changed to `CONNECTING` after the first message is sent
-  if (sbConnectionStatus === "INIT") {
+  if (sbConnectionStatus === 'INIT') {
     return <StartingPage isStartingPage={true} />;
   }
 
@@ -86,7 +86,7 @@ const SBComponent = () => {
       }}
     >
       <CustomChannel />
-      <div id={"sb_chat_root_for_z_index"} />
+      <div id={'sb_chat_root_for_z_index'} />
     </SendbirdProvider>
   );
 };
@@ -106,7 +106,7 @@ const Chat = ({
 
   assert(
     applicationId !== null && botId !== null,
-    "applicationId and botId must be provided"
+    'applicationId and botId must be provided'
   );
 
   const _applicationId = CHAT_WIDGET_APP_ID ?? applicationId;

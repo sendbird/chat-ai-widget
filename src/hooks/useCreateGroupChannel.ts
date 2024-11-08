@@ -1,14 +1,7 @@
-import { User } from '@sendbird/chat';
-import {
-  type GroupChannel,
-  type SendbirdGroupChat,
-} from "@sendbird/chat/groupChannel";
-import * as sendbirdSelectors from "@sendbird/uikit-react/sendbirdSelectors";
-import useSendbirdStateContext from "@sendbird/uikit-react/useSendbirdStateContext";
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import axios from 'axios';
+import { useCallback, useEffect, useState } from 'react';
 
-import { useSbConnectionState } from "../context/SBConnectionContext";
+import { useSbConnectionState } from '../context/SBConnectionContext';
 
 type APIResponse = {
   bot?: {
@@ -16,7 +9,7 @@ type APIResponse = {
   };
   bot_style: {
     color: {
-      theme: "light" | "dark";
+      theme: 'light' | 'dark';
       accent_color: string;
       bot_message_color: string;
     };
@@ -36,15 +29,14 @@ type APIResponse = {
 export function useCreateGroupChannel(
   applicationId: string,
   botId: string
-): [string | null, string | null, string | null, boolean] {
+): [string | null, string | null, string | null] {
   const [channel, setChannel] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [sessionToken, setSessionToken] = useState<string | null>(null);
-  const [creating, setCreating] = useState<boolean>(false);
   const { setSbConnectionStatus, firstMessage } = useSbConnectionState();
 
   const headers = {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   };
 
   async function createGroupChannelWithWidgetSettingsAPI() {
@@ -52,7 +44,7 @@ export function useCreateGroupChannel(
       `https://api-${applicationId}.sendbird.com/v3/bots/${botId}/${applicationId?.toUpperCase()}/widget_setting`,
       {
         params: {
-          create_user_and_channel: "True",
+          create_user_and_channel: 'True',
         },
         headers,
       }
@@ -91,10 +83,7 @@ export function useCreateGroupChannel(
     }
 
     try {
-      setCreating(true);
-
       const botAndChannelData = await createGroupChannelWithWidgetSettingsAPI();
-
       if (!botAndChannelData.channel?.channelUrl) {
         throw new Error(
           `Channel not created: ${botAndChannelData.channel?.channelUrl}`
@@ -113,8 +102,7 @@ export function useCreateGroupChannel(
     } catch (error) {
       console.error(error);
     } finally {
-      setCreating(false);
-      setSbConnectionStatus("CONNECTED");
+      setSbConnectionStatus('CONNECTED');
     }
     // we dont want to watchout for change of whole objects
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -131,5 +119,5 @@ export function useCreateGroupChannel(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [botId, firstMessage]);
 
-  return [channel, userId, sessionToken, creating];
+  return [channel, userId, sessionToken];
 }

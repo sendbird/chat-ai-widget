@@ -88,10 +88,10 @@ function dz() {
         Ft.unshift("Warning: " + Ue), Function.prototype.apply.call(console[X], console, Ft);
       }
     }
-    var p = !1, u = !1, b = !1, k = !1, Y = !1, S;
+    var E = !1, u = !1, b = !1, k = !1, Y = !1, S;
     S = Symbol.for("react.module.reference");
     function v(X) {
-      return !!(typeof X == "string" || typeof X == "function" || X === l || X === d || Y || X === a || X === V || X === s || k || X === N || p || u || b || typeof X == "object" && X !== null && (X.$$typeof === U || X.$$typeof === o || X.$$typeof === r || X.$$typeof === i || X.$$typeof === c || // This needs to include all possible module reference object
+      return !!(typeof X == "string" || typeof X == "function" || X === l || X === d || Y || X === a || X === V || X === s || k || X === N || E || u || b || typeof X == "object" && X !== null && (X.$$typeof === U || X.$$typeof === o || X.$$typeof === r || X.$$typeof === i || X.$$typeof === c || // This needs to include all possible module reference object
       // types supported by any Flight configuration anywhere since
       // we don't know which Flight build this will end up being used
       // with.
@@ -743,7 +743,7 @@ function iz() {
   return Zm || (Zm = 1, process.env.NODE_ENV !== "production" && function() {
     var e = Symbol.for("react.element"), n = Symbol.for("react.portal"), t = Symbol.for("react.fragment"), l = Symbol.for("react.strict_mode"), a = Symbol.for("react.profiler"), d = Symbol.for("react.provider"), r = Symbol.for("react.context"), i = Symbol.for("react.server_context"), c = Symbol.for("react.forward_ref"), V = Symbol.for("react.suspense"), s = Symbol.for("react.suspense_list"), o = Symbol.for("react.memo"), U = Symbol.for("react.lazy"), N = Symbol.for("react.offscreen"), R = !1, h = !1, Z = !1, W = !1, F = !1, m;
     m = Symbol.for("react.module.reference");
-    function p(pe) {
+    function E(pe) {
       return !!(typeof pe == "string" || typeof pe == "function" || pe === t || pe === a || F || pe === l || pe === V || pe === s || W || pe === N || R || h || Z || typeof pe == "object" && pe !== null && (pe.$$typeof === U || pe.$$typeof === o || pe.$$typeof === d || pe.$$typeof === r || pe.$$typeof === c || // This needs to include all possible module reference object
       // types supported by any Flight configuration anywhere since
       // we don't know which Flight build this will end up being used
@@ -825,7 +825,7 @@ function iz() {
     function He(pe) {
       return u(pe) === s;
     }
-    Qn.ContextConsumer = b, Qn.ContextProvider = k, Qn.Element = Y, Qn.ForwardRef = S, Qn.Fragment = v, Qn.Lazy = G, Qn.Memo = w, Qn.Portal = y, Qn.Profiler = f, Qn.StrictMode = H, Qn.Suspense = I, Qn.SuspenseList = _, Qn.isAsyncMode = le, Qn.isConcurrentMode = ce, Qn.isContextConsumer = ne, Qn.isContextProvider = L, Qn.isElement = ee, Qn.isForwardRef = C, Qn.isFragment = O, Qn.isLazy = de, Qn.isMemo = $, Qn.isPortal = Ye, Qn.isProfiler = ve, Qn.isStrictMode = Qe, Qn.isSuspense = A, Qn.isSuspenseList = He, Qn.isValidElementType = p, Qn.typeOf = u;
+    Qn.ContextConsumer = b, Qn.ContextProvider = k, Qn.Element = Y, Qn.ForwardRef = S, Qn.Fragment = v, Qn.Lazy = G, Qn.Memo = w, Qn.Portal = y, Qn.Profiler = f, Qn.StrictMode = H, Qn.Suspense = I, Qn.SuspenseList = _, Qn.isAsyncMode = le, Qn.isConcurrentMode = ce, Qn.isContextConsumer = ne, Qn.isContextProvider = L, Qn.isElement = ee, Qn.isForwardRef = C, Qn.isFragment = O, Qn.isLazy = de, Qn.isMemo = $, Qn.isPortal = Ye, Qn.isProfiler = ve, Qn.isStrictMode = Qe, Qn.isSuspense = A, Qn.isSuspenseList = He, Qn.isValidElementType = E, Qn.typeOf = u;
   }()), Qn;
 }
 process.env.NODE_ENV === "production" ? MT.exports = rz() : MT.exports = iz();
@@ -1054,7 +1054,7 @@ function Vz(e) {
       if (Ge = qe.join(",") + "{" + Ge + "}", H * f !== 0) {
         switch (H !== 2 || d(Ge, 2) || (f = 0), f) {
           case 111:
-            Ge = Ge.replace(p, ":-moz-$1") + Ge;
+            Ge = Ge.replace(E, ":-moz-$1") + Ge;
             break;
           case 112:
             Ge = Ge.replace(m, "::-webkit-input-$1") + Ge.replace(m, "::-moz-$1") + Ge.replace(m, ":-ms-input-$1") + Ge;
@@ -1256,7 +1256,7 @@ function Vz(e) {
     var O = n(I, ee, L, 0, 0);
     return 0 < oe && (C = i(-2, O, ee, ee, y, w, O.length, 0, 0, 0), C !== void 0 && (O = C)), ce = "", f = 0, w = y = 1, O;
   }
-  var o = /^\0+/g, U = /[\0\r\f]/g, N = /: */g, R = /zoo|gra/, h = /([,: ])(transform)/g, Z = /,\r+?/g, W = /([\t\r\n ])*\f?&/g, F = /@(k\w+)\s*(\S*)\s*/, m = /::(place)/g, p = /:(read-only)/g, u = /[svh]\w+-[tblr]{2}/, b = /\(\s*(.*)\s*\)/g, k = /([\s\S]*?);/g, Y = /-self|flex-/g, S = /[^]*?(:[rp][el]a[\w-]+)[^]*/, v = /stretch|:\s*\w+\-(?:conte|avail)/, G = /([^-])(image-set\()/, w = 1, y = 1, f = 0, H = 1, I = [], _ = [], oe = 0, ie = null, le = 0, ce = "";
+  var o = /^\0+/g, U = /[\0\r\f]/g, N = /: */g, R = /zoo|gra/, h = /([,: ])(transform)/g, Z = /,\r+?/g, W = /([\t\r\n ])*\f?&/g, F = /@(k\w+)\s*(\S*)\s*/, m = /::(place)/g, E = /:(read-only)/g, u = /[svh]\w+-[tblr]{2}/, b = /\(\s*(.*)\s*\)/g, k = /([\s\S]*?);/g, Y = /-self|flex-/g, S = /[^]*?(:[rp][el]a[\w-]+)[^]*/, v = /stretch|:\s*\w+\-(?:conte|avail)/, G = /([^-])(image-set\()/, w = 1, y = 1, f = 0, H = 1, I = [], _ = [], oe = 0, ie = null, le = 0, ce = "";
   return s.use = c, s.set = V, e !== void 0 && V(e), s;
 }
 var cz = {
@@ -1363,12 +1363,12 @@ function Uz() {
       }
     }
   }
-  function p(u) {
+  function E(u) {
     return m(u) === V;
   }
   return Jn.AsyncMode = c, Jn.ConcurrentMode = V, Jn.ContextConsumer = i, Jn.ContextProvider = r, Jn.Element = n, Jn.ForwardRef = s, Jn.Fragment = l, Jn.Lazy = R, Jn.Memo = N, Jn.Portal = t, Jn.Profiler = d, Jn.StrictMode = a, Jn.Suspense = o, Jn.isAsyncMode = function(u) {
-    return p(u) || m(u) === c;
-  }, Jn.isConcurrentMode = p, Jn.isContextConsumer = function(u) {
+    return E(u) || m(u) === c;
+  }, Jn.isConcurrentMode = E, Jn.isContextConsumer = function(u) {
     return m(u) === i;
   }, Jn.isContextProvider = function(u) {
     return m(u) === r;
@@ -1411,7 +1411,7 @@ function Nz() {
       return typeof A == "string" || typeof A == "function" || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
       A === l || A === V || A === d || A === a || A === o || A === U || typeof A == "object" && A !== null && (A.$$typeof === R || A.$$typeof === N || A.$$typeof === r || A.$$typeof === i || A.$$typeof === s || A.$$typeof === Z || A.$$typeof === W || A.$$typeof === F || A.$$typeof === h);
     }
-    function p(A) {
+    function E(A) {
       if (typeof A == "object" && A !== null) {
         var He = A.$$typeof;
         switch (He) {
@@ -1445,45 +1445,45 @@ function Nz() {
     }
     var u = c, b = V, k = i, Y = r, S = n, v = s, G = l, w = R, y = N, f = t, H = d, I = a, _ = o, oe = !1;
     function ie(A) {
-      return oe || (oe = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.")), le(A) || p(A) === c;
+      return oe || (oe = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.")), le(A) || E(A) === c;
     }
     function le(A) {
-      return p(A) === V;
+      return E(A) === V;
     }
     function ce(A) {
-      return p(A) === i;
+      return E(A) === i;
     }
     function ne(A) {
-      return p(A) === r;
+      return E(A) === r;
     }
     function L(A) {
       return typeof A == "object" && A !== null && A.$$typeof === n;
     }
     function ee(A) {
-      return p(A) === s;
+      return E(A) === s;
     }
     function C(A) {
-      return p(A) === l;
+      return E(A) === l;
     }
     function O(A) {
-      return p(A) === R;
+      return E(A) === R;
     }
     function de(A) {
-      return p(A) === N;
+      return E(A) === N;
     }
     function $(A) {
-      return p(A) === t;
+      return E(A) === t;
     }
     function Ye(A) {
-      return p(A) === d;
+      return E(A) === d;
     }
     function ve(A) {
-      return p(A) === a;
+      return E(A) === a;
     }
     function Qe(A) {
-      return p(A) === o;
+      return E(A) === o;
     }
-    vn.AsyncMode = u, vn.ConcurrentMode = b, vn.ContextConsumer = k, vn.ContextProvider = Y, vn.Element = S, vn.ForwardRef = v, vn.Fragment = G, vn.Lazy = w, vn.Memo = y, vn.Portal = f, vn.Profiler = H, vn.StrictMode = I, vn.Suspense = _, vn.isAsyncMode = ie, vn.isConcurrentMode = le, vn.isContextConsumer = ce, vn.isContextProvider = ne, vn.isElement = L, vn.isForwardRef = ee, vn.isFragment = C, vn.isLazy = O, vn.isMemo = de, vn.isPortal = $, vn.isProfiler = Ye, vn.isStrictMode = ve, vn.isSuspense = Qe, vn.isValidElementType = m, vn.typeOf = p;
+    vn.AsyncMode = u, vn.ConcurrentMode = b, vn.ContextConsumer = k, vn.ContextProvider = Y, vn.Element = S, vn.ForwardRef = v, vn.Fragment = G, vn.Lazy = w, vn.Memo = y, vn.Portal = f, vn.Profiler = H, vn.StrictMode = I, vn.Suspense = _, vn.isAsyncMode = ie, vn.isConcurrentMode = le, vn.isContextConsumer = ce, vn.isContextProvider = ne, vn.isElement = L, vn.isForwardRef = ee, vn.isFragment = C, vn.isLazy = O, vn.isMemo = de, vn.isPortal = $, vn.isProfiler = Ye, vn.isStrictMode = ve, vn.isSuspense = Qe, vn.isValidElementType = m, vn.typeOf = E;
   }()), vn;
 }
 process.env.NODE_ENV === "production" ? ET.exports = Uz() : ET.exports = Nz();
@@ -1888,7 +1888,7 @@ function Iz(e) {
         } catch {
         }
     }
-    return function(W, F, m, p, u, b, k, Y, S, v) {
+    return function(W, F, m, E, u, b, k, Y, S, v) {
       switch (W) {
         case 1:
           if (S === 0 && F.charCodeAt(0) === 64)
@@ -1917,8 +1917,8 @@ function Iz(e) {
   };
   function R(h, Z, W, F) {
     F === void 0 && (F = "&");
-    var m = h.replace(wz, ""), p = Z && W ? W + " " + Z + " { " + m + " }" : m;
-    return n = F, t = Z, l = new RegExp("\\" + t + "\\b", "g"), a = new RegExp("(\\" + t + "\\b){2,}"), s(W || !Z ? "" : Z, p);
+    var m = h.replace(wz, ""), E = Z && W ? W + " " + Z + " { " + m + " }" : m;
+    return n = F, t = Z, l = new RegExp("\\" + t + "\\b", "g"), a = new RegExp("(\\" + t + "\\b){2,}"), s(W || !Z ? "" : Z, E);
   }
   return s.use([].concat(V, [function(h, Z, W) {
     h === 2 && W.length && W[0].lastIndexOf(t) > 0 && (W[0] = W[0].replace(l, N));
@@ -2054,19 +2054,19 @@ Fk.Consumer;
 var qh = {};
 function Wk(e, n, t) {
   var l = WW(e), a = !DU(e), d = n.attrs, r = d === void 0 ? KN : d, i = n.componentId, c = i === void 0 ? function(F, m) {
-    var p = typeof F != "string" ? "sc" : Ah(F);
-    qh[p] = (qh[p] || 0) + 1;
-    var u = p + "-" + Zk("5.3.11" + p + qh[p]);
+    var E = typeof F != "string" ? "sc" : Ah(F);
+    qh[E] = (qh[E] || 0) + 1;
+    var u = E + "-" + Zk("5.3.11" + E + qh[E]);
     return m ? m + "-" + u : u;
   }(n.displayName, n.parentComponentId) : i, V = n.displayName, s = V === void 0 ? function(F) {
     return DU(F) ? "styled." + F : "Styled(" + kT(F) + ")";
   }(e) : V, o = n.displayName && n.componentId ? Ah(n.displayName) + "-" + n.componentId : n.componentId || c, U = l && e.attrs ? Array.prototype.concat(e.attrs, r).filter(Boolean) : r, N = n.shouldForwardProp;
-  l && e.shouldForwardProp && (N = n.shouldForwardProp ? function(F, m, p) {
-    return e.shouldForwardProp(F, m, p) && n.shouldForwardProp(F, m, p);
+  l && e.shouldForwardProp && (N = n.shouldForwardProp ? function(F, m, E) {
+    return e.shouldForwardProp(F, m, E) && n.shouldForwardProp(F, m, E);
   } : e.shouldForwardProp);
   var R, h = new fz(t, o, l ? e.componentStyle : void 0), Z = h.isStatic && r.length === 0, W = function(F, m) {
-    return function(p, u, b, k) {
-      var Y = p.attrs, S = p.componentStyle, v = p.defaultProps, G = p.foldedComponentIds, w = p.shouldForwardProp, y = p.styledComponentId, f = p.target, H = function(C, O, de) {
+    return function(E, u, b, k) {
+      var Y = E.attrs, S = E.componentStyle, v = E.defaultProps, G = E.foldedComponentIds, w = E.shouldForwardProp, y = E.styledComponentId, f = E.target, H = function(C, O, de) {
         C === void 0 && (C = oi);
         var $ = mr({}, O, { theme: C }), Ye = {};
         return de.forEach(function(ve) {
@@ -2077,14 +2077,14 @@ function Wk(e, n, t) {
       }(ex(u, Ot(Fk), v) || oi, u, Y), I = H[0], _ = H[1], oe = function(C, O, de, $) {
         var Ye = Cz(), ve = Kz(), Qe = O ? C.generateAndInjectStyles(oi, Ye, ve) : C.generateAndInjectStyles(de, Ye, ve);
         return process.env.NODE_ENV !== "production" && !O && $ && $(Qe), Qe;
-      }(S, k, I, process.env.NODE_ENV !== "production" ? p.warnTooManyClasses : void 0), ie = b, le = _.$as || u.$as || _.as || u.as || f, ce = DU(le), ne = _ !== u ? mr({}, u, {}, _) : u, L = {};
+      }(S, k, I, process.env.NODE_ENV !== "production" ? E.warnTooManyClasses : void 0), ie = b, le = _.$as || u.$as || _.as || u.as || f, ce = DU(le), ne = _ !== u ? mr({}, u, {}, _) : u, L = {};
       for (var ee in ne)
         ee[0] !== "$" && ee !== "as" && (ee === "forwardedAs" ? L.as = ne[ee] : (w ? w(ee, Tm, le) : !ce || Tm(ee)) && (L[ee] = ne[ee]));
       return u.style && _.style !== u.style && (L.style = mr({}, u.style, {}, _.style)), L.className = Array.prototype.concat(G, y, oe !== y ? oe : null, u.className, _.className).filter(Boolean).join(" "), L.ref = ie, la(le, L);
     }(R, F, m, Z);
   };
   return W.displayName = s, (R = T.forwardRef(W)).attrs = U, R.componentStyle = h, R.displayName = s, R.shouldForwardProp = N, R.foldedComponentIds = l ? Array.prototype.concat(e.foldedComponentIds, e.styledComponentId) : KN, R.styledComponentId = o, R.target = l ? e.target : e, R.withComponent = function(F) {
-    var m = n.componentId, p = function(b, k) {
+    var m = n.componentId, E = function(b, k) {
       if (b == null)
         return {};
       var Y, S, v = {}, G = Object.keys(b);
@@ -2092,15 +2092,15 @@ function Wk(e, n, t) {
         Y = G[S], k.indexOf(Y) >= 0 || (v[Y] = b[Y]);
       return v;
     }(n, ["componentId"]), u = m && m + "-" + (DU(F) ? F : Ah(kT(F)));
-    return Wk(F, mr({}, p, { attrs: U, componentId: u }), t);
+    return Wk(F, mr({}, E, { attrs: U, componentId: u }), t);
   }, Object.defineProperty(R, "defaultProps", { get: function() {
     return this._foldedDefaultProps;
   }, set: function(F) {
     this._foldedDefaultProps = l ? Tk({}, e.defaultProps, F) : F;
   } }), process.env.NODE_ENV !== "production" && ($z(s, o), R.warnTooManyClasses = function(F, m) {
-    var p = {}, u = !1;
+    var E = {}, u = !1;
     return function(b) {
-      if (!u && (p[b] = !0, Object.keys(p).length >= 200)) {
+      if (!u && (E[b] = !0, Object.keys(E).length >= 200)) {
         var k = m ? ' with the id of "' + m + '"' : "";
         console.warn("Over 200 classes were generated for component " + F + k + `.
 Consider using the attrs method, together with a style object for frequently changed styles.
@@ -2111,7 +2111,7 @@ Example:
     },
   }))\`width: 100%;\`
 
-  <Component />`), u = !0, p = {};
+  <Component />`), u = !0, E = {};
       }
     };
   }(s, o)), Object.defineProperty(R, "toString", { value: function() {
@@ -2316,7 +2316,7 @@ function rx(e, n) {
   }
   return t;
 }
-function E(e, n, t, l) {
+function M(e, n, t, l) {
   return new (t || (t = Promise))(function(a, d) {
     function r(V) {
       try {
@@ -2341,7 +2341,7 @@ function E(e, n, t, l) {
     c((l = l.apply(e, n || [])).next());
   });
 }
-function M(e, n) {
+function p(e, n) {
   var t, l, a, d, r = { label: 0, sent: function() {
     if (1 & a[0])
       throw a[1];
@@ -2623,8 +2623,8 @@ var wl, eV, sl, xT, Ds, Il = function(e) {
     this._preference = /* @__PURE__ */ new Map(), this._store = t;
   }
   return e.prototype._savePreferenceKeys = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, this._store.set({ key: this._keysAddress, value: st([], et(this._preference.keys()), !1) })];
@@ -2635,9 +2635,9 @@ var wl, eV, sl, xT, Ds, Il = function(e) {
     });
   }, e.prototype.init = function(n, t) {
     var l;
-    return t === void 0 && (t = 1), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = 1), M(this, void 0, void 0, function() {
       var a, d, r, i, c, V, s, o, U, N;
-      return M(this, function(R) {
+      return p(this, function(R) {
         switch (R.label) {
           case 0:
             return this._version = t, this._keysAddress = n, a = "".concat(n, ".metadata.version"), [4, this._store.get(a)];
@@ -2673,8 +2673,8 @@ var wl, eV, sl, xT, Ds, Il = function(e) {
       });
     });
   }, e.prototype._resetPreferenceData = function(n, t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this._preference = /* @__PURE__ */ new Map(), [4, this._store.removeMany(n)];
@@ -2686,15 +2686,15 @@ var wl, eV, sl, xT, Ds, Il = function(e) {
       });
     });
   }, e.prototype.get = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2, this._preference.get(n)];
       });
     });
   }, e.prototype.set = function(n, t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = !this._preference.has(n), [4, this._store.set({ key: n, value: t })];
@@ -2708,8 +2708,8 @@ var wl, eV, sl, xT, Ds, Il = function(e) {
       });
     });
   }, e.prototype.remove = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._store.remove(n)];
@@ -2721,8 +2721,8 @@ var wl, eV, sl, xT, Ds, Il = function(e) {
       });
     });
   }, e.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, this._store.removeMany(st([], et(this._preference.keys()), !1))];
@@ -3158,14 +3158,14 @@ var bx = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
   }, e.prototype._statLogApiResult = function(n, t, l) {
     this._dispatcher.dispatch(new MW(new Ml({ type: Sn.API_RESULT, data: { endpoint: n.path, method: n.method, success: !l, latency: Date.now() - t, error_code: l == null ? void 0 : l.code, error_description: l == null ? void 0 : l.message } })));
   }, e.prototype.send = function(n) {
-    return E(this, void 0, void 0, function() {
-      var t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u;
-      return M(this, function(b) {
+    return M(this, void 0, void 0, function() {
+      var t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u;
+      return p(this, function(b) {
         switch (b.label) {
           case 0:
             t = n.path, l = n.method, a = n.uploadProgressHandler, d = ![Re.GET, Re.DELETE].includes(l), r = this._sdkState.api, i = "".concat(r.host).concat(t).concat(d ? "" : n.query), c = d ? n.payload : null, V = this._createHeader(n, c instanceof FormData ? c : void 0), s = new AbortController(), o = s.signal, this._abortControl.set(n.requestId, s), U = Date.now(), b.label = 1;
           case 1:
-            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-ba14c836.mjs")] : [3, 6];
+            return b.trys.push([1, 13, , 14]), a ? [4, import("./__bundle-aece11ae-6d43cda8.mjs")] : [3, 6];
           case 2:
             N = b.sent().xmlHttpRequest, b.label = 3;
           case 3:
@@ -3177,11 +3177,11 @@ var bx = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
               throw h;
             return this._logger.debug("XMLHttpRequest is not available in this environment. progressHandler is ignored."), [3, 6];
           case 6:
-            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-c1d8fef8.mjs").then((k) => k._)];
+            return this._shouldImportFetchCompat && (this._shouldImportFetchCompat = !1, (typeof globalThis < "u" && globalThis || typeof self < "u" && self || typeof global < "u" && global || { fetch: null }).fetch = null), typeof AbortController < "u" ? [3, 8] : [4, import("./__bundle-2aa1a987-df2011d1.mjs").then((k) => k._)];
           case 7:
             b.sent(), b.label = 8;
           case 8:
-            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-7fcec4e3.mjs").then((k) => k._)];
+            return typeof fetch == "function" ? [3, 10] : [4, import("./__bundle-ba2b9764-542c99aa.mjs").then((k) => k._)];
           case 9:
             b.sent(), b.label = 10;
           case 10:
@@ -3201,7 +3201,7 @@ var bx = "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*
             }
             throw j.requestFailed;
           case 13:
-            throw p = b.sent(), this._statLogApiResult(n, U, p), p instanceof j ? (this._logger.debug("fail api request", p), p) : (p == null ? void 0 : p.name) === "AbortError" ? j.requestCanceled : (u = j.networkError, this._logger.debug("fail api request", u), u);
+            throw E = b.sent(), this._statLogApiResult(n, U, E), E instanceof j ? (this._logger.debug("fail api request", E), E) : (E == null ? void 0 : E.name) === "AbortError" ? j.requestCanceled : (u = j.networkError, this._logger.debug("fail api request", u), u);
           case 14:
             return [2];
         }
@@ -3315,11 +3315,11 @@ const xk = (e) => e < 256 ? Wo[e] : Wo[256 + (e >>> 7)], mo = (e, n) => {
   while (e.heap_len >= 2);
   e.heap[--e.heap_max] = e.heap[1], ((s, o) => {
     const U = o.dyn_tree, N = o.max_code, R = o.stat_desc.static_tree, h = o.stat_desc.has_stree, Z = o.stat_desc.extra_bits, W = o.stat_desc.extra_base, F = o.stat_desc.max_length;
-    let m, p, u, b, k, Y, S = 0;
+    let m, E, u, b, k, Y, S = 0;
     for (b = 0; b <= js; b++)
       s.bl_count[b] = 0;
     for (U[2 * s.heap[s.heap_max] + 1] = 0, m = s.heap_max + 1; m < 573; m++)
-      p = s.heap[m], b = U[2 * U[2 * p + 1] + 1] + 1, b > F && (b = F, S++), U[2 * p + 1] = b, p > N || (s.bl_count[b]++, k = 0, p >= W && (k = Z[p - W]), Y = U[2 * p], s.opt_len += Y * (b + k), h && (s.static_len += Y * (R[2 * p + 1] + k)));
+      E = s.heap[m], b = U[2 * U[2 * E + 1] + 1] + 1, b > F && (b = F, S++), U[2 * E + 1] = b, E > N || (s.bl_count[b]++, k = 0, E >= W && (k = Z[E - W]), Y = U[2 * E], s.opt_len += Y * (b + k), h && (s.static_len += Y * (R[2 * E + 1] + k)));
     if (S !== 0) {
       do {
         for (b = F - 1; s.bl_count[b] === 0; )
@@ -3327,8 +3327,8 @@ const xk = (e) => e < 256 ? Wo[e] : Wo[256 + (e >>> 7)], mo = (e, n) => {
         s.bl_count[b]--, s.bl_count[b + 1] += 2, s.bl_count[F]--, S -= 2;
       } while (S > 0);
       for (b = F; b !== 0; b--)
-        for (p = s.bl_count[b]; p !== 0; )
-          u = s.heap[--m], u > N || (U[2 * u + 1] !== b && (s.opt_len += (b - U[2 * u + 1]) * U[2 * u], U[2 * u + 1] = b), p--);
+        for (E = s.bl_count[b]; E !== 0; )
+          u = s.heap[--m], u > N || (U[2 * u + 1] !== b && (s.opt_len += (b - U[2 * u + 1]) * U[2 * u], U[2 * u + 1] = b), E--);
     }
   })(e, n), yk(t, V, e.bl_count);
 }, Hm = (e, n, t) => {
@@ -3861,7 +3861,7 @@ var nG = { Deflate: Is, deflate: dZ, deflateRaw: function(e, n) {
 }, constants: yV };
 const OU = 16209;
 var lG = function(e, n) {
-  let t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S;
+  let t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S;
   const v = e.state;
   t = e.next_in, Y = e.input, l = t + (e.avail_in - 5), a = e.next_out, S = e.output, d = a - (n - e.avail_out), r = a + (e.avail_out - 257), i = v.dmax, c = v.wsize, V = v.whave, s = v.wnext, o = v.window, U = v.hold, N = v.bits, R = v.lencode, h = v.distcode, Z = (1 << v.lenbits) - 1, W = (1 << v.distbits) - 1;
   e:
@@ -3884,7 +3884,7 @@ var lG = function(e, n) {
               e.msg = "invalid literal/length code", v.mode = OU;
               break e;
             }
-            p = 65535 & F, m &= 15, m && (N < m && (U += Y[t++] << N, N += 8), p += U & (1 << m) - 1, U >>>= m, N -= m), N < 15 && (U += Y[t++] << N, N += 8, U += Y[t++] << N, N += 8), F = h[U & W];
+            E = 65535 & F, m &= 15, m && (N < m && (U += Y[t++] << N, N += 8), E += U & (1 << m) - 1, U >>>= m, N -= m), N < 15 && (U += Y[t++] << N, N += 8, U += Y[t++] << N, N += 8), F = h[U & W];
             n:
               for (; ; ) {
                 if (m = F >>> 24, U >>>= m, N -= m, m = F >>> 16 & 255, !(16 & m)) {
@@ -3905,43 +3905,43 @@ var lG = function(e, n) {
                     break e;
                   }
                   if (b = 0, k = o, s === 0) {
-                    if (b += c - m, m < p) {
-                      p -= m;
+                    if (b += c - m, m < E) {
+                      E -= m;
                       do
                         S[a++] = o[b++];
                       while (--m);
                       b = a - u, k = S;
                     }
                   } else if (s < m) {
-                    if (b += c + s - m, m -= s, m < p) {
-                      p -= m;
+                    if (b += c + s - m, m -= s, m < E) {
+                      E -= m;
                       do
                         S[a++] = o[b++];
                       while (--m);
-                      if (b = 0, s < p) {
-                        m = s, p -= m;
+                      if (b = 0, s < E) {
+                        m = s, E -= m;
                         do
                           S[a++] = o[b++];
                         while (--m);
                         b = a - u, k = S;
                       }
                     }
-                  } else if (b += s - m, m < p) {
-                    p -= m;
+                  } else if (b += s - m, m < E) {
+                    E -= m;
                     do
                       S[a++] = o[b++];
                     while (--m);
                     b = a - u, k = S;
                   }
-                  for (; p > 2; )
-                    S[a++] = k[b++], S[a++] = k[b++], S[a++] = k[b++], p -= 3;
-                  p && (S[a++] = k[b++], p > 1 && (S[a++] = k[b++]));
+                  for (; E > 2; )
+                    S[a++] = k[b++], S[a++] = k[b++], S[a++] = k[b++], E -= 3;
+                  E && (S[a++] = k[b++], E > 1 && (S[a++] = k[b++]));
                 } else {
                   b = a - u;
                   do
-                    S[a++] = S[b++], S[a++] = S[b++], S[a++] = S[b++], p -= 3;
-                  while (p > 2);
-                  p && (S[a++] = S[b++], p > 1 && (S[a++] = S[b++]));
+                    S[a++] = S[b++], S[a++] = S[b++], S[a++] = S[b++], E -= 3;
+                  while (E > 2);
+                  E && (S[a++] = S[b++], E > 1 && (S[a++] = S[b++]));
                 }
                 break;
               }
@@ -3949,12 +3949,12 @@ var lG = function(e, n) {
           break;
         }
     } while (t < l && a < r);
-  p = N >> 3, t -= p, N -= p << 3, U &= (1 << N) - 1, e.next_in = t, e.next_out = a, e.avail_in = t < l ? l - t + 5 : 5 - (t - l), e.avail_out = a < r ? r - a + 257 : 257 - (a - r), v.hold = U, v.bits = N;
+  E = N >> 3, t -= E, N -= E << 3, U &= (1 << N) - 1, e.next_in = t, e.next_out = a, e.avail_in = t < l ? l - t + 5 : 5 - (t - l), e.avail_out = a < r ? r - a + 257 : 257 - (a - r), v.hold = U, v.bits = N;
 };
 const jU = 15, aG = new Uint16Array([3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258, 0, 0]), dG = new Uint8Array([16, 16, 16, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 16, 72, 78]), rG = new Uint16Array([1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577, 0, 0]), iG = new Uint8Array([16, 16, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26, 27, 27, 28, 28, 29, 29, 64, 64]);
 var Ls = (e, n, t, l, a, d, r, i) => {
   const c = i.bits;
-  let V, s, o, U, N, R, h = 0, Z = 0, W = 0, F = 0, m = 0, p = 0, u = 0, b = 0, k = 0, Y = 0, S = null;
+  let V, s, o, U, N, R, h = 0, Z = 0, W = 0, F = 0, m = 0, E = 0, u = 0, b = 0, k = 0, Y = 0, S = null;
   const v = new Uint16Array(16), G = new Uint16Array(16);
   let w, y, f, H = null;
   for (h = 0; h <= jU; h++)
@@ -3976,10 +3976,10 @@ var Ls = (e, n, t, l, a, d, r, i) => {
     G[h + 1] = G[h] + v[h];
   for (Z = 0; Z < l; Z++)
     n[t + Z] !== 0 && (r[G[n[t + Z]]++] = Z);
-  if (e === 0 ? (S = H = r, R = 20) : e === 1 ? (S = aG, H = dG, R = 257) : (S = rG, H = iG, R = 0), Y = 0, Z = 0, h = W, N = d, p = m, u = 0, o = -1, k = 1 << m, U = k - 1, e === 1 && k > 852 || e === 2 && k > 592)
+  if (e === 0 ? (S = H = r, R = 20) : e === 1 ? (S = aG, H = dG, R = 257) : (S = rG, H = iG, R = 0), Y = 0, Z = 0, h = W, N = d, E = m, u = 0, o = -1, k = 1 << m, U = k - 1, e === 1 && k > 852 || e === 2 && k > 592)
     return 1;
   for (; ; ) {
-    w = h - u, r[Z] + 1 < R ? (y = 0, f = r[Z]) : r[Z] >= R ? (y = H[r[Z] - R], f = S[r[Z] - R]) : (y = 96, f = 0), V = 1 << h - u, s = 1 << p, W = s;
+    w = h - u, r[Z] + 1 < R ? (y = 0, f = r[Z]) : r[Z] >= R ? (y = H[r[Z] - R], f = S[r[Z] - R]) : (y = 96, f = 0), V = 1 << h - u, s = 1 << E, W = s;
     do
       s -= V, a[N + (Y >> u) + s] = w << 24 | y << 16 | f | 0;
     while (s !== 0);
@@ -3991,11 +3991,11 @@ var Ls = (e, n, t, l, a, d, r, i) => {
       h = n[t + r[Z]];
     }
     if (h > m && (Y & U) !== o) {
-      for (u === 0 && (u = m), N += W, p = h - u, b = 1 << p; p + u < F && (b -= v[p + u], !(b <= 0)); )
-        p++, b <<= 1;
-      if (k += 1 << p, e === 1 && k > 852 || e === 2 && k > 592)
+      for (u === 0 && (u = m), N += W, E = h - u, b = 1 << E; E + u < F && (b -= v[E + u], !(b <= 0)); )
+        E++, b <<= 1;
+      if (k += 1 << E, e === 1 && k > 852 || e === 2 && k > 592)
         return 1;
-      o = Y & U, a[o] = m << 24 | p << 16 | N - d | 0;
+      o = Y & U, a[o] = m << 24 | E << 16 | N - d | 0;
     }
   }
   return Y !== 0 && (a[N + Y] = h - u << 24 | 64 << 16 | 0), i.bits = m, 0;
@@ -4057,7 +4057,7 @@ const NG = (e) => {
   return d.window === null && (d.wsize = 1 << d.wbits, d.wnext = 0, d.whave = 0, d.window = new Uint8Array(d.wsize)), l >= d.wsize ? (d.window.set(n.subarray(t - d.wsize, t), 0), d.wnext = 0, d.whave = d.wsize) : (a = d.wsize - d.wnext, a > l && (a = l), d.window.set(n.subarray(t - l, t - l + a), d.wnext), (l -= a) ? (d.window.set(n.subarray(t - l, t), 0), d.wnext = l, d.whave = d.wsize) : (d.wnext += a, d.wnext === d.wsize && (d.wnext = 0), d.whave < d.wsize && (d.whave += a))), 0;
 };
 var Tr = { inflateReset: Ck, inflateReset2: Kk, inflateResetKeep: Lk, inflateInit: (e) => $m(e, 15), inflateInit2: $m, inflate: (e, n) => {
-  let t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y = 0;
+  let t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y = 0;
   const S = new Uint8Array(4);
   let v, G;
   const w = new Uint8Array([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]);
@@ -4345,7 +4345,7 @@ var Tr = { inflateReset: Ck, inflateReset2: Kk, inflateResetKeep: Lk, inflateIni
             i--, V += l[d++] << s, s += 8;
           }
           if (W && !(240 & W)) {
-            for (m = Z, p = W, u = F; Y = t.lencode[u + ((V & (1 << m + p) - 1) >> m)], Z = Y >>> 24, W = Y >>> 16 & 255, F = 65535 & Y, !(m + Z <= s); ) {
+            for (m = Z, E = W, u = F; Y = t.lencode[u + ((V & (1 << m + E) - 1) >> m)], Z = Y >>> 24, W = Y >>> 16 & 255, F = 65535 & Y, !(m + Z <= s); ) {
               if (i === 0)
                 break e;
               i--, V += l[d++] << s, s += 8;
@@ -4382,7 +4382,7 @@ var Tr = { inflateReset: Ck, inflateReset2: Kk, inflateResetKeep: Lk, inflateIni
             i--, V += l[d++] << s, s += 8;
           }
           if (!(240 & W)) {
-            for (m = Z, p = W, u = F; Y = t.distcode[u + ((V & (1 << m + p) - 1) >> m)], Z = Y >>> 24, W = Y >>> 16 & 255, F = 65535 & Y, !(m + Z <= s); ) {
+            for (m = Z, E = W, u = F; Y = t.distcode[u + ((V & (1 << m + E) - 1) >> m)], Z = Y >>> 24, W = Y >>> 16 & 255, F = 65535 & Y, !(m + Z <= s); ) {
               if (i === 0)
                 break e;
               i--, V += l[d++] << s, s += 8;
@@ -4543,9 +4543,9 @@ var WG = { Inflate: Ks, inflate: NZ, inflateRaw: function(e, n) {
 }, ungzip: NZ, constants: yV };
 const { Deflate: mG, deflate: uG, deflateRaw: pG, gzip: MG } = nG, { Inflate: EG, inflate: SG, inflateRaw: kG, ungzip: bG } = WG;
 var wd, YG = { Deflate: mG, deflate: uG, deflateRaw: pG, gzip: MG, Inflate: EG, inflate: SG, inflateRaw: kG, ungzip: bG, constants: yV }, lu = function(e) {
-  return E(void 0, void 0, void 0, function() {
+  return M(void 0, void 0, void 0, function() {
     var n;
-    return M(this, function(t) {
+    return p(this, function(t) {
       return n = YG.ungzip(e), [2, String.fromCharCode.apply(null, n)];
     });
   });
@@ -4596,15 +4596,15 @@ var ln, QG = function(e) {
     l === void 0 && (l = ""), this._ws = new WebSocket(t, encodeURIComponent(l)), this._ws.onopen = function() {
       a._logger.debug("websocket open"), a.dispatch("open");
     }, this._ws.onmessage = function(d) {
-      return E(a, void 0, void 0, function() {
+      return M(a, void 0, void 0, function() {
         var r, i, c, V, s = this;
-        return M(this, function(o) {
+        return p(this, function(o) {
           switch (o.label) {
             case 0:
               return !((V = this._sdkState.websocket) === null || V === void 0) && V.compression ? d.data instanceof Blob ? ((r = new FileReader()).readAsArrayBuffer(d.data), r.onloadend = function() {
-                return E(s, void 0, void 0, function() {
+                return M(s, void 0, void 0, function() {
                   var U, N;
-                  return M(this, function(R) {
+                  return p(this, function(R) {
                     switch (R.label) {
                       case 0:
                         return R.trys.push([0, 2, , 3]), [4, lu(r.result)];
@@ -4684,8 +4684,8 @@ var ln, QG = function(e) {
     });
   }
   return e.prototype._sendApiRequest = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this.apiClient.send(n)];
@@ -4695,9 +4695,9 @@ var ln, QG = function(e) {
       });
     });
   }, e.prototype._sendWebsocketRequest = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d = this;
-      return M(this, function(r) {
+      return p(this, function(r) {
         if (!this._sdkState.websocket)
           throw j.connectionRequired;
         if (t = new Ll(), n.ackRequired) {
@@ -4725,8 +4725,8 @@ var ln, QG = function(e) {
       });
     });
   }, e.prototype.send = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return n instanceof Ze ? [4, this._sendApiRequest(n)] : [3, 2];
@@ -4902,9 +4902,9 @@ var kc, Gt = function(e) {
       l ? delete a.metaData[d] : a.metaData[d] = t[d];
     });
   }, n.prototype.createMetaData = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return he(this._isValidMetaData(t)).throw(j.invalidParameters), l = D.of(this._iid), a = l.sdkState, d = l.requestQueue, r = new zG({ userId: a.userId, metadata: t }), [4, d.send(r)];
@@ -4914,9 +4914,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.updateMetaData = function(t, l) {
-    return l === void 0 && (l = !1), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !1), M(this, void 0, void 0, function() {
       var a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return he(this._isValidMetaData(t)).throw(j.invalidParameters), a = D.of(this._iid), d = a.sdkState, r = a.requestQueue, i = new GG({ userId: d.userId, metadata: t, upsert: l }), [4, r.send(i)];
@@ -4926,9 +4926,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.deleteMetaData = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return he(B("string", t)).throw(j.invalidParameters), l = D.of(this._iid), a = l.sdkState, d = l.requestQueue, r = new BG({ userId: a.userId, metadataKey: t }), [4, d.send(r)];
@@ -4938,9 +4938,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.deleteAllMetaData = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new DG({ userId: l.userId }), [4, a.send(d)];
@@ -4983,9 +4983,9 @@ var kc, Gt = function(e) {
   return J(n, e), n.asError = function(t) {
     return new n("", "LOGI", x({ user_id: "", error: !0 }, t));
   }, n.prototype.applyTo = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return this.error ? [3, 4] : (l = D.of(t)) ? (a = l.sessionManager, d = l.dispatcher, [4, a.login(this)]) : [3, 2];
@@ -5008,46 +5008,46 @@ var kc, Gt = function(e) {
     this.type = ln.NONE, this.name = "none";
   }
   return e.prototype.run = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2];
       });
     });
   }, e.prototype.onConnect = function(n, t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2];
       });
     });
   }, e.prototype.onReconnect = function(n, t) {
-    return t.resetReconnectCount, E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return t.resetReconnectCount, M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2];
       });
     });
   }, e.prototype.onDisconnect = function(n, t) {
-    return t.error, t.autoReconnect, t.cause, E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return t.error, t.autoReconnect, t.cause, M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2];
       });
     });
   }, e.prototype.onDisconnectWebSocket = function(n, t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2];
       });
     });
   }, e.prototype.onLogout = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2];
       });
     });
   }, e;
 }(), Le = function(e) {
-  return E(void 0, void 0, void 0, function() {
+  return M(void 0, void 0, void 0, function() {
     var n;
-    return M(this, function(t) {
+    return p(this, function(t) {
       switch (t.label) {
         case 0:
           return t.trys.push([0, 2, , 3]), [4, e()];
@@ -5063,8 +5063,8 @@ var kc, Gt = function(e) {
     });
   });
 }, Bn = function(e) {
-  return E(void 0, void 0, void 0, function() {
-    return M(this, function(n) {
+  return M(void 0, void 0, void 0, function() {
+    return p(this, function(n) {
       switch (n.label) {
         case 0:
           return n.trys.push([0, 2, , 3]), [4, e()];
@@ -5083,9 +5083,9 @@ var kc, Gt = function(e) {
     return (a = e.call(this) || this).type = ln.LOGOUT, a.name = "logout", a._wasPreviouslyConnected = (l = t.wasPreviouslyConnected) === null || l === void 0 || l, a;
   }
   return J(n, e), n.prototype.run = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d = this;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return l = Date.now(), a = t.sdkState.userId, [4, t.logout()];
@@ -5093,8 +5093,8 @@ var kc, Gt = function(e) {
             return r.sent(), [4, t.changeState(new bW(), l)];
           case 2:
             return r.sent(), this._wasPreviouslyConnected && Le(function() {
-              return E(d, void 0, void 0, function() {
-                return M(this, function(i) {
+              return M(d, void 0, void 0, function() {
+                return p(this, function(i) {
                   return t.connectionHandlers.forEach(function(c) {
                     c.onDisconnected && c.onDisconnected(a);
                   }), [2];
@@ -5111,8 +5111,8 @@ var kc, Gt = function(e) {
     return t.type = ln.EXTERNAL_DISCONNECTED, t.name = "externaldisconnected", t;
   }
   return J(n, e), n.prototype.run = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, t.disconnect()];
@@ -5122,9 +5122,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onConnect = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = Date.now(), [4, t.disconnect()];
@@ -5136,9 +5136,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onReconnect = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.changeState(new lR(), l)];
@@ -5148,9 +5148,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onLogout = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.changeState(new Ti(), l)];
@@ -5166,9 +5166,9 @@ var kc, Gt = function(e) {
     return a.type = ln.INTERNAL_DISCONNECTED, a.name = "internaldisconnected", a._autoReconnect = !1, a._autoReconnect = l, a;
   }
   return J(n, e), n.prototype.run = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.disconnect()];
@@ -5182,9 +5182,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onConnect = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = Date.now(), [4, t.disconnect()];
@@ -5196,9 +5196,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onReconnect = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.changeState(new lR(), l)];
@@ -5208,9 +5208,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onDisconnectWebSocket = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.changeState(new CR(), l)];
@@ -5220,9 +5220,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onLogout = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.changeState(new Ti(), l)];
@@ -5233,8 +5233,8 @@ var kc, Gt = function(e) {
     });
   }, n;
 }(BV), Qa = function(e) {
-  return E(void 0, void 0, void 0, function() {
-    return M(this, function(n) {
+  return M(void 0, void 0, void 0, function() {
+    return p(this, function(n) {
       return [2, new Promise(function(t) {
         return setTimeout(t, e);
       })];
@@ -5247,9 +5247,9 @@ var kc, Gt = function(e) {
     return 0;
   }, e;
 }(), KR = function(e, n, t) {
-  return t === void 0 && (t = new t3()), E(void 0, void 0, void 0, function() {
+  return t === void 0 && (t = new t3()), M(void 0, void 0, void 0, function() {
     var l, a, d, r, i, c;
-    return M(this, function(V) {
+    return p(this, function(V) {
       switch (V.label) {
         case 0:
           l = 0, a = null, d = function(s) {
@@ -5298,16 +5298,16 @@ var kc, Gt = function(e) {
       return l(t);
     });
   }, n.prototype.run = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V = this;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             l = Date.now(), a = new Ll(), this._callbacks.push(function(o) {
               return o ? a.reject(o) : a.resolve();
             }), Le(function() {
-              return E(V, void 0, void 0, function() {
-                return M(this, function(o) {
+              return M(V, void 0, void 0, function() {
+                return p(this, function(o) {
                   return t.connectionHandlers.forEach(function(U) {
                     U.onReconnectStarted && U.onReconnectStarted();
                   }), [2];
@@ -5316,9 +5316,9 @@ var kc, Gt = function(e) {
             }), s.label = 1;
           case 1:
             return s.trys.push([1, 4, , 9]), d = t.sdkState.websocket, r = d.reconnectMaxRetry, i = d.reconnectRetryStrategy, [4, KR(function(o, U) {
-              return E(V, void 0, void 0, function() {
+              return M(V, void 0, void 0, function() {
                 var N;
-                return M(this, function(R) {
+                return p(this, function(R) {
                   switch (R.label) {
                     case 0:
                       this._haltConnect = o, this._resetConnect = U, R.label = 1;
@@ -5344,8 +5344,8 @@ var kc, Gt = function(e) {
             return s.sent(), [4, t.changeState(new n3(), l)];
           case 3:
             return s.sent(), this._flushCallbacks(), Le(function() {
-              return E(V, void 0, void 0, function() {
-                return M(this, function(o) {
+              return M(V, void 0, void 0, function() {
+                return p(this, function(o) {
                   return t.connectionHandlers.forEach(function(U) {
                     U.onReconnectSucceeded && U.onReconnectSucceeded();
                   }), [2];
@@ -5358,8 +5358,8 @@ var kc, Gt = function(e) {
             s.sent(), s.label = 6;
           case 6:
             return this._flushCallbacks(c), Le(function() {
-              return E(V, void 0, void 0, function() {
-                return M(this, function(o) {
+              return M(V, void 0, void 0, function() {
+                return p(this, function(o) {
                   return t.connectionHandlers.forEach(function(U) {
                     U.onReconnectFailed && U.onReconnectFailed();
                   }), [2];
@@ -5376,9 +5376,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onConnect = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         return a = new Ll(), this._halt(j.connectionCanceled), t.cancelConnectForRetry(), this._callbacks.push(function() {
           var r = Date.now();
           t.changeState(new _R({ authToken: l }), r).then(function() {
@@ -5391,9 +5391,9 @@ var kc, Gt = function(e) {
     });
   }, n.prototype.onReconnect = function(t, l) {
     var a = l.resetReconnectCount, d = a !== void 0 && a;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         return r = new Ll(), this._resetConnect && d && this._resetConnect(), this._callbacks.push(function(c) {
           return c ? r.reject(c) : r.resolve();
         }), [2, r.promise];
@@ -5402,9 +5402,9 @@ var kc, Gt = function(e) {
   }, n.prototype.onDisconnect = function(t, l) {
     l.error;
     var a = l.autoReconnect, d = a === void 0 || a;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return r = Date.now(), this._halt(j.connectionCanceled), [4, t.changeState(new nR({ autoReconnect: d }), r)];
@@ -5414,9 +5414,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onDisconnectWebSocket = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), this._halt(j.connectionCanceled), [4, t.changeState(new CR(), l)];
@@ -5426,9 +5426,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onLogout = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), this._halt(j.connectionCanceled), [4, t.changeState(new Ti(), l)];
@@ -5444,9 +5444,9 @@ var kc, Gt = function(e) {
     return t.type = ln.CONNECTED, t.name = "connected", t;
   }
   return J(n, e), n.prototype.onReconnect = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.disconnect()];
@@ -5459,9 +5459,9 @@ var kc, Gt = function(e) {
     });
   }, n.prototype.onDisconnect = function(t, l) {
     var a = l.autoReconnect;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return d = Date.now(), [4, t.changeState(new nR({ autoReconnect: a }), d)];
@@ -5471,9 +5471,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onDisconnectWebSocket = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.changeState(new CR(), l)];
@@ -5483,9 +5483,9 @@ var kc, Gt = function(e) {
       });
     });
   }, n.prototype.onLogout = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.changeState(new Ti(), l)];
@@ -5508,8 +5508,8 @@ var XG = function() {
     var n = this;
     this._disableWebSocketCloseEventHandling || (this._clearEventDispatcher(), this._sessionEventDispatcherContext = this._sessionManager.on("refresh", function() {
       n.isConnecting || n.isConnected || (n._logger.debug("try reconnect by session key refresh"), Bn(function() {
-        return E(n, void 0, void 0, function() {
-          return M(this, function(t) {
+        return M(n, void 0, void 0, function() {
+          return p(this, function(t) {
             switch (t.label) {
               case 0:
                 return [4, this.reconnect()];
@@ -5521,8 +5521,8 @@ var XG = function() {
       }));
     }), this._websocketEventDispatcherContext = this._websocketClient.on("close", function() {
       n._sdkState.appState !== "foreground" || n._webSocketClosedCause || Bn(function() {
-        return E(n, void 0, void 0, function() {
-          return M(this, function(t) {
+        return M(n, void 0, void 0, function() {
+          return p(this, function(t) {
             switch (t.label) {
               case 0:
                 return this._sessionManager.isSessionKeyRefreshing ? [3, 2] : (this._logger.debug("try reconnect by websocket connection closed"), [4, this.reconnect()]);
@@ -5549,9 +5549,9 @@ var XG = function() {
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(e.prototype, "websocketClient", { get: function() {
     return this._websocketClient;
   }, enumerable: !1, configurable: !0 }), e.prototype.connect = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return t = this._context.currentState, this._webSocketClosedCause = null, [4, t.onConnect(this._context, n)];
@@ -5561,9 +5561,9 @@ var XG = function() {
       });
     });
   }, e.prototype.reconnect = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return n = this._context.currentState, this._webSocketClosedCause = null, [4, n.onReconnect(this._context, {})];
@@ -5573,9 +5573,9 @@ var XG = function() {
       });
     });
   }, e.prototype.resetAndReconnect = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return n = this._context.currentState, this._webSocketClosedCause = null, [4, n.onReconnect(this._context, { resetReconnectCount: !0 })];
@@ -5585,9 +5585,9 @@ var XG = function() {
       });
     });
   }, e.prototype.background = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return n = this._context.currentState, this._webSocketClosedCause = kc.ExternalSetBackground, [4, n.onDisconnect(this._context, { autoReconnect: !1, cause: this._webSocketClosedCause })];
@@ -5597,8 +5597,8 @@ var XG = function() {
       });
     });
   }, e.prototype.disconnect = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._context.currentState.onDisconnect(this._context, { error: n, autoReconnect: !0, cause: this._webSocketClosedCause })];
@@ -5608,9 +5608,9 @@ var XG = function() {
       });
     });
   }, e.prototype.disconnectWebSocket = function(n) {
-    return n === void 0 && (n = !1), E(this, void 0, void 0, function() {
+    return n === void 0 && (n = !1), M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return t = this._context.currentState, n && (this._webSocketClosedCause = kc.ExternalDisconnectWebSocket), [4, t.onDisconnectWebSocket(this._context, { cause: this._webSocketClosedCause })];
@@ -5620,9 +5620,9 @@ var XG = function() {
       });
     });
   }, e.prototype.logout = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return n = this._context.currentState, this._clearEventDispatcher(), [4, n.onLogout(this._context)];
@@ -5644,9 +5644,9 @@ var XG = function() {
       return l(t);
     });
   }, n.prototype.run = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r = this;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             l = Date.now(), a = new Ll(), this._callbacks.push(function(c) {
@@ -5654,9 +5654,9 @@ var XG = function() {
             }), i.label = 1;
           case 1:
             return i.trys.push([1, 4, , 10]), [4, KR(function(c) {
-              return E(r, void 0, void 0, function() {
+              return M(r, void 0, void 0, function() {
                 var V;
-                return M(this, function(s) {
+                return p(this, function(s) {
                   switch (s.label) {
                     case 0:
                       this._haltConnect = c, s.label = 1;
@@ -5678,8 +5678,8 @@ var XG = function() {
             return i.sent(), [4, t.changeState(new n3(), l)];
           case 3:
             return i.sent(), Le(function() {
-              return E(r, void 0, void 0, function() {
-                return M(this, function(c) {
+              return M(r, void 0, void 0, function() {
+                return p(this, function(c) {
                   return this._flushCallbacks(), t.connectionHandlers.forEach(function(V) {
                     V.onConnected && V.onConnected(t.sdkState.userId);
                   }), [2];
@@ -5694,8 +5694,8 @@ var XG = function() {
             i.sent(), i.label = 7;
           case 7:
             return Le(function() {
-              return E(r, void 0, void 0, function() {
-                return M(this, function(c) {
+              return M(r, void 0, void 0, function() {
+                return p(this, function(c) {
                   return this._flushCallbacks(d), [2];
                 });
               });
@@ -5710,9 +5710,9 @@ var XG = function() {
       });
     });
   }, n.prototype.onConnect = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         return l = new Ll(), this._callbacks.push(function(d) {
           return d ? l.reject(d) : l.resolve();
         }), [2, l.promise];
@@ -5720,9 +5720,9 @@ var XG = function() {
     });
   }, n.prototype.onDisconnect = function(t, l) {
     var a = l.error, d = a === void 0 ? null : a, r = l.autoReconnect, i = r !== void 0 && r, c = l.cause, V = c === void 0 ? null : c;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var s;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return s = Date.now(), this._halt(d ?? cu(V)), t.hasSession ? [4, t.changeState(new nR({ autoReconnect: i }), s)] : [3, 2];
@@ -5738,9 +5738,9 @@ var XG = function() {
       });
     });
   }, n.prototype.onDisconnectWebSocket = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return this._halt(cu((l == null ? void 0 : l.cause) || null)), a = Date.now(), t.hasSession ? [4, t.changeState(new CR(), a)] : [3, 2];
@@ -5756,9 +5756,9 @@ var XG = function() {
       });
     });
   }, n.prototype.onLogout = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), this._halt(j.connectionCanceled), [4, t.changeState(new Ti(), l)];
@@ -5790,9 +5790,9 @@ var _r, bW = function(e) {
     return t.type = ln.INITIALIZED, t.name = "initialized", t;
   }
   return J(n, e), n.prototype.onConnect = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = Date.now(), [4, t.changeState(new _R({ authToken: l }), a)];
@@ -5802,9 +5802,9 @@ var _r, bW = function(e) {
       });
     });
   }, n.prototype.onLogout = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = Date.now(), [4, t.changeState(new Ti({ wasPreviouslyConnected: !1 }), l)];
@@ -5889,8 +5889,8 @@ var _r, bW = function(e) {
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "hasSession", { get: function() {
     return this._sessionManager.session.hasSession;
   }, enumerable: !1, configurable: !0 }), n.prototype.changeState = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l >= this._stateUpdatedAt ? (this._currentState = t, this._stateUpdatedAt = l, this._dispatcher.dispatch(new pa({ stateType: t.type })), this._logger.debug("connection state changes to ".concat(t.name)), [4, this._currentState.run(this)]) : [3, 2];
@@ -5903,9 +5903,9 @@ var _r, bW = function(e) {
     });
   }, n.prototype._tryResolveConnectionRequest = function() {
     var t;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = this._unresolvedLogi, this._websocketClient.isOpen && l ? (this._unresolvedLogi = void 0, l.error ? [3, 2] : [4, l.applyTo(this._iid)]) : [3, 3];
@@ -5936,9 +5936,9 @@ var _r, bW = function(e) {
     this._dispatcher.dispatch(new MW(new Ml({ type: Sn.WEBSOCKET_CONNECT, data: { host_url: (l = this.sdkState.websocket) === null || l === void 0 ? void 0 : l.host, success: !t, latency: Date.now() - this._connectingAt, error_code: t == null ? void 0 : t.code, error_description: t == null ? void 0 : t.message } })));
   }, n.prototype.connect = function(t) {
     var l;
-    return t === void 0 && (t = ""), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = ""), M(this, void 0, void 0, function() {
       var a, d, r, i = this;
-      return M(this, function(c) {
+      return p(this, function(c) {
         return this._logiProcessingTimer && (clearTimeout(this._logiProcessingTimer), this._logiProcessingTimer = void 0, this._rejectConnectionRequest(j.connectionCanceled)), a = this._url(), d = new Ll(), this._connectionRequestQueue.push(d), this._connectionRequestQueue.length === 1 && (this._connectingAt = Date.now(), this._loginTimer = setTimeout(function() {
           i._loginTimer = void 0, i._rejectConnectionRequest(j.loginTimeout);
         }, (l = this.sdkState.websocket) === null || l === void 0 ? void 0 : l.responseTimeout), r = this._sessionManager.session, t && (r.authToken = t), this._websocketClient.connect(a, JSON.stringify(r.hasSession ? { auth: r.sessionKey } : { token: t }))), [2, d.promise];
@@ -5947,8 +5947,8 @@ var _r, bW = function(e) {
   }, n.prototype.cancelConnectForRetry = function() {
     this._dispatcher.dispatch(SN.asError(j.connectionRenew));
   }, n.prototype.disconnect = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._websocketClient.disconnect()];
@@ -5958,8 +5958,8 @@ var _r, bW = function(e) {
       });
     });
   }, n.prototype.logout = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this.sdkState.userId = void 0, this._unresolvedLogi = void 0, [4, this.disconnect()];
@@ -6013,14 +6013,14 @@ var vd, wG = [pW, a3], gG = function() {
       else if (s instanceof vk) {
         var Z = s.request, W = s.deferred, F = s.error;
         try {
-          for (var m = Se(wG), p = m.next(); !p.done; p = m.next())
-            if (Z instanceof p.value)
+          for (var m = Se(wG), E = m.next(); !E.done; E = m.next())
+            if (Z instanceof E.value)
               return void W.reject(F);
         } catch (u) {
           o = { error: u };
         } finally {
           try {
-            p && !p.done && (U = m.return) && U.call(m);
+            E && !E.done && (U = m.return) && U.call(m);
           } finally {
             if (o)
               throw o.error;
@@ -6055,9 +6055,9 @@ var vd, wG = [pW, a3], gG = function() {
     n === void 0 && (n = _r.ALL);
     var l = et(this._classifyLazyCallQueueByScope(n), 2), a = l[0], d = l[1];
     this._lazyCallQueue = d, a.forEach(function(r) {
-      return E(t, void 0, void 0, function() {
+      return M(t, void 0, void 0, function() {
         var i, c, V, s, o;
-        return M(this, function(U) {
+        return p(this, function(U) {
           switch (U.label) {
             case 0:
               i = r.command, c = r.deferred, (V = r.timeout) && clearTimeout(V), U.label = 1;
@@ -6078,17 +6078,17 @@ var vd, wG = [pW, a3], gG = function() {
     t === void 0 && (t = _r.ALL);
     var a = et(this._classifyLazyCallQueueByScope(t), 2), d = a[0], r = a[1];
     this._lazyCallQueue = r, d.forEach(function(i) {
-      return E(l, void 0, void 0, function() {
+      return M(l, void 0, void 0, function() {
         var c, V;
-        return M(this, function(s) {
+        return p(this, function(s) {
           return c = i.deferred, V = i.timeout, clearTimeout(V), c.reject(n), [2];
         });
       });
     });
   }, e.prototype.send = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a = this;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return n instanceof Yl ? this.isReady ? (this._logger.debug("send websocket request", n), [4, this.commandRouter.send(n)]) : [3, 2] : [3, 4];
@@ -6120,8 +6120,8 @@ var vd, wG = [pW, a3], gG = function() {
       });
     });
   }, e.prototype.forceSend = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this._logger.debug("send forced request", n), n instanceof Yl || n instanceof Ze ? [4, this.commandRouter.send(n)] : [3, 2];
@@ -6181,9 +6181,9 @@ var vd, wG = [pW, a3], gG = function() {
   }, n.prototype.createRefreshWebsocketCommand = function(t, l) {
     return new Ex({ authToken: t, expiringSession: !0, requestId: l });
   }, n.prototype._refreshSessionKeyByWebSocket = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return l = this.createRefreshWebsocketCommand(t), [4, this._requestQueue.forceSend(l)];
@@ -6195,15 +6195,15 @@ var vd, wG = [pW, a3], gG = function() {
       });
     });
   }, n.prototype._refreshSessionKeyByApi = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a = this;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return l = new pW({ userId: this._sdkState.userId, authToken: t, services: this.session.services && this.session.services.length > 0 ? this.session.services : void 0, expiringSession: !0 }), [4, KR(function(r) {
-              return E(a, void 0, void 0, function() {
+              return M(a, void 0, void 0, function() {
                 var i, c, V, s, o;
-                return M(this, function(U) {
+                return p(this, function(U) {
                   switch (U.label) {
                     case 0:
                       return U.trys.push([0, 2, , 3]), [4, this._requestQueue.forceSend(l)];
@@ -6225,9 +6225,9 @@ var vd, wG = [pW, a3], gG = function() {
       });
     });
   }, n.prototype._refreshSessionKey = function(t, l) {
-    return l === void 0 && (l = !0), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !0), M(this, void 0, void 0, function() {
       var a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             if (this._currentConnectionStateType !== ln.CONNECTED)
@@ -6273,9 +6273,9 @@ var vd, wG = [pW, a3], gG = function() {
       d = setTimeout(function() {
         return c();
       }, 1e3 * this._sdkState.sessionTokenRefreshTimeout), Le(function() {
-        return E(l, void 0, void 0, function() {
+        return M(l, void 0, void 0, function() {
           var V;
-          return M(this, function(s) {
+          return p(this, function(s) {
             return !((V = this.handler) === null || V === void 0) && V.onSessionTokenRequired && this.handler.onSessionTokenRequired(i, c), [2];
           });
         });
@@ -6284,9 +6284,9 @@ var vd, wG = [pW, a3], gG = function() {
       a.resolve(null);
     return a.promise;
   }, n.prototype._handleSessionRefreshError = function(t, l) {
-    return l === void 0 && (l = !1), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !1), M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return t instanceof j && (t.isSessionTokenExpiredError || t.code === nt.APPLICATION_NOT_FOUND) ? (this.session.authToken = void 0, l ? [4, this._receiveNewAuthToken()] : [3, 6]) : [3, 6];
@@ -6315,9 +6315,9 @@ var vd, wG = [pW, a3], gG = function() {
     return !!this.handler;
   }, enumerable: !1, configurable: !0 }), n.prototype.authenticateFeed = function(t, l) {
     var a;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this.session.authToken = l, d = new a3({ appId: this._sdkState.appId, userId: t, services: [Fo.FEED], includeUIKitConfig: !!((a = this._sdkState.extensions) !== null && a !== void 0 ? a : {}).sb_uikit, localCacheEnabled: this._cacheContext.localCacheEnabled, expiringSession: !l || this.isSessionExpiring }), [4, this._requestQueue.commandRouter.send(d)];
@@ -6334,9 +6334,9 @@ var vd, wG = [pW, a3], gG = function() {
     });
   }, n.prototype.login = function(t) {
     var l;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i, c, V, s, o;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             return a = t.key, d = t.ekey, r = t.services, i = t.userProfile, c = t.deviceTokenLastDeletedAt, V = c === void 0 ? 0 : c, this.session.sessionKey = a, this.session.services = r, ZZ.set(this, d), this._deviceTokenCacheEnabled = (l = i == null ? void 0 : i.appInfo) === null || l === void 0 ? void 0 : l.deviceTokenCache, s = this._cacheContext.preference, this._deviceTokenCacheEnabled ? [4, s.get(RZ)] : [3, 5];
@@ -6362,9 +6362,9 @@ var vd, wG = [pW, a3], gG = function() {
   }, n.prototype.complete = function() {
     var t = this;
     this.dispatch("refresh"), this._dispatcher.dispatch(new Ak()), Le(function() {
-      return E(t, void 0, void 0, function() {
+      return M(t, void 0, void 0, function() {
         var l;
-        return M(this, function(a) {
+        return p(this, function(a) {
           return this._logger.debug("session refreshed"), !((l = this.handler) === null || l === void 0) && l.onSessionRefreshed && this.handler.onSessionRefreshed(), [2];
         });
       });
@@ -6372,9 +6372,9 @@ var vd, wG = [pW, a3], gG = function() {
   }, n.prototype.error = function(t) {
     var l = this;
     Le(function() {
-      return E(l, void 0, void 0, function() {
+      return M(l, void 0, void 0, function() {
         var a;
-        return M(this, function(d) {
+        return p(this, function(d) {
           return !((a = this.handler) === null || a === void 0) && a.onSessionError && this.handler.onSessionError(t), [2];
         });
       });
@@ -6382,17 +6382,17 @@ var vd, wG = [pW, a3], gG = function() {
   }, n.prototype.close = function() {
     var t = this;
     this.dispatch("close"), this._dispatcher.dispatch(new qk()), Le(function() {
-      return E(t, void 0, void 0, function() {
+      return M(t, void 0, void 0, function() {
         var l;
-        return M(this, function(a) {
+        return p(this, function(a) {
           return this._logger.debug("session closed"), !((l = this.handler) === null || l === void 0) && l.onSessionClosed && this.handler.onSessionClosed(), [2];
         });
       });
     });
   }, n.prototype.refresh = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             if (!this.isSessionExpiring)
@@ -6439,8 +6439,8 @@ var vd, wG = [pW, a3], gG = function() {
   }, n.prototype.setDeviceTokenDeletedAt = function(t) {
     t > 0 && (this._deviceTokenLastDeletedAt = t);
   }, n.prototype.saveDeviceToken = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this._deviceTokenCacheEnabled ? [4, this._cacheContext.preference.set(RZ, { tokens: this._deviceTokens, lastDeletedAt: this._deviceTokenLastDeletedAt })] : [3, 2];
@@ -6452,8 +6452,8 @@ var vd, wG = [pW, a3], gG = function() {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this.currentUser = null, this.session.clear(), this.close(), ZZ.delete(this), this._deviceTokens = [], this._deviceTokenLastDeletedAt = 0, [4, this.saveDeviceToken()];
@@ -6522,9 +6522,9 @@ var Fr, CG = function(e) {
       return l.type !== Sn.NOTIFICATION;
     })), this.queue = t;
   }, n.prototype._save = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.isEnabled ? (t = st(st([], et(this.queue), !1), et(this.flushWaitQueue), !1), [4, this.cacheContext.preference.set(this.key, { deviceId: this.deviceId, statLogs: t.map(function(a) {
@@ -6538,9 +6538,9 @@ var Fr, CG = function(e) {
       });
     });
   }, n.prototype._flush = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             if (!this.isEnabled)
@@ -6590,9 +6590,9 @@ var Fr, CG = function(e) {
       });
     });
   }, n.prototype.init = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d = this;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return this.key = t, [4, this.cacheContext.preference.get(this.key)];
@@ -6619,9 +6619,9 @@ var Fr, CG = function(e) {
       });
     });
   }, n.prototype.put = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             if (this.enabledState === vd.DISABLED)
@@ -6654,8 +6654,8 @@ var Fr, CG = function(e) {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this.queue = [], this.flushWaitQueue = [], this.generation = 1, [4, this._save()];
@@ -6944,9 +6944,9 @@ var s3 = "removed", wT = function(e) {
     var t = Zi(n);
     return new dd(this._iid, dd.payloadify(t));
   }, e.prototype.get = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return he(R3(n)).throw(j.invalidParameters), t = new qG(x({}, n)), [4, this._requestQueue.send(t)];
@@ -6956,9 +6956,9 @@ var s3 = "removed", wT = function(e) {
       });
     });
   }, e.prototype.create = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return he(U3(n)).throw(j.invalidParameters), t = new PG(x({}, n)), [4, this._requestQueue.send(t)];
@@ -6968,9 +6968,9 @@ var s3 = "removed", wT = function(e) {
       });
     });
   }, e.prototype.getOption = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return he(N3(n)).throw(j.invalidParameters), t = new ey(x({}, n)), [4, this._requestQueue.send(t)];
@@ -6980,9 +6980,9 @@ var s3 = "removed", wT = function(e) {
       });
     });
   }, e.prototype.getPollChangeLogs = function(n, t, l, a) {
-    return a === void 0 && (a = te.SYNC_POLL_CHANGELOGS), E(this, void 0, void 0, function() {
+    return a === void 0 && (a = te.SYNC_POLL_CHANGELOGS), M(this, void 0, void 0, function() {
       var d, r, i, c, V, s, o;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             return d = new ny(Ae({ channelType: t, channelUrl: n, timestamp: typeof l == "number" ? l : null, token: typeof l == "string" ? l : null })), [4, this._requestQueue.send(d)];
@@ -7011,9 +7011,9 @@ var s3 = "removed", wT = function(e) {
     return e.call(this, t, l.channelUrl, l.channelType, l) || this;
   }
   return J(n, e), n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new iy(x(x({}, this), { token: this._token })), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -7055,9 +7055,9 @@ var s3 = "removed", wT = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && B("number", this.pollId) && B("number", this.pollOptionId);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new cy(x(x({}, this), { pollId: this.pollId, pollOptionId: this.pollOptionId, token: this._token })), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -7245,8 +7245,8 @@ var Nu, FV = function() {
     }) : null, R.mentionedUserIds = (r = l.mentioned_user_ids) !== null && r !== void 0 ? r : null, R.mentionedUsers && !R.mentionedUserIds && (R.mentionedUserIds = R.mentionedUsers.map(function(m) {
       return m.userId;
     })), R.mentionedMessageTemplate = (i = l.mentioned_message_template) !== null && i !== void 0 ? i : "";
-    var h = (c = l.metaarray) !== null && c !== void 0 ? c : {}, Z = (V = l.metaarray_key_order) !== null && V !== void 0 ? V : Object.keys(h).sort(function(m, p) {
-      return m.localeCompare(p);
+    var h = (c = l.metaarray) !== null && c !== void 0 ? c : {}, Z = (V = l.metaarray_key_order) !== null && V !== void 0 ? V : Object.keys(h).sort(function(m, E) {
+      return m.localeCompare(E);
     });
     R.metaArrays = [];
     for (var W = 0; W < Z.length; W++) {
@@ -7499,16 +7499,16 @@ var aV, Bl = function(e) {
     }
     return !1;
   }, n.prototype._triggerThreadInfoUpdatedEvent = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         return (t = D.of(this._iid).dispatcher).dispatch(new p3({ channelType: Xt.GROUP, channelUrl: this.channelUrl, parentMessage: this })), t.dispatch(new kn({ messages: [this], source: te.EVENT_THREAD_INFO_UPDATED })), [2];
       });
     });
   }, n.prototype.markThreadAsRead = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new Uy({ channelUrl: this.channelUrl, messageId: this.messageId }), [4, t.send(l)];
@@ -7522,9 +7522,9 @@ var aV, Bl = function(e) {
       });
     });
   }, n.prototype.setPushNotificationEnabled = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return l = D.of(this._iid).requestQueue, a = new Ny({ channelUrl: this.channelUrl, channelType: this.channelType, messageId: this.messageId, pushEnabled: t }), [4, l.send(a)];
@@ -7534,9 +7534,9 @@ var aV, Bl = function(e) {
       });
     });
   }, n.prototype.submitForm = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             if (he(t.form && t.form instanceof LU || B("string", t.formId) && B("object", t.answers)).throw(j.invalidParameters), l = D.of(this._iid), a = l.requestQueue, d = l.sdkState, r = l.logger, !t.form)
@@ -7562,9 +7562,9 @@ var aV, Bl = function(e) {
       });
     });
   }, n.prototype.submitFeedback = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return l = D.of(this._iid), a = l.requestQueue, d = l.dispatcher, r = new Ry({ channelUrl: this.channelUrl, channelType: this.channelType, messageId: this.messageId, rating: t.rating, comment: t.comment }), [4, a.send(r)];
@@ -7574,9 +7574,9 @@ var aV, Bl = function(e) {
       });
     });
   }, n.prototype.updateFeedback = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return l = D.of(this._iid), a = l.requestQueue, d = l.dispatcher, r = new Zy({ channelUrl: this.channelUrl, channelType: this.channelType, messageId: this.messageId, feedbackId: t.id, rating: t.rating, comment: t.comment }), [4, a.send(r)];
@@ -7586,9 +7586,9 @@ var aV, Bl = function(e) {
       });
     });
   }, n.prototype.deleteFeedback = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return l = D.of(this._iid), a = l.requestQueue, d = l.dispatcher, r = new Fy({ channelUrl: this.channelUrl, channelType: this.channelType, messageId: this.messageId, feedbackId: t }), [4, a.send(r)];
@@ -7645,9 +7645,9 @@ var aV, Bl = function(e) {
   return J(n, e), n.payloadify = function(t) {
     return Oe(Ae(x(x({}, e.payloadify.call(this, t)), { message: t.message, translations: t.translations, parent_message_info: t.parentMessage ? e._getParentMessageInfoPayload.call(this, t.parentMessage) : null })));
   }, n.prototype.getThreadedMessagesByTimestamp = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, aU), l), he(this.messageId > 0 && B("number", t) && qR(a)).throw(j.invalidParameters), [4, tl.of(this._iid).getThreadedMessagesByTimestamp(this, t, a)];
@@ -7704,9 +7704,9 @@ var aV, Bl = function(e) {
       return hu.payloadify(l);
     }), poll: t._poll ? dd.payloadify(t._poll) : null, parent_message_info: t.parentMessage ? e._getParentMessageInfoPayload.call(this, t.parentMessage) : null, review_info: t.messageReviewInfo ? Zu.payloadify(t.messageReviewInfo) : void 0 })));
   }, n.prototype.getThreadedMessagesByTimestamp = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, aU), l), he(this.messageId > 0 && B("number", t) && qR(a)).throw(j.invalidParameters), [4, tl.of(this._iid).getThreadedMessagesByTimestamp(this, t, a)];
@@ -7732,9 +7732,9 @@ var aV, Bl = function(e) {
     return V;
   }
   return J(n, e), n.prototype.getThreadedMessagesByTimestamp = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, aU), l), he(this.messageId > 0 && B("number", t) && qR(a)).throw(j.invalidParameters), [4, tl.of(this._iid).getThreadedMessagesByTimestamp(this, t, a)];
@@ -7810,8 +7810,8 @@ var kV = function(e) {
       var b;
       return new Dr(F._iid, typeof u == "string" ? { url: u, width: 0, height: 0 } : x(x({}, u), { url: ((b = u.url) !== null && b !== void 0 ? b : "").split("auth=")[0] }), F.requireAuth);
     }) : [], F.messageSurvivalSeconds = (h = l.message_survival_seconds) !== null && h !== void 0 ? h : -1, l.parent_message_info) {
-      var p = l.parent_message_info;
-      F.parentMessage = Hl(t, Oe(Ae(x(x({}, p), { created_at: p.ts, message_id: F.parentMessageId, channel_url: F.channelUrl, channel_type: F.channelType, file: p.file, url: (Z = p.file) === null || Z === void 0 ? void 0 : Z.url, require_auth: (W = p.file) === null || W === void 0 ? void 0 : W.require_auth }))));
+      var E = l.parent_message_info;
+      F.parentMessage = Hl(t, Oe(Ae(x(x({}, E), { created_at: E.ts, message_id: F.parentMessageId, channel_url: F.channelUrl, channel_type: F.channelType, file: E.file, url: (Z = E.file) === null || Z === void 0 ? void 0 : Z.url, require_auth: (W = E.file) === null || W === void 0 ? void 0 : W.require_auth }))));
     }
     return F;
   }
@@ -7824,9 +7824,9 @@ var kV = function(e) {
     var t = D.of(this._iid).sessionManager;
     return this.requireAuth && t.ekey ? "".concat(this.plainUrl, "?auth=").concat(t.ekey) : this.plainUrl;
   }, enumerable: !1, configurable: !0 }), n.prototype.getThreadedMessagesByTimestamp = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, aU), l), he(this.messageId > 0 && B("number", t) && qR(a)).throw(j.invalidParameters), [4, tl.of(this._iid).getThreadedMessagesByTimestamp(this, t, a)];
@@ -7918,9 +7918,9 @@ var py = function() {
   return Object.defineProperty(e.prototype, "_shouldSendThroughWebSocket", { get: function() {
     return this._connectionState === ln.CONNECTED || this._connectionState === ln.CONNECTING || this._connectionState === ln.RECONNECTING;
   }, enumerable: !1, configurable: !0 }), e.prototype._sendFileMessage = function(n, t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return l = this._createSendFileMessageRequestParams(n, t), this._shouldSendThroughWebSocket ? (a = new Wy(l), [4, this._requestQueue.send(a)]) : [3, 2];
@@ -7943,9 +7943,9 @@ var py = function() {
     return l;
   }, e.prototype._resolveMessageQueue = function(n) {
     var t;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s, o, U, N, R, h;
-      return M(this, function(Z) {
+      return p(this, function(Z) {
         switch (Z.label) {
           case 0:
             if (!(l = this._queueMap.get(n.url)))
@@ -8019,9 +8019,9 @@ var py = function() {
     });
   }, e.prototype._uploadNextPendingItem = function(n) {
     var t;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s, o, U;
-      return M(this, function(N) {
+      return p(this, function(N) {
         switch (N.label) {
           case 0:
             return (l = this._queueMap.get(n.url)) && (a = l.messageQueue.find(function(R) {
@@ -8049,9 +8049,9 @@ var py = function() {
       });
     });
   }, e.prototype._tryUploadNextItemAndUpdateItemState = function(n, t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return [4, this._onlineDetector.isOnline()];
@@ -8097,9 +8097,9 @@ var py = function() {
     l >= 0 && n.uploadQueue.splice(l, 1);
   }, e.prototype._uploadNextFileForSingleFileItemAndUpdateParams = function(n, t, l) {
     var a, d, r;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var i, c, V, s, o, U, N, R, h, Z;
-      return M(this, function(W) {
+      return p(this, function(W) {
         switch (W.label) {
           case 0:
             return i = new dR({ file: l.file, channelUrl: n.url, thumbnailSizes: l.thumbnailSizes, requestId: t.requestId }), [4, this._requestQueue.send(i)];
@@ -8110,9 +8110,9 @@ var py = function() {
     });
   }, e.prototype._uploadNextFileForMultipleFilesItemAndUpdateParams = function(n, t, l) {
     var a, d, r;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var i, c, V, s, o, U, N, R, h, Z, W;
-      return M(this, function(F) {
+      return p(this, function(F) {
         switch (F.label) {
           case 0:
             return i = t.multipleFileUploadInfo.uploadIndex, c = l.fileInfoList[i], V = new dR({ file: c.file, channelUrl: n.url, thumbnailSizes: c.thumbnailSizes, requestId: t.requestId }), [4, this._requestQueue.send(V)];
@@ -8122,9 +8122,9 @@ var py = function() {
       });
     });
   }, e.prototype.request = function(n, t, l, a) {
-    return a === void 0 && (a = {}), E(this, void 0, void 0, function() {
+    return a === void 0 && (a = {}), M(this, void 0, void 0, function() {
       var d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         return this._queueMap.has(n.url) || (d = { messageQueue: [], uploadQueue: [], isResolving: !1, isResolveRequestPending: !1 }, this._queueMap.set(n.url, d)), r = this._queueMap.get(n.url), i = new Ll(), c = { requestId: t, params: l, state: rl.PENDING, deferred: i }, function(o) {
           return "fileInfoList" in o;
         }(l) && (V = x({ uploadIndex: 0, uploadCount: l.fileInfoList.length }, a), c.multipleFileUploadInfo = V), r.messageQueue.push(c), this._uploadNextPendingItem(n), [2, i.promise];
@@ -8183,8 +8183,8 @@ var py = function() {
   return J(n, e), n;
 }(ue), CU = function(e) {
   function n(t) {
-    var l = t.channelType, a = t.channelUrl, d = t.timestamp, r = t.token, i = t.prevResultSize, c = t.nextResultSize, V = t.isInclusive, s = t.reverse, o = t.messageTypeFilter, U = t.customTypesFilter, N = t.senderUserIdsFilter, R = t.replyType, h = t.includeMetaArray, Z = t.includeReactions, W = t.parentMessageId, F = t.includeThreadInfo, m = t.includeParentMessageInfo, p = t.showSubchannelMessagesOnly, u = t.checkingHasNext, b = t.checkingContinuousMessages, k = e.call(this) || this;
-    return k.method = Re.GET, k.path = "".concat(_t(l), "/").concat(encodeURIComponent(a), "/messages"), k.params = Oe(Ae({ is_sdk: !0, prev_limit: i, next_limit: c, include: V, reverse: s, message_ts: d, message_id: r, message_type: o ?? null, custom_types: U, sender_ids: N, include_reply_type: R, with_sorted_meta_array: h, include_reactions: Z, parent_message_id: W, include_thread_info: F, include_parent_message_info: m, show_subchannel_message_only: p, include_poll_details: !0, checking_has_next: u, checking_continuous_messages: b })), k;
+    var l = t.channelType, a = t.channelUrl, d = t.timestamp, r = t.token, i = t.prevResultSize, c = t.nextResultSize, V = t.isInclusive, s = t.reverse, o = t.messageTypeFilter, U = t.customTypesFilter, N = t.senderUserIdsFilter, R = t.replyType, h = t.includeMetaArray, Z = t.includeReactions, W = t.parentMessageId, F = t.includeThreadInfo, m = t.includeParentMessageInfo, E = t.showSubchannelMessagesOnly, u = t.checkingHasNext, b = t.checkingContinuousMessages, k = e.call(this) || this;
+    return k.method = Re.GET, k.path = "".concat(_t(l), "/").concat(encodeURIComponent(a), "/messages"), k.params = Oe(Ae({ is_sdk: !0, prev_limit: i, next_limit: c, include: V, reverse: s, message_ts: d, message_id: r, message_type: o ?? null, custom_types: U, sender_ids: N, include_reply_type: R, with_sorted_meta_array: h, include_reactions: Z, parent_message_id: W, include_thread_info: F, include_parent_message_info: m, show_subchannel_message_only: E, include_poll_details: !0, checking_has_next: u, checking_continuous_messages: b })), k;
   }
   return J(n, e), n;
 }(Ze), KU = function(e) {
@@ -8344,9 +8344,9 @@ var Ps, KT = function(e, n) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : (t = [], this._hasNext ? (this._isLoading = !0, l = D.of(this._iid).requestQueue, a = new vy(x(x({}, this), { channelUrl: this.channelUrl, token: this._token })), [4, l.send(a)]) : [3, 2]) : [3, 5];
@@ -8374,9 +8374,9 @@ var Ps, KT = function(e, n) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && B("boolean", this.reverse) && zt(bl, this.messageTypeFilter) && zt(al, this.replyType) && xt("string", this.customTypesFilter, !0) && xt("string", this.senderUserIdsFilter, !0) && B("boolean", this.includeMetaArray) && B("boolean", this.includeReactions) && B("boolean", this.includeParentMessageInfo) && B("boolean", this.includeThreadInfo) && B("boolean", this.showSubchannelMessagesOnly);
   }, n.prototype.load = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, [4, tl.of(this._iid).getMessagesByTimestamp(this.channelUrl, this.channelType, this._edge, Ae({ prevResultSize: this.limit, nextResultSize: 0, isInclusive: !1, reverse: this.reverse, messageTypeFilter: this.messageTypeFilter, customTypesFilter: this.customTypesFilter, replyType: this.replyType, senderUserIdsFilter: this.senderUserIdsFilter, includeReactions: this.includeReactions, includeMetaArray: this.includeMetaArray, includeParentMessageInfo: this.includeParentMessageInfo, includeThreadInfo: this.includeThreadInfo, showSubchannelMessagesOnly: this.showSubchannelMessagesOnly }))]) : [3, 2] : [3, 5];
@@ -8419,9 +8419,9 @@ var Ps, KT = function(e, n) {
     return e.call(this, t, l, a, d) || this;
   }
   return J(n, e), n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new yy(x(x({}, this), { token: this._token })), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -8464,9 +8464,9 @@ var Ps, KT = function(e, n) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new Xy(x(x({}, this), { token: this._token })), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -9125,9 +9125,9 @@ var zn, oR = function(e) {
   }, n.prototype.createPreviousMessageListQuery = function(t) {
     return t === void 0 && (t = {}), new Gy(this._iid, this.url, this.channelType, t);
   }, n.prototype.addOperators = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(xt("string", t)).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new Hy({ channelUrl: this.url, channelType: this.channelType, operatorUserIds: t }), [4, l.send(a)];
@@ -9137,9 +9137,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.removeOperators = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(xt("string", t)).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new fy({ channelUrl: this.url, channelType: this.channelType, operatorUserIds: t }), [4, l.send(a)];
@@ -9149,9 +9149,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getMyMutedInfo = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V, s, o, U;
-      return M(this, function(N) {
+      return p(this, function(N) {
         switch (N.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new wy({ channelUrl: this.url, channelType: this.channelType, userId: l.userId }), [4, a.send(d)];
@@ -9161,9 +9161,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getMetaData = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return he(xt("string", t)).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new Su({ channelUrl: this.url, channelType: this.channelType, keys: t }), [4, l.send(a)];
@@ -9173,9 +9173,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getAllMetaData = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new Su({ channelUrl: this.url, channelType: this.channelType, keys: [] }), [4, t.send(l)];
@@ -9185,9 +9185,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.createMetaData = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return l = D.of(this._iid).requestQueue, a = new Iy({ channelUrl: this.url, channelType: this.channelType, metadata: t }), [4, l.send(a)];
@@ -9197,9 +9197,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.updateMetaData = function(t, l) {
-    return l === void 0 && (l = !1), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !1), M(this, void 0, void 0, function() {
       var a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return a = D.of(this._iid).requestQueue, d = new Cy({ channelUrl: this.url, channelType: this.channelType, metadata: t, upsert: l }), [4, a.send(d)];
@@ -9209,9 +9209,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.deleteMetaData = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(B("string", t)).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new _y({ channelUrl: this.url, channelType: this.channelType, key: t }), [4, l.send(a)];
@@ -9221,9 +9221,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.deleteAllMetaData = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new Ay({ channelUrl: this.url, channelType: this.channelType }), [4, t.send(l)];
@@ -9233,9 +9233,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getMetaCounters = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return he(xt("string", t)).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new bu({ channelUrl: this.url, channelType: this.channelType, keys: t }), [4, l.send(a)];
@@ -9245,9 +9245,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getAllMetaCounters = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new bu({ channelUrl: this.url, channelType: this.channelType, keys: [] }), [4, t.send(l)];
@@ -9257,9 +9257,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.createMetaCounters = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return l = D.of(this._iid).requestQueue, a = new $y({ channelUrl: this.url, channelType: this.channelType, metaCounter: t }), [4, l.send(a)];
@@ -9269,9 +9269,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.updateMetaCounters = function(t, l) {
-    return l === void 0 && (l = !1), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !1), M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return a = D.of(this._iid).requestQueue, d = new FZ({ channelUrl: this.url, channelType: this.channelType, metaCounter: t, upsert: l }), [4, a.send(d)];
@@ -9281,9 +9281,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.increaseMetaCounters = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return l = D.of(this._iid).requestQueue, a = new FZ({ channelUrl: this.url, channelType: this.channelType, metaCounter: t, upsert: !1, mode: "increase" }), [4, l.send(a)];
@@ -9293,9 +9293,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.decreaseMetaCounters = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return l = D.of(this._iid).requestQueue, a = new FZ({ channelUrl: this.url, channelType: this.channelType, metaCounter: t, upsert: !1, mode: "decrease" }), [4, l.send(a)];
@@ -9305,9 +9305,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.deleteMetaCounter = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(B("string", t)).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new t5({ channelUrl: this.url, channelType: this.channelType, key: t }), [4, l.send(a)];
@@ -9317,9 +9317,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.deleteAllMetaCounters = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new n5({ channelUrl: this.url, channelType: this.channelType }), [4, t.send(l)];
@@ -9329,15 +9329,15 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.muteUser = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(d) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(d) {
         return [2, this.muteUserWithUserId(t.userId, l, a)];
       });
     });
   }, n.prototype.muteUserWithUserId = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(B("string", t) && B("number", l, !0) && B("string", a, !0)).throw(j.invalidParameters), d = D.of(this._iid).requestQueue, r = new l5({ channelUrl: this.url, channelType: this.channelType, userId: t, seconds: l, description: a }), [4, d.send(r)];
@@ -9347,15 +9347,15 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.unmuteUser = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2, this.unmuteUserWithUserId(t.userId)];
       });
     });
   }, n.prototype.unmuteUserWithUserId = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(B("string", t)).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new a5({ channelUrl: this.url, channelType: this.channelType, userId: t }), [4, l.send(a)];
@@ -9365,15 +9365,15 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.banUser = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(d) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(d) {
         return [2, this.banUserWithUserId(t.userId, l, a)];
       });
     });
   }, n.prototype.banUserWithUserId = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(B("string", t) && B("number", l, !0) && B("string", a, !0)).throw(j.invalidParameters), d = D.of(this._iid).requestQueue, r = new d5({ channelUrl: this.url, channelType: this.channelType, userId: t, seconds: l, description: a }), [4, d.send(r)];
@@ -9383,15 +9383,15 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.unbanUser = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2, this.unbanUserWithUserId(t.userId)];
       });
     });
   }, n.prototype.unbanUserWithUserId = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(B("string", t)).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new r5({ channelUrl: this.url, channelType: this.channelType, userId: t }), [4, l.send(a)];
@@ -9401,9 +9401,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.freeze = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new Qu({ channelUrl: this.url, channelType: this.channelType, freezing: !0 }), [4, t.send(l)];
@@ -9413,9 +9413,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.unfreeze = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new Qu({ channelUrl: this.url, channelType: this.channelType, freezing: !1 }), [4, t.send(l)];
@@ -9425,9 +9425,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getMessagesByMessageId = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, _s), l), he(B("number", t) && Fu(a)).throw(j.invalidParameters), [4, tl.of(this._iid).getMessagesByMessageId(this.url, this.channelType, t, a)];
@@ -9437,9 +9437,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getMessagesByTimestamp = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, _s), l), he(B("number", t) && Fu(a)).throw(j.invalidParameters), [4, tl.of(this._iid).getMessagesByTimestamp(this.url, this.channelType, t, a)];
@@ -9449,9 +9449,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getMessageChangeLogsSinceTimestamp = function(t, l) {
-    return l === void 0 && (l = {}), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = {}), M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, LT), l), he(B("number", t) && Wu(a)).throw(j.invalidParameters), [4, tl.of(this._iid).getMessageChangelogs(this.url, this.channelType, t, a)];
@@ -9461,9 +9461,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getMessageChangeLogsSinceToken = function(t, l) {
-    return l === void 0 && (l = {}), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = {}), M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, LT), l), he(B("string", t) && Wu(a)).throw(j.invalidParameters), [4, tl.of(this._iid).getMessageChangelogs(this.url, this.channelType, t, a)];
@@ -9526,8 +9526,8 @@ var zn, oR = function(e) {
     return Qa(2).then(function() {
       var U = d._createPendingUserMessage(t, V, s);
       i.dispatch(new kn({ messages: [U], source: l === pl.RESEND ? te.LOCAL_MESSAGE_RESEND_STARTED : te.EVENT_MESSAGE_SENT_PENDING })), Le(function() {
-        return E(d, void 0, void 0, function() {
-          return M(this, function(R) {
+        return M(d, void 0, void 0, function() {
+          return p(this, function(R) {
             return [2, o._trigger(U)];
           });
         });
@@ -9536,8 +9536,8 @@ var zn, oR = function(e) {
       c.send(N).then(function(R) {
         var h = R.as(GW).message;
         i.dispatch(new kn({ messages: [h], source: te.EVENT_MESSAGE_SENT_SUCCESS })), Le(function() {
-          return E(d, void 0, void 0, function() {
-            return M(this, function(Z) {
+          return M(d, void 0, void 0, function() {
+            return p(this, function(Z) {
               return [2, o._trigger(h)];
             });
           });
@@ -9548,8 +9548,8 @@ var zn, oR = function(e) {
         Qa(2).then(function() {
           var h = d._createPendingUserMessage(t, V, s), Z = D.of(d._iid).cacheContext, W = Z.localCacheEnabled && Z.localCacheConfig.enableAutoResend && PN(R.code);
           d._markMessageAsFailed(h, R, W), i.dispatch(new kn({ messages: [h], source: h.sendingStatus === tn.PENDING ? te.REQUEST_RESEND_MESSAGE : te.EVENT_MESSAGE_SENT_FAILED })), Le(function() {
-            return E(d, void 0, void 0, function() {
-              return M(this, function(F) {
+            return M(d, void 0, void 0, function() {
+              return p(this, function(F) {
                 return [2, o._triggerFailed(R, h)];
               });
             });
@@ -9561,9 +9561,9 @@ var zn, oR = function(e) {
     return he(t instanceof kl && !!t.messageParams).throw(j.invalidParameters), this._sendUserMessage(t.messageParams, pl.SEND, t.reqId);
   }, n.prototype.resendUserMessage = function(t) {
     var l;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         return he(t instanceof kl && !t.scheduledInfo).throw(j.invalidParameters), a = new Ll(), d = (l = t.messageParams) !== null && l !== void 0 ? l : CT(t), this._sendUserMessage(d, pl.RESEND, t.reqId).onFailed(function(i) {
           return a.reject(i);
         }).onSucceeded(function(i) {
@@ -9572,9 +9572,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.updateUserMessage = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return a = x(x({}, Y3), l), he(B("number", t) && Q3(a)).throw(j.invalidParameters), d = D.of(this._iid).requestQueue, r = new Ju(x({ channelType: this.channelType, channelUrl: this.url, messageId: t, metaArrayParams: a.metaArrays ? { array: a.metaArrays, mode: "add", upsert: !0 } : void 0 }, a)), [4, d.send(r)];
@@ -9585,9 +9585,9 @@ var zn, oR = function(e) {
     });
   }, n.prototype.copyUserMessage = function(t, l) {
     var a, d, r;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         return he(t instanceof n && l instanceof kl && l.sendingStatus === tn.SUCCEEDED && this.url === l.channelUrl && !l.scheduledInfo).throw(j.invalidParameters), he(!l.poll).throw(j.notSupportedError), i = new Ll(), c = (a = l.messageParams) !== null && a !== void 0 ? a : Ae(x(x({}, l), { mentionType: l.mentionType, mentionedUserIds: (d = l.mentionedUserIds) !== null && d !== void 0 ? d : (r = l.mentionedUsers) === null || r === void 0 ? void 0 : r.map(function(s) {
           return s.userId;
         }), translationTargetLanguages: Object.keys(l.translations), pushNotificationDeliveryOption: Ed.DEFAULT, parentMessageId: null, isReplyToChannel: !1, isPinnedMessage: !1 })), t._sendUserMessage(c).onSucceeded(function(s) {
@@ -9598,9 +9598,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.translateUserMessage = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(t instanceof kl && t.messageId > 0 && xt("string", l)).throw(j.invalidParameters), a = D.of(this._iid).requestQueue, d = new Z5({ channelType: this.channelType, channelUrl: this.url, messageId: t.messageId, translationTargetLanguages: l }), [4, a.send(d)];
@@ -9614,8 +9614,8 @@ var zn, oR = function(e) {
     Qa(2).then(function() {
       var V = a._createPendingScheduledUserMessage(t, i, r);
       Le(function() {
-        return E(a, void 0, void 0, function() {
-          return M(this, function(s) {
+        return M(a, void 0, void 0, function() {
+          return p(this, function(s) {
             return [2, l._trigger(V)];
           });
         });
@@ -9625,8 +9625,8 @@ var zn, oR = function(e) {
     d.send(c).then(function(V) {
       var s = V.as(X3).message;
       Le(function() {
-        return E(a, void 0, void 0, function() {
-          return M(this, function(o) {
+        return M(a, void 0, void 0, function() {
+          return p(this, function(o) {
             return [2, l._trigger(s)];
           });
         });
@@ -9637,8 +9637,8 @@ var zn, oR = function(e) {
       Qa(2).then(function() {
         var s = a._createPendingScheduledUserMessage(t, i, r);
         a._markMessageAsFailed(s, V), Le(function() {
-          return E(a, void 0, void 0, function() {
-            return M(this, function(o) {
+          return M(a, void 0, void 0, function() {
+            return p(this, function(o) {
               return [2, l._triggerFailed(V, s)];
             });
           });
@@ -9667,15 +9667,15 @@ var zn, oR = function(e) {
     return Qa(2).then(function() {
       var o = d._createPendingFileMessage(t, c, V);
       r.dispatch(new kn({ messages: [o], source: l === pl.RESEND ? te.LOCAL_MESSAGE_RESEND_STARTED : te.EVENT_MESSAGE_SENT_PENDING })), Le(function() {
-        return E(d, void 0, void 0, function() {
-          return M(this, function(U) {
+        return M(d, void 0, void 0, function() {
+          return p(this, function(U) {
             return [2, s._trigger(o)];
           });
         });
       }), i.request(d, c, t).then(function(U) {
         r.dispatch(new kn({ messages: [U], source: te.EVENT_MESSAGE_SENT_SUCCESS })), Le(function() {
-          return E(d, void 0, void 0, function() {
-            return M(this, function(N) {
+          return M(d, void 0, void 0, function() {
+            return p(this, function(N) {
               return [2, s._trigger(U)];
             });
           });
@@ -9686,8 +9686,8 @@ var zn, oR = function(e) {
         Qa(2).then(function() {
           var N = d._createPendingFileMessage(t, c, V), R = D.of(d._iid).cacheContext, h = R.localCacheEnabled && R.localCacheConfig.enableAutoResend && PN(U.code);
           d._markMessageAsFailed(N, U, h), r.dispatch(new kn({ messages: [N], source: N.sendingStatus === tn.PENDING ? te.REQUEST_RESEND_MESSAGE : U.code === nt.FILE_UPLOAD_CANCEL_FAILED ? te.LOCAL_MESSAGE_CANCELED : te.EVENT_MESSAGE_SENT_FAILED })), Le(function() {
-            return E(d, void 0, void 0, function() {
-              return M(this, function(Z) {
+            return M(d, void 0, void 0, function() {
+              return p(this, function(Z) {
                 return [2, s._triggerFailed(U, N)];
               });
             });
@@ -9708,15 +9708,15 @@ var zn, oR = function(e) {
     return Qa(2).then(function() {
       var o = d._createPendingMultipleFilesMessage(t, c, V);
       r.dispatch(new kn({ messages: [o], source: l === pl.RESEND ? te.LOCAL_MESSAGE_RESEND_STARTED : te.EVENT_MESSAGE_SENT_PENDING })), Le(function() {
-        return E(d, void 0, void 0, function() {
-          return M(this, function(U) {
+        return M(d, void 0, void 0, function() {
+          return p(this, function(U) {
             return [2, s._trigger(o)];
           });
         });
       }), i.request(d, c, t, { requestHandler: s, isCopy: l === pl.COPY }).then(function(U) {
         r.dispatch(new kn({ messages: [U], source: te.EVENT_MESSAGE_SENT_SUCCESS })), Le(function() {
-          return E(d, void 0, void 0, function() {
-            return M(this, function(N) {
+          return M(d, void 0, void 0, function() {
+            return p(this, function(N) {
               return [2, s._trigger(U)];
             });
           });
@@ -9727,8 +9727,8 @@ var zn, oR = function(e) {
         Qa(2).then(function() {
           var N = d._createPendingMultipleFilesMessage(t, c, V);
           d._markMessageAsFailed(N, U), r.dispatch(new kn({ messages: [N], source: te.EVENT_MESSAGE_SENT_FAILED })), Le(function() {
-            return E(d, void 0, void 0, function() {
-              return M(this, function(R) {
+            return M(d, void 0, void 0, function() {
+              return p(this, function(R) {
                 return [2, s._triggerFailed(U, N)];
               });
             });
@@ -9741,8 +9741,8 @@ var zn, oR = function(e) {
     i.send(c).then(function(V) {
       var s = V.as(m5).message;
       Le(function() {
-        return E(r, void 0, void 0, function() {
-          return M(this, function(o) {
+        return M(r, void 0, void 0, function() {
+          return p(this, function(o) {
             return [2, l._trigger(s)];
           });
         });
@@ -9753,8 +9753,8 @@ var zn, oR = function(e) {
       Qa(2).then(function() {
         var s = r._createPendingScheduledFileMessage(t, a, d);
         r._markMessageAsFailed(s, V), Le(function() {
-          return E(r, void 0, void 0, function() {
-            return M(this, function(o) {
+          return M(r, void 0, void 0, function() {
+            return p(this, function(o) {
               return [2, l._triggerFailed(V, s)];
             });
           });
@@ -9790,9 +9790,9 @@ var zn, oR = function(e) {
     }
     return d;
   }, n.prototype.resendFileMessage = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         return a = this._validateFailedFileMessageHasFile(t, l), he(t instanceof Cn && a && !t.scheduledInfo).throw(j.invalidParameters), d = new Ll(), r = KT(t, l), this._sendFileMessage(r, pl.RESEND, t.reqId).onFailed(function(c) {
           return d.reject(c);
         }).onSucceeded(function(c) {
@@ -9813,9 +9813,9 @@ var zn, oR = function(e) {
     if (t.isMultipleFilesMessage())
       throw j.channelTypeNotSupportedError;
   }, n.prototype.updateFileMessage = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return a = x(x({}, Jy), l), he(B("number", t) && function(V) {
@@ -9827,9 +9827,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.uploadFile = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return l = D.of(this._iid).requestQueue, a = zr(), (d = new dR({ file: t.file, channelUrl: this.url, thumbnailSizes: t.thumbnailSizes, requestId: a })).uploadProgressHandler = t.progressHandler, t.uploadStartedHandler && t.uploadStartedHandler(a), [4, l.send(d)];
@@ -9839,16 +9839,16 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.cancelUploadingFileMessage = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return he(B("string", t)).throw(j.invalidParameters), tl.of(this._iid).fileMessageQueue.cancel(this, t), [2, !0];
       });
     });
   }, n.prototype.copyFileMessage = function(t, l) {
     var a, d, r;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         return he(t instanceof n && l instanceof Cn && l.sendingStatus === tn.SUCCEEDED && this.url === l.channelUrl && !l.scheduledInfo).throw(j.invalidParameters), i = new Ll(), c = Ae(x(x({}, l), { fileUrl: l.url, fileName: l.name, fileSize: l.size, mimeType: l.type, mentionType: l.mentionType, mentionedUserIds: (a = l.mentionedUserIds) !== null && a !== void 0 ? a : (d = l.mentionedUsers) === null || d === void 0 ? void 0 : d.map(function(s) {
           return s.userId;
         }), pushNotificationDeliveryOption: Ed.DEFAULT, parentMessageId: null, isReplyToChannel: !1, thumbnailSizes: (r = l.thumbnails) === null || r === void 0 ? void 0 : r.map(function(s) {
@@ -9873,9 +9873,9 @@ var zn, oR = function(e) {
     if (l.isMultipleFilesMessage())
       throw j.channelTypeNotSupportedError;
   }, n.prototype.deleteMessage = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(t instanceof Bl).throw(j.invalidParameters), t.messageId > 0 ? (l = D.of(this._iid).requestQueue, a = new o5({ channelType: this.channelType, channelUrl: this.url, messageId: t.messageId }), [4, l.send(a)]) : [3, 2];
@@ -9887,9 +9887,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.addReaction = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(t instanceof Bl && t.messageId > 0 && B("string", l)).throw(j.invalidParameters), a = D.of(this._iid).requestQueue, d = new U5({ channelType: this.channelType, channelUrl: this.url, messageId: t.messageId, reactionKey: l }), [4, a.send(d)];
@@ -9899,9 +9899,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.deleteReaction = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(t instanceof Bl && t.messageId > 0 && B("string", l)).throw(j.invalidParameters), a = D.of(this._iid).requestQueue, d = new R5({ channelType: this.channelType, channelUrl: this.url, messageId: t.messageId, reactionKey: l }), [4, a.send(d)];
@@ -9911,9 +9911,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype._updateUserMessageMetaArray = function(t, l, a, d) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var r, i, c, V, s, o;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             return r = D.of(this._iid), i = r.dispatcher, c = r.requestQueue, V = new Ju({ channelType: this.channelType, channelUrl: this.url, messageId: t, metaArrayParams: { array: l, mode: a, upsert: d } }), [4, c.send(V)];
@@ -9923,9 +9923,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype._updateFileMessageMetaArray = function(t, l, a, d) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var r, i, c, V, s, o;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             return r = D.of(this._iid), i = r.dispatcher, c = r.requestQueue, V = new vu({ channelType: this.channelType, channelUrl: this.url, messageId: t, metaArrayParams: { array: l, mode: a, upsert: d } }), [4, c.send(V)];
@@ -9935,43 +9935,43 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.createMessageMetaArrayKeys = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         return he(t instanceof Bl && t.messageId > 0 && xt("string", l)).throw(j.invalidParameters), a = l.map(function(r) {
           return new Ol({ key: r });
         }), t instanceof Cn ? [2, this._updateFileMessageMetaArray(t.messageId, a, "add", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, a, "add", !0)];
       });
     });
   }, n.prototype.deleteMessageMetaArrayKeys = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         return he(t instanceof Bl && t.messageId > 0 && xt("string", l)).throw(j.invalidParameters), a = l.map(function(r) {
           return new Ol({ key: r });
         }), t instanceof Cn ? [2, this._updateFileMessageMetaArray(t.messageId, a, "remove", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, a, "remove", !0)];
       });
     });
   }, n.prototype.addMessageMetaArrayValues = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         return he(t instanceof Bl && t.messageId > 0 && l.every(function(d) {
           return d instanceof Ol;
         })).throw(j.invalidParameters), t instanceof Cn ? [2, this._updateFileMessageMetaArray(t.messageId, l, "add", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, l, "add", !0)];
       });
     });
   }, n.prototype.removeMessageMetaArrayValues = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         return he(t instanceof Bl && t.messageId > 0 && l.every(function(d) {
           return d instanceof Ol;
         })).throw(j.invalidParameters), t instanceof Cn ? [2, this._updateFileMessageMetaArray(t.messageId, l, "remove", !0)] : [2, this._updateUserMessageMetaArray(t.messageId, l, "remove", !0)];
       });
     });
   }, n.prototype.report = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return he(zt(Ps, t) && B("string", l)).throw(j.invalidParameters), a = D.of(this._iid), d = a.sdkState, r = a.requestQueue, i = new i5({ channelUrl: this.url, channelType: this.channelType, userId: d.userId, category: t, description: l }), [4, r.send(i)];
@@ -9981,9 +9981,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.reportUser = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return he(t instanceof Gt && zt(Ps, l) && B("string", a)).throw(j.invalidParameters), d = D.of(this._iid), r = d.sdkState, i = d.requestQueue, c = new V5({ channelUrl: this.url, channelType: this.channelType, userId: r.userId, offendingUserId: t.userId, category: l, description: a }), [4, i.send(c)];
@@ -9993,9 +9993,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.reportMessage = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return he(t instanceof gn && zt(Ps, l) && B("string", a)).throw(j.invalidParameters), d = D.of(this._iid), r = d.sdkState, i = d.requestQueue, c = new c5({ channelUrl: this.url, channelType: this.channelType, userId: r.userId, offendingUserId: t.sender.userId, messageId: t.messageId, category: l, description: a }), [4, i.send(c)];
@@ -10005,9 +10005,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.updatePoll = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(B("number", t) && function(c) {
@@ -10019,9 +10019,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.deletePoll = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return l = B("number", t), he(l).throw(j.invalidParameters), a = D.of(this._iid).requestQueue, d = new M5({ pollId: t }), [4, a.send(d)];
@@ -10031,9 +10031,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.closePoll = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return l = B("number", t), he(l).throw(j.invalidParameters), a = D.of(this._iid).requestQueue, d = new E5({ pollId: t }), [4, a.send(d)];
@@ -10043,9 +10043,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.addPollOption = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return a = B("number", t) && B("string", l) && l.trim() !== "", he(a).throw(j.invalidParameters), d = D.of(this._iid).requestQueue, r = new k5({ channelUrl: this.url, channelType: this.channelType, pollId: t, optionText: l }), [4, d.send(r)];
@@ -10055,9 +10055,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.updatePollOption = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return d = B("number", t) && B("number", l) && B("string", a) && a.trim() !== "", he(d).throw(j.invalidParameters), r = D.of(this._iid).requestQueue, i = new Y5({ pollId: t, pollOptionId: l, optionText: a }), [4, r.send(i)];
@@ -10067,9 +10067,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.deletePollOption = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return a = B("number", t) && B("number", l), he(a).throw(j.invalidParameters), d = D.of(this._iid).requestQueue, r = new J5({ pollId: t, pollOptionId: l }), [4, d.send(r)];
@@ -10079,9 +10079,9 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.votePoll = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i, c, V, s;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return a = B("number", t) && xt("number", l), he(a).throw(j.invalidParameters), d = D.of(this._iid), r = d.requestQueue, i = d.dispatcher, c = new v5({ reqId: this._generateRequestId(), channelUrl: this.url, channelType: this.channelType, pollId: t, pollOptionIds: l }), [4, r.send(c)];
@@ -10091,8 +10091,8 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getPollChangeLogsSinceTimestamp = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return he(B("number", t)).throw(j.invalidParameters), [4, aR.of(this._iid).getPollChangeLogs(this.url, this.channelType, t)];
@@ -10102,8 +10102,8 @@ var zn, oR = function(e) {
       });
     });
   }, n.prototype.getPollChangeLogsSinceToken = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return he(B("string", t, !0)), [4, aR.of(this._iid).getPollChangeLogs(this.url, this.channelType, t)];
@@ -10174,9 +10174,9 @@ var zn, oR = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && xt("string", this.userIdsFilter, !0) && B("string", this.metaDataKeyFilter, !0) && xt("string", this.metaDataValuesFilter, !0) && B("string", this.nicknameStartsWithFilter, !0);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new I5(Ae(x(x({}, this), { token: this._token }))), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -10218,9 +10218,9 @@ var zn, oR = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && xt("string", this.userIdsFilter, !0);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new K5(Ae(x(x({}, this), { userId: l.userId, token: this._token }))), [4, a.send(d)]) : [3, 2] : [3, 5];
@@ -10261,9 +10261,9 @@ var zn, oR = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V, s;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new A5(x(x({}, this), { userId: l.userId, token: this._token })), [4, a.send(d)]) : [3, 2] : [3, 5];
@@ -10513,9 +10513,9 @@ var uV, Dl, Xd, tB = function() {
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(e.prototype, "hasNext", { get: function() {
     return !!this._nextValue;
   }, enumerable: !1, configurable: !0 }), e.prototype.prev = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             if (!this.hasPrevious)
@@ -10539,9 +10539,9 @@ var uV, Dl, Xd, tB = function() {
       });
     });
   }, e.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             if (!this.hasNext)
@@ -10608,9 +10608,9 @@ var uV, Dl, Xd, tB = function() {
           if (typeof N.condition[Z] == "object")
             Object.keys(N.condition[Z]).forEach(function(m) {
               if ((W > 0 ? t : l).includes(m)) {
-                for (var p = o; p < n._indexer.origin.length; p++)
-                  if (W * ur(n._indexer.origin[p].columnValues[h], n.condition[Z][m]) >= 0) {
-                    o = p;
+                for (var E = o; E < n._indexer.origin.length; E++)
+                  if (W * ur(n._indexer.origin[E].columnValues[h], n.condition[Z][m]) >= 0) {
+                    o = E;
                     break;
                   }
               }
@@ -10626,9 +10626,9 @@ var uV, Dl, Xd, tB = function() {
         U(d);
     return Math.max(o - 1, 0);
   }, e.prototype.each = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V = this;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             if (t = this.findOptimizedStartPosition(), l = 0, this.backward && this._indexer.origin[t] && (l = this._indexer.origin[t].keys.length - 1), a = function() {
@@ -10667,9 +10667,9 @@ var uV, Dl, Xd, tB = function() {
           case 4:
             return [4, new Promise(function(o) {
               var U = new tB({ initialNextValue: ta(r), iterator: n, forward: function() {
-                return E(V, void 0, void 0, function() {
+                return M(V, void 0, void 0, function() {
                   var N, R;
-                  return M(this, function(h) {
+                  return p(this, function(h) {
                     switch (h.label) {
                       case 0:
                         N = this.backward ? d : a, h.label = 1;
@@ -10683,9 +10683,9 @@ var uV, Dl, Xd, tB = function() {
                   });
                 });
               }, backward: function() {
-                return E(V, void 0, void 0, function() {
+                return M(V, void 0, void 0, function() {
                   var N, R;
-                  return M(this, function(h) {
+                  return p(this, function(h) {
                     switch (h.label) {
                       case 0:
                         N = this.backward ? a : d, h.label = 1;
@@ -10713,9 +10713,9 @@ var uV, Dl, Xd, tB = function() {
     this._mutex = r, this._iterator = new PT({ condition: l, backward: d, blockManager: i, indexer: c });
   }
   return e.prototype.fetch = function(n) {
-    return n === void 0 && (n = {}), E(this, void 0, void 0, function() {
+    return n === void 0 && (n = {}), M(this, void 0, void 0, function() {
       var t, l, a, d, r = this;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             if (t = Math.max(n.offset || 0, 0), (l = typeof n.limit == "number" ? n.limit : Number.MAX_SAFE_INTEGER) === 0)
@@ -10727,8 +10727,8 @@ var uV, Dl, Xd, tB = function() {
             return i.trys.push([1, 4, , 5]), a = [], [4, this._mutex.lock()];
           case 2:
             return i.sent(), [4, this._iterator.each(function(c) {
-              return E(r, void 0, void 0, function() {
-                return M(this, function(V) {
+              return M(r, void 0, void 0, function() {
+                return p(this, function(V) {
                   return c.error ? c.stop() : c.hasNext ? t === 0 ? (a.push(c.nextValue), 0 < l && l <= a.length ? c.stop() : c.next()) : (t--, c.next()) : c.stop(), [2];
                 });
               });
@@ -10743,16 +10743,16 @@ var uV, Dl, Xd, tB = function() {
       });
     });
   }, e.prototype.count = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return a.trys.push([0, 3, , 4]), n = 0, [4, this._mutex.lock()];
           case 1:
             return a.sent(), [4, this._iterator.each(function(d) {
-              return E(l, void 0, void 0, function() {
-                return M(this, function(r) {
+              return M(l, void 0, void 0, function() {
+                return p(this, function(r) {
                   return d.error ? d.stop() : d.hasNext ? (n++, d.next()) : d.stop(), [2];
                 });
               });
@@ -10783,9 +10783,9 @@ var uV, Dl, Xd, tB = function() {
     this.dbname = t, this.collectionName = l, this.store = a;
   }
   return e.prototype.get = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V, s;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return [4, this.store.get(n)];
@@ -10808,9 +10808,9 @@ var uV, Dl, Xd, tB = function() {
       });
     });
   }, e.prototype.save = function(n, t) {
-    return t === void 0 && (t = "".concat(Date.now())), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = "".concat(Date.now())), M(this, void 0, void 0, function() {
       var l, a, d, r, i = this;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return [4, new Promise(function(V) {
@@ -10829,8 +10829,8 @@ var uV, Dl, Xd, tB = function() {
       });
     });
   }, e.prototype.remove = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this.store.remove(n)];
@@ -10840,9 +10840,9 @@ var uV, Dl, Xd, tB = function() {
       });
     });
   }, e.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return n = Bu(this.dbname, this.collectionName), [4, this.store.getAllKeys()];
@@ -10850,8 +10850,8 @@ var uV, Dl, Xd, tB = function() {
             return t = a.sent(), [4, Promise.all(t.filter(function(d) {
               return d.startsWith(n);
             }).map(function(d) {
-              return E(l, void 0, void 0, function() {
-                return M(this, function(r) {
+              return M(l, void 0, void 0, function() {
+                return p(this, function(r) {
                   switch (r.label) {
                     case 0:
                       return [4, this.store.remove(d)];
@@ -10885,9 +10885,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
   }, Object.defineProperty(e.prototype, "items", { get: function() {
     return this._items;
   }, enumerable: !1, configurable: !0 }), e.prototype.find = function(n, t, l) {
-    return l === void 0 && (l = Xd.DEFAULT), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = Xd.DEFAULT), M(this, void 0, void 0, function() {
       var a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return (a = this.get(t)) ? [3, 2] : [4, n.get(t)];
@@ -10972,9 +10972,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(e.prototype, "requestCount", { get: function() {
     return this._requests.length;
   }, enumerable: !1, configurable: !0 }), e.prototype._getReducedRecordset = function(n) {
-    return n === void 0 && (n = []), E(this, void 0, void 0, function() {
+    return n === void 0 && (n = []), M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._store.get(this.recordsetKey)];
@@ -10993,9 +10993,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
     }
     return t;
   }, e.prototype._applyRecord = function(n, t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s, o;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             l = td.get(this.dbname), a = t.generation, d = t.requests, r = null, U.label = 1;
@@ -11029,9 +11029,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
       });
     });
   }, e.prototype.init = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return n = this, [4, this._store.get(this.metadataKey)];
@@ -11095,17 +11095,17 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
       }
     }
   }, e.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         return td.get(this.dbname).clearByCondition(function(t) {
           return t.state === Dl.PENDING;
         }), this._requests = [], [2];
       });
     });
   }, e.prototype.commit = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i, c, V, s, o, U, N = this;
-      return M(this, function(R) {
+      return p(this, function(R) {
         switch (R.label) {
           case 0:
             if (!((n = this._requests).length > 0))
@@ -11190,9 +11190,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
     }(n, t, { hashFunction: this.hashFunction, base: this.metadata.blockHashBase, multiplier: this.metadata.blockHashMultiplier, constant: this.metadata.blockHashConstant })), "".concat(qT(l, a)).concat(d, ".").concat(r);
     var l, a, d, r;
   }, e.prototype._findBlock = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             t = td.get(this.dbname), l = this.metadata.blockLevel, i.label = 1;
@@ -11210,9 +11210,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
       });
     });
   }, e.prototype.getFromBlock = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._findBlock(n)];
@@ -11222,9 +11222,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
       });
     });
   }, e.prototype.putToBlock = function(n, t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return l = dU.get(this.dbname), a = this.createBlockId(n), d = Math.floor(this._store.itemSizeLimit / l.itemSizeLimit), [4, td.get(this.dbname).find(this._store, a)];
@@ -11234,9 +11234,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
       });
     });
   }, e.prototype.removeFromBlock = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._findBlock(n)];
@@ -11246,9 +11246,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
       });
     });
   }, e.prototype.clearAllBlocks = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return n = qT(this.dbname, this.collectionName), [4, this._store.getAllKeys()];
@@ -11344,9 +11344,9 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
     }
     return [0, !1];
   }, e.prototype.ensure = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W;
-      return M(this, function(F) {
+      return p(this, function(F) {
         switch (F.label) {
           case 0:
             return [4, (n = td.get(this.dbname)).find(this._store, this.indexerKey, Xd.PERSISTENT)];
@@ -11398,8 +11398,8 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
       });
     });
   }, e.prototype.drop = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return td.get(this.dbname).remove(this.indexerKey), [4, this._store.remove(this.indexerKey)];
@@ -11409,20 +11409,20 @@ var As, xl, Du = [Dl.PENDING, Dl.VOLATILE], AU = {}, td = function() {
       });
     });
   }, e.prototype.addItem = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return this._addItem(n) && this._transaction.requestWrite({ key: this.indexerKey, value: this._table }, { persistent: !0 }), [2];
       });
     });
   }, e.prototype.removeItem = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return this._removeItem(n) && this._transaction.requestWrite({ key: this.indexerKey, value: this._table }, { persistent: !0 }), [2];
       });
     });
   }, e.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         return this._table = [], this._transaction.requestWrite({ key: this.indexerKey, value: this._table }, { persistent: !0 }), [2];
       });
     });
@@ -11464,17 +11464,17 @@ var Rd, uZ = {}, BW = function() {
           case xl.SYNC_HOST:
             if (!l.isInSync) {
               l._activationTimeout && clearTimeout(l._activationTimeout);
-              var N = U, R = N.currentItemRequestId, h = N.queue, Z = function(p) {
+              var N = U, R = N.currentItemRequestId, h = N.queue, Z = function(E) {
                 var u = l._queue.findIndex(function(b) {
-                  return b.requestId === p.requestId;
+                  return b.requestId === E.requestId;
                 });
-                u < 0 && l._requestLock({ nodeId: p.nodeId, requestId: p.requestId, key: l.key, op: xl.REQUEST_LOCK, ts: p.ts });
+                u < 0 && l._requestLock({ nodeId: E.nodeId, requestId: E.requestId, key: l.key, op: xl.REQUEST_LOCK, ts: E.ts });
               };
               try {
                 for (var W = Se(h), F = W.next(); !F.done; F = W.next())
                   Z(F.value);
-              } catch (p) {
-                d = { error: p };
+              } catch (E) {
+                d = { error: E };
               } finally {
                 try {
                   F && !F.done && (r = W.return) && r.call(W);
@@ -11483,22 +11483,22 @@ var Rd, uZ = {}, BW = function() {
                     throw d.error;
                 }
               }
-              l._currentItem = l._queue.find(function(p) {
-                return p.requestId === R;
+              l._currentItem = l._queue.find(function(E) {
+                return E.requestId === R;
               }), l._completeSync();
             }
             break;
           case xl.REMOVENODE:
-            l._queue = l._queue.filter(function(p) {
-              return p.nodeId !== i.nodeId;
+            l._queue = l._queue.filter(function(E) {
+              return E.nodeId !== i.nodeId;
             }), l._currentItem && l._currentItem.nodeId === i.nodeId && (l._currentItem = void 0, l._acquire(l._queue[0]));
             break;
           case xl.REQUEST_LOCK:
             l._requestLock(i);
             break;
           case xl.ACQUIRE_LOCK:
-            var m = l._queue.find(function(p) {
-              return p.requestId === V;
+            var m = l._queue.find(function(E) {
+              return E.requestId === V;
             });
             l._acquire(m);
             break;
@@ -11552,9 +11552,9 @@ var Rd, uZ = {}, BW = function() {
       return { nodeId: t.nodeId, requestId: t.requestId, ts: t.ts };
     }) } });
   }, e.prototype._waitUntilSyncCompleted = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n = this;
-      return M(this, function(t) {
+      return p(this, function(t) {
         return this.isHost && !this.isInSync ? [2, new Promise(function(l) {
           n._activationQueue.push(l);
         })] : [2];
@@ -11574,9 +11574,9 @@ var Rd, uZ = {}, BW = function() {
   }, e.prototype.claimHost = function() {
     this._hostId = this.nodeId, this._send(xl.CLAIM_HOST), this._waitSync();
   }, e.prototype.lock = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._waitUntilSyncCompleted()];
@@ -11601,9 +11601,9 @@ var Rd, uZ = {}, BW = function() {
     }(t, l)), this._blobContainer = new lB({ dbname: t, collectionName: l, store: i }), this._transaction = new aB({ dbname: t, collectionName: l, store: i });
   }
   return e.metadataOf = function(n, t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = mZ(n, t), [4, l.get(a)];
@@ -11617,9 +11617,9 @@ var Rd, uZ = {}, BW = function() {
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(e.prototype, "isReady", { get: function() {
     return this._state === dV.READY;
   }, enumerable: !1, configurable: !0 }), e.prototype.init = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i, c, V, s, o, U, N, R, h = this;
-      return M(this, function(Z) {
+      return p(this, function(Z) {
         switch (Z.label) {
           case 0:
             return [4, this._mutex.lock()];
@@ -11696,9 +11696,9 @@ var Rd, uZ = {}, BW = function() {
     }
     throw rn.indexTableIsRequired;
   }, e.prototype._upgradeBlockLevel = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return n = mZ(this.dbname, this.name), this._metadata.blockLevel++, [4, this._store.set({ key: n, value: this._metadata })];
@@ -11708,9 +11708,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype._requestInsert = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return t = n[this.keyName], [4, this._blockManager.getFromBlock(t)];
@@ -11752,9 +11752,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype._requestUpsert = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V, s, o, U, N, R;
-      return M(this, function(h) {
+      return p(this, function(h) {
         switch (h.label) {
           case 0:
             return t = n[this.keyName], [4, this._blockManager.getFromBlock(t)];
@@ -11820,9 +11820,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype._requestUpdate = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return t = n[this.keyName], [4, this._blockManager.getFromBlock(t)];
@@ -11858,9 +11858,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype._requestRemove = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return [4, this._blockManager.getFromBlock(n)];
@@ -11894,9 +11894,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype._requestClear = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return [4, this._blockManager.clearAllBlocks()];
@@ -11928,9 +11928,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.getByKey = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 6];
@@ -11956,9 +11956,9 @@ var Rd, uZ = {}, BW = function() {
       return new nB({ condition: n.where, mutex: this._mutex, blockManager: this._blockManager, indexer: this._getIndexerBy(n.index), backward: !!n.backward });
     throw rn.collectionNotReady;
   }, e.prototype.insertOne = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 8];
@@ -11986,9 +11986,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.insertMany = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V = this;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 15];
@@ -12038,9 +12038,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.upsertOne = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 8];
@@ -12068,9 +12068,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.upsertMany = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V = this;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 15];
@@ -12120,9 +12120,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.update = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 8];
@@ -12150,9 +12150,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.updateIf = function(n, t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W = this;
-      return M(this, function(F) {
+      return p(this, function(F) {
         switch (F.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 16];
@@ -12160,19 +12160,19 @@ var Rd, uZ = {}, BW = function() {
             F.sent(), F.label = 2;
           case 2:
             return F.trys.push([2, 13, , 15]), l = n.where, a = l === void 0 ? {} : l, d = n.index, r = d === void 0 ? null : d, i = n.backward, c = i !== void 0 && i, V = [], [4, new PT({ condition: a, blockManager: this._blockManager, backward: c, indexer: this._getIndexerBy(r) }).each(function(m) {
-              return E(W, void 0, void 0, function() {
-                var p, u;
-                return M(this, function(b) {
+              return M(W, void 0, void 0, function() {
+                var E, u;
+                return p(this, function(b) {
                   if (m.error)
                     throw m.stop(), m.error;
                   if (m.hasNext) {
-                    if (p = m.nextValue, mV(a, p) && t.set) {
+                    if (E = m.nextValue, mV(a, E) && t.set) {
                       if (typeof t.set != "function")
                         for (u in t.set)
-                          p[u] = t.set[u];
+                          E[u] = t.set[u];
                       else
-                        t.set(p);
-                      V.push(p);
+                        t.set(E);
+                      V.push(E);
                     }
                     m.next();
                   } else
@@ -12221,9 +12221,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.remove = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 8];
@@ -12249,9 +12249,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.removeIf = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z = this;
-      return M(this, function(W) {
+      return p(this, function(W) {
         switch (W.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 15];
@@ -12259,12 +12259,12 @@ var Rd, uZ = {}, BW = function() {
             W.sent(), W.label = 2;
           case 2:
             return W.trys.push([2, 13, , 14]), t = n.where, l = t === void 0 ? {} : t, a = n.index, d = a === void 0 ? null : a, r = n.backward, i = r !== void 0 && r, c = [], [4, new PT({ condition: l, blockManager: this._blockManager, backward: i, indexer: this._getIndexerBy(d) }).each(function(F) {
-              return E(Z, void 0, void 0, function() {
-                var m, p;
-                return M(this, function(u) {
+              return M(Z, void 0, void 0, function() {
+                var m, E;
+                return p(this, function(u) {
                   if (F.error)
                     throw F.stop(), F.error;
-                  return F.hasNext ? (m = F.nextValue, mV(l, m) && (p = m[this.keyName], c.push(p)), F.next()) : F.stop(), [2];
+                  return F.hasNext ? (m = F.nextValue, mV(l, m) && (E = m[this.keyName], c.push(E)), F.next()) : F.stop(), [2];
                 });
               });
             })];
@@ -12306,9 +12306,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this.isReady ? [4, this._mutex.lock()] : [3, 8];
@@ -12334,8 +12334,8 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.getBlob = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._blobContainer.get(n)];
@@ -12345,8 +12345,8 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.saveBlob = function(n, t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._blobContainer.save(n, t)];
@@ -12356,8 +12356,8 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.removeBlob = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._blobContainer.remove(n)];
@@ -12367,8 +12367,8 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.removeAllBlobs = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, this._blobContainer.clear()];
@@ -12416,9 +12416,9 @@ var Rd, uZ = {}, BW = function() {
       return i === 0 && (c.metadata = { shards: r }), c;
     });
   }, e.prototype._resetIfEncryptionChanged = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i, c, V, s = this;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return [4, this.get(this._encryptionCheckKey)];
@@ -12453,9 +12453,9 @@ var Rd, uZ = {}, BW = function() {
   }, Object.defineProperty(e.prototype, "adjustedItemSizeLimit", { get: function() {
     return Math.max(this.itemSizeLimit - this.metadataBuffer, 4);
   }, enumerable: !1, configurable: !0 }), e.prototype.usage = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return n = 0, [4, this._getAllRawKeys()];
@@ -12487,9 +12487,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.getAllKeys = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n = this;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._getAllRawKeys()];
@@ -12505,9 +12505,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.get = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c = this;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return t = this._getRawKey(n, ".0"), [4, this._getRaw(t)];
@@ -12517,9 +12517,9 @@ var Rd, uZ = {}, BW = function() {
             V.label = 2;
           case 2:
             return V.trys.push([2, 6, , 7]), a = l.data, (d = l.metadata) != null && d.shards && d.shards > 1 ? [4, Promise.all(this._generateShardPostfixArray(d == null ? void 0 : d.shards).map(function(s) {
-              return E(c, void 0, void 0, function() {
+              return M(c, void 0, void 0, function() {
                 var o, U;
-                return M(this, function(N) {
+                return p(this, function(N) {
                   switch (N.label) {
                     case 0:
                       return s > 0 ? (o = this._getRawKey(n, ".".concat(s)), [4, this._getRaw(o)]) : [3, 2];
@@ -12547,9 +12547,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.set = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return t = this._shardify(n), [4, this._setRaw(t)];
@@ -12559,9 +12559,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.setMany = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = [], [4, this._setRaw(t.concat.apply(t, st([], et(n.map(function(d) {
@@ -12575,9 +12575,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.remove = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d = this;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return t = this._getRawKey(n, ".0"), [4, this._getRaw(t)];
@@ -12593,14 +12593,14 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, e.prototype.removeMany = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V, s, o = this;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             t = [], l = function(N) {
               var R, h, Z;
-              return M(this, function(W) {
+              return p(this, function(W) {
                 switch (W.label) {
                   case 0:
                     return R = a._getRawKey(N, ".0"), [4, a._getRaw(R)];
@@ -12654,16 +12654,16 @@ var Rd, uZ = {}, BW = function() {
   }, set: function(t) {
     Pl[this.dbname] = t;
   }, enumerable: !1, configurable: !0 }), n.prototype._getAllRawKeys = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         if (Pl[this.dbname])
           return [2, Object.keys(Pl[this.dbname])];
         throw rn.storeNotAvailable;
       });
     });
   }, n.prototype._getRaw = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return Pl[this.dbname] ? [4, PU(this.delay)] : [3, 2];
@@ -12675,9 +12675,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, n.prototype._setRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return Pl[this.dbname] ? [4, PU(this.delay)] : [3, 2];
@@ -12705,9 +12705,9 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, n.prototype._removeRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return Pl[this.dbname] ? [4, PU(this.delay)] : [3, 2];
@@ -12740,14 +12740,14 @@ var Rd, uZ = {}, BW = function() {
       return d.observer[t][r] = a;
     });
   }, n.prototype.checkAvailability = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2];
       });
     });
   }, n.prototype.init = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.dbname = t, Pl[this.dbname] || (Pl[this.dbname] = {}), [4, this._resetIfEncryptionChanged()];
@@ -12757,18 +12757,18 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, n.prototype.set = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         if ((l = this.observer[t.key]) && typeof l.set == "function" && (a = l.set()))
           throw a;
         return [2, e.prototype.set.call(this, t)];
       });
     });
   }, n.prototype.setMany = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         try {
           for (l = Se(t), a = l.next(); !a.done; a = l.next())
             if (d = a.value, (r = this.observer[d.key]) && typeof r.set == "function" && (i = r.set()))
@@ -12787,8 +12787,8 @@ var Rd, uZ = {}, BW = function() {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, PU(this.delay)];
@@ -12819,8 +12819,8 @@ var iB = function(e) {
     }
     return !0;
   }, enumerable: !1, configurable: !0 }), n.prototype._putToObjectStore = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         return [2, new Promise(function(d, r) {
           var i = t.put(l);
           i.addEventListener("success", function(c) {
@@ -12832,8 +12832,8 @@ var iB = function(e) {
       });
     });
   }, n.prototype._deleteFromObjectStore = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         return [2, new Promise(function(d, r) {
           var i = t.delete(l);
           i.addEventListener("success", function() {
@@ -12867,9 +12867,9 @@ var iB = function(e) {
         d(rn.storeNotAvailable);
     });
   }, n.prototype._getObjectStore = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this._database ? [2, this._database.transaction(this._storeName, t).objectStore(this._storeName)] : [3, 1];
@@ -12899,9 +12899,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._getAllRawKeys = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._getObjectStore("readonly")];
@@ -12920,9 +12920,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._getRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._getObjectStore("readonly")];
@@ -12942,9 +12942,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._setRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s = this;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return [4, this._getObjectStore("readwrite")];
@@ -12980,9 +12980,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._removeRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s = this;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return [4, this._getObjectStore("readwrite")];
@@ -13020,9 +13020,9 @@ var iB = function(e) {
   }, n.prototype._triggerDatabaseClose = function() {
     this._database && this._database.onclose && this._database.onclose(new Event("dummy"));
   }, n.prototype.checkAvailability = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             if (!((t = typeof window < "u" ? window : null) != null && t.indexedDB || t != null && t.mozIndexedDB || t != null && t.webkitIndexedDB || t != null && t.msIndexedDB))
@@ -13074,8 +13074,8 @@ var iB = function(e) {
       });
     });
   }, n.prototype.init = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.dbname = t, [4, this.checkAvailability()];
@@ -13089,9 +13089,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._getObjectStore("readwrite")];
@@ -13120,9 +13120,9 @@ var iB = function(e) {
   }, n.prototype._getActualKey = function(t) {
     return "".concat(this.dbname, "/").concat(t);
   }, n.prototype._getAllRawKeys = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._asyncStorage.getAllKeys()];
@@ -13136,9 +13136,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._getRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._asyncStorage.getItem(this._getActualKey(t))];
@@ -13148,9 +13148,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._setRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             l = [];
@@ -13174,9 +13174,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._removeRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._asyncStorage.multiRemove(t.map(function(d) {
@@ -13188,16 +13188,16 @@ var iB = function(e) {
       });
     });
   }, n.prototype.checkAvailability = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         if (!this._asyncStorage)
           throw rn.storeNotAvailable;
         return [2];
       });
     });
   }, n.prototype.init = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.dbname = t, [4, this._resetIfEncryptionChanged()];
@@ -13207,9 +13207,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this.getAllKeys()];
@@ -13232,9 +13232,9 @@ var iB = function(e) {
   }, n.prototype._getActualKey = function(t) {
     return "".concat(this.dbname, "/").concat(t);
   }, n.prototype._getAllRawKeys = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._mmkv.getAllKeys()];
@@ -13248,9 +13248,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._getRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._mmkv.getString(this._getActualKey(t))];
@@ -13260,9 +13260,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._setRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         try {
           for (l = Se(t), a = l.next(); !a.done; a = l.next())
             d = a.value, r = d.key, d.data.length <= this.adjustedItemSizeLimit && this._mmkv.set(this._getActualKey(r), JSON.stringify(d));
@@ -13280,9 +13280,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype._removeRaw = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         try {
           for (l = Se(t), a = l.next(); !a.done; a = l.next())
             d = a.value, this._mmkv.delete(this._getActualKey(d));
@@ -13300,16 +13300,16 @@ var iB = function(e) {
       });
     });
   }, n.prototype.checkAvailability = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         if (!this._mmkv)
           throw rn.storeNotAvailable;
         return [2];
       });
     });
   }, n.prototype.init = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.dbname = t, [4, this._resetIfEncryptionChanged()];
@@ -13319,9 +13319,9 @@ var iB = function(e) {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this.getAllKeys()];
@@ -13350,12 +13350,12 @@ var Wl, cB = function() {
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(e.prototype, "store", { get: function() {
     return this._store;
   }, enumerable: !1, configurable: !0 }), e.prototype.estimateUsage = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
-            return [4, (t = this._store, E(void 0, void 0, void 0, function() {
-              return M(this, function(l) {
+            return [4, (t = this._store, M(void 0, void 0, void 0, function() {
+              return p(this, function(l) {
                 switch (l.label) {
                   case 0:
                     return [4, t.usage()];
@@ -13371,15 +13371,15 @@ var Wl, cB = function() {
       });
     });
   }, e.prototype.commitSchema = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t = this;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this._state !== Od.OPENING ? [3, 2] : [4, Promise.all(n.map(function(a) {
-              return E(t, void 0, void 0, function() {
+              return M(t, void 0, void 0, function() {
                 var d, r, i, c, V;
-                return M(this, function(s) {
+                return p(this, function(s) {
                   switch (s.label) {
                     case 0:
                       return d = a.collectionName, r = a.keyName, i = a.index, c = i === void 0 ? [] : i, this._collections.has(d) || this._collections.set(d, new pZ({ dbname: this.name, collectionName: d, keyName: r, indexes: c, store: this._store })), (V = this._collections.get(d)) ? [4, V.init()] : [3, 2];
@@ -13402,9 +13402,9 @@ var Wl, cB = function() {
     });
   }, e.prototype.open = function() {
     var n;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r = this;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return [4, this._globalMutex.lock()];
@@ -13420,9 +13420,9 @@ var Wl, cB = function() {
             return a = (n = i.sent()) !== null && n !== void 0 ? n : l, [2, new Promise(function(V, s) {
               var o = function(N) {
                 a.version < r._version ? r._event.upgrade(a.version, function(R) {
-                  return E(r, void 0, void 0, function() {
+                  return M(r, void 0, void 0, function() {
                     var h;
-                    return M(this, function(Z) {
+                    return p(this, function(Z) {
                       switch (Z.label) {
                         case 0:
                           if (R)
@@ -13455,10 +13455,10 @@ var Wl, cB = function() {
                 else {
                   var F = [];
                   a.collectionNames.forEach(function(m) {
-                    var p = r._collections.get(m);
-                    p && p.state === dV.READY || F.push(E(r, void 0, void 0, function() {
+                    var E = r._collections.get(m);
+                    E && E.state === dV.READY || F.push(M(r, void 0, void 0, function() {
                       var u, b;
-                      return M(this, function(k) {
+                      return p(this, function(k) {
                         switch (k.label) {
                           case 0:
                             return [4, pZ.metadataOf(this.name, m, this._store)];
@@ -13511,8 +13511,8 @@ var Wl, cB = function() {
       return n.close();
     }), this._state = Od.CLOSED;
   }, e.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, Promise.all(Array.from(this._collections.values()).map(function(t) {
@@ -13524,9 +13524,9 @@ var Wl, cB = function() {
       });
     });
   }, e.prototype.reset = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t = this;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.close(), (n = td.get(this.name)) && n.clearByCondition(function(a) {
@@ -13633,9 +13633,9 @@ var qs, Id = function(e) {
     return t = x(x({}, t), { messageId: parseInt(t.messageId) }), tl.of(this._iid).buildMessageFromSerializedData(t);
   }, n.prototype._deserializeWithMessageCreateParams = function(t) {
     var l, a, d;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var r, i, c, V, s, o, U = this;
-      return M(this, function(N) {
+      return p(this, function(N) {
         switch (N.label) {
           case 0:
             return r = tl.of(this._iid), i = this._deserialize(t), t.messageParams ? i instanceof kl ? (V = t.messageParams, i.messageParams = r.buildUserMessageCreateParamsFromSerializedData(V, i), [3, 6]) : [3, 1] : [3, 6];
@@ -13647,14 +13647,14 @@ var qs, Id = function(e) {
             return i.messageParams = r.buildFileMessageCreateParamsFromSerializedData(V, i), [3, 6];
           case 4:
             return i instanceof Da && (V = t.messageParams) && V.fileInfoList ? (i.messageParams = r.buildMultipleFilesMessageCreateParamsFromSerializedData(V, i), [4, Promise.all(i.messageParams.fileInfoList.map(function(R) {
-              return E(U, void 0, void 0, function() {
+              return M(U, void 0, void 0, function() {
                 var h, Z, W, F, m;
-                return M(this, function(p) {
-                  switch (p.label) {
+                return p(this, function(E) {
+                  switch (E.label) {
                     case 0:
                       return typeof ((Z = R._uploadedMetaData) === null || Z === void 0 ? void 0 : Z.fileKey) == "string" && TZ((F = (W = R._uploadedMetaData) === null || W === void 0 ? void 0 : W.fileType) !== null && F !== void 0 ? F : "") ? (h = R, [4, this.collection.getBlob(R._uploadedMetaData.fileKey)]) : [3, 2];
                     case 1:
-                      h.file = (m = p.sent()) !== null && m !== void 0 ? m : void 0, p.label = 2;
+                      h.file = (m = E.sent()) !== null && m !== void 0 ? m : void 0, E.label = 2;
                     case 2:
                       return [2];
                   }
@@ -13679,9 +13679,9 @@ var qs, Id = function(e) {
   }, n.prototype._getFileInfoBlobKey = function(t, l) {
     return "".concat(t, ".").concat(l);
   }, n.prototype.get = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.getByKey("".concat(t))] : [3, 2];
@@ -13696,9 +13696,9 @@ var qs, Id = function(e) {
     });
   }, n.prototype.fetch = function(t) {
     var l = t.channelUrl, a = t.filter, d = a === void 0 ? new ui() : a, r = t.order, i = r === void 0 ? Wl.CHANNEL_LATEST : r, c = t.sendingStatus, V = t.backward, s = V !== void 0 && V, o = t.parentMessageId;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var U, N, R, h, Z = this;
-      return M(this, function(W) {
+      return p(this, function(W) {
         switch (W.label) {
           case 0:
             return this.localCacheEnabled ? (U = Id(i), N = { "/where": function(F) {
@@ -13708,8 +13708,8 @@ var qs, Id = function(e) {
             return [4, W.sent().fetch({})];
           case 2:
             return h = W.sent(), [2, Promise.all(h.map(function(F) {
-              return E(Z, void 0, void 0, function() {
-                return M(this, function(m) {
+              return M(Z, void 0, void 0, function() {
+                return p(this, function(m) {
                   switch (m.label) {
                     case 0:
                       return [4, this._deserializeWithMessageCreateParams(F)];
@@ -13725,8 +13725,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.getAllChildMessages = function(t, l) {
-    return l === void 0 && (l = new ui()), E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return l === void 0 && (l = new ui()), M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this.fetch({ filter: l, order: Wl.NEWEST_CHILD_MESSAGE, channelUrl: t.channelUrl, backward: !1, parentMessageId: t.messageId })];
@@ -13736,15 +13736,15 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.upsert = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, Promise.all(t.map(function(d) {
-              return E(l, void 0, void 0, function() {
+              return M(l, void 0, void 0, function() {
                 var r;
-                return M(this, function(i) {
+                return p(this, function(i) {
                   switch (i.label) {
                     case 0:
                       return d instanceof Cn || d instanceof Da ? [4, this._mutex.lock()] : [3, 4];
@@ -13770,15 +13770,15 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.upsertChildMessages = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, Promise.all(t.map(function(d) {
-              return E(l, void 0, void 0, function() {
+              return M(l, void 0, void 0, function() {
                 var r;
-                return M(this, function(i) {
+                return p(this, function(i) {
                   switch (i.label) {
                     case 0:
                       return r = [], d.threadInfo && d.threadInfo.replyCount > 0 ? [4, this.getAllChildMessages(d)] : [3, 2];
@@ -13804,9 +13804,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.remove = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             if (!this.localCacheEnabled)
@@ -13838,8 +13838,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.removeMessagesOfChannel = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.removeIf({ where: { channelUrl: t } })] : [3, 2];
@@ -13851,8 +13851,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.clear()] : [3, 2];
@@ -13864,9 +13864,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.saveBlob = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r = this;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return t instanceof Cn ? t.messageParams && (d = t.messageParams).file && bN(d.file) ? [4, this.collection.saveBlob(d.file, t.reqId)] : [3, 2] : [3, 5];
@@ -13880,9 +13880,9 @@ var qs, Id = function(e) {
             return [3, 7];
           case 5:
             return t instanceof Da && (d = t.messageParams) && d.fileInfoList && Array.isArray(d.fileInfoList) ? [4, Promise.all(d.fileInfoList.map(function(c, V) {
-              return E(r, void 0, void 0, function() {
+              return M(r, void 0, void 0, function() {
                 var s;
-                return M(this, function(o) {
+                return p(this, function(o) {
                   switch (o.label) {
                     case 0:
                       return c.file && bN(c.file) ? [4, this.collection.saveBlob(c.file, this._getFileInfoBlobKey(t.reqId, V))] : [3, 2];
@@ -13925,9 +13925,9 @@ var qs, Id = function(e) {
   }, n.prototype._deserialize = function(t) {
     return t = x(x({}, t), { messageId: parseInt(t.messageId) }), tl.of(this._iid).buildMessageFromSerializedData(t);
   }, n.prototype.get = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.getByKey("".concat(t))] : [3, 2];
@@ -13942,12 +13942,12 @@ var qs, Id = function(e) {
     });
   }, n.prototype.fetch = function(t) {
     var l = t.channelUrl, a = t.token, d = t.limit, r = d === void 0 ? 100 : d, i = t.filter, c = i === void 0 ? new ui() : i, V = t.order, s = V === void 0 ? Wl.CHANNEL_LATEST : V, o = t.backward, U = o !== void 0 && o, N = t.parentMessageId, R = t.isPollOnly, h = R !== void 0 && R, Z = t.exactMatch, W = Z !== void 0 && Z, F = t.inclusive, m = F === void 0 || F;
-    return E(this, void 0, void 0, function() {
-      var p, u, b, k = this;
-      return M(this, function(Y) {
+    return M(this, void 0, void 0, function() {
+      var E, u, b, k = this;
+      return p(this, function(Y) {
         switch (Y.label) {
           case 0:
-            return this.localCacheEnabled ? (p = Id(s), u = { where: { channelUrl: l, "/where": function(S) {
+            return this.localCacheEnabled ? (E = Id(s), u = { where: { channelUrl: l, "/where": function(S) {
               if (a)
                 switch (s) {
                   case Wl.CHANNEL_LATEST:
@@ -13964,13 +13964,13 @@ var qs, Id = function(e) {
                       return !1;
                 }
               return !(h && !S._poll) && c.match(k._deserialize(S));
-            } }, index: p, backward: U }, [4, this.collection.query(u)]) : [3, 3];
+            } }, index: E, backward: U }, [4, this.collection.query(u)]) : [3, 3];
           case 1:
             return [4, Y.sent().fetch({ limit: r ?? void 0 })];
           case 2:
             return b = Y.sent(), [2, Promise.all(b.map(function(S) {
-              return E(k, void 0, void 0, function() {
-                return M(this, function(v) {
+              return M(k, void 0, void 0, function() {
+                return p(this, function(v) {
                   return [2, this._deserialize(S)];
                 });
               });
@@ -13981,8 +13981,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.getAllChildMessages = function(t, l) {
-    return l === void 0 && (l = new ui()), E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return l === void 0 && (l = new ui()), M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this.fetch({ channelUrl: t.channelUrl, token: Date.now(), limit: null, backward: !1, filter: l, order: Wl.NEWEST_CHILD_MESSAGE, parentMessageId: t.messageId })];
@@ -13993,9 +13993,9 @@ var qs, Id = function(e) {
     });
   }, n.prototype.upsert = function(t) {
     var l;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i, c, V, s, o, U = this;
-      return M(this, function(N) {
+      return p(this, function(N) {
         switch (N.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.saveBlobs(t)] : [3, 13];
@@ -14037,15 +14037,15 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.upsertChildMessages = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, Promise.all(t.map(function(d) {
-              return E(l, void 0, void 0, function() {
+              return M(l, void 0, void 0, function() {
                 var r, i;
-                return M(this, function(c) {
+                return p(this, function(c) {
                   switch (c.label) {
                     case 0:
                       return r = [], !((i = d.threadInfo) === null || i === void 0) && i.replyCount && d.threadInfo.replyCount > 0 ? [4, this.getAllChildMessages(d)] : [3, 2];
@@ -14071,9 +14071,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.remove = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             if (!this.localCacheEnabled)
@@ -14105,9 +14105,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.removeMessagesOfChannel = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.removeIf({ where: { channelUrl: t }, index: Id(Wl.CHANNEL_LATEST) })] : [3, 6];
@@ -14127,8 +14127,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.removeUnderOffset = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.removeIf({ where: { channelUrl: t, createdAt: { "<": l } }, index: Id(Wl.CHANNEL_LATEST) })] : [3, 2];
@@ -14140,8 +14140,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.clear()] : [3, 2];
@@ -14153,9 +14153,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.countBetween = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d, r = this;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return this.localCacheEnabled ? (d = Id(Wl.CHANNEL_LATEST), [4, this.collection.query({ where: { channelUrl: t, "/where": function(c) {
@@ -14170,15 +14170,15 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.saveBlobs = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l = this;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, Promise.all(t.map(function(d) {
-              return E(l, void 0, void 0, function() {
+              return M(l, void 0, void 0, function() {
                 var r, i;
-                return M(this, function(c) {
+                return p(this, function(c) {
                   switch (c.label) {
                     case 0:
                       return d instanceof Cn && d.messageParams && (r = d.messageParams).file && bN(r.file) ? [4, this.collection.saveBlob(r.file, d.reqId)] : [3, 2];
@@ -14196,9 +14196,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype._getGroupChannelPreferenceSize = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return l = 0, [4, (a = this._cacheContext.preference).get("sendbird:".concat(this._sdkState.userId, "@groupchannel/").concat(t, "/message/sync"))];
@@ -14235,9 +14235,9 @@ var qs, Id = function(e) {
   }, n.prototype._deserialize = function(t) {
     return tl.of(this._iid).buildMessageFromSerializedData(t);
   }, n.prototype.get = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.getByKey(t)] : [3, 2];
@@ -14252,9 +14252,9 @@ var qs, Id = function(e) {
     });
   }, n.prototype.fetch = function(t) {
     var l = t.channelUrl, a = t.token, d = t.limit, r = d === void 0 ? 100 : d, i = t.filter, c = i === void 0 ? new ui() : i, V = t.backward, s = V !== void 0 && V, o = t.exactMatch, U = o !== void 0 && o, N = t.inclusive, R = N === void 0 || N;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var h, Z = this;
-      return M(this, function(W) {
+      return p(this, function(W) {
         switch (W.label) {
           case 0:
             return this.localCacheEnabled ? (h = { where: { channelUrl: l, "/where": function(F) {
@@ -14281,9 +14281,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.upsert = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a = this;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return this.localCacheEnabled ? (l = t.map(function(r) {
@@ -14297,9 +14297,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.remove = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             if (!this.localCacheEnabled)
@@ -14331,8 +14331,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.markAsReadByTimestamp = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.updateIf({ where: { channelUrl: t, messageStatus: aV.SENT, createdAt: { "<": l } } }, { set: { messageStatus: aV.READ } })] : [3, 2];
@@ -14344,8 +14344,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.markAsReadByMessageIds = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.updateIf({ where: { channelUrl: t, notificationId: { "/in": l }, messageStatus: aV.SENT } }, { set: { messageStatus: aV.READ } })] : [3, 2];
@@ -14357,9 +14357,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.removeMessagesOfChannel = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.removeIf({ where: { channelUrl: t }, index: ["channelUrl", "-createdAt", "-notificationId"] })] : [3, 6];
@@ -14379,8 +14379,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.removeUnderOffset = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.removeIf({ where: { channelUrl: t, createdAt: { "<": l } }, index: Id(Wl.CHANNEL_LATEST) })] : [3, 2];
@@ -14392,8 +14392,8 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this.localCacheEnabled ? [4, this.collection.clear()] : [3, 2];
@@ -14405,9 +14405,9 @@ var qs, Id = function(e) {
       });
     });
   }, n.prototype.countBetween = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var d, r = this;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return this.localCacheEnabled ? (d = ["channelUrl", "-createdAt", "-notificationId"], [4, this.collection.query({ where: { channelUrl: t, "/where": function(c) {
@@ -14426,9 +14426,9 @@ var qs, Id = function(e) {
   function n(t) {
     var l = e.call(this, t) || this;
     return l._observers = /* @__PURE__ */ new Map(), l._dispatcherContext = l._dispatcher.on(function(a) {
-      return E(l, void 0, void 0, function() {
-        var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y = this;
-        return M(this, function(S) {
+      return M(l, void 0, void 0, function() {
+        var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y = this;
+        return p(this, function(S) {
           switch (S.label) {
             case 0:
               return a instanceof kn ? (d = a.messages, k = a.source, s = a.isWebSocketEventComing, r = d.filter(function(v) {
@@ -14438,8 +14438,8 @@ var qs, Id = function(e) {
               }), c = d.filter(function(v) {
                 return v instanceof kV;
               }), r.length > 0 ? [4, Bn(function() {
-                return E(Y, void 0, void 0, function() {
-                  return M(this, function(v) {
+                return M(Y, void 0, void 0, function() {
+                  return p(this, function(v) {
                     switch (v.label) {
                       case 0:
                         return [4, this._messageCache.upsert(r)];
@@ -14459,8 +14459,8 @@ var qs, Id = function(e) {
               S.sent(), s || this._broadcastUpdateEvent(r, k), S.label = 2;
             case 2:
               return i.length > 0 ? [4, Bn(function() {
-                return E(Y, void 0, void 0, function() {
-                  return M(this, function(v) {
+                return M(Y, void 0, void 0, function() {
+                  return p(this, function(v) {
                     switch (v.label) {
                       case 0:
                         return [4, this._unsentMessageCache.upsert(i)];
@@ -14474,8 +14474,8 @@ var qs, Id = function(e) {
               S.sent(), s || this._broadcastUpdateEvent(i, k), S.label = 4;
             case 4:
               return c.length > 0 ? [4, Bn(function() {
-                return E(Y, void 0, void 0, function() {
-                  return M(this, function(v) {
+                return M(Y, void 0, void 0, function() {
+                  return p(this, function(v) {
                     switch (v.label) {
                       case 0:
                         return [4, this._notificationCache.upsert(c)];
@@ -14495,8 +14495,8 @@ var qs, Id = function(e) {
               }), U = V.filter(function(v) {
                 return typeof v == "string";
               }), [4, Bn(function() {
-                return E(Y, void 0, void 0, function() {
-                  return M(this, function(v) {
+                return M(Y, void 0, void 0, function() {
+                  return p(this, function(v) {
                     switch (v.label) {
                       case 0:
                         return o.length > 0 ? [4, this._messageCache.remove(o)] : [3, 2];
@@ -14516,8 +14516,8 @@ var qs, Id = function(e) {
               return S.sent(), s || this._broadcastRemoveEvent(V, k), [3, 24];
             case 9:
               return a instanceof V3 ? (N = a.reqId, k = a.source, [4, Bn(function() {
-                return E(Y, void 0, void 0, function() {
-                  return M(this, function(v) {
+                return M(Y, void 0, void 0, function() {
+                  return p(this, function(v) {
                     switch (v.label) {
                       case 0:
                         return [4, this._unsentMessageCache.remove([N])];
@@ -14544,8 +14544,8 @@ var qs, Id = function(e) {
                 });
                 G && G.applyPoll(v);
               }), [4, Bn(function() {
-                return E(Y, void 0, void 0, function() {
-                  return M(this, function(v) {
+                return M(Y, void 0, void 0, function() {
+                  return p(this, function(v) {
                     switch (v.label) {
                       case 0:
                         return [4, this._messageCache.upsert(Z)];
@@ -14563,8 +14563,8 @@ var qs, Id = function(e) {
               return a instanceof QW ? (W = a.event, k = a.source, [4, this._messageCache.get(W.messageId)]) : [3, 19];
             case 16:
               return (F = S.sent()) && F.isUserMessage() && F.poll && F.poll.applyPollUpdateEvent(W) ? [4, Bn(function() {
-                return E(Y, void 0, void 0, function() {
-                  return M(this, function(v) {
+                return M(Y, void 0, void 0, function() {
+                  return p(this, function(v) {
                     switch (v.label) {
                       case 0:
                         return [4, this._messageCache.upsert([F])];
@@ -14581,12 +14581,12 @@ var qs, Id = function(e) {
             case 19:
               return a instanceof AR ? (m = a.event, k = a.source, [4, this._messageCache.get(m.messageId)]) : [3, 23];
             case 20:
-              return (p = S.sent()) && p.isUserMessage() && p.poll && p.poll.applyPollVoteEvent(m) ? [4, Bn(function() {
-                return E(Y, void 0, void 0, function() {
-                  return M(this, function(v) {
+              return (E = S.sent()) && E.isUserMessage() && E.poll && E.poll.applyPollVoteEvent(m) ? [4, Bn(function() {
+                return M(Y, void 0, void 0, function() {
+                  return p(this, function(v) {
                     switch (v.label) {
                       case 0:
-                        return [4, this._messageCache.upsert([p])];
+                        return [4, this._messageCache.upsert([E])];
                       case 1:
                         return [2, v.sent()];
                     }
@@ -14828,9 +14828,9 @@ var qs, Id = function(e) {
     var t = Zi(n);
     return new Yc(this._iid, Yc.payloadify(t));
   }, e.prototype.getMessage = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = new My(n), [4, this._requestQueue.send(t)];
@@ -14840,9 +14840,9 @@ var qs, Id = function(e) {
       });
     });
   }, e.prototype.getScheduledMessage = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = new by(n), [4, this._requestQueue.send(t)];
@@ -14852,9 +14852,9 @@ var qs, Id = function(e) {
       });
     });
   }, e.prototype.getMessagesByMessageId = function(n, t, l, a, d) {
-    return d === void 0 && (d = te.REQUEST_MESSAGE), E(this, void 0, void 0, function() {
+    return d === void 0 && (d = te.REQUEST_MESSAGE), M(this, void 0, void 0, function() {
       var r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return r = new CU(x(x({ channelType: t, channelUrl: n, token: String(l) }, _s), a)), [4, this._requestQueue.send(r)];
@@ -14864,9 +14864,9 @@ var qs, Id = function(e) {
       });
     });
   }, e.prototype.getMessagesByTimestamp = function(n, t, l, a, d) {
-    return d === void 0 && (d = te.REQUEST_MESSAGE), E(this, void 0, void 0, function() {
+    return d === void 0 && (d = te.REQUEST_MESSAGE), M(this, void 0, void 0, function() {
       var r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return r = new CU(x(x({ channelType: t, channelUrl: n, timestamp: l }, _s), a)), [4, this._requestQueue.send(r)];
@@ -14876,9 +14876,9 @@ var qs, Id = function(e) {
       });
     });
   }, e.prototype._getMessagesByTimestampForCollection = function(n, t, l, a, d, r, i) {
-    return d === void 0 && (d = te.REQUEST_MESSAGE), E(this, void 0, void 0, function() {
+    return d === void 0 && (d = te.REQUEST_MESSAGE), M(this, void 0, void 0, function() {
       var c, V, s, o, U, N;
-      return M(this, function(R) {
+      return p(this, function(R) {
         switch (R.label) {
           case 0:
             return c = new CU(x(x(x({ channelType: t, channelUrl: n, timestamp: l }, _s), a), { checkingHasNext: r, checkingContinuousMessages: i })), [4, this._requestQueue.send(c)];
@@ -14888,9 +14888,9 @@ var qs, Id = function(e) {
       });
     });
   }, e.prototype.getThreadedMessagesByTimestamp = function(n, t, l, a) {
-    return a === void 0 && (a = te.REQUEST_THREADED_MESSAGE), E(this, void 0, void 0, function() {
+    return a === void 0 && (a = te.REQUEST_THREADED_MESSAGE), M(this, void 0, void 0, function() {
       var d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return d = new CU(x(x(x({ channelUrl: n.channelUrl, channelType: n.channelType, timestamp: t }, aU), l), { replyType: al.ALL, parentMessageId: n.messageId, includeThreadInfo: !0 })), [4, this._requestQueue.send(d)];
@@ -14902,9 +14902,9 @@ var qs, Id = function(e) {
       });
     });
   }, e.prototype.getMessageTemplatesByToken = function(n, t) {
-    return t === void 0 && (t = {}), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = {}), M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return l = new TB(x({ token: n }, t)), [4, this._requestQueue.send(l)];
@@ -14914,9 +14914,9 @@ var qs, Id = function(e) {
       });
     });
   }, e.prototype.getMessageTemplate = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = new WB({ key: n }), [4, this._requestQueue.send(t)];
@@ -14926,9 +14926,9 @@ var qs, Id = function(e) {
       });
     });
   }, e.prototype.getMessageChangelogs = function(n, t, l, a, d) {
-    return d === void 0 && (d = te.REQUEST_MESSAGE_CHANGELOGS), E(this, void 0, void 0, function() {
+    return d === void 0 && (d = te.REQUEST_MESSAGE_CHANGELOGS), M(this, void 0, void 0, function() {
       var r, i, c, V, s, o, U, N;
-      return M(this, function(R) {
+      return p(this, function(R) {
         switch (R.label) {
           case 0:
             return r = new Sy(Oe(Ae(x(x({ channelType: t, channelUrl: n, timestamp: typeof l == "number" ? l : null, token: typeof l == "string" ? l : null }, LT), a)))), [4, this._requestQueue.send(r)];
@@ -14974,9 +14974,9 @@ var EB = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && B("string", this.keyword) && this.keyword.length > 0 && B("boolean", this.reverse) && B("boolean", this.exactMatch) && B("string", this.channelUrl) && B("string", this.channelCustomType) && (B("number", this.messageTimestampFrom) || this.messageTimestampFrom === null) && (B("number", this.messageTimestampTo) || this.messageTimestampTo === null) && zt(qs, this.order) && B("boolean", this.advancedQuery) && xt("string", this.targetFields, !0);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new pB(Ae(x(x({}, this), { nextToken: this._nextToken ? this._nextToken : null }))), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -15018,9 +15018,9 @@ var EB = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this);
   }, n.prototype.load = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new SB({ channelType: this.channelType, channelUrl: this.channelUrl, token: this._edge, limit: this.limit }), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -15053,9 +15053,9 @@ var EB = function(e) {
   }, n.prototype.buildSenderFromSerializedData = function(t) {
     return this._manager.buildSenderFromSerializedData(t);
   }, n.prototype.getMessage = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return l = x(x({}, uB), t), he(function(r) {
@@ -15069,26 +15069,26 @@ var EB = function(e) {
       });
     });
   }, n.prototype.getScheduledMessage = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         return l = x(x({}, YB), t), he(function(d) {
           return B("string", d.channelUrl) && d.channelUrl !== "" && B("number", d.scheduledMessageId) && d.scheduledMessageId > 0;
         }(l)).throw(j.invalidParameters), [2, this._manager.getScheduledMessage(l)];
       });
     });
   }, n.prototype.getMessageTemplatesByToken = function(t, l) {
-    return l === void 0 && (l = {}), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = {}), M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         return a = x(x({}, QB), l), he(B("string", t, !0) && function(r) {
           return B("boolean", r.reverse, !0) && B("number", r.limit, !0);
         }(a)).throw(j.invalidParameters), [2, this._manager.getMessageTemplatesByToken(t, a)];
       });
     });
   }, n.prototype.getMessageTemplate = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return he(B("string", t)).throw(j.invalidParameters), [2, this._manager.getMessageTemplate(t)];
       });
     });
@@ -15138,9 +15138,9 @@ var Eo, JN = function(e) {
   return e.of = function(n) {
     return Hu[n];
   }, e.prototype.processNonAutoResendRegisteredPendingMessages = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return this._enableAutoResend ? [4, this._fetchAllCachedPendingMessages()] : [2];
@@ -15164,9 +15164,9 @@ var Eo, JN = function(e) {
       });
     });
   }, e.prototype.processAutoResendRegisteredPendingMessages = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return [4, this._fetchAllCachedPendingMessages()];
@@ -15197,9 +15197,9 @@ var Eo, JN = function(e) {
       t >= 0 && this._autoResendQueue.splice(t, 1), t === 0 && this._processNextAutoResend();
     }
   }, e.prototype._fetchAllCachedPendingMessages = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return n = YV.of(this._iid), (t = new ui()).replyType = al.ALL, [4, n.fetch({ sendingStatus: tn.PENDING, backward: !0, filter: t })];
@@ -15217,9 +15217,9 @@ var Eo, JN = function(e) {
       return t.reqId;
     }).indexOf(n.reqId) === -1;
   }, e.prototype._processNextAutoResend = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         if (this._localCacheEnabled && this._enableAutoResend && this._sdkState.appState === "foreground")
           try {
             this._autoResendQueue.length > 0 ? (this._isProcessingAutoResend || (this._logger.debug("auto-resend queue started."), this._isProcessingAutoResend = !0), n = this._autoResendQueue[0], this._dispatcher.dispatch(new C3({ message: n })), this._logger.debug("processing auto-resend for message request id: ", n.reqId)) : (this._logger.debug("auto-resend queue finished."), this._isProcessingAutoResend = !1);
@@ -15306,44 +15306,44 @@ var zB = function() {
   }, n.prototype.unsubscribeMessageEvent = function(t) {
     this._messageBroadcast.unsubscribe(t);
   }, n.prototype.getMessageFromCache = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2, null];
       });
     });
   }, n.prototype.getExactlyMatchingMessagesForTokenFromCache = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(d) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(d) {
         return [2, []];
       });
     });
   }, n.prototype.getMessagesFromCache = function(t, l, a, d, r, i) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(c) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(c) {
         return [2, []];
       });
     });
   }, n.prototype.getPollMessagesFromCache = function(t, l, a, d) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(r) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(r) {
         return [2, []];
       });
     });
   }, n.prototype.getCachedMessageCountBetween = function(t, l, a, d) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(r) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(r) {
         return [2, 0];
       });
     });
   }, n.prototype.getUnsentMessagesFromCache = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         return [2, []];
       });
     });
   }, n.prototype.removeFailedMessageFromCache = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2];
       });
     });
@@ -15601,9 +15601,9 @@ var il, db = function() {
         return l._channels.get(a.url).messageOffsetTimestamp < a.messageOffsetTimestamp;
     });
   }, n.prototype.get = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return this._channels.has(t) ? [3, 3] : this.localCacheEnabled ? [4, this.collection.getByKey(t)] : [3, 2];
@@ -15620,9 +15620,9 @@ var il, db = function() {
     });
   }, n.prototype.fetch = function(t) {
     var l = t.token, a = t.limit, d = a === void 0 ? O3 : a, r = t.backward, i = r !== void 0 && r, c = t.filter, V = c === void 0 ? new db() : c, s = t.order, o = s === void 0 ? On.LATEST_LAST_MESSAGE : s, U = t.borderlineChannelUrl;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var N, R, h, Z, W = this;
-      return M(this, function(F) {
+      return p(this, function(F) {
         switch (F.label) {
           case 0:
             return this.localCacheEnabled ? (N = JN(o), R = { where: function(m) {
@@ -15656,9 +15656,9 @@ var il, db = function() {
       });
     });
   }, n.prototype.upsert = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i = this;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             if (a = [], t.forEach(function(V) {
@@ -15680,9 +15680,9 @@ var il, db = function() {
       });
     });
   }, n.prototype.remove = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             V.trys.push([0, 5, 6, 7]), l = Se(t), a = l.next(), V.label = 1;
@@ -15710,8 +15710,8 @@ var il, db = function() {
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this.clearMemoryCache(), this.localCacheEnabled ? [4, this.collection.clear()] : [3, 2];
@@ -15725,9 +15725,9 @@ var il, db = function() {
   }, n.prototype.clearMemoryCache = function() {
     this._channels.clear();
   }, n.prototype._setBlockStateOfAllChannels = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
-      var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k;
-      return M(this, function(Y) {
+    return M(this, void 0, void 0, function() {
+      var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k;
+      return p(this, function(Y) {
         switch (Y.label) {
           case 0:
             if (d = [], t === this._sdkState.userId)
@@ -15783,13 +15783,13 @@ var il, db = function() {
                   }
                 }
               } catch (S) {
-                p = { error: S };
+                E = { error: S };
               } finally {
                 try {
                   o && !o.done && (u = s.return) && u.call(s);
                 } finally {
-                  if (p)
-                    throw p.error;
+                  if (E)
+                    throw E.error;
                 }
               }
             return d.length > 0 ? [4, this.upsert(d)] : [3, 2];
@@ -15801,8 +15801,8 @@ var il, db = function() {
       });
     });
   }, n.prototype.block = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._setBlockStateOfAllChannels(t, l, !0)];
@@ -15812,8 +15812,8 @@ var il, db = function() {
       });
     });
   }, n.prototype.unblock = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._setBlockStateOfAllChannels(t, l, !1)];
@@ -15823,9 +15823,9 @@ var il, db = function() {
       });
     });
   }, n.prototype.markAsRead = function(t, l) {
-    return l === void 0 && (l = st([], et(this._channels.keys()), !1)), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = st([], et(this._channels.keys()), !1)), M(this, void 0, void 0, function() {
       var a, d, r, i, c, V, s, o;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             a = [], U.label = 1;
@@ -15891,9 +15891,9 @@ var zN = function(e) {
   function e(n) {
     var t = n.groupChannelCache, l = n.messageCache, a = n.unsentMessageCache, d = n.dispatcher, r = this;
     this._observers = /* @__PURE__ */ new Map(), d.on(function(i) {
-      return E(r, void 0, void 0, function() {
-        var c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b = this;
-        return M(this, function(k) {
+      return M(r, void 0, void 0, function() {
+        var c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b = this;
+        return p(this, function(k) {
           switch (k.label) {
             case 0:
               if (!(i instanceof Dt))
@@ -15912,13 +15912,13 @@ var zN = function(e) {
             case 5:
               return [3, 8];
             case 6:
-              return h = k.sent(), p = { error: h }, [3, 8];
+              return h = k.sent(), E = { error: h }, [3, 8];
             case 7:
               try {
                 N && !N.done && (u = U.return) && u.call(U);
               } finally {
-                if (p)
-                  throw p.error;
+                if (E)
+                  throw E.error;
               }
               return [7];
             case 8:
@@ -15929,9 +15929,9 @@ var zN = function(e) {
               return i instanceof or ? (W = i.channelUrls, F = i.source, m = i.isWebSocketEventComing, [4, t.remove(W)]) : [3, 13];
             case 11:
               return k.sent(), [4, Bn(function() {
-                return E(b, void 0, void 0, function() {
+                return M(b, void 0, void 0, function() {
                   var Y, S, v, G, w, y;
-                  return M(this, function(f) {
+                  return p(this, function(f) {
                     switch (f.label) {
                       case 0:
                         f.trys.push([0, 6, 7, 8]), Y = Se(W), S = Y.next(), f.label = 1;
@@ -16043,8 +16043,8 @@ var zN = function(e) {
   return J(n, e), n;
 }(ue), IV = { includeEmpty: !1, includeFrozen: !0, includeMetaData: !0, includeChatNotification: !1, channelUrlsFilter: void 0, customTypesFilter: void 0, customTypeStartsWithFilter: void 0, nicknameContainsFilter: void 0, nicknameStartsWithFilter: void 0, nicknameExactMatchFilter: void 0, channelNameContainsFilter: void 0, myMemberStateFilter: na.ALL, unreadChannelFilter: Fi.ALL, superChannelFilter: aa.ALL, publicChannelFilter: _d.ALL, hiddenChannelFilter: Fd.ALL, userIdsFilter: { userIds: [], includeMode: !0, queryType: Sr.AND }, searchFilter: { query: void 0, fields: [] }, metadataKey: void 0, metadataValues: void 0, metadataOrderKeyFilter: void 0, metadataValueStartsWith: void 0, order: On.LATEST_LAST_MESSAGE, createdAfter: void 0, createdBefore: void 0 }, HB = function(e) {
   function n(t) {
-    var l = this, a = t.userId, d = t.token, r = t.limit, i = t.order, c = t.includeEmpty, V = t.myMemberStateFilter, s = t.superChannelFilter, o = t.publicChannelFilter, U = t.unreadChannelFilter, N = t.nicknameContainsFilter, R = t.nicknameStartsWithFilter, h = t.nicknameExactMatchFilter, Z = t.channelNameContainsFilter, W = t.channelUrlsFilter, F = t.customTypesFilter, m = t.customTypeStartsWithFilter, p = t.hiddenChannelFilter, u = t.metadataOrderKeyFilter, b = t.metadataKey, k = t.metadataValues, Y = t.metadataValueStartsWith, S = t.includeFrozen, v = t.includeMetaData, G = t.searchFilter, w = t.userIdsFilter, y = t.includeChatNotification, f = y !== void 0 && y, H = t.includeLeftChannel, I = H !== void 0 && H, _ = t.createdAfter, oe = t.createdBefore;
-    return (l = e.call(this) || this).method = Re.GET, l.path = "".concat(Kt, "/").concat(encodeURIComponent(a), "/my_group_channels"), l.params = Oe({ token: d, limit: r, order: i ?? IV.order, show_member: !0, show_read_receipt: !0, show_delivery_receipt: !0, show_empty: c ?? IV.includeEmpty, member_state_filter: V ?? IV.myMemberStateFilter, super_mode: s ?? IV.superChannelFilter, public_mode: o ?? IV.publicChannelFilter, unread_filter: U ?? IV.unreadChannelFilter, members_nickname_contains: N, members_nickname_startswith: R, members_nickname: h, name_contains: Z, channel_urls: W, custom_types: F, custom_type_startswith: m, hidden_mode: p, metadata_order_key: u, metadata_key: b, metadata_values: k, metadata_value_startswith: Y, show_frozen: S, show_metadata: v, include_chat_notification: f, include_left_channel: I, created_after: _, created_before: oe }), G && G.query && G.fields && (l.params.search_query = G.query, l.params.search_fields = G.fields), w && w.userIds && w.userIds.length > 0 && (w.includeMode ? (l.params.members_include_in = w.userIds, l.params.query_type = w.queryType.toUpperCase()) : l.params.members_exactly_in = w.userIds), l;
+    var l = this, a = t.userId, d = t.token, r = t.limit, i = t.order, c = t.includeEmpty, V = t.myMemberStateFilter, s = t.superChannelFilter, o = t.publicChannelFilter, U = t.unreadChannelFilter, N = t.nicknameContainsFilter, R = t.nicknameStartsWithFilter, h = t.nicknameExactMatchFilter, Z = t.channelNameContainsFilter, W = t.channelUrlsFilter, F = t.customTypesFilter, m = t.customTypeStartsWithFilter, E = t.hiddenChannelFilter, u = t.metadataOrderKeyFilter, b = t.metadataKey, k = t.metadataValues, Y = t.metadataValueStartsWith, S = t.includeFrozen, v = t.includeMetaData, G = t.searchFilter, w = t.userIdsFilter, y = t.includeChatNotification, f = y !== void 0 && y, H = t.includeLeftChannel, I = H !== void 0 && H, _ = t.createdAfter, oe = t.createdBefore;
+    return (l = e.call(this) || this).method = Re.GET, l.path = "".concat(Kt, "/").concat(encodeURIComponent(a), "/my_group_channels"), l.params = Oe({ token: d, limit: r, order: i ?? IV.order, show_member: !0, show_read_receipt: !0, show_delivery_receipt: !0, show_empty: c ?? IV.includeEmpty, member_state_filter: V ?? IV.myMemberStateFilter, super_mode: s ?? IV.superChannelFilter, public_mode: o ?? IV.publicChannelFilter, unread_filter: U ?? IV.unreadChannelFilter, members_nickname_contains: N, members_nickname_startswith: R, members_nickname: h, name_contains: Z, channel_urls: W, custom_types: F, custom_type_startswith: m, hidden_mode: E, metadata_order_key: u, metadata_key: b, metadata_values: k, metadata_value_startswith: Y, show_frozen: S, show_metadata: v, include_chat_notification: f, include_left_channel: I, created_after: _, created_before: oe }), G && G.query && G.fields && (l.params.search_query = G.query, l.params.search_fields = G.fields), w && w.userIds && w.userIds.length > 0 && (w.includeMode ? (l.params.members_include_in = w.userIds, l.params.query_type = w.queryType.toUpperCase()) : l.params.members_exactly_in = w.userIds), l;
   }
   return J(n, e), n;
 }(Ze), fB = function(e) {
@@ -16138,10 +16138,10 @@ var zN = function(e) {
   }), n;
 }, eD = function(e) {
   function n(t) {
-    var l = this, a = t.userId, d = t.channelUrl, r = t.coverUrl, i = t.coverImage, c = t.isDistinct, V = t.isSuper, s = t.isBroadcast, o = t.isPublic, U = t.isExclusive, N = t.isDiscoverable, R = t.isStrict, h = t.isEphemeral, Z = t.accessCode, W = t.name, F = t.data, m = t.customType, p = t.messageSurvivalSeconds, u = t.invitedUserIds, b = t.operatorUserIds;
+    var l = this, a = t.userId, d = t.channelUrl, r = t.coverUrl, i = t.coverImage, c = t.isDistinct, V = t.isSuper, s = t.isBroadcast, o = t.isPublic, U = t.isExclusive, N = t.isDiscoverable, R = t.isStrict, h = t.isEphemeral, Z = t.accessCode, W = t.name, F = t.data, m = t.customType, E = t.messageSurvivalSeconds, u = t.invitedUserIds, b = t.operatorUserIds;
     return (l = e.call(this) || this).method = Re.POST, l.path = vl, l.params = Oe({ user_ids: st([a], et(u ?? []), !1).filter(function(k, Y, S) {
       return Y === S.indexOf(k);
-    }), channel_url: d, cover_url: r, cover_file: i, is_distinct: c, is_super: V, is_broadcast: s, is_exclusive: U, is_public: o, is_discoverable: N, strict: R, is_ephemeral: h, access_code: Z, name: W, data: F, custom_type: m, operator_ids: b, message_survival_seconds: p }), l;
+    }), channel_url: d, cover_url: r, cover_file: i, is_distinct: c, is_super: V, is_broadcast: s, is_exclusive: U, is_public: o, is_discoverable: N, strict: R, is_ephemeral: h, access_code: Z, name: W, data: F, custom_type: m, operator_ids: b, message_survival_seconds: E }), l;
   }
   return J(n, e), n;
 }(Ze), tD = function(e) {
@@ -16294,17 +16294,17 @@ var oD = function(e) {
   return J(n, e), n;
 }(Yl), Vb = function(e) {
   function n(t, l) {
-    var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S, v, G = this;
-    return (G = e.call(this, t, l) || this).includeEmpty = !1, G.includeFrozen = !0, G.includeMetaData = !0, G.includeChatNotification = !1, G.channelUrlsFilter = null, G.customTypesFilter = null, G.customTypeStartsWithFilter = null, G.nicknameContainsFilter = null, G.nicknameStartsWithFilter = null, G.nicknameExactMatchFilter = null, G.channelNameContainsFilter = "", G.myMemberStateFilter = na.ALL, G.unreadChannelFilter = Fi.ALL, G.superChannelFilter = aa.ALL, G.publicChannelFilter = _d.ALL, G.hiddenChannelFilter = Fd.UNHIDDEN, G.searchFilter = { fields: [], query: null }, G.userIdsFilter = { userIds: [], includeMode: !0, queryType: Sr.AND }, G.metadataKey = null, G.metadataValues = null, G.metadataOrderKeyFilter = null, G.metadataValueStartsWith = null, G.order = On.LATEST_LAST_MESSAGE, G.includeEmpty = (a = l.includeEmpty) !== null && a !== void 0 && a, G.includeFrozen = (d = l.includeFrozen) === null || d === void 0 || d, G.includeMetaData = (r = l.includeMetaData) === null || r === void 0 || r, G.includeChatNotification = (i = l.includeChatNotification) !== null && i !== void 0 && i, G.channelUrlsFilter = (c = l.channelUrlsFilter) !== null && c !== void 0 ? c : null, G.customTypesFilter = (V = l.customTypesFilter) !== null && V !== void 0 ? V : null, G.customTypeStartsWithFilter = (s = l.customTypeStartsWithFilter) !== null && s !== void 0 ? s : "", G.nicknameContainsFilter = (o = l.nicknameContainsFilter) !== null && o !== void 0 ? o : null, G.nicknameStartsWithFilter = (U = l.nicknameStartsWithFilter) !== null && U !== void 0 ? U : null, G.nicknameExactMatchFilter = (N = l.nicknameExactMatchFilter) !== null && N !== void 0 ? N : null, G.channelNameContainsFilter = (R = l.channelNameContainsFilter) !== null && R !== void 0 ? R : "", G.myMemberStateFilter = (h = l.myMemberStateFilter) !== null && h !== void 0 ? h : na.ALL, G.unreadChannelFilter = (Z = l.unreadChannelFilter) !== null && Z !== void 0 ? Z : Fi.ALL, G.superChannelFilter = (W = l.superChannelFilter) !== null && W !== void 0 ? W : aa.ALL, G.publicChannelFilter = (F = l.publicChannelFilter) !== null && F !== void 0 ? F : _d.ALL, G.hiddenChannelFilter = (m = l.hiddenChannelFilter) !== null && m !== void 0 ? m : Fd.UNHIDDEN, G.searchFilter = (p = l.searchFilter) !== null && p !== void 0 ? p : { fields: [], query: null }, G.userIdsFilter = (u = l.userIdsFilter) !== null && u !== void 0 ? u : { userIds: [], includeMode: !0, queryType: Sr.AND }, G.metadataKey = (b = l.metadataKey) !== null && b !== void 0 ? b : null, G.metadataValues = (k = l.metadataValues) !== null && k !== void 0 ? k : null, G.metadataOrderKeyFilter = (Y = l.metadataOrderKeyFilter) !== null && Y !== void 0 ? Y : null, G.metadataValueStartsWith = (S = l.metadataValueStartsWith) !== null && S !== void 0 ? S : null, G.order = (v = l.order) !== null && v !== void 0 ? v : On.LATEST_LAST_MESSAGE, l.createdAfter && (G.createdAfter = l.createdAfter), l.createdBefore && (G.createdBefore = l.createdBefore), G;
+    var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S, v, G = this;
+    return (G = e.call(this, t, l) || this).includeEmpty = !1, G.includeFrozen = !0, G.includeMetaData = !0, G.includeChatNotification = !1, G.channelUrlsFilter = null, G.customTypesFilter = null, G.customTypeStartsWithFilter = null, G.nicknameContainsFilter = null, G.nicknameStartsWithFilter = null, G.nicknameExactMatchFilter = null, G.channelNameContainsFilter = "", G.myMemberStateFilter = na.ALL, G.unreadChannelFilter = Fi.ALL, G.superChannelFilter = aa.ALL, G.publicChannelFilter = _d.ALL, G.hiddenChannelFilter = Fd.UNHIDDEN, G.searchFilter = { fields: [], query: null }, G.userIdsFilter = { userIds: [], includeMode: !0, queryType: Sr.AND }, G.metadataKey = null, G.metadataValues = null, G.metadataOrderKeyFilter = null, G.metadataValueStartsWith = null, G.order = On.LATEST_LAST_MESSAGE, G.includeEmpty = (a = l.includeEmpty) !== null && a !== void 0 && a, G.includeFrozen = (d = l.includeFrozen) === null || d === void 0 || d, G.includeMetaData = (r = l.includeMetaData) === null || r === void 0 || r, G.includeChatNotification = (i = l.includeChatNotification) !== null && i !== void 0 && i, G.channelUrlsFilter = (c = l.channelUrlsFilter) !== null && c !== void 0 ? c : null, G.customTypesFilter = (V = l.customTypesFilter) !== null && V !== void 0 ? V : null, G.customTypeStartsWithFilter = (s = l.customTypeStartsWithFilter) !== null && s !== void 0 ? s : "", G.nicknameContainsFilter = (o = l.nicknameContainsFilter) !== null && o !== void 0 ? o : null, G.nicknameStartsWithFilter = (U = l.nicknameStartsWithFilter) !== null && U !== void 0 ? U : null, G.nicknameExactMatchFilter = (N = l.nicknameExactMatchFilter) !== null && N !== void 0 ? N : null, G.channelNameContainsFilter = (R = l.channelNameContainsFilter) !== null && R !== void 0 ? R : "", G.myMemberStateFilter = (h = l.myMemberStateFilter) !== null && h !== void 0 ? h : na.ALL, G.unreadChannelFilter = (Z = l.unreadChannelFilter) !== null && Z !== void 0 ? Z : Fi.ALL, G.superChannelFilter = (W = l.superChannelFilter) !== null && W !== void 0 ? W : aa.ALL, G.publicChannelFilter = (F = l.publicChannelFilter) !== null && F !== void 0 ? F : _d.ALL, G.hiddenChannelFilter = (m = l.hiddenChannelFilter) !== null && m !== void 0 ? m : Fd.UNHIDDEN, G.searchFilter = (E = l.searchFilter) !== null && E !== void 0 ? E : { fields: [], query: null }, G.userIdsFilter = (u = l.userIdsFilter) !== null && u !== void 0 ? u : { userIds: [], includeMode: !0, queryType: Sr.AND }, G.metadataKey = (b = l.metadataKey) !== null && b !== void 0 ? b : null, G.metadataValues = (k = l.metadataValues) !== null && k !== void 0 ? k : null, G.metadataOrderKeyFilter = (Y = l.metadataOrderKeyFilter) !== null && Y !== void 0 ? Y : null, G.metadataValueStartsWith = (S = l.metadataValueStartsWith) !== null && S !== void 0 ? S : null, G.order = (v = l.order) !== null && v !== void 0 ? v : On.LATEST_LAST_MESSAGE, l.createdAfter && (G.createdAfter = l.createdAfter), l.createdBefore && (G.createdBefore = l.createdBefore), G;
   }
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && B("boolean", this.includeEmpty) && B("boolean", this.includeFrozen) && B("boolean", this.includeMetaData) && B("string", this.channelNameContainsFilter) && xt("string", this.channelUrlsFilter, !0) && xt("string", this.customTypesFilter, !0) && B("string", this.customTypeStartsWithFilter) && B("string", this.nicknameContainsFilter, !0) && B("string", this.nicknameStartsWithFilter, !0) && B("string", this.nicknameExactMatchFilter, !0) && zt(na, this.myMemberStateFilter) && zt(aa, this.superChannelFilter) && zt(_d, this.publicChannelFilter) && zt(Fi, this.unreadChannelFilter) && zt(Fd, this.hiddenChannelFilter) && xt(So, this.searchFilter.fields) && B("string", this.searchFilter.query, !0) && xt("string", this.userIdsFilter.userIds) && B("boolean", this.userIdsFilter.includeMode) && zt(Sr, this.userIdsFilter.queryType) && zt(On, this.order) && B("string", this.metadataOrderKeyFilter, !0) && B("string", this.metadataKey, !0) && xt("string", this.metadataValues, !0) && B("string", this.metadataValueStartsWith, !0) && Jm(this.createdAfter, !0) && Jm(this.createdBefore, !0);
   }, n.prototype.serialize = function() {
     return gc(this);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, [4, cl.of(this._iid).getMyGroupChannels(this._token, Ae(x({}, this)), this.limit, te.REQUEST_CHANNEL, !0)]) : [3, 2] : [3, 5];
@@ -16399,9 +16399,9 @@ var hr, pD = function(e) {
       r instanceof un ? d._handleEvent(r).catch(function(i) {
         if (Il(i) && d._sdkState.appState === "foreground")
           throw i;
-      }) : r instanceof C3 ? E(d, void 0, void 0, function() {
+      }) : r instanceof C3 ? M(d, void 0, void 0, function() {
         var i, c;
-        return M(this, function(V) {
+        return p(this, function(V) {
           switch (V.label) {
             case 0:
               return i = r.message, [4, this.getChannel(i.channelUrl, !0)];
@@ -16409,22 +16409,22 @@ var hr, pD = function(e) {
               return c = V.sent(), i instanceof kl ? c._autoResendUserMessage(i) : i instanceof Cn && c._autoResendFileMessage(i), [2];
           }
         });
-      }) : r instanceof _3 ? d.reduceDBSize() : r instanceof p3 && E(d, void 0, void 0, function() {
+      }) : r instanceof _3 ? d.reduceDBSize() : r instanceof p3 && M(d, void 0, void 0, function() {
         var i, c, V, s, o, U = this;
-        return M(this, function(N) {
+        return p(this, function(N) {
           switch (N.label) {
             case 0:
               return i = r.channelUrl, c = r.channelType, V = r.parentMessage, s = new L3(this._iid, { channel_type: Xt.GROUP, channel_url: i, parent_message_id: V.messageId, thread_info: iR.payloadify(V.threadInfo) }), c !== Xt.GROUP ? [3, 2] : [4, this.getChannel(i, !0)];
             case 1:
               o = N.sent(), Le(function() {
-                return E(U, void 0, void 0, function() {
+                return M(U, void 0, void 0, function() {
                   var R, h, Z, W, F;
-                  return M(this, function(m) {
+                  return p(this, function(m) {
                     try {
                       for (R = Se(this._groupChannelHandlers.values()), h = R.next(); !h.done; h = R.next())
                         (Z = h.value).onThreadInfoUpdated && Z.onThreadInfoUpdated(o, s);
-                    } catch (p) {
-                      W = { error: p };
+                    } catch (E) {
+                      W = { error: E };
                     } finally {
                       try {
                         h && !h.done && (F = R.return) && F.call(R);
@@ -16465,8 +16465,8 @@ var hr, pD = function(e) {
     return new Ga(this._iid, Ga.payloadify(l));
   }, n.prototype.getChannelFromCache = function(t) {
     var l;
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._groupChannelCache.get(t)];
@@ -16476,8 +16476,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getChannelsFromCache = function(t, l, a, d, r) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(i) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return [4, this._groupChannelCache.fetch({ token: t, filter: l, order: a, limit: d, borderlineChannelUrl: r })];
@@ -16487,8 +16487,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.upsertChannelsToCache = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._groupChannelCache.upsert(t)];
@@ -16498,8 +16498,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.removeChannelsFromCache = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._groupChannelCache.remove(t)];
@@ -16509,8 +16509,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.clearChannelsFromCache = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._groupChannelCache.clear()];
@@ -16520,9 +16520,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.reduceDBSize = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z;
-      return M(this, function(W) {
+      return p(this, function(W) {
         switch (W.label) {
           case 0:
             return t = ac.of(this._iid), l = D.of(this._iid).cacheContext, a = l.localCacheConfig, d = l.nestdb, l.localCacheEnabled && d && d.state == Od.OPENED ? (r = 1024 * a.maxSize * 1024, [4, d.estimateUsage()]) : [2];
@@ -16555,9 +16555,9 @@ var hr, pD = function(e) {
     });
   }, n.prototype._handleEvent = function(t) {
     var l, a;
-    return E(this, void 0, void 0, function() {
-      var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut, _e, ke, ae, Nt, rt, it, Tt, Qt, Nn, Et, dn, Fn, gt, en, Ct, jt, ge, $e, be, mt, Jt, X, Ue, Fe, je, ht, Ft, Zt, pt, Ce, g, Me, Ie, Bt, Zn, Rt, ft, wt, bn, cn, Yd, Ia, jh, Qd, kU, _c, Pc, Ac, Gi, bU, YU, QU, JU, Or, vU, dm, rm, im, Hh, fh, wh, zU, xU, gh, Ih, Vm, Lh, cm, Ch, sm, Kh, om, _h, Um, sn = this;
-      return M(this, function(Lt) {
+    return M(this, void 0, void 0, function() {
+      var d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut, _e, ke, ae, Nt, rt, it, Tt, Qt, Nn, Et, dn, Fn, gt, en, Ct, jt, ge, $e, be, mt, Jt, X, Ue, Fe, je, ht, Ft, Zt, pt, Ce, g, Me, Ie, Bt, Zn, Rt, ft, wt, bn, cn, Yd, Ia, jh, Qd, kU, _c, Pc, Ac, Gi, bU, YU, QU, JU, Or, vU, dm, rm, im, Hh, fh, wh, zU, xU, gh, Ih, Vm, Lh, cm, Ch, sm, Kh, om, _h, Um, sn = this;
+      return p(this, function(Lt) {
         switch (Lt.label) {
           case 0:
             switch (Lt.trys.push([0, 80, , 81]), t.code) {
@@ -16594,9 +16594,9 @@ var hr, pD = function(e) {
             return [3, 79];
           case 1:
             return U = null, t.code === "MESG" ? U = t.as(GW) : t.code === "FILE" ? U = t.as(vW) : t.code !== "ADMM" && t.code != "BRDM" || (U = t.as($3)), U ? (d = U.message, r = U.isMentioned, i = U.forceUpdateLastMessage, d.channelType !== Xt.GROUP ? [3, 3] : (this._disableMack || Bn(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne;
-                return M(this, function(K) {
+                return p(this, function(K) {
                   return Ne = new WD(d), this._requestQueue.send(Ne), [2];
                 });
               });
@@ -16643,9 +16643,9 @@ var hr, pD = function(e) {
               })), v && (F = this._sessionManager.currentUser) && (F.nickname = d.sender.nickname, F.plainProfileUrl = d.sender.plainProfileUrl, F.metaData = d.sender.metaData);
             }
             d.silent && !v || (c.isEphemeral || I) && (c._updateLastMessage(d), v || c._updateUnreadCount(c.unreadMessageCount + 1, c.unreadMentionCount + (r ? 1 : 0))), i && c._updateLastMessage(d), this._dispatcher.dispatch(new Dt({ channels: [c], source: te.EVENT_MESSAGE_RECEIVED })), d.silent && !v || Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onChannelChanged && bt.onChannelChanged(c);
@@ -16663,9 +16663,9 @@ var hr, pD = function(e) {
                 });
               });
             }), this._dispatcher.dispatch(new kn({ messages: [d], source: te.EVENT_MESSAGE_RECEIVED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onMessageReceived && bt.onMessageReceived(c, d), r && bt.onMentionReceived && bt.onMentionReceived(c, d);
@@ -16689,9 +16689,9 @@ var hr, pD = function(e) {
             return U = null, t.code === "MEDI" ? U = t.as(cR) : t.code === "FEDI" ? U = t.as(sR) : t.code === "AEDI" && (U = t.as(eb)), U ? (N = U.message, R = U.mentionCountChange, N.threadInfo && (N.threadInfo.unreadReplyCount = void 0), N.channelType !== Xt.GROUP ? [3, 6] : (I = this._groupChannelCache.isCachedInMemory(N.channelUrl), [4, this.getChannel(N.channelUrl, !0)])) : [3, 6];
           case 5:
             h = Lt.sent(), v = N instanceof gn && N.sender.userId === this._sdkState.userId, Z = !1, v ? (W = N.sender, (F = this._sessionManager.currentUser) && (F.nickname = W.nickname, F.plainProfileUrl = W.plainProfileUrl, F.metaData = W.metaData)) : h.isReadMessage(N) || R !== 0 && !N.silent && I && (h._updateUnreadCount(h.unreadMessageCount, h.unreadMentionCount + R), Z = !0), h._updateLastMessage(N) ? Z = !0 : !((a = h.lastMessage) === null || a === void 0) && a.isIdentical(N) && (I ? h._updateLastMessage(N) && (Z = !0) : Z = !0), m = !1, h.lastPinnedMessage && h.lastPinnedMessage.messageId === N.messageId && (h.lastPinnedMessage = N, Z = !0, m = !0), Z && (this._dispatcher.dispatch(new Dt({ channels: [h], source: m ? te.EVENT_PINNED_MESSAGE_UPDATED : te.EVENT_MESSAGE_UPDATED })), N.silent && !v || Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onChannelChanged && bt.onChannelChanged(h);
@@ -16709,9 +16709,9 @@ var hr, pD = function(e) {
                 });
               });
             }), m && Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onPinnedMessageUpdated && bt.onPinnedMessageUpdated(h);
@@ -16729,9 +16729,9 @@ var hr, pD = function(e) {
                 });
               });
             })), this._dispatcher.dispatch(new kn({ messages: [N], source: te.EVENT_MESSAGE_UPDATED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onMessageUpdated && bt.onMessageUpdated(h, N), R > 0 && bt.onMentionReceived && bt.onMentionReceived(h, N);
@@ -16752,12 +16752,12 @@ var hr, pD = function(e) {
           case 6:
             return [3, 79];
           case 7:
-            return p = t.as(D3), xe = p.channelUrl, fe = p.channelType, u = p.messageId, b = p.silent, k = p.messageCreatedAt, Y = p.senderId, fe !== Xt.GROUP ? [3, 9] : [4, this.getChannel(xe, !0)];
+            return E = t.as(D3), xe = E.channelUrl, fe = E.channelType, u = E.messageId, b = E.silent, k = E.messageCreatedAt, Y = E.senderId, fe !== Xt.GROUP ? [3, 9] : [4, this.getChannel(xe, !0)];
           case 8:
             S = Lt.sent(), v = Y === this._sdkState.userId, b || v || k > 0 && S.myLastRead < k && S.unreadMessageCount > 0 && S._updateUnreadCount(S.unreadMessageCount - 1, 0), this._dispatcher.dispatch(new YW({ messageIds: [u], source: te.EVENT_MESSAGE_DELETED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onMessageDeleted && bt.onMessageDeleted(S, u);
@@ -16781,9 +16781,9 @@ var hr, pD = function(e) {
             return (G = t.as(u3).readStatus).channelType !== Xt.GROUP ? [3, 12] : (I = this._groupChannelCache.isCachedInMemory(G.channelUrl), [4, this.getChannel(G.channelUrl, !0)]);
           case 11:
             w = Lt.sent(), I && w._updateUnreadMemberState(G.reader.userId, G.readAt), G.reader.userId === this._sdkState.userId ? I ? (w.unreadMessageCount > 0 || w.unreadMentionCount > 0) && (w._updateUnreadCount(0, 0), this._dispatcher.dispatch(new Dt({ channels: [w], source: te.EVENT_CHANNEL_READ })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onChannelChanged && bt.onChannelChanged(w);
@@ -16801,9 +16801,9 @@ var hr, pD = function(e) {
                 });
               });
             })) : w.unreadMessageCount !== 0 && w.unreadMentionCount !== 0 || (this._dispatcher.dispatch(new Dt({ channels: [w], source: te.EVENT_CHANNEL_READ })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onChannelChanged && bt.onChannelChanged(w);
@@ -16821,9 +16821,9 @@ var hr, pD = function(e) {
                 });
               });
             })) : (this._dispatcher.dispatch(new Dt({ channels: [w], source: te.EVENT_CHANNEL_READ })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onUnreadMemberStatusUpdated && bt.onUnreadMemberStatusUpdated(w);
@@ -16852,9 +16852,9 @@ var hr, pD = function(e) {
             return Object.keys(H).some(function(Ne) {
               return Ne !== sn._sdkState.userId;
             }) && (this._dispatcher.dispatch(new Dt({ channels: [_], source: te.EVENT_CHANNEL_DELIVERED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onUndeliveredMemberStatusUpdated && bt.onUndeliveredMemberStatusUpdated(_);
@@ -16878,9 +16878,9 @@ var hr, pD = function(e) {
             return ce = Lt.sent(), [4, this.getMessageFromCache(le.messageId)];
           case 17:
             (ee = Lt.sent()) ? ee instanceof Bl && (ee.applyReactionEvent(le), this._dispatcher.dispatch(new kn({ messages: [ee], source: te.EVENT_MESSAGE_REACTION_UPDATED }))) : this._dispatcher.dispatch(new r3({ event: le, source: te.EVENT_MESSAGE_REACTION_UPDATED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onReactionUpdated && bt.onReactionUpdated(ce, le);
@@ -16906,9 +16906,9 @@ var hr, pD = function(e) {
             return L = Lt.sent(), [4, this.getMessageFromCache(ne.targetMessageId)];
           case 21:
             (ee = Lt.sent()) ? ee instanceof Bl && (ee.applyThreadInfoUpdateEvent(ne), this._dispatcher.dispatch(new kn({ messages: [ee], source: te.EVENT_MESSAGE_THREADINFO_UPDATED }))) : this._dispatcher.dispatch(new i3({ event: ne, source: te.EVENT_MESSAGE_THREADINFO_UPDATED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onThreadInfoUpdated && bt.onThreadInfoUpdated(L, ne);
@@ -16952,9 +16952,9 @@ var hr, pD = function(e) {
             return [7];
           case 31:
             return O.length > 0 && (this._dispatcher.dispatch(new Dt({ channels: O, source: te.EVENT_CHANNEL_MEMBER_COUNT_UPDATED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onChannelMemberCountChanged && bt.onChannelMemberCountChanged(O);
@@ -16976,9 +16976,9 @@ var hr, pD = function(e) {
             return He = t.as(ab), pe = He.event, me = He.status, xe = He.channelUrl, fe = He.channelType, xe && fe === Xt.GROUP ? [4, this.getChannel(xe, !0)] : [3, 34];
           case 33:
             Be = Lt.sent(), this._dispatcher.dispatch(new QW({ event: pe, source: te.EVENT_POLL_UPDATED })), Le(me === s3 ? function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onPollDeleted && bt.onPollDeleted(Be, pe.pollId);
@@ -16996,9 +16996,9 @@ var hr, pD = function(e) {
                 });
               });
             } : function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onPollUpdated && bt.onPollUpdated(Be, pe);
@@ -17022,9 +17022,9 @@ var hr, pD = function(e) {
             return ye = t.as(yW), qe = ye.event, xe = ye.channelUrl, fe = ye.channelType, xe && fe === Xt.GROUP ? [4, this.getChannel(xe, !0)] : [3, 37];
           case 36:
             dt = Lt.sent(), this._dispatcher.dispatch(new AR({ event: qe, source: te.EVENT_POLL_VOTED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onPollVoted && bt.onPollVoted(dt, qe);
@@ -17093,8 +17093,8 @@ var hr, pD = function(e) {
             return tt = Lt.sent(), Xe = t.as(aD), Ge = Xe.memberCount, ut = Xe.joinedMemberCount, Vt = Xe.members, yt = !1, Vt.forEach(function(Ne) {
               tt.isExclusive || tt.isSuper || tt.isBroadcast ? yt = yt || tt._setLatestMemberCount(Ge, ut, De.ts) : (Ne.state = Hn.JOINED, tt.addMember(Ne, De.ts), sn._updateJoinedMemberCount(tt)), Ne.userId === sn._sdkState.userId && (tt.myMemberState = Hn.JOINED);
             }), this._dispatcher.dispatch(new Dt({ channels: [tt], source: te.EVENT_CHANNEL_JOINED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     var bt, ct;
                     try {
@@ -17127,8 +17127,8 @@ var hr, pD = function(e) {
             return ze = qt, Ht = t.as(rD), Ct = Ht.memberCount, jt = Ht.joinedMemberCount, $t = Ht.member, nn = !1, kt = D.of(this._iid).appInfo, ze.isExclusive || ze.isSuper || ze.isBroadcast ? nn = ze._setLatestMemberCount(Ct, jt, De.ts) : (kt != null && kt.enabledChannelMemberShipHistory ? ((Ut = ze.members.find(function(Ne) {
               return Ne.userId === $t.userId;
             })) && (Ut.state = Hn.LEFT), ze.memberCount = Ct) : ze.removeMember($t), this._updateJoinedMemberCount(ze)), $t.userId === this._sdkState.userId ? (ze.myMemberState = Hn.NONE, ze.invitedAt = 0, ze.joinedAt = 0, ze._updateUnreadCount(0, 0), ze.isPublic ? this._dispatcher.dispatch(new Dt({ channels: [ze], source: te.EVENT_CHANNEL_LEFT })) : (this._markAsLeave(ze), this._dispatcher.dispatch(new or({ channelUrls: [ze.url], source: te.EVENT_CHANNEL_LEFT })))) : this._dispatcher.dispatch(new Dt({ channels: [ze], source: te.EVENT_CHANNEL_LEFT })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onUserLeft && K.onUserLeft(ze, $t), ze.isBroadcast && nn && K.onChannelMemberCountChanged && K.onChannelMemberCountChanged([ze]);
                   }), [2];
@@ -17155,8 +17155,8 @@ var hr, pD = function(e) {
               }
             }
             return _e.myRole = ae.includes(this._sdkState.userId) ? nd.OPERATOR : nd.NONE, this._dispatcher.dispatch(new Dt({ channels: [_e], source: te.EVENT_CHANNEL_OPERATOR_UPDATED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onOperatorUpdated && K.onOperatorUpdated(_e, ke);
                   }), [2];
@@ -17183,8 +17183,8 @@ var hr, pD = function(e) {
               }
             }
             return this._dispatcher.dispatch(new Dt({ channels: [it], source: te.EVENT_CHANNEL_INVITED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onUserReceivedInvitation && K.onUserReceivedInvitation(it, Qt, Nn);
                   }), [2];
@@ -17195,8 +17195,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 50:
             return gt = Lt.sent(), en = t.as(oD), Ct = en.memberCount, jt = en.joinedMemberCount, ge = en.inviter, $e = en.invitee, gt.isExclusive || gt.isSuper || gt.isBroadcast ? gt._setLatestMemberCount(Ct, jt, De.ts) : gt.removeMember($e), this._sdkState.userId === $e.userId ? (gt.invitedAt = 0, gt.myMemberState = Hn.NONE, gt.isPublic ? this._dispatcher.dispatch(new Dt({ channels: [gt], source: te.EVENT_CHANNEL_DECLINED_INVITE })) : this._dispatcher.dispatch(new or({ channelUrls: [gt.url], source: te.EVENT_CHANNEL_DECLINED_INVITE }))) : this._dispatcher.dispatch(new Dt({ channels: [gt], source: te.EVENT_CHANNEL_DECLINED_INVITE })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onUserDeclinedInvitation && K.onUserDeclinedInvitation(gt, ge, $e);
                   }), [2];
@@ -17207,8 +17207,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 52:
             return be = Lt.sent(), mt = De.category === Vn.TYPING_START, Jt = t.as(mt ? ZD : FD).user, be._updateTypingStatus(Jt, mt ? De.ts : 0), this._dispatcher.dispatch(new Dt({ channels: [be], source: te.EVENT_CHANNEL_TYPING_STATUS_UPDATE })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onTypingStatusUpdated && K.onTypingStatusUpdated(be);
                   }), [2];
@@ -17236,8 +17236,8 @@ var hr, pD = function(e) {
               }
             }
             return this._dispatcher.dispatch(new Dt({ channels: [X], source: Ue ? te.EVENT_CHANNEL_MUTED : te.EVENT_CHANNEL_UNMUTED, data: Fe.userId })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     Ue ? K.onUserMuted && K.onUserMuted(X, Fe) : K.onUserUnmuted && K.onUserUnmuted(X, Fe);
                   }), [2];
@@ -17252,8 +17252,8 @@ var hr, pD = function(e) {
             Ce = Lt.sent(), Lt.label = 58;
           case 58:
             return pt = Ce, this._markAsLeave(pt), g = t.as(G3).user, g.userId === this._sdkState.userId && this._dispatcher.dispatch(new or({ channelUrls: [pt.url], source: te.EVENT_CHANNEL_BANNED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onUserBanned && K.onUserBanned(pt, g);
                   }), [2];
@@ -17264,8 +17264,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 60:
             return Me = Lt.sent(), Ie = t.as(y3).user, Ie.userId === this._sdkState.userId && this._dispatcher.dispatch(new or({ channelUrls: [Me.url], source: te.EVENT_CHANNEL_UNBANNED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onUserUnbanned && K.onUserUnbanned(Me, Ie);
                   }), [2];
@@ -17276,8 +17276,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 62:
             return Bt = Lt.sent(), Zn = t.as(B3).freeze, Bt.isFrozen = Zn, this._dispatcher.dispatch(new Dt({ channels: [Bt], source: Zn ? te.EVENT_CHANNEL_FROZEN : te.EVENT_CHANNEL_UNFROZEN })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     Zn ? K.onChannelFrozen && K.onChannelFrozen(Bt) : K.onChannelUnfrozen && K.onChannelUnfrozen(Bt);
                   }), [2];
@@ -17288,8 +17288,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 64:
             return Rt = Lt.sent(), ft = t.as(RD), wt = ft.allowAutoUnhide, bn = ft.hidePreviousMessages, cn = ft.messageOffsetTimestamp, wt !== null && (Rt.hiddenState = wt ? yl.HIDDEN_ALLOW_AUTO_UNHIDE : yl.HIDDEN_PREVENT_AUTO_UNHIDE), bn !== null && bn && Rt._updateUnreadCount(0, 0), cn !== null && (Rt.messageOffsetTimestamp = cn), this._dispatcher.dispatch(new Dt({ channels: [Rt], source: te.EVENT_CHANNEL_HIDDEN })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onChannelHidden && K.onChannelHidden(Rt);
                   }), [2];
@@ -17300,8 +17300,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 66:
             return (Yd = Lt.sent()).hiddenState = yl.UNHIDDEN, this._dispatcher.dispatch(new Dt({ channels: [Yd], source: te.EVENT_CHANNEL_UNHIDDEN })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onChannelChanged && K.onChannelChanged(Yd);
                   }), [2];
@@ -17312,8 +17312,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 68:
             return Ia = Lt.sent(), this._dispatcher.dispatch(new or({ channelUrls: [De.channelUrl], source: te.EVENT_CHANNEL_DELETED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onChannelDeleted && K.onChannelDeleted(Ia.url, Ia.channelType);
                   }), [2];
@@ -17324,8 +17324,8 @@ var hr, pD = function(e) {
             return [4, this.getChannelWithoutCache(De.channelUrl, !0)];
           case 70:
             return jh = Lt.sent(), this._dispatcher.dispatch(new Dt({ channels: [jh], source: te.EVENT_CHANNEL_UPDATED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onChannelChanged && K.onChannelChanged(jh);
                   }), [2];
@@ -17336,8 +17336,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 72:
             return Qd = Lt.sent(), kU = t.as(J3), _c = kU.created, Pc = kU.updated, Ac = kU.deleted, _c && (Qd._upsertCachedMetaData(_c, De.ts), this._dispatcher.dispatch(new Dt({ channels: [Qd], source: te.EVENT_CHANNEL_METADATA_CREATED }))), Pc && (Qd._upsertCachedMetaData(Pc, De.ts), this._dispatcher.dispatch(new Dt({ channels: [Qd], source: te.EVENT_CHANNEL_METADATA_UPDATED }))), Ac && (Qd._removeFromCachedMetaData(Ac, De.ts), this._dispatcher.dispatch(new Dt({ channels: [Qd], source: te.EVENT_CHANNEL_METADATA_DELETED }))), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     _c && K.onMetaDataCreated && K.onMetaDataCreated(Qd, _c), Pc && K.onMetaDataUpdated && K.onMetaDataUpdated(Qd, Pc), Ac && K.onMetaDataDeleted && K.onMetaDataDeleted(Qd, Ac);
                   }), [2];
@@ -17348,8 +17348,8 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 74:
             return Gi = Lt.sent(), bU = t.as(v3), YU = bU.created, QU = bU.updated, JU = bU.deleted, YU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: te.EVENT_CHANNEL_METACOUNTER_CREATED })), QU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: te.EVENT_CHANNEL_METACOUNTER_UPDATED })), JU && this._dispatcher.dispatch(new Dt({ channels: [Gi], source: te.EVENT_CHANNEL_METACOUNTER_DELETED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     YU && K.onMetaCounterCreated && K.onMetaCounterCreated(Gi, YU), QU && K.onMetaCounterUpdated && K.onMetaCounterUpdated(Gi, QU), JU && K.onMetaCounterDeleted && K.onMetaCounterDeleted(Gi, JU);
                   }), [2];
@@ -17360,9 +17360,9 @@ var hr, pD = function(e) {
             return [4, this.getChannel(De.channelUrl, !0)];
           case 76:
             return Or = Lt.sent(), vU = t.as(mD), dm = vU.pinnedMessageIds, rm = vU.latestPinnedMessage, (im = vU.ts) > Or._pinnedMessagesUpdatedAt && (Or.pinnedMessageIds = dm, Or.lastPinnedMessage = rm, Or._pinnedMessagesUpdatedAt = im, this._dispatcher.dispatch(new Dt({ channels: [Or], source: te.EVENT_PINNED_MESSAGE_UPDATED })), Le(function() {
-              return E(sn, void 0, void 0, function() {
+              return M(sn, void 0, void 0, function() {
                 var Ne, K, bt, ct, Yt;
-                return M(this, function(Xn) {
+                return p(this, function(Xn) {
                   try {
                     for (Ne = Se(this._groupChannelHandlers.values()), K = Ne.next(); !K.done; K = Ne.next())
                       (bt = K.value).onChannelChanged && bt.onChannelChanged(Or);
@@ -17380,8 +17380,8 @@ var hr, pD = function(e) {
                 });
               });
             }), Le(function() {
-              return E(sn, void 0, void 0, function() {
-                return M(this, function(Ne) {
+              return M(sn, void 0, void 0, function() {
+                return p(this, function(Ne) {
                   return this._groupChannelHandlers.forEach(function(K) {
                     K.onPinnedMessageUpdated && K.onPinnedMessageUpdated(Or);
                   }), [2];
@@ -17430,9 +17430,9 @@ var hr, pD = function(e) {
       return l.state === Hn.JOINED;
     }).length;
   }, n.prototype.getChannel = function(t, l) {
-    return l === void 0 && (l = !1), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !1), M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             he(B("string", t)).throw(j.invalidParameters), d.label = 1;
@@ -17450,9 +17450,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getChannelWithoutCache = function(t, l) {
-    return l === void 0 && (l = !1), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !1), M(this, void 0, void 0, function() {
       var a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return he(B("string", t)).throw(j.invalidParameters), a = new n0({ channelUrl: t, isInternalCall: l }), [4, this._requestQueue.send(a)];
@@ -17474,9 +17474,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.refreshChannel = function(t, l, a) {
-    return l === void 0 && (l = !0), a === void 0 && (a = te.REFRESH_CHANNEL), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !0), a === void 0 && (a = te.REFRESH_CHANNEL), M(this, void 0, void 0, function() {
       var d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return s.trys.push([0, 5, , 6]), d = new n0({ channelUrl: t, isInternalCall: l }), [4, this._requestQueue.send(d)];
@@ -17496,9 +17496,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getMyGroupChannels = function(t, l, a, d, r) {
-    return d === void 0 && (d = te.REQUEST_CHANNEL), r === void 0 && (r = !1), E(this, void 0, void 0, function() {
+    return d === void 0 && (d = te.REQUEST_CHANNEL), r === void 0 && (r = !1), M(this, void 0, void 0, function() {
       var i, c, V, s, o, U, N, R, h;
-      return M(this, function(Z) {
+      return p(this, function(Z) {
         switch (Z.label) {
           case 0:
             return l.createdAfter && (l.createdAfter = Math.floor(l.createdAfter / 1e3)), l.createdBefore && (l.createdBefore = Math.floor(l.createdBefore / 1e3)), i = !1, r && (c = D.of(this._iid), V = c.appInfo, (s = c.cacheContext) && !s.localCacheEnabled && (V != null && V.enabledChannelMemberShipHistory) && (V != null && V.applicationAttributes.includes("left_user_view_support")) && (i = !0)), o = new HB(x(x({}, l), { userId: this._sdkState.userId, token: t, limit: a, includeLeftChannel: r && i })), [4, this._requestQueue.send(o)];
@@ -17508,9 +17508,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getMyGroupChannelChangeLogs = function(t, l, a) {
-    return a === void 0 && (a = te.REQUEST_CHANNEL_CHANGELOGS), E(this, void 0, void 0, function() {
+    return a === void 0 && (a = te.REQUEST_CHANNEL_CHANGELOGS), M(this, void 0, void 0, function() {
       var d, r, i, c, V, s, o, U;
-      return M(this, function(N) {
+      return p(this, function(N) {
         switch (N.label) {
           case 0:
             return d = x(x({}, hR), l), he((B("string", t) || B("number", t)) && t0(d)).throw(j.invalidParameters), r = new OB(Ae({ userId: this._sdkState.userId, ts: typeof t == "number" ? t : null, token: typeof t == "string" ? t : null, filter: d })), [4, this._requestQueue.send(r)];
@@ -17520,9 +17520,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getGroupChannelCount = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return l = x(x({}, rb), t), he(ib(l)).throw(j.invalidParameters), a = new wB({ userId: this._sdkState.userId, filter: l }), [4, this._requestQueue.send(a)];
@@ -17532,13 +17532,13 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getUnreadItemCount = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F;
-      return M(this, function(m) {
+      return p(this, function(m) {
         switch (m.label) {
           case 0:
-            return l = x(x({}, GB), t), he(function(p) {
-              return xt(il, p.keys);
+            return l = x(x({}, GB), t), he(function(E) {
+              return xt(il, E.keys);
             }(l)).throw(j.invalidParameters), a = D.of(this._iid), d = a.sdkState, r = a.requestQueue, i = new IB({ userId: d.userId, filter: l }), [4, r.send(i)];
           case 1:
             return c = m.sent(), V = c.as(LB), s = V.groupChannelUnreadMentionCount, o = V.groupChannelUnreadMessageCount, U = V.groupChannelInvitationCount, N = V.superGroupChannelUnreadMentionCount, R = V.superGroupChannelUnreadMessageCount, h = V.superGroupChannelInvitationCount, Z = V.nonSuperGroupChannelUnreadMentionCount, W = V.nonSuperGroupChannelUnreadMessageCount, F = V.nonSuperGroupChannelInvitationCount, [2, Oe({ groupChannelUnreadMentionCount: s, groupChannelUnreadMessageCount: o, groupChannelInvitationCount: U, superGroupChannelUnreadMentionCount: N, superGroupChannelUnreadMessageCount: R, superGroupChannelInvitationCount: h, nonSuperGroupChannelUnreadMentionCount: Z, nonSuperGroupChannelUnreadMessageCount: W, nonSuperGroupChannelInvitationCount: F })];
@@ -17546,9 +17546,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getTotalUnreadChannelCount = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new CB({ userId: l.userId }), [4, a.send(d)];
@@ -17558,9 +17558,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getTotalUnreadMessageCount = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return l = x(x({}, yB), t), he(BB(l)).throw(j.invalidParameters), a = D.of(this._iid), d = a.sdkState, r = a.requestQueue, i = new _B({ userId: d.userId, filter: l }), [4, r.send(i)];
@@ -17570,9 +17570,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getTotalScheduledMessageCount = function(t) {
-    return t === void 0 && (t = {}), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = {}), M(this, void 0, void 0, function() {
       var l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return l = x(x({}, DB), t), he(function(c) {
@@ -17595,9 +17595,9 @@ var hr, pD = function(e) {
     var l;
     return (l = D.of(this._iid).subscribedUnreadMessageCount.customTypes[t]) !== null && l !== void 0 ? l : 0;
   }, n.prototype.createChannel = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return l = x(x({}, vN), t), he(e0(l)).throw(j.invalidParameters), l.isPublic || (l.accessCode = void 0), a = new eD(x({ userId: this._sdkState.userId }, l)), [4, this._requestQueue.send(a)];
@@ -17609,9 +17609,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.markAsReadAll = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return t = Date.now(), he(t - this._markAsReadAllLastSentAt >= 1e3).throw(j.markAsReadAllRateLimitExceeded), this._markAsReadAllLastSentAt = t, l = new fu({ userId: this._sdkState.userId }), [4, this._requestQueue.send(l)];
@@ -17639,9 +17639,9 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.markAsReadWithChannelUrls = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s, o;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             return l = Date.now(), he(xt("string", t) && l - this._markAsReadAllLastSentAt >= 1e3).throw(j.markAsReadAllRateLimitExceeded), this._markAsReadAllLastSentAt = l, a = new fu({ userId: this._sdkState.userId, channelUrls: t }), [4, this._requestQueue.send(a)];
@@ -17669,8 +17669,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.markAsDelivered = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this.getChannel(t)];
@@ -17683,8 +17683,8 @@ var hr, pD = function(e) {
     });
   }, n.prototype.getMessageFromCache = function(t) {
     var l;
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._messageCache.get(t)];
@@ -17694,8 +17694,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getExactlyMatchingMessagesForTokenFromCache = function(t, l, a) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(d) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return [4, this._messageCache.fetch({ channelUrl: t, token: l, filter: a, exactMatch: !0 })];
@@ -17705,8 +17705,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getMessagesFromCache = function(t, l, a, d, r, i) {
-    return r === void 0 && (r = H3), i === void 0 && (i = !0), E(this, void 0, void 0, function() {
-      return M(this, function(c) {
+    return r === void 0 && (r = H3), i === void 0 && (i = !0), M(this, void 0, void 0, function() {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return [4, this._messageCache.fetch({ channelUrl: t, token: l, limit: r, filter: d, backward: a === "next", inclusive: i })];
@@ -17716,8 +17716,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getPollMessagesFromCache = function(t, l, a, d) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(r) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return [4, this._messageCache.fetch({ channelUrl: t, token: l, limit: d, filter: a, backward: !1, isPollOnly: !0 })];
@@ -17727,8 +17727,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getCachedMessageCountBetween = function(t, l, a, d) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(r) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return [4, this._messageCache.countBetween(t, l, new gd({ top: a, bottom: d }))];
@@ -17738,8 +17738,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.getUnsentMessagesFromCache = function(t, l) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._unsentMessageCache.fetch({ channelUrl: t, filter: l })];
@@ -17749,8 +17749,8 @@ var hr, pD = function(e) {
       });
     });
   }, n.prototype.removeFailedMessageFromCache = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._unsentMessageCache.remove([t])];
@@ -17805,9 +17805,9 @@ var d0, pi = function(e) {
   }, enumerable: !1, configurable: !0 }), Object.defineProperty(n.prototype, "retryLimit", { get: function() {
     return this._retryLimit;
   }, enumerable: !1, configurable: !0 }), n.prototype._run = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             if (!this.isRunning)
@@ -17841,9 +17841,9 @@ var d0, pi = function(e) {
       return "sendbird:".concat(Z, "@groupchannel/").concat(W, "/message/sync");
     }(s.userId, l.url);
     this._prevSync = new pi(h, function(Z) {
-      return E(r, void 0, void 0, function() {
-        var W, F, m, p, u, b, k, Y, S, v, G, w;
-        return M(this, function(y) {
+      return M(r, void 0, void 0, function() {
+        var W, F, m, E, u, b, k, Y, S, v, G, w;
+        return p(this, function(y) {
           switch (y.label) {
             case 0:
               return W = { hasNext: !0, nextToken: 0 }, this._prevSyncLoopCount++, [4, this.loadMetadata(Z)];
@@ -17860,11 +17860,11 @@ var d0, pi = function(e) {
             case 4:
               return y.sent(), [3, 9];
             case 5:
-              return p = y.sent(), N.debug("message background prev sync error", p), p instanceof j && p.isInvalidTokenError ? [4, this.clearMetadata()] : [3, 7];
+              return E = y.sent(), N.debug("message background prev sync error", E), E instanceof j && E.isInvalidTokenError ? [4, this.clearMetadata()] : [3, 7];
             case 6:
               y.sent(), y.label = 7;
             case 7:
-              throw p;
+              throw E;
             case 8:
               return R.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: l.url, measured_on: "back_sync", event: "cache_fetch", max_db_size: (w = (G = o.localCacheConfig) === null || G === void 0 ? void 0 : G.maxSize) !== null && w !== void 0 ? w : 0, use_local_cache: o.localCacheEnabled, starting_point: 0, message_init_policy: "" } })), [7];
             case 9:
@@ -17877,9 +17877,9 @@ var d0, pi = function(e) {
         });
       });
     }), this._nextSync = new pi(h, function(Z) {
-      return E(r, void 0, void 0, function() {
-        var W, F, m, p, u, b, k, Y, S, v, G;
-        return M(this, function(w) {
+      return M(r, void 0, void 0, function() {
+        var W, F, m, E, u, b, k, Y, S, v, G;
+        return p(this, function(w) {
           switch (w.label) {
             case 0:
               return W = { hasNext: !0, nextToken: 0 }, [4, this.loadMetadata(Z)];
@@ -17894,7 +17894,7 @@ var d0, pi = function(e) {
             case 4:
               return w.sent(), [3, 7];
             case 5:
-              throw p = w.sent(), N.debug("message background next sync error", p), p;
+              throw E = w.sent(), N.debug("message background next sync error", E), E;
             case 6:
               return R.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: l.url, measured_on: "back_sync", event: "cache_fetch", max_db_size: (G = (v = o.localCacheConfig) === null || v === void 0 ? void 0 : v.maxSize) !== null && G !== void 0 ? G : 0, use_local_cache: o.localCacheEnabled, starting_point: 0, message_init_policy: "" } })), [7];
             case 7:
@@ -17927,9 +17927,9 @@ var d0, pi = function(e) {
       return l.createdAt;
     })), !1));
   }, e.prototype.loadMetadata = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return this._metadata ? [3, 2] : [4, D.of(this._iid).cacheContext.preference.get(this._metadataKey)];
@@ -17941,8 +17941,8 @@ var d0, pi = function(e) {
       });
     });
   }, e.prototype.saveMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return this._metadata ? [4, D.of(this._iid).cacheContext.preference.set(this._metadataKey, this._metadata)] : [3, 2];
@@ -17954,8 +17954,8 @@ var d0, pi = function(e) {
       });
     });
   }, e.prototype.clearMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, D.of(this._iid).cacheContext.preference.remove(this._metadataKey)];
@@ -17984,14 +17984,14 @@ var d0, pi = function(e) {
       return "sendbird:".concat(N, "@groupchannel/").concat(R, "/message/changelogs");
     }(s.userId, this._channel.url);
     this._sync = new pi(U, function() {
-      return E(d, void 0, void 0, function() {
-        var N, R, h, Z, W, F, m, p;
-        return M(this, function(u) {
+      return M(d, void 0, void 0, function() {
+        var N, R, h, Z, W, F, m, E;
+        return p(this, function(u) {
           switch (u.label) {
             case 0:
               return N = { hasNext: !0, nextToken: 0 }, [4, this.loadMetadata()];
             case 1:
-              u.sent(), V.debug("message changelog sync from", (p = this._metadata) === null || p === void 0 ? void 0 : p.token), u.label = 2;
+              u.sent(), V.debug("message changelog sync from", (E = this._metadata) === null || E === void 0 ? void 0 : E.token), u.label = 2;
             case 2:
               return u.trys.push([2, 5, , 8]), [4, tl.of(this._iid).getMessageChangelogs(this._channel.url, this._channel.channelType, this._metadata.token, x({ replyType: al.ALL }, this._includeParams), te.SYNC_MESSAGE_CHANGELOGS)];
             case 3:
@@ -18018,9 +18018,9 @@ var d0, pi = function(e) {
   }, e.clear = function(n, t) {
     Ud[n] && Ud[n][t] && (Ud[n][t].close(), delete Ud[n]);
   }, e.prototype.loadMetadata = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return this._metadata ? [3, 2] : (n = D.of(this._iid), t = n.cacheContext, l = n.firstConnectedAt, [4, t.preference.get(this._metadataKey)]);
@@ -18032,8 +18032,8 @@ var d0, pi = function(e) {
       });
     });
   }, e.prototype.saveMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return this._metadata ? [4, D.of(this._iid).cacheContext.preference.set(this._metadataKey, this._metadata)] : [3, 2];
@@ -18045,8 +18045,8 @@ var d0, pi = function(e) {
       });
     });
   }, e.prototype.clearMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, D.of(this._iid).cacheContext.preference.remove(this._metadataKey)];
@@ -18073,14 +18073,14 @@ var d0, pi = function(e) {
       return "sendbird:".concat(N, "@groupchannel/").concat(R, "/poll/changelogs");
     }(s.userId, this._channel.url);
     this._sync = new pi(U, function() {
-      return E(d, void 0, void 0, function() {
-        var N, R, h, Z, W, F, m, p;
-        return M(this, function(u) {
+      return M(d, void 0, void 0, function() {
+        var N, R, h, Z, W, F, m, E;
+        return p(this, function(u) {
           switch (u.label) {
             case 0:
               return N = { hasNext: !0, nextToken: 0 }, [4, this.loadMetadata()];
             case 1:
-              return u.sent(), V.debug("poll changelog sync from", (p = this._metadata) === null || p === void 0 ? void 0 : p.token), (R = !this._metadata || !this._metadata.token) ? [4, a()] : [3, 3];
+              return u.sent(), V.debug("poll changelog sync from", (E = this._metadata) === null || E === void 0 ? void 0 : E.token), (R = !this._metadata || !this._metadata.token) ? [4, a()] : [3, 3];
             case 2:
               R = !u.sent(), u.label = 3;
             case 3:
@@ -18111,9 +18111,9 @@ var d0, pi = function(e) {
   return e.of = function(n, t, l) {
     return Di[n] || (Di[n] = {}), Di[n][t.url] || (Di[n][t.url] = new e({ _iid: n, channel: t, hasPollMessage: l })), Di[n][t.url].ref++, Di[n][t.url];
   }, e.prototype.loadMetadata = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this._metadata ? [3, 2] : [4, D.of(this._iid).cacheContext.preference.get(this._metadataKey)];
@@ -18125,8 +18125,8 @@ var d0, pi = function(e) {
       });
     });
   }, e.prototype.saveMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return this._metadata ? [4, D.of(this._iid).cacheContext.preference.set(this._metadataKey, this._metadata)] : [3, 2];
@@ -18138,8 +18138,8 @@ var d0, pi = function(e) {
       });
     });
   }, e.prototype.clearMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, D.of(this._iid).cacheContext.preference.remove(this._metadataKey)];
@@ -18220,8 +18220,8 @@ var eo, to, no, zD = function() {
   return e.prototype._invokeResponse = function(n, t, l) {
     var a = this;
     Le(function() {
-      return E(a, void 0, void 0, function() {
-        return M(this, function(d) {
+      return M(a, void 0, void 0, function() {
+        return p(this, function(d) {
           switch (n) {
             case "local":
               this._onCacheResult(t, l);
@@ -18241,7 +18241,7 @@ var eo, to, no, zD = function() {
 }(), xD = function() {
   function e(n, t) {
     var l = t.filter, a = t.startingPoint, d = t.limit, r = t.prevResultLimit, i = t.nextResultLimit, c = t.channel, V = t.channelManager, s = t.disableBackgroundSync, o = s !== void 0 && s, U = this;
-    this._messages = [], this._unsentMessages = [], this._isLoadingPrevious = !1, this._isLoadingNext = !1, this._iid = n, this._key = "mc-".concat(zr()), this._isDisposed = !1, this.filter = l ?? new ui(), this._channel = c, this._syncRange = new gd({}), this._hasPrevious = !0, this._hasNext = !0, this._startingPoint = typeof a == "number" && Number.isFinite(a) ? a : Number.MAX_SAFE_INTEGER, this._limit = d || H3, this._prevResultLimit = r ?? Math.floor(this._limit / 2), this._nextResultLimit = i ?? Math.floor(this._limit / 2), this._channelManager = V, this._channelManager.subscribeChannelEvent(this._key, { onUpdate: function(F, m, p) {
+    this._messages = [], this._unsentMessages = [], this._isLoadingPrevious = !1, this._isLoadingNext = !1, this._iid = n, this._key = "mc-".concat(zr()), this._isDisposed = !1, this.filter = l ?? new ui(), this._channel = c, this._syncRange = new gd({}), this._hasPrevious = !0, this._hasNext = !0, this._startingPoint = typeof a == "number" && Number.isFinite(a) ? a : Number.MAX_SAFE_INTEGER, this._limit = d || H3, this._prevResultLimit = r ?? Math.floor(this._limit / 2), this._nextResultLimit = i ?? Math.floor(this._limit / 2), this._channelManager = V, this._channelManager.subscribeChannelEvent(this._key, { onUpdate: function(F, m, E) {
       var u = F.findIndex(function(b) {
         return b.isIdentical(U.channel);
       });
@@ -18266,51 +18266,51 @@ var eo, to, no, zD = function() {
             }), te.EVENT_MESSAGE_OFFSET_UPDATED);
             break;
           case te.EVENT_CHANNEL_UNMUTED:
-            var G = D.of(U._iid).sdkState, w = p;
+            var G = D.of(U._iid).sdkState, w = E;
             G.userId === w && U._clearCheckMyMutedTimer();
             break;
           case te.EVENT_CHANNEL_MUTED:
             G = D.of(U._iid).sdkState;
-            var y = p;
+            var y = E;
             G.userId === y && b._myMutedRemainingTime !== -1 && U._startCheckMyMutedTimer(b._myMutedRemainingTime);
             break;
           case te.EVENT_CHANNEL_LEFT:
             b.isPublic && U._clearCheckMyMutedTimer();
         }
         Le(function() {
-          return E(U, void 0, void 0, function() {
+          return M(U, void 0, void 0, function() {
             var f, H;
-            return M(this, function(I) {
+            return p(this, function(I) {
               return f = this._createChannelEventContext(m), zN(m) && (!((H = this._handler) === null || H === void 0) && H.onChannelUpdated) && this._handler.onChannelUpdated(f, this.channel), [2];
             });
           });
         });
       }), U._postprocessChannelUpdateEvent(F[u], m));
     }, onRemove: function(F, m) {
-      var p = F.indexOf(U.channel.url);
-      p >= 0 && (U._clearCheckMyMutedTimer(), Le(function() {
-        return E(U, void 0, void 0, function() {
+      var E = F.indexOf(U.channel.url);
+      E >= 0 && (U._clearCheckMyMutedTimer(), Le(function() {
+        return M(U, void 0, void 0, function() {
           var u, b;
-          return M(this, function(k) {
+          return p(this, function(k) {
             return u = this._createChannelEventContext(m), !((b = this._handler) === null || b === void 0) && b.onChannelDeleted && this._handler.onChannelDeleted(u, this.channel.url), [2];
           });
         });
-      }), U._postprocessChannelRemoveEvent(F[p]));
+      }), U._postprocessChannelRemoveEvent(F[E]));
     } }), this._channelManager.subscribeMessageEvent(this._key, { onUpdate: function(F, m) {
-      var p, u, b = [], k = [];
+      var E, u, b = [], k = [];
       try {
         for (var Y = Se(F), S = Y.next(); !S.done; S = Y.next()) {
           var v = S.value;
           v.channelUrl === U._channel.url && (U.filter.match(v) ? b.push(v) : k.push(U.keyOf(v)));
         }
       } catch (G) {
-        p = { error: G };
+        E = { error: G };
       } finally {
         try {
           S && !S.done && (u = Y.return) && u.call(Y);
         } finally {
-          if (p)
-            throw p.error;
+          if (E)
+            throw E.error;
         }
       }
       if (Rr(m)) {
@@ -18360,30 +18360,30 @@ var eo, to, no, zD = function() {
     this._channel._updateMessageCollectionLastAccessedAt();
     var Z = this._createChannelUpdateEventCommand(te.CHANNEL_LASTACCESSEDAT_UPDATED);
     Z && h.dispatch(Z), !o && this._shouldStartBackgroundSync() && (this._backgroundSync = MD.of(this._iid, this._channel), this._backgroundSync.resume(this._startingPoint)), this._changelogSync = ED.of(this._iid, this._channel, this.changelogIncludeParams), this._changelogSync.resume(), this._pollChangelogSync = SD.of(this._iid, this._channel, this._hasPollMessage.bind(this)), this._pollChangelogSync.resume(), this._prevFill = new pi(this._key, function(F) {
-      return E(U, void 0, void 0, function() {
-        var m, p, u, b, k, Y, S;
-        return M(this, function(v) {
+      return M(U, void 0, void 0, function() {
+        var m, E, u, b, k, Y, S;
+        return p(this, function(v) {
           switch (v.label) {
             case 0:
               return [4, this._getRemoteMessages(F, { prevLimit: this._prevResultLimit, source: te.SYNC_MESSAGE_FILL, checkingContinuousMessages: R.localCacheEnabled })];
             case 1:
-              return m = v.sent(), p = m.messages, u = m.isContinuousMessages, p.length > 0 ? (b = Math.min.apply(Math, st([], et(p.map(function(G) {
+              return m = v.sent(), E = m.messages, u = m.isContinuousMessages, E.length > 0 ? (b = Math.min.apply(Math, st([], et(E.map(function(G) {
                 return G.createdAt;
-              })), !1)), this._syncRange.extends(b), u && ((k = this._backgroundSync) === null || k === void 0 || k.range.extends(b)), [2, { hasNext: p.length >= this._prevResultLimit && this.viewTop < b, nextToken: this._syncRange.top }]) : (W.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, measured_on: "gap_check", event: "cache_fetch", max_db_size: (S = (Y = R.localCacheConfig) === null || Y === void 0 ? void 0 : Y.maxSize) !== null && S !== void 0 ? S : 0, use_local_cache: R.localCacheEnabled, starting_point: 0, message_init_policy: "" } })), [2, { hasNext: !1, nextToken: 0 }]);
+              })), !1)), this._syncRange.extends(b), u && ((k = this._backgroundSync) === null || k === void 0 || k.range.extends(b)), [2, { hasNext: E.length >= this._prevResultLimit && this.viewTop < b, nextToken: this._syncRange.top }]) : (W.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, measured_on: "gap_check", event: "cache_fetch", max_db_size: (S = (Y = R.localCacheConfig) === null || Y === void 0 ? void 0 : Y.maxSize) !== null && S !== void 0 ? S : 0, use_local_cache: R.localCacheEnabled, starting_point: 0, message_init_policy: "" } })), [2, { hasNext: !1, nextToken: 0 }]);
           }
         });
       });
     }), this._nextFill = new pi(this._key, function(F) {
-      return E(U, void 0, void 0, function() {
-        var m, p, u, b, k, Y, S;
-        return M(this, function(v) {
+      return M(U, void 0, void 0, function() {
+        var m, E, u, b, k, Y, S;
+        return p(this, function(v) {
           switch (v.label) {
             case 0:
               return [4, this._getRemoteMessages(F, { nextLimit: this._nextResultLimit, source: te.SYNC_MESSAGE_FILL, checkingContinuousMessages: R.localCacheEnabled })];
             case 1:
-              return m = v.sent(), p = m.messages, u = m.isContinuousMessages, p.length > 0 ? (b = Math.max.apply(Math, st([], et(p.map(function(G) {
+              return m = v.sent(), E = m.messages, u = m.isContinuousMessages, E.length > 0 ? (b = Math.max.apply(Math, st([], et(E.map(function(G) {
                 return G.createdAt;
-              })), !1)), this._syncRange.extends(b), u && ((k = this._backgroundSync) === null || k === void 0 || k.range.extends(b)), [2, { hasNext: !(p.length >= this._nextResultLimit && this._hasNext) || this.viewBottom > b, nextToken: this._syncRange.bottom }]) : (W.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, measured_on: "gap_check", event: "cache_fetch", max_db_size: (S = (Y = R.localCacheConfig) === null || Y === void 0 ? void 0 : Y.maxSize) !== null && S !== void 0 ? S : 0, use_local_cache: R.localCacheEnabled, starting_point: 0, message_init_policy: "" } })), [2, { hasNext: !1, nextToken: 0 }]);
+              })), !1)), this._syncRange.extends(b), u && ((k = this._backgroundSync) === null || k === void 0 || k.range.extends(b)), [2, { hasNext: !(E.length >= this._nextResultLimit && this._hasNext) || this.viewBottom > b, nextToken: this._syncRange.bottom }]) : (W.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, measured_on: "gap_check", event: "cache_fetch", max_db_size: (S = (Y = R.localCacheConfig) === null || Y === void 0 ? void 0 : Y.maxSize) !== null && S !== void 0 ? S : 0, use_local_cache: R.localCacheEnabled, starting_point: 0, message_init_policy: "" } })), [2, { hasNext: !1, nextToken: 0 }]);
           }
         });
       });
@@ -18392,8 +18392,8 @@ var eo, to, no, zD = function() {
         switch (F.stateType) {
           case ln.CONNECTED:
             Bn(function() {
-              return E(U, void 0, void 0, function() {
-                return M(this, function(m) {
+              return M(U, void 0, void 0, function() {
+                return p(this, function(m) {
                   return this._activate(), [2];
                 });
               });
@@ -18442,8 +18442,8 @@ var eo, to, no, zD = function() {
       return n.createdAt;
     })), !1), [0], !1));
   }, enumerable: !1, configurable: !0 }), e.prototype._activate = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return D.of(this._iid).logger.debug("check huge gap"), this._checkHugeGap(), [4, this._refreshChannel(te.SYNC_CHANNEL_CHANGELOGS)];
@@ -18514,9 +18514,9 @@ var eo, to, no, zD = function() {
       }
     }
     return r.length > 0 && Rr(t) && Le(function() {
-      return E(d, void 0, void 0, function() {
+      return M(d, void 0, void 0, function() {
         var U, N, R;
-        return M(this, function(h) {
+        return p(this, function(h) {
           return U = this._createMessageEventContext(t), r.length > 0 && ((R = (N = this._handler).onMessagesUpdated) === null || R === void 0 || R.call(N, U, this.channel, r)), [2];
         });
       });
@@ -18526,9 +18526,9 @@ var eo, to, no, zD = function() {
     if (a >= 0) {
       var d = this._messages[a];
       d && d.isUserMessage() && d.poll && d.poll.applyPollUpdateEvent(n) && Rr(t) && Le(function() {
-        return E(l, void 0, void 0, function() {
+        return M(l, void 0, void 0, function() {
           var r, i, c;
-          return M(this, function(V) {
+          return p(this, function(V) {
             return r = this._createMessageEventContext(t), (c = (i = this._handler) === null || i === void 0 ? void 0 : i.onMessagesUpdated) === null || c === void 0 || c.call(i, r, this.channel, [d]), [2];
           });
         });
@@ -18539,9 +18539,9 @@ var eo, to, no, zD = function() {
     if (a >= 0) {
       var d = this._messages[a];
       d && d.isUserMessage() && d.poll && d.poll.applyPollVoteEvent(n) && Rr(t) && Le(function() {
-        return E(l, void 0, void 0, function() {
+        return M(l, void 0, void 0, function() {
           var r, i, c;
-          return M(this, function(V) {
+          return p(this, function(V) {
             return r = this._createMessageEventContext(t), (c = (i = this._handler) === null || i === void 0 ? void 0 : i.onMessagesUpdated) === null || c === void 0 || c.call(i, r, this.channel, [d]), [2];
           });
         });
@@ -18552,9 +18552,9 @@ var eo, to, no, zD = function() {
     if (a >= 0) {
       var d = this._messages[a];
       d && (d.isUserMessage() || d.isFileMessage() || d.isMultipleFilesMessage()) && Rr(t) && (d.applyReactionEvent(n), Le(function() {
-        return E(l, void 0, void 0, function() {
+        return M(l, void 0, void 0, function() {
           var r, i, c;
-          return M(this, function(V) {
+          return p(this, function(V) {
             return r = this._createMessageEventContext(t), (c = (i = this._handler) === null || i === void 0 ? void 0 : i.onMessagesUpdated) === null || c === void 0 || c.call(i, r, this.channel, [d]), [2];
           });
         });
@@ -18565,9 +18565,9 @@ var eo, to, no, zD = function() {
     if (a >= 0) {
       var d = this._messages[a];
       d && (d.isUserMessage() || d.isFileMessage() || d.isMultipleFilesMessage()) && Rr(t) && (d.applyThreadInfoUpdateEvent(n), Le(function() {
-        return E(l, void 0, void 0, function() {
+        return M(l, void 0, void 0, function() {
           var r, i, c;
-          return M(this, function(V) {
+          return p(this, function(V) {
             return r = this._createMessageEventContext(t), (c = (i = this._handler) === null || i === void 0 ? void 0 : i.onMessagesUpdated) === null || c === void 0 || c.call(i, r, this.channel, [d]), [2];
           });
         });
@@ -18597,9 +18597,9 @@ var eo, to, no, zD = function() {
       }
     }
     return Rr(t) && i.length > 0 && Le(function() {
-      return E(d, void 0, void 0, function() {
+      return M(d, void 0, void 0, function() {
         var U, N, R;
-        return M(this, function(h) {
+        return p(this, function(h) {
           return U = this._createMessageEventContext(t), (R = (N = this._handler) === null || N === void 0 ? void 0 : N.onMessagesDeleted) === null || R === void 0 || R.call(N, U, this.channel, r, i), [2];
         });
       });
@@ -18611,9 +18611,9 @@ var eo, to, no, zD = function() {
     l >= 0 && this._unsentMessages.splice(l, 1);
   }, e.prototype._getLocalMessages = function(n, t) {
     var l = t.prevLimit, a = l === void 0 ? 0 : l, d = t.nextLimit, r = d === void 0 ? 0 : d, i = t.inclusive, c = i === void 0 || i;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var V, s, o, U, N;
-      return M(this, function(R) {
+      return p(this, function(R) {
         switch (R.label) {
           case 0:
             return V = [], c ? [4, this._channelManager.getExactlyMatchingMessagesForTokenFromCache(this._channel.url, n, this.filter)] : [3, 2];
@@ -18640,9 +18640,9 @@ var eo, to, no, zD = function() {
     });
   }, e.prototype._getRemoteMessages = function(n, t) {
     var l = t.prevLimit, a = l === void 0 ? 0 : l, d = t.nextLimit, r = d === void 0 ? 0 : d, i = t.source, c = i === void 0 ? te.REQUEST_MESSAGE : i, V = t.reverse, s = V !== void 0 && V, o = t.checkingHasNext, U = o !== void 0 && o, N = t.checkingContinuousMessages, R = N !== void 0 && N;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var h, Z;
-      return M(this, function(W) {
+      return p(this, function(W) {
         switch (W.label) {
           case 0:
             return h = tl.of(this._iid), a > 0 || r > 0 ? [4, h._getMessagesByTimestampForCollection(this._channel.url, this._channel.channelType, n, Ae(x(x(x({}, this.filter), wu), { isInclusive: !0, reverse: s, prevResultSize: a, nextResultSize: r })), c, U, R)] : [3, 2];
@@ -18657,9 +18657,9 @@ var eo, to, no, zD = function() {
     });
   }, e.prototype._checkHugeGap = function() {
     var n, t, l, a, d;
-    return E(this, void 0, void 0, function() {
-      var r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S, v, G, w, y, f, H = this;
-      return M(this, function(I) {
+    return M(this, void 0, void 0, function() {
+      var r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S, v, G, w, y, f, H = this;
+      return p(this, function(I) {
         switch (I.label) {
           case 0:
             return r = D.of(this._iid), i = r.dispatcher, c = r.requestQueue, V = r.cacheContext, s = r.statLogCollector, o = r.logger, this._messages.length > 0 ? (U = this._syncRange.top, N = this.viewTop, R = this._syncRange.bottom, h = this.hasNext ? this.viewBottom : Number.MAX_SAFE_INTEGER, [4, this._channelManager.getCachedMessageCountBetween(this._channel.url, this.filter, N, U)]) : [3, 8];
@@ -18669,17 +18669,17 @@ var eo, to, no, zD = function() {
             W = I.sent(), I.label = 3;
           case 3:
             return I.trys.push([3, 5, 6, 7]), [4, KR(function() {
-              return E(H, void 0, void 0, function() {
+              return M(H, void 0, void 0, function() {
                 var _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe = this;
-                return M(this, function(me) {
+                return p(this, function(me) {
                   switch (me.label) {
                     case 0:
                       return _ = new bD(x(x({ channelUrl: this._channel.url, channelType: this._channel.channelType, prevStart: N, prevEnd: U, prevCount: Z, nextStart: R, nextEnd: h, nextCount: W, checkingContinuousMessages: V.localCacheEnabled }, this.filter), wu)), [4, c.send(_)];
                     case 1:
                       return oe = me.sent(), ie = oe.as(YD), le = ie.isHugeGap, ce = ie.prevMessages, ne = ce === void 0 ? [] : ce, L = ie.prevHasMore, ee = ie.isContinuousPrevMessages, C = ie.nextMessages, O = C === void 0 ? [] : C, de = ie.nextHasmore, $ = ie.isContinuousNextMessages, le ? Le(function() {
-                        return E(pe, void 0, void 0, function() {
+                        return M(pe, void 0, void 0, function() {
                           var Be;
-                          return M(this, function(ye) {
+                          return p(this, function(ye) {
                             return !((Be = this._handler) === null || Be === void 0) && Be.onHugeGapDetected && this._handler.onHugeGapDetected(), [2];
                           });
                         });
@@ -18705,7 +18705,7 @@ var eo, to, no, zD = function() {
           case 9:
             return I.trys.push([9, 11, 12, 13]), [4, this._getRemoteMessages(m, { prevLimit: this._prevResultLimit, nextLimit: this._nextResultLimit, source: te.SYNC_MESSAGE_FILL, checkingHasNext: !0, checkingContinuousMessages: V.localCacheEnabled })];
           case 10:
-            if (p = I.sent(), u = p.messages, b = p.isContinuousMessages, k = p.hasNext, u.length > 0) {
+            if (E = I.sent(), u = E.messages, b = E.isContinuousMessages, k = E.hasNext, u.length > 0) {
               for (Y = u.map(function(_) {
                 return _.createdAt;
               }), S = 0, v = 0, G = 0; G < Y.length; G++)
@@ -18724,9 +18724,9 @@ var eo, to, no, zD = function() {
       });
     });
   }, e.prototype._loadUnsentMessages = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return n = this, [4, this._channelManager.getUnsentMessagesFromCache(this._channel.url, this.filter)];
@@ -18736,8 +18736,8 @@ var eo, to, no, zD = function() {
       });
     });
   }, e.prototype._hasPollMessage = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, this._channelManager.getPollMessagesFromCache(this._channel.url, Date.now() + 6e5, this.filter, 1)];
@@ -18749,8 +18749,8 @@ var eo, to, no, zD = function() {
   }, e.prototype._refreshChannel = function(n) {
     var t = this;
     Bn(function() {
-      return E(t, void 0, void 0, function() {
-        return M(this, function(l) {
+      return M(t, void 0, void 0, function() {
+        return p(this, function(l) {
           switch (l.label) {
             case 0:
               return [4, this._channelManager.refreshChannel(this.channel.url, !0, n)];
@@ -18763,9 +18763,9 @@ var eo, to, no, zD = function() {
   }, e.prototype._startCheckMyMutedTimer = function(n) {
     var t = this;
     this._clearCheckMyMutedTimer(), this._checkMyMutedStateTimer = setTimeout(function() {
-      return E(t, void 0, void 0, function() {
+      return M(t, void 0, void 0, function() {
         var l, a, d = this;
-        return M(this, function(r) {
+        return p(this, function(r) {
           switch (r.label) {
             case 0:
               this._checkMyMutedStateTimer = void 0, l = !0, r.label = 1;
@@ -18795,9 +18795,9 @@ var eo, to, no, zD = function() {
     this._messages = [], this._unsentMessages = [], this._syncRange = new gd({}), this._hasNext = !0, this._hasPrevious = !0, this._refreshChannel(te.REFRESH_CHANNEL);
     var a = D.of(this._iid), d = a.cacheContext, r = a.statLogCollector;
     return n === d0.CACHE_AND_REPLACE_BY_API && this._getLocalMessages(this._startingPoint, { prevLimit: this._prevResultLimit, nextLimit: this._nextResultLimit }).then(function(i) {
-      return E(t, void 0, void 0, function() {
+      return M(t, void 0, void 0, function() {
         var c;
-        return M(this, function(V) {
+        return p(this, function(V) {
           switch (V.label) {
             case 0:
               return c = this._filterUnderOffsetMessage(i), this._addMessagesToView(c, te.REQUEST_MESSAGE), [4, this._loadUnsentMessages()];
@@ -18815,11 +18815,11 @@ var eo, to, no, zD = function() {
       t._getRemoteMessages(t._startingPoint, { prevLimit: t._prevResultLimit, nextLimit: t._nextResultLimit, reverse: !0, checkingHasNext: !0, checkingContinuousMessages: i.localCacheEnabled }).then(function(c) {
         var V, s, o, U, N, R, h = c.messages, Z = c.isContinuousMessages, W = c.hasNext, F = t._filterUnderOffsetMessage(h), m = !0;
         if (t._messages.length === F.length) {
-          var p = t._messages.map(function(v) {
+          var E = t._messages.map(function(v) {
             return t.keyOf(v);
           });
           for (var u in F)
-            if (!p.includes(t.keyOf(F[u]))) {
+            if (!E.includes(t.keyOf(F[u]))) {
               m = !1;
               break;
             }
@@ -18847,17 +18847,17 @@ var eo, to, no, zD = function() {
     }), r.put(new lV({ type: Sn.FEATURE_LOCALCACHE, data: { use_local_cache: d.localCacheEnabled, collection_interface: { message_init_policy: n } } })), l;
   }, e.prototype.loadPrevious = function() {
     var n, t, l;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i, c, V, s, o, U = this;
-      return M(this, function(N) {
+      return p(this, function(N) {
         switch (N.label) {
           case 0:
             if (this._isDisposed)
               throw new j({ code: nt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
             return a = D.of(this._iid), d = a.cacheContext, r = a.statLogCollector, i = a.logger, this._hasPrevious ? this._isLoadingPrevious ? (i.warn("Messages are already fetching."), [2, []]) : (this._isLoadingPrevious = !0, c = this.viewTop, V = [], [4, Bn(function() {
-              return E(U, void 0, void 0, function() {
+              return M(U, void 0, void 0, function() {
                 var R;
-                return M(this, function(h) {
+                return p(this, function(h) {
                   switch (h.label) {
                     case 0:
                       return R = this._filterUnderOffsetMessage, [4, this._getLocalMessages(c, { prevLimit: this._prevResultLimit, inclusive: !1 })];
@@ -18869,9 +18869,9 @@ var eo, to, no, zD = function() {
             })]) : [2, []];
           case 1:
             return N.sent(), s = V.length >= this._prevResultLimit, r.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, starting_point: this._startingPoint, measured_on: "load_prev", event: d.localCacheEnabled && s ? "cache_hit" : "cache_miss", max_db_size: (t = (n = d.localCacheConfig) === null || n === void 0 ? void 0 : n.maxSize) !== null && t !== void 0 ? t : 0, use_local_cache: d.localCacheEnabled, collection_id: this._key, message_init_policy: "" } })), s && (!((l = this._backgroundSync) === null || l === void 0) && l.isWrappingMessages(V)) ? [3, 3] : (o = !1, [4, Bn(function() {
-              return E(U, void 0, void 0, function() {
-                var R, h, Z, W, F, m, p, u = this;
-                return M(this, function(b) {
+              return M(U, void 0, void 0, function() {
+                var R, h, Z, W, F, m, E, u = this;
+                return p(this, function(b) {
                   switch (b.label) {
                     case 0:
                       return R = D.of(this._iid).cacheContext, [4, this._getRemoteMessages(c, { prevLimit: this._prevResultLimit, reverse: !0, checkingContinuousMessages: R.localCacheEnabled })];
@@ -18880,7 +18880,7 @@ var eo, to, no, zD = function() {
                         return k.createdAt;
                       })), !1)), !((W = this._backgroundSync) === null || W === void 0) && W.range.overlap(this._syncRange) && h.isContinuousMessages && (o = !0, (F = this._backgroundSync) === null || F === void 0 || F.range.extends(this._syncRange.top))), V = V.filter(function(k) {
                         return Ea(u._messages, k) < 0;
-                      }), this._hasPrevious = V.length >= this._prevResultLimit, o && r.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, starting_point: this._startingPoint, measured_on: "load_prev", event: "cache_fetch", max_db_size: (p = (m = R.localCacheConfig) === null || m === void 0 ? void 0 : m.maxSize) !== null && p !== void 0 ? p : 0, use_local_cache: R.localCacheEnabled, collection_id: this._key, message_init_policy: "" } })), [2];
+                      }), this._hasPrevious = V.length >= this._prevResultLimit, o && r.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, starting_point: this._startingPoint, measured_on: "load_prev", event: "cache_fetch", max_db_size: (E = (m = R.localCacheConfig) === null || m === void 0 ? void 0 : m.maxSize) !== null && E !== void 0 ? E : 0, use_local_cache: R.localCacheEnabled, collection_id: this._key, message_init_policy: "" } })), [2];
                   }
                 });
               });
@@ -18896,17 +18896,17 @@ var eo, to, no, zD = function() {
     });
   }, e.prototype.loadNext = function() {
     var n, t, l;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i, c, V, s, o, U = this;
-      return M(this, function(N) {
+      return p(this, function(N) {
         switch (N.label) {
           case 0:
             if (this._isDisposed)
               throw new j({ code: nt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
             return a = D.of(this._iid), d = a.cacheContext, r = a.statLogCollector, i = a.logger, this._hasNext ? this._isLoadingNext ? (i.warn("Messages are already fetching."), [2, []]) : (this._isLoadingNext = !0, c = this.viewBottom, V = [], [4, Bn(function() {
-              return E(U, void 0, void 0, function() {
+              return M(U, void 0, void 0, function() {
                 var R;
-                return M(this, function(h) {
+                return p(this, function(h) {
                   switch (h.label) {
                     case 0:
                       return R = this._filterUnderOffsetMessage, [4, this._getLocalMessages(c, { nextLimit: this._nextResultLimit, inclusive: !1 })];
@@ -18918,9 +18918,9 @@ var eo, to, no, zD = function() {
             })]) : [2, []];
           case 1:
             return N.sent(), s = V.length >= this._nextResultLimit, r.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, starting_point: this._startingPoint, measured_on: "load_next", event: d.localCacheEnabled && s ? "cache_hit" : "cache_miss", max_db_size: (t = (n = d.localCacheConfig) === null || n === void 0 ? void 0 : n.maxSize) !== null && t !== void 0 ? t : 0, use_local_cache: d.localCacheEnabled, collection_id: this._key, message_init_policy: "" } })), s && (!((l = this._backgroundSync) === null || l === void 0) && l.isWrappingMessages(V)) ? [3, 3] : (o = !1, [4, Bn(function() {
-              return E(U, void 0, void 0, function() {
-                var R, h, Z, W, F, m, p, u, b = this;
-                return M(this, function(k) {
+              return M(U, void 0, void 0, function() {
+                var R, h, Z, W, F, m, E, u, b = this;
+                return p(this, function(k) {
                   switch (k.label) {
                     case 0:
                       return R = D.of(this._iid).cacheContext, [4, this._getRemoteMessages(c, { nextLimit: this._nextResultLimit, reverse: !0, checkingHasNext: !0, checkingContinuousMessages: R.localCacheEnabled })];
@@ -18929,7 +18929,7 @@ var eo, to, no, zD = function() {
                         return Y.createdAt;
                       })), !1)), !((W = this._backgroundSync) === null || W === void 0) && W.range.overlap(this._syncRange) && h.isContinuousMessages && (o = !0, (F = this._backgroundSync) === null || F === void 0 || F.range.extends(this._syncRange.bottom))), V = V.filter(function(Y) {
                         return Ea(b._messages, Y) < 0;
-                      }), this._hasNext = (m = h.hasNext) !== null && m !== void 0 ? m : V.length >= this._nextResultLimit, o && r.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, starting_point: this._startingPoint, measured_on: "load_next", event: "cache_fetch", max_db_size: (u = (p = R.localCacheConfig) === null || p === void 0 ? void 0 : p.maxSize) !== null && u !== void 0 ? u : 0, use_local_cache: R.localCacheEnabled, collection_id: this._key, message_init_policy: "" } })), [2];
+                      }), this._hasNext = (m = h.hasNext) !== null && m !== void 0 ? m : V.length >= this._nextResultLimit, o && r.put(new Ml({ type: Sn.FEATURE_LOCALCACHE_EVENT, ts: Date.now(), data: { channel_url: this.channel.url, starting_point: this._startingPoint, measured_on: "load_next", event: "cache_fetch", max_db_size: (u = (E = R.localCacheConfig) === null || E === void 0 ? void 0 : E.maxSize) !== null && u !== void 0 ? u : 0, use_local_cache: R.localCacheEnabled, collection_id: this._key, message_init_policy: "" } })), [2];
                   }
                 });
               });
@@ -18944,9 +18944,9 @@ var eo, to, no, zD = function() {
       });
     });
   }, e.prototype.removeFailedMessage = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             if (this._isDisposed)
@@ -18982,9 +18982,9 @@ var eo, to, no, zD = function() {
   }, n.prototype.initialize = function(t) {
     var l = this;
     return Bn(function() {
-      return E(l, void 0, void 0, function() {
+      return M(l, void 0, void 0, function() {
         var a;
-        return M(this, function(d) {
+        return p(this, function(d) {
           switch (d.label) {
             case 0:
               return [4, this.channel.getMyMutedInfo()];
@@ -18997,17 +18997,17 @@ var eo, to, no, zD = function() {
   }, n.prototype.setMessageCollectionHandler = function(t) {
     this._setBaseMessageCollectionHandler(t);
   }, n.prototype._activate = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t = this;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, e.prototype._activate.call(this)];
           case 1:
             return l.sent(), [4, Bn(function() {
-              return E(t, void 0, void 0, function() {
+              return M(t, void 0, void 0, function() {
                 var a;
-                return M(this, function(d) {
+                return p(this, function(d) {
                   switch (d.label) {
                     case 0:
                       return [4, this.channel.getMyMutedInfo()];
@@ -19062,10 +19062,10 @@ var eo, to, no, zD = function() {
       }
     }
     Rr(l) && Le(function() {
-      return E(r, void 0, void 0, function() {
-        var W, F, m, p, u;
-        return M(this, function(b) {
-          return W = this._createMessageEventContext(l), c.length > 0 && ((m = (F = this._handler) === null || F === void 0 ? void 0 : F.onMessagesAdded) === null || m === void 0 || m.call(F, W, this.channel, c)), V.length > 0 && ((u = (p = this._handler) === null || p === void 0 ? void 0 : p.onMessagesUpdated) === null || u === void 0 || u.call(p, W, this.channel, V)), [2];
+      return M(r, void 0, void 0, function() {
+        var W, F, m, E, u;
+        return p(this, function(b) {
+          return W = this._createMessageEventContext(l), c.length > 0 && ((m = (F = this._handler) === null || F === void 0 ? void 0 : F.onMessagesAdded) === null || m === void 0 || m.call(F, W, this.channel, c)), V.length > 0 && ((u = (E = this._handler) === null || E === void 0 ? void 0 : E.onMessagesUpdated) === null || u === void 0 || u.call(E, W, this.channel, V)), [2];
         });
       });
     });
@@ -19109,10 +19109,10 @@ var eo, to, no, zD = function() {
       }
     }
     return Rr(l) && Le(function() {
-      return E(r, void 0, void 0, function() {
-        var F, m, p, u, b;
-        return M(this, function(k) {
-          return F = this._createMessageEventContext(l), c.length > 0 ? (p = (m = this._handler) === null || m === void 0 ? void 0 : m.onMessagesUpdated) === null || p === void 0 || p.call(m, F, this.channel, c) : V.length > 0 ? (b = (u = this._handler) === null || u === void 0 ? void 0 : u.onMessagesDeleted) === null || b === void 0 || b.call(u, F, this.channel, [], V) : i.length > 0 && this._addMessagesToView(i, l), [2];
+      return M(r, void 0, void 0, function() {
+        var F, m, E, u, b;
+        return p(this, function(k) {
+          return F = this._createMessageEventContext(l), c.length > 0 ? (E = (m = this._handler) === null || m === void 0 ? void 0 : m.onMessagesUpdated) === null || E === void 0 || E.call(m, F, this.channel, c) : V.length > 0 ? (b = (u = this._handler) === null || u === void 0 ? void 0 : u.onMessagesDeleted) === null || b === void 0 || b.call(u, F, this.channel, [], V) : i.length > 0 && this._addMessagesToView(i, l), [2];
         });
       });
     }), c;
@@ -19149,9 +19149,9 @@ var XD = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && zt(eo, this.mutedMemberFilter) && zt(no, this.memberStateFilter) && (B("string", this.nicknameStartsWithFilter) || this.nicknameStartsWithFilter === null) && zt(RR, this.operatorFilter) && zt(to, this.order);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new BD(Ae(x(x({}, this), { token: this._token }))), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -19379,9 +19379,9 @@ var Ja, yl, VX = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && B("boolean", this.includeMetaArray, !0) && B("boolean", this.includeReactions, !0) && B("boolean", this.includeParentMessageInfo, !0) && B("boolean", this.includeThreadInfo, !0) && B("boolean", this.includePollDetails, !0);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new cX(x(x({}, this), { token: this._token })), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -19415,14 +19415,14 @@ var Ja, yl, VX = function(e) {
 }(yl || (yl = {}));
 var ja = function(e) {
   function n(t, l) {
-    var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S = this;
+    var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S = this;
     return (S = e.call(this, t, l) || this)._unreadMemberStateMap = /* @__PURE__ */ new Map(), S._undeliveredMemberStateMap = /* @__PURE__ */ new Map(), S._typingStatus = /* @__PURE__ */ new Map(), S._lastMemberCountUpdated = 0, S._typingStarted = 0, S._typingEnded = 0, S.isDistinct = !1, S.isSuper = !1, S.isBroadcast = !1, S.isExclusive = !1, S.isPublic = !1, S.isDiscoverable = !0, S.isChatNotification = !1, S.isAccessCodeRequired = !1, S.isPushEnabled = !1, S.unreadMessageCount = 0, S.unreadMentionCount = 0, S.totalUnreadReplyCount = 0, S.members = [], S.memberCount = 0, S.joinedMemberCount = 0, S.hiddenState = yl.UNHIDDEN, S.lastMessage = null, S.messageOffsetTimestamp = 0, S.messageSurvivalSeconds = -1, S.myMemberState = Hn.NONE, S.myRole = nd.NONE, S.myMutedState = Hd.UNMUTED, S.myLastRead = 0, S.myCountPreference = Ja.ALL, S.myPushTriggerOption = eV.DEFAULT, S.inviter = null, S.invitedAt = 0, S.joinedAt = 0, S.pinnedMessageIds = [], S.lastPinnedMessage = null, S._pinnedMessagesUpdatedAt = 0, S._myMutedRemainingTime = -1, S.channelType = Xt.GROUP, S.isDistinct = (d = l.is_distinct) !== null && d !== void 0 && d, S.isSuper = (r = l.is_super) !== null && r !== void 0 && r, S.isBroadcast = (i = l.is_broadcast) !== null && i !== void 0 && i, S.isExclusive = (c = l.is_exclusive) !== null && c !== void 0 && c, S.isPublic = (V = l.is_public) !== null && V !== void 0 && V, S.isDiscoverable = (s = l.is_discoverable) !== null && s !== void 0 ? s : S.isPublic, S.isChatNotification = (o = l.is_chat_notification) !== null && o !== void 0 && o, S.isAccessCodeRequired = (U = l.is_access_code_required) !== null && U !== void 0 && U, S.isPushEnabled = (N = l.is_push_enabled) !== null && N !== void 0 && N, Array.isArray(l.members) && (a = S.members).push.apply(a, st([], et(l.members.map(function(v) {
       return new Ga(S._iid, v);
     })), !1)), S.memberCount = (R = l.member_count) !== null && R !== void 0 ? R : 0, S.joinedMemberCount = (h = l.joined_member_count) !== null && h !== void 0 ? h : 0, S.hiddenState = zt(yl, l.hidden_state) ? l.hidden_state : yl.UNHIDDEN, S.messageOffsetTimestamp = (Z = l.ts_message_offset) !== null && Z !== void 0 ? Z : 0, S.messageSurvivalSeconds = (W = l.message_survival_seconds) !== null && W !== void 0 ? W : -1, S.lastMessage = l.last_message ? Hl(S._iid, x({ channel_type: S.channelType }, l.last_message)) : null, l.read_receipt && Object.keys(l.read_receipt).forEach(function(v) {
       B("number", l.read_receipt[v]) && S._updateUnreadMemberState(v, l.read_receipt[v]);
     }), l.delivery_receipt && Object.keys(l.delivery_receipt).forEach(function(v) {
       B("number", l.delivery_receipt[v]) && S._updateUndeliveredMemberState(v, l.delivery_receipt[v]);
-    }), S.myMemberState = zt(Hn, l.member_state) ? l.member_state : Hn.NONE, S.myRole = zt(nd, l.my_role) ? l.my_role : nd.NONE, zt(Hd, l.is_muted) ? S.myMutedState = l.is_muted : B("boolean", l.is_muted) ? S.myMutedState = l.is_muted ? Hd.MUTED : Hd.UNMUTED : S.myMutedState = Hd.UNMUTED, S.myCountPreference = zt(Ja, l.count_preference) ? l.count_preference : Ja.ALL, S.myPushTriggerOption = zt(eV, l.push_trigger_option) ? l.push_trigger_option : eV.ALL, S.myLastRead = (F = l.user_last_read) !== null && F !== void 0 ? F : 0, S.inviter = l.inviter ? new Gt(S._iid, l.inviter) : null, S.invitedAt = (m = l.invited_at) !== null && m !== void 0 ? m : 0, S.joinedAt = (p = l.joined_ts) !== null && p !== void 0 ? p : 0, S._updateUnreadCount((u = l.unread_message_count) !== null && u !== void 0 ? u : 0, (b = l.unread_mention_count) !== null && b !== void 0 ? b : 0), S.totalUnreadReplyCount = (k = l.total_unread_thread_message_count) !== null && k !== void 0 ? k : 0, S.pinnedMessageIds = (Y = l.pinned_message_ids) !== null && Y !== void 0 ? Y : [], S.lastPinnedMessage = l.latest_pinned_message ? Hl(S._iid, x({ channel_type: S.channelType }, l.latest_pinned_message)) : null, S;
+    }), S.myMemberState = zt(Hn, l.member_state) ? l.member_state : Hn.NONE, S.myRole = zt(nd, l.my_role) ? l.my_role : nd.NONE, zt(Hd, l.is_muted) ? S.myMutedState = l.is_muted : B("boolean", l.is_muted) ? S.myMutedState = l.is_muted ? Hd.MUTED : Hd.UNMUTED : S.myMutedState = Hd.UNMUTED, S.myCountPreference = zt(Ja, l.count_preference) ? l.count_preference : Ja.ALL, S.myPushTriggerOption = zt(eV, l.push_trigger_option) ? l.push_trigger_option : eV.ALL, S.myLastRead = (F = l.user_last_read) !== null && F !== void 0 ? F : 0, S.inviter = l.inviter ? new Gt(S._iid, l.inviter) : null, S.invitedAt = (m = l.invited_at) !== null && m !== void 0 ? m : 0, S.joinedAt = (E = l.joined_ts) !== null && E !== void 0 ? E : 0, S._updateUnreadCount((u = l.unread_message_count) !== null && u !== void 0 ? u : 0, (b = l.unread_mention_count) !== null && b !== void 0 ? b : 0), S.totalUnreadReplyCount = (k = l.total_unread_thread_message_count) !== null && k !== void 0 ? k : 0, S.pinnedMessageIds = (Y = l.pinned_message_ids) !== null && Y !== void 0 ? Y : [], S.lastPinnedMessage = l.latest_pinned_message ? Hl(S._iid, x({ channel_type: S.channelType }, l.latest_pinned_message)) : null, S;
   }
   return J(n, e), Object.defineProperty(n.prototype, "isHidden", { get: function() {
     return this.hiddenState !== yl.UNHIDDEN;
@@ -19648,15 +19648,15 @@ var ja = function(e) {
       a - c >= l && (t._typingStatus.delete(i), d = !0);
     }), d;
   }, n.prototype.refresh = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2, this._refresh()];
       });
     });
   }, n.prototype._refresh = function(t) {
-    return t === void 0 && (t = !1), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = !1), M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return l = D.of(this._iid), a = l.requestQueue, d = l.dispatcher, r = new n0({ channelUrl: this.url }), [4, a.send(r)];
@@ -19666,8 +19666,8 @@ var ja = function(e) {
       });
     });
   }, n.prototype.freeze = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, e.prototype.freeze.call(this)];
@@ -19677,8 +19677,8 @@ var ja = function(e) {
       });
     });
   }, n.prototype.unfreeze = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, e.prototype.unfreeze.call(this)];
@@ -19688,9 +19688,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.updateChannel = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return l = x(x({}, yD), t), he(function(o) {
@@ -19702,8 +19702,8 @@ var ja = function(e) {
       });
     });
   }, n.prototype.invite = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return he(t.every(function(a) {
           return a instanceof Gt;
         })).throw(j.invalidParameters), [2, this.inviteWithUserIds(t.map(function(a) {
@@ -19712,9 +19712,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.inviteWithUserIds = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return he(xt("string", t)).throw(j.invalidParameters), l = D.of(this._iid), a = l.dispatcher, d = l.requestQueue, r = new iD({ channelUrl: this.url, userIds: t }), [4, d.send(r)];
@@ -19724,9 +19724,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.join = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return he(B("string", t, !0)).throw(j.invalidParameters), l = D.of(this._iid), a = l.dispatcher, d = l.sdkState, r = l.requestQueue, i = new nD({ channelUrl: this.url, userId: d.userId, accessCode: t }), [4, r.send(i)];
@@ -19736,9 +19736,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.leave = function(t) {
-    return t === void 0 && (t = !1), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = !1), M(this, void 0, void 0, function() {
       var l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return l = D.of(this._iid), a = l.sdkState, d = l.requestQueue, r = new dD({ channelUrl: this.url, userId: a.userId, shouldRemoveOperatorStatus: t }), [4, d.send(r)];
@@ -19748,9 +19748,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.acceptInvitation = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return he(B("string", t, !0)).throw(j.invalidParameters), l = D.of(this._iid), a = l.dispatcher, d = l.sdkState, r = l.requestQueue, i = new OD({ channelUrl: this.url, userId: d.userId, accessCode: t }), [4, r.send(i)];
@@ -19760,9 +19760,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.declineInvitation = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new sD({ channelUrl: this.url, userId: l.userId }), [4, a.send(d)];
@@ -19783,9 +19783,9 @@ var ja = function(e) {
       }), d.dispatch(new Dt({ channels: [l], source: te.EVENT_MESSAGE_SENT })), a._trigger(i);
     }), a;
   }, n.prototype.updateUserMessage = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i, c = this;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return a = D.of(this._iid).dispatcher, [4, e.prototype.updateUserMessage.call(this, t, l)];
@@ -19837,9 +19837,9 @@ var ja = function(e) {
       a._triggerOnFileUploaded(r, i, c, V);
     }), a;
   }, n.prototype.updateFileMessage = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i, c = this;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return a = D.of(this._iid).dispatcher, [4, e.prototype.updateFileMessage.call(this, t, l)];
@@ -19865,8 +19865,8 @@ var ja = function(e) {
       }), d.dispatch(new Dt({ channels: [l], source: te.EVENT_MESSAGE_SENT })), a._trigger(i);
     }), a;
   }, n.prototype.deleteMessage = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, e.prototype.deleteMessage.call(this, t)];
@@ -19876,9 +19876,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.hide = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             return l = x(x({}, a0), t), he(function(U) {
@@ -19890,9 +19890,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.unhide = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return t = D.of(this._iid), l = t.dispatcher, a = t.requestQueue, d = new gD({ channelUrl: this.url }), [4, a.send(d)];
@@ -19902,9 +19902,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.delete = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new wD({ channelUrl: this.url }), [4, t.send(l)];
@@ -19914,9 +19914,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.markAsRead = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V = this;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.dispatcher, d = t.requestQueue, r = new oy({ channelUrl: this.url }), [4, d.send(r)];
@@ -19928,9 +19928,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.markAsDelivered = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new uD({ channelUrl: this.url, userId: l.userId }), [4, a.send(d)];
@@ -19940,9 +19940,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.startTyping = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return t = D.of(this._iid), l = t.requestQueue, a = t.typingIndicatorThrottle, (d = (/* @__PURE__ */ new Date()).getTime()) - this._typingStarted >= a ? (this._typingStarted = d, this._typingEnded = 0, r = new hD({ channelUrl: this.url, time: this._typingStarted }), [4, l.send(r)]) : [3, 2];
@@ -19954,9 +19954,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.endTyping = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return t = D.of(this._iid), l = t.requestQueue, a = t.typingIndicatorThrottle, (d = (/* @__PURE__ */ new Date()).getTime()) - this._typingEnded >= a ? (this._typingStarted = 0, this._typingEnded = d, r = new TD({ channelUrl: this.url, time: this._typingStarted }), [4, l.send(r)]) : [3, 2];
@@ -19972,9 +19972,9 @@ var ja = function(e) {
     var l = new Ua();
     return this._createScheduledUserMessage(t, l), l;
   }, n.prototype.updateScheduledUserMessage = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return a = x(x({}, PD), l), he(function(V) {
@@ -19992,8 +19992,8 @@ var ja = function(e) {
     return Qa(f5).then(function() {
       var i = l._createPendingScheduledFileMessage(t, d, a);
       Le(function() {
-        return E(l, void 0, void 0, function() {
-          return M(this, function(c) {
+        return M(l, void 0, void 0, function() {
+          return p(this, function(c) {
             return [2, r._trigger(i)];
           });
         });
@@ -20002,9 +20002,9 @@ var ja = function(e) {
       return l._createScheduledFileMessage(t, r, d, a);
     }) : this._createScheduledFileMessage(t, r, d, a), r;
   }, n.prototype.updateScheduledFileMessage = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return a = x(x({}, _D), l), he(function(c) {
@@ -20022,9 +20022,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.cancelScheduledMessage = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = new eX({ scheduledMessageId: t, channelType: this.channelType, channelUrl: this.url }), [4, D.of(this._iid).requestQueue.send(l)];
@@ -20034,9 +20034,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.sendScheduledMessageNow = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return l = new tX({ scheduledMessageId: t, channelType: this.channelType, channelUrl: this.url }), [4, D.of(this._iid).requestQueue.send(l)];
@@ -20046,9 +20046,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.getMyPushTriggerOption = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new aX({ userId: l.userId, channelUrl: this.url }), [4, a.send(d)];
@@ -20058,9 +20058,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.setMyPushTriggerOption = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return he(zt(eV, t)).throw(j.invalidParameters), l = D.of(this._iid), a = l.dispatcher, d = l.sdkState, r = l.requestQueue, i = new nX({ userId: d.userId, channelUrl: this.url, pushTriggerOption: t }), [4, r.send(i)];
@@ -20070,9 +20070,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.setMyCountPreference = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return he(zt(Ja, t)).throw(j.invalidParameters), l = D.of(this._iid), a = l.dispatcher, d = l.sdkState, r = l.requestQueue, i = new ID({ channelUrl: this.url, userId: d.userId, countPreference: t }), [4, r.send(i)];
@@ -20082,9 +20082,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.resetMyHistory = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return t = D.of(this._iid), l = t.dispatcher, a = t.requestQueue, d = new CD({ channelUrl: this.url }), [4, a.send(d)];
@@ -20094,9 +20094,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.pinMessage = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(B("number", t) && t > 0).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new rX({ channelType: this.channelType, channelUrl: this.url, messageId: t }), [4, l.send(a)];
@@ -20106,9 +20106,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype.unpinMessage = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(B("number", t) && t > 0).throw(j.invalidParameters), l = D.of(this._iid).requestQueue, a = new iX({ channelType: this.channelType, channelUrl: this.url, messageId: t }), [4, l.send(a)];
@@ -20118,9 +20118,9 @@ var ja = function(e) {
       });
     });
   }, n.prototype._uploadFileAndUpdateParams = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s, o, U;
-      return M(this, function(N) {
+      return p(this, function(N) {
         switch (N.label) {
           case 0:
             return Nl(t.file) ? (l = D.of(this._iid).requestQueue, a = new dR({ file: t.file, channelUrl: this.url, thumbnailSizes: t.thumbnailSizes, requestId: this._generateRequestId() }), [4, l.send(a)]) : [3, 2];
@@ -20221,9 +20221,9 @@ var ja = function(e) {
       return "sendbird:".concat(N, "@groupchannel/sync");
     }(c.userId);
     this._sync = new pi(U, function() {
-      return E(d, void 0, void 0, function() {
-        var N, R, h, Z, W, F, m, p, u, b, k, Y;
-        return M(this, function(S) {
+      return M(d, void 0, void 0, function() {
+        var N, R, h, Z, W, F, m, E, u, b, k, Y;
+        return p(this, function(S) {
           switch (S.label) {
             case 0:
               return N = { hasNext: !0, nextToken: "" }, [4, this.loadMetadata()];
@@ -20244,7 +20244,7 @@ var ja = function(e) {
             case 6:
               return [4, cl.of(this._iid).getMyGroupChannels((Y = (k = this._metadata) === null || k === void 0 ? void 0 : k.token) !== null && Y !== void 0 ? Y : "", R, this._limit, te.SYNC_CHANNEL_BACKGROUND)];
             case 7:
-              return Z = S.sent(), W = Z.channels, F = Z.token, N.hasNext = W.length >= this._limit && !!F, N.nextToken = F, this._metadata && (this._metadata.token = F, (p = this._metadata.range).extends.apply(p, st([], et(W.map(function(v) {
+              return Z = S.sent(), W = Z.channels, F = Z.token, N.hasNext = W.length >= this._limit && !!F, N.nextToken = F, this._metadata && (this._metadata.token = F, (E = this._metadata.range).extends.apply(E, st([], et(W.map(function(v) {
                 return v.createdAt;
               })), !1)), this._metadata.completed = !N.hasNext), s.debug("channel background sync progress", N), [4, this.saveMetadata()];
             case 8:
@@ -20279,9 +20279,9 @@ var ja = function(e) {
     var n;
     return !!(!((n = this._metadata) === null || n === void 0) && n.completed);
   }, enumerable: !1, configurable: !0 }), e.prototype.loadMetadata = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return this._metadata ? [3, 2] : [4, D.of(this._iid).cacheContext.preference.get(this._metadataKey)];
@@ -20293,8 +20293,8 @@ var ja = function(e) {
       });
     });
   }, e.prototype.saveMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return this._metadata ? [4, D.of(this._iid).cacheContext.preference.set(this._metadataKey, this._metadata)] : [3, 2];
@@ -20306,8 +20306,8 @@ var ja = function(e) {
       });
     });
   }, e.prototype.clearMetaData = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, D.of(this._iid).cacheContext.preference.remove(this._metadataKey)];
@@ -20334,9 +20334,9 @@ var ja = function(e) {
       return "sendbird:".concat(o, "@groupchannel/changelogs");
     }(i.userId);
     this._sync = new pi(s, function() {
-      return E(l, void 0, void 0, function() {
-        var o, U, N, R, h, Z, W, F, m, p;
-        return M(this, function(u) {
+      return M(l, void 0, void 0, function() {
+        var o, U, N, R, h, Z, W, F, m, E;
+        return p(this, function(u) {
           switch (u.label) {
             case 0:
               return o = { hasNext: !0, nextToken: 0 }, [4, this.loadMetadata()];
@@ -20351,7 +20351,7 @@ var ja = function(e) {
             case 5:
               return u.sent(), U.includeChatNotification = !1, [3, 6];
             case 6:
-              return [4, cl.of(this._iid).getMyGroupChannelChangeLogs((p = (m = this._metadata) === null || m === void 0 ? void 0 : m.token) !== null && p !== void 0 ? p : "", U, te.SYNC_CHANNEL_CHANGELOGS)];
+              return [4, cl.of(this._iid).getMyGroupChannelChangeLogs((E = (m = this._metadata) === null || m === void 0 ? void 0 : m.token) !== null && E !== void 0 ? E : "", U, te.SYNC_CHANNEL_CHANGELOGS)];
             case 7:
               return R = u.sent(), h = R.hasMore, Z = R.token, o.hasNext = h, o.nextToken = Z, this._metadata && (this._metadata.token = Z), r.debug("channel changelog sync progress", o), [4, this.saveMetadata()];
             case 8:
@@ -20376,9 +20376,9 @@ var ja = function(e) {
   }, e.clear = function(n) {
     fr[n] && (fr[n].close(), delete fr[n]);
   }, e.prototype.loadMetadata = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return this._metadata ? [3, 2] : (n = D.of(this._iid), t = n.cacheContext, l = n.firstConnectedAt, [4, t.preference.get(this._metadataKey)]);
@@ -20390,8 +20390,8 @@ var ja = function(e) {
       });
     });
   }, e.prototype.saveMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return this._metadata ? [4, D.of(this._iid).cacheContext.preference.set(this._metadataKey, this._metadata)] : [3, 2];
@@ -20403,8 +20403,8 @@ var ja = function(e) {
       });
     });
   }, e.prototype.clearMetadata = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         switch (n.label) {
           case 0:
             return [4, D.of(this._iid).cacheContext.preference.remove(this._metadataKey)];
@@ -20470,8 +20470,8 @@ var ja = function(e) {
     }, onRemove: function(o, U) {
       r._removeChannelsFromView(o, U);
     } }), D.of(this._iid).statLogCollector.put(new lV({ type: Sn.FEATURE_LOCALCACHE, data: { use_local_cache: V.localCacheEnabled, collection_interface: { group_channel: !0 } } })), s.on(function(o) {
-      o instanceof pa && (o.stateType === ln.CONNECTED ? r._isGetRemoteChannelsSucceeded || E(r, void 0, void 0, function() {
-        return M(this, function(U) {
+      o instanceof pa && (o.stateType === ln.CONNECTED ? r._isGetRemoteChannelsSucceeded || M(r, void 0, void 0, function() {
+        return p(this, function(U) {
           switch (U.label) {
             case 0:
               return [4, this._revokeLoadMore()];
@@ -20509,8 +20509,8 @@ var ja = function(e) {
               this.channels.splice(Z, 0, R), s.push(R);
           }
       }
-    } catch (p) {
-      a = { error: p };
+    } catch (E) {
+      a = { error: E };
     } finally {
       try {
         N && !N.done && (d = U.return) && d.call(U);
@@ -20526,8 +20526,8 @@ var ja = function(e) {
           var m = i0(this.channels, R);
           m !== -1 && this.channels.splice(m, 1);
         }
-      } catch (p) {
-        r = { error: p };
+      } catch (E) {
+        r = { error: E };
       } finally {
         try {
           F && !F.done && (i = W.return) && i.call(W);
@@ -20537,10 +20537,10 @@ var ja = function(e) {
         }
       }
     zN(t) && Le(function() {
-      return E(c, void 0, void 0, function() {
-        var p, u, b, k;
-        return M(this, function(Y) {
-          return p = new r0(t), V.length > 0 && (!((u = this._handler) === null || u === void 0) && u.onChannelsAdded) && this._handler.onChannelsAdded(p, V), s.length > 0 && (!((b = this._handler) === null || b === void 0) && b.onChannelsUpdated) && this._handler.onChannelsUpdated(p, s), o.length > 0 && (!((k = this._handler) === null || k === void 0) && k.onChannelsDeleted) && this._handler.onChannelsDeleted(p, o.map(function(S) {
+      return M(c, void 0, void 0, function() {
+        var E, u, b, k;
+        return p(this, function(Y) {
+          return E = new r0(t), V.length > 0 && (!((u = this._handler) === null || u === void 0) && u.onChannelsAdded) && this._handler.onChannelsAdded(E, V), s.length > 0 && (!((b = this._handler) === null || b === void 0) && b.onChannelsUpdated) && this._handler.onChannelsUpdated(E, s), o.length > 0 && (!((k = this._handler) === null || k === void 0) && k.onChannelsDeleted) && this._handler.onChannelsDeleted(E, o.map(function(S) {
             return S.url;
           })), [2];
         });
@@ -20567,17 +20567,17 @@ var ja = function(e) {
       }
     }
     return zN(t) && r.length > 0 && Le(function() {
-      return E(d, void 0, void 0, function() {
+      return M(d, void 0, void 0, function() {
         var o, U;
-        return M(this, function(N) {
+        return p(this, function(N) {
           return o = new r0(t), !((U = this._handler) === null || U === void 0) && U.onChannelsDeleted && this._handler.onChannelsDeleted(o, r), [2];
         });
       });
     }), r;
   }, e.prototype._getLocalChannels = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return n = cl.of(this._iid), t = this.channels.length > 0 ? function(a, d) {
@@ -20599,9 +20599,9 @@ var ja = function(e) {
       });
     });
   }, e.prototype._getRemoteChannels = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, cl.of(this._iid).getMyGroupChannels(this._token, Ae(x(x({}, this.filter), { order: this.order })), this._limit)];
@@ -20611,9 +20611,9 @@ var ja = function(e) {
       });
     });
   }, e.prototype._revokeLoadMore = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             if (this._isDisposed)
@@ -20631,16 +20631,16 @@ var ja = function(e) {
       });
     });
   }, e.prototype.loadMore = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d = this;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             if (this._isDisposed)
               throw new j({ code: nt.COLLECTION_DISPOSED, message: "Collection has been disposed." });
             return this._hasMore ? (n = D.of(this._iid), t = n.cacheContext, l = n.connectionManager, a = [], !t.localCacheEnabled || l.isConnected && !this._backgroundSync.completed ? [3, 2] : [4, Bn(function() {
-              return E(d, void 0, void 0, function() {
-                return M(this, function(i) {
+              return M(d, void 0, void 0, function() {
+                return p(this, function(i) {
                   switch (i.label) {
                     case 0:
                       return [4, this._getLocalChannels()];
@@ -20697,9 +20697,9 @@ var WX = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && B("boolean", this.includeEmpty) && B("boolean", this.includeFrozen) && B("boolean", this.includeMetaData) && B("string", this.channelNameContainsFilter, !0) && xt("string", this.channelUrlsFilter, !0) && xt("string", this.customTypesFilter, !0) && B("string", this.customTypeStartsWithFilter, !0) && zt(lo, this.membershipFilter) && zt(aa, this.superChannelFilter) && zt($s, this.order) && B("string", this.metadataOrderKeyFilter, !0) && B("string", this.metadataKey, !0) && xt("string", this.metadataValues, !0) && B("string", this.metadataValueStartsWith, !0);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : (t = [], this._hasNext ? (this._isLoading = !0, l = D.of(this._iid).requestQueue, a = new TX(Ae(x(x({}, this), { token: this._token }))), [4, l.send(a)]) : [3, 2]) : [3, 5];
@@ -20758,9 +20758,9 @@ var WX = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && B("string", this.channelUrl, !0) && (zt($T, this.order) || this.order === null) && B("boolean", this.reverse) && (xt(Vi, this.scheduledStatus) || this.scheduledStatus === null) && zt(bl, this.messageTypeFilter);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new mX(Ae(x(x({}, this), { token: this._token }))), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -20809,21 +20809,21 @@ var WX = function(e) {
   }, n.prototype.buildMemberFromSerializedData = function(t) {
     return this._manager.buildMemberFromSerializedData(t);
   }, n.prototype.getChannel = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return he(B("string", t)).throw(j.invalidParameters), [2, this._manager.getChannel(t)];
       });
     });
   }, n.prototype.getChannelWithoutCache = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return he(B("string", t)).throw(j.invalidParameters), [2, this._manager.getChannelWithoutCache(t)];
       });
     });
   }, n.prototype.getMyGroupChannelChangeLogsByToken = function(t, l) {
-    return l === void 0 && (l = {}), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = {}), M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, hR), l), he(B("string", t) && t0(a)).throw(j.invalidParameters), [4, this._manager.getMyGroupChannelChangeLogs(t, a)];
@@ -20833,9 +20833,9 @@ var WX = function(e) {
       });
     });
   }, n.prototype.getMyGroupChannelChangeLogsByTimestamp = function(t, l) {
-    return l === void 0 && (l = {}), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = {}), M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return a = x(x({}, hR), l), he(B("number", t) && t0(a)).throw(j.invalidParameters), [4, this._manager.getMyGroupChannelChangeLogs(t, a)];
@@ -20845,15 +20845,15 @@ var WX = function(e) {
       });
     });
   }, n.prototype.getGroupChannelCount = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         return l = x(x({}, rb), t), he(ib(l)).throw(j.invalidParameters), [2, this._manager.getGroupChannelCount(l)];
       });
     });
   }, n.prototype.getUnreadItemCount = function(t) {
-    return t === void 0 && (t = {}), E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return t === void 0 && (t = {}), M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._manager.getUnreadItemCount(t)];
@@ -20863,8 +20863,8 @@ var WX = function(e) {
       });
     });
   }, n.prototype.getTotalUnreadChannelCount = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, this._manager.getTotalUnreadChannelCount()];
@@ -20874,8 +20874,8 @@ var WX = function(e) {
       });
     });
   }, n.prototype.getTotalUnreadMessageCount = function(t) {
-    return t === void 0 && (t = {}), E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return t === void 0 && (t = {}), M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._manager.getTotalUnreadMessageCount(t)];
@@ -20885,8 +20885,8 @@ var WX = function(e) {
       });
     });
   }, n.prototype.getTotalScheduledMessageCount = function(t) {
-    return t === void 0 && (t = {}), E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return t === void 0 && (t = {}), M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._manager.getTotalScheduledMessageCount(t)];
@@ -20902,41 +20902,41 @@ var WX = function(e) {
   }, n.prototype.getSubscribedCustomTypeUnreadMessageCount = function(t) {
     return this._manager.getSubscribedCustomTypeUnreadMessageCount(t);
   }, n.prototype.createChannel = function(t) {
-    return t === void 0 && (t = {}), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = {}), M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         return l = x(x({}, vN), t), he(e0(l)).throw(j.invalidParameters), [2, this._manager.createChannel(l)];
       });
     });
   }, n.prototype.createDistinctChannelIfNotExist = function(t) {
-    return t === void 0 && (t = {}), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = {}), M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         return l = x(x({}, vN), t), he(e0(l)).throw(j.invalidParameters), l && (l.isDistinct = !0), [2, this.createChannel(l)];
       });
     });
   }, n.prototype.createChannelWithUserIds = function(t, l, a, d, r, i) {
-    return l === void 0 && (l = !1), r === void 0 && (r = ""), i === void 0 && (i = ""), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !1), r === void 0 && (r = ""), i === void 0 && (i = ""), M(this, void 0, void 0, function() {
       var c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         return c = x(x({}, vN), { invitedUserIds: t, isDistinct: l, name: a, data: r, customType: i }), typeof d == "string" ? c.coverUrl = d : c.coverImage = d, [2, this.createChannel(c)];
       });
     });
   }, n.prototype.markAsReadAll = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return this._manager.markAsReadAll(), [2];
       });
     });
   }, n.prototype.markAsReadWithChannelUrls = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return he(xt("string", t)).throw(j.invalidParameters), this._manager.markAsReadWithChannelUrls(t), [2];
       });
     });
   }, n.prototype.markAsDelivered = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return he(B("string", t)).throw(j.invalidParameters), [4, this.getChannel(t)];
@@ -20966,23 +20966,23 @@ var EX = function(e) {
     var a = l.sdkState, d = l.dispatcher, r = l.sessionManager, i = l.requestQueue, c = l.logger, V = l.onlineDetector, s = l.cacheContext;
     e.prototype.init.call(this, t, { sdkState: a, dispatcher: d, sessionManager: r, requestQueue: i, logger: c, onlineDetector: V, cacheContext: s }), this._manager = new aR(t, { sdkState: a, dispatcher: d, sessionManager: r, requestQueue: i, logger: c, onlineDetector: V, cacheContext: s });
   }, n.prototype.create = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         return l = x(x({}, ay), t), he(U3(l)).throw(j.invalidParameters), [2, this._manager.create(l)];
       });
     });
   }, n.prototype.get = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         return l = x(x({}, ry), t), he(R3(l)).throw(j.invalidParameters), [2, this._manager.get(l)];
       });
     });
   }, n.prototype.getOption = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         return l = x(x({}, dy), t), he(N3(l)).throw(j.invalidParameters), [2, this._manager.getOption(l)];
       });
     });
@@ -21008,9 +21008,9 @@ var EX = function(e) {
   }) : [];
 }, bX = { profileImage: void 0, profileUrl: void 0, nickname: void 0 }, Lu = function(e) {
   return function(n, t) {
-    return E(void 0, void 0, void 0, function() {
+    return M(void 0, void 0, void 0, function() {
       var l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             switch (n) {
@@ -21031,8 +21031,8 @@ var EX = function(e) {
           case 3:
             return c.sent(), l = function(V) {
               return { v2: function() {
-                return E(void 0, void 0, void 0, function() {
-                  return M(this, function(s) {
+                return M(void 0, void 0, void 0, function() {
+                  return p(this, function(s) {
                     switch (s.label) {
                       case 0:
                         return [4, V.commitSchema([{ collectionName: j3, keyName: z5, index: [JN(On.LATEST_LAST_MESSAGE), JN(On.CHRONOLOGICAL), JN(On.CHANNEL_NAME_ALPHABETICAL)] }, { collectionName: _T, keyName: x5, index: [Id(Wl.CHANNEL_LATEST), Id(Wl.NEWEST_CHILD_MESSAGE)] }, { collectionName: g3, keyName: hB, index: [Id(Wl.CHANNEL_LATEST), Id(Wl.NEWEST_CHILD_MESSAGE)] }, { collectionName: y5, keyName: B5 }])];
@@ -21042,8 +21042,8 @@ var EX = function(e) {
                   });
                 });
               }, v3: function() {
-                return E(void 0, void 0, void 0, function() {
-                  return M(this, function(s) {
+                return M(void 0, void 0, void 0, function() {
+                  return p(this, function(s) {
                     switch (s.label) {
                       case 0:
                         return [4, V.commitSchema([{ collectionName: D5, keyName: X5, index: [SX()] }])];
@@ -21053,8 +21053,8 @@ var EX = function(e) {
                   });
                 });
               }, v4: function() {
-                return E(void 0, void 0, void 0, function() {
-                  return M(this, function(s) {
+                return M(void 0, void 0, void 0, function() {
+                  return p(this, function(s) {
                     switch (s.label) {
                       case 0:
                         return [4, V.commitSchema([{ collectionName: f3, keyName: G5, index: [sB()] }])];
@@ -21150,8 +21150,8 @@ var EX = function(e) {
       }
     }), this.unsubscribes = [];
   }, e.prototype.isOnline = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(n) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(n) {
         return this.isAvailableOnWeb ? [2, navigator.onLine] : [2, new Promise(function(t) {
           fetch("https://www.google.com", { method: Re.GET, mode: "no-cors" }).then(function() {
             return t(!0);
@@ -21566,9 +21566,9 @@ var as, FO = function(e) {
     this._storeInitialized = !1, this._iid = n, this.options = t;
     var d = D.of(n), r = d.sdkState, i = d.cacheContext, c = d.dispatcher, V = d.sessionManager, s = d.requestQueue, o = d.logger, U = d.userEventHandlers, N = d.appStateToggleEnabled;
     this._onlineDetector = new JX({ logger: o, connectionDelegate: { reconnect: function() {
-      return E(a, void 0, void 0, function() {
-        var h, Z, W, F, m, p;
-        return M(this, function(u) {
+      return M(a, void 0, void 0, function() {
+        var h, Z, W, F, m, E;
+        return p(this, function(u) {
           switch (u.label) {
             case 0:
               if (h = D.of(n), Z = h.sdkState, W = h.connectionManager, (F = h.sessionManager).session.hasSession)
@@ -21593,9 +21593,9 @@ var as, FO = function(e) {
             case 7:
               return u.sent(), [3, 9];
             case 8:
-              if (p = u.sent(), Il(p))
-                throw p;
-              return o.debug("resetAndReconnect failed by reconnect event = ", p), [3, 9];
+              if (E = u.sent(), Il(E))
+                throw E;
+              return o.debug("resetAndReconnect failed by reconnect event = ", E), [3, 9];
             case 9:
               return c.dispatch(new Iu()), [2];
           }
@@ -21603,8 +21603,8 @@ var as, FO = function(e) {
       });
     }, disconnect: function() {
       Bn(function() {
-        return E(a, void 0, void 0, function() {
-          return M(this, function(h) {
+        return M(a, void 0, void 0, function() {
+          return p(this, function(h) {
             switch (h.label) {
               case 0:
                 return [4, D.of(n).connectionManager.disconnect()];
@@ -21632,8 +21632,8 @@ var as, FO = function(e) {
           if (W.category === Eo.FRIEND_DISCOVERED) {
             var F = NR.getDataAsFriendDiscoveredEvent(n, W).friendDiscoveries;
             Le(function() {
-              return E(a, void 0, void 0, function() {
-                return M(this, function(k) {
+              return M(a, void 0, void 0, function() {
+                return p(this, function(k) {
                   return [2, U.forEach(function(Y) {
                     Y.onFriendsDiscovered && Y.onFriendsDiscovered(F);
                   })];
@@ -21643,16 +21643,16 @@ var as, FO = function(e) {
           }
         }
       } else if (h instanceof Pk) {
-        var m = D.of(a._iid).subscribedUnreadMessageCount, p = !1, u = h.ts;
+        var m = D.of(a._iid).subscribedUnreadMessageCount, E = !1, u = h.ts;
         if (typeof u == "number" && u > m.ts) {
-          if (m.all !== h.all && (p = !0), m.all = h.all >= 0 ? h.all : 0, h.customTypes)
+          if (m.all !== h.all && (E = !0), m.all = h.all >= 0 ? h.all : 0, h.customTypes)
             for (var b in h.customTypes)
-              m.customTypes[b] !== h.customTypes[b] && (p = !0), m.customTypes[b] = h.customTypes[b];
-          p = p && m.ts > 0, m.ts = u;
+              m.customTypes[b] !== h.customTypes[b] && (E = !0), m.customTypes[b] = h.customTypes[b];
+          E = E && m.ts > 0, m.ts = u;
         }
-        p && Le(function() {
-          return E(a, void 0, void 0, function() {
-            return M(this, function(k) {
+        E && Le(function() {
+          return M(a, void 0, void 0, function() {
+            return p(this, function(k) {
               return [2, U.forEach(function(Y) {
                 Y.onTotalUnreadMessageCountChanged && Y.onTotalUnreadMessageCountChanged({ groupChannelCount: m.all, feedChannelCount: m.feed, customTypeUnreadCount: m.customTypes }), Y.onTotalUnreadMessageCountUpdated && Y.onTotalUnreadMessageCountUpdated(m.all, m.customTypes);
               })];
@@ -21664,7 +21664,7 @@ var as, FO = function(e) {
     });
   }
   return e.init = function(n) {
-    var t = n.appId, l = n.appVersion, a = n.modules, d = a === void 0 ? [] : a, r = n.options, i = r === void 0 ? new Mk() : r, c = n.debugMode, V = c !== void 0 && c, s = n.customApiHost, o = n.customWebSocketHost, U = n.newInstance, N = U !== void 0 && U, R = n.logLevel, h = n.localCacheEnabled, Z = h !== void 0 && h, W = n.localCacheConfig, F = W === void 0 ? new Sk() : W, m = n.localCacheEncryption, p = n.useAsyncStorageStore, u = p === void 0 ? null : p, b = n.appStateToggleEnabled, k = b === void 0 || b;
+    var t = n.appId, l = n.appVersion, a = n.modules, d = a === void 0 ? [] : a, r = n.options, i = r === void 0 ? new Mk() : r, c = n.debugMode, V = c !== void 0 && c, s = n.customApiHost, o = n.customWebSocketHost, U = n.newInstance, N = U !== void 0 && U, R = n.logLevel, h = n.localCacheEnabled, Z = h !== void 0 && h, W = n.localCacheConfig, F = W === void 0 ? new Sk() : W, m = n.localCacheEncryption, E = n.useAsyncStorageStore, u = E === void 0 ? null : E, b = n.appStateToggleEnabled, k = b === void 0 || b;
     if (!as || N) {
       var Y = "su-".concat(zr()), S = m ?? { encrypt: function(y) {
         return y;
@@ -21761,9 +21761,9 @@ var as, FO = function(e) {
   }, e.prototype.setOfflineListener = function(n) {
     this._onlineDetector.setOfflineListener(n);
   }, e.prototype._safeInitializeStore = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t;
-      return M(this, function(l) {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             t = D.of(this._iid).cacheContext, l.label = 1;
@@ -21781,9 +21781,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.initializeCache = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c, V, s;
-      return M(this, function(o) {
+      return p(this, function(o) {
         switch (o.label) {
           case 0:
             if (t = D.of(this._iid), l = t.sdkState, a = t.cacheContext, d = t.dispatcher, r = t.logger, l.userId && l.userId === n)
@@ -21815,9 +21815,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getCacheDataSize = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return (n = D.of(this._iid).cacheContext).localCacheEnabled && n.nestdb ? [4, n.nestdb.estimateUsage()] : [3, 2];
@@ -21829,9 +21829,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.clearCachedData = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n;
-      return M(this, function(t) {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return (n = D.of(this._iid).cacheContext).localCacheEnabled && n.nestdb ? [4, n.nestdb.clear()] : [3, 2];
@@ -21847,14 +21847,14 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.clearCachedMessages = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a = this;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return he(xt("string", n)).throw(j.invalidParameters), t = ac.of(this._iid), l = YV.of(this._iid), t && l ? [4, Promise.all(n.map(function(r) {
-              return E(a, void 0, void 0, function() {
-                return M(this, function(i) {
+              return M(a, void 0, void 0, function() {
+                return p(this, function(i) {
                   switch (i.label) {
                     case 0:
                       return [4, t.removeMessagesOfChannel(r)];
@@ -21874,9 +21874,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype._setupPreference = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.cacheContext, d = t.statLogCollector, [4, a.preference.init(this._getPreferenceCacheKey(n), this._getNestDBVersion())];
@@ -21890,9 +21890,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype._ready = function(n, t, l) {
-    return l === void 0 && (l = {}), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = {}), M(this, void 0, void 0, function() {
       var a, d, r, i, c, V;
-      return M(this, function(s) {
+      return p(this, function(s) {
         switch (s.label) {
           case 0:
             return he(B("string", n) && B("string", t, !0)).throw(j.invalidParameters), a = D.of(this._iid), d = a.sdkState, r = a.cacheContext, i = a.connectionManager, c = l.errorForOtherUser, d.userId && d.userId !== n ? c ? [3, 2] : [4, i.logout()] : [3, 3];
@@ -21917,9 +21917,9 @@ var as, FO = function(e) {
     });
   }, e.prototype.authenticateFeed = function(n, t) {
     var l;
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return a = D.of(this._iid), d = a.sessionManager, r = a.connectionManager, [4, this._ready(n, t, { errorForOtherUser: r.isConnected ? j.alreadyConnectedAsAnotherUser : void 0 })];
@@ -21933,8 +21933,8 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.connect = function(n, t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._ready(n, t)];
@@ -21958,9 +21958,9 @@ var as, FO = function(e) {
     }).catch(function() {
     })), a;
   }, e.prototype.disconnect = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return n = D.of(this._iid), t = n.connectionManager, l = n.sdkState, a = n.requestQueue, this._appStateChangeDetector.stop(), this._onlineDetector.stop(), a.cancelAll(), [4, t.logout()];
@@ -21972,9 +21972,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.disconnectWebSocket = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return n = D.of(this._iid), t = n.connectionManager, l = n.requestQueue, this._appStateChangeDetector.stop(), this._onlineDetector.stop(), l.cancelAll(), [4, t.disconnectWebSocket(!0)];
@@ -22023,9 +22023,9 @@ var as, FO = function(e) {
     var t = Zi(n);
     return new Gt(this._iid, Gt.payloadify(t));
   }, e.prototype.updateCurrentUserInfo = function(n) {
-    return n === void 0 && (n = {}), E(this, void 0, void 0, function() {
+    return n === void 0 && (n = {}), M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return t = x(x({}, bX), n), he(function(s) {
@@ -22039,9 +22039,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.updateCurrentUserInfoWithPreferredLanguages = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return he(xt("string", n)).throw(j.invalidParameters), this.currentUser ? (t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new Cu({ userId: l.userId, preferredLanguages: n }), [4, a.send(d)]) : [3, 2];
@@ -22053,9 +22053,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.registerFCMPushTokenForCurrentUser = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i = this;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             if (he(B("string", n)).throw(j.invalidParameters), !this.currentUser)
@@ -22065,8 +22065,8 @@ var as, FO = function(e) {
             return c.trys.push([1, 4, , 5]), t = D.of(this._iid), l = t.sessionManager, a = t.sdkState, d = t.requestQueue, l.hasDeviceToken(sl.FCM, n) ? [2, wl.SUCCESS] : (r = new zX({ userId: a.userId, token: n }), [4, d.send(r)]);
           case 2:
             return c.sent(), [4, Bn(function() {
-              return E(i, void 0, void 0, function() {
-                return M(this, function(V) {
+              return M(i, void 0, void 0, function() {
+                return p(this, function(V) {
                   switch (V.label) {
                     case 0:
                       return l.setDeviceToken(sl.FCM, n), [4, l.saveDeviceToken()];
@@ -22090,9 +22090,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.unregisterFCMPushTokenForCurrentUser = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c = this;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             if (he(B("string", n)).throw(j.invalidParameters), !this.currentUser)
@@ -22102,8 +22102,8 @@ var as, FO = function(e) {
             return V.trys.push([1, 4, , 5]), t = D.of(this._iid), l = t.sessionManager, a = t.sdkState, d = t.requestQueue, r = new GX({ userId: a.userId, token: n }), [4, d.send(r)];
           case 2:
             return i = V.sent().lastDeletedAt, [4, Bn(function() {
-              return E(c, void 0, void 0, function() {
-                return M(this, function(s) {
+              return M(c, void 0, void 0, function() {
+                return p(this, function(s) {
                   switch (s.label) {
                     case 0:
                       return l.unsetDeviceToken(sl.FCM, n), l.setDeviceTokenDeletedAt(i), [4, l.saveDeviceToken()];
@@ -22127,16 +22127,16 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.unregisterFCMPushTokenAllForCurrentUser = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i = this;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this.currentUser ? (n = D.of(this._iid), t = n.sessionManager, l = n.sdkState, a = n.requestQueue, d = new BX({ userId: l.userId }), [4, a.send(d)]) : [3, 3];
           case 1:
             return r = c.sent().lastDeletedAt, [4, Bn(function() {
-              return E(i, void 0, void 0, function() {
-                return M(this, function(V) {
+              return M(i, void 0, void 0, function() {
+                return p(this, function(V) {
                   switch (V.label) {
                     case 0:
                       return t.unsetDeviceTokens(sl.FCM), t.setDeviceTokenDeletedAt(r), [4, t.saveDeviceToken()];
@@ -22154,9 +22154,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.registerAPNSPushTokenForCurrentUser = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i = this;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             if (he(B("string", n)).throw(j.invalidParameters), !this.currentUser)
@@ -22166,8 +22166,8 @@ var as, FO = function(e) {
             return c.trys.push([1, 4, , 5]), t = D.of(this._iid), l = t.sessionManager, a = t.sdkState, d = t.requestQueue, l.hasDeviceToken(sl.APNS, n) ? [2, wl.SUCCESS] : (r = new vX({ userId: a.userId, token: n }), [4, d.send(r)]);
           case 2:
             return c.sent(), [4, Bn(function() {
-              return E(i, void 0, void 0, function() {
-                return M(this, function(V) {
+              return M(i, void 0, void 0, function() {
+                return p(this, function(V) {
                   switch (V.label) {
                     case 0:
                       return l.setDeviceToken(sl.APNS, n), [4, l.saveDeviceToken()];
@@ -22191,9 +22191,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.unregisterAPNSPushTokenForCurrentUser = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i, c = this;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             if (he(B("string", n)).throw(j.invalidParameters), !this.currentUser)
@@ -22203,8 +22203,8 @@ var as, FO = function(e) {
             return V.trys.push([1, 4, , 5]), t = D.of(this._iid), l = t.sessionManager, a = t.sdkState, d = t.requestQueue, r = new xX({ userId: a.userId, token: n }), [4, d.send(r)];
           case 2:
             return i = V.sent().lastDeletedAt, [4, Bn(function() {
-              return E(c, void 0, void 0, function() {
-                return M(this, function(s) {
+              return M(c, void 0, void 0, function() {
+                return p(this, function(s) {
                   switch (s.label) {
                     case 0:
                       return l.unsetDeviceToken(sl.APNS, n), l.setDeviceTokenDeletedAt(i), [4, l.saveDeviceToken()];
@@ -22228,16 +22228,16 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.unregisterAPNSPushTokenAllForCurrentUser = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d, r, i = this;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this.currentUser ? (n = D.of(this._iid), t = n.sessionManager, l = n.sdkState, a = n.requestQueue, d = new yX({ userId: l.userId }), [4, a.send(d)]) : [3, 3];
           case 1:
             return r = c.sent().lastDeletedAt, [4, Bn(function() {
-              return E(i, void 0, void 0, function() {
-                return M(this, function(V) {
+              return M(i, void 0, void 0, function() {
+                return p(this, function(V) {
                   switch (V.label) {
                     case 0:
                       return t.unsetDeviceTokens(sl.APNS), t.setDeviceTokenDeletedAt(r), [4, t.saveDeviceToken()];
@@ -22255,9 +22255,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getChannelInvitationPreference = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return n = D.of(this._iid), t = n.sdkState, l = n.requestQueue, a = new OX({ userId: t.userId }), [4, l.send(a)];
@@ -22267,9 +22267,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.setChannelInvitationPreference = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(B("boolean", n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new HX({ userId: l.userId, willAutoAccept: n }), [4, a.send(d)];
@@ -22279,9 +22279,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getDoNotDisturb = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return n = D.of(this._iid), t = n.sdkState, l = n.requestQueue, a = new wX({ userId: t.userId }), [4, l.send(a)];
@@ -22291,9 +22291,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.setDoNotDisturb = function(n, t, l, a, d, r) {
-    return t === void 0 && (t = 0), l === void 0 && (l = 0), a === void 0 && (a = 0), d === void 0 && (d = 0), r === void 0 && (r = ""), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = 0), l === void 0 && (l = 0), a === void 0 && (a = 0), d === void 0 && (d = 0), r === void 0 && (r = ""), M(this, void 0, void 0, function() {
       var i, c, V, s, o;
-      return M(this, function(U) {
+      return p(this, function(U) {
         switch (U.label) {
           case 0:
             return he(B("boolean", n) && B("number", t) && B("number", l) && B("number", a) && B("number", d) && B("string", r)).throw(j.invalidParameters), i = D.of(this._iid), c = i.sdkState, V = i.requestQueue, s = new IX({ userId: c.userId, doNotDisturbOn: n, startHour: t, startMin: l, endHour: a, endMin: d, timezone: r }), [4, V.send(s)];
@@ -22303,9 +22303,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getSnoozePeriod = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return n = D.of(this._iid), t = n.sdkState, l = n.requestQueue, a = new CX({ userId: t.userId }), [4, l.send(a)];
@@ -22315,9 +22315,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.setSnoozePeriod = function(n, t, l) {
-    return t === void 0 && (t = 0), l === void 0 && (l = 0), E(this, void 0, void 0, function() {
+    return t === void 0 && (t = 0), l === void 0 && (l = 0), M(this, void 0, void 0, function() {
       var a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             return he(B("boolean", n) && B("number", t) && B("number", l)).throw(j.invalidParameters), a = D.of(this._iid), d = a.sdkState, r = a.requestQueue, i = new _X({ userId: d.userId, snoozeOn: n, startTs: t, endTs: l }), [4, r.send(i)];
@@ -22327,9 +22327,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getMyPushTokensByToken = function(n, t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c, V, s, o, U, N, R;
-      return M(this, function(h) {
+      return p(this, function(h) {
         switch (h.label) {
           case 0:
             return he(B("string", n) && zt(sl, t)).throw(j.invalidParameters), l = D.of(this._iid), a = l.sdkState, d = l.requestQueue, r = l.sessionManager, i = new DX({ userId: a.userId, type: t, token: n }), [4, d.send(i)];
@@ -22355,9 +22355,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getPushTriggerOption = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return n = D.of(this._iid), t = n.sdkState, l = n.requestQueue, a = new $X({ userId: t.userId }), [4, l.send(a)];
@@ -22367,9 +22367,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.setPushTriggerOption = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return he(zt(eV, n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new tO({ userId: l.userId, pushTriggerOption: n }), [4, a.send(d)];
@@ -22379,9 +22379,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getPushTemplate = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return n = D.of(this._iid), t = n.sdkState, l = n.requestQueue, a = new lO({ userId: t.userId }), [4, l.send(a)];
@@ -22391,9 +22391,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.setPushTemplate = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return he(zt(xT, n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new dO({ userId: l.userId, templateName: n }), [4, a.send(d)];
@@ -22403,9 +22403,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.blockUser = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return he(n instanceof Gt || B("string", n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new AX({ userId: l.userId, blockedUserId: n instanceof Gt ? n.userId : n }), [4, a.send(d)];
@@ -22415,15 +22415,15 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.blockUserWithUserId = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2, this.blockUser(n)];
       });
     });
   }, e.prototype.unblockUser = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return he(n instanceof Gt || B("string", n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new qX({ userId: l.userId, unblockedUserId: n instanceof Gt ? n.userId : n }), [4, a.send(d)];
@@ -22433,15 +22433,15 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.unblockUserWithUserId = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2, this.unblockUser(n)];
       });
     });
   }, e.prototype.getFriendChangeLogsByToken = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(B("string", n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new iO({ userId: l.userId, token: n }), [4, a.send(d)];
@@ -22451,9 +22451,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getAllowFriendDiscovery = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return n = D.of(this._iid), t = n.sdkState, l = n.requestQueue, a = new hO({ userId: t.userId }), [4, l.send(a)];
@@ -22463,9 +22463,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.setAllowFriendDiscovery = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return he(B("boolean", n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new TO({ userId: l.userId, allowFriendDiscovery: n }), [4, a.send(d)];
@@ -22475,9 +22475,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.uploadFriendDiscoveries = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new cO({ userId: l.userId, discoveries: n }), [4, a.send(d)];
@@ -22487,15 +22487,15 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.deleteFriendDiscovery = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2, this.deleteFriendDiscoveries([n])];
       });
     });
   }, e.prototype.deleteFriendDiscoveries = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return he(xt("string", n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new oO({ userId: l.userId, discoveryKeys: n }), [4, a.send(d)];
@@ -22505,9 +22505,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.addFriends = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(xt("string", n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new UO({ userId: l.userId, userIds: n }), [4, a.send(d)];
@@ -22517,15 +22517,15 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.deleteFriend = function(n) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return [2, this.deleteFriends([n])];
       });
     });
   }, e.prototype.deleteFriends = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d;
-      return M(this, function(r) {
+      return p(this, function(r) {
         switch (r.label) {
           case 0:
             return he(xt("string", n)).throw(j.invalidParameters), t = D.of(this._iid), l = t.sdkState, a = t.requestQueue, d = new RO({ userId: l.userId, userIds: n }), [4, a.send(d)];
@@ -22535,9 +22535,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getAllEmoji = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return n = D.of(this._iid).requestQueue, t = new FO(), [4, n.send(t)];
@@ -22547,9 +22547,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getEmojiCategory = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new mO({ categoryId: n }), [4, t.send(l)];
@@ -22559,9 +22559,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getEmoji = function(n) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new pO({ key: n }), [4, t.send(l)];
@@ -22571,9 +22571,9 @@ var as, FO = function(e) {
       });
     });
   }, e.prototype.getUIKitConfiguration = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var n, t, l, a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             return n = D.of(this._iid), he(n.hasExtension("sb_uikit")).throw(j.notSupportedError), t = n.requestQueue, l = new EO(), [4, t.send(l)];
@@ -22762,16 +22762,16 @@ function xO(e, n, t) {
   GO(e, n, t), yO(e, n, t), BO(e, n, t), DO(e, n, t);
 }
 function GO(e, n, t) {
-  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut, _e, ke, ae, Nt, rt, it, Tt, Qt, Nn, Et, dn, Fn, gt, en, Ct, jt, ge, $e, be, mt, Jt, X, Ue, Fe, je, ht, Ft, Zt, pt;
-  !((l = t.groupChannel) === null || l === void 0) && l.channel && Pt((d = (a = t.groupChannel) === null || a === void 0 ? void 0 : a.channel) === null || d === void 0 ? void 0 : d.enableOgtag) && (e.channel.enableOgtag = t.groupChannel.channel.enableOgtag), !((r = n.groupChannel) === null || r === void 0) && r.channel && Pt((c = (i = n.groupChannel) === null || i === void 0 ? void 0 : i.channel) === null || c === void 0 ? void 0 : c.enableOgtag) && (e.channel.enableOgtag = (s = (V = n.groupChannel) === null || V === void 0 ? void 0 : V.channel) === null || s === void 0 ? void 0 : s.enableOgtag), !((o = t.groupChannel) === null || o === void 0) && o.channel && Pt((N = (U = t.groupChannel) === null || U === void 0 ? void 0 : U.channel) === null || N === void 0 ? void 0 : N.enableTypingIndicator) && (e.channel.enableTypingIndicator = (h = (R = t.groupChannel) === null || R === void 0 ? void 0 : R.channel) === null || h === void 0 ? void 0 : h.enableTypingIndicator), !((Z = n.groupChannel) === null || Z === void 0) && Z.channel && Pt((F = (W = n.groupChannel) === null || W === void 0 ? void 0 : W.channel) === null || F === void 0 ? void 0 : F.enableTypingIndicator) && (e.channel.enableTypingIndicator = (p = (m = n.groupChannel) === null || m === void 0 ? void 0 : m.channel) === null || p === void 0 ? void 0 : p.enableTypingIndicator), !((u = t.groupChannel) === null || u === void 0) && u.channel && Pt((k = (b = t.groupChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.enableReactions) && (e.channel.enableReactions = (S = (Y = t.groupChannel) === null || Y === void 0 ? void 0 : Y.channel) === null || S === void 0 ? void 0 : S.enableReactions), !((v = n.groupChannel) === null || v === void 0) && v.channel && Pt((w = (G = n.groupChannel) === null || G === void 0 ? void 0 : G.channel) === null || w === void 0 ? void 0 : w.enableReactions) && (e.channel.enableReactions = (f = (y = n.groupChannel) === null || y === void 0 ? void 0 : y.channel) === null || f === void 0 ? void 0 : f.enableReactions), !((H = t.groupChannel) === null || H === void 0) && H.channel && Pt((_ = (I = t.groupChannel) === null || I === void 0 ? void 0 : I.channel) === null || _ === void 0 ? void 0 : _.enableReactionsSupergroup) && (e.channel.enableReactionsSupergroup = (ie = (oe = t.groupChannel) === null || oe === void 0 ? void 0 : oe.channel) === null || ie === void 0 ? void 0 : ie.enableReactionsSupergroup), !((le = n.groupChannel) === null || le === void 0) && le.channel && Pt((ne = (ce = n.groupChannel) === null || ce === void 0 ? void 0 : ce.channel) === null || ne === void 0 ? void 0 : ne.enableReactionsSupergroup) && (e.channel.enableReactionsSupergroup = (ee = (L = n.groupChannel) === null || L === void 0 ? void 0 : L.channel) === null || ee === void 0 ? void 0 : ee.enableReactionsSupergroup), !((C = t.groupChannel) === null || C === void 0) && C.channel && Pt((de = (O = t.groupChannel) === null || O === void 0 ? void 0 : O.channel) === null || de === void 0 ? void 0 : de.enableMention) && (e.channel.enableMention = (Ye = ($ = t.groupChannel) === null || $ === void 0 ? void 0 : $.channel) === null || Ye === void 0 ? void 0 : Ye.enableMention), !((ve = n.groupChannel) === null || ve === void 0) && ve.channel && Pt((A = (Qe = n.groupChannel) === null || Qe === void 0 ? void 0 : Qe.channel) === null || A === void 0 ? void 0 : A.enableMention) && (e.channel.enableMention = (pe = (He = n.groupChannel) === null || He === void 0 ? void 0 : He.channel) === null || pe === void 0 ? void 0 : pe.enableMention), !((me = t.groupChannel) === null || me === void 0) && me.channel && ds((ye = (Be = t.groupChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || ye === void 0 ? void 0 : ye.replyType, ["none", "quote_reply", "thread"]) && (e.channel.replyType = (xe = (qe = t.groupChannel) === null || qe === void 0 ? void 0 : qe.channel) === null || xe === void 0 ? void 0 : xe.replyType), !((fe = n.groupChannel) === null || fe === void 0) && fe.channel && ds((De = (dt = n.groupChannel) === null || dt === void 0 ? void 0 : dt.channel) === null || De === void 0 ? void 0 : De.replyType, ["none", "quote_reply", "thread"]) && (e.channel.replyType = (Xe = (tt = n.groupChannel) === null || tt === void 0 ? void 0 : tt.channel) === null || Xe === void 0 ? void 0 : Xe.replyType), !((Ge = t.groupChannel) === null || Ge === void 0) && Ge.channel && ds((Vt = (ut = t.groupChannel) === null || ut === void 0 ? void 0 : ut.channel) === null || Vt === void 0 ? void 0 : Vt.threadReplySelectType, ["thread", "parent"]) && (e.channel.threadReplySelectType = (ze = (yt = t.groupChannel) === null || yt === void 0 ? void 0 : yt.channel) === null || ze === void 0 ? void 0 : ze.threadReplySelectType), !((qt = n.groupChannel) === null || qt === void 0) && qt.channel && ds(($t = (Ht = n.groupChannel) === null || Ht === void 0 ? void 0 : Ht.channel) === null || $t === void 0 ? void 0 : $t.threadReplySelectType, ["thread", "parent"]) && (e.channel.threadReplySelectType = (kt = (nn = n.groupChannel) === null || nn === void 0 ? void 0 : nn.channel) === null || kt === void 0 ? void 0 : kt.threadReplySelectType), !((Ut = t.groupChannel) === null || Ut === void 0) && Ut.channel && Pt((ke = (_e = t.groupChannel) === null || _e === void 0 ? void 0 : _e.channel) === null || ke === void 0 ? void 0 : ke.enableVoiceMessage) && (e.channel.enableVoiceMessage = (Nt = (ae = t.groupChannel) === null || ae === void 0 ? void 0 : ae.channel) === null || Nt === void 0 ? void 0 : Nt.enableVoiceMessage), !((rt = n.groupChannel) === null || rt === void 0) && rt.channel && Pt((Tt = (it = n.groupChannel) === null || it === void 0 ? void 0 : it.channel) === null || Tt === void 0 ? void 0 : Tt.enableVoiceMessage) && (e.channel.enableVoiceMessage = (Nn = (Qt = n.groupChannel) === null || Qt === void 0 ? void 0 : Qt.channel) === null || Nn === void 0 ? void 0 : Nn.enableVoiceMessage), !((Et = n.groupChannel) === null || Et === void 0) && Et.channel && bO((Fn = (dn = n.groupChannel) === null || dn === void 0 ? void 0 : dn.channel) === null || Fn === void 0 ? void 0 : Fn.typingIndicatorTypes) && (e.channel.typingIndicatorTypes = (en = (gt = n.groupChannel) === null || gt === void 0 ? void 0 : gt.channel) === null || en === void 0 ? void 0 : en.typingIndicatorTypes), !((Ct = n.groupChannel) === null || Ct === void 0) && Ct.channel && Pt((ge = (jt = n.groupChannel) === null || jt === void 0 ? void 0 : jt.channel) === null || ge === void 0 ? void 0 : ge.enableFeedback) && (e.channel.enableFeedback = (be = ($e = n.groupChannel) === null || $e === void 0 ? void 0 : $e.channel) === null || be === void 0 ? void 0 : be.enableFeedback), !((mt = n.groupChannel) === null || mt === void 0) && mt.channel && Pt((X = (Jt = n.groupChannel) === null || Jt === void 0 ? void 0 : Jt.channel) === null || X === void 0 ? void 0 : X.enableSuggestedReplies) && (e.channel.enableSuggestedReplies = (Fe = (Ue = n.groupChannel) === null || Ue === void 0 ? void 0 : Ue.channel) === null || Fe === void 0 ? void 0 : Fe.enableSuggestedReplies), !((je = n.groupChannel) === null || je === void 0) && je.channel && ds((Ft = (ht = n.groupChannel) === null || ht === void 0 ? void 0 : ht.channel) === null || Ft === void 0 ? void 0 : Ft.showSuggestedRepliesFor, ["all_messages", "last_message_only"]) && (e.channel.showSuggestedRepliesFor = (pt = (Zt = n.groupChannel) === null || Zt === void 0 ? void 0 : Zt.channel) === null || pt === void 0 ? void 0 : pt.showSuggestedRepliesFor);
+  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut, _e, ke, ae, Nt, rt, it, Tt, Qt, Nn, Et, dn, Fn, gt, en, Ct, jt, ge, $e, be, mt, Jt, X, Ue, Fe, je, ht, Ft, Zt, pt;
+  !((l = t.groupChannel) === null || l === void 0) && l.channel && Pt((d = (a = t.groupChannel) === null || a === void 0 ? void 0 : a.channel) === null || d === void 0 ? void 0 : d.enableOgtag) && (e.channel.enableOgtag = t.groupChannel.channel.enableOgtag), !((r = n.groupChannel) === null || r === void 0) && r.channel && Pt((c = (i = n.groupChannel) === null || i === void 0 ? void 0 : i.channel) === null || c === void 0 ? void 0 : c.enableOgtag) && (e.channel.enableOgtag = (s = (V = n.groupChannel) === null || V === void 0 ? void 0 : V.channel) === null || s === void 0 ? void 0 : s.enableOgtag), !((o = t.groupChannel) === null || o === void 0) && o.channel && Pt((N = (U = t.groupChannel) === null || U === void 0 ? void 0 : U.channel) === null || N === void 0 ? void 0 : N.enableTypingIndicator) && (e.channel.enableTypingIndicator = (h = (R = t.groupChannel) === null || R === void 0 ? void 0 : R.channel) === null || h === void 0 ? void 0 : h.enableTypingIndicator), !((Z = n.groupChannel) === null || Z === void 0) && Z.channel && Pt((F = (W = n.groupChannel) === null || W === void 0 ? void 0 : W.channel) === null || F === void 0 ? void 0 : F.enableTypingIndicator) && (e.channel.enableTypingIndicator = (E = (m = n.groupChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.enableTypingIndicator), !((u = t.groupChannel) === null || u === void 0) && u.channel && Pt((k = (b = t.groupChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.enableReactions) && (e.channel.enableReactions = (S = (Y = t.groupChannel) === null || Y === void 0 ? void 0 : Y.channel) === null || S === void 0 ? void 0 : S.enableReactions), !((v = n.groupChannel) === null || v === void 0) && v.channel && Pt((w = (G = n.groupChannel) === null || G === void 0 ? void 0 : G.channel) === null || w === void 0 ? void 0 : w.enableReactions) && (e.channel.enableReactions = (f = (y = n.groupChannel) === null || y === void 0 ? void 0 : y.channel) === null || f === void 0 ? void 0 : f.enableReactions), !((H = t.groupChannel) === null || H === void 0) && H.channel && Pt((_ = (I = t.groupChannel) === null || I === void 0 ? void 0 : I.channel) === null || _ === void 0 ? void 0 : _.enableReactionsSupergroup) && (e.channel.enableReactionsSupergroup = (ie = (oe = t.groupChannel) === null || oe === void 0 ? void 0 : oe.channel) === null || ie === void 0 ? void 0 : ie.enableReactionsSupergroup), !((le = n.groupChannel) === null || le === void 0) && le.channel && Pt((ne = (ce = n.groupChannel) === null || ce === void 0 ? void 0 : ce.channel) === null || ne === void 0 ? void 0 : ne.enableReactionsSupergroup) && (e.channel.enableReactionsSupergroup = (ee = (L = n.groupChannel) === null || L === void 0 ? void 0 : L.channel) === null || ee === void 0 ? void 0 : ee.enableReactionsSupergroup), !((C = t.groupChannel) === null || C === void 0) && C.channel && Pt((de = (O = t.groupChannel) === null || O === void 0 ? void 0 : O.channel) === null || de === void 0 ? void 0 : de.enableMention) && (e.channel.enableMention = (Ye = ($ = t.groupChannel) === null || $ === void 0 ? void 0 : $.channel) === null || Ye === void 0 ? void 0 : Ye.enableMention), !((ve = n.groupChannel) === null || ve === void 0) && ve.channel && Pt((A = (Qe = n.groupChannel) === null || Qe === void 0 ? void 0 : Qe.channel) === null || A === void 0 ? void 0 : A.enableMention) && (e.channel.enableMention = (pe = (He = n.groupChannel) === null || He === void 0 ? void 0 : He.channel) === null || pe === void 0 ? void 0 : pe.enableMention), !((me = t.groupChannel) === null || me === void 0) && me.channel && ds((ye = (Be = t.groupChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || ye === void 0 ? void 0 : ye.replyType, ["none", "quote_reply", "thread"]) && (e.channel.replyType = (xe = (qe = t.groupChannel) === null || qe === void 0 ? void 0 : qe.channel) === null || xe === void 0 ? void 0 : xe.replyType), !((fe = n.groupChannel) === null || fe === void 0) && fe.channel && ds((De = (dt = n.groupChannel) === null || dt === void 0 ? void 0 : dt.channel) === null || De === void 0 ? void 0 : De.replyType, ["none", "quote_reply", "thread"]) && (e.channel.replyType = (Xe = (tt = n.groupChannel) === null || tt === void 0 ? void 0 : tt.channel) === null || Xe === void 0 ? void 0 : Xe.replyType), !((Ge = t.groupChannel) === null || Ge === void 0) && Ge.channel && ds((Vt = (ut = t.groupChannel) === null || ut === void 0 ? void 0 : ut.channel) === null || Vt === void 0 ? void 0 : Vt.threadReplySelectType, ["thread", "parent"]) && (e.channel.threadReplySelectType = (ze = (yt = t.groupChannel) === null || yt === void 0 ? void 0 : yt.channel) === null || ze === void 0 ? void 0 : ze.threadReplySelectType), !((qt = n.groupChannel) === null || qt === void 0) && qt.channel && ds(($t = (Ht = n.groupChannel) === null || Ht === void 0 ? void 0 : Ht.channel) === null || $t === void 0 ? void 0 : $t.threadReplySelectType, ["thread", "parent"]) && (e.channel.threadReplySelectType = (kt = (nn = n.groupChannel) === null || nn === void 0 ? void 0 : nn.channel) === null || kt === void 0 ? void 0 : kt.threadReplySelectType), !((Ut = t.groupChannel) === null || Ut === void 0) && Ut.channel && Pt((ke = (_e = t.groupChannel) === null || _e === void 0 ? void 0 : _e.channel) === null || ke === void 0 ? void 0 : ke.enableVoiceMessage) && (e.channel.enableVoiceMessage = (Nt = (ae = t.groupChannel) === null || ae === void 0 ? void 0 : ae.channel) === null || Nt === void 0 ? void 0 : Nt.enableVoiceMessage), !((rt = n.groupChannel) === null || rt === void 0) && rt.channel && Pt((Tt = (it = n.groupChannel) === null || it === void 0 ? void 0 : it.channel) === null || Tt === void 0 ? void 0 : Tt.enableVoiceMessage) && (e.channel.enableVoiceMessage = (Nn = (Qt = n.groupChannel) === null || Qt === void 0 ? void 0 : Qt.channel) === null || Nn === void 0 ? void 0 : Nn.enableVoiceMessage), !((Et = n.groupChannel) === null || Et === void 0) && Et.channel && bO((Fn = (dn = n.groupChannel) === null || dn === void 0 ? void 0 : dn.channel) === null || Fn === void 0 ? void 0 : Fn.typingIndicatorTypes) && (e.channel.typingIndicatorTypes = (en = (gt = n.groupChannel) === null || gt === void 0 ? void 0 : gt.channel) === null || en === void 0 ? void 0 : en.typingIndicatorTypes), !((Ct = n.groupChannel) === null || Ct === void 0) && Ct.channel && Pt((ge = (jt = n.groupChannel) === null || jt === void 0 ? void 0 : jt.channel) === null || ge === void 0 ? void 0 : ge.enableFeedback) && (e.channel.enableFeedback = (be = ($e = n.groupChannel) === null || $e === void 0 ? void 0 : $e.channel) === null || be === void 0 ? void 0 : be.enableFeedback), !((mt = n.groupChannel) === null || mt === void 0) && mt.channel && Pt((X = (Jt = n.groupChannel) === null || Jt === void 0 ? void 0 : Jt.channel) === null || X === void 0 ? void 0 : X.enableSuggestedReplies) && (e.channel.enableSuggestedReplies = (Fe = (Ue = n.groupChannel) === null || Ue === void 0 ? void 0 : Ue.channel) === null || Fe === void 0 ? void 0 : Fe.enableSuggestedReplies), !((je = n.groupChannel) === null || je === void 0) && je.channel && ds((Ft = (ht = n.groupChannel) === null || ht === void 0 ? void 0 : ht.channel) === null || Ft === void 0 ? void 0 : Ft.showSuggestedRepliesFor, ["all_messages", "last_message_only"]) && (e.channel.showSuggestedRepliesFor = (pt = (Zt = n.groupChannel) === null || Zt === void 0 ? void 0 : Zt.channel) === null || pt === void 0 ? void 0 : pt.showSuggestedRepliesFor);
 }
 function yO(e, n, t) {
-  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut, _e, ke, ae, Nt, rt, it, Tt, Qt, Nn, Et, dn, Fn, gt, en, Ct, jt, ge, $e, be, mt, Jt, X, Ue, Fe, je, ht, Ft, Zt, pt, Ce, g, Me, Ie, Bt, Zn;
-  !((a = (l = t.groupChannel) === null || l === void 0 ? void 0 : l.channel) === null || a === void 0) && a.input && Pt((i = (r = (d = t.groupChannel) === null || d === void 0 ? void 0 : d.channel) === null || r === void 0 ? void 0 : r.input) === null || i === void 0 ? void 0 : i.enableDocument) && (e.channel.input.enableDocument = (s = (V = (c = t.groupChannel) === null || c === void 0 ? void 0 : c.channel) === null || V === void 0 ? void 0 : V.input) === null || s === void 0 ? void 0 : s.enableDocument), !((U = (o = n.groupChannel) === null || o === void 0 ? void 0 : o.channel) === null || U === void 0) && U.input && Pt((h = (R = (N = n.groupChannel) === null || N === void 0 ? void 0 : N.channel) === null || R === void 0 ? void 0 : R.input) === null || h === void 0 ? void 0 : h.enableDocument) && (e.channel.input.enableDocument = (F = (W = (Z = n.groupChannel) === null || Z === void 0 ? void 0 : Z.channel) === null || W === void 0 ? void 0 : W.input) === null || F === void 0 ? void 0 : F.enableDocument), !((u = (p = (m = t.groupChannel) === null || m === void 0 ? void 0 : m.channel) === null || p === void 0 ? void 0 : p.input) === null || u === void 0) && u.camera && Pt((S = (Y = (k = (b = t.groupChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.input) === null || Y === void 0 ? void 0 : Y.camera) === null || S === void 0 ? void 0 : S.enablePhoto) && (e.channel.input.camera.enablePhoto = (y = (w = (G = (v = t.groupChannel) === null || v === void 0 ? void 0 : v.channel) === null || G === void 0 ? void 0 : G.input) === null || w === void 0 ? void 0 : w.camera) === null || y === void 0 ? void 0 : y.enablePhoto), !((I = (H = (f = n.groupChannel) === null || f === void 0 ? void 0 : f.channel) === null || H === void 0 ? void 0 : H.input) === null || I === void 0) && I.camera && Pt((le = (ie = (oe = (_ = n.groupChannel) === null || _ === void 0 ? void 0 : _.channel) === null || oe === void 0 ? void 0 : oe.input) === null || ie === void 0 ? void 0 : ie.camera) === null || le === void 0 ? void 0 : le.enablePhoto) && (e.channel.input.camera.enablePhoto = (ee = (L = (ne = (ce = n.groupChannel) === null || ce === void 0 ? void 0 : ce.channel) === null || ne === void 0 ? void 0 : ne.input) === null || L === void 0 ? void 0 : L.camera) === null || ee === void 0 ? void 0 : ee.enablePhoto), !((de = (O = (C = t.groupChannel) === null || C === void 0 ? void 0 : C.channel) === null || O === void 0 ? void 0 : O.input) === null || de === void 0) && de.camera && Pt((Qe = (ve = (Ye = ($ = t.groupChannel) === null || $ === void 0 ? void 0 : $.channel) === null || Ye === void 0 ? void 0 : Ye.input) === null || ve === void 0 ? void 0 : ve.camera) === null || Qe === void 0 ? void 0 : Qe.enableVideo) && (e.channel.input.camera.enableVideo = (me = (pe = (He = (A = t.groupChannel) === null || A === void 0 ? void 0 : A.channel) === null || He === void 0 ? void 0 : He.input) === null || pe === void 0 ? void 0 : pe.camera) === null || me === void 0 ? void 0 : me.enableVideo), !((qe = (ye = (Be = n.groupChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || ye === void 0 ? void 0 : ye.input) === null || qe === void 0) && qe.camera && Pt((De = (dt = (fe = (xe = n.groupChannel) === null || xe === void 0 ? void 0 : xe.channel) === null || fe === void 0 ? void 0 : fe.input) === null || dt === void 0 ? void 0 : dt.camera) === null || De === void 0 ? void 0 : De.enableVideo) && (e.channel.input.camera.enableVideo = (ut = (Ge = (Xe = (tt = n.groupChannel) === null || tt === void 0 ? void 0 : tt.channel) === null || Xe === void 0 ? void 0 : Xe.input) === null || Ge === void 0 ? void 0 : Ge.camera) === null || ut === void 0 ? void 0 : ut.enableVideo), !((ze = (yt = (Vt = t.groupChannel) === null || Vt === void 0 ? void 0 : Vt.channel) === null || yt === void 0 ? void 0 : yt.input) === null || ze === void 0) && ze.gallery && Pt((nn = ($t = (Ht = (qt = t.groupChannel) === null || qt === void 0 ? void 0 : qt.channel) === null || Ht === void 0 ? void 0 : Ht.input) === null || $t === void 0 ? void 0 : $t.gallery) === null || nn === void 0 ? void 0 : nn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (ke = (_e = (Ut = (kt = t.groupChannel) === null || kt === void 0 ? void 0 : kt.channel) === null || Ut === void 0 ? void 0 : Ut.input) === null || _e === void 0 ? void 0 : _e.gallery) === null || ke === void 0 ? void 0 : ke.enablePhoto), !((rt = (Nt = (ae = n.groupChannel) === null || ae === void 0 ? void 0 : ae.channel) === null || Nt === void 0 ? void 0 : Nt.input) === null || rt === void 0) && rt.gallery && Pt((Nn = (Qt = (Tt = (it = n.groupChannel) === null || it === void 0 ? void 0 : it.channel) === null || Tt === void 0 ? void 0 : Tt.input) === null || Qt === void 0 ? void 0 : Qt.gallery) === null || Nn === void 0 ? void 0 : Nn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (gt = (Fn = (dn = (Et = n.groupChannel) === null || Et === void 0 ? void 0 : Et.channel) === null || dn === void 0 ? void 0 : dn.input) === null || Fn === void 0 ? void 0 : Fn.gallery) === null || gt === void 0 ? void 0 : gt.enablePhoto), !((jt = (Ct = (en = t.groupChannel) === null || en === void 0 ? void 0 : en.channel) === null || Ct === void 0 ? void 0 : Ct.input) === null || jt === void 0) && jt.gallery && Pt((mt = (be = ($e = (ge = t.groupChannel) === null || ge === void 0 ? void 0 : ge.channel) === null || $e === void 0 ? void 0 : $e.input) === null || be === void 0 ? void 0 : be.gallery) === null || mt === void 0 ? void 0 : mt.enableVideo) && (e.channel.input.gallery.enableVideo = (Fe = (Ue = (X = (Jt = t.groupChannel) === null || Jt === void 0 ? void 0 : Jt.channel) === null || X === void 0 ? void 0 : X.input) === null || Ue === void 0 ? void 0 : Ue.gallery) === null || Fe === void 0 ? void 0 : Fe.enableVideo), !((Ft = (ht = (je = n.groupChannel) === null || je === void 0 ? void 0 : je.channel) === null || ht === void 0 ? void 0 : ht.input) === null || Ft === void 0) && Ft.gallery && Pt((g = (Ce = (pt = (Zt = n.groupChannel) === null || Zt === void 0 ? void 0 : Zt.channel) === null || pt === void 0 ? void 0 : pt.input) === null || Ce === void 0 ? void 0 : Ce.gallery) === null || g === void 0 ? void 0 : g.enableVideo) && (e.channel.input.gallery.enableVideo = (Zn = (Bt = (Ie = (Me = n.groupChannel) === null || Me === void 0 ? void 0 : Me.channel) === null || Ie === void 0 ? void 0 : Ie.input) === null || Bt === void 0 ? void 0 : Bt.gallery) === null || Zn === void 0 ? void 0 : Zn.enableVideo);
+  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut, _e, ke, ae, Nt, rt, it, Tt, Qt, Nn, Et, dn, Fn, gt, en, Ct, jt, ge, $e, be, mt, Jt, X, Ue, Fe, je, ht, Ft, Zt, pt, Ce, g, Me, Ie, Bt, Zn;
+  !((a = (l = t.groupChannel) === null || l === void 0 ? void 0 : l.channel) === null || a === void 0) && a.input && Pt((i = (r = (d = t.groupChannel) === null || d === void 0 ? void 0 : d.channel) === null || r === void 0 ? void 0 : r.input) === null || i === void 0 ? void 0 : i.enableDocument) && (e.channel.input.enableDocument = (s = (V = (c = t.groupChannel) === null || c === void 0 ? void 0 : c.channel) === null || V === void 0 ? void 0 : V.input) === null || s === void 0 ? void 0 : s.enableDocument), !((U = (o = n.groupChannel) === null || o === void 0 ? void 0 : o.channel) === null || U === void 0) && U.input && Pt((h = (R = (N = n.groupChannel) === null || N === void 0 ? void 0 : N.channel) === null || R === void 0 ? void 0 : R.input) === null || h === void 0 ? void 0 : h.enableDocument) && (e.channel.input.enableDocument = (F = (W = (Z = n.groupChannel) === null || Z === void 0 ? void 0 : Z.channel) === null || W === void 0 ? void 0 : W.input) === null || F === void 0 ? void 0 : F.enableDocument), !((u = (E = (m = t.groupChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.input) === null || u === void 0) && u.camera && Pt((S = (Y = (k = (b = t.groupChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.input) === null || Y === void 0 ? void 0 : Y.camera) === null || S === void 0 ? void 0 : S.enablePhoto) && (e.channel.input.camera.enablePhoto = (y = (w = (G = (v = t.groupChannel) === null || v === void 0 ? void 0 : v.channel) === null || G === void 0 ? void 0 : G.input) === null || w === void 0 ? void 0 : w.camera) === null || y === void 0 ? void 0 : y.enablePhoto), !((I = (H = (f = n.groupChannel) === null || f === void 0 ? void 0 : f.channel) === null || H === void 0 ? void 0 : H.input) === null || I === void 0) && I.camera && Pt((le = (ie = (oe = (_ = n.groupChannel) === null || _ === void 0 ? void 0 : _.channel) === null || oe === void 0 ? void 0 : oe.input) === null || ie === void 0 ? void 0 : ie.camera) === null || le === void 0 ? void 0 : le.enablePhoto) && (e.channel.input.camera.enablePhoto = (ee = (L = (ne = (ce = n.groupChannel) === null || ce === void 0 ? void 0 : ce.channel) === null || ne === void 0 ? void 0 : ne.input) === null || L === void 0 ? void 0 : L.camera) === null || ee === void 0 ? void 0 : ee.enablePhoto), !((de = (O = (C = t.groupChannel) === null || C === void 0 ? void 0 : C.channel) === null || O === void 0 ? void 0 : O.input) === null || de === void 0) && de.camera && Pt((Qe = (ve = (Ye = ($ = t.groupChannel) === null || $ === void 0 ? void 0 : $.channel) === null || Ye === void 0 ? void 0 : Ye.input) === null || ve === void 0 ? void 0 : ve.camera) === null || Qe === void 0 ? void 0 : Qe.enableVideo) && (e.channel.input.camera.enableVideo = (me = (pe = (He = (A = t.groupChannel) === null || A === void 0 ? void 0 : A.channel) === null || He === void 0 ? void 0 : He.input) === null || pe === void 0 ? void 0 : pe.camera) === null || me === void 0 ? void 0 : me.enableVideo), !((qe = (ye = (Be = n.groupChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || ye === void 0 ? void 0 : ye.input) === null || qe === void 0) && qe.camera && Pt((De = (dt = (fe = (xe = n.groupChannel) === null || xe === void 0 ? void 0 : xe.channel) === null || fe === void 0 ? void 0 : fe.input) === null || dt === void 0 ? void 0 : dt.camera) === null || De === void 0 ? void 0 : De.enableVideo) && (e.channel.input.camera.enableVideo = (ut = (Ge = (Xe = (tt = n.groupChannel) === null || tt === void 0 ? void 0 : tt.channel) === null || Xe === void 0 ? void 0 : Xe.input) === null || Ge === void 0 ? void 0 : Ge.camera) === null || ut === void 0 ? void 0 : ut.enableVideo), !((ze = (yt = (Vt = t.groupChannel) === null || Vt === void 0 ? void 0 : Vt.channel) === null || yt === void 0 ? void 0 : yt.input) === null || ze === void 0) && ze.gallery && Pt((nn = ($t = (Ht = (qt = t.groupChannel) === null || qt === void 0 ? void 0 : qt.channel) === null || Ht === void 0 ? void 0 : Ht.input) === null || $t === void 0 ? void 0 : $t.gallery) === null || nn === void 0 ? void 0 : nn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (ke = (_e = (Ut = (kt = t.groupChannel) === null || kt === void 0 ? void 0 : kt.channel) === null || Ut === void 0 ? void 0 : Ut.input) === null || _e === void 0 ? void 0 : _e.gallery) === null || ke === void 0 ? void 0 : ke.enablePhoto), !((rt = (Nt = (ae = n.groupChannel) === null || ae === void 0 ? void 0 : ae.channel) === null || Nt === void 0 ? void 0 : Nt.input) === null || rt === void 0) && rt.gallery && Pt((Nn = (Qt = (Tt = (it = n.groupChannel) === null || it === void 0 ? void 0 : it.channel) === null || Tt === void 0 ? void 0 : Tt.input) === null || Qt === void 0 ? void 0 : Qt.gallery) === null || Nn === void 0 ? void 0 : Nn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (gt = (Fn = (dn = (Et = n.groupChannel) === null || Et === void 0 ? void 0 : Et.channel) === null || dn === void 0 ? void 0 : dn.input) === null || Fn === void 0 ? void 0 : Fn.gallery) === null || gt === void 0 ? void 0 : gt.enablePhoto), !((jt = (Ct = (en = t.groupChannel) === null || en === void 0 ? void 0 : en.channel) === null || Ct === void 0 ? void 0 : Ct.input) === null || jt === void 0) && jt.gallery && Pt((mt = (be = ($e = (ge = t.groupChannel) === null || ge === void 0 ? void 0 : ge.channel) === null || $e === void 0 ? void 0 : $e.input) === null || be === void 0 ? void 0 : be.gallery) === null || mt === void 0 ? void 0 : mt.enableVideo) && (e.channel.input.gallery.enableVideo = (Fe = (Ue = (X = (Jt = t.groupChannel) === null || Jt === void 0 ? void 0 : Jt.channel) === null || X === void 0 ? void 0 : X.input) === null || Ue === void 0 ? void 0 : Ue.gallery) === null || Fe === void 0 ? void 0 : Fe.enableVideo), !((Ft = (ht = (je = n.groupChannel) === null || je === void 0 ? void 0 : je.channel) === null || ht === void 0 ? void 0 : ht.input) === null || Ft === void 0) && Ft.gallery && Pt((g = (Ce = (pt = (Zt = n.groupChannel) === null || Zt === void 0 ? void 0 : Zt.channel) === null || pt === void 0 ? void 0 : pt.input) === null || Ce === void 0 ? void 0 : Ce.gallery) === null || g === void 0 ? void 0 : g.enableVideo) && (e.channel.input.gallery.enableVideo = (Zn = (Bt = (Ie = (Me = n.groupChannel) === null || Me === void 0 ? void 0 : Me.channel) === null || Ie === void 0 ? void 0 : Ie.input) === null || Bt === void 0 ? void 0 : Bt.gallery) === null || Zn === void 0 ? void 0 : Zn.enableVideo);
 }
 function BO(e, n, t) {
-  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p;
-  !((l = t.groupChannel) === null || l === void 0) && l.channelList && Pt((d = (a = t.groupChannel) === null || a === void 0 ? void 0 : a.channelList) === null || d === void 0 ? void 0 : d.enableTypingIndicator) && (e.channelList.enableTypingIndicator = t.groupChannel.channelList.enableTypingIndicator), !((r = n.groupChannel) === null || r === void 0) && r.channelList && Pt((c = (i = n.groupChannel) === null || i === void 0 ? void 0 : i.channelList) === null || c === void 0 ? void 0 : c.enableTypingIndicator) && (e.channelList.enableTypingIndicator = (s = (V = n.groupChannel) === null || V === void 0 ? void 0 : V.channelList) === null || s === void 0 ? void 0 : s.enableTypingIndicator), !((o = t.groupChannel) === null || o === void 0) && o.channelList && Pt((N = (U = t.groupChannel) === null || U === void 0 ? void 0 : U.channelList) === null || N === void 0 ? void 0 : N.enableMessageReceiptStatus) && (e.channelList.enableMessageReceiptStatus = (h = (R = t.groupChannel) === null || R === void 0 ? void 0 : R.channelList) === null || h === void 0 ? void 0 : h.enableMessageReceiptStatus), !((Z = n.groupChannel) === null || Z === void 0) && Z.channelList && Pt((F = (W = n.groupChannel) === null || W === void 0 ? void 0 : W.channelList) === null || F === void 0 ? void 0 : F.enableMessageReceiptStatus) && (e.channelList.enableMessageReceiptStatus = (p = (m = n.groupChannel) === null || m === void 0 ? void 0 : m.channelList) === null || p === void 0 ? void 0 : p.enableMessageReceiptStatus);
+  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E;
+  !((l = t.groupChannel) === null || l === void 0) && l.channelList && Pt((d = (a = t.groupChannel) === null || a === void 0 ? void 0 : a.channelList) === null || d === void 0 ? void 0 : d.enableTypingIndicator) && (e.channelList.enableTypingIndicator = t.groupChannel.channelList.enableTypingIndicator), !((r = n.groupChannel) === null || r === void 0) && r.channelList && Pt((c = (i = n.groupChannel) === null || i === void 0 ? void 0 : i.channelList) === null || c === void 0 ? void 0 : c.enableTypingIndicator) && (e.channelList.enableTypingIndicator = (s = (V = n.groupChannel) === null || V === void 0 ? void 0 : V.channelList) === null || s === void 0 ? void 0 : s.enableTypingIndicator), !((o = t.groupChannel) === null || o === void 0) && o.channelList && Pt((N = (U = t.groupChannel) === null || U === void 0 ? void 0 : U.channelList) === null || N === void 0 ? void 0 : N.enableMessageReceiptStatus) && (e.channelList.enableMessageReceiptStatus = (h = (R = t.groupChannel) === null || R === void 0 ? void 0 : R.channelList) === null || h === void 0 ? void 0 : h.enableMessageReceiptStatus), !((Z = n.groupChannel) === null || Z === void 0) && Z.channelList && Pt((F = (W = n.groupChannel) === null || W === void 0 ? void 0 : W.channelList) === null || F === void 0 ? void 0 : F.enableMessageReceiptStatus) && (e.channelList.enableMessageReceiptStatus = (E = (m = n.groupChannel) === null || m === void 0 ? void 0 : m.channelList) === null || E === void 0 ? void 0 : E.enableMessageReceiptStatus);
 }
 function DO(e, n, t) {
   var l, a, d, r, i, c, V, s;
@@ -22785,8 +22785,8 @@ function OO(e, n, t) {
   !((l = t.openChannel) === null || l === void 0) && l.channel && Pt((d = (a = t.openChannel) === null || a === void 0 ? void 0 : a.channel) === null || d === void 0 ? void 0 : d.enableOgtag) && (e.channel.enableOgtag = t.openChannel.channel.enableOgtag), !((r = n.openChannel) === null || r === void 0) && r.channel && Pt((c = (i = n.openChannel) === null || i === void 0 ? void 0 : i.channel) === null || c === void 0 ? void 0 : c.enableOgtag) && (e.channel.enableOgtag = (s = (V = n.openChannel) === null || V === void 0 ? void 0 : V.channel) === null || s === void 0 ? void 0 : s.enableOgtag);
 }
 function jO(e, n, t) {
-  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut, _e, ke, ae, Nt, rt, it, Tt, Qt, Nn, Et, dn, Fn, gt, en, Ct, jt, ge, $e, be, mt, Jt, X, Ue, Fe, je, ht, Ft, Zt, pt, Ce, g, Me, Ie, Bt, Zn;
-  !((a = (l = t.openChannel) === null || l === void 0 ? void 0 : l.channel) === null || a === void 0) && a.input && Pt((i = (r = (d = t.openChannel) === null || d === void 0 ? void 0 : d.channel) === null || r === void 0 ? void 0 : r.input) === null || i === void 0 ? void 0 : i.enableDocument) && (e.channel.input.enableDocument = (s = (V = (c = t.openChannel) === null || c === void 0 ? void 0 : c.channel) === null || V === void 0 ? void 0 : V.input) === null || s === void 0 ? void 0 : s.enableDocument), !((U = (o = n.openChannel) === null || o === void 0 ? void 0 : o.channel) === null || U === void 0) && U.input && Pt((h = (R = (N = n.openChannel) === null || N === void 0 ? void 0 : N.channel) === null || R === void 0 ? void 0 : R.input) === null || h === void 0 ? void 0 : h.enableDocument) && (e.channel.input.enableDocument = (F = (W = (Z = n.openChannel) === null || Z === void 0 ? void 0 : Z.channel) === null || W === void 0 ? void 0 : W.input) === null || F === void 0 ? void 0 : F.enableDocument), !((u = (p = (m = t.openChannel) === null || m === void 0 ? void 0 : m.channel) === null || p === void 0 ? void 0 : p.input) === null || u === void 0) && u.camera && Pt((S = (Y = (k = (b = t.openChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.input) === null || Y === void 0 ? void 0 : Y.camera) === null || S === void 0 ? void 0 : S.enablePhoto) && (e.channel.input.camera.enablePhoto = (y = (w = (G = (v = t.openChannel) === null || v === void 0 ? void 0 : v.channel) === null || G === void 0 ? void 0 : G.input) === null || w === void 0 ? void 0 : w.camera) === null || y === void 0 ? void 0 : y.enablePhoto), !((I = (H = (f = n.openChannel) === null || f === void 0 ? void 0 : f.channel) === null || H === void 0 ? void 0 : H.input) === null || I === void 0) && I.camera && Pt((le = (ie = (oe = (_ = n.openChannel) === null || _ === void 0 ? void 0 : _.channel) === null || oe === void 0 ? void 0 : oe.input) === null || ie === void 0 ? void 0 : ie.camera) === null || le === void 0 ? void 0 : le.enablePhoto) && (e.channel.input.camera.enablePhoto = (ee = (L = (ne = (ce = n.openChannel) === null || ce === void 0 ? void 0 : ce.channel) === null || ne === void 0 ? void 0 : ne.input) === null || L === void 0 ? void 0 : L.camera) === null || ee === void 0 ? void 0 : ee.enablePhoto), !((de = (O = (C = t.openChannel) === null || C === void 0 ? void 0 : C.channel) === null || O === void 0 ? void 0 : O.input) === null || de === void 0) && de.camera && Pt((Qe = (ve = (Ye = ($ = t.openChannel) === null || $ === void 0 ? void 0 : $.channel) === null || Ye === void 0 ? void 0 : Ye.input) === null || ve === void 0 ? void 0 : ve.camera) === null || Qe === void 0 ? void 0 : Qe.enableVideo) && (e.channel.input.camera.enableVideo = (me = (pe = (He = (A = t.openChannel) === null || A === void 0 ? void 0 : A.channel) === null || He === void 0 ? void 0 : He.input) === null || pe === void 0 ? void 0 : pe.camera) === null || me === void 0 ? void 0 : me.enableVideo), !((qe = (ye = (Be = n.openChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || ye === void 0 ? void 0 : ye.input) === null || qe === void 0) && qe.camera && Pt((De = (dt = (fe = (xe = n.openChannel) === null || xe === void 0 ? void 0 : xe.channel) === null || fe === void 0 ? void 0 : fe.input) === null || dt === void 0 ? void 0 : dt.camera) === null || De === void 0 ? void 0 : De.enableVideo) && (e.channel.input.camera.enableVideo = (ut = (Ge = (Xe = (tt = n.openChannel) === null || tt === void 0 ? void 0 : tt.channel) === null || Xe === void 0 ? void 0 : Xe.input) === null || Ge === void 0 ? void 0 : Ge.camera) === null || ut === void 0 ? void 0 : ut.enableVideo), !((ze = (yt = (Vt = t.openChannel) === null || Vt === void 0 ? void 0 : Vt.channel) === null || yt === void 0 ? void 0 : yt.input) === null || ze === void 0) && ze.gallery && Pt((nn = ($t = (Ht = (qt = t.openChannel) === null || qt === void 0 ? void 0 : qt.channel) === null || Ht === void 0 ? void 0 : Ht.input) === null || $t === void 0 ? void 0 : $t.gallery) === null || nn === void 0 ? void 0 : nn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (ke = (_e = (Ut = (kt = t.openChannel) === null || kt === void 0 ? void 0 : kt.channel) === null || Ut === void 0 ? void 0 : Ut.input) === null || _e === void 0 ? void 0 : _e.gallery) === null || ke === void 0 ? void 0 : ke.enablePhoto), !((rt = (Nt = (ae = n.openChannel) === null || ae === void 0 ? void 0 : ae.channel) === null || Nt === void 0 ? void 0 : Nt.input) === null || rt === void 0) && rt.gallery && Pt((Nn = (Qt = (Tt = (it = n.openChannel) === null || it === void 0 ? void 0 : it.channel) === null || Tt === void 0 ? void 0 : Tt.input) === null || Qt === void 0 ? void 0 : Qt.gallery) === null || Nn === void 0 ? void 0 : Nn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (gt = (Fn = (dn = (Et = n.openChannel) === null || Et === void 0 ? void 0 : Et.channel) === null || dn === void 0 ? void 0 : dn.input) === null || Fn === void 0 ? void 0 : Fn.gallery) === null || gt === void 0 ? void 0 : gt.enablePhoto), !((jt = (Ct = (en = t.openChannel) === null || en === void 0 ? void 0 : en.channel) === null || Ct === void 0 ? void 0 : Ct.input) === null || jt === void 0) && jt.gallery && Pt((mt = (be = ($e = (ge = t.openChannel) === null || ge === void 0 ? void 0 : ge.channel) === null || $e === void 0 ? void 0 : $e.input) === null || be === void 0 ? void 0 : be.gallery) === null || mt === void 0 ? void 0 : mt.enableVideo) && (e.channel.input.gallery.enableVideo = (Fe = (Ue = (X = (Jt = t.openChannel) === null || Jt === void 0 ? void 0 : Jt.channel) === null || X === void 0 ? void 0 : X.input) === null || Ue === void 0 ? void 0 : Ue.gallery) === null || Fe === void 0 ? void 0 : Fe.enableVideo), !((Ft = (ht = (je = n.openChannel) === null || je === void 0 ? void 0 : je.channel) === null || ht === void 0 ? void 0 : ht.input) === null || Ft === void 0) && Ft.gallery && Pt((g = (Ce = (pt = (Zt = n.openChannel) === null || Zt === void 0 ? void 0 : Zt.channel) === null || pt === void 0 ? void 0 : pt.input) === null || Ce === void 0 ? void 0 : Ce.gallery) === null || g === void 0 ? void 0 : g.enableVideo) && (e.channel.input.gallery.enableVideo = (Zn = (Bt = (Ie = (Me = n.openChannel) === null || Me === void 0 ? void 0 : Me.channel) === null || Ie === void 0 ? void 0 : Ie.input) === null || Bt === void 0 ? void 0 : Bt.gallery) === null || Zn === void 0 ? void 0 : Zn.enableVideo);
+  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut, _e, ke, ae, Nt, rt, it, Tt, Qt, Nn, Et, dn, Fn, gt, en, Ct, jt, ge, $e, be, mt, Jt, X, Ue, Fe, je, ht, Ft, Zt, pt, Ce, g, Me, Ie, Bt, Zn;
+  !((a = (l = t.openChannel) === null || l === void 0 ? void 0 : l.channel) === null || a === void 0) && a.input && Pt((i = (r = (d = t.openChannel) === null || d === void 0 ? void 0 : d.channel) === null || r === void 0 ? void 0 : r.input) === null || i === void 0 ? void 0 : i.enableDocument) && (e.channel.input.enableDocument = (s = (V = (c = t.openChannel) === null || c === void 0 ? void 0 : c.channel) === null || V === void 0 ? void 0 : V.input) === null || s === void 0 ? void 0 : s.enableDocument), !((U = (o = n.openChannel) === null || o === void 0 ? void 0 : o.channel) === null || U === void 0) && U.input && Pt((h = (R = (N = n.openChannel) === null || N === void 0 ? void 0 : N.channel) === null || R === void 0 ? void 0 : R.input) === null || h === void 0 ? void 0 : h.enableDocument) && (e.channel.input.enableDocument = (F = (W = (Z = n.openChannel) === null || Z === void 0 ? void 0 : Z.channel) === null || W === void 0 ? void 0 : W.input) === null || F === void 0 ? void 0 : F.enableDocument), !((u = (E = (m = t.openChannel) === null || m === void 0 ? void 0 : m.channel) === null || E === void 0 ? void 0 : E.input) === null || u === void 0) && u.camera && Pt((S = (Y = (k = (b = t.openChannel) === null || b === void 0 ? void 0 : b.channel) === null || k === void 0 ? void 0 : k.input) === null || Y === void 0 ? void 0 : Y.camera) === null || S === void 0 ? void 0 : S.enablePhoto) && (e.channel.input.camera.enablePhoto = (y = (w = (G = (v = t.openChannel) === null || v === void 0 ? void 0 : v.channel) === null || G === void 0 ? void 0 : G.input) === null || w === void 0 ? void 0 : w.camera) === null || y === void 0 ? void 0 : y.enablePhoto), !((I = (H = (f = n.openChannel) === null || f === void 0 ? void 0 : f.channel) === null || H === void 0 ? void 0 : H.input) === null || I === void 0) && I.camera && Pt((le = (ie = (oe = (_ = n.openChannel) === null || _ === void 0 ? void 0 : _.channel) === null || oe === void 0 ? void 0 : oe.input) === null || ie === void 0 ? void 0 : ie.camera) === null || le === void 0 ? void 0 : le.enablePhoto) && (e.channel.input.camera.enablePhoto = (ee = (L = (ne = (ce = n.openChannel) === null || ce === void 0 ? void 0 : ce.channel) === null || ne === void 0 ? void 0 : ne.input) === null || L === void 0 ? void 0 : L.camera) === null || ee === void 0 ? void 0 : ee.enablePhoto), !((de = (O = (C = t.openChannel) === null || C === void 0 ? void 0 : C.channel) === null || O === void 0 ? void 0 : O.input) === null || de === void 0) && de.camera && Pt((Qe = (ve = (Ye = ($ = t.openChannel) === null || $ === void 0 ? void 0 : $.channel) === null || Ye === void 0 ? void 0 : Ye.input) === null || ve === void 0 ? void 0 : ve.camera) === null || Qe === void 0 ? void 0 : Qe.enableVideo) && (e.channel.input.camera.enableVideo = (me = (pe = (He = (A = t.openChannel) === null || A === void 0 ? void 0 : A.channel) === null || He === void 0 ? void 0 : He.input) === null || pe === void 0 ? void 0 : pe.camera) === null || me === void 0 ? void 0 : me.enableVideo), !((qe = (ye = (Be = n.openChannel) === null || Be === void 0 ? void 0 : Be.channel) === null || ye === void 0 ? void 0 : ye.input) === null || qe === void 0) && qe.camera && Pt((De = (dt = (fe = (xe = n.openChannel) === null || xe === void 0 ? void 0 : xe.channel) === null || fe === void 0 ? void 0 : fe.input) === null || dt === void 0 ? void 0 : dt.camera) === null || De === void 0 ? void 0 : De.enableVideo) && (e.channel.input.camera.enableVideo = (ut = (Ge = (Xe = (tt = n.openChannel) === null || tt === void 0 ? void 0 : tt.channel) === null || Xe === void 0 ? void 0 : Xe.input) === null || Ge === void 0 ? void 0 : Ge.camera) === null || ut === void 0 ? void 0 : ut.enableVideo), !((ze = (yt = (Vt = t.openChannel) === null || Vt === void 0 ? void 0 : Vt.channel) === null || yt === void 0 ? void 0 : yt.input) === null || ze === void 0) && ze.gallery && Pt((nn = ($t = (Ht = (qt = t.openChannel) === null || qt === void 0 ? void 0 : qt.channel) === null || Ht === void 0 ? void 0 : Ht.input) === null || $t === void 0 ? void 0 : $t.gallery) === null || nn === void 0 ? void 0 : nn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (ke = (_e = (Ut = (kt = t.openChannel) === null || kt === void 0 ? void 0 : kt.channel) === null || Ut === void 0 ? void 0 : Ut.input) === null || _e === void 0 ? void 0 : _e.gallery) === null || ke === void 0 ? void 0 : ke.enablePhoto), !((rt = (Nt = (ae = n.openChannel) === null || ae === void 0 ? void 0 : ae.channel) === null || Nt === void 0 ? void 0 : Nt.input) === null || rt === void 0) && rt.gallery && Pt((Nn = (Qt = (Tt = (it = n.openChannel) === null || it === void 0 ? void 0 : it.channel) === null || Tt === void 0 ? void 0 : Tt.input) === null || Qt === void 0 ? void 0 : Qt.gallery) === null || Nn === void 0 ? void 0 : Nn.enablePhoto) && (e.channel.input.gallery.enablePhoto = (gt = (Fn = (dn = (Et = n.openChannel) === null || Et === void 0 ? void 0 : Et.channel) === null || dn === void 0 ? void 0 : dn.input) === null || Fn === void 0 ? void 0 : Fn.gallery) === null || gt === void 0 ? void 0 : gt.enablePhoto), !((jt = (Ct = (en = t.openChannel) === null || en === void 0 ? void 0 : en.channel) === null || Ct === void 0 ? void 0 : Ct.input) === null || jt === void 0) && jt.gallery && Pt((mt = (be = ($e = (ge = t.openChannel) === null || ge === void 0 ? void 0 : ge.channel) === null || $e === void 0 ? void 0 : $e.input) === null || be === void 0 ? void 0 : be.gallery) === null || mt === void 0 ? void 0 : mt.enableVideo) && (e.channel.input.gallery.enableVideo = (Fe = (Ue = (X = (Jt = t.openChannel) === null || Jt === void 0 ? void 0 : Jt.channel) === null || X === void 0 ? void 0 : X.input) === null || Ue === void 0 ? void 0 : Ue.gallery) === null || Fe === void 0 ? void 0 : Fe.enableVideo), !((Ft = (ht = (je = n.openChannel) === null || je === void 0 ? void 0 : je.channel) === null || ht === void 0 ? void 0 : ht.input) === null || Ft === void 0) && Ft.gallery && Pt((g = (Ce = (pt = (Zt = n.openChannel) === null || Zt === void 0 ? void 0 : Zt.channel) === null || pt === void 0 ? void 0 : pt.input) === null || Ce === void 0 ? void 0 : Ce.gallery) === null || g === void 0 ? void 0 : g.enableVideo) && (e.channel.input.gallery.enableVideo = (Zn = (Bt = (Ie = (Me = n.openChannel) === null || Me === void 0 ? void 0 : Me.channel) === null || Ie === void 0 ? void 0 : Ie.input) === null || Bt === void 0 ? void 0 : Bt.gallery) === null || Zn === void 0 ? void 0 : Zn.enableVideo);
 }
 function HO(e, n) {
   const t = XW();
@@ -23073,8 +23073,8 @@ function Au(e) {
         t.onBeforeSend(W, s, F);
       },
       onSuccess: function(W, F, m) {
-        var p = t.onSuccess(W, s, F);
-        W = p === !1 ? "" : p || W;
+        var E = t.onSuccess(W, s, F);
+        W = E === !1 ? "" : E || W;
         var u = i(W, F, R);
         return u.rules.forEach(function(b, k) {
           W = W.replace(b, u.absoluteRules[k]);
@@ -23105,15 +23105,15 @@ function Au(e) {
       } else
         Pu(o, {
           mimeType: "text/css",
-          onBeforeSend: function(p, u, b) {
-            t.onBeforeSend(p, V, u);
+          onBeforeSend: function(E, u, b) {
+            t.onBeforeSend(E, V, u);
           },
-          onSuccess: function(p, u, b) {
+          onSuccess: function(E, u, b) {
             var k = SZ(o);
-            r(p, s, V, k);
+            r(E, s, V, k);
           },
-          onError: function(p, u, b) {
-            a[s] = "", t.onError(p, V, u), d();
+          onError: function(E, u, b) {
+            a[s] = "", t.onError(E, V, u), d();
           }
         });
     } else if (h && !R) {
@@ -23301,7 +23301,7 @@ function OW(e) {
         declarations: R()
       };
   }
-  function p() {
+  function E() {
     var y = r(/^@supports *([^{]+)/);
     if (y)
       return {
@@ -23356,7 +23356,7 @@ function OW(e) {
   }
   function v() {
     if (V(), e[0] === "@") {
-      var y = S() || m() || b() || Z() || p() || Y() || k() || u() || W() || F();
+      var y = S() || m() || b() || Z() || E() || Y() || k() || u() || W() || F();
       if (y && !l.preserveStatic) {
         var f = !1;
         if (y.declarations)
@@ -23825,7 +23825,7 @@ function Wr() {
                   }
                 S && k.setAttribute("data-cssvars", "skip"), k.hasAttribute("data-cssvars-job") || k.setAttribute("data-cssvars-job", _i.job);
               }), zs = t.rootElement.querySelectorAll('[data-cssvars]:not([data-cssvars="out"])').length, t.shadowDOM) {
-                for (var m = [].concat(t.rootElement).concat([].slice.call(t.rootElement.querySelectorAll("*"))), p = 0, u; u = m[p]; ++p)
+                for (var m = [].concat(t.rootElement).concat([].slice.call(t.rootElement.querySelectorAll("*"))), E = 0, u; u = m[E]; ++E)
                   if (u.shadowRoot && u.shadowRoot.querySelector("style")) {
                     var b = Na({}, t, {
                       rootElement: u.shadowRoot
@@ -24334,15 +24334,15 @@ var Rj = function(e) {
   }, n.prototype.exitAll = function() {
     this._enteredChannelUrls = [];
   }, n.prototype.get = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2, this._channels.get(t)];
       });
     });
   }, n.prototype.upsert = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a = this;
-      return M(this, function(d) {
+      return p(this, function(d) {
         return l = [], t.forEach(function(r) {
           if (a._channels.has(r.url)) {
             var i = a._channels.get(r.url);
@@ -24353,14 +24353,14 @@ var Rj = function(e) {
       });
     });
   }, n.prototype.remove = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return this._channels.delete(t), this.exit(t), [2];
       });
     });
   }, n.prototype.clear = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         return this._channels.clear(), this._enteredChannelUrls = [], [2];
       });
     });
@@ -24419,8 +24419,8 @@ var Tj = function(e) {
   function n(t, l) {
     var a = e.call(this, t, x(x({}, l), { channelType: Xt.OPEN })) || this;
     return a.subscribeChannelEvent = St, a.unsubscribeChannelEvent = St, a.refreshChannel = function() {
-      return E(a, void 0, void 0, function() {
-        return M(this, function(d) {
+      return M(a, void 0, void 0, function() {
+        return p(this, function(d) {
           return [2, St()];
         });
       });
@@ -24456,8 +24456,8 @@ var Tj = function(e) {
     return new Jc(this._iid, Jc.payloadify(l));
   }, n.prototype.getChannelFromCache = function(t) {
     var l;
-    return E(this, void 0, void 0, function() {
-      return M(this, function(a) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return [4, this._openChannelCache.get(t)];
@@ -24467,8 +24467,8 @@ var Tj = function(e) {
       });
     });
   }, n.prototype.upsertChannelsToCache = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         switch (l.label) {
           case 0:
             return [4, this._openChannelCache.upsert(t)];
@@ -24478,9 +24478,9 @@ var Tj = function(e) {
       });
     });
   }, n.prototype.removeChannelsFromCache = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i, c;
-      return M(this, function(V) {
+      return p(this, function(V) {
         switch (V.label) {
           case 0:
             V.trys.push([0, 5, 6, 7]), l = Se(t), a = l.next(), V.label = 1;
@@ -24512,9 +24512,9 @@ var Tj = function(e) {
   }, n.prototype.setExitedToCache = function(t) {
     this._openChannelCache.exit(t.url);
   }, n.prototype._handleEvent = function(t) {
-    return E(this, void 0, void 0, function() {
-      var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut = this;
-      return M(this, function(_e) {
+    return M(this, void 0, void 0, function() {
+      var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S, v, G, w, y, f, H, I, _, oe, ie, le, ce, ne, L, ee, C, O, de, $, Ye, ve, Qe, A, He, pe, me, Be, ye, qe, xe, fe, dt, De, tt, Xe, Ge, ut, Vt, yt, ze, qt, Ht, $t, nn, kt, Ut = this;
+      return p(this, function(_e) {
         switch (_e.label) {
           case 0:
             switch (_e.trys.push([0, 57, , 58]), t.code) {
@@ -24547,9 +24547,9 @@ var Tj = function(e) {
             return r = null, t.code === "MESG" ? r = t.as(GW) : t.code === "FILE" ? r = t.as(vW) : t.code !== "ADMM" && t.code != "BRDM" || (r = t.as($3)), r ? (l = r.message, a = r.isMentioned, l.channelType !== Xt.OPEN ? [3, 3] : [4, this.getChannel(l.channelUrl, !0)]) : [3, 3];
           case 2:
             d = _e.sent(), Le(function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       Nt = ae.value, this._openChannelCache.isEnteredChannel(d.url) && (Nt.onMessageReceived && Nt.onMessageReceived(d, l), a && Nt.onMentionReceived && Nt.onMentionReceived(d, l));
@@ -24573,9 +24573,9 @@ var Tj = function(e) {
             return r = null, t.code === "MEDI" ? r = t.as(cR) : t.code === "FEDI" ? r = t.as(sR) : t.code === "AEDI" && (r = t.as(eb)), r ? (i = r.message, c = r.mentionCountChange, i.channelType !== Xt.OPEN ? [3, 6] : [4, this.getChannel(i.channelUrl, !0)]) : [3, 6];
           case 5:
             V = _e.sent(), Le(function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       Nt = ae.value, this._openChannelCache.isEnteredChannel(V.url) && (Nt.onMessageUpdated && Nt.onMessageUpdated(V, i), c > 0 && Nt.onMentionReceived && Nt.onMentionReceived(V, i));
@@ -24599,9 +24599,9 @@ var Tj = function(e) {
             return s = t.as(D3), _ = s.channelUrl, oe = s.channelType, o = s.messageId, oe !== Xt.OPEN ? [3, 9] : [4, this.getChannel(_, !0)];
           case 8:
             U = _e.sent(), Le(function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       Nt = ae.value, this._openChannelCache.isEnteredChannel(U.url) && Nt.onMessageDeleted && Nt.onMessageDeleted(U, o);
@@ -24625,9 +24625,9 @@ var Tj = function(e) {
             return N = t.as(tb), _ = N.channelUrl, oe = N.channelType, R = N.event, oe !== Xt.OPEN ? [3, 12] : [4, this.getChannel(_, !0)];
           case 11:
             h = _e.sent(), Le(function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       Nt = ae.value, this._openChannelCache.isEnteredChannel(h.url) && Nt.onReactionUpdated && Nt.onReactionUpdated(h, R);
@@ -24651,9 +24651,9 @@ var Tj = function(e) {
             return (Z = t.as(nb).event).channelType !== Xt.OPEN ? [3, 15] : [4, this.getChannel(Z.channelUrl, !0)];
           case 14:
             W = _e.sent(), Le(function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       Nt = ae.value, this._openChannelCache.isEnteredChannel(W.url) && Nt.onThreadInfoUpdated && Nt.onThreadInfoUpdated(W, Z);
@@ -24676,20 +24676,20 @@ var Tj = function(e) {
           case 16:
             F = t.as(lb).openChannelMemberCounts, m = [], _e.label = 17;
           case 17:
-            _e.trys.push([17, 22, 23, 24]), p = Se(F), u = p.next(), _e.label = 18;
+            _e.trys.push([17, 22, 23, 24]), E = Se(F), u = E.next(), _e.label = 18;
           case 18:
             return u.done ? [3, 21] : (b = u.value, _ = b.channelUrl, de = b.participantCount, k = b.updatedAt, [4, this.getChannelFromCache(_)]);
           case 19:
             (Y = _e.sent()) && Y._updateParticipantCount(de, k) && m.push(Y), _e.label = 20;
           case 20:
-            return u = p.next(), [3, 18];
+            return u = E.next(), [3, 18];
           case 21:
             return [3, 24];
           case 22:
             return S = _e.sent(), nn = { error: S }, [3, 24];
           case 23:
             try {
-              u && !u.done && (kt = p.return) && kt.call(p);
+              u && !u.done && (kt = E.return) && kt.call(E);
             } finally {
               if (nn)
                 throw nn.error;
@@ -24699,9 +24699,9 @@ var Tj = function(e) {
             return m.length > 0 ? [4, this.upsertChannelsToCache(m)] : [3, 26];
           case 25:
             v = _e.sent(), Le(function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       (Nt = ae.value).onChannelMemberCountChanged && Nt.onChannelMemberCountChanged(v);
@@ -24725,9 +24725,9 @@ var Tj = function(e) {
             return G = t.as(ab), w = G.event, y = G.status, _ = G.channelUrl, oe = G.channelType, _ && oe === Xt.OPEN ? [4, this.getChannel(_, !0)] : [3, 29];
           case 28:
             f = _e.sent(), this._dispatcher.dispatch(new QW({ event: w, source: te.EVENT_POLL_UPDATED })), Le(y === s3 ? function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       (Nt = ae.value).onPollDeleted && Nt.onPollDeleted(f, w.pollId);
@@ -24745,9 +24745,9 @@ var Tj = function(e) {
                 });
               });
             } : function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       (Nt = ae.value).onPollUpdated && Nt.onPollUpdated(f, w);
@@ -24771,9 +24771,9 @@ var Tj = function(e) {
             return H = t.as(yW), I = H.event, _ = H.channelUrl, oe = H.channelType, _ && oe === Xt.OPEN ? [4, this.getChannel(_, !0)] : [3, 32];
           case 31:
             ie = _e.sent(), this._dispatcher.dispatch(new AR({ event: I, source: te.EVENT_POLL_VOTED })), Le(function() {
-              return E(Ut, void 0, void 0, function() {
+              return M(Ut, void 0, void 0, function() {
                 var ke, ae, Nt, rt, it;
-                return M(this, function(Tt) {
+                return p(this, function(Tt) {
                   try {
                     for (ke = Se(this._openChannelHandlers.values()), ae = ke.next(); !ae.done; ae = ke.next())
                       (Nt = ae.value).onPollVoted && Nt.onPollVoted(ie, I);
@@ -24826,8 +24826,8 @@ var Tj = function(e) {
             return [4, this.getChannel(le.channelUrl, !0)];
           case 35:
             return ce = _e.sent(), ne = t.as(bb), de = ne.participantCount, L = ne.user, ee = ce._updateParticipantCount(de, le.ts), Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     ae.onUserEntered && ae.onUserEntered(ce, L), ee && ae.onChannelParticipantCountChanged && ae.onChannelParticipantCountChanged(ce);
                   }), [2];
@@ -24838,8 +24838,8 @@ var Tj = function(e) {
             return [4, this.getChannel(le.channelUrl, !0)];
           case 37:
             return C = _e.sent(), O = t.as(Yb), de = O.participantCount, $ = O.user, Ye = C._updateParticipantCount(de, le.ts), Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     ae.onUserExited && ae.onUserExited(C, $), Ye && ae.onChannelParticipantCountChanged && ae.onChannelParticipantCountChanged(C);
                   }), [2];
@@ -24850,8 +24850,8 @@ var Tj = function(e) {
             return [4, this.getChannel(le.channelUrl, !0)];
           case 39:
             return ve = _e.sent(), Qe = t.as(A3).operators, ve.operators = Qe, this.upsertChannelsToCache([ve]), Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     ae.onOperatorUpdated && ae.onOperatorUpdated(ve, Qe);
                   }), [2];
@@ -24862,8 +24862,8 @@ var Tj = function(e) {
             return [4, this.getChannel(le.channelUrl, !0)];
           case 41:
             return A = _e.sent(), He = le.category === Vn.USER_CHANNEL_MUTE, pe = t.as(He ? z3 : x3).user, Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     He ? ae.onUserMuted && ae.onUserMuted(A, pe) : ae.onUserUnmuted && ae.onUserUnmuted(A, pe);
                   }), [2];
@@ -24874,8 +24874,8 @@ var Tj = function(e) {
             return [4, this.getChannel(le.channelUrl, !0)];
           case 43:
             return me = _e.sent(), Be = le.category === Vn.USER_CHANNEL_BAN, ye = t.as(Be ? G3 : y3).user, Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     Be ? ae.onUserBanned && ae.onUserBanned(me, ye) : ae.onUserUnbanned && ae.onUserUnbanned(me, ye);
                   }), [2];
@@ -24886,8 +24886,8 @@ var Tj = function(e) {
             return [4, this.getChannel(le.channelUrl, !0)];
           case 45:
             return qe = _e.sent(), xe = t.as(B3).freeze, qe.isFrozen = xe, this.upsertChannelsToCache([qe]), Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     xe ? ae.onChannelFrozen && ae.onChannelFrozen(qe) : ae.onChannelUnfrozen && ae.onChannelUnfrozen(qe);
                   }), [2];
@@ -24900,8 +24900,8 @@ var Tj = function(e) {
             return fe = _e.sent(), [4, this.removeChannelsFromCache([fe.url])];
           case 48:
             return _e.sent(), Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     ae.onChannelDeleted && ae.onChannelDeleted(fe.url, fe.channelType);
                   }), [2];
@@ -24912,8 +24912,8 @@ var Tj = function(e) {
             return [4, this.getChannelWithoutCache(le.channelUrl, !0)];
           case 50:
             return dt = _e.sent(), Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     ae.onChannelChanged && ae.onChannelChanged(dt);
                   }), [2];
@@ -24924,8 +24924,8 @@ var Tj = function(e) {
             return [4, this.getChannel(le.channelUrl, !0)];
           case 52:
             return De = _e.sent(), tt = t.as(J3), Xe = tt.created, Ge = tt.updated, ut = tt.deleted, Xe && De._upsertCachedMetaData(Xe, le.ts), Ge && De._upsertCachedMetaData(Ge, le.ts), ut && De._removeFromCachedMetaData(ut, le.ts), Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     Xe && ae.onMetaDataCreated && ae.onMetaDataCreated(De, Xe), Ge && ae.onMetaDataUpdated && ae.onMetaDataUpdated(De, Ge), ut && ae.onMetaDataDeleted && ae.onMetaDataDeleted(De, ut);
                   }), [2];
@@ -24936,8 +24936,8 @@ var Tj = function(e) {
             return [4, this.getChannel(le.channelUrl, !0)];
           case 54:
             return Vt = _e.sent(), yt = t.as(v3), ze = yt.created, qt = yt.updated, Ht = yt.deleted, Le(function() {
-              return E(Ut, void 0, void 0, function() {
-                return M(this, function(ke) {
+              return M(Ut, void 0, void 0, function() {
+                return p(this, function(ke) {
                   return this._openChannelHandlers.forEach(function(ae) {
                     ze && ae.onMetaCounterCreated && ae.onMetaCounterCreated(Vt, ze), qt && ae.onMetaCounterUpdated && ae.onMetaCounterUpdated(Vt, qt), Ht && ae.onMetaCounterDeleted && ae.onMetaCounterDeleted(Vt, Ht);
                   }), [2];
@@ -24964,9 +24964,9 @@ var Tj = function(e) {
   }, n.prototype.clearHandler = function() {
     this._openChannelHandlers.clear();
   }, n.prototype.getChannel = function(t, l) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var a;
-      return M(this, function(d) {
+      return p(this, function(d) {
         switch (d.label) {
           case 0:
             he(B("string", t)).throw(j.invalidParameters), d.label = 1;
@@ -24984,9 +24984,9 @@ var Tj = function(e) {
       });
     });
   }, n.prototype.getChannelWithoutCache = function(t, l) {
-    return l === void 0 && (l = !1), E(this, void 0, void 0, function() {
+    return l === void 0 && (l = !1), M(this, void 0, void 0, function() {
       var a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return he(B("string", t)).throw(j.invalidParameters), a = new hj({ channelUrl: t, isInternalCall: l }), [4, this._requestQueue.send(a)];
@@ -24998,9 +24998,9 @@ var Tj = function(e) {
       });
     });
   }, n.prototype.createChannel = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r;
-      return M(this, function(i) {
+      return p(this, function(i) {
         switch (i.label) {
           case 0:
             return l = x(x({}, kb), t), he(function(c) {
@@ -25035,9 +25035,9 @@ var Tj = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 3] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new Wj(x(x({}, this), { token: this._token })), [4, t.send(l)]) : [3, 2] : [3, 5];
@@ -25104,8 +25104,8 @@ var Jc = function(e) {
   }, n.prototype.createParticipantListQuery = function(t) {
     return new uj(this._iid, this.url, t);
   }, n.prototype.refresh = function() {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(t) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(t) {
         switch (t.label) {
           case 0:
             return [4, Pi.of(this._iid).getChannelWithoutCache(this.url)];
@@ -25115,9 +25115,9 @@ var Jc = function(e) {
       });
     });
   }, n.prototype.enter = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new Tj({ channelUrl: this.url }), [4, t.send(l)];
@@ -25127,9 +25127,9 @@ var Jc = function(e) {
       });
     });
   }, n.prototype.exit = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new Fj({ channelUrl: this.url }), [4, t.send(l)];
@@ -25139,9 +25139,9 @@ var Jc = function(e) {
       });
     });
   }, n.prototype.updateChannel = function(t) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return l = x(x({}, Vp), t), he(function(V) {
@@ -25155,16 +25155,16 @@ var Jc = function(e) {
       });
     });
   }, n.prototype.updateChannelWithOperatorUserIds = function(t, l, a, d, r) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         return i = x(x({}, Vp), { name: t, coverUrlOrImage: l, data: a, operatorUserIds: d, customType: r }), [2, this.updateChannel(i)];
       });
     });
   }, n.prototype.delete = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l;
-      return M(this, function(a) {
+      return p(this, function(a) {
         switch (a.label) {
           case 0:
             return t = D.of(this._iid).requestQueue, l = new Ej({ channelUrl: this.url }), [4, t.send(l)];
@@ -25221,9 +25221,9 @@ var Sj = function(e) {
   return J(n, e), n.prototype._validate = function() {
     return e.prototype._validate.call(this) && B("boolean", this.includeFrozen) && B("boolean", this.includeMetaData) && B("string", this.nameKeyword, !0) && B("string", this.urlKeyword, !0) && xt("string", this.customTypes, !0);
   }, n.prototype.next = function() {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var t, l, a, d, r, i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         switch (c.label) {
           case 0:
             return this._validate() ? this._isLoading ? [3, 4] : this._hasNext ? (this._isLoading = !0, t = D.of(this._iid).requestQueue, l = new Sj(Ae(x(x({}, this), { token: this._token }))), [4, t.send(l)]) : [3, 3] : [3, 6];
@@ -25264,27 +25264,27 @@ var Sj = function(e) {
   }, n.prototype.buildOpenChannelFromSerializedData = function(t) {
     return this._manager.buildOpenChannelFromSerializedData(t);
   }, n.prototype.getChannel = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2, this._manager.getChannel(t)];
       });
     });
   }, n.prototype.getChannelWithoutCache = function(t) {
-    return E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2, this._manager.getChannelWithoutCache(t)];
       });
     });
   }, n.prototype.createChannel = function(t) {
-    return t === void 0 && (t = {}), E(this, void 0, void 0, function() {
-      return M(this, function(l) {
+    return t === void 0 && (t = {}), M(this, void 0, void 0, function() {
+      return p(this, function(l) {
         return [2, this._manager.createChannel(t)];
       });
     });
   }, n.prototype.createChannelWithOperatorUserIds = function(t, l, a, d, r) {
-    return E(this, void 0, void 0, function() {
+    return M(this, void 0, void 0, function() {
       var i;
-      return M(this, function(c) {
+      return p(this, function(c) {
         return (i = x({}, kb)).name = t, i.coverUrlOrImage = l, i.data = a, i.operatorUserIds = d, i.customType = r, [2, this._manager.createChannel(i)];
       });
     });
@@ -25685,7 +25685,7 @@ function lH(e, n) {
       return U.playingStatus = Wd.PAUSED, F === m && (U.playbackTime = 0), Ve(Ve({}, e), { audioStorage: Ve(Ve({}, e.audioStorage), (d = {}, d[o] = U, d)) });
     }
     case fb: {
-      var o = n.payload.groupKey, p = e.currentPlayer, m = p.currentTime, F = p.duration, U = !((s = e.audioStorage) === null || s === void 0) && s[o] ? e.audioStorage[o] : qi();
+      var o = n.payload.groupKey, E = e.currentPlayer, m = E.currentTime, F = E.duration, U = !((s = e.audioStorage) === null || s === void 0) && s[o] ? e.audioStorage[o] : qi();
       return U.playbackTime === U.duration && U.playingStatus === Wd.PAUSED ? U.playbackTime = 0 : m > 0 && F > 0 && (U.playbackTime = m, U.duration = F), Ve(Ve({}, e), { audioStorage: Ve(Ve({}, e.audioStorage), (r = {}, r[o] = U, r)) });
     }
     default:
@@ -25710,8 +25710,8 @@ var aH = "ALL", vZ = function() {
   }, U = function(N) {
     var R = N.groupKey, h = N.audioFile, Z = h === void 0 ? null : h, W = N.audioFileUrl, F = W === void 0 ? "" : W;
     R !== d && o(d);
-    var m = document.getElementById(QZ), p = document.getElementById(h0);
-    p && m.removeChild(p), V.info("VoicePlayer: Start getting audio file."), new Promise(function(u, b) {
+    var m = document.getElementById(QZ), E = document.getElementById(h0);
+    E && m.removeChild(E), V.info("VoicePlayer: Start getting audio file."), new Promise(function(u, b) {
       var k;
       if (a({
         type: Xb,
@@ -26441,12 +26441,12 @@ var zH = /^(\d+)(th|st|nd|rd)?/i, xH = /\d+/i, GH = {
 }, Wi = T.forwardRef(function(e, n) {
   var t = e.className, l = t === void 0 ? "" : t, a = e.children, d = e.disabled, r = d === void 0 ? !1 : d, i = e.width, c = i === void 0 ? "56px" : i, V = e.height, s = V === void 0 ? "56px" : V, o = e.type, U = o === void 0 ? "button" : o, N = e.style, R = N === void 0 ? {} : N, h = e.onBlur, Z = h === void 0 ? function() {
   } : h, W = e.onClick, F = W === void 0 ? function() {
-  } : W, m = We(!1), p = m[0], u = m[1];
+  } : W, m = We(!1), E = m[0], u = m[1];
   return T.createElement(
     "button",
     { className: ot(ot([], Array.isArray(l) ? l : [l], !0), [
       "sendbird-iconbutton",
-      p ? "sendbird-iconbutton--pressed" : ""
+      E ? "sendbird-iconbutton--pressed" : ""
     ], !1).join(" "), disabled: r, ref: n, type: U, style: Ve(Ve({}, R), { height: s, width: c }), onClick: function(b) {
       r || (u(!0), F == null || F(b));
     }, onBlur: function(b) {
@@ -28326,7 +28326,7 @@ var we = Ee, Pe = Zl, Qo = "sendbird-modal-root", cw = function(e) {
   );
 };
 function Ic(e) {
-  var n = e.children, t = n === void 0 ? null : n, l = e.className, a = l === void 0 ? "" : l, d = e.contentClassName, r = d === void 0 ? "" : d, i = e.isCloseOnClickOutside, c = i === void 0 ? !1 : i, V = e.isFullScreenOnMobile, s = V === void 0 ? !1 : V, o = e.titleText, U = e.submitText, N = e.disabled, R = N === void 0 ? !1 : N, h = e.hideFooter, Z = h === void 0 ? !1 : h, W = e.type, F = W === void 0 ? nl.DANGER : W, m = e.onCancel, p = m === void 0 ? dl : m, u = e.onClose, b = e.onSubmit, k = b === void 0 ? dl : b, Y = e.renderHeader, S = e.customFooter, v = u ?? p, G = ir().isMobile;
+  var n = e.children, t = n === void 0 ? null : n, l = e.className, a = l === void 0 ? "" : l, d = e.contentClassName, r = d === void 0 ? "" : d, i = e.isCloseOnClickOutside, c = i === void 0 ? !1 : i, V = e.isFullScreenOnMobile, s = V === void 0 ? !1 : V, o = e.titleText, U = e.submitText, N = e.disabled, R = N === void 0 ? !1 : N, h = e.hideFooter, Z = h === void 0 ? !1 : h, W = e.type, F = W === void 0 ? nl.DANGER : W, m = e.onCancel, E = m === void 0 ? dl : m, u = e.onClose, b = e.onSubmit, k = b === void 0 ? dl : b, Y = e.renderHeader, S = e.customFooter, v = u ?? E, G = ir().isMobile;
   return Qi(T.createElement(
     "div",
     { className: `
@@ -28369,11 +28369,11 @@ var EF = function() {
     return MediaRecorder.isTypeSupported(b);
   })) !== null && n !== void 0 ? n : "";
   d && !m && a.error("VoiceRecorder: Browser does not support mimeType", { mimmeTypes: Np }), Ke(function() {
-    d && !W && import("./bundle-f5U_VL0z-1540c7b7.mjs").then(function(b) {
+    d && !W && import("./bundle-f5U_VL0z-c265b33c.mjs").then(function(b) {
       F(b);
     });
   }, [d, W]);
-  var p = At(function(b) {
+  var E = At(function(b) {
     var k, Y;
     if (d && !W) {
       a.error("VoiceRecorder: Recording audio processor is being loaded.");
@@ -28421,7 +28421,7 @@ var EF = function() {
   return T.createElement(
     _b.Provider,
     { value: {
-      start: p,
+      start: E,
       stop: u,
       isRecordable: s
     } },
@@ -28701,7 +28701,7 @@ function Yw(e) {
 function Qw(e) {
   var n = e.logger, t = e.sdkDispatcher, l = e.userDispatcher, a = e.initDashboardConfigs, d = e.userId, r = e.appId, i = e.customApiHost, c = e.customWebSocketHost, V = e.configureSession, s = e.nickname, o = e.profileUrl, U = e.accessToken, N = e.isUserIdUsedForNickname, R = e.sdkInitParams, h = e.customExtensionParams, Z = e.isMobile, W = Z === void 0 ? !1 : Z, F = e.eventHandlers, m = e.initializeMessageTemplatesInfo;
   return ol(this, void 0, void 0, function() {
-    var p = this;
+    var E = this;
     return Ul(this, function(u) {
       return [2, new Promise(function(b, k) {
         var Y, S, v, G, w, y, f, H, I, _, oe;
@@ -28728,7 +28728,7 @@ function Qw(e) {
             platform: W ? (H = Kr == null ? void 0 : Kr.MOBILE_WEB) !== null && H !== void 0 ? H : "mobile_web" : (I = Kr == null ? void 0 : Kr.WEB) !== null && I !== void 0 ? I : "web"
           }, h), le.addExtension("sb_uikit", xZ);
           var ne = function(C) {
-            return ol(p, void 0, void 0, function() {
+            return ol(E, void 0, void 0, function() {
               var O, de, $, Ye;
               return Ul(this, function(ve) {
                 switch (ve.label) {
@@ -28796,7 +28796,7 @@ function Qw(e) {
   });
 }
 function SM(e) {
-  var n = e.logger, t = e.sdkDispatcher, l = e.userDispatcher, a = e.appInfoDispatcher, d = e.initDashboardConfigs, r = e.userId, i = e.appId, c = e.customApiHost, V = e.customWebSocketHost, s = e.configureSession, o = e.nickname, U = e.profileUrl, N = e.accessToken, R = e.sdk, h = e.sdkInitParams, Z = e.customExtensionParams, W = e.isMobile, F = e.eventHandlers, m = e.isUserIdUsedForNickname, p = e.initializeMessageTemplatesInfo;
+  var n = e.logger, t = e.sdkDispatcher, l = e.userDispatcher, a = e.appInfoDispatcher, d = e.initDashboardConfigs, r = e.userId, i = e.appId, c = e.customApiHost, V = e.customWebSocketHost, s = e.configureSession, o = e.nickname, U = e.profileUrl, N = e.accessToken, R = e.sdk, h = e.sdkInitParams, Z = e.customExtensionParams, W = e.isMobile, F = e.eventHandlers, m = e.isUserIdUsedForNickname, E = e.initializeMessageTemplatesInfo;
   return ol(this, void 0, void 0, function() {
     return Ul(this, function(u) {
       switch (u.label) {
@@ -28827,7 +28827,7 @@ function SM(e) {
             isMobile: W,
             eventHandlers: F,
             isUserIdUsedForNickname: m,
-            initializeMessageTemplatesInfo: p
+            initializeMessageTemplatesInfo: E
           })];
         case 2:
           return u.sent(), [
@@ -28839,7 +28839,7 @@ function SM(e) {
   });
 }
 function Jw(e, n) {
-  var t = this, l, a = e.userId, d = e.appId, r = e.accessToken, i = e.isMobile, c = e.isUserIdUsedForNickname, V = n.logger, s = n.nickname, o = n.profileUrl, U = n.configureSession, N = n.customApiHost, R = n.customWebSocketHost, h = n.sdk, Z = n.sdkDispatcher, W = n.userDispatcher, F = n.appInfoDispatcher, m = n.initDashboardConfigs, p = n.sdkInitParams, u = n.customExtensionParams, b = n.eventHandlers, k = n.initializeMessageTemplatesInfo;
+  var t = this, l, a = e.userId, d = e.appId, r = e.accessToken, i = e.isMobile, c = e.isUserIdUsedForNickname, V = n.logger, s = n.nickname, o = n.profileUrl, U = n.configureSession, N = n.customApiHost, R = n.customWebSocketHost, h = n.sdk, Z = n.sdkDispatcher, W = n.userDispatcher, F = n.appInfoDispatcher, m = n.initDashboardConfigs, E = n.sdkInitParams, u = n.customExtensionParams, b = n.eventHandlers, k = n.initializeMessageTemplatesInfo;
   (l = V == null ? void 0 : V.info) === null || l === void 0 || l.call(V, "SendbirdProvider | useConnect", Ve(Ve({}, e), n));
   var Y = Mt({
     appId: "",
@@ -28863,7 +28863,7 @@ function Jw(e, n) {
       appInfoDispatcher: F,
       initDashboardConfigs: m,
       isUserIdUsedForNickname: c,
-      sdkInitParams: p,
+      sdkInitParams: E,
       customExtensionParams: u,
       isMobile: i,
       eventHandlers: b,
@@ -28897,7 +28897,7 @@ function Jw(e, n) {
               appInfoDispatcher: F,
               initDashboardConfigs: m,
               isUserIdUsedForNickname: c,
-              sdkInitParams: p,
+              sdkInitParams: E,
               customExtensionParams: u,
               isMobile: i,
               eventHandlers: b,
@@ -28982,7 +28982,7 @@ var yw = function(e) {
   );
 };
 function Bw(e) {
-  var n, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k, Y, S, v, G, w, y = e.legacyConfig, f = e.uikitOptions, H = f === void 0 ? {} : f, I = y.replyType, _ = y.isMentionEnabled, oe = y.isReactionEnabled, ie = y.disableUserProfile, le = y.isVoiceMessageEnabled, ce = y.isTypingIndicatorEnabledOnChannelList, ne = y.isMessageReceiptStatusEnabledOnChannelList, L = y.showSearchIcon;
+  var n, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k, Y, S, v, G, w, y = e.legacyConfig, f = e.uikitOptions, H = f === void 0 ? {} : f, I = y.replyType, _ = y.isMentionEnabled, oe = y.isReactionEnabled, ie = y.disableUserProfile, le = y.isVoiceMessageEnabled, ce = y.isTypingIndicatorEnabledOnChannelList, ne = y.isMessageReceiptStatusEnabledOnChannelList, L = y.showSearchIcon;
   return {
     common: {
       enableUsingDefaultUserProfile: (t = (n = H.common) === null || n === void 0 ? void 0 : n.enableUsingDefaultUserProfile) !== null && t !== void 0 ? t : typeof ie == "boolean" ? !ie : void 0
@@ -29004,7 +29004,7 @@ function Bw(e) {
       showSuggestedRepliesFor: (m = H.groupChannel) === null || m === void 0 ? void 0 : m.showSuggestedRepliesFor
     },
     groupChannelList: {
-      enableTypingIndicator: (u = (p = H.groupChannelList) === null || p === void 0 ? void 0 : p.enableTypingIndicator) !== null && u !== void 0 ? u : ce,
+      enableTypingIndicator: (u = (E = H.groupChannelList) === null || E === void 0 ? void 0 : E.enableTypingIndicator) !== null && u !== void 0 ? u : ce,
       enableMessageReceiptStatus: (k = (b = H.groupChannelList) === null || b === void 0 ? void 0 : b.enableMessageReceiptStatus) !== null && k !== void 0 ? k : ne
     },
     groupChannelSettings: {
@@ -29175,8 +29175,8 @@ function gw(e) {
   }, s = function(o, U) {
     return ol(n, void 0, void 0, function() {
       var N, R, h, Z, W, F, m;
-      return Ul(this, function(p) {
-        switch (p.label) {
+      return Ul(this, function(E) {
+        switch (E.label) {
           case 0:
             if (!d)
               return [3, 5];
@@ -29186,13 +29186,13 @@ function gw(e) {
                 key: o,
                 requestedAt: U
               }
-            }), N = null, p.label = 1;
+            }), N = null, E.label = 1;
           case 1:
-            return p.trys.push([1, 3, , 4]), [4, t.message.getMessageTemplate(o)];
+            return E.trys.push([1, 3, , 4]), [4, t.message.getMessageTemplate(o)];
           case 2:
-            return R = p.sent(), N = JSON.parse(R.template), [3, 4];
+            return R = E.sent(), N = JSON.parse(R.template), [3, 4];
           case 3:
-            return h = p.sent(), (m = l == null ? void 0 : l.error) === null || m === void 0 || m.call(l, "Sendbird | fetchProcessedMessageTemplate failed", h), [3, 4];
+            return h = E.sent(), (m = l == null ? void 0 : l.error) === null || m === void 0 || m.call(l, "Sendbird | fetchProcessedMessageTemplate failed", h), [3, 4];
           case 4:
             N ? (Z = localStorage.getItem(LV), Z ? (W = JSON.parse(Z), W.push(N), localStorage.setItem(LV, JSON.stringify(W))) : localStorage.setItem(LV, JSON.stringify([N])), F = lY(N), d({
               type: Hw,
@@ -29205,7 +29205,7 @@ function gw(e) {
               payload: {
                 key: o
               }
-            }), p.label = 5;
+            }), E.label = 5;
           case 5:
             return [
               2
@@ -29252,7 +29252,7 @@ function Iw(e) {
   );
 }
 var Lw = function(e) {
-  var n, t, l, a = e.appId, d = e.userId, r = e.children, i = e.accessToken, c = e.customApiHost, V = e.customWebSocketHost, s = e.configureSession, o = s === void 0 ? null : s, U = e.theme, N = U === void 0 ? "light" : U, R = e.config, h = R === void 0 ? {} : R, Z = e.nickname, W = Z === void 0 ? "" : Z, F = e.colorSet, m = F === void 0 ? null : F, p = e.stringSet, u = p === void 0 ? null : p, b = e.dateLocale, k = b === void 0 ? null : b, Y = e.profileUrl, S = Y === void 0 ? "" : Y, v = e.voiceRecord, G = e.userListQuery, w = G === void 0 ? null : G, y = e.imageCompression, f = y === void 0 ? {} : y, H = e.allowProfileEdit, I = H === void 0 ? !1 : H, _ = e.disableMarkAsDelivered, oe = _ === void 0 ? !1 : _, ie = e.renderUserProfile, le = ie === void 0 ? null : ie, ce = e.onUserProfileMessage, ne = ce === void 0 ? null : ce, L = e.breakpoint, ee = L === void 0 ? !1 : L, C = e.isUserIdUsedForNickname, O = C === void 0 ? !0 : C, de = e.sdkInitParams, $ = e.customExtensionParams, Ye = e.isMultipleFilesMessageEnabled, ve = Ye === void 0 ? !1 : Ye, Qe = e.eventHandlers, A = h.logLevel, He = A === void 0 ? "" : A, pe = h.userMention, me = pe === void 0 ? {} : pe, Be = h.isREMUnitEnabled, ye = Be === void 0 ? !1 : Be, qe = h.pubSub, xe = ir().isMobile, fe = We(kM(He)), dt = fe[0], De = fe[1], tt = We(function() {
+  var n, t, l, a = e.appId, d = e.userId, r = e.children, i = e.accessToken, c = e.customApiHost, V = e.customWebSocketHost, s = e.configureSession, o = s === void 0 ? null : s, U = e.theme, N = U === void 0 ? "light" : U, R = e.config, h = R === void 0 ? {} : R, Z = e.nickname, W = Z === void 0 ? "" : Z, F = e.colorSet, m = F === void 0 ? null : F, E = e.stringSet, u = E === void 0 ? null : E, b = e.dateLocale, k = b === void 0 ? null : b, Y = e.profileUrl, S = Y === void 0 ? "" : Y, v = e.voiceRecord, G = e.userListQuery, w = G === void 0 ? null : G, y = e.imageCompression, f = y === void 0 ? {} : y, H = e.allowProfileEdit, I = H === void 0 ? !1 : H, _ = e.disableMarkAsDelivered, oe = _ === void 0 ? !1 : _, ie = e.renderUserProfile, le = ie === void 0 ? null : ie, ce = e.onUserProfileMessage, ne = ce === void 0 ? null : ce, L = e.breakpoint, ee = L === void 0 ? !1 : L, C = e.isUserIdUsedForNickname, O = C === void 0 ? !0 : C, de = e.sdkInitParams, $ = e.customExtensionParams, Ye = e.isMultipleFilesMessageEnabled, ve = Ye === void 0 ? !1 : Ye, Qe = e.eventHandlers, A = h.logLevel, He = A === void 0 ? "" : A, pe = h.userMention, me = pe === void 0 ? {} : pe, Be = h.isREMUnitEnabled, ye = Be === void 0 ? !1 : Be, qe = h.pubSub, xe = ir().isMobile, fe = We(kM(He)), dt = fe[0], De = fe[1], tt = We(function() {
     return qe ?? Kj();
   })[0], Xe = ys(Zw, eY), Ge = Xe[0], ut = Xe[1], Vt = ys(Tw, tY), yt = Vt[0], ze = Vt[1], qt = ys(Fw, Ww), Ht = qt[0], $t = qt[1], nn = IO(), kt = nn.configs, Ut = nn.configsWithAppAttr, _e = nn.initDashboardConfigs, ke = Ge.initialized, ae = Ge == null ? void 0 : Ge.sdk, Nt = (n = ae == null ? void 0 : ae.appInfo) !== null && n !== void 0 ? n : {}, rt = Nt.uploadSizeLimit, it = Nt.multipleFilesMessageFileCountLimit;
   hw(m);
@@ -29681,12 +29681,12 @@ function iY(e) {
       var b;
       if (l)
         return;
-      const F = e.retry ?? (zc ? 0 : 3), m = e.retryDelay ?? $w, p = typeof m == "function" ? m(t, W) : m, u = F === !0 || typeof F == "number" && t < F || typeof F == "function" && F(t, W);
+      const F = e.retry ?? (zc ? 0 : 3), m = e.retryDelay ?? $w, E = typeof m == "function" ? m(t, W) : m, u = F === !0 || typeof F == "number" && t < F || typeof F == "function" && F(t, W);
       if (n || !u) {
         N(W);
         return;
       }
-      t++, (b = e.onFail) == null || b.call(e, t, W), Kw(p).then(() => {
+      t++, (b = e.onFail) == null || b.call(e, t, W), Kw(E).then(() => {
         if (o())
           return R();
       }).then(() => {
@@ -30152,7 +30152,7 @@ var Gd, qS, lg = (qS = class extends VU {
     this.execute(this.state.variables);
   }
   async execute(n) {
-    var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p, u, b, k;
+    var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E, u, b, k;
     const t = () => (Wt(this, Uc, iY({
       fn: () => this.options.mutationFn ? this.options.mutationFn(n) : Promise.reject(new Error("No mutationFn found")),
       onFail: (Y, S) => {
@@ -30210,8 +30210,8 @@ var Gd, qS, lg = (qS = class extends VU {
           Y,
           n,
           this.state.context
-        )), await ((u = (p = P(this, Ya).config).onSettled) == null ? void 0 : u.call(
-          p,
+        )), await ((u = (E = P(this, Ya).config).onSettled) == null ? void 0 : u.call(
+          E,
           void 0,
           Y,
           this.state.variables,
@@ -30389,14 +30389,14 @@ function ig(e) {
           `Attempted to invoke queryFn when set to skipToken. This is likely a configuration error. Query hash: '${n.options.queryHash}'`
         ), Promise.reject(
           new Error(`Missing queryFn: '${n.options.queryHash}'`)
-        )), U = async (m, p, u) => {
+        )), U = async (m, E, u) => {
           if (V)
             return Promise.reject();
-          if (p == null && m.pages.length)
+          if (E == null && m.pages.length)
             return Promise.resolve(m);
           const b = {
             queryKey: n.queryKey,
-            pageParam: p,
+            pageParam: E,
             direction: u ? "backward" : "forward",
             meta: n.options.meta
           };
@@ -30406,15 +30406,15 @@ function ig(e) {
           ), { maxPages: Y } = n.options, S = u ? Pw : _w;
           return {
             pages: S(m.pages, k, Y),
-            pageParams: S(m.pageParams, p, Y)
+            pageParams: S(m.pageParams, E, Y)
           };
         };
         let N;
         if (d && r.length) {
-          const m = d === "backward", p = m ? Vg : xM, u = {
+          const m = d === "backward", E = m ? Vg : xM, u = {
             pages: r,
             pageParams: i
-          }, b = p(a, u);
+          }, b = E(a, u);
           N = await U(u, b, m);
         } else {
           N = await U(
@@ -30422,7 +30422,7 @@ function ig(e) {
             i[0] ?? a.initialPageParam
           );
           const m = e ?? r.length;
-          for (let p = 1; p < m; p++) {
+          for (let E = 1; E < m; E++) {
             const u = xM(a, N);
             N = await U(N, u);
           }
@@ -30809,15 +30809,15 @@ var Tl, ai, di, Nc, Rc, ri, hc, Zc, tk, cg = (tk = class {
       ), h = !0);
     }
     P(this, Dd) && (o = P(this, Dd), Z = P(this, Fc), U = Date.now(), R = "error");
-    const W = N === "fetching", F = R === "pending", m = R === "error", p = F && W, u = s.data !== void 0;
+    const W = N === "fetching", F = R === "pending", m = R === "error", E = F && W, u = s.data !== void 0;
     return {
       status: R,
       fetchStatus: N,
       isPending: F,
       isSuccess: R === "success",
       isError: m,
-      isInitialLoading: p,
-      isLoading: p,
+      isInitialLoading: E,
+      isLoading: E,
       data: Z,
       dataUpdatedAt: s.dataUpdatedAt,
       error: o,
@@ -31948,12 +31948,12 @@ function jM(e, n, t) {
 }
 var i4 = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g, V4 = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g, c4 = /^'([^]*?)'?$/, s4 = /''/g, o4 = /[a-zA-Z]/;
 function kr(e, n, t) {
-  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p;
+  var l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E;
   An(2, arguments);
   var u = String(n), b = ih(), k = (l = (a = t == null ? void 0 : t.locale) !== null && a !== void 0 ? a : b.locale) !== null && l !== void 0 ? l : gb, Y = Gr((d = (r = (i = (c = t == null ? void 0 : t.firstWeekContainsDate) !== null && c !== void 0 ? c : t == null || (V = t.locale) === null || V === void 0 || (s = V.options) === null || s === void 0 ? void 0 : s.firstWeekContainsDate) !== null && i !== void 0 ? i : b.firstWeekContainsDate) !== null && r !== void 0 ? r : (o = b.locale) === null || o === void 0 || (U = o.options) === null || U === void 0 ? void 0 : U.firstWeekContainsDate) !== null && d !== void 0 ? d : 1);
   if (!(Y >= 1 && Y <= 7))
     throw new RangeError("firstWeekContainsDate must be between 1 and 7 inclusively");
-  var S = Gr((N = (R = (h = (Z = t == null ? void 0 : t.weekStartsOn) !== null && Z !== void 0 ? Z : t == null || (W = t.locale) === null || W === void 0 || (F = W.options) === null || F === void 0 ? void 0 : F.weekStartsOn) !== null && h !== void 0 ? h : b.weekStartsOn) !== null && R !== void 0 ? R : (m = b.locale) === null || m === void 0 || (p = m.options) === null || p === void 0 ? void 0 : p.weekStartsOn) !== null && N !== void 0 ? N : 0);
+  var S = Gr((N = (R = (h = (Z = t == null ? void 0 : t.weekStartsOn) !== null && Z !== void 0 ? Z : t == null || (W = t.locale) === null || W === void 0 || (F = W.options) === null || F === void 0 ? void 0 : F.weekStartsOn) !== null && h !== void 0 ? h : b.weekStartsOn) !== null && R !== void 0 ? R : (m = b.locale) === null || m === void 0 || (E = m.options) === null || E === void 0 ? void 0 : E.weekStartsOn) !== null && N !== void 0 ? N : 0);
   if (!(S >= 0 && S <= 6))
     throw new RangeError("weekStartsOn must be between 0 and 6 inclusively");
   if (!k.localize)
@@ -32380,12 +32380,12 @@ function p4(e, n) {
     return m === u4;
   });
   Ke(function() {
-    var m, p = r == null ? void 0 : r.url, u = xr();
-    if (p && d) {
+    var m, E = r == null ? void 0 : r.url, u = xr();
+    if (E && d) {
       var b = {
         onMessageReceived: function(k, Y) {
           var S, v;
-          if (k.isGroupChannel() && pn(k == null ? void 0 : k.url, p)) {
+          if (k.isGroupChannel() && pn(k == null ? void 0 : k.url, E)) {
             var G = !1;
             try {
               var w = s.current;
@@ -32406,26 +32406,26 @@ function p4(e, n) {
           }
         },
         onUnreadMemberStatusUpdated: function(k) {
-          V.info("Channel | useHandleChannelEvents: onUnreadMemberStatusUpdated", k), pn(k == null ? void 0 : k.url, p) && U({
+          V.info("Channel | useHandleChannelEvents: onUnreadMemberStatusUpdated", k), pn(k == null ? void 0 : k.url, E) && U({
             type: ba,
             payload: k
           });
         },
         // before(onDeliveryReceiptUpdated)
         onUndeliveredMemberStatusUpdated: function(k) {
-          pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onDeliveryReceiptUpdated", k), U({
+          pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onDeliveryReceiptUpdated", k), U({
             type: ba,
             payload: k
           }));
         },
         onMessageUpdated: function(k, Y) {
-          k.isGroupChannel() && pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onMessageUpdated", Y), U({
+          k.isGroupChannel() && pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onMessageUpdated", Y), U({
             type: cU,
             payload: { channel: k, message: Y }
           }));
         },
         onThreadInfoUpdated: function(k, Y) {
-          k.isGroupChannel() && pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onThreadInfoUpdated", { channel: k, threadInfoUpdateEvent: Y }), U({
+          k.isGroupChannel() && pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onThreadInfoUpdated", { channel: k, threadInfoUpdateEvent: Y }), U({
             type: t1,
             payload: { channel: k, event: Y }
           }));
@@ -32443,38 +32443,38 @@ function p4(e, n) {
           });
         },
         onChannelChanged: function(k) {
-          k.isGroupChannel() && pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onChannelChanged", k), U({
+          k.isGroupChannel() && pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onChannelChanged", k), U({
             type: ba,
             payload: k
           }));
         },
         onChannelFrozen: function(k) {
-          k.isGroupChannel() && pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onChannelFrozen", k), U({
+          k.isGroupChannel() && pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onChannelFrozen", k), U({
             type: ba,
             payload: k
           }));
         },
         onChannelUnfrozen: function(k) {
-          k.isGroupChannel() && pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onChannelUnFrozen", k), U({
+          k.isGroupChannel() && pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onChannelUnFrozen", k), U({
             type: ba,
             payload: k
           }));
         },
         onUserMuted: function(k, Y) {
-          k.isGroupChannel() && pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onUserMuted", { channel: k, user: Y }), U({
+          k.isGroupChannel() && pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onUserMuted", { channel: k, user: Y }), U({
             type: ba,
             payload: k
           }));
         },
         onUserUnmuted: function(k, Y) {
-          k.isGroupChannel() && pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onUserUnmuted", { channel: k, user: Y }), U({
+          k.isGroupChannel() && pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onUserUnmuted", { channel: k, user: Y }), U({
             type: ba,
             payload: k
           }));
         },
         onUserBanned: function(k, Y) {
           var S;
-          if (pn(k == null ? void 0 : k.url, p)) {
+          if (pn(k == null ? void 0 : k.url, E)) {
             V.info("Channel | useHandleChannelEvents: onUserBanned", { channel: k, user: Y });
             var v = (Y == null ? void 0 : Y.userId) === ((S = c == null ? void 0 : c.currentUser) === null || S === void 0 ? void 0 : S.userId);
             U({
@@ -32484,14 +32484,14 @@ function p4(e, n) {
           }
         },
         onOperatorUpdated: function(k, Y) {
-          k.isGroupChannel() && pn(k == null ? void 0 : k.url, p) && (V.info("Channel | useHandleChannelEvents: onOperatorUpdated", { channel: k, users: Y }), U({
+          k.isGroupChannel() && pn(k == null ? void 0 : k.url, E) && (V.info("Channel | useHandleChannelEvents: onOperatorUpdated", { channel: k, users: Y }), U({
             type: ba,
             payload: k
           }));
         },
         onUserLeft: function(k, Y) {
           var S;
-          if (pn(k == null ? void 0 : k.url, p)) {
+          if (pn(k == null ? void 0 : k.url, E)) {
             V.info("Channel | useHandleChannelEvents: onUserLeft", { channel: k, user: Y });
             var v = (Y == null ? void 0 : Y.userId) === ((S = c == null ? void 0 : c.currentUser) === null || S === void 0 ? void 0 : S.userId);
             U({
@@ -32501,7 +32501,7 @@ function p4(e, n) {
           }
         },
         onTypingStatusUpdated: function(k) {
-          if (pn(k == null ? void 0 : k.url, p)) {
+          if (pn(k == null ? void 0 : k.url, E)) {
             V.info("Channel | onTypingStatusUpdated", { channel: k });
             var Y = k.getTypingUsers();
             U({
@@ -32565,18 +32565,18 @@ function E4(e, n) {
           payload: null
         }), (h = i == null ? void 0 : i.groupChannel) === null || h === void 0 || h.getChannel(V == null ? void 0 : V.url).then(function(F) {
           var m = (/* @__PURE__ */ new Date()).getTime();
-          F.getMessagesByTimestamp(m, W).then(function(p) {
+          F.getMessagesByTimestamp(m, W).then(function(E) {
             s({
               type: ch,
               payload: {
                 currentGroupChannel: V,
-                messages: p
+                messages: E
               }
             }), setTimeout(function() {
               return tr(0, c);
             }, Db);
-          }).catch(function(p) {
-            r.error("Channel: Fetching messages failed", p), s({
+          }).catch(function(E) {
+            r.error("Channel: Fetching messages failed", E), s({
               type: xo,
               payload: { currentGroupChannel: V }
             });
@@ -32784,10 +32784,10 @@ function J4(e, n) {
       }), setTimeout(function() {
         return tr(0, i);
       }, vc);
-    }).onFailed(function(m, p) {
-      d.warning("Channel: Sending message failed!", { message: p, error: m }), c({
+    }).onFailed(function(m, E) {
+      d.warning("Channel: Sending message failed!", { message: E, error: m }), c({
         type: br,
-        payload: p
+        payload: E
       });
     }).onSucceeded(function(m) {
       d.info("Channel: Sending message success!", m), c({
@@ -32968,7 +32968,7 @@ var y4 = function(e, n) {
     t
   ]);
 }, uY = T.createContext(void 0), D4 = function(e) {
-  var n, t, l, a, d, r, i = e.channelUrl, c = e.children, V = e.isReactionEnabled, s = e.isMessageGroupingEnabled, o = s === void 0 ? !0 : s, U = e.isMultipleFilesMessageEnabled, N = e.showSearchIcon, R = e.animatedMessage, h = e.highlightedMessage, Z = e.startingPoint, W = e.onBeforeSendUserMessage, F = e.onBeforeSendFileMessage, m = e.onBeforeUpdateUserMessage, p = e.onBeforeSendVoiceMessage, u = e.onBeforeSendMultipleFilesMessage, b = e.onChatHeaderActionClick, k = e.onSearchClick, Y = e.onBackClick, S = e.replyType, v = e.threadReplySelectType, G = e.queries, w = e.filterMessageList, y = e.disableMarkAsRead, f = y === void 0 ? !1 : y, H = e.onReplyInThread, I = e.onQuoteMessageClick, _ = e.onMessageAnimated, oe = e.onMessageHighlighted, ie = e.scrollBehavior, le = ie === void 0 ? "auto" : ie, ce = e.reconnectOnIdle, ne = ce === void 0 ? !0 : ce, L = jn(), ee = L.config, C = S ?? ee.replyType, O = ee.pubSub, de = ee.logger, $ = ee.userId, Ye = ee.isOnline, ve = ee.imageCompression, Qe = ee.isMentionEnabled, A = ee.onUserProfileMessage, He = ee.markAsReadScheduler, pe = ee.groupChannel, me = (t = (n = L == null ? void 0 : L.stores) === null || n === void 0 ? void 0 : n.sdkStore) === null || t === void 0 ? void 0 : t.sdk, Be = (a = (l = L == null ? void 0 : L.stores) === null || l === void 0 ? void 0 : l.sdkStore) === null || a === void 0 ? void 0 : a.initialized, ye = L == null ? void 0 : L.config, qe = We(Z), xe = qe[0], fe = qe[1];
+  var n, t, l, a, d, r, i = e.channelUrl, c = e.children, V = e.isReactionEnabled, s = e.isMessageGroupingEnabled, o = s === void 0 ? !0 : s, U = e.isMultipleFilesMessageEnabled, N = e.showSearchIcon, R = e.animatedMessage, h = e.highlightedMessage, Z = e.startingPoint, W = e.onBeforeSendUserMessage, F = e.onBeforeSendFileMessage, m = e.onBeforeUpdateUserMessage, E = e.onBeforeSendVoiceMessage, u = e.onBeforeSendMultipleFilesMessage, b = e.onChatHeaderActionClick, k = e.onSearchClick, Y = e.onBackClick, S = e.replyType, v = e.threadReplySelectType, G = e.queries, w = e.filterMessageList, y = e.disableMarkAsRead, f = y === void 0 ? !1 : y, H = e.onReplyInThread, I = e.onQuoteMessageClick, _ = e.onMessageAnimated, oe = e.onMessageHighlighted, ie = e.scrollBehavior, le = ie === void 0 ? "auto" : ie, ce = e.reconnectOnIdle, ne = ce === void 0 ? !0 : ce, L = jn(), ee = L.config, C = S ?? ee.replyType, O = ee.pubSub, de = ee.logger, $ = ee.userId, Ye = ee.isOnline, ve = ee.imageCompression, Qe = ee.isMentionEnabled, A = ee.onUserProfileMessage, He = ee.markAsReadScheduler, pe = ee.groupChannel, me = (t = (n = L == null ? void 0 : L.stores) === null || n === void 0 ? void 0 : n.sdkStore) === null || t === void 0 ? void 0 : t.sdk, Be = (a = (l = L == null ? void 0 : L.stores) === null || l === void 0 ? void 0 : l.sdkStore) === null || a === void 0 ? void 0 : a.initialized, ye = L == null ? void 0 : L.config, qe = We(Z), xe = qe[0], fe = qe[1];
   Ke(function() {
     fe(Z);
   }, [Z, i]);
@@ -33073,7 +33073,7 @@ var y4 = function(e, n) {
     messagesDispatcher: _e
   })[0], Bt = y4({
     currentGroupChannel: Et,
-    onBeforeSendVoiceMessage: p
+    onBeforeSendVoiceMessage: E
   }, {
     logger: de,
     pubSub: O,
@@ -33202,7 +33202,7 @@ function H4(e, n, t) {
   return "".concat(d, "px ").concat(r, "px ").concat(i, "px ").concat(c, "px");
 }
 var el = function(e) {
-  var n = e.className, t = n === void 0 ? "" : n, l = e.url, a = e.alt, d = a === void 0 ? "" : a, r = e.width, i = r === void 0 ? null : r, c = e.maxSideLength, V = c === void 0 ? null : c, s = e.height, o = s === void 0 ? null : s, U = e.circle, N = U === void 0 ? !1 : U, R = e.fixedSize, h = R === void 0 ? !1 : R, Z = e.placeHolder, W = Z === void 0 ? null : Z, F = e.defaultComponent, m = F === void 0 ? null : F, p = e.borderRadius, u = p === void 0 ? null : p, b = e.onLoad, k = b === void 0 ? dl : b, Y = e.onError, S = Y === void 0 ? dl : Y, v = e.shadeOnHover, G = e.isUploaded, w = G === void 0 ? !0 : G, y = Mt(null), f = j4(y), H = f ? l : null, I = We(!1), _ = I[0], oe = I[1], ie = We(!0), le = ie[0], ce = ie[1], ne = X4({
+  var n = e.className, t = n === void 0 ? "" : n, l = e.url, a = e.alt, d = a === void 0 ? "" : a, r = e.width, i = r === void 0 ? null : r, c = e.maxSideLength, V = c === void 0 ? null : c, s = e.height, o = s === void 0 ? null : s, U = e.circle, N = U === void 0 ? !1 : U, R = e.fixedSize, h = R === void 0 ? !1 : R, Z = e.placeHolder, W = Z === void 0 ? null : Z, F = e.defaultComponent, m = F === void 0 ? null : F, E = e.borderRadius, u = E === void 0 ? null : E, b = e.onLoad, k = b === void 0 ? dl : b, Y = e.onError, S = Y === void 0 ? dl : Y, v = e.shadeOnHover, G = e.isUploaded, w = G === void 0 ? !0 : G, y = Mt(null), f = j4(y), H = f ? l : null, I = We(!1), _ = I[0], oe = I[1], ie = We(!0), le = ie[0], ce = ie[1], ne = X4({
     width: i,
     height: o,
     maxSideLength: V,
@@ -33763,7 +33763,7 @@ function vY() {
     const Ce = t.createElement("template");
     Ce.content && Ce.content.ownerDocument && (t = Ce.content.ownerDocument);
   }
-  let p, u = "";
+  let E, u = "";
   const {
     implementation: b,
     createNodeIterator: k,
@@ -33847,9 +33847,9 @@ function vY() {
           throw Us('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
         if (typeof g.TRUSTED_TYPES_POLICY.createScriptURL != "function")
           throw Us('TRUSTED_TYPES_POLICY configuration option must provide a "createScriptURL" hook.');
-        p = g.TRUSTED_TYPES_POLICY, u = p.createHTML("");
+        E = g.TRUSTED_TYPES_POLICY, u = E.createHTML("");
       } else
-        p === void 0 && (p = FI(N, a)), p !== null && typeof u == "string" && (u = p.createHTML(""));
+        E === void 0 && (E = FI(N, a)), E !== null && typeof u == "string" && (u = E.createHTML(""));
       ia && ia(g), Qt = g;
     }
   }, Fn = hn({}, ["mi", "mo", "mn", "ms", "mtext"]), gt = hn({}, ["annotation-xml"]), en = hn({}, ["title", "style", "font", "a", "script"]), Ct = hn({}, [...XZ, ...OZ, ...iI]), jt = hn({}, [...jZ, ...VI]), ge = function(g) {
@@ -33901,7 +33901,7 @@ function vY() {
       Ie = Rt && Rt[0];
     }
     Nt === "application/xhtml+xml" && Ut === kt && (g = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + g + "</body></html>");
-    const Bt = p ? p.createHTML(g) : g;
+    const Bt = E ? E.createHTML(g) : g;
     if (Ut === kt)
       try {
         Me = new U().parseFromString(Bt, Nt);
@@ -34028,14 +34028,14 @@ function vY() {
           be(Rt, g);
           continue;
         }
-        if (p && typeof N == "object" && typeof N.getAttributeType == "function" && !ft)
+        if (E && typeof N == "object" && typeof N.getAttributeType == "function" && !ft)
           switch (N.getAttributeType(Yd, bn)) {
             case "TrustedHTML": {
-              cn = p.createHTML(cn);
+              cn = E.createHTML(cn);
               break;
             }
             case "TrustedScriptURL": {
-              cn = p.createScriptURL(cn);
+              cn = E.createScriptURL(cn);
               break;
             }
           }
@@ -34074,7 +34074,7 @@ function vY() {
     else {
       if (!ye && !A && !pe && // eslint-disable-next-line unicorn/prefer-includes
       Ce.indexOf("<") === -1)
-        return p && xe ? p.createHTML(Ce) : Ce;
+        return E && xe ? E.createHTML(Ce) : Ce;
       if (Me = mt(Ce), !Me)
         return ye ? null : xe ? u : "";
     }
@@ -34096,7 +34096,7 @@ function vY() {
     return pe && ce["!doctype"] && Me.ownerDocument && Me.ownerDocument.doctype && Me.ownerDocument.doctype.name && Al(JY, Me.ownerDocument.doctype.name) && (ft = "<!DOCTYPE " + Me.ownerDocument.doctype.name + `>
 ` + ft), A && aN([w, y, f], (wt) => {
       ft = os(ft, wt, " ");
-    }), p && xe ? p.createHTML(ft) : ft;
+    }), E && xe ? E.createHTML(ft) : ft;
   }, n.setConfig = function() {
     let Ce = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
     dn(Ce), me = !0;
@@ -34362,7 +34362,7 @@ var GI = function(e) {
   endNodeIndex: null,
   endOffsetIndex: null
 }, XY = T.forwardRef(function(e, n) {
-  var t, l, a, d, r, i = e.channel, c = e.className, V = c === void 0 ? "" : c, s = e.messageFieldId, o = s === void 0 ? "" : s, U = e.isEdit, N = U === void 0 ? !1 : U, R = e.isMobile, h = R === void 0 ? !1 : R, Z = e.isMentionEnabled, W = Z === void 0 ? !1 : Z, F = e.isVoiceMessageEnabled, m = F === void 0 ? !0 : F, p = e.isSelectingMultipleFilesEnabled, u = p === void 0 ? !1 : p, b = e.disabled, k = b === void 0 ? !1 : b, Y = e.message, S = Y === void 0 ? null : Y, v = e.placeholder, G = v === void 0 ? "" : v, w = e.maxLength, y = w === void 0 ? 5e3 : w, f = e.onFileUpload, H = f === void 0 ? ql : f, I = e.onSendMessage, _ = I === void 0 ? ql : I, oe = e.onUpdateMessage, ie = oe === void 0 ? ql : oe, le = e.onCancelEdit, ce = le === void 0 ? ql : le, ne = e.onStartTyping, L = ne === void 0 ? ql : ne, ee = e.channelUrl, C = ee === void 0 ? "" : ee, O = e.mentionSelectedUser, de = O === void 0 ? null : O, $ = e.onUserMentioned, Ye = $ === void 0 ? ql : $, ve = e.onMentionStringChange, Qe = ve === void 0 ? ql : ve, A = e.onMentionedUserIdsUpdated, He = A === void 0 ? ql : A, pe = e.onVoiceMessageIconClick, me = pe === void 0 ? ql : pe, Be = e.onKeyUp, ye = Be === void 0 ? ql : Be, qe = e.onKeyDown, xe = qe === void 0 ? ql : qe, fe = e.renderFileUploadIcon, dt = fe === void 0 ? ql : fe, De = e.renderVoiceMessageIcon, tt = De === void 0 ? ql : De, Xe = e.renderSendMessageIcon, Ge = Xe === void 0 ? ql : Xe, ut = e.setMentionedUsers, Vt = ut === void 0 ? ql : ut, yt = e.acceptableMimeTypes, ze = n && "current" in n ? n : null, qt = o || yI, Ht = sa().stringSet, $t = jn().config, nn = GI({
+  var t, l, a, d, r, i = e.channel, c = e.className, V = c === void 0 ? "" : c, s = e.messageFieldId, o = s === void 0 ? "" : s, U = e.isEdit, N = U === void 0 ? !1 : U, R = e.isMobile, h = R === void 0 ? !1 : R, Z = e.isMentionEnabled, W = Z === void 0 ? !1 : Z, F = e.isVoiceMessageEnabled, m = F === void 0 ? !0 : F, E = e.isSelectingMultipleFilesEnabled, u = E === void 0 ? !1 : E, b = e.disabled, k = b === void 0 ? !1 : b, Y = e.message, S = Y === void 0 ? null : Y, v = e.placeholder, G = v === void 0 ? "" : v, w = e.maxLength, y = w === void 0 ? 5e3 : w, f = e.onFileUpload, H = f === void 0 ? ql : f, I = e.onSendMessage, _ = I === void 0 ? ql : I, oe = e.onUpdateMessage, ie = oe === void 0 ? ql : oe, le = e.onCancelEdit, ce = le === void 0 ? ql : le, ne = e.onStartTyping, L = ne === void 0 ? ql : ne, ee = e.channelUrl, C = ee === void 0 ? "" : ee, O = e.mentionSelectedUser, de = O === void 0 ? null : O, $ = e.onUserMentioned, Ye = $ === void 0 ? ql : $, ve = e.onMentionStringChange, Qe = ve === void 0 ? ql : ve, A = e.onMentionedUserIdsUpdated, He = A === void 0 ? ql : A, pe = e.onVoiceMessageIconClick, me = pe === void 0 ? ql : pe, Be = e.onKeyUp, ye = Be === void 0 ? ql : Be, qe = e.onKeyDown, xe = qe === void 0 ? ql : qe, fe = e.renderFileUploadIcon, dt = fe === void 0 ? ql : fe, De = e.renderVoiceMessageIcon, tt = De === void 0 ? ql : De, Xe = e.renderSendMessageIcon, Ge = Xe === void 0 ? ql : Xe, ut = e.setMentionedUsers, Vt = ut === void 0 ? ql : ut, yt = e.acceptableMimeTypes, ze = n && "current" in n ? n : null, qt = o || yI, Ht = sa().stringSet, $t = jn().config, nn = GI({
     channel: i,
     config: $t
   }), kt = Mt(null), Ut = We(!1), _e = Ut[0], ke = Ut[1], ae = We([]), Nt = ae[0], rt = ae[1], it = We(Ve({}, a2)), Tt = it[0], Qt = it[1], Nn = At(function() {
@@ -34713,17 +34713,17 @@ var KI = 60, _I = (
       document.removeEventListener("mousedown", U);
     };
   }, []), Ke(function() {
-    var U, N, R, h = (d == null ? void 0 : d.x) || 0, Z = (d == null ? void 0 : d.y) || 0, W = (N = (U = t == null ? void 0 : t.current) === null || U === void 0 ? void 0 : U.getBoundingClientRect()) !== null && N !== void 0 ? N : PI, F = W.x || W.left, m = W.y || W.top, p = {
+    var U, N, R, h = (d == null ? void 0 : d.x) || 0, Z = (d == null ? void 0 : d.y) || 0, W = (N = (U = t == null ? void 0 : t.current) === null || U === void 0 ? void 0 : U.getBoundingClientRect()) !== null && N !== void 0 ? N : PI, F = W.x || W.left, m = W.y || W.top, E = {
       top: m,
       left: F
     };
     if (!(s != null && s.current))
-      V(p);
+      V(E);
     else {
       var u = (R = s == null ? void 0 : s.current) === null || R === void 0 ? void 0 : R.getBoundingClientRect();
-      p.top < u.height ? (p.top += W.height, p.top += Z) : (p.top -= u.height, p.top -= Z), p.left -= u.width / 2, p.left += W.height / 2 - 2, p.left += h;
+      E.top < u.height ? (E.top += W.height, E.top += Z) : (E.top -= u.height, E.top -= Z), E.left -= u.width / 2, E.left += W.height / 2 - 2, E.left += h;
       var b = window.innerWidth - u.width;
-      b < p.left && (p.left = b), p.left < 0 && (p.left = 0), V(p);
+      b < E.left && (E.left = b), E.left < 0 && (E.left = 0), V(E);
     }
   }, []);
   var o = document.getElementById("sendbird-emoji-list-portal");
@@ -34772,7 +34772,7 @@ var $I = {
   NONE: "none"
 };
 function e9(e) {
-  var n, t = e.className, l = e.message, a = e.channel, d = e.isByMe, r = d === void 0 ? !1 : d, i = e.disabled, c = i === void 0 ? !1 : i, V = e.replyType, s = e.disableDeleteMessage, o = s === void 0 ? null : s, U = e.showEdit, N = e.showRemove, R = e.deleteMessage, h = e.resendMessage, Z = e.setQuoteMessage, W = e.setSupposedHover, F = e.onReplyInThread, m = e.onMoveToParentMessage, p = m === void 0 ? null : m, u = Ot(_n).stringSet, b = Mt(null), k = Mt(null), Y = id(l), S = !(a != null && a.isEphemeral) && id(l) && Yo(l) && r, v = Ba(l) && (l == null ? void 0 : l.isResendable) && r, G = !(a != null && a.isEphemeral) && !md(l) && r, w = p !== null, y = !Ba(l) && !md(l) && ((n = a == null ? void 0 : a.isGroupChannel) === null || n === void 0 ? void 0 : n.call(a)) && !(a != null && a.isEphemeral) && ((a == null ? void 0 : a.isBroadcast) && (a == null ? void 0 : a.myRole) === $I.OPERATOR || !(a != null && a.isBroadcast)), f = y && V === "QUOTE_REPLY", H = y && V === "THREAD" && !(l != null && l.parentMessageId) && F;
+  var n, t = e.className, l = e.message, a = e.channel, d = e.isByMe, r = d === void 0 ? !1 : d, i = e.disabled, c = i === void 0 ? !1 : i, V = e.replyType, s = e.disableDeleteMessage, o = s === void 0 ? null : s, U = e.showEdit, N = e.showRemove, R = e.deleteMessage, h = e.resendMessage, Z = e.setQuoteMessage, W = e.setSupposedHover, F = e.onReplyInThread, m = e.onMoveToParentMessage, E = m === void 0 ? null : m, u = Ot(_n).stringSet, b = Mt(null), k = Mt(null), Y = id(l), S = !(a != null && a.isEphemeral) && id(l) && Yo(l) && r, v = Ba(l) && (l == null ? void 0 : l.isResendable) && r, G = !(a != null && a.isEphemeral) && !md(l) && r, w = E !== null, y = !Ba(l) && !md(l) && ((n = a == null ? void 0 : a.isGroupChannel) === null || n === void 0 ? void 0 : n.call(a)) && !(a != null && a.isEphemeral) && ((a == null ? void 0 : a.isBroadcast) && (a == null ? void 0 : a.myRole) === $I.OPERATOR || !(a != null && a.isBroadcast)), f = y && V === "QUOTE_REPLY", H = y && V === "THREAD" && !(l != null && l.parentMessageId) && F;
   return Y || f || H || w || S || v || G ? T.createElement(
     "div",
     { className: xn([t, "sendbird-message-item-menu"]), ref: k },
@@ -34803,7 +34803,7 @@ function e9(e) {
           F == null || F({ message: l }), oe();
         }, dataSbId: "ui_message_item_menu_thread" }, u.MESSAGE_MENU__THREAD),
         w && T.createElement(Ra, { className: "sendbird-message-item-menu__list__menu-item menu-item-open-channel", onClick: function() {
-          p == null || p(), oe();
+          E == null || E(), oe();
         }, dataSbId: "ui_message_item_menu_open_in_channel" }, u.MESSAGE_MENU__OPEN_IN_CHANNEL),
         S && T.createElement(Ra, { className: "sendbird-message-item-menu__list__menu-item menu-item-edit", onClick: function() {
           c || (U(!0), oe());
@@ -34826,7 +34826,7 @@ function n9(e) {
   return e && "touches" in e;
 }
 function NU(e, n) {
-  var t = e.onLongPress, l = e.onClick, a = n === void 0 ? {} : n, d = a.delay, r = d === void 0 ? t9 : d, i = a.shouldPreventDefault, c = i === void 0 ? !0 : i, V = a.shouldStopPropagation, s = V === void 0 ? !1 : V, o = ir().isMobile, U = We(!1), N = U[0], R = U[1], h = We(!1), Z = h[0], W = h[1], F = Mt(), m = Mt(), p = At(function(b) {
+  var t = e.onLongPress, l = e.onClick, a = n === void 0 ? {} : n, d = a.delay, r = d === void 0 ? t9 : d, i = a.shouldPreventDefault, c = i === void 0 ? !0 : i, V = a.shouldStopPropagation, s = V === void 0 ? !1 : V, o = ir().isMobile, U = We(!1), N = U[0], R = U[1], h = We(!1), Z = h[0], W = h[1], F = Mt(), m = Mt(), E = At(function(b) {
     b.persist();
     var k = Ve({}, b);
     W(!1), s && b.stopPropagation(), c && b.target && (b.target.addEventListener("touchend", i2, {
@@ -34839,7 +34839,7 @@ function NU(e, n) {
   }, [c, l, N, Z]);
   return {
     onMouseDown: function(b) {
-      return p(b);
+      return E(b);
     },
     onMouseUp: function(b) {
       return u(b);
@@ -34848,7 +34848,7 @@ function NU(e, n) {
       return u(b, !1);
     },
     onTouchStart: function(b) {
-      return p(b);
+      return E(b);
     },
     // setDragTriggered as true on touchmove, so that next onTouchEnd is ignored
     // if we dont do it, onClick?.(e) will be triggred, see inside clear()
@@ -35071,7 +35071,7 @@ function o1(e) {
   );
 }
 function s9(e) {
-  var n = e.user, t = e.className, l = e.checked, a = e.checkBox, d = e.isOperator, r = e.disabled, i = e.disableMessaging, c = e.currentUser, V = e.action, s = e.onChange, o = e.avatarSize, U = o === void 0 ? "40px" : o, N = e.onClick, R = n.userId, h = T.useRef(null), Z = T.useRef(null), W = T.useRef(null), F = Ot(rh), m = F.disableUserProfile, p = F.renderUserProfile, u = Ot(_n).stringSet;
+  var n = e.user, t = e.className, l = e.checked, a = e.checkBox, d = e.isOperator, r = e.disabled, i = e.disableMessaging, c = e.currentUser, V = e.action, s = e.onChange, o = e.avatarSize, U = o === void 0 ? "40px" : o, N = e.onClick, R = n.userId, h = T.useRef(null), Z = T.useRef(null), W = T.useRef(null), F = Ot(rh), m = F.disableUserProfile, E = F.renderUserProfile, u = Ot(_n).stringSet;
   return T.createElement(
     "div",
     { className: ot(ot([], Array.isArray(t) ? t : [t], !0), [
@@ -35083,7 +35083,7 @@ function s9(e) {
         m || (b(), N == null || N());
       } });
     }, menuItems: function(b) {
-      return p ? p({
+      return E ? E({
         user: n,
         currentUserId: c,
         close: b,
@@ -35200,10 +35200,10 @@ var R9 = {
             h(W.key);
           } },
           T.createElement(el, { url: F, width: "28px", height: "28px", placeHolder: function(m) {
-            var p = m.style;
+            var E = m.style;
             return T.createElement(
               "div",
-              { style: p },
+              { style: E },
               T.createElement(lt, { type: we.QUESTION, fillColor: Pe.ON_BACKGROUND_3, width: "28px", height: "28px" })
             );
           } }),
@@ -35303,7 +35303,7 @@ var T9 = function(e) {
     }))
   );
 }, W9 = function(e) {
-  var n, t, l, a, d, r = e.className, i = r === void 0 ? "" : r, c = e.userId, V = e.message, s = e.channel, o = e.emojiContainer, U = e.memberNicknamesMap, N = e.spaceFromTrigger, R = N === void 0 ? { x: 0, y: 0 } : N, h = e.isByMe, Z = h === void 0 ? !1 : h, W = e.toggleReaction, F = e.onPressUserProfile, m = ir().isMobile, p = Mt(null), u = We(!1), b = u[0], k = u[1], Y = We(""), S = Y[0], v = Y[1], G = Hj(o), w = ((t = (n = V.reactions) === null || n === void 0 ? void 0 : n.length) !== null && t !== void 0 ? t : 0) < G.size;
+  var n, t, l, a, d, r = e.className, i = r === void 0 ? "" : r, c = e.userId, V = e.message, s = e.channel, o = e.emojiContainer, U = e.memberNicknamesMap, N = e.spaceFromTrigger, R = N === void 0 ? { x: 0, y: 0 } : N, h = e.isByMe, Z = h === void 0 ? !1 : h, W = e.toggleReaction, F = e.onPressUserProfile, m = ir().isMobile, E = Mt(null), u = We(!1), b = u[0], k = u[1], Y = We(""), S = Y[0], v = Y[1], G = Hj(o), w = ((t = (n = V.reactions) === null || n === void 0 ? void 0 : n.length) !== null && t !== void 0 ? t : 0) < G.size;
   return T.createElement(
     "div",
     { className: xn([
@@ -35317,14 +35317,14 @@ var T9 = function(e) {
     !m && w && T.createElement(jV, { menuTrigger: function(y) {
       return T.createElement(
         s1,
-        { className: "sendbird-emoji-reactions__add-reaction-badge", ref: p, isAdd: !0, onClick: function(f) {
+        { className: "sendbird-emoji-reactions__add-reaction-badge", ref: E, isAdd: !0, onClick: function(f) {
           var H;
           y(), (H = f == null ? void 0 : f.stopPropagation) === null || H === void 0 || H.call(f);
         } },
         T.createElement(lt, { type: we.EMOJI_MORE, fillColor: Pe.ON_BACKGROUND_3, width: "20px", height: "20px" })
       );
     }, menuItems: function(y) {
-      return T.createElement(OY, { parentRef: p, parentContainRef: p, closeDropdown: y, spaceFromTrigger: R }, lh(o).map(function(f) {
+      return T.createElement(OY, { parentRef: E, parentContainRef: E, closeDropdown: y, spaceFromTrigger: R }, lh(o).map(function(f) {
         var H, I, _, oe = ((_ = (I = (H = V == null ? void 0 : V.reactions) === null || H === void 0 ? void 0 : H.find(function(ie) {
           return ie.key === f.key;
         })) === null || I === void 0 ? void 0 : I.userIds) === null || _ === void 0 ? void 0 : _.some(function(ie) {
@@ -35419,7 +35419,7 @@ function gY(e) {
   return n && n.length > 0 ? n[0].url : "";
 }
 function p9(e) {
-  var n, t, l, a, d, r, i, c = e.message, V = e.userId, s = V === void 0 ? "" : V, o = e.isByMe, U = o === void 0 ? !1 : o, N = e.className, R = N === void 0 ? "" : N, h = e.isUnavailable, Z = h === void 0 ? !1 : h, W = e.onClick, F = Ot(_n).stringSet, m = c.parentMessage, p = m == null ? void 0 : m.sender, u = s === (p == null ? void 0 : p.userId) ? F.QUOTED_MESSAGE__CURRENT_USER : p == null ? void 0 : p.nickname, b = JR(m), k = QR(m), Y = s === ((t = c == null ? void 0 : c.sender) === null || t === void 0 ? void 0 : t.userId) ? F.QUOTED_MESSAGE__CURRENT_USER : (l = c == null ? void 0 : c.sender) === null || l === void 0 ? void 0 : l.nickname, S = We(!1), v = S[0], G = S[1], w = Jj(), y = (d = (a = wY(m)) === null || a === void 0 ? void 0 : a.split("/")) !== null && d !== void 0 ? d : b.split("/");
+  var n, t, l, a, d, r, i, c = e.message, V = e.userId, s = V === void 0 ? "" : V, o = e.isByMe, U = o === void 0 ? !1 : o, N = e.className, R = N === void 0 ? "" : N, h = e.isUnavailable, Z = h === void 0 ? !1 : h, W = e.onClick, F = Ot(_n).stringSet, m = c.parentMessage, E = m == null ? void 0 : m.sender, u = s === (E == null ? void 0 : E.userId) ? F.QUOTED_MESSAGE__CURRENT_USER : E == null ? void 0 : E.nickname, b = JR(m), k = QR(m), Y = s === ((t = c == null ? void 0 : c.sender) === null || t === void 0 ? void 0 : t.userId) ? F.QUOTED_MESSAGE__CURRENT_USER : (l = c == null ? void 0 : c.sender) === null || l === void 0 ? void 0 : l.nickname, S = We(!1), v = S[0], G = S[1], w = Jj(), y = (d = (a = wY(m)) === null || a === void 0 ? void 0 : a.split("/")) !== null && d !== void 0 ? d : b.split("/");
   return T.createElement(
     "div",
     { className: xn([R, "sendbird-quote-message", U ? "outgoing" : "incoming", Z ? "unavailable" : ""]), key: m == null ? void 0 : m.messageId, onClick: function() {
@@ -35509,7 +35509,7 @@ function p9(e) {
   );
 }
 var M9 = function(e) {
-  var n, t, l, a = e.hideMenu, d = e.channel, r = e.message, i = e.replyType, c = e.userId, V = e.resendMessage, s = e.showEdit, o = e.showRemove, U = e.deleteMenuState, N = e.deleteMessage, R = e.setQuoteMessage, h = e.parentRef, Z = e.onReplyInThread, W = e.isOpenedFromThread, F = W === void 0 ? !1 : W, m = ((n = r == null ? void 0 : r.sender) === null || n === void 0 ? void 0 : n.userId) === c, p = sa().stringSet, u = id(r), b = id(r) && Yo(r) && m, k = Ba(r) && (r == null ? void 0 : r.isResendable) && m, Y = !md(r) && m, S = m && (U === void 0 || U !== "HIDE"), v = S && Y, G = U !== void 0 && U === "DISABLE" || ((l = (t = r == null ? void 0 : r.threadInfo) === null || t === void 0 ? void 0 : t.replyCount) !== null && l !== void 0 ? l : 0) > 0, w = !md(r) && ga(r) && !(Ei(r) && (d != null && d.isSuper || d != null && d.isBroadcast)), y = i === "QUOTE_REPLY" && !Ba(r) && !md(r) && (d == null ? void 0 : d.isGroupChannel()), f = i === "THREAD" && !F && !Ba(r) && !md(r) && !zb(r) && (d == null ? void 0 : d.isGroupChannel()), H = r;
+  var n, t, l, a = e.hideMenu, d = e.channel, r = e.message, i = e.replyType, c = e.userId, V = e.resendMessage, s = e.showEdit, o = e.showRemove, U = e.deleteMenuState, N = e.deleteMessage, R = e.setQuoteMessage, h = e.parentRef, Z = e.onReplyInThread, W = e.isOpenedFromThread, F = W === void 0 ? !1 : W, m = ((n = r == null ? void 0 : r.sender) === null || n === void 0 ? void 0 : n.userId) === c, E = sa().stringSet, u = id(r), b = id(r) && Yo(r) && m, k = Ba(r) && (r == null ? void 0 : r.isResendable) && m, Y = !md(r) && m, S = m && (U === void 0 || U !== "HIDE"), v = S && Y, G = U !== void 0 && U === "DISABLE" || ((l = (t = r == null ? void 0 : r.threadInfo) === null || t === void 0 ? void 0 : t.replyCount) !== null && l !== void 0 ? l : 0) > 0, w = !md(r) && ga(r) && !(Ei(r) && (d != null && d.isSuper || d != null && d.isBroadcast)), y = i === "QUOTE_REPLY" && !Ba(r) && !md(r) && (d == null ? void 0 : d.isGroupChannel()), f = i === "THREAD" && !F && !Ba(r) && !md(r) && !zb(r) && (d == null ? void 0 : d.isGroupChannel()), H = r;
   return T.createElement(jV, { isOpen: !0, menuItems: function() {
     var I, _, oe;
     return T.createElement(
@@ -35520,7 +35520,7 @@ var M9 = function(e) {
         { className: "sendbird-message__mobile-context-menu-item menu-item-copy", onClick: function() {
           a(), gW(r == null ? void 0 : r.message);
         }, dataSbId: "ui_mobile_message_item_menu_copy" },
-        T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, p == null ? void 0 : p.MESSAGE_MENU__COPY),
+        T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, E == null ? void 0 : E.MESSAGE_MENU__COPY),
         T.createElement(lt, { type: we.COPY, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       y && T.createElement(
@@ -35528,7 +35528,7 @@ var M9 = function(e) {
         { className: "sendbird-message__mobile-context-menu-item menu-item-reply", onClick: function() {
           a(), R(r);
         }, disable: ((I = r == null ? void 0 : r.parentMessageId) !== null && I !== void 0 ? I : 0) > 0, dataSbId: "ui_mobile_message_item_menu_reply" },
-        T.createElement(Te, { type: se.SUBTITLE_1, color: ((_ = r == null ? void 0 : r.parentMessageId) !== null && _ !== void 0 ? _ : 0) > 0 ? re.ONBACKGROUND_4 : re.ONBACKGROUND_1 }, p.MESSAGE_MENU__REPLY),
+        T.createElement(Te, { type: se.SUBTITLE_1, color: ((_ = r == null ? void 0 : r.parentMessageId) !== null && _ !== void 0 ? _ : 0) > 0 ? re.ONBACKGROUND_4 : re.ONBACKGROUND_1 }, E.MESSAGE_MENU__REPLY),
         T.createElement(lt, { type: we.REPLY, fillColor: ((oe = r == null ? void 0 : r.parentMessageId) !== null && oe !== void 0 ? oe : 0) > 0 ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       f && T.createElement(
@@ -35536,7 +35536,7 @@ var M9 = function(e) {
         { className: "sendbird-message__mobile-context-menu-item menu-item-reply", onClick: function() {
           a(), Z == null || Z({ message: r });
         }, dataSbId: "ui_mobile_message_item_menu_thread" },
-        T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, p.MESSAGE_MENU__THREAD),
+        T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, E.MESSAGE_MENU__THREAD),
         T.createElement(lt, { type: we.THREAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       b && T.createElement(
@@ -35544,7 +35544,7 @@ var M9 = function(e) {
         { className: "sendbird-message__mobile-context-menu-item menu-item-edit", onClick: function() {
           a(), s(!0);
         }, dataSbId: "ui_mobile_message_item_menu_edit" },
-        T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, p.MESSAGE_MENU__EDIT),
+        T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, E.MESSAGE_MENU__EDIT),
         T.createElement(lt, { type: we.EDIT, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       k && T.createElement(
@@ -35552,7 +35552,7 @@ var M9 = function(e) {
         { className: "sendbird-message__mobile-context-menu-item menu-item-resend", onClick: function() {
           a(), V(r);
         }, dataSbId: "ui_mobile_message_item_menu_resend" },
-        T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, p.MESSAGE_MENU__RESEND),
+        T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, E.MESSAGE_MENU__RESEND),
         T.createElement(lt, { type: we.REFRESH, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       v && T.createElement(
@@ -35560,7 +35560,7 @@ var M9 = function(e) {
         { className: "sendbird-message__mobile-context-menu-item menu-item-delete", onClick: function() {
           Ba(r) ? (a(), N == null || N(r)) : G || (a(), o == null || o(!0));
         }, disable: G, dataSbId: "ui_mobile_message_item_menu_delete" },
-        T.createElement(Te, { type: se.SUBTITLE_1, color: G ? re.ONBACKGROUND_4 : re.ONBACKGROUND_1 }, p.MESSAGE_MENU__DELETE),
+        T.createElement(Te, { type: se.SUBTITLE_1, color: G ? re.ONBACKGROUND_4 : re.ONBACKGROUND_1 }, E.MESSAGE_MENU__DELETE),
         T.createElement(lt, { type: we.DELETE, fillColor: G ? Pe.ON_BACKGROUND_4 : Pe.PRIMARY, width: "24px", height: "24px" })
       ),
       w && T.createElement(
@@ -35571,14 +35571,14 @@ var M9 = function(e) {
         T.createElement(
           "a",
           { className: "sendbird-message__contextmenu--hyperlink", rel: "noopener noreferrer", href: H == null ? void 0 : H.url, target: "_blank" },
-          T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, p.MESSAGE_MENU__SAVE),
+          T.createElement(Te, { type: se.SUBTITLE_1, color: re.ONBACKGROUND_1 }, E.MESSAGE_MENU__SAVE),
           T.createElement(lt, { type: we.DOWNLOAD, fillColor: Pe.PRIMARY, width: "24px", height: "24px" })
         )
       )
     );
   } });
 }, gZ = 38, E9 = function(e) {
-  var n, t, l, a = e.hideMenu, d = e.channel, r = e.emojiContainer, i = e.message, c = e.replyType, V = e.userId, s = e.resendMessage, o = e.deleteMessage, U = e.toggleReaction, N = e.isReactionEnabled, R = e.showEdit, h = e.showRemove, Z = e.deleteMenuState, W = e.setQuoteMessage, F = e.onReplyInThread, m = e.isOpenedFromThread, p = m === void 0 ? !1 : m, u = ((n = i == null ? void 0 : i.sender) === null || n === void 0 ? void 0 : n.userId) === V, b = sa().stringSet, k = jn(), Y = k.config.isOnline, S = id(i), v = id(i) && Yo(i) && u, G = Y && Ba(i) && (i == null ? void 0 : i.isResendable) && u, w = !md(i) && u, y = u && (Z === void 0 || Z !== "HIDE"), f = y && w, H = Z !== void 0 && Z === "DISABLE" || ((l = (t = i == null ? void 0 : i.threadInfo) === null || t === void 0 ? void 0 : t.replyCount) !== null && l !== void 0 ? l : 0) > 0, I = Yo(i) && ga(i) && !Ei(i), _ = !Ba(i) && !md(i) && N, oe = c === "QUOTE_REPLY" && !Ba(i) && !md(i) && (d == null ? void 0 : d.isGroupChannel()) && !(d != null && d.isBroadcast), ie = c === "THREAD" && !p && !Ba(i) && !md(i) && !zb(i) && (d == null ? void 0 : d.isGroupChannel()) && !(d != null && d.isBroadcast), le = (i == null ? void 0 : i.parentMessageId) > 0, ce = i, ne = Math.floor(window.innerWidth / gZ) - 1, L = We(!1), ee = L[0], C = L[1], O = lh(r), de = ee ? O : O == null ? void 0 : O.slice(0, ne), $ = O.length > ne;
+  var n, t, l, a = e.hideMenu, d = e.channel, r = e.emojiContainer, i = e.message, c = e.replyType, V = e.userId, s = e.resendMessage, o = e.deleteMessage, U = e.toggleReaction, N = e.isReactionEnabled, R = e.showEdit, h = e.showRemove, Z = e.deleteMenuState, W = e.setQuoteMessage, F = e.onReplyInThread, m = e.isOpenedFromThread, E = m === void 0 ? !1 : m, u = ((n = i == null ? void 0 : i.sender) === null || n === void 0 ? void 0 : n.userId) === V, b = sa().stringSet, k = jn(), Y = k.config.isOnline, S = id(i), v = id(i) && Yo(i) && u, G = Y && Ba(i) && (i == null ? void 0 : i.isResendable) && u, w = !md(i) && u, y = u && (Z === void 0 || Z !== "HIDE"), f = y && w, H = Z !== void 0 && Z === "DISABLE" || ((l = (t = i == null ? void 0 : i.threadInfo) === null || t === void 0 ? void 0 : t.replyCount) !== null && l !== void 0 ? l : 0) > 0, I = Yo(i) && ga(i) && !Ei(i), _ = !Ba(i) && !md(i) && N, oe = c === "QUOTE_REPLY" && !Ba(i) && !md(i) && (d == null ? void 0 : d.isGroupChannel()) && !(d != null && d.isBroadcast), ie = c === "THREAD" && !E && !Ba(i) && !md(i) && !zb(i) && (d == null ? void 0 : d.isGroupChannel()) && !(d != null && d.isBroadcast), le = (i == null ? void 0 : i.parentMessageId) > 0, ce = i, ne = Math.floor(window.innerWidth / gZ) - 1, L = We(!1), ee = L[0], C = L[1], O = lh(r), de = ee ? O : O == null ? void 0 : O.slice(0, ne), $ = O.length > ne;
   return T.createElement(
     Rh,
     { onBackdropClick: a },
@@ -35704,8 +35704,8 @@ var M9 = function(e) {
     )
   );
 }, S9 = function(e) {
-  var n = e.message, t = e.hideMenu, l = e.userId, a = e.channel, d = e.isReactionEnabled, r = d === void 0 ? !1 : d, i = e.isByMe, c = e.replyType, V = e.disabled, s = e.deleteMenuState, o = e.showRemove, U = e.showEdit, N = e.resendMessage, R = e.deleteMessage, h = e.setQuoteMessage, Z = e.emojiContainer, W = e.toggleReaction, F = e.parentRef, m = e.onReplyInThread, p = e.isOpenedFromThread;
-  return T.createElement(T.Fragment, null, r ? T.createElement(E9, { channel: a, message: n, hideMenu: t, isByMe: i, userId: l, replyType: c, disabled: V, showRemove: o, showEdit: U, deleteMenuState: s, resendMessage: N, deleteMessage: R, setQuoteMessage: h, emojiContainer: Z, toggleReaction: W, isReactionEnabled: r, onReplyInThread: m, isOpenedFromThread: p }) : T.createElement(M9, { channel: a, userId: l, message: n, hideMenu: t, isByMe: i, showEdit: U, replyType: c, disabled: V, deleteMenuState: s, showRemove: o, resendMessage: N, deleteMessage: R, setQuoteMessage: h, parentRef: F, onReplyInThread: m, isOpenedFromThread: p }));
+  var n = e.message, t = e.hideMenu, l = e.userId, a = e.channel, d = e.isReactionEnabled, r = d === void 0 ? !1 : d, i = e.isByMe, c = e.replyType, V = e.disabled, s = e.deleteMenuState, o = e.showRemove, U = e.showEdit, N = e.resendMessage, R = e.deleteMessage, h = e.setQuoteMessage, Z = e.emojiContainer, W = e.toggleReaction, F = e.parentRef, m = e.onReplyInThread, E = e.isOpenedFromThread;
+  return T.createElement(T.Fragment, null, r ? T.createElement(E9, { channel: a, message: n, hideMenu: t, isByMe: i, userId: l, replyType: c, disabled: V, showRemove: o, showEdit: U, deleteMenuState: s, resendMessage: N, deleteMessage: R, setQuoteMessage: h, emojiContainer: Z, toggleReaction: W, isReactionEnabled: r, onReplyInThread: m, isOpenedFromThread: E }) : T.createElement(M9, { channel: a, userId: l, message: n, hideMenu: t, isByMe: i, showEdit: U, replyType: c, disabled: V, deleteMenuState: s, showRemove: o, resendMessage: N, deleteMessage: R, setQuoteMessage: h, parentRef: F, onReplyInThread: m, isOpenedFromThread: E }));
 };
 function k9(e) {
   var n, t = e.className, l = e.threadInfo, a = e.onClick, d = l.mostRepliedUsers, r = d === void 0 ? [] : d, i = l.replyCount, c = sa().stringSet;
@@ -35831,11 +35831,11 @@ function IY(e) {
   }));
 }
 function v9(e) {
-  var n, t, l, a, d, r, i, c, V, s, o, U, N = e.className, R = e.message, h = e.isByMe, Z = h === void 0 ? !1 : h, W = e.mouseHover, F = W === void 0 ? !1 : W, m = e.isMentionEnabled, p = m === void 0 ? !1 : m, u = e.isReactionEnabled, b = u === void 0 ? !1 : u, k = e.onMessageHeightChange, Y = k === void 0 ? function() {
+  var n, t, l, a, d, r, i, c, V, s, o, U, N = e.className, R = e.message, h = e.isByMe, Z = h === void 0 ? !1 : h, W = e.mouseHover, F = W === void 0 ? !1 : W, m = e.isMentionEnabled, E = m === void 0 ? !1 : m, u = e.isReactionEnabled, b = u === void 0 ? !1 : u, k = e.onMessageHeightChange, Y = k === void 0 ? function() {
   } : k, S = Mt(null), v = Ot(_n).stringSet, G = function() {
     var f, H = (f = R == null ? void 0 : R.ogMetaData) === null || f === void 0 ? void 0 : f.url;
     H && (!H.startsWith("http://") && !H.startsWith("https://") && (H = "https://" + H), window.open(H));
-  }, w = p && ((n = R == null ? void 0 : R.mentionedMessageTemplate) === null || n === void 0 ? void 0 : n.length) > 0 && ((t = R == null ? void 0 : R.mentionedUsers) === null || t === void 0 ? void 0 : t.length) > 0, y = an(function() {
+  }, w = E && ((n = R == null ? void 0 : R.mentionedMessageTemplate) === null || n === void 0 ? void 0 : n.length) > 0 && ((t = R == null ? void 0 : R.mentionedUsers) === null || t === void 0 ? void 0 : t.length) > 0, y = an(function() {
     return Bo(w ? {
       mentionedUsers: R == null ? void 0 : R.mentionedUsers,
       messageText: R == null ? void 0 : R.mentionedMessageTemplate
@@ -36188,8 +36188,8 @@ function _9(e) {
           return s(h);
         } : void 0, key: "sendbird-multiple-files-image-renderer-".concat(h, "-").concat(R.url) },
         T.createElement(el, { url: (F = (W = (Z = R.thumbnails) === null || Z === void 0 ? void 0 : Z[0]) === null || W === void 0 ? void 0 : W.url) !== null && F !== void 0 ? F : R.url, fixedSize: !1, width: LZ[d], maxSideLength: LZ.CHAT_WEB, height: LZ[d], borderRadius: H4(K9[d], h, i.length), shadeOnHover: !0, isUploaded: !!R.isUploaded, placeHolder: function(m) {
-          var p = m.style;
-          return iU(R.mimeType) ? T.createElement(CZ.GIF, { style: p }) : T.createElement(CZ.Default, { style: p });
+          var E = m.style;
+          return iU(R.mimeType) ? T.createElement(CZ.GIF, { style: E }) : T.createElement(CZ.Default, { style: E });
         }, defaultComponent: T.createElement(CZ.LoadError, null) })
       );
     }))
@@ -36277,7 +36277,7 @@ var A9 = function(e) {
     });
   }, m = function() {
     N == null || N(s);
-  }, p = function(u) {
+  }, E = function(u) {
     u === void 0 && (u = ""), R == null || R(u);
   };
   return Ke(function() {
@@ -36291,7 +36291,7 @@ var A9 = function(e) {
   }, []), {
     play: F,
     pause: m,
-    stop: p,
+    stop: E,
     /**
      * The reason why we multiply this by *1000 is,
      * The unit of playbackTime and duration should be millisecond
@@ -36317,7 +36317,7 @@ var A9 = function(e) {
     var u;
     c && ((u = l == null ? void 0 : l.reactions) === null || u === void 0 ? void 0 : u.length) > 0 ? o(!0) : o(!1);
   }, [c, (n = l == null ? void 0 : l.reactions) === null || n === void 0 ? void 0 : n.length]);
-  var p = an(function() {
+  var E = an(function() {
     var u;
     if (l != null && l.metaArrays) {
       var b = (u = l == null ? void 0 : l.metaArrays.find(function(k) {
@@ -36330,7 +36330,7 @@ var A9 = function(e) {
   return T.createElement(
     "div",
     { className: "sendbird-voice-message-item-body ".concat(t, " ").concat(s ? "is-reactions-contained" : "") },
-    T.createElement(CY, { className: "sendbird-voice-message-item-body__progress-bar", maxSize: W || p, currentSize: Z, colorType: r ? fF.PRIMARY : fF.GRAY }),
+    T.createElement(CY, { className: "sendbird-voice-message-item-body__progress-bar", maxSize: W || E, currentSize: Z, colorType: r ? fF.PRIMARY : fF.GRAY }),
     T.createElement(
       "div",
       { className: "sendbird-voice-message-item-body__status-button" },
@@ -36357,11 +36357,11 @@ var A9 = function(e) {
         )
       )
     ),
-    T.createElement(_Y, { className: "sendbird-voice-message-item-body__playback-time", time: p - Z, labelType: se.BODY_1, labelColor: r ? re.ONCONTENT_1 : re.ONBACKGROUND_1 })
+    T.createElement(_Y, { className: "sendbird-voice-message-item-body__playback-time", time: E - Z, labelType: se.BODY_1, labelColor: r ? re.ONCONTENT_1 : re.ONBACKGROUND_1 })
   );
 };
 function eL(e) {
-  var n, t, l = e.className, a = l === void 0 ? "" : l, d = e.message, r = e.isByMe, i = r === void 0 ? !1 : r, c = e.mouseHover, V = c === void 0 ? !1 : c, s = e.isReactionEnabled, o = s === void 0 ? !1 : s, U = e.showFileViewer, N = U === void 0 ? dl : U, R = e.style, h = R === void 0 ? {} : R, Z = gY(d), W = We(!1), F = W[0], m = W[1], p = NU({
+  var n, t, l = e.className, a = l === void 0 ? "" : l, d = e.message, r = e.isByMe, i = r === void 0 ? !1 : r, c = e.mouseHover, V = c === void 0 ? !1 : c, s = e.isReactionEnabled, o = s === void 0 ? !1 : s, U = e.showFileViewer, N = U === void 0 ? dl : U, R = e.style, h = R === void 0 ? {} : R, Z = gY(d), W = We(!1), F = W[0], m = W[1], E = NU({
     onLongPress: dl,
     onClick: function() {
       Yo(d) && (N == null || N(!0));
@@ -36375,7 +36375,7 @@ function eL(e) {
       i ? "outgoing" : "incoming",
       V ? "mouse-hover" : "",
       o && ((t = (n = d.reactions) === null || n === void 0 ? void 0 : n.length) !== null && t !== void 0 ? t : 0) > 0 ? "reactions" : ""
-    ]) }, p),
+    ]) }, E),
     T.createElement(el, { className: "sendbird-thumbnail-message-item-body__thumbnail", url: Z || JR(d), alt: QR(d), width: (h == null ? void 0 : h.width) || "360px", height: (h == null ? void 0 : h.height) || "270px", onLoad: function() {
       m(!0);
     }, placeHolder: function(u) {
@@ -36738,9 +36738,9 @@ function pL(e) {
       contentHeight: Z
     });
   }, [t.id, o, U, N, R, h, Z, r]), { recalculatedStyle: an(() => {
-    const F = (p = 0, u) => {
+    const F = (E = 0, u) => {
       var b, k, Y, S;
-      return s === Un.Row ? p + ((k = (b = i[u.id]) === null || b === void 0 ? void 0 : b.contentWidth) !== null && k !== void 0 ? k : 0) : p + ((S = (Y = i[u.id]) === null || Y === void 0 ? void 0 : Y.contentHeight) !== null && S !== void 0 ? S : 0);
+      return s === Un.Row ? E + ((k = (b = i[u.id]) === null || b === void 0 ? void 0 : b.contentWidth) !== null && k !== void 0 ? k : 0) : E + ((S = (Y = i[u.id]) === null || Y === void 0 ? void 0 : Y.contentHeight) !== null && S !== void 0 ? S : 0);
     };
     if (VN({
       width: t.width,
@@ -36748,7 +36748,7 @@ function pL(e) {
       parentLayout: s,
       option: "fill"
     })) {
-      const p = V.filter(({ width: k, height: Y }) => !VN({
+      const E = V.filter(({ width: k, height: Y }) => !VN({
         width: k,
         height: Y,
         parentLayout: s,
@@ -36759,13 +36759,13 @@ function pL(e) {
         parentLayout: s,
         option: "fill"
       })).length, b = (() => s === Un.Row ? {
-        maxWidth: `calc((100% - ${p}px) / ${u})`
+        maxWidth: `calc((100% - ${E}px) / ${u})`
       } : {
-        maxHeight: `calc((100% - ${p}px) / ${u})`
+        maxHeight: `calc((100% - ${E}px) / ${u})`
       })();
       return Object.assign(Object.assign(Object.assign({}, n), b), o == 0 && { height: 0 });
     } else {
-      const p = V.findIndex((b) => b.id === c), u = V.slice(0, p).filter(({ width: b, height: k }) => VN({
+      const E = V.findIndex((b) => b.id === c), u = V.slice(0, E).filter(({ width: b, height: k }) => VN({
         width: b,
         height: k,
         parentLayout: s,
@@ -36855,7 +36855,7 @@ var QL = function(e, n) {
   return t;
 };
 const JL = (e = "") => ["http://", "https://", "ftp://"].some((n) => e.startsWith(n)), vL = (e = "") => JL(e) ? e : `https://${e}`, Fs = ({ className: e = "", style: n, children: t, props: l }) => {
-  var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, p;
+  var a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F, m, E;
   const { recalculatedStyle: u, elemRef: b } = pL({ style: n, props: l }), { message: k, handleWebAction: Y, handleCustomAction: S, handlePredefinedAction: v } = ZL(), G = (ie) => {
     var le, ce, ne, L, ee;
     ((le = l == null ? void 0 : l.action) === null || le === void 0 ? void 0 : le.type) === "web" && (Y ? Y == null || Y(ie, l.action, k) : (ne = window == null ? void 0 : window.open(vL((ce = l == null ? void 0 : l.action) === null || ce === void 0 ? void 0 : ce.data), "_blank", "noopener noreferrer")) === null || ne === void 0 || ne.focus()), ((L = l == null ? void 0 : l.action) === null || L === void 0 ? void 0 : L.type) === "custom" && (S == null || S(ie, l.action, k)), ((ee = l == null ? void 0 : l.action) === null || ee === void 0 ? void 0 : ee.type) === "uikit" && (v == null || v(ie, l.action, k));
@@ -36877,7 +36877,7 @@ const JL = (e = "") => ["http://", "https://", "ftp://"].some((n) => e.startsWit
       paddingTop: (R = (N = l.viewStyle) === null || N === void 0 ? void 0 : N.padding) === null || R === void 0 ? void 0 : R.top,
       paddingRight: (Z = (h = l.viewStyle) === null || h === void 0 ? void 0 : h.padding) === null || Z === void 0 ? void 0 : Z.right,
       paddingBottom: (F = (W = l.viewStyle) === null || W === void 0 ? void 0 : W.padding) === null || F === void 0 ? void 0 : F.bottom,
-      paddingLeft: (p = (m = l.viewStyle) === null || m === void 0 ? void 0 : m.padding) === null || p === void 0 ? void 0 : p.left
+      paddingLeft: (E = (m = l.viewStyle) === null || m === void 0 ? void 0 : m.padding) === null || E === void 0 ? void 0 : E.left
     } }, t)
   );
 };
@@ -37118,7 +37118,7 @@ function HL(e) {
   var U = o.utils, N = U.getCachedTemplate, R = U.updateMessageTemplatesInfo, h = o.stores.appInfoStore.waitingTemplateKeysMap, Z = We(function() {
     var k, Y = N(V.key);
     return Y ? p2(JSON.parse(Y.uiTemplate), (k = V.variables) !== null && k !== void 0 ? k : {}, Y.colorVariables, c) : [];
-  }), W = Z[0], F = Z[1], m = We(!1), p = m[0], u = m[1], b = Object.entries(h).map(function(k) {
+  }), W = Z[0], F = Z[1], m = We(!1), E = m[0], u = m[1], b = Object.entries(h).map(function(k) {
     var Y = k[0], S = k[1];
     return [Y, S.requestedAt, S.isError].join("-");
   }).join(",");
@@ -37129,12 +37129,12 @@ function HL(e) {
       if (Y) {
         var S = p2(JSON.parse(Y.uiTemplate), (k = V.variables) !== null && k !== void 0 ? k : {}, Y.colorVariables, c);
         F(S);
-      } else if (!p) {
+      } else if (!E) {
         var v = h[s], G = Date.now();
         !v || G > v.requestedAt + jL ? R(V.key, Date.now()) : v && v.isError && u(!0);
       }
     }
-  }, [V.key, b]), W.length === 0 ? p ? T.createElement(KZ, { className: l, message: a, isByMe: r }) : T.createElement(yL, { className: l, isByMe: r }) : T.createElement(
+  }, [V.key, b]), W.length === 0 ? E ? T.createElement(KZ, { className: l, message: a, isByMe: r }) : T.createElement(yL, { className: l, isByMe: r }) : T.createElement(
     "div",
     { className: xn([
       l,
@@ -37372,7 +37372,7 @@ function KL(e) {
   );
 }
 function _L(e) {
-  var n = this, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F = e.className, m = e.userId, p = e.channel, u = e.message, b = e.disabled, k = b === void 0 ? !1 : b, Y = e.chainTop, S = Y === void 0 ? !1 : Y, v = e.chainBottom, G = v === void 0 ? !1 : v, w = e.isReactionEnabled, y = w === void 0 ? !1 : w, f = e.disableQuoteMessage, H = f === void 0 ? !1 : f, I = e.replyType, _ = e.threadReplySelectType, oe = e.nicknamesMap, ie = e.emojiContainer, le = e.scrollToMessage, ce = e.showEdit, ne = e.showRemove, L = e.showFileViewer, ee = e.resendMessage, C = e.deleteMessage, O = e.toggleReaction, de = e.setQuoteMessage, $ = e.onReplyInThread, Ye = e.onQuoteMessageClick, ve = e.onMessageHeightChange, Qe = e.renderSenderProfile, A = Qe === void 0 ? function(Rt) {
+  var n = this, t, l, a, d, r, i, c, V, s, o, U, N, R, h, Z, W, F = e.className, m = e.userId, E = e.channel, u = e.message, b = e.disabled, k = b === void 0 ? !1 : b, Y = e.chainTop, S = Y === void 0 ? !1 : Y, v = e.chainBottom, G = v === void 0 ? !1 : v, w = e.isReactionEnabled, y = w === void 0 ? !1 : w, f = e.disableQuoteMessage, H = f === void 0 ? !1 : f, I = e.replyType, _ = e.threadReplySelectType, oe = e.nicknamesMap, ie = e.emojiContainer, le = e.scrollToMessage, ce = e.showEdit, ne = e.showRemove, L = e.showFileViewer, ee = e.resendMessage, C = e.deleteMessage, O = e.toggleReaction, de = e.setQuoteMessage, $ = e.onReplyInThread, Ye = e.onQuoteMessageClick, ve = e.onMessageHeightChange, Qe = e.renderSenderProfile, A = Qe === void 0 ? function(Rt) {
     return T.createElement(IL, Ve({}, Rt));
   } : Qe, He = e.renderMessageBody, pe = He === void 0 ? function(Rt) {
     return T.createElement(LL, Ve({}, Rt));
@@ -37386,7 +37386,7 @@ function _L(e) {
     return T.createElement(W9, Ve({}, Rt));
   } : dt, tt = e.renderMobileMenuOnLongPress, Xe = tt === void 0 ? function(Rt) {
     return T.createElement(S9, Ve({}, Rt));
-  } : tt, Ge = sa().dateLocale, ut = (jn == null ? void 0 : jn()) || {}, Vt = ut.config, yt = ut.eventHandlers, ze = (t = yt == null ? void 0 : yt.reaction) === null || t === void 0 ? void 0 : t.onPressUserProfile, qt = Mt(null), Ht = ir().isMobile, $t = We(!1), nn = $t[0], kt = $t[1], Ut = We(!1), _e = Ut[0], ke = Ut[1], ae = We(!1), Nt = ae[0], rt = ae[1], it = We(!1), Tt = it[0], Qt = it[1], Nn = We(!1), Et = Nn[0], dn = Nn[1], Fn = We(""), gt = Fn[0], en = Fn[1], Ct = Ot(_n).stringSet, jt = m === ((l = u == null ? void 0 : u.sender) === null || l === void 0 ? void 0 : l.userId) || (u == null ? void 0 : u.sendingStatus) === "pending" || (u == null ? void 0 : u.sendingStatus) === "failed", ge = jt ? "outgoing" : "incoming", $e = S ? "chain-top" : "", be = y && !(p != null && p.isEphemeral), mt = be ? "use-reactions" : "", Jt = Nt ? "sendbird-mouse-hover" : "", X = !!((I === "QUOTE_REPLY" || I === "THREAD") && (u != null && u.parentMessageId) && (u != null && u.parentMessage) && !H), Ue = X ? "use-quote" : "", Fe = ((a = u == null ? void 0 : u.threadInfo) === null || a === void 0 ? void 0 : a.replyCount) > 0 && I === "THREAD", je = !jt && (u == null ? void 0 : u.myFeedbackStatus) && u.myFeedbackStatus !== gF.NOT_APPLICABLE, ht = ((d = Vt == null ? void 0 : Vt.groupChannel) === null || d === void 0 ? void 0 : d.enableFeedback) && je, Ft = ht ? "sendbird-message-content__feedback" : "", Zt = !yN(u), pt = Zt && Ht, Ce = Zt && jt && !Ht, g = Zt && Fe, Me = Zt && !jt && !Ht, Ie = function() {
+  } : tt, Ge = sa().dateLocale, ut = (jn == null ? void 0 : jn()) || {}, Vt = ut.config, yt = ut.eventHandlers, ze = (t = yt == null ? void 0 : yt.reaction) === null || t === void 0 ? void 0 : t.onPressUserProfile, qt = Mt(null), Ht = ir().isMobile, $t = We(!1), nn = $t[0], kt = $t[1], Ut = We(!1), _e = Ut[0], ke = Ut[1], ae = We(!1), Nt = ae[0], rt = ae[1], it = We(!1), Tt = it[0], Qt = it[1], Nn = We(!1), Et = Nn[0], dn = Nn[1], Fn = We(""), gt = Fn[0], en = Fn[1], Ct = Ot(_n).stringSet, jt = m === ((l = u == null ? void 0 : u.sender) === null || l === void 0 ? void 0 : l.userId) || (u == null ? void 0 : u.sendingStatus) === "pending" || (u == null ? void 0 : u.sendingStatus) === "failed", ge = jt ? "outgoing" : "incoming", $e = S ? "chain-top" : "", be = y && !(E != null && E.isEphemeral), mt = be ? "use-reactions" : "", Jt = Nt ? "sendbird-mouse-hover" : "", X = !!((I === "QUOTE_REPLY" || I === "THREAD") && (u != null && u.parentMessageId) && (u != null && u.parentMessage) && !H), Ue = X ? "use-quote" : "", Fe = ((a = u == null ? void 0 : u.threadInfo) === null || a === void 0 ? void 0 : a.replyCount) > 0 && I === "THREAD", je = !jt && (u == null ? void 0 : u.myFeedbackStatus) && u.myFeedbackStatus !== gF.NOT_APPLICABLE, ht = ((d = Vt == null ? void 0 : Vt.groupChannel) === null || d === void 0 ? void 0 : d.enableFeedback) && je, Ft = ht ? "sendbird-message-content__feedback" : "", Zt = !yN(u), pt = Zt && Ht, Ce = Zt && jt && !Ht, g = Zt && Fe, Me = Zt && !jt && !Ht, Ie = function() {
     dn(!1);
   }, Bt = function() {
     Ht ? Qt(!0) : dn(!0);
@@ -37414,7 +37414,7 @@ function _L(e) {
         "div",
         { className: xn(["sendbird-message-content-menu", mt, Jt, ge]) },
         qe({
-          channel: p,
+          channel: E,
           message: u,
           isByMe: jt,
           replyType: I,
@@ -37449,7 +37449,7 @@ function _L(e) {
       X ? T.createElement(
         "div",
         { className: xn(["sendbird-message-content__middle__quote-message", jt ? "outgoing" : "incoming", Ue]) },
-        T.createElement(p9, { className: "sendbird-message-content__middle__quote-message__quote", message: u, userId: m, isByMe: jt, isUnavailable: ((i = p == null ? void 0 : p.messageOffsetTimestamp) !== null && i !== void 0 ? i : 0) > ((V = (c = u.parentMessage) === null || c === void 0 ? void 0 : c.createdAt) !== null && V !== void 0 ? V : 0), onClick: function() {
+        T.createElement(p9, { className: "sendbird-message-content__middle__quote-message__quote", message: u, userId: m, isByMe: jt, isUnavailable: ((i = E == null ? void 0 : E.messageOffsetTimestamp) !== null && i !== void 0 ? i : 0) > ((V = (c = u.parentMessage) === null || c === void 0 ? void 0 : c.createdAt) !== null && V !== void 0 ? V : 0), onClick: function() {
           var Rt;
           I === "THREAD" && _ === Zd.THREAD && (Ye == null || Ye({ message: u })), (I === "QUOTE_REPLY" || I === "THREAD" && _ === Zd.PARENT) && (!((Rt = u == null ? void 0 : u.parentMessage) === null || Rt === void 0) && Rt.createdAt) && (u != null && u.parentMessageId) && le(u.parentMessage.createdAt, u.parentMessageId);
         } })
@@ -37466,12 +37466,12 @@ function _L(e) {
           T.createElement(
             "div",
             { className: "sendbird-message-content__middle__body-container__created-at__component-container" },
-            T.createElement(LI, { message: u, channel: p })
+            T.createElement(LI, { message: u, channel: E })
           )
         ),
         pe({
           message: u,
-          channel: p,
+          channel: E,
           showFileViewer: L,
           onMessageHeightChange: ve,
           mouseHover: _e,
@@ -37487,7 +37487,7 @@ function _L(e) {
         ]) }, De({
           userId: m,
           message: u,
-          channel: p,
+          channel: E,
           isByMe: jt,
           emojiContainer: ie,
           memberNicknamesMap: oe,
@@ -37590,7 +37590,7 @@ function _L(e) {
       }),
       qe({
         className: "sendbird-message-content-menu__normal-menu",
-        channel: p,
+        channel: E,
         message: u,
         isByMe: jt,
         replyType: I,
@@ -37608,7 +37608,7 @@ function _L(e) {
     )),
     nn && (((N = u == null ? void 0 : u.isUserMessage) === null || N === void 0 ? void 0 : N.call(u)) || ((R = u == null ? void 0 : u.isFileMessage) === null || R === void 0 ? void 0 : R.call(u)) || ((h = u == null ? void 0 : u.isMultipleFilesMessage) === null || h === void 0 ? void 0 : h.call(u))) && Xe({
       parentRef: qt,
-      channel: p,
+      channel: E,
       hideMenu: function() {
         kt(!1);
       },
@@ -37772,7 +37772,7 @@ function $L(e, n, t, l) {
   });
 }
 var eC = 300, iQ = function(e) {
-  var n, t, l, a = e.className, d = e.currentChannel, r = e.targetNickname, i = r === void 0 ? "" : r, c = e.onUserItemClick, V = e.onFocusItemChange, s = e.onFetchUsers, o = e.renderUserMentionItem, U = e.inputEvent, N = e.ableAddMention, R = N === void 0 ? !0 : N, h = e.maxMentionCount, Z = h === void 0 ? UY : h, W = e.maxSuggestionCount, F = W === void 0 ? NY : W, m = jn(), p = m.config, u = m.stores, b = p.logger, k = ((l = (t = (n = u == null ? void 0 : u.sdkStore) === null || n === void 0 ? void 0 : n.sdk) === null || t === void 0 ? void 0 : t.currentUser) === null || l === void 0 ? void 0 : l.userId) || "", Y = Mt(null), S = sa().stringSet, v = We(null), G = v[0], w = v[1], y = We(""), f = y[0], H = y[1], I = We(""), _ = I[0], oe = I[1], ie = We(null), le = ie[0], ce = ie[1], ne = We([]), L = ne[0], ee = ne[1];
+  var n, t, l, a = e.className, d = e.currentChannel, r = e.targetNickname, i = r === void 0 ? "" : r, c = e.onUserItemClick, V = e.onFocusItemChange, s = e.onFetchUsers, o = e.renderUserMentionItem, U = e.inputEvent, N = e.ableAddMention, R = N === void 0 ? !0 : N, h = e.maxMentionCount, Z = h === void 0 ? UY : h, W = e.maxSuggestionCount, F = W === void 0 ? NY : W, m = jn(), E = m.config, u = m.stores, b = E.logger, k = ((l = (t = (n = u == null ? void 0 : u.sdkStore) === null || n === void 0 ? void 0 : n.sdk) === null || t === void 0 ? void 0 : t.currentUser) === null || l === void 0 ? void 0 : l.userId) || "", Y = Mt(null), S = sa().stringSet, v = We(null), G = v[0], w = v[1], y = We(""), f = y[0], H = y[1], I = We(""), _ = I[0], oe = I[1], ie = We(null), le = ie[0], ce = ie[1], ne = We([]), L = ne[0], ee = ne[1];
   return Ke(function() {
     clearTimeout(G), w(setTimeout(function() {
       H(i);
@@ -37846,7 +37846,7 @@ var eC = 300, iQ = function(e) {
     return T.createElement(_L, Ve({}, be));
   } : r, c = e.renderSuggestedReplies, V = c === void 0 ? function(be) {
     return T.createElement(PL, Ve({}, be));
-  } : c, s = e.renderCustomSeparator, o = e.renderEditInput, U = e.hasSeparator, N = e.chainTop, R = e.chainBottom, h = e.handleScroll, Z = e.channel, W = e.emojiContainer, F = e.editInputDisabled, m = e.shouldRenderSuggestedReplies, p = e.isReactionEnabled, u = e.replyType, b = e.threadReplySelectType, k = e.nicknamesMap, Y = e.renderUserMentionItem, S = e.scrollToMessage, v = e.toggleReaction, G = e.setQuoteMessage, w = e.onQuoteMessageClick, y = e.onReplyInThreadClick, f = e.sendUserMessage, H = e.updateUserMessage, I = e.resendMessage, _ = e.deleteMessage, oe = e.renderFileViewer, ie = e.renderRemoveMessageModal, le = e.setAnimatedMessageId, ce = e.animatedMessageId, ne = e.onMessageAnimated, L = e.usedInLegacy, ee = L === void 0 ? !0 : L, C = sa(), O = C.dateLocale, de = C.stringSet, $ = jn(), Ye = $.config, ve = Ye.userId, Qe = Ye.isOnline, A = Ye.isMentionEnabled, He = Ye.userMention, pe = Ye.logger, me = (He == null ? void 0 : He.maxMentionCount) || UY, Be = (He == null ? void 0 : He.maxSuggestionCount) || NY, ye = We(!1), qe = ye[0], xe = ye[1], fe = We(!1), dt = fe[0], De = fe[1], tt = We(!1), Xe = tt[0], Ge = tt[1], ut = We(!1), Vt = ut[0], yt = ut[1], ze = We(""), qt = ze[0], Ht = ze[1], $t = We([]), nn = $t[0], kt = $t[1], Ut = We([]), _e = Ut[0], ke = Ut[1], ae = We(null), Nt = ae[0], rt = ae[1], it = We(null), Tt = it[0], Qt = it[1], Nn = We([]), Et = Nn[0], dn = Nn[1], Fn = Mt(null), gt = Mt(null), en = Qe && A && qt.length > 0 && !bR(Z) && !Go(Z), Ct = kY({ ref: Fn }, { logger: pe }), jt = (Ct == null ? void 0 : Ct.length) < me;
+  } : c, s = e.renderCustomSeparator, o = e.renderEditInput, U = e.hasSeparator, N = e.chainTop, R = e.chainBottom, h = e.handleScroll, Z = e.channel, W = e.emojiContainer, F = e.editInputDisabled, m = e.shouldRenderSuggestedReplies, E = e.isReactionEnabled, u = e.replyType, b = e.threadReplySelectType, k = e.nicknamesMap, Y = e.renderUserMentionItem, S = e.scrollToMessage, v = e.toggleReaction, G = e.setQuoteMessage, w = e.onQuoteMessageClick, y = e.onReplyInThreadClick, f = e.sendUserMessage, H = e.updateUserMessage, I = e.resendMessage, _ = e.deleteMessage, oe = e.renderFileViewer, ie = e.renderRemoveMessageModal, le = e.setAnimatedMessageId, ce = e.animatedMessageId, ne = e.onMessageAnimated, L = e.usedInLegacy, ee = L === void 0 ? !0 : L, C = sa(), O = C.dateLocale, de = C.stringSet, $ = jn(), Ye = $.config, ve = Ye.userId, Qe = Ye.isOnline, A = Ye.isMentionEnabled, He = Ye.userMention, pe = Ye.logger, me = (He == null ? void 0 : He.maxMentionCount) || UY, Be = (He == null ? void 0 : He.maxSuggestionCount) || NY, ye = We(!1), qe = ye[0], xe = ye[1], fe = We(!1), dt = fe[0], De = fe[1], tt = We(!1), Xe = tt[0], Ge = tt[1], ut = We(!1), Vt = ut[0], yt = ut[1], ze = We(""), qt = ze[0], Ht = ze[1], $t = We([]), nn = $t[0], kt = $t[1], Ut = We([]), _e = Ut[0], ke = Ut[1], ae = We(null), Nt = ae[0], rt = ae[1], it = We(null), Tt = it[0], Qt = it[1], Nn = We([]), Et = Nn[0], dn = Nn[1], Fn = Mt(null), gt = Mt(null), en = Qe && A && qt.length > 0 && !bR(Z) && !Go(Z), Ct = kY({ ref: Fn }, { logger: pe }), jt = (Ct == null ? void 0 : Ct.length) < me;
   Ke(function() {
     kt(nn.filter(function(be) {
       var mt = be.userId, Jt = _e.indexOf(mt);
@@ -37892,7 +37892,7 @@ var eC = 300, iQ = function(e) {
         disabled: !Qe,
         chainTop: N,
         chainBottom: R,
-        isReactionEnabled: p,
+        isReactionEnabled: E,
         replyType: u,
         threadReplySelectType: b,
         nicknamesMap: k,
@@ -38060,7 +38060,7 @@ var rC = function(e) {
   var n = fl().deleteMessage;
   return T.createElement(rC, Ve({}, e, { deleteMessage: n }));
 }, S2 = function(e) {
-  var n, t, l, a = jn().config, d = fl(), r = d.initialized, i = d.currentGroupChannel, c = d.animatedMessageId, V = d.setAnimatedMessageId, s = d.updateMessage, o = d.scrollToMessage, U = d.replyType, N = d.threadReplySelectType, R = d.isReactionEnabled, h = d.toggleReaction, Z = d.emojiContainer, W = d.nicknamesMap, F = d.setQuoteMessage, m = d.resendMessage, p = d.deleteMessage, u = d.renderUserMentionItem, b = d.onReplyInThread, k = d.onQuoteMessageClick, Y = d.onMessageAnimated, S = d.sendMessage, v = d.localMessages, G = e.message;
+  var n, t, l, a = jn().config, d = fl(), r = d.initialized, i = d.currentGroupChannel, c = d.animatedMessageId, V = d.setAnimatedMessageId, s = d.updateMessage, o = d.scrollToMessage, U = d.replyType, N = d.threadReplySelectType, R = d.isReactionEnabled, h = d.toggleReaction, Z = d.emojiContainer, W = d.nicknamesMap, F = d.setQuoteMessage, m = d.resendMessage, E = d.deleteMessage, u = d.renderUserMentionItem, b = d.onReplyInThread, k = d.onQuoteMessageClick, Y = d.onMessageAnimated, S = d.sendMessage, v = d.localMessages, G = e.message;
   return T.createElement(tC, Ve({}, e, { channel: i, emojiContainer: Z, editInputDisabled: !r || Jg(i) || vg(i) || !a.isOnline, shouldRenderSuggestedReplies: ((n = a == null ? void 0 : a.groupChannel) === null || n === void 0 ? void 0 : n.enableSuggestedReplies) && (((t = a == null ? void 0 : a.groupChannel) === null || t === void 0 ? void 0 : t.showSuggestedRepliesFor) === "all_messages" ? !0 : G.messageId === ((l = i == null ? void 0 : i.lastMessage) === null || l === void 0 ? void 0 : l.messageId)) && (v == null ? void 0 : v.length) === 0 && wW(G).length > 0, isReactionEnabled: R, replyType: U, threadReplySelectType: N, nicknamesMap: W, renderUserMentionItem: u, scrollToMessage: o, toggleReaction: h, setQuoteMessage: F, onQuoteMessageClick: k, onReplyInThreadClick: b, sendUserMessage: function(w) {
     S({
       message: w.message,
@@ -38074,7 +38074,7 @@ var rC = function(e) {
       mentionedUsers: y.mentionedUsers,
       mentionTemplate: y.mentionedMessageTemplate
     });
-  }, resendMessage: m, deleteMessage: p, animatedMessageId: c, setAnimatedMessageId: V, onMessageAnimated: Y, renderFileViewer: function(w) {
+  }, resendMessage: m, deleteMessage: E, animatedMessageId: c, setAnimatedMessageId: V, onMessageAnimated: Y, renderFileViewer: function(w) {
     return T.createElement(aC, Ve({}, w));
   }, renderRemoveMessageModal: function(w) {
     return T.createElement(iC, Ve({}, w));
@@ -38248,7 +38248,7 @@ var mC = function(e, n, t, l, a) {
   var l, a;
   return e && n && e.messageType && e.messageType !== "admin" && n.messageType && (n == null ? void 0 : n.messageType) !== "admin" && "sender" in e && "sender" in n && e.createdAt && n.createdAt && e.sender.userId && n.sender.userId ? (e == null ? void 0 : e.sendingStatus) === (n == null ? void 0 : n.sendingStatus) && ((l = e == null ? void 0 : e.sender) === null || l === void 0 ? void 0 : l.userId) === ((a = n == null ? void 0 : n.sender) === null || a === void 0 ? void 0 : a.userId) && b2(e) === b2(n) && (t ? sp(t, e) === sp(t, n) : !0) : !1;
 }, Y2 = function(e) {
-  var n = e.allMessages, t = n === void 0 ? [] : n, l = e.isMessageGroupingEnabled, a = l === void 0 ? !0 : l, d = e.currentIndex, r = d === void 0 ? 0 : d, i = e.currentMessage, c = i === void 0 ? null : i, V = e.currentChannel, s = V === void 0 ? null : V, o = e.replyType, U = o === void 0 ? "" : o, N = t[r - 1], R = t[r + 1], h = a ? mC(N, c, R, s, U) : [!1, !1], Z = h[0], W = h[1], F = N == null ? void 0 : N.createdAt, m = c.createdAt, p = "sendingStatus" in c && c.sendingStatus !== "succeeded", u = p ? !1 : !(F && c1(m, F));
+  var n = e.allMessages, t = n === void 0 ? [] : n, l = e.isMessageGroupingEnabled, a = l === void 0 ? !0 : l, d = e.currentIndex, r = d === void 0 ? 0 : d, i = e.currentMessage, c = i === void 0 ? null : i, V = e.currentChannel, s = V === void 0 ? null : V, o = e.replyType, U = o === void 0 ? "" : o, N = t[r - 1], R = t[r + 1], h = a ? mC(N, c, R, s, U) : [!1, !1], Z = h[0], W = h[1], F = N == null ? void 0 : N.createdAt, m = c.createdAt, E = "sendingStatus" in c && c.sendingStatus !== "succeeded", u = E ? !1 : !(F && c1(m, F));
   return {
     chainTop: Z,
     chainBottom: W,
@@ -38285,7 +38285,7 @@ var EC = 50, SC = function(e) {
     return T.createElement(iV, { className: "sendbird-conversation__no-messages", type: Pn.NO_MESSAGES });
   } : R, Z = e.renderFrozenNotification, W = Z === void 0 ? function() {
     return T.createElement(cC, { className: "sendbird-conversation__messages__notification" });
-  } : Z, F = fl(), m = F.allMessages, p = F.localMessages, u = F.hasMorePrev, b = F.hasMoreNext, k = F.setInitialTimeStamp, Y = F.setAnimatedMessageId, S = F.setHighLightedMessageId, v = F.isMessageGroupingEnabled, G = F.scrollRef, w = F.onScrollCallback, y = F.onScrollDownCallback, f = F.messagesDispatcher, H = F.messageActionTypes, I = F.currentGroupChannel, _ = F.disableMarkAsRead, oe = F.filterMessageList, ie = F.replyType, le = F.loading, ce = F.isScrolled, ne = F.unreadSince, L = F.unreadSinceDate, ee = F.typingMembers, C = jn(), O = typeof oe == "function" ? m.filter(oe) : m, de = C.config.markAsReadScheduler, $ = We(!1), Ye = $[0], ve = $[1];
+  } : Z, F = fl(), m = F.allMessages, E = F.localMessages, u = F.hasMorePrev, b = F.hasMoreNext, k = F.setInitialTimeStamp, Y = F.setAnimatedMessageId, S = F.setHighLightedMessageId, v = F.isMessageGroupingEnabled, G = F.scrollRef, w = F.onScrollCallback, y = F.onScrollDownCallback, f = F.messagesDispatcher, H = F.messageActionTypes, I = F.currentGroupChannel, _ = F.disableMarkAsRead, oe = F.filterMessageList, ie = F.replyType, le = F.loading, ce = F.isScrolled, ne = F.unreadSince, L = F.unreadSinceDate, ee = F.typingMembers, C = jn(), O = typeof oe == "function" ? m.filter(oe) : m, de = C.config.markAsReadScheduler, $ = We(!1), Ye = $[0], ve = $[1];
   MC();
   var Qe = function(xe) {
     var fe = G == null ? void 0 : G.current;
@@ -38367,7 +38367,7 @@ var EC = 50, SC = function(e) {
               })
             );
           }),
-          p.map(function(xe, fe) {
+          E.map(function(xe, fe) {
             var dt, De, tt = Y2({
               allMessages: O,
               replyType: ie,
@@ -38492,7 +38492,7 @@ var $i = {
     c == null || c.stop(), Y();
   }, [c]), F = At(function() {
     W(), U(null);
-  }, [c]), m = We(0), p = m[0], u = m[1], b = null;
+  }, [c]), m = We(0), E = m[0], u = m[1], b = null;
   function k() {
     Y(), u(0);
     var S = setInterval(function() {
@@ -38507,13 +38507,13 @@ var $i = {
     clearInterval(b), b = null;
   }
   return Ke(function() {
-    p > i && W();
-  }, [p, i, W]), {
+    E > i && W();
+  }, [E, i, W]), {
     start: Z,
     stop: W,
     cancel: F,
     recordingStatus: R,
-    recordingTime: p,
+    recordingTime: E,
     recordedFile: o,
     recordingLimit: i
   };
@@ -38550,7 +38550,7 @@ var $i = {
     return r === $n.READY_TO_RECORD || r === $n.RECORDING ? t > d : !1;
   }, [r, t, d]), m = an(function() {
     return r === $n.READY_TO_PLAY || r === $n.PLAYING;
-  }, [r]), p = sa().stringSet, u = function() {
+  }, [r]), E = sa().stringSet, u = function() {
     var Y = Date.now();
     Y - R > YZ && (i(), h(Y));
   }, b = At(function() {
@@ -38580,7 +38580,7 @@ var $i = {
       (s == null ? void 0 : s()) || T.createElement(
         LY,
         { className: "sendbird-voice-message-input__controler__cancel", onClick: u, disableUnderline: !0 },
-        T.createElement(Te, { type: se.BUTTON_1, color: re.PRIMARY }, p.BUTTON__CANCEL)
+        T.createElement(Te, { type: se.BUTTON_1, color: re.PRIMARY }, E.BUTTON__CANCEL)
       ),
       (o == null ? void 0 : o(r)) || T.createElement(
         "div",
@@ -38663,7 +38663,7 @@ var $i = {
     });
   });
 }, GC = function(e) {
-  var n, t = e.channel, l = e.onCancelClick, a = e.onSubmitClick, d = Mt(xr()).current, r = We(null), i = r[0], c = r[1], V = We($n.READY_TO_RECORD), s = V[0], o = V[1], U = We(!1), N = U[0], R = U[1], h = We(!1), Z = h[0], W = h[1], F = We(!1), m = F[0], p = F[1], u = sa().stringSet, b = jn().config, k = ((n = b == null ? void 0 : b.voiceRecord) === null || n === void 0 ? void 0 : n.minRecordingTime) || IW, Y = QC({
+  var n, t = e.channel, l = e.onCancelClick, a = e.onSubmitClick, d = Mt(xr()).current, r = We(null), i = r[0], c = r[1], V = We($n.READY_TO_RECORD), s = V[0], o = V[1], U = We(!1), N = U[0], R = U[1], h = We(!1), Z = h[0], W = h[1], F = We(!1), m = F[0], E = F[1], u = sa().stringSet, b = jn().config, k = ((n = b == null ? void 0 : b.voiceRecord) === null || n === void 0 ? void 0 : n.minRecordingTime) || IW, Y = QC({
     onRecordingStarted: function() {
       o($n.RECORDING);
     },
@@ -38687,7 +38687,7 @@ var $i = {
     T.createElement(vC, { currentValue: y === $i.COMPLETED ? oe : w, maximumValue: y === $i.COMPLETED ? w : f, currentType: s, onCancelClick: function() {
       l(), G(), le();
     }, onSubmitClick: function() {
-      Z ? (p(!0), o($n.READY_TO_RECORD)) : (v(), _(), R(!0));
+      Z ? (E(!0), o($n.READY_TO_RECORD)) : (v(), _(), R(!0));
     }, onControlClick: function(ce) {
       switch (ce) {
         case $n.READY_TO_RECORD: {
@@ -38695,7 +38695,7 @@ var $i = {
           break;
         }
         case $n.RECORDING: {
-          w >= k && !Z ? v() : Z ? (G(), p(!0), o($n.READY_TO_RECORD)) : (G(), o($n.READY_TO_RECORD));
+          w >= k && !Z ? v() : Z ? (G(), E(!0), o($n.READY_TO_RECORD)) : (G(), o($n.READY_TO_RECORD));
           break;
         }
         case $n.READY_TO_PLAY: {
@@ -38711,13 +38711,13 @@ var $i = {
     m && T.createElement(
       Ic,
       { className: "sendbird-voice-message-input-wrapper-alert", titleText: Go(t) ? u.MODAL__VOICE_MESSAGE_INPUT_DISABLED__TITLE_MUTED : u.MODAL__VOICE_MESSAGE_INPUT_DISABLED__TITLE_FROZEN, hideFooter: !0, isCloseOnClickOutside: !0, onCancel: function() {
-        p(!1), l();
+        E(!1), l();
       } },
       T.createElement(
         "div",
         { className: "sendbird-voice-message-input-wrapper-alert__body" },
         T.createElement(Ql, { className: "sendbird-voice-message-input-wrapper-alert__body__ok-button", type: nl.PRIMARY, size: Si.BIG, onClick: function() {
-          p(!1), l();
+          E(!1), l();
         } }, u.BUTTON__OK)
       )
     )
@@ -38738,22 +38738,22 @@ var $i = {
                 titleText: r.FILE_UPLOAD_NOTIFICATION__COUNT_LIMIT.replace("%d", "".concat(V)),
                 hideFooter: !0
               },
-              childElement: function(p) {
-                var u = p.closeModal;
+              childElement: function(E) {
+                var u = E.closeModal;
                 return T.createElement(MF, { type: nl.PRIMARY, submitText: r.BUTTON__OK, hideCancelButton: !0, onCancel: u, onSubmit: u });
               }
             }), [
               2
               /*return*/
-            ]) : U.some(function(p) {
-              return p.size > V;
+            ]) : U.some(function(E) {
+              return E.size > V;
             }) ? (d.info("Channel|useHandleUploadFiles: Cannot upload file size exceeding ".concat(V)), N = 1024 * 1024, o({
               modalProps: {
                 titleText: r.FILE_UPLOAD_NOTIFICATION__SIZE_LIMIT.replace("%d", "".concat(Math.floor(V / N))),
                 hideFooter: !0
               },
-              childElement: function(p) {
-                var u = p.closeModal;
+              childElement: function(E) {
+                var u = E.closeModal;
                 return T.createElement(MF, { type: nl.PRIMARY, submitText: r.BUTTON__OK, hideCancelButton: !0, onCancel: u, onSubmit: u });
               }
             }), [
@@ -38765,20 +38765,20 @@ var $i = {
               logger: d
             })];
           case 1:
-            return R = m.sent().compressedFiles, h = R, h.length === 1 ? (d.info("Channel|useHandleUploadFiles: sending one file."), Z = h[0], [2, t({ file: Z, parentMessageId: a == null ? void 0 : a.messageId })]) : h.length > 1 ? (d.info("Channel|useHandleUploadFiles: sending multiple files."), W = [], F = [], h.forEach(function(p) {
-              OV(p.type) ? W.push(p) : F.push(p);
-            }), [2, F.reduce(function(p, u) {
-              return p.then(function() {
+            return R = m.sent().compressedFiles, h = R, h.length === 1 ? (d.info("Channel|useHandleUploadFiles: sending one file."), Z = h[0], [2, t({ file: Z, parentMessageId: a == null ? void 0 : a.messageId })]) : h.length > 1 ? (d.info("Channel|useHandleUploadFiles: sending multiple files."), W = [], F = [], h.forEach(function(E) {
+              OV(E.type) ? W.push(E) : F.push(E);
+            }), [2, F.reduce(function(E, u) {
+              return E.then(function() {
                 return t({ file: u, parentMessageId: a == null ? void 0 : a.messageId });
               });
             }, function() {
               return W.length === 0 ? Promise.resolve() : W.length === 1 ? t({ file: W[0] }) : l({
-                fileInfoList: W.map(function(p) {
+                fileInfoList: W.map(function(E) {
                   return {
-                    file: p,
-                    fileName: p.name,
-                    fileSize: p.size,
-                    mimeType: p.type
+                    file: E,
+                    fileName: E.name,
+                    fileSize: E.size,
+                    mimeType: E.type
                   };
                 }),
                 parentMessageId: a == null ? void 0 : a.messageId
@@ -38792,7 +38792,7 @@ var $i = {
     });
   }, [t, l, a]);
 }, BC = T.forwardRef(function(e, n) {
-  var t = e.currentChannel, l = e.isMultipleFilesMessageEnabled, a = e.loading, d = e.quoteMessage, r = e.setQuoteMessage, i = e.messageInputRef, c = e.sendUserMessage, V = e.sendFileMessage, s = e.sendVoiceMessage, o = e.sendMultipleFilesMessage, U = e.renderUserMentionItem, N = e.renderFileUploadIcon, R = e.renderVoiceMessageIcon, h = e.renderSendMessageIcon, Z = e.acceptableMimeTypes, W = e.disabled, F = sa().stringSet, m = ir().isMobile, p = jn(), u = p.stores, b = p.config, k = b.isOnline, Y = b.isMentionEnabled, S = b.isVoiceMessageEnabled, v = b.isMultipleFilesMessageEnabled, G = b.userMention, w = b.logger, y = u.sdkStore.sdk, f = G.maxMentionCount, H = G.maxSuggestionCount, I = t == null ? void 0 : t.isBroadcast, _ = (t == null ? void 0 : t.myRole) === "operator", oe = We(""), ie = oe[0], le = oe[1], ce = We([]), ne = ce[0], L = ce[1], ee = We([]), C = ee[0], O = ee[1], de = We(null), $ = de[0], Ye = de[1], ve = We([]), Qe = ve[0], A = ve[1], He = We(null), pe = He[0], me = He[1], Be = We(!1), ye = Be[0], qe = Be[1], xe = a || !t || bR(t) || Go(t) || !k && !(y != null && y.isCacheEnabled) || W, fe = !xe && Y && ie.length > 0 && !I, dt = l ?? v, De = kY({ ref: n || i }, { logger: w }), tt = (De == null ? void 0 : De.length) < f;
+  var t = e.currentChannel, l = e.isMultipleFilesMessageEnabled, a = e.loading, d = e.quoteMessage, r = e.setQuoteMessage, i = e.messageInputRef, c = e.sendUserMessage, V = e.sendFileMessage, s = e.sendVoiceMessage, o = e.sendMultipleFilesMessage, U = e.renderUserMentionItem, N = e.renderFileUploadIcon, R = e.renderVoiceMessageIcon, h = e.renderSendMessageIcon, Z = e.acceptableMimeTypes, W = e.disabled, F = sa().stringSet, m = ir().isMobile, E = jn(), u = E.stores, b = E.config, k = b.isOnline, Y = b.isMentionEnabled, S = b.isVoiceMessageEnabled, v = b.isMultipleFilesMessageEnabled, G = b.userMention, w = b.logger, y = u.sdkStore.sdk, f = G.maxMentionCount, H = G.maxSuggestionCount, I = t == null ? void 0 : t.isBroadcast, _ = (t == null ? void 0 : t.myRole) === "operator", oe = We(""), ie = oe[0], le = oe[1], ce = We([]), ne = ce[0], L = ce[1], ee = We([]), C = ee[0], O = ee[1], de = We(null), $ = de[0], Ye = de[1], ve = We([]), Qe = ve[0], A = ve[1], He = We(null), pe = He[0], me = He[1], Be = We(!1), ye = Be[0], qe = Be[1], xe = a || !t || bR(t) || Go(t) || !k && !(y != null && y.isCacheEnabled) || W, fe = !xe && Y && ie.length > 0 && !I, dt = l ?? v, De = kY({ ref: n || i }, { logger: w }), tt = (De == null ? void 0 : De.length) < f;
   Ke(function() {
     le(""), L([]), O([]), Ye(null), A([]), me(null), qe(!1);
   }, [t == null ? void 0 : t.url]), Ke(function() {
@@ -39675,10 +39675,10 @@ function uh(e, n, t) {
       if (Je.endsWith(h, "{}"))
         h = l ? h : h.slice(0, -2), R = JSON.stringify(R);
       else if (Je.isArray(R) && t6(R) || (Je.isFileList(R) || Je.endsWith(h, "[]")) && (W = Je.toArray(R)))
-        return h = bQ(h), W.forEach(function(m, p) {
+        return h = bQ(h), W.forEach(function(m, E) {
           !(Je.isUndefined(m) || m === null) && n.append(
             // eslint-disable-next-line no-nested-ternary
-            r === !0 ? y2([h], p, d) : r === null ? h : h + "[]",
+            r === !0 ? y2([h], E, d) : r === null ? h : h + "[]",
             V(m)
           );
         }), !1;
@@ -41096,7 +41096,7 @@ function r_({
   setShowModal: t
 }) {
   var He, pe;
-  const { inputValue: l, botId: a, userId: d } = In(), [r, i] = We(""), [c, V] = We(null), [s, o] = We(null), U = Mt(null), [N, R] = We(!1), [h, Z] = We((l == null ? void 0 : l.value) ?? ""), { botCategory: W } = In(), [F, m] = We(!1), [p, u] = We(!1), [b, k] = We(!1), [Y, S] = We(""), [v, G] = We(!1), w = {
+  const { inputValue: l, botId: a, userId: d } = In(), [r, i] = We(""), [c, V] = We(null), [s, o] = We(null), U = Mt(null), [N, R] = We(!1), [h, Z] = We((l == null ? void 0 : l.value) ?? ""), { botCategory: W } = In(), [F, m] = We(!1), [E, u] = We(!1), [b, k] = We(!1), [Y, S] = We(""), [v, G] = We(!1), w = {
     "Content-Type": "application/json"
   }, { allMessages: y } = fl(), f = [
     {
@@ -41265,13 +41265,13 @@ function r_({
     !me.shiftKey && me.charCode === 13 && h != null && (me.preventDefault(), L());
   }
   function O() {
-    u(!p), V(null), i("");
+    u(!E), V(null), i("");
   }
   function de() {
     Z(Y), m(!0);
   }
   function $() {
-    u(!p), i(""), Z((c == null ? void 0 : c.reply_messages[0]) ?? ""), m(!0), V(null);
+    u(!E), i(""), Z((c == null ? void 0 : c.reply_messages[0]) ?? ""), m(!0), V(null);
   }
   function Ye() {
     V(null);
@@ -41359,7 +41359,7 @@ function r_({
           }
         }
       )
-    ] }) : p ? /* @__PURE__ */ Q.jsxs(L2, { children: [
+    ] }) : E ? /* @__PURE__ */ Q.jsxs(L2, { children: [
       /* @__PURE__ */ Q.jsxs(
         I2,
         {
@@ -41583,7 +41583,7 @@ function r_({
         ] })
       ] })
     ] }),
-    !p && /* @__PURE__ */ Q.jsxs(g6, { children: [
+    !E && /* @__PURE__ */ Q.jsxs(g6, { children: [
       /* @__PURE__ */ Q.jsx(
         I6,
         {
@@ -42672,8 +42672,8 @@ function TP(e, n, t, l) {
     for (const F in W) {
       let m = W[F];
       if (Array.isArray(m)) {
-        const p = s ? m.length - 1 : 0;
-        m = m[p];
+        const E = s ? m.length - 1 : 0;
+        m = m[E];
       }
       m !== null && (a[F] = m);
     }
@@ -43426,32 +43426,32 @@ function D1({ keyframes: e, restDelta: n, restSpeed: t, ...l }) {
   let F;
   if (R < 1) {
     const m = tW(Z, R);
-    F = (p) => {
-      const u = Math.exp(-R * Z * p);
-      return d - u * ((N + R * Z * h) / m * Math.sin(m * p) + h * Math.cos(m * p));
+    F = (E) => {
+      const u = Math.exp(-R * Z * E);
+      return d - u * ((N + R * Z * h) / m * Math.sin(m * E) + h * Math.cos(m * E));
     };
   } else if (R === 1)
     F = (m) => d - Math.exp(-Z * m) * (h + (N + Z * h) * m);
   else {
     const m = Z * Math.sqrt(R * R - 1);
-    F = (p) => {
-      const u = Math.exp(-R * Z * p), b = Math.min(m * p, 300);
+    F = (E) => {
+      const u = Math.exp(-R * Z * E), b = Math.min(m * E, 300);
       return d - u * ((N + R * Z * h) * Math.sinh(b) + m * h * Math.cosh(b)) / m;
     };
   }
   return {
     calculatedDuration: U && s || null,
     next: (m) => {
-      const p = F(m);
+      const E = F(m);
       if (U)
         r.done = m >= s;
       else {
         let u = N;
-        m !== 0 && (R < 1 ? u = GJ(F, m, p) : u = 0);
-        const b = Math.abs(u) <= t, k = Math.abs(d - p) <= n;
+        m !== 0 && (R < 1 ? u = GJ(F, m, E) : u = 0);
+        const b = Math.abs(u) <= t, k = Math.abs(d - E) <= n;
         r.done = b && k;
       }
-      return r.value = r.done ? d : p, r;
+      return r.value = r.done ? d : E, r;
     }
   };
 }
@@ -43463,7 +43463,7 @@ function FE({ keyframes: e, velocity: n = 0, power: t = 0.8, timeConstant: l = 3
   let h = t * n;
   const Z = o + h, W = r === void 0 ? Z : r(Z);
   W !== Z && (h = W - o);
-  const F = (Y) => -h * Math.exp(-Y / l), m = (Y) => W + F(Y), p = (Y) => {
+  const F = (Y) => -h * Math.exp(-Y / l), m = (Y) => W + F(Y), E = (Y) => {
     const S = F(Y), v = m(Y);
     U.done = Math.abs(S) <= V, U.value = U.done ? W : v;
   };
@@ -43482,7 +43482,7 @@ function FE({ keyframes: e, velocity: n = 0, power: t = 0.8, timeConstant: l = 3
     calculatedDuration: null,
     next: (Y) => {
       let S = !1;
-      return !b && u === void 0 && (S = !0, p(Y), k(Y)), u !== void 0 && Y > u ? b.next(Y - u) : (!S && p(Y), U);
+      return !b && u === void 0 && (S = !0, E(Y), k(Y)), u !== void 0 && Y > u ? b.next(Y - u) : (!S && E(Y), U);
     }
   };
 }
@@ -43523,8 +43523,8 @@ function XR({ autoplay: e = !0, delay: n = 0, driver: t = WA, keyframes: l, type
   W();
   let F;
   const m = mA[a] || DR;
-  let p;
-  m !== DR && typeof l[0] != "number" && (process.env.NODE_ENV !== "production" && ua(l.length === 2, `Only two keyframes currently supported with spring and inertia animations. Trying to animate ${l}`), p = B1([0, 100], l, {
+  let E;
+  m !== DR && typeof l[0] != "number" && (process.env.NODE_ENV !== "production" && ua(l.length === 2, `Only two keyframes currently supported with spring and inertia animations. Trying to animate ${l}`), E = B1([0, 100], l, {
     clamp: !1
   }), l = [0, 100]);
   const u = m({ ...U, keyframes: l });
@@ -43553,7 +43553,7 @@ function XR({ autoplay: e = !0, delay: n = 0, driver: t = WA, keyframes: l, type
       !Qe && Ye >= 1 && (Qe = 1), Qe === 1 && ve--, ve = Math.min(ve, d + 1), !!(ve % 2) && (i === "reverse" ? (Qe = 1 - Qe, r && (Qe -= r / w)) : i === "mirror" && (C = b)), ee = ki(0, 1, Qe) * w;
     }
     const O = L ? { done: !1, value: l[0] } : C.next(ee);
-    p && (O.value = p(O.value));
+    E && (O.value = E(O.value));
     let { done: de } = O;
     !L && G !== null && (de = N >= 0 ? f >= y : f <= 0);
     const $ = Y === null && (k === "finished" || k === "running" && de);
@@ -43640,11 +43640,11 @@ function SA(e, n, { onUpdate: t, onComplete: l, ...a }) {
       repeat: 0,
       delay: 0
     });
-    let p = { done: !1, value: o[0] };
+    let E = { done: !1, value: o[0] };
     const u = [];
     let b = 0;
-    for (; !p.done && b < MA; )
-      p = m.sample(b), u.push(p.value), b += TN;
+    for (; !E.done && b < MA; )
+      E = m.sample(b), u.push(E.value), b += TN;
     R = void 0, o = u, U = b - TN, N = "linear";
   }
   const h = jP(e.owner.current, n, o, {
@@ -43668,8 +43668,8 @@ function SA(e, n, { onUpdate: t, onComplete: l, ...a }) {
   return h.onfinish = () => {
     V || (e.set(HP(o, a)), l && l(), W());
   }, {
-    then(m, p) {
-      return c.then(m, p);
+    then(m, E) {
+      return c.then(m, E);
     },
     attachTimeline(m) {
       return h.timeline = m, h.onfinish = null, ll;
@@ -43698,11 +43698,11 @@ function SA(e, n, { onUpdate: t, onComplete: l, ...a }) {
         return;
       const { currentTime: m } = h;
       if (m) {
-        const p = XR({
+        const E = XR({
           ...a,
           autoplay: !1
         });
-        e.setWithVelocity(p.sample(m - TN).value, p.sample(m).value, TN);
+        e.setWithVelocity(E.sample(m - TN).value, E.sample(m).value, TN);
       }
       W();
     },
@@ -44248,18 +44248,18 @@ function a8(e) {
     const s = e.getProps(), o = e.getVariantContext(!0) || {}, U = [], N = /* @__PURE__ */ new Set();
     let R = {}, h = 1 / 0;
     for (let W = 0; W < n8; W++) {
-      const F = t8[W], m = t[F], p = s[F] !== void 0 ? s[F] : o[F], u = Oo(p), b = F === V ? m.isActive : null;
+      const F = t8[W], m = t[F], E = s[F] !== void 0 ? s[F] : o[F], u = Oo(E), b = F === V ? m.isActive : null;
       b === !1 && (h = W);
-      let k = p === o[F] && p !== s[F] && u;
+      let k = E === o[F] && E !== s[F] && u;
       if (k && l && e.manuallyAnimateOnMount && (k = !1), m.protectedKeys = { ...R }, // If it isn't active and hasn't *just* been set as inactive
       !m.isActive && b === null || // If we didn't and don't have any defined prop for this animation type
-      !p && !m.prevProp || // Or if the prop doesn't define an animation
-      Yh(p) || typeof p == "boolean")
+      !E && !m.prevProp || // Or if the prop doesn't define an animation
+      Yh(E) || typeof E == "boolean")
         continue;
-      let S = d8(m.prevProp, p) || // If we're making this variant active, we want to always make it active
+      let S = d8(m.prevProp, E) || // If we're making this variant active, we want to always make it active
       F === V && m.isActive && !k && u || // If we removed a higher-priority variant (i is in reverse order)
       W > h && u, v = !1;
-      const G = Array.isArray(p) ? p : [p];
+      const G = Array.isArray(E) ? E : [E];
       let w = G.reduce(a, {});
       b === !1 && (w = {});
       const { prevResolvedValues: y = {} } = m, f = {
@@ -44275,7 +44275,7 @@ function a8(e) {
         let ie = !1;
         yR(_) && yR(oe) ? ie = !VJ(_, oe) : ie = _ !== oe, ie ? _ !== void 0 ? H(I) : N.add(I) : _ !== void 0 && N.has(I) ? H(I) : m.protectedKeys[I] = !0;
       }
-      m.prevProp = p, m.prevResolvedValues = w, m.isActive && (R = { ...R, ...w }), l && e.blockInitialAnimation && (S = !1), S && (!k || v) && U.push(...G.map((I) => ({
+      m.prevProp = E, m.prevResolvedValues = w, m.isActive && (R = { ...R, ...w }), l && e.blockInitialAnimation && (S = !1), S && (!k || v) && U.push(...G.map((I) => ({
         animation: I,
         options: { type: F, ...c }
       })));
@@ -45232,12 +45232,12 @@ function ev({ attachResizeListener: e, defaultParent: n, measureScroll: t, check
         const h = this.options.transition || s.getDefaultTransition() || sq, { onLayoutAnimationStart: Z, onLayoutAnimationComplete: W } = s.getProps(), F = !this.targetLayout || !qJ(this.targetLayout, R) || N, m = !U && N;
         if (this.options.layoutRoot || this.resumeFrom && this.resumeFrom.instance || m || U && (F || !this.currentAnimation)) {
           this.resumeFrom && (this.resumingFrom = this.resumeFrom, this.resumingFrom.resumingFrom = void 0), this.setAnimationOrigin(o, m);
-          const p = {
+          const E = {
             ...O1(h, "layout"),
             onPlay: Z,
             onComplete: W
           };
-          (s.shouldReduceMotion || this.options.layoutRoot) && (p.delay = 0, p.type = !1), this.startAnimation(p);
+          (s.shouldReduceMotion || this.options.layoutRoot) && (E.delay = 0, E.type = !1), this.startAnimation(E);
         } else
           U || PE(this), this.isLead() && this.options.onExitComplete && this.options.onExitComplete();
         this.targetLayout = R;
@@ -45487,8 +45487,8 @@ function ev({ attachResizeListener: e, defaultParent: n, measureScroll: t, check
       const U = Rl(), N = c ? c.source : void 0, R = this.layout ? this.layout.source : void 0, h = N !== R, Z = this.getStack(), W = !Z || Z.members.length <= 1, F = !!(h && !W && this.options.crossfade === !0 && !this.path.some(cq));
       this.animationProgress = 0;
       let m;
-      this.mixTargetDelta = (p) => {
-        const u = p / 1e3;
+      this.mixTargetDelta = (E) => {
+        const u = E / 1e3;
         AE(o.x, r.x, u), AE(o.y, r.y, u), this.setTargetDelta(o), this.relativeTarget && this.relativeTargetOrigin && this.layout && this.relativeParent && this.relativeParent.layout && (Uo(U, this.layout.layoutBox, this.relativeParent.layout.layoutBox), Vq(this.relativeTarget, this.relativeTargetOrigin, U, u), m && w8(this.relativeTarget, m) && (this.isProjectionDirty = !1), m || (m = Rl()), La(m, this.relativeTarget)), h && (this.animationValues = s, D8(s, V, this.latestValues, u, F, W)), this.root.scheduleUpdateProjection(), this.scheduleRender(), this.animationProgress = u;
       }, this.mixTargetDelta(this.options.layoutRoot ? 1e3 : 0);
     }
@@ -45606,8 +45606,8 @@ function ev({ attachResizeListener: e, defaultParent: n, measureScroll: t, check
         const { correct: Z, applyTo: W } = xR[h], F = V.transform === "none" ? U[h] : Z(U[h], o);
         if (W) {
           const m = W.length;
-          for (let p = 0; p < m; p++)
-            V[W[p]] = F;
+          for (let E = 0; E < m; E++)
+            V[W[E]] = F;
         } else
           V[h] = F;
       }
@@ -46392,8 +46392,8 @@ const sv = ({ children: e, custom: n, initial: t = !0, onExitComplete: l, exitBe
   return r === "wait" && o.size && (s = []), o.forEach((F, m) => {
     if (Z.indexOf(m) !== -1)
       return;
-    const p = N.get(m);
-    if (!p)
+    const E = N.get(m);
+    if (!E)
       return;
     const u = h.indexOf(m);
     let b = F;
@@ -46414,7 +46414,7 @@ const sv = ({ children: e, custom: n, initial: t = !0, onExitComplete: l, exitBe
           i(), l && l();
         }
       };
-      b = z.createElement(NT, { key: gi(p), isPresent: !1, onExitComplete: k, custom: n, presenceAffectsLayout: d, mode: r }, p), o.set(m, b);
+      b = z.createElement(NT, { key: gi(E), isPresent: !1, onExitComplete: k, custom: n, presenceAffectsLayout: d, mode: r }, E), o.set(m, b);
     }
     s.splice(u, 0, b);
   }), s = s.map((F) => {
@@ -46637,9 +46637,9 @@ function l7(e, { defaultTransition: n = {}, ...t } = {}, l) {
     let [R, h, Z = {}] = N;
     Z.at !== void 0 && (s = rS(s, Z.at, V, c));
     let W = 0;
-    const F = (m, p, u, b = 0, k = 0) => {
-      const Y = a7(m), { delay: S = 0, times: v = zJ(Y), type: G = "keyframes", ...w } = p;
-      let { ease: y = n.ease || "easeOut", duration: f } = p;
+    const F = (m, E, u, b = 0, k = 0) => {
+      const Y = a7(m), { delay: S = 0, times: v = zJ(Y), type: G = "keyframes", ...w } = E;
+      let { ease: y = n.ease || "easeOut", duration: f } = E;
       const H = typeof S == "function" ? S(b, k) : S, I = Y.length;
       if (I <= 2 && G === "spring") {
         let le = 100;
@@ -46662,12 +46662,12 @@ function l7(e, { defaultTransition: n = {}, ...t } = {}, l) {
       const m = iS(R, r);
       F(h, Z, VS("default", m));
     } else {
-      const m = Uv(R, l, i), p = m.length;
-      for (let u = 0; u < p; u++) {
+      const m = Uv(R, l, i), E = m.length;
+      for (let u = 0; u < E; u++) {
         h = h, Z = Z;
         const b = m[u], k = iS(b, r);
         for (const Y in h)
-          F(h[Y], d7(Z, Y), VS(Y, k), u, p);
+          F(h[Y], d7(Z, Y), VS(Y, k), u, E);
       }
     }
     V = s, s += W;
@@ -46677,8 +46677,8 @@ function l7(e, { defaultTransition: n = {}, ...t } = {}, l) {
       const h = U[R];
       h.sort(t7);
       const Z = [], W = [], F = [];
-      for (let p = 0; p < h.length; p++) {
-        const { at: u, value: b, easing: k } = h[p];
+      for (let E = 0; E < h.length; E++) {
+        const { at: u, value: b, easing: k } = h[E];
         Z.push(b), W.push(yc(0, o, u)), F.push(k || "easeOut");
       }
       W[0] !== 0 && (W.unshift(0), Z.unshift(Z[0]), F.unshift(n7)), W[W.length - 1] !== 1 && (W.push(1), Z.push(null)), d.has(N) || d.set(N, {
@@ -47089,7 +47089,7 @@ var Mr = {
     overflowY: "auto"
   }
 }, J7 = ["onOpenStart", "onOpenEnd", "onClose", "onCloseStart", "onCloseEnd", "onSnap", "children", "disableScrollLocking", "isOpen", "snapPoints", "rootId", "mountPoint", "style", "detent", "initialSnap", "disableDrag", "prefersReducedMotion", "tweenConfig"], v7 = /* @__PURE__ */ zV(function(e, n) {
-  var t = e.onOpenStart, l = e.onOpenEnd, a = e.onClose, d = e.onCloseStart, r = e.onCloseEnd, i = e.onSnap, c = e.children, V = e.disableScrollLocking, s = V === void 0 ? !1 : V, o = e.isOpen, U = e.snapPoints, N = e.rootId, R = e.mountPoint, h = e.style, Z = e.detent, W = Z === void 0 ? "full-height" : Z, F = e.initialSnap, m = F === void 0 ? 0 : F, p = e.disableDrag, u = p === void 0 ? !1 : p, b = e.prefersReducedMotion, k = b === void 0 ? !1 : b, Y = e.tweenConfig, S = Y === void 0 ? R7 : Y, v = Kc(e, J7), G = Mt(null), w = fo(0), y = M7(), f = Nv(), H = !!(k || f), I = pd({
+  var t = e.onOpenStart, l = e.onOpenEnd, a = e.onClose, d = e.onCloseStart, r = e.onCloseEnd, i = e.onSnap, c = e.children, V = e.disableScrollLocking, s = V === void 0 ? !1 : V, o = e.isOpen, U = e.snapPoints, N = e.rootId, R = e.mountPoint, h = e.style, Z = e.detent, W = Z === void 0 ? "full-height" : Z, F = e.initialSnap, m = F === void 0 ? 0 : F, E = e.disableDrag, u = E === void 0 ? !1 : E, b = e.prefersReducedMotion, k = b === void 0 ? !1 : b, Y = e.tweenConfig, S = Y === void 0 ? R7 : Y, v = Kc(e, J7), G = Mt(null), w = fo(0), y = M7(), f = Nv(), H = !!(k || f), I = pd({
     type: "tween"
   }, H ? h7 : S), _ = fo(0), oe = Yi(_, function(O) {
     return O >= y ? -1 : 9999999;
@@ -47200,7 +47200,7 @@ var Mr = {
   })) : null)));
   return Fv ? C : Qi(C, R ?? document.body);
 }), z7 = ["children", "style", "className"], x7 = /* @__PURE__ */ zV(function(e, n) {
-  var t = e.children, l = e.style, a = l === void 0 ? {} : l, d = e.className, r = d === void 0 ? "" : d, i = Kc(e, z7), c = Dh(), V = c.y, s = c.isOpen, o = c.callbacks, U = c.snapPoints, N = c.initialSnap, R = N === void 0 ? 0 : N, h = c.sheetRef, Z = c.windowHeight, W = c.detent, F = c.animationOptions, m = c.reduceMotion, p = p7(s, o), u = p.handleAnimationComplete, b = U ? U[0] - U[R] : 0, k = U ? U[0] : null, Y = k !== null ? "min(" + k + "px, " + US + ")" : US;
+  var t = e.children, l = e.style, a = l === void 0 ? {} : l, d = e.className, r = d === void 0 ? "" : d, i = Kc(e, z7), c = Dh(), V = c.y, s = c.isOpen, o = c.callbacks, U = c.snapPoints, N = c.initialSnap, R = N === void 0 ? 0 : N, h = c.sheetRef, Z = c.windowHeight, W = c.detent, F = c.animationOptions, m = c.reduceMotion, E = p7(s, o), u = E.handleAnimationComplete, b = U ? U[0] - U[R] : 0, k = U ? U[0] : null, Y = k !== null ? "min(" + k + "px, " + US + ")" : US;
   return la(Cl.div, Object.assign({}, i, {
     ref: C1([h, n]),
     className: "react-modal-sheet-container " + r,
@@ -47285,7 +47285,7 @@ var Mr = {
   function s(R) {
     var h = R.scrollTop, Z = R.scrollHeight, W = R.clientHeight, F = Z > W;
     if (F) {
-      var m = h <= 0, p = Z - h === W, u = l === "top" && m || l === "bottom" && p || l === "both" && (m || p);
+      var m = h <= 0, E = Z - h === W, u = l === "top" && m || l === "bottom" && E || l === "both" && (m || E);
       u ? V.setDragEnabled() : V.setDragDisabled();
     }
   }
@@ -48125,7 +48125,7 @@ const Er = {
     tweenConfig: W = s$,
     ...F
   }, m) => {
-    const p = z.useRef(null), u = fo(0), b = W$(), k = Nv(), Y = !!(Z || k), S = {
+    const E = z.useRef(null), u = fo(0), b = W$(), k = Nv(), Y = !!(Z || k), S = {
       type: "tween",
       ...Y ? o$ : W
     }, v = fo(0), G = Yi(
@@ -48158,7 +48158,7 @@ const Er = {
       if (le.y > N$)
         t();
       else {
-        const ne = p.current.getBoundingClientRect().height, L = v.get();
+        const ne = E.current.getBoundingClientRect().height, L = v.get();
         let ee = 0;
         if (V) {
           const de = V.map(
@@ -48184,7 +48184,7 @@ const Er = {
     }, [c]), z.useImperativeHandle(m, () => ({
       y: v,
       snapTo: (ie) => {
-        const le = p.current;
+        const le = E.current;
         if (V && V[ie] !== void 0 && le !== null) {
           const ce = le.getBoundingClientRect().height, ne = V[ie], L = SS({
             snapTo: ce - ne,
@@ -48203,7 +48203,7 @@ const Er = {
       onDragEnd: H
     }, [h]), _ = {
       y: v,
-      sheetRef: p,
+      sheetRef: E,
       isOpen: c,
       initialSnap: R,
       snapPoints: V,
@@ -49379,7 +49379,7 @@ var Hee = function(n, t) {
 function fee(e) {
   var n, t = e.state, l = e.name, a = e.options, d = t.elements.arrow, r = t.modifiersData.popperOffsets, i = er(t.placement), c = em(i), V = [Fa, sd].indexOf(i) >= 0, s = V ? "height" : "width";
   if (!(!d || !r)) {
-    var o = Hee(a.padding, t), U = $1(d), N = c === "y" ? Ta : Fa, R = c === "y" ? cd : sd, h = t.rects.reference[s] + t.rects.reference[c] - r[c] - t.rects.popper[s], Z = r[c] - t.rects.reference[c], W = SU(d), F = W ? c === "y" ? W.clientHeight || 0 : W.clientWidth || 0 : 0, m = h / 2 - Z / 2, p = o[N], u = F - U[s] - o[R], b = F / 2 - U[s] / 2 + m, k = ho(p, b, u), Y = c;
+    var o = Hee(a.padding, t), U = $1(d), N = c === "y" ? Ta : Fa, R = c === "y" ? cd : sd, h = t.rects.reference[s] + t.rects.reference[c] - r[c] - t.rects.popper[s], Z = r[c] - t.rects.reference[c], W = SU(d), F = W ? c === "y" ? W.clientHeight || 0 : W.clientWidth || 0 : 0, m = h / 2 - Z / 2, E = o[N], u = F - U[s] - o[R], b = F / 2 - U[s] / 2 + m, k = ho(E, b, u), Y = c;
     t.modifiersData[l] = (n = {}, n[Y] = k, n.centerOffset = k - b, n);
   }
 }
@@ -49421,11 +49421,11 @@ function BS(e) {
     y: h
   };
   N = Z.x, h = Z.y;
-  var W = r.hasOwnProperty("x"), F = r.hasOwnProperty("y"), m = Fa, p = Ta, u = window;
+  var W = r.hasOwnProperty("x"), F = r.hasOwnProperty("y"), m = Fa, E = Ta, u = window;
   if (V) {
     var b = SU(t), k = "clientHeight", Y = "clientWidth";
     if (b === wa(t) && (b = xi(t), yr(b).position !== "static" && i === "absolute" && (k = "scrollHeight", Y = "scrollWidth")), b = b, a === Ta || (a === Fa || a === sd) && d === wo) {
-      p = cd;
+      E = cd;
       var S = o && b === u && u.visualViewport ? u.visualViewport.height : (
         // $FlowFixMe[prop-missing]
         b[k]
@@ -49452,9 +49452,9 @@ function BS(e) {
   };
   if (N = w.x, h = w.y, c) {
     var y;
-    return Object.assign({}, G, (y = {}, y[p] = F ? "0" : "", y[m] = W ? "0" : "", y.transform = (u.devicePixelRatio || 1) <= 1 ? "translate(" + N + "px, " + h + "px)" : "translate3d(" + N + "px, " + h + "px, 0)", y));
+    return Object.assign({}, G, (y = {}, y[E] = F ? "0" : "", y[m] = W ? "0" : "", y.transform = (u.devicePixelRatio || 1) <= 1 ? "translate(" + N + "px, " + h + "px)" : "translate3d(" + N + "px, " + h + "px, 0)", y));
   }
-  return Object.assign({}, G, (n = {}, n[p] = F ? h + "px" : "", n[m] = W ? N + "px" : "", n.transform = "", n));
+  return Object.assign({}, G, (n = {}, n[E] = F ? h + "px" : "", n[m] = W ? N + "px" : "", n.transform = "", n));
 }
 function Cee(e) {
   var n = e.state, t = e.options, l = t.gpuAcceleration, a = l === void 0 ? !0 : l, d = t.adaptive, r = d === void 0 ? !0 : d, i = t.roundOffsets, c = i === void 0 ? !0 : i, V = {
@@ -49654,7 +49654,7 @@ function Lv(e) {
 }
 function go(e, n) {
   n === void 0 && (n = {});
-  var t = n, l = t.placement, a = l === void 0 ? e.placement : l, d = t.strategy, r = d === void 0 ? e.strategy : d, i = t.boundary, c = i === void 0 ? Mee : i, V = t.rootBoundary, s = V === void 0 ? Xv : V, o = t.elementContext, U = o === void 0 ? Ss : o, N = t.altBoundary, R = N === void 0 ? !1 : N, h = t.padding, Z = h === void 0 ? 0 : h, W = wv(typeof Z != "number" ? Z : gv(Z, EU)), F = U === Ss ? Eee : Ss, m = e.rects.popper, p = e.elements[R ? F : U], u = lte(vV(p) ? p : p.contextElement || xi(e.elements.popper), c, s, r), b = jc(e.elements.reference), k = Lv({
+  var t = n, l = t.placement, a = l === void 0 ? e.placement : l, d = t.strategy, r = d === void 0 ? e.strategy : d, i = t.boundary, c = i === void 0 ? Mee : i, V = t.rootBoundary, s = V === void 0 ? Xv : V, o = t.elementContext, U = o === void 0 ? Ss : o, N = t.altBoundary, R = N === void 0 ? !1 : N, h = t.padding, Z = h === void 0 ? 0 : h, W = wv(typeof Z != "number" ? Z : gv(Z, EU)), F = U === Ss ? Eee : Ss, m = e.rects.popper, E = e.elements[R ? F : U], u = lte(vV(E) ? E : E.contextElement || xi(e.elements.popper), c, s, r), b = jc(e.elements.reference), k = Lv({
     reference: b,
     element: m,
     strategy: "absolute",
@@ -49703,7 +49703,7 @@ function dte(e) {
 function rte(e) {
   var n = e.state, t = e.options, l = e.name;
   if (!n.modifiersData[l]._skip) {
-    for (var a = t.mainAxis, d = a === void 0 ? !0 : a, r = t.altAxis, i = r === void 0 ? !0 : r, c = t.fallbackPlacements, V = t.padding, s = t.boundary, o = t.rootBoundary, U = t.altBoundary, N = t.flipVariations, R = N === void 0 ? !0 : N, h = t.allowedAutoPlacements, Z = n.options.placement, W = er(Z), F = W === Z, m = c || (F || !R ? [LN(Z)] : dte(Z)), p = [Z].concat(m).reduce(function(ee, C) {
+    for (var a = t.mainAxis, d = a === void 0 ? !0 : a, r = t.altAxis, i = r === void 0 ? !0 : r, c = t.fallbackPlacements, V = t.padding, s = t.boundary, o = t.rootBoundary, U = t.altBoundary, N = t.flipVariations, R = N === void 0 ? !0 : N, h = t.allowedAutoPlacements, Z = n.options.placement, W = er(Z), F = W === Z, m = c || (F || !R ? [LN(Z)] : dte(Z)), E = [Z].concat(m).reduce(function(ee, C) {
       return ee.concat(er(C) === A1 ? ate(n, {
         placement: C,
         boundary: s,
@@ -49712,8 +49712,8 @@ function rte(e) {
         flipVariations: R,
         allowedAutoPlacements: h
       }) : C);
-    }, []), u = n.rects.reference, b = n.rects.popper, k = /* @__PURE__ */ new Map(), Y = !0, S = p[0], v = 0; v < p.length; v++) {
-      var G = p[v], w = er(G), y = Hc(G) === Xc, f = [Ta, cd].indexOf(w) >= 0, H = f ? "width" : "height", I = go(n, {
+    }, []), u = n.rects.reference, b = n.rects.popper, k = /* @__PURE__ */ new Map(), Y = !0, S = E[0], v = 0; v < E.length; v++) {
+      var G = E[v], w = er(G), y = Hc(G) === Xc, f = [Ta, cd].indexOf(w) >= 0, H = f ? "width" : "height", I = go(n, {
         placement: G,
         boundary: s,
         rootBoundary: o,
@@ -49732,7 +49732,7 @@ function rte(e) {
     }
     if (Y)
       for (var le = R ? 3 : 1, ce = function(C) {
-        var O = p.find(function(de) {
+        var O = E.find(function(de) {
           var $ = k.get(de);
           if ($)
             return $.slice(0, C).every(function(Ye) {
@@ -49848,7 +49848,7 @@ function Zte(e) {
     rootBoundary: V,
     padding: o,
     altBoundary: s
-  }), W = er(n.placement), F = Hc(n.placement), m = !F, p = em(W), u = hte(p), b = n.modifiersData.popperOffsets, k = n.rects.reference, Y = n.rects.popper, S = typeof h == "function" ? h(Object.assign({}, n.rects, {
+  }), W = er(n.placement), F = Hc(n.placement), m = !F, E = em(W), u = hte(E), b = n.modifiersData.popperOffsets, k = n.rects.reference, Y = n.rects.popper, S = typeof h == "function" ? h(Object.assign({}, n.rects, {
     placement: n.placement
   })) : h, v = typeof S == "number" ? {
     mainAxis: S,
@@ -49862,14 +49862,14 @@ function Zte(e) {
   };
   if (b) {
     if (d) {
-      var y, f = p === "y" ? Ta : Fa, H = p === "y" ? cd : sd, I = p === "y" ? "height" : "width", _ = b[p], oe = _ + Z[f], ie = _ - Z[H], le = N ? -Y[I] / 2 : 0, ce = F === Xc ? k[I] : Y[I], ne = F === Xc ? -Y[I] : -k[I], L = n.elements.arrow, ee = N && L ? $1(L) : {
+      var y, f = E === "y" ? Ta : Fa, H = E === "y" ? cd : sd, I = E === "y" ? "height" : "width", _ = b[E], oe = _ + Z[f], ie = _ - Z[H], le = N ? -Y[I] / 2 : 0, ce = F === Xc ? k[I] : Y[I], ne = F === Xc ? -Y[I] : -k[I], L = n.elements.arrow, ee = N && L ? $1(L) : {
         width: 0,
         height: 0
-      }, C = n.modifiersData["arrow#persistent"] ? n.modifiersData["arrow#persistent"].padding : fv(), O = C[f], de = C[H], $ = ho(0, k[I], ee[I]), Ye = m ? k[I] / 2 - le - $ - O - v.mainAxis : ce - $ - O - v.mainAxis, ve = m ? -k[I] / 2 + le + $ + de + v.mainAxis : ne + $ + de + v.mainAxis, Qe = n.elements.arrow && SU(n.elements.arrow), A = Qe ? p === "y" ? Qe.clientTop || 0 : Qe.clientLeft || 0 : 0, He = (y = G == null ? void 0 : G[p]) != null ? y : 0, pe = _ + Ye - He - A, me = _ + ve - He, Be = ho(N ? wR(oe, pe) : oe, _, N ? EV(ie, me) : ie);
-      b[p] = Be, w[p] = Be - _;
+      }, C = n.modifiersData["arrow#persistent"] ? n.modifiersData["arrow#persistent"].padding : fv(), O = C[f], de = C[H], $ = ho(0, k[I], ee[I]), Ye = m ? k[I] / 2 - le - $ - O - v.mainAxis : ce - $ - O - v.mainAxis, ve = m ? -k[I] / 2 + le + $ + de + v.mainAxis : ne + $ + de + v.mainAxis, Qe = n.elements.arrow && SU(n.elements.arrow), A = Qe ? E === "y" ? Qe.clientTop || 0 : Qe.clientLeft || 0 : 0, He = (y = G == null ? void 0 : G[E]) != null ? y : 0, pe = _ + Ye - He - A, me = _ + ve - He, Be = ho(N ? wR(oe, pe) : oe, _, N ? EV(ie, me) : ie);
+      b[E] = Be, w[E] = Be - _;
     }
     if (i) {
-      var ye, qe = p === "x" ? Ta : Fa, xe = p === "x" ? cd : sd, fe = b[u], dt = u === "y" ? "height" : "width", De = fe + Z[qe], tt = fe - Z[xe], Xe = [Ta, Fa].indexOf(W) !== -1, Ge = (ye = G == null ? void 0 : G[u]) != null ? ye : 0, ut = Xe ? De : fe - k[dt] - Y[dt] - Ge + v.altAxis, Vt = Xe ? fe + k[dt] + Y[dt] - Ge - v.altAxis : tt, yt = N && Xe ? jee(ut, fe, Vt) : ho(N ? ut : De, fe, N ? Vt : tt);
+      var ye, qe = E === "x" ? Ta : Fa, xe = E === "x" ? cd : sd, fe = b[u], dt = u === "y" ? "height" : "width", De = fe + Z[qe], tt = fe - Z[xe], Xe = [Ta, Fa].indexOf(W) !== -1, Ge = (ye = G == null ? void 0 : G[u]) != null ? ye : 0, ut = Xe ? De : fe - k[dt] - Y[dt] - Ge + v.altAxis, Vt = Xe ? fe + k[dt] + Y[dt] - Ge - v.altAxis : tt, yt = N && Xe ? jee(ut, fe, Vt) : ho(N ? ut : De, fe, N ? Vt : tt);
       b[u] = yt, w[u] = yt - fe;
     }
     n.modifiersData[l] = w;
@@ -49998,8 +49998,8 @@ function kte(e) {
           popper: Zo(c)
         };
         var m = Mte(Ste([].concat(l, s.options.modifiers)));
-        return s.orderedModifiers = m.filter(function(p) {
-          return p.enabled;
+        return s.orderedModifiers = m.filter(function(E) {
+          return E.enabled;
         }), R(), N.update();
       },
       // Sync update – it will always be executed, even if not necessary. This
@@ -50017,12 +50017,12 @@ function kte(e) {
             }, s.reset = !1, s.placement = s.options.placement, s.orderedModifiers.forEach(function(v) {
               return s.modifiersData[v.name] = Object.assign({}, v.data);
             });
-            for (var p = 0; p < s.orderedModifiers.length; p++) {
+            for (var E = 0; E < s.orderedModifiers.length; E++) {
               if (s.reset === !0) {
-                s.reset = !1, p = -1;
+                s.reset = !1, E = -1;
                 continue;
               }
-              var u = s.orderedModifiers[p], b = u.fn, k = u.options, Y = k === void 0 ? {} : k, S = u.name;
+              var u = s.orderedModifiers[E], b = u.fn, k = u.options, Y = k === void 0 ? {} : k, S = u.name;
               typeof b == "function" && (s = b({
                 state: s,
                 options: Y,
@@ -50051,9 +50051,9 @@ function kte(e) {
     });
     function R() {
       s.orderedModifiers.forEach(function(Z) {
-        var W = Z.name, F = Z.options, m = F === void 0 ? {} : F, p = Z.effect;
-        if (typeof p == "function") {
-          var u = p({
+        var W = Z.name, F = Z.options, m = F === void 0 ? {} : F, E = Z.effect;
+        if (typeof E == "function") {
+          var u = E({
             state: s,
             name: W,
             instance: N,
@@ -50299,7 +50299,7 @@ function jte(e, n) {
       return clearTimeout(W.current);
     };
   }, []);
-  var F = Bte(d.followCursor ? wS : V, U, i), m = F.styles, p = F.attributes, u = pee(F, Ote), b = u.update, k = Cv({
+  var F = Bte(d.followCursor ? wS : V, U, i), m = F.styles, E = F.attributes, u = pee(F, Ote), b = u.update, k = Cv({
     visible: h,
     triggerRef: V,
     tooltipRef: U,
@@ -50390,11 +50390,11 @@ function jte(e, n) {
   var y = function(I) {
     return I === void 0 && (I = {}), Zr({}, I, {
       style: Zr({}, I.style, m.popper)
-    }, p.popper, {
+    }, E.popper, {
       "data-popper-interactive": d.interactive
     });
   }, f = function(I) {
-    return I === void 0 && (I = {}), Zr({}, I, p.arrow, {
+    return I === void 0 && (I = {}), Zr({}, I, E.arrow, {
       style: Zr({}, I.style, m.arrow),
       "data-popper-arrow": !0
     });
@@ -50525,7 +50525,7 @@ function tne(e) {
   ] });
 }
 const nne = tz(
-  () => import("./CodeBlock-3706ab9c.mjs").then(({ CodeBlock: e }) => ({ default: e }))
+  () => import("./CodeBlock-b3e49af2.mjs").then(({ CodeBlock: e }) => ({ default: e }))
 ), lne = q.div`
   display: flex;
   ${({ botCategory: e }) => e && da`
@@ -51333,7 +51333,7 @@ function Kne(e) {
     N && (N == null ? void 0 : N.messageType) !== "admin" && ((Y = N.sender) == null ? void 0 : Y.userId) === t && N.sendingStatus === tn.SUCCEEDED && // this bubble loading should be shown only when there're only bot and 1 user in the channel
     (U == null ? void 0 : U.memberCount) === 2 && !(U != null && U.members.map((S) => S.userId).includes(jN)) ? h(N.messageId) : h(-1);
   }, [N == null ? void 0 : N.messageId]);
-  const p = an(
+  const E = an(
     () => Ene(d),
     [d.length]
   ), u = an(() => Sne(d, t), [d.length]);
@@ -51356,7 +51356,7 @@ function Kne(e) {
               }
             ) : /* @__PURE__ */ Q.jsx(SY, {}),
             renderMessage: ({ message: Y }) => {
-              const S = p.find(
+              const S = E.find(
                 (G) => G.messageId == Y.messageId
               ), v = !!u.find(
                 (G) => G.messageId === Y.messageId
@@ -51729,65 +51729,64 @@ const hle = _l({
   hashedKey: null
 }), Zle = (e) => /* @__PURE__ */ Q.jsx(hle.Provider, { value: { hashedKey: e.hashedKey }, children: e.children });
 function Tle(e, n) {
-  const [t, l] = We(null), [a, d] = We(null), [r, i] = We(null), [c, V] = We(!1), { setSbConnectionStatus: s, firstMessage: o } = ZU(), U = {
+  const [t, l] = We(null), [a, d] = We(null), [r, i] = We(null), { setSbConnectionStatus: c, firstMessage: V } = ZU(), s = {
     "Content-Type": "application/json"
   };
-  async function N() {
-    var W;
-    const Z = (await AF.get(
+  async function o() {
+    var h;
+    const R = (await AF.get(
       `https://api-${e}.sendbird.com/v3/bots/${n}/${e == null ? void 0 : e.toUpperCase()}/widget_setting`,
       {
         params: {
           create_user_and_channel: "True"
         },
-        headers: U
+        headers: s
       }
     )).data;
     return {
       bot: {
-        replyToFile: ((W = Z.bot) == null ? void 0 : W.reply_to_file) ?? !1
+        replyToFile: ((h = R.bot) == null ? void 0 : h.reply_to_file) ?? !1
       },
       botStyle: {
-        theme: Z.bot_style.color.theme,
-        accentColor: Z.bot_style.color.accent_color,
-        botMessageBGColor: Z.bot_style.color.bot_message_color,
-        toggleButtonUrl: Z.bot_style.toggle_button_url ?? void 0,
-        autoOpen: Z.bot_style.auto_open
+        theme: R.bot_style.color.theme,
+        accentColor: R.bot_style.color.accent_color,
+        botMessageBGColor: R.bot_style.color.bot_message_color,
+        toggleButtonUrl: R.bot_style.toggle_button_url ?? void 0,
+        autoOpen: R.bot_style.auto_open
       },
-      user: Z.user ? {
-        expireAt: Z.user.expire_at,
-        userId: Z.user.user_id,
-        sessionToken: Z.user.session_token
+      user: R.user ? {
+        expireAt: R.user.expire_at,
+        userId: R.user.user_id,
+        sessionToken: R.user.session_token
       } : void 0,
-      channel: Z.channel ? {
-        channelUrl: Z.channel.channel_url
+      channel: R.channel ? {
+        channelUrl: R.channel.channel_url
       } : void 0
     };
   }
-  const R = At(async () => {
-    var h, Z, W, F, m;
+  const U = At(async () => {
+    var N, R, h, Z, W;
     if (!(!e || !n))
       try {
-        V(!0);
-        const p = await N();
-        if (!((h = p.channel) != null && h.channelUrl))
+        const F = await o();
+        if (!((N = F.channel) != null && N.channelUrl))
           throw new Error(
-            `Channel not created: ${(Z = p.channel) == null ? void 0 : Z.channelUrl}`
+            `Channel not created: ${(R = F.channel) == null ? void 0 : R.channelUrl}`
           );
-        if (!((W = p.user) != null && W.userId))
+        if (!((h = F.user) != null && h.userId))
           throw new Error(
-            `UserId not created: ${(F = p.user) == null ? void 0 : F.userId}`
+            `UserId not created: ${(Z = F.user) == null ? void 0 : Z.userId}`
           );
-        d(p.user.userId), l(p.channel.channelUrl), i((m = p.user) == null ? void 0 : m.sessionToken);
-      } catch (p) {
-        console.error(p);
+        d(F.user.userId), l(F.channel.channelUrl), i((W = F.user) == null ? void 0 : W.sessionToken);
+      } catch (F) {
+        console.error(F);
       } finally {
-        V(!1), s("CONNECTED");
+        c("CONNECTED");
       }
-  }, [n, o]);
+  }, [n, V]);
   return Ke(() => {
-    n && R();
-  }, [n, o]), [t, a, r, c];
+    n && U();
+  }, [n, V]), [t, a, r];
 }
 const Fle = () => {
   const {
