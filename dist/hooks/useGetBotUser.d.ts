@@ -1,2 +1,2 @@
 import { User } from '@sendbird/chat';
-export declare function useGetBotUser(currentUser: User | null, sendbirdBotId: string): User | null;
+export declare function useGetBotUser(sendbirdBotId: string): User | null;
