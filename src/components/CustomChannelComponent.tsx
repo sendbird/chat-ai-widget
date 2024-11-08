@@ -18,20 +18,20 @@ import { HealthcareMessageInput } from './CustomHealthcareMessageInput';
 import CustomMessage from './CustomMessage';
 import { MessageInput } from './CustomMessageInput';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
-import { ECOMMERCE_AGENT_ID } from "../const";
-import { useConstantState } from "../context/ConstantContext";
+import { ECOMMERCE_AGENT_ID } from '../const';
+import { useConstantState } from '../context/ConstantContext';
 import {
   useCurrentChannelMemberIds,
   useNumOfMessages,
-} from "../hooks/useInteractiveDemoSharableData";
+} from '../hooks/useInteractiveDemoSharableData';
 import { ReactComponent as IconClose } from '../icons/icon-close-black.svg';
-import { isSpecialMessage } from "../utils";
-import { categoryColors } from "../utils/category";
+import { isSpecialMessage } from '../utils';
+import { categoryColors } from '../utils/category';
 import {
   groupMessagesByShortSpanTime,
   getBotWelcomeMessages,
   type MessageMeta,
-} from "../utils/messages";
+} from '../utils/messages';
 
 interface RootStyleProps {
   hidePlaceholder: boolean;
@@ -186,9 +186,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const lastMessageRef = useRef<HTMLDivElement>(null);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({
-    symptom: "",
-    date: "",
-    medicalHistory: "",
+    symptom: '',
+    date: '',
+    medicalHistory: '',
   });
 
   useNumOfMessages(userId);
@@ -199,13 +199,13 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     allMessages?.length - 1
   ] as ClientUserMessage;
   const isLastBotMessage =
-    !(lastMessage?.messageType === "admin") &&
+    !(lastMessage?.messageType === 'admin') &&
     (lastMessage as ClientUserMessage)?.sender?.userId === userId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
 
   const startingPagePlaceHolder =
-    allMessages.length === 1 && lastMessage.messageType === "admin";
+    allMessages.length === 1 && lastMessage.messageType === 'admin';
 
   const lastMessageMeta = useMemo(() => {
     let messageMeta: MessageMeta | null;
@@ -219,7 +219,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
 
   const dynamicReplyOptions =
     lastMessage?.extendedMessagePayload != null &&
-    "suggested_replies" in lastMessage.extendedMessagePayload &&
+    'suggested_replies' in lastMessage.extendedMessagePayload &&
     lastMessage.extendedMessagePayload.suggested_replies != null
       ? lastMessage.extendedMessagePayload.suggested_replies
       : [];
@@ -227,11 +227,11 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   const isStaticReplyVisible =
     allMessages &&
     allMessages.length > 1 &&
-    !(lastMessage?.messageType === "admin") &&
+    !(lastMessage?.messageType === 'admin') &&
     lastMessage.sender?.userId === userId &&
     // in streaming
     lastMessageMeta != null &&
-    "stream" in lastMessageMeta &&
+    'stream' in lastMessageMeta &&
     !lastMessageMeta.stream &&
     !isSpecialMessage(
       lastMessage.message,
@@ -257,7 +257,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   useEffect(() => {
     if (
       lastMessage &&
-      !(lastMessage?.messageType === "admin") &&
+      !(lastMessage?.messageType === 'admin') &&
       lastMessage.sender?.userId === userId &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
       // this bubble loading should be shown only when there're only bot and 1 user in the channel
@@ -289,7 +289,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   return (
     <Root
       hidePlaceholder={startingPagePlaceHolder}
-      height={"100%"}
+      height={'100%'}
       botCategory={botCategory}
     >
       <ChannelUI
@@ -332,7 +332,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
         }}
         renderTypingIndicator={() => <></>}
         renderMessageInput={() => {
-          if (botCategory === "healthcare") {
+          if (botCategory === 'healthcare') {
             return (
               <HealthcareMessageInput
                 setModalContent={setModalContent}
@@ -350,9 +350,9 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
           <ModalContainer>
             <div
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                height: "36px",
+                display: 'flex',
+                justifyContent: 'space-between',
+                height: '36px',
               }}
             >
               <Label
@@ -363,38 +363,38 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
               </Label>
               <IconClose
                 style={{
-                  color: "black",
-                  cursor: "pointer",
+                  color: 'black',
+                  cursor: 'pointer',
                 }}
                 onClick={closeModal}
               />
             </div>
             <div
               style={{
-                paddingTop: "12px",
-                display: "flex",
-                flexDirection: "column",
-                gap: "8px",
+                paddingTop: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
               }}
             >
               <div
                 style={{
-                  color: "rgba(0, 0, 0, 0.5)",
+                  color: 'rgba(0, 0, 0, 0.5)',
                 }}
               >
                 {modalContent.date}
               </div>
               <div
                 style={{
-                  height: "200px",
-                  overflowY: "auto",
+                  height: '200px',
+                  overflowY: 'auto',
                 }}
               >
-                {modalContent.medicalHistory.split("\n").map((item, index) => (
+                {modalContent.medicalHistory.split('\n').map((item, index) => (
                   <div
                     style={{
-                      paddingLeft: "10px",
-                      textIndent: "-10px",
+                      paddingLeft: '10px',
+                      textIndent: '-10px',
                     }}
                     key={index}
                   >
