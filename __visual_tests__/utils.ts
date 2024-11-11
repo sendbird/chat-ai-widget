@@ -8,7 +8,7 @@ export async function assertScreenshot(page: Page, screenshotName: string, brows
     name,
     {
       omitBackground: false,
-      maxDiffPixelRatio: 0.01, // Uncomment if you need a pixel threshold
+      maxDiffPixelRatio: 0.01, // Need this because Sendbird logo is slightly differently rendered in CI.
     }
   );
 }
