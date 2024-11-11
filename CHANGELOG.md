@@ -1,3 +1,11 @@
+## [1.8.6] (Nov 11, 2024)
+### Feat:
+- Added `localCacheEnabled` flag to control the use of local cache in the Chat SDK.
+
+### Fix:
+- Use `disconnectWebsocket` instead of `disconnect` (applied changes from PR #1219)
+- Prevent changes to the theme if it has already been added by other logic.
+
 ## [1.8.5] (Oct 29, 2024)
 ### Chore:
 - Added bot profile style for the favicon from onboarding 
