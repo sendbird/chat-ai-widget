@@ -266,6 +266,11 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
    * @description Callback to be called when the widget open state changes.
    */
   onWidgetOpenStateChange?: (params: OnWidgetOpenStateChangeParams) => void;
+  /**
+   * @private
+   * @description Determines whether to use the local cache of the Chat SDK.
+   */
+  localCacheEnabled?: boolean;
 }
 
 interface ConstantAIFeatures {
