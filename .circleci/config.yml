@@ -32,9 +32,6 @@ commands:
     steps:
       - attach_workspace:
           at: ~/project
-      - run:
-          name: Enable Corepack
-          command: corepack enable --install-directory ~/bin
   aws-create-invalidation:
     description: Create invalidation in CloudFront distribution
     parameters:
@@ -70,6 +67,9 @@ jobs:
             - v2-dependencies-{{ checksum "yarn.lock" }}
             - v2-dependencies-
       - run:
+          name: Enable Corepack
+          command: corepack enable --install-directory ~/bin
+      - run:
           name: Install dependencies
           command: |
             git submodule update --init --recursive
@@ -91,6 +91,9 @@ jobs:
       - checkout
       - attach_workspace:
           at: /Users/distiller/project
+      - run:
+          name: Enable Corepack
+          command: corepack enable
       - run:
           name: Install dependencies
           command: |
@@ -136,11 +139,6 @@ jobs:
     executor: ci-macos
     steps:
       - attach_project
-      - run:
-          name: Clean and reinstall dependencies
-          command: |
-            rm -rf node_modules package-lock.json
-            yarn install
       - run:
           name: Install Playwright dependencies
           command: sudo yarn playwright install-deps

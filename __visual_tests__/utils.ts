@@ -1,9 +1,12 @@
+import * as os from 'os';
+
 import {expect, Page} from "@playwright/test";
 
 import {WidgetComponentIds} from "./const";
 
 export async function assertScreenshot(page: Page, screenshotName: string, browserName: string) {
-  const name = `${screenshotName}.${browserName}.png`; // Include the browser name in the filename
+  const arch = os.arch();
+  const name = `${screenshotName}.${browserName}.${arch}.png`; // Include the browser and OS architecture info in the filename
   await expect(page.locator(WidgetComponentIds.WIDGET)).toHaveScreenshot(
     name,
     {
@@ -15,6 +18,8 @@ export async function assertScreenshot(page: Page, screenshotName: string, brows
 
 export async function loadWidget(page: Page) {
   await page.click(WidgetComponentIds.WIDGET_BUTTON);
+  // const widgetWindow = page.locator(WidgetComponentIds.MESSAGE_INPUT);
+  // await widgetWindow.waitFor({ state: 'visible' });
   await page.waitForTimeout(2500);
 }
 
