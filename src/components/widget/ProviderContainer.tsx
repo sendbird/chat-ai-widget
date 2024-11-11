@@ -31,6 +31,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     isMobileView,
     dateLocale,
     enableHideWidgetForDeactivatedUser,
+    localCacheEnabled,
   } = useConstantState();
 
   const { setIsVisible } = useWidgetState();
@@ -80,6 +81,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
             nickname={userNickName}
             customApiHost={apiHost}
             customWebSocketHost={wsHost}
+            sdkInitParams={{ localCacheEnabled }}
             configureSession={configureSession}
             customExtensionParams={userAgentCustomParams}
             breakpoint={isMobileView} // A property that determines whether to show it with a layout that fits the mobile screen. Or you can put the width size with `px`.

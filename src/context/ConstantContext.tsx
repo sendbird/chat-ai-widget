@@ -76,6 +76,7 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
         botStudioEditProps: props.botStudioEditProps,
         widgetOpenState: props.widgetOpenState,
         onWidgetOpenStateChange: props.onWidgetOpenStateChange,
+        localCacheEnabled: props.localCacheEnabled,
         messageInputControls: {
           ...initialState.messageInputControls,
           ...props.messageInputControls,
