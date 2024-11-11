@@ -18,21 +18,20 @@ import { HealthcareMessageInput } from './CustomHealthcareMessageInput';
 import CustomMessage from './CustomMessage';
 import { MessageInput } from './CustomMessageInput';
 import DynamicRepliesPanel from './DynamicRepliesPanel';
+import { ECOMMERCE_AGENT_ID } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import {
   useCurrentChannelMemberIds,
   useNumOfMessages,
 } from '../hooks/useInteractiveDemoSharableData';
-import { useScrollOnStreaming } from '../hooks/useScrollOnStreaming';
 import { ReactComponent as IconClose } from '../icons/icon-close-black.svg';
-import { isSpecialMessage, scrollUtil } from '../utils';
+import { isSpecialMessage } from '../utils';
 import { categoryColors } from '../utils/category';
 import {
   groupMessagesByShortSpanTime,
   getBotWelcomeMessages,
   type MessageMeta,
 } from '../utils/messages';
-import { ECOMMERCE_AGENT_ID } from "../const";
 
 interface RootStyleProps {
   hidePlaceholder: boolean;
@@ -176,11 +175,11 @@ export interface StartingPageAnimatorProps {
 
 type CustomChannelComponentProps = {
   botUser: User;
-  createGroupChannel?: () => void;
+  channel?: GroupChannel;
 };
 
 export function CustomChannelComponent(props: CustomChannelComponentProps) {
-  const { botUser, createGroupChannel } = props;
+  const { botUser } = props;
   const { userId, suggestedMessageContent } = useConstantState();
   const { botCategory } = useConstantState();
   const { allMessages, currentGroupChannel } = useChannelContext();
@@ -191,16 +190,17 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     date: '',
     medicalHistory: '',
   });
-  useNumOfMessages(botUser.userId);
+
+  useNumOfMessages(userId);
   useCurrentChannelMemberIds();
 
-  const channel: GroupChannel | undefined = currentGroupChannel;
+  const channel: GroupChannel | null = currentGroupChannel;
   const lastMessage: ClientUserMessage = allMessages?.[
     allMessages?.length - 1
   ] as ClientUserMessage;
   const isLastBotMessage =
     !(lastMessage?.messageType === 'admin') &&
-    (lastMessage as ClientUserMessage)?.sender?.userId === botUser.userId;
+    (lastMessage as ClientUserMessage)?.sender?.userId === userId;
 
   const [activeSpinnerId, setActiveSpinnerId] = useState(-1);
 
@@ -228,7 +228,7 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     allMessages &&
     allMessages.length > 1 &&
     !(lastMessage?.messageType === 'admin') &&
-    lastMessage.sender?.userId === botUser.userId &&
+    lastMessage.sender?.userId === userId &&
     // in streaming
     lastMessageMeta != null &&
     'stream' in lastMessageMeta &&
@@ -257,12 +257,12 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   useEffect(() => {
     if (
       lastMessage &&
-      !(lastMessage?.messageType === "admin") &&
+      !(lastMessage?.messageType === 'admin') &&
       lastMessage.sender?.userId === userId &&
       lastMessage.sendingStatus === SendingStatus.SUCCEEDED &&
       // this bubble loading should be shown only when there're only bot and 1 user in the channel
       channel?.memberCount === 2 &&
-      !currentGroupChannel?.members
+      !channel?.members
         .map((member) => member.userId)
         .includes(ECOMMERCE_AGENT_ID)
     ) {
@@ -279,11 +279,11 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
   );
 
   const botWelcomeMessages = useMemo(() => {
-    return getBotWelcomeMessages(allMessages, botUser.userId);
+    return getBotWelcomeMessages(allMessages, userId);
   }, [allMessages.length]);
 
   useEffect(() => {
-    channel?.createMetaData({ bot_id: botUser.userId });
+    // channel?.createMetaData({ bot_id: botUser.userId });
   }, [channel]);
 
   return (
@@ -294,11 +294,10 @@ export function CustomChannelComponent(props: CustomChannelComponentProps) {
     >
       <ChannelUI
         renderChannelHeader={() => {
-          return channel && createGroupChannel && botUser ? (
+          return channel && botUser ? (
             <CustomChannelHeader
               botUser={botUser}
               channel={channel as GroupChannel}
-              createGroupChannel={createGroupChannel}
             />
           ) : (
             <ChannelHeader />

@@ -7,10 +7,14 @@ const initialState = DEFAULT_CONSTANT;
 interface ConstantContextProps extends Constant {
   applicationId: string | null;
   botId: string | null;
+  userToken: string | null;
+  channelUrl: string | null;
 }
 const ConstantContext = createContext<ConstantContextProps>({
   applicationId: null,
   botId: null,
+  userToken: null,
+  channelUrl: null,
   ...initialState,
 });
 
@@ -26,6 +30,8 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       botNickName: props.botNickName ?? initialState.botNickName,
       userId: props.userId ?? initialState.userId,
       userNickName: props.userNickName ?? initialState.userNickName,
+      userToken: props.userToken,
+      channelUrl: props.channelUrl,
       betaMark: props.betaMark ?? initialState.betaMark,
       customBetaMarkText:
         props.customBetaMarkText ?? initialState.customBetaMarkText,
@@ -70,7 +76,7 @@ export const ConstantStateProvider = (props: ProviderProps) => {
       inputValue: props.inputValue?.value
         ? props.inputValue
         : {
-            value: '',
+            value: "",
             id: 1,
           },
     }),
