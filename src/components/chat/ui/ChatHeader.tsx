@@ -41,7 +41,7 @@ export const ChatHeader = ({ fullscreen }: Props) => {
 
   return (
     <div className={container}>
-      <div style={{ marginRight: 6 }}>
+      <div style={{ marginInlineEnd: 6 }}>
         <BotProfileImage size={34} />
       </div>
       <div className={headerCenter}>

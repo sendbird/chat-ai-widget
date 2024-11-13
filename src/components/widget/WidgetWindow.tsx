@@ -13,7 +13,7 @@ const StyledWidgetWindowWrapper = styled.div<{
   -webkit-overflow-scrolling: auto;
   position: fixed;
   bottom: 84px;
-  right: 20px;
+  inset-inline-end: 20px;
   height: 640px;
   min-height: 80px;
   width: 400px;

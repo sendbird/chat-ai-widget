@@ -88,17 +88,17 @@ export const CarouselMessage = ({ streaming, textBody, streamingBody, items }: P
         startPadding={leftMargin}
         endPadding={listPadding}
         gap={avatarMargin}
-        style={{ marginLeft: -leftMargin, marginRight: -listPadding }}
+        style={{ marginInlineStart: -leftMargin, marginInlineEnd: -listPadding }}
         renderButtons={({ activeIndex, onClickPrev, onClickNext }) =>
           shouldRenderButtons && (
             <>
               {activeIndex !== 0 && (
-                <Button style={{ left: -leftMargin }} onClick={onClickPrev} direction={'left'}>
+                <Button style={{ insetInlineStart: -leftMargin }} onClick={onClickPrev} direction={'left'}>
                   <ChevronLeft width={24} height={24} fill={theme.bgColor.carouselButtonIcon} />
                 </Button>
               )}
               {activeIndex !== items.length - 1 && (
-                <Button style={{ right: -listPadding }} onClick={onClickNext} direction={'right'}>
+                <Button style={{ insetInlineEnd: -listPadding }} onClick={onClickNext} direction={'right'}>
                   <ChevronRight width={24} height={24} fill={theme.bgColor.carouselButtonIcon} />
                 </Button>
               )}

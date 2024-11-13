@@ -21,7 +21,7 @@ const Root = styled.div`
 
 const Sender = styled(Label)`
   margin: 0 0 4px 12px;
-  text-align: left;
+  text-align: start;
 `;
 
 interface BodyContainerProps {

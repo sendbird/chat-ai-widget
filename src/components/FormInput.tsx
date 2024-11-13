@@ -79,7 +79,7 @@ const Placeholder = styled.div<PlaceholderProps>`
   position: absolute;
   pointer-events: none;
   top: 8px;
-  left: 13px;
+  inset-inline-start: 13px;
   font-size: 14px;
   line-height: 1.43;
   color: ${({ theme }) => theme.textColor.placeholder};
@@ -261,7 +261,7 @@ const CheckIconContainer = styled.div`
 `;
 
 const CheckIconForChip = styled(Icon)<CheckIconProps>`
-  margin-left: 4px;
+  margin-inline-start: 4px;
 `;
 
 const InputContainer = styled.div`

@@ -84,14 +84,14 @@ const Root = styled.div`
   display: flex;
   justify-content: flex-start;
   margin-top: 16px;
-  padding-left: 36px;
+  padding-inline-start: 36px;
 `;
 
 const SideBar = styled.div`
   width: 4px;
   border-radius: 100px;
   background-color: ${({ theme }) => theme.bgColor.messageDataContent.sidebar};
-  margin-left: 8px;
+  margin-inline-start: 8px;
 `;
 
 const DataContainer = styled.div`
@@ -100,7 +100,7 @@ const DataContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 4px;
-  margin-left: 16px;
+  margin-inline-start: 16px;
   flex: 1; // Without this, Sidebar width is reduced.
   color: ${({ theme }) => theme.textColor.messageDataContent.default};
 `;

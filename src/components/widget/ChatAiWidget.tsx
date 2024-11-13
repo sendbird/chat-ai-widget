@@ -16,7 +16,7 @@ const MobileContainer = styled.div<{ width: number }>`
   position: fixed;
   z-index: ${WIDGET_WINDOW_Z_INDEX};
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: ${({ width }) => `${width}px`};
   height: 100%;
   overflow: hidden;

@@ -11,7 +11,8 @@ const FloatingWidgetButton = styled(WidgetButton)`
     position: fixed;
     z-index: ${MAX_Z_INDEX};
     bottom: 24px;
-    right: 24px;
+    right: unset;
+    inset-inline-end: 24px;
   }
 `;
 
