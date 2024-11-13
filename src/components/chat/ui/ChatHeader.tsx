@@ -8,8 +8,8 @@ import { useWidgetState } from '../../../context/WidgetStateContext';
 import { themedColors } from '../../../foundation/colors/css';
 import { Label } from '../../../foundation/components/Label';
 import CloseIcon from '../../../icons/ic-close.svg';
+import CollapseIcon from '../../../icons/ic-collapse.svg';
 import ExpandIcon from '../../../icons/ic-expand.svg';
-import CollapsedIcon from '../../../icons/icon-collapse.svg';
 import BotProfileImage from '../../BotProfileImage';
 import BetaLogo from '../../ui/BetaLogo';
 import { useChatContext } from '../context/ChatProvider';
@@ -87,7 +87,7 @@ const RefreshButton = ({ size, onClick }: ButtonProps) => {
 
 const ExpandButton = ({ size }: ButtonProps) => {
   const { isExpanded, setIsExpanded } = useWidgetState();
-  const Icon = isExpanded ? CollapsedIcon : ExpandIcon;
+  const Icon = isExpanded ? CollapseIcon : ExpandIcon;
 
   return (
     <IconButton id={elementIds.expandIcon} aria-label={'expand'} onClick={() => setIsExpanded(!isExpanded)}>

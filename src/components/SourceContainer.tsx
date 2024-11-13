@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import OpenLinkIcon from '../icons/open-link-icon.svg';
+import OpenIcon from '../icons/ic-open.svg';
 
 const Root = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const SourceItem = styled.div`
   gap: 16px;
 `;
 
-const IconLink = styled.a`
+const IconContainer = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,13 +72,13 @@ export default function SourceContainer(props: Props) {
       <RootTitle>Source</RootTitle>
       <SourceItem>
         <div>
-          <SourceTitle href={source.source} id="openLinkText" target="_blank">
+          <SourceTitle href={source.source} target="_blank">
             {source.title}
           </SourceTitle>
         </div>
-        <IconLink href={source.source} id="openLinkIcon" target="_blank" aria-label="Source link">
-          <OpenLinkIcon width={'15px'} height={'15px'} />
-        </IconLink>
+        <IconContainer href={source.source} target="_blank" aria-label="Source link">
+          <OpenIcon width={'15px'} height={'15px'} />
+        </IconContainer>
       </SourceItem>
     </Root>
   );

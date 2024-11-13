@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-import SpinIcon from '../icons/spin-icon.svg';
+import SpinnerIcon from '../icons/ic-spinner.svg';
 
 const spinner = keyframes`
   0% {
@@ -39,7 +39,7 @@ export default function LoadingScreen() {
   return (
     <Container>
       <IconContainer>
-        <SpinIcon width="50px" height="50px" />
+        <SpinnerIcon width="50px" height="50px" />
       </IconContainer>
     </Container>
   );

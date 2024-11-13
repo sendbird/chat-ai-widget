@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import styled, { useTheme } from 'styled-components';
 
 import { useConstantState } from '../../context/ConstantContext';
-import ChevronLeft from '../../icons/chevron-left.svg';
-import ChevronRight from '../../icons/chevron-right.svg';
+import ChevronLeft from '../../icons/ic-chevron-left.svg';
+import ChevronRight from '../../icons/ic-chevron-right.svg';
 import { WidgetCarouselItem } from '../../types';
 import { openURL } from '../../utils';
 import { SnapCarousel } from '../ui/SnapCarousel';
