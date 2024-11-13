@@ -11,4 +11,5 @@ export const WidgetComponentIds = {
   BUTTON: 'button.sendbird-button--primary',
   INPUT: '.sendbird-input__input',
   CHIPS_CONTAINER: '.sendbird-form-chip__container',
+  FORM: '#aichatbot-widget-form',
 };

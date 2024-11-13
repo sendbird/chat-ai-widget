@@ -8,7 +8,6 @@ test.beforeEach(async ({ page }) => {
   await page.goto(TEST_URL);
   const widgetWindow = page.locator(WidgetComponentIds.WIDGET_BUTTON);
   await widgetWindow.waitFor({ state: 'visible' });
-  // await page.waitForTimeout(2500);
 });
 
 /**
@@ -24,7 +23,9 @@ test('100', async ({ page, browserName }) => {
   await loadWidget(page);
   
   // 1
-  await sendTextMessage(page, 'Give me a food order form');
+  await sendTextMessage(page, 'Give me a food order form', 0);
+  const widgetWindow = page.locator(WidgetComponentIds.FORM);
+  await widgetWindow.waitFor({ state: 'visible' });
   await assertScreenshot(page, '100-1', browserName);
   
   // 2
@@ -116,7 +117,9 @@ test('103', async ({ page, browserName }) => {
   // 5
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).click();
-  await page.waitForTimeout(1000);
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  // Expecting three options.
+  await options.nth(2).waitFor({ state: 'visible' });
   await assertScreenshot(page, '103-5', browserName);
   
   // 6
