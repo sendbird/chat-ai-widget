@@ -15,6 +15,18 @@ import { noop } from './utils';
 
 // Most of browsers use a 32-bit signed integer as the maximum value for z-index
 export const MAX_Z_INDEX = 2147483647;
+export const FLOATING_STYLES = {
+  WIDGET_BUTTON: {
+    zIndex: MAX_Z_INDEX,
+    right: '24px',
+    bottom: '24px',
+  },
+  TEASER_MESSAGES: {
+    zIndex: MAX_Z_INDEX,
+    right: '24px',
+    bottom: '80px', // 24 + 48(button height) + 8(gap) = 80px
+  },
+};
 // .sendbird-modal-root will be on top of the widget window
 export const WIDGET_WINDOW_Z_INDEX = MAX_Z_INDEX - 1;
 
@@ -113,6 +125,7 @@ export interface BotStudioEditProps {
   welcomeMessages?: WelcomeUserMessage[];
   styles?: WidgetStyles;
   suggestedRepliesDirection?: 'horizontal' | 'vertical';
+  teaserMessages?: string[];
 }
 
 export interface MessageInputControls {
@@ -347,6 +360,7 @@ export interface CustomRefreshComponent extends CustomRefreshProps {
 export const elementIds = {
   widgetWindow: 'aichatbot-widget-window',
   widgetToggleButton: 'aichatbot-widget-button',
+  widgetTeaserMessages: 'aichatbot-teaser-messages',
   collapseIcon: 'aichatbot-widget-collapse-icon',
   expandIcon: 'aichatbot-widget-expand-icon',
   closeIcon: 'aichatbot-widget-close-icon',

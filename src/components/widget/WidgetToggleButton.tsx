@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { MAX_Z_INDEX } from '../../const';
+import { FLOATING_STYLES } from '../../const';
 import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetSetting } from '../../context/WidgetSettingContext';
 import { useWidgetState } from '../../context/WidgetStateContext';
@@ -9,9 +9,9 @@ import { WidgetButton, WidgetButtonProps } from '../ui/WidgetButton';
 const FloatingWidgetButton = styled(WidgetButton)`
   && {
     position: fixed;
-    z-index: ${MAX_Z_INDEX};
-    bottom: 24px;
-    right: 24px;
+    z-index: ${FLOATING_STYLES.WIDGET_BUTTON.zIndex};
+    bottom: ${FLOATING_STYLES.WIDGET_BUTTON.bottom};
+    right: ${FLOATING_STYLES.WIDGET_BUTTON.right};
   }
 `;
 

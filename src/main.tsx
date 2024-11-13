@@ -25,7 +25,21 @@ const WidgetApp = () => {
   }
 
   const host = getHost(region);
-  return <App applicationId={appId} botId={botId} locale={locale} apiHost={host.apiHost} wsHost={host.wsHost} />;
+  return (
+    <App
+      applicationId={appId}
+      botId={botId}
+      locale={locale}
+      apiHost={host.apiHost}
+      wsHost={host.wsHost}
+      botStudioEditProps={{
+        teaserMessages: [
+          '👋 Hi! I am a Chatbase AI, ask me anything about Chatbase!',
+          'By the way, you can create a chatbot like me for your website! 😊',
+        ],
+      }}
+    />
+  );
 };
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

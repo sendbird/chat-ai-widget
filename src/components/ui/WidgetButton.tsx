@@ -1,9 +1,13 @@
+import { ReactNode, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../../colors';
-import { elementIds } from '../../const';
+import { elementIds, FLOATING_STYLES } from '../../const';
+import { useConstantState } from '../../context/ConstantContext';
 import BotOutlinedIcon from '../../icons/bot-outlined.svg';
 import ChevronDownIcon from '../../icons/chevron-down.svg';
+import { parseTextMessage, Token } from '../../utils';
+import TokensBody from '../TokensBody';
 
 const buttonEffect = css`
   &:hover {
@@ -36,6 +40,7 @@ const ButtonContainer = styled.button<{
     0px 6px 10px -5px rgba(33, 33, 33, 0.04);
 
   span {
+    position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -85,7 +90,7 @@ type IconWrapperProps = {
 };
 
 const IconWrapper = styled.span`
-  position: absolute;
+  position: fixed;
 `;
 
 const OpenIconWrapper = styled(IconWrapper)<IconWrapperProps>`
@@ -110,6 +115,70 @@ const Icon = {
   Close: () => <ChevronDownIcon />,
 };
 
+interface TeaserMessageProps {
+  isVisible: boolean;
+}
+
+const TeaserMessage = styled.div<TeaserMessageProps>`
+  cursor: pointer;
+  /* Slide-in from right */
+  @keyframes slideInFromRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Slide-out to the right */
+  @keyframes slideOutToRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  ${({ isVisible }) =>
+    isVisible
+      ? {
+          animation: 'slideInFromRight 0.5s ease-out forwards',
+        }
+      : {
+          animation: 'slideOutToRight 0.5s ease-in forwards',
+        }};
+`;
+
+export const TeaserMessageComponent = ({ children }: { children: ReactNode }) => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleToggle = () => {
+    setIsVisible(false); // Trigger slide-out animation
+  };
+
+  return (
+    <TeaserMessage onClick={handleToggle} isVisible={isVisible}>
+      {children}
+    </TeaserMessage>
+  );
+};
+
+const TeaserMessagesContainer = styled.div`
+  position: fixed;
+  z-index: ${FLOATING_STYLES.TEASER_MESSAGES.zIndex};
+  bottom: ${FLOATING_STYLES.TEASER_MESSAGES.bottom};
+  right: ${FLOATING_STYLES.TEASER_MESSAGES.right};
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
 export interface WidgetButtonProps {
   isOpen: boolean;
   accentColor: string;
@@ -119,6 +188,26 @@ export interface WidgetButtonProps {
   animated?: boolean;
 }
 
+interface TeaserMessagesProps {
+  teaserMessages: string[];
+}
+
+export const TeaserMessages = ({ teaserMessages }: TeaserMessagesProps) => {
+  const { replacementTextList } = useConstantState();
+  return (
+    <TeaserMessagesContainer id={elementIds.widgetTeaserMessages}>
+      {teaserMessages.map((message, i) => {
+        const tokens: Token[] = parseTextMessage(message, replacementTextList);
+        return (
+          <TeaserMessageComponent key={i}>
+            {tokens && tokens.length > 0 ? <TokensBody tokens={tokens} /> : message}
+          </TeaserMessageComponent>
+        );
+      })}
+    </TeaserMessagesContainer>
+  );
+};
+
 export const WidgetButton = ({
   isOpen,
   imageUrl,
@@ -127,21 +216,27 @@ export const WidgetButton = ({
   className,
   animated = true,
 }: WidgetButtonProps) => {
+  const { botStudioEditProps } = useConstantState();
+  const { teaserMessages } = botStudioEditProps ?? {};
+
   return (
-    <ButtonContainer
-      id={elementIds.widgetToggleButton}
-      aria-label="Widget toggle button"
-      className={className}
-      onClick={onClick}
-      backgroundColor={accentColor}
-      animated={animated}
-    >
-      <OpenIconWrapper isOpen={isOpen} animated={animated}>
-        <Icon.Open url={imageUrl} />
-      </OpenIconWrapper>
-      <CloseIconWrapper isOpen={isOpen} animated={animated}>
-        <Icon.Close />
-      </CloseIconWrapper>
-    </ButtonContainer>
+    <>
+      {Array.isArray(teaserMessages) && !isOpen && <TeaserMessages teaserMessages={teaserMessages} />}
+      <ButtonContainer
+        id={elementIds.widgetToggleButton}
+        aria-label="Widget toggle button"
+        className={className}
+        onClick={onClick}
+        backgroundColor={accentColor}
+        animated={animated}
+      >
+        <OpenIconWrapper isOpen={isOpen} animated={animated}>
+          <Icon.Open url={imageUrl} />
+        </OpenIconWrapper>
+        <CloseIconWrapper isOpen={isOpen} animated={animated}>
+          <Icon.Close />
+        </CloseIconWrapper>
+      </ButtonContainer>
+    </>
   );
 };
