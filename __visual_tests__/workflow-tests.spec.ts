@@ -111,7 +111,7 @@ test('103', async ({ page, browserName }) => {
   // 4
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(1).click();
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(4000); // Time takes long for file message to be rendered and then scrolled to bottom in CI browsers.
   await assertScreenshot(page, '103-4', browserName);
   
   // 5
