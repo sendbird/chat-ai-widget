@@ -7,11 +7,7 @@ const WidgetApp = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const appId = urlParams.get('app_id') ?? import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const botId = urlParams.get('bot_id') ?? import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
-  const isSnapshotStr = urlParams.get('snapshot');
-  let isSnapshot = false;
-  if (isSnapshotStr !== null) {
-    isSnapshot = JSON.parse(isSnapshotStr);
-  }
+  const isSnapshot = urlParams.get('snapshot') === 'true';
 
   const locale = urlParams.get('locale') ?? undefined;
   const region = urlParams.get('region') ?? undefined;
