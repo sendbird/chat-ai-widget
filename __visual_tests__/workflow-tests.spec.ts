@@ -6,7 +6,9 @@ import {assertScreenshot, clickNthChip, loadWidget, sendTextMessage} from "./uti
 
 test.beforeEach(async ({ page }) => {
   await page.goto(TEST_URL);
-  await page.waitForTimeout(2500);
+  const widgetWindow = page.locator(WidgetComponentIds.WIDGET_BUTTON);
+  await widgetWindow.waitFor({ state: 'visible' });
+  // await page.waitForTimeout(2500);
 });
 
 /**

@@ -7,10 +7,10 @@ const WidgetApp = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const appId = urlParams.get('app_id') ?? import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const botId = urlParams.get('bot_id') ?? import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
-  const disableTimestampsStr = urlParams.get('disable_timestamps');
-  let disableTimestamps = false;
-  if (disableTimestampsStr !== null) {
-    disableTimestamps = JSON.parse(disableTimestampsStr);
+  const isSnapshotStr = urlParams.get('snapshot');
+  let isSnapshot = false;
+  if (isSnapshotStr !== null) {
+    isSnapshot = JSON.parse(isSnapshotStr);
   }
 
   const locale = urlParams.get('locale') ?? undefined;
@@ -39,14 +39,14 @@ const WidgetApp = () => {
       apiHost={host.apiHost}
       wsHost={host.wsHost}
       stringSet={
-        disableTimestamps
+        isSnapshot
           ? {
               DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR: "'DATE SEPARATOR'",
               DATE_FORMAT__MESSAGE_TIMESTAMP: "'00:00 AM'",
             }
           : undefined
       }
-      enableMessageGrouping={!disableTimestamps}
+      enableMessageGrouping={!isSnapshot}
     />
   );
 };

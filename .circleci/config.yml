@@ -32,6 +32,9 @@ commands:
     steps:
       - attach_workspace:
           at: ~/project
+      - run:
+          name: Enable Corepack
+          command: corepack enable --install-directory ~/bin
   aws-create-invalidation:
     description: Create invalidation in CloudFront distribution
     parameters:
@@ -67,9 +70,6 @@ jobs:
             - v2-dependencies-{{ checksum "yarn.lock" }}
             - v2-dependencies-
       - run:
-          name: Enable Corepack
-          command: corepack enable --install-directory ~/bin
-      - run:
           name: Install dependencies
           command: |
             git submodule update --init --recursive
@@ -83,31 +83,6 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-
-  # CI - install dependencies for macOS
-  prepare-macos:
-    executor: ci-macos
-    steps:
-      - checkout
-      - attach_workspace:
-          at: /Users/distiller/project
-      - run:
-          name: Enable Corepack
-          command: corepack enable
-      - run:
-          name: Install dependencies
-          command: |
-            git submodule update --init --recursive
-            yarn install --immutable
-      - save_cache:
-          key: v2-dependencies-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-            - packages/self-service/node_modules
-      - persist_to_workspace:
-          root: /Users/distiller/project
-          paths: .
-
   # CI - check format
   run-format:
     executor: ci-node
@@ -138,16 +113,20 @@ jobs:
   run-snapshot-test:
     executor: ci-macos
     steps:
-      - attach_project
+      - checkout
+      - attach_workspace:
+          at: /Users/distiller/project
       - run:
-          name: Install Playwright dependencies
-          command: sudo yarn playwright install-deps
+          name: Enable Corepack
+          command: corepack enable
+      - run:
+          name: Install dependencies
+          command: |
+            git submodule update --init --recursive
+            yarn install --immutable
       - run:
           name: Install Playwright browsers
-          command: yarn playwright install
-      - run:
-          name: List all __visual_tests__ snapshots
-          command: find /Users/distiller/project/__visual_tests__ -type f
+          command: npx playwright install --with-deps
       - run:
           name: Run Playwright snapshot tests
           command: yarn playwright test
@@ -252,10 +231,7 @@ workflows:
             - prepare
   ci-snapshot-test:
     jobs:
-      - prepare-macos
-      - run-snapshot-test:
-          requires:
-            - prepare-macos
+      - run-snapshot-test
 
   deploy_prod:
     when: << pipeline.parameters.run_deploy_prod >>

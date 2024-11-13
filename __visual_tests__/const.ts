@@ -1,7 +1,7 @@
 const appId = process.env.SNAPSHOT_TEST_APP_ID;
 const botId = process.env.SNAPSHOT_TEST_BOT_ID;
 
-export const TEST_URL = `http://localhost:5173/chat-ai-widget/?app_id=${appId}&bot_id=${botId}&disable_timestamps=true`;
+export const TEST_URL = `http://localhost:5173/chat-ai-widget/?app_id=${appId}&bot_id=${botId}&snapshot=true`;
 
 export const WidgetComponentIds = {
   WIDGET: '#aichatbot-widget-window',

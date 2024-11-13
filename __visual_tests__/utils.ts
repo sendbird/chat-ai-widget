@@ -15,6 +15,7 @@ export async function assertScreenshot(page: Page, screenshotName: string, brows
 
 export async function loadWidget(page: Page) {
   await page.click(WidgetComponentIds.WIDGET_BUTTON);
+  // NOTE: below fails sometimes in CI.
   // const widgetWindow = page.locator(WidgetComponentIds.MESSAGE_INPUT);
   // await widgetWindow.waitFor({ state: 'visible' });
   await page.waitForTimeout(2500);
