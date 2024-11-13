@@ -1,12 +1,9 @@
-import * as os from 'os';
-
 import {expect, Page} from "@playwright/test";
 
 import {WidgetComponentIds} from "./const";
 
 export async function assertScreenshot(page: Page, screenshotName: string, browserName: string) {
-  const arch = os.arch();
-  const name = `${screenshotName}.${browserName}.${arch}.png`; // Include the browser and OS architecture info in the filename
+  const name = `${screenshotName}.${browserName}.${process.platform}.png`; // Include the browser and OS architecture info in the filename
   await expect(page.locator(WidgetComponentIds.WIDGET)).toHaveScreenshot(
     name,
     {
