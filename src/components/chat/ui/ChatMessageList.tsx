@@ -56,9 +56,9 @@ export const ChatMessageList = () => {
 
           const [top, bottom] = getMessageGrouping(
             message,
-            enableMessageGrouping,
             filteredMessages[index - 1],
             filteredMessages[index + 1],
+            enableMessageGrouping,
           );
 
           return (

@@ -1,16 +1,13 @@
-import {expect, Page} from "@playwright/test";
+import { expect, Page } from '@playwright/test';
 
-import {WidgetComponentIds} from "./const";
+import { WidgetComponentIds } from './const';
 
 export async function assertScreenshot(page: Page, screenshotName: string, browserName: string) {
   const name = `${screenshotName}.${browserName}.${process.platform}.png`; // Include the browser and OS architecture info in the filename
-  await expect(page.locator(WidgetComponentIds.WIDGET)).toHaveScreenshot(
-    name,
-    {
-      omitBackground: false,
-      maxDiffPixelRatio: 0.01, // Need this because Sendbird logo is slightly differently rendered in CI.
-    }
-  );
+  await expect(page.locator(WidgetComponentIds.WIDGET)).toHaveScreenshot(name, {
+    omitBackground: false,
+    maxDiffPixelRatio: 0.01, // Need this because Sendbird logo is slightly differently rendered in CI.
+  });
 }
 
 export async function loadWidget(page: Page) {

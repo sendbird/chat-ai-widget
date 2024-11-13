@@ -128,11 +128,16 @@ jobs:
           name: Install Playwright browsers
           command: npx playwright install --with-deps
       - run:
-          name: Run Playwright snapshot tests
-          command: yarn playwright test
+          name: Run Playwright snapshot tests # refer to https://circleci.com/docs/collect-test-data/#playwright
+          command: PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml yarn playwright test --config=playwright.config.ts
+      - store_test_results:
+          path: results.xml
       - store_artifacts:
           path: /Users/distiller/project/test-results
           destination: playwright-test-results
+      - store_artifacts:
+          path: /Users/distiller/project/playwright-report
+          destination: playwright-html-report
 
   # Publish - build self-service
   build:

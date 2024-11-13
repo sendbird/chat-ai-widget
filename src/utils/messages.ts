@@ -5,9 +5,9 @@ import { messageExtension } from './messageExtension';
 
 export const getMessageGrouping = (
   curr: BaseMessage,
-  enableMessageGrouping: boolean,
   prev?: BaseMessage,
   next?: BaseMessage,
+  enableMessageGrouping = true,
 ): [boolean, boolean] => {
   if (!enableMessageGrouping) {
     return [true, true];

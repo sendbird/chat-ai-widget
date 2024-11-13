@@ -24,9 +24,9 @@
     "build:npm": "node scripts/prebuild.mjs && yarn build",
     "build:pages": "rm -rf ./dist && tsc-silent -p './tsconfig.json' --suppress @ && vite build --config vite.config.pages.ts",
     "format": "yarn prettier:fix && yarn lint:fix",
-    "format:check": "yarn prettier src --check && yarn eslint src",
-    "lint:fix": "yarn eslint src --fix",
-    "prettier:fix": "yarn prettier src --write",
+    "format:check": "yarn prettier src __visual_tests__ --check && yarn eslint src __visual_tests__",
+    "lint:fix": "yarn eslint src __visual_tests__ --fix",
+    "prettier:fix": "yarn prettier src __visual_tests__ --write",
     "preview": "vite preview",
     "test": "vitest run"
   },
