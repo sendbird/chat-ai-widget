@@ -133,9 +133,6 @@ jobs:
       - store_test_results:
           path: results.xml
       - store_artifacts:
-          path: /Users/distiller/project/test-results
-          destination: playwright-test-results
-      - store_artifacts:
           path: /Users/distiller/project/playwright-report
           destination: playwright-html-report
 
