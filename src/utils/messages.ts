@@ -3,7 +3,15 @@ import { isSameMinute } from 'date-fns';
 
 import { messageExtension } from './messageExtension';
 
-export const getMessageGrouping = (curr: BaseMessage, prev?: BaseMessage, next?: BaseMessage): [boolean, boolean] => {
+export const getMessageGrouping = (
+  curr: BaseMessage,
+  prev?: BaseMessage,
+  next?: BaseMessage,
+  enableMessageGrouping = true,
+): [boolean, boolean] => {
+  if (!enableMessageGrouping) {
+    return [true, true];
+  }
   if (!curr.isUserMessage() && !curr.isFileMessage()) {
     return [false, false];
   }

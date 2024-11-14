@@ -29,6 +29,7 @@
     "src",
     "./src/custom.d.ts",
     "./src/styled-components.d.ts",
+    "__visual_tests__",
   ],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]

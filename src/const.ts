@@ -63,6 +63,7 @@ export const DEFAULT_CONSTANT = {
   enableMention: true,
   enableResetHistoryOnConnect: false,
   enableWidgetExpandButton: false,
+  enableMessageGrouping: true,
   dateLocale: enUS,
   enableHideWidgetForDeactivatedUser: false,
   messageInputControls: {
@@ -316,6 +317,11 @@ interface ConstantFeatureFlags {
    * @description Enable widget expand button.
    * */
   enableWidgetExpandButton: boolean;
+  /**
+   * @public
+   * @description Enable message grouping by timestamp.
+   * */
+  enableMessageGrouping: boolean;
 }
 
 export interface CreateGroupChannelParams {

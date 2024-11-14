@@ -22,6 +22,10 @@ executors:
       - image: cimg/node:20.13.1
     resource_class: medium
     working_directory: ~/project
+  ci-macos:
+    macos:
+      xcode: 15.0.0  # Use the closest available version of macOS (Sonoma equivalent may not be available yet)
+    working_directory: ~/project
 
 commands:
   attach_project:
@@ -105,6 +109,30 @@ jobs:
           no_output_timeout: 15m
           name: Run test
           command: yarn test
+  # CI - Run snapshot tests
+  run-snapshot-test:
+    executor: ci-macos
+    steps:
+      - checkout
+      - run:
+          name: Enable Corepack
+          command: corepack enable
+      - run:
+          name: Install dependencies
+          command: |
+            git submodule update --init --recursive
+            yarn install --immutable
+      - run:
+          name: Install Playwright browsers
+          command: npx playwright install --with-deps
+      - run:
+          name: Run Playwright snapshot tests # refer to https://circleci.com/docs/collect-test-data/#playwright
+          command: PLAYWRIGHT_JUNIT_OUTPUT_NAME=results.xml yarn playwright test --config=playwright.config.ts
+      - store_test_results:
+          path: results.xml
+      - store_artifacts:
+          path: ~/project/playwright-report
+          destination: playwright-html-report
 
   # Publish - build self-service
   build:
@@ -201,6 +229,9 @@ workflows:
       - run-test:
           requires:
             - prepare
+  ci-snapshot-test:
+    jobs:
+      - run-snapshot-test
 
   deploy_prod:
     when: << pipeline.parameters.run_deploy_prod >>

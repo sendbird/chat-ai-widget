@@ -5,6 +5,7 @@ import { Locale } from 'date-fns';
 import { useTheme } from 'styled-components';
 
 import { DefaultSentTime } from './MessageComponent';
+import { useConstantState } from '../context/ConstantContext';
 import { Icon } from '../foundation/components/Icon';
 import { Loader } from '../foundation/components/Loader';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
@@ -16,6 +17,7 @@ interface MyMessageStatusProps {
 
 export default function MyMessageStatus(props: MyMessageStatusProps) {
   const { message, dateLocale } = props;
+  const { stringSet } = useConstantState();
   const theme = useTheme();
 
   switch (message.sendingStatus) {
@@ -32,7 +34,11 @@ export default function MyMessageStatus(props: MyMessageStatusProps) {
         </div>
       );
     default:
-      return <DefaultSentTime>{formatCreatedAtToAMPM(message.createdAt, dateLocale)}</DefaultSentTime>;
+      return (
+        <DefaultSentTime>
+          {formatCreatedAtToAMPM(message.createdAt, stringSet.DATE_FORMAT__MESSAGE_TIMESTAMP, dateLocale)}
+        </DefaultSentTime>
+      );
   }
 }
 
