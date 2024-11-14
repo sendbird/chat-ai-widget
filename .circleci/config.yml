@@ -114,8 +114,6 @@ jobs:
     executor: ci-macos
     steps:
       - checkout
-      - attach_workspace:
-          at: /Users/distiller/project
       - run:
           name: Enable Corepack
           command: corepack enable
