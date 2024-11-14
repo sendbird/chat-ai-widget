@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Avatar from '@uikit/ui/Avatar';
 
 import { SentTime } from './MessageComponent';
+import { useConstantState } from '../context/ConstantContext';
 import { Label } from '../foundation/components/Label';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
@@ -60,6 +61,7 @@ const EmptyImageContainer = styled.div`
 
 export default function UserMessageWithBodyInput(props: Props) {
   const { user, message, bodyComponent, chainTop, chainBottom, locale } = props;
+  const { stringSet } = useConstantState();
 
   const nonChainedMessage = chainTop == null && chainBottom == null;
   const displayProfileImage = nonChainedMessage || chainBottom;
@@ -82,7 +84,11 @@ export default function UserMessageWithBodyInput(props: Props) {
         )}
         <Content>
           {bodyComponent}
-          {!!message?.createdAt && <SentTime>{formatCreatedAtToAMPM(message.createdAt, locale)}</SentTime>}
+          {!!message?.createdAt && (
+            <SentTime>
+              {formatCreatedAtToAMPM(message.createdAt, stringSet.DATE_FORMAT__MESSAGE_TIMESTAMP, locale)}
+            </SentTime>
+          )}
         </Content>
       </BodyContainer>
     </Root>

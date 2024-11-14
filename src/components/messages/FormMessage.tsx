@@ -132,7 +132,7 @@ export default function FormMessage(props: Props) {
   };
 
   return (
-    <Root>
+    <Root id="aichatbot-widget-form">
       {items.map((item, index) => {
         const { name, placeholder, id, required, style } = item;
         const { draftValues = [], errorMessage } = formValues[index];

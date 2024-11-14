@@ -20,7 +20,7 @@ import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
 
 export const ChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
-  const { botStudioEditProps, customUserAgentParam, stringSet, dateLocale } = useConstantState();
+  const { botStudioEditProps, customUserAgentParam, stringSet, dateLocale, enableMessageGrouping } = useConstantState();
 
   const typingTargetMessageId = useTypingTargetMessageId();
   const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();
@@ -54,7 +54,12 @@ export const ChatMessageList = () => {
           const lastMessageInChannel = filteredMessages[filteredMessages.length - 1];
           const showRepliesOnLastMessage = message.messageId === lastMessageInChannel?.messageId;
 
-          const [top, bottom] = getMessageGrouping(message, filteredMessages[index - 1], filteredMessages[index + 1]);
+          const [top, bottom] = getMessageGrouping(
+            message,
+            filteredMessages[index - 1],
+            filteredMessages[index + 1],
+            enableMessageGrouping,
+          );
 
           return (
             <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
