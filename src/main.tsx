@@ -36,6 +36,8 @@ const WidgetApp = () => {
         teaserMessages: [
           '👋 Hi! I am a Chatbase AI, ask me anything about Chatbase!',
           'By the way, you can create a chatbot like me for your website! 😊',
+          'something something something something',
+          'something something'
         ],
       }}
     />

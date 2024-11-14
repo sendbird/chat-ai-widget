@@ -121,6 +121,9 @@ interface TeaserMessageProps {
 
 const TeaserMessage = styled.div<TeaserMessageProps>`
   cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+
   /* Slide-in from right */
   @keyframes slideInFromRight {
     from {
@@ -157,13 +160,24 @@ const TeaserMessage = styled.div<TeaserMessageProps>`
 
 export const TeaserMessageComponent = ({ children }: { children: ReactNode }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isRendered, setIsRendered] = useState(true); // Controls if component is in the DOM
 
   const handleToggle = () => {
     setIsVisible(false); // Trigger slide-out animation
   };
+  
+  const handleAnimationEnd = () => {
+    if (!isVisible) {
+      setIsRendered(false); // Remove component from DOM after animation
+    }
+  };
 
   return (
-    <TeaserMessage onClick={handleToggle} isVisible={isVisible}>
+    isRendered && <TeaserMessage
+      isVisible={isVisible}
+      onClick={handleToggle}
+      onAnimationEnd={handleAnimationEnd}
+    >
       {children}
     </TeaserMessage>
   );
