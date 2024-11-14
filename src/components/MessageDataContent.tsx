@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 import { useConstantState } from '../context/ConstantContext';
-import ChevronRightIcon from '../icons/chevron-right.svg';
-import EllipsisIcon from '../icons/icon-ellipsis.svg';
-import MessageBubbleIcon from '../icons/icon-message-bubble.svg';
+import ChevronRightIcon from '../icons/ic-chevron-right.svg';
+import EllipsisIcon from '../icons/ic-ellipsis.svg';
+import MessageIcon from '../icons/ic-message.svg';
 import { FunctionCallData } from '../types';
 import { noop } from '../utils';
 
@@ -121,7 +121,7 @@ const AdditionalInfo = styled.div`
   margin-top: 5px;
 `;
 
-const Icon = styled.div`
+const IconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,9 +239,9 @@ export default function MessageDataContent({ messageData }: MessageDataContentPr
       <DataContainer>
         {workflow && (
           <DataRow>
-            <Icon>
-              <MessageBubbleIcon id="aichatbot-widget-ellipsis-icon" />
-            </Icon>
+            <IconContainer>
+              <MessageIcon />
+            </IconContainer>
             <Text>{workflow.name}</Text>
             <LineHeightWrapper>
               <WorkFlowType>{workflow.type}</WorkFlowType>
@@ -250,17 +250,17 @@ export default function MessageDataContent({ messageData }: MessageDataContentPr
         )}
         {functionCalls.map((renderData, index) => (
           <DataRow key={index}>
-            <Icon>
-              <EllipsisIcon id="aichatbot-widget-message-bubble-icon" />
-            </Icon>
+            <IconContainer>
+              <EllipsisIcon />
+            </IconContainer>
             <Text>{renderData.name}</Text>
             <ViewDetails onClick={renderData.onClick}>
-              <TextButton>View details</TextButton>
-              <ChevronRightIcon id="aichatbot-widget-chevron-right-icon" />
+              <TextButton>{'View details'}</TextButton>
+              <ChevronRightIcon />
             </ViewDetails>
           </DataRow>
         ))}
-        <AdditionalInfo>Only visible in the dashboard widget</AdditionalInfo>
+        <AdditionalInfo>{'Only visible in the dashboard widget'}</AdditionalInfo>
       </DataContainer>
     </Root>
   );

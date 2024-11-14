@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../../colors';
 import { elementIds } from '../../const';
-import BotOutlinedIcon from '../../icons/bot-outlined.svg';
-import ChevronDownIcon from '../../icons/chevron-down.svg';
+import BotOutlinedIcon from '../../icons/ic-bot-outlined.svg';
+import ChevronDownIcon from '../../icons/ic-chevron-down.svg';
 
 const buttonEffect = css`
   &:hover {

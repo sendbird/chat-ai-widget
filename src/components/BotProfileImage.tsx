@@ -5,7 +5,7 @@ import { useChatContext } from './chat/context/ChatProvider';
 import { getColorBasedOnSaturation } from '../colors';
 import { useConstantState } from '../context/ConstantContext';
 import { themedColors } from '../foundation/colors/css';
-import BotProfileIcon from '../icons/bot-profile-image-small.svg';
+import BotFilledIcon from '../icons/ic-bot-filled.svg';
 
 function isMaybeFavicon(url: string) {
   if (url.length < 4) return false;
@@ -44,7 +44,7 @@ const IconContainer = styled.span<{ backgroundColor: string; size: number }>`
   align-items: center;
 }`;
 
-const Icon = styled(BotProfileIcon)<{ fill: string }>`
+const Icon = styled(BotFilledIcon)<{ fill: string }>`
   path {
     fill: ${({ fill }) => fill};
   }
