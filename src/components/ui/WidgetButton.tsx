@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import {Dispatch, ReactNode, SetStateAction, useState} from 'react';
 import styled, { css } from 'styled-components';
 
 import { getColorBasedOnSaturation } from '../../colors';
@@ -156,25 +156,18 @@ const TeaserMessage = styled.div<TeaserMessageProps>`
         }};
 `;
 
-export const TeaserMessageComponent = ({ children }: { children: ReactNode }) => {
+export const TeaserMessageComponent = ({ children, onClick }: { children: ReactNode, onClick: () => void }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [isRendered, setIsRendered] = useState(true); // Controls if component is in the DOM
 
   const handleToggle = () => {
     setIsVisible(false); // Trigger slide-out animation
   };
   
-  const handleAnimationEnd = () => {
-    if (!isVisible) {
-      setIsRendered(false); // Remove component from DOM after animation
-    }
-  };
-
   return (
-    isRendered && <TeaserMessage
+    <TeaserMessage
       isVisible={isVisible}
       onClick={handleToggle}
-      onAnimationEnd={handleAnimationEnd}
+      onAnimationEnd={() => { if (!isVisible) onClick() }}
     >
       {children}
     </TeaserMessage>
@@ -203,18 +196,35 @@ export interface WidgetButtonProps {
 
 interface TeaserMessagesProps {
   teaserMessages: string[];
+  teaserMessageIsVisibleStates: boolean[];
+  setTeaserMessageIsVisibleStates: Dispatch<SetStateAction<boolean[]>>;
 }
 
-export const TeaserMessages = ({ teaserMessages }: TeaserMessagesProps) => {
+export const TeaserMessages = ({
+  teaserMessages,
+  teaserMessageIsVisibleStates,
+  setTeaserMessageIsVisibleStates
+}: TeaserMessagesProps) => {
   const { replacementTextList } = useConstantState();
   return (
     <TeaserMessagesContainer id={elementIds.widgetTeaserMessages}>
       {teaserMessages.map((message, i) => {
         const tokens: Token[] = parseTextMessage(message, replacementTextList);
         return (
-          <TeaserMessageComponent key={i}>
-            {tokens && tokens.length > 0 ? <TokensBody tokens={tokens} /> : message}
-          </TeaserMessageComponent>
+          teaserMessageIsVisibleStates[i]
+            ? <TeaserMessageComponent
+              key={i}
+              onClick={() => {
+                setTeaserMessageIsVisibleStates((oldVals) => {
+                  const newVals = [...oldVals];
+                  newVals[i] = false;
+                  return newVals;
+                })
+              }}
+            >
+              {tokens && tokens.length > 0 ? <TokensBody tokens={tokens} /> : message}
+            </TeaserMessageComponent>
+            : null
         );
       })}
     </TeaserMessagesContainer>
@@ -231,10 +241,23 @@ export const WidgetButton = ({
 }: WidgetButtonProps) => {
   const { botStudioEditProps } = useConstantState();
   const { teaserMessages } = botStudioEditProps ?? {};
-
+  
+  const [teaserMessageIsVisibleStates, setTeaserMessageIsVisibleStates] = useState(
+    teaserMessages
+      ? Array.from({ length: teaserMessages.length }, () => true)
+      : []
+  );
+  
   return (
     <>
-      {Array.isArray(teaserMessages) && !isOpen && <TeaserMessages teaserMessages={teaserMessages} />}
+      {
+        Array.isArray(teaserMessages)
+        && !isOpen
+        && <TeaserMessages
+          teaserMessages={teaserMessages}
+          teaserMessageIsVisibleStates={teaserMessageIsVisibleStates}
+          setTeaserMessageIsVisibleStates={setTeaserMessageIsVisibleStates}
+        />}
       <ButtonContainer
         id={elementIds.widgetToggleButton}
         aria-label="Widget toggle button"
