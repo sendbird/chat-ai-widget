@@ -133,7 +133,7 @@ jobs:
       - store_test_results:
           path: results.xml
       - store_artifacts:
-          path: /Users/distiller/project/playwright-report
+          path: ~/project/playwright-report
           destination: playwright-html-report
 
   # Publish - build self-service
