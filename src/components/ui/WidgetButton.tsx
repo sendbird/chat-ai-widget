@@ -121,8 +121,6 @@ interface TeaserMessageProps {
 
 const TeaserMessage = styled.div<TeaserMessageProps>`
   cursor: pointer;
-  display: flex;
-  justify-content: flex-end;
 
   /* Slide-in from right */
   @keyframes slideInFromRight {
@@ -191,6 +189,7 @@ const TeaserMessagesContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  align-items: flex-end;
 `;
 
 export interface WidgetButtonProps {
