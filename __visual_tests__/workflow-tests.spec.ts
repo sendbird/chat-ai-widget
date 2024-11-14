@@ -74,7 +74,7 @@ test('101', async ({ page, browserName }) => {
 test('102', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
-  await sendTextMessage(page, 'Give me a travel agency poster', 100);
+  await sendTextMessage(page, 'Give me a travel agency poster', 5000);
   await assertScreenshot(page, '102-1', browserName);
 });
 
@@ -110,7 +110,7 @@ test('103', async ({ page, browserName }) => {
   // 4
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(1).click();
-  await page.waitForTimeout(100); // Time takes long for file message to be rendered and then scrolled to bottom in CI browsers.
+  await page.waitForTimeout(4000); // Time takes long for file message to be rendered and then scrolled to bottom in CI browsers.
   await assertScreenshot(page, '103-4', browserName);
 
   // 5
