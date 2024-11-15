@@ -32,6 +32,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     dateLocale,
     enableHideWidgetForDeactivatedUser,
     localCacheEnabled,
+    isCustomizedForDemo
   } = useConstantState();
 
   const { setIsVisible } = useWidgetState();
@@ -46,7 +47,7 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
       'chat-ai-widget-key': CHAT_AI_WIDGET_KEY,
       'chat-ai-widget-service-name': serviceName,
     };
-    if (isDashboardPreview(userAgent)) {
+    if (isDashboardPreview(userAgent) || isCustomizedForDemo) {
       delete userAgent['chat-ai-widget-service-name'];
     }
     return userAgent;

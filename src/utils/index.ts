@@ -306,6 +306,10 @@ export function isDashboardPreview(userAgent: object | undefined) {
   return userAgent && 'chat-ai-widget-preview' in userAgent && userAgent['chat-ai-widget-preview'] === 'True';
 }
 
+export function isInteractiveDemo(userAgent: object | undefined) {
+  return userAgent && 'chat-ai-widget-demo' in userAgent && userAgent['chat-ai-widget-demo'] === 'True';
+}
+
 export function getDefaultServiceName(injectedServiceName?: string) {
   if (!injectedServiceName) {
     return widgetServiceName.default;

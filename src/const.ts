@@ -58,6 +58,7 @@ export const DEFAULT_CONSTANT = {
     width: '16px',
     height: '16px',
   },
+  isCustomizedForDemo: false,
   enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
@@ -271,6 +272,11 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
    * @description Determines whether to use the local cache of the Chat SDK.
    */
   localCacheEnabled?: boolean;
+  /**
+   * @private
+   * @description Custom Flags for Interactive Demo
+   */
+  isCustomizedForDemo?: boolean;
 }
 
 interface ConstantAIFeatures {

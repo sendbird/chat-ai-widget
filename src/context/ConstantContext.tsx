@@ -6,7 +6,7 @@ import { LabelStringSet } from '@uikit/ui/Label';
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
 import { type Constant, DEFAULT_CONSTANT, widgetStringSet } from '../const';
-import { getDefaultServiceName, isMobile } from '../utils';
+import { getDefaultServiceName, isInteractiveDemo, isMobile } from '../utils';
 
 const initialState = DEFAULT_CONSTANT;
 
@@ -24,6 +24,7 @@ const ConstantContext = createContext<ConstantContextValue | null>(null);
 
 export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextProps>) => {
   const isMobileView = isMobile(props.deviceType);
+  const isCustomizedForDemo = isInteractiveDemo(props?.customUserAgentParam);
   const defaultRefreshComponentSideLength = isMobileView ? '24px' : '16px';
 
   /**
@@ -116,6 +117,8 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
             ...props.tools?.functionCall,
           },
         },
+        // -------- Custom Props ----- //
+        isCustomizedForDemo: isCustomizedForDemo ?? props.isCustomizedForDemo,
       }}
     >
       {props.children}
