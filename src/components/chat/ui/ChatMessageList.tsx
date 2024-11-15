@@ -11,6 +11,7 @@ import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
 import { isDashboardPreview } from '../../../utils';
 import { getMessageGrouping } from '../../../utils/messages';
+import BotReplySourcesPanel from '../../BotReplySourcesPanel';
 import CustomMessage from '../../CustomMessage';
 import MessageDataContent from '../../MessageDataContent';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
@@ -94,6 +95,8 @@ export const ChatMessageList = () => {
                     }}
                   />
                 )}
+
+                {<BotReplySourcesPanel message={message} />}
               </div>
             </div>
           );

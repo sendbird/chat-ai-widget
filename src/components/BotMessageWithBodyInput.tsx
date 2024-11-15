@@ -1,3 +1,4 @@
+import { BaseMessage } from '@sendbird/chat/message';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
@@ -44,6 +45,7 @@ type Props = {
   chainBottom?: boolean;
   messageFeedback?: ReactNode;
   wideContainer?: boolean;
+  message?: BaseMessage;
 };
 
 // TODO: When changing the layout, it should be modified to apply flexibly.
