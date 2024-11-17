@@ -32,9 +32,6 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
     stores.sdkStore.initialized,
   ]);
 
-  console.log('--------------------------------------------------------')
-  console.log(customizedDemoCategory)
-
   // Set locale for chatbot
   useEffect(() => {
     if (locale && stores.sdkStore.initialized && stores.sdkStore.sdk) {

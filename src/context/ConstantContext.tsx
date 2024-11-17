@@ -23,10 +23,7 @@ interface ConstantContextValue extends Constant {
 const ConstantContext = createContext<ConstantContextValue | null>(null);
 
 export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextProps>) => {
-  console.log('################################################################');
-  console.log(props);
   const isMobileView = isMobile(props.deviceType);
-  console.log(getCustomizedDemoCategory(props.customUserAgentParam));
   const defaultRefreshComponentSideLength = isMobileView ? '24px' : '16px';
 
   /**
