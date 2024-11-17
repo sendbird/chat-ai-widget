@@ -58,7 +58,6 @@ export const DEFAULT_CONSTANT = {
     width: '16px',
     height: '16px',
   },
-  isCustomizedForDemo: false,
   enableSourceMessage: false,
   enableEmojiFeedback: true,
   enableMention: true,
@@ -274,9 +273,9 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
   localCacheEnabled?: boolean;
   /**
    * @private
-   * @description Custom Flags for Interactive Demo
+   * @description Custom Properties for Interactive Demo (fintech | ecommerce | healthcare)
    */
-  isCustomizedForDemo?: boolean;
+  customizedDemoCategory?: string;
 }
 
 interface ConstantAIFeatures {
@@ -316,6 +315,7 @@ interface ConstantFeatureFlags {
    * @public
    * @description Hide widget for deactivated user.
    * */
+
   enableHideWidgetForDeactivatedUser: boolean;
   /**
    * @public

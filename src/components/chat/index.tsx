@@ -13,7 +13,7 @@ import { useWidgetInactivityTimeout } from '../../hooks/useWidgetInactivityTimeo
 
 const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
   const { stores } = useSendbirdStateContext();
-  const { locale } = useConstantState();
+  const { locale, customizedDemoCategory } = useConstantState();
   const widgetSetting = useWidgetSetting();
   const widgetSession = useWidgetSession();
 
@@ -31,6 +31,9 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
     stores.sdkStore.sdk,
     stores.sdkStore.initialized,
   ]);
+
+  console.log('--------------------------------------------------------')
+  console.log(customizedDemoCategory)
 
   // Set locale for chatbot
   useEffect(() => {

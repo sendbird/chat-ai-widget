@@ -306,8 +306,20 @@ export function isDashboardPreview(userAgent: object | undefined) {
   return userAgent && 'chat-ai-widget-preview' in userAgent && userAgent['chat-ai-widget-preview'] === 'True';
 }
 
-export function isInteractiveDemo(userAgent: object | undefined) {
-  return userAgent && 'chat-ai-widget-demo' in userAgent && userAgent['chat-ai-widget-demo'] === 'True';
+export function isCustomizedForDemo(userAgent: object | undefined) {
+  return (
+    userAgent &&
+    'chat-ai-widget-demo-category' in userAgent &&
+    typeof userAgent['chat-ai-widget-demo-category'] === 'string'
+  );
+}
+
+export function getCustomizedDemoCategory(userAgent: { [key: string]: any } | undefined): string | undefined {
+  if (!userAgent || !isCustomizedForDemo(userAgent)) {
+    return undefined;
+  }
+
+  return userAgent['chat-ai-widget-demo-category'];
 }
 
 export function getDefaultServiceName(injectedServiceName?: string) {
