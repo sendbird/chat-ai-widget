@@ -3,11 +3,12 @@ import { css, cx } from '@linaria/core';
 import { ChatHeader } from './ChatHeader';
 import { ChatInput } from './ChatInput';
 import { ChatMessageList } from './ChatMessageList';
+import { DemoChatHeader } from './DemoChatHeader';
+import { DemoChatInput } from './DemoChatInput';
+import { DemoChatMessageList } from './DemoChatMessageList';
 import { themedColorVars } from '../../../foundation/colors/css';
 import { useDragDropArea } from '../../../tools/hooks/useDragDropFiles';
 import { PoweredByBanner } from '../../ui/PoweredByBanner';
-import { DemoChatHeader } from './DemoChatHeader';
-import { DemoChatMessageList } from './DemoChatMessageList';
 
 type Props = {
   fullscreen: boolean;
@@ -31,7 +32,7 @@ export const DemoChatUI = () => {
     <div className={cx(container, themedColorVars)} {...dragHandlers}>
       <DemoChatHeader />
       <DemoChatMessageList />
-      <ChatInput />
+      <DemoChatInput />
     </div>
   );
 };

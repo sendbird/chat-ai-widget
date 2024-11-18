@@ -20,8 +20,7 @@ import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
 
 export const DemoChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
-  const { botStudioEditProps, customUserAgentParam, stringSet, dateLocale } =
-    useConstantState();
+  const { botStudioEditProps, customUserAgentParam, stringSet, dateLocale } = useConstantState();
 
   const typingTargetMessageId = useTypingTargetMessageId();
   const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();

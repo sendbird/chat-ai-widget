@@ -119,6 +119,7 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
         },
         // -------- Custom Props ----- //
         customizedDemoCategory: getCustomizedDemoCategory(props?.customUserAgentParam) as CustomizedDemoCategory,
+        externalInputChatMessage: props.externalInputChatMessage ?? null,
       }}
     >
       {props.children}

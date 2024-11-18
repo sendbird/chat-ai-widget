@@ -130,6 +130,11 @@ export interface OnWidgetOpenStateChangeParams {
   value: boolean;
 }
 
+export type ExternalChatMessage = {
+  id: string;
+  value: string;
+};
+
 export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
   /**
    * @public
@@ -276,6 +281,11 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
    * @description Custom Properties for Interactive Demo (fintech | ecommerce | healthcare)
    */
   customizedDemoCategory?: CustomizedDemoCategory;
+  /**
+   * @private
+   * @description Custom Properties for Interactive Demo
+   */
+  externalInputChatMessage: ExternalChatMessage | null;
 }
 
 interface ConstantAIFeatures {
