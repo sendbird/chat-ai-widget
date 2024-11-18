@@ -66,6 +66,11 @@ const BotReplySourceContainer = styled.div<BotReplySourceContainerProps>`
   border-top: ${({ hasDelimiter }) => (hasDelimiter ? '1px solid' : undefined)};
 `;
 
+const BotReplySourcesContainer = styled.div`
+  max-height: 120px;
+  overflow-y: scroll;
+`;
+
 function BotReplySource({ source, index }: { source: BotReplySource; index: number }) {
   const { title, url } = source;
   return (
@@ -95,6 +100,26 @@ export default function BotReplySourcesPanel({ message }: BotReplySourcesPanelPr
       title: 'QWER',
       url: 'https://namu.wiki/w/QWER',
     },
+    {
+      title: 'QWER',
+      url: 'https://namu.wiki/w/QWER',
+    },
+    {
+      title: 'QWER',
+      url: 'https://namu.wiki/w/QWER',
+    },
+    {
+      title: 'QWER',
+      url: 'https://namu.wiki/w/QWER',
+    },
+    {
+      title: 'QWER',
+      url: 'https://namu.wiki/w/QWER',
+    },
+    {
+      title: 'QWER',
+      url: 'https://namu.wiki/w/QWER',
+    },
   ];
 
   function openBotReplySourcesPanel() {
@@ -114,23 +139,26 @@ export default function BotReplySourcesPanel({ message }: BotReplySourcesPanelPr
   const widgetWindow = document.getElementById(elementIds.widgetWindow);
 
   return (
-    <>
-      {botReplySources && <BotReplySourcesButton onClick={openBotReplySourcesPanel}>Source Info</BotReplySourcesButton>}
-      {botReplySources &&
-        widgetWindow &&
-        isBotReplySourcePanelVisible &&
-        createPortal(
-          <div>
-            <ShadowBackground onClick={() => setIsBotReplySourcePanelExpanded(false)} />
-            <Root isExpanded={isBotReplySourcePanelExpanded} onTransitionEnd={handleAnimationEnd}>
-              <Title>Bot reply sources</Title>
-              {botReplySources.map((source, i) => (
-                <BotReplySource key={i} source={source} index={i} />
-              ))}
-            </Root>
-          </div>,
-          widgetWindow,
-        )}
-    </>
+    botReplySources && (
+      <>
+        {<BotReplySourcesButton onClick={openBotReplySourcesPanel}>Source Info</BotReplySourcesButton>}
+        {widgetWindow &&
+          isBotReplySourcePanelVisible &&
+          createPortal(
+            <div>
+              <ShadowBackground onClick={() => setIsBotReplySourcePanelExpanded(false)} />
+              <Root isExpanded={isBotReplySourcePanelExpanded} onTransitionEnd={handleAnimationEnd}>
+                <Title>Bot reply sources</Title>
+                <BotReplySourcesContainer>
+                  {botReplySources.map((source, i) => (
+                    <BotReplySource key={i} source={source} index={i} />
+                  ))}
+                </BotReplySourcesContainer>
+              </Root>
+            </div>,
+            widgetWindow,
+          )}
+      </>
+    )
   );
 }

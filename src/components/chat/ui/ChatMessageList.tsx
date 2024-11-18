@@ -86,6 +86,8 @@ export const ChatMessageList = () => {
                     <MessageDataContent messageData={message.data} />
                   )}
 
+                {<BotReplySourcesPanel message={message} />}
+
                 {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
                   <SuggestedRepliesContainer
                     replies={suggestedReplies}
@@ -95,8 +97,6 @@ export const ChatMessageList = () => {
                     }}
                   />
                 )}
-
-                {<BotReplySourcesPanel message={message} />}
               </div>
             </div>
           );
