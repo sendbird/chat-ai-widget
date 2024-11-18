@@ -47,7 +47,7 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
         ERR_CHANNEL_FETCH: 'Failed to retrieve channel information',
       }}
     >
-      {customizedDemoCategory ? <DemoChatUI category={customizedDemoCategory} /> : <ChatUI fullscreen={fullscreen} />}
+      {customizedDemoCategory ? <DemoChatUI /> : <ChatUI fullscreen={fullscreen} />}
       <HeadlessForHooks fullscreen={fullscreen} />
     </ChatContainer>
   );

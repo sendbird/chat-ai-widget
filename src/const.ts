@@ -380,7 +380,7 @@ export const widgetStringSet = {
 
 export const customizedDemoCategories = ['fintech', 'ecommerce', 'healthcare'] as const;
 
-export type CustomizedDemoCategory = typeof customizedDemoCategories[number];
+export type CustomizedDemoCategory = (typeof customizedDemoCategories)[number];
 
 export const customizedDemoSettings = {
   fintech: {

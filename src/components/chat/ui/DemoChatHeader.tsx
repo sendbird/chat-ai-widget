@@ -15,12 +15,8 @@ import CelluarConnectionIcon from '../../../icons/icon-celluar-connection.svg';
 import WifiIcon from '../../../icons/icon-wifi.svg';
 import { useChatContext } from '../context/ChatProvider';
 
-type Props = {
-  category: CustomizedDemoCategory;
-};
-
-export const DemoChatHeader = ({ category }: Props) => {
-  const { botStudioEditProps, isMobileView, enableWidgetExpandButton } = useConstantState();
+export const DemoChatHeader = () => {
+  const { botStudioEditProps, isMobileView, enableWidgetExpandButton, customizedDemoCategory } = useConstantState();
   const { sdk, channel, botUser, dataSource } = useChatContext();
 
   const { botInfo } = botStudioEditProps ?? {};
@@ -54,7 +50,7 @@ export const DemoChatHeader = ({ category }: Props) => {
           </Label>
         </div>
         <div className={buttonsContainer}>
-          <RefreshButton size={24} onClick={handleRefresh} category={category} />
+          <RefreshButton size={24} onClick={handleRefresh} category={customizedDemoCategory} />
           {isExpandableMode && enableWidgetExpandButton && <ExpandButton size={24} />}
         </div>
       </div>

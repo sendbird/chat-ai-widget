@@ -7,7 +7,7 @@ import { themedColorVars } from '../../../foundation/colors/css';
 import { useDragDropArea } from '../../../tools/hooks/useDragDropFiles';
 import { PoweredByBanner } from '../../ui/PoweredByBanner';
 import { DemoChatHeader } from './DemoChatHeader';
-import { CustomizedDemoCategory } from '../../../const';
+import { DemoChatMessageList } from './DemoChatMessageList';
 
 type Props = {
   fullscreen: boolean;
@@ -25,16 +25,12 @@ export const ChatUI = ({ fullscreen }: Props) => {
   );
 };
 
-type DemoChatUIProps = {
-  category: CustomizedDemoCategory;
-};
-
-export const DemoChatUI = ({ category }: DemoChatUIProps) => {
+export const DemoChatUI = () => {
   const dragHandlers = useDragDropArea();
   return (
     <div className={cx(container, themedColorVars)} {...dragHandlers}>
-      <DemoChatHeader category={category} />
-      <ChatMessageList />
+      <DemoChatHeader />
+      <DemoChatMessageList />
       <ChatInput />
     </div>
   );
