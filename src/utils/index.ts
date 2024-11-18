@@ -309,6 +309,8 @@ export function isDashboardPreview(userAgent: object | undefined) {
 export function isCustomizedForDemo(userAgent: object | undefined) {
   return (
     userAgent &&
+    'chat-ai-widget-demo' in userAgent &&
+    userAgent['chat-ai-widget-demo'] === 'True' &&
     'chat-ai-widget-demo-category' in userAgent &&
     typeof userAgent['chat-ai-widget-demo-category'] === 'string'
   );
