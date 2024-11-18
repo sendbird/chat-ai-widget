@@ -275,7 +275,7 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
    * @private
    * @description Custom Properties for Interactive Demo (fintech | ecommerce | healthcare)
    */
-  customizedDemoCategory?: string;
+  customizedDemoCategory?: CustomizedDemoCategory;
 }
 
 interface ConstantAIFeatures {
@@ -376,4 +376,23 @@ export const widgetServiceName = {
 export const widgetStringSet = {
   messageInputDisabledPlaceholder: 'Waiting for the bot’s reply…',
   formVersionInvalidFallbackMessage: 'Form type messages are not available in this version.',
+};
+
+export const customizedDemoCategories = ['fintech', 'ecommerce', 'healthcare'] as const;
+
+export type CustomizedDemoCategory = typeof customizedDemoCategories[number];
+
+export const customizedDemoSettings = {
+  fintech: {
+    name: 'Sendbird Pay',
+    color: '#4141B2',
+  },
+  ecommerce: {
+    name: 'Sendbird Shopping',
+    color: '#508537',
+  },
+  healthcare: {
+    name: 'Patient X',
+    color: '#3C7EFF',
+  },
 };

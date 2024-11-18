@@ -6,10 +6,13 @@ import { ChatMessageList } from './ChatMessageList';
 import { themedColorVars } from '../../../foundation/colors/css';
 import { useDragDropArea } from '../../../tools/hooks/useDragDropFiles';
 import { PoweredByBanner } from '../../ui/PoweredByBanner';
+import { DemoChatHeader } from './DemoChatHeader';
+import { CustomizedDemoCategory } from '../../../const';
 
 type Props = {
   fullscreen: boolean;
 };
+
 export const ChatUI = ({ fullscreen }: Props) => {
   const dragHandlers = useDragDropArea();
   return (
@@ -18,6 +21,21 @@ export const ChatUI = ({ fullscreen }: Props) => {
       <ChatMessageList />
       <ChatInput />
       <PoweredByBanner />
+    </div>
+  );
+};
+
+type DemoChatUIProps = {
+  category: CustomizedDemoCategory;
+};
+
+export const DemoChatUI = ({ category }: DemoChatUIProps) => {
+  const dragHandlers = useDragDropArea();
+  return (
+    <div className={cx(container, themedColorVars)} {...dragHandlers}>
+      <DemoChatHeader category={category} />
+      <ChatMessageList />
+      <ChatInput />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { ConfigureSessionTypes } from '@uikit/lib/hooks/useConnect/types';
 import { LabelStringSet } from '@uikit/ui/Label';
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
-import { type Constant, DEFAULT_CONSTANT, widgetStringSet } from '../const';
+import { type Constant, CustomizedDemoCategory, DEFAULT_CONSTANT, widgetStringSet } from '../const';
 import { getCustomizedDemoCategory, getDefaultServiceName, isMobile } from '../utils';
 
 const initialState = DEFAULT_CONSTANT;
@@ -25,6 +25,7 @@ const ConstantContext = createContext<ConstantContextValue | null>(null);
 export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextProps>) => {
   const isMobileView = isMobile(props.deviceType);
   const defaultRefreshComponentSideLength = isMobileView ? '24px' : '16px';
+  const refreshButtonSize = '24px';
 
   /**
    * In chat SDK, because of the instance check in SessionHandler,
@@ -102,8 +103,8 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
         replacementTextList: props.replacementTextList ?? initialState.replacementTextList,
         customRefreshComponent: {
           icon: props.customRefreshComponent?.icon ?? initialState.customRefreshComponent.icon,
-          width: props.customRefreshComponent?.width ?? defaultRefreshComponentSideLength,
-          height: props.customRefreshComponent?.height ?? defaultRefreshComponentSideLength,
+          width: refreshButtonSize ?? props.customRefreshComponent?.width ?? defaultRefreshComponentSideLength,
+          height: refreshButtonSize ?? props.customRefreshComponent?.height ?? defaultRefreshComponentSideLength,
           onClick: props.customRefreshComponent?.onClick ?? initialState.customRefreshComponent.onClick,
           style: {
             ...initialState.customRefreshComponent.style,
@@ -117,7 +118,7 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
           },
         },
         // -------- Custom Props ----- //
-        customizedDemoCategory: getCustomizedDemoCategory(props?.customUserAgentParam),
+        customizedDemoCategory: getCustomizedDemoCategory(props?.customUserAgentParam) as CustomizedDemoCategory,
       }}
     >
       {props.children}
