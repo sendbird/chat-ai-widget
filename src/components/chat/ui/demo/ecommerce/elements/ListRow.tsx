@@ -41,7 +41,7 @@ interface ListRowProps {
 }
 
 export const ListRow = ({ icon, title, description, rightTop, rightBottom }: ListRowProps) => {
-  const hasRightColumn = rightTop !== null || rightBottom !== null;
+  const hasRightColumn = Boolean(rightTop || rightBottom);
   return (
     <Container>
       <LeftColumn>{icon}</LeftColumn>

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { DeliveryStatusLabel } from './elements/DeliveryStatusLabel';
 import { ItemImageComponent } from './elements/ItemImageComponent';
 import { ListRow } from './elements/ListRow';
+import OrderHistoryBottomSheet from './elements/OrderHistoryBottomSheet';
 import { customizedDemoSettings } from '../../../../../const';
 import { Label as UILabel } from '../../../../../foundation/components/Label';
 import { useSendUserMessage } from '../../../../../foundation/hooks/useSendMessage';
@@ -81,7 +82,7 @@ export interface HistoryItem {
 const OrderHistoryMessage = ({ data }: { data: FunctionCallResponse }) => {
   const { sendUserMessage } = useSendUserMessage();
   const historyList = data?.order_history as unknown as HistoryItem[];
-  const [_, setBottomSheetOpen] = useState(false);
+  const [bottomSheetOpen, setBottomSheetOpen] = useState(false);
 
   function getDescriptionMessage(history: HistoryItem) {
     if (history.items.length === 1) {
@@ -167,11 +168,11 @@ const OrderHistoryMessage = ({ data }: { data: FunctionCallResponse }) => {
           </SeeAllButton>
         </Bottom>
 
-        {/* <OrderHistoryBottomSheet
+        <OrderHistoryBottomSheet
           historyList={historyList}
           bottomSheetOpen={bottomSheetOpen}
           setBottomSheetOpen={setBottomSheetOpen}
-        /> */}
+        />
       </ListContainer>
     </div>
   );
