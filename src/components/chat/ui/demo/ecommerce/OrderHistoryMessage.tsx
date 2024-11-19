@@ -6,6 +6,7 @@ import { ItemImageComponent } from './elements/ItemImageComponent';
 import { ListRow } from './elements/ListRow';
 import { customizedDemoSettings } from '../../../../../const';
 import { Label as UILabel } from '../../../../../foundation/components/Label';
+import { useSendUserMessage } from '../../../../../foundation/hooks/useSendMessage';
 import ChevronRightIcon from '../../../../../icons/chevron-right.svg';
 import { FunctionCallResponse } from '../../renderCustomComponent';
 
@@ -78,6 +79,7 @@ export interface HistoryItem {
 }
 
 const OrderHistoryMessage = ({ data }: { data: FunctionCallResponse }) => {
+  const { sendUserMessage } = useSendUserMessage();
   const historyList = data?.order_history as unknown as HistoryItem[];
   const [_, setBottomSheetOpen] = useState(false);
 
@@ -88,10 +90,10 @@ const OrderHistoryMessage = ({ data }: { data: FunctionCallResponse }) => {
       return `${history.items[0].name} and ${history.items.length - 1} other items`;
     }
   }
-  // const sendMessage = useSendMessage();
   const handleListRowClick = (id: string) => {
-    console.log(`Details for Order #${id}`);
-    // sendMessage(`Details for Order #${id}`);
+    sendUserMessage({
+      message: `Details for Order #${id}`,
+    });
   };
 
   return (
