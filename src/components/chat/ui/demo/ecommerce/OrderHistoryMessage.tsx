@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 import { DeliveryStatusLabel } from './elements/DeliveryStatusLabel';
 import { ItemImageComponent } from './elements/ItemImageComponent';
-import { ListRow } from './elements/ListRow';
 import OrderHistoryBottomSheet from './elements/OrderHistoryBottomSheet';
 import { customizedDemoSettings } from '../../../../../const';
 import { Label as UILabel } from '../../../../../foundation/components/Label';
 import { useSendUserMessage } from '../../../../../foundation/hooks/useSendMessage';
 import ChevronRightIcon from '../../../../../icons/chevron-right.svg';
 import { FunctionCallResponse } from '../../renderCustomComponent';
+import { ListRow } from '../elements/ListRow';
 
 const Container = styled.div`
   display: flex;

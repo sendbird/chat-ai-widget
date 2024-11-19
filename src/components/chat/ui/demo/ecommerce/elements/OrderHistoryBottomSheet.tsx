@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 import { DeliveryStatusLabel } from './DeliveryStatusLabel';
 import { ItemImageComponent } from './ItemImageComponent';
-import { ListRow } from './ListRow';
 import BottomSheet from '../../../../../../__custom__/react-modal-sheet/index';
 import { Label as UILabel } from '../../../../../../foundation/components/Label';
 import { useSendUserMessage } from '../../../../../../foundation/hooks/useSendMessage';
 import ChevronRightIcon from '../../../../../../icons/chevron-right.svg';
 import CloseIcon from '../../../../../../icons/icon-close-green.svg';
+import { ListRow } from '../../elements/ListRow';
 
 const BottomSheetContainer = styled(BottomSheet.Container)`
   padding-bottom: 16px;

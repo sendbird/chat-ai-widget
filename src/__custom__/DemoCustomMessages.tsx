@@ -96,11 +96,14 @@ export default function DemoCustomMessage(props: Props) {
     const extractedFunctionCallData = messageExtension.functionCalls.getAdapterParams(message);
     // Custom Component for demo
     if (Array.isArray(extractedFunctionCallData) && extractedFunctionCallData.length > 0) {
+      const functionCallData = extractedFunctionCallData[0] as FunctionCallData;
+      const functionCallType = functionCallData.response.value_type;
       return (
         <DemoBotMessageWithBodyInput
           {...props}
-          bodyComponent={renderDemoCustomComponent(extractedFunctionCallData[0] as FunctionCallData)}
+          bodyComponent={renderDemoCustomComponent(functionCallData)}
           createdAt={message.createdAt}
+          wideContainer={functionCallType === 'RECOMMEND_ITEMS'}
         />
       );
     }

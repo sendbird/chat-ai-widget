@@ -396,7 +396,7 @@ export const customizedDemoSettings = {
   fintech: {
     name: 'Sendbird Pay',
     color: {
-      userMessageBackground: '#4141B2',
+      userMessageBackground: '#30308F',
       botUserMessageBackground: '#E7F1FF',
       messageListBackground: '#FFFFFF',
     },

@@ -336,6 +336,19 @@ export function getDefaultServiceName(injectedServiceName?: string) {
   }
 }
 
+export function getFormattedDate(inputTime: Date) {
+  const month = inputTime.toLocaleString('en-us', { month: 'short' }); // 'Dec'
+  const day = inputTime.getUTCDate(); // 21
+
+  const formattedDate = `${month}, ${day}`;
+
+  const hours = ('0' + inputTime.getUTCHours()).slice(-2);
+  const minutes = ('0' + inputTime.getUTCMinutes()).slice(-2);
+  const formattedTime = `${hours}:${minutes}`;
+
+  return { formattedDate, formattedTime };
+}
+
 export function asSafeURL(url: string) {
   let safeURL = url;
 

@@ -1,4 +1,11 @@
+import CancelOrderMessage from './demo/ecommerce/CancelOrderMessage';
+import OrderDetailsMessage from './demo/ecommerce/OrderDetailMessage';
 import OrderHistoryMessage from './demo/ecommerce/OrderHistoryMessage';
+import RecommendItemsMessage from './demo/ecommerce/RecommendItemsMessage';
+import CurrentBalanceMessage from './demo/fintech/CurrentBalanceMessage';
+import SendingMoneyConfirmedMessage from './demo/fintech/SendingMoneyConfirmMessage';
+import SendingMoneyMessage from './demo/fintech/SendingMoneyMessage';
+import TransactionHistoryMessage from './demo/fintech/TransactionHistoryMessage';
 import { FunctionCallAdapterParams } from '../../../types';
 
 type ValueType =
@@ -26,19 +33,19 @@ export function renderDemoCustomComponent({ response }: FunctionCallData) {
   }
 
   if (isCurrentBalanceMessage(response)) {
-    console.log('current balance');
+    return <CurrentBalanceMessage data={response} />;
   }
 
   if (isTransactionHistoryMessage(response)) {
-    console.log('transaction history');
+    return <TransactionHistoryMessage data={response} />;
   }
 
   if (isSendingMoneyMessage(response)) {
-    console.log('is sending money');
+    return <SendingMoneyMessage data={response} />;
   }
 
   if (isSendingMoneyConfirmedMessage(response)) {
-    console.log('Sending Money Confirm');
+    return <SendingMoneyConfirmedMessage data={response} />;
   }
 
   if (isOrderHistoryMessage(response)) {
@@ -46,15 +53,15 @@ export function renderDemoCustomComponent({ response }: FunctionCallData) {
   }
 
   if (isOrderDetailsMessage(response)) {
-    console.log('order details');
+    return <OrderDetailsMessage data={response} />;
   }
 
   if (isCancelOrderMessage(response)) {
-    console.log('cancel order');
+    return <CancelOrderMessage data={response} />;
   }
 
   if (isRecommendItemsMessage(response)) {
-    console.log('recommend items');
+    return <RecommendItemsMessage data={response} />;
   }
 }
 
