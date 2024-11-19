@@ -23,7 +23,7 @@ import { TypingBubble } from '../foundation/components/TypingBubble';
 import { WidgetCarouselItem } from '../types';
 import { getSourceFromMetadata, parseTextMessage, Token } from '../utils';
 import { messageExtension } from '../utils/messageExtension';
-import { isSentBy } from '../utils/messages';
+import { isSentBy, isSentByDemoBot } from '../utils/messages';
 
 type Props = {
   message: BaseMessage;
@@ -92,7 +92,7 @@ export default function DemoCustomMessage(props: Props) {
   }
 
   // Sent by bot user
-  if (isSentBy(message, botUserId)) {
+  if (isSentByDemoBot(message)) {
     const extractedFunctionCallData = messageExtension.functionCalls.getAdapterParams(message);
     // Custom Component for demo
     if (Array.isArray(extractedFunctionCallData) && extractedFunctionCallData.length > 0) {

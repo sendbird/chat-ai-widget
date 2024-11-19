@@ -2,6 +2,7 @@ import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { useTheme } from 'styled-components';
 
+import DemoBotProfileImage from '../../../__custom__/DemoBotProfileImage';
 import { CustomizedDemoCategory, customizedDemoSettings, elementIds } from '../../../const';
 import { useConstantState } from '../../../context/ConstantContext';
 import { useWidgetState } from '../../../context/WidgetStateContext';
@@ -12,7 +13,6 @@ import BatteryIcon from '../../../icons/icon-battery.svg';
 import CelluarConnectionIcon from '../../../icons/icon-celluar-connection.svg';
 import CollapsedIcon from '../../../icons/icon-collapse.svg';
 import WifiIcon from '../../../icons/icon-wifi.svg';
-import BotProfileImage from '../../BotProfileImage';
 import { useChatContext } from '../context/ChatProvider';
 
 export const DemoChatHeader = () => {
@@ -20,7 +20,10 @@ export const DemoChatHeader = () => {
   const { sdk, channel, botUser, dataSource } = useChatContext();
 
   const { botInfo } = botStudioEditProps ?? {};
-  const botNickname = botInfo?.nickname ?? botUser?.nickname;
+  const botNickname = customizedDemoCategory
+    ? customizedDemoSettings[customizedDemoCategory].name
+    : (botInfo?.nickname ?? botUser?.nickname);
+  const botProfileUrl = customizedDemoCategory ? customizedDemoSettings[customizedDemoCategory].profileUrl : undefined;
   const isExpandableMode = !isMobileView;
 
   const handleRefresh = async () => {
@@ -42,7 +45,7 @@ export const DemoChatHeader = () => {
       </div>
       <div className={container}>
         <div style={{ marginRight: 6 }}>
-          <BotProfileImage size={34} />
+          <DemoBotProfileImage size={34} profileUrl={botProfileUrl} />
         </div>
         <div className={headerCenter}>
           <Label type={'h2'} color={'onbackground1'} className={titleInline}>

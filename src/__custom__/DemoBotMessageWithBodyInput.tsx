@@ -1,11 +1,14 @@
+import { BaseMessage } from '@sendbird/chat/message';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import BotProfileImage from '../components/BotProfileImage';
+import DemoBotProfileImage from './DemoBotProfileImage';
 import { useChatContext } from '../components/chat/context/ChatProvider';
 import { FullBodyContainer, DefaultSentTime, WideSentTime } from '../components/MessageComponent';
+import { customizedDemoBotInfos } from '../const';
 import { useConstantState } from '../context/ConstantContext';
 import { Label } from '../foundation/components/Label';
+import { getSenderUserIdFromMessage } from '../utils/messages';
 import { formatCreatedAtToAMPM } from '../utils/messageTimestamp';
 
 const Root = styled.span`
@@ -37,6 +40,7 @@ const EmptyImageContainer = styled.div`
 `;
 
 type Props = {
+  message: BaseMessage;
   createdAt?: number;
   messageData?: string;
   bodyComponent: ReactNode;
@@ -55,6 +59,9 @@ const HEIGHTS = {
 export default function DemoBotMessageWithBodyInput(props: Props) {
   const { botUser } = useChatContext();
   const { botStudioEditProps, dateLocale } = useConstantState();
+  const message = props.message;
+  const senderId = getSenderUserIdFromMessage(message);
+  const botInfo = customizedDemoBotInfos.find((bot) => bot.id === senderId);
 
   const { createdAt, bodyComponent, chainTop, chainBottom, messageFeedback, wideContainer = false } = props;
 
@@ -64,13 +71,14 @@ export default function DemoBotMessageWithBodyInput(props: Props) {
   const displaySender = nonChainedMessage || chainTop;
   const displayProfileImage = nonChainedMessage || chainBottom;
   const { nickname } = botStudioEditProps?.botInfo ?? {};
-  const botNickname = nickname ?? botUser?.nickname;
+  const botNickname = nickname ?? botUser?.nickname ?? botInfo?.name;
+  const botProfileUrl = botInfo?.profileUrl;
 
   return (
     <Root>
       {displayProfileImage ? (
         <div style={{ paddingBottom: profilePaddingBottom }}>
-          <BotProfileImage size={28} />
+          <DemoBotProfileImage size={28} profileUrl={botProfileUrl} />
         </div>
       ) : (
         <EmptyImageContainer />
