@@ -6,7 +6,6 @@ import AdminMessage from './AdminMessage';
 import BotMessageFeedback from './BotMessageFeedback';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import { useChatContext } from './chat/context/ChatProvider';
-import { FunctionCallData, renderDemoCustomComponent } from './chat/ui/renderCustomComponent';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
@@ -88,13 +87,6 @@ export default function CustomMessage(props: Props) {
 
   // Sent by bot user
   if (isSentBy(message, botUserId)) {
-    const extractedFunctionCallData = messageExtension.functionCalls.getAdapterParams(message);
-    // Custom Component for demo
-    if (Array.isArray(extractedFunctionCallData) && extractedFunctionCallData.length > 0) {
-      renderDemoCustomComponent(extractedFunctionCallData[0] as FunctionCallData);
-      return;
-    }
-
     if (message.messageForm) {
       return (
         <BotMessageWithBodyInput
