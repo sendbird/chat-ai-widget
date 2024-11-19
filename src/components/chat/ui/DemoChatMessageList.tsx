@@ -44,7 +44,7 @@ export const DemoChatMessageList = () => {
         scrollPositionRef={scrollSource.scrollPositionRef}
         scrollDistanceFromBottomRef={scrollSource.scrollDistanceFromBottomRef}
         onScrollPosition={(it) => scrollSource.setIsScrollBottomReached(it === 'bottom')}
-        stackDirection={'bottom'}
+        stackDirection={'top'}
         messages={filteredMessages}
         onLoadPrev={dataSource.loadPrevious}
         onLoadNext={dataSource.loadNext}

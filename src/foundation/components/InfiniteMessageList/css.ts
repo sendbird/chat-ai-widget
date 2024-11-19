@@ -12,6 +12,7 @@ export const infiniteListInner = css`
   flex: 1;
   flex-direction: column;
   overflow-y: auto;
+  padding-bottom: 20px;
 `;
 
 export const infiniteListOverlayContainer = css`
