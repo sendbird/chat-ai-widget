@@ -395,14 +395,26 @@ export type CustomizedDemoCategory = (typeof customizedDemoCategories)[number];
 export const customizedDemoSettings = {
   fintech: {
     name: 'Sendbird Pay',
-    color: '#4141B2',
+    color: {
+      userMessageBackground: '#4141B2',
+      botUserMessageBackground: '#E7F1FF',
+      messageListBackground: '#FFFFFF',
+    },
   },
   ecommerce: {
     name: 'Sendbird Shopping',
-    color: '#508537',
+    color: {
+      userMessageBackground: '#508537',
+      botUserMessageBackground: '#FFFFFF',
+      messageListBackground: '#F8F8F8',
+    },
   },
   healthcare: {
     name: 'Patient X',
-    color: '#3C7EFF',
+    color: {
+      userMessageBackground: '#3C7EFF',
+      botUserMessageBackground: '#FFFFFF',
+      messageListBackground: '#C8D9FA',
+    },
   },
 };

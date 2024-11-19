@@ -1,3 +1,4 @@
+import OrderHistoryMessage from './demo/ecommerce/OrderHistoryMessage';
 import { FunctionCallAdapterParams } from '../../../types';
 
 type ValueType =
@@ -10,7 +11,7 @@ type ValueType =
   | 'CANCEL_ORDER'
   | 'RECOMMEND_ITEMS';
 
-type FunctionCallResponse = {
+export type FunctionCallResponse = {
   value_type: ValueType;
   [key: string]: any;
 };
@@ -19,10 +20,7 @@ export type FunctionCallData = Omit<FunctionCallAdapterParams, 'resonse'> & {
   response: FunctionCallResponse;
 };
 
-export function renderDemoCustomComponent({ name, request, response }: FunctionCallData) {
-  console.log(name);
-  console.log(request);
-  console.log(response);
+export function renderDemoCustomComponent({ response }: FunctionCallData) {
   if (typeof response !== 'object' || !response) {
     return;
   }
@@ -44,7 +42,7 @@ export function renderDemoCustomComponent({ name, request, response }: FunctionC
   }
 
   if (isOrderHistoryMessage(response)) {
-    console.log('order history');
+    return <OrderHistoryMessage data={response} />;
   }
 
   if (isOrderDetailsMessage(response)) {

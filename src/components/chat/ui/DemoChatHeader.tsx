@@ -8,11 +8,11 @@ import { useWidgetState } from '../../../context/WidgetStateContext';
 import { themedColors } from '../../../foundation/colors/css';
 import { Label } from '../../../foundation/components/Label';
 import ExpandIcon from '../../../icons/ic-expand.svg';
-import CollapsedIcon from '../../../icons/icon-collapse.svg';
-import BotProfileImage from '../../BotProfileImage';
 import BatteryIcon from '../../../icons/icon-battery.svg';
 import CelluarConnectionIcon from '../../../icons/icon-celluar-connection.svg';
+import CollapsedIcon from '../../../icons/icon-collapse.svg';
 import WifiIcon from '../../../icons/icon-wifi.svg';
+import BotProfileImage from '../../BotProfileImage';
 import { useChatContext } from '../context/ChatProvider';
 
 export const DemoChatHeader = () => {
@@ -78,7 +78,7 @@ const RefreshButton = ({ size, onClick, category }: ButtonProps) => {
       id={elementIds.refreshIcon}
       aria-label={'refresh'}
       onClick={handleClick}
-      color={category ? customizedDemoSettings[category]?.color : theme.accentColor}
+      color={category ? customizedDemoSettings[category]?.color.userMessageBackground : theme.accentColor}
     >
       <customRefreshComponent.icon
         style={customRefreshComponent.style}

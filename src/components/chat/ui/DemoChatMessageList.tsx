@@ -3,6 +3,8 @@ import { isSameDay } from 'date-fns/isSameDay';
 
 import { getComponentKeyFromMessage } from '@uikit/modules/GroupChannel/context/utils';
 
+import DemoCustomMessages from '../../../__custom__/DemoCustomMessages';
+import { customizedDemoSettings } from '../../../const';
 import { useConstantState } from '../../../context/ConstantContext';
 import { DateSeparator } from '../../../foundation/components/DateSeparator';
 import FrozenBanner from '../../../foundation/components/FrozenBanner';
@@ -11,7 +13,6 @@ import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
 import { isDashboardPreview } from '../../../utils';
 import { getMessageGrouping } from '../../../utils/messages';
-import CustomMessage from '../../CustomMessage';
 import MessageDataContent from '../../MessageDataContent';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
@@ -20,7 +21,8 @@ import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
 
 export const DemoChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
-  const { botStudioEditProps, customUserAgentParam, stringSet, dateLocale } = useConstantState();
+  const { botStudioEditProps, customUserAgentParam, stringSet, dateLocale, customizedDemoCategory } =
+    useConstantState();
 
   const typingTargetMessageId = useTypingTargetMessageId();
   const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();
@@ -67,7 +69,7 @@ export const DemoChatMessageList = () => {
                 />
               )}
               <div style={{ marginBottom: index === filteredMessages.length - 1 ? 0 : 16 }}>
-                <CustomMessage
+                <DemoCustomMessages
                   message={message as any}
                   activeSpinnerId={typingTargetMessageId}
                   chainTop={top}
@@ -115,7 +117,15 @@ export const DemoChatMessageList = () => {
   };
 
   return (
-    <div id={'widget-chat-message-list'} className={listContainer}>
+    <div
+      id={'widget-chat-message-list'}
+      className={listContainer}
+      style={{
+        backgroundColor: customizedDemoCategory
+          ? customizedDemoSettings[customizedDemoCategory].color.messageListBackground
+          : 'inherit',
+      }}
+    >
       {render()}
       {channel?.isFrozen && <FrozenBanner className={frozenBanner} label={stringSet.CHANNEL_FROZEN} />}
     </div>
