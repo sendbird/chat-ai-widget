@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import BottomSheet from 'react-modal-sheet';
 import styled from 'styled-components';
 
+import BottomSheet from '../../../../../../__custom__/react-modal-sheet/index';
 import { Label as UILabel } from '../../../../../../foundation/components/Label';
 import CloseIcon from '../../../../../../icons/icon-close.svg';
 import TransactionIcon1 from '../../../../../../icons/icon-transaction-type-1.svg';
