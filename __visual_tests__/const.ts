@@ -1,7 +1,16 @@
-const appId = process.env.SNAPSHOT_TEST_APP_ID;
-const botId = process.env.SNAPSHOT_TEST_BOT_ID;
+export const AppId = process.env.SNAPSHOT_TEST_APP_ID;
+export const BotId = process.env.SNAPSHOT_TEST_BOT_ID;
+export const ApiToken = process.env.SNAPSHOT_TEST_API_TOKEN;
 
-export const TEST_URL = `http://localhost:5173/chat-ai-widget/?app_id=${appId}&bot_id=${botId}&snapshot=true`;
+const apiVersion = '/v3';
+export const PlatformApiPath = {
+  GROUP_CHANNELS: `${apiVersion}/group_channels/`,
+  USERS: `${apiVersion}/users/`,
+};
+
+export const ApiHost = `https://api-${AppId}.sendbird.com`;
+
+export const TestUrl = `http://localhost:5173/chat-ai-widget/?app_id=${AppId}&bot_id=${BotId}&snapshot=true`;
 
 export const WidgetComponentIds = {
   WIDGET: '#aichatbot-widget-window',
