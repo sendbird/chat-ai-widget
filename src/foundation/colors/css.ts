@@ -14,7 +14,6 @@ export const themedColors = {
   primary: 'var(--sb-primary)',
   error: 'var(--sb-error)',
   secondary: 'var(--sb-secondary)',
-  healthcare1: 'var(--sb-on-healthcare-1)',
 };
 
 export const themedColorVars = css`
@@ -32,7 +31,6 @@ export const themedColorVars = css`
     --sb-primary: var(--sendbird-light-primary-300);
     --sb-secondary: var(--sendbird-light-secondary-300);
     --sb-error: var(--sendbird-light-error-300);
-    --sb-on-healthcare-1: var(--sendbird-light-healthcare-01);
   }
   .sendbird-theme--dark & {
     --sb-on-bg-1: var(--sendbird-dark-ondark-01);
@@ -48,7 +46,6 @@ export const themedColorVars = css`
     --sb-primary: var(--sendbird-dark-primary-200);
     --sb-secondary: var(--sendbird-dark-secondary-200);
     --sb-error: var(--sendbird-dark-error-200);
-    --sb-on-healthcare-1: var(--sendbird-light-healthcare-01);
   }
 `;
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { themedColors } from '../../../../../foundation/colors/css';
+import { customizedDemoSettings } from '../../../../../const';
 import { Label as UILabel } from '../../../../../foundation/components/Label';
 import ChevronDownIcon from '../../../../../icons/chevron-down.svg';
 
@@ -26,7 +26,7 @@ export const CommonInnerContainerStyles = `
 
 export const InnerContainer = styled.div`
   ${CommonInnerContainerStyles}
-  background-color: ${themedColors.healthcare1};
+  background-color: ${customizedDemoSettings['healthcare'].color.chatInputBackground};
 `;
 
 interface TopInnerContainerProps {
