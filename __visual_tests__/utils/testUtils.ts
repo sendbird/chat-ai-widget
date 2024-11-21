@@ -1,7 +1,7 @@
 import { expect, Page } from '@playwright/test';
 
+import { getWidgetSessionCache } from './localStorageUtils';
 import { deleteChannel, deleteUser } from './requestUtils';
-import { getWidgetSessionCache } from '../../src/libs/storage/widgetSessionCache';
 import { AppId, BotId, WidgetComponentIds } from '../const';
 
 export async function assertScreenshot(page: Page, screenshotName: string, browserName: string) {
@@ -32,9 +32,9 @@ export async function clickNthChip(page: Page, nth: number) {
   await chipContainer.locator(':scope > *').nth(nth).click();
 }
 
-export async function deleteTestResources() {
+export async function deleteTestResources(page: Page) {
   if (AppId && BotId) {
-    const cachedSession = getWidgetSessionCache({
+    const cachedSession = await getWidgetSessionCache(page, {
       appId: AppId,
       botId: BotId,
     });
@@ -42,7 +42,6 @@ export async function deleteTestResources() {
       try {
         await deleteChannel(cachedSession.channelUrl);
         await deleteUser(cachedSession.userId);
-        console.error('## deleteTestResources succeeded for cachedSession: ', cachedSession);
       } catch (e) {
         console.error('## deleteTestResources failed: ', e);
       }
