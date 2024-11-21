@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 import { ChatContainer } from './context/ChatProvider';
-import { ChatUI, DemoChatUI } from './ui';
+import { DemoChatUI } from './ui';
 import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
 import { useAssignGlobalFunction } from '../../hooks/useAssignGlobalFunction';

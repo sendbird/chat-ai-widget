@@ -3,12 +3,7 @@ import styled from 'styled-components';
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
 import ProviderContainer from './ProviderContainer';
-import WidgetToggleButton from './WidgetToggleButton';
-import WidgetWindow from './WidgetWindow';
-import { type Constant, elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
-import { useWidgetState } from '../../context/WidgetStateContext';
-import useMobileView from '../../hooks/useMobileView';
-import { useWidgetAutoOpen } from '../../hooks/useWidgetAutoOpen';
+import { type Constant } from '../../const';
 import Chat from '../chat';
 
 const DemoContainer = styled.div`
@@ -24,49 +19,6 @@ const DemoComponent = () => {
     <DemoContainer>
       <Chat />
     </DemoContainer>
-  );
-};
-
-const MobileContainer = styled.div<{ width: number }>`
-  position: fixed;
-  z-index: ${WIDGET_WINDOW_Z_INDEX};
-  top: 0;
-  left: 0;
-  width: ${({ width }) => `${width}px`};
-  height: 100%;
-  overflow: hidden;
-  background-color: white;
-`;
-
-const DesktopComponent = () => {
-  const { isVisible } = useWidgetState();
-  useWidgetAutoOpen();
-
-  return (
-    <>
-      <WidgetWindow>
-        <Chat />
-      </WidgetWindow>
-      {isVisible && <WidgetToggleButton />}
-    </>
-  );
-};
-
-const MobileComponent = () => {
-  const { isOpen, isVisible } = useWidgetState();
-  const { width: mobileContainerWidth } = useMobileView();
-
-  return (
-    <>
-      <MobileContainer
-        style={{ display: isOpen && isVisible ? 'block' : 'none' }}
-        width={mobileContainerWidth}
-        id={elementIds.widgetWindow}
-      >
-        <Chat />
-      </MobileContainer>
-      {isVisible && !isOpen && <WidgetToggleButton />}
-    </>
   );
 };
 
