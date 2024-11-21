@@ -54,7 +54,7 @@ interface AIResponseMessage {
   reply_messages: string[];
   response_method: {
     function_calls: FunctionCalls[];
-  }[];
+  };
 }
 
 interface MedicalHistoryContentItem {
@@ -78,7 +78,9 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
   const { externalInputChatMessage, customizedDemoCategory: category, botId, userId } = useConstantState();
   const { filteredMessages: allMessages } = useBotStudioView();
   const { sendUserMessage } = useSendUserMessage();
-  const { openModal, closeModal, Modal } = useDemoModal();
+  const { openModal, closeModal, Modal } = useDemoModal({
+    targetContainer: document.getElementById('chat-window') as HTMLElement,
+  });
 
   const [askToAIMessage, setAskToAIMessage] = useState<string>('');
   const [AIResponse, setAIResponse] = useState<AIResponseMessage | null>(null);
@@ -159,7 +161,7 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
       }
     };
 
-    if (!setIsExternalInputPending) {
+    if (!isExternalInputPending) {
       fetchData();
     }
   }, [externalInputChatMessage?.id]);
@@ -171,11 +173,9 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
   }, [message]);
 
   useEffect(() => {
-    const isInitialRendering = bodyInput.length < 2;
+    const isInitialRendering = bodyInput.length < 1;
     if (isInitialRendering) {
-      setTimeout(() => {
-        sendUserMessage({ message: 'How can I help you today?' });
-      }, 500);
+      sendUserMessage({ message: 'How can I help you today?' });
     }
   }, []);
 
@@ -191,12 +191,9 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsMessageLengthPending(true);
-
       // bodyInput must include 2 objects, role and assistant
       const isInvalidBodyInput = !bodyInput || bodyInput.length < 1;
       if (isInvalidBodyInput) {
-        setIsMessageLengthPending(false);
         return Promise.resolve([]);
       }
 
@@ -210,6 +207,8 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
         });
       }
 
+      setIsMessageLengthPending(true);
+
       try {
         const data = await getRecommendMessage(bodyInput);
         const replyMessage = data.reply_messages[0];
@@ -219,11 +218,11 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
           setRecommendMessage(replyMessage ?? '');
         }
 
-        setAIResponse(data);
+        // setAIResponse(data);
 
-        if (data.response_method?.function_calls?.length > 0) {
-          setCurrentFunctionCall(data.response_method.function_calls[0]);
-        }
+        // if (data.response_method?.function_calls?.length > 0) {
+        //   setCurrentFunctionCall(data.response_method.function_calls[0]);
+        // }
       } catch (error) {
         console.error('Error fetching recommend message:', error);
       } finally {
@@ -231,7 +230,7 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
       }
     };
 
-    if (!isMessageLengthPending) {
+    if (!isMessageLengthPending || bodyInput.length % 2 === 0) {
       fetchData();
     }
   }, [bodyInput.length]);
@@ -429,7 +428,7 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
             </AIAssistantHeadText>
           </TopInnerContainer>
           {AIResponse && AIResponse.reply_messages.length > 0 ? (
-            AIResponse.response_method?.[0]?.function_calls.length > 0 ? (
+            AIResponse.response_method?.function_calls?.length > 0 ? (
               renderFunctionCall()
             ) : (
               <AIAssistantBodyContainer>

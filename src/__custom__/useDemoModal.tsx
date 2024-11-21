@@ -1,9 +1,9 @@
-import { useState, useCallback, ReactNode } from 'react';
+import { useState, useCallback, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
 const BackgroundOverlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -13,14 +13,15 @@ const BackgroundOverlay = styled.div`
 `;
 
 const ModalContainer = styled.div`
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   padding: 20px;
   z-index: 1000;
-  width: 400px;
+  width: 80%;
+  max-height: 500px;
   max-height: 80%;
   overflow-y: auto;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -32,7 +33,11 @@ interface UseDemoModalResult {
   Modal: React.FC;
 }
 
-export function useDemoModal(): UseDemoModalResult {
+export function useDemoModal({
+  targetContainer,
+}: {
+  targetContainer: HTMLElement | DocumentFragment;
+}): UseDemoModalResult {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState<ReactNode | null>(null);
 
@@ -46,6 +51,18 @@ export function useDemoModal(): UseDemoModalResult {
     setModalContent(null);
   }, []);
 
+  useEffect(() => {
+    if (targetContainer instanceof HTMLElement) {
+      const originalPosition = targetContainer.style.position;
+      if (originalPosition !== 'relative' && originalPosition !== 'absolute' && originalPosition !== 'fixed') {
+        targetContainer.style.position = 'relative';
+      }
+      return () => {
+        targetContainer.style.position = originalPosition;
+      };
+    }
+  }, [targetContainer]);
+
   const Modal: React.FC = () => {
     if (!showModal) return null;
 
@@ -54,7 +71,7 @@ export function useDemoModal(): UseDemoModalResult {
         <BackgroundOverlay onClick={closeModal} />
         <ModalContainer>{modalContent}</ModalContainer>
       </>,
-      document.body,
+      targetContainer ?? document.body,
     );
   };
 
