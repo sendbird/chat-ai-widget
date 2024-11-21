@@ -6,11 +6,8 @@ export const getKey = (appId: string, botId: string) => {
 };
 
 export type WidgetSessionCache = {
-  strategy: 'auto' | 'manual';
   userId: string;
   channelUrl: string;
-  expireAt: number;
-  sessionToken?: string;
 };
 
 export async function getWidgetSessionCache(
@@ -21,14 +18,13 @@ export async function getWidgetSessionCache(
     ({ key }) => (localStorage.getItem(key)),
     { key: getKey(appId, botId) },
   );
-  try {
-    if (value) {
-      // For cache of users before the update, there is no 'strategy'.
-      // Therefore, 'auto' is set as the default value.
-      return { strategy: 'auto', ...JSON.parse(value) };
+  if (value) {
+    try {
+      return JSON.parse(value);
+    } catch {
+      return null;
     }
-    return null;
-  } catch {
+  } else {
     return null;
   }
 }
