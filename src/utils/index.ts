@@ -1,5 +1,6 @@
 import type SendbirdChat from '@sendbird/chat';
 import { BaseMessage } from '@sendbird/chat/message';
+import DOMPurify from 'dompurify';
 
 import { jsonParseSafely } from './messages';
 import { Source } from '../components/SourceContainer';
@@ -367,6 +368,11 @@ export function asSafeURL(url: string) {
   }
 
   return safeURL;
+}
+
+export function boldifyMessage(text: string) {
+  const boldifiedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  return DOMPurify.sanitize(boldifiedText);
 }
 
 declare global {

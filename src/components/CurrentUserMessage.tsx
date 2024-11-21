@@ -4,6 +4,7 @@ import { UserMessage } from '@sendbird/chat/message';
 import { BodyContainer, BodyComponent } from './MessageComponent';
 import MyMessageStatus from './MyMessageStatus';
 import { useConstantState } from '../context/ConstantContext';
+import { boldifyMessage } from '../utils';
 
 const Root = styled.div<{ enableEmojiFeedback: boolean }>`
   display: flex;
@@ -25,7 +26,7 @@ export default function CurrentUserMessage(props: Props) {
       <MyMessageStatus message={message} dateLocale={dateLocale} />
       <BodyContainer>
         <BodyComponent>
-          <div className="sendbird-word">{message.message}</div>
+          <div className="sendbird-word" dangerouslySetInnerHTML={{ __html: boldifyMessage(message.message) }} />
         </BodyComponent>
       </BodyContainer>
     </Root>

@@ -41,6 +41,7 @@ import AIChatbotIcon from '../../../../../icons/icon-aichatbot.svg';
 import CloseIcon from '../../../../../icons/icon-close-black.svg';
 import MagicWandIcon from '../../../../../icons/icon-magic-wand-filled.svg';
 import SendIcon from '../../../../../icons/icon-send.svg';
+import { boldifyMessage } from '../../../../../utils';
 import { getSenderUserIdFromMessage } from '../../../../../utils/messages';
 import { useBotStudioView } from '../../../hooks/useBotStudioView';
 
@@ -533,7 +534,7 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
                 </div>
               ) : (
                 <AIAssistantBodyText type={'body1'} color={'onbackground1'}>
-                  <div>{recommendMessage}</div>
+                  <div dangerouslySetInnerHTML={{ __html: boldifyMessage(recommendMessage) }} />
                 </AIAssistantBodyText>
               )}
             </TextContainer>

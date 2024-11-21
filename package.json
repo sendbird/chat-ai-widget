@@ -2,14 +2,8 @@
   "name": "@sendbird/chat-ai-widget",
   "version": "1.8.6",
   "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.es.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "./src/index.ts",
   "type": "module",
-  "files": [
-    "dist",
-    "README.md"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/sendbird/chat-ai-widget.git"
