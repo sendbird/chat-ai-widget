@@ -392,7 +392,22 @@ export const customizedDemoCategories = ['fintech', 'ecommerce', 'healthcare'] a
 
 export type CustomizedDemoCategory = (typeof customizedDemoCategories)[number];
 
-export const customizedDemoSettings = {
+type CustomizedDemoSettings = {
+  [key: string]: {
+    name: string;
+    botId: string;
+    color: {
+      userMessageBackground: string;
+      botUserMessageBackground: string;
+      messageListBackground: string;
+      headerBackground?: string;
+      chatInputBackground?: string;
+    };
+    profileUrl: string;
+  };
+};
+
+export const customizedDemoSettings: CustomizedDemoSettings = {
   fintech: {
     name: 'Sendbird Pay',
     botId: '324a1351-678d-4726-9c10-50efeb27e1c1',
@@ -421,6 +436,8 @@ export const customizedDemoSettings = {
       userMessageBackground: '#3C7EFF',
       botUserMessageBackground: '#FFFFFF',
       messageListBackground: '#C8D9FA',
+      headerBackground: '#C8D9FA',
+      chatInputBackground: '#DCE1FB',
     },
     profileUrl: 'https://sendbird.github.io/chat-ai-assets/healthcare-avatar.png',
   },

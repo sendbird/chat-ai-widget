@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/MessageInputWrapper/MessageInputWrapperView';
 
+import { HealthcareMessageInput } from './demo/healthcare/HealthcareMessageInput';
 import { useConstantState } from '../../../context/ConstantContext';
 import { themedColors } from '../../../foundation/colors/css';
 import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotResponding';
@@ -14,7 +15,7 @@ import { useChatContext } from '../context/ChatProvider';
 // TODO: Remove UIKit
 export const DemoChatInput = () => {
   const { channel, botUser, dataSource, handlers } = useChatContext();
-  const { externalInputChatMessage } = useConstantState();
+  const { externalInputChatMessage, customizedDemoCategory } = useConstantState();
 
   const ref = useRef<HTMLDivElement>(null);
   const [limitError, setLimitError] = useState(false);
@@ -24,6 +25,7 @@ export const DemoChatInput = () => {
     lastMessage: dataSource.messages[dataSource.messages.length - 1],
     botUser,
   });
+  const isHealthcareDemo = customizedDemoCategory === 'healthcare';
 
   const sendUserMessage = async (params: any) => {
     const processedParams = await handlers.onBeforeSendMessage(params);
@@ -33,14 +35,16 @@ export const DemoChatInput = () => {
   };
 
   useEffect(() => {
-    if (channel && externalInputChatMessage?.value) {
+    if (channel && externalInputChatMessage?.value && customizedDemoCategory !== 'healthcare') {
       sendUserMessage({
         message: externalInputChatMessage.value,
       });
     }
   }, [externalInputChatMessage?.id]);
 
-  return (
+  return isHealthcareDemo && channel ? (
+    <HealthcareMessageInput />
+  ) : (
     <div className={cx(container, isIOSMobile && iosMobileContainer)}>
       <MessageInputWrapperView
         loading={false}

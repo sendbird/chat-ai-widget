@@ -3,7 +3,7 @@ import { styled } from '@linaria/react';
 import { useTheme } from 'styled-components';
 
 import DemoBotProfileImage from '../../../__custom__/DemoBotProfileImage';
-import { CustomizedDemoCategory, customizedDemoSettings, elementIds } from '../../../const';
+import { customizedDemoSettings, elementIds } from '../../../const';
 import { useConstantState } from '../../../context/ConstantContext';
 import { useWidgetState } from '../../../context/WidgetStateContext';
 import { themedColors } from '../../../foundation/colors/css';
@@ -20,10 +20,10 @@ export const DemoChatHeader = () => {
   const { sdk, channel, botUser, dataSource } = useChatContext();
 
   const { botInfo } = botStudioEditProps ?? {};
-  const botNickname = customizedDemoCategory
-    ? customizedDemoSettings[customizedDemoCategory].name
-    : (botInfo?.nickname ?? botUser?.nickname);
-  const botProfileUrl = customizedDemoCategory ? customizedDemoSettings[customizedDemoCategory].profileUrl : undefined;
+  const demoBotSettings = customizedDemoCategory ? customizedDemoSettings[customizedDemoCategory] : undefined;
+  const botNickname = demoBotSettings?.name ?? botInfo?.nickname ?? botUser?.nickname;
+  const botProfileUrl = demoBotSettings?.profileUrl;
+  const headerBackground = demoBotSettings?.color?.headerBackground;
   const isExpandableMode = !isMobileView;
 
   const handleRefresh = async () => {
@@ -34,7 +34,7 @@ export const DemoChatHeader = () => {
   };
 
   return (
-    <div className={demoHeaderContainer}>
+    <div className={demoHeaderContainer} style={{ backgroundColor: headerBackground }}>
       <div className={demoStatusBarContainer}>
         <span>9:41</span>
         <div className={statusIconContainer}>
@@ -53,7 +53,7 @@ export const DemoChatHeader = () => {
           </Label>
         </div>
         <div className={buttonsContainer}>
-          <RefreshButton size={24} onClick={handleRefresh} category={customizedDemoCategory} />
+          <RefreshButton size={24} onClick={handleRefresh} color={demoBotSettings?.color.userMessageBackground} />
           {isExpandableMode && enableWidgetExpandButton && <ExpandButton size={24} />}
         </div>
       </div>
@@ -64,10 +64,10 @@ export const DemoChatHeader = () => {
 type ButtonProps = {
   size: number;
   onClick?: () => void;
-  category?: CustomizedDemoCategory;
+  color?: string;
 };
 
-const RefreshButton = ({ size, onClick, category }: ButtonProps) => {
+const RefreshButton = ({ size, onClick, color }: ButtonProps) => {
   const { customRefreshComponent } = useConstantState();
   const theme = useTheme();
 
@@ -81,7 +81,7 @@ const RefreshButton = ({ size, onClick, category }: ButtonProps) => {
       id={elementIds.refreshIcon}
       aria-label={'refresh'}
       onClick={handleClick}
-      color={category ? customizedDemoSettings[category]?.color.userMessageBackground : theme.accentColor}
+      color={color ?? theme.accentColor}
     >
       <customRefreshComponent.icon
         style={customRefreshComponent.style}
