@@ -12,7 +12,7 @@ import { useWidgetState, WidgetStateProvider } from '../../context/WidgetStateCo
 import { useStyledComponentsTarget } from '../../hooks/useStyledComponentsTarget';
 import { getTheme } from '../../theme';
 import { DragDropProvider } from '../../tools/hooks/useDragDropFiles';
-import { isDashboardPreview } from '../../utils';
+import { isCustomizedForDemo, isDashboardPreview } from '../../utils';
 
 const CHAT_AI_WIDGET_KEY = import.meta.env.VITE_CHAT_AI_WIDGET_KEY;
 
@@ -48,6 +48,9 @@ const SBComponent = ({ children }: { children: React.ReactElement }) => {
     };
     if (isDashboardPreview(userAgent)) {
       delete userAgent['chat-ai-widget-service-name'];
+    } else if (isCustomizedForDemo(userAgent)) {
+      delete userAgent['chat-ai-widget-demo'];
+      delete userAgent['chat-ai-widget-demo-category'];
     }
     return userAgent;
   }, []);

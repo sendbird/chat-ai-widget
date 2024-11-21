@@ -130,6 +130,11 @@ export interface OnWidgetOpenStateChangeParams {
   value: boolean;
 }
 
+export type ExternalChatMessage = {
+  id: string;
+  value: string;
+};
+
 export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
   /**
    * @public
@@ -271,6 +276,16 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
    * @description Determines whether to use the local cache of the Chat SDK.
    */
   localCacheEnabled?: boolean;
+  /**
+   * @private
+   * @description Custom Properties for Interactive Demo (fintech | ecommerce | healthcare)
+   */
+  customizedDemoCategory?: CustomizedDemoCategory;
+  /**
+   * @private
+   * @description Custom Properties for Interactive Demo
+   */
+  externalInputChatMessage: ExternalChatMessage | null;
 }
 
 interface ConstantAIFeatures {
@@ -310,6 +325,7 @@ interface ConstantFeatureFlags {
    * @public
    * @description Hide widget for deactivated user.
    * */
+
   enableHideWidgetForDeactivatedUser: boolean;
   /**
    * @public
@@ -371,3 +387,75 @@ export const widgetStringSet = {
   messageInputDisabledPlaceholder: 'Waiting for the bot’s reply…',
   formVersionInvalidFallbackMessage: 'Form type messages are not available in this version.',
 };
+
+export const customizedDemoCategories = ['fintech', 'ecommerce', 'healthcare'] as const;
+
+export type CustomizedDemoCategory = (typeof customizedDemoCategories)[number];
+
+type CustomizedDemoSettings = {
+  [key: string]: {
+    name: string;
+    botId: string;
+    color: {
+      userMessageBackground: string;
+      botUserMessageBackground: string;
+      messageListBackground: string;
+      headerBackground?: string;
+      chatInputBackground?: string;
+    };
+    profileUrl: string;
+  };
+};
+
+export const customizedDemoSettings: CustomizedDemoSettings = {
+  fintech: {
+    name: 'Sendbird Pay',
+    botId: '324a1351-678d-4726-9c10-50efeb27e1c1',
+    color: {
+      userMessageBackground: '#30308F',
+      botUserMessageBackground: '#E7F1FF',
+      messageListBackground: '#FFFFFF',
+    },
+    profileUrl:
+      'https://raw.githubusercontent.com/sendbird/chat-ai-widget/50e15d6f4c5ac9c797c1b9ce58f8d387c07addfc/src/icons/icon-fintech-demo-bot.svg',
+  },
+  ecommerce: {
+    name: 'Sendbird Shopping',
+    botId: '0a3e21cc-5e2d-4a56-8d20-e675bf3fca34',
+    color: {
+      userMessageBackground: '#508537',
+      botUserMessageBackground: '#FFFFFF',
+      messageListBackground: '#F8F8F8',
+    },
+    profileUrl: 'https://sendbird.github.io/chat-ai-assets/ecommerce-bot.png',
+  },
+  healthcare: {
+    name: 'Patient X',
+    botId: '9237b7d5-21c0-4a0e-a612-839de71b8a00',
+    color: {
+      userMessageBackground: '#3C7EFF',
+      botUserMessageBackground: '#FFFFFF',
+      messageListBackground: '#C8D9FA',
+      headerBackground: '#C8D9FA',
+      chatInputBackground: '#DCE1FB',
+    },
+    profileUrl: 'https://sendbird.github.io/chat-ai-assets/healthcare-avatar.png',
+  },
+};
+
+export const customizedDemoBotInfos = [
+  ...Object.values(customizedDemoSettings).map((category) => {
+    return {
+      id: category.botId,
+      name: category.name,
+      profileUrl: category.profileUrl,
+    };
+  }),
+  {
+    id: 'luke',
+    name: 'Luke',
+    profileUrl: 'https://sendbird.github.io/chat-ai-assets/ecommerce-agent-avatar-new.png',
+  },
+];
+
+export const customizedDemoBotIds = customizedDemoBotInfos.map((bot) => bot.id);

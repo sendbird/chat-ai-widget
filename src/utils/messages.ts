@@ -2,6 +2,7 @@ import { BaseMessage } from '@sendbird/chat/message';
 import { isSameMinute } from 'date-fns';
 
 import { messageExtension } from './messageExtension';
+import { customizedDemoBotIds } from '../const';
 
 export const getMessageGrouping = (curr: BaseMessage, prev?: BaseMessage, next?: BaseMessage): [boolean, boolean] => {
   if (!curr.isUserMessage() && !curr.isFileMessage()) {
@@ -31,6 +32,11 @@ export function getBotWelcomeMessages(messages: BaseMessage[], botUserId: string
 
 export function isSentBy(message: BaseMessage, userId?: string | null) {
   return getSenderUserIdFromMessage(message) === userId;
+}
+
+export function isSentByDemoBot(message: BaseMessage) {
+  const senderUserId = getSenderUserIdFromMessage(message);
+  return customizedDemoBotIds.includes(senderUserId || '');
 }
 
 export function jsonParseSafely(messageData: string) {

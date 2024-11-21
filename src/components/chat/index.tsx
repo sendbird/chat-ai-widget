@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 
 import { ChatContainer } from './context/ChatProvider';
-import { ChatUI } from './ui';
+import { DemoChatUI } from './ui';
 import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetSession, useWidgetSetting } from '../../context/WidgetSettingContext';
 import { useAssignGlobalFunction } from '../../hooks/useAssignGlobalFunction';
@@ -47,8 +47,8 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
         ERR_CHANNEL_FETCH: 'Failed to retrieve channel information',
       }}
     >
+      <DemoChatUI />
       <HeadlessForHooks fullscreen={fullscreen} />
-      <ChatUI fullscreen={fullscreen} />
     </ChatContainer>
   );
 };

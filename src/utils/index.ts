@@ -1,5 +1,6 @@
 import type SendbirdChat from '@sendbird/chat';
 import { BaseMessage } from '@sendbird/chat/message';
+import DOMPurify from 'dompurify';
 
 import { jsonParseSafely } from './messages';
 import { Source } from '../components/SourceContainer';
@@ -306,6 +307,24 @@ export function isDashboardPreview(userAgent: object | undefined) {
   return userAgent && 'chat-ai-widget-preview' in userAgent && userAgent['chat-ai-widget-preview'] === 'True';
 }
 
+export function isCustomizedForDemo(userAgent: object | undefined) {
+  return (
+    userAgent &&
+    'chat-ai-widget-demo' in userAgent &&
+    userAgent['chat-ai-widget-demo'] === 'True' &&
+    'chat-ai-widget-demo-category' in userAgent &&
+    typeof userAgent['chat-ai-widget-demo-category'] === 'string'
+  );
+}
+
+export function getCustomizedDemoCategory(userAgent: { [key: string]: any } | undefined): string | undefined {
+  if (!userAgent || !isCustomizedForDemo(userAgent)) {
+    return undefined;
+  }
+
+  return userAgent['chat-ai-widget-demo-category'];
+}
+
 export function getDefaultServiceName(injectedServiceName?: string) {
   if (!injectedServiceName) {
     return widgetServiceName.default;
@@ -316,6 +335,19 @@ export function getDefaultServiceName(injectedServiceName?: string) {
   } else {
     return injectedServiceName;
   }
+}
+
+export function getFormattedDate(inputTime: Date) {
+  const month = inputTime.toLocaleString('en-us', { month: 'short' }); // 'Dec'
+  const day = inputTime.getUTCDate(); // 21
+
+  const formattedDate = `${month}, ${day}`;
+
+  const hours = ('0' + inputTime.getUTCHours()).slice(-2);
+  const minutes = ('0' + inputTime.getUTCMinutes()).slice(-2);
+  const formattedTime = `${hours}:${minutes}`;
+
+  return { formattedDate, formattedTime };
 }
 
 export function asSafeURL(url: string) {
@@ -336,6 +368,11 @@ export function asSafeURL(url: string) {
   }
 
   return safeURL;
+}
+
+export function boldifyMessage(text: string) {
+  const boldifiedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  return DOMPurify.sanitize(boldifiedText);
 }
 
 declare global {
