@@ -17,12 +17,9 @@ export async function getWidgetSessionCache(
   page: Page,
   { appId, botId }: { appId: string; botId: string },
 ): Promise<WidgetSessionCache | null> {
-  const key = getKey(appId, botId);
   const value = await page.evaluate(
-    ({ key }) => {
-      return localStorage.getItem(key); // Replace 'key' with your key
-    },
-    { key },
+    ({ key }) => (localStorage.getItem(key)),
+    { key: getKey(appId, botId) },
   );
   try {
     if (value) {
