@@ -6,11 +6,13 @@ import { getComponentKeyFromMessage } from '@uikit/modules/GroupChannel/context/
 import DemoCustomMessages from '../../../__custom__/DemoCustomMessages';
 import { customizedDemoSettings } from '../../../const';
 import { useConstantState } from '../../../context/ConstantContext';
+import { useWidgetSession } from '../../../context/WidgetSettingContext';
 import { DateSeparator } from '../../../foundation/components/DateSeparator';
 import FrozenBanner from '../../../foundation/components/FrozenBanner';
 import { InfiniteMessageList } from '../../../foundation/components/InfiniteMessageList';
 import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
+import { useCurrentChannelMemberIds, useNumOfMessages } from '../../../foundation/hooks/useDemoSharableData';
 import { isDashboardPreview } from '../../../utils';
 import { getMessageGrouping } from '../../../utils/messages';
 import MessageDataContent from '../../MessageDataContent';
@@ -26,6 +28,10 @@ export const DemoChatMessageList = () => {
 
   const typingTargetMessageId = useTypingTargetMessageId();
   const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();
+  const { userId: currentUserId } = useWidgetSession();
+
+  useNumOfMessages(currentUserId);
+  useCurrentChannelMemberIds();
 
   const render = () => {
     if (!dataSource.initialized) {

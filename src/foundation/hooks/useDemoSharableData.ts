@@ -6,8 +6,8 @@ import { useBotStudioView } from '../../components/chat/hooks/useBotStudioView';
 import { localStorageHelper } from '../../utils';
 
 export const CHAT_LOAD_TIME_KEY = 'load-time';
-export const NUM_OF_MESSAGES_KEY = 'num-of-messages';
-export const MEMBER_IDS_KEY = 'member-ids';
+export const NUM_OF_MESSAGES_KEY = 'chat-ai-widget_num-of-messages';
+export const MEMBER_IDS_KEY = 'chat-ai-widget_member-ids';
 export const BOT_ID = 'bot-id';
 
 export function useBotId(id: string) {
@@ -59,5 +59,5 @@ export function useCurrentChannelMemberIds() {
   useEffect(() => {
     store.current.setItem(MEMBER_IDS_KEY, memberIds.toString());
     window.dispatchEvent(new Event('storage'));
-  }, [memberIds]);
+  }, [channel, memberIds]);
 }
