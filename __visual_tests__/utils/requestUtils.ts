@@ -1,18 +1,9 @@
-import { ApiHost, ApiToken, PlatformApiPath } from '../const';
+import { ApiHost, ApiToken } from '../const';
 
 interface RequestParams {
   url: string;
   headers?: object;
   data?: object;
-}
-
-function uuid() {
-  let d = new Date().getTime();
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = (d + Math.random() * 16) % 16 | 0;
-    d = Math.floor(d / 16);
-    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
-  });
 }
 
 function createQueryString(params: any): string {
@@ -34,7 +25,6 @@ async function requestDelete(requestParams: RequestParams) {
   const response = await fetch(
     `${ApiHost}${requestParams.url}?${createQueryString({
       ...requestParams.data,
-      sendbird: uuid(),
     })}`,
     {
       method: 'DELETE',
@@ -47,12 +37,12 @@ async function requestDelete(requestParams: RequestParams) {
 
 export async function deleteChannel(channelUrl: string): Promise<object[]> {
   return await requestDelete({
-    url: PlatformApiPath.GROUP_CHANNELS + encodeURIComponent(channelUrl),
+    url: `/v3/group_channels/${encodeURIComponent(channelUrl)}`,
   });
 }
 
 export async function deleteUser(userId: string): Promise<object[]> {
   return await requestDelete({
-    url: PlatformApiPath.USERS + encodeURIComponent(userId),
+    url: `/v3/users/${encodeURIComponent(userId)}`,
   });
 }
