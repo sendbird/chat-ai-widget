@@ -5,6 +5,7 @@ import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/MessageInputWrapper/MessageInputWrapperView';
 
 import { HealthcareMessageInput } from './demo/healthcare/HealthcareMessageInput';
+import { HealthcareMessageMockInput } from './demo/healthcare/HealthcareMessageMockInput';
 import { useConstantState } from '../../../context/ConstantContext';
 import { themedColors } from '../../../foundation/colors/css';
 import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotResponding';
@@ -42,8 +43,12 @@ export const DemoChatInput = () => {
     }
   }, [externalInputChatMessage?.id]);
 
-  return isHealthcareDemo && channel ? (
-    <HealthcareMessageInput />
+  return isHealthcareDemo ? (
+    channel ? (
+      <HealthcareMessageInput />
+    ) : (
+      <HealthcareMessageMockInput />
+    )
   ) : (
     <div className={cx(container, isIOSMobile && iosMobileContainer)}>
       <MessageInputWrapperView

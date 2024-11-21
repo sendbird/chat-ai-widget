@@ -95,7 +95,7 @@ export const AIAssistantBodyContainer = styled.div`
   gap: 12px;
   display: flex;
   flex-direction: column;
-  max-height: 240px;
+  max-height: 260px;
   overflow-y: auto;
 `;
 
