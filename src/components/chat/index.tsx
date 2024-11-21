@@ -13,7 +13,7 @@ import { useWidgetInactivityTimeout } from '../../hooks/useWidgetInactivityTimeo
 
 const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
   const { stores } = useSendbirdStateContext();
-  const { locale, customizedDemoCategory } = useConstantState();
+  const { locale } = useConstantState();
   const widgetSetting = useWidgetSetting();
   const widgetSession = useWidgetSession();
 
@@ -47,7 +47,7 @@ const Chat = ({ fullscreen = false }: { fullscreen?: boolean }) => {
         ERR_CHANNEL_FETCH: 'Failed to retrieve channel information',
       }}
     >
-      {customizedDemoCategory ? <DemoChatUI /> : <ChatUI fullscreen={fullscreen} />}
+      <DemoChatUI />
       <HeadlessForHooks fullscreen={fullscreen} />
     </ChatContainer>
   );

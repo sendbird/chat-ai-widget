@@ -9,7 +9,6 @@ import { type Constant, elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
 import { useWidgetState } from '../../context/WidgetStateContext';
 import useMobileView from '../../hooks/useMobileView';
 import { useWidgetAutoOpen } from '../../hooks/useWidgetAutoOpen';
-import { isCustomizedForDemo, isMobile } from '../../utils';
 import Chat from '../chat';
 
 const DemoContainer = styled.div`
@@ -81,13 +80,7 @@ export interface ChatAiWidgetProps extends Omit<Partial<Constant>, 'stringSet'> 
 export default function ChatAiWidget(props: ChatAiWidgetProps) {
   return (
     <ProviderContainer {...props}>
-      {isCustomizedForDemo(props?.customUserAgentParam) ? (
-        <DemoComponent />
-      ) : isMobile(props.deviceType) ? (
-        <MobileComponent />
-      ) : (
-        <DesktopComponent />
-      )}
+      <DemoComponent />
     </ProviderContainer>
   );
 }
