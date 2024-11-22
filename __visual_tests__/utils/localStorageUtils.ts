@@ -1,8 +1,7 @@
 import { Page } from '@playwright/test';
 
-export const WIDGET_SESSION_PREFIX = '@sendbird/chat-ai-widget';
 export const getKey = (appId: string, botId: string) => {
-  return `${WIDGET_SESSION_PREFIX}/${appId}/${botId}`;
+  return `@sendbird/chat-ai-widget/${appId}/${botId}`;
 };
 
 export type WidgetSessionCache = {
