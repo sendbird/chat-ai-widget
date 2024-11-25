@@ -25,7 +25,6 @@ const StyledWidgetWindowWrapper = styled.div<{
     0px 6px 10px -5px rgba(33, 33, 33, 0.04);
   border-radius: 16px;
   overflow: hidden;
-  transform-origin: right bottom;
   transition:
     width 200ms ease 0s,
     height 200ms ease 0s,
@@ -34,6 +33,10 @@ const StyledWidgetWindowWrapper = styled.div<{
     opacity 83ms ease-out 0s;
   transform: scale(0.15);
   opacity: 0;
+  transform-origin: right bottom;
+  [dir='rtl'] & {
+    transform-origin: left bottom;
+  }
 
   ${({ isOpen }) => {
     return (
