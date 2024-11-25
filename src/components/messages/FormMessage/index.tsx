@@ -6,10 +6,10 @@ import { isFormVersionCompatible } from '@uikit/modules/GroupChannel/context/uti
 import Button from '@uikit/ui/Button';
 
 import FallbackUserMessage from './../FallbackUserMessage';
+import FormInput from './FormInput';
 import { widgetStringSet } from '../../../const';
 import { useConstantState } from '../../../context/ConstantContext';
 import { Label } from '../../../foundation/components/Label';
-import FormInput from './FormInput';
 import { AlertModal } from '../../ui/AlertModal';
 
 interface Props {

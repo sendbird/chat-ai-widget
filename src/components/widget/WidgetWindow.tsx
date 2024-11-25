@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 import { elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
-import { useWidgetState } from '../../context/WidgetStateContext';
 import { useConstantState } from '../../context/ConstantContext';
+import { useWidgetState } from '../../context/WidgetStateContext';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
