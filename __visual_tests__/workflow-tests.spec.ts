@@ -134,6 +134,6 @@ test('103', async ({ page, browserName }) => {
   // 6
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(2).click();
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(2000);
   await assertScreenshot(page, '103-6', browserName);
 });
