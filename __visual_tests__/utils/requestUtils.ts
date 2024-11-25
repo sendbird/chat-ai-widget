@@ -23,9 +23,7 @@ function createHeaders(): object {
 
 async function requestDelete(requestParams: RequestParams) {
   const response = await fetch(
-    `${ApiHost}${requestParams.url}?${createQueryString({
-      ...requestParams.data,
-    })}`,
+    `${ApiHost}${requestParams.url}?${createQueryString(requestParams.data)}`,
     {
       method: 'DELETE',
       headers: createHeaders() as Headers,
