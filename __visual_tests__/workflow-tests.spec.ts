@@ -1,12 +1,22 @@
 import { test } from '@playwright/test';
 
-import { TEST_URL, WidgetComponentIds } from './const';
-import { assertScreenshot, clickNthChip, loadWidget, sendTextMessage } from './utils';
+import { TestUrl, WidgetComponentIds } from './const';
+import { assertScreenshot, clickNthChip, deleteTestResources, loadWidget, sendTextMessage } from './utils/testUtils';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(TEST_URL);
+  await page.goto(TestUrl);
+
   const widgetWindow = page.locator(WidgetComponentIds.WIDGET_BUTTON);
   await widgetWindow.waitFor({ state: 'visible' });
+});
+
+test.afterEach(async ({ page }) => {
+  await deleteTestResources(page);
+  /**
+   * Optional: Playwright automatically handles page closure at the end of a test,
+   * but explicitly closing it ensures no lingering resources remain.
+   */
+  await page.close();
 });
 
 /**
@@ -124,6 +134,6 @@ test('103', async ({ page, browserName }) => {
   // 6
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(2).click();
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(2000);
   await assertScreenshot(page, '103-6', browserName);
 });

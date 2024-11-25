@@ -1,6 +1,8 @@
 import { expect, Page } from '@playwright/test';
 
-import { WidgetComponentIds } from './const';
+import { getWidgetSessionCache } from './localStorageUtils';
+import { deleteChannel, deleteUser } from './requestUtils';
+import { AppId, BotId, WidgetComponentIds } from '../const';
 
 export async function assertScreenshot(page: Page, screenshotName: string, browserName: string) {
   const name = `${screenshotName}.${browserName}.${process.platform}.png`; // Include the browser and OS architecture info in the filename
@@ -28,4 +30,21 @@ export async function sendTextMessage(page: Page, text: string, waitTime = 1000)
 export async function clickNthChip(page: Page, nth: number) {
   const chipContainer = page.locator(WidgetComponentIds.CHIPS_CONTAINER);
   await chipContainer.locator(':scope > *').nth(nth).click();
+}
+
+export async function deleteTestResources(page: Page) {
+  if (AppId && BotId) {
+    const cachedSession = await getWidgetSessionCache(page, {
+      appId: AppId,
+      botId: BotId,
+    });
+    if (cachedSession) {
+      try {
+        await deleteChannel(cachedSession.channelUrl);
+        await deleteUser(cachedSession.userId);
+      } catch (e) {
+        console.error('## deleteTestResources failed: ', e);
+      }
+    }
+  }
 }
