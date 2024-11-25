@@ -131,7 +131,7 @@ export interface OnWidgetOpenStateChangeParams {
   value: boolean;
 }
 
-export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
+export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures, ConstantStyles {
   /**
    * @public
    * @description User nickname to be used in the widget.
@@ -272,6 +272,14 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures {
    * @description Determines whether to use the local cache of the Chat SDK.
    */
   localCacheEnabled?: boolean;
+}
+
+interface ConstantStyles {
+  /**
+   * @public
+   * @description dir of the widget.
+   * */
+  dir?: 'ltr' | 'rtl';
 }
 
 interface ConstantAIFeatures {

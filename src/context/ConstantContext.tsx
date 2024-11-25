@@ -52,31 +52,19 @@ export const ConstantStateProvider = (props: PropsWithChildren<ConstantContextPr
   return (
     <ConstantContext.Provider
       value={{
-        // ----- SDK props ----- //
-        applicationId: props.applicationId,
-        botId: props.botId,
+        ...props,
         /** userId, sessionToken, configureSession should be used together to handle session manually. **/
-        userId: props.userId,
-        sessionToken: props.sessionToken,
         configureSession: props.configureSession ? configureSession : undefined,
         userNickName: props.userNickName ?? initialState.userNickName,
         apiHost: props.apiHost ?? `https://api-${props.applicationId}.sendbird.com`,
         wsHost: props.wsHost ?? `wss://ws-${props.applicationId}.sendbird.com`,
         serviceName: getDefaultServiceName(props.serviceName),
-        callbacks: props.callbacks,
-        customUserAgentParam: props.customUserAgentParam,
-        renderWidgetToggleButton: props.renderWidgetToggleButton,
-        deviceType: props.deviceType, // Note this property is not being used but added just to remove any confusion.
         isMobileView,
         stringSet: {
           ...LabelStringSet,
           MESSAGE_INPUT__PLACE_HOLDER__DISABLED: widgetStringSet.messageInputDisabledPlaceholder,
           ...props.stringSet,
         },
-        botStudioEditProps: props.botStudioEditProps,
-        widgetOpenState: props.widgetOpenState,
-        onWidgetOpenStateChange: props.onWidgetOpenStateChange,
-        localCacheEnabled: props.localCacheEnabled,
         messageInputControls: {
           ...initialState.messageInputControls,
           ...props.messageInputControls,

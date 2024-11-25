@@ -117,6 +117,7 @@ export interface WidgetButtonProps {
   onClick?: () => void;
   className?: string;
   animated?: boolean;
+  dir?: 'ltr' | 'rtl';
 }
 
 export const WidgetButton = ({
@@ -126,6 +127,7 @@ export const WidgetButton = ({
   onClick,
   className,
   animated = true,
+  dir,
 }: WidgetButtonProps) => {
   return (
     <ButtonContainer
@@ -135,6 +137,7 @@ export const WidgetButton = ({
       onClick={onClick}
       backgroundColor={accentColor}
       animated={animated}
+      dir={dir}
     >
       <OpenIconWrapper isOpen={isOpen} animated={animated}>
         <Icon.Open url={imageUrl} />

@@ -19,7 +19,7 @@ const FloatingWidgetButton = styled(WidgetButton)`
 export type ToggleButtonProps = Omit<WidgetButtonProps, 'imageUrl'>;
 export default function WidgetToggleButton() {
   const { botStyle } = useWidgetSetting();
-  const { renderWidgetToggleButton } = useConstantState();
+  const { dir, renderWidgetToggleButton } = useConstantState();
   const { isOpen, setIsOpen } = useWidgetState();
 
   const toggleButtonProps: ToggleButtonProps = {
@@ -32,5 +32,5 @@ export default function WidgetToggleButton() {
     return renderWidgetToggleButton(toggleButtonProps);
   }
 
-  return <FloatingWidgetButton {...toggleButtonProps} imageUrl={botStyle.toggleButtonUrl} />;
+  return <FloatingWidgetButton {...toggleButtonProps} imageUrl={botStyle.toggleButtonUrl} dir={dir} />;
 }

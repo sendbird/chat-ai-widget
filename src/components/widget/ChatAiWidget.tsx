@@ -11,6 +11,7 @@ import useMobileView from '../../hooks/useMobileView';
 import { useWidgetAutoOpen } from '../../hooks/useWidgetAutoOpen';
 import { isMobile } from '../../utils';
 import Chat from '../chat';
+import { useConstantState } from '../../context/ConstantContext';
 
 const MobileContainer = styled.div<{ width: number }>`
   position: fixed;
@@ -39,11 +40,13 @@ const DesktopComponent = () => {
 
 const MobileComponent = () => {
   const { isOpen, isVisible } = useWidgetState();
+  const { dir } = useConstantState();
   const { width: mobileContainerWidth } = useMobileView();
 
   return (
     <>
       <MobileContainer
+        dir={dir}
         style={{ display: isOpen && isVisible ? 'block' : 'none' }}
         width={mobileContainerWidth}
         id={elementIds.widgetWindow}

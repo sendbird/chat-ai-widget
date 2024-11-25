@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
 import { useWidgetState } from '../../context/WidgetStateContext';
+import { useConstantState } from '../../context/ConstantContext';
 
 const StyledWidgetWindowWrapper = styled.div<{
   isOpen: boolean;
@@ -34,7 +35,8 @@ const StyledWidgetWindowWrapper = styled.div<{
   transform: scale(0.15);
   opacity: 0;
   transform-origin: right bottom;
-  [dir='rtl'] & {
+  [dir='rtl'] &:not([dir='ltr']),
+  &[dir='rtl'] {
     transform-origin: left bottom;
   }
 
@@ -65,10 +67,16 @@ const StyledWidgetWindowWrapper = styled.div<{
 `;
 
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
+  const { dir } = useConstantState();
   const { isVisible, isOpen, isExpanded } = useWidgetState();
 
   return (
-    <StyledWidgetWindowWrapper isOpen={isOpen && isVisible} isExpanded={isExpanded} id={elementIds.widgetWindow}>
+    <StyledWidgetWindowWrapper
+      dir={dir}
+      isOpen={isOpen && isVisible}
+      isExpanded={isExpanded}
+      id={elementIds.widgetWindow}
+    >
       {children}
     </StyledWidgetWindowWrapper>
   );
