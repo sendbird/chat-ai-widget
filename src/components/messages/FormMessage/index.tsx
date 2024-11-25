@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import { isFormVersionCompatible } from '@uikit/modules/GroupChannel/context/utils';
 import Button from '@uikit/ui/Button';
 
-import FallbackUserMessage from './FallbackUserMessage';
-import { widgetStringSet } from '../../const';
-import { useConstantState } from '../../context/ConstantContext';
-import { Label } from '../../foundation/components/Label';
-import FormInput from '../FormInput';
-import { AlertModal } from '../ui/AlertModal';
+import FallbackUserMessage from './../FallbackUserMessage';
+import { widgetStringSet } from '../../../const';
+import { useConstantState } from '../../../context/ConstantContext';
+import { Label } from '../../../foundation/components/Label';
+import FormInput from './FormInput';
+import { AlertModal } from '../../ui/AlertModal';
 
 interface Props {
   message: BaseMessage;

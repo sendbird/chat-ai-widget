@@ -2,8 +2,8 @@ import { MessageFormItemStyle } from '@sendbird/chat/message';
 import { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { Icon } from '../foundation/components/Icon';
-import { Label as UILabel } from '../foundation/components/Label';
+import { Icon } from '../../../foundation/components/Icon';
+import { Label as UILabel } from '../../../foundation/components/Label';
 
 export interface InputLabelProps {
   children: ReactNode;
@@ -17,7 +17,7 @@ const Label = styled(UILabel)`
 
 export const InputLabel = ({ children }: InputLabelProps): ReactElement => (
   <div style={{ marginBottom: '6px' }}>
-    <Label className="sendbird-input-label" type={'caption2'} color={'onbackground2'}>
+    <Label className={'sendbird-input-label'} type={'caption2'} color={'onbackground2'}>
       {children}
     </Label>
   </div>
