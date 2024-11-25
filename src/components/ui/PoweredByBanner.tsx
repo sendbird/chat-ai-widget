@@ -48,7 +48,7 @@ function Banner() {
   const { chatBottomContent } = useConstantState();
 
   return (
-    <InnerContainer chatBottomBackgroundColor={chatBottomContent.backgroundColor}>
+    <InnerContainer chatBottomBackgroundColor={chatBottomContent.backgroundColor} dir={'ltr'}>
       {chatBottomContent?.text}&nbsp;&nbsp;&nbsp;Powered by&nbsp;
       <Highlighter
         aria-label="Learn more about Sendbird"
