@@ -131,13 +131,13 @@ export const WidgetButton = ({
 }: WidgetButtonProps) => {
   return (
     <ButtonContainer
+      dir={dir}
       id={elementIds.widgetToggleButton}
       aria-label="Widget toggle button"
       className={className}
       onClick={onClick}
       backgroundColor={accentColor}
       animated={animated}
-      dir={dir}
     >
       <OpenIconWrapper isOpen={isOpen} animated={animated}>
         <Icon.Open url={imageUrl} />

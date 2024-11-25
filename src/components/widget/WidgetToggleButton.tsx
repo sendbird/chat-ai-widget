@@ -16,21 +16,22 @@ const FloatingWidgetButton = styled(WidgetButton)`
   }
 `;
 
-export type ToggleButtonProps = Omit<WidgetButtonProps, 'imageUrl'>;
 export default function WidgetToggleButton() {
   const { botStyle } = useWidgetSetting();
   const { dir, renderWidgetToggleButton } = useConstantState();
   const { isOpen, setIsOpen } = useWidgetState();
 
-  const toggleButtonProps: ToggleButtonProps = {
+  const toggleButtonProps: WidgetButtonProps = {
+    dir,
     isOpen,
     onClick: () => setIsOpen(!isOpen),
     accentColor: botStyle.accentColor,
+    imageUrl: botStyle.toggleButtonUrl,
   };
 
   if (typeof renderWidgetToggleButton === 'function') {
     return renderWidgetToggleButton(toggleButtonProps);
   }
 
-  return <FloatingWidgetButton {...toggleButtonProps} imageUrl={botStyle.toggleButtonUrl} dir={dir} />;
+  return <FloatingWidgetButton {...toggleButtonProps} />;
 }

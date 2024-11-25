@@ -7,7 +7,7 @@ import React from 'react';
 
 import { StringSet } from '@uikit/ui/Label/stringSet';
 
-import type { ToggleButtonProps } from './components/widget/WidgetToggleButton';
+import type { WidgetButtonProps } from './components/ui/WidgetButton';
 import { BotStyle } from './context/WidgetSettingContext';
 import RefreshIcon from './icons/ic-refresh.svg';
 import { FunctionCallAdapter, SendbirdChatAICallbacks, WidgetCarouselItem } from './types';
@@ -241,7 +241,7 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures, Cons
    * @private
    * @description Custom widget toggle button renderer.
    */
-  renderWidgetToggleButton?: (props: ToggleButtonProps) => React.ReactElement;
+  renderWidgetToggleButton?: (props: WidgetButtonProps) => React.ReactElement;
   /**
    * @private
    * @description Service name to be used in the widget.

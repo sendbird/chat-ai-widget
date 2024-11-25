@@ -12,14 +12,7 @@ function WidgetWindowFullScreen(props: ChatAiWidgetProps) {
     <ProviderContainer {...props}>
       <div
         id={elementIds.widgetWindow}
-        style={{
-          position: 'fixed',
-          top: 0,
-          insetInlineStart: 0,
-          width: '100%',
-          height: '100%',
-          transform: 'scale(1)',
-        }}
+        style={{ position: 'fixed', left: 0, top: 0, width: '100%', height: '100%', transform: 'scale(1)' }}
       >
         <Chat fullscreen />
       </div>
