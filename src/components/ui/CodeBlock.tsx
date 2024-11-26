@@ -22,8 +22,8 @@ const Line = styled.div`
 
 const LineNumber = styled.span`
   display: table-cell;
-  text-align: right;
-  padding-right: 10px;
+  text-align: end;
+  padding-inline-end: 10px;
   user-select: none;
   opacity: 0.5;
 `;
@@ -35,7 +35,7 @@ const LineContent = styled.span`
 const CopyButton = styled.button`
   position: absolute;
   top: 8px;
-  right: 12px;
+  inset-inline-end: 12px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

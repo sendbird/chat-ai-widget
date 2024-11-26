@@ -11,7 +11,7 @@ import { SnapCarousel } from '../ui/SnapCarousel';
 const listPadding = 16;
 const avatarSize = 28;
 const avatarMargin = 8;
-const leftMargin = avatarSize + avatarMargin + listPadding;
+const startMargin = avatarSize + avatarMargin + listPadding;
 
 const BodyWrapper = styled.div({
   display: 'flex',
@@ -49,7 +49,7 @@ const Image = styled.img`
   background-color: ${({ theme }) => theme.bgColor.carouselItem};
 `;
 
-const Button = styled.button<{ direction: 'left' | 'right' }>(({ theme, direction }) => ({
+const Button = styled.button<{ direction: 'start' | 'end' }>(({ theme, direction }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -58,13 +58,22 @@ const Button = styled.button<{ direction: 'left' | 'right' }>(({ theme, directio
   transform: 'translateY(-50%)',
   border: 'none',
   cursor: 'pointer',
-  borderRadius: direction === 'right' ? '100px 0px 0px 100px' : '0px 100px 100px 0px',
-  padding: direction === 'right' ? '8px 8px 8px 12px' : '8px 12px 8px 8px',
+  borderStartStartRadius: direction === 'start' ? 0 : 100,
+  borderStartEndRadius: direction === 'end' ? 0 : 100,
+  borderEndStartRadius: direction === 'start' ? 0 : 100,
+  borderEndEndRadius: direction === 'end' ? 0 : 100,
+  paddingTop: 8,
+  paddingBottom: 8,
+  paddingInlineStart: direction === 'end' ? 12 : 8,
+  paddingInlineEnd: direction === 'start' ? 12 : 8,
   backgroundColor: theme.bgColor.carouselButton,
   boxShadow:
     '0px 8px 10px 1px rgba(13, 13, 13, 0.12), 0px 3px 14px 2px rgba(13, 13, 13, 0.08), 0px 3px 5px -3px rgba(13, 13, 13, 0.04)',
   '&:hover': {
     backgroundColor: theme.bgColor.hover.carouselButton,
+  },
+  '[dir=rtl] & svg': {
+    transform: 'scaleX(-1)',
   },
 }));
 
@@ -85,20 +94,20 @@ export const CarouselMessage = ({ streaming, textBody, streamingBody, items }: P
 
     return (
       <SnapCarousel
-        startPadding={leftMargin}
+        startPadding={startMargin}
         endPadding={listPadding}
         gap={avatarMargin}
-        style={{ marginLeft: -leftMargin, marginRight: -listPadding }}
+        style={{ marginInlineStart: -startMargin, marginInlineEnd: -listPadding }}
         renderButtons={({ activeIndex, onClickPrev, onClickNext }) =>
           shouldRenderButtons && (
             <>
               {activeIndex !== 0 && (
-                <Button style={{ left: -leftMargin }} onClick={onClickPrev} direction={'left'}>
+                <Button style={{ insetInlineStart: -startMargin }} onClick={onClickPrev} direction={'start'}>
                   <ChevronLeft width={24} height={24} fill={theme.bgColor.carouselButtonIcon} />
                 </Button>
               )}
               {activeIndex !== items.length - 1 && (
-                <Button style={{ right: -listPadding }} onClick={onClickNext} direction={'right'}>
+                <Button style={{ insetInlineEnd: -listPadding }} onClick={onClickNext} direction={'end'}>
                   <ChevronRight width={24} height={24} fill={theme.bgColor.carouselButtonIcon} />
                 </Button>
               )}

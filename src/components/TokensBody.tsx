@@ -34,7 +34,7 @@ const MultipleTokenTypeContainer = styled.div`
 
 export const TextContainer = styled.div`
   width: inherit;
-  text-align: left;
+  text-align: start;
   word-break: break-word;
   padding: 8px 12px;
   gap: 12px;

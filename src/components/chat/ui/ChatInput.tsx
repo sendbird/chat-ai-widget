@@ -116,6 +116,9 @@ const container = css`
         right: unset;
         bottom: unset;
         background-color: transparent;
+        [dir='rtl'] & {
+          transform: scaleX(-1);
+        }
       }
       .sendbird-message-input--attach {
         right: unset;

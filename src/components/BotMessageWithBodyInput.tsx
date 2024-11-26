@@ -18,7 +18,7 @@ const Root = styled.span`
 
 const Sender = styled.div`
   padding: 0 0 4px 12px;
-  text-align: left;
+  text-align: start;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -11,7 +11,7 @@ const Container = styled.div({
   overflowY: 'scroll',
   gap: 12,
   scrollPadding: 0,
-  paddingLeft: 0,
+  paddingInlineStart: 0,
   scrollbarWidth: 'none',
   userSelect: 'none',
   '::-webkit-scrollbar': {
@@ -58,25 +58,23 @@ export const SnapCarousel = ({
 }: SnapCarouselProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveState] = useState(0);
-  const itemLength = React.Children.toArray(children).length;
 
+  const direction = (ref.current ? getComputedStyle(ref.current).direction : 'ltr') as 'rtl' | 'ltr';
+  const itemLength = React.Children.toArray(children).length;
   const itemWidth = useMemo(() => {
     const total = ref.current?.scrollWidth ?? 0;
     return (total - (startPadding + endPadding + gap * (itemLength - 1))) / itemLength;
   }, [ref.current?.scrollWidth, itemLength, gap, startPadding, endPadding]);
 
   const onScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const idx = Math.round(e.currentTarget.scrollLeft / itemWidth);
+    const idx = Math.round(e.currentTarget.scrollLeft / itemWidth) * (direction === 'ltr' ? 1 : -1);
     if (idx !== activeIndex) setActiveState(idx);
   };
 
   const scrollTo = (index: number) => {
     if (ref.current) {
       const nextIdx = Math.min(Math.max(0, index), itemLength - 1);
-      ref.current.scroll({
-        left: nextIdx * itemWidth,
-        behavior: 'smooth',
-      });
+      ref.current.scroll({ left: nextIdx * itemWidth * (direction === 'ltr' ? 1 : -1), behavior: 'smooth' });
     }
   };
 
@@ -88,8 +86,8 @@ export const SnapCarousel = ({
         style={{
           gap,
           scrollPadding: startPadding,
-          paddingLeft: startPadding,
-          paddingRight: endPadding,
+          paddingInlineStart: startPadding,
+          paddingInlineEnd: endPadding,
           ...style,
         }}
       >

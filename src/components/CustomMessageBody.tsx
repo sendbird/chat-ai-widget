@@ -8,7 +8,7 @@ const Root = styled.div`
 
 const Text = styled.span`
   width: 100%;
-  text-align: left;
+  text-align: start;
   white-space: pre-line;
   word-break: break-word;
   line-height: 1.43;

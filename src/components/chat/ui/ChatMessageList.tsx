@@ -149,5 +149,5 @@ const dateSeparatorMargin = css`
 const scrollBottomPosition = css`
   position: absolute;
   bottom: 20px;
-  right: 20px;
+  inset-inline-end: 20px;
 `;

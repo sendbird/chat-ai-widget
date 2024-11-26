@@ -11,25 +11,27 @@ const FloatingWidgetButton = styled(WidgetButton)`
     position: fixed;
     z-index: ${MAX_Z_INDEX};
     bottom: 24px;
-    right: 24px;
+    right: unset;
+    inset-inline-end: 24px;
   }
 `;
 
-export type ToggleButtonProps = Omit<WidgetButtonProps, 'imageUrl'>;
 export default function WidgetToggleButton() {
   const { botStyle } = useWidgetSetting();
-  const { renderWidgetToggleButton } = useConstantState();
+  const { dir, renderWidgetToggleButton } = useConstantState();
   const { isOpen, setIsOpen } = useWidgetState();
 
-  const toggleButtonProps: ToggleButtonProps = {
+  const toggleButtonProps: WidgetButtonProps = {
+    dir,
     isOpen,
     onClick: () => setIsOpen(!isOpen),
     accentColor: botStyle.accentColor,
+    imageUrl: botStyle.toggleButtonUrl,
   };
 
   if (typeof renderWidgetToggleButton === 'function') {
     return renderWidgetToggleButton(toggleButtonProps);
   }
 
-  return <FloatingWidgetButton {...toggleButtonProps} imageUrl={botStyle.toggleButtonUrl} />;
+  return <FloatingWidgetButton {...toggleButtonProps} />;
 }

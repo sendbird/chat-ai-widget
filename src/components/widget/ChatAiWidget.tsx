@@ -6,6 +6,7 @@ import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
 import { type Constant, elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
+import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetState } from '../../context/WidgetStateContext';
 import useMobileView from '../../hooks/useMobileView';
 import { useWidgetAutoOpen } from '../../hooks/useWidgetAutoOpen';
@@ -16,7 +17,7 @@ const MobileContainer = styled.div<{ width: number }>`
   position: fixed;
   z-index: ${WIDGET_WINDOW_Z_INDEX};
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: ${({ width }) => `${width}px`};
   height: 100%;
   overflow: hidden;
@@ -39,11 +40,13 @@ const DesktopComponent = () => {
 
 const MobileComponent = () => {
   const { isOpen, isVisible } = useWidgetState();
+  const { dir } = useConstantState();
   const { width: mobileContainerWidth } = useMobileView();
 
   return (
     <>
       <MobileContainer
+        dir={dir}
         style={{ display: isOpen && isVisible ? 'block' : 'none' }}
         width={mobileContainerWidth}
         id={elementIds.widgetWindow}

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
+import { useConstantState } from '../../context/ConstantContext';
 import { useWidgetState } from '../../context/WidgetStateContext';
 
 const StyledWidgetWindowWrapper = styled.div<{
@@ -13,7 +14,7 @@ const StyledWidgetWindowWrapper = styled.div<{
   -webkit-overflow-scrolling: auto;
   position: fixed;
   bottom: 84px;
-  right: 20px;
+  inset-inline-end: 20px;
   height: 640px;
   min-height: 80px;
   width: 400px;
@@ -25,7 +26,6 @@ const StyledWidgetWindowWrapper = styled.div<{
     0px 6px 10px -5px rgba(33, 33, 33, 0.04);
   border-radius: 16px;
   overflow: hidden;
-  transform-origin: right bottom;
   transition:
     width 200ms ease 0s,
     height 200ms ease 0s,
@@ -34,6 +34,11 @@ const StyledWidgetWindowWrapper = styled.div<{
     opacity 83ms ease-out 0s;
   transform: scale(0.15);
   opacity: 0;
+  transform-origin: right bottom;
+  [dir='rtl'] &:not([dir='ltr']),
+  &[dir='rtl'] {
+    transform-origin: left bottom;
+  }
 
   ${({ isOpen }) => {
     return (
@@ -62,10 +67,16 @@ const StyledWidgetWindowWrapper = styled.div<{
 `;
 
 const WidgetWindow = ({ children }: { children: React.ReactNode }) => {
+  const { dir } = useConstantState();
   const { isVisible, isOpen, isExpanded } = useWidgetState();
 
   return (
-    <StyledWidgetWindowWrapper isOpen={isOpen && isVisible} isExpanded={isExpanded} id={elementIds.widgetWindow}>
+    <StyledWidgetWindowWrapper
+      dir={dir}
+      isOpen={isOpen && isVisible}
+      isExpanded={isExpanded}
+      id={elementIds.widgetWindow}
+    >
       {children}
     </StyledWidgetWindowWrapper>
   );
