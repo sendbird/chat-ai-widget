@@ -3,10 +3,12 @@ import { styled } from '@linaria/react';
 import { useTheme } from 'styled-components';
 
 import { elementIds } from '../../../const';
+import { useChannels } from '../../../context/ChannelsContext';
 import { useConstantState } from '../../../context/ConstantContext';
 import { useWidgetState } from '../../../context/WidgetStateContext';
 import { themedColors } from '../../../foundation/colors/css';
 import { Label } from '../../../foundation/components/Label';
+import ChevronLeftIcon from '../../../icons/ic-chevron-left.svg';
 import CloseIcon from '../../../icons/ic-close.svg';
 import CollapseIcon from '../../../icons/ic-collapse.svg';
 import ExpandIcon from '../../../icons/ic-expand.svg';
@@ -22,6 +24,7 @@ export const ChatHeader = ({ fullscreen }: Props) => {
     useConstantState();
   const { sdk, channel, botUser, dataSource } = useChatContext();
   const { setIsOpen } = useWidgetState();
+  const { setCurrentChannel } = useChannels();
 
   const { botInfo } = botStudioEditProps ?? {};
   const botNickname = botInfo?.nickname ?? botUser?.nickname;
@@ -39,8 +42,13 @@ export const ChatHeader = ({ fullscreen }: Props) => {
     setIsOpen(false);
   };
 
+  const handleGoBack = () => {
+    setCurrentChannel(undefined);
+  };
+
   return (
     <div className={container}>
+      <GoBackButton size={buttonSize} onClick={handleGoBack} />
       <div style={{ marginRight: 6 }}>
         <BotProfileImage size={34} />
       </div>
@@ -63,6 +71,18 @@ export const ChatHeader = ({ fullscreen }: Props) => {
 type ButtonProps = {
   size: number;
   onClick?: () => void;
+};
+
+const GoBackButton = ({ size, onClick }: ButtonProps) => {
+  const handleClick = () => {
+    onClick?.();
+  };
+
+  return (
+    <IconButton id={elementIds.goBackIcon} aria-label={'go-back'} onClick={handleClick}>
+      <ChevronLeftIcon width={size} height={size} onClick={onClick} />
+    </IconButton>
+  );
 };
 
 const RefreshButton = ({ size, onClick }: ButtonProps) => {

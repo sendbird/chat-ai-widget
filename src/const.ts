@@ -357,6 +357,7 @@ export const elementIds = {
   expandIcon: 'aichatbot-widget-expand-icon',
   closeIcon: 'aichatbot-widget-close-icon',
   refreshIcon: 'aichatbot-widget-refresh-icon',
+  goBackIcon: 'aichatbot-widget-go-back-icon',
 };
 
 export const widgetServiceName = {

@@ -6,10 +6,12 @@ import ProviderContainer from './ProviderContainer';
 import WidgetToggleButton from './WidgetToggleButton';
 import WidgetWindow from './WidgetWindow';
 import { type Constant, elementIds, WIDGET_WINDOW_Z_INDEX } from '../../const';
+import { useChannels } from '../../context/ChannelsContext';
 import { useWidgetState } from '../../context/WidgetStateContext';
 import useMobileView from '../../hooks/useMobileView';
 import { useWidgetAutoOpen } from '../../hooks/useWidgetAutoOpen';
 import { isMobile } from '../../utils';
+import ChannelList from '../ChannelList';
 import Chat from '../chat';
 
 const MobileContainer = styled.div<{ width: number }>`
@@ -23,15 +25,37 @@ const MobileContainer = styled.div<{ width: number }>`
   background-color: white;
 `;
 
+type View = 'channel' | 'channelList';
+
 const DesktopComponent = () => {
   const { isVisible } = useWidgetState();
   useWidgetAutoOpen();
+  const { currentChannel } = useChannels();
+
+  const currentView: View = currentChannel ? 'channel' : 'channelList';
+
+  // function addChannel(channel: GroupChannel) {
+  //   setChannels((oldChannels) => {
+  //     const newChannels = [channel, ...oldChannels];
+  //     sortChannelsByLastMessage(newChannels);
+  //     return newChannels;
+  //   });
+  //   // TODO: Add group channel handler.
+  // }
+
+  // function sortChannelsByLastMessage(channels: GroupChannel[]) {
+  //   channels.sort((a, b) => {
+  //     const aTime = a.lastMessage?.createdAt ?? a.createdAt;
+  //     const bTime = b.lastMessage?.createdAt ?? b.createdAt;
+  //     if (aTime > bTime) return -1;
+  //     if (aTime < bTime) return 1;
+  //     return 0;
+  //   })
+  // }
 
   return (
     <>
-      <WidgetWindow>
-        <Chat />
-      </WidgetWindow>
+      <WidgetWindow>{currentView === 'channel' ? <Chat /> : <ChannelList />}</WidgetWindow>
       {isVisible && <WidgetToggleButton />}
     </>
   );

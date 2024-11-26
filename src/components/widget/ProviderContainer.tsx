@@ -6,6 +6,7 @@ import SendbirdProvider from '@uikit/lib/Sendbird';
 
 import { ChatAiWidgetProps } from './ChatAiWidget';
 import { generateCSSVariables } from '../../colors';
+import { ChannelsProvider } from '../../context/ChannelsContext';
 import { ConstantStateProvider, useConstantState } from '../../context/ConstantContext';
 import { useWidgetSession, useWidgetSetting, WidgetSettingProvider } from '../../context/WidgetSettingContext';
 import { useWidgetState, WidgetStateProvider } from '../../context/WidgetStateContext';
@@ -137,7 +138,9 @@ export default function ProviderContainer(props: ProviderContainerProps) {
       <WidgetSettingProvider>
         <WidgetStateProvider>
           <DragDropProvider>
-            <SBComponent>{props.children}</SBComponent>
+            <SBComponent>
+              <ChannelsProvider>{props.children}</ChannelsProvider>
+            </SBComponent>
           </DragDropProvider>
         </WidgetStateProvider>
       </WidgetSettingProvider>

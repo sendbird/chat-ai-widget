@@ -1,13 +1,12 @@
-import { SendbirdChatWith, SendbirdError, SendbirdErrorCode, User } from '@sendbird/chat';
+import { SendbirdChatWith, User } from '@sendbird/chat';
 import { GroupChannel, GroupChannelModule } from '@sendbird/chat/groupChannel';
 import { useGroupChannelMessages } from '@sendbird/uikit-tools';
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { createContext, PropsWithChildren, useContext } from 'react';
 
 import { useMessageListScroll } from '@uikit/modules/GroupChannel/context/hooks/useMessageListScroll';
 
+import { useChannels } from '../../../context/ChannelsContext';
 import { useConstantState } from '../../../context/ConstantContext';
-import { useWidgetSetting } from '../../../context/WidgetSettingContext';
-import { Placeholder } from '../../../foundation/components/Placeholder';
 import { clearWidgetSessionCache } from '../../../libs/storage/widgetSessionCache';
 import { useWidgetChatHandlers, WidgetChatHandlers } from '../hooks/useWidgetChatHandlers';
 
@@ -17,7 +16,7 @@ export interface WidgetStringSet {
 
 export interface ChatContextType {
   sdk: SendbirdChatWith<[GroupChannelModule]> | null;
-  channel: GroupChannel | null;
+  channel: GroupChannel;
   botUser?: User;
   dataSource: ReturnType<typeof useGroupChannelMessages>;
   scrollSource: ReturnType<typeof useMessageListScroll>;
@@ -30,54 +29,37 @@ const ChatContext = createContext<ChatContextType | null>(null);
 
 export interface ChatContainerProps {
   sdk: SendbirdChatWith<[GroupChannelModule]> | null;
-  channelUrl: string;
   stringSet: WidgetStringSet;
 }
 
 export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
-  const { sdk, channelUrl, stringSet, children } = props;
+  const { sdk, children } = props;
   const { applicationId: appId, botId } = useConstantState();
-  const { resetSession } = useWidgetSetting();
-
-  const [channel, setChannel] = useState<GroupChannel | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { currentChannel } = useChannels();
 
   const scrollSource = useMessageListScroll('smooth');
   const onScrollToBottom = () => setTimeout(() => scrollSource.scrollPubSub.publish('scrollToBottom', {}), 25);
   const handlers = useWidgetChatHandlers({ onScrollToBottom });
 
   // NOTE: sdk and channel are nullable, but useGroupChannelMessages can handle it even if types are not.
-  const dataSource = useGroupChannelMessages(sdk as SendbirdChatWith<[GroupChannelModule]>, channel as GroupChannel, {
-    shouldCountNewMessages: () => false,
-    onChannelDeleted: () => clearWidgetSessionCache({ appId, botId }),
-    onMessagesReceived: onScrollToBottom,
-    onMessagesUpdated: onScrollToBottom,
-  });
+  const dataSource = useGroupChannelMessages(
+    sdk as SendbirdChatWith<[GroupChannelModule]>,
+    currentChannel as GroupChannel,
+    {
+      shouldCountNewMessages: () => false,
+      onChannelDeleted: () => clearWidgetSessionCache({ appId, botId }),
+      onMessagesReceived: onScrollToBottom,
+      onMessagesUpdated: onScrollToBottom,
+    },
+  );
 
-  useEffect(() => {
-    if (!sdk?.groupChannel) return;
-
-    setChannel(null);
-    setErrorMessage(null);
-
-    sdk.groupChannel
-      .getChannel(channelUrl)
-      .then(setChannel)
-      .catch((error: SendbirdError) => {
-        if (error.code === SendbirdErrorCode.NOT_FOUND_IN_DATABASE || error.code === SendbirdErrorCode.NON_AUTHORIZED) {
-          resetSession();
-        } else {
-          setErrorMessage(stringSet.ERR_CHANNEL_FETCH);
-        }
-      });
-  }, [sdk, channelUrl]);
-
-  if (errorMessage) return <Placeholder type={'error'} label={errorMessage} />;
+  // FIXME: Is this ok?
+  if (!currentChannel) return null;
 
   return (
     <ChatProvider
-      channel={channel}
-      botUser={channel?.members.find((it) => it.userId === botId)}
+      channel={currentChannel}
+      botUser={currentChannel?.members.find((it) => it.userId === botId)}
       dataSource={dataSource}
       scrollSource={scrollSource}
       handlers={handlers}
@@ -89,7 +71,7 @@ export const ChatContainer = (props: PropsWithChildren<ChatContainerProps>) => {
 };
 
 interface ChatProviderProps extends ChatContainerProps {
-  channel: GroupChannel | null;
+  channel: GroupChannel;
   botUser?: User;
   dataSource: ReturnType<typeof useGroupChannelMessages>;
   scrollSource: ReturnType<typeof useMessageListScroll>;
