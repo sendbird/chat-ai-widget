@@ -8,7 +8,6 @@ import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import { useChatContext } from './chat/context/ChatProvider';
 import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
-import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
 import { CarouselMessage } from './messages/CarouselMessage';
 import FormMessage from './messages/FormMessage';
@@ -25,20 +24,19 @@ import { isSentBy } from '../utils/messages';
 
 type Props = {
   message: BaseMessage;
-  activeSpinnerId: number;
   chainTop?: boolean;
   chainBottom?: boolean;
 };
 
 export default function CustomMessage(props: Props) {
+  const { message } = props;
+
   const { botUser } = useChatContext();
-  const { message, activeSpinnerId } = props;
   const { replacementTextList, enableEmojiFeedback } = useConstantState();
   const { userId: currentUserId } = useWidgetSession();
   const getCarouselItems = useCarouselItems(message);
 
   const botUserId = botUser?.userId;
-  const isWaitingForBotReply = activeSpinnerId === message.messageId && !!botUser;
 
   const shouldRenderFeedback = () => {
     return (
@@ -61,28 +59,8 @@ export default function CustomMessage(props: Props) {
 
   // Sent by current user
   if (isSentBy(message, currentUserId)) {
-    if (message.isUserMessage()) {
-      /**
-       * If a message to render is sent by me and is a last message,
-       * typing indicator bubble is displayed below to indicate
-       * a reply message from bot is expected to arrive.
-       */
-      return (
-        <div>
-          <CurrentUserMessage message={message} />
-          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
-        </div>
-      );
-    }
-
-    if (message.isFileMessage()) {
-      return (
-        <div>
-          <OutgoingFileMessage message={message} />
-          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
-        </div>
-      );
-    }
+    if (message.isUserMessage()) return <CurrentUserMessage message={message} />;
+    if (message.isFileMessage()) return <OutgoingFileMessage message={message} />;
   }
 
   // Sent by bot user

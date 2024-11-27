@@ -11,12 +11,13 @@ import { Placeholder } from '../../../foundation/components/Placeholder';
 import { ScrollToBottomButton } from '../../../foundation/components/ScrollToBottomButton';
 import { isDashboardPreview } from '../../../utils';
 import { getMessageGrouping } from '../../../utils/messages';
+import BotTypingIndicator from '../../BotTypingIndicator';
 import CustomMessage from '../../CustomMessage';
 import MessageDataContent from '../../MessageDataContent';
 import SuggestedRepliesContainer from '../../SuggestedRepliesContainer';
 import { useChatContext } from '../context/ChatProvider';
 import { useBotStudioView } from '../hooks/useBotStudioView';
-import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
+import { useIsBotTyping } from '../hooks/useIsBotTyping';
 
 export const ChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
@@ -29,7 +30,7 @@ export const ChatMessageList = () => {
     messageStackDirection = 'bottom',
   } = useConstantState();
 
-  const typingTargetMessageId = useTypingTargetMessageId();
+  const isBotTyping = useIsBotTyping();
   const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();
 
   const render = () => {
@@ -55,6 +56,13 @@ export const ChatMessageList = () => {
         onLoadNext={dataSource.loadNext}
         depsForResetScrollPositionToBottom={[dataSource.initialized, dataSource.messages.length !== 0]}
         messageTopArea={renderBotStudioWelcomeMessages()}
+        messageBottomArea={
+          isBotTyping && (
+            <div style={{ padding: '0 16px' }}>
+              <BotTypingIndicator />
+            </div>
+          )
+        }
         renderMessage={({ message, index }) => {
           const prevCreatedAt = filteredMessages[index - 1]?.createdAt ?? 0;
           const suggestedReplies = message.suggestedReplies ?? [];
@@ -79,12 +87,7 @@ export const ChatMessageList = () => {
                 />
               )}
               <div style={{ marginBottom: index === filteredMessages.length - 1 ? 0 : 16 }}>
-                <CustomMessage
-                  message={message as any}
-                  activeSpinnerId={typingTargetMessageId}
-                  chainTop={top}
-                  chainBottom={bottom}
-                />
+                <CustomMessage message={message as any} chainTop={top} chainBottom={bottom} />
 
                 {message.data &&
                   isDashboardPreview(customUserAgentParam) &&
