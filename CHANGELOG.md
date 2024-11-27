@@ -1,3 +1,8 @@
+## [1.9.0] (Nov 27, 2024)
+### Feat:
+- Added supports for RTL layout.
+- Added `dir` prop for layout direction management.
+
 ## [1.8.6] (Nov 11, 2024)
 ### Feat:
 - Added `localCacheEnabled` flag to control the use of local cache in the Chat SDK.
