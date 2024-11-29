@@ -6,7 +6,7 @@ import SourceContainer, { Source } from './SourceContainer';
 import { CodeBlock } from './ui/CodeBlock';
 import { useConstantState } from '../context/ConstantContext';
 import { Token, TokenType } from '../utils';
-import '../css/markdown.css';
+import './markdown.css';
 
 type TokensBodyProps = {
   tokens: Token[];
