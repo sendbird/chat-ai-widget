@@ -67,11 +67,22 @@ export default function CustomMessage(props: Props) {
        * typing indicator bubble is displayed below to indicate
        * a reply message from bot is expected to arrive.
        */
+      // return (
+      //   <div>
+      //     <CurrentUserMessage message={message} />
+      //     {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
+      //   </div>
+      // );
+      const tokens: Token[] = parseTextMessage(message.message, replacementTextList);
+      
+      const textMessageBody = <ParsedBotMessageBody text={message.message} tokens={tokens} />;
       return (
-        <div>
-          <CurrentUserMessage message={message} />
-          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
-        </div>
+        <BotMessageWithBodyInput
+          {...props}
+          bodyComponent={textMessageBody}
+          createdAt={message.createdAt}
+          messageFeedback={renderFeedbackButtons()}
+        />
       );
     }
 

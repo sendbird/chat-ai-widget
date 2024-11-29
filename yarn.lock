@@ -3298,6 +3298,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-styled-components-a11y: "npm:^2.1.32"
     jsdom: "npm:^24.1.0"
+    markdown-to-jsx: "npm:^7.7.0"
     prettier: "npm:^3.3.3"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -12765,6 +12766,15 @@ __metadata:
   peerDependencies:
     react: ">= 0.14.0"
   checksum: 10c0/191b9a9defeed02e12dd340cebf279f577266dac7b34574fa44ce4d64ee8536f9967d455b8303c853f84413feb473118290a6160d8221eeaf3b9e4961b8980e3
+  languageName: node
+  linkType: hard
+
+"markdown-to-jsx@npm:^7.7.0":
+  version: 7.7.0
+  resolution: "markdown-to-jsx@npm:7.7.0"
+  peerDependencies:
+    react: ">= 0.14.0"
+  checksum: 10c0/ffaad99232a802f86be350458c969b50dfaf2e13597b89ce61ada2354ddb8c97f77ed82d5779d91ebc27a765ae4fdcf58fb078266260f3db2fe7f5fe797c2a81
   languageName: node
   linkType: hard
 
