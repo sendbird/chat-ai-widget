@@ -6,7 +6,6 @@ import AdminMessage from './AdminMessage';
 import BotMessageFeedback from './BotMessageFeedback';
 import BotMessageWithBodyInput from './BotMessageWithBodyInput';
 import { useChatContext } from './chat/context/ChatProvider';
-import CurrentUserMessage from './CurrentUserMessage';
 import CustomMessageBody from './CustomMessageBody';
 import CustomTypingIndicatorBubble from './CustomTypingIndicatorBubble';
 import FileMessage from './FileMessage';
@@ -67,12 +66,19 @@ export default function CustomMessage(props: Props) {
        * typing indicator bubble is displayed below to indicate
        * a reply message from bot is expected to arrive.
        */
-      return (
-        <div>
-          <CurrentUserMessage message={message} />
-          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
-        </div>
-      );
+      // return (
+      //   <div>
+      //     <CurrentUserMessage message={message} />
+      //     {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
+      //   </div>
+      // );
+      const tokens: Token[] = parseTextMessage(message.message, replacementTextList);
+      const textMessageBody = <ParsedBotMessageBody text={message.message} tokens={tokens} />;
+      return <BotMessageWithBodyInput
+        {...props}
+        bodyComponent={textMessageBody}
+        createdAt={message.createdAt}
+      />
     }
 
     if (message.isFileMessage()) {
