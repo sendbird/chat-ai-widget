@@ -2,7 +2,14 @@ import { expect, Page } from '@playwright/test';
 
 import { getWidgetSessionCache } from './localStorageUtils';
 import { deleteChannel, deleteUser } from './requestUtils';
-import { AppId, BotId, WidgetComponentIds } from '../const';
+import { AppId, BotId, TestUrl, WidgetComponentIds } from '../const';
+
+export async function beforeEach(page: Page, url = TestUrl) {
+  await page.goto(url);
+
+  const widgetWindow = page.locator(WidgetComponentIds.WIDGET_BUTTON);
+  await widgetWindow.waitFor({ state: 'visible' });
+}
 
 export async function assertScreenshot(page: Page, screenshotName: string, browserName: string) {
   const name = `${screenshotName}.${browserName}.${process.platform}.png`; // Include the browser and OS architecture info in the filename
@@ -12,12 +19,13 @@ export async function assertScreenshot(page: Page, screenshotName: string, brows
   });
 }
 
-export async function loadWidget(page: Page) {
+export async function loadWidget(page: Page, testUrl?: string) {
+  await beforeEach(page, testUrl);
+
   await page.click(WidgetComponentIds.WIDGET_BUTTON);
   // NOTE: below fails sometimes in CI.
   const widgetWindow = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await widgetWindow.waitFor({ state: 'visible' });
-  // await page.waitForTimeout(3000);
 }
 
 export async function sendTextMessage(page: Page, text: string, waitTime = 1000) {

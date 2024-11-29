@@ -8,6 +8,7 @@ const WidgetApp = () => {
   const appId = urlParams.get('app_id') ?? import.meta.env.VITE_CHAT_WIDGET_APP_ID;
   const botId = urlParams.get('bot_id') ?? import.meta.env.VITE_CHAT_WIDGET_BOT_ID;
   const isSnapshot = urlParams.get('snapshot') === 'true';
+  const isSuggestedRepliesHorizontal = urlParams.get('suggested_replies_direction') === 'horizontal';
 
   const locale = urlParams.get('locale') ?? undefined;
   const region = urlParams.get('region') ?? undefined;
@@ -39,6 +40,13 @@ const WidgetApp = () => {
           ? {
               DATE_FORMAT__MESSAGE_LIST__DATE_SEPARATOR: "'DATE SEPARATOR'",
               DATE_FORMAT__MESSAGE_TIMESTAMP: "'00:00 AM'",
+            }
+          : undefined
+      }
+      botStudioEditProps={
+        isSuggestedRepliesHorizontal
+          ? {
+              suggestedRepliesDirection: 'horizontal',
             }
           : undefined
       }
