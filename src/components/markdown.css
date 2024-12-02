@@ -30,5 +30,16 @@
 .markdown code {
   margin: 0;
   padding: 0;
+  font-size: 1em;
 }
 
+.markdown table {
+  display: block;
+  overflow-x: scroll;
+  max-width: 100%;
+  border: 1px solid;
+}
+
+.markdown tr, th, td {
+  border: 1px solid;
+}
