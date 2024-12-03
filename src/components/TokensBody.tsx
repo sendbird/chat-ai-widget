@@ -1,4 +1,4 @@
-import Markdown from 'markdown-to-jsx';
+import Markdown, {RuleType} from 'markdown-to-jsx';
 import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
@@ -7,6 +7,13 @@ import { CodeBlock } from './ui/CodeBlock';
 import { useConstantState } from '../context/ConstantContext';
 import { Token, TokenType } from '../utils';
 import './markdown.css';
+import {Key} from "react";
+// @ts-ignore
+import ParserResult = MarkdownToJSX.ParserResult;
+// @ts-ignore
+import RuleOutput = MarkdownToJSX.RuleOutput;
+// @ts-ignore
+import State = MarkdownToJSX.State;
 
 type TokensBodyProps = {
   tokens: Token[];
@@ -32,16 +39,28 @@ export const TextContainer = styled.div`
   white-space: pre-wrap;
 `;
 
+function getSpaces(count: unknown): string {
+  const num = Number(count) - 1;
+  if (isNaN(num) || num < 0) {
+    return '';
+  }
+  const res = ' '.repeat(num * 2);
+  return res;
+}
+
 export default function TokensBody({ tokens, sources }: TokensBodyProps) {
   const { enableSourceMessage } = useConstantState();
-
+  
   return (
     <MultipleTokenTypeContainer className="sendbird-word">
       {tokens.map((token: Token, i) => {
         // Normal text part of the message.
         if (token.type === TokenType.string) {
-          return <div key={i} style={{ padding: '8px 12px' }}>
-            <Markdown className='markdown'>{token.value}</Markdown>
+          console.log('## token: ', token.value);
+          return <div key={i} className='markdown'>
+            <Markdown>
+              {token.value}
+            </Markdown>
           </div>
         }
         // Code part of the message.

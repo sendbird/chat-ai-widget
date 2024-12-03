@@ -1,36 +1,57 @@
-.markdown p {
-  font-size: 14px;
-  line-height: 1.43;
-  margin: 0;
+.markdown {
+  font-size: 14px; /* em is based on parent. So need to set default size here (parent class). */
+  padding: 0 12px; /* apply side padding of the bubble */
+}
+
+.markdown hr {
+  border-top-width: 1px;
+  margin-bottom: 1.5em; /* 3em in ChatGPT */
+  margin-top: 1.5em; /* 3em in ChatGPT */
 }
 
 .markdown h1 {
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: .8888889em;
   padding: 0;
-  font-size: 28px;
+  font-size: 1.6em; /* original size is 2.25em in ChatGPT but because we are rendering in bubble, we reduced size to make it more appealing visually. */
+  line-height: 1.1111111;
+  font-weight: 700;
+  letter-spacing: -.04rem;
 }
 
 .markdown h2 {
-  margin: 0;
-  padding: 0;
-  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 0.75rem; /* 1em in ChatGPT */
+  margin-top: 1.5rem; /* 2em in ChatGPT */
+  font-size: 1.3em; /* 1.5em in ChatGPT */
+  line-height: 1.3333333;
 }
 
 .markdown h3 {
-  margin: 0;
-  padding: 0;
-  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: .5rem;
+  margin-top: 1rem;
+  font-size: 1.1em; /* 1.25em in ChatGPT */
+  line-height: 1.6;
 }
 
-.markdown {
-  margin: 0;
-  padding: 0;
+.markdown p:not(:first-child) {
+  margin-top: .5rem;
+}
+
+.markdown p {
+  font-size: 1em;
+  line-height: 1.43; /* 1.75 in ChatGPT */
+  margin-bottom: .5rem;
+  margin-top: 0;
 }
 
 .markdown code {
-  margin: 0;
-  padding: 0;
-  font-size: 1em;
+  border-radius: .25rem;
+  font-size: .875em;
+  font-weight: 500;
+  padding: .15rem .3rem;
+  background-color: #e7c8ff; /* I picked this color randomly. Need to be checked by the design team. Also need to be made customizable. */
 }
 
 .markdown table {
@@ -42,4 +63,61 @@
 
 .markdown tr, th, td {
   border: 1px solid;
+}
+
+.markdown menu, ol, ul {
+  list-style: none;
+}
+
+/*
+Below stuffs are from ChatGPT. I asked Widget to send me a random message with
+bunch of markdown syntaxes. Then I asked ChatGPT to send me the exact same message.
+I then benchmarked the style ChatGPT used. Below classes are the exact same classes.
+*/
+
+.markdown :where(ol):not(:where([class~=not-markdown] *)) {
+  padding-inline-start: 1.2em; /* 1.625em in ChatGPT */
+  list-style-type: decimal;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.markdown :where(ul):not(:where([class~=not-markdown] *)) {
+  padding-inline-start: 1.2em; /* 1.625em in ChatGPT */
+  list-style-type: disc;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+/*
+Any element inside .markdown will have a margin-top: 0 applied if it directly follows an h3.
+Any element inside .not-markdown will not be affected.
+markdown.markdown is to increase specificity. Refer to: https://www.w3.org/TR/CSS21/cascade.html#specificity
+*/
+.markdown.markdown :where(h3+*):not(:where([class~=not-markdown] *)) {
+  margin-top: 0;
+}
+
+.markdown :where(ol,ul)>li>:first-child {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.markdown :where(ol,ul)>li>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown p+:where(ol,ul) {
+  margin-top: 0;
+}
+
+.markdown :where(ul ul, ul ol, ol ul, ol ol):not(:where([class~=not-markdown] *)) {
+  margin-bottom: 0.75em;
+  margin-top: 0.75em;
+}
+
+.markdown :where(li):not(:where([class~=not-markdown] *)) {
+  padding-inline-start: 0; /* .375 in ChatGPT */
+  margin-bottom: .4em; /* .5em in ChatGPT */
+  margin-top: .4em; /* .5em in ChatGPT */
 }

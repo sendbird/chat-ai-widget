@@ -124,6 +124,7 @@ export default function CustomMessage(props: Props) {
     // for user message
     if (message.isUserMessage()) {
       const sources = getSourceFromMetadata(message);
+      // console.log('## message.message: ', message.message);
       const tokens: Token[] = parseTextMessage(message.message, replacementTextList);
 
       const textMessageBody = <ParsedBotMessageBody text={message.message} tokens={tokens} sources={sources} />;
