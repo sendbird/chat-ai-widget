@@ -25,6 +25,7 @@ const BlockContainer = styled.div`
 `;
 
 const MultipleTokenTypeContainer = styled.div`
+  padding: 8px 0; // Bubble top and bottom padding. Side padding is applied for token containers.
   border-radius: 16px;
   overflow: auto;
   background-color: ${({ theme }) => theme.bgColor.incomingMessage};
