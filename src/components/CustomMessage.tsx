@@ -67,22 +67,11 @@ export default function CustomMessage(props: Props) {
        * typing indicator bubble is displayed below to indicate
        * a reply message from bot is expected to arrive.
        */
-      // return (
-      //   <div>
-      //     <CurrentUserMessage message={message} />
-      //     {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
-      //   </div>
-      // );
-      const tokens: Token[] = parseTextMessage(message.message, replacementTextList);
-      
-      const textMessageBody = <ParsedBotMessageBody text={message.message} tokens={tokens} />;
       return (
-        <BotMessageWithBodyInput
-          {...props}
-          bodyComponent={textMessageBody}
-          createdAt={message.createdAt}
-          messageFeedback={renderFeedbackButtons()}
-        />
+        <div>
+          <CurrentUserMessage message={message} />
+          {isWaitingForBotReply && <CustomTypingIndicatorBubble />}
+        </div>
       );
     }
 
@@ -124,7 +113,6 @@ export default function CustomMessage(props: Props) {
     // for user message
     if (message.isUserMessage()) {
       const sources = getSourceFromMetadata(message);
-      // console.log('## message.message: ', message.message);
       const tokens: Token[] = parseTextMessage(message.message, replacementTextList);
 
       const textMessageBody = <ParsedBotMessageBody text={message.message} tokens={tokens} sources={sources} />;

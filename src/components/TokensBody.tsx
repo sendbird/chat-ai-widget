@@ -1,4 +1,4 @@
-import Markdown, {RuleType} from 'markdown-to-jsx';
+import Markdown from 'markdown-to-jsx';
 import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
@@ -7,13 +7,6 @@ import { CodeBlock } from './ui/CodeBlock';
 import { useConstantState } from '../context/ConstantContext';
 import { Token, TokenType } from '../utils';
 import './markdown.css';
-import {Key} from "react";
-// @ts-ignore
-import ParserResult = MarkdownToJSX.ParserResult;
-// @ts-ignore
-import RuleOutput = MarkdownToJSX.RuleOutput;
-// @ts-ignore
-import State = MarkdownToJSX.State;
 
 type TokensBodyProps = {
   tokens: Token[];
@@ -22,6 +15,11 @@ type TokensBodyProps = {
 
 const BlockContainer = styled.div`
   width: 100%;
+  /*
+  Note this was added because following element doest not have top margin due to it being the first element
+  of its markdown div.
+  */
+  margin: 0.5em 0;
 `;
 
 const MultipleTokenTypeContainer = styled.div`
@@ -40,29 +38,43 @@ export const TextContainer = styled.div`
   white-space: pre-wrap;
 `;
 
-function getSpaces(count: unknown): string {
-  const num = Number(count) - 1;
-  if (isNaN(num) || num < 0) {
-    return '';
-  }
-  const res = ' '.repeat(num * 2);
-  return res;
-}
-
 export default function TokensBody({ tokens, sources }: TokensBodyProps) {
   const { enableSourceMessage } = useConstantState();
-  
+
   return (
     <MultipleTokenTypeContainer className="sendbird-word">
       {tokens.map((token: Token, i) => {
         // Normal text part of the message.
         if (token.type === TokenType.string) {
           console.log('## token: ', token.value);
-          return <div key={i} className='markdown'>
-            <Markdown>
-              {token.value}
-            </Markdown>
-          </div>
+          return (
+            <div key={i} className="markdown">
+              <Markdown
+                options={{
+                  overrides: {
+                    // Note that this is to remove text-align: left by the library.
+                    td: {
+                      component: ({ children, ...props }) => (
+                        <td {...props} style={null}>
+                          {children}
+                        </td>
+                      ),
+                    },
+                    // Note that this is to remove text-align: left by the library.
+                    th: {
+                      component: ({ children, ...props }) => (
+                        <th {...props} style={null}>
+                          {children}
+                        </th>
+                      ),
+                    },
+                  },
+                }}
+              >
+                {token.value}
+              </Markdown>
+            </div>
+          );
         }
         // Code part of the message.
         return (
