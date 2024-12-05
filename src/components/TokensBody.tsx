@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify';
 import Markdown from 'markdown-to-jsx';
 import styled from 'styled-components';
 
@@ -6,7 +7,8 @@ import SourceContainer, { Source } from './SourceContainer';
 import { CodeBlock } from './ui/CodeBlock';
 import { useConstantState } from '../context/ConstantContext';
 import { Token, TokenType } from '../utils';
-import './markdown.css';
+
+import './markdown.scss';
 
 type TokensBodyProps = {
   tokens: Token[];
@@ -46,13 +48,15 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
       {tokens.map((token: Token, i) => {
         // Normal text part of the message.
         if (token.type === TokenType.string) {
-          console.log('## token: ', token.value);
           return (
-            <div key={i} className="markdown">
+            <div key={i} className="widget-markdown">
               <Markdown
                 options={{
+                  sanitizer: (value: string) => {
+                    return DOMPurify.sanitize(value);
+                  },
                   overrides: {
-                    // Note that this is to remove text-align: left by the library.
+                    // Note that this is to remove text-align: right by the library.
                     td: {
                       component: ({ children, ...props }) => (
                         <td {...props} style={null}>
@@ -60,12 +64,19 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
                         </td>
                       ),
                     },
-                    // Note that this is to remove text-align: left by the library.
+                    // Note that this is to remove text-align: right by the library.
                     th: {
                       component: ({ children, ...props }) => (
                         <th {...props} style={null}>
                           {children}
                         </th>
+                      ),
+                    },
+                    a: {
+                      component: ({ children, ...props }) => (
+                        <a {...props} target='_blank'>
+                          {children}
+                        </a>
                       ),
                     },
                   },
