@@ -202,7 +202,7 @@ widget-markdown.widget-markdown is to increase specificity. Refer to: https://ww
   border-left-width: 1px;
   background-color: rgba(0, 0, 0, 0.1);
   border-bottom-width: 1px;
-  border-color: rgba(0, 0, 0, 0.15);
+  border-color: var(--sb-on-bg-4);
   border-top-width: 1px;
   padding: 4px 10.5px; /* 0.25rem 0.75rem */
 }
@@ -250,7 +250,7 @@ widget-markdown.widget-markdown is to increase specificity. Refer to: https://ww
 .widget-markdown td {
   border-left-width: 1px;
   border-bottom-width: 1px;
-  border-color: rgba(0, 0, 0, 0.15);
+  border-color: var(--sb-on-bg-4);
   padding: 4px 10.5px; /* 0.25rem 0.75rem */
   text-align: left;
 }
