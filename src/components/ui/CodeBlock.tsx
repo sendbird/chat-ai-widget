@@ -7,7 +7,7 @@ import { Token } from '../../utils';
 const CodeContainer = styled.div`
   position: relative;
   padding: 20px;
-  background: #000;
+  background: var(--sendbird-dark-background-600);
 `;
 
 const CodeContent = styled.div`
