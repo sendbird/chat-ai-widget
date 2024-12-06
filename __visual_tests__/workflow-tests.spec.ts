@@ -1,14 +1,14 @@
 import { test } from '@playwright/test';
 
-import { TestUrl, WidgetComponentIds } from './const';
-import { assertScreenshot, clickNthChip, deleteTestResources, loadWidget, sendTextMessage } from './utils/testUtils';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto(TestUrl);
-
-  const widgetWindow = page.locator(WidgetComponentIds.WIDGET_BUTTON);
-  await widgetWindow.waitFor({ state: 'visible' });
-});
+import {TestUrl, WidgetComponentIds} from './const';
+import {
+  assertScreenshot,
+  beforeEach,
+  clickNthChip,
+  deleteTestResources,
+  loadWidget,
+  sendTextMessage
+} from './utils/testUtils';
 
 test.afterEach(async ({ page }) => {
   await deleteTestResources(page);
@@ -29,6 +29,7 @@ test.afterEach(async ({ page }) => {
  * 4. Submit form with valid values.
  */
 test('100', async ({ page, browserName }) => {
+  await beforeEach(page);
   await loadWidget(page);
 
   // 1
@@ -69,6 +70,7 @@ test('100', async ({ page, browserName }) => {
  * 1. Send the trigger message: "Tell me about one cat breed"
  */
 test('101', async ({ page, browserName }) => {
+  await beforeEach(page);
   await loadWidget(page);
   // 1
   await sendTextMessage(page, 'Tell me about one cat breed', 2000);
@@ -82,6 +84,7 @@ test('101', async ({ page, browserName }) => {
  * 1. Send the trigger message: "Give me a travel agency poster"
  */
 test('102', async ({ page, browserName }) => {
+  await beforeEach(page);
   await loadWidget(page);
   // 1
   await sendTextMessage(page, 'Give me a travel agency poster', 5000);
@@ -100,6 +103,7 @@ test('102', async ({ page, browserName }) => {
  * 6. Click "Link to workflow: form message"
  */
 test('103', async ({ page, browserName }) => {
+  await beforeEach(page);
   await loadWidget(page);
   // 1
   await sendTextMessage(page, 'Suggested replies', 2000);
@@ -143,14 +147,56 @@ test('103', async ({ page, browserName }) => {
  * Workflow - Markdown response
  * Steps:
  * 1. Send the trigger message: "give me a markdown message"
+ * 2. Click "Part 2"
+ * 3. Click "Back"
+ * 4. Click "Part 3"
+ * 5. Click "Back"
+ * 6. Click "Part 4"
  */
 test('104', async ({ page, browserName }) => {
+  await beforeEach(page, TestUrl + '&suggested_replies_direction=horizontal');
   await loadWidget(page);
   // 1
   await sendTextMessage(page, 'give me a markdown message', 2000);
-
+  
   // Check if the fallback component is visible
   const fallback = page.locator(WidgetComponentIds.MARKDOWN);
-  await fallback.waitFor({ state: 'visible' });
-  await assertScreenshot(page, '104', browserName);
+  await fallback.first().waitFor({ state: 'visible' });
+  let options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(3).waitFor({ state: 'visible' });
+  await assertScreenshot(page, '104-1', browserName);
+  
+  // 2
+  await options.nth(0).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-2', browserName);
+  await options.nth(0).click(); // Go back
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(3).waitFor({ state: 'visible' });
+  
+  // 3
+  await options.nth(1).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-3', browserName);
+  await options.nth(0).click(); // Go back
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(3).waitFor({ state: 'visible' });
+  
+  // 4
+  await options.nth(2).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-4', browserName);
+  await options.nth(0).click(); // Go back
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(3).waitFor({ state: 'visible' });
+  
+  // 5
+  await options.nth(3).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-5', browserName);
 });
+
