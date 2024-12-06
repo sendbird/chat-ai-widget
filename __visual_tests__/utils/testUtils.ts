@@ -2,11 +2,11 @@ import { expect, Page } from '@playwright/test';
 
 import { getWidgetSessionCache } from './localStorageUtils';
 import { deleteChannel, deleteUser } from './requestUtils';
-import {AppId, BotId, TestUrl, WidgetComponentIds} from '../const';
+import { AppId, BotId, TestUrl, WidgetComponentIds } from '../const';
 
 export async function beforeEach(page: Page, url = TestUrl) {
   await page.goto(url);
-  
+
   const widgetWindow = page.locator(WidgetComponentIds.WIDGET_BUTTON);
   await widgetWindow.waitFor({ state: 'visible' });
 }

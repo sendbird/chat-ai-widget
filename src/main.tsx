@@ -46,8 +46,8 @@ const WidgetApp = () => {
       botStudioEditProps={
         isSuggestedRepliesHorizontal
           ? {
-            suggestedRepliesDirection: 'horizontal',
-          }
+              suggestedRepliesDirection: 'horizontal',
+            }
           : undefined
       }
       enableMessageGrouping={!isSnapshot}

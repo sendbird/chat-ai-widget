@@ -1,13 +1,13 @@
 import { test } from '@playwright/test';
 
-import {TestUrl, WidgetComponentIds} from './const';
+import { TestUrl, WidgetComponentIds } from './const';
 import {
   assertScreenshot,
   beforeEach,
   clickNthChip,
   deleteTestResources,
   loadWidget,
-  sendTextMessage
+  sendTextMessage,
 } from './utils/testUtils';
 
 test.afterEach(async ({ page }) => {
@@ -158,14 +158,14 @@ test('104', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
   await sendTextMessage(page, 'give me a markdown message', 2000);
-  
+
   // Check if the fallback component is visible
   const fallback = page.locator(WidgetComponentIds.MARKDOWN);
   await fallback.first().waitFor({ state: 'visible' });
   let options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(3).waitFor({ state: 'visible' });
   await assertScreenshot(page, '104-1', browserName);
-  
+
   // 2
   await options.nth(0).click();
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
@@ -174,7 +174,7 @@ test('104', async ({ page, browserName }) => {
   await options.nth(0).click(); // Go back
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(3).waitFor({ state: 'visible' });
-  
+
   // 3
   await options.nth(1).click();
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
@@ -183,7 +183,7 @@ test('104', async ({ page, browserName }) => {
   await options.nth(0).click(); // Go back
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(3).waitFor({ state: 'visible' });
-  
+
   // 4
   await options.nth(2).click();
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
@@ -192,11 +192,10 @@ test('104', async ({ page, browserName }) => {
   await options.nth(0).click(); // Go back
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(3).waitFor({ state: 'visible' });
-  
+
   // 5
   await options.nth(3).click();
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
   await assertScreenshot(page, '104-5', browserName);
 });
-

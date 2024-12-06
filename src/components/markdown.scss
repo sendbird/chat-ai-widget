@@ -6,11 +6,13 @@
   color: var(--sb-on-content-inverse-1);
 }
 
-.widget-markdown *:first-child { /* First child element should have no top margin */
+.widget-markdown *:first-child {
+  /* First child element should have no top margin */
   margin-top: 0;
 }
 
-.widget-markdown *:last-child { /* Last child element should have no bottom margin */
+.widget-markdown *:last-child {
+  /* Last child element should have no bottom margin */
   margin-bottom: 0;
 }
 
