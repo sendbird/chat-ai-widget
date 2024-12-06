@@ -137,3 +137,20 @@ test('103', async ({ page, browserName }) => {
   await page.waitForTimeout(2000);
   await assertScreenshot(page, '103-6', browserName);
 });
+
+/**
+ * 104
+ * Workflow - Markdown response
+ * Steps:
+ * 1. Send the trigger message: "give me a markdown message"
+ */
+test('104', async ({ page, browserName }) => {
+  await loadWidget(page);
+  // 1
+  await sendTextMessage(page, 'give me a markdown message', 2000);
+
+  // Check if the fallback component is visible
+  const fallback = page.locator(WidgetComponentIds.MARKDOWN);
+  await fallback.waitFor({ state: 'visible' });
+  await assertScreenshot(page, '104', browserName);
+});

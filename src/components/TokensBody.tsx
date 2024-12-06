@@ -1,5 +1,5 @@
 import DOMPurify from 'dompurify';
-import Markdown from 'markdown-to-jsx';
+import { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
 import BotMessageBottom from './BotMessageBottom';
@@ -9,6 +9,8 @@ import { useConstantState } from '../context/ConstantContext';
 import { Token, TokenType } from '../utils';
 
 import './markdown.scss';
+
+const Markdown = lazy(() => import('markdown-to-jsx'));
 
 type TokensBodyProps = {
   tokens: Token[];
@@ -44,66 +46,74 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
   const { enableSourceMessage } = useConstantState();
 
   return (
-    <MultipleTokenTypeContainer className="sendbird-word">
-      {tokens.map((token: Token, i) => {
-        // Normal text part of the message.
-        if (token.type === TokenType.string) {
+    <Suspense
+      fallback={
+        <TextContainer className="sendbird-word" style={{ borderRadius: 16 }}>
+          Loading markdown renderer...
+        </TextContainer>
+      }
+    >
+      <MultipleTokenTypeContainer className="sendbird-word">
+        {tokens.map((token: Token, i) => {
+          // Normal text part of the message.
+          if (token.type === TokenType.string) {
+            return (
+              <div key={i} className="widget-markdown">
+                <Markdown
+                  options={{
+                    sanitizer: (value: string) => {
+                      return DOMPurify.sanitize(value);
+                    },
+                    overrides: {
+                      // Note that this is to remove text-align: right by the library.
+                      td: {
+                        component: ({ children, ...props }) => (
+                          <td {...props} style={null}>
+                            {children}
+                          </td>
+                        ),
+                      },
+                      // Note that this is to remove text-align: right by the library.
+                      th: {
+                        component: ({ children, ...props }) => (
+                          <th {...props} style={null}>
+                            {children}
+                          </th>
+                        ),
+                      },
+                      a: {
+                        component: ({ children, ...props }) => (
+                          <a {...props} target="_blank">
+                            {children}
+                          </a>
+                        ),
+                      },
+                    },
+                  }}
+                >
+                  {token.value}
+                </Markdown>
+              </div>
+            );
+          }
+          // Code part of the message.
           return (
-            <div key={i} className="widget-markdown">
-              <Markdown
-                options={{
-                  sanitizer: (value: string) => {
-                    return DOMPurify.sanitize(value);
-                  },
-                  overrides: {
-                    // Note that this is to remove text-align: right by the library.
-                    td: {
-                      component: ({ children, ...props }) => (
-                        <td {...props} style={null}>
-                          {children}
-                        </td>
-                      ),
-                    },
-                    // Note that this is to remove text-align: right by the library.
-                    th: {
-                      component: ({ children, ...props }) => (
-                        <th {...props} style={null}>
-                          {children}
-                        </th>
-                      ),
-                    },
-                    a: {
-                      component: ({ children, ...props }) => (
-                        <a {...props} target='_blank'>
-                          {children}
-                        </a>
-                      ),
-                    },
-                  },
-                }}
-              >
-                {token.value}
-              </Markdown>
-            </div>
+            <BlockContainer key={'token' + i}>
+              <CodeBlock token={token} />
+            </BlockContainer>
           );
-        }
-        // Code part of the message.
-        return (
-          <BlockContainer key={'token' + i}>
-            <CodeBlock token={token} />
-          </BlockContainer>
-        );
-      })}
-      {sources && sources.length > 0 && enableSourceMessage ? (
-        <div
-          style={{
-            padding: '8px 12px',
-          }}
-        >
-          <SourceContainer sources={sources} />
-          <BotMessageBottom />
-        </div>
-      ) : null}
-    </MultipleTokenTypeContainer>
+        })}
+        {sources && sources.length > 0 && enableSourceMessage ? (
+          <div
+            style={{
+              padding: '8px 12px',
+            }}
+          >
+            <SourceContainer sources={sources} />
+            <BotMessageBottom />
+          </div>
+        ) : null}
+      </MultipleTokenTypeContainer>
+    </Suspense>
   );
 }

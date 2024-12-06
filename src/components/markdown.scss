@@ -2,8 +2,12 @@
   padding: 0 12px; /* apply side padding of the bubble */
 }
 
+.widget-markdown * {
+  color: var(--sb-on-content-inverse-1);
+}
+
 .widget-markdown hr {
-  border-top-width: 1px;
+  border-top: 1px solid var(--sb-on-bg-4);
   margin-bottom: 21px; /* 1.5em (3em in ChatGPT) */
   margin-top: 21px; /* 1.5em (3em in ChatGPT) */
 }
@@ -13,7 +17,7 @@
   margin-bottom: 12.4px; /* 0.8888889em */
   padding: 0;
   font-size: 22.4px; /* 1.6em (2.25em in ChatGPT, reduced for visual appeal) */
-  line-height: 15.6px; /* 1.1em */
+  line-height: 27.6px;
   font-weight: 700;
   letter-spacing: -0.6px; /* -0.04rem */
 }
@@ -23,10 +27,13 @@
   margin-bottom: 12px; /* 0.75rem (1em in ChatGPT) */
   margin-top: 24px; /* 1.5rem (2em in ChatGPT) */
   font-size: 18.2px; /* 1.3em (1.5em in ChatGPT) */
-  line-height: 18.7px; /* 1.3333333em */
+  line-height: 22.3px; /* 1.3333333em */
 }
 
-.widget-markdown h3, h4, h5, h6 {
+.widget-markdown h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   margin-bottom: 8px; /* 0.5rem */
   margin-top: 16px; /* 1rem */
@@ -173,7 +180,8 @@ widget-markdown.widget-markdown is to increase specificity. Refer to: https://ww
   margin-top: 4px; /* 0.25rem */
   *,
   :after,
-  :before { /* Need this for table borders to be displayed */
+  :before {
+    /* Need this for table borders to be displayed */
     border: 0 solid;
     box-sizing: border-box;
   }
@@ -271,5 +279,3 @@ widget-markdown.widget-markdown is to increase specificity. Refer to: https://ww
   color: var(--sb-on-bg-1);
   font-weight: 700;
 }
-
-
