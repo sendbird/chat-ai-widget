@@ -38,7 +38,7 @@ export default function ParsedBotMessageBody(props: Props) {
           </TextContainer>
         }
       >
-        <TokensBody tokens={tokens} sources={sources} />;
+        <TokensBody tokens={tokens} sources={sources} />
       </Suspense>
     );
   }
