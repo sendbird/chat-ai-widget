@@ -1,11 +1,11 @@
 import { styled } from '@linaria/react';
 import { useTheme } from 'styled-components';
 
-import { useChatContext } from './chat/context/ChatProvider';
 import { getColorBasedOnSaturation } from '../colors';
 import { useConstantState } from '../context/ConstantContext';
 import { themedColors } from '../foundation/colors/css';
 import BotFilledIcon from '../icons/ic-bot-filled.svg';
+import { useChatContext } from './chat/context/ChatProvider';
 
 function isMaybeFavicon(url: string) {
   if (url.length < 4) return false;

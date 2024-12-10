@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "typeRoots": ["../../node_modules/@types", "./"], // Look in the current directory
+    "types": []
+  },
+  "include": ["vite.config.ts", "src"]
+}
