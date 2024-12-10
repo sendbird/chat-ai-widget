@@ -5,8 +5,8 @@ import FeedbackIconButton from '@uikit/ui/FeedbackIconButton';
 import MessageFeedbackModal from '@uikit/ui/MessageFeedbackModal';
 import MobileFeedbackMenu from '@uikit/ui/MobileFeedbackMenu';
 
-import { AlertModal } from './ui/AlertModal';
 import { elementIds } from '../const';
+import { AlertModal } from './ui/AlertModal';
 import { useConstantState } from '../context/ConstantContext';
 import { Icon } from '../foundation/components/Icon';
 
