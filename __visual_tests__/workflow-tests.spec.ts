@@ -1,13 +1,7 @@
 import { test } from '@playwright/test';
 
 import { WidgetComponentIds } from './const';
-import {
-  assertScreenshot,
-  clickNthChip,
-  deleteTestResources,
-  loadWidget,
-  sendTextMessage,
-} from './utils/testUtils';
+import { assertScreenshot, clickNthChip, deleteTestResources, loadWidget, sendTextMessage } from './utils/testUtils';
 
 test.afterEach(async ({ page }) => {
   await deleteTestResources(page);
@@ -57,7 +51,7 @@ test('100', async ({ page, browserName }) => {
   await inputs.nth(3).fill('guy.ordering.food@food.com');
   await inputs.nth(4).fill('123-456-7890');
   await submitButton.click();
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(2000);
   await assertScreenshot(page, '100-4', browserName);
 });
 
@@ -157,7 +151,7 @@ test('104', async ({ page, browserName }) => {
   const fallback = page.locator(WidgetComponentIds.MARKDOWN);
   await fallback.first().waitFor({ state: 'visible' });
   let options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
-  await options.nth(3).waitFor({ state: 'visible' });
+  await options.nth(4).waitFor({ state: 'visible' });
   await assertScreenshot(page, '104-1', browserName);
 
   // 2
@@ -167,7 +161,7 @@ test('104', async ({ page, browserName }) => {
   await assertScreenshot(page, '104-2', browserName);
   await options.nth(0).click(); // Go back
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
-  await options.nth(3).waitFor({ state: 'visible' });
+  await options.nth(4).waitFor({ state: 'visible' });
 
   // 3
   await options.nth(1).click();
@@ -176,7 +170,7 @@ test('104', async ({ page, browserName }) => {
   await assertScreenshot(page, '104-3', browserName);
   await options.nth(0).click(); // Go back
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
-  await options.nth(3).waitFor({ state: 'visible' });
+  await options.nth(4).waitFor({ state: 'visible' });
 
   // 4
   await options.nth(2).click();
@@ -185,11 +179,20 @@ test('104', async ({ page, browserName }) => {
   await assertScreenshot(page, '104-4', browserName);
   await options.nth(0).click(); // Go back
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
-  await options.nth(3).waitFor({ state: 'visible' });
+  await options.nth(4).waitFor({ state: 'visible' });
 
   // 5
   await options.nth(3).click();
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
   await assertScreenshot(page, '104-5', browserName);
+  await options.nth(0).click(); // Go back
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(4).waitFor({ state: 'visible' });
+
+  // 6
+  await options.nth(4).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-6', browserName);
 });
