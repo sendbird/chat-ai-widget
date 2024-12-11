@@ -1,3 +1,7 @@
+## [1.9.1] (Dec 11, 2024)
+### Feat:
+- Added support for wider range of markdown syntaxes
+
 ## [1.9.0] (Nov 27, 2024)
 ### Feat:
 - Added supports for RTL layout.
