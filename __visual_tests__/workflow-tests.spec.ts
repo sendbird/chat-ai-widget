@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 
-import { TestUrl, WidgetComponentIds } from './const';
+import { WidgetComponentIds } from './const';
 import {
   assertScreenshot,
   clickNthChip,
@@ -149,7 +149,7 @@ test('103', async ({ page, browserName }) => {
  * 6. Click "Part 4"
  */
 test('104', async ({ page, browserName }) => {
-  await loadWidget(page, TestUrl + '&suggested_replies_direction=horizontal');
+  await loadWidget(page);
   // 1
   await sendTextMessage(page, 'give me a markdown message', 2000);
 
