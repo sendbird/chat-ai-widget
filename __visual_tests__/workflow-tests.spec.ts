@@ -1,14 +1,7 @@
 import { test } from '@playwright/test';
 
-import { TestUrl, WidgetComponentIds } from './const';
+import { WidgetComponentIds } from './const';
 import { assertScreenshot, clickNthChip, deleteTestResources, loadWidget, sendTextMessage } from './utils/testUtils';
-
-test.beforeEach(async ({ page }) => {
-  await page.goto(TestUrl);
-
-  const widgetWindow = page.locator(WidgetComponentIds.WIDGET_BUTTON);
-  await widgetWindow.waitFor({ state: 'visible' });
-});
 
 test.afterEach(async ({ page }) => {
   await deleteTestResources(page);
@@ -58,7 +51,7 @@ test('100', async ({ page, browserName }) => {
   await inputs.nth(3).fill('guy.ordering.food@food.com');
   await inputs.nth(4).fill('123-456-7890');
   await submitButton.click();
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(2000);
   await assertScreenshot(page, '100-4', browserName);
 });
 
@@ -136,4 +129,70 @@ test('103', async ({ page, browserName }) => {
   await options.nth(2).click();
   await page.waitForTimeout(2000);
   await assertScreenshot(page, '103-6', browserName);
+});
+
+/**
+ * 104
+ * Workflow - Markdown response
+ * Steps:
+ * 1. Send the trigger message: "give me a markdown message"
+ * 2. Click "Part 2"
+ * 3. Click "Back"
+ * 4. Click "Part 3"
+ * 5. Click "Back"
+ * 6. Click "Part 4"
+ */
+test('104', async ({ page, browserName }) => {
+  await loadWidget(page);
+  // 1
+  await sendTextMessage(page, 'give me a markdown message', 2000);
+
+  // Check if the fallback component is visible
+  const fallback = page.locator(WidgetComponentIds.MARKDOWN);
+  await fallback.first().waitFor({ state: 'visible' });
+  let options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(4).waitFor({ state: 'visible' });
+  await assertScreenshot(page, '104-1', browserName);
+
+  // 2
+  await options.nth(0).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-2', browserName);
+  await options.nth(0).click(); // Go back
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(4).waitFor({ state: 'visible' });
+
+  // 3
+  await options.nth(1).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-3', browserName);
+  await options.nth(0).click(); // Go back
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(4).waitFor({ state: 'visible' });
+
+  // 4
+  await options.nth(2).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-4', browserName);
+  await options.nth(0).click(); // Go back
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(4).waitFor({ state: 'visible' });
+
+  // 5
+  await options.nth(3).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-5', browserName);
+  await options.nth(0).click(); // Go back
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(4).waitFor({ state: 'visible' });
+
+  // 6
+  await options.nth(4).click();
+  options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
+  await options.nth(0).waitFor({ state: 'visible' }); // Wait for go back button to show
+  await assertScreenshot(page, '104-6', browserName);
 });
