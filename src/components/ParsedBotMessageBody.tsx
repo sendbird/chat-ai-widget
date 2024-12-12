@@ -35,7 +35,7 @@ export default function ParsedBotMessageBody(props: Props) {
   const { text, tokens, sources } = props;
 
   return (
-    <Container className="sendbird-word">
+    <Container>
       <Suspense fallback={<div className={textContainerStyle}>{text}</div>}>
         <TokensBody className={textContainerStyle} tokens={tokens} sources={sources} />
       </Suspense>
