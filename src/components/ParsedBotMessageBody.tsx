@@ -13,13 +13,15 @@ type Props = {
 };
 
 const TextContainer = styled.div`
-  width: inherit;
-  text-align: start;
   word-break: break-word;
-  padding: 8px 12px;
-  gap: 12px;
   white-space: pre-wrap;
+  padding: 0 12px;
+`;
+
+const MultipleTokenTypeContainer = styled.div`
+  padding: 8px 0; // Bubble top and bottom padding. Side padding is applied for token containers.
   border-radius: 16px;
+  overflow: auto;
   background-color: ${({ theme }) => theme.bgColor.incomingMessage};
 `;
 
@@ -32,14 +34,10 @@ export default function ParsedBotMessageBody(props: Props) {
   const { text, tokens, sources } = props;
 
   return (
-    <Suspense
-      fallback={
-        <TextContainer className="sendbird-word">
-          {text}
-        </TextContainer>
-      }
-    >
-      <TokensBody tokens={tokens} sources={sources} />
-    </Suspense>
+    <MultipleTokenTypeContainer className="sendbird-word">
+      <Suspense fallback={<TextContainer>{text}</TextContainer>}>
+        <TokensBody tokens={tokens} sources={sources} />
+      </Suspense>
+    </MultipleTokenTypeContainer>
   );
 }

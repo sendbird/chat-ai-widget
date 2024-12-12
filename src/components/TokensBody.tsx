@@ -24,18 +24,11 @@ const BlockContainer = styled.div`
   margin: 0.5em 0;
 `;
 
-const MultipleTokenTypeContainer = styled.div`
-  padding: 8px 0; // Bubble top and bottom padding. Side padding is applied for token containers.
-  border-radius: 16px;
-  overflow: auto;
-  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
-`;
-
 export default function TokensBody({ tokens, sources }: TokensBodyProps) {
   const { enableSourceMessage } = useConstantState();
 
   return (
-    <MultipleTokenTypeContainer className="sendbird-word">
+    <>
       {tokens.map((token: Token, i) => {
         // Normal text part of the message.
         if (token.type === TokenType.string) {
@@ -95,6 +88,6 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
           <BotMessageBottom />
         </div>
       ) : null}
-    </MultipleTokenTypeContainer>
+    </>
   );
 }
