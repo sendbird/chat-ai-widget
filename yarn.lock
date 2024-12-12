@@ -3270,9 +3270,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sendbird/chat-ai-widget@npm:1.9.0":
-  version: 1.9.0
-  resolution: "@sendbird/chat-ai-widget@npm:1.9.0"
+"@sendbird/chat-ai-widget@file:../../sendbird-chat-ai-widget-1.9.1.tgz::locator=self-service%40workspace%3Apackages%2Fself-service":
+  version: 1.9.1
+  resolution: "@sendbird/chat-ai-widget@file:../../sendbird-chat-ai-widget-1.9.1.tgz#../../sendbird-chat-ai-widget-1.9.1.tgz::hash=cf8ab6&locator=self-service%40workspace%3Apackages%2Fself-service"
   dependencies:
     styled-components: "npm:^5.3.11"
   peerDependencies:
@@ -3282,7 +3282,7 @@ __metadata:
   peerDependenciesMeta:
     date-fns:
       optional: true
-  checksum: 10c0/b79cc3d301c6570a3a0de5e2f94c398d2747cb267cd1364c7863def74d7a5147adbcfd1eae508ed056199613700cff6cb067b94b64c84b0b2df2dcc3adb747f5
+  checksum: 10c0/f4c92c31f3b039522bad947990bc52a25ac6eedf4f13378b6c7fb14bf3833a38214ad76ac995ac4d7a68c0e864976b2a6be442adff2fffeac100c5b15973990a
   languageName: node
   linkType: hard
 
@@ -16047,7 +16047,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "self-service@workspace:packages/self-service"
   dependencies:
-    "@sendbird/chat-ai-widget": "npm:1.9.0"
+    "@sendbird/chat-ai-widget": "file:../../sendbird-chat-ai-widget-1.9.1.tgz"
     "@types/react": "npm:^18.0.37"
     "@types/react-dom": "npm:^18.0.11"
     "@vitejs/plugin-react": "npm:^4.2.1"
