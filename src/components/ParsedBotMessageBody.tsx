@@ -19,6 +19,8 @@ const TextContainer = styled.div`
   padding: 8px 12px;
   gap: 12px;
   white-space: pre-wrap;
+  border-radius: 16px;
+  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
 `;
 
 /**
@@ -32,7 +34,7 @@ export default function ParsedBotMessageBody(props: Props) {
   return (
     <Suspense
       fallback={
-        <TextContainer className="sendbird-word" style={{ borderRadius: 16 }}>
+        <TextContainer className="sendbird-word">
           {text}
         </TextContainer>
       }
