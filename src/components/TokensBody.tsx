@@ -1,3 +1,4 @@
+import { cx } from '@linaria/core';
 import DOMPurify from 'dompurify';
 import Markdown from 'markdown-to-jsx';
 import styled from 'styled-components';
@@ -13,6 +14,7 @@ import './markdown.scss';
 type TokensBodyProps = {
   tokens: Token[];
   sources?: Source[];
+  className?: string;
 };
 
 const BlockContainer = styled.div`
@@ -24,23 +26,16 @@ const BlockContainer = styled.div`
   margin: 0.5em 0;
 `;
 
-const MultipleTokenTypeContainer = styled.div`
-  padding: 8px 0; // Bubble top and bottom padding. Side padding is applied for token containers.
-  border-radius: 16px;
-  overflow: auto;
-  background-color: ${({ theme }) => theme.bgColor.incomingMessage};
-`;
-
-export default function TokensBody({ tokens, sources }: TokensBodyProps) {
+export default function TokensBody({ tokens, sources, className }: TokensBodyProps) {
   const { enableSourceMessage } = useConstantState();
 
   return (
-    <MultipleTokenTypeContainer className="sendbird-word">
+    <>
       {tokens.map((token: Token, i) => {
         // Normal text part of the message.
         if (token.type === TokenType.string) {
           return (
-            <div key={i} className="widget-markdown">
+            <div key={i} className={cx(className, 'widget-markdown')}>
               <Markdown
                 options={{
                   sanitizer: (value: string) => {
@@ -95,6 +90,6 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
           <BotMessageBottom />
         </div>
       ) : null}
-    </MultipleTokenTypeContainer>
+    </>
   );
 }
