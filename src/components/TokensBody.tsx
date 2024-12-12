@@ -1,3 +1,4 @@
+import { cx } from '@linaria/core';
 import DOMPurify from 'dompurify';
 import Markdown from 'markdown-to-jsx';
 import styled from 'styled-components';
@@ -13,6 +14,7 @@ import './markdown.scss';
 type TokensBodyProps = {
   tokens: Token[];
   sources?: Source[];
+  className?: string;
 };
 
 const BlockContainer = styled.div`
@@ -24,7 +26,7 @@ const BlockContainer = styled.div`
   margin: 0.5em 0;
 `;
 
-export default function TokensBody({ tokens, sources }: TokensBodyProps) {
+export default function TokensBody({ tokens, sources, className }: TokensBodyProps) {
   const { enableSourceMessage } = useConstantState();
 
   return (
@@ -33,7 +35,7 @@ export default function TokensBody({ tokens, sources }: TokensBodyProps) {
         // Normal text part of the message.
         if (token.type === TokenType.string) {
           return (
-            <div key={i} className="widget-markdown">
+            <div key={i} className={cx(className, 'widget-markdown')}>
               <Markdown
                 options={{
                   sanitizer: (value: string) => {

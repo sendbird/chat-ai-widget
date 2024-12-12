@@ -1,3 +1,4 @@
+import { css } from '@linaria/core';
 import { lazy, Suspense } from 'react';
 import styled from 'styled-components';
 
@@ -12,13 +13,13 @@ type Props = {
   sources?: Source[];
 };
 
-const TextContainer = styled.div`
+const textContainerStyle = css`
   word-break: break-word;
   white-space: pre-wrap;
-  padding: 0 12px;
+  padding: 0 12px; // apply side padding of the bubble
 `;
 
-const MultipleTokenTypeContainer = styled.div`
+const Container = styled.div`
   padding: 8px 0; // Bubble top and bottom padding. Side padding is applied for token containers.
   border-radius: 16px;
   overflow: auto;
@@ -34,10 +35,10 @@ export default function ParsedBotMessageBody(props: Props) {
   const { text, tokens, sources } = props;
 
   return (
-    <MultipleTokenTypeContainer className="sendbird-word">
-      <Suspense fallback={<TextContainer>{text}</TextContainer>}>
-        <TokensBody tokens={tokens} sources={sources} />
+    <Container className="sendbird-word">
+      <Suspense fallback={<div className={textContainerStyle}>{text}</div>}>
+        <TokensBody className={textContainerStyle} tokens={tokens} sources={sources} />
       </Suspense>
-    </MultipleTokenTypeContainer>
+    </Container>
   );
 }
