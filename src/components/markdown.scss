@@ -1,291 +1,259 @@
-.widget-markdown * {
-  color: var(--sb-on-content-inverse-1);
-}
+.widget-markdown {
+  & * {
+    color: var(--sb-on-content-inverse-1);
 
-.widget-markdown *:first-child {
-  /* First child element should have no top margin */
-  margin-top: 0;
-}
+    &:first-child {
+      margin-top: 0;
+    }
 
-.widget-markdown *:last-child {
-  /* Last child element should have no bottom margin */
-  margin-bottom: 0;
-}
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 
-.widget-markdown hr {
-  border-top: 1px solid var(--sb-on-bg-4);
-  margin-bottom: 21px; /* 1.5em (3em in ChatGPT) */
-  margin-top: 21px; /* 1.5em (3em in ChatGPT) */
-}
+  hr {
+    border-top: 1px solid var(--sb-on-bg-4);
+    margin: 21px 0; // 1.5em
+  }
 
-.widget-markdown h1 {
-  margin-top: 0;
-  margin-bottom: 12.4px; /* 0.8888889em */
-  padding: 0;
-  font-size: 22.4px; /* 1.6em (2.25em in ChatGPT, reduced for visual appeal) */
-  line-height: 27.6px;
-  font-weight: 700;
-  letter-spacing: -0.6px; /* -0.04rem */
-}
+  h1 {
+    margin-top: 0;
+    margin-bottom: 12.4px; // 0.8888889em
+    padding: 0;
+    font-size: 22.4px; // 1.6em
+    line-height: 27.6px;
+    font-weight: 700;
+    letter-spacing: -0.6px; // -0.04rem
+  }
 
-.widget-markdown h2 {
-  font-weight: 600;
-  margin-bottom: 12px; /* 0.75rem (1em in ChatGPT) */
-  margin-top: 24px; /* 1.5rem (2em in ChatGPT) */
-  font-size: 18.2px; /* 1.3em (1.5em in ChatGPT) */
-  line-height: 22.3px; /* 1.3333333em */
-}
+  h2 {
+    font-weight: 600;
+    margin: 24px 0 12px; // 1.5rem 0 0.75rem
+    font-size: 18.2px; // 1.3em
+    line-height: 22.3px; // 1.3333333em
+  }
 
-.widget-markdown h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-  margin-bottom: 8px; /* 0.5rem */
-  margin-top: 16px; /* 1rem */
-  font-size: 15.4px; /* 1.1em (1.25em in ChatGPT) */
-  line-height: 22.4px; /* 1.6em */
-}
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    margin: 16px 0 8px; // 1rem 0 0.5rem
+    font-size: 15.4px; // 1.1em
+    line-height: 22.4px; // 1.6em
+  }
 
-.widget-markdown p:not(:first-child) {
-  margin-top: 8px; /* 0.5rem */
-}
+  p {
+    font-size: 14px; // 1em
+    line-height: 20px; // 1.43em
+    margin-bottom: 8px; // 0.5rem
+    margin-top: 0;
 
-.widget-markdown p {
-  font-size: 14px; /* 1em */
-  line-height: 20px; /* 1.43em (1.75em in ChatGPT) */
-  margin-bottom: 8px; /* 0.5rem */
-  margin-top: 0;
-}
+    &:not(:first-child) {
+      margin-top: 8px; // 0.5rem
+    }
+  }
 
-.widget-markdown code {
-  border-radius: 0.25rem;
-  font-size: 0.875em; // 12.3px; /* 0.875em */
-  font-weight: 500;
-  padding: 2.4px 4.8px; /* 0.15rem 0.3rem */
-  background-color: var(--sb-on-bg-4);
-}
+  a {
+    color: var(--sb-on-bg-1);
+    font-weight: 700;
+  }
 
-.widget-markdown menu,
-ol,
-ul {
-  list-style: none;
-}
-
-/*
-Below stuffs are from ChatGPT. I asked Widget to send me a random message with
-bunch of widget-markdown syntaxes. Then I asked ChatGPT to send me the exact same message.
-I then benchmarked the style ChatGPT used. Below classes are the exact same classes.
-*/
-
-.widget-markdown :where(ol):not(:where([class~='not-widget-markdown'] *)) {
-  padding-inline-start: 16.8px; /* 1.2em (1.625em in ChatGPT) */
-  list-style-type: decimal;
-  margin-top: 20px; /* 1.25em */
-  margin-bottom: 20px; /* 1.25em */
-}
-
-.widget-markdown :where(ul):not(:where([class~='not-widget-markdown'] *)) {
-  padding-inline-start: 16.8px; /* 1.2em (1.625em in ChatGPT) */
-  list-style-type: disc;
-  margin-top: 20px; /* 1.25em */
-  margin-bottom: 20px; /* 1.25em */
-}
-
-/*
-Any element inside .widget-markdown will have a margin-top: 0 applied if it directly follows an h3.
-Any element inside .not-widget-markdown will not be affected.
-widget-markdown.widget-markdown is to increase specificity. Refer to: https://www.w3.org/TR/CSS21/cascade.html#specificity
-*/
-.widget-markdown.widget-markdown :where(h3 + *):not(:where([class~='not-widget-markdown'] *)) {
-  margin-top: 0;
-}
-
-.widget-markdown :where(ol, ul) > li > :first-child {
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-.widget-markdown :where(ol, ul) > li > :last-child {
-  margin-bottom: 0;
-}
-
-.widget-markdown p + :where(ol, ul) {
-  margin-top: 0;
-}
-
-.widget-markdown :where(ul ul, ul ol, ol ul, ol ol):not(:where([class~='not-widget-markdown'] *)) {
-  margin-bottom: 10.5px; /* 0.75em */
-  margin-top: 10.5px; /* 0.75em */
-}
-
-.widget-markdown :where(li):not(:where([class~='not-widget-markdown'] *)) {
-  padding-inline-start: 0; /* 0.375rem */
-  margin-bottom: 5.6px; /* 0.4em (0.5em in ChatGPT) */
-  margin-top: 5.6px; /* 0.4em (0.5em in ChatGPT) */
-}
-
-.widget-markdown blockquote {
-  line-height: 19.2px; /* 1.2rem (1.5rem in ChatGPT) */
-  margin: 0;
-  padding-bottom: 4.8px; /* 0.3rem (0.5rem in ChatGPT) */
-  padding-top: 4.8px; /* 0.3rem (0.5rem in ChatGPT) */
-  margin-inline-start: 8px;
-  padding-inline-start: 16px; /* 12px + block width 4px (1rem in ChatGPT) */
-  box-sizing: border-box;
-  position: relative;
-
-  ::before {
-    border-radius: 100px;
-
-    content: ''; /* Empty content to create the rounded bar effect */
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 4px;
+  code {
+    white-space: pre-wrap;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    font-weight: 500;
+    padding: 2.4px 4.8px; // 0.15rem 0.3rem
     background-color: var(--sb-on-bg-4);
   }
-}
 
-.widget-markdown :where(blockquote):not(:where([class~='not-widget-markdown'] *)) {
-  font-style: normal;
-  font-weight: 500;
-  margin-bottom: 16.8px; /* 1.2em (1.6rem in ChatGPT) */
-  margin-top: 16.8px; /* 1.2em (1.6rem in ChatGPT) */
-  quotes: '“' '”' '‘' '’';
-
-  border-left-width: 4px; /* 0.25rem */
-  padding-inline-start: 14px; /* 1em */
-}
-
-[type='checkbox'] {
-  vertical-align: middle;
-  margin: 0;
-}
-
-.widget-markdown :where(table):not(:where([class~='not-widget-markdown'] *)) {
-  text-align: left;
-}
-
-.widget-markdown table {
-  unicode-bidi: isolate;
-  overflow-wrap: break-word;
-  white-space: normal;
-
-  display: block;
-  overflow-x: scroll;
-  max-width: 100%;
-  text-indent: 0;
-
-  --tw-border-spacing-x: 0px;
-  --tw-border-spacing-y: 0px;
-  border-collapse: separate;
-  border-spacing: 0 0;
-  margin-bottom: 4px; /* 0.25rem */
-  margin-top: 4px; /* 0.25rem */
-  *,
-  :after,
-  :before {
-    /* Need this for table borders to be displayed */
-    border: 0 solid;
-    box-sizing: border-box;
+  menu,
+  ol,
+  ul {
+    list-style: none;
   }
-}
 
-.widget-markdown :where(table):not(:where([class~='not-widget-markdown'] *)) {
-  font-size: 12.3px; /* 0.875em */
-  margin-bottom: 28px; /* 2em */
-  margin-top: 28px; /* 2em */
-  table-layout: auto;
-  width: 100%;
-}
+  :where(ol) {
+    padding-inline-start: 16.8px;
+    list-style-type: decimal;
+    margin: 20px 0; // 1.25em 0
+  }
 
-.widget-markdown th:first-child {
-  border-top-left-radius: 6px; /* 0.375rem */
-  padding-inline-start: 10.5px; /* 0.75rem */
-}
+  :where(ul) {
+    padding-inline-start: 16.8px;
+    list-style-type: disc;
+    margin: 20px 0; // 1.25em 0
+  }
 
-.widget-markdown th:last-child {
-  border-right-width: 1px;
-  border-top-right-radius: 6px; /* 0.375rem */
-  padding-inline-end: 10.5px; /* 0.75rem */
-}
+  &.widget-markdown:where(h3 + *) {
+    margin-top: 0;
+  }
 
-.widget-markdown th {
-  border-left-width: 1px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-bottom-width: 1px;
-  border-color: var(--sb-on-bg-4);
-  border-top-width: 1px;
-  padding: 4px 10.5px; /* 0.25rem 0.75rem */
-}
+  :where(ol, ul) > li > :first-child {
+    margin: 0;
+  }
 
-.widget-markdown :where(thead th:first-child):not(:where([class~='not-widget-markdown'] *)) {
-  padding-inline-start: 0;
-}
+  :where(ol, ul) > li > :last-child {
+    margin-bottom: 0;
+  }
 
-.widget-markdown :where(thead th:last-child):not(:where([class~='not-widget-markdown'] *)) {
-  padding-inline-end: 0;
-}
+  p + :where(ol, ul) {
+    margin-top: 0;
+  }
 
-.widget-markdown :where(thead th):not(:where([class~='not-widget-markdown'] *)) {
-  padding-bottom: 8px; /* 0.5714286em */
-  padding-inline-start: 8px; /* 0.5714286em */
-  padding-inline-end: 8px; /* 0.5714286em */
-  vertical-align: bottom;
-}
+  :where(ul ul, ul ol, ol ul, ol ol) {
+    margin: 10.5px 0; // 0.75em 0
+  }
 
-.widget-markdown :where(tbody tr):not(:where([class~='not-widget-markdown'] *)) {
-  border-bottom-width: 1px;
-}
+  :where(li) {
+    padding-inline-start: 0;
+    margin: 5.6px 0; // 0.4em 0
+  }
 
-.widget-markdown :where(tbody tr:last-child):not(:where([class~='not-widget-markdown'] *)) {
-  border-bottom-width: 0;
-}
+  blockquote {
+    line-height: 19.2px; // 1.2rem
+    margin: 0;
+    padding: 4.8px 0; // 0.3rem 0
+    margin-inline-start: 8px;
+    padding-inline-start: 16px;
+    box-sizing: border-box;
+    position: relative;
 
-.widget-markdown td:first-child {
-  padding-inline-start: 10.5px; /* 0.75rem */
-}
+    &::before {
+      border-radius: 100px;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 4px;
+      background-color: var(--sb-on-bg-4);
+    }
+  }
 
-.widget-markdown td:last-child {
-  border-right-width: 1px;
-  padding-inline-end: 10.5px; /* 0.75rem */
-}
+  :where(blockquote) {
+    font-style: normal;
+    font-weight: 500;
+    margin: 16.8px 0; // 1.2em 0
+    quotes: '“' '”' '‘' '’';
+    border-inline-start-width: 4px;
+    padding-inline-start: 14px;
+  }
 
-.widget-markdown :where(tbody td:first-child, tfoot td:first-child):not(:where([class~='not-widget-markdown'] *)) {
-  padding-inline-start: 0;
-}
+  [type='checkbox'] {
+    vertical-align: middle;
+    margin: 0;
+  }
 
-.widget-markdown :where(tbody td:last-child, tfoot td:last-child):not(:where([class~='not-widget-markdown'] *)) {
-  padding-inline-end: 0;
-}
+  table {
+    unicode-bidi: isolate;
+    overflow-wrap: break-word;
+    white-space: normal;
+    display: block;
+    overflow-x: scroll;
+    max-width: 100%;
+    text-indent: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 4px 0; // 0.25rem 0
 
-.widget-markdown td {
-  border-left-width: 1px;
-  border-bottom-width: 1px;
-  border-color: var(--sb-on-bg-4);
-  padding: 4px 10.5px; /* 0.25rem 0.75rem */
-  text-align: left;
-}
+    *,
+    &:after,
+    &:before {
+      border: 0 solid;
+      box-sizing: border-box;
+    }
+  }
 
-.widget-markdown :where(tbody td, tfoot td):not(:where([class~='not-widget-markdown'] *)) {
-  padding: 8px; /* 0.5714286em */
-}
+  :where(table) {
+    text-align: start;
+    font-size: 12.3px; // 0.875em
+    margin: 28px 0; // 2em 0
+    table-layout: auto;
+    width: 100%;
+  }
 
-.widget-markdown :where(tbody td):not(:where([class~='not-widget-markdown'] *)) {
-  vertical-align: baseline;
-}
+  th:first-child {
+    border-start-start-radius: 6px; // 0.375rem
+    padding-inline-start: 10.5px; // 0.75rem
+  }
 
-.widget-markdown tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 6px; /* 0.375rem */
-}
+  th:last-child {
+    border-inline-end-width: 1px;
+    border-start-end-radius: 6px; // 0.375rem
+    padding-inline-end: 10.5px; // 0.75rem
+  }
 
-.widget-markdown tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 6px; /* 0.375rem */
-}
+  th {
+    border-inline-start-width: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom-width: 1px;
+    border-color: var(--sb-on-bg-4);
+    border-top-width: 1px;
+    padding: 4px 10.5px;
+  }
 
-.widget-markdown a {
-  color: var(--sb-on-bg-1);
-  font-weight: 700;
+  :where(thead th:first-child) {
+    padding-inline-start: 0;
+  }
+
+  :where(thead th:last-child) {
+    padding-inline-end: 0;
+  }
+
+  :where(thead th) {
+    padding-bottom: 8px;
+    padding-inline: 8px;
+    vertical-align: bottom;
+  }
+
+  :where(tbody tr) {
+    border-bottom-width: 1px;
+  }
+
+  :where(tbody tr:last-child) {
+    border-bottom-width: 0;
+  }
+
+  td:first-child {
+    padding-inline-start: 10.5px;
+  }
+
+  td:last-child {
+    border-inline-end-width: 1px;
+    padding-inline-end: 10.5px;
+  }
+
+  :where(tbody td:first-child, tfoot td:first-child) {
+    padding-inline-start: 0;
+  }
+
+  :where(tbody td:last-child, tfoot td:last-child) {
+    padding-inline-end: 0;
+  }
+
+  td {
+    border-inline-start-width: 1px;
+    border-bottom-width: 1px;
+    border-color: var(--sb-on-bg-4);
+    padding: 4px 10.5px;
+    text-align: start;
+  }
+
+  :where(tbody td, tfoot td) {
+    padding: 8px;
+  }
+
+  :where(tbody td) {
+    vertical-align: baseline;
+  }
+
+  tbody tr:last-child td:first-child {
+    border-end-start-radius: 6px;
+  }
+
+  tbody tr:last-child td:last-child {
+    border-end-end-radius: 6px;
+  }
 }
