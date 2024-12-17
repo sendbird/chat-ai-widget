@@ -15,9 +15,6 @@ export function PoweredByBanner() {
   }
 
   return <Banner />;
-  // const inputElement = document.querySelector('.sendbird-message-input-wrapper');
-  //
-  // return inputElement ? ReactDOM.createPortal(<Banner />, inputElement) : null;
 }
 
 const InnerContainer = styled.div<{ chatBottomBackgroundColor?: string }>`

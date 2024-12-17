@@ -185,7 +185,7 @@ export function hideChatBottomBanner(sdk: SendbirdChat): boolean {
     return applicationAttributes.includes(REMOVE_POWERED_BY);
   }
 
-  return false;
+  return true;
 }
 
 export const replaceWithRegex = <T>(
