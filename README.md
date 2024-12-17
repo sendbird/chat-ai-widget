@@ -127,7 +127,7 @@ export default App;
 | `dateLocale` | `Locale` | No | `enUS` | Locale value to be applied to string values of message timestamp and date separator. Locale values must be imported from `date-fns`.                                                    |
 | `enableHideWidgetForDeactivatedUser` | `boolean` | No       | `false`    | Determines whether the chatbot widget is hidden when the user is deactivated.                                                                                                           |
 | `enableWidgetExpandButton` | `boolean` | No | `false` | Determines whether the expand button is displayed in the chatbot widget. |
-| `messageStackDirection` | `'top' \| 'bottom'` | No | `bottom` | Determines direction at which message stack starts in the message list. |
+| `messageStackDirection` | `'top' \| 'bottom'` | No | `'bottom'` | Determines direction at which message stack starts in the message list. |
 
 ## For internal contributors
 - [Release guide](./release-guide.md)
