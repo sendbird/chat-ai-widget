@@ -20,7 +20,14 @@ import { useTypingTargetMessageId } from '../hooks/useTypingTargetMessageId';
 
 export const ChatMessageList = () => {
   const { channel, dataSource, scrollSource, handlers } = useChatContext();
-  const { botStudioEditProps, customUserAgentParam, stringSet, dateLocale, enableMessageGrouping } = useConstantState();
+  const {
+    botStudioEditProps,
+    customUserAgentParam,
+    stringSet,
+    dateLocale,
+    enableMessageGrouping,
+    messageStackDirection = 'bottom',
+  } = useConstantState();
 
   const typingTargetMessageId = useTypingTargetMessageId();
   const { filteredMessages, shouldShowOriginalDate, renderBotStudioWelcomeMessages } = useBotStudioView();
@@ -42,7 +49,7 @@ export const ChatMessageList = () => {
         scrollPositionRef={scrollSource.scrollPositionRef}
         scrollDistanceFromBottomRef={scrollSource.scrollDistanceFromBottomRef}
         onScrollPosition={(it) => scrollSource.setIsScrollBottomReached(it === 'bottom')}
-        stackDirection={'bottom'}
+        stackDirection={messageStackDirection}
         messages={filteredMessages}
         onLoadPrev={dataSource.loadPrevious}
         onLoadNext={dataSource.loadNext}
