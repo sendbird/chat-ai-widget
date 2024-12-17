@@ -109,25 +109,25 @@ export default App;
 
 ### Available props
 | Prop Name               | Type                                  | Required | Default Value | Description                                                                                                    |
-|-------------------------|---------------------------------------|----------|---------------|----------------------------------------------------------------------------------------------------------------|
-| `applicationId`         | `string`                              | Yes      | N/A           | Your Sendbird application ID                                                                                   |
-| `botId`                 | `string`                              | Yes      | N/A           | Your Sendbird bot ID                                                                                           |                                                                                       |
-| `userNickName`          | `string`                              | No       | N/A           | The nickname of the user                                                                                       |                                                                   |
-| `enableEmojiFeedback`   | `boolean`                             | No       | `true`        | Enables emoji feedback functionality.                                                                          |
-| `enableMention`         | `boolean`                             | No       | `true`        | Enables mention functionality.                                                                                 |
-| `deviceType`      | `'desktop' \| 'mobile'`                     | No       | N/A        | Device type to be used in the widget                                                   |
-| `stringSet`             | `{ [key: string]: string }`           | No       | N/A           | Customizable string set. Available string sets can be found [here](https://github.com/sendbird/sendbird-uikit-react/blob/main/src/ui/Label/stringSet.ts). |
-| `customRefreshComponent` | `{ icon: string, style: React.CSSProperties, width: string, height: string, onClick: () => void }` | No       | N/A           | Customizable refresh component. You can set properties such as `icon`, `style`, `width`, `height`, and `onClick`. |
-| `userId`                | `string`                              | No       | N/A        | User ID to be used in the widget connect. Must be used with `sessionToken` and `configureSession`. The example usage can be found [here](./custom-session-guide.md). |
-| `sessionToken`          | `string`                              | No       | N/A        | Session token to be used in the widget connect. Must be used with `userId` and `configureSession`. The example usage can be found [here](./custom-session-guide.md). |
-| `configureSession`      | `() => SessionHandler`                | No       | N/A        | Session configuration function. Must be used with `userId` and `sessionToken`. The example usage can be found [here](./custom-session-guide.md). |
-| `autoOpen`              | `boolean`                             | No       | N/A        | Determines whether the chatbot widget automatically opens when the browser window is opened. This property is being ignored in mobile view.                  |
-| `enableResetHistoryOnConnect`        | `boolean` | No       | `false`       | Determines whether the chatbot widget history is reset when the user connects. |
+|-------------------------|---------------------------------------|----------|------------|----------------------------------------------------------------------------------------------------------------|
+| `applicationId`         | `string`                              | Yes      | N/A        | Your Sendbird application ID                                                                                   |
+| `botId`                 | `string`                              | Yes      | N/A        | Your Sendbird bot ID                                                                                           |                                                                                       |
+| `userNickName`          | `string`                              | No       | N/A        | The nickname of the user                                                                                       |                                                                   |
+| `enableEmojiFeedback`   | `boolean`                             | No       | `true`     | Enables emoji feedback functionality.                                                                          |
+| `enableMention`         | `boolean`                             | No       | `true`     | Enables mention functionality.                                                                                 |
+| `deviceType`      | `'desktop' \| 'mobile'`                     | No       | N/A     | Device type to be used in the widget                                                   |
+| `stringSet`             | `{ [key: string]: string }`           | No       | N/A        | Customizable string set. Available string sets can be found [here](https://github.com/sendbird/sendbird-uikit-react/blob/main/src/ui/Label/stringSet.ts). |
+| `customRefreshComponent` | `{ icon: string, style: React.CSSProperties, width: string, height: string, onClick: () => void }` | No       | N/A        | Customizable refresh component. You can set properties such as `icon`, `style`, `width`, `height`, and `onClick`. |
+| `userId`                | `string`                              | No       | N/A     | User ID to be used in the widget connect. Must be used with `sessionToken` and `configureSession`. The example usage can be found [here](./custom-session-guide.md). |
+| `sessionToken`          | `string`                              | No       | N/A     | Session token to be used in the widget connect. Must be used with `userId` and `configureSession`. The example usage can be found [here](./custom-session-guide.md). |
+| `configureSession`      | `() => SessionHandler`                | No       | N/A     | Session configuration function. Must be used with `userId` and `sessionToken`. The example usage can be found [here](./custom-session-guide.md). |
+| `autoOpen`              | `boolean`                             | No       | N/A     | Determines whether the chatbot widget automatically opens when the browser window is opened. This property is being ignored in mobile view.                  |
+| `enableResetHistoryOnConnect`        | `boolean` | No       | `false`    | Determines whether the chatbot widget history is reset when the user connects. |
 | `messageInputControls.blockWhileBotResponding` | `boolean \| number` | No | N/A | Allows to control enabled/disabled state of the message input for waiting for the bot's reply mesage. If number value is given, a timer will be set to force unblock the message input. |
 | `dateLocale` | `Locale` | No | `enUS` | Locale value to be applied to string values of message timestamp and date separator. Locale values must be imported from `date-fns`.                                                    |
-| `enableHideWidgetForDeactivatedUser` | `boolean` | No       | `false`       | Determines whether the chatbot widget is hidden when the user is deactivated.                                                                                                           |
+| `enableHideWidgetForDeactivatedUser` | `boolean` | No       | `false`    | Determines whether the chatbot widget is hidden when the user is deactivated.                                                                                                           |
 | `enableWidgetExpandButton` | `boolean` | No | `false` | Determines whether the expand button is displayed in the chatbot widget. |
-| `messageStackDirection` | `'top' \| 'bottom'` | No | N/A | Determines direction at which message stack starts in the message list. |
+| `messageStackDirection` | `'top' \| 'bottom'` | No | `bottom` | Determines direction at which message stack starts in the message list. |
 
 ## For internal contributors
 - [Release guide](./release-guide.md)
