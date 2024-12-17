@@ -60,6 +60,18 @@ export const ChatMessageList = () => {
             filteredMessages[index + 1],
             enableMessageGrouping,
           );
+          
+          const renderSuggestedReplies = showRepliesOnLastMessage && suggestedReplies.length > 0;
+          const { suggestedRepliesOptions, suggestedRepliesDirection } = botStudioEditProps ?? {};
+          const isSuggestedRepliesAtTop = suggestedRepliesOptions?.location === 'top';
+          const SuggestedReplies =
+            <SuggestedRepliesContainer
+              replies={suggestedReplies}
+              type={suggestedRepliesOptions?.direction ?? suggestedRepliesDirection}
+              sendUserMessage={(params) => {
+                dataSource.sendUserMessage(params, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
+              }}
+            />;
 
           return (
             <div style={{ padding: '0 16px' }} key={getComponentKeyFromMessage(message)}>
@@ -72,6 +84,7 @@ export const ChatMessageList = () => {
                 />
               )}
               <div style={{ marginBottom: index === filteredMessages.length - 1 ? 0 : 16 }}>
+                {renderSuggestedReplies && isSuggestedRepliesAtTop && SuggestedReplies}
                 <CustomMessage
                   message={message as any}
                   activeSpinnerId={typingTargetMessageId}
@@ -84,16 +97,7 @@ export const ChatMessageList = () => {
                   message.messageId === channel?.lastMessage?.messageId && (
                     <MessageDataContent messageData={message.data} />
                   )}
-
-                {showRepliesOnLastMessage && suggestedReplies.length > 0 && (
-                  <SuggestedRepliesContainer
-                    replies={suggestedReplies}
-                    type={botStudioEditProps?.suggestedRepliesDirection}
-                    sendUserMessage={(params) => {
-                      dataSource.sendUserMessage(params, handlers.onAfterSendMessage).then(handlers.onAfterSendMessage);
-                    }}
-                  />
-                )}
+                {renderSuggestedReplies && !isSuggestedRepliesAtTop && SuggestedReplies}
               </div>
             </div>
           );

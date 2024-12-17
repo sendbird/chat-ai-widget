@@ -108,12 +108,19 @@ export interface BotInfo {
   nickname?: string;
 }
 
+interface SuggestedRepliesOptions {
+  direction?: 'horizontal' | 'vertical';
+  location?: 'top' | 'bottom';
+}
+
 export interface BotStudioEditProps {
   botInfo?: BotInfo;
   aiAttributes?: Record<string, unknown>;
   welcomeMessages?: WelcomeUserMessage[];
   styles?: WidgetStyles;
+  // @deprecated Use `SuggestedRepliesOptions` instead.
   suggestedRepliesDirection?: 'horizontal' | 'vertical';
+  suggestedRepliesOptions?: SuggestedRepliesOptions;
 }
 
 export interface MessageInputControls {
