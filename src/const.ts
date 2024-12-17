@@ -189,7 +189,6 @@ export interface Constant extends ConstantFeatureFlags, ConstantAIFeatures, Cons
   messageInputControls?: MessageInputControls;
   /**
    * @public
-   * @description
    * */
   messageStackDirection?: 'top' | 'bottom';
   /**
