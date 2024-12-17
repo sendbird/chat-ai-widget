@@ -1,3 +1,11 @@
+## [1.9.2] (Dec 17, 2024)
+### Feat:
+- Added `messageStackDirection` in `Constant`
+
+### Fix:
+- Fixed markdown lazy load preview message background color
+- Fixed `widget-markdown` css selector to not overwrite global styles of elements
+
 ## [1.9.1] (Dec 12, 2024)
 ### Feat:
 - Added support for wider range of markdown syntaxes
