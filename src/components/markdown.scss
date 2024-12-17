@@ -68,19 +68,16 @@
     background-color: var(--sb-on-bg-4);
   }
 
-  menu,
-  ol,
-  ul {
+  menu {
     list-style: none;
   }
 
-  :where(ol) {
+  ol {
     padding-inline-start: 16.8px;
     list-style-type: decimal;
     margin: 20px 0; // 1.25em 0
   }
-
-  :where(ul) {
+  ul {
     padding-inline-start: 16.8px;
     list-style-type: disc;
     margin: 20px 0; // 1.25em 0
@@ -157,6 +154,10 @@
     border-collapse: separate;
     border-spacing: 0;
     margin: 4px 0; // 0.25rem 0
+    text-align: start;
+    font-size: 12.3px; // 0.875em
+    table-layout: auto;
+    width: 100%;
 
     *,
     &:after,
@@ -164,14 +165,6 @@
       border: 0 solid;
       box-sizing: border-box;
     }
-  }
-
-  :where(table) {
-    text-align: start;
-    font-size: 12.3px; // 0.875em
-    margin: 28px 0; // 2em 0
-    table-layout: auto;
-    width: 100%;
   }
 
   th:first-child {
