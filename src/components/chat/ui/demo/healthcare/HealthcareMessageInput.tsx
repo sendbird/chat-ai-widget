@@ -237,7 +237,7 @@ export function HealthcareMessageInput({ onSendMessage }: { onSendMessage?: (mes
   }, [bodyInput.length]);
 
   async function getRecommendMessage(bodyInput?: any[]) {
-    const response = await fetch('/api/assistant', {
+    const response = await fetch('/demos/api/assistant', {
       method: 'POST',
       headers,
       body: JSON.stringify({

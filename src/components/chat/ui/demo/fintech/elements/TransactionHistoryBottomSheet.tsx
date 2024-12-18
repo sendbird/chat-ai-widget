@@ -15,7 +15,6 @@ const icons = [<TransactionIcon1 key="1" />, <TransactionIcon2 key="2" />, <Tran
 const BottomSheetContainer = styled(BottomSheet.Container)`
   padding-bottom: 16px;
   border-radius: 15px 15px 0 0 !important;
-  max-height: initial !important;
   -webkit-font-smoothing: subpixel-antialiased;
 `;
 
