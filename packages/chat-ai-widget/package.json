@@ -1,16 +1,36 @@
 {
+  "name": "@sendbird/chat-ai-widget",
+  "version": "1.9.2",
+  "description": "Sendbird Chat AI Widget,\n Detailed documentation can be found at https://github.com/sendbird/chat-ai-widget#readme",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/src/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/sendbird/chat-ai-widget.git"
   },
   "scripts": {
     "install:deps": "git submodule update --init --recursive && yarn install",
+    "dev": "vite",
+    "prebuild": "rm -rf ./dist && mv .env .env_temp || true",
+    "postbuild": "mv .env_temp .env || true",
+    "build": "yarn prebuild && tsc-silent -p './tsconfig.json' --suppress @ && vite build && yarn postbuild",
+    "build:npm": "node scripts/prebuild.mjs && yarn build",
+    "build:pages": "rm -rf ./dist && tsc-silent -p './tsconfig.json' --suppress @ && vite build --config vite.config.pages.ts",
     "format": "yarn prettier:fix && yarn lint:fix",
-    "format:check": "yarn prettier packages/chat-ai-widget/src __visual_tests__ --check && yarn eslint src __visual_tests__",
-    "lint:fix": "yarn eslint packages/chat-ai-widget/src __visual_tests__ --fix",
-    "prettier:fix": "yarn prettier packages/chat-ai-widget/src __visual_tests__ --write",
+    "format:check": "yarn prettier src __visual_tests__ --check && yarn eslint src __visual_tests__",
+    "lint:fix": "yarn eslint src __visual_tests__ --fix",
+    "prettier:fix": "yarn prettier src __visual_tests__ --write",
     "preview": "vite preview",
     "test": "vitest run"
+  },
+  "dependencies": {
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@linaria/atomic": "^6.2.0",
@@ -50,6 +70,16 @@
     "vite-plugin-dts": "^3.7.0",
     "vite-plugin-svgr": "^4.2.0",
     "vitest": "^1.6.0"
+  },
+  "peerDependencies": {
+    "date-fns": "^3.6.0",
+    "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "date-fns": {
+      "optional": true
+    }
   },
   "workspaces": [
     "packages/*"

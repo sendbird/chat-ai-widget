@@ -68,7 +68,7 @@ This is a Sendbird Chat AI Widget implemented on top of [React UiKit](https://gi
 
     export default App;
     ```
-    > Not using React in your environment? You can also load this Chat AI Widget component from an HTML file on your website. Please refer to [js-example.html](./js-example.html) for an example.
+    > Not using React in your environment? You can also load this Chat AI Widget component from an HTML file on your website. Please refer to [js-example.html](packages/chat-ai-widget/js-example.html) for an example.
   
 
 
