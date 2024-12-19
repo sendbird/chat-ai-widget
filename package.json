@@ -27,7 +27,8 @@
     "lint:fix": "yarn eslint src __visual_tests__ --fix",
     "prettier:fix": "yarn prettier src __visual_tests__ --write",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "dependencies": {
     "styled-components": "^5.3.11"
@@ -36,6 +37,7 @@
     "@linaria/atomic": "^6.2.0",
     "@linaria/core": "^6.2.0",
     "@linaria/react": "^6.2.1",
+    "@playwright/experimental-ct-react": "^1.49.1",
     "@playwright/test": "^1.48.1",
     "@types/dompurify": "^3.0.5",
     "@types/node": "^22.7.9",
