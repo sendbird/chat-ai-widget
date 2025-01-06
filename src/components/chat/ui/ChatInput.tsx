@@ -1,11 +1,12 @@
 import { css, cx } from '@linaria/core';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import useSendbirdStateContext from '@uikit/hooks/useSendbirdStateContext';
 import MessageInputWrapperView from '@uikit/modules/GroupChannel/components/MessageInputWrapper/MessageInputWrapperView';
 
 import { themedColors } from '../../../foundation/colors/css';
 import { useBlockWhileBotResponding } from '../../../hooks/useBlockWhileBotResponding';
+import { usePrevious } from '../../../hooks/usePrevious';
 import { isIOSMobile } from '../../../utils';
 import { AlertModal } from '../../ui/AlertModal';
 import { useChatContext } from '../context/ChatProvider';
@@ -15,6 +16,7 @@ export const ChatInput = () => {
   const { channel, botUser, dataSource, handlers } = useChatContext();
 
   const ref = useRef<HTMLDivElement>(null);
+
   const [limitError, setLimitError] = useState(false);
 
   const { config } = useSendbirdStateContext();
@@ -22,6 +24,16 @@ export const ChatInput = () => {
     lastMessage: dataSource.messages[dataSource.messages.length - 1],
     botUser,
   });
+  const prevIsMessageInputDisabled = usePrevious(isMessageInputDisabled);
+
+  // Focus the input only when isMessageInputDisabled changes from true to false
+  useEffect(() => {
+    if (prevIsMessageInputDisabled === true && !isMessageInputDisabled) {
+      if (ref.current) {
+        ref.current.focus();
+      }
+    }
+  }, [isMessageInputDisabled, prevIsMessageInputDisabled]);
 
   return (
     <div className={cx(container, isIOSMobile && iosMobileContainer)}>
