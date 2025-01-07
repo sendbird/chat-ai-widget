@@ -1,3 +1,7 @@
+## [1.9.3] (Jan 7, 2024)
+### Fix:
+- Fixed a bug where message input is not being focused after receiving a bot reply
+
 ## [1.9.2] (Dec 17, 2024)
 ### Feat:
 - Added `messageStackDirection` in `Constant`
