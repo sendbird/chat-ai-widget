@@ -84,5 +84,8 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@4.2.2"
+  "packageManager": "yarn@4.2.2",
+  "resolutions": {
+    "rollup": "^4.22.4"
+  }
 }
