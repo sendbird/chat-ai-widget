@@ -1,3 +1,7 @@
+## [1.9.4] (Jan 14, 2025)
+### Fix:
+- Improved stability
+
 ## [1.9.3] (Jan 7, 2024)
 ### Fix:
 - Fixed a bug where message input is not being focused after receiving a bot reply
