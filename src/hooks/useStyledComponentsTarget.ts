@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { version } from 'styled-components/package.json';
 
 function isSCTarget(node: Node): node is HTMLStyleElement {
