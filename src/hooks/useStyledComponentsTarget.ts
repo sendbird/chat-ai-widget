@@ -15,7 +15,6 @@ function isSCTarget(node: Node): node is HTMLStyleElement {
  * This is a short-term solution, and in the long run, we plan to remove styled-components altogether.
  * */
 export function useStyledComponentsTarget() {
-  const scInitialized = useRef(false);
   const [target, setTarget] = useState(document.head);
 
   useLayoutEffect(() => {
@@ -31,12 +30,8 @@ export function useStyledComponentsTarget() {
         if (mutation.target === document.head && mutation.addedNodes.length > 0) {
           for (const node of mutation.addedNodes) {
             if (isSCTarget(node)) {
-              if (scInitialized.current) {
-                console.warn('Styled Components styles re-injected, switching to <body>');
-                setTarget(document.body);
-              } else {
-                scInitialized.current = true;
-              }
+              console.warn('Styled Components styles re-injected, switching to <body>');
+              setTarget(document.body);
               return;
             }
           }
