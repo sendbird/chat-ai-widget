@@ -28,7 +28,7 @@ export function useStyledComponentsTarget() {
       }
       mutations.forEach((mutation) => {
         // Case 2: Detect if styles are added to <head>
-        if (mutation.addedNodes.length > 0) {
+        if (mutation.target === document.head && mutation.addedNodes.length > 0) {
           for (const node of mutation.addedNodes) {
             if (isSCTarget(node)) {
               if (scInitialized.current) {
@@ -42,7 +42,7 @@ export function useStyledComponentsTarget() {
           }
         }
         // Case 3: Detect if styles are removed from <head>
-        if (mutation.removedNodes.length > 0) {
+        if (mutation.target === document.head && mutation.removedNodes.length > 0) {
           for (const node of mutation.removedNodes) {
             if (isSCTarget(node)) {
               console.warn('Styled Components styles removed, switching to <body>');
