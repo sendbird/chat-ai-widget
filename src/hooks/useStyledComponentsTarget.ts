@@ -1,6 +1,8 @@
 import { useLayoutEffect, useState } from 'react';
 import { version } from 'styled-components/package.json';
 
+const StyledId = 'sendbird-css-inject-id';
+
 function isSCTarget(node: Node): node is HTMLStyleElement {
   return node instanceof HTMLStyleElement && node.getAttribute('data-styled-version') === version;
 }
@@ -15,37 +17,43 @@ function isSCTarget(node: Node): node is HTMLStyleElement {
  * */
 export function useStyledComponentsTarget() {
   const [target, setTarget] = useState(document.head);
-
+  
   useLayoutEffect(() => {
+    const moveStyleToBody = (styleElement: HTMLElement) => {
+      if (styleElement && styleElement.parentElement !== document.body) {
+        document.body.appendChild(styleElement);
+        setTarget(document.body);
+      }
+    };
+    
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        // Case 1: Detect if styles are added to <head>
-        if (mutation.target === document.head && mutation.addedNodes.length > 0) {
-          for (const node of mutation.addedNodes) {
-            if (isSCTarget(node)) {
-              console.warn('Styled Components styles re-injected, switching to <body>');
-              setTarget(document.body);
-              return;
-            }
+        // Handle added nodes
+        Array.from(mutation.addedNodes).forEach((node) => {
+          if (isSCTarget(node)) {
+            console.warn('Styled Components styles re-injected, switching to <body>');
+            setTarget(document.body);
+          } else if (node instanceof HTMLElement && node.id === StyledId) {
+            moveStyleToBody(node);
           }
-        }
-        // Case 2: Detect if styles are removed from <head>
-        if (mutation.target === document.head && mutation.removedNodes.length > 0) {
-          for (const node of mutation.removedNodes) {
-            if (isSCTarget(node)) {
-              console.warn('Styled Components styles removed, switching to <body>');
-              setTarget(document.body);
-              return;
-            }
+        });
+        
+        // Handle removed nodes
+        Array.from(mutation.removedNodes).forEach((node) => {
+          if (isSCTarget(node)) {
+            console.warn('Styled Components styles removed, switching to <body>');
+            setTarget(document.body);
+          } else if (node instanceof HTMLElement && node.id === StyledId) {
+            moveStyleToBody(node);
           }
-        }
+        });
       });
     });
 
     observer.observe(document.head, { childList: true });
-
+    
     return () => observer.disconnect();
   }, []);
-
+  
   return target;
 }
