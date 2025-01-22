@@ -17,31 +17,32 @@ function isSCTarget(node: Node): node is HTMLStyleElement {
  * */
 export function useStyledComponentsTarget() {
   const [target, setTarget] = useState(document.head);
-  
+
   useLayoutEffect(() => {
     const moveStyleToBody = (styleElement: HTMLElement) => {
       if (styleElement && styleElement.parentElement !== document.body) {
+        console.warn(`[useStyledComponentsTarget]: Moving style element ${StyledId} to <body>.`);
         document.body.appendChild(styleElement);
         setTarget(document.body);
       }
     };
-    
+
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         // Handle added nodes
         Array.from(mutation.addedNodes).forEach((node) => {
           if (isSCTarget(node)) {
-            console.warn('Styled Components styles re-injected, switching to <body>');
+            console.warn('[useStyledComponentsTarget]: Styled Components styles re-injected, switching to <body>');
             setTarget(document.body);
           } else if (node instanceof HTMLElement && node.id === StyledId) {
             moveStyleToBody(node);
           }
         });
-        
+
         // Handle removed nodes
         Array.from(mutation.removedNodes).forEach((node) => {
           if (isSCTarget(node)) {
-            console.warn('Styled Components styles removed, switching to <body>');
+            console.warn('[useStyledComponentsTarget]: Styled Components styles removed, switching to <body>');
             setTarget(document.body);
           } else if (node instanceof HTMLElement && node.id === StyledId) {
             moveStyleToBody(node);
@@ -51,9 +52,9 @@ export function useStyledComponentsTarget() {
     });
 
     observer.observe(document.head, { childList: true });
-    
+
     return () => observer.disconnect();
   }, []);
-  
+
   return target;
 }
