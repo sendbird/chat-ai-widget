@@ -34,8 +34,6 @@ export function useStyledComponentsTarget() {
           if (isSCTarget(node)) {
             console.warn('[useStyledComponentsTarget]: Styled Components styles re-injected, switching to <body>');
             setTarget(document.body);
-          } else if (node instanceof HTMLElement && node.id === StyledId) {
-            moveStyleToBody(node);
           }
         });
 
