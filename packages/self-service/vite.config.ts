@@ -8,7 +8,7 @@ const version = getWidgetVersion();
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), cssInjectedByJsPlugin()],
+  plugins: [react(), cssInjectedByJsPlugin({ styleId: 'sendbird-css-inject-id' })],
   build: {
     outDir: `./dist/${version}`,
     rollupOptions: {
