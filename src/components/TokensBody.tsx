@@ -38,9 +38,6 @@ export default function TokensBody({ tokens, sources, className }: TokensBodyPro
             <div key={i} className={cx(className, 'widget-markdown')}>
               <Markdown
                 options={{
-                  sanitizer: (value: string) => {
-                    return DOMPurify.sanitize(value);
-                  },
                   overrides: {
                     // Note that this is to remove text-align: right by the library.
                     td: {
@@ -68,7 +65,7 @@ export default function TokensBody({ tokens, sources, className }: TokensBodyPro
                   },
                 }}
               >
-                {token.value}
+                {DOMPurify.sanitize(token.value)}
               </Markdown>
             </div>
           );

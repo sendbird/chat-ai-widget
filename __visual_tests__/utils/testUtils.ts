@@ -1,4 +1,4 @@
-import { expect, Page } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 
 import { getWidgetSessionCache } from './localStorageUtils';
 import { deleteChannel, deleteUser } from './requestUtils';
@@ -50,4 +50,8 @@ export async function deleteTestResources(page: Page) {
       }
     }
   }
+}
+
+export function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
