@@ -64,7 +64,7 @@ test('100', async ({ page, browserName }) => {
 test('101', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
-  await sendTextMessage(page, 'Tell me about one cat breed', 2000);
+  await sendTextMessage(page, 'Tell me about one cat breed', 5000);
   await assertScreenshot(page, '101-1', browserName);
 });
 
@@ -95,19 +95,19 @@ test('102', async ({ page, browserName }) => {
 test('103', async ({ page, browserName }) => {
   await loadWidget(page);
   // 1
-  await sendTextMessage(page, 'Suggested replies', 2000);
+  await sendTextMessage(page, 'Suggested replies', 4000);
   await assertScreenshot(page, '103-1', browserName);
 
   // 2
   let options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).click();
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(4000);
   await assertScreenshot(page, '103-2', browserName);
 
   // 3
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).click();
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(4000);
   await assertScreenshot(page, '103-3', browserName);
 
   // 4
@@ -127,7 +127,7 @@ test('103', async ({ page, browserName }) => {
   // 6
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(2).click();
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(4000);
   await assertScreenshot(page, '103-6', browserName);
 });
 
