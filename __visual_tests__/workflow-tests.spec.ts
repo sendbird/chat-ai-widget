@@ -1,7 +1,14 @@
 import { test } from '@playwright/test';
 
 import { WidgetComponentIds } from './const';
-import { assertScreenshot, clickNthChip, deleteTestResources, loadWidget, sendTextMessage } from './utils/testUtils';
+import {
+  sleep,
+  assertScreenshot,
+  clickNthChip,
+  deleteTestResources,
+  loadWidget,
+  sendTextMessage,
+} from './utils/testUtils';
 
 test.afterEach(async ({ page }) => {
   await deleteTestResources(page);
@@ -43,7 +50,7 @@ test('100', async ({ page, browserName }) => {
   await inputs.nth(4).fill('123_456_7890');
   await clickNthChip(page, 4);
   submitButton = page.locator(WidgetComponentIds.BUTTON);
-  await page.waitForTimeout(1000);
+  await sleep(1000);
   await assertScreenshot(page, '100-3', browserName);
 
   // 4
@@ -51,7 +58,7 @@ test('100', async ({ page, browserName }) => {
   await inputs.nth(3).fill('guy.ordering.food@food.com');
   await inputs.nth(4).fill('123-456-7890');
   await submitButton.click();
-  await page.waitForTimeout(2000);
+  await sleep(2000);
   await assertScreenshot(page, '100-4', browserName);
 });
 
@@ -101,19 +108,19 @@ test('103', async ({ page, browserName }) => {
   // 2
   let options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).click();
-  await page.waitForTimeout(4000);
+  await sleep(4000);
   await assertScreenshot(page, '103-2', browserName);
 
   // 3
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(0).click();
-  await page.waitForTimeout(4000);
+  await sleep(4000);
   await assertScreenshot(page, '103-3', browserName);
 
   // 4
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(1).click();
-  await page.waitForTimeout(4000); // Time takes long for file message to be rendered and then scrolled to bottom in CI browsers.
+  await sleep(4000); // Time takes long for file message to be rendered and then scrolled to bottom in CI browsers.
   await assertScreenshot(page, '103-4', browserName);
 
   // 5
@@ -127,7 +134,7 @@ test('103', async ({ page, browserName }) => {
   // 6
   options = page.locator(WidgetComponentIds.SUGGESTED_REPLIES_OPTIONS);
   await options.nth(2).click();
-  await page.waitForTimeout(4000);
+  await sleep(4000);
   await assertScreenshot(page, '103-6', browserName);
 });
 
