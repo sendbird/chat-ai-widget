@@ -1,3 +1,7 @@
+## [1.9.7] (Feb 11, 2025)
+### Fix:
+- Improved sanitize logic
+
 ## [1.9.6] (Jan 24, 2025)
 ### Fix:
 - Re-fix: Fixed an issue where widget style is not applied due to style tag being dynamically removed and then re-added in the head tag in a WordPress like environment
