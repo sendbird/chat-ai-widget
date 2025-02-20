@@ -52,6 +52,7 @@ export default defineConfig({
       name: 'ChatAiWidget',
       formats: ['es', 'umd'],
       fileName: (format) => `index.${format}.js`,
+      cssFileName: 'style',
     },
     rollupOptions: {
       plugins: [terser()],
