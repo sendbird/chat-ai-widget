@@ -5,6 +5,7 @@
   "main": "./dist/index.umd.js",
   "module": "./dist/index.es.js",
   "types": "./dist/src/index.d.ts",
+  "style": "./dist/src/index.css",
   "type": "module",
   "files": [
     "dist",
