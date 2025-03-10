@@ -1,7 +1,7 @@
 import BotProfileImage from './BotProfileImage';
 import { TypingBubble } from '../foundation/components/TypingBubble';
 
-function CustomTypingIndicatorBubble() {
+function BotTypingIndicator() {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, marginTop: 16 }}>
       <BotProfileImage size={28} />
@@ -10,4 +10,4 @@ function CustomTypingIndicatorBubble() {
   );
 }
 
-export default CustomTypingIndicatorBubble;
+export default BotTypingIndicator;
